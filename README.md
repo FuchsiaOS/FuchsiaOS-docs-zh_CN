@@ -1,7 +1,6 @@
 # Fuchsia OS 中文社区简体中文文档
 
-This `README.md` document is a top-level entry point to the Fuchsia
-documentation.
+原始英文文档 fork 自 https://fuchsia.googlesource.com/docs/
 
  - [Code of conduct](CODE_OF_CONDUCT.md)
  - [Glossary](glossary.md) - definitions of commonly used terms
@@ -10,6 +9,13 @@ documentation.
  - [System](the-book/README.md) - documentation for how Fuchsia works
  - [Repository map](map.md)
  - [Contributing changes](CONTRIBUTING.md)
+ 
+Fuchsia OS 中文社区
+ 
+ - 网站  https://fuchsia-china.com
+ - 电报  https://t.me/FuchsiaOSzh
+ - QQ群：788645873
+ - 微信：请扫二维码 https://fuchsia-china.com/join
 
 Other files in this repository are **system-wide** documentation articles for
 Fuchsia. **Individual subprojects** have their own documentation within each
