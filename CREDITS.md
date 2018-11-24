@@ -9,5 +9,5 @@
  - Wen: other
  
  * [x] 校稿：Locez  
- 流程：Mr-Linus  
- 统筹：Bootingman
+ * [x] 流程：Mr-Linus  
+ * [x] 统筹：Bootingman
