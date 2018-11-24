@@ -1,80 +1,75 @@
-Naming C/C++ objects
+C / C ++对象命名
 ====================
 
-## Include paths
+## 包含路径
 
-The following guidelines apply to libraries which are meant to be used
-extensively, e.g. in an upper layer of the Fuchsia codebase or via an SDK,
-where "upper layer of the Fuchsia codebase" means "garnet" and above
-(peridot, topaz, vendor/foo).
+以下准则适用于广泛使用的库，例如在Fuchsia代码库的上层或者通过SDK工具包，其中“Fuchsia代码库的上层”的意思是“garnet”和(peridot、 topaz、vendor/foo)的上级。
 
-There are three categories of headers: system, fuchsia, other.
+头文件分为三类：system、fuchsia、其它。
 
-#### For system headers
+#### system头文件
 
 ```
 <zircon/foo/bar.h>
 ```
 
-###### Rationale
+###### 解释
 
-These headers describe kernel interfaces (syscalls, related structs and
-defines), shared definitions and data structures between kernel and userspace
-(and bootloader), that are often useful to higher layers as well.
+这些头文件描述了内核接口 (系统调用, 相关结构和定义)，在内核和用户空间之间的共享定义和数据结构
+(和引导程序)，通常也适用于更高层级.
 
-###### Notes
+###### 备注
 
-- Headers may be installed straight under `zircon/`.
+- 这些头文件可能在`zircon/`目录下.
 - This does not include things like wrappers on syscall interfaces like zx.
 
-###### Examples
+###### 示例
 
 - `zircon/process.h`
 - `zircon/syscalls/hypervisor.h`
 
 
-#### For global headers
+#### 全局头文件
 
 ```
 <fuchsia/foo/bar.h>
 ```
 
-###### Rationale
+###### 解释
 
-These are libraries that define a low level ABI/API in Fuchsia but are not
-specific to the kernel.
+这些是在Fuchsia中定义低级别的ABI / API库，但不是特定于内核。
 
-###### Notes
+###### 备注
 
 - FIDL-generated code for Fuchsia APIs in that very namespace,
   as well as C/C++ wrapper libraries around these APIs are installed here.
-- Headers may be installed straight under `fuchsia/`.
+- 这些头文件可能在`fuchsia/`目录下.
 
-###### Examples
+###### 示例
 
 - `fuchsia/fdio/fdio.h`
 - `fuchsia/pixelformat.h`
 
 
-#### For other headers
+#### 其它头文件
 
 ```
 <lib/foo/bar.h>
 ```
 
-###### Rationale
+###### 解释
 
 Some libraries in that space are not necessarily Fuchsia-specific, or they
 may be Fuchsia-specific but do not fall into either of the above categories.
 We use a rather bland namespace that will likely not cause any collisions in
 the outside world: "lib".
 
-###### Notes
+###### 备注
 
-- Headers may not be placed straight under `lib/`. Subdirectories (`lib/foo/`)
+- 这些头文件可能不会放在`lib/`目录下. Subdirectories (`lib/foo/`)
   are mandatory.
 
-###### Examples
+###### 示例
 
 - `lib/app/cpp/startup_context.h`
 - `lib/fbl/array.h`
