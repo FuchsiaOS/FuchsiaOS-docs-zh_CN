@@ -48,20 +48,14 @@ TODO: 解释为满足不同受众使用合适的定制化绑定的目标是什�
 
 # 目的
 
-*   Describe data structures and interfaces used by IPC protocols on Zircon.
-*   Optimized for interprocess communication only; FIDL must not be persisted to
-    disk or used for network transfer across device boundaries.
-*   Efficiently transport messages consisting of data (bytes) and capabilities
-    (handles) over Zircon channels between processes running on the same
-    device.
-*   Designed specifically to facilitate effective use of Zircon primitives; not
-    intended for use on other platforms; not portable.
-*   Offers convenient APIs for creating, sending, receiving, and consuming
-    messages.
-*   Perform sufficient validation to maintain protocol invariants (but no more
-    than that).
+*   描述用于Zircon上使用的IPC协议的数据结构与接口。
+*   针对特定于进程间通信的优化; FIDL不能用于磁盘上的持久化操作或者跨设备的网络传输。
+*   同一设备上进程间的有效传输消息由数据(字节)与Zircon中处理通道的能力组成。
+*   专为促进Zircon原语的有效使用而设计；不打算在其它平台上使用，并且不可移植。
+*   为创建、发送、接收与消费消息提供方便的API。
+*   执行足够的验证来维护协议不变性（并仅是如此而已）。
 
-# Efficiency
+# 性能
 
 *   Just as efficient (speed and memory) as using hand-rolled data structures
     would be.
