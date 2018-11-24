@@ -1,81 +1,52 @@
-# Overview
+# FIDL:概述
 
-This document is a description of the Fuchsia Interface Definition Language
-(FIDL) purpose, high-level goals, and requirements.
+本文档的目的是用来描述Fuchsia接口定义语言（FIDL）的高层目标与需求。
 
-## Related Documents
+## 相关文档
 
-*   [Wire Format Specification]
-*   [Language Specification]
-*   [Compiler Specification]
-*   [API Readability / Style Guide]
-*   [C Language Bindings]
-*   [C++ Language Bindings]
-*   [Examples]: Some small example code used during development
-*   [Tutorial]: A tutorial on using FIDL services in several languages
+*   [有限格式规范]
+*   [语言规范]
+*   [编译规范]
+*   [API 可读性 / 样式指南]
+*   [绑定C语言]
+*   [绑定C++语言]
+*   [示例]: 开发过程中使用的一些小示例代码
+*   [教程]: 有关使用多种语言的FIDL服务的教程
 
 <!-- Reference links because these are used again below. -->
 
-[Wire Format Specification]: ../reference/wire-format/index.md
-[Language Specification]: ../reference/language.md
-[Compiler Specification]: ../reference/compiler.md
-[API Readability / Style Guide]: ../../../api/fidl.md
-[C Language Bindings]: ../languages/c.md
-[C++ Language Bindings]: ../languages/cpp.md
-[Examples]: https://fuchsia.googlesource.com/zircon/+/master/system/host/fidl/examples
-[Tutorial]: ../tutorial/README.md
+[有限格式规范]: ../reference/wire-format/index.md
+[语言规范]: ../reference/language.md
+[编译规范]: ../reference/compiler.md
+[API 可读性 / 样式指南]: ../../../api/fidl.md
+[绑定C语言]: ../languages/c.md
+[绑定C++语言]: ../languages/cpp.md
+[示例]: https://fuchsia.googlesource.com/zircon/+/master/system/host/fidl/examples
+[教程]: ../tutorial/README.md
 
 [TOC]
 
-## Overview
+## 概述
 
-The Fuchsia Interface Definition Language (FIDL) is the language used to
-describe interprocess communication (IPC) protocols used by programs running on
-the Fuchsia Operating System. FIDL is supported by a toolchain (compiler) and
-runtime support libraries (bindings) to help developers use IPC effectively.
+Fuchsia接口定义语言（FIDL）是用来描述Fuchsia操作系统中进程间通信协议（IPC）的语言。FIDL的工具链（编译器）和运行时支持库(绑定)用于帮助开发者高效的使用IPC。
 
-Goals
+##目标
 
-Fuchsia extensively relies on IPC since it has a microkernel architecture
-wherein most functionality is implemented in user space outside of the kernel,
-including privileged components such as device drivers. Consequently the IPC
-mechanism must be efficient, deterministic, robust, and easy to use.
+由于Fuchsia是微内核操作系统，其中大部分的功能在用户空间中实现，包括设备驱动等特权组件，所以它大量地依赖IPC进行通信。因此，IPC机制在设计上必须具有高效性、确定性、稳健性和易用性。
 
-**IPC efficiency** pertains to the computational overhead required to generate,
-transfer, and consume messages between processes. IPC will be involved in all
-aspects of system operation so it must be efficient. The FIDL compiler must
-generate tight code without excess indirection or hidden costs. It should be at
-least as good as hand-rolled code would be where it matters most.
+**IPC的高效性**衡量生成、传输和处理进程间消息所需的计算开销。IPC将参与所有的系统操作，所以它必须高效。FIDL的编译器必须生成紧凑的代码，没有额外的间接跳转或者隐形开销。最重要的是，它应该至少要你特定优化的代码一样好。
 
-**IPC determinism** pertains to the ability to perform transactions within a
-known resource envelope. IPC will be used extensively by critical system
-services such as filesystems which serve many clients and which must perform in
-predictable ways. The FIDL wire format must offer strong static guarantees such
-as ensuring that structure size and layout is invariant thereby alleviating the
-need for dynamic memory allocation or complex validation rules.
+**IPC的确定性**衡量在已知的封装资源大小的执行事务能力。IPC将被广泛的用于关键系统服务，例如，服务于许多客户端的文件系统，必须按照可预测的方式进行工作。FIDL的有线格式必须对确保结构体大小与布局的不变性提供强静态保证，从而减轻对动态内存分配或复杂验证规则的需求。
 
-**IPC robustness** pertains to the need to consider IPC as an essential part of
-the operating system's ABI. Maintaining binary stability is crucial. Mechanisms
-for protocol evolution must be designed conservatively so as not to violate the
-invariants of existing services and their clients, particularly when the need
-for determinism is also considered. The FIDL bindings must perform effective,
-lightweight, and strict validation.
+**IPC的鲁棒性**衡量考虑IPC作为操作系统ABI的重要组成部分的需要。保持二进制的稳定性至关重要，协议演变的机制必须谨慎设计，以便使现在的服务与他们的客户端不违反不变性，特别是在确定性的需求也被考虑其中时。FIDL的绑定也必须高效，轻量并且经过严格验证。
 
-**IPC ease of use** pertains to the fact that IPC protocols are an essential
-part of the operating system's API. It is important to provide good developer
-ergonomics for accessing services via IPC. The FIDL code generator removes the
-burden of writing IPC bindings by hand. Moreover, the FIDL code generator can
-produce different bindings to suit the needs of different audiences and their
-idioms.
+**IPC的易用性**衡量IPC协议作为操作系统API的重要组成部分，为通过IPC访问服务提供好的开发者使用方法是很重要的。FIDL的代码生成器减轻了手工编写IPC绑定代码的负担。此外，FIDL的代码生成器可以提供不同的绑定来适应不同开发者以及他们的习惯。
 
-TODO: express goal of meeting the needs of different audiences using
-appropriately tailored bindings, eg. system programming native vs. event-driven
-dispatch vs. async calls, etc... say more things about FIDL as our system API,
-SDK concerns, etc.
+TODO: 解释为满足不同受众使用合适的定制化绑定的目标是什么，例如，本地系统编程 vs.事件驱动调度 vs. 异步调用等... 以及关于更多FIDL的介绍，例如系统API，SDK的关注点等。
 
-Requirements
+##需求
 
-# Purpose
+# 目的
 
 *   Describe data structures and interfaces used by IPC protocols on Zircon.
 *   Optimized for interprocess communication only; FIDL must not be persisted to

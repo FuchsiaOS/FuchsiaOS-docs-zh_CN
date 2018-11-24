@@ -11,7 +11,7 @@ The following topics are presented:
 * [Reference](reference/README.md) &mdash; a technical deep dive for the interested developer,
 	featuring FIDL grammar, language features, on-wire format, building, and so on.
 
-# Supported Languages
+# 支持语言
 
 * [C](languages/c.md)
 * [C++](languages/cpp.md)
