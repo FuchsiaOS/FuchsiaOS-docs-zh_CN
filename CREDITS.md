@@ -5,7 +5,9 @@
  - 张麟：/development/hardware, /development/workfolows
  - Locez：/development/source_code, /development/tests
  - 浩宇：/development/languages/
- - Wenyin:/the_book
+ - Yur5n:/the_book
  - Wen: other
  
  校稿：Locez
+ 流程：Mr-Linus
+ 统筹：Bootingman
