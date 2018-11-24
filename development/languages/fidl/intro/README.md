@@ -10,8 +10,8 @@
 *   [API 可读性 / 样式指南]
 *   [绑定C语言]
 *   [绑定C++语言]
-*   [示例]: 开发过程中使用的一些小示例代码
-*   [教程]: 有关使用多种语言的FIDL服务的教程
+*   [示例]
+*   [教程]
 
 <!-- Reference links because these are used again below. -->
 
