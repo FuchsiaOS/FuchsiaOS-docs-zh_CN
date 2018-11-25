@@ -162,17 +162,19 @@ constant expressions.
 > 为了更加清晰，FIDL中没有表达式处理；也就是说，例如，你**不能**将常量声明为`6+5`。
 
 #### 声明分隔符
-
+<!--
 FIDL uses the semi-colon **';'** to separate adjacent declarations within the
 file, much like C.
+-->
 
-### Libraries
+如同C语言一样，FIDL使用分号**`;`**                                                       来分隔文件中的相邻声明。
 
-Libraries are named containers of FIDL declarations.
+### 库
 
-Each library has a name consisting of a single identifier (e.g., "objects"),
-or multiple identifiers separated by dots (e.g., "mozart.composition").
-Library names are used in [Qualified Identifiers](#qualified-identifiers).
+库被称为FIDL声明的容器。
+
+每个库都有一个由单个标识符(例如："objects")或者多个由点分隔的标识符组成的名称(例如： "mozart.composition").
+关于库名称的说明在[限定标识符](#qualified-identifiers)一节中出现。
 
 ```fidl
 // library identifier separated by dots
