@@ -47,7 +47,7 @@ Note that documentation comments can also be provided via the
 
 #### 关键字
 
-以下FIDL中保留的关键字.
+以下是FIDL中保留的关键字。
 
 ```
 array, as, bool, const, enum, float32, float64, handle, int8, int16,
@@ -57,7 +57,7 @@ uint32, uint64, union, using, vector
 
 #### 标识符
 
-FIDL标识符必须匹配正则表达式 `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`.
+FIDL标识符必须匹配正则表达式 `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`。
 
 简而言之，标识符必须以字母开始，可以包含字母、数字和下划线，但不能以下划线结束。
 
