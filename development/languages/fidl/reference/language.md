@@ -1,50 +1,53 @@
-# Language Specification
+# 语言规范
 
-This document is a specification of the Fuchsia Interface Definition Language
-(**FIDL**) syntax.
+本文档是Fuchsia接口定义语言(**FIDL**)的语法规范。
 
-See [Overview](index.md) for more information about FIDL's overall
-purpose, goals, and requirements, as well as links to related documents.
+有关FIDL的总体目的、目标和要求，以及相关文档的链接的更多信息，请参阅[FIDL概述](index.md)。
 
+<!--
 You can find a modified [EBNF description of the FIDL grammar here](grammar.md).
-
+-->
+你可以在这里找到修改后的[FIDL语法的EBNF描述](grammar.md)。
 [TOC]
 
-## Syntax
+## 语法
 
-FIDL provides a syntax for declaring named
-constants, enums, structs, unions, and interfaces. These declarations are
-collected into libraries for distribution.
+Fuchsia接口定义语言提供了声明命名常量、枚举、结构体、联合体和接口的语法。这些声明被集中到库中以便分发。
 
-FIDL declarations are stored in plain text UTF-8 files. Each file consists of a
-sequence of semicolon-delimited declarations. The order of declarations within a
-FIDL file, or among FIDL files within a library, is irrelevant. FIDL does not
-require (or support) forward declarations of any kind.
+FIDL声明存储在UTF-8纯文本文件中，每个文件都由一系列以分号分隔的声明组成。 库中的FIDL文件顺序或FIDL文件中的声明顺序是无关紧要的。 FIDL不要求（且不支持）任何类型的前向声明。
 
-### Tokens
+### 令牌(Tokens)
 
-#### Comments
+#### 注释
 
+<!--
 FIDL comments start with two (`//`) or three (`///`) forward slashes, continue
 to the end of the line, and can contain UTF-8 content (which is, of course, ignored).
 The three-forward-slash variant is a "documentation comment", and causes the comment
 text to be emitted into the generated code (as a comment, escaped correctly
 for the target language).
+-->
+
+FIDL注释是从`//`或者`///`开始到行尾结束，并且可以包含UTF-8内容（它们当然会被FIDL编译器作为注释忽略）。`///`是“文档注释”，并且通过其注释的内容将会发送到生成的代码中（作为注释，正确地为目标语言进行了转义）。
 
 ```fidl
-// this is a comment
-/// and this one is too, but it also ends up in the generated code
-struct Foo { // plain comment
-    int32 f; // as is this one
-}; // and this is the last one!
+// 这里是注释
+/// 这里也是注释，但是他会在最终生成的代码中
+struct Foo { // 这里也是
+    int32 f; // 以及这里
+}; // 最后一行注释!
 ```
 
+<!--
 Note that documentation comments can also be provided via the
 [`[Doc]` attribute](attributes.md#Doc).
+-->
 
-#### Keywords
+备注：文档注释也可参阅[`[Doc]` attribute](attributes.md#Doc)。
 
-The following are keywords in FIDL.
+#### 关键字
+
+以下FIDL中保留的关键字.
 
 ```
 array, as, bool, const, enum, float32, float64, handle, int8, int16,
@@ -52,35 +55,37 @@ int32, int64, interface, library, request, string, struct, uint8, uint16,
 uint32, uint64, union, using, vector
 ```
 
-#### Identifiers
+#### 标识符
 
-FIDL identifiers must match the regex `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`.
+FIDL标识符必须匹配正则表达式 `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`.
 
-In words: identifiers must start with a letter, can contain letters,
-numbers, and underscores, but cannot end with an underscore.
+简而言之，标识符必须以字母开始，可以包含字母、数字和下划线，但不能以下划线结束。
 
-Identifiers are case-sensitive.
+标识符区分大小写.
 
 ```fidl
-// a library named "foo"
+// 名为"foo"的库
 library foo;
 
-// a struct named "Foo"
+// 名为"Foo"的结构体
 struct Foo { };
 
-// a struct named "struct"
+// 名为"struct"的结构体
 struct struct { };
 ```
 
+<!--
 > Note that while using keywords as identifiers is supported, it can lead to confusion,
 > and should the be considered on a case-by-case basis. See the `Names` section of the
 > [Readability Rubric](https://fuchsia.googlesource.com/docs/+/master/development/api/fidl.md#Names)
+-->
 
-#### Qualified Identifiers
+> 请注意，虽然可以使用关键字作为标识符，但可能会导致混淆，
+> 应该根据具体情况加以考虑，请参阅[可读性规范(Readability Rubric)](https://fuchsia.googlesource.com/docs/+/master/development/api/fidl.md#Names)的`名称(Names)`部分。
 
-FIDL always looks for unqualified symbols within the scope of the current
-library. To reference symbols in other libraries, they must be qualified by
-prefixing the identifier with the library name or alias.
+#### 限定标识符
+
+FIDL始终在当前库的作用域内查找未限定的符号。 要引用其他库中的符号，必须在标识符前添加库名或别名来限定它们。
 
 **objects.fidl:**
 
@@ -109,10 +114,13 @@ struct Color {
 };
 ```
 
-#### Literals
+#### 字面量
 
+<!--
 FIDL supports integer, floating point, boolean, string, and enumeration literals, using
 a simplified syntax familiar to C programmers (see below for examples).
+-->
+FIDL支持使用类C语法的字面量类型:整型，浮点型，布尔型，字符串，枚举类型（请参见以下示例）。
 
 #### Constants
 
