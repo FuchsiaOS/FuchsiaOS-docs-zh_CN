@@ -124,11 +124,14 @@ a simplified syntax familiar to C programmers (see below for examples).
 -->
 FIDL支持使用类C语法的字面量类型:整型，浮点型，布尔型，字符串，枚举类型（请参见以下示例）。
 
-#### Constants
+#### 常量
 
+<!--
 FIDL supports the following constant types: booleans, signed and unsigned integers,
 floating point values, strings, and enumerations.
 The syntax is similar to C:
+-->
+FIDL支持使用类C语法的以下字面量类型：布尔型，有符号整型，无符号整型，浮点型，字符串和枚举类型。
 
 ```fidl
 const bool enabled_flag = true;
@@ -142,18 +145,23 @@ const float32 min_temp = -273.15;
 const float64 conversion_factor = 1.41421358;
 const Beverage my_drink = WATER;
 ```
-
+<!--
 These declarations introduce a name within their scope.
 The constant's type must be either a primitive or an enum.
+-->
+这些声明在其范围内引入了一个名称。
+常量的类型必须是基元或枚举。
 
+<!--
 Constant expressions are either literals or the names of other
 constant expressions.
+-->
+常量表达式可以是字面量, 也可以是其他常量表达式的名称。
 
-> For greater clarity, there is no expression processing in FIDL; that is,
-> you *cannot* declare a constant as having the value `6 + 5`, for
-> example.
 
-#### Declaration Separator
+> 为了更加清晰，FIDL中没有表达式处理；也就是说，例如，你**不能**将常量声明为`6+5`。
+
+#### 声明分隔符
 
 FIDL uses the semi-colon **';'** to separate adjacent declarations within the
 file, much like C.
