@@ -8,6 +8,8 @@
 You can find a modified [EBNF description of the FIDL grammar here](grammar.md).
 -->
 你可以在这里找到修改后的[FIDL语法的EBNF描述](grammar.md)。
+
+
 [TOC]
 
 ## 语法
@@ -61,7 +63,7 @@ FIDL标识符必须匹配正则表达式 `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`�
 
 简而言之，标识符必须以字母开始，可以包含字母、数字和下划线，但不能以下划线结束。
 
-标识符区分大小写.
+标识符区分大小写。
 
 ```fidl
 // 名为"foo"的库
