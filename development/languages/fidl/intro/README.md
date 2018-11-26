@@ -76,7 +76,7 @@ TODO: 解释为满足不同受众使用合适的定制化绑定的目标是什�
 *   针对特定于进程间通信的优化; FIDL 不能用于磁盘上的持久化操作或者跨设备的网络传输。
 *   在同一设备上运行的进程间通过 Ziron 通道高效传输由数据（bytes）和功能（handles）组成的消息。
 *   专为促进 Zircon 原语的高效使用而设计；不打算在其它平台上使用，并且不可移植。
-*   提供用于创建，发送，接收和使用消息的便捷API。
+*   提供用于创建，发送，接收和使用消息的便捷 API。
 *   执行足够的验证来维护协议不变性（仅此而已）。
 
 # 性能
@@ -117,10 +117,10 @@ TODO: 解释为满足不同受众使用合适的定制化绑定的目标是什�
 ## 代码位置
 
 - [编译器](../../system/host/fidl)
-- [C绑定](../../system/ulib/fidl)
-- [C++绑定](https://fuchsia.googlesource.com/garnet/+/master/public/lib/fidl/cpp)
-- [Go绑定](https://fuchsia.googlesource.com/garnet/+/master/public/lib/fidl/go)
-- [Rust绑定](https://fuchsia.googlesource.com/garnet/+/master/public/lib/fidl/rust)
+- [C 绑定](../../system/ulib/fidl)
+- [C++ 绑定](https://fuchsia.googlesource.com/garnet/+/master/public/lib/fidl/cpp)
+- [Go 绑定](https://fuchsia.googlesource.com/garnet/+/master/public/lib/fidl/go)
+- [Rust 绑定](https://fuchsia.googlesource.com/garnet/+/master/public/lib/fidl/rust)
 
 ## 规范的组成部分
 
