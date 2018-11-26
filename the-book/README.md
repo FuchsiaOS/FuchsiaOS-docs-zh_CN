@@ -1,21 +1,18 @@
-# Fuchsia is not Linux
-_A modular, capability-based operating system_
+# Fuchsia 不是 Linux (并非基于linux内核)
+_而是一种模块化的，基于功能的操作系统_
 
-This document is a collection of articles describing the Fuchsia operating system,
-organized around particular subsystems. Sections will be populated over time.
+本文档是一系列关于Fushsia操作系统的描述，部分内容将在后续补充。
 
 [TOC]
 
-## Zircon Kernel
+## Zircon 内核
+Zircon 是运行在Fushia下的微内核，Zircon同时也提供系统所需的驱动程序和库。
 
-Zircon is the microkernel underlying the rest of Fuchsia. Zircon
-also provides core drivers and Fuchsia's libc implementation.
-
- - [Concepts][zircon-concepts]
- - [System Calls][zircon-syscalls]
+ - [概念][zircon-concepts]
+ - [系统调用][zircon-syscalls]
  - [vDSO (libzircon)][zircon-vdso]
 
-## Zircon Core
+## Zircon 核心
 
  - Device Manager & Device Hosts
  - [Device Driver Model (DDK)][zircon-ddk]
@@ -23,73 +20,73 @@ also provides core drivers and Fuchsia's libc implementation.
  - [POSIX I/O (libfdio)](life_of_an_open.md)
  - [Process Creation](process_creation.md)
 
-## Framework
+## Zircon 框架
 
- - [Core Libraries](core_libraries.md)
- - Application model
-   - [Interface definition language (FIDL)][FIDL]
-   - Services
-   - Environments
- - [Boot sequence](boot_sequence.md)
+ - [核心库](core_libraries.md)
+ - 应用模型
+   - [接口定义语言 (FIDL)][FIDL]
+   - 服务
+   - 环境
+ - [Boot 顺序](boot_sequence.md)
  - Device, user, and story runners
- - Components
+ - 组件
  - [Namespaces](namespaces.md)
- - [Sandboxing](sandboxing.md)
- - [Story][framework-story]
- - [Module][framework-module]
+ - [沙箱](sandboxing.md)
+ - [存储][framework-story]
+ - [模块][framework-module]
  - [Agent][framework-agent]
  - Links
 
-## Storage
+## 存储
 
- - [Block devices](block_devices.md)
- - [File systems](filesystems.md)
- - Directory hierarchy
- - [Ledger][ledger]
- - Document store
- - Application cache
+ - [块设备](block_devices.md)
+ - [文件系统](filesystems.md)
+ - 目录层次结构
+ - [Ledger分布式存储系统][ledger]
+ - 文件管理器
+ - 应用缓存
 
-## Networking
+## 网络
 
- - Ethernet
- - [Wireless](wireless_networking.md)
- - [Bluetooth][bluetooth]
- - [Telephony][telephony]
+ - 以太网
+ - [无线网](wireless_networking.md)
+ - [蓝牙][bluetooth]
+ - [电话/蜂窝][telephony]
  - Sockets
  - HTTP
 
-## Graphics
+## 图像
 
- - [Magma (vulkan driver)][magma]
- - [Escher (physically-based renderer)][escher]
- - [Scenic (compositor)][scenic]
+ - [Magma-Fuchsia的GPU驱动架构 (vulkan 设备)][magma]
+ - [Escher (物理渲染器)][escher]
+ - [Scenic (合成器)][scenic]
  - [Input manager][input-manager]
  - [View manager][view-manager]
- - [Flutter (UI toolkit)][flutter]
+ - [Flutter (UI 工具包)][flutter]
 
-## Media
+## 媒体
 
- - Audio
- - Video
+ - 音频
+ - 视频
  - DRM
 
 ## Intelligence
 
  - Context
- - Agent Framework
- - Suggestions
+ - 代理框架
+ - 建议
 
-## User interface
+## 用户界面
 
- - Device, user, and story shells
- - Stories and modules
+ - 设备、用户和存储shells
+ - 存储和模块化
 
-## Backwards compatibility
+## 向下兼容
 
- - POSIX lite (what subset of POSIX we support and why)
+ - POSIX lite (我们支持POSIX的哪个子集以及原因)
  - Web runtime
 
-## Update and recovery
+## 更新和恢复
 
  - Verified boot
  - Updater
