@@ -4,15 +4,15 @@
 
  - [贡献者名单](CREDITS.md)
  - [术语表](DICT.md)
- - [Development](development/README.md) - instructions for building, running and
-   testing Fuchsia and software that runs on Fuchsia
- - [System](the-book/README.md) - documentation for how Fuchsia works
- - [Repository map](map.md)
+ - [开发](development/README.md) - 一份详细的说明文档，介绍如何参与开发、编译、运行、以及测试 Fuchsia OS 和 Fuchsia OS 软件的方法与细节。
+ - [系统](the-book/README.md) - 介绍 Fuchsia OS 如何运作的文档
+ - [仓库结构](map.md)
  - [Contributing changes](CONTRIBUTING.md)
  
 Fuchsia OS 中文社区
  
  - 网站  https://fuchsia-china.com
+ - 论坛  https://forum.fuchsia-china.com/
  - 电报  https://t.me/FuchsiaOSzh
  - QQ群：788645873
  - 微信：https://fuchsia-china.com/join
