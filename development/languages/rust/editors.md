@@ -4,23 +4,23 @@
 
 ## Intellij
 
-See instructions on [the Intellij Rust site](https://intellij-rust.github.io/).
-Run `fx gen-cargo //garnet/foo/path/to/target:label` for the GN target that you want to work on and
-open the corresponding directory.
+为了设置Intellij，请参见[Intellij Rust网站](https://intellij-rust.github.io/).
+
+设置完Intellij后，对需要做修改的GN目标运行`fx gen-cargo //garnet/foo/path/to/target:label`。 最后用Intellij打开相应的目录。
+
 
 ## VIM
 
-See instructions on [`rust-lang/rust.vim`](https://github.com/rust-lang/rust.vim).
+参见 [`rust-lang/rust.vim`](https://github.com/rust-lang/rust.vim).
 
 ## Visual Studio Code
 
-The VIM plugin uses the RLS (Rust language server) so you'll need to first
-[install rustup](https://rustup.rs/) and run
-`rustup component add rls-preview rust-analysis rust-src`. Once the RLS is installed,
-install [this VSCode plugin](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust).
+前文提到的VIM插件使用了RLS (Rust language server)。因此你需要首先
+[安装 rustup](https://rustup.rs/) 并运行`rustup component add rls-preview rust-analysis rust-src`. 
 
-Next open File -> Preferences -> Settings (or type Ctrl+Comma). Add the setting
+安装RLS后, 需要安装[VSCode 插件](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust)
+
+之后打开 File -> Preferences -> Settings (或输入 Ctrl+,). 并添加如下的设置：
 `"rust.target": "x86_64-fuchsia"`.
 
-Finally, run `fx gen-cargo //garnet/foo/path/to/target:label` for the GN target that you want to work on and
-open the corresponding directory in VSCode.
+最后，对需要做修改的GN目标运行`fx gen-cargo //garnet/foo/path/to/target:label`，之后在VSCode中打开相应的目录.
