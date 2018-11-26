@@ -5,7 +5,7 @@
  - Mr-Linus: /development/build, /development/sdk
  - 张麟: /development/hardware, /development/workflows
  - Locez: /development/source_code, /development/tests
- - ×××: /development/languages/rust, /development/languages/dart
+ - Liurnd: /development/languages/rust, /development/languages/dart
  - 浩宇：/development/languages/
  - Yur5n: /the_book
  - AndyGuo: /development/benchmarking
