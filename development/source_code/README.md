@@ -5,11 +5,11 @@ Fuchsia 使用 `jiri` 工具管理 git 仓库
 [https://fuchsia.googlesource.com/jiri](https://fuchsia.googlesource.com/jiri).
 使用该工具来管理在清单中列出的仓库集合。
 
-怎样构建，请看 Fuchsia 的 [Getting Started](/getting_started.md) 文档。
+怎样构建，请看 Fuchsia 的 [入门](/getting_started.md) 文档。
 
 ## 创建一个新的 Checkout
 
-引导程序需要你安装 Go 1.6 （或更新）和 Git 并且能在你的 PATH 中找到。
+引导程序需要你安装 Go 1.6 （或更高版本）和 Git 并且它们能在你的 PATH 中找到。
 
 这个脚本首先会创建一个 `fuchsia` 目录来引导一个开发环境。
 
@@ -29,13 +29,13 @@ curl -s "https://fuchsia.googlesource.com/scripts/+/master/bootstrap?format=TEXT
 
 ### 在不改变 PATH 的情况下工作
 
-如果你不喜欢破坏你的环境变量，只想 `jiri` 能在当前目录下工作即可，只需要复制 `jiri` 到 PATH 中。然而你必须拥有对复制 `jiri` 到 **目标目录** 的  **写入权限** （无需 `sudo`) ，如果你没有，那么 `jiri` 将不会更新它自己。
+如果你不喜欢破坏你的环境变量，只想 `jiri` 能在当前目录下工作即可，只需要复制 `jiri` 到现有的 PATH 中。然而你必须拥有对复制 `jiri` 到 **目标目录** 的  **写入权限** （无需 `sudo`) ，如果你没有，那么 `jiri` 将不会升级它自己。
 
 ```
 cp .jiri_root/bin/jiri ~/bin
 ```
 
-为了使用 `fx` 工具，你可以将它符号链接到 `~/bin` 目录：
+为了使用 `fx` 工具，你可以创建该工具的符号链接到 `~/bin` 目录：
 ```
 ln -s `pwd`/scripts/fx ~/bin
 ```
@@ -44,7 +44,7 @@ ln -s `pwd`/scripts/fx ~/bin
 
 ## 谁会在代码上工作
 
-在每个仓库的根目录和其它目录会有 MAINTAINERS 文件。这些列出来的都是那些熟悉并且能够为包含它的目录提供代码内容审查的人的邮件地址。查看 [maintainers.md](maintainers.md) 获得更多讨论。
+在每个仓库的根目录和其它目录会有 MAINTAINERS 文件。这些列出来的邮件地址，都是那些熟悉并且能够为包含这个文件的目录提供代码内容审查的人的邮件。查看 [maintainers.md](maintainers.md) 获得更多讨论。
 
 ## 如何处理第三方代码
 有关编写 README.fuchsia 文件的信息，请查看 [指南](README.fuchsia.md)。
