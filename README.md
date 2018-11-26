@@ -3,7 +3,7 @@
 原始英文文档 fork 自 https://fuchsia.googlesource.com/docs/
 
  - [贡献者名单](CREDITS.md) - 参与贡献 Fuchsia OS 简体中文文档翻译的志愿者列表
- - [术语表](DICT.md) - 本文档提及有争议的术语表
+ - [约定与术语表](https://github.com/servicemesher/istio-official-translation/issues/77) - 本文档提及有争议的术语表
  - [开发](development/README.md) - 介绍如何参与开发、编译、运行、以及测试 Fuchsia OS 和 Fuchsia OS 软件的方法与细节。
  - [系统](the-book/README.md) - 介绍 Fuchsia OS 如何运作。
  - [仓库结构](map.md)
@@ -48,7 +48,7 @@ the system-wide repository and within Individual project repositories.
 
 ### 翻译规范
 
-- 翻译之前，需参考[术语表](DICT.md)以规范翻译一致性。
+- 翻译之前，需参考[约定与术语表](https://github.com/servicemesher/istio-official-translation/issues/77)以规范翻译一致性。
 - 译文中的英文与中文建议用空格分隔,可以考虑找个[自动化中英文格式化 md 的软件](https://pypi.org/project/zhlint/)
 - 专业名称不需要翻译，尽可能用原始英文。
 - 翻译的中英文间隔不宜过长，尽可能一段英文注释，一段中文翻译，可以前后对应，方便其他译者协助 review。
