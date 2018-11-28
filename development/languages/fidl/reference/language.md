@@ -984,11 +984,10 @@ struct Record {
     // 绑定到 Calculator 接口通道的客户端点
     Calculator c;
 
-    // 绑定到Science接口通道的服务端点
+    // 绑定到 Science 接口通道的服务端点
     request<Science> s;
 
-    // 绑定到RealCalculator接口通道的可为 null 的客户端点
-    // RealCalculator interface
+    // 绑定到 RealCalculator 接口通道的可为 null 的客户端点
     RealCalculator? r;
 };
 ```
