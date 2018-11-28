@@ -1,8 +1,8 @@
 # 语言规范
 
-本文档是Fuchsia接口定义语言(**FIDL**)的语法规范。
+本文档是 Fuchsia 接口定义语言(**FIDL**)的语法规范。
 
-有关FIDL的总体目的、目标和要求，以及相关文档的链接的更多信息，请参阅[FIDL概述](index.md)。
+有关 FIDL 的总体目的、目标和要求，以及相关文档的链接的更多信息，请参阅[FIDL概述](index.md)。
 
 <!--
 You can find a modified [EBNF description of the FIDL grammar here](grammar.md).
@@ -14,9 +14,9 @@ You can find a modified [EBNF description of the FIDL grammar here](grammar.md).
 
 ## 语法
 
-Fuchsia接口定义语言提供了声明命名常量、枚举、结构体、联合体和接口的语法。这些声明被集中到库中以便分发。
+Fuchsia 接口定义语言提供了声明命名常量、枚举、结构体、联合体和接口的语法。这些声明被集中到库中以便分发。
 
-FIDL声明存储在UTF-8纯文本文件中，每个文件都由一系列以分号分隔的声明组成。 库中的FIDL文件顺序或FIDL文件中的声明顺序是无关紧要的。 FIDL不要求（且不支持）任何类型的前向声明。
+FIDL 声明存储在 UTF-8 纯文本文件中，每个文件都由一系列以分号分隔的声明组成。 库中的 FIDL 文件顺序或 FIDL 文件中的声明顺序是无关紧要的。 FIDL 不要求（且不支持）任何类型的前向声明。
 
 ### 令牌(Tokens)
 
@@ -49,7 +49,7 @@ Note that documentation comments can also be provided via the
 
 #### 关键字
 
-以下是FIDL中保留的关键字。
+以下是 FIDL 中保留的关键字。
 
 ```
 array, as, bool, const, enum, float32, float64, handle, int8, int16,
@@ -59,7 +59,7 @@ uint32, uint64, union, using, vector
 
 #### 标识符
 
-FIDL标识符必须匹配正则表达式 `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`。
+FIDL 标识符必须匹配正则表达式 `[a-zA-Z]([a-zA-Z0-9_]*[a-zA-Z0-9])?`。
 
 简而言之，标识符必须以字母开始，可以包含字母、数字和下划线，但不能以下划线结束。
 
@@ -87,10 +87,11 @@ struct struct { };
 
 #### 限定标识符
 
-FIDL始终在当前库的作用域内查找未限定的符号。 要引用其他库中的符号，必须在标识符前添加库名或别名来限定它们。
+FIDL 始终在当前库的作用域内查找未限定的符号。要引用其他库中的符号，必须在标识符前添加库名或别名来限定它们。
 
 **objects.fidl:**
 
+<!--
 ```fidl
 library objects;
 using textures as tex;
@@ -105,6 +106,21 @@ struct Thing {
     string name;
 };
 ```
+-->
+```fidl
+library objects;
+using textures as tex;
+
+interface Frob {
+    // "Thing"指的是"objects"库中的"Thing"
+    // "tex.Color"指的是"textures"库中的"Color"
+    1: Paint(Thing thing, tex.Color color);
+};
+
+struct Thing {
+    string name;
+};
+
 
 **textures.fidl:**
 
@@ -122,7 +138,7 @@ struct Color {
 FIDL supports integer, floating point, boolean, string, and enumeration literals, using
 a simplified syntax familiar to C programmers (see below for examples).
 -->
-FIDL支持使用类C语法的字面量类型:整型，浮点型，布尔型，字符串，枚举类型（请参见以下示例）。
+FIDL 支持使用类 C 语法的字面量类型:整型，浮点型，布尔型，字符串，枚举类型（请参见以下示例）。
 
 #### 常量
 
@@ -131,7 +147,7 @@ FIDL supports the following constant types: booleans, signed and unsigned intege
 floating point values, strings, and enumerations.
 The syntax is similar to C:
 -->
-FIDL支持使用类C语法的以下字面量类型：布尔型，有符号整型，无符号整型，浮点型，字符串和枚举类型。
+FIDL 支持使用类 C 语法的以下常量类型：布尔型，有符号整型，无符号整型，浮点型，字符串和枚举类型。
 
 ```fidl
 const bool enabled_flag = true;
@@ -150,7 +166,7 @@ These declarations introduce a name within their scope.
 The constant's type must be either a primitive or an enum.
 -->
 这些声明在其范围内引入了一个名称。
-常量的类型必须是基元或枚举。
+常量的类型必须是基本数据类型或枚举。
 
 <!--
 Constant expressions are either literals or the names of other
@@ -159,7 +175,7 @@ constant expressions.
 常量表达式可以是字面量, 也可以是其他常量表达式的名称。
 
 
-> 为了更加清晰，FIDL中没有表达式处理；也就是说，例如，你**不能**将常量声明为`6+5`。
+> 为了更加清晰，FIDL 中没有表达式处理；也就是说，例如，你**不能**将常量声明为`6+5`。
 
 #### 声明分隔符
 <!--
@@ -167,18 +183,23 @@ FIDL uses the semi-colon **';'** to separate adjacent declarations within the
 file, much like C.
 -->
 
-如同C语言一样，FIDL使用分号**`;`**                                                       来分隔文件中的相邻声明。
+如同 C 语言一样，FIDL 使用分号**`;`**                                                       来分隔文件中的相邻声明。
 
 <!-- ### Libraries -->
 ### 库
 
-<!-- Libraries are named containers of FIDL declarations. -->
-库被称为FIDL声明的容器。
-<!-- Each library has a name consisting of a dot-delimited identifier. Library names
-appear in [Qualified Identifiers](#qualified-identifiers). -->
+<!-- 
+Libraries are named containers of FIDL declarations. 
+-->
+库被称为 FIDL 声明的容器。
+<!-- 
+Each library has a name consisting of a dot-delimited identifier. Library names
+appear in [Qualified Identifiers](#qualified-identifiers). 
+-->
 每个库都有一个由单个标识符(例如："objects")或者多个由点分隔的标识符组成的名称(例如： "mozart.composition").
 关于库名称的说明在[限定标识符](#qualified-identifiers)一节中出现。
 
+<!--
 ```fidl
 // library identifier separated by dots
 library mozart.composition;
@@ -190,13 +211,25 @@ using mozart.buffers;
 using mozart.geometry as geo;
 
 ```
+-->
+```fidl
+// 使用点标识符分隔库
+library mozart.composition;
+
+//使用 "using" 来导入 "mozart.buffers" 库
+using mozart.buffers;
+
+//使用 "using" 来导入 "mozart.buffers" 库，并且将其简写为 geo
+using mozart.geometry as geo;
+
+```
 
 <!--
 Libraries may declare that they use other libraries with a "using" declaration.
 This allows the library to refer to symbols defined in other libraries upon which
 they depend. Symbols which are imported this way may be accessed by:
 -->
-库使用`using`来声明它们使用的其他库，这允许库引用它们所依赖的其他库中定义的符号。
+库使用 `using` 来声明它们使用的其他库，这允许库引用它们所依赖的其他库中定义的符号。
 以这种方式导入的符号可以通过以下方式访问： 
 
 <!--
@@ -216,8 +249,8 @@ but by convention it should resemble the library name itself. A directory should
 not contain FIDL files for more than one library.
 -->
 在源码树中，每个库都有一个包含 **.fidl**文件的目录。 
-目录的名称与FIDL编译器无关，但按照约定俗成，它应该类似于库本身的名字。 
-一个目录不应包含多个库的FIDL文件。
+目录的名称与 FIDL 编译器无关，但按照约定俗成，它应该类似于库本身的名字。 
+一个目录不应包含多个库的 FIDL 文件。
 
 <!--
 The scope of "library" and "using" declarations is limited to a single file.
@@ -240,8 +273,8 @@ FIDL library "fuchsia.ui" within the C++ namespace
 have their own module system, each FIDL library is compiled as a
 module for that language.
 -->
-例如，C++绑定的生成器将 `fuchsia.ui` FIDL库的声明放置于 `fuchsia::ui` 命名空间中。
-同样，对于具有自己的模块系统的Dart和Rust等语言，每个FIDL库都被编译为该语言的一个模块。
+例如，C++ 绑定的生成器将 `fuchsia.ui` FIDL库的声明放置于 `fuchsia::ui` 命名空间中。
+同样，对于具有自己的模块系统的 Dart 和 Rust 等语言，每个 FIDL 库都被编译为该语言的一个模块。
 
 <!--
 ### Types and Type Declarations
@@ -258,12 +291,12 @@ module for that language.
 *   Not nullable.
 -->
 * 简单的值类型
-* 不能为空
+* 不能为 `null`
 
 <!--
 The following primitive types are supported:
--->
-以下是FIDL支持的基本数据类型：
+--> 
+以下是 FIDL 支持的基本数据类型：
 
 <!--
 *    Boolean                 **`bool`**
@@ -324,7 +357,7 @@ struct Sprite {
 -->
 * 适当的可枚举类型
 * 从基本整型中，选出命名值的离散子集
-* 不能为空
+* 不能为 `null`
 * 枚举必须至少有一个元素
 
 <!-- ##### Declaration -->
@@ -413,7 +446,7 @@ struct Order {
 -->
 *   同一类型元素的定长序列。
 *   元素可以是任何类型，包括：基本类型，枚举(enum)，数组(array)，字符串(string)，向量(vector)，句柄(handle)，结构体(struct)，联合体(union)。
-*   自己本身不可为 `null`，但可以包含 `null` 类型。
+*   自己本身不能为 `null`，但可以包含 `null` 类型。
 
 <!-- ##### Use -->
 ##### 使用
