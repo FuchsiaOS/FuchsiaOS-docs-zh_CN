@@ -130,6 +130,7 @@ the file.
 
 任何能够追踪参数，它们可以被当作参数传递给`trace record`，并且在说明文件中设置，命令行值会覆盖来自于文件的值。
 
+<!--
 ### Measurement types
 
 The `trace` tool supports the following types of measurements:
@@ -194,6 +195,60 @@ event doesn't matter, but the recorded argument must have `uint64` type.
       "argument_unit": "Mb"
     }
 ```
+-->
+
+### 测试类型
+
+`trace`工具支持如下的基准测试类型：
+
+ - `时长`
+ - `时间间隔`
+ - `参数值`
+
+`时长`测量的目标是一个追踪事件，计算它发生的时间长短。目标追踪事件能被当作一个持续时间，异步事件或流式事件来记录。
+
+**例如**:
+
+```{json}
+    {
+      "type": "duration",
+      "event_name": "example",
+      "event_category": "benchmark"
+    },
+```
+
+`时间间隔`测量的目标是有特定父事件的两个追踪事件(事件开始或事件的结束)，计算两个连续发生的事件之间的时间。目标事件可以是"duration", "async", "flow" 或 "instant"(这种情况下，另外一个事件就无关紧要了)。这种测量可以使用如下的参数： `first_event_name`, `first_event_category`,`first_event_anchor`, `second_event_name`, `second_event_category`, `second_event_anchor`。
+
+**例如**:
+
+```{json}
+    {
+      "type": "time_between",
+      "first_event_name": "task_end",
+      "first_event_category": "benchmark",
+      "second_event_name": "task_start",
+      "second_event_category": "benchmark"
+    }
+```
+
+在上面的时间间隔测量中，抓取两个立即事件之间的时间，测量一个任务的技术和另一个任务开始之间的时间间隔。
+
+`参数值`测量用于记录传递给追踪事件的参数的值。将事件的名字和类别当作参数，当作参数名字和事件类别做参数，参数的名字会被记录，Takes as arguments a name and category of the event, name of
+the argument to be recorded and unit in which it is measured. The type of trace
+event doesn't matter, but the recorded argument must have `uint64` type.
+
+**Example**:
+
+```{json}
+    {
+      "type": "argument_value",
+      "event_name": "example",
+      "event_category": "benchmark",
+      "argument_name": "disk_space_used",
+      "argument_unit": "Mb"
+    }
+```
+
 
 ### Samples
 
