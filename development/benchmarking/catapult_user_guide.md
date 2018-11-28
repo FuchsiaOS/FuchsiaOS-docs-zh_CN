@@ -1,6 +1,15 @@
-# Catapult User Guide (Version 1)
 
+<!--
+# Catapult User Guide (Version 1)
+-->
+
+# Catapult User Guide (版本1)
+
+<!--
 * Updated: 2018 July 27
+-->
+
+* 更新于：2018年6月27日
 
 [TOC]
 
