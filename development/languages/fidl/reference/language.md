@@ -2,12 +2,12 @@
 
 本文档是 Fuchsia 接口定义语言(**FIDL**)的语法规范。
 
-有关 FIDL 的总体目的、目标和要求，以及相关文档的链接的更多信息，请参阅[FIDL概述](index.md)。
+有关 FIDL 的总体目的、目标和要求，以及相关文档的链接的更多信息，请参阅 [FIDL概述](index.md)。
 
 <!--
 You can find a modified [EBNF description of the FIDL grammar here](grammar.md).
 -->
-你可以在这里找到修改后的[FIDL语法的EBNF描述](grammar.md)。
+你可以在这里找到修改后的 [FIDL语法的EBNF描述](grammar.md)。
 
 
 [TOC]
@@ -30,7 +30,7 @@ text to be emitted into the generated code (as a comment, escaped correctly
 for the target language).
 -->
 
-FIDL注释是从`//`或者`///`开始到行尾结束，并且可以包含UTF-8内容（它们当然会被FIDL编译器作为注释忽略）。`///`是“文档注释”，并且通过其注释的内容将会发送到生成的代码中（作为注释，正确地为目标语言进行了转义）。
+FIDL注释是从`//`或者`///`开始到行尾结束，并且可以包含 UTF-8 内容（它们当然会被 FIDL 编译器作为注释忽略）。`///`是“文档注释”，并且通过其注释的内容将会发送到生成的代码中（作为注释，正确地为目标语言进行了转义）。
 
 ```fidl
 // 这里是注释
@@ -107,6 +107,7 @@ struct Thing {
 };
 ```
 -->
+
 ```fidl
 library objects;
 using textures as tex;
@@ -120,7 +121,7 @@ interface Frob {
 struct Thing {
     string name;
 };
-
+```
 
 **textures.fidl:**
 
