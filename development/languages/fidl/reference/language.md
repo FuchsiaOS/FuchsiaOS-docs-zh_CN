@@ -133,7 +133,7 @@ struct Color {
 };
 ```
 
-#### 字面量
+#### 字面量（Literals）
 
 <!--
 FIDL supports integer, floating point, boolean, string, and enumeration literals, using
@@ -187,7 +187,7 @@ file, much like C.
 如同 C 语言一样，FIDL 使用分号**`;`**                                                       来分隔文件中的相邻声明。
 
 <!-- ### Libraries -->
-### 库
+### 库（Library）
 
 <!-- 
 Libraries are named containers of FIDL declarations. 
@@ -892,7 +892,7 @@ struct Paint {
     error codes.  Positive values are reserved for application errors.  A status
     of ZX_OK indicates successful operation.
 -->
-*	当接口的客户端或服务端即将关闭其通道的一侧时，它可以选择向其对等端发送**墓志铭（epitaph）**消息来配置连接。墓志铭（epitaph）消息必须是通过该通道传递的最后一条信息。一条墓志消息包含 **zx_status_t** 类型的32位 int 值。保留负值用于系统错误代码。保留正值用于应用程序错误。状态为 ZX_OK 表示操作成功。
+*	当接口的客户端或服务端即将关闭其通道的一侧时，它可以选择向其对等端发送**墓志铭(epitaph)**消息来配置连接。墓志铭（epitaph）消息必须是通过该通道传递的最后一条信息。一条墓志消息包含 **zx_status_t** 类型的32位 int 值。保留负值用于系统错误代码。保留正值用于应用程序错误。状态为 ZX_OK 表示操作成功。
 <!--
 *   **Interface extension:** New methods can be added to existing interfaces as
     long as they do not collide with existing methods.
