@@ -12,7 +12,7 @@
 This is the grammar for FIDL source files. The grammar is expressed in
 a modified BNF format.
 -->
-下文描述的是 FIDL 源文件的语法，语法使用改进的BNF格式表示。
+下文描述的是 FIDL 源文件的语法，语法使用改进的 BNF 格式表示。
 
 <!--
 A nonterminal symbol matches a sequence of other symbols, delimited by
