@@ -23,7 +23,7 @@ This guide will walk you through the process of writing a benchmark, running it 
 commit, and automatically tracking the results in the [Performance Dashboard].
 -->
 
-这篇指南将会带领你学习编写评量基准的过程，每次代码提交时执行，并且在[Performance Dashboard]中自动回溯查看结果。
+这篇指南将会带领你学习编写评量基准的过程，每次代码提交时执行，并且在[Performance Dashboard]中自动回溯结果。
 
 <!--
 Today we support automating benchmarks for these projects:
@@ -51,7 +51,7 @@ executable must meet the following criteria:
 2. It produces JSON results that match the [benchmark results schema]:
 -->
 
-Fuchsia的基准评量是命令行可执行文件，这些程序会生成一个JSON格式的结果文件。执行文件必须满足如下的标准：
+Fuchsia的基准评量是命令行可执行文件，这些程序会生成一个JSON格式的结果文件这个可执行文件必须满足如下的标准：
 
 1. 程序要能将结果文件的位置作为命令行标记。
 2. 程序要能够生成JSON格式结果，并且满足[基准评量结果模式]。
@@ -87,7 +87,7 @@ examples.
 * Peridot: [//peridot/tests/benchmarks](https://fuchsia.googlesource.com/peridot/+/master/tests/benchmarks)
 * Topaz: [//topaz/tests/benchmarks](https://fuchsia.googlesource.com/topaz/+/master/tests/benchmarks)
 
-这些shell脚本是用一个叫[Runbenchmarks]的辅助库编写。在脚本中添加一行适当的代码，用来执行你的测试程序。可以参考脚本中其他的命令。
+这些shell脚本用一个叫[Runbenchmarks]的辅助库编写。在脚本中添加一行适当的代码，用来执行你的测试程序。可以参考脚本中其他的命令形式来编写。
 
 <!--
 ## Testing
@@ -125,7 +125,7 @@ the results files of other benchmarks.
 ```sh
 fx set-petal $layer
 jiri update -gc
-# 基准评量程序并没有包含在结果程序包中，因此要使用$layer/packages/kitchen_sink
+# 基准评量程序并没有包含在结果程序包中，因此要使用$layer/packages/kitchen_sink编译参数
 # 否则这些程序可能不会被编译。
 fx set <arch> --packages $layer/packages/kitchen_sink
 fx full-build && fx run
@@ -141,7 +141,7 @@ run my_benchmark [options]
 /pkgfs/packages/${layer}_benchmarks/0/bin/benchmarks.sh /tmp
 ```
 
-如果没有错误出现，你就可以在`/tmp`目录查看基准评量程序的输出文件了，同时也包括其他基准评量的结果文件。
+如果没有错误出现，就可以在`/tmp`目录查看基准评量程序的输出文件了，同时也包括其他基准评量的结果文件。
 
 <!--
 ## Tracking in the performance dashboard
@@ -160,13 +160,13 @@ NOTE: We do not yet have a User guide for the [Performance Dashboard Version 2].
 [//garnet/go/src/benchmarks]: https://fuchsia.googlesource.com/garnet/+/master/go/src/benchmarks
 -->
 
-##在性能显示面板中回溯
+##在性能显示面板中跟踪结果
 
 请参考[Performance Dashboard User Guide]文档。
 
 注意：我们现在还没有[Performance Dashboard Version 2]的使用指南。
 
-[benchmark results schema]: results_schema.md
+[基准评量结果模式]: results_schema.md
 [Fuchsia package documentation]: /development/build/packages.md
 [Performance Dashboard]: https://chromeperf.appspot.com/report
 [Performance Dashboard User Guide]: catapult_user_guide.md
