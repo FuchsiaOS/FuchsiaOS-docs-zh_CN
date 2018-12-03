@@ -20,7 +20,7 @@ visualization.  The dashboard is maintained by the Chrome team.  This a short gu
 to find and use the results of your benchmarks in the dashboard.
 -->
 
-##概述
+## 概述
 
 基准显示面板是我们发送基准测试结果用于监控和可视化的UI。显示面板由Chrome团队维护。这里又一个简短的指南，它说明如何在面板中找到和使用你基准测试的结果。
 
@@ -36,9 +36,9 @@ The login button is in the top right corner of the screen.
 The dashboard can be found at https://chromeperf.appspot.com/report.
 -->
 
-##访问基准显示面板
+## 访问基准显示面板
 
-*** 广告
+*** promo
 **确定已经登陆上google.com的账户，否则Fuchsia数据会被隐藏。**
 登陆按钮在屏幕顶部右上角
 ***

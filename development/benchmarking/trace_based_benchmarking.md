@@ -7,7 +7,7 @@ This document describes how to use trace-based benchmarking to measure and track
 performance of Fuchsia apps.
 -->
 
-#可追踪的基准测试
+# 可追踪的基准测试
 
 * 更新于：2018年9月18日
 
@@ -35,7 +35,7 @@ The same framework can be also used to benchmark single binaries (without the
 client-server split).
 -->
 
-##概述
+## 概述
 
 可追踪的基准测试通过在[tracing]下运行，并且分析收集的程序执行线索来度量性能，从而用来衡量应用程序的性能。
 
@@ -56,7 +56,7 @@ trace record --spec-file=<path to the spec file>
 ```
 -->
 
-##运行方式
+## 运行方式
 
 可追踪的基准测试使用`trace`二进制程序运行。说明文件应该按照如下的方式传给`trace`工具:
 
@@ -101,7 +101,7 @@ and set in the specification file, the command line value overrides the one from
 the file.
 -->
 
-##说明文件
+## 说明文件
 
 说明文件配置了追踪参数，并且细化测量值。（如果想要看一个完整例子，请参考[examples/benchmark]）
 
@@ -266,7 +266,7 @@ compliance with the [results schema].
 
 -->
 
-###取样
+### 取样
 
 可以指定预期样例的确切数组。为了做到指定确切数字，使用整数值的可选参数`expected_sample_count`必须为给定测量指定。这种情况下，如果记录下来的采样数字不符合其中提供的一个，测试程序就会记录一个错误，测试就不会生成结果（基准测试就失败了）。
 
@@ -286,7 +286,7 @@ trace record --spec-file=/pkgfs/packages/benchmark/0/data/benchmark_example.tspe
 
 -->
 
-###完整例子
+### 完整例子
 
 参考[examples/benchmark]获取一个可追踪基准测试的完整例子。
 
@@ -332,13 +332,13 @@ the [dashboard user guide] and the instructions for [automating benchmarks].
 
 -->
 
-##最佳实践
+## 最佳实践
 
 ###关于重用基准测试二进制程序
 
 说明文件和基准测试程序的分离允许基于单独的基准测试程序定义多个基准测试。通过采用命令行参数，可以将基准测试程序参数化，命令行参数在每一个说明文件中可以设置为不同值。
 
-###单独记录“冷启动”采样
+### 单独记录“冷启动”采样
 
 对于任何持续时间的测量都应该进行多次，有可能第一次时间与接下来的几次有不同的性能特征。可以设置`split_first:true`来单独报告和追踪第一次采样。
 

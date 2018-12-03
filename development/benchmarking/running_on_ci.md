@@ -118,7 +118,7 @@ If no errors occurred, you should see your benchmark's output file in `/tmp`, al
 the results files of other benchmarks.
 -->
 
-##测试
+## 测试
 
 到这里，你已经准备好编译Fuchsia，并且测试你的基准测量程序能否成功执行。在shell中执行如下命令：
 
@@ -160,7 +160,7 @@ NOTE: We do not yet have a User guide for the [Performance Dashboard Version 2].
 [//garnet/go/src/benchmarks]: https://fuchsia.googlesource.com/garnet/+/master/go/src/benchmarks
 -->
 
-##在性能显示面板中跟踪结果
+## 在性能显示面板中跟踪结果
 
 请参考[Performance Dashboard User Guide]文档。
 
