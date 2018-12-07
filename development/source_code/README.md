@@ -29,7 +29,7 @@ curl -s "https://fuchsia.googlesource.com/scripts/+/master/bootstrap?format=TEXT
 
 ### 在不改变 PATH 的情况下工作
 
-如果你不想被破坏环境变量，只想 `jiri` 能在当前目录下工作即可，只需要复制 `jiri` 到现有的 PATH 中。然而你必须拥有对复制 `jiri` 到 **目标目录** 的  **写入权限** （无需 `sudo`) ，如果你没有，那么 `jiri` 将不会被升级。
+如果你不想破坏你的环境变量，只想 `jiri` 能在当前目录下工作即可，只需要复制 `jiri` 到现有的 PATH 中。然而你必须拥有对复制 `jiri` 到 **目标目录** 的  **写入权限** （无需 `sudo`) ，如果你没有，那么 `jiri` 将不会被升级。
 
 ```
 cp .jiri_root/bin/jiri ~/bin
