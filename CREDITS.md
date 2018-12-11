@@ -9,6 +9,7 @@
  - 浩宇：/development/languages/
  - Yur5n: /the_book
  - AndyGuo: /development/benchmarking
+ - Kinglong: /glossary.md
  - Wen: other
  
  * [x] 校稿：Locez  
