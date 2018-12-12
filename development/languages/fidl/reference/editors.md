@@ -1,7 +1,8 @@
-# Editors
 <!--
-# 编辑器
+# Editors
 -->
+# 编辑器
+
 <!--
 Several editors have support for FIDL.
 -->
