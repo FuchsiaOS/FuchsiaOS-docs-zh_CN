@@ -17,15 +17,15 @@
  ## 翻译目录与分工对应
  Directory:
  - /development
-   - /api TooB
-   - /sdk Mr-Linus,Locez
-   - /hardware 张麟
-   - /languages 浩宇,Liurnd
-   - /source_code Cinus
-   - /benchmarking 浩宇,AndyGuo
-   - /source_code Locez
- - /the_book Yur5n
- - /glossary.md Kinglong
+   - /api **TooB**
+   - /sdk **Mr-Linus,Locez**
+   - /hardware **张麟**
+   - /languages **浩宇,Liurnd**
+   - /source_code **Cinus**
+   - /benchmarking **浩宇,AndyGuo**
+   - /source_code **Locez**
+ - /the_book **Yur5n**
+ - /glossary.md **Kinglong**
  - /* Wen
  
  * **校稿**：Locez  
