@@ -26,7 +26,7 @@
    - /source_code Locez
  - /the_book Yur5n
  - /glossary.md Kinglong
- - others Wen
+ - /* Wen
  
  * **校稿**：Locez  
  * **流程**：Mr-Linus  
