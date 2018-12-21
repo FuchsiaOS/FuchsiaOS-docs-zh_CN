@@ -1,6 +1,6 @@
 # Fuchsia OS 中文社区简体中文文档翻译小组分工表
 
-* [x] 翻译：
+
 <!--
  - TooB: /development/api
  - Mr-Linus: /development/build, /development/sdk
