@@ -6,8 +6,8 @@
  - [约定与术语表](https://github.com/servicemesher/istio-official-translation/issues/77) - 本文档提及有争议的术语表
  - [开发](development/README.md) - 介绍如何参与开发、编译、运行、以及测试 Fuchsia OS 和 Fuchsia OS 软件的方法与细节。
  - [系统](the-book/README.md) - 介绍 Fuchsia OS 如何运作。
- - [仓库结构](map.md)
- - [Contributing changes](CONTRIBUTING.md)
+ - [仓库结构](map.md) - 项目的目录结构。
+ - [Contributing changes](CONTRIBUTING.md) 
  
 Fuchsia OS 中文社区
  
