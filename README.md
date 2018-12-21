@@ -2,7 +2,7 @@
 
 原始英文文档 fork 自 https://fuchsia.googlesource.com/docs/
 
- - [贡献者名单](CREDITS.md) - 参与贡献 Fuchsia OS 简体中文文档翻译的志愿者列表
+ - [翻译分工](CREDITS.md) - 参与贡献 Fuchsia OS 简体中文文档翻译的志愿者分工情况。
  - [约定与术语表](https://github.com/servicemesher/istio-official-translation/issues/77) - 本文档提及有争议的术语表
  - [开发](development/README.md) - 介绍如何参与开发、编译、运行、以及测试 Fuchsia OS 和 Fuchsia OS 软件的方法与细节。
  - [系统](the-book/README.md) - 介绍 Fuchsia OS 如何运作。
