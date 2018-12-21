@@ -7,8 +7,7 @@
  - [开发](development/README.md) - 介绍如何参与开发、编译、运行、以及测试 Fuchsia OS 和 Fuchsia OS 软件的方法与细节。
  - [系统](the-book/README.md) - 介绍 Fuchsia OS 如何运作。
  - [仓库结构](map.md) - 项目的目录结构。
- - [Contributing changes](CONTRIBUTING.md) 
- 
+
 Fuchsia OS 中文社区
  
  - 网站  https://fuchsia-china.com
@@ -17,10 +16,12 @@ Fuchsia OS 中文社区
  - QQ群：788645873
  - 微信：https://fuchsia-china.com/join
 
+<!--
 Other files in this repository are **system-wide** documentation articles for
 Fuchsia. **Individual subprojects** have their own documentation within each
 project repository. The articles above link to Individual documents both within
 the system-wide repository and within Individual project repositories.
+-->
 
 ## 文档校对
 
