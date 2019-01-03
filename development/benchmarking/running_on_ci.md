@@ -8,7 +8,7 @@
 * Updated: 2018 August 9
 -->
 
-* 更新于: 2018年8月9日
+* 更新于: 2018 年 8 月 9 日
 
 [TOC]
 
@@ -23,7 +23,7 @@ This guide will walk you through the process of writing a benchmark, running it 
 commit, and automatically tracking the results in the [Performance Dashboard].
 -->
 
-这篇指南将会带领你学习编写评量基准的过程，每次代码提交时执行，并且在[Performance Dashboard]中自动回溯结果。
+这篇指南将会带领你学习编写评量基准的过程，每次代码提交时执行，并且在 [Performance Dashboard] 中自动回溯结果。
 
 <!--
 Today we support automating benchmarks for these projects:
@@ -33,7 +33,7 @@ Today we support automating benchmarks for these projects:
 -->
 
 现在已经为如下的这些工程支持了自动测量基准性能：
-* Garnet（也会执行Zircon的基准性能测量）
+* Garnet（也会执行 Zircon 的基准性能测量）
 * Peridot
 * Topaz
 
@@ -51,10 +51,10 @@ executable must meet the following criteria:
 2. It produces JSON results that match the [benchmark results schema]:
 -->
 
-Fuchsia的基准评量是命令行可执行文件，这些程序会生成一个JSON格式的结果文件这个可执行文件必须满足如下的标准：
+Fuchsia 的基准评量是命令行可执行文件，这些程序会生成一个 JSON 格式的结果文件这个可执行文件必须满足如下的标准：
 
 1. 程序要能将结果文件的位置作为命令行标记。
-2. 程序要能够生成JSON格式结果，并且满足[基准评量结果模式]。
+2. 程序要能够生成 JSON 格式结果，并且满足[基准评量结果模式]。
 
 <!--
 ## Building your benchmark
@@ -65,7 +65,7 @@ please read the [Fuchsia package documentation].
 
 ## 编译评量基准
 
-你编写的基准评量程序应该编译进Fuchsia程序包中，更多信息请阅读[Fuchsia package documentation]
+你编写的基准评量程序应该编译进Fuchsia程序包中，更多信息请阅读 [Fuchsia package documentation] 。
 
 <!--
 ## Automating your benchmark
@@ -87,7 +87,7 @@ examples.
 * Peridot: [//peridot/tests/benchmarks](https://fuchsia.googlesource.com/peridot/+/master/tests/benchmarks)
 * Topaz: [//topaz/tests/benchmarks](https://fuchsia.googlesource.com/topaz/+/master/tests/benchmarks)
 
-这些shell脚本用一个叫[Runbenchmarks]的辅助库编写。在脚本中添加一行适当的代码，用来执行你的测试程序。可以参考脚本中其他的命令形式来编写。
+这些 shell 脚本用一个叫 [Runbenchmarks] 的辅助库编写。在脚本中添加一行适当的代码，用来执行你的测试程序。可以参考脚本中其他的命令形式来编写。
 
 <!--
 ## Testing
@@ -120,18 +120,18 @@ the results files of other benchmarks.
 
 ## 测试
 
-到这里，你已经准备好编译Fuchsia，并且测试你的基准测量程序能否成功执行。在shell中执行如下命令：
+到这里，你已经准备好编译 Fuchsia ，并且测试你的基准测量程序能否成功执行。在 shell 中执行如下命令：
 
 ```sh
 fx set-petal $layer
 jiri update -gc
-# 基准评量程序并没有包含在结果程序包中，因此要使用$layer/packages/kitchen_sink编译参数
+# 基准评量程序并没有包含在结果程序包中，因此要使用 $layer/packages/kitchen_sink 编译参数
 # 否则这些程序可能不会被编译。
 fx set <arch> --packages $layer/packages/kitchen_sink
 fx full-build && fx run
 ```
 
-一旦Fuchsia的Shell加载成功：
+一旦 Fuchsia 的 Shell 加载成功：
 
 ```sh
 # 运行你的基准测试程序
@@ -141,7 +141,7 @@ run my_benchmark [options]
 /pkgfs/packages/${layer}_benchmarks/0/bin/benchmarks.sh /tmp
 ```
 
-如果没有错误出现，就可以在`/tmp`目录查看基准评量程序的输出文件了，同时也包括其他基准评量的结果文件。
+如果没有错误出现，就可以在 `/tmp` 目录查看基准评量程序的输出文件了，同时也包括其他基准评量的结果文件。
 
 <!--
 ## Tracking in the performance dashboard
@@ -162,9 +162,9 @@ NOTE: We do not yet have a User guide for the [Performance Dashboard Version 2].
 
 ## 在性能显示面板中跟踪结果
 
-请参考[Performance Dashboard User Guide]文档。
+请参考 [Performance Dashboard User Guide] 文档。
 
-注意：我们现在还没有[Performance Dashboard Version 2]的使用指南。
+注意：我们现在还没有 [Performance Dashboard Version 2] 的使用指南。
 
 [基准评量结果模式]: results_schema.md
 [Fuchsia package documentation]: /development/build/packages.md

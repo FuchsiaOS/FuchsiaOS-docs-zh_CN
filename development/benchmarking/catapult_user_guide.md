@@ -22,7 +22,7 @@ to find and use the results of your benchmarks in the dashboard.
 
 ## 概述
 
-基准显示面板是我们发送基准测试结果用于监控和可视化的UI。显示面板由Chrome团队维护。这里又一个简短的指南，它说明如何在面板中找到和使用你基准测试的结果。
+基准显示面板是我们发送基准测试结果用于监控和可视化的UI。显示面板由 Chrome 团队维护。这里又一个简短的指南，它说明如何在面板中找到和使用你基准测试的结果。
 
 <!--
 ## Accessing the Dashboard
@@ -39,11 +39,11 @@ The dashboard can be found at https://chromeperf.appspot.com/report.
 ## 访问基准显示面板
 
 *** promo
-**确定已经登陆上google.com的账户，否则Fuchsia数据会被隐藏。**
+**确定已经登陆上 google.com 的账户，否则 Fuchsia 数据会被隐藏。**
 登陆按钮在屏幕顶部右上角
 ***
 
-显示面板可以在`https://chromeperf.appspot.com/report`找到。
+显示面板可以在 `https://chromeperf.appspot.com/report` 找到。
 
 <!--
 ## Searching and Adding Graphs
@@ -64,10 +64,10 @@ example, we can see the zircon_benchmarks suite if we type "zircon"
 
 ## 搜索和添加图
 
-显示面板中显示了一组搜索框。占位符的名字还是Chrome说明使用BuildBot时的遗迹。因为它们和Fuchsia说明没有关系，我们将自己的数据根据如下的模式映射到这些字段中：
+显示面板中显示了一组搜索框。占位符的名字还是 Chrome 说明使用 BuildBot 时的遗迹。因为它们和 Fuchsia 说明没有关系，我们将自己的数据根据如下的模式映射到这些字段中：
 
 * `Test suite` == 基准测试套件的名字。
-* `Bot` == 至少运行了一次基准测试的Fuchsia LUCI编译器。
+* `Bot` == 至少运行了一次基准测试的 Fuchsia LUCI 编译器。
 * `Subtest` == 在你的基准测试中的测试用例名字。
 
 ![test_suite_example](/images/benchmarking/test_suite_example.png "test_suite_example")
@@ -85,9 +85,9 @@ You should see something like this:
 ![graph_example](/images/benchmarking/graph_example.png "graph_exmaple")
 -->
 
-选择一个编译器和子测试。注意如果你的子测试命名为`foo`，这里会有多个`foo_<metrics_name>`子测试供选择。这些子测试每一个代表这个子测试取样中计算出来的度量标准。例如，如果`foo`在每次基准测试运行时生成了N个采样点，那么子测试`foo_avg`是这N个采样的平均值的绘图。
+选择一个编译器和子测试。注意如果你的子测试命名为 `foo` ，这里会有多个 `foo_<metrics_name>` 子测试供选择。这些子测试每一个代表这个子测试取样中计算出来的度量标准。例如，如果 `foo` 在每次基准测试运行时生成了 N 个采样点，那么子测试 `foo_avg` 是这N个采样的平均值的绘图。
 
-当你完成了填充每一个域，点击`Add`按钮添加你的图到UI上。你会看到如下的一些图：
+当你完成了填充每一个域，点击 `Add` 按钮添加你的图到UI上。你会看到如下的一些图：
 
 ![graph_example](/images/benchmarking/graph_example.png "graph_exmaple")
 
@@ -121,9 +121,9 @@ the right of the graph.
 
 ## 保存视图
 
-第一个版本的基准测试结果显示面板的UI没有内建机制用于保存图形集合。如果你想要保存一列图，用于和其他人分享或在以后重新打开列表，可以从Chrome浏览器地址栏中拷贝URL。
+第一个版本的基准测试结果显示面板的UI没有内建机制用于保存图形集合。如果你想要保存一列图，用于和其他人分享或在以后重新打开列表，可以从 Chrome 浏览器地址栏中拷贝 URL 。
 
-注意，你必须在每次添加，修改或删除一个图之后重新拷贝URL。这包括移动绿色图形下方的滚动条或在图的右边列表中选择新值。
+注意，你必须在每次添加，修改或删除一个图之后重新拷贝 URL 。这包括移动绿色图形下方的滚动条或在图的右边列表中选择新值。
 
 <!--
 ## Enabling Regression Detection
@@ -146,12 +146,12 @@ See this link for more information about the [Sheriff rotation]
 
 ## 开启复原检测
 
-为了开启复原检测，你必须通过点击`Request Monitoring for Tests`按钮来为你的测试开启`monitoring`，这个按钮在页面顶部的`Report issue`下方。
+为了开启复原检测，你必须通过点击 `Request Monitoring for Tests` 按钮来为你的测试开启 `monitoring` ，这个按钮在页面顶部的 `Report issue` 下方。
 
 ![monitoring_button_example](/images/benchmarking/monitoring_button_example.png "monitoring_button_example")
 
-这样就会打开一个bug表格，你可以填充它来为一次基准测试开启监控。Chrome团队有一个Sheriff循环（随时轮转）来分类修复警告。显示面板仅允许单向分类bugs，因此我们必须没有JIRA支持。
+这样就会打开一个 bug 表格，你可以填充它来为一次基准测试开启监控。 Chrome 团队有一个 Sheriff 循环（随时轮转）来分类修复警告。显示面板仅允许单向分类 bugs ，因此我们必须没有 JIRA 支持。
 
-参考下面链接更多关于[Sheriff rotation]的信息。
+参考下面链接更多关于 [Sheriff rotation] 的信息。
 
 [Sheriff rotation]: https://chromium.googlesource.com/chromium/src/+/master/docs/speed/perf_regression_sheriffing.md

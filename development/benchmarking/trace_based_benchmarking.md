@@ -11,7 +11,7 @@ performance of Fuchsia apps.
 
 * 更新于：2018年9月18日
 
-这篇文档描述了如何使用可追踪的基准测试来衡量和追踪Fuchsia应用程序的性能。
+这篇文档描述了如何使用可追踪的基准测试来测量和追踪 Fuchsia 应用程序的性能。
 
 [TOC]
 
@@ -37,13 +37,13 @@ client-server split).
 
 ## 概述
 
-可追踪的基准测试通过在[tracing]下运行，并且分析收集的程序执行线索来度量性能，从而用来衡量应用程序的性能。
+可追踪的基准测试通过在 [tracing] 下运行，并且分析收集的程序执行线索来度量性能，进而用来测量应用程序的性能。
 
-对于典型的**服务**程序（客户端程序可以通过FIDL连接的应用程序），如下的组件参与到基准测试运行中：
+对于典型的**服务**程序（客户端程序可以通过FIDL连接的应用程序），有如下的组件参与到基准测试运行中：
 
-- **服务二进制程序** - 服务程序要被测试。
-- **基准程序** - 连接到服务程序的客户端应用程序，并且它执行我们在基准测试中感兴趣的服务使用方式。
-- **基准测试说明** - 一个JSON文件，它指定了在基准测试应用程序运行期间要抓取的应该被检测的事件，以及如何抓取。
+- **服务端的二进制程序** - 服务程序要被测试。
+- **基准程序** - 连接到服务程序的客户端应用程序，并且它执行在基准测试中我们感兴趣的服务使用方式。
+- **基准测试说明** - 一个 JSON 文件，它指定了在基准测试应用程序运行期间要抓取的应该被检测的事件，以及如何抓取。
 
 <!--
 ## Mechanics
@@ -58,7 +58,7 @@ trace record --spec-file=<path to the spec file>
 
 ## 运行方式
 
-可追踪的基准测试使用`trace`二进制程序运行。说明文件应该按照如下的方式传给`trace`工具:
+可追踪的基准测试使用 `trace` 二进制程序运行。说明文件应该按照如下的方式传给 `trace` 工具:
 
 ```sh
 trace record --spec-file=<path to the spec file>
@@ -101,19 +101,19 @@ and set in the specification file, the command line value overrides the one from
 the file.
 -->
 
-## 说明文件
+### 说明文件
 
-说明文件配置了追踪参数，并且细化测量值。（如果想要看一个完整例子，请参考[examples/benchmark]）
+说明文件配置了追踪参数，并且细化测量值。（如果想看一个完整例子，请参考 [examples/benchmark] ）
 
 说明文件支持如下的顶级参数：
 
-- `app`：字符串，要执行的应用程序的url。
+- `app`：字符串，要执行的应用程序的 url 。
 - `args`: 字符串数组，传给应用程序的启动参数。
 - `catagories`: 字符串数组，要开启的追踪种类。
 - `duration`: 整数，追踪最长持续时间，单位是秒。
 - `measure`: 测量说明的数组，参考下面内容。
 
-假定有了说明文件，`trace`工具使用给定的`args`数据运行`app`参数指定的程序，它最多执行`duration`参数指定的秒数，从选择的`categories`中收集追踪的事件。然后，trace工具根据记录的追踪事件计算在`measure`中指定的测量的结果。
+假定有了说明文件，`trace` 工具使用给定的 `args` 数据运行 `app` 参数指定的程序，它最多执行 `duration` 参数指定的秒数，从选择的 `categories` 中收集追踪的事件。然后， trace 工具根据记录的追踪事件计算在 `measure` 中指定的测量的结果。
 
 例如：
 
@@ -128,7 +128,7 @@ the file.
 }
 ```
 
-任何能够追踪参数，它们可以被当作参数传递给`trace record`，并且在说明文件中设置，命令行中的值设置会覆盖来自于文件的值。
+任何能够追踪的参数，它们可以被当作参数传递给 `trace record` ，并且在说明文件中设置，命令行中的值设置会覆盖来自于文件的值。
 
 <!--
 ### Measurement types
@@ -157,7 +157,7 @@ duration, an async, or a flow event.
 
 ### 测试类型
 
-`trace`工具支持如下的基准测试类型：
+`trace` 工具支持如下的基准测试类型：
 
  - `时长`
  - `时间间隔`
@@ -219,9 +219,9 @@ event doesn't matter, but the recorded argument must have `uint64` type.
 ```
 -->
 
-`时间间隔`测量的目标是有特定父事件的两个追踪事件(事件开始或事件结束)，计算两个连续发生的事件之间的时间。目标事件可以是"duration", "async", "flow" 或 "instant"(这种情况下，另外一个事件就无关紧要了)。这种测量可以使用如下的参数： `first_event_name`, `first_event_category`,`first_event_anchor`, `second_event_name`, `second_event_category`, `second_event_anchor`。
+`时间间隔`测量的目标是有特定父事件的两个追踪事件(事件开始或事件结束)，计算两个连续发生的事件之间的时间。目标事件可以是 "duration"，"async"，"flow" 或 "instant" (这种情况下，另外一个事件就无关紧要了)。这种测量可以使用如下的参数： `first_event_name`，`first_event_category`，`first_event_anchor`，`second_event_name`，`second_event_category`，`second_event_anchor`。
 
-**例如**:
+** 例如 **:
 
 ```{json}
     {
@@ -268,9 +268,9 @@ compliance with the [results schema].
 
 ### 取样
 
-可以指定预期样例的确切数组。为了做到指定确切数字，使用整数值的可选参数`expected_sample_count`必须为给定测量指定。这种情况下，如果记录下来的采样数字不符合其中提供的一个，测试程序就会记录一个错误，测试就不会生成结果（基准测试就失败了）。
+可以指定预期样例的确切数组。为了做到指定确切数字，使用整数值的可选参数 `expected_sample_count` 必须为给定测量指定。这种情况下，如果记录下来的采样数字不符合其中提供的一个，测试程序就会记录一个错误，测试就不会生成结果（基准测试就失败了）。
 
-当然也可以指定`split_first`标记，用它来分离第一个取样和后面剩下的取样。这对于记录`冷启动`采样非常有用（参考[best practices]一节）。为了服从[result schema]，这个标记也被传给导出文件，。
+当然也可以指定 `split_first` 标记，用它来分离第一个取样和后面剩下的取样。这对于记录`冷启动`采样非常有用（参考 [best practices] 一节）。为了服从 [result schema] ，这个标记也被传给导出文件，。
 
 <!--
 
@@ -288,7 +288,7 @@ trace record --spec-file=/pkgfs/packages/benchmark/0/data/benchmark_example.tspe
 
 ### 完整例子
 
-参考[examples/benchmark]获取一个可追踪基准测试的完整例子。
+参考 [examples/benchmark] 获取一个可追踪基准测试的完整例子。
 
 这个例子可以使用如下的命令来运行。
 
@@ -340,7 +340,7 @@ the [dashboard user guide] and the instructions for [automating benchmarks].
 
 ### 单独记录“冷启动”采样
 
-对于任何持续时间的测量都应该进行多次，有可能第一次时间与接下来的几次有不同的性能特征。可以设置`split_first:true`来单独报告和追踪第一次采样。
+对于任何持续时间的测量都应该进行多次，有可能第一次时间与接下来的几次有不同的性能特征。可以设置`split_first:true` 来单独报告和追踪第一次采样。
 
 ### 结果
 
@@ -348,11 +348,11 @@ the [dashboard user guide] and the instructions for [automating benchmarks].
 
 ### 导出
 
-如果你喜欢机器友好的格式，以`--benchmark-results-file=<file>`形式传递导出文件路径参数给`trace record`。参考[results schema]获取结果文件格式。
+如果你喜欢机器友好的格式，以 `--benchmark-results-file=<file>` 形式传递导出文件路径参数给 `trace record` 。参考 [results schema] 获取结果文件格式。
 
 ### 结果显示上传
 
-WIP是性能显示信息上传集成和额外支持功能在2018年正在开发中。参考[dashboard user guide]和[automating benchmarks]中的说明。
+WIP 是性能显示信息上传集成和额外支持功能在2018年正在开发中。参考 [dashboard user guide] 和 [automating benchmarks] 中的说明。
 
 [automating benchmarks]: running_on_ci.md
 [dashboard user guide]: catapult_user_guide.md
