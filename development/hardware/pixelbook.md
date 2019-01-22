@@ -36,9 +36,9 @@ OS（帮助->关于Chrom OS）“确定版本&gt;=62
 6. (可选) 运行 `sudo crossystem dev_default_boot=usb` 设置默认USB启动。
 7. 插入USB驱动器（U盘）。
 8. 运行 `sudo reboot` 重启设备。
-9. 在"OS verification is OFF（系统验证已经关闭）"页面，按 Ctrl+U 可以立即进入USB启动。 ( [提示 & 技巧](#tips-and-tricks) 查看其他简单操作)
+9. 在"OS verification is OFF（系统验证已经关闭）"页面，按 Ctrl+U 可以立即进入USB启动。 ( [提示 & 技巧](#提示-&-技巧) 查看其他简单操作)
 
-The USB drive is only needed for booting when you want to re-pave or otherwise
+Th USB drive is only needed for booting when you want to re-pave or otherwise
 netboot the device. If you didn't make USB booting the default (Step #6), you
 will need to press Ctrl+U at the grey 'warning OS-not verified' screen to boot
 from USB when you power on your device. If the device tries to boot from USB,
