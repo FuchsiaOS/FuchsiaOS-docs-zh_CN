@@ -38,7 +38,7 @@ OS（帮助->关于Chrom OS）“确定版本&gt;=62
 8. 运行 `sudo reboot` 重启设备。
 9. 在"OS verification is OFF（系统验证已经关闭）"页面，按 Ctrl+U 可以立即进入USB启动。 ( [提示 & 技巧](#提示--技巧) 查看其他简单操作)
 
-Th USB drive is only needed for booting when you want to re-pave or otherwise
+只有你想重新安装或网络启动设备时才需要USB驱动器。如果你没有设置USB默认启动（第6步）Th USB drive is only needed for booting when you want to re-pave or otherwise
 netboot the device. If you didn't make USB booting the default (Step #6), you
 will need to press Ctrl+U at the grey 'warning OS-not verified' screen to boot
 from USB when you power on your device. If the device tries to boot from USB,
