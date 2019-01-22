@@ -1,54 +1,42 @@
-# Preparing to install Fuchsia on Pixelbook
+# 在 Pixelbook 上安装 Fuchsia 的准备工作
 
-## Update ChromeOS
+## 更新 ChromeOS
 
-If your Pixelbook has never been booted, it is best to boot it normally to check
-for any critical updates, as follows:
+如果你的 Pixelbook 从来没有被启动过, 那么最好的方式就是正常启动检查所有关键的更新，方法如下：
 
-1. Boot the Pixelbook normally. Opening the lid usually powers on the device.
-If this doesn't work, the power button is on the left side of the device, near
-the front of the wrist rest.
-2. Tap the "Let's go" button.
-3. Connect to a wired or wireless network.
-4. Accept the terms to proceed to the update check step.
-5. The device should check for updates, install any found.
-6. After rebooting from any updates, tap 'Browse as Guest' in the lower left
-corner.
-7. From the browser UI, go into "Settings->About Chrome OS" or "Help->About Chrome
-OS" and confirm the version is &gt;=62.
+1. 正常启动 Pixelbook， 通常翻开盖子就会给 Pixelbook 供电
+如果没有启动， 电源键就在设备的左侧，靠近腕托前面。
+2. 点击“Let's go”按钮。
+3. 连接到有线或无线网络。
+4. 接受条款以继续进行更新检查步骤。
+5. 设备应该会检查更新，并安装所有更新。
+6. 安装所有更新后重启设备，点击左下角的”Browse as Guest（以访客身份访问）“。
+7. 在ChromeOS的主界面，点击”Settings->About Chrome OS（设置->关于Chrome OS）“或”Help->About Chrome
+OS（帮助->关于Chrom OS）“确定版本&gt;=62
 
-## Put your device into developer mode
-***WARNING: This will erase any state stored locally on your Pixelbook***
+## 讲设备设置为开发者模式
+***注意: 这个操作会清除本地所有的设置***
 
-1. Power off the Pixelbook.
-2. Go into Recovery Mode.
-Hold down Esc+Refresh (first and third buttons on the top row of the keyboard).
-Then press the Power button (bottom left side of the device).
-3. Start by disabling OS verification by pressing Ctrl+D. You should see "To turn OS verification OFF, press ENTER". Press Enter to confirm.
-4. When your device reboots, you'll get confirmation that OS verification is OFF. Press Ctrl+D again to enter Developer Mode.
-5. Wait for the device to re-configure itself, which will take several minutes.
-Initially it may not appear to be doing anything. Let the device sit for a
-minute or two. You will hear two loud &lt;BEEP&gt;s early in the process. The
-process is complete when you hear two more loud &lt;BEEP&gt;s.
-6. The device should reboot itself when the Developer Mode transition is
-complete. You can now jump to Step #2 in the "Boot from USB" section.
+1. 关闭 Pixelbook 的电源。
+2. 进入Recovery模式。
+按住 Esc+Refresh (键盘上第一行的第一个和第三个按钮)
+然后再按电源键 (设备左侧的按钮)。
+3. 首先按Ctrl+D关闭系统验证。你会看到"To turn OS verification OFF, press ENTER（关闭系统验证，请按ENTER）"。回车确认选择。
+4. 如果 Pixelbook 重启，可以确定系统验证已经被关闭。再次按 Ctrl+D 进入开发者模式。
+5. 等待设备自己配置，这将会花费几分钟时间。最初设备好像什么都没有做。静置设备一两分钟。配置开始会听到两声哔哔声。当适配完成会发出两声更加响亮的哔哔声。
+6. 开发者模式配置完成，设备会重起。可以进入第二步”从USB启动“。
 
-## Boot from USB
+## 从USB启动
 
-1. Boot into ChromeOS.
-2. You should see a screen that says "OS verification is OFF" and approximately
-30 seconds later the boot will continue. Wait for the Welcome or Login screen
-to load. **Ignore** any link for "Enable debugging features".
-3. Press Ctrl+Alt+Refresh/F3 to enter a command shell. If pressing this key
-combination has no effect, try rebooting the Pixelbook once more.
-4. Enter 'chronos' as the user with a blank password
-5. Enable USB booting by running `sudo crossystem dev_boot_usb=1`
-6. (optional) Default to USB booting by running `sudo crossystem dev_default_boot=usb`.
-7. Plug the USB drive into the Pixelbook.
-8. Reboot by typing `sudo reboot`
-9. On the "OS verification is OFF" screen press Ctrl+U to bypass the timeout and
-boot from USB immediately. (See [Tips and Tricks](#tips-and-tricks) for other
-short circuit options)
+1. 进入ChromeOS。
+2. 你会看到屏幕显示"OS verification is OFF（系统验证已经关闭）"然后大约30秒会继续加载系统。等欢迎界面或者登陆页面加载。 **忽略** 所有的"Enable debugging features（启用调试功能）"的链接。
+3. 按 Ctrl+Alt+Refresh/F3 打开命令行窗口。 如果按下组合键没有效果，重启一次之后再尝试。
+4. 输入'chronos'作为用户名，密码为空。
+5. 通过运行 `sudo crossystem dev_boot_usb=1` 启动USB。
+6. (可选) 运行 `sudo crossystem dev_default_boot=usb` 设置默认USB启动。
+7. 插入USB驱动器（U盘）。
+8. 运行 `sudo reboot` 重启设备。
+9. 在"OS verification is OFF（系统验证已经关闭）"页面，按 Ctrl+U 可以立即进入USB启动。 ( [提示 & 技巧](#tips-and-tricks) 查看其他简单操作)
 
 The USB drive is only needed for booting when you want to re-pave or otherwise
 netboot the device. If you didn't make USB booting the default (Step #6), you
@@ -60,7 +48,7 @@ bootloader USB enumeration during boot has been observed to be slow. If you're
 having trouble booting from USB, it may be helpful to remove other USB devices
 until the device is through the bootloader and also avoid using a USB hub.
 
-## Tips and Tricks
+## 提示 & 技巧
 
 By default the ChromeOS bootloader has a long timeout to allow you to press
 buttons. To shortcut this you can press Ctrl+D or Ctrl+U when on the grey screen
@@ -68,7 +56,7 @@ that warns that the OS will not be verified. Ctrl+D will cause the device to
 skip the timeout and boot from its default source. Ctrl+U will skip the timeout
 and boot the device from USB.
 
-### Going back to ChromeOS
+### 回到ChromeOS
 
 To go back to ChromeOS you must modify the priority of the Fuchsia kernel
 partition to be lower than that of at least one of the two ChromeOS kernel
