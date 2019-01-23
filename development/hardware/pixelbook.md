@@ -14,7 +14,7 @@
 7. 在ChromeOS的主界面，点击”Settings->About Chrome OS（设置->关于Chrome OS）“或”Help->About Chrome
 OS（帮助->关于Chrom OS）“确定版本&gt;=62
 
-## 讲设备设置为开发者模式
+## 设置开发者模式
 ***注意: 这个操作会清除本地所有的设置***
 
 1. 关闭 Pixelbook 的电源。
@@ -38,34 +38,18 @@ OS（帮助->关于Chrom OS）“确定版本&gt;=62
 8. 运行 `sudo reboot` 重启设备。
 9. 在"OS verification is OFF（系统验证已经关闭）"页面，按 Ctrl+U 可以立即进入USB启动。 ( [提示 & 技巧](#提示--技巧) 查看其他简单操作)
 
-只有你想重新安装或网络启动设备时才需要USB驱动器。如果你没有设置USB默认启动（第6步）Th USB drive is only needed for booting when you want to re-pave or otherwise
-netboot the device. If you didn't make USB booting the default (Step #6), you
-will need to press Ctrl+U at the grey 'warning OS-not verified' screen to boot
-from USB when you power on your device. If the device tries to boot from USB,
-either because that is the default or you pressed Ctrl+U, and the device fails
-to boot from USB you'll hear a fairly loud &lt;BEEP&gt;. Note that ChromeOS
-bootloader USB enumeration during boot has been observed to be slow. If you're
-having trouble booting from USB, it may be helpful to remove other USB devices
-until the device is through the bootloader and also avoid using a USB hub.
+只有你想重新安装或网络启动设备时才需要USB驱动器。如果你没有设置USB默认启动（第6步）， 你需要在设备开启电源后，在界面显示”warning OS-not verified（警告系统没有验证）“时按 Ctrl+U。如果设备默认USB启动或者你按了 Ctrl+U ，那么设备会尝试从USB启动，如果启动失败，设备会发出很大得哔哔声。注意，ChromeOS引导程序在引导期间的USB总线枚举过程被观察到很慢。如果你USB启动遇到困难，你可以尝试移除其他所有的USB驱动设备并且不使用USB集线器连接USB驱动器，直到通过引导程序。
 
 ## 提示 & 技巧
 
-By default the ChromeOS bootloader has a long timeout to allow you to press
-buttons. To shortcut this you can press Ctrl+D or Ctrl+U when on the grey screen
-that warns that the OS will not be verified. Ctrl+D will cause the device to
-skip the timeout and boot from its default source. Ctrl+U will skip the timeout
-and boot the device from USB.
+默认情况下，ChromeOS引导加载程序有很长的超时时间允许您按下按钮。 再灰色的界面上按快捷键 Ctrl+D 或 CTRL +U 可以跳过系统不会被验证的警告。Ctrl+D 可以跳过等待时间然后从默认资源启动。Ctrl+U 可以跳过等待时间然后从USB启动。
 
-### 回到ChromeOS
+### 设置启动ChromeOS
 
-To go back to ChromeOS you must modify the priority of the Fuchsia kernel
-partition to be lower than that of at least one of the two ChromeOS kernel
-partitions.
+安装Fuchsia后要启动Chromeos，必须将Fuchsia内核分区的优先级修改为低于至少两个Chromeos内核分区中的一个。
 
-1. Press Alt+Esc to get to a virtual console
-2. Find the disk that contains the KERN-A, KERN-B, and KERN-C partitions with
-the `lsblk` command. Below this is device 000, note how the device path of the
-kernel partitions is an extension of that device.
+1. 按 Alt+Esc 打开虚拟控制台
+2. 使用`lsblk` 找到包含KERN-A， KERN-B 和 KERN-C 的磁盘分区。下面是设备000 的示例，注意，内核分区的路径是该设备的扩展。
 
         $ lsblk
         ID  SIZE TYPE             LABEL                FLAGS  DEVICE
@@ -77,7 +61,7 @@ kernel partitions is an extension of that device.
         005   4G cros rootfs      ROOT-B                      /dev/sys/pci/00:1e.4/pci-sdhci/sdhci/sdmmc/block/part-004/block
         006  64M cros kernel      KERN-C                      /dev/sys/pci/00:1e.4/pci-sdhci/sdhci/sdmmc/block/part-005/block
         007   4G cros rootfs      ROOT-C                      /dev/sys/pci/00:1e.4/pci-sdhci/sdhci/sdmmc/block/part-006/block
-3. Use the `gpt` command to look at the device's (eg. 000) partition map.
+3. 使用 `gpt` 命令查看设备（例如：000）的分区表。
 
         $ gpt dump /dev/class/block/000
         blocksize=0x200 blocks=488554496
@@ -118,12 +102,9 @@ kernel partitions is an extension of that device.
             id:   769444A7-6E13-D74D-B583-C3A9CF0DE307
             type: 3CB8E202-3B7E-47DD-8A3C-7FF2A13CFCEC
             flags: 0x0000000000000000
-4. KERN-C typically hosts the Zircon kernel. KERN-A and KERN-B typically have
-ChromeOS kernels. To go to ChromeOS we need to lower the priority of KERN-C
-here by referencing the **partition** index on the **disk** that has that
-partition.
+4. KERN-C 含有Zircon内核。KERN-A 和 KERN-B 代表 ChromeOS 内核。设置启动进入ChromeOS 我们需要通过引用具有该分区的磁盘上的分区索引来降低 KERN-C 的优先级。
 
         $ gpt edit_cros 5 -P 0 /dev/class/block/000
-5. Reboot
+5. 重启
 
-To go back to the Fuchsia kernel, just re-pave the device.
+启动进入Fuchsia内核，只需要重设设备的分区索引。
