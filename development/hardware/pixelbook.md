@@ -34,7 +34,7 @@ OS（帮助->关于Chrom OS）“确定版本&gt;=62
 4. 输入'chronos'作为用户名，密码为空。
 5. 通过运行 `sudo crossystem dev_boot_usb=1` 启动USB。
 6. (可选) 运行 `sudo crossystem dev_default_boot=usb` 设置默认USB启动。
-7. 插入USB驱动器（U盘）。
+7. 插入USB驱动器。
 8. 运行 `sudo reboot` 重启设备。
 9. 在"OS verification is OFF（系统验证已经关闭）"页面，按 Ctrl+U 可以立即进入USB启动。 ( [提示 & 技巧](#提示--技巧) 查看其他简单操作)
 
@@ -42,14 +42,14 @@ OS（帮助->关于Chrom OS）“确定版本&gt;=62
 
 ## 提示 & 技巧
 
-默认情况下，ChromeOS引导加载程序有很长的超时时间允许您按下按钮。 再灰色的界面上按快捷键 Ctrl+D 或 CTRL +U 可以跳过系统不会被验证的警告。Ctrl+D 可以跳过等待时间然后从默认资源启动。Ctrl+U 可以跳过等待时间然后从USB启动。
+一般情况下，ChromeOS引导加载程序有很长的超时时间允许您按下按钮。 再灰色的界面上按快捷键 Ctrl+D 或 CTRL +U 可以跳过系统不会被验证的警告。Ctrl+D 可以跳过等待时间然后从默认资源启动。Ctrl+U 可以跳过等待时间然后从USB启动。
 
 ### 设置启动ChromeOS
 
-安装Fuchsia后要启动Chromeos，必须将Fuchsia内核分区的优先级修改为低于至少两个Chromeos内核分区中的一个。
+安装Fuchsia后要启动Chromeos，必须将Fuchsia内核分区的优先级修改为低于两个Chromeos内核分区中的一个。
 
 1. 按 Alt+Esc 打开虚拟控制台
-2. 使用`lsblk` 找到包含KERN-A， KERN-B 和 KERN-C 的磁盘分区。下面是设备000 的示例，注意，内核分区的路径是该设备的扩展。
+2. 使用`lsblk` 命令找到包含KERN-A， KERN-B 和 KERN-C 的磁盘分区。下面是设备000 的示例，注意，内核分区的路径是该设备的扩展。
 
         $ lsblk
         ID  SIZE TYPE             LABEL                FLAGS  DEVICE
