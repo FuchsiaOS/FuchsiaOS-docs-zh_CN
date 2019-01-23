@@ -30,14 +30,16 @@ OS（帮助->关于Chrom OS）“确定版本&gt;=62
 
 <!--## Put your device into developer mode-->
 ## 设置开发者模式
-<!--***WARNING: This will erase any state stored locally on your Pixelbook***-->***注意: 这个操作会清除本地所有的设置***
+
+<!--***WARNING: This will erase any state stored locally on your Pixelbook***
+-->***注意: 这个操作会清除本地所有的设置***
 
 <!--1. Power off the Pixelbook.-->
 1. 关闭 Pixelbook 的电源。
 <!--2. Go into Recovery Mode.
 Hold down Esc+Refresh (first and third buttons on the top row of the keyboard).
 Then press the Power button (bottom left side of the device).-->
-2. 进入Recovery模式。
+2. 进入 Recovery 模式。
 按住 Esc+Refresh (键盘上第一行的第一个和第三个按钮)
 然后再按电源键 (设备左侧的按钮)。
 <!--3. Start by disabling OS verification by pressing Ctrl+D. You should see "To turn OS verification OFF, press ENTER". Press Enter to confirm.-->
@@ -99,21 +101,25 @@ until the device is through the bootloader and also avoid using a USB hub.-->
 buttons. To shortcut this you can press Ctrl+D or Ctrl+U when on the grey screen
 that warns that the OS will not be verified. Ctrl+D will cause the device to
 skip the timeout and boot from its default source. Ctrl+U will skip the timeout
-and boot the device from USB.-->一般情况下，ChromeOS引导加载程序有很长的超时时间允许您按下按钮。 再灰色的界面上按快捷键 Ctrl+D 或 CTRL +U 可以跳过系统不会被验证的警告。Ctrl+D 可以跳过等待时间然后从默认资源启动。Ctrl+U 可以跳过等待时间然后从USB启动。
+and boot the device from USB.
+-->
+一般情况下，ChromeOS引导加载程序有很长的超时时间允许您按下按钮。 再灰色的界面上按快捷键 Ctrl+D 或 CTRL +U 可以跳过系统不会被验证的警告。Ctrl+D 可以跳过等待时间然后从默认资源启动。Ctrl+U 可以跳过等待时间然后从USB启动。
 
 <!--### Going back to ChromeOS-->
-### 设置启动ChromeOS
+### 设置启动 ChromeOS
 
 <!--To go back to ChromeOS you must modify the priority of the Fuchsia kernel
 partition to be lower than that of at least one of the two ChromeOS kernel
-partitions.-->安装Fuchsia后要启动Chromeos，必须将Fuchsia内核分区的优先级修改为低于两个Chromeos内核分区中的一个。
+partitions.
+-->
+安装Fuchsia后要启动Chromeos，必须将Fuchsia内核分区的优先级修改为低于两个Chromeos内核分区中的一个。
 
 <!--1. Press Alt+Esc to get to a virtual console-->
 1. 按 Alt+Esc 打开虚拟控制台
 <!--2. Find the disk that contains the KERN-A, KERN-B, and KERN-C partitions with
 the `lsblk` command. Below this is device 000, note how the device path of the
 kernel partitions is an extension of that device.-->
-2. 使用`lsblk` 命令找到包含KERN-A， KERN-B 和 KERN-C 的磁盘分区。下面是设备000 的示例，注意，内核分区的路径是该设备的扩展。
+2. 使用 `lsblk` 命令找到包含KERN-A， KERN-B 和 KERN-C 的磁盘分区。下面是设备 000 的示例，注意，内核分区的路径是该设备的扩展。
 
         $ lsblk
         ID  SIZE TYPE             LABEL                FLAGS  DEVICE
@@ -171,10 +177,10 @@ kernel partitions is an extension of that device.-->
 ChromeOS kernels. To go to ChromeOS we need to lower the priority of KERN-C
 here by referencing the **partition** index on the **disk** that has that
 partition.-->
-4. KERN-C 含有Zircon内核。KERN-A 和 KERN-B 代表 ChromeOS 内核。设置启动进入ChromeOS 我们需要通过引用具有该分区的磁盘上的分区索引来降低 KERN-C 的优先级。
+4. KERN-C 含有 Zircon 内核。KERN-A 和 KERN-B 代表 ChromeOS 内核。设置启动进入ChromeOS 我们需要通过引用具有该分区的磁盘上的分区索引来降低 KERN-C 的优先级。
 
         $ gpt edit_cros 5 -P 0 /dev/class/block/000
 <!--5. Reboot-->
 5. 重启
 <!--To go back to the Fuchsia kernel, just re-pave the device.-->
-启动进入Fuchsia内核，只需要重设设备的分区索引。
+启动进入 Fuchsia 内核，只需要重设设备的分区索引。
