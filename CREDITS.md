@@ -22,7 +22,7 @@
    - /hardware **张麟**
    - /languages **浩宇,Liurnd**
    - /source_code **Cinus**
-   - /benchmarking **浩宇,AndyGuo**
+   - /benchmarking **浩宇,AndyGuo** （已完成）
    - /source_code **Locez**
  - /the_book **Yur5n**
  - /glossary.md **Kinglong**
