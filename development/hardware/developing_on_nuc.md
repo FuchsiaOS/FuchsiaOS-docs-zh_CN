@@ -1,35 +1,56 @@
-# Developing with Fuchsia on a NUC
+<!--# Developing with Fuchsia on a NUC-->
+
+#在 NUC 上开发 Fuchsia
 
 This document describes how to get a NUC up and running with Fuchsia.
 
-[1. Get Parts](#parts)<br/>
-[2. Prepare the NUC](#nuc)<br/>
-[3. Install Fuchsia](#install)<br/>
-[4. Update NUC BIOS to allow netbooting](#bios)<br/>
+<!--[1. Get Parts](#parts)<br/>-->
+[1. 需要的硬件](#parts)<br/>
+<!--[2. Prepare the NUC](#nuc)<br/>-->
+[2. 准备 NUC](#nuc)<br/>
+<!--[3. Install Fuchsia](#install)<br/>-->
+[3. 安装 Fuchsia](#install)<br/>
+<!--[4. Update NUC BIOS to allow netbooting](#bios)<br/>-->
+[4. 更新 NUC 的 BIOS 允许网络引导](#bios)<br/>
 
 -----
 
-## 1. Get Parts <a name="parts"/>
+<!--## 1. Get Parts <a name="parts"/>-->
+## 1. 需要的硬件 <a name="parts"/>
 
-You’ll need the following:
+<!--You’ll need the following:-->
+你将会需要以下硬件：
 
-- USB 3.0 Drive
+<!--- USB 3.0 Drive-->
+- USB 3.0 驱动器
 - NUC
 - RAM
 - m.2 SSD
-- Keyboard
-- Mouse
-- Monitor that supports HDMI
-- HDMI cable
-- ethernet cable
-- Magnetic tip phillips head screwdriver.
+<!--
+	- Keyboard
+	- Mouse
+	- Monitor that supports HDMI
+	- HDMI cable
+	- ethernet cable
+	- Magnetic tip phillips head screwdriver.
+-->
+- 键盘
+- 鼠标
+- 支持HDMI的显示器
+- HDMI连接线
+- 网线
+- 磁头十字螺丝刀
 
-This table shows what I bought from Amazon.
 
-| Item | Link | Notes: |
+<!--This table shows what I bought from Amazon.-->
+下表是我从亚马逊上买到的设备
+
+<!--| Item | Link | Notes: |-->
+
+| 设备 | 链接 | 备注 |
 | ---- | ---- | ------ |
-| NUC | [B01MSZLO9P](https://www.amazon.com/gp/product/B01MSZLO9P) | Get a NUC7 or NUC6 for gpu support. |
-| RAM | [B01BIWKP58](https://www.amazon.com/gp/product/B01BIWKP58) | Works fine. |
+| NUC | [B01MSZLO9P](https://www.amazon.com/gp/product/B01MSZLO9P) | <!--Get a NUC7 or NUC6 for gpu support.--> 需要 NUC6 或者 NUC7 支持 GPU |
+| RAM | [B01BIWKP58](https://www.amazon.com/gp/product/B01BIWKP58) | <!--Works fine.--> 工作正常 |
 | SSD (Only need one, | [B01IAGSDJ0](https://www.amazon.com/gp/product/B01IAGSDJ0) | Works fine. |
 | I bought some of each) | [B00TGIVZTW](https://www.amazon.com/gp/product/B00TGIVZTW) | Works fine. |
 | | [B01M9K0N8I](https://www.amazon.com/gp/product/B01M9K0N8I) | Works fine. |
