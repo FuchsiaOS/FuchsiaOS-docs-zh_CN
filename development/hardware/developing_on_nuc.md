@@ -1,4 +1,5 @@
 <!--# Developing with Fuchsia on a NUC-->
+
 #在 NUC 上开发 Fuchsia
 
 This document describes how to get a NUC up and running with Fuchsia.
@@ -25,14 +26,13 @@ This document describes how to get a NUC up and running with Fuchsia.
 - NUC
 - RAM
 - m.2 SSD
-<!--
-	- Keyboard
+<!-- - Keyboard
 	- Mouse
 	- Monitor that supports HDMI
 	- HDMI cable
 	- ethernet cable
-	- Magnetic tip phillips head screwdriver.
--->- 键盘
+	- Magnetic tip phillips head screwdriver. -->
+- 键盘
 - 鼠标
 - 支持HDMI的显示器
 - HDMI连接线
