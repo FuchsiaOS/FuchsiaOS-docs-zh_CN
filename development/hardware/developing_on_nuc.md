@@ -34,8 +34,7 @@ This document describes how to get a NUC up and running with Fuchsia.
 	- HDMI cable
 	- ethernet cable
 	- Magnetic tip phillips head screwdriver. 
--->
-- 键盘
+-->- 键盘
 - 鼠标
 - 支持HDMI的显示器
 - HDMI连接线
