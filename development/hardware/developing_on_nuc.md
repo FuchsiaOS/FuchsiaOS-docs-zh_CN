@@ -1,7 +1,7 @@
 <!-- # Developing with Fuchsia on a NUC -->
 
 
-#在 NUC 上开发 Fuchsia
+# 在 NUC 上开发 Fuchsia
 
 This document describes how to get a NUC up and running with Fuchsia.
 
@@ -23,10 +23,6 @@ This document describes how to get a NUC up and running with Fuchsia.
 你将会需要以下硬件：
 
 <!--- USB 3.0 Drive-->
-- USB 3.0 驱动器
-- NUC
-- RAM
-- m.2 SSD
 <!-- 
 	- Keyboard
 	- Mouse
@@ -34,7 +30,12 @@ This document describes how to get a NUC up and running with Fuchsia.
 	- HDMI cable
 	- ethernet cable
 	- Magnetic tip phillips head screwdriver. 
--->- 键盘
+-->
+- USB 3.0 驱动器
+- NUC
+- RAM
+- m.2 SSD
+- 键盘
 - 鼠标
 - 支持HDMI的显示器
 - HDMI连接线
