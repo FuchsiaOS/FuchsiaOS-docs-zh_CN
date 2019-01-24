@@ -1,5 +1,6 @@
 <!-- # Developing with Fuchsia on a NUC -->
 
+
 #在 NUC 上开发 Fuchsia
 
 This document describes how to get a NUC up and running with Fuchsia.
@@ -25,7 +26,8 @@ This document describes how to get a NUC up and running with Fuchsia.
 - USB 3.0 驱动器
 - NUC
 - RAM
-- m.2 SSD<!-- 
+- m.2 SSD
+<!-- 
 	- Keyboard
 	- Mouse
 	- Monitor that supports HDMI
