@@ -1,5 +1,4 @@
 <!--# Developing with Fuchsia on a NUC-->
-
 #在 NUC 上开发 Fuchsia
 
 This document describes how to get a NUC up and running with Fuchsia.
