@@ -3,7 +3,9 @@
 
 # 在 NUC 上开发 Fuchsia
 
-This document describes how to get a NUC up and running with Fuchsia.
+<!--This document describes how to get a NUC up and running with Fuchsia.-->
+
+本文档介绍如何使用 NUC 启动和运行 Fuchsia。
 
 <!--[1. Get Parts](#parts)<br/>-->
 [1. 需要的硬件](#parts)<br/>
@@ -52,38 +54,47 @@ This document describes how to get a NUC up and running with Fuchsia.
 | ---- | ---- | ------ |
 | NUC | [B01MSZLO9P](https://www.amazon.com/gp/product/B01MSZLO9P) | <!--Get a NUC7 or NUC6 for gpu support.--> 需要 NUC6 或者 NUC7 支持 GPU |
 | RAM | [B01BIWKP58](https://www.amazon.com/gp/product/B01BIWKP58) | <!--Works fine.--> 工作正常 |
-| SSD (Only need one, | [B01IAGSDJ0](https://www.amazon.com/gp/product/B01IAGSDJ0) | Works fine. |
-| I bought some of each) | [B00TGIVZTW](https://www.amazon.com/gp/product/B00TGIVZTW) | Works fine. |
-| | [B01M9K0N8I](https://www.amazon.com/gp/product/B01M9K0N8I) | Works fine. |
+| SSD <!--(Only need one,--> （ 只需要一个， | [B01IAGSDJ0](https://www.amazon.com/gp/product/B01IAGSDJ0) | <!--Works fine.--> 工作正常 |
+| <!--I bought some of each)--> 我买了很多个） | [B00TGIVZTW](https://www.amazon.com/gp/product/B00TGIVZTW) | <!--Works fine.--> 工作正常 |
+| | [B01M9K0N8I](https://www.amazon.com/gp/product/B01M9K0N8I) | <!--Works fine.--> 工作正常 |
 | | | |
-| **Optional:** | | |
-| Keyboard and Mouse | [B00B7GV802](https://www.amazon.com/gp/product/B00B7GV802) | Works fine.  Next time I'd get a keyboard with a smaller foot print. |
-| Monitor | [B015WCV70W](https://www.amazon.com/gp/product/B015WCV70W) | Works fine. |
-| HDMI Cable | [B014I8SIJY](https://www.amazon.com/gp/product/B014I8SIJY) | Works fine. |
-| USB 3.0 drive | [B01BGTG41W](https://www.amazon.com/gp/product/B01BGTG41W) | Works fine. |
+| <!--**Optional:**--> **可选** | | |
+| <!--Keyboard and Mouse--> 键盘、鼠标 | [B00B7GV802](https://www.amazon.com/gp/product/B00B7GV802) | Works fine.  Next time I'd get a keyboard with a smaller foot print. |
+| <!--Monitor--> 显示器 | [B015WCV70W](https://www.amazon.com/gp/product/B015WCV70W) | <!--Works fine.--> 工作正常 |
+| <!--HDMI Cable--> HDMI连接线 | [B014I8SIJY](https://www.amazon.com/gp/product/B014I8SIJY) | <!--Works fine.--> 工作正常 |
+| <!--USB 3.0 drive--> USB 3.0 驱动器 | [B01BGTG41W](https://www.amazon.com/gp/product/B01BGTG41W) | <!--Works fine.--> 工作正常 |
 
 -----
 
-## 2. Prepare the NUC <a name="nuc"/>
-NUCs don’t come with RAM or an SSD so you need to install them.
+<!--## 2. Prepare the NUC <a name="nuc"/>-->
+## 2. 准备 NUC <a name="nuc"/>
+<!--NUCs don’t come with RAM or an SSD so you need to install them.-->
+因为 NUCs 没有自带 RAM 和 SSD ，需要自己安装。
 <br/><center><img width="50%" src="images/developing_on_nuc/parts.jpg"/></center><br/>
 
-1. Remove the phillips screws in the bottom feet of the NUC.
+<!--1. Remove the phillips screws in the bottom feet of the NUC.-->
+1. 取下 NUC 底部的十字螺丝。
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_bottom.jpg"/></center>
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_inside.jpg"/></center><br/><br/>
-1. Install the RAM.
-1. Remove the phillips screw that will hold the SSD in place (phillips screwdriver with magnetic tip is useful here).
-1. Install the SSD.
-1. Screw the SSD in place using screw from 3.
+<!--1. Install the RAM.-->
+1. 安装 RAM。
+<!--1. Remove the phillips screw that will hold the SSD in place (phillips screwdriver with magnetic tip is useful here).-->
+1. 卸下将SSD固定到位的十字螺丝（带磁性的十字螺丝刀在这里很有用）。
+<!--1. Install the SSD.-->
+1. 安装 SSD。
+<!--1. Screw the SSD in place using screw from 3.-->
+1. 使用步骤 3 卸下的十字螺丝将SSD固定到位。
 <br/><center><img width="50%" src="images/developing_on_nuc/parts_installed.jpg"/></center><br/><br/>
-1. Replace bottom and screw feet back in.
-1.(Optional) Apply fuchsia logo.
+<!--1. Replace bottom and screw feet back in.1.(Optional) Apply fuchsia logo.-->
+1. 更换底部，并用按照步骤 1 将螺丝固定回去（可选）喷涂 Fuchsia 的 LOGO。
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_fuchsia.jpg"/></center><br/><br/>
-1. Plug power, ethernet, HDMI, keyboard, and mouse into NUC.
+<!--1. Plug power, ethernet, HDMI, keyboard, and mouse into NUC.-->
+1. 将电源，以太网，HDMI，键盘和鼠标接入NUC。
 
 -----
 
-## 3. Build Fuchsia <a name="build"/>
+<!--## 3. Build Fuchsia <a name="build"/>-->
+## 3. 构建 Fuchsia <a name="build"/>
 
 1. Follow the [getting started guidelines](../../getting_started.md)
 1. Plug in your USB key to your build workstation
