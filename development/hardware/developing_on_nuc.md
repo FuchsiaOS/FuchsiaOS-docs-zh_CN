@@ -23,13 +23,13 @@ This document describes how to get a NUC up and running with Fuchsia.
 你将会需要以下硬件：
 
 <!--- USB 3.0 Drive-->
-<!-- 
+<!--
 	- Keyboard
 	- Mouse
 	- Monitor that supports HDMI
 	- HDMI cable
 	- ethernet cable
-	- Magnetic tip phillips head screwdriver. 
+	- Magnetic tip phillips head screwdriver.
 -->
 - USB 3.0 驱动器
 - NUC
