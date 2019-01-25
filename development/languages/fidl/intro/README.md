@@ -4,7 +4,7 @@
 <!--
 This document is a description of the Fuchsia Interface Definition Language (FIDL) purpose, high-level goals, and requirements.
 -->
-本文档描述了Fuchsia接口定义语言（FIDL）的目的，高级目标和要求。
+本文档描述了 Fuchsia 接口定义语言（FIDL）的目的，高级目标和要求。
 
 <!-- ## Related Documents -->
 ## 相关文档
@@ -23,7 +23,7 @@ This document is a description of the Fuchsia Interface Definition Language (FID
 *   [有线格式规范]
 *   [语言规范]
 *   [编译器规范]
-*   [API 可读性 / 样式指南]
+*   [API 可读性/样式指南]
 *   [C 语言绑定]
 *   [C++ 语言绑定]
 *   [示例]
@@ -72,7 +72,7 @@ generate tight code without excess indirection or hidden costs. It should be at
 least as good as hand-rolled code would be where it matters most.
 -->
 
-**IPC的高效性** 衡量生成、传输和处理进程间消息所需的计算开销。IPC  将参与所有的系统操作，所以它必须高效。FIDL 的编译器必须生成紧凑的代码，没有额外的间接跳转或者隐形开销。最重要的是，它应该至少要你特定优化的代码一样好。
+**IPC 的高效性** 衡量生成、传输和处理进程间消息所需的计算开销。IPC  将参与所有的系统操作，所以它必须高效。FIDL 的编译器必须生成紧凑的代码，没有额外的间接跳转或者隐形开销。最重要的是，它应该至少要你特定优化的代码一样好。
 
 <!--
 **IPC determinism** pertains to the ability to perform transactions within a
@@ -83,7 +83,7 @@ as ensuring that structure size and layout is invariant thereby alleviating the
 need for dynamic memory allocation or complex validation rules.
 -->
 
-**IPC的确定性** 衡量在已知的封装资源大小的执行事务能力。IPC 将被广泛的用于关键系统服务，例如，服务于许多客户端的文件系统，必须按照可预测的方式进行工作。FIDL 的有线格式必须对确保结构体大小与布局的不变性提供强静态保证，从而减轻对动态内存分配或复杂验证规则的需求。
+**IPC 的确定性** 衡量在已知的封装资源大小的执行事务能力。IPC 将被广泛的用于关键系统服务，例如，服务于许多客户端的文件系统，必须按照可预测的方式进行工作。FIDL 的有线格式必须对确保结构体大小与布局的不变性提供强静态保证，从而减轻对动态内存分配或复杂验证规则的需求。
 
 <!--
 **IPC robustness** pertains to the need to consider IPC as an essential part of
@@ -94,13 +94,13 @@ for determinism is also considered. The FIDL bindings must perform effective,
 lightweight, and strict validation.
 -->
 
-**IPC的鲁棒性** 衡量考虑 IPC 作为操作系统 ABI 的重要组成部分的需要。保持二进制的稳定性至关重要，协议演变的机制必须谨慎设计，以便使现在的服务与他们的客户端不违反不变性，特别是在确定性的需求也被考虑其中时。FIDL 的绑定也必须高效，轻量并且经过严格验证。
+**IPC 的鲁棒性** 衡量考虑 IPC 作为操作系统 ABI 的重要组成部分的需要。保持二进制的稳定性至关重要，协议演变的机制必须谨慎设计，以便使现在的服务与他们的客户端不违反不变性，特别是在确定性的需求也被考虑其中时。FIDL 的绑定也必须高效，轻量并且经过严格验证。
 
 <!--
 **IPC ease of use** pertains to the fact that IPC protocols are an essential part of the operating system's API. It is important to provide good developer ergonomics for accessing services via IPC. The FIDL code generator removes the burden of writing IPC bindings by hand. Moreover, the FIDL code generator can produce different bindings to suit the needs of different audiences and their idioms.
 -->
 
-**IPC的易用性** 衡量涉及 IPC 协议作为操作系统 API 的重要组成部分的事实，为通过 IPC 访问服务提供良好的开发者使用方法是很重要的。FIDL 的代码生成器减轻了手工编写 IPC 绑定代码的负担。此外，FIDL 的代码生成器可以提供不同的绑定来适应不同开发者以及他们的习惯。
+**IPC 的易用性** 衡量涉及 IPC 协议作为操作系统 API 的重要组成部分的事实，为通过 IPC 访问服务提供良好的开发者使用方法是很重要的。FIDL 的代码生成器减轻了手工编写 IPC 绑定代码的负担。此外，FIDL 的代码生成器可以提供不同的绑定来适应不同开发者以及他们的习惯。
 
 TODO: 解释为满足不同受众使用合适的定制化绑定的目标是什么，例如，本地系统编程 vs.事件驱动调度 vs. 异步调用等... 以及关于更多 FIDL 的介绍，例如系统 API，SDK 的关注点等。
 
@@ -262,9 +262,9 @@ files.
 
 The FIDL language is documented [Language Specification].
 -->
-FIDL语言是**.fidl**文件来描述接口的语法。
+FIDL 语言是**.fidl**文件来描述接口的语法。
 
-FIDL语言的文档 [语言规范].
+FIDL 语言的文档 [语言规范].
 
 
 <!--
