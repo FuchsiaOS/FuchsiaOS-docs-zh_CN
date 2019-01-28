@@ -96,41 +96,65 @@
 <!--## 3. Build Fuchsia <a name="build"/>-->
 ## 3. 构建 Fuchsia <a name="build"/>
 
-1. Follow the [getting started guidelines](../../getting_started.md)
-1. Plug in your USB key to your build workstation
-1. Identify the path to your USB key by running `fx list-usb-disks`
-1. Create a Zedboot USB by running `fx mkzedboot /path/to/usb/disk`
-1. Plug the Zedboot USB key into the NUC and boot it
-1. Run `fx pave` on your workstation
+<!--1. Follow the [getting started guidelines](../../getting_started.md)-->
+1. 遵循 [入门指南](../../getting_started.md)
+<!--1. Plug in your USB key to your build workstation-->
+1. 在你的构建工作站插入 UBS 密钥。
+<!--1. Identify the path to your USB key by running `fx list-usb-disks`-->
+1. 通过运行 `fx list-usb-disks` 来确定 USB 密钥的的路径。
+<!--1. Create a Zedboot USB by running `fx mkzedboot /path/to/usb/disk`-->
+1. 通过运行 `fx mkzedboot /path/to/usb/disk` 来创建一个 Zedboot USB
+<!--1. Plug the Zedboot USB key into the NUC and boot it-->
+1. 将 Zedboot USB 密钥插入 NUC 然后启动。
+<!--1. Run `fx pave` on your workstation-->
+1. 在你的工作站运行 `fx pave`。
 
-## 4. Install Fuchsia <a name="install"/>
+<!--## 4. Install Fuchsia <a name="install"/>-->
+## 4. 安装 Fuchsia <a name="install"/>
 
-1. Plug in your installable fuchsia usb drive into NUC.
-1. Turn on NUC.
-1. Wait for NUC to boot into fuchsia.
-1. Alt-tab to a terminal if you don’t boot into a terminal.
+<!--1. Plug in your installable fuchsia usb drive into NUC.-->
+1. 将 Fuchsia 的安装 USB 驱动器插入 NUC。
+<!--1. Turn on NUC.-->
+1.开启 NUC。
+<!--1. Wait for NUC to boot into fuchsia.-->
+1.等待 NUC 启动进入 Fuchsia。
+<!--1. Alt-tab to a terminal if you don’t boot into a terminal.-->
+1. 如果启动起来没有进入终端，按 Alt-tab 可以打开终端。
 <br/><center><img width="50%" src="images/developing_on_nuc/terminal.jpg"/></center><br/><br/>
-1. Run ‘lsblk’.  This should say there’s a ‘block’ device at 003.
+<!--1. Run ‘lsblk’.  This should say there’s a ‘block’ device at 003.-->
+1. 运行 `lsblk` 。这里应该说明在 003 有一个“阻塞”设备
 <br/><center><img width="50%" src="images/developing_on_nuc/lsblk.jpg"/></center><br/><br/>
-1. Run ‘gpt init /dev/class/block/003’.  Say ‘y’ to the warning.
-1. Run ‘install-fuchsia’.
-1. Run ‘dm reboot’.
-1. Remove usb drive.
+<!--1. Run ‘gpt init /dev/class/block/003’.  Say ‘y’ to the warning.-->
+<!--1. Run ‘install-fuchsia’.-->
+<!--1. Run ‘dm reboot’.-->
+<!--1. Remove usb drive.-->
+1. 运行 `gpt init /dev/class/block/003` 。警告输入“y”。
+1. 运行 `install-fuchsia`。
+1. 运行 `dm reboot`。
+1. 移除 USB 驱动器。
 
-At this point the NUC should boot to fuchsia without the usb drive.  It’s using the internal SSD.  But it won’t work with netbooting.  Let’s fix that.
+<!--At this point the NUC should boot to fuchsia without the usb drive.  It’s using the internal SSD.  But it won’t work with netbooting.  Let’s fix that.-->
+此时，NUC应在不使用USB驱动器的情况下可以引导至 Fuchsia。它使用的是内部的 SSD。但它不适用于网络启动。我们来解决这个问题。
 
 -----
 
-## 5. Update NUC BIOS to allow netbooting <a name="bios"/>
+<!--## 5. Update NUC BIOS to allow netbooting <a name="bios"/>-->
+## 5. 更新 NUC BIOS 用来支持网络启动 <a name="bios"/>
 
-1. Reboot NUC.
-1. Press F2 while booting to enter BIOS.
-1. In the Boot Order window on the left click the Legacy tab.
-1. Uncheck ‘Legacy Boot’.
+<!--1. Reboot NUC.-->
+1. 重启 NUC。
+<!--1. Press F2 while booting to enter BIOS.-->
+1. 当启动时按 F2 进入 BIOS。
+<!--1. In the Boot Order window on the left click the Legacy tab.-->
+1. 在左侧的“Boot Order” 选项中，点击 “Legacy” 选项。
+<!--1. Uncheck ‘Legacy Boot’.-->
+1. 取消选中 “Legacy Boot”。
 <br/><center><img width="50%" src="images/developing_on_nuc/bios.jpg"/></center><br/><br/>
-1. Press the X in the top right to leave the BIOS.  Ensure you save before exiting.
+<!--1. Press the X in the top right to leave the BIOS.  Ensure you save before exiting.-->
+1. 点击右上角的叉关闭 BIOS。确保关闭之前已经保存。
 
 -----
 
 
-All done!
+<!--All done!-->
+完成！
