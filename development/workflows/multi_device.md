@@ -1,4 +1,5 @@
-Multi Device Setup
+<!--Multi Device Setup-->
+多设备设置
 ============
 
 This guide will walk you through the process of getting two Fuchsia devices
