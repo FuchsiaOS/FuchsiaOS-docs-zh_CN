@@ -59,7 +59,7 @@
 | | [B01M9K0N8I](https://www.amazon.com/gp/product/B01M9K0N8I) | <!--Works fine.--> 工作正常 |
 | | | |
 | <!--**Optional:**--> **可选** | | |
-| <!--Keyboard and Mouse--> 键盘、鼠标 | [B00B7GV802](https://www.amazon.com/gp/product/B00B7GV802) | Works fine.  Next time I'd get a keyboard with a smaller foot print. |
+| <!--Keyboard and Mouse--> 键盘、鼠标 | [B00B7GV802](https://www.amazon.com/gp/product/B00B7GV802) | <!--Works fine.  Next time I'd get a keyboard with a smaller foot print.-->工作正常。下次我要买个小巧的键盘。 |
 | <!--Monitor--> 显示器 | [B015WCV70W](https://www.amazon.com/gp/product/B015WCV70W) | <!--Works fine.--> 工作正常 |
 | <!--HDMI Cable--> HDMI连接线 | [B014I8SIJY](https://www.amazon.com/gp/product/B014I8SIJY) | <!--Works fine.--> 工作正常 |
 | <!--USB 3.0 drive--> USB 3.0 驱动器 | [B01BGTG41W](https://www.amazon.com/gp/product/B01BGTG41W) | <!--Works fine.--> 工作正常 |
@@ -71,7 +71,6 @@
 <!--NUCs don’t come with RAM or an SSD so you need to install them.-->
 因为 NUCs 没有自带 RAM 和 SSD ，需要自己安装。
 <br/><center><img width="50%" src="images/developing_on_nuc/parts.jpg"/></center><br/>
-
 <!--1. Remove the phillips screws in the bottom feet of the NUC.-->
 1. 取下 NUC 底部的十字螺丝。
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_bottom.jpg"/></center>
@@ -97,37 +96,37 @@
 ## 3. 构建 Fuchsia <a name="build"/>
 
 <!--1. Follow the [getting started guidelines](../../getting_started.md)-->
-1. 遵循 [入门指南](../../getting_started.md)
 <!--1. Plug in your USB key to your build workstation-->
-1. 在你的构建工作站插入 UBS 密钥。
 <!--1. Identify the path to your USB key by running `fx list-usb-disks`-->
-1. 通过运行 `fx list-usb-disks` 来确定 USB 密钥的的路径。
 <!--1. Create a Zedboot USB by running `fx mkzedboot /path/to/usb/disk`-->
-1. 通过运行 `fx mkzedboot /path/to/usb/disk` 来创建一个 Zedboot USB
 <!--1. Plug the Zedboot USB key into the NUC and boot it-->
-1. 将 Zedboot USB 密钥插入 NUC 然后启动。
 <!--1. Run `fx pave` on your workstation-->
+1. 遵循 [入门指南](../../getting_started.md)
+1. 在你的构建工作站插入 UBS 密钥。
+1. 通过运行 `fx list-usb-disks` 来确定 USB 密钥的的路径。
+1. 通过运行 `fx mkzedboot /path/to/usb/disk` 来创建一个 Zedboot USB
+1. 将 Zedboot USB 密钥插入 NUC 然后启动。
 1. 在你的工作站运行 `fx pave`。
 
 <!--## 4. Install Fuchsia <a name="install"/>-->
 ## 4. 安装 Fuchsia <a name="install"/>
 
 <!--1. Plug in your installable fuchsia usb drive into NUC.-->
-1. 将 Fuchsia 的安装 USB 驱动器插入 NUC。
 <!--1. Turn on NUC.-->
-1.开启 NUC。
 <!--1. Wait for NUC to boot into fuchsia.-->
-1.等待 NUC 启动进入 Fuchsia。
 <!--1. Alt-tab to a terminal if you don’t boot into a terminal.-->
-1. 如果启动起来没有进入终端，按 Alt-tab 可以打开终端。
-<br/><center><img width="50%" src="images/developing_on_nuc/terminal.jpg"/></center><br/><br/>
 <!--1. Run ‘lsblk’.  This should say there’s a ‘block’ device at 003.-->
-1. 运行 `lsblk` 。这里应该说明在 003 有一个“阻塞”设备
-<br/><center><img width="50%" src="images/developing_on_nuc/lsblk.jpg"/></center><br/><br/>
 <!--1. Run ‘gpt init /dev/class/block/003’.  Say ‘y’ to the warning.-->
 <!--1. Run ‘install-fuchsia’.-->
 <!--1. Run ‘dm reboot’.-->
 <!--1. Remove usb drive.-->
+1. 将 Fuchsia 的安装 USB 驱动器插入 NUC。
+1. 开启 NUC。
+1. 等待 NUC 启动进入 Fuchsia。
+1. 如果启动起来没有进入终端，按 Alt-tab 可以打开终端。
+<br/><center><img width="50%" src="images/developing_on_nuc/terminal.jpg"/></center><br/><br/>
+1. 运行 `lsblk` 。这里应该说明在 003 有一个“阻塞”设备
+<br/><center><img width="50%" src="images/developing_on_nuc/lsblk.jpg"/></center><br/><br/>
 1. 运行 `gpt init /dev/class/block/003` 。警告输入“y”。
 1. 运行 `install-fuchsia`。
 1. 运行 `dm reboot`。
@@ -142,15 +141,15 @@
 ## 5. 更新 NUC BIOS 用来支持网络启动 <a name="bios"/>
 
 <!--1. Reboot NUC.-->
-1. 重启 NUC。
 <!--1. Press F2 while booting to enter BIOS.-->
-1. 当启动时按 F2 进入 BIOS。
 <!--1. In the Boot Order window on the left click the Legacy tab.-->
-1. 在左侧的“Boot Order” 选项中，点击 “Legacy” 选项。
 <!--1. Uncheck ‘Legacy Boot’.-->
+<!--1. Press the X in the top right to leave the BIOS.  Ensure you save before exiting.-->
+1. 重启 NUC。
+1. 当启动时按 F2 进入 BIOS。
+1. 在左侧的“Boot Order” 选项中，点击 “Legacy” 选项。
 1. 取消选中 “Legacy Boot”。
 <br/><center><img width="50%" src="images/developing_on_nuc/bios.jpg"/></center><br/><br/>
-<!--1. Press the X in the top right to leave the BIOS.  Ensure you save before exiting.-->
 1. 点击右上角的叉关闭 BIOS。确保关闭之前已经保存。
 
 -----
