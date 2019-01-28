@@ -72,22 +72,22 @@
 因为 NUCs 没有自带 RAM 和 SSD ，需要自己安装。
 <br/><center><img width="50%" src="images/developing_on_nuc/parts.jpg"/></center><br/>
 <!--1. Remove the phillips screws in the bottom feet of the NUC.-->
+<!--1. Install the RAM.-->
+<!--1. Remove the phillips screw that will hold the SSD in place (phillips screwdriver with magnetic tip is useful here).-->
+<!--1. Install the SSD.-->
+<!--1. Screw the SSD in place using screw from 3.-->
+<!--1. Replace bottom and screw feet back in.1.(Optional) Apply fuchsia logo.-->
+<!--1. Plug power, ethernet, HDMI, keyboard, and mouse into NUC.-->
 1. 取下 NUC 底部的十字螺丝。
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_bottom.jpg"/></center>
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_inside.jpg"/></center><br/><br/>
-<!--1. Install the RAM.-->
 1. 安装 RAM。
-<!--1. Remove the phillips screw that will hold the SSD in place (phillips screwdriver with magnetic tip is useful here).-->
 1. 卸下将SSD固定到位的十字螺丝（带磁性的十字螺丝刀在这里很有用）。
-<!--1. Install the SSD.-->
 1. 安装 SSD。
-<!--1. Screw the SSD in place using screw from 3.-->
 1. 使用步骤 3 卸下的十字螺丝将SSD固定到位。
 <br/><center><img width="50%" src="images/developing_on_nuc/parts_installed.jpg"/></center><br/><br/>
-<!--1. Replace bottom and screw feet back in.1.(Optional) Apply fuchsia logo.-->
 1. 更换底部，并用按照步骤 1 将螺丝固定回去（可选）喷涂 Fuchsia 的 LOGO。
 <br/><center><img width="50%" src="images/developing_on_nuc/nuc_fuchsia.jpg"/></center><br/><br/>
-<!--1. Plug power, ethernet, HDMI, keyboard, and mouse into NUC.-->
 1. 将电源，以太网，HDMI，键盘和鼠标接入NUC。
 
 -----
