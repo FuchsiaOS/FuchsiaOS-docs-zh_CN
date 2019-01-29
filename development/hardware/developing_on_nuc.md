@@ -4,7 +4,6 @@
 # 在 NUC 上开发 Fuchsia
 
 <!--This document describes how to get a NUC up and running with Fuchsia.-->
-
 本文档介绍如何使用 NUC 启动和运行 Fuchsia。
 
 <!--[1. Get Parts](#parts)<br/>-->
@@ -101,7 +100,7 @@
 <!--1. Create a Zedboot USB by running `fx mkzedboot /path/to/usb/disk`-->
 <!--1. Plug the Zedboot USB key into the NUC and boot it-->
 <!--1. Run `fx pave` on your workstation-->
-1. 遵循 [入门指南](../../getting_started.md)
+1. 遵循[入门指南](../../getting_started.md)
 1. 在你的构建工作站插入 UBS 密钥。
 1. 通过运行 `fx list-usb-disks` 来确定 USB 密钥的的路径。
 1. 通过运行 `fx mkzedboot /path/to/usb/disk` 来创建一个 Zedboot USB
@@ -125,7 +124,7 @@
 1. 等待 NUC 启动进入 Fuchsia。
 1. 如果启动起来没有进入终端，按 Alt-tab 可以打开终端。
 <br/><center><img width="50%" src="images/developing_on_nuc/terminal.jpg"/></center><br/><br/>
-1. 运行 `lsblk` 。这里应该说明在 003 有一个“阻塞”设备
+1. 运行 `lsblk`。这里应该说明在 003 有一个“块”设备
 <br/><center><img width="50%" src="images/developing_on_nuc/lsblk.jpg"/></center><br/><br/>
 1. 运行 `gpt init /dev/class/block/003` 。警告输入“y”。
 1. 运行 `install-fuchsia`。
