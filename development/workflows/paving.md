@@ -17,30 +17,39 @@ media, and stream a large portion of the system over the network to the target.-
 
 体验 Fuchsia 的最佳的方式就是在真实的硬件上运行它。本文将帮助你在设备上安装 Fuchsia。Fuchsia对一些不同的硬件平台有很好的支持，其中有：Acer Switch 12、Intel NUC 和 Google Pixelbook（不要与 Chromebook Pixel 弄混）。目前安装进程不支持基于 ARM 的硬件。Fuchsia 的安装进程称为 “paving”，还需要两台设备，一台用来安装 Fuchsia 叫做 “target”，另外一台用来构建 Fuchsia 叫做 “host”。host 和 target 需要可以通过局域网进行通信。在 host 系统中需要构建 Fuchsia，创建一个安装工具，将系统的大部分通过网络安装到 target 中。
 
-The `fx` command will be used throughout these instructions. If you have fx
+<!--The `fx` command will be used throughout these instructions. If you have fx
 mapped into your command path you can follow the instructions verbatim. If you
 don't have fx in your path, it can be found at `//scripts/fx` and you'll need
 to use the appropriate relative path in the supplied commands. Many of fx
 commands are relatively thin wrappers around build actions in GN coupled with
 tool invocations. If your use case isn't quite served by what's currently
 available there may a few GN targets you can build or some GN templates you can
-extend to allow you to build what you need.
+extend to allow you to build what you need.-->
+
+`fx` 将在这些指令中使用。如果您已经将fx映射到您的命令路径中，那么可以完全按照说明操作。
+
+
 
 ## TL;DR
 
-Read this all before? See the
+<!--Read this all before? See the
 [quickstart guide](https://fuchsia.googlesource.com/fuchsia/+/master/docs/development/workflows/build_and_pave_quickstart.md)
-for a workflow summary.
+for a workflow summary.-->
 
-## Building
+之前都读过吗?有关工作流摘要，请参阅[快速入门指南](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/master/development/workflows/build_and_pave_quickstart.md)。
 
-Detailed instructions for obtaining and building Fuchsia are available from the
+<!--## Building-->
+## 构建
+
+<!--Detailed instructions for obtaining and building Fuchsia are available from the
 [Getting Started](/getting_started.md) guide, but we'll assume here that the
 target system is x86-based and that you want to build a complete system. To
 configure our build for this we can run `fx set x64` and then build with
-`fx full-build`.
+`fx full-build`.-->
+获取和构建 Fuchsia 的详细说明可以从[入门指南](/getting_started.md)中获得，我们在这里假设 target 系统是基于 x86 的，并且您希望构建一个完整的系统。我们可以运行 `fx set x64` 来配置构建类型，然后运行 `fx full-build` 来生成。
 
-## Creating install media
+<!--## Creating install media-->
+## 生成安装镜像
 
 To create your install media we recommend using a USB drive since these are
 well-supported as boot media by most systems. Note that the install media
@@ -79,7 +88,8 @@ select Zedboot. For vboot-based systems using the USB drive is currently the
 only option for re-paving. In all cases the bootserver needs to have been
 started with `fx pave`
 
-## Troubleshooting
+<!--## Troubleshooting-->
+## 常见问题
 
 In some cases paving may fail because you have a disk layout that is incompatible.
 In these cases you will see a message that asks you to run
@@ -98,7 +108,8 @@ column for your partition (likely to be either 000 or 003). Then run
 will clear all Windows partitions from the disk. Once this is done, reboot into
 zedboot and paving should work.
 
-## Changing boot target (localboot, netboot, etc) default
+<!--## Changing boot target (localboot, netboot, etc) default-->
+## 更改默认启动对象（localboot、netboot等等）
 
 For EFI-based systems, it is possible to change the default boot option of the
 system paved on the target between local booting and Zedboot for network
