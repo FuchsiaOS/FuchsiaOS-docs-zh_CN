@@ -15,7 +15,7 @@ Fuchsia ("host"). Host and target must be able to communicate over a local area
 network. On your host system you will build Fuchsia, create a piece of install
 media, and stream a large portion of the system over the network to the target.-->
 
-体验 Fuchsia 的最佳的方式就是在真实的硬件上运行它。本文将帮助你在设备上安装 Fuchsia。Fuchsia对一些不同的硬件平台有很好的支持，其中有：Acer Switch 12、Intel NUC 和 Google Pixelbook（不要与 Chromebook Pixel 弄混）。目前安装进程不支持基于 ARM 的硬件。Fuchsia 的安装进程称为 “paving”，还需要两台设备，一台用来安装 Fuchsia 叫做 “target”，另外一台用来构建 Fuchsia 叫做 “host”。host 和 target 需要可以通过局域网进行通信。在 host 系统中需要构建 Fuchsia，创建一个安装工具，将系统的大部分通过网络安装到 target 中。
+体验 Fuchsia 的最佳的方式就是在真实的硬件上运行它。本文将帮助你在设备上安装 Fuchsia。Fuchsia对一些不同的硬件平台有很好的支持：Acer Switch 12、Intel NUC 和 Google Pixelbook（不要与 Chromebook Pixel 弄混）。目前安装进程不支持基于 ARM 的硬件。Fuchsia 的安装进程称为 “paving”，安装 Fuchsia 需要两台设备，一台用来安装 Fuchsia 叫做 “target”，另外一台用来构建 Fuchsia 叫做 “host”。host 和 target 需要可以通过局域网进行通信。在 host 系统中需要构建 Fuchsia，创建一个安装工具，将系统的大部分通过网络安装到 target 中。
 
 <!--The `fx` command will be used throughout these instructions. If you have fx
 mapped into your command path you can follow the instructions verbatim. If you
@@ -26,7 +26,7 @@ tool invocations. If your use case isn't quite served by what's currently
 available there may a few GN targets you can build or some GN templates you can
 extend to allow you to build what you need.-->
 
-`fx` 将在这些指令中使用。如果您已经将fx映射到您的命令路径中，那么可以完全按照说明操作。
+ 指令中将使用 `fx`。如果你已经将 fx 映射到您的命令路径中，那么可以完全按照说明操作。如果没有将 fx 添加进去，再 “//scripts/fx” 路径下你能找到命令工具，你需要在使用的命令中使用相对路径。许多 fx 都是对 GN 中的构建操作以及工具调用的简单包装。
 
 
 
