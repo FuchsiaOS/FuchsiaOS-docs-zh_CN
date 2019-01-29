@@ -37,14 +37,14 @@ have options for less common situations; see `fx help <command>` for details.-->
 
 1. `fx mkzedboot <usb_drive_device_path>`
 
-   构建 Zedboot 媒体然后安装到 USB 驱动器中。请参见下边的内容说明，获取 USB 驱动器的路径。
+   构建 Zedboot 介质然后安装到 USB 驱动器中。请参见下边的内容说明，获取 USB 驱动器的路径。
 
 1. `fx pave`
 
    启动 bootserver。
 
-1.  将 Zedboot USB 连接到设备并重新启动。
-   Zedboot 会连接主机，并下载安装镜像，然后安装到设备中。
+1. 将 Zedboot USB 连接到设备并重新启动。
+   Zedboot 会连接 host，并下载安装镜像，然后安装到设备中。
 
    
 
@@ -55,7 +55,7 @@ have options for less common situations; see `fx help <command>` for details.-->
 depending on the host OS. In either case, you can run the command once with the
 USB drive disconnected, then run again with it connected, to see the
 difference.-->
-根据操作系统的不同，确定 USB 驱动器的正确路径的说明如下。你可以运行这些命令观察在连接 USB 驱动器和未连接 USB 驱动器时的区别。
+根据 host 操作系统的不同，确定 USB 驱动器的正确路径的说明如下。你可以运行这些命令观察在连接 USB 驱动器和未连接 USB 驱动器时的区别。
 
 <!-- Linux users:-->
 * Linux 用户：
@@ -109,9 +109,11 @@ difference.-->
    构建 Zircon，和 Fuchsia 的剩余部分。
    
 1. `fx serve`
-    在主机上启动开发包服务器。
+
+    在 host 上启动开发包服务器。
 
 1. 移除 Zedboot USB 启动设备。
+
     将设备引导至最后安装的状态。
 
 1. `fx ota`
