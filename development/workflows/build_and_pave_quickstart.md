@@ -14,19 +14,19 @@ have options for less common situations; see `fx help <command>` for details.-->
 <!--The initial build and deploy workflow using `fx` is as follows:-->
 使用 `fx` 的初始构建和部署工作流程如下：
 
-<!--1. `fx set <arch>`-->
-       <!--Configures the build for <arch>: one of [x64, arm64].-->
+<!--1. `fx set <arch>`
+       Configures the build for <arch>: one of [x64, arm64].-->
 
-<!--1.  `fx full-build`-->
-    <!--Builds Zircon, then the rest of Fuchsia.-->
-<!--1.  `fx mkzedboot <usb_drive_device_path>`-->
-    <!--Builds the Zedboot media and installs to the USB drive target. See below-->
-    <!--for notes on obtaining the USB drive device path.-->
-<!--1.  `fx pave`-->
-    <!--Starts the bootserver.-->
-<!--1.  Attach Zedboot USB to device and reboot.-->
-    <!--Zedboot will connect to the host, download the pave image, and pave the-->
-    <!--device.-->
+<!--1.  `fx full-build`
+    Builds Zircon, then the rest of Fuchsia.-->
+<!--1.  `fx mkzedboot <usb_drive_device_path>`
+    Builds the Zedboot media and installs to the USB drive target. See below
+    for notes on obtaining the USB drive device path.-->
+<!--1.  `fx pave`
+    Starts the bootserver.-->
+<!--1.  Attach Zedboot USB to device and reboot.
+    Zedboot will connect to the host, download the pave image, and pave the
+    device.-->
 
 1. `fx set <arch>`
    为 [x64, arm64] 其中一个配置<arch>构建内容。
