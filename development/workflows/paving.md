@@ -1,7 +1,10 @@
 <!--# Putting Fuchsia on a Device-->
+
+<!--这篇文章应该最先阅读-->
+
 # 在设备上安装 Fuchsia
 
-One of the best ways to experience Fuchsia is by running it on actual hardware.
+<!--One of the best ways to experience Fuchsia is by running it on actual hardware.
 This guide will help you get Fuchsia installed on your device. Fuchsia has good
 support for a few different hardware platforms including the Acer Switch 12,
 Intel NUC, and Google Pixelbook (not to be confused with the Chromebook Pixel).
@@ -10,7 +13,9 @@ Fuchsia install process, called 'paving', requires two machines, the machine on
 which you want to run Fuchsia ("target") and the machine on which you build
 Fuchsia ("host"). Host and target must be able to communicate over a local area
 network. On your host system you will build Fuchsia, create a piece of install
-media, and stream a large portion of the system over the network to the target.
+media, and stream a large portion of the system over the network to the target.-->
+
+体验 Fuchsia 的最佳的方式就是在真实的硬件上运行它。本文将帮助你在设备上安装 Fuchsia。Fuchsia对一些不同的硬件平台有很好的支持，其中有：Acer Switch 12、Intel NUC 和 Google Pixelbook（不要与 Chromebook Pixel 弄混）。目前安装进程不支持基于 ARM 的硬件。Fuchsia 的安装进程称为 “paving”，还需要两台设备，一台用来安装 Fuchsia 叫做 “target”，另外一台用来构建 Fuchsia 叫做 “host”。host 和 target 需要可以通过局域网进行通信。在 host 系统中需要构建 Fuchsia，创建一个安装工具，将系统的大部分通过网络安装到 target 中。
 
 The `fx` command will be used throughout these instructions. If you have fx
 mapped into your command path you can follow the instructions verbatim. If you
