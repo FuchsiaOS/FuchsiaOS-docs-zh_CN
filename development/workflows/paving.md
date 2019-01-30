@@ -36,7 +36,7 @@ extend to allow you to build what you need.-->
 [quickstart guide](https://fuchsia.googlesource.com/fuchsia/+/master/docs/development/workflows/build_and_pave_quickstart.md)
 for a workflow summary.-->
 
-之前都读过吗?有关工作流摘要，请参阅[快速入门指南](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/master/development/workflows/build_and_pave_quickstart.md)。
+阅读以上所有内容，然后参阅[快速入门指南](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/master/development/workflows/build_and_pave_quickstart.md)了解工作流摘要。
 
 <!--## Building-->
 ## 构建
