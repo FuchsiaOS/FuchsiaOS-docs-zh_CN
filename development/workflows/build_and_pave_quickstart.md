@@ -44,7 +44,7 @@ have options for less common situations; see `fx help <command>` for details.-->
    启动 bootserver。
 
 1. 将 Zedboot USB 连接到设备并重新启动。
-   Zedboot 会连接 host，并下载安装镜像，然后安装到设备中。
+   Zedboot 会连接主机设备，并下载安装镜像，然后安装到设备中。
 
    
 
@@ -55,7 +55,7 @@ have options for less common situations; see `fx help <command>` for details.-->
 depending on the host OS. In either case, you can run the command once with the
 USB drive disconnected, then run again with it connected, to see the
 difference.-->
-根据 host 操作系统的不同，确定 USB 驱动器的正确路径的说明如下。你可以运行这些命令观察在连接 USB 驱动器和未连接 USB 驱动器时的区别。
+根据主机设备操作系统的不同，确定 USB 驱动器的正确路径的说明如下。你可以运行这些命令观察在连接 USB 驱动器和未连接 USB 驱动器时的区别。
 
 <!-- Linux users:-->
 * Linux 用户：
