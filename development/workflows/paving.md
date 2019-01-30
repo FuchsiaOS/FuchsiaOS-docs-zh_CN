@@ -121,14 +121,18 @@ column for your partition (likely to be either 000 or 003). Then run
 will clear all Windows partitions from the disk. Once this is done, reboot into
 zedboot and paving should work.-->
 
-在某些情况下，在 Acer 上安装 Fuchsia 可能会失败，并出现一些错误提示 “couldn't find space in gpt”。
+在某些情况下，在 Acer 上安装 Fuchsia 可能会失败，并出现一些错误提示 “couldn't find space in gpt”。在这种情况下（只要你不想保留其他操作系统，即Windows，部分）运行 `lsblk` 并识别不是你的 USB 分区（它不应该在列中有 RE ）。确认分区第一列中的标识编号（可能是 000 或 003 ）。然后运行  `gpt init /dev/class/block/N` N 是之前确定的编号。这会清除磁盘上的所有 Windows 分区。一旦完成，重新引导进入 Zedboot 安装 Fuchsia 就能成功。
 
 <!--## Changing boot target (localboot, netboot, etc) default-->
-## 更改默认启动对象（localboot、netboot等等）
 
-For EFI-based systems, it is possible to change the default boot option of the
+## 更改默认启动对象（本地引导、网络引导 等等）
+
+<!--For EFI-based systems, it is possible to change the default boot option of the
 system paved on the target between local booting and Zedboot for network
 booting. By default the system boots locally with a 1-second delay in Gigaboot
 to allow you to select a different mode. To change this default to Zedboot,
 supply the `always_zedboot` argument when calling your set command, for example
-`fx set <target_type> --args "always_zedboot=true"`.
+`fx set <target_type> --args "always_zedboot=true"`.-->
+
+对于基于 EFI 系统的设备，可以更改目标设备的默认的引导选项为本地引导或者网络引导的 Zedboot。默认情况下，系统本地启动，Gigaboot 会延迟1秒，允许您选择其他模式。要将此默认值更改为 Zedboot，请在调用set命令时提供 `always_zedboot` 参数，例如 `fx set <target_type> --args "always_zedboot=true"`。
+
