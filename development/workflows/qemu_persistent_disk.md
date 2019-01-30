@@ -1,4 +1,5 @@
-# Running QEMU with persistent disks
+<!--# Running QEMU with persistent disks-->
+# 在持久化磁盘上运行 QEMU
 
 It's useful to run QEMU with persistent disks, like you'd have on actual
 hardware.

@@ -1,10 +1,12 @@
-# Build and Pave Quickstart
+<!--# Build and Pave Quickstart-->
+# 快速入门与应用
 
 This document captures the common-case workflow for building and deploying
 Fuchsia onto a device using `fx` development commands. Most such commands
 have options for less common situations; see `fx help <command>` for details.
 
-## Initial Build and Deploy
+<!--## Initial Build and Deploy-->
+## 创建与部署
 
 The initial build and deploy workflow using `fx` is as follows:
 

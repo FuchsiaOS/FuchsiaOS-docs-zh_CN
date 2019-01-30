@@ -1,4 +1,5 @@
-# Putting Fuchsia on a Device
+<!--# Putting Fuchsia on a Device-->
+# 在设备上安装 Fuchsia
 
 One of the best ways to experience Fuchsia is by running it on actual hardware.
 This guide will help you get Fuchsia installed on your device. Fuchsia has good
