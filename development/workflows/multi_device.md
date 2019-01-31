@@ -74,7 +74,7 @@ Ledger 是一个针对 Fuchsia 的分布式存储系统。Stories 可以使用 L
 * 使用 `configure_ledger` 在每个设备上设置同步。
 
 <!--## Run Stories-->
-## 运行 Stories
+## 运行 Story
 
 <!--### Virtual consoles.-->
 ### 虚拟控制台
