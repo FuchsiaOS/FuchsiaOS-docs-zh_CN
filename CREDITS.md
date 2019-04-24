@@ -19,6 +19,8 @@
  - /development
    - /api **TooB**
    - /sdk **Mr-Linus,Locez**
+   - /tests **H**
+   - /build **H**
    - /hardware **张麟**
    - /languages **浩宇,Liurnd**
    - /source_code **Cinus**
