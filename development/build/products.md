@@ -1,68 +1,44 @@
-# Products
+## 组件
 
-**Products** are defined in JSON files which can be found at:
+**组件(Products)** 在 如下位置的 JSON 文件中定义：
 
-* Garnet Layer Products: [`//garnet/products/`][garnet-products-source].
-* Peridot Layer Products: [`//peridot/products/`][peridot-products-source].
-* Topaz Layer Products: [`//topaz/products/`][topaz-products-source].
+* Garnet 层组件：[`//garnet/products/`][garnet-products-source].
+* Peridot 层组件：[`//peridot/products/`][peridot-products-source].
+* Topaz 层组件：[`//topaz/products/`][topaz-products-source].
 
-Products are a Fuchsia-specific feature built on top of GN to help customize
-Fuchsia builds. Products reference [packages](packages.md) and coarsely
-define which build artifacts the packages are added to.
+组件是一个基于 GN 构建的 Fuchsia 特有的功能，用于帮助定制 Fuchsia 构建过程。组件引用包并粗略定义了将包添加到哪一个构建工件（Artifacts）。
 
-## Package Sets
+## 包集合
 
-A product can import one or more packages into three different package sets
-of build artifacts, as defined below. The package sets influence what
-packages are included in parts of build output.
+一个组件可以包含一个或多个包，分置与三个不同的构建工件，如下所定义。这些包集合将影响构建输出的不同部分中将包含的包。
 
 ### monolith
 
-The `monolith` section of a **product** defines the list of [build
-packages](packages.md) that are to be included in the disk images, system
-update images and package repository. Membership of a package in the
-`monolith` dependency set takes precedence over membership in other package
-sets.
+**组件** 中的 `monolith` 节定义了将包含在硬盘镜像、系统更新镜像以及包仓库（package repository）中的 [build 包](packages.md)。`monolith` 中包含的包将比其他包集合中的包拥有更高的优先级。
 
 ### preinstall
 
-The `preinstall` section of a **product** defines the list of [build
-packages](packages.md) that are to be preinstalled in the disk image
-artifacts of the build, and will also be made available in the package
-repository. These packages are not added to the system update images or
-packages.
+**组件** 中的 `preinstall` 节定义了将在硬盘镜像中预装的 [build 包](packages.md) ，这些包也将可以从包仓库中访问。这些包将不会被添加到系统更新镜像（或更新包）中。
 
 ### available
 
-The `available` section of a **product** defines the list of [build
-packages](packages.md) that are added to the package repository only. These
-packages will be available for runtime installation, but are not found in
-system update images nor are they preinstalled in any disk images. All
-members of `monolith` and `preinstall` are inherently `available`.
+**组件** 中的 `available` 节定义了将只添加至包仓库的 [build 包](packages.md) 。这些包将可以进行运行时安装，但不会被预装在硬盘镜像中，也不会包含在系统更新镜像中。`monolith` 与 `preinstall` 包集合内的成员都拥有 `available` 包的特性。
 
-## Defaults & Conventions
+## 默认配置 & 约定俗成
 
-### product: default
+### 默认组件配置
 
-The `default` product for a layer, found in `//<layer>/products/default` by
-convention contains:
+一个层级的 `default` 组件配置，按照约定存储在 `//<层级名>/products/default`，其中包括：
 
-* `monolith` - a common minimal base for this layer that makes up a system
-  update.
-* `preinstall` - a set of most commonly used development tools for the layer
-  and other common work-items.
-* `available` - all `prod` packages for the layer.
+* `monolith` - 该层的最小可用基础，并支持系统更新。
+* `preinstall` - 该层常用开发工具的集合和其他常用的项目。
+* `available` - 该层的所有 `prod` 包。
 
-By convention, the `default` product for a higher layer should be additive
-from the layer below.
+根据约定，更高层的 `default` 组件配置应该从低一层的配置增量形成。
 
-## Inspecting Products
+## 查看组件配置
 
-As products reference [packages](packages.md) and packages may reference
-other packages, it is useful to be able to inspect the expanded and filtered
-set of build labels that will make up each package set in a product. The
-[preprocess products][preprocess-products-py] script is the tool that
-produces this for the build and can be run by hand:
+由于组件依赖于 [包](packages.md) 而包又依赖于其他的包，查看构成组件的每个包集合中的构建标签（的拓展和过滤集合）是很必要的。[预处理组件][preprocess-products-py] 脚本就是这样一个工具，可以如下手动运行：
 
 ```bash
 $ python build/gn/preprocess_products.py --products '["garnet/products/default"]'

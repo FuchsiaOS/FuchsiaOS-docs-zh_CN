@@ -1,33 +1,23 @@
-# The build system
+# 构建系统
 
-## Overview
+## 概述
 
-The Fuchsia build system aims at building both boot images and installable
-packages for various devices. To do so, it uses [GN][gn-main], a meta-build
-system that generates build files consumed by [Ninja][ninja-main], which
-executes the actual build. [Using GN build][gn-preso] is a good intro to GN.
+Fuchsia构建系统的设计目标，是同时为多种设备构建引导镜像和可安装软件包。为此，它使用 [GN](gn-main)，一个基于元语的构建系统，来为 [Ninja](ninja-main) 生成构建文件，再由 Ninja 执行实际构建工作。[使用 GN 构建工具](gn-preso) 是一篇对 GN 的介绍。
 
-Note that Zircon uses an entirely different build system based on GNU Make.
-The rest of the build relies on Zircon being built ahead of time.
+需要注意的是，Zircon 使用的是基于 GNU Make 的，完全不同的构建系统。
+对系统其他部分的构建，都需要建立在先构建 Zircon 的基础上。
 
-## Products
+## 组件
 
-The contents of the generated image are controlled by a set of top level
-products. Products define sets of packages that are included in boot and
-system update images, preinstalled in paver images, and installable using the
-update system. [products](products.md) documents the structure and usage of
-fields in product definitions.
+生成的镜像中具体包含哪些内容，是由一系列顶层组件控制的。组件定义了一系列包，这些包被包含在系统引导（或更新）镜像中、预装在 paver images 中，并可以使用更新系统来安装。[组件](products.md) 解释了组件定义文件中不同域的结构和用法。
 
-## Packages
+## 包
 
-The contents of products are packages, which may aggregate or reference other
-packages and GN labels that are to be built. See [packages](packages.md)
-for more information.
+包是组件的内容，包可能包含或引用其他的包（或可用于构建的 GN labels）。详见 [包](packages.md) 页面。
 
-## Build targets
+## 构建目标
 
-Build targets are defined in `BUILD.gn` files scattered all over the source
-tree. These files use a Python-like syntax to declare buildable objects:
+构建目标在 `BUILD.gn` 文件中定义，这些文件分布在源码树各处。它们使用类似 Python 的语法来声明构建目标：
 ``` py
 import("//build/some/template.gni")
 
@@ -40,184 +30,162 @@ my_template("foo") {
   ]
 }
 ```
-Available commands (invoked using gn cli tool) and constructs (built-in target
-declaration types) are defined in the [GN reference][gn-reference]. There are
-also a handful of custom templates in `.gni` files in the
-[`//build` project][build-project].
+[GN 定义](gn-reference) 中定义了可用的命令（通过 gn 命令行工具调用）和组件（多种内建目标声明类型）。[`//build` project](build-project) 中提供了大量用户模板 `.gni` 文件。
 
-These custom templates mostly define custom target declaration types, such as
-the [package declaration type][packages-source].
+这些用户模板大多定义了用户目标声明类型，比如 [包声明类型][packages-source]。
 
 > TODO(pylaligand): list available templates
 
-## Executing a build
+## 执行构建
 
-The simplest way to this is through the `fx` tool, as described in
-[Getting Started](/getting_started.md#Setup-Build-Environment). Read on to see
-what `fx` does under the hood.
+最简单的方法就是使用 `fx` 工具，详见 [快速开始](/getting_started.md#Setup-Build-Environment) 。下面介绍 `fx` 的幕后工作流程。
 
 ### A
 
-The first step is to build Zircon which uses its own build system:
+构建 Zircon 的第一步就是使用它自带的构建系统：
 ```bash
 $ scripts/build-zircon.sh
 ```
 
-This is what gets run under the hood by `fx build-zircon`, which is run by `fx
-full-build`.
+这就是在执行 `fx build-zircon` 时实际执行的指令，也在执行 `fx full-build` 的时候被执行。
 
-For a list of all options, run `build-zircon.sh -h`. See Zircon's
-[Getting started][zircon-getting-started] and
-[Makefile options][zircon-makefile-options] for details.
+要查看所有的执行选项，可以运行 `build-zircon.sh -h`。查看 Zircon 的
+[快速开始][zircon-getting-started] 和
+[Makefile 选项][zircon-makefile-options] 了解更多细节。
 
 ### B
 
-Then configure the content of the generated image by choosing the top level
-product to build:
+下一步是通过选择要构建的顶层组件来配置要构建镜像的内容：
 ```
 # --products and --packages can be omitted to use the defaults, which are
 # $layer/products/default.gni and empty, respectively.
 $ buildtools/gn gen out/x64 --args='import("//garnet/products/product_name.gni") fuchsia_packages=["garnet/packages/my_stuff"]'
 ```
 
-This will create an `out/x64` directory containing Ninja files.
+这将创建一个包含 Ninja 文件的 `out/x64` 目录。
 
-The equivalent fx set command is:
+等价的 fx set 指令如下：
 ```
 $ scripts/fx set x64 --products garnet/products/base.gni --packages garnet/packages/my_stuff
 ```
 
-For a list of all GN build arguments, run `buildtools/gn args out/x64 --list`.
-For documentation on the `select_variant` argument, see [Variants](variants.md).
+要查看所有 GN 构建参数的列表，运行 `buildtools/gn args out/x64 --list`。
+要查看 `select_variant` 参数的文档，查看 [Variants](variants.md)。
 
 ### C
 
-The final step is to run the actual build with Ninja:
+最后一步是使用 Ninja 执行实际构建。
 ```
 $ buildtools/ninja -C out/<arch> -j 64
 ```
 
-This is what gets run under the hood by `fx build`.
+这就是执行 `fx build` 时的幕后工作流程。
 
-## Rebuilding
+## 二次构建
 
-### After modifying non-Zircon files
+### 在改动了非 Zircon 文件之后
 
-In order to rebuild the tree after modifying some sources, just rerun step
-**C**. This holds true even if you modify `BUILD.gn` files as GN adds Ninja
-targets to update Ninja targets if build files are changed! The same holds true
-for package files used to configure the build.
+要在更改了一些代码后重新构建代码，只需要重新执行 **C** 步骤，这在你改动了 `BUILD.gn` 文件之后依然有效。在构建文件改动后，GN 将增加 Ninja 目标来更新 Ninja 目标。对于包的构建配置文件来说也是这样的。
 
-### After modifying Zircon files
+### 在改动了 Zircon 文件之后
 
-You will want to rerun **A** and **C**.
+你需要重新执行 **A** 和 **C** 步骤。
 
-### After syncing sources
+### 在同步了代码之后
 
-You’ll most likely need to run **A** once if anything in the Zircon tree was
-changed. After that, run **C** again.
+如果 Zircon 代码树有变动，你最好执行一次 **A** 步骤，然后再重新执行 **C** 步骤。
 
 
-## Tips and tricks
+## 提示和技巧
 
-## Inspecting all packages in a product
+###  查看一个组件中所有的包
 
 ```bash
 $ build/gn/preprocess_products.py --products '["garnet/products/default"]'
 ```
 
-### Visualizing the hierarchy of build packages
+### 可视化构建包的层级结构
 
 ```bash
 $ scripts/visualize_module_tree.py > tree.dot
 $ dot -Tpng tree.dot -o tree.png
 ```
 
-### Inspecting the content of a GN target
+### 查看一个 GN 构建目标的内容
 
 ```bash
 $ buildtools/gn desc out/x64 //path/to/my:target
 ```
 
-### Finding references to a GN target
+### 查找对一个 GN 目标的引用
 
 ```bash
 $ buildtools/gn refs out/x64 //path/to/my:target
 ```
 
-### Referencing targets for the build host
+### 为构建主机引用目标
 
-Various host tools (some used in the build itself) need to be built along with
-the final image.
+许多构建主机需求的工具（包括一些在构建过程中使用的）需要和最终镜像一起构建。
 
-To reference a build target for the host toolchain from a module file:
+为主机工具链从一个模块文件设置构建目标引用：
 ```
 //path/to/target(//build/toolchain:host_x64)
 ```
-To reference a build target for the host toolchain from within a `BUILD.gn`
-file:
+为主机工具链从一个 `BUILD.gn`文件设置构建目标引用：
 ```
 //path/to/target($host_toolchain)
 ```
 
-### Building only a specific target
+### 只构建一个指定目标
 
-If a target is defined in a GN build file as `//foo/bar/blah:dash`, that target
-(and its dependencies) can be built with:
+如果一个目标在 GN 构建文件中定义为 `//foo/bar/blah:dash`，这个目标（以及它的依赖）可以用如下指令构建：
 ```bash
 $ buildtools/ninja -C out/x64 -j64 foo/bar/blah:dash
 ```
-Note that this only works for targets in the default toolchain.
+需要注意的是，这只对包含在默认工具链中的目标有效。
 
-### Exploring Ninja targets
+### 探索 Ninja 构建目标
 
-GN extensively documents which Ninja targets it generates. The documentation is
-accessible with:
+GN 为它产生的 Ninja 构建目标生成了文档。该文档可以通过以下指令访问：
 ```bash
 $ buildtools/gn help ninja_rules
 ```
 
-You can also browse the set of Ninja targets currently defined in your output
-directory with:
+你也可以使用以下命令浏览你的输出目录中目前定义的一系列 Ninja 构建目标：
 ```bash
 $ buildtools/ninja -C out/x64 -t browse
 ```
-Note that the presence of a Ninja target does not mean it will be built - for
-that it needs to depend on the “default” target.
+需要注意的是，当出现的 Ninja 构建目标需要依赖于 “default” 目标时，它不会被构建。
 
-### Understanding why Ninja does what it does
+### 理解 Ninja 的工作步骤
 
-Add `-d explain` to your Ninja command to have it explain every step of its
-execution.
+在你的 Ninja 指令中添加 `-d explain` 来使它解释每一步的执行。
 
-### Debugging build timing issues
+### 调试构建时发生的问题
 
-When running a build, Ninja keeps logs that can be used to generate
-visualizations of the build process:
+当执行构建时，Ninja 会记录可用于生成构建过程可视化的日志数据：
 
-1. Delete your output directory - this is to ensure the logs represent only the
-   build iteration you’re about to run;
-1. Run a build as you would normally do;
-1. Get <https://github.com/nico/ninjatracing>;
-1. Run `ninjatracing <output directory>/.ninja_log > trace.json`;
-1. Load the resulting json file in Chrome in `about:tracing`.
+1. 删除你的输出目录，这是为了保证日志数据记录最新一次的构建过程；
+2. 执行正常的构建流程；
+3. 安装 <https://github.com/nico/ninjatracing>；
+4. 执行 `ninjatracing <output directory>/.ninja_log > trace.json`；
+5. 在 Chrome 的 `about:tracing` 中加载生成的 json 文件。
 
 
-## Troubleshooting
+## 常见问题
 
-### My GN target is not being built!
+### 我的 GN 构建目标没有被构建！
 
-Make sure it rolls up to a label defined in a module file, otherwise the build
-system will ignore it.
+确保它使用了模块文件中定义的标签来声明，否则构建系统将忽略它。
 
-### GN complains about a missing `sysroot`.
+### GN 报错：缺少 `sysroot`
 
-You likely forgot to run **A** before running **B**.
+在运行 **B** 步骤之前，你需要先运行 **A** 步骤。
 
 > TODO(pylaligand): command showing path to default target
 
 
-### Internal GN setup
+### 系统内的 GN 配置
 
 > TODO(pylaligand): .gn, default target, mkbootfs, GN labels insertion
 
@@ -228,3 +196,5 @@ You likely forgot to run **A** before running **B**.
 [build-project]: https://fuchsia.googlesource.com/build/+/master/
 [zircon-getting-started]: https://fuchsia.googlesource.com/zircon/+/master/docs/getting_started.md
 [zircon-makefile-options]: https://fuchsia.googlesource.com/zircon/+/master/docs/makefile_options.md
+
+[packages-source]: 
