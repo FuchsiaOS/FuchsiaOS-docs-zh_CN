@@ -1,8 +1,9 @@
-# Build system
+# 构建系统
 
-- [Overview](overview.md)
-- [Packages](packages.md)
-- [Layout of "packages" directories](package_layout.md)
-- [Variants](variants.md)
-- [Toolchain](toolchain.md)
-- [Tools & dashboards](tools-dashboards.md)
+- [概述](overview.md)
+- [包](packages.md)
+- [“packages”目录层级结构](package_layout.md)
+- [变体](variants.md)
+- [工具链](toolchain.md)
+- [工具和仪表板](tools-dashboards.md)
+

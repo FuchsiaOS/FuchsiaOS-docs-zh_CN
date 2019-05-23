@@ -1,64 +1,44 @@
-# Fuchsia Build System: Variants
+### Fuchsia 构建系统：变体（Variants）
 
-The Fuchsia GN build machinery allows for separate components to be built
-in different "variants".  A variant usually just means using extra compiler
-options, but they can do more than that if you write some more GN code.
-The variants defined so far enable things like
-[sanitizers](https://github.com/google/sanitizers/wiki) and
-[LTO](https://llvm.org/docs/LinkTimeOptimization.html).
+Fuchsia GN 构建系统允许不同的组件在不同的 变体 中构建。一个变体常常表示使用额外的编译选项，但如果你编写更多的 GN 代码，它们的功能远不止于此。
+至今定义的变体描述了：
+[排查工具](https://github.com/google/sanitizers/wiki) 和
+[LTO](https://llvm.org/docs/LinkTimeOptimization.html) 之类的内容。
 
-The GN build argument
+GN 构建指令
 [`select_variant`](https://fuchsia.googlesource.com/garnet/+/master/docs/gen/build_arguments.md#select_variant)
-controls which components are built in which variants.  It applies
-automatically to every `executable`, `loadable_module`, or `driver_module`
-target in GN files.  It's a flexible mechanism in which you give a list of
-matching rules to apply to each target to decide which variant to use (if
-any).  To support this flexibility, the value for `select_variant` uses a
-detailed GN syntax.  For simple cases, this can just be a list of strings.
+控制了哪些组件在哪些变体中被构建。这些规则自动应用于 GN 文件中定义的的每一个 `executable`，`loadable_module`，或者 `driver_module` 目标。这是一个灵活的系统，可以让你指定一张对应关系列表，指明那个目标使用哪个变体（如果有的话）。为了支持这种灵活性，`select_variant` 的值使用了一种灵活的 GN 语法。在简单的情况下，它可以只是一个字符串的列表。
 
-Here's an example running `gn gen` directly:
+这是一个直接运行 `gn gen` 的例子：
 
 ```sh
 ./buildtools/gn gen out/x64 --args='select_variant=["host_asan", "asan/cat", "asan/ledger"]'
 ```
 
-This does the same thing using the `fx set` tool:
+以下命令使用 `fx set` 工具做了同样的工作：
 
 ```sh
 fx set x64 --variant={host_asan,asan/cat,asan/ledger}
 ```
 
- 1. The first switch applies the `host_asan` matching rule, which enables
-    [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html)
-    for all the executables built to run on the build host.
+1. 参数列表中的第一个开关定义了 `host_asan` 对应规则。这一规则使能了在主机上为所有 executables 构建运行 [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) 的能力。
 
- 2. The second switch applies the `asan` matching rule, which enables
-    AddressSanitizer for executables built to run on the target (i.e. the
-    Fuchsia device).  The `/cat` suffix constrains this matching rule only
-    to the binary named `cat`.
+2. 参数列表中的第二个开关定义了 `asan` 对应规则。这一规则是能了在目标机器上为所有 executables 构建运行 AddressSanitizer 的能力。`/cat` 后缀表示这条对应规则只应用于名为 `cat` 的二进制文件。
 
- 3. The third switch is like the second, but matches the binary named `ledger`.
+3. 参数列表中的第三个开关和第二个一样，只不过匹配的是名为 `ledger` 的二进制文件。
 
-The GN code supports much more flexible matching rules than just the binary
-name, but there are no shorthands for those.  To do something more complex,
-set the
+GN 代码还支持二进制文件名之外更多灵活的匹配规则，但需要更为复杂的语法。如果需要做更复杂的工作，直接设置
 [`select_variant`](https://fuchsia.googlesource.com/garnet/+/master/docs/gen/build_arguments.md#select_variant)
-GN build argument directly.
+GN 构建参数。
 
- * You can do this via the `--args` switch to `gn gen` once you have the
-   syntax down.
+ * 如果语法有问题，你可以通过 `--args` 开关来切换到 `gn gen`
 
- * The easiest way to experiment is to start with some `--variant` switches
-   that approximate what you want and then edit the `select_variant` value
-   `fx set` produces:
-   * You can just edit the `args.gn` file in the GN output directory
-     (e.g. `out/x64/args.gn`) and the next `ninja` run (aka `fx build`)
-     will re-run `gn gen` with those changes.
-   * You can use the command `./buildtools/gn args out/x64`, which
-     will run your `$EDITOR` on the `args.gn` file and then do `gn gen`
-     immediately so you can see any errors in your GN syntax.
+ * 最简单的实验方式是从设置一些近似于你的需求的 `--variant` 开关开始，然后编辑 `select_variant` 的值
+   `fx set` 处理了：
+   * 你可以只编辑 GN 输出目录中的 `args.gn` 文件
+    （e.g. `out/x64/args.gn`） 下一次执行 `ninja` 构建（通过 `fx build`）的时候， `gn gen` 将会重新执行以适配更改。
+   * 你可以使用 `./buildtools/gn args out/x64` 命令，这将用你的 `$EDITOR` 打开 `args.gn` 文件，然后立即执行 `gn gen`，这样你就可以立即看到 GN 语法中的错误。
 
-To see the list of variants available and learn more about how to define
-new ones, see the
+要查看可用的变体列表并学习如何定义新的变体，查看
 [`known_variants`](https://fuchsia.googlesource.com/garnet/+/master/docs/gen/build_arguments.md#known_variants)
-build argument.
+构建参数。

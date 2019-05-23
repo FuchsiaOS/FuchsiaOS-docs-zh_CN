@@ -1,10 +1,11 @@
-## Tools
+## 工具
 
-- `fx rolling-commits` - displays the commits not yet rolled to a given layer
+- `fx rolling-commits` - 关闭指定层尚未回滚的 commits
 - `fx rolling-commits --layer <layer>`
 
-## Dashboards
+## 仪表盘
 
 - [Repo and roller builders](https://luci-milo.appspot.com/p/fuchsia)
 - [Build status dashboard](https://fuchsia-dashboard.appspot.com/)
 - [Dashboard component](https://fuchsia.googlesource.com/topaz/+/master/app/dashboard/)
+
