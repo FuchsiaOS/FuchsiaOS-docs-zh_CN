@@ -1,6 +1,7 @@
-# Syslog
+<!-- # Syslog
 
-<!--This document explains how to use golang syslogger library.-->
+This document explains how to use golang syslogger library. -->
+# 系统日志
 该文档向开发者展示了如何使用golang下的系统日志库。
 
 
@@ -14,10 +15,10 @@ deps = [
 ]
 ```
 
-<!--### Initialization-->
-### 初始化
+<!-- ### Initialization
+Logger can only be initialized once. -->
 
-<!-- Logger can only be initialized once. -->
+### 初始化
 日志记录器只能被初始化一次
 
 <!-- #### Basic initialization -->
@@ -46,7 +47,6 @@ import (
 
 func main() {
     ctx := context.CreateFromStartupInfo()
-    // Global tags, max 4 tags can be passed. Every log message would be tagged using these.
     // 全局标签，最多能传递4个标签。每一条日志消息都将被打上这些标签。
     err := logger.InitDefaultLoggerWithTags(ctx.Connector(), tag1, tag2)
 }
@@ -58,8 +58,6 @@ func main() {
 ```golang
 logger.Infof("my msg: %d", 10);
 
-// Allow message specific tagging. This message is going to be tagged with
-// this local tag and any global tag passed during initialization.
 // 可以对某一条消息指定标签。这条消息将被打上这个局部标签（tag）以及在初始化中被传递的全局标签。
 logger.InfoTf("tag", "my msg: %d", 10);
 
@@ -72,8 +70,8 @@ logger.ErrorTf("tag", "my msg: %d", 10);
 logger.Fatalf("my msg: %d", 10);
 logger.FatalTf("tag", "my msg: %d", 10);
 
-logger.VLogf(1, "my msg: %d", 10); // verbose logs 
-logger.VLogTf(1, "tag", "my msg: %d", 10); // verbose logs
+logger.VLogf(1, "my msg: %d", 10); // 详细日志
+logger.VLogTf(1, "tag", "my msg: %d", 10); // 详细日志
 ```
 
 <!-- ### Reference -->
