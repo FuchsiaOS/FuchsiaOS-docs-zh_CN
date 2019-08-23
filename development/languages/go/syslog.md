@@ -1,7 +1,7 @@
 # Syslog
 
 <!--This document explains how to use golang syslogger library.-->
-该文档向开发者展示了如何使用golang下的syslogger库。
+该文档向开发者展示了如何使用golang下的系统日志库。
 
 
 <!--## gn dependency-->
