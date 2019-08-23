@@ -6,7 +6,7 @@ This document explains how to use golang syslogger library. -->
 
 
 <!--## gn dependency-->
-## gn 依赖项
+## gn 依赖关系
 
 ```
 deps = [
