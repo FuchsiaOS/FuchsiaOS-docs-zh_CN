@@ -1,6 +1,8 @@
-# Logging
+<!-- # Logging -->
+# 日志
 
 
+<!--
 It is highly recommended that you use `lib.logging` package when you want to add
 logging statements to your Dart package.
 
@@ -12,9 +14,30 @@ deps = [
   ...
 ]
 ```
+-->
+当你需要添加日志语句到 Dart 包中时，强烈推荐使用 `lib.logging` 包。
 
+将包 `lib.logging` 作为依赖在 BUILD.gn 对象中导入：
+```
+deps = [
+  ...
+  "//topaz/public/dart/logging:lib.logging",
+  ...
+]
+```
+
+<!--
 In the main function of your Dart / Flutter app, call the `setupLogger()`
 function to make sure logs appear in the Fuchsia console in the desired format.
+```dart
+import 'package:lib.logging/logging.dart';
+
+main() {
+  setupLogger();
+}
+```
+-->
+在你的 Dart / Flutter 应用的主函数中调用 `setupLogger()` 函数来确保日志在 Fuchsia 终端中以期望的格式出现。
 ```dart
 import 'package:lib.logging/logging.dart';
 
