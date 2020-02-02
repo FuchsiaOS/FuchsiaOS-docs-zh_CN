@@ -3,7 +3,6 @@
 
 
 <!-- Analysis is run as part of the Fuchsia build. -->
-
 分析作为编译 Fuchsia 的一部分运行。
 
 <!--
@@ -17,13 +16,12 @@ Note that other templates usually define a Dart library they build upon. For
 example, a `flutter_app` `//foo/bar` will yield a `//foo/bar:bar_dart_library`
 target which can also be analyzed.
 -->
-
 每一个 `dart_library` 对象都有一个对应的分析脚本被生成在输出目录中。
 ```sh
 out/<build-type>/gen/path/to/package/package.analyzer.sh
 ```
 此脚本对该对象的源代码进行分析。
-注意其他模板通常声明一个它们编译时所依赖的 Dart 例如一个 `flutter_app` `//foo/bar` 会生成一个可分析的对象 `//foo/bar:bar_dart_library`。
+注意其他模板通常声明一个它们编译时所依赖的 Dart 库。例如一个 `flutter_app` `//foo/bar` 会生成一个可分析的对象 `//foo/bar:bar_dart_library`。
 
 <!--Dart
 As with standard Dart packages, analysis options are defined in an
@@ -38,7 +36,6 @@ It is customary to merely include that set from a local options file:
 include: path/to/topaz/tools/analysis_options.yaml
 ```
 -->
-
 标准 Dart 包的分析选项在根目录的 `analysis_options.yaml` 定义。
 此文件通过 `include` 指令的方式控制一系列常用的选项。
 ```
@@ -58,7 +55,6 @@ dart_library("foo") {
 }
 ```
 -->
-
 对于一个指定对象，可以这样彻底关闭分析：
 ```
 dart_library("foo") {
@@ -79,7 +75,6 @@ scripts/run-dart-action.py analyze --out out/<build-type> --fatal-warnings --lin
 ```
 This holds true for the individual analysis scripts.
 -->
-
 脚本 `//scripts/run-dart-action.py` 简化了对多个对象的分析。
 ```sh
 scripts/run-dart-action.py analyze --out out/<build-type> --tree //topaz/shell/*
