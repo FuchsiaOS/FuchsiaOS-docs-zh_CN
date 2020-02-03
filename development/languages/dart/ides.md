@@ -65,7 +65,7 @@ Fuchsia at:
     * 可选但有用的 git 扩展：
       * [Git Blame](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame)：在状态栏显示 git blame 信息
       * [Git History](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory)：查看 git 日志、文件历史等等
-1. 这里是一些有用的 Dart 用户设置，你可以输入 `Ctrl+,` 打开设置界面：
+1. 这里是一些有用的 Dart 用户设置，可输入 `Ctrl+,` 打开设置界面：
 ```json
 {
   // Auto-formats your files when you save
@@ -100,7 +100,7 @@ following:
 -->
 ## 疑难解答
 
-当发现 Dart 分析在你的 IDE 中工作不正常时，尝试以下选项：
+当发现 Dart 分析在 IDE 中工作不正常时，尝试以下选项：
 - 删除 `//out` 并重新编译。特别地，发布版本会覆盖调试版本。这意味着如果发布版本中存在问题，它将会覆盖调试版本。坏的发布版本会导致无论多少次正确的调试模式重编译都无法解决问题，除非删除 `//out/release-x64`。
 - 删除项目中的 .packages 文件并重新编译。
-- 重启你的机器。（这有时解决了问题。）
+- 重启机器。（这有时解决了问题。）
