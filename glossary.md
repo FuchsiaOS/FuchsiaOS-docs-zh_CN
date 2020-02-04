@@ -1,56 +1,91 @@
-# Glossary
+<!-- # Glossary -->
+# 术语表
 
+<!-- ## Overview -->
+## 概述
 
-## Overview
-
+<!--
 The purpose of this document is to provide short definitions for a collection of technical terms
 used in the Fuchsia source tree.
+-->
+这篇文档旨在对 Fuchsia 源代码树中的术语集提供简明定义。
 
-#### Adding new definitions
+<!-- #### Adding new definitions -->
+#### 添加新定义
 
+<!--
 - A definition should be limited to two or three sentences and deliver a high-level description of a
 term.
 - When another non-trivial technical term needs to be employed as part of the description,
 consider adding a definition for that term and linking to it from the original definition.
 - A definition should be complemented by a list of links to more detailed documentation and related
 topics.
+-->
+- 每条定义的长度应限制在两到三句话之内。定义应对数据进行高层次描述。
+- 当另一个特别术语被用作描述的一部分时，请考虑对新术语添加描述并于原描述创建指向此处的链接。
+- 每条定义应有一系列的补充链接，提供更详细的文档和相关话题。
 
-
-## Terms
+<!-- ## Terms -->
+## 术语
 
 #### **Agent**
+<!-- FT -->
 
+<!--
 A component whose life cycle is not tied to any story, is a singleton in user scope, and provides
 services to other components. An agent can be invoked by other components or by the system in
 response to triggers like push notifications. An agent can provide services to components, send and
 receive messages, and make proposals to give suggestions to the user.
+-->
+一个生命周期与任何 story 无关、在用户空间中单独存在、为其他组件提供服务的组件。Agent 可被其他组件或系统作为对触发器回应调用，如通知推送。Agent 为组件提供服务，发送和接收信息，并产生对用户的建议。
 
-#### **AppMgr**
+#### **应用管理器** **AppMgr**
+<!-- FA -->
 
+<!--
 The Application Manager (AppMgr) is responsible for launching components and managing the namespaces
 in which those components run. It is the first process started in the `fuchsia` job by the [DevMgr]
 (#DevMgr).
+-->
+应用管理器（AppMgr）负责启动组件和管理这些组件运行的命名空间。它是由 [DevMgr]（#DevMgr）在 `fuchsia` job 中启动的第一个进程。
 
 #### **Armadillo**
+<!-- FN  -->
 
+<!--
 An implementation of a session shell.
 - [Source](https://fuchsia.googlesource.com/topaz/+/master/shell/armadillo/)
+-->
+一个会话 shell 的实现。
+- [源代码](https://fuchsia.googlesource.com/topaz/+/master/shell/armadillo/)
 
 #### **Base shell**
+<!-- OT -->
 
+<!--
 The platform-guaranteed set of software functionality which provides a basic user-facing interface
 for boot, first-use, authentication, escape from and selection of session shells, and device recovery.
+-->
+平台保证的一套软件功能。提供引导时的用户界面、初次使用、认证、会话 shell 的退出和选择和设备恢复服务。
 
-#### **Component**
+<!-- #### **Component** -->
+#### **组件** **Component**
+<!-- OT -->
 
+<!--
 A component is a unit of execution and accounting. It consists of a manifest file and associated
 code, which comes from a Fuchsia package. A component runs in a sandbox, accesses objects via its
 [namespace](#Namespace) and publishes objects via its export directory. [Modules](#Module) and
 [Agents](#Agent) are examples of components. Components are most commonly distributed inside
 [Fuchsia Packages](#fuchsia-package).
+-->
+组件是一个执行和管理单元。由来自一个 Fuchsia 包的一个清单文件和相关的代码组成。组件运行在沙箱中，通过其命名空间 [namespace](#Namespace) 访问对象，并通过其导出目录放出对象。例如，[Module](#Module) 和 [Agent](#Agent) 都是组件。组件通常在 [Fuchsia 包](#fuchsia-package) 中被分发。
 
-#### **Component manifest**
+<!-- #### **Component manifest** -->
+#### **组件清单** **Component Manifest**
+<!-- OT -->
 
+<!--
 A component manifest (.cmx) is a JSON file with the file extension `.cmx`, typically located in the
 package’s `meta/` directory with information that declares how to run the component and what
 capabilities it receives upon launch. In particular, the component manifest describes how the
@@ -58,49 +93,79 @@ component is sandboxed. See [Component manifest](the-book/package_metadata.md#Co
 for a detailed description.
 
 These files end in `.cmx`, so they are also known as "cmx files".
+-->
+组件清单（.cmx）是文件扩展名为 `.cmx` 的 JSON 文件。通常位于所属包的 `meta/` 目录。包含关于该组件如何运行和启动时获得哪些能力的信息，特别是该组件被沙箱隔离的过程。详细描述请参见 [组件清单](the-book/package_metadata.md#Component-manifest)。
 
 #### **Channel**
+<!-- FT -->
 
 A Channel is the fundamental IPC primitive provided by Zircon.  It is a bidirectional, datagram-like
 transport that can transfer small messages including [Handles](#Handle).
 - [Channel Overview](https://fuchsia.googlesource.com/zircon/+/master/docs/objects/channel.md)
 
 #### **DevHost**
+<!-- FA -->
 
+<!--
 A Device Host (DevHost) is a process containing one or more device drivers.  They are created by the
 Device Manager, as needed, to provide isolation between drivers for stability and security.
+-->
+设备主机（DevHost）是包含一个或更多设备驱动的进程。由设备管理器按需创建，从而通过提供驱动间的隔离带来稳定性和安全性。
 
 #### **DevMgr**
+<!-- FA -->
 
+<!--
 The Device Manager (DevMgr) is responsible for enumerating, loading, and managing the life cycle of
 device drivers, as well as low level system tasks (providing filesystem servers for the boot
-filesystem, launching [AppMgr]( #AppMgr), and so on).
+filesystem, launching [AppMgr](#AppMgr), and so on).
+-->
+设备管理器（DevMgr）负责枚举、加载和管理设备驱动和低级系统任务（为引导文件系统提供文件系统服务器、启动 [AppMgr](#AppMgr) 等等）的生命周期。
 
 #### **DDK**
+<!-- FA -->
 
+<!--
 The Driver Development Kit is the documentation, APIs, and ABIs necessary to build Zircon Device
 Drivers.  Device drivers are implemented as ELF shared libraries loaded by Zircon's Device Manager.
 - [DDK Overview](https://fuchsia.googlesource.com/zircon/+/master/docs/ddk/overview.md)
 - [DDK includes](https://fuchsia.googlesource.com/zircon/+/master/system/ulib/ddk/include/ddk/)
+-->
+驱动开发套件是编译 Zircon 设备驱动所需的文档、API 和 ABI。设备驱动以 ELF 共享库的形式实现，由 Zircon 的设备管理器加载。
 
-#### **Driver**
+<!-- #### **Driver** -->
+<!-- OT -->
 
+<!--
 A driver is a dynamic shared library which [DevMgr](#DevMgr) can load into a [DevHost](#DevHost)
 and that enables, and controls one or more devices.
 - [Reference](https://fuchsia.googlesource.com/zircon/+/master/docs/ddk/driver-development.md)
 - [Driver Sources](https://fuchsia.googlesource.com/zircon/+/master/system/dev)
+-->
+驱动是可由 [DevMgr](#DevMgr) 载入到 [DevHost](#DevHost) 的动态共享库，使一个或更多设备可用并将其控制。
+- [参考](https://fuchsia.googlesource.com/zircon/+/master/docs/ddk/driver-development.md)
+- [驱动源代码](https://fuchsia.googlesource.com/zircon/+/master/system/dev)
 
-#### **Environment**
+<!-- #### **Environment** -->
+#### 环境
+<!-- OT -->
 
+<!--
 A container for a set of components, which provides a way to manage their lifecycle and provision
 services for them. All components in an environment receive access to (a subset of) the
 environment's services.
+-->
+一系列组件的容器，提供管理这些组件生命周期的方式并为它们提供服务。所有环境中的组件都能访问所属环境的服务（的子集）。
 
 #### **Escher**
+<!-- FF -->
 
+<!--
 Graphics library for compositing user interface content. Its design is inspired by modern real-time
 and physically based rendering techniques though we anticipate most of the content it renders to
 have non-realistic or stylized qualities suitable for user interfaces.
+-->
+绘制用户界面内容的图形库。其设计灵感来源于现代的实时物理渲染方法，尽管它渲染的大多数内容预计会有适合用户界面的非现实或风格化特征。
 
 #### **FAR**
 
