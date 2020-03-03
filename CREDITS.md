@@ -16,6 +16,7 @@
  ## 翻译目录与分工对应
  Directory:
  - /development
+    - /api/device_interface **CimZzz**
    - /api/fidl **7**
    - /api/system **Mario**
    - /sdk **Mr-Linus,Locez**
