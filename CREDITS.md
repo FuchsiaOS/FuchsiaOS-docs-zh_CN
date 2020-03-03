@@ -2,7 +2,6 @@
 
 
 <!--
- - TooB: /development/api
  - Mr-Linus: /development/build, /development/sdk
  - 张麟: /development/hardware, /development/workflows
  - Cinus: /development/source_code, /development/tests
@@ -17,7 +16,8 @@
  ## 翻译目录与分工对应
  Directory:
  - /development
-   - /api **TooB**
+   - /api/fidl **7**
+   - /api/system **Mario**
    - /sdk **Mr-Linus,Locez**
    - /tests **H**
    - /build **H**
