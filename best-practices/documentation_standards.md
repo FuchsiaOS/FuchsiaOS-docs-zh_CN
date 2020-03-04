@@ -1,21 +1,33 @@
-# Documentation Standards
+<!--# Documentation Standards
 
 A document about what to document and how to document it for people who create
-things that need documentation.
+things that need documentation.-->
 
-## Why document?
+# 文档标准
+
+为做了需要文档化的事情的人提供的一份关于文档写什么以及如何写的文档。
+
+<!--## Why document?
 
 Fuchsia is a new operating system.  As it grows and new people join the project
-so grows the need to provide effective documentation resources.
+so grows the need to provide effective documentation resources.-->
 
-## Who is the audience?
+## 为什么要写文档？
+
+Fuchsia 是一个新的操作系统。随着项目的发展和新成员的加入提供有效文档资源的需求也随之增长。
+
+<!--## Who is the audience?
 
 The documentation described here is intended to address a technical audience,
 i.e. those who expect to implement or exercise APIs or understand the internal
 dynamics of the operating system.  These standards are not intended for
-end-user product documentation.
+end-user product documentation.-->
 
-## What should I document?
+## 受众是谁？
+
+这里记录的文档是面向技术人员的，即那些希望实现或运行 APIs 或了解操作系统内部动态的人。这些标准不适用于为最终用户产品提供的文档。
+
+<!--## What should I document?
 
 In brief, document your interfaces, introduce essential concepts, explain how
 everything fits together.
@@ -26,7 +38,18 @@ everything fits together.
 - Protocols: e.g. schemas, encodings, wire formats, configuration files
 - Tools: e.g. `bootserver`, `netcp`, `fx`
 - Workflows: e.g. environment set up, test methodologies, where to find various
-  parts, how to get work done
+  parts, how to get work done-->
+
+## 我应该写什么内容？
+
+简而言之，记录你的程序接口，介绍基本概念，解释所有东西是如何结合在一起的。
+
+- 约定：例如本文档是关于文档、代码样式
+- 系统设计：例如网络堆栈、compositor、内核、assumptions
+- APIs：例如 FIDL 接口、库函数、系统调用
+- 协议：例如 schemas、编码、wire formats、配置文件
+- 工具：例如 “bootserver”、“netcp”、“fx”
+- 工作流程：例如环境设置、测试方法、在何处查找各个部分、如何完成工作
 
 ## Where should I put documents?  What goes where?
 
