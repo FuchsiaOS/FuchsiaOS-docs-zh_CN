@@ -15,6 +15,12 @@ Fuchsia OS 中文社区
  - 电报  https://t.me/FuchsiaOSzh
  - QQ群：788645873
  - 微信：https://fuchsia-china.com/join
+ 
+ Fuchsia 开发者社区
+
+ - 电报  https://t.me/FuchsiaDevelopers
+ - QQ群：241234421
+ - 微信：https://fuchsia-china.com/join
 
 <!--
 Other files in this repository are **system-wide** documentation articles for
