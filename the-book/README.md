@@ -25,7 +25,7 @@ also provides core drivers and Fuchsia's libc implementation.
  - [vDSO (libzircon)][zircon-vdso] -->
 
 ## Zircon 内核
-Zircon 是运行在 Fushia 下的微内核，Zircon 同时也提供系统所需的驱动程序和库。
+Zircon 是运行在 Fuchsia 下的微内核，Zircon 同时也提供系统所需的驱动程序和库。
 
  - [概念][zircon-concepts]
  - [系统调用][zircon-syscalls]
