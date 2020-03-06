@@ -7,7 +7,7 @@ to **developing** Fuchsia and software running on Fuchsia.
 
 # 开发 
 
-本文档是有关Fuchsia **开发** 以及在Fuchsia上运行软件的所有文档的一个入口（概述）。
+本文档是有关 Fuchsia **开发** 以及在 Fuchsia 上运行软件的所有文档的一个入口（概述）。
 
 <!--
 ## Developer workflow
@@ -32,8 +32,8 @@ and debugging Fuchsia and programs running on Fuchsia.
  
  ## 开发人员工作流程
 
-本节介绍了用于构建、运行、测试和调试Fuchsia，以及在Fuchsia上运行程序的工作流程和工具。
- - [入门](../getting_started.md) - **从这里开始**：本文档介绍获取源代码，构建和运行Fuchsia。
+本节介绍了用于构建、运行、测试和调试 Fuchsia，以及在 Fuchsia 上运行程序的工作流程和工具。
+ - [入门](../getting_started.md) - **从这里开始**：本文档介绍获取源代码，构建和运行 Fuchsia。
  - [源代码](source_code/README.md)
  - [在多个设备上](workflows/multi_device.md)
  - [Fuchsia 包](workflows/package_update.md)
@@ -41,7 +41,7 @@ and debugging Fuchsia and programs running on Fuchsia.
  - [调试](workflows/debugging.md)
  - [追踪][tracing] <!-- Error -->
  - [可追踪的基准测试][trace_based_benchmarking]
- - [基于LibFuzzer的模糊测试](workflows/libfuzzer.md)
+ - [基于 LibFuzzer 的模糊测试](workflows/libfuzzer.md)
  - [构建系统](build/README.md)
  - [工作流程 FAQ](workflows/workflow_faq.md)
  - [测试 FAQ](workflows/testing_faq.md)
@@ -77,9 +77,9 @@ and debugging Fuchsia and programs running on Fuchsia.
 
 ## API
 
- - [系统](api/system.md) - 用于设计Zircon系统接口的说明
- - [FIDL](api/fidl.md) - 设计FIDL协议的说明
- - [C](api/c.md) - 设计C库接口的说明
+ - [系统](api/system.md) - 用于设计 Zircon 系统接口的说明
+ - [FIDL](api/fidl.md) - 设计 FIDL 协议的说明
+ - [C](api/c.md) - 设计 C 库接口的说明
 
 <!--
 ## SDK
@@ -89,7 +89,7 @@ and debugging Fuchsia and programs running on Fuchsia.
  
 ## SDK
 
- - [SDK](sdk/README.md) - 有关开发Fuchsia SDK的信息
+ - [SDK](sdk/README.md) - 有关开发 Fuchsia SDK 的信息
 
 <!--
 ## Hardware
@@ -103,7 +103,7 @@ This section covers Fuchsia development hardware targets.
  
 ## 硬件
 
-本节介绍了Fuchsia开发所支持的硬件设备。
+本节介绍了 Fuchsia 开发所支持的硬件设备。
 
  - [Acer Switch Alpha 12][acer_12] <!-- Error -->
  - [Intel NUC][intel_nuc] <!-- (also [this](hardware/developing_on_nuc.md)) --> <!-- Error -->
@@ -123,9 +123,9 @@ This section covers Fuchsia-wide conventions and best practices.
 
 ## 约定
 
-本节涵盖了有关Fuchsia的所有公约和最佳实践。
+本节涵盖了有关 Fuchsia 的所有公约和最佳实践。
 
- - [Layers](source_code/layers.md) - the Fuchsia layer cake, ie. Fuchsia子系统如何拆分为多层
+ - [Layers](source_code/layers.md) - Fuchsia 子系统如何拆分为多层
  - [仓库结构](source_code/layer_repository_structure.md) - Fuchsia layer 仓库组织代码的标准方法
  - [文档标准](/best-practices/documentation_standards.md)
 
