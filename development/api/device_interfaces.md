@@ -7,7 +7,7 @@ definitions should conform to the [FIDL Readability Rubric].
 
 # Fuchsia 设备接口规范
 
-Fuchsia 设备接口表示形式为 FIDL 接口。相关 FIDL 定义应该遵守 [FIDL可读性规范][FIDL Readability Rubric]
+Fuchsia 设备接口表示形式为 FIDL 接口。这些 FIDL 定义应符合 [FIDL可读性规范][FIDL Readability Rubric]
 
 <!-- 
 ## Identifiers
