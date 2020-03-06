@@ -137,7 +137,7 @@ they are a valuable asset for SDK consumers.-->
 
 文档注释在描述接口、结构、方法、数据类型和程序代码的其他元素的用途时特别有效。
 
-所有开发使用的 APIs 都应该添加文档注释，因为它们对于SDK用户来说是一项很有用的资产。
+所有开发使用的 APIs 都应该添加文档注释，因为它们对于 SDK 用户来说是一项很有用的资产。
 
 <!--Tips for writing effective documentation comments:
 
