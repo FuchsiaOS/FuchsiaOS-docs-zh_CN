@@ -7,7 +7,7 @@ definitions should conform to the [FIDL Readability Rubric].
 
 # Fuchsia 设备接口规范
 
-Fuchsia 设备接口表示形式为 FIDL 接口。这些 FIDL 定义应该遵守 [FIDL可读性规范][FIDL Readability Rubric]
+Fuchsia 设备接口表示形式为 FIDL 接口。相关 FIDL 定义应该遵守 [FIDL可读性规范][FIDL Readability Rubric]
 
 <!-- 
 ## Identifiers
@@ -22,9 +22,9 @@ parameters) or behavior (in the case of methods).
 
 ## 标识符
 
-应首选描述性的标识符。如果使用 `特定领域` 的术语缩写，需要记录其相关扩展内容或提供引用来获取更多信息。
+应首选描述性的标识符。如果使用特定领域的术语缩写，需要描述其相关扩展内容或提供引用来获取更多信息。
 
-接口中定义的每个标识符都必须有注释，用来解释其含义（针对成员，类型和参数）或行为（针对方法）。
+接口中定义的每个标识符都必须有注释，用来阐释其含义（针对成员，类型和参数）或行为（针对方法）。
 
 <!-- 
 ## Interfaces
@@ -36,7 +36,7 @@ supported languages for driver development.
 
 ## 接口
 
-所有设备接口必须使用 `[Layout = "Simple"]` 属性。这个限制允许驱动开发中使用任何支持的语言轻松实现接口。
+所有设备接口必须使用 `[Layout = "Simple"]` 属性。这个限制允许在驱动开发中使用任何支持的语言轻松实现接口。
 
 <!-- 
 ## Method Statuses
@@ -48,7 +48,7 @@ values, the `zx.status` should come first.
 
 ## 方法状态
 
-使用 `zx.status` 作为方法返回值，表示方法的成功和失败。若某个方法不应失败，则无需提供 `zx.status` 作为返回值。若方法中有多个返回值，`zx.status` 应第一个返回。
+使用 `zx.status` 作为方法返回值，表示成功和失败。当某个方法不可能失败，则无需返回 `zx.status`。若方法中有多个返回值，`zx.status` 应第一个返回。
 
 <!--
 ## Arrays, Strings, and Vectors
@@ -96,7 +96,7 @@ If FIDL gains bitfield support, this guidance will be updated.
 
 ## 位域
 
-若接口中存在位域，使用 `const` 来表示其全部值。位域的值应具有相同前缀，并且在 FIDL 被分组放在一起。例如：
+若接口中存在位域，使用 `const` 修饰其全部值。位域的值应具有相同前缀，并且在 FIDL 文件中被分组放在一起。例如：
 
 ```
 // Bit definitions for Info.features field
@@ -126,7 +126,7 @@ currently supported.
 
 ## 基于非通道协议
 
-某些接口为了性能优化可能使用非通道协议（例如 `zircon.ethernet.Device` 的 `GetFifos/SetIOBuffer` 方法），FIDL 目前不支持表示这些协议。
+某些接口为了性能优化可能会使用非通道协议（例如 `zircon.ethernet.Device` 的 `GetFifos/SetIOBuffer` 方法），FIDL 目前不支持表示这些协议。
 
 现在，任何由 `struct` 定义，代表共享数据的结构，应提供其在协议中参与部分的详细文档。
 
