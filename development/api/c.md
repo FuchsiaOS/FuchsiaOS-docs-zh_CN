@@ -1,13 +1,19 @@
-# C Library Readability Rubric
+<!--# C Library Readability Rubric
 
 This document describes heuristics and rules for writing C libraries
 that are published in the Fuchsia SDK.
 
 A different document will be written for C++ libraries. While C++ is
 almost an extension of C, and has some influence in this document, the
-patterns for writing C++ libraries will be quite different than for C.
+patterns for writing C++ libraries will be quite different than for C.-->
 
-Most of this document is concerned with the description of an
+# C 库可读性评估准则
+
+本文档描述了要发布在 Fuchsia SDK 中 C 库的编写方法和规则。
+
+将为 C++ 库单独编写文档。尽管 C++ 几乎是 C 的扩展，但在本文中也有一定的影响，编写 C++ 库的模式将与 C 完全不同。
+
+<!--Most of this document is concerned with the description of an
 interface in a C header. This is not a full C style guide, and has
 little to say about the contents of C source files. Nor is this a
 documentation rubric (though public interfaces should be well
@@ -17,9 +23,15 @@ Some C libraries have external constraints that contradict these
 rules. For instance, the C standard library itself does not follow
 these rules. This document should still be followed where applicable.
 
+[TOC]-->
+
+本文档的大部分内容与 C 头中接口的描述有关。这不是一个完整的 C 风格指南，对于 C 源文件的内容几乎没什么可说的。这也不是文档准则（尽管公开的接口应该有很好的文档记录）。
+
+一些 C 库具有与这些规则相矛盾的外部约束。例如，C 标准库本身不遵循这些规则。在适用的情况下，仍应遵循本文档。
+
 [TOC]
 
-## Goals
+<!--## Goals
 
 ### ABI Stability
 
@@ -30,29 +42,47 @@ suggest not using certain features of the C language that have
 potentially surprising or complicated implications on the ABI of an
 interface. We also disallow nonstandard compiler extensions, since we
 cannot assume that third parties are using any particular compiler,
-with a handful of exceptions for the DDK described below.
+with a handful of exceptions for the DDK described below.-->
 
-### Resource Management
+## 目标
+
+### ABI 稳定
+
+一些带有稳定 ABI 的 Fuchsia 接口将作为 C 库发布。本文档的一个目标是使 Fuchsia 开发人员易于编写和维护一个稳定的 ABI。因此，我们建议不要使用 C 语言的某些特性，这些特性可能会使接口的 ABI 产生潜在问题或复杂的影响。我们也不允许非标准编译器扩展，因为我们不能假定第三方正在使用任何特定的编译器，下面描述的 DDK 有几个例外。
+
+<!--### Resource Management
 
 Parts of this document describe best practices for resource management
 in C. This includes resources, Zircon handles, and any other type of
-resource.
+resource.-->
 
-### Standardization
+### 资源管理
+
+本文档的部分内容描述了 C 语言中资源管理的最佳实践。这包括 resources、Zircon handles 和任何其他类型的资源。
+
+<!--### Standardization
 
 We would also like to adopt reasonably uniform standards for Fuchsia C
 libraries. This is especially true of naming schemes. Out parameter
-ordering is another example of standardization.
+ordering is another example of standardization.-->
 
-### FFI Friendliness
+### 标准化
+
+我们也希望对 Fuchsia 的 C 库采用合理统一的标准。这尤其适用于命名方案。另一个标准化的例子是对输出参数排序。
+
+<!--### FFI Friendliness
 
 Some amount of attention is paid to Foreign Function Interface (FFI)
 friendliness. Many non-C languages support C interfaces. The
 sophistication of these FFI systems varies wildly, from essentially
 sed to sophisticated libclang-based tooling. Some amount of
-consideration of FFI friendliness went into these decisions.
+consideration of FFI friendliness went into these decisions.-->
 
-## Language versions
+### FFI 友好性
+
+对外部函数接口 `Foreign Function Interface`（FFI）友好性给予了一定的关注。许多非 C 语言支持 C 接口。从基本的 sed 到复杂的基于 libclang 的工具，这些 FFI 系统的复杂程度差别很大。在做出这些决定时，一定程度上考虑了 FFI 友好性。
+
+<!--## Language versions
 
 ### C
 
@@ -63,16 +93,28 @@ goal.
 
 In particular, Fuchsia C code can use the `<threads.h>` and
 `<stdatomic.h>` headers from the C11 standard library, as well as the
-`_Thread_local` and alignment language features.
+`_Thread_local` and alignment language features.-->
 
-The thread locals should use the `thread_local` spelling from
+## 语言版本
+
+### C
+
+Fuchsia C 库是根据 C11 标准编写的（除了一小部分异常，比如 unix 信号支持，它们与我们的 C 库 ABI 没有特别的关系）。不需要符合 C99 标准。
+
+特别是，Fuchsia C 代码可以使用 C11 标准库中的 `<threads.h>` 和 `<stdatomic.h>` 头，以及 `_Thread_local` 和语言对齐特性。
+
+<!--The thread locals should use the `thread_local` spelling from
 `<threads.h>`, rather than the built in `_Thread_local`. Similarly,
 prefer `alignas` and `alignof` from `<stdalign.h>`, rather than
 `_Alignas` and `_Alignof`.
 
 Note that compilers support flags which may alter the ABI of the
 code. For instance, GCC has a `-m96bit-long-double` flag which alters
-the size of a long double. We assume that such flags are not used.
+the size of a long double. We assume that such flags are not used.-->
+
+线程局部变量应使用 `<threads.h>` 中的 `thread_local`，而不是内置的 `_Thread_local`。同样的，使用 `<stdalign.h>` 中的 `alignas` 和 `alignof`，而不是 `_Alignas` 和 `_Alignof`。
+
+注意编译器支持可能更改代码 ABI 的标志。例如，GCC 有一个 `-m96bit-long-double` 标志，它可以改变 long double 的大小。我们假定不使用这种标志。
 
 Finally, some libraries (such as Fuchsia's C standard library) in our
 SDK are a mix of externally defined interfaces and Fuchsia specific
@@ -82,6 +124,8 @@ libc defines functions like `thrd_get_zx_handle` and
 rules below: the name of the library is not a prefix. Doing so would
 make the names fit less well next to other functions like
 `thrd_current` and `dlopen`, and so we allow the exceptions.
+
+
 
 ### C++
 
