@@ -116,18 +116,18 @@ the size of a long double. We assume that such flags are not used.-->
 
 注意编译器支持可能更改代码 ABI 的标志。例如，GCC 有一个 `-m96bit-long-double` 标志，它可以改变 long double 的大小。我们假定不使用这种标志。
 
-Finally, some libraries (such as Fuchsia's C standard library) in our
+<!--Finally, some libraries (such as Fuchsia's C standard library) in our
 SDK are a mix of externally defined interfaces and Fuchsia specific
 extensions. In these cases, we allow some pragmatism. For instance,
 libc defines functions like `thrd_get_zx_handle` and
 `dlopen_vmo`. These names are not strictly in accordance with the
 rules below: the name of the library is not a prefix. Doing so would
 make the names fit less well next to other functions like
-`thrd_current` and `dlopen`, and so we allow the exceptions.
+`thrd_current` and `dlopen`, and so we allow the exceptions.-->
 
+最后，我们 SDK 中的一些库（比如 Fuchsia 的 C 标准库）混合了外部定义接口和 Fuchsia 的特定扩展。在这些情况下，我们允许一些例外发生。例如，libc 定义了诸如 `thrd_get_zx_handle` 和 `dlopen_vmo` 之类的函数。这些名字不是严格按照下面的规则命名的：没有使用库的名称做前缀。这样做会使名称与其他诸如 `thrd_current` 和 `dlopen` 之类的函数不太匹配，但我们允许这种例外发生。
 
-
-### C++
+<!--### C++
 
 While C++ is not an exact superset of C, we still design C libraries
 to be usable from C++. Fuchsia C headers should be compatible with the
@@ -136,9 +136,15 @@ declarations must be `extern "C"`, as described below.
 
 C and C++ interfaces should not be mixed in one header. Instead,
 create a separate `cpp` subdirectory and place C++ interfaces in their
-own headers there.
+own headers there.-->
 
-## Library Layout and Naming
+### C++
+
+虽然 C++ 不是 C 的精确超集，但我们仍然设计了可用于 C++ 的 C 库。Fuchsia C 头应该兼容 C++11、C++14 和 C++17 标准。特别是，函数声明必须是 `extern "C"`，如下所述。
+
+C 和 C++ 接口不应该混写在一个头中。相反，创建一个单独的 `CPP` 子目录，并在它们自己的头中写 C++ 接口。
+
+<!--## Library Layout and Naming
 
 A Fuchsia C library has a name. This name determines its include path
 (as described in the [library naming document]) as well as identifiers
@@ -152,9 +158,17 @@ regular expression `[a-z][a-z0-9]*`.  A tag can be replaced by a shorter
 version of the library name, for example `zx` instead of `zircon`.
 
 The include path for a header `foo.h`, as described by the [library
-naming document], should be `lib/tag/foo.h`.
+naming document], should be `lib/tag/foo.h`.-->
 
-## Header Layout
+## 库的设计和命名
+
+一个 Fuchsia C 库有一个名字。此名称决定了其引入路径（如[库命名文档]中所述）以及库中的标识符。
+
+在本文档中，库始终用 `tag` 命名，并以各种方式被称为 `tag` 或 `TAG` 或 `Tag` 或 `kTag` 以反映特定的词汇习惯。`tag` 需要是一个没有下划线的标识符。标签的全小写形式需满足正则表达式 `[a-z][a-z0-9]*`。标签可以被库名称的较短版本替换，例如用 `zx` 替换 `zircon`。
+
+对于头文件 `foo.h` 的引入路径，如[库命名文档]中所述，应该为 `lib/tag/foo.h`。
+
+<!--## Header Layout
 
 A single header in a C library contains a few kinds of things.
 
@@ -164,11 +178,25 @@ A single header in a C library contains a few kinds of things.
 - Extern C guards
 - Constant declarations
 - Extern symbol declarations
-  - Including extern function declarations
+- Including extern function declarations
 - Static inline functions
-- Macro definitions
+- Macro definitions-->
 
-### Header Guards
+## 头的设计
+
+C 库中的单个头包含几种类型的内容。
+
+- 版权说明
+- 头部防护
+- 文件包含列表
+- 外部 C 防护
+- 常量声明
+- 外部符号声明
+- 包括外部函数声明
+- 静态内联函数
+- 宏定义
+
+<!--### Header Guards
 
 Use #ifndef guards in headers. These look like:
 
@@ -190,9 +218,32 @@ The exact form of the define is as follows:
 - Add a trailing _
 
 For example, the header located in the SDK at `lib/tag/object_bits.h`
-should have a header guard `LIB_TAG_OBJECT_BITS_H_`.
+should have a header guard `LIB_TAG_OBJECT_BITS_H_`.-->
 
-### Inclusions
+### 头部防护
+
+在头部使用 #ifndef 防护。这些看起来像：
+
+```C
+#ifndef SOMETHING_MUMBLE_H_
+#define SOMETHING_MUMBLE_H_
+
+// code
+// code
+// code
+
+#endif // SOMETHING_MUMBLE_H_
+```
+
+定义的确切形式如下：
+- 在头中使用规范的引入路径
+- 用 `_` 替换所有的 `.` `/` 和 `-`
+- 将所有字母转换为大写
+- 末尾添加 `_`
+
+例如，SDK 中位于 `lib/tag/object_bits.h` 的头应该有一个头部防护 `LIB_TAG_OBJECT_BITS_H_`
+
+<!--### Inclusions
 
 Headers should include what they use. In particular, any public header
 in a library should be safe to include first in a source file.
@@ -200,9 +251,17 @@ in a library should be safe to include first in a source file.
 Libraries can depend on the C standard library headers.
 
 Some libraries may also depend on a subset of POSIX headers. Exactly
-which are appropriate is pending a forthcoming libc API review.
+which are appropriate is pending a forthcoming libc API review.-->
 
-### Constant Definitions
+### 包含物
+
+头应该包括它们使用的内容。特别是，库中的任何公共头都应该安全地优先包含在源文件中。
+
+库可以依赖于 C 标准库的头。
+
+有些库还可能依赖于 POSIX 头的子集。究竟哪一个是合适的取决于未来 libc API 审查。
+
+<!--### Constant Definitions
 
 Most constants in a library will be compile-time constants, created
 via a `#define`. There are also read-only variables, declared via
@@ -214,9 +273,19 @@ There are several types of compile time constants.
 
 - Single integer constants
 - Enumerated integer constants
-- Floating point constants
+- Floating point constants-->
 
-#### Single integer constants
+### 常量声明
+
+库中的大多数常量都是编译时常量，通过 `#define` 创建。也有只读变量，通过 `extern const TYPE NAME;` 来声明，因为有时需要存储一个常数（特别是对一些类型的 FFI）。本节描述了如何在头中提供编译时常量。
+
+编译时常量有几种类型。
+
+- 单整数常量
+- 枚举整数常量
+- 浮点常量
+
+<!--#### Single integer constants
 
 A single integer constants has some `NAME` in a library `TAG`, and its
 definition looks like the following.
@@ -229,9 +298,23 @@ where `EXPR` has one of the following forms (for a `uint32_t`)
 
 - `((uint32_t)23)`
 - `((uint32_t)0x23)`
+- `((uint32_t)(EXPR | EXPR | ...))`-->
+
+#### 单整数常量
+
+单个整数常量在库 `TAG` 中有一些 `NAME`，其定义如下。
+
+```C
+#define TAG_NAME EXPR
+```
+
+其中 `EXPR` 具有以下形式之一（对于 `uint32_t`）
+
+- `((uint32_t)23)`
+- `((uint32_t)0x23)`
 - `((uint32_t)(EXPR | EXPR | ...))`
 
-#### Enumerated integer constants
+<!--#### Enumerated integer constants
 
 Given an enumerated set of integer constants named `NAME` in a library
 `TAG`, a related set of compile-time constants has the following parts.
@@ -258,7 +341,31 @@ constants (always wrapped in parentheses):
 - `((tag_name_t)(TAG_NAME_FOO | TAG_NAME_BAR | ...))`
 
 Do not include a count of values, which is difficult to maintain as
-the set of constants grows.
+the set of constants grows.-->
+
+#### 枚举整数常量
+
+给一个库 `TAG` 中定义名为 `NAME` 的整数常量枚举集，一组相关的编译时常量包含以下部分。
+
+首先，一个 typedef 给类型一个名称、一个大小和一个符号。typedef 应为显式大小的整数类型。例如，如果使用 `uint32_t`：
+
+```C
+typedef uint32_t tag_name_t;
+```
+
+每个常数都有
+
+```C
+#define TAG_NAME_... EXPR
+```
+
+其中 `EXPR` 是少数几种编译时整型常量之一（总是用括号括起来）：
+
+- `((tag_name_t)23)`
+- `((tag_name_t)0x23)`
+- `((tag_name_t)(TAG_NAME_FOO | TAG_NAME_BAR | ...))`
+
+不要包含太多值，因为随着常数集的增长会很难维护。
 
 #### Floating point constants
 
