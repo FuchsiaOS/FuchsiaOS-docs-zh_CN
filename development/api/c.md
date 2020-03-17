@@ -578,51 +578,79 @@ Zircon primitives and to I/O.-->
 
 首选 `zx_status_t` 作为描述 Zircon 原语和 I/O 相关的错误的返回值。
 
-## Resource Management
+<!--## Resource Management
 
 Libraries can traffic in several kinds of resources. Memory and Zircon
 handles are examples of resources common across many
 libraries. Libraries may also define their own resources with
-lifetimes to manage.
+lifetimes to manage.-->
 
-Ownership of all resources should be unambiguous. Transfer of
+## 资源管理
+
+库可以提供多种资源。内存和 Zircon 句柄是许多库中常见的资源示例。库还可以定义自己的资源，并使用生命周期进行管理。
+
+<!--Ownership of all resources should be unambiguous. Transfer of
 resources should be explicit in the name of a function. For example,
-`create` and `take` connote a function transferring ownership.
+`create` and `take` connote a function transferring ownership.-->
 
-Libraries should be memory tight. Memory allocated by a function like
+所有资源的所有权应该是明确的。资源的转移应该以函数的名称显式地处理。例如，`create` 和 `take` 表示转移所有权的函数。
+
+<!--Libraries should be memory tight. Memory allocated by a function like
 `tag_thing_create` should released via `tag_thing_destroy` or some
-such, not via `free`.
+such, not via `free`.-->
 
-Libraries should not expose global variables. Instead, provide
+库应该对内存敏感。像 `tag-thing-create` 这样的函数分配的内存应该通过 `tag-thing-destroy` 或类似的方法释放，而不是通过 `free` 释放。
+
+<!--Libraries should not expose global variables. Instead, provide
 functions to manipulate that state. Libraries with process-global
 state must be dynamically linked, not statically. A common pattern is
 to split a library into a stateless static part, containing almost all
-of the code, and a small dynamic library holding global state.
+of the code, and a small dynamic library holding global state.-->
 
-In particular, the `errno` interface (which is a global thread-local
-global) should be avoided in new code.
+库不应公开全局变量。相反，提供操作该状态的函数。具有全局进程状态的库必须动态链接，而不是静态链接。一种常见的模式是将一个库拆分为一个无状态的静态部分，其中包含几乎所有的代码，以及一个包含全局状态的小型动态库。
 
-## Linkage
+<!--In particular, the `errno` interface (which is a global thread-local
+global) should be avoided in new code.-->
+
+特别是，在新代码中应该避免使用 `errno` 接口（它是全局的 thread-local）。
+
+<!--## Linkage
 
 The default symbol visibility in a library should be hidden. Use
 either a whitelist of exported symbols, or explicit visibility
 annotations, on symbols to exported.
 
-C libraries must not export C++ symbols.
+C libraries must not export C++ symbols.-->
 
-## Evolution
+## 链接
+
+应该隐藏库中默认符号的可见性。对要暴露的符号使用要导出符号的白名单或使用显式的可见性注解。
+
+C 库不可以导出 C++ 的符号。
+
+<!--## Evolution
 
 ### Deprecation
 
 Deprecated functions should be marked with the __DEPRECATED attribute
 from [compiler.h]. They should also be commented with a description
-about what to do instead, and a bug tracking the deprecation.
+about what to do instead, and a bug tracking the deprecation.-->
 
-## Disallowed or Discouraged Language Features
+## 演进
+
+### 过时
+
+不推荐使用的函数应该用 [compiler.h] 中的 __DEPRECATED 属性标记。还应该对它们用什么代替和可能导致的 bug 进行注释说明。
+
+<!--## Disallowed or Discouraged Language Features
 
 This section describes language features that cannot or should not be
 used in the interfaces to Fuchsia's C libraries, and the rationales
-behind the decisions to disallow them.
+behind the decisions to disallow them.-->
+
+## 不允许或不鼓励的语言特性
+
+本节描述在 Fuchsia 的 C 库接口中不能或不应该使用的语言特性，以及禁止他们的决定背后的原因。
 
 ### Enums
 
