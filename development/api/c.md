@@ -469,54 +469,80 @@ contract with the `__PRINTFLIKE` attribute from [compiler.h].-->
 
 除了 printf 类函数外，其他所有函数都应避免使用变量函数。这些函数应该用 [compiler.h] 中的 `__PRINTFLIKE` 属性记录它们的格式字符串协定。
 
-#### Static inline functions
+<!--#### Static inline functions
 
 Static inline functions are allowed, and are preferable to
 function-like macros. Inline-only (that is, not also `static`) C
-functions have complicated linkage rules and few use cases.
+functions have complicated linkage rules and few use cases.-->
 
-### Types
+#### 静态内联函数
+
+允许使用静态内联函数，并且比宏之类的函数更可取。仅内联（也就是说，不是静态的）C 函数有复杂的链接规则和很少的用例。
+
+<!--### Types
 
 Prefer explicitly sized integer types (e.g. `int32_t`) to
 non-explicitly sized types (e.g. `int` or `unsigned long int`). An
 exemption is made for `int` when referring to POSIX file descriptors,
-and for typedefs like `size_t` from the C or POSIX headers.
+and for typedefs like `size_t` from the C or POSIX headers.-->
 
-When possible, pointer types mentioned in interfaces should refer to
+### 类型
+
+与非显式大小的类型（例如 `int` 或 `unsigned long int`）相比，更倾向显式大小的整数类型（例如 `int32_t`）。在引用 POSIX 文件描述符时，对 `int` 和 C 或 POSIX 头中的 `size_t` 等 typedef 作了排除。
+
+<!--When possible, pointer types mentioned in interfaces should refer to
 specific types. This includes pointers to opaque structs. `void*` is
 acceptable for referring to raw memory, and to interfaces that pass
-around opaque user cookies or contexts.
+around opaque user cookies or contexts.-->
 
-#### Opaque/Explicit types
+如果可能，接口中提到的指针类型应该引用特定类型。这包括指向隐式的结构指针。`void*` 可用于引用原始内存和传递隐式的用户 cookie 的或上下文的接口。
+
+<!--#### Opaque/Explicit types
 
 Defining an opaque struct is preferable to using `void*`. Opaque
-structs should be declared like:
+structs should be declared like:-->
+
+#### 隐式/显式类型
+
+定义隐式结构比使用 `void*` 更可取。隐式结构应该声明如下：
 
 ```C
 typedef struct tag_thing tag_thing_t;
 ```
 
-Exposed structs should be declared like:
+<!--Exposed structs should be declared like:-->
+
+显示的结构应该声明如下：
 
 ```C
 typedef struct tag_thing {
 } tag_thing_t;
 ```
 
-#### Reserved fields
+<!--#### Reserved fields
 
 Any reserved fields in a struct should be documented as to the purpose
-of the reservation.
+of the reservation.-->
 
-A future version of this document will give guidance as to how to
-describe string parameters in C interfaces.
+#### 保留字段
 
-#### Anonymous types
+结构中的任何保留字段都应记录保留的目的。
+
+<!--A future version of this document will give guidance as to how to
+describe string parameters in C interfaces.-->
+
+本文档的未来版本将指导如何在 C 接口中描述字符串参数。
+
+<!--#### Anonymous types
 
 Top-level anonymous types are not allowed. Anonymous structures and
 unions are allowed inside other structures, and inside function
 bodies, as they are then not part of the top level namespace. For
-instance, the following contains an allowed anonymous union.
+instance, the following contains an allowed anonymous union.-->
+
+#### 匿名类型
+
+不允许顶级匿名类型。匿名结构和联合允许在其他结构内和函数体内，因为它们不属于顶级命名空间的一部分。例如，下面包含允许的匿名联合。
 
 ```C
 typedef struct tag_message {
@@ -528,19 +554,29 @@ typedef struct tag_message {
 } tag_message_t;
 ```
 
-#### Function typedefs
+<!--#### Function typedefs
 
-Typedefs for function types are permitted.
+Typedefs for function types are permitted.-->
 
-Functions should not overload return values with a `zx_status_t` on
+#### 函数类型定义
+
+允许使用函数类型的 typedef。
+
+<!--Functions should not overload return values with a `zx_status_t` on
 failure and a positive success value. Functions should not overload
 return values with a `zx_status_t` that contains additional values not
-described in [zircon/errors.h].
+described in [zircon/errors.h].-->
 
-#### Status return
+函数不应重载失败时的 `zx_status_t` 返回值和成功时的正值返回值。函数不应重载具有 `zx_status_t` 的返回值，该 `zx_status_t` 包含 [zircon/errors.h] 中未描述的附加值。
+
+<!--#### Status return
 
 Prefer `zx_status_t` as a return value to describe errors relating to
-Zircon primitives and to I/O.
+Zircon primitives and to I/O.-->
+
+#### 状态返回
+
+首选 `zx_status_t` 作为描述 Zircon 原语和 I/O 相关的错误的返回值。
 
 ## Resource Management
 
