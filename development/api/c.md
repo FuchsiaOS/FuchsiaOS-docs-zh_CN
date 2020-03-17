@@ -347,7 +347,7 @@ the set of constants grows.-->
 
 给一个库 `TAG` 中定义名为 `NAME` 的整数常量枚举集，一组相关的编译时常量包含以下部分。
 
-首先，一个 typedef 给类型一个名称、一个大小和一个符号。typedef 应为显式大小的整数类型。例如，如果使用 `uint32_t`：
+首先，用 typedef 给该类型一个名称、一个大小和一个符号。typedef 应为显式大小的整数类型。例如，如果使用 `uint32_t`：
 
 ```C
 typedef uint32_t tag_name_t;
@@ -367,15 +367,19 @@ typedef uint32_t tag_name_t;
 
 不要包含太多值，因为随着常数集的增长会很难维护。
 
-#### Floating point constants
+<!--#### Floating point constants
 
 Floating point constants are similar to single integer constants,
 except that a different mechanism is used to describe the type. Float
 constants must end in `f` or `F`; double constants have no suffix;
 long double constants must end in `l` or `L`. Hexadecimal versions of
-floating point constants are allowed.
+floating point constants are allowed.-->
 
-```C
+#### 浮点常量
+
+浮点常量类似于单整数常量，除了用不同的机制来描述以。浮点常量必须以 `f` 或 `F` 结尾；double 常量不需要后缀；long double 常量必须以 `l` 或 `L` 结尾。允许十六进制的浮点常量。
+
+<!--```C
 // A float constant
 #define TAG_FREQUENCY_LOW 1.0f
 
@@ -384,17 +388,34 @@ floating point constants are allowed.
 
 // A long double constant
 #define TAG_FREQUENCY_HIGH 4.0L
+```-->
+
+```C
+// 浮点常量
+#define TAG_FREQUENCY_LOW 1.0f
+
+// double 常量
+#define TAG_FREQUENCY_MEDIUM 2.0
+
+// long double 常量
+#define TAG_FREQUENCY_HIGH 4.0L
 ```
 
-### Function Declarations
+<!--### Function Declarations
 
 Function declarations should all have names beginning with `tag_...`.
 
 Function declarations should be placed in `extern "C"` guards. These
 are canonically provided by using the `__BEGIN_CDECLS` and
-`__END_CDECLS` macros from [compiler.h].
+`__END_CDECLS` macros from [compiler.h].-->
 
-#### Function parameters
+### 函数声明
+
+函数声明的名称都应该以 `tag_...` 开头。
+
+函数声明应该放在 `extern "C"` 防护区中。这些是通过使用 [compiler.h] 中的 `__BEGIN_CDECLS` 和 `__END_CDECLS` 宏来规范地提供的。
+
+<!--#### Function parameters
 
 Function parameters must be named. For example,
 
@@ -404,13 +425,27 @@ zx_status_t tag_frob_vmo(zx_handle_t, size_t num_bytes);
 
 // Allowed: all parameters named
 zx_status_t tag_frob_vmo(zx_handle_t vmo, size_t num_bytes);
+```-->
+
+#### 函数参数
+
+函数参数必须命名。例如，
+
+```C
+// 不允许：缺少参数名
+zx_status_t tag_frob_vmo(zx_handle_t, size_t num_bytes);
+
+// 允许：所有参数都有命名
+zx_status_t tag_frob_vmo(zx_handle_t vmo, size_t num_bytes);
 ```
 
-It should be clear which parameters are consumed and which are
+<!--It should be clear which parameters are consumed and which are
 borrowed. Avoid interfaces in which clients may or may not own a
 resource after a function call. If this is infeasible, consider noting
 the ownership hazard in the name of the function, or one of its
-parameters. For example:
+parameters. For example:-->
+
+应该明确哪些参数是消费的，哪些是借用的。避免在函数调用后客户端可能拥有或可能不拥有资源的接口。如果这是不可行的，考虑在函数或参数命名中体现该所有权风险。例如：
 
 ```C
 zx_status_t tag_frobinate_subtle(zx_handle_t foo);
@@ -419,14 +454,20 @@ zx_status_t tag_try_frobinate(zx_handle_t foo);
 zx_status_t tag_frobinate(zx_handle_t maybe_consumed_foo);
 ```
 
-By convention, out parameters go last in a function's signature, and
-should be named `out_*`.
+<!--By convention, out parameters go last in a function's signature, and
+should be named `out_*`.-->
 
-#### Variadic functions
+按照惯例，输出参数在函数签名中位于最后，应该命名为 `out_*`。
+
+<!--#### Variadic functions
 
 Variadic functions should be avoided for everything except printf-like
 functions. Those functions should document their format string
-contract with the `__PRINTFLIKE` attribute from [compiler.h].
+contract with the `__PRINTFLIKE` attribute from [compiler.h].-->
+
+#### 变量函数
+
+除了 printf 类函数外，其他所有函数都应避免使用变量函数。这些函数应该用 [compiler.h] 中的 `__PRINTFLIKE` 属性记录它们的格式字符串协定。
 
 #### Static inline functions
 
