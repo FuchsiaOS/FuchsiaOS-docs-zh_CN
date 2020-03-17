@@ -652,22 +652,35 @@ behind the decisions to disallow them.-->
 
 本节描述在 Fuchsia 的 C 库接口中不能或不应该使用的语言特性，以及禁止他们的决定背后的原因。
 
-### Enums
+<!--### Enums
 
-C enums are banned. They are brittle from an ABI standpoint.
+C enums are banned. They are brittle from an ABI standpoint.-->
 
-- The size of integer used to represent a constant of enum type is
+### 枚举
+
+C 枚举是被禁止的。从 ABI 的角度来看，它们是不可靠的。
+
+<!-- - The size of integer used to represent a constant of enum type is
   compiler (and compiler flag) dependent.
 - The signedness of an enum is brittle, as adding a negative value to
-  an enumeration can change the underlying type.
+  an enumeration can change the underlying type.-->
 
-### Bitfields
+- 用于表示枚举类型常量的整数大小取决于编译器（和编译器标志）。
+- 枚举的签名是不可靠的，因为向枚举中添加负值可以更改基础类型。
+
+<!--### Bitfields
 
 C's bitfields are banned. They are brittle from an ABI standpoint, and
-have a lot of nonintuitive sharp edges.
+have a lot of nonintuitive sharp edges.-->
 
-Note that this applies to the C language feature, not to an API which
-exposes bit flags. The C bitfield feature looks like:
+### 位字段
+
+C 的位字段是被禁止的。从 ABI 的角度来看，它们是不可靠的，而且有很多 nonintuitive sharp edges。
+
+<!--Note that this applies to the C language feature, not to an API which
+exposes bit flags. The C bitfield feature looks like:-->
+
+注意，这适用于 C 语言特性，而不适于暴露位标志的 API。C 位字段功能看起来像:
 
 ```C
 typedef struct tag_some_flags {
@@ -678,20 +691,30 @@ typedef struct tag_some_flags {
 } tag_some_flags_t;
 ```
 
-We instead prefer exposing bit flags as compile-time integer
-constants.
+<!--We instead prefer exposing bit flags as compile-time integer
+constants.-->
 
-### Empty Parameter Lists
+我们更倾向将位标志公开为编译时整数常量。
+
+<!--### Empty Parameter Lists
 
 C allows for function `with_empty_parameter_lists()`, which are
 distinct from `functions_that_take(void)`. The first means "take any
 number and type of parameters", while the second means "take zero
-parameters". We ban the empty parameter list for being too dangerous.
+parameters". We ban the empty parameter list for being too dangerous.-->
 
-### Flexible Array Members
+### 空参数列表
+
+C 函数允许 `with_empty_parameter_lists()`，这与 `functions_that_take(void)` 不同。第一个表示“取任意数量和类型的参数”，第二个表示“取零个参数”。我们禁止空参数列表因为它太危险了。
+
+<!--### Flexible Array Members
 
 This is the C99 feature which allows declaring an incomplete array as
-the last member of a struct with more than one parameter. For example:
+the last member of a struct with more than one parameter. For example:-->
+
+### 动态数组成员
+
+这是 C99 的特性，它允许将不完整数组声明为具有多个参数的结构的最后一个成员。例如：
 
 ```C
 typedef struct foo_buffer {
@@ -700,31 +723,52 @@ typedef struct foo_buffer {
 } foo_buffer_t;
 ```
 
-As an exception, DDK structures are allowed to use this pattern when
+<!--As an exception, DDK structures are allowed to use this pattern when
 referring to an external layout that fits this header-plus-payload
-pattern.
+pattern.-->
 
-The similar GCC extension of declaring a 0-sized array member is
-similarly disallowed.
+作为一个例外，DDK 结构允许在引用适合此 header-plus-payload 模式的外部布局时使用此模式。
 
-### Module Maps
+<!--The similar GCC extension of declaring a 0-sized array member is
+similarly disallowed.-->
+
+类似 GCC 的扩展同样被禁止声明 0 大小数组成员。
+
+<!--### Module Maps
 
 These are a Clang extension to C-like languages which attempt to solve
 many of the issues with header-driven compilation. While the Fuchsia
 toolchain team is very likely to invest in these in the future, we
-currently do not support them.
+currently do not support them.-->
 
-### Compiler Extensions
+### 模块地图
+
+这是类 C 语言的一个 Clang 扩展，它试图解决许多头驱动编译的问题。虽然 Fuchsia 工具链团队很可能在未来对这些工具有投入，但我们目前不支持它们。
+
+<!--### Compiler Extensions
 
 These are, by definition, not portable across toolchains.
 
 This in particular includes packed attributes or pragmas, with one
-exception for the DDK.
+exception for the DDK.-->
 
-DDK structures often reflect an external layout that does not match
+### 编译器扩展
+
+根据定义，这些是不可跨工具链移植的。
+
+这尤其包括压缩属性或 pragmas，但 DDK 有一个例外。
+
+<!--DDK structures often reflect an external layout that does not match
 the system ABI. For instance, it may refer to an integer field that is
 less aligned than required by the language. This can be expressed via
-compiler extensions such as pragma pack.
+compiler extensions such as pragma pack.-->
+
+DDK 结构通常表示与系统 ABI 不匹配的外部布局。例如，它可以引用一个整数字段，该字段的对齐度小于语言所需的对齐度。这可以通过编译扩展来处理，比如 pragma pack。
+
+<!--[compiler.h]: https://fuchsia.googlesource.com/zircon/+/master/system/public/zircon/compiler.h
+[library naming document]: ../languages/c-cpp/naming.md-->
 
 [compiler.h]: https://fuchsia.googlesource.com/zircon/+/master/system/public/zircon/compiler.h
-[library naming document]: ../languages/c-cpp/naming.md
+[库命名文档]: ../languages/c-cpp/naming.md
+
+
