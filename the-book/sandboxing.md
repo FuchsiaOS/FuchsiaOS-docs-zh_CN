@@ -122,4 +122,4 @@ See the documentation for the `package()` macro for details about including reso
 <!--For examples, see [https://fuchsia.googlesource.com/garnet/+/master/packages/prod/fortune]
 and [https://fuchsia.googlesource.com/garnet/+/master/bin/fortune/BUILD.gn].-->
 
-例如, 去看 [https://fuchsia.googlesource.com/garnet/+/master/packages/prod/fortune] 和 [https://fuchsia.googlesource.com/garnet/+/master/bin/fortune/BUILD.gn].
+例如, 您可以查看 [https://fuchsia.googlesource.com/garnet/+/master/packages/prod/fortune] 和 [https://fuchsia.googlesource.com/garnet/+/master/bin/fortune/BUILD.gn] 。
