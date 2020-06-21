@@ -1,1249 +1,754 @@
-# FIDL API Readability Rubric
+FIDL API 可读性注释：
 
 [TOC]
 
-## General Advice
+# **整体建议：**
 
-This section contains some general advice about defining interfaces in the
-[Fuchsia Interface Definition Language](https://fuchsia.googlesource.com/docs/+/master/development/languages/fidl/README.md).
+   这一部分包含了在 [Fuchsia](https://fuchsia.googlesource.com/docs/+/master/development/languages/fidl/README.md)接口定义语言中关于定义接口的一些整体建议。
 
-### Protocols not objects
+## **协议不是对象**
 
-FIDL is a language for defining interprocess communication protocols.  Although
-the syntax resembles a definition of an object-oriented interface, the design
-considerations are more akin to network protocols than to object systems.  For
-example, to design a high-quality interface, you need to consider bandwidth,
-latency, and flow control.  You should also consider that an interface is more
-than just a logical grouping of operations: an interface also imposes a FIFO
-ordering on requests and breaking an interface into two smaller interfaces means
-that requests made on the two different interfaces can be reordered with respect
-to each other.
+  FIDL是一种为了定义内部进程通信的协议的语言；虽然这些语法类似于面向对象接口的定义，但是设计者考虑更多的是同种的网络协议而不是实体系统。例如：
 
-### Focus on the types
+设计一个高质量的接口，你需要考虑带宽，延迟以及流程控制。你也需要考虑的是接口不只是一组可操作的逻辑分组：接口还对请求加强了FIFO排序，并将接口分为两个较小的接口意味着两个不同接口上发出的请求可以相对于彼此重新排序。
 
-A good starting point for designing your FIDL protocol is to design the data
-structures your protocol will use.  For example, a FIDL protocol about
-networking would likely contain data structures for various types of IP
-addresses and a FIDL protocol about graphics would likely contain data
-structures for various geometric concepts.  You should be able to look at the
-type names and have some intuition about the concepts the protocol manipulates
-and how the interfaces for manipulating those concepts might be structured.
+## **专注于类型** 
 
-### Language neutrality
+  设计FIDL的良好起点是设计你将在协议中所使用的数据结构，例如，关于网络的FIDL协议可能包含各种IP地址类型的数据结构，以及图形的FIDL协议可能包含各种几何概念的数据结构。 您应该能够查看这些类型名称，并对协议操作的概念以及如何构造用于操纵这些概念的接口有一些直观的感受.
 
-There are FIDL backends for many different languages.  You should avoid
-over-specializing your FIDL definitions for any particular target language.
-Over time, your FIDL protocol is likely to be used by many different languages,
-perhaps even some languages that are not even supported today.  FIDL is the
-glue that holds the system together and lets Fuchsia support a wide variety of
-languages and runtimes.  If you over-specialize for your favorite language, you
-undermine that core value proposition.
+## **语言中立性质**
 
-## Names
+   FIDL后端支持许多不同的语言。 您应该避免针对任何特定目标语言过度专业化FIDL定义。 随着时间的流逝，您的FIDL协议可能会被许多种不同的语言所使用，甚至可能是一些如今没有被支持的语言。 FIDL是将系统结合在一起并让Fuchsia支持多种语言和运行时的粘合剂。 如果您过度定制化自己喜欢的语言，则会破坏FIDL设计的核心意义。
+
+## **命名：**
 
 ```
 The Naming of Cats is a difficult matter,
 It isn't just one of your holiday games;
-  --- T.S. Eliot
+    --- T.S. Eliot
 ```
 
-Names defined in FIDL are used to generate identifiers in each target language.
-Some languages attach semantic or conventional meaning to names of various
-forms.  For example, in Go, whether the initial letter in an identifier is
-capitalized controls the visibility of the identifier.  For this reason, many of
-the language backends transform the names in your library to make them more
-appropriate for their target language.  The naming rules in this section are a
-balancing act between readability in the FIDL source, usability in each target
-language, and consistency across target languages.
+在FIDL中定义的名称用于生成每一种目标语言的标识符，一些语言将语义或者常规含义附加到各种形式的名称上。例如在GO语言中标识符中的首字母是否大写将控制标识符的可见性。 因此，许多语言后端都会转换库中的名称，以使其更适合其目标语言。本节中的命名规则是FIDL源代码的可读性，每种目标语言的可用性以及目标语言之间的一致性之间的一种平衡行为。
 
-Avoid commonly reserved words, such as `goto`.  The language backends will
-transform reserved words into non-reserved identifiers, but these transforms
-reduce usability in those languages.  Avoiding commonly reserved words reduces
-the frequency with which these transformations are applied.
+避免使用通用词，例如`goto`。语言后端会将保留的单词转换为非保留的标识符，但是这些转换会降低这些语言的可用性。 避免使用常用的保留关键字会降低应用这些转换的频率。
 
-While some FIDL keywords are also commonly reserved words in target languages,
-(such as `struct` in C and C++), and should thus be avoided, other FIDL keywords,
-particularly `request` and `handle`, are generally descriptive and can be
-used as appropriate.
+虽然某些FIDL关键字也是目标语言常用的保留字（例如C和C ++中的`struct`），因此应避免使用，其他FIDL关键字尤其是请求和句柄通常是描述性的，可以适当地使用。
 
-Names must not contain leading or trailing underscores.  Leading or trailing
-underscores have semantic meaning in some languages (e.g., leading underscores
-control visibility in Dart) and conventional meaning in other languages (e.g.,
-trailing underscores are conventionally used for member variables in C++).
-Additionally, the FIDL compiler uses leading and trailing underscores to munge
-identifiers to avoid collisions.
+名称的头部和尾部不能包含下划线。头部或尾部下划线在某些语言中具有特定的语义含义（例如，`Dart`中的前导下划线控制可见性），而在其他语言中则具有常规含义（例如，尾部下划线通常用于C ++中的成员变量）。 此外，FIDL编译器使用前导和尾随下划线来修饰标识符以避免冲突。
 
-### Libraries
+# **库函数**
 
-Library names are period-separated lists of identifiers. Portions of the library
-name other than the last are also referred to as namespaces.  Each component of
-the name is in lowercase and must match the following regular expression:
-`[a-z][a-z0-9]*`.
+库名称是句点分隔的标识符列表。 库名称中除最后一个以外的其他部分也称为名称空间。 名称的每个组成部分均小写，并且必须与以下正则表达式匹配：[a-z] [a-z0-9] *。
 
-We use these restrictive rules because different target languages have different
-restrictions on how they qualify namespaces, libraries, or packages.  We have
-selected a conservative least common denominator in order for FIDL to work well
-with our current set of target languages and with potential future target
-languages.
+我们使用这些限制性规则是因为不同的目标语言对它们如何限定名称空间，库或程序包具有不同的限制。 我们选择了一个保守的最小公分母，以使FIDL与我们当前的目标语言以及潜在的未来目标语言配合良好。
 
-Prefer functional names (e.g., `fuchsia.media`) over product or codenames (e.g.,
-`fuchsia.amber` or `fuchsia.mozart`).  Product names are appropriate when the
-product has some external existence beyond Fuchsia and when the interface is
-specific to that product.  For example, `fuchsia.cobalt` is a better name for
-the Cobalt interface than `fuchsia.metrics` because other metrics
-implementations (e.g., Firebase) are unlikely to implement the same protocol.
+相对于产品或代号（例如，fuchsia.amber或fuchsia.mozart），功能名称（例如fuchsia.media）优先。 当产品在Fuchsia之外具有某种外部存在并且接口特定于该产品时，则使用产品名称是合适的。 例如，fuchsia.cobalt是Cobalt接口的一个比fuchsia.metrics更好的名称，因为其他具体实现（例如Firebase）不太可能实现相同的协议。
 
-FIDL libraries defined in the Fuchsia source tree (i.e., defined in
-fuchsia.googlesource.com) must be in the `fuchsia` top-level namespace (e.g.,
-`fuchsia.ui`) unless (a) the library defines portions of the FIDL language
-itself or its conformance test suite, in which case the top-level namespace must
-be `fidl`, or (b) the library is used only for internal testing and is not
-included in the SDK or in production builds, in which case the top-level
-namespace must be `test`.
+FIDL 库函数是定义在Fuchsia的源码树目录下(i.e,定义在[fuchsia.googlesource.com](http://fuchsia.googlesource.com))必须是在fuchsia的顶层的命名空间中(e.g., fuchsia.ui)除非（a）库定义了FIDL语言本身或其部分 一致性测试套件，在这种情况下，顶级名称空间必须为fidl，或者（b）该库仅用于内部测试，并且不包含在SDK或生产版本中，在这种情况下，顶级名称空间必须为 测试。
 
-Avoid library names with more than two dots (e.g., `fuchsia.foo.bar.baz`).
-There are some cases when a third dot is appropriate, but those cases are rare.
-If you use more than two dots, you should have a specific reason for that
-choice.
+避免使用超过两个点的库名称（例如fuchsia.foo.bar.baz）。 在某些情况下，第三个点是合适的，但这种情况很少见。 如果使用两个以上的点，则应该有一个选择的特定原因。
 
-Prefer to introduce dependencies from more libraries with more specific names to
-libraries with less specific names rather than the reverse.  For example,
-`fuchsia.foo.bar` might depend on `fuchsia.foo`, but `fuchsia.foo` should not
-depend on `fuchsia.foo.bar`.  This pattern is better for extensibility because
-over time we can add more libraries with more specific names but there are only
-a finite number of libraries with less specific names.  Having libraries with
-less specific names know about libraries with more specific names privileges the
-current status quo relative to the future.
+最好从名称更多的库引入名称更具体的库，而不是相反的库。 例如，fuchsia.foo.bar可能依赖于fuchsia.foo，但是fuchsia.foo不应依赖于fuchsia.foo.bar。 这种模式对于可扩展性更好，因为随着时间的推移，我们可以添加更多具有更特定名称的库，但是只有有限数量的具有较不特定名称的库。 让具有较少特定名称的库知道具有较高特定名称的库将赋予当前相对于将来的现状特权。
 
-Library names must not contain the following components: `common`, `service`,
-`util`, `base`, `f<letter>l`, `zx<word>`.  Avoid these (and other) meaningless
-names.  If `fuchsia.foo.bar` and `fuchsia.foo.baz` share a number of concepts
-that you wish to factor out into a separate library, consider defining those
-concepts in `fuchsia.foo` rather than in `fuchsia.foo.common`.
+库名称不得包含以下组件：通用，服务，实用程序，基础，f <字母> l，zx <单词>。 避免使用这些（和其他）无意义的名称。 如果fuchsia.foo.bar和fuchsia.foo.baz共享许多希望分解到单独库中的概念，请考虑在fuchsia.foo中而不是在[fuchsia.foo.common](http://fuchsia.foo.common)中定义这些概念。
 
-### Top-level
+# **顶层设计**
 
-Avoid repeating the names from the library name.  For example, in the
-`fuchsia.process` library, an interface that launches process should be named
-`Launcher` rather than `ProcessLauncher` because the name `process` already
-appears in the library name.  In all target languages, top-level names are
-scoped by the library name in some fashion.
+避免和库名称中重复名称。 例如，在fuchsia.process库中，启动进程的接口应命名为Launcher而不是ProcessLauncher，因为该库中已经出现了process这样的名称。 在所有目标语言中，顶级名称以某种方式由库名称确定范围。
 
-### Primitive aliases
+# **原始别名**
 
-Primitive aliases must be named in `lower_snake_case`.
+原始别名必须是lower_snake_case
 
-```
 using vaddr = uint64;
-```
 
-Primitive aliases must not repeat names from the enclosing library.  In all
-target languages, primitive aliases are replaced by the underlying primitive
-type and therefore do not cause name collisions.
+原始别名不得与库中的名称重复。 在所有目标语言中，原始别名被基础原始类型替换，因此不会引起命名冲突。
 
-### Constants
+# **常量Constants**
 
-Constants must be named in `ALL_CAPS_SNAKE_CASE`.
+常量必须在ALL_CAPS_SNAKE_CASE中命名。
 
-```
 const uint64 FOO_BAR = 4096;
-```
 
-Constant names must not repeat names from the enclosing library.  In all target
-languages, constant names are scoped by their enclosing library.
+常量名称不得重复包含库中的名称。 在所有目标语言中，常量名称受其封闭库的限制。
 
-### Interfaces
+# **接口**
 
-Interfaces must be named in `UpperCamelCase` and must be noun phrases.  Typically,
-interfaces are named using nouns that suggest an action.  For example,
-`AudioRenderer` is a noun that suggests that the interface is related to
-rendering audio.  Similarly, `Launcher` is a noun that suggests that the
-interface is related to launching something.  Interfaces can also be passive
-nouns, particularly if they relate to some state held by the implementation.
-For example, `Directory` is a noun that suggests that the interface is used for
-interacting with a directory held by the implementation.
+接口必须在UpperCamelCase中命名，并且必须是名词短语。 通常，接口使用建议动作性名词来命名。例如，AudioRenderer是一个名词，表明接口与渲染音频有关。同样，启动器是一个名词，表明接口与启动某些内容有关。接口也可以是被动名词，尤其是当它们与实现所拥有的某些状态有关时。例如，目录是一个名词，表明该接口用于与实现所拥有的目录进行交互。
 
-Interface may be named using object-oriented design patterns.  For example,
-`fuchsia.fonts.Provider` uses the "provider" suffix, which indicates that the
-interface provides fonts (rather than represents a font itself).  Similarly,
-`fuchsia.tracing.Controller` uses the "controller" suffix, which indicates that
-the interface controls the tracing system (rather than represents a trace
-itself).
+可以使用面向对象的设计模式来命名接口例如，fuchsia.fonts.Provider使用“ provider”后缀，它表示接口提供字体接口（而不是表示字体本身）。同样，fuchsia.tracing.Controller使用“ controller”后缀，它表示接口控制跟踪系统（而不是表示跟踪本身）。
 
-The name `Manager` may be used as a name of last resort for an interface with
-broad scope.  For example, `fuchsia.power.Manager`.  However, be warned that
-"manager" interfaces tend to attract a large amount of loosely related
-functionality that might be better factored into multiple interfaces.
+名字管理器可能被用作为接口扩大范围的最后保障；例如，fuchsia.power.Manager。 但是，请注意，“Manager”接口更倾向于大多数功能的松耦合；在多接口中更好的因子。
 
-Interfaces must not include the name "service."  All interfaces define services.
-The term is meaningless.  For example, `fuchsia.net.oldhttp.HttpService`
-violates this rubric in two ways.  First, the "http" prefix is redundant with
-the library name.  Second, the "service" suffix is banned.  Notice that the
-successor FIDL library, `fuchsia.net.http` simply omits this useless interface.
+接口不得包含名称“ service”。所有接口都定义服务。 这个术语是没有意义的。例如，[fuchsia.net.oldhttp.HttpService](http://fuchsia.net.oldhttp.HttpService)以两种方式违反了该规则。 首先“ http”前缀与库名冗余。 其次，禁止使用“service”后缀。 注意，继承FIDL库[fuchsia.net.http](http://fuchsia.net.http)只是忽略了这个无用的接口。
 
-### Methods
+# **方法：**
 
-Methods must be named in `UpperCamelCase` and must be verb phrases.  For
-example, `GetBatteryStatus` and `CreateSession` are verb phrases that indicate
-what action the method performs.
+方法必须在UpperCamelCase中命名，并且必须是动词短语。 例如，GetBatteryStatus和CreateSession是动词短语，指示该方法执行什么操作和方法的意义。
 
-Methods on "listener" or "observer" interfaces that are called when an event
-occurs should be prefixed with `On` and describe the event that occurred in the
-past tense.  For example, the `ViewContainerListener` interface has a method
-named `OnChildAttached`.  Similarly, events (i.e., unsolicited messages from the
-server to the client) should be prefixed with `On` and describe the event that
-occurred in the past tense.  For example, the `AudioCapturer` interface has an
-event named `OnPacketCaptured`.
+事件发生时调用的“侦听器”或“观察者”接口上的方法应以On为前缀，并且描述过去发生的事件。 例如，ViewContainerListener接口具有一个命名为OnChildAttached的方法。 类似，事件（即，从服务器到客户端的未经请求的消息）应以On为前缀，并描述过去时发生的事件。 例如，AudioCapturer接口具有一个名为OnPacketCaptured的事件。
 
-### Parameters
+# **参数：**
 
-Parameter must be named in `lower_snake_case`.
+参数必须类似如下命名：lower_snake_case
 
-### Structs and unions
+# **结构体和联合体：**
 
-Structs and unions must be named in `UpperCamelCase` and must be noun phrases.
-For example, `Point` is a struct that defines a location in space and
-`KeyboardEvent` is a struct that defines a keyboard-related event.
+结构和联合必须是以驼峰命名如：UpperCamelCase，并且必须是名词短语。 例如，Point是定义空间中位置的结构体，而KeyboardEvent是定义与键盘相关的事件的结构中。
 
-### Struct and union members
+# **结构和联合体成员：**
 
-Struct and union members must be named in `lower_snake_case`.  Prefer names with
-a single word when practical because single-word names render more consistently
-across target languages.  However, do not be afraid to use multiple words if a
-single word would be ambiguous or confusing.
+结构和联合成员必须以小写下划线形式命名，如：lower_snake_case。 如果可行，请优先使用单个单词的名称，因为单个单词的名称在目标语言之间的呈现更加一致。 但是，如果单个单词会造成歧义或令人困惑，请不要担心使用多个单词。
 
-Member names must not repeat names from the enclosing type (or library).  For
-example, the `KeyboardEvent` member that contains the time the event was
-delivered should be named `time` rather than `event_time` because the name
-`event` already appears in the name of the enclosing type.  In all target
-languages, member names are scoped by their enclosing type.
+成员名称不能与自封闭类型（或库）的名称重复。 例如，包含事件传递时间的KeyboardEvent成员应命名为time而不是event_time，因为name事件已经出现在封闭类型的名称中。 在所有目标语言中，成员名称均受其封闭类型的限制。
 
-### Enums
+**枚举**
 
-Enums must be named in `UpperCamelCase` and must be noun phrases.  For example,
-`PixelFormat` is an enum that defines how colors are encoded into bits in an
-image.
+枚举必须是以驼峰命名形式：UpperCamelCase，并且必须是名词短语。 例如，PixelFormat是一个枚举，它定义如何将颜色编码为图像中的比特位。
 
-### Enum members
+**枚举成员**
 
-Enum members must be named in `ALL_CAPS_SNAKE_CASE`.
+枚举成员必须是全大写下划线分开形式命名：ALL_CAPS_SNAKE_CASE。
 
-Enum member names must not repeat names from the enclosing type (or library).
-For example, members of `PixelFormat` enum should be named `ARGB` rather than
-`PIXEL_FORMAT_ARGB` because the name `PIXEL_FORMAT` already appears in the name
-of the enclosing type.  In all target languages, enum member names are scoped by
-their enclosing type.
+枚举成员名称不能和包含类型（或库）的名称重复。 例如，PixelFormat枚举的成员应命名为ARGB而不是PIXEL_FORMAT_ARGB，因为名称PIXEL_FORMAT已出现在封闭类型的名称中。 在所有目标语言中，枚举成员名称均受其封闭类型的限制。
 
-## Organization
+**组织：**
 
-### Syntax
+句法：
 
- * Use 4 space indents.
- * Never use tabs.
- * Avoid trailing whitespace.
- * Separate declarations for `struct`, `union`, `enum`, and `interface` constructs from other declarations with one newline.
- * End files with exactly one newline character.
+使用4个空格缩进。
 
-### Comments
+切勿使用tab。
 
-Use `// comments` to document your library.  Place comments above the thing
-being described.  Use reasonably complete sentences with proper capitalization
-and periods:
+避免尾随空格。
 
-```
+结构，联合，枚举和接口结构的声明与其他声明用一个换行符分开。
+
+用一个换行符结束文件。
+
+注释：
+
+使用 // 注释来记录您的库。将注释放在要描述的内容上方。使用合理完整的句子，并使用适当的大写字母和句号：
+
 struct Widget {
-    // Widgets must be published with monotonically increasing ids.
-    uint64 id;
-    // Relative to the center.
-    Point location;
+
+  // Widgets must be published with monotonically increasing ids.
+
+  uint64 id;
+
+  // Relative to the center.
+
+  Point location;
+
 };
-```
 
-Types or values defined by some external source of truth should be commented
-with references to the external thing.  For example, reference the WiFi
-specification that describes a configuration structure.  Similarly, if a
-structure must match an ABI defined in a C header, reference the C header.
+由某些外部的真实源文件定义的类型或值，应通过引用外存在的文件进行注释。例如，参考一份WIFI描述配置结构的具体说明书。同样，如果结构必须匹配C头文件中定义的ABI，请引用C的头文件。
 
-If you would like your comments to "flow through" to the target language,
-then use either `///` as the comment introducer (yes, three forward slashes
-in a row) or the `[Doc = "this is a comment"]` attribute:
+如果你希望你的注释“流程”目标语言，请使用///作为注释介绍器（是的，连续三个正斜杠）或[Doc =“ this is a comment”]属性：
 
-```fidl
 /// this is a comment that flows through to the target
 
-[Doc = "and so is this"]
-```
+[Doc = "and so is this”]
 
-#### Flow-through vs. regular comment guidelines
+**流程与常规注释指南：**
 
-For flow through comments, the `///` form is preferred over the `[Doc = ]`
-form; the latter is intended as an internal implementation hook.
+对于流经注释，///形式优于[Doc =]形式； 后者旨在用作内部实现挂钩。
 
-When deciding what should be a regular "`//`" comment versus a flow-through
-comment, keep in mind the following.
+在决定应该使用常规“ //”注释还是通过流程性注释时，请牢记以下几点。
 
-Regular comments:
+定期评论：
 
- * internal "todo" comments
- * copyright notices
- * implementation details
+内部使用“待办事项”评论
 
-Flow-through comments:
+版权声明
 
- * descriptions of parameters, arguments, function
- * usage notes
+实施细节
 
-For example:
+流程性注释：
 
-```fidl
+参数命，函数的描述
+
+使用说明
+
+例如：
+
 // TODO -- this function needs additional error checks
+
 /// WatchedEvent describes events returned from a DirectoryWatcher.
+
 struct WatchedEvent {
-...
-```
 
-### Files
+…
 
-A library is comprised of one or more files.  The files are stored in a
-directory hierarchy with the following conventions:
+文件：
 
-```
+库由一个或多个文件组成。 这些文件按照以下约定存储在相应的目录层次结构中：
+
 fidl/<library>/[<dir>/]*<file>.fidl
-```
 
-The `<library>` directory is named using the dot-separated name of the FIDL
-library.  The `<dir>` subdirectories are optional and typically not used for
-libraries with less than a dozen files.  This directory structure matches how
-FIDL files are included in the Fuchsia SDK.
+<library>目录使用FIDL库的点分隔名称命名。 <dir>子目录是可选的，通常地是不用于文件少于十二个的库。 此目录结构与Fuchsia SDK中包含FIDL文件的方式匹配。
 
-The division of a library into files has no technical impact on consumers of the
-library.  Declarations, including interfaces, can reference each other and
-themselves throughout the library, regardless of the file in which they appear.
-Divide libraries into files to maximize readability.
+将库分为文件对库的使用者没有特别的影响。 声明（包括接口）可以在整个库中互相引用，也可以通过库互相引用，而不论它们出现在哪个文件中。 将库划分为文件以最大程度地提高可读性。
 
- * Prefer a DAG dependency diagram for files in a library.
+对于库中的文件，最好使用DAG依赖关系图。
 
- * Prefer keeping mutually referring definitions textually close to each other,
-   ideally in the same file.
+最好保持相互引用的定义在文本上彼此依赖，最好在同一文件中。
 
- * For complex libraries, prefer defining pure data types or constants in leaf
-   files and defining interfaces that reference those types together in a trunk
-   file.
+对于复杂的库，最好在子文件中定义纯数据类型或常量，并且定义同时引用这些类型的接口。
 
-### Ordinals
+**序数：**
 
-Interfaces contain a number of methods.  In its declaration, each method is
-assigned a unique 32 bit identifier, called an ordinal.
+接口包含许多方法。在其声明中，为每个方法分配了唯一的32位标识符，称为序数。
 
-Interfaces evolve in two directions.  First, an interface can grow new methods,
-with new ordinals.  Second, a superinterface can be extended by a subinterface.
-The subinterface has all of the methods of its superinterface plus its own.
+接口在两个方向上进化。首先，接口可以使用新的序数增长新的方法。其次，超级接口可以由子接口扩展。子接口具有其父接口的所有方法以及自己的方法。
 
-The goal of the guidelines here is to avoid these extension mechanisms
-colliding.
+本指南的目的是避免这些扩展机制发生冲突。
 
- * Never use the zero ordinal. (The compiler forbids the zero ordinal.)
+切勿使用零序数,（编译器禁止零序。）
 
- * Ordinals within an interface should be allocated in contiguous blocks. For example:
-   * 0x80000001--0x80000007
-   * 1, 2, 3
-   * 1000--1010, 1100--1112, 1200--1999
+接口内的常规对象应按连续的块分配。例如：
 
- * New ordinals in an interface should use the next ordinal in the block. After
-   1, 2, and 3, use 4.
+0x80000001--0x80000007
 
- * Related interfaces should consider using nearby and distinct ordinal blocks:
+1,2,3
 
- * Interfaces A and B, in the same library, that refer to each other might
-   choose to allocate in blocks 0x100-0x1ff and 0x200-0x2ff respectively.
+1000--1010、1100--1112、1200--1999
 
- * Interfaces that expect to be extended by subinterfaces should explicitly
-   claim ordinal blocks in a comment.
+接口中的新序数应使用块中的下一个序数。在1、2和3之后，使用4。
 
-### Library structure
+相关接口应考虑使用附近和不同的序数块：
 
-Carefully consider how you divide your type and interface definitions into
-libraries.  How you decompose these definitions into libraries has a large
-effect on the consumers of these definitions because a FIDL library is the unit
-of dependency and distribution for your protocols.
+接口A、B在同一个库中；可能分别选择在块0x100-0x1ff和0x200-0x2ff中去分配。
 
-The FIDL compiler requires that the dependency graph between libraries is a DAG,
-which means you cannot create a circular dependency across library boundaries.
-However, you can create (some) circular dependencies within a library.
+期望由子接口扩展的接口应在注释中显式声明序数块。
 
-To decide whether to decompose a library into smaller libraries, consider the
-following questions:
+# **库的结构**
 
- * Do the customers for the library break down into separate roles that would
-   want to use a subset of the functionality or declarations in the library?  If
-   so, consider breaking the library into separate libraries that target each
-   role.
+仔细考虑如何将类型和接口定义划分为库。将这些定义分解为库的方式对这些定义的使用者有很大影响，因为FIDL库是你的协议的依赖性和分布单位。
 
- * Does the library correspond to an industry concept that has a generally
-   understood structure?  If so, consider structuring your library to match the
-   industry-standard structure.  For example, Bluetooth is organized into
-   `fuchsia.bluetooth.le` and `fuchsia.bluetooth.gatt` to match how these
-   concepts are generally understood in the industry.  Similarly,
-   `fuchsia.net.http` corresponds to the industry-standard HTTP network
-   protocol.
+FIDL编译器要求库之间的依赖关系图是DAG，这意味着您不能跨库边界创建循环依赖关系。但是，您可以在一个库中创建（某些）循环依赖项。
 
- * Do many other libraries depend upon the library?  If so, check whether those
-   incoming dependencies really need to depend on the whole library or whether
-   there is a "core" set of definitions that could be factored out of the
-   library to receive the bulk of the incoming dependencies.
+要决定是否将一个库分解为较小的库，请考虑以下问题：
 
-Ideally, we would produce a FIDL library structure for Fuchsia as a whole that
-is a global optimum.  However, Conway's law states that "organizations which
-design systems \[...\] are constrained to produce designs which are copies of the
-communication structures of these organizations."  We should spend a moderate
-amount of time fighting Conway's law.
+库的客户是否分解为想要使用库中功能或声明子集的单独角色？如果是这样，请考虑将库分成针对每个角色的单独的库。
 
-## Types
+该库是否符合具有普遍被理解的结构的行业概念？如果是这样，请考虑构建您的库以使其符合行业标准结构。例如，蓝牙被组织为fuchsia.bluetooth.le和fuchsia.bluetooth.gatt以匹配行业中对这些概念的一般理解。同样，[fuchsia.net.http](http://fuchsia.net.http)对应于行业标准的HTTP网络协议。
 
-As mentioned under "general advice," you should pay particular attention to the
-types you used in your protocol definition.
+其他许多库是否依赖该库？如果是这样，请检查这些传入依赖项是否真的需要依赖整个库，或者是否存在可以从库中分解出来以接收大量传入依赖项的“核心”定义集。
 
-### Be consistent
+理想情况下，我们将为fuchsia整体创建FIDL库结构，这是全球最佳的选着。但是，康威（Conway）的法则规定“设计系统受到约束的组织只能制作出这些组织的通信结构的复制品。”我们应该花一些时间与Conway定律作对抗。
 
-Use consistent types for the same concept.  For example, use a uint32 or a int32
-for a particular concept consistently throughout your library.  If you create a
-struct for a concept, be consistent about using that struct to represent the
-concept.
+**类型**
 
-Ideally, types would be used consistently across library boundaries as well.
-Check related libraries for similar concepts and be consistent with those
-libraries.  If there are many concepts shared between libraries, consider
-factoring the type definitions for those concepts into a common library.  For
-example, `fuchsia.mem` and `fuchsia.math` contain many commonly used types for
-representing memory and mathematical concepts, respectively.
+如“一般建议”中所述，您应特别注意协议定义中使用的类型。
 
-### Prefer semantic types
+**保持一致**
 
-Create structs to name commonly used concepts, even if those concepts could be
-represented using primitives.  For example, an IPv4 address is an important
-concept in the networking library and should be named using a struct even
-through the data can be represented using a primitive:
+对同一概念使用一致的类型。 例如，在整个库中始终对特定概念使用uint32或int32。 如果为概念创建结构体，请始终使用该结构体表示该概念。
 
-```
+理想情况下，类型也应跨库边界一致使用。 检查相关的库以了解类似的概念，并与这些库保持一致。 如果库之间共享许多概念，请考虑将这些概念的类型定义分解为一个公共库。 例如，fuchsia.mem和fuchsia.math分别包含许多相同的表示内存和数学概念的类型。
+
+**首选语义类型**
+
+创建结构以命名常用概念，即使可以使用原函数表示这些概念。 例如，IPv4地址是网络库中的一个重要概念，即使可以使用原语表示数据，也应使用结构来命名它：
+
 struct Ipv4Address {
-    array<uint8>:4 octets;
+
+  array<uint8>:4 octets;
+
 };
-```
 
-In performance-critical target languages, structs are represented in line, which
-reduces the cost of using structs to name important concepts.
+在对性能至关重要的目标语言中，结构以行表示，这降低了使用结构命名重要概念的成本。
 
-### Consider using fuchsia.mem.Buffer
+**考虑使用fuchsia.mem.Buffer**
 
-A Virtual Memory Object (VMO) is a kernel object that represents a contiguous
-region of virtual memory.  VMOs track memory on a per-page basis, which means a
-VMO by itself does not track its size at byte-granularity.  When sending memory
-in a FIDL message, you will often need to send both a VMO and a size.  Rather
-than sending these primitives separately, consider using `fuchsia.mem.Buffer`,
-which combines these primitives and names this common concept.
+虚拟内存对象（VMO）是一个内核对象，代表虚拟内存的连续区域。 VMO以每页为单位跟踪内存，这意味着VMO本身不会以字节粒度跟踪其大小。当以FIDL消息发送内存时，通常将需要同时发送VMO和大小。而不是单独发送这些原语，不如考虑使用fuchsia.mem.Buffer，它结合了这些原语并命名了此通用概念。
 
-### Specify bounds for vector and string
+指定向量和字符串的界限
 
-Most `vector` and `string` declarations should specify a length bound.  Whenever
-you omit a length bound, consider whether the receiver of the message would
-really want to process arbitrarily long sequences or whether extremely long
-sequences represent abuse.
+大多数向量和字符串声明应指定长度限制。每当您忽略长度限制时，请考虑消息的接收者是否真的想处理任意长序列，或者极端长序列是否表示滥用。
 
-Bear in mind that declarations that lack an upper bound are implicitly bounded
-by the maximum message length when sent over a `zx::channel`.  If there really
-are use cases for arbitrarily long sequences, simply omitting a bound might not
-address those use cases because clients that attempt to provide extremely long
-sequences might hit the maximum message length.
+请记住，在通过zx :: channel发送时，缺少上限的声明会隐含地受最大消息长度的限制。如果确实存在任意长序列的用例，则仅忽略一个边界可能无法解决这些用例，因为尝试提供极长序列的客户端可能会达到最大消息长度。
 
-To address use cases with arbitrarily large sequences, consider breaking the
-sequence up into multiple messages using one of the pagination patterns
-discussed below or consider moving the data out of the message itself, for
-example into a `fuchsia.mem.Buffer`.
+要处理具有任意大序列的用例，请考虑使用以下讨论的分页模式之一将序列分解为多条消息，或考虑将数据从消息本身移出，例如移至fuchsia.mem.Buffer中。
 
-### Errors
+**错误**
 
-Select the appropriate error type for your use case and be consistent about how
-you report errors.
+为您的用例选择适当的错误类型，并在报告错误方面保持一致。
 
-Use the `status` type for errors related to kernel objects or IO.  For example,
-`fuchsia.process` uses `status` because the library is largely concerned with
-manipulating kernel objects.  As another example, `fuchsia.io` uses `status`
-extensively because the library is concerned with IO.
+将状态类型用于与内核对象或IO相关的错误。 例如，fuchsia.process使用状态，因为该库在很大程度上与操纵内核对象有关。 另举一个例子，因为库与IO有关，fuchsia.io广泛使用状态。
 
-Use a domain-specific enum error type for other domains.  For example, use an
-enum when you expect clients to receive the error and then stop rather than
-propagate the error to another system.
+对其他域使用特定于域的枚举错误类型。 例如，当您希望客户端收到错误然后停止而不是将错误传播到另一个系统时，请使用一个枚举。
 
-If a method can return either an error or a result, use the following pattern:
+如果方法可以返回错误或结果，请使用以下模式：
 
-```
 enum MyStatus { OK; FOO; BAR; ... };
 
 interface Frobinator {
-    1: Frobinate(...) -> (MyStatus status, FrobinateResult? result);
+
+  1: Frobinate(...) -> (MyStatus status, FrobinateResult? result);
+
 };
-```
 
-In some unusual situations, interfaces may include a string description of the
-error in addition to a `status` or enum value if the range of possible error
-conditions is large and descriptive error messages are likely to be useful to
-clients.  However, including a string invites difficulties.  For example,
-clients might try to parse the string to understand what happened, which means
-the exact format of the string becomes part of the interface, which is
-especially problematic when the strings are localized.  *Security note:*
-Similarly, reporting stack traces or exception messages to the client can
-unintentionally leak privileged information.
+在某些不常见的情况下，如果可能的错误条件的范围很大并且描述性错误消息可能对客户端有用，则接口除了状态或枚举值之外还可能包含错误的字符串描述。 但是，包含字符串会带来困难。 例如，客户端可能尝试解析字符串以了解发生了什么，这意味着字符串的确切格式成为接口的一部分，当字符串本地化时，这尤其成问题。 安全说明：同样，向客户端报告堆栈跟踪或异常消息可能会无意间泄漏特权信息。
 
-### Should I define a struct to encapsulate method parameters (or responses)?
+**我应该定义一个结构来封装方法参数（或响应）吗？**
 
-Whenever you define a method, you need to decide whether  to pass parameters
-individually or to encapsulate the parameters in a struct.  Making the best
-choice involves balancing several factors.  Consider the questions below to help
-guide your decision making:
+无论何时定义方法，都需要决定是单独传递参数还是将参数封装在结构体中。做出最佳选择涉及平衡多个因素。考虑以下问题，以帮助您做出决策：
 
- * Is there a meaningful encapsulation boundary?  If a group of parameters makes
-   sense to pass around as a unit because they have some cohesion beyond this
-   method, you might want to encapsulate those parameters in a struct.
-   (Hopefully, you have already identified these cohesive groups when you
-   started designing your protocol because you followed the "general advice"
-   above and focused on the types early on.)
+有有意义的封装边界吗？如果一组参数可以作为一个单元传递，因为它们具有超出此方法的内聚性，你可能希望将这些参数封装在结构体中。 （希望你在开始设计协议时就已经确定了这些紧密联系的组，因为你遵循了上面的“一般建议”，并尽早关注了类型。）
 
- * Would the struct be useful for anything beyond the method being called?  If
-   not, consider passing the parameters separately.
+该结构体对除调用方法之外的任何其他东西是否有用吗？如果没有，请考虑分别传递参数。
 
- * Are you repeating the same groups of parameters in many methods?  If so,
-   consider grouping those parameters into one or more structures.  You might
-   also consider whether the repetition indicates that these parameters are
-   cohesive because they represent some important concept in your protocol.
+你是否在许多方法中重复相同的参数组？如果是这样，请考虑将这些参数分组为一个或多个结构。你可能还会考虑重复参数是否表明这些参数是内聚的，因为它们代表了协议中的一些重要概念。
 
- * Are there a large number of parameters that are optional or otherwise are
-   commonly given a default value?  If so, consider using use a struct to reduce
-   boilerplate for callers.
+是否有大量可选参数，否则通常会给其默认值？如果是这样，请考虑使用结构体减少调用者的样板。
 
- * Are there groups of parameters that are always null or non-null at the same
-   time?  If so, consider grouping those parameters into a nullable struct to
-   enforce that invariant in the protocol itself.  For example, the
-   `FrobinateResult` struct defined above contains values that are always null
-   at the same time when `error` is not `MyError.OK`.
+是否存在同时总是为null或非null的参数组？如果是这样，请考虑将这些参数分组为可为空的结构，以在协议本身中强制执行该不变式。例如，上面定义的FrobinateResult结构包含的值在error不是MyError.OK的同时始终为null。
 
-### Should I use string or vector?
+**我应该使用****string还是\**vector?\****
 
-In FIDL, `string` data must be valid UTF-8, which means strings can represent
-sequences of Unicode code points but cannot represent arbitrary binary data.  In
-contrast, `vector` or `array` can represent arbitrary binary data and do not
-implicate Unicode.
+在FIDL中，string 据必须是有效的UTF-8，这意味着字符串可以表示Unicode代码点的序列，但不能表示任意二进制数据。 相反，vector或array可以表示任意二进制数据，并不表示Unicode。
 
-Use `string` for text data:
+使用string作为文本数据：
 
- * Use `string` to represent package names because package names are required to
-   be valid UTF-8 strings (with certain excluded characters).
+使用string来表示软件包名称，因为软件包名称必须是有效的UTF-8字符串（带有某些排除的字符）。
 
- * Use `string` to represent file names within packages because file names
-   within packages are required to be valid UTF-8 strings (with certain excluded
-   characters).
+使用string表示包中的文件名，因为包中的文件名必须是有效的UTF-8字符串（带有某些排除的字符）。
 
- * Use `string` to represent media codec names because media codec names are
-   selected from a fixed vocabulary of valid UTF-8 strings.
+使用string来表示媒体编解码器名称，因为媒体编解码器名称是从有效的UTF-8字符串的固定词汇表中选择的。
 
- * Use `string` to represent HTTP methods because HTTP methods are comprised of
-   a fixed selection of characters that are always valid UTF-8.
+使用string表示HTTP方法，因为HTTP方法由固定选择的字符组成，这些字符始终是有效的UTF-8。
 
-Use `vector` or `array` for non-text data:
+对非文本数据使用vector或array：
 
- * Use `vector<uint8>` for HTTP header fields because HTTP header fields do not
-   specify an encoding and therefore cannot necessarily be represented in UTF-8.
+将vector <uint8>用于HTTP标头字段，因为HTTP标头字段未指定编码，因此不一定以UTF-8表示。
 
- * Use `array<uint8>:6` for MAC addresses because MAC address are binary data.
+对于MAC地址，请使用array <uint8>：6，因为MAC地址是二进制数据。
 
- * Use `array<uint8>:16` for UUIDs because UUIDs are (almost!) arbitrary binary
-   data.
+对UUID使用array <uint8>：16，因为UUID是（几乎！）任意二进制数据。
 
-### Should I use vector or array?
+**我应该使用\**vector\******还是array****?**
 
-A `vector` is a variable-length sequence that is represented out-of-line in the
-wire format.  An `array` is a fixed-length sequence that is represented in-line
-in the wire format.
+vector是可变长度序列，以离散数据格式写入。 array是固定长度的序列，写入是以线性表示。
 
-Use `vector` for variable-length data:
+将vector用于可变长度数据：
 
- * Use `vector` for tags in log messages because log messages can have between
-   zero and five tags.
+对日志消息中的标签使用vector，因为日志消息可以具有零到五个标签。
 
-Use `array` for fixed-length data:
+将array用于定长数据：
 
- * Use `array` for MAC addresses because a MAC address is always six bytes long.
+对MAC地址使用array，因为MAC地址始终为6个字节长。
 
-### When should I use an enum?
+**什么时候应该使用枚举？**
 
-(Note: This section depends on a proposed FIDL 2.1 feature that makes enums
-extensible.)
+（注意：本节取决于FINUM 2.1的推荐功能，该功能使枚举具有可扩展。）
 
-Use an enum if the set of enumerated values is bounded and controlled by the
-Fuchsia project.  For example, the Fuchsia project defines the pointer event
-input model and therefore controls the values enumerated by `PointerEventPhase`.
+如果枚举值集受Fuchsia项目限制和控制，请使用枚举。例如，Fuchsia项目定义了指针事件输入模型，通过PointerEventPhase枚举的值控制。
 
-In some scenarios, you should use an enum even if the Fuchsia project itself
-does not control the set of enumerated values if we can reasonably expect that
-people who will want to register new values will submit a patch to the Fuchsia
-source tree to register their values.  For example, texture formats need to be
-understood by the Fuchsia graphics drivers, which means new texture formats can
-be added by developers working on those drivers even if the set of texture
-formats is controlled by the graphics hardware vendors.  As a counter example,
-do not use an enum to represent HTTP methods because we cannot reasonably expect
-people who use novel HTTP methods to submit a patch to the Fuchsia source tree.
+在某些场景下，即使我们可以合理地期望希望注册新值的人将向Fuchsia源树提交补丁来注册其值，即使Fuchsia项目本身不控制枚举值集，也应使用一个枚举 。例如，Fuchsia图形驱动程序需要理解纹理格式，这意味着即使那些结构格式集由图形硬件供应商控制，开发人员也可以在这些驱动程序上添加新的结构格式。作为反例，不要使用枚举来表示HTTP方法，因为我们不能合理地期望使用新颖HTTP方法的人向Fuchsia源树提交补丁。
 
-For _a priori_ unbounded sets, a `string` might be a more appropriate choice if
-you foresee wanting to extend the set dynamically.  For example, use a `string`
-to represent media codec names because intermediaries might be able to do
-something reasonable with a novel media code name.
+对于先验无界集合，如果您预想要动态扩展集合，则string可能是更合适的选择。例如，使用string来表示媒体编解码器名称，因为中介程序可能能够使用新颖的媒体代码名称来做一些合理的事情。
 
-If the set of enumerated values is controlled by an external entity, use an
-integer (of an appropriate size) or a `string`.  For example, use an integer (or
-some size) to represent USB HID identifiers because the set of USB HID
-identifiers is controlled by an industry consortium.  Similarly, use a `string`
-to represent a MIME type because MIME types are controlled (at least in theory)
-by an IANA registry.
+如果一组枚举值由外部实体控制，请使用整数（适当大小）或string。例如，使用整数（或某种大小）来表示USB HID标识符，因为USB HID标识符集由行业协会控制。同样，使用string表示MIME类型，因为MIME类型（至少在理论上）由IANA注册中心控制。
 
-## Good Design Patterns
+**好的设计模式**
 
-This section describes several good design patterns that recur in many FIDL
-protocols.
+本节描述了许多FIDL协议中重复出现的几种良好的设计模式。
 
-### Interface request pipelining
+Interface request pipelining(流水线)设计模式
 
-One of the best and most widely used design patterns is _interface request
-pipelining_.  Rather than returning a channel that implements an interface, the
-client sends the channel and requests the server to bind an implementation of
-the interface to that channel:
+最佳和最广泛使用的设计模式之一是接口pipelining(流水线)设计模式。 客户端不返回实现接口的通道，而是发送通道并请求服务器将接口的实现绑定到该通道：
 
-```
 GOOD:
+
 interface Foo {
-    1: GetBar(string name, request<Bar> bar);
+
+  1: GetBar(string name, request<Bar> bar);
+
 };
 
 BAD:
+
 interface Foo {
-    1: GetBar(string name) -> (Bar bar);
+
+  1: GetBar(string name) -> (Bar bar);
+
 };
-```
 
-This pattern is useful because the client does not need to wait for a round-trip
-before starting to use the `Bar` interface.  Instead, the client can queue
-messages for `Bar` immediately.  Those messages will be buffered by the kernel
-and processed eventually once an implementation of `Bar` binds to the interface
-request.  By contrast, if the server returns an instance of the `Bar` interface,
-the client needs to wait for the whole round-trip before queuing messages for
-`Bar`.
+此模式很高效，因为客户端在开始使用Bar接口之前不需要等待返回信息。 而是，客户端可以立即处理Bar的队列消息。 一旦Bar的实现绑定到接口请求技术，这些消息将由内核缓冲并最终进行处理。 相反，如果服务器返回Bar接口的实例，则客户端需要等待整个返回过程，然后再为Bar处理队列消息。
 
-If the request is likely to fail, consider extending this pattern with a reply
-that describes whether the operation succeeded:
+如果请求可能失败，请考虑通过描述操作是否成功的回复扩展此模式：
 
-```
 interface CodecProvider {
-    1: TryToCreateCodec(CodecParams params, request<Codec> codec) -> (bool succeed);
+
+  1: TryToCreateCodec(CodecParams params, request<Codec> codec) -> (bool succeed);
+
 };
-```
 
-To handle the failure case, the client waits for the reply and takes some other
-action if the request failed.  Another approach is for the interface to have an
-event that the server sends at the start of the protocol:
+为了处理失败情况，客户端等待答复，如果请求失败，则采取其他措施。 另一种方法是使接口具有服务器在协议开始时发送的事件：
 
-```
 interface Codec2 {
-    1: -> OnReady();
+
+  1: -> OnReady();
+
 };
 
 interface CodecProvider2 {
-    1: TryToCreateCodec(CodecParams params, request<Codec2> codec);
+
+  1: TryToCreateCodec(CodecParams params, request<Codec2> codec);
+
 };
-```
 
-To handle the failure case, the client waits for the `OnReady` event and takes
-some other action if the `Codec2` channel is closed before the event arrives.
+为了处理失败的情况，客户端等待OnReady事件，并在事件到达之前关闭Codec2通道时采取其他措施
 
-However, if the request is likely to succeed, having either kind of success
-signal can be harmful because the signal allows the client to distinguish
-between different failure modes that often should be handled in the same way.
-For example, the client should treat a service that fails immediately after
-establishing a connection in the same way as a service that cannot be reached in
-the first place.  In both situations, the service is unavailable and the client
-should either generate an error or find another way to accomplishing its task.
+但是，如果请求很可能会成功，则使用任何一种成功信号都可能是不好的，因为该信号使客户端可以区分通常应以相同方式处理的不同失败模式。 例如，客户端应以与最初无法访问的服务相同的方式来处理建立连接后立即失败的服务。 在这两种情况下，该服务都不可用，客户端应生成错误或寻找另一种方法来完成其任务。
 
-### Flow Control
+**流量控制**
 
-FIDL messages are buffered by the kernel.  If one endpoint produces more
-messages than the other endpoint consumes, the messages will accumulate in the
-kernel, taking up memory and making it more difficult for the system to recover.
-Instead, well-designed protocols should throttle the production of messages to
-match the rate at which those messages are consumed, a property known as _flow
-control_.
+FIDL消息由内核缓冲。 如果一个端点产生的消息多于另一端点消耗的消息，则这些消息将在内核中累积，从而占用内存，并使系统更难以恢复。 取而代之的是，经过精心设计的协议应限制消息的生成，以匹配消耗这些消息的速率，这种属性称为流控制。
 
-The kernel provides some amount of flow control in the form of back pressure on
-channels.  However, most protocols should have protocol-level flow control and
-use channel back pressure as a backstop to protect the rest of the system when
-the protocol fails to work as designed.
+内核以通道背压的形式提供了一些流量控制。 但是，大多数协议都应具有协议级别的流量控制，并在协议无法按设计工作时使用通道背压作为逆止器，以保护系统的其余部分。
 
-Flow control is a broad, complex topic, and there are a number of effective
-design patterns.  This section discusses some of the more popular flow control
-patterns but is not exhaustive.  Protocols are free to use whatever flow control
-mechanisms best suit their use cases, even if that mechanism is not listed
-below.
+流量控制是一个广泛而复杂的主题，并且有许多有效的设计模式。 本节讨论一些较流行的流量控制模式，但并不详尽。 协议可以自由使用最适合其用例的任何流量控制机制，即使该机制未在下面列出。
 
-#### Prefer pull to push
+**Prefer pull to push**
 
-Without careful design, protocols in which the server pushes data to the client
-often have poor flow control.  One approach to providing better flow control is
-to have the client pull one or a range from the server.  Pull models have
-built-in flow control the client naturally limits the rate at which the server
-produces data and avoids getting overwhelmed by messages pushed from the server.
+如果不进行仔细的设计，服务器将数据推送到客户端的协议通常会具有较差的流控制。提供更好的流控制的一种方法是让客户端从服务器拉取一个或一个范围的数据。**pull**拉取模型具有内置的流控制功能，客户端自然会限制服务器生成数据的速率，并避免被服务器推送的消息淹没。
 
-A simple way to implement a pull-based protocol is to "park a callback" with the
-server using the _hanging get pattern_.  In this pattern, the client sends a
-`GetFoo` message, but the server does not reply immediately.  Instead, the
-server replies when a "foo" is available.  The client consumes the foo and
-immediately sends another hanging get.  The client and server each do one unit
-of work per data item, which means neither gets ahead of the other.
+实现基于请求的协议的一种简单方法是使用悬挂获取模式在服务器上“驻留回调”。在这种模式下，客户端发送GetFoo消息，但是服务器不会立即回复。而是，服务器在“ foo”可用时进行答复。客户端使用foo并立即发送另一个挂起的get。客户端和服务器每个数据项都执行一个工作单元，这意味着它们都不能领先于另一个。
 
-The hanging get pattern works well when the set of data items being transferred
-is bounded in size and the server-side state is simple, but does not work well
-in situations where the client and server need to synchronize their work.
+当要传输的数据项集有大小限制并且服务器端状态很简单时，悬挂获取模式会很好地工作，但是在客户端和服务器需要同步其工作的情况下，该方法在这样的场景下不能高效工作。
 
-#### Throttle push using acknowledgements
+**Throttle push using acknowledgments(确认形式的push模式)**
 
-One approach to providing flow control in protocols that use the push, is the
-_acknowledgment pattern_, in which the caller provides an acknowledgement
-response that the caller uses for flow control.  For example, consider this
-generic listener interface:
+在使用push推送的协议中提供流控制的一种方法是确认模式，在该模式中，调用者提供了调用者用于流控制的确认响应。 例如，考虑以下通用侦听器接口：
 
-```
 interface Listener {
-    1: OnBar(...) -> ();
+
+  1: OnBar(...) -> ();
+
 };
-```
 
-The listener is expected to send an empty response message immediately upon
-receiving the `OnBar` message.  The response does not convey any data to the
-caller.  Instead, the response lets the caller observe the rate at which the
-callee is consuming messages.  The caller should throttle the rate at which it
-produces messages to match the rate at which the callee consumes them.  For
-example, the caller might arrange for only one (or a fixed number) of messages
-to be in flight (i.e., waiting for acknowledgement).
+侦听器期望在收到OnBar消息后立即发送空响应消息。 该响应不会将任何数据传递给调用方。 而是，响应使调用者可以观察被调用者使用消息的速率。 调用者应限制其产生消息的速率，以匹配被调用者消耗消息的速率。 例如，调用者可能只安排一条消息（或固定数量的消息）进行传输（即等待确认)。
 
-#### Events
+**事件**
 
-In FIDL, servers can send clients unsolicited messages called _events_.
-Protocols that use events need to provide particular attention to flow control
-because the event mechanism itself does not provide any flow control.
+在FIDL中，服务器可以向客户端发送未经请求的消息，称为事件。 使用事件的协议需要特别注意流量控制，因为事件机制本身不提供任何流量控制。
 
-A good use case for events is when at most one instance of the event will be
-sent for the lifetime of the channel.  In this pattern, the protocol does not
-need any flow control for the event:
+事件的一个比较好的用例是在整个通道的生命周期内最多发送一个事件实例。 在这种模式下，协议不需要对该事件进行任何流控制：
 
-```
 interface DeathWish {
-    1: -> OnFatalError(status error_code);
+
+  1: -> OnFatalError(status error_code);
+
 };
-```
 
-Another good use case for events is when the client requests that the server
-produce events and when the overall number of events produced by the server is
-bounded.  This pattern is a more sophisticated version of the hanging get
-pattern in which the server can respond to the "get" request a bounded number of
-times (rather than just once):
+事件的另一个好用例是客户端请求服务器产生事件，并且服务器产生的事件总数受到限制。 此模式是悬挂获取模式的复杂版本，在该模式中，服务器可以响应“get”请求的次数是有限的（而不是一次）：
 
-```
 interface NetworkScanner {
-    1: ScanForNetworks();
-    2: -> OnNetworkDiscovered(string network);
-    3: -> OnScanFinished();
+
+  1: ScanForNetworks();
+
+  2: -> OnNetworkDiscovered(string network);
+
+  3: -> OnScanFinished();
+
 };
-```
 
-If there is no a priori bound on the number of events, consider having the
-client acknowledge the events by sending a message.  This pattern is a more
-awkward version of the acknowledgement pattern in which the roles of client and
-server are switched.  As in the acknowledgement pattern, the server should
-throttle event production to match the rate at which the client consumes the
-events:
+如果事件数量没有先验约束，考虑让客户端通过发送消息来确认事件。 此模式是确认模式的更别扭的版本，在该模式中，客户端和服务器的角色已切换。 就像在确认模式中一样，服务器应限制事件的产生以匹配客户端使用事件的速率：
 
-```
 interface View {
-    1: -> OnInputEvent(InputEvent event);
-    2: NotifyInputEventHandled();
+
+  1: -> OnInputEvent(InputEvent event);
+
+  2: NotifyInputEventHandled();
+
 };
-```
 
-One advantage to this pattern over the normal acknowledgement pattern is that
-the client can more easily acknowledge multiple events with a single message
-because the acknowledgement is disassociated from the event being acknowledged.
-This pattern allows for more efficient batch processing by reducing the volume
-of acknowledgement messages and works well for in-order processing of multiple
-event types:
+与正常确认模式相比，此模式的一个优势是客户端可以通过一条消息更轻松地确认多个事件，因为确认与正在确认的事件无关。 此模式通过减少确认消息的数量来实现更有效的批处理，并且对于多事件类型的有序处理非常有效：
 
-```
 interface View {
-    1: -> OnInputEvent(InputEvent event, uint64 seq);
-    2: -> OnFocusChangedEvent(FocusChangedEvent event, uint64 seq);
-    3: NotifyEventsHandled(uint64 last_seq);
+
+  1: -> OnInputEvent(InputEvent event, uint64 seq);
+
+  2: -> OnFocusChangedEvent(FocusChangedEvent event, uint64 seq);
+
+  3: NotifyEventsHandled(uint64 last_seq);
+
 };
-```
 
-### Feed-forward dataflow
+### 
 
-Some protocols have _feed-forward dataflow_, which avoids round-trip latency by
-having data flow primarily in one direction, typically from client to server.
-The protocol only synchronizes the two endpoints when necessary.  Feed-forward
-dataflow also increases throughput because fewer total context switches are
-required to perform a given task.
+### **Feed-forward dataflow(前向反馈数据流)**
 
-The key to feed-forward dataflow is to remove the need for clients to wait for
-results from prior method calls before sending subsequent messages.  For
-example, interface request pipelining removes the need for the client to wait
-for the server to reply with an interface before the client can use the
-interface.  Similarly, client-assigned identifiers (see below) removes the need
-for the client to wait for the server to assign identifiers for state held by
-the server.
+一些协议具有前向反馈数据流，它通过使数据流主要在一个方向上（通常从客户端到服务器）来避免往返延迟。 该协议仅在必要时同步两个端点。 前向反馈数据流还提高了吞吐量，因为执行给定任务所需的总上下文切换较少。
 
-Typically, a feed-forward protocol will involve the client submitting a sequence
-of one-way method calls without waiting for a response from the server.  After
-submitting these messages, the client explicitly synchronizes with the server by
-calling a method such as `Commit` or `Flush` that has a reply.  The reply might
-be an empty message or might contain information about whether the submitted
-sequence succeeded.  In more sophisticated protocols, the one-way messages are
-represented as a union of command objects rather than individual method calls,
-see the _command union pattern_ below.
+前向反馈数据流的关键是无需客户端在发送后续消息之前先等待先前方法调用的结果。 例如，接口请求流水线消除了客户机在客户机可以使用接口之前等待客户机用接口答复的需求。 同样，客户端分配的标识符（参见下文）使客户端无需等待服务器为服务器保留的状态分配标识符。
 
-Protocols that use feed-forward dataflow work well with optimistic error
-handling strategies.  Rather than having the server reply to every method with a
-status value, which encourages the client to wait for a round trip between each
-message, instead include a status reply only if the method can fail for reasons
-that are not under the control of the client.  If the client sends a message
-that the client should have known was invalid (e.g., referencing an invalid
-client-assigned identifier), signal the error by closing the connection.  If the
-client sends a message the client could not have known was invalid, either
-provide a response that signals success or failure (which requires the client to
-synchronize) or remember the error and ignore subsequent dependent requests
-until the client synchronizes and recovers from the error in some way.
+通常，前向反馈协议将涉及客户端提交一系列单向方法调用，而无需等待服务器的响应。 提交这些消息后，客户端通过调用诸如Commit或Flush之类的具有响应的方法来显式与服务器同步。 响应的消息可能为空，也可能包含有关所提交序列是否成功的信息。 在更复杂的协议中，单向消息表示为命令对象的并集，而不是单个方法调用，参见下面的命令并集模式。
+
+使用前向反馈数据流的协议可以与积极的错误处理策略配合使用。 与其让服务器用状态值答复每个方法，不如鼓励客户端等待每条消息之间的往返，代替倘若由于一个没有在客户端可控制范围下而失败的原因；才包含一个状态回应。 如果客户端发送一条消息，表明客户端应该知道该消息无效（e.g，引用了无效的客户端分配标识符），通过关闭连接来发出错误信号。 如果客户端发送一条消息，该客户端可能不知道该消息无效，请提供一个响应，指示成功或失败（这需要客户端进行同步），或者记住错误并忽略后续的相关请求，直到客户端进行同步并从错误中以某种方式恢复 。
 
 Example:
 
-```
 interface Canvas {
-    1: Flush() -> (status code);
-    2: Clear();
-    3: UploadImage(uint32 image_id, Image image);
-    4: PaintImage(uint32 image_id, float x, float y);
-    5: DiscardImage(uint32 image_id);
-    6: PaintSmileyFace(float x, float y);
-    7: PaintMoustache(float x, float y);
+
+  1: Flush() -> (status code);
+
+  2: Clear();
+
+  3: UploadImage(uint32 image_id, Image image);
+
+  4: PaintImage(uint32 image_id, float x, float y);
+
+  5: DiscardImage(uint32 image_id);
+
+  6: PaintSmileyFace(float x, float y);
+
+  7: PaintMoustache(float x, float y);
+
 };
-```
 
-### Client-assigned identifiers
+### **客户端分配的标识符**
 
-Often an interface will let a client manipulate multiple pieces of state held by
-the server.  When designing an object system, the typical approach to this
-problem is to create separate objects for each coherent piece of state held by
-the server.  However, when designing a protocol, using separate objects for each
-piece of state has several disadvantages:
+通常，接口将使客户端具有可以操纵服务器所拥有的多个状态。 在设计对象系统时，解决此问题的典型方法是为服务器保存的每个相关状态创建单独的对象。 但是，在设计协议时，为每个状态使用单独的对象有几个缺点：
 
-Creating separate interface instances for each logical object consumes kernel
-resources because each interface instance requires a separate channel object.
-Each interface instance maintains a separate FIFO queue of messages.  Using
-separate interface instances for each logical object means that messages sent
-to different objects can be reordered with respect to each other, leading to
-out-of-order interactions between the client and the server.
+为每个逻辑对象创建单独的接口实例会消耗内核资源，因为每个接口实例都需要一个单独的channel对象。 每个接口实例都维护一个单独的消息FIFO队列。 对每个逻辑对象使用单独的接口实例意味着发送到不同对象的消息可以相对于彼此重新排序，从而使客户端和服务器之间的无序交互。
 
-The _client-assigned identifier pattern_ avoids these problems by having the
-client assign uint32 or uint64 identifiers to objects retained by the server.
-All the messages exchanged between the client and the server are funnelled
-through a single interface instance, which provides a consistent FIFO ordering
-for the whole interaction.
+客户端分配的标识符模式通过让客户端将uint32或uint64标识符分配给服务器保留的对象来避免这些问题。 在客户端和服务器之间交换的所有消息都通过单个接口实例进行传递，该接口实例为整个交互提供了一致的FIFO顺序。
 
-Having the client (rather than the server) assign the identifiers allows for
-feed-forward dataflow because the client can assign an identifier to an object
-and then operate on that object immediately without waiting for the server to
-reply with the object's identifier.  In this pattern, the identifiers are valid
-only within the scope of the current connection, and typically the zero
-identifier is reserved as a sentinel.  *Security note:* Clients should not use
-addresses in their address space as their identifiers because these addresses
-can leak the layout of their address space.
+让客户端（而不是服务器）分配标识符可以实现前反馈数据流，因为客户端可以将标识符分配给对象，然后立即对该对象进行操作，而无需等待服务器用对象的标识符进行回复。 在这种模式下，标识符仅在当前连接的范围内有效，并且通常将零标识符保留为哨兵。 安全说明：客户端不应将其地址空间中的地址用作其标识符，因为这些地址可能会泄漏其地址空间的布局。
 
-The client-assigned identifier pattern has some disadvantages.  For example,
-clients are more difficult to author because clients need to manage their own
-identifiers.  Developers commonly want to create a client library that provides
-an object-oriented facades for the service to hide the complexity of managing
-identifiers, which itself is an antipattern (see _client libraries_ below).
+客户端分配的标识符模式有一些缺点。 例如，对于开发人员客户端更难编写，因为客户端需要管理自己的标识符。 开发人员通常希望创建一个客户端库，为服务端提供面向对象的前端，以隐藏管理标识符的复杂性，而标识符本身就是一种反模式（请参见下面的客户端库）。
 
-A strong signal that you should create a separate interface instance to
-represent an object rather than using a client-assigned identifier is when you
-want to use the kernel's object capability system to protect access to that
-object.  For example, if you want a client to be able to interact with an object
-but you do not want the client to be able to interact with other objects,
-creating a separate interface instance means you can use the underlying channel
-as a capability that controls access to that object.
+当您想使用内核的对象功能系统来保护对该对象的访问时，强烈建议您应该创建一个单独的接口实例来表示一个对象而不是使用客户端分配的标识符。 例如，如果您希望客户端能够与对象进行交互，但又不希望客户端与其他对象进行交互，则创建单独的接口实例意味着您可以将基础通道用作控制访问这个对象的能力
 
-### Command union
+**命令联合模式**
 
-In protocols that use feed-forward dataflow, the client often sends many one-way
-messages to the server before sending a two-way synchronization message.  If the
-protocol involves a particularly high volume of messages, the overhead for
-sending a message can become noticeable.  In those situations, consider using the
-_command union pattern_ to batch multiple commands into a single message.
+在使用前向反馈数据流的协议中，客户端通常在发送双向同步消息之前向服务器发送许多单向消息。 如果协议涉及大量消息，则发送消息的负载开销会变得很明显。 在这种情况下，请考虑使用命令联合模式将多个命令批处理为一条消息。
 
-In this pattern, the client sends a `vector` of commands rather than sending an
-individual message for each command.  The vector contains a union of all the
-possible commands, and the server uses the union tag as the selector for command
-dispatch in addition to using the method ordinal number:
+在这种模式下，客户端发送命令 vector，而不是为每个命令发送单独的消息。 vector包含所有可能命令的并集，并且服务器除了使用方法序号之外，还使用并集标记作为命令分配的选择器：
 
-```
 struct PokeCmd { int32 x; int32 y; };
 
 struct ProdCmd { string:64 message; };
 
 union MyCommand {
-    PokeCmd poke;
-    ProdCmd prod;
+
+  PokeCmd poke;
+
+  ProdCmd prod;
+
 };
 
 interface HighVolumeSink {
-  1: Enqueue(vector<MyCommand> commands);
-  2: Commit() -> (MyStatus result);
+
+ 1: Enqueue(vector<MyCommand> commands);
+
+ 2: Commit() -> (MyStatus result);
+
 };
-```
 
-Typically the client buffers the commands locally in its address space and sends
-them to the server in a batch.  The client should flush the batch to the server
-before hitting the channel capacity limits in either bytes and handles.
+通常，客户端在其地址空间中本地缓存命令，然后将它们批量发送到服务器。 客户端应在达到字节和句柄中的通道容量限制之前将批处理刷新到服务器。
 
-For protocols with even higher message volumes, consider using a ring buffer in
-a `zx::vmo` for the data plane and an associated `zx::fifo` for the control
-plane.  Such protocols place a higher implementation burden on the client and
-the server but are appropriate when you need maximal performance.  For example,
-the block device protocol uses this approach to optimize performance.
+对于消息量更大的协议，请考虑在数据平面的zx::vmo 中使用环形缓冲区，在控制平面使用相关的 zx::fifo 。 这样的协议给客户端和服务器带来了更高的实现负担，但是在需要最大性能时才能够合适使用。 例如，块设备协议使用这这种方法来优化性能。
 
-### Pagination
+**分页**
 
-FIDL messages are typically sent over channels, which have a maximum message
-size.  In many cases, the maximum message size is sufficient to transmit
-reasonable amounts of data, but there are use cases for transmitting large (or
-even unbounded) amounts of data.  One way to transmit a large or unbounded
-amount of information is to use a _pagination pattern_.
+FIDL消息通常通过具有最大消息大小的通道发送。 在许多情况下，最大消息大小足以传输合理数量的数据，但是在某些情况下，则用于传输大量（甚至是无边界）数据。 传输大量或无边界信息的一种方法是使用分页模式。
 
-#### Paginating Writes
+#### **分页write操作**
 
-A simple approach to paginating writes to the server is to let the client send
-data in multiple messages and then have a "finalize" method that causes the
-server to process the sent data:
+#### 对服务器写分页的一种简单方法是让客户端以多条消息发送数据，然后使用“ finalize”方法使服务器处理发送的数据：
 
-```
 interface Foo {
-    1: AddBars(vector<Bar> bars);
-    2: UseTheBars() -> (...);
+
+  1: AddBars(vector<Bar> bars);
+
+  2: UseTheBars() -> (...);
+
 };
-```
 
-For example, this pattern is used by `fuchsia.process.Launcher` to let the
-client send an arbitrary number of environment variables.
+例如，fuchsia.process.Launcher使用此模式让客户端发送任意数量的环境变量。
 
-A more sophisticated version of this pattern creates an interface that
-represents the transaction, often called a _tear-off interface_:
+此模式的更复杂的版本创建代表事务的接口，通常称为分离接口：
 
-```
 interface BarTransaction {
-    1: Add(vector<Bar> bars);
-    2: Commit() -> (...);
+
+  1: Add(vector<Bar> bars);
+
+  2: Commit() -> (...);
+
 };
 
 interface Foo {
-    1: StartBarTransaction(request<BarTransaction> transaction);
+
+  1: StartBarTransaction(request<BarTransaction> transaction);
+
 };
-```
 
-This approach is useful when the client might be performing many operations
-concurrently and breaking the writes into separate messages loses atomicity.
-Notice that `BarTransaction` does not need an `Abort` method.  The better
-approach to aborting the transaction is for the client to close the
-`BarTransaction` interface.
+当客户端可能并发执行许多操作并且将写入拆分为单独的消息而失去原子性时，此方法很有用。 注意BarTransaction 不需要Abort方法。 终止事务的更好的方法是让客户端关闭BarTransaction 接口。
 
-#### Paginating Reads
+**分页Read操作**
 
-A simple approach to paginating reads from the server is to let the server send
-multiple responses to a single request using events:
+分页来自服务器的读取的一种简单方法是让服务器使发送多个响应使用事件做单独的请求：
 
-```
 interface EventBasedGetter {
-    1: GetBars();
-    2: -> OnBars(vector<Bar> bars);
-    3: -> OnBarsDone();
+
+  1: GetBars();
+
+  2: -> OnBars(vector<Bar> bars);
+
+  3: -> OnBarsDone();
+
 };
-```
 
-Depending on the domain-specific semantics, this pattern might also require a
-second event that signals when the server is done sending data.  This approach
-works well for simple cases but has a number of scaling problems.  For example,
-the protocol lacks flow control and the client has no way to stop the server if
-the client no longer needs additional data (short of closing the whole
-interface).
+依赖特定领域语义，此模式可能还需要第二个事件，该事件会在服务器完成数据发送时发出信号。 这种方法在简单情况下效果很好，但存在许多扩展问题。 例如，该协议缺少流控制，并且如果客户端不再需要其他数据（缺少关闭整个接口），则客户端将无法停止服务器。
 
-A more robust approach uses a tear-off interface to create an iterator:
+一种更可靠的方法是使用分离接口创建迭代器：
 
-```
 interface BarIterator {
-    1: GetNext() -> (vector<Bar> bars);
+
+  1: GetNext() -> (vector<Bar> bars);
+
 };
 
 interface ChannelBasedGetter {
-    1: GetBars(request<BarIterator> iterator);
+
+  1: GetBars(request<BarIterator> iterator);
+
 };
-```
 
-After calling `GetBars`, the client uses interface request pipelining to queue
-the first `GetNext` call immediately.  Thereafter, the client repeatedly calls
-`GetNext` to read additional data from the server, bounding the number of
-outstanding `GetNext` messages to provide flow control.  Notice that the
-iterator need not require a "done" response because the server can reply with an
-empty vector and then close the iterator when done.
+调用 GetBars之后，客户端使用接口请求流水通道将第一个GetNext 调用立即排队。 此后，客户端反复调用GetNext 以从服务器读取其他数据，以限制未完成的GetNext 消息的数量以提供流控制。 注意，迭代器不需要“完成”响应，因为服务器可以使用空vector进行回复，然后在完成后关闭迭代器。
 
-Another approach to paginating reads is to use a token.  In this approach, the
-server stores the iterator state on the client in the form of an opaque token,
-and the client returns the token to the server with each partial read:
+分页读取的另一种方法是使用令牌。 在这种方法中，服务器以不透明令牌的形式将迭代器状态存储在客户端上，并且每次读取部分内容时，客户端会将令牌返回给服务器：
 
-```
 struct Token { array<uint8>:16 opaque; }
+
 interface TokenBasedGetter {
-  // If  token  is null, fetch the first N entries. If  token  is not null, return the N items starting at  token
-  // Returns as many entries as it can in  results  and populates  next_token  if more entries are available.
-  1: GetEntries(Token? token) -> (vector<Entry> entries, Token? next_token);
+
+ // If token is null, fetch the first N entries. If token is not null, return the N items starting at token
+
+ // Returns as many entries as it can in results and populates next_token if more entries are available.
+
+ 1: GetEntries(Token? token) -> (vector<Entry> entries, Token? next_token);
+
 }
-```
 
-This pattern is especially attractive when the server can escrow all of its
-pagination state to the client and therefore no longer need to maintain
-paginations state at all.  The server should document whether the client can
-persist the token and reuse it across instances of the interface.  *Security
-note:* In either case, the server must validate the token supplied by the client
-to ensure that the client's access is limited to its own paginated results and
-does not include results intended for another client.
+当服务器可以将其所有分页状态都托管给客户端，因此根本不再需要保持分页状态时，此模式非常实用的。 服务器应记录客户端是否可以保留令牌并在接口实例之间重用令牌。 安全说明：无论哪种情况，服务器都必须验证客户端提供的令牌，以确保客户端的访问仅限于其自身的分页结果，并且不包括用于其他客户端的结果。
 
-### Eventpair correlation
+**事件对关联模式**
 
-When using client-assigned identifiers, clients identify objects held by the
-server using identifiers that are meaningful only in the context of their own
-connection to the server.  However, some use cases require correlating objects
-across clients.  For example, in `fuchsia.ui.scenic`, clients largely interact
-with nodes in the scene graph using client-assigned identifiers.  However,
-importing a node from another process requires correlating the reference to that
-node across process boundaries.
+使用客户端分配的标识符时，客户端使用仅在其自身与服务器的连接的上下文中才有意义的标识符来标识服务器拥有的对象。 但是，某些用例需要跨客户端关联对象。 例如，在fuchsia.ui.scenic,中，客户端使用客户端分配的标识符在很大程度上与场景图中的节点进行交互。 但是，从另一个流程导入节点需要跨该流程边界关联对该节点的引用。
 
-The _eventpair correlation pattern_ solves this problem using a feed-forward
-dataflow by relying on the kernel to provide the necessary security.  First, the
-client that wishes to export an object creates a `zx::eventpair` and sends one
-of the entangled events to the server along with its client-assigned identifier
-of the object.  The client then sends the other entangled event to the other
-client, which forwards the event to the server with its own client-assigned
-identifier for the now-shared object:
+事件对关联模式通过依赖内核提供必要的安全性，使用前向反馈数据流解决了此问题。 首先，希望导出对象的客户端创建一个zx::eventpair ，并将纠缠的事件之一及其由客户端分配的对象标识符发送到服务器。 然后，客户端将另一个纠缠的事件发送给另一个客户端，该事件将事件与具有自己的客户端分配的标识符（现在共享对象）的事件转发给服务器：
 
-```
 interface Foo {
-    1: ExportThing(uint32 client_assigned_id, ..., handle<eventpair> export_token);
+
+  1: ExportThing(uint32 client_assigned_id, ..., handle<eventpair> export_token);
+
 };
 
 interface Bar {
-    1: ImportThing(uint32 some_other_client_assigned_id, ..., handle<eventpair> import_token);
+
+  1: ImportThing(uint32 some_other_client_assigned_id, ..., handle<eventpair> import_token);
+
 };
-```
 
-To correlate the objects, the server calls `zx_object_get_info` with
-`ZX_INFO_HANDLE_BASIC` and matches the `koid` and `related_koid` properties from
-the entangled event objects.
+为了关联对象，服务器使用zx_object_get_info调用ZX_INFO_HANDLE_BASIC并匹配纠缠事件对象的 koid和related_koid 属性。
 
-### Eventpair cancellation
+**取消事件对关联模式**
 
-When using tear-off transactions, the client can cancel long-running operations
-by closing the client end of the interface.  The server should listen for
-`ZX_CHANNEL_PEER_CLOSED` and abort the transaction to avoid wasting resources.
+使用剥离事务时，客户端可以通过关闭接口的客户端来取消长时间运行的操作。 服务器应侦听ZX_CHANNEL_PEER_CLOSED 并中止事务以避免浪费资源
 
-There is a similar use case for operations that do not have a dedicated channel.
-For example, the `fuchsia.net.http.Loader` interface has a `Fetch` method that
-initiates an HTTP request.  The server replies to the request with the HTTP
-response once the HTTP transaction is complete, which might take a significant
-amount of time.  The client has no obvious way to cancel the request short of
-closing the entire `Loader` interface, which might cancel many other outstanding
-requests.
+没有专用通道的操作也有类似的用例。 例如，[fuchsia.net.http.Loader](http://fuchsia.net.http.Loader)接口具有启动HTTP请求的Fetch方法。 HTTP事务完成后，服务器将使用HTTP响应回复请求，这可能会花费大量时间。 除非关闭整个Loader接口，否则客户端没有明显的方法来取消请求，这可能会取消许多其他未完成的请求。
 
-The _eventpair cancellation pattern_ solves this problem by having the client
-include one of the entangled events from a `zx::eventpair` as a parameter to the
-method.  The server then listens for `ZX_EVENTPAIR_PEER_CLOSED` and cancels the
-operation when that signal is asserted.  Using a `zx::eventpair` is better than
-using a `zx::event` or some other signal because the `zx::eventpair` approach
-implicitly handles the case where the client crashes or otherwise tears down
-because the `ZX_EVENTPAIR_PEER_CLOSED` is generated automatically by the kernel
-when the entangled event retained by the client is destroyed.
+事件对取消模式通过让客户端包括来自zx::eventpair 的纠缠事件之一作为方法的参数来解决此问题。 然后，服务器侦听ZX_EVENTPAIR_PEER_CLOSED并在断言该信号时取消操作。 使用zx::eventpair 比使用zx::event或其他信号更好，因为zx::eventpair方法可隐式处理客户端崩溃的情况或者直接关闭因为当纠缠在一起时内核会自动生成ZX_EVENTPAIR_PEER_CLOSED客户端保留的事件被销毁。
 
-### Empty interfaces
+**空接口**
 
-Sometimes an empty interface can provide value.  For example, a method that
-creates an object might also receive a `request<FooController>` parameter.  The
-caller provides an implementation of this empty interface:
+有时，空接口也可以提供价值。 例如，创建对象的方法可能还会收到request<FooController> 参数。 调用方提供了此空接口的实现：
 
-```
 interface FooController {};
-```
 
-The `FooController` does not contain any methods for controlling the created
-object, but the server can use the `ZX_CHANNEL_PEER_CLOSED` signal on the
-interface to trigger destruction of the object.  In the future, the interface
-could potentially be extended with methods for controlling the created object.
+FooController 不包含任何控制所创建对象的方法，但是服务端可以使用接口上的ZX_CHANNEL_PEER_CLOSED信号来触发销毁对象。 将来，该接口可能会使用用于控制创建的对象的方法进行扩展。
 
-## Antipatterns
+**反模式**
 
-This section describes several antipatterns: design patterns that often provide
-negative value.  Learning to recognize these patterns is the first step towards
-avoiding using them in the wrong ways.
+本节描述了几种反模式：通常提供消极影响的设计模式。 学习识别这些模式是避免以错误的方式使用它们的第一步。
 
-### Client libraries
+**客户端库**
 
-Ideally, clients interface with protocols defined in FIDL using
-language-specific client libraries generated by the FIDL compiler.  This
-approach lets Fuchsia provide high-quality support for a large number of target
-languages, but sometimes the protocol is too low-level to program directly and
-a a hand-written client library is appropriate to provide an interface to the
-same underlying protocol that is easier to use correctly.
+理想情况下，客户端使用FIDL编译器生成的特定于语言的客户端库与FIDL中定义的协议进行交互。 这种方法可以让Fuchsia为大量目标语言提供高质量的支持，但是有时协议过于底层而无法直接进行编程，因此手写的客户端库适合提供与更简单的同一基础协议的接口。 那样更容易正确使用。
 
-For example, `fuchsia.io` has a client library, `libfdio.so`, which provides a
-POSIX-like frontend to the protocol.  Clients that expect a POSIX-style
-`open`/`close`/`read`/`write` interface can link against `libfdio.so` and speak
-the `fuchsia.io` protocol with minimal modification.  This client library
-provides value because the library adapts between an existing library interface
-and the underlying FIDL protocol.
+例如，[fuchsia.io](http://fuchsia.io)有一个客户端库[libfdio.so](http://libfdio.so)，它为协议提供了类似POSIX的前端协议。 希望使用POSIX风格的open/close/read/write 接口的客户端可以链接到[libfdio.so](http://libfdio.so)并以最小的代价改动[fuchsia.io](http://fuchsia.io)协议。 该客户端库提供有效的价值，因为该库可在现有库接口和基础FIDL协议之间进行调整。
 
-Another kind of client library that provides positive value is a framework.  A
-framework is an extensive client library that provides a structure for a large
-portion of the application.  Typically, a framework provides a significant
-amount of abstraction over a diverse set of protocols.  For example, Flutter is
-a framework that can be viewed as an extensive client library for the
-`fuchsia.ui` protocols.
+提供积极效果的另一种客户端库是框架。 框架是一个广泛的客户端库，它为大部分应用程序提供结构。 通常，框架通过多种协议集提供大量抽象。 例如，Flutter是一个框架，可以看作fuchsia.ui 协议的扩展客户端库。
 
-FIDL protocols should be fully documented regardless of whether the protocol has
-an associated client library.  An independent group of software engineers should
-be able to understand and correctly use the protocol directly given its
-definition without need to reverse-engineer the client library.  When the
-protocol has a client library, aspects of the protocol that are low-level and
-subtle enough to motivate you to create a client library should be documented
-clearly.
+无论该协议是否具有关联的客户端库，都应完整记录FIDL协议。 一个独立的软件工程师小组应该能够直接根据给定的协议定义来理解和正确使用该协议，而无需对客户端库进行反向工程。 当协议具有客户端库时，应清楚记录协议的底层和足以激发您创建客户端库的细节方面。
 
-The main difficulty with client libraries is that they need to be maintained for
-every target language, which tends to mean client libraries are missing (or
-lower quality) for less popular languages.  Client libraries also tend to ossify
-the underlying protocols because they cause every client to interact with the
-server in exactly the same way.  The servers grow to expect this exact
-interaction pattern and fail to work correctly when clients deviate from the
-pattern used by the client library.
+客户端库的主要困难是需要针对每种目标语言进行维护，这往往意味着缺少流行语言的客户端库（（或质量较低））。 客户端库还倾向于使底层协议变得僵化，因为它们使每个客户端以完全相同的方式与服务器交互。 当客户端偏离客户端库使用的模式时，服务器会期望这种确切的交互模式，并且无法正常工作。
 
-In order to include the client library in the Fuchsia SDK, we should provide
-implementations of the library in at least two languages.
+为了在Fuchsia SDK中包含客户端库，我们应该至少以两种语言提供该库的实现。
 
-### Service hubs
+**服务中心**
 
-A _service hub_ is a `Discoverable` interface that simply lets you discover a
-number of other interfaces, typically with explicit names:
+服务中心是一个Discoverable ，它使您可以发现许多其他接口，通常使用显式名称：
 
-```
 BAD:
+
 [Discoverable]
+
 interface ServiceHub {
-    1: GetFoo(request<Foo> foo);
-    2: GetBar(request<Bar> bar);
-    3: GetBaz(request<Baz> baz);
-    4: GetQux(request<Qux> qux);
+
+  1: GetFoo(request<Foo> foo);
+
+  2: GetBar(request<Bar> bar);
+
+  3: GetBaz(request<Baz> baz);
+
+  4: GetQux(request<Qux> qux);
+
 };
-```
 
-Particularly if stateless, the `ServiceHub` interface does not provide much
-value over simply making the individual services discoverable directly:
+尤其是在无状态的情况下，ServiceHub接口不能提供比简单地使单个服务可直接发现更有价值:
 
-```
 [Discoverable]
+
 interface Foo { ... };
 
 [Discoverable]
+
 interface Bar { ... };
 
 [Discoverable]
+
 interface Baz { ... };
 
 [Discoverable]
+
 interface Qux { ... };
-```
 
-Either way, the client can establish a connection to the enumerated services.
-In the latter case, the client can discover the same services through the normal
-mechanism used throughout the system to discover services.  Using the normal
-mechanism lets the core platform apply appropriate policy to discovery.
+无论哪种方式，客户端都可以建立与枚举服务的连接。 在后一种情况下，客户端可以通过整个系统中用于发现服务的常规机制发现相同的服务。 使用常规机制，可使核心平台将适当的策略应用于发现
 
-However, service hubs can be useful in some situations.  For example, if the
-interface were stateful or was obtained through some process more elaborate than
-normal service discovery, then the interface could provide value by transferring
-state to the obtained services.  As another example, if the methods for
-obtaining the services take additional parameters, then the interface could
-provide value by taking those parameters into account when connecting to the
-services.
+但是，服务中心在某些情况下可能很有用。 例如，如果接口是有状态的，或者是通过比正常服务发现更复杂的过程获得的，则接口可以通过将状态转移到获得的服务来提供值。 作为另一个示例，如果用于获取服务的方法采用其他参数，则接口可以在连接到服务时通过考虑这些参数来提供值。
 
-### Overly object-oriented design
+**过度的面向对象设计**
 
-Some libraries create separate interface instances for every logical object in
-the protocol, but this approach has a number of disadvantages:
+一些库为协议中的每个逻辑对象创建单独的接口实例，但是这种方法有许多缺点：
 
- * Message ordering between the different interface instances is undefined.
-   Messages sent over a single interface are processed in FIFO order (in each
-   direction), but messages sent over different channels race.  When the
-   interaction between the client and the server is spread across many channels,
-   there is a larger potential for bugs when messages are unexpectedly
-   reordered.
+- 未定义不同接口实例之间的消息顺序。 通过单个接口发送的消息按FIFO顺序（在每个方向上）进行处理，但是通过不同通道发送的消息会争用。 当客户端和服务器之间的交互分布在许多通道上时，如果消息意外地重新排序，则存在更大的潜在错误。
+- 每个接口实例在内核资源，等待队列和调度方面都有代价。 尽管Fuchsia被设计为可扩展到大量通道，但是成本在整个系统上加起来，并且创建大量对象来建模系统中的每个逻辑对象给系统带来了沉重负担。
+- 错误处理和拆除的复杂性要大得多，因为错误和拆除状态的数量会随着交互中涉及的接口实例的数量呈指数增长。 当您使用单个接口实例时，客户端和服务器都可以通过关闭接口来干脆地关闭交互。 使用多个接口实例，交互可以进入交互被部分关闭的状态，或者两方对关闭状态的统一不一致的状态时。
+- 跨越接口边界的协调比在单个接口中进行协调更为复杂，因为涉及多个接口的协议需要考虑到不同客户端可能会使用不同接口的可能性，这些客户端可能不会完全相互可靠。
 
- * Each interface instance has a cost in terms of kernel resources, waiting
-   queues, and scheduling.  Although Fuchsia is designed to scale to large
-   numbers of channels, the costs add up over the whole system and creating a
-   huge proliferation of objects to model every logical object in the system
-   places a large burden on the system.
+但是，存在将功能划分为多个接口的用例：
 
-* Error handling and teardown is much more complicated because the number of
-  error and teardown states grows exponentially with the number of interface
-  instances involved in the interaction.  When you use a single interface
-  instance, both the client and the server can cleanly shut down the interaction
-  by closing the interface.  With multiple interface instances, the interaction
-  can get into states where the interaction is partially shutdown or where the
-  two parties have inconsistent views of the shutdown state.
+- 提供单独的接口可能对安全性有益，因为某些客户端可能只能访问其中一个接口，从而限制了它们与服务器的交互。
+- 单独的接口也可以更容易地从单独的线程中使用。 例如，一个接口可能绑定到一个线程，而另一个接口可能绑定到另一个线程。
+- 客户端和服务器为接口中的每种方法支付（少量）成本。 如果一次只需要几个较小的接口，那么拥有一个包含所有可能方法的巨型接口可能会比拥有多个较小的接口效率低。
+- 有时，服务器保留的状态会沿着方法边界清晰地分解。 在这些情况下，请考虑将接口分解为沿着相同边界的较小接口，以提供用于与单独状态进行交互的单独接口。
+- 
 
- * Coordination across interface boundaries is more complex than within a single
-   interface because protocols that involve multiple interfaces need to allow
-   for the possibility that different interfaces will be used by different
-   clients, who might not completely trust each other.
-
-However, there are use cases for separating functionality into multiple
-interfaces:
-
- * Providing separate interfaces can be beneficial for security because some
-   clients might have access to only one of the interfaces and thereby be
-   restricted in their interactions with the server.
-
- * Separate interfaces can also more easily be used from separate threads.  For
-   example, one interface might be bound to one thread and another interface
-   might be bound to another thread.
-
- * Clients and servers pay a (small) cost for each method in an interface.
-   Having one giant interface that contains every possible method can be less
-   efficient than having multiple smaller interfaces if only a few of the
-   smaller interfaces are needed at a time.
-
- * Sometimes the state held by the server factors cleanly along method
-   boundaries.  In those cases, consider factoring the interface into smaller
-   interfaces along those same boundaries to provide separate interfaces for
-   interacting with separate state.
-
-A good way to avoid over object-orientation is to use client-assigned
-identifiers to model logical objects in the protocol.  That pattern lets clients
-interact with a potentially large set of logical objects through a single
-interface.
+避免过度面向对象的一种好方法是使用客户端分配的标识符在协议中对逻辑对象进行建模。 这种模式使客户端可以通过单个接口与一组潜在的大量逻辑对象进行交互。
