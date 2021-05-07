@@ -1,0 +1,23 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/testing/fuzzing/overview.md
+- title: "Write a Fuzzer"
+  path: /docs/development/testing/fuzzing/write-a-fuzzer.md
+- title: "Build a Fuzzer"
+  path: /docs/development/testing/fuzzing/build-a-fuzzer.md
+- title: "Run a Fuzzer"
+  path: /docs/development/testing/fuzzing/run-a-fuzzer.md
+- title: "Handling Results Found Through Fuzzing"
+  path: /docs/development/testing/fuzzing/handle-results.md
+- title: "Improving Your Fuzzer"
+  path: /docs/development/testing/fuzzing/improve-a-fuzzer.md
+  section:
+  - title: "Additional Topics"
+    path: /docs/development/testing/fuzzing/fidl-fuzzing.md

@@ -1,0 +1,18 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as a reviewer.
+toc:
+- title: "General documentation standards"
+  path: /docs/contribute/docs/documentation-standards.md
+- title: "Documentation style guide"
+  path: /docs/contribute/docs/documentation-style-guide.md
+- title: "Document types"
+  path: /docs/contribute/docs/documentation-types.md
+- title: "Site navigation and TOC files"
+  path: /docs/contribute/docs/documentation-navigation-toc.md
+- title: "Code sample style guide"
+  path: /docs/contribute/docs/code-sample-style-guide.md

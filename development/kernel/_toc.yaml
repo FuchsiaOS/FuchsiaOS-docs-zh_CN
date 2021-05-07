@@ -1,0 +1,24 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Getting started"
+  path: /docs/development/kernel/getting_started.md
+- title: "Kernel in the build"
+  path: /docs/development/kernel/build.md
+- title: "Manage memory"
+  section:
+  - include: /docs/development/kernel/memory/_toc.yaml
+- title: "Manage threads"
+  section:
+  - include: /docs/development/kernel/threads/_toc.yaml
+- title: "Object usage analysis tools"
+  path: /docs/development/kernel/handles.md
+- title: "Cross translation unit static analysis in Zircon"
+  path: /docs/development/kernel/ctu_analysis.md
+- title: "Notes on kernel development"
+  path: /docs/development/kernel/notes_on_kernel_development.md

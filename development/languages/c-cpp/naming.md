@@ -3,79 +3,102 @@ Naming C/C++ objects
 
 ## Include paths
 
-The following guidelines apply to libraries which are meant to be used
-extensively, e.g. in an upper layer of the Fuchsia codebase or via an SDK,
-where "upper layer of the Fuchsia codebase" means "garnet" and above
-(peridot, topaz, vendor/foo).
+There are four categories of headers: system, global, library, and
+implementation.
 
-There are three categories of headers: system, fuchsia, other.
-
-#### For system headers
+#### System headers
 
 ```
-<zircon/foo/bar.h>
+#include <zircon/foo/bar.h>
 ```
 
-###### Rationale
+###### Definition
 
-These headers describe kernel interfaces (syscalls, related structs and
-defines), shared definitions and data structures between kernel and userspace
-(and bootloader), that are often useful to higher layers as well.
+These headers define the interface between the kernel and userspace, also known
+as the vDSO interface. These headers define system calls, included related types
+and structures.  These headers also define some basic C and C++ machinery, for
+example for crashing in a well-defined sequence.
 
 ###### Notes
 
-- Headers may be installed straight under `zircon/`.
-- This does not include things like wrappers on syscall interfaces like zx.
+- System headers may be installed under `zircon/`, rather than `lib/zircon/`.
+- System call wrappers, such as `zx`, are not considered system headers. They
+  are library headers (see below) that depend on the system headers..
+- Standard system headers (e.g., from the C and C++ standard librareis) have
+  their   standard paths
 
 ###### Examples
 
-- `zircon/process.h`
-- `zircon/syscalls/hypervisor.h`
+- `#include <zircon/process.h>`
+- `#include <zircon/syscalls/hypervisor.h>`
+- `#include <stdint.h>`
+- `#include <algorithm>`
 
-
-#### For global headers
+#### Global headers
 
 ```
-<fuchsia/foo/bar.h>
+#include <fuchsia/foo/bar.h>
 ```
 
-###### Rationale
+###### Definition
 
-These are libraries that define a low level ABI/API in Fuchsia but are not
-specific to the kernel.
+These headers define system-wide contracts between userspace components. These
+headers are generated from FIDL definitions of these contracts.
 
 ###### Notes
 
-- FIDL-generated code for Fuchsia APIs in that very namespace,
-  as well as C/C++ wrapper libraries around these APIs are installed here.
-- Headers may be installed straight under `fuchsia/`.
+- Hand-written code should be presented in library headers rather than global
+  headers.
 
 ###### Examples
 
-- `fuchsia/fdio/fdio.h`
-- `fuchsia/pixelformat.h`
+- `#include <fuchsia/sys/cpp/fidl.h>`
+- `#include <fuchsia/sysmem/llcpp/fidl.h>`
 
-
-#### For other headers
+#### Library headers
 
 ```
-<lib/foo/bar.h>
+#include <lib/foo/bar.h>
 ```
 
-###### Rationale
+###### Definition
 
-Some libraries in that space are not necessarily Fuchsia-specific, or they
-may be Fuchsia-specific but do not fall into either of the above categories.
-We use a rather bland namespace that will likely not cause any collisions in
-the outside world: "lib".
+Library headers are hand-written code that are used by applications. The
+interfaces they define are local to that application. Some libraries are
+Fuchsia-specific and provide an ergonomic wrapper around some lower-level
+system facilities. Some libraries might not be tied directly to Fuchsia.
 
 ###### Notes
 
+- All library headers are in the `lib/` directory to help avoid collisions with
+  other header used by applications.
 - Headers may not be placed straight under `lib/`. Subdirectories (`lib/foo/`)
   are mandatory.
 
 ###### Examples
 
-- `lib/app/cpp/startup_context.h`
-- `lib/fbl/array.h`
-- `lib/zx/event.h`
+- `#include <lib/fit/function.h>`
+- `#include <lib/sys/cpp/component_context.h>`
+- `#include <lib/zx/event.h>`
+
+#### Implementation headers
+
+```
+#include "src/foo/bar.h"
+```
+
+###### Definition
+
+Implementation headers are internal to the Fuchsia Platform Source Tree. They
+are never included in SDKs and are referenced by absolute path from the root of
+the source tree.
+
+###### Notes
+
+- Includes of implementation headers use `"` rather than `<` to indicate that
+  the path is relative to the root of the source tree.
+
+###### Examples
+
+- `#include "src/ui/scenic/bin/app.h"`
+- `#include "src/lib/fxl/observer_list.h"`

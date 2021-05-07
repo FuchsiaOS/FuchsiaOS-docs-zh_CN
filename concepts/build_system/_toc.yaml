@@ -1,0 +1,33 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/concepts/build_system/index.md
+- title: "Fuchsia build system"
+  path: /docs/concepts/build_system/fuchsia_build_system_overview.md
+- title: "Boards and products"
+  path: /docs/concepts/build_system/boards_and_products.md
+  section:
+  - title: "Bringup Product Definition"
+    path: /docs/concepts/build_system/bringup.md
+- title: "Build system policies"
+  path: /docs/concepts/build_system/policies.md
+- title: "GN"
+  section:
+  - title: "Introduction to GN"
+    path: /docs/concepts/build_system/intro.md
+  - title: "Bundles"
+    path: /docs/concepts/build_system/bundles.md
+  - title: "Variants"
+    path: /docs/concepts/build_system/variants.md
+  - title: "GN in Zircon"
+    path: /docs/concepts/build_system/zircon_gn.md
+  - title: "GN build arguments"
+    path: https://fuchsia.googlesource.com/fuchsia/+/HEAD/docs/gen/build_arguments.md
+  - title: "GN Template Best Practices"
+    path: /docs/concepts/build_system/best_practices.md

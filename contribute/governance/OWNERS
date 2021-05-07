@@ -1,0 +1,11 @@
+# Don't inherit "*" from the //docs/OWNERS file for this directory.
+set noparent
+
+include /OWNERS
+
+# Docs team:
+nickvander@google.com
+kyol@google.com
+kadolor@google.com
+mkearney@google.com
+mangini@google.com

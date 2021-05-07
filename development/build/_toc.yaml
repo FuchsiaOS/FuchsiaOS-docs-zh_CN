@@ -1,0 +1,24 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "fx workflows"
+  path: /docs/development/build/fx.md
+- title: "Build and pave quickstart"
+  path: /docs/development/build/build_and_pave_quickstart.md
+- title: "Retrieve build information"
+  path: /docs/development/build/build_information.md
+- title: "Advanced"
+  section:
+  - title: "Build Clang toolchain"
+    path: /docs/development/build/toolchain.md
+  - title: "Run Clang static analysis"
+    path: /docs/development/build/static_analysis.md
+  - title: "Ninja no-op check"
+    path: /docs/development/build/ninja_no_op.md
+  - title: "Hermetic actions check"
+    path: /docs/development/build/hermetic_actions.md

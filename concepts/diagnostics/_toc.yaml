@@ -1,0 +1,58 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+# TODO(fxbug.dev/60771)
+# - title: "Overview"
+#   path: /docs/concepts/diagnostics/README.md
+
+# TODO(fxbug.dev/60763)
+# - title: "ArchiveAccessor"
+#   path: /docs/concepts/diagnostics/accessor.md
+
+# TODO(fxbug.dev/60768)
+# - title: "Component Lifecycle"
+#   path: /docs/concepts/diagnostics/lifecycle.md
+
+- title: "Inspect"
+  section:
+  # TODO(fxbug.dev/60767)
+  # - title: "Overview"
+  #   path: /docs/concepts/diagnostics/inspect/README.md
+
+  # TODO(fxbug.dev/60764)
+  # - title: "Principles"
+  #   path: /docs/concepts/diagnostics/inspect/principles.md
+
+  - title: "Health"
+    path: /docs/concepts/diagnostics/inspect/health.md
+  - title: "Rust libraries"
+    path: /docs/concepts/diagnostics/inspect/rust.md
+- title: "Logs"
+  section:
+  - title: "Overview"
+    path: /docs/concepts/diagnostics/logs/README.md
+
+  - title: "Attributing LogSink connections"
+    path: /docs/concepts/diagnostics/logs/attribution.md
+
+  # TODO(fxbug.dev/60766)
+  # - title: "Principles"
+  #   path: /docs/concepts/diagnostics/logs/principles.md
+
+  # TODO(fxbug.dev/60767)
+  # - title: "Severity"
+  #   path: /docs/concepts/diagnostics/logs/severity.md
+
+- title: "Lifecycle events"
+  section:
+  - title: "Overview"
+    path: /docs/concepts/diagnostics/lifecycle_events/README.md
+
+# TODO(fxbug.dev/60772)
+# - title: "Triage & Detect"
+#   path: /docs/concepts/diagnostics/triage.md

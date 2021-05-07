@@ -1,9 +1,9 @@
 # Fuchsia
 
-* [Home](README.md)
-* [Glossary](glossary.md)
-* [Development](development/README.md)
-* [System](the-book/README.md)
+* [Home](https://fuchsia.dev/fuchsia-src)
+* [Concepts](https://fuchsia.dev/fuchsia-src/the-book)
+* [Development](https://fuchsia.dev/fuchsia-src/development)
+* [Reference](https://fuchsia.dev/reference/fidl)
 
-[home]: README.md
-[logo]: /images/fuchsia-logo-32x32.png
+[home]: https://fuchsia.dev/fuchsia-src
+[logo]: /docs/images/fuchsia-logo-32x32.png

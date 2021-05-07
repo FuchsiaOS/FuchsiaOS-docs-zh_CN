@@ -1,0 +1,17 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+
+toc:
+- title: "Overview"
+  path: /docs/concepts/testing/v2/README.md
+- title: "Test components"
+  path: /docs/concepts/testing/v2/v2_test_component.md
+- title: "Test Runner Framework"
+  path: /docs/concepts/testing/v2/test_runner_framework.md
+- title: "Complex topologies and testing"
+  path: /docs/concepts/testing/v2/v2_integration_testing.md

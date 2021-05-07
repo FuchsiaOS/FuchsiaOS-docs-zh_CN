@@ -1,0 +1,39 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- name: "Get started"
+  contents:
+  - include: /docs/get-started/_toc.yaml
+  - title: "Overview"
+    path: /docs
+  - title: "Glossary"
+    path: /docs/glossary.md
+- name: "Concepts"
+  contents:
+  - include: /docs/concepts/_toc.yaml
+- name: "Development"
+  contents:
+  - include: /docs/development/_toc.yaml
+- name: "Reference"
+  contents:
+  - include: /docs/reference/_toc.yaml
+- name: "Contribute"
+  contents:
+  - include: /docs/contribute/_toc.yaml
+- name: "Governance"
+  contents:
+  - include: /docs/contribute/governance/_toc.yaml
+- name: "Community"
+  contents:
+  - include: /docs/contribute/community/_toc.yaml
+
+# Orphaned files, these files don't display anywhere. Workaround for doc-checker, should be avoided
+- title: "Deprecated: FTP process"
+  path: /docs/contribute/governance/deprecated-ftp-process.md
+- title: "Deprecated: FTP template"
+  path: /docs/contribute/governance/deprecated-ftp-template.md

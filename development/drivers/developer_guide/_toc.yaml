@@ -1,0 +1,16 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Getting started"
+  path: /docs/development/drivers/developer_guide/driver-development.md
+- title: "Write a simple driver"
+  path: /docs/development/drivers/developer_guide/simple.md
+- title: "Write an ethernet driver"
+  path: /docs/development/drivers/developer_guide/ethernet.md
+- title: "Write a ramdisk driver"
+  path: /docs/development/drivers/developer_guide/ramdisk.md

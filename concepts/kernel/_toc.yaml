@@ -1,0 +1,74 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/concepts/kernel
+- title: "Zircon concepts"
+  path: /docs/concepts/kernel/concepts.md
+- title: "Zircon and LK"
+  path: /docs/concepts/kernel/zx_and_lk.md
+- title: "Kernel objects"
+  section:
+  - title: "Handles"
+    path: /docs/concepts/kernel/handles.md
+  - title: "Rights"
+    path: /docs/concepts/kernel/rights.md
+  - title: "Signals"
+    path: /docs/concepts/kernel/signals.md
+- title: "System calls"
+  section:
+  - title: "Life of a Fuchsia syscall"
+    path: /docs/concepts/kernel/life_of_a_syscall.md
+  - title: "vDSO (libzircon)"
+    path: /docs/concepts/kernel/vdso.md
+- title: "Scheduling"
+  section:
+  - title: "Zircon scheduling"
+    path: /docs/concepts/kernel/kernel_scheduling.md
+  - title: "Fair scheduler"
+    path: /docs/concepts/kernel/fair_scheduler.md
+- title: "Runtime lock"
+  section:
+  - title: "Runtime lock validation"
+    path: /docs/concepts/kernel/lockdep.md
+  - title: "Lock validation design"
+    path: /docs/concepts/kernel/lockdep-design.md
+- title: "Security"
+  section:
+  - title: "Safe stack"
+    path: /docs/concepts/kernel/safestack.md
+  - title: "Shadow call stack"
+    path: /docs/concepts/kernel/shadow_call_stack.md
+  - title: "Random number generator"
+    path: /docs/concepts/kernel/cprng.md
+- title: "Errors and exceptions"
+  section:
+  - title: "Errors"
+    path: /docs/concepts/kernel/errors.md
+  - title: "Exceptions"
+    path: /docs/concepts/kernel/exceptions.md
+  - title: "Kernel internal errors"
+    path: /docs/concepts/kernel/kernel_internal_errors.md
+  - title: "IPC Limits"
+    path: /docs/concepts/kernel/ipc_limits.md
+- title: "Waiting"
+  section:
+  - title: "Timer slack"
+    path: /docs/concepts/kernel/timer_slack.md
+  - title: "Time units"
+    path: /docs/concepts/kernel/time.md
+  - title: "Clock transformations"
+    path: /docs/concepts/kernel/clock_transformations.md
+- title: "Advanced"
+  section:
+  - title: "Kernel invariants"
+    path: /docs/concepts/kernel/kernel_invariants.md
+  - title: "Avoiding a problem with the SYSRET"
+    path: /docs/concepts/kernel/sysret_problem.md
+  - title: "Hardware watchdog timers"
+    path: /docs/concepts/kernel/watchdog.md

@@ -1,0 +1,16 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Source code layout"
+  path: /docs/concepts/source_code/layout.md
+- title: "Owners"
+  path: /docs/concepts/source_code/owners.md
+- title: "README.fuchsia file syntax"
+  path: /docs/concepts/source_code/third-party-metadata.md
+- title: "Fuchsia archive format (FAR)"
+  path: /docs/concepts/source_code/archive_format.md

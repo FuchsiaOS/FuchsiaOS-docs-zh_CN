@@ -1,149 +1,115 @@
-<!--
-# Development
+# Development guides
 
 This document is a top-level entry point to all of Fuchsia documentation related
-to **developing** Fuchsia and software running on Fuchsia.
--->
+to developing Fuchsia and software running on Fuchsia.
 
-# 开发 
-
-本文档是有关 Fuchsia **开发** 以及在 Fuchsia 上运行软件的所有文档的一个入口（概述）。
-
-<!--
 ## Developer workflow
 
 This sections describes the workflows and tools for building, running, testing
 and debugging Fuchsia and programs running on Fuchsia.
 
- - [Getting started](../getting_started.md) - **start here**. This document
+ - [Getting started](/docs/get-started/README.md) - This document
    covers getting the source, building and running Fuchsia.
- - [Source code](source_code/README.md)
- - [Multiple device setup](workflows/multi_device.md)
- - [Pushing a package](workflows/package_update.md)
- - [Changes that span layers](workflows/multilayer_changes.md)
- - [Debugging](workflows/debugging.md)
- - [Tracing][tracing]
- - [Trace-based Benchmarking][trace_based_benchmarking]
- - [LibFuzzer-based fuzzing](workflows/libfuzzer.md)
- - [Build system](build/README.md)
- - [Workflow FAQ](workflows/workflow_faq.md)
- - [Testing FAQ](workflows/testing_faq.md)
--->
- 
- ## 开发人员工作流程
+ - [Source code](/docs/get-started/get_fuchsia_source.md)
+ - [fx workflows](build/fx.md)
+ - [Pushing a package](/docs/concepts/packages/package_update.md)
+ - [Working across different petals](source_code/working_across_petals.md)
+ - [Build system](/docs/concepts/build_system/index.md)
+ - [Workflow tips and FAQ](source_code/workflow_tips_and_faq.md)
+ - [Testing FAQ](testing/faq.md)
 
-本节介绍了用于构建、运行、测试和调试 Fuchsia，以及在 Fuchsia 上运行程序的工作流程和工具。
- - [入门](../getting_started.md) - **从这里开始**：本文档介绍获取源代码，构建和运行 Fuchsia。
- - [源代码](source_code/README.md)
- - [在多个设备上](workflows/multi_device.md)
- - [Fuchsia 包](workflows/package_update.md)
- - [Changes that span layers](workflows/multilayer_changes.md)
- - [调试](workflows/debugging.md)
- - [追踪][tracing] <!-- Error -->
- - [可追踪的基准测试][trace_based_benchmarking]
- - [基于 LibFuzzer 的模糊测试](workflows/libfuzzer.md)
- - [构建系统](build/README.md)
- - [工作流程 FAQ](workflows/workflow_faq.md)
- - [测试 FAQ](workflows/testing_faq.md)
-
-<!--
 ## Languages
 
+ - [README](languages/README.md) - Language usage in Fuchsia
  - [C/C++](languages/c-cpp/README.md)
  - [Dart](languages/dart/README.md)
  - [FIDL](languages/fidl/README.md)
  - [Go](languages/go/README.md)
  - [Rust](languages/rust/README.md)
+ - [Python](languages/python/README.md)
  - [Flutter modules](languages/dart/mods.md) - how to write a graphical module
    using Flutter
--->
-   
-## 编程语言
-
- - [C/C++](languages/c-cpp/README.md)
- - [Dart](languages/dart/README.md)
- - [FIDL](languages/fidl/README.md)
- - [Go](languages/go/README.md)
- - [Rust](languages/rust/README.md)
- - [Flutter modules](languages/dart/mods.md) - 如何使用Flutter编写图形模块
-
-<!--
-## API
-
- - [System](api/system.md) - Rubric for designing the Zircon System Interface
- - [FIDL](api/fidl.md) - Rubric for designing FIDL protocols
- - [C](api/c.md) - Rubric for designing C library interfaces
--->
+ - [New language](languages/new/README.md) - how to bring a new language to Fuchsia
 
 ## API
 
- - [系统](api/system.md) - 用于设计 Zircon 系统接口的说明
- - [FIDL](api/fidl.md) - 设计 FIDL 协议的说明
- - [C](api/c.md) - 设计 C 库接口的说明
+ - [README](/docs/concepts/api/README.md) - Developing APIs for Fuchsia
+ - [API Council](/docs/contribute/governance/api_council.md) - Definition of the API council
+ - [System](/docs/concepts/api/system.md) - Rubric for designing the Zircon System Interface
+ - [FIDL API][fidl-api] - Rubric for designing FIDL protocols
+ - [FIDL style][fidl-style] - FIDL style rubric
+ - [C](/docs/concepts/api/c.md) - Rubric for designing C library interfaces
+ - [Tools](/docs/concepts/api/tools.md) - Rubrics for designing developer tools
+ - [Devices](/docs/concepts/api/device_interfaces.md) - Rubric for designing device interfaces
 
-<!--
+## ABI
+
+ - [System](/docs/concepts/system/abi/system.md) - Describes scope of the binary-stable Fuchsia System Interface
+
 ## SDK
 
- - [SDK](sdk/README.md) - information about developing the Fuchsia SDK
--->
- 
-## SDK
+ - [SDK](idk/README.md) - information about developing the Fuchsia SDK
 
- - [SDK](sdk/README.md) - 有关开发 Fuchsia SDK 的信息
-
-<!--
 ## Hardware
 
 This section covers Fuchsia development hardware targets.
 
  - [Acer Switch Alpha 12][acer_12]
- - [Intel NUC][intel_nuc] (also [this](hardware/developing_on_nuc.md))
- - [Pixelbook](hardware/pixelbook.md)
--->
- 
-## 硬件
+ - [Intel NUC][intel-nuc]
+ - [Pixelbook][pixelbook]
+ - [Toulouse][toulouse]
+ - [Khadas VIM2][khadas-vim]
+ - [iMX8M EVK][imx8mevk]
 
-本节介绍了 Fuchsia 开发所支持的硬件设备。
+## Drivers
 
- - [Acer Switch Alpha 12][acer_12] <!-- Error -->
- - [Intel NUC][intel_nuc] <!-- (also [this](hardware/developing_on_nuc.md)) --> <!-- Error -->
- - [Pixelbook](hardware/pixelbook.md)
+This section covers developing drivers on Fuchsia.
 
-<!--
+ - [Getting started][drivers-start]
+
+## Testing
+
+ - [Debugging workflow](/docs/development/debugging/debugging.md)
+ - [Fuzz testing with LibFuzzer](/docs/development/testing/fuzzing/overview.md)
+ - [Test components](/docs/concepts/testing/v1_test_component.md)
+ - [Test environments](/docs/concepts/testing/environments.md)
+ - [Testability rubrics](/docs/concepts/testing/testability_rubric.md)
+ - [Test flake policy](/docs/concepts/testing/test_flake_policy.md)
+ - [Testing Isolated Cache Storage](/docs/concepts/testing/testing_isolated_cache_storage.md)
+ - [Host-target interaction tests](/docs/development/testing/host_target_interaction_tests.md)
+ - [Testing for Flakiness in CQ](/docs/development/testing/testing_for_flakiness_in_cq.md)
+
+
 ## Conventions
 
 This section covers Fuchsia-wide conventions and best practices.
 
- - [Layers](source_code/layers.md) - the Fuchsia layer cake, ie. how Fuchsia
-   subsystems are split into a stack of layers
- - [Repository structure](source_code/layer_repository_structure.md) - standard way
-   of organizing code within a Fuchsia layer repository
- - [Documentation standards](/best-practices/documentation_standards.md)
--->
+ - [Documentation standards](/docs/contribute/docs/documentation-standards.md)
+ - [Endian policy](/docs/development/languages/endian.md)
 
-## 约定
+## Tracing
 
-本节涵盖了有关 Fuchsia 的所有公约和最佳实践。
+ - [Fuchsia tracing system](/docs/concepts/tracing/README.md)
+ - [Tracing guides](/docs/development/tracing/README.md)
 
- - [Layers](source_code/layers.md) - Fuchsia 子系统如何拆分为多层
- - [仓库结构](source_code/layer_repository_structure.md) - Fuchsia layer 仓库组织代码的标准方法
- - [文档标准](/best-practices/documentation_standards.md)
+## Internationalization
 
-<!--
+ - [Internationalization, localization and input methods](internationalization/README.md)
+
 ## Miscellaneous
 
- - [CTU analysis in Zircon](workflows/ctu_analysis.md)
- - [Persistent disks in QEMU](workflows/qemu_persistent_disk.md)
--->
+ - [CTU analysis in Zircon](kernel/ctu_analysis.md)
+ - [Packet capture](debugging/packet_capture.md)
+ - [Editor configurations](/docs/development/editors/README.md)
+ - [Using the Fuchsia Installer](/docs/development/hardware/installer.md)
+ - [Enable verbose logging for input events](/docs/development/components/v1/verbose_logging.md)
 
-## 其它
-
- - [Zircon 交叉编译的静态分析](workflows/ctu_analysis.md)
- - [在硬盘上运行 QEMU](workflows/qemu_persistent_disk.md)
-
-
-[acer_12]: https://fuchsia.googlesource.com/zircon/+/master/docs/targets/acer12.md "Acer 12"
-[intel_nuc]: https://fuchsia.googlesource.com/zircon/+/master/docs/targets/nuc.md "Intel NUC"
-[pixelbook]: hardware/pixelbook.md "Pixelbook"
-[tracing]: https://fuchsia.googlesource.com/garnet/+/master/docs/tracing_usage_guide.md
-[trace_based_benchmarking]: benchmarking/trace_based_benchmarking.md
+[acer_12]: /docs/development/hardware/acer12.md "Acer 12"
+[pixelbook]: /docs/development/hardware/pixelbook.md "Pixelbook"
+[toulouse]: /docs/development/hardware/toulouse.md "Toulouse"
+[khadas-vim]: /docs/development/hardware/khadas-vim.md "Khadas VIM2"
+[imx8mevk]: /docs/development/hardware/imx8mevk.md "iMX8M EVK"
+[intel-nuc]: /docs/development/hardware/intel_nuc.md "Intel NUC"
+[fidl-style]: /docs/development/languages/fidl/guides/style.md
+[fidl-api]: /docs/concepts/api/fidl.md
+[drivers-start]: /docs/development/drivers/developer_guide/driver-development.md

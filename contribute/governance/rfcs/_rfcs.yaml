@@ -1,0 +1,1212 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+- name: 'RFC-0000'
+  title: 'RFC template'
+  short_description: 'The RFC template.'
+  authors: []
+  file: 'TEMPLATE.md'
+  area: ['General']
+  issue: []
+  gerrit_change_id: []
+  status: 'Template'
+  reviewers: []
+  submitted: ''
+  reviewed: ''
+
+- name: 'RFC-0001'
+  title: 'Fuchsia Request for Comments (RFC) process'
+  short_description: 'A process for making project-wide, technical decisions.'
+  authors: ['abarth@google.com']
+  file: '0001_rfc_process.md'
+  area: ['Governance']
+  issue: []
+  gerrit_change_id: ['366393']
+  status: 'Accepted'
+  reviewers: ['kulakowski@google.com', 'pylaligand@google.com', 'jln@google.com', 'benwright@google.com', 'cpu@google.com', 'ccherubino@google.com', 'dglazkov@google.com', 'lanechr@google.com', 'pascallouis@google.com']
+  submitted: '2020-02-20'
+  reviewed: '2020-02-27'
+
+- name: 'RFC-0002'
+  title: 'Fuchsia platform versioning'
+  short_description: 'Uses versioning to let the platform evolve while offering compatibility.'
+  authors: ['abarth@google.com']
+  file: '0002_platform_versioning.md'
+  area: ['General']
+  status: 'Accepted'
+  issue: []
+  gerrit_change_id: ['376759']
+  reviewers: ['jsanky@google.com', 'jln@google.com', 'kulakowski@google.com', 'geb@google.com', 'raggi@google.com', 'gridman@google.com', 'pascallouis@google.com', 'pylaligand@google.com', 'cpu@google.com']
+  submitted: '2020-04-30'
+  reviewed: '2020-05-23'
+
+- name: 'RFC-0003'
+  title: 'Fuchsia logging guidelines'
+  short_description: 'Best practices for using log severities. Applications of log severities in testing and in-field metrics.'
+  authors: ['fsamuel@google.com', 'shayba@google.com']
+  area: ['General']
+  file: '0003_logging.md'
+  issue: []
+  gerrit_change_id: ['395561']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'pascallouis@google.com', 'rlb@google.com', 'edcoyne@google.com', 'adamperry@google.com', 'crjohns@google.com', 'frousseau@google.com', 'drees@google.com']
+  submitted: '2020-06-03'
+  reviewed: '2020-06-11'
+
+- name: 'RFC-0004'
+  title: 'Units of bytes'
+  short_description: 'In Fuchsia, specific notation is used to denote multiples of bytes. This improves clarity by eliminating the need to guess the value of <code>MB</code>.'
+  authors: ['dschuyler@google.com']
+  file: '0004_units_of_bytes.md'
+  area: ['Governance']
+  issue: []
+  gerrit_change_id: ['397239']
+  status: 'Accepted'
+  reviewers: ['nathaniel@google.com', 'pascallouis@google.com', 'jaredb@google.com', 'heygray@google.com', 'cpu@google.com', 'abbogart@google.com', 'mcgrathr@google.com']
+  submitted: '2020-06-09'
+  reviewed: '2020-07-31'
+
+- name: 'RFC-0005'
+  title: 'Blobfs snapshots'
+  short_description: 'Support for Blobfs snapshots during upgrades.'
+  authors: ['csuter@google.com', 'jfsulliv@google.com']
+  file: '0005_blobfs_snapshots.md'
+  area: ['Storage']
+  issue: []
+  gerrit_change_id: ['424179']
+  status: 'Rejected'
+  reviewers: ['jfsulliv@google.com', 'computerdruid@google.com', 'abarth@google.com', 'wittrock@google.com', 'brettw@google.com']
+  submitted: '2020-09-06'
+  reviewed: '2020-09-21'
+
+- name: 'RFC-0006'
+  title: 'Addendum of the RFC process for Zircon'
+  short_description: 'Special considerations when using the Fuchsia RFC process for Zircon.'
+  authors: ['cpu@google.com']
+  file: '0006_addendum_to_rfc_process_for_zircon.md'
+  area: ['Governance']
+  issue: []
+  gerrit_change_id: ['417975']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'eieio@google.com', 'maniscalco@google.com', 'abdulla@google.com', 'kulakowski@google.com']
+  submitted: '2020-08-17'
+  reviewed: '2020-09-25'
+
+- name: 'RFC-0007'
+  title: 'Zircon removal of thread killing'
+  short_description: 'This document discusses the removal of thread killing functionality and the reasoning behind that removal.'
+  authors: ['dgilhooley@google.com']
+  file: '0007_remove_thread_killing.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: ['431174']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'kulakowski@google.com']
+  submitted: '2020-09-25'
+  reviewed: '2020-10-06'
+
+- name: 'RFC-0008'
+  title: 'Remove zx_clock_get and zx_clock_adjust'
+  short_description: 'Defines the plan to deprecate and then remove the zx_clock_get and zx_clock_adjust syscalls.'
+  authors: ['jsankey@google.com', 'johngro@google.com']
+  file: '0008_remove_zx_clock_get_and_adjust.md'
+  area: ['Zircon']
+  issue: ['61987']
+  gerrit_change_id: ['438135']
+  status: 'Accepted'
+  reviewers: ['adamlesinski@google.com', 'vaas@google.com', 'abarth@google.com', 'johngro@google.com']
+  submitted: '2020-10-12'
+  reviewed: '2020-10-29'
+
+- name: 'RFC-0009'
+  title: 'Edge triggered async_wait'
+  short_description: 'The proposal is that, if the ZX_WAIT_ASYNC_EDGE flag is specified, the initial check is omitted and the signal set added to the interest list of the DispatchObject regardless of the initial signal state. In this mode of operation, one of the signals must transition from inactive to active for a packet to be queued on the supplied port (possibly requiring a signal to become inactive in the process).'
+  authors: ['steveaustin@google.com']
+  file: '0009_edge_triggered_async_wait.md'
+  area: ['Zircon']
+  issue: ['45709', '62553']
+  gerrit_change_id: ['442834']
+  status: 'Accepted'
+  reviewers: ['jamesr@google.com', 'maniscalco@google.com', 'cpu@google.com', 'tbodt@google.com']
+  submitted: '2020-10-24'
+  reviewed: '2020-11-06'
+
+- name: 'RFC-0010'
+  title: 'zx_channel_iovec_t support for zx_channel_write and zx_channel_call'
+  short_description: 'This RFC introduces a new mode to zx_channel_write and zx_channel_call which copies input data from multiple memory regions rather than from a single contiguous buffer.'
+  authors: ['bprosnitz@google.com']
+  file: '0010_channel_iovec.md'
+  area: ['Zircon']
+  issue: ['60623']
+  gerrit_change_id: ['433621']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'kulakowski@google.com', 'abarth@google.com', 'pascallouis@google.com']
+  submitted: '2020-09-25'
+  reviewed: '2020-10-06'
+
+- name: 'RFC-0011'
+  title: 'zx_object_get_info ZX_INFO_KMEM_STATS_EXTENDED'
+  short_description: 'Proposes adding a new topic - `ZX_INFO_KMEM_STATS_EXTENDED`, to the `zx_object_get_info()` syscall.'
+  authors: ['rashaeqbal@google.com']
+  file: '0011_getinfo_kmemstats_extended.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: ['446786']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com','adanis@google.com','maniscalco@google.com']
+  submitted: '2020-11-04'
+  reviewed: '2020-11-20'
+
+- name: 'RFC-0012'
+  title: 'Zircon Discardable Memory'
+  short_description: 'Describes a mechanism for userspace applications to indicate to the kernel that certain memory buffers are eligible for reclamation.'
+  authors: ['rashaeqbal@google.com']
+  file: '0012_zircon_discardable_memory.md'
+  area: ['Zircon']
+  issue: ['60237']
+  gerrit_change_id: ['441994']
+  status: 'Accepted'
+  reviewers: ['maniscalco@google.com','cpu@google.com','jamesr@google.com','adanis@google.com']
+  submitted: '2020-10-27'
+  reviewed: '2020-12-02'
+
+- name: 'RFC-0013'
+  title: 'Cloning a VMO mapping'
+  short_description: 'A system call that creates a CoW clone of a VMO from a mapping, without needing a handle to it.'
+  authors: ['tbodt@google.com']
+  file: '0013_cloning_a_vmo_mapping.md'
+  area: ['Zircon']
+  issue: ['60232']
+  gerrit_change_id: ['443437']
+  status: 'Accepted'
+  reviewers: ['adanis@google.com','cpu@google.com','maniscalco@google.com','abarth@google.com','mcgrathr@google.com']
+  submitted: '2020-10-26'
+  reviewed: '2020-12-09'
+
+- name: 'RFC-0014'
+  title: 'Relax zx_fifo_create constraints'
+  short_description: 'Permit `zx_fifo_create` calls with element counts that are not powers of two.'
+  authors: ['jfsulliv@google.com']
+  file: '0014_relax_fifo_create_constraints.md'
+  area: ['Zircon']
+  issue: ['65697']
+  gerrit_change_id: ['457334']
+  status: 'Accepted'
+  reviewers: ['kulakowski@google.com', 'jamesr@google.com', 'cpu@google.com', 'maniscalco@google.com', 'johngro@google.com', 'abarth@google.com']
+  submitted: '2020-12-02'
+  reviewed: '2020-12-09'
+
+- name: 'RFC-0015'
+  title: 'Fuchsia Compatibility Test Suite (CTS)'
+  short_description: 'Requirements, goals, and context for a Compatibility Test Suite (CTS) for Fuchsia.'
+  authors: ['jeremymanson@google.com']
+  file: '0015_cts.md'
+  area: ['Governance', 'Testing']
+  issue: ['66256']
+  gerrit_change_id: ['450861']
+  status: 'Accepted'
+  reviewers: ['pascallouis@google.com', 'jamesr@google.com']
+  submitted: '2020-11-13'
+  reviewed: '2020-12-09'
+
+- name: 'RFC-0016'
+  title: 'Boot time page sizes'
+  short_description: 'Replace PAGE_SIZE constant with a vdsocall.'
+  authors: ['adanis@google.com']
+  file: '0016_boot_time_page_sizes.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: ['457076']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com']
+  submitted: '2020-12-02'
+  reviewed: '2021-01-12'
+
+- name: 'RFC-0017'
+  title: 'The FTP Process is dead, long live the RFC Process!'
+  short_description: 'Discontinue the FIDL Tuning Process, and consolidate it into the RFC process.'
+  authors: ['pascallouis@google.com']
+  file: '0017_folding_ftp_into_rfc.md'
+  area: ['FIDL','Governance']
+  issue: []
+  gerrit_change_id: ['458035']
+  status: 'Accepted'
+  reviewers: ['vaas@google.com']
+  submitted: '2020-12-14'
+  reviewed: '2021-02-08'
+
+- name: 'RFC-0018'
+  title: 'FTP process: A modest proposal'
+  short_description: 'The FIDL Tuning Proposal (FTP) process is designed to provide a uniform and recorded path for making changes to the FIDL language, bindings, and tools.'
+  authors: ['kulakowski@google.com']
+  file: '0018_ftp_process.md'
+  area: ['FIDL','Governance']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-17'
+  reviewed: '2018-08-01'
+
+- name: 'RFC-0019'
+  title: 'Using evolution = uint64;'
+  short_description: 'Add a mechanism to give more descriptive names to primitive types. Remove status as a built-in feature of the language. Introduce a zx library to contain the primitive types from <zircon/types.h>.'
+  authors: ['abarth@google.com']
+  file: '0019_using_evolution_uint64.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-17'
+  reviewed: '2018-08-03'
+
+- name: 'RFC-0020'
+  title: 'Interface ordinal hashing'
+  short_description: "We propose removing the programmer's ability to manually specify the ordinal for interface methods. Instead, the compiler generates the ordinal based on a hash of the fully-qualified method name, i.e. the library name, interface name and method name."
+  authors: ['apang@google.com', 'ianloic@google.com']
+  file: '0020_interface_ordinal_hashing.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-10-26'
+  reviewed: '2018-11-29'
+
+- name: 'RFC-0021'
+  title: 'Soft transitions for methods add and remove'
+  short_description: 'We propose declaring a new attribute that allows code to build regardless of whether the method is implemented or not.'
+  authors: ['ianloic@google.com']
+  file: '0021_soft_transitions_methods_add_remove.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-10-31'
+  reviewed: '2018-11-01'
+
+- name: 'RFC-0022'
+  title: 'Clarification: Default values for struct members'
+  short_description: 'A FIDL struct member may have a default value. Today, support of defaults is partially implemented (see section below), this proposal aims to clarify how defaults ought to behave.'
+  authors: ['porce@google.com']
+  file: '0022_default_values_for_struct.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-17'
+  reviewed: '2018-09-27'
+
+- name: 'RFC-0023'
+  title: 'Compositional model for protocols'
+  short_description: 'The keyword interface is replaced by the keyword protocol. Extending protocols is clarified to denote a compositional model, where one protocol can be defined as a set of messages, augmented by one or many other protocols. The syntax used for protocol extension is changed from one that resembles inheritance to one that resembles mixins.'
+  authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
+  file: '0023_compositional_model_protocols.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-12-10'
+  reviewed: '2019-01-09'
+
+- name: 'RFC-0024'
+  title: 'Mandatory source compatibility'
+  short_description: 'Establish a source-compatibility standard for FIDL language bindings, as well as a process for evolving that standard.'
+  authors: ['cramertj@google.com']
+  file: '0024_mandatory_source_compatibility.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-04-02'
+  reviewed: '2019-04-11'
+
+- name: 'RFC-0025'
+  title: 'Bit flags'
+  short_description: 'Extend the FIDL language with bit flag declarations.'
+  authors: ['kulakowski@google.com']
+  file: '0025_bit_flags.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-01-14'
+  reviewed: '2019-01-24'
+
+- name: 'RFC-0026'
+  title: 'Envelopes everywhere'
+  short_description: 'Improve the efficiency of the existing envelope format, by making envelopes more than twice as compact. Use envelopes as the sole means of referencing all out-of-line objects. This increases the consistency of the wire format, and the uniformity of protocol design and implementation.'
+  authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
+  file: '0026_envelopes_everywhere.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-01-19'
+  reviewed: '2019-02-04'
+
+- name: 'RFC-0027'
+  title: 'You only pay for what you use'
+  short_description: 'When adding functionality to FIDL, we should evaluate the costs that adding that functionality imposes on people who use FIDL but do not use the new functionality. We should then have a very high bar for accepting functionality that imposes costs on people who do not use the functionality.'
+  authors: ['abarth@google.com']
+  file: '0027_you_only_pay_what_you_use.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-01-19'
+  reviewed: '2019-02-04'
+
+- name: 'RFC-0028'
+  title: 'Handle rights'
+  short_description: 'Annotate required or excluded handle rights in FIDL.'
+  authors: ['kulakowski@google.com', 'bprosnitz@google.com']
+  file: '0028_handle_rights.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-04-01'
+  reviewed: '2019-04-18'
+
+- name: 'RFC-0029'
+  title: 'Increasing method ordinals'
+  short_description: 'Increase the size of method ordinals to 64 bits (up from 32 bits), while maintaining the range with the highest order bit set for Fuchsia reserved usage. Update the epitaph ordinal to 0xFFFFFFFFFFFFFFFF (from 0xFFFFFFFF). Packing the increased ordinal size by using the flags field of the transactional header. And discontinue the use of the FragileBase attribute.'
+  authors: ['pascallouis@google.com']
+  file: '0029_increasing_method_ordinals.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-02-14'
+  reviewed: '2019-02-28'
+
+- name: 'RFC-0030'
+  title: 'FIDL is little endian'
+  short_description: 'Declare that FIDL is little endian.'
+  authors: ['ctiller@google.com', 'pascallouis@google.com']
+  file: '0030_fidl_is_little_endian.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-01-30'
+  reviewed: '2019-01-30'
+
+- name: 'RFC-0031'
+  title: 'Typed Epitaphs'
+  short_description: 'Ability and syntax to indicate the type of an epitaph.'
+  authors: ['pascallouis@google.com']
+  file: '0031_typed_epitaphs.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['486059']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-02-05'
+  reviewed: '2021-04-07'
+
+- name: 'RFC-0032'
+  title: 'Efficient envelopes'
+  short_description: 'This FTP proposes a more compact encoding for envelopes.'
+  authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
+  file: '0032_efficient_envelopes.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-02-06'
+  reviewed: '2019-02-21'
+
+- name: 'RFC-0033'
+  title: 'Handling of unknown fields and strictness'
+  short_description: 'This FTP amends and clarifies the behavior of FIDL decoders when encountering tables, extensible unions, enums, and bits — extensible messages — contain fields where the type is unknown.'
+  authors: ['apang@google.com', 'pascallouis@google.com']
+  file: '0033_handling_unkown_fields_strictness.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-02-07'
+  reviewed: '2019-03-07'
+
+- name: 'RFC-0034'
+  title: 'Null terminate strings'
+  short_description: 'We propose that strings in FIDL will be null terminated (all the while retaining the size of the string as is the case today). Also, change the C bindings to use uint8_t* for string data'
+  authors: ['ianloic@google.com']
+  file: '0034_null_terminate_strings.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-02-08'
+  reviewed: '2019-02-21'
+
+- name: 'RFC-0035'
+  title: 'Automatic flow tracing'
+  short_description: 'Adding tracing events to our FIDL bindings enables end-to-end flows across processes on Fuchsia without hand-rolling custom IDs.'
+  authors: ['bwb@google.com', 'nathanrogers@google.com']
+  file: '0035_automatic_flow_tracing.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-02-28'
+  reviewed: '2019-02-28'
+
+- name: 'RFC-0036'
+  title: 'Update to struct declarations'
+  short_description: 'To better convey ABI implications of re-ordering and renaming fields, we propose a syntactic change to introduce ordinals for structs fields, with similar syntactic rules then those for tables.'
+  authors: ['pascallouis@google.com']
+  file: '0036_update_struct_declarations.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-03-07'
+  reviewed: '2019-03-14'
+
+- name: 'RFC-0037'
+  title: 'Transactional message header v3'
+  short_description: 'This proposal modifies the FIDL wire format. The reserved bytes of the transaction header are allocated to a one byte magic number to identify the wire format used aAnd three bytes for flags meant to be temporarily used for soft migrations.'
+  authors: ['pascallouis@google.com']
+  file: '0037_transactional_message_header_v3.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-03-07'
+  reviewed: '2019-03-14'
+
+- name: 'RFC-0038'
+  title: 'Seperating layout from constraints'
+  short_description: 'We propose a syntax change to convey differences between layout from constraints.'
+  authors: ['pascallouis@google.com']
+  file: '0038_seperating_layout_from_constraints.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-03-07'
+  reviewed: ''
+
+- name: 'RFC-0039'
+  title: 'Types come second'
+  short_description: 'We propose to allow inline declarations of structs, xunions, and tables; flip the order in which field names (or argument and return names) appear with respect to types, specifically to have the type appear after names.'
+  authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
+  file: '0039_types_come_second.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-03-07'
+  reviewed: ''
+
+- name: 'RFC-0040'
+  title: 'Identifier uniqueness'
+  short_description: 'The FIDL specification and front-end compiler currently considers two identifiers to be distinct based on simple string comparison. This proposes a new algorithm that takes into account the transformations that bindings generators make.'
+  authors: ['ianloic@google.com']
+  file: '0040_identifier_uniqueness.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-04-08'
+  reviewed: '2019-05-14'
+
+- name: 'RFC-0041'
+  title: 'Support for unifying services and devices'
+  short_description: 'Introduce the notion of a service — a collection of protocols, where there may be one or more instances of the collection.'
+  authors: ['abdulla@google.com', 'jeffbrown@google.com', 'pascallouis@google.com', 'abarth@google.com']
+  file: '0041_unifying_services_devices.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-04-08'
+  reviewed: '2019-04-23'
+
+- name: 'RFC-0042'
+  title: 'Non nullable types'
+  short_description: 'FIDL library authors can mark some types and members as nullable with ?. This proposes a way to mark types and members as not nullable.'
+  authors: ['ianloic@google.com']
+  file: '0042_non_nullable_types.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-04-01'
+  reviewed: '2019-04-01'
+
+- name: 'RFC-0043'
+  title: 'Documentation comment format'
+  short_description: 'This FTP standardizes on a single format for writing documentation comments. This format can be consumed by tools that generate API documentation in other human readable and machine consumable formats (e.g., HTML, Markdown).'
+  authors: ['jeremymanson@google.com']
+  file: '0043_documentation_comment_format.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-05-06'
+  reviewed: '2019-05-30'
+
+- name: 'RFC-0044'
+  title: 'Extensible method arguments'
+  short_description: 'We encourage FIDL library authors to use tables rather than structs when extensibility is required however method arguments are encoded as structs. This proposes a way to have extensible method arguments built on top of tables.'
+  authors: ['vardhan@google.com', 'ianloic@google.com']
+  file: '0044_extensible_method_arguments.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2019-04-08'
+  reviewed: ''
+
+- name: 'RFC-0045'
+  title: 'Zero-size empty structs'
+  short_description: "RFC-0056 (\"Empty Structs\") improved language ergonomics by enabling empty structs to be defined. Empty structs carry no content, but they currently occupy one byte in the wire format to be compatible across all FIDL language implementations. This uses unnecessary space, which is typically made worse due to FIDL's eight-byte alignment in many contexts."
+  authors: ['apang@google.com']
+  file: '0045_zero_size_empty_structs.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2018-12-26'
+  reviewed: '2019-05-29'
+
+- name: 'RFC-0047'
+  title: 'Tables'
+  short_description: 'Add a mechanism for forward and backwards compatible compound data types to the FIDL language.'
+  authors: ['ctiller@google.com']
+  file: '0047_tables.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-27'
+  reviewed: '2018-09-20'
+
+- name: 'RFC-0048'
+  title: 'Explicit union ordinals'
+  short_description: 'To better align ABI implications around extensible unions (or simply unions), we propose make changes that make flexible unions syntactically closer to tables, and correct odd[2] and unduly strict ABI restrictions today around renaming unions or union members.'
+  authors: ['pascallouis@google.com']
+  file: '0048_explicit_union_ordinals.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-08-25'
+  reviewed: '2019-09-26'
+
+- name: 'RFC-0049'
+  title: 'FIDL tuning process evolution'
+  short_description: 'We propose various evolutions of the FTP Process by splitting the review from decision making, introduce a way for authors to withdraw their FTPs, provide guidelines for what needs an FTP, and lastly describe other avenues to contribute to FIDL.'
+  authors: ['pascallouis@google.com']
+  file: '0049_fidl_tuning_process_evolution.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-11-20'
+  reviewed: '2019-12-19'
+
+- name: 'RFC-0050'
+  title: 'Syntax revamp'
+  short_description: 'We establish guiding principles for syntactic choices, and make a few syntax changes following these principles.'
+  authors: ['pascallouis@google.com']
+  file: '0050_syntax_revamp.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2020-02-26'
+  reviewed: '2019-06-04'
+
+- name: 'RFC-0051'
+  title: 'Safer structs for C++'
+  short_description: "Allow C++ developers to write FIDL code that will break at compile time if structs aren't fully initialized."
+  authors: ['ianloic@google.com']
+  file: '0051_safer_structs_for_cpp.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-19'
+  reviewed: '2019-03-14'
+
+- name: 'RFC-0052'
+  title: 'Type aliasing and new types'
+  short_description: "This proposal aims to formally evolve FIDL's type aliasing and new type declaration mechanisms and their effects on bindings. More specifically, this proposes refinements to the type alias grammar, exposition of type aliases to bindings, and a new feature known as new types."
+  authors: ['godtamit@google.com']
+  file: '0052_type_aliasing_named_types.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2020-01-07'
+  reviewed: '2020-01-23'
+
+- name: 'RFC-0053'
+  title: 'Epitaphs'
+  short_description: 'The goal of this proposal is to allow a server to send a message prior to closing a connection that provides an indication of why the connection is being closed.'
+  authors: ['jeremymanson@google.com']
+  file: '0053_epitaphs.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-19'
+  reviewed: '2018-10-04'
+
+- name: 'RFC-0054'
+  title: 'Parameter attributes'
+  short_description: "We can already apply attributes to various elements of FIDL but not to parameters. This is a proposal to extend the grammar to accept parameter attributes."
+  authors: ['xazax@google.com', 'phosek@google.com']
+  file: '0054_parameter_attributes.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2019-11-21'
+  reviewed: '2019-12-12'
+
+- name: 'RFC-0055'
+  title: 'Documentation comments'
+  short_description: 'Documenting FIDL.'
+  authors: ['bwb@google.com']
+  file: '0055_documentation_comments.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-31'
+  reviewed: '2018-08-20'
+
+- name: 'RFC-0056'
+  title: 'Empty structs'
+  short_description: 'Allow empty structs in FIDL library declarations and define the encoding of that to be a struct with a single zero-valued uint8.'
+  authors: ['ianloic@google.com']
+  file: '0056_empty_structs.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-08-30'
+  reviewed: '2018-09-11'
+
+- name: 'RFC-0057'
+  title: 'Default no handles'
+  short_description: "We propose to disallow handles in FIDL type declarations by default, and add a new keyword resource to mark types that are allowed to contain handles or other resource types. Adding or removing a resource modifier may be a source-breaking change."
+  authors: ['mkember@google.com']
+  file: '0057_default_no_handles.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2020-01-16'
+  reviewed: '2020-01-23'
+
+- name: 'RFC-0058'
+  title: 'Introduce a deprecated attribute'
+  short_description: 'Use a new attribute Deprecated to indicate deprecation of types (enums, structs, unions, using declarations), consts, methods, or whole interfaces. Carry this over to target languages in the best possible way.'
+  authors: ['pascallouis@google.com']
+  file: '0058_deprecated_attribute.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-09-10'
+  reviewed: '2018-10-11'
+
+- name: 'RFC-0059'
+  title: 'Reserved bits in vector, string, and array count fields'
+  short_description: "This FTP proposes a few changes. Vector, string and array counts max out at 32-bits (max value 232-1). The upper 8-bits of vector and string count fields are reserved for use by bindings for in-memory use. They must be filled with zero on the wire. The next 24-bits of vector/string count fields are reserved but are unused and must be filled with zero on the wire. They cannot be used by bindings and may be reallocated in a future FTP."
+  authors: ['bprosnitz@google.com']
+  file: '0059_reserved_bits_count_fields.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2020-03-16'
+  reviewed: '2020-03-19'
+
+- name: 'RFC-0060'
+  title: 'Error handling'
+  short_description: 'APIs often need to indicate that requests could not be successfully completed. Often there is useful contextual information associated with the error that allows the caller to take corrective action. This proposes a syntax that will allow FIDL interfaces to describe how errors will be reported.'
+  authors: ['ianloic@google.com']
+  file: '0060_error_handling.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-09-18'
+  reviewed: '2018-12-06'
+
+- name: 'RFC-0061'
+  title: 'Extensible unions'
+  short_description: 'To provide more ways to express payloads whose shape may need to evolve over time, we propose to replace unions as they exist today with extensible unions.'
+  authors: ['pascallouis@google.com']
+  file: '0061_extensible_unions.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-09-26'
+  reviewed: '2018-10-11'
+
+- name: 'RFC-0062'
+  title: 'Method impossible'
+  short_description: 'It should be an error to declare an interface method that may require more than the maximum number of handles or bytes allowed in a Zircon channel message.'
+  authors: ['ianloic@google.com']
+  file: '0062_method_impossible.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2018-07-19'
+  reviewed: '2018-09-11'
+
+- name: 'RFC-0063'
+  title: 'OrdinalRange'
+  short_description: 'Add an optional [OrdinalRange] attribute to interfaces. If present, ordinals defined by the interface must fall within the declared range.'
+  authors: ['abarth@google.com']
+  file: '0063_OrdinalRange.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2018-07-31'
+  reviewed: '2018-10-04'
+
+- name: 'RFC-0064'
+  title: 'Box &lt;Knox&gt;'
+  short_description: 'Introduce a mechanism for transmitting large structured data objects through an auxiliary VMO associated with a FIDL message.'
+  authors: ['jeffbrown@google.com']
+  file: '0064_box_knox.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2018-09-27'
+  reviewed: '2020-06-17'
+
+- name: 'RFC-0065'
+  title: 'No optional strings or vectors'
+  short_description: 'Remove optional strings and optional vectors from the FIDL language.'
+  authors: ['kulakowski@google.com']
+  file: '0065_optional_strings_or_vectors.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2018-09-27'
+  reviewed: '2018-10-25'
+
+- name: 'RFC-0066'
+  title: 'Programmer advisory explicit defaults'
+  short_description: "The FIDL specification doesn't state whether primitive and enum struct fields have default values. This tuning proposes that we document explicitly that they do not."
+  authors: ['ianloic@google.com']
+  file: '0066_programmer_advisory_explicit.md'
+  area: ['FIDL']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['']
+  submitted: '2018-07-20'
+  reviewed: '2019-01-14'
+
+- name: 'RFC-0067'
+  title: 'Additions to Fuchsia RFC process'
+  short_description: 'Introducing "Last Call" step; calling out exit criteria; adding process to amend an RFC.'
+  authors: ['vaas@google.com']
+  file: '0067_rfc_process_additions.md'
+  area: ['Governance']
+  issue: []
+  gerrit_change_id: ['458183']
+  status: 'Accepted'
+  reviewers: ['shayba@google.com', 'abarth@google.com', 'aaronwood@google.com', 'fmil@google.com', 'pascallouis@google.com', 'jamesr@google.com']
+  submitted: '2020-12-14'
+  reviewed: '2020-02-17'
+
+- name: 'RFC-0068'
+  title: 'Page Eviction Hints'
+  short_description: 'Mechanism for userspace applications to hint to the kernel a relative order of eviction for user pager backed memory.'
+  authors: ['rashaeqbal@google.com']
+  file: '0068_eviction_hints.md'
+  area: ['Zircon']
+  issue: ['65334']
+  gerrit_change_id: ['468630']
+  status: 'Accepted'
+  reviewers: ['adanis@google.com', 'cpu@google.com', 'scottmg@google.com']
+  submitted: '2021-01-08'
+  reviewed: '2021-02-10'
+
+- name: 'RFC-0069'
+  title: 'Standard I/O in ELF Runner'
+  short_description: 'Mechanism for ELF components to forward stdout and stderr streams to the LogSink service.'
+  authors: ['yaneury@google.com']
+  file: '0069_stdio_in_elf_runner.md'
+  area: ['Component Framework']
+  issue: []
+  gerrit_change_id: ['480362']
+  status: 'Accepted'
+  reviewers: ['jamesr@google.com', 'shayba@google.com', 'geb@google.com', 'adamperry@google.com', 'pascallouis@google.com', 'abarth@google.com', 'vaas@google.com', 'cpu@google.com']
+  submitted: '2021-02-02'
+  reviewed: '2021-02-17'
+
+- name: 'RFC-0070'
+  title: 'PCI protocol changes to support legacy interrupts'
+  short_description: 'Mitigations for spurious PCI legacy interrupts.'
+  authors: ['cja@google.com']
+  file: '0070_pci_protocol_legacy_interrupt_changes.md'
+  area: ['Zircon']
+  issue: ['71188']
+  gerrit_change_id: ['457076']
+  status: 'Accepted'
+  reviewers: ['tbd']
+  submitted: '2020-01-17'
+  reviewed: '2020-02-25'
+
+- name: 'RFC-0071'
+  title: 'OTA backstop'
+  short_description: 'Prevent devices from OTAing backwards across a version boundary.'
+  authors: ['zkbaum@google.com']
+  file: '0071_ota_backstop.md'
+  area: ['System']
+  issue: ['66089']
+  gerrit_change_id: ['481013']
+  status: 'Accepted'
+  reviewers: ['jamesr@google.com', 'computerdruid@google.com', 'jfsulliv@google.com', 'ampearce@google.com', 'atyfto@google.com']
+  submitted: '2021-02-03'
+  reviewed: '2021-02-24'
+
+- name: 'RFC-0072'
+  title: 'Standalone Image Assembly Tool'
+  short_description: 'Create a standalone image assembly tool that can also be used by the Fuchsia build.'
+  authors: ['aaronwood@google.com']
+  file: '0072_standalone_image_assembly_tool.md'
+  area: ['Build']
+  issue: []
+  gerrit_change_id: ['478494']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'amathes@google.com', 'shayba@google.com', 'digit@google.com', 'abarth@google.com', 'mesch@google.com', 'jamesr@google.com']
+  submitted: '2021-01-29'
+  reviewed: '2021-03-05'
+
+- name: 'RFC-0073'
+  title: 'Raising x86-64 platform requirement to x86-64-v2'
+  short_description: 'Raise the minimum x86-64 platform from v1 + extensions to v2'
+  authors: ['venkateshs@chromium.org']
+  file: '0073_x86_64_platform_requirement.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: ['484898']
+  status: 'Socialization'
+  reviewers: ['travisg@google.com', 'mcgrathr@google.com', 'kostyak@google.com']
+  submitted: ''
+  reviewed: ''
+
+- name: 'RFC-0074'
+  title: 'Expose Process Start Time'
+  short_description: 'Make process start time queryable from userspace.'
+  authors: ['joshuaseaton@google.com']
+  file: '0074_expose_process_start_time.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: ['488412']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'maniscalco@google.com']
+  submitted: '2021-02-19'
+  reviewed: '2021-03-11'
+
+- name: 'RFC-0075'
+  title: 'Deprecate Zedboot-based paving for provisioning devices'
+  short_description: 'Standardize device provisioning around fastboot and deprecate Zedboot-based paving.'
+  authors: ['amituttam@google.com']
+  file: '0075_deprecate_zedboot_paving.md'
+  area: ['General']
+  issue: []
+  gerrit_change_id: ['491819']
+  status: 'Accepted'
+  reviewers: ['rudymathu@google.com', 'nmulcahey@google.com', 'dpursell@google.com', 'wittrock@google.com', 'andresoportus@google.com', 'vaas@google.com', 'dkrahn@google.com', 'jfsulliv@google.com']
+  submitted: '2021-02-25'
+  reviewed: '2021-03-12'
+
+- name: 'RFC-0076'
+  title: 'FIDL API Summaries'
+  short_description: 'Presents a format for a human-readable FIDL API surface.'
+  authors: ['fmil@google.com']
+  file: '0076_fidl_api_summaries.md'
+  area: ['FIDL']
+  issue: ['68955']
+  gerrit_change_id: ['480497']
+  status: 'Accepted'
+  reviewers: ['pascallouis@google.com', 'mkember@google.com', 'jeremymanson@google.com', 'gridman@google.com']
+  submitted: '2021-03-16'
+  reviewed: '2021-03-16'
+
+- name: 'RFC-0077'
+  title: 'zx_clock_update accuracy improvement'
+  short_description: 'Changes to zx_clock_update that let clock maintainers opt in to supplying more information and achieving higher accuracy.'
+  authors: ['jsankey@google.com']
+  file: '0077_zx_clock_update_accuracy.md'
+  area: ['Zircon']
+  issue: ['65726']
+  gerrit_change_id: ['495844']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'johngro@google.com', 'satsukiu@google.com']
+  submitted: '2021-03-04'
+  reviewed: '2021-03-18'
+
+- name: 'RFC-0078'
+  title: 'Kernel Sanitizer Coverage for Fuchsia Fuzzing'
+  short_description: 'Export Fuchsia kernel code coverage so it can be used for fuzzing with Syzkaller.'
+  authors: ['eep@google.com', 'mvanotti@google.com', 'markdittmer@google.com']
+  file: '0078_kernel_coverage_for_fuchsia_fuzzing.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: ['phosek@google.com', 'mcgrathr@google.com', 'maniscalco@google.com', 'cpu@google.com']
+  submitted: '2021-02-26'
+  reviewed: '2021-03-25'
+
+- name: 'RFC-0079'
+  title: 'Detecting debuglog data loss'
+  short_description: 'A revised mechanism for detecting debuglog data loss.'
+  authors: ['maniscalco@google.com']
+  file: '0079_detecting_debuglog_data_loss.md'
+  area: ['Zircon', 'Diagnostics']
+  issue: ['69290']
+  gerrit_change_id: ['487876']
+  status: 'Accepted'
+  reviewers: ['adamperry@google.com', 'adanis@google.com', 'cpu@google.com']
+  submitted: '2021-02-17'
+  reviewed: '2021-03-25'
+
+- name: 'RFC-0080'
+  title: 'Detecting VMO Immutability'
+  short_description: 'This RFC proposes a new flag `ZX_INFO_VMO_IMMUTABLE` that makes it possible to determine if a VMO is immutable and has been since creation.'
+  authors: ['bprosnitz@google.com']
+  file: '0080_detecting_vmo_immutability.md'
+  area: ['Zircon']
+  issue: []
+  gerrit_change_id: []
+  status: 'Accepted'
+  reviewers: [ 'bryanhenry@google.com', 'adanis@google.com', 'mseaborn@google.com', 'pascallouis@google.com', 'ctiller@google.com', 'rashaeqbal@google.com', 'cpu@google.com' ]
+  submitted: '2021-02-18'
+  reviewed: '2021-03-29'
+
+- name: 'RFC-0081'
+  title: 'fastboot boot'
+  short_description: 'Replace Zedboot based netbooting flows with fastboot boot'
+  authors: ['andresoportus@google.com']
+  file: '0081_fastboot_boot.md'
+  area: ['General']
+  issue: ['']
+  gerrit_change_id: ['498344']
+  status: 'Accepted'
+  reviewers: ['amituttam@', 'boetger@google.com', 'bradenkell@google.com', 'cpu@google.com', 'curtisgalloway@google.com', 'dpursell@google.com', 'raggi@google.com', 'tkilbourn@google.com', 'travisg@google.com', 'alizhang@google.com']
+  submitted: '2021-03-09'
+  reviewed: '2021-03-25'
+
+- name: 'RFC-0082'
+  title: 'Runnning unmodified Linux programs on Fuchsia'
+  short_description: 'This document proposes a mechanism for running unmodified Linux programs on Fuchsia.'
+  authors: ['abarth@google.com']
+  file: '0082_starnix.md'
+  area: ['PosixCompat']
+  issue: ['70225']
+  gerrit_change_id: ['485181']
+  status: 'Accepted'
+  reviewers: ['shayba@google.com', 'jln@google.com', 'abdulla@google.com', 'jamesr@google.com', 'pascallouis@google.com', 'hjfreyer@google.com', 'cpu@google.com']
+  submitted: '2021-02-11'
+  reviewed: '2021-03-25'
+
+- name: 'RFC-0083'
+  title: 'FIDL versioning'
+  short_description: 'Provide a way to version FIDL elements and generate bindings at a particular version.'
+  authors: ['mkember@google.com']
+  file: '0083_fidl_versioning.md'
+  area: ['FIDL']
+  issue: ['67858']
+  gerrit_change_id: ['486164']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'hjfreyer@google.com', 'jamesr@google.com', 'jeremymanson@google.com', 'pascallouis@google.com', 'tombergan@google.com', 'yifeit@google.com']
+  submitted: '2021-02-12'
+  reviewed: '2021-04-05'
+
+- name: 'RFC-0084'
+  title: 'Add more metrics to zx_info_task_runtime_t'
+  short_description: 'Adds additional metrics to zx_info_task_runtime_t to debug media performance problems.'
+  authors: ['tombergan@google.com']
+  file: '0084_zircon_more_per_task_runtime_information.md'
+  area: ['Zircon']
+  issue: ['67477']
+  gerrit_change_id: ['485181']
+  status: 'Accepted'
+  reviewers: ['eieio@google.com', 'maniscalco@google.com', 'adanis@google.com']
+  submitted: '2021-03-09'
+  reviewed: '2021-04-06'
+
+- name: 'RFC-0085'
+  title: 'Reducing the zx_status_t space'
+  short_description: 'Reduce the range of valid zx_status_t values, allowing the type to be more easily embedded in other types.'
+  authors: ['dgreenaway@google.com', 'kulakowski@google.com']
+  file: '0085_reducing_zx_status_t_space.md'
+  area: ['Zircon', 'System']
+  issue: ['74211', '74212']
+  gerrit_change_id: ['436685']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'maniscalco@google.com', 'pascallouis@google.com']
+  submitted: '2020-10-09'
+  reviewed: '2021-04-08'
+
+- name: 'RFC-0086'
+  title: 'Updates to RFC-0050: FIDL Attributes Syntax'
+  short_description: 'Specifies a new syntax for attributes in the FIDL language.'
+  authors: ['azaslavsky@google.com']
+  file: '0086_rfc_0050_attributes.md'
+  area: ['FIDL']
+  issue: ['68792']
+  gerrit_change_id: ['499278']
+  status: 'Accepted'
+  reviewers: ['jsankey@google.com', 'pascallouis@google.com']
+  submitted: '2021-03-09'
+  reviewed: '2021-04-07'
+
+- name: 'RFC-0087'
+  title: 'Updates to RFC-0050: FIDL Method Parameter Syntax'
+  short_description: 'Modify the syntax for specifying request and response parameters by explicitly defining the top level type.'
+  authors: ['fcz@google.com']
+  file: '0087_fidl_method_syntax.md'
+  area: ['FIDL']
+  issue: ['71818']
+  gerrit_change_id: ['497299']
+  status: 'Accepted'
+  reviewers: ['mkember@google.com', 'pascallouis@google.com', 'surajmalhotra@google.com', 'yifeit@google.com']
+  submitted: '2021-03-09'
+  reviewed: '2021-04-14'
+
+- name: 'RFC-0088'
+  title: 'Updates to RFC-0050: FIDL Bits, Enum, and Constraints Syntax'
+  short_description: 'Specify two incremental improvements to the new FIDL syntax defined by FTP-050.'
+  authors: ['azaslavsky@google.com']
+  file: '0088_rfc_0050_bits_enums_constraints.md'
+  area: ['FIDL']
+  issue: ['70528']
+  gerrit_change_id: ['488205']
+  status: 'Rejected'
+  reviewers: ['pascallouis@google.com']
+  submitted: '2021-02-18'
+  reviewed: '2021-04-07'
+
+- name: 'RFC-0089'
+  title: 'Core realm variations'
+  short_description: 'Generate custom core component realms per product configurations.'
+  authors: ['dgonyeo@google.com']
+  file: '0089_core_realm_variations.md'
+  area: ['Component Framework']
+  issue: ['74801']
+  gerrit_change_id: ['495678']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'geb@google.com', 'jsankey@google.com', 'shayba@google.com', 'thatguy@google.com']
+  submitted: '2021-03-04'
+  reviewed: '2021-04-19'
+
+- name: 'RFC-0090'
+  title: 'Driver shared libraries allowlist'
+  short_description: 'Add an allowlist for drivers shared libraries.'
+  authors: ['dgilhooley@google.com']
+  file: '0090_drivers_shared_library_allowlist.md'
+  area: ['Zircon']
+  issue: ['']
+  gerrit_change_id: ['508918']
+  status: 'Accepted'
+  reviewers: ['jamesr@google.com', 'mangini@google.com', 'bryanhenry@google.com', 'digit@google.com', 'benwright@google.com', 'surajmalhotra@google.com']
+  submitted: '2021-03-30'
+  reviewed: '2021-04-28'
+
+- name: 'RFC-0091'
+  title: 'zx_system_get_event ZX_SYSTEM_EVENT_IMMINENT_OUT_OF_MEMORY'
+  short_description: 'Proposes adding a new event - `ZX_SYSTEM_EVENT_IMMINENT_OUT_OF_MEMORY`, to the `zx_system_get_event()` syscall.'
+  authors: ['rashaeqbal@google.com']
+  file: '0091_getevent_imminent_oom.md'
+  area: ['Zircon']
+  issue: ['73872']
+  gerrit_change_id: ['514760']
+  status: 'Accepted'
+  reviewers: ['adanis@google.com', 'davemoore@google.com', 'jsankey@google.com', 'maniscalco@google.com', 'pascallouis@google.com']
+  submitted: '2021-04-12'
+  reviewed: '2021-05-04'
+
+- name: 'RFC-0092'
+  title: 'Sessions'
+  short_description: 'Defines the role of the session component.'
+  authors: ['lindkvist@google.com']
+  file: '0092_sessions.md'
+  area: ['Session']
+  issue: ['']
+  gerrit_change_id: ['513028']
+  status: 'Accepted'
+  reviewers: [ 'aaronwood@google.com', 'bryanhenry@google.com', 'dgonyeo@google.com', 'geb@google.com', 'hjfreyer@google.com', 'jsankey@google.com', 'thatguy@google.com' ]
+  submitted: '2021-04-08'
+  reviewed: '2021-05-05'
+
+- name: 'RFC-0093'
+  title: 'Design principles of component manifests'
+  short_description: 'Design notes on the `.cml` and `.cm` formats used for component manifests.'
+  authors: ['geb@google.com', 'shayba@google.com']
+  file: '0093_component_manifest_design_principles.md'
+  area: ['Component Framework']
+  issue: ['75514']
+  gerrit_change_id: ['521303']
+  status: 'Accepted'
+  reviewers: ['jjosh@google.com', 'geb@google.com', 'pascallouis@google.com', 'abarth@google.com', 'mesch@google.com', 'thatguy@google.com', 'shrike@google.com', 'brunodalbo@google.com']
+  submitted: '2021-04-26'
+  reviewed: '2021-05-05'

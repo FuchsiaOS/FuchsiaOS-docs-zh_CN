@@ -1,0 +1,18 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Inspect"
+  path: /docs/development/drivers/diagnostics/inspect.md
+- title: "Logging"
+  path: /docs/development/drivers/diagnostics/logging.md
+- title: "Tracing"
+  path: /docs/development/drivers/diagnostics/tracing.md
+- title: "Bind debugger"
+  path: /docs/development/drivers/diagnostics/bind-debugger.md
+- title: "Driver utilities"
+  path: /docs/development/drivers/diagnostics/driver-utils.md

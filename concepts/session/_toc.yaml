@@ -1,0 +1,18 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Introduction to the session framework"
+  path: /docs/concepts/session/introduction.md
+- title: "Elements"
+  path: /docs/concepts/session/element.md
+- title: "Element Proposers"
+  path: /docs/concepts/session/element_proposer.md
+- title: "Graphical Presenter"
+  path: /docs/concepts/session/graphical_presenter.md
+- title: "Input client library"
+  path: /docs/concepts/session/input.md

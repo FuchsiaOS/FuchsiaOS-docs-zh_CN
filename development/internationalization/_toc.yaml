@@ -1,0 +1,23 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+toc:
+- title: "Overview"
+  path: /docs/development/internationalization/README.md
+- title: "ICU"
+  path: /docs/development/internationalization/icu.md
+- title: "ICU data"
+  path: /docs/development/internationalization/icu_data.md
+- title: "Localizing mods"
+  path: /docs/development/internationalization/localizing_mods.md
+- title: "Internationalization preferences"
+  path: /docs/development/internationalization/i18n_preferences.md
+- title: "Fonts"
+  section:
+  - include: /docs/development/internationalization/fonts/_toc.yaml
+- title: "Localization"
+  section:
+  - include: /docs/development/internationalization/localization/_toc.yaml
+- title: "Future work"
+  path: /docs/development/internationalization/future_work.md

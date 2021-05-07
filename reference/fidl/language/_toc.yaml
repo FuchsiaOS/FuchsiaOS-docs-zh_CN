@@ -1,0 +1,26 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer
+toc:
+- title: "Overview"
+  path: /docs/reference/fidl/language/language.md
+- title: "Attributes"
+  path: /docs/reference/fidl/language/attributes.md
+- title: "Grammar"
+  path: /docs/reference/fidl/language/grammar.md
+- title: "Internal library: 'zx'"
+  path: /docs/reference/fidl/language/library-zx.md
+- title: "JSON internal representation"
+  path: /docs/reference/fidl/language/json-ir.md
+- title: "Wire format"
+  path: /docs/reference/fidl/language/wire-format/README.md
+- title: "fidlc internals"
+  path: /docs/reference/fidl/language/fidlc.md
+- title: "Lexicon"
+  path: /docs/reference/fidl/language/lexicon.md
+- title: "Bindings spec"
+  path: /docs/reference/fidl/language/bindings-spec.md

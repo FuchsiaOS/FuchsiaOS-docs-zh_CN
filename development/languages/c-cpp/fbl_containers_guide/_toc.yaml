@@ -1,0 +1,28 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Introduction to fbl intrusive containers"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/introduction.md
+- title: "Getting started"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/getting_started.md
+- title: "Controlling container membership"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/container_membership.md
+- title: "Sequenced containers"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/sequenced_containers.md
+- title: "Associative containers"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/associative_containers.md
+- title: "Iterators"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/iterators.md
+- title: "Testing an object for membership in a container"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/membership_tests.md
+- title: "Lifecycle checks"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/lifecycle_checks.md
+- title: "size()'s order of operation"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/size_order_of_operation.md
+- title: "Advanced scenarios"
+  path: /docs/development/languages/c-cpp/fbl_containers_guide/advanced_scenarios.md

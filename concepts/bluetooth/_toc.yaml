@@ -1,0 +1,14 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Bluetooth architecture"
+  path: /docs/concepts/bluetooth/architecture.md
+- title: "Bluetooth persistent data schema"
+  path: /docs/concepts/bluetooth/persistent_data_schema.md
+- title: "Writing unit tests for the C++ bt-host driver"
+  path: /docs/concepts/bluetooth/bt_host_unittesting.md

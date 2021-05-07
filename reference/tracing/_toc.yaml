@@ -1,0 +1,18 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Fuchsia trace format"
+  path: /docs/reference/tracing/trace-format.md
+- title: "Trace specification file"
+  path: /docs/reference/tracing/trace-specification-file.md
+- title: "Tracing libraries"
+  path: /docs/reference/tracing/libraries.md
+- title: "Tracing: C and C++ macros"
+  path: /docs/reference/tracing/c_cpp_macros.md
+- title: "FIFO packets"
+  path: /docs/reference/tracing/FIFO-packets.md

@@ -1,0 +1,32 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Contributing to Fuchsia"
+  path: /CONTRIBUTING.md
+- title: "Fuchsia roadmap"
+  section:
+  - include: /docs/contribute/roadmap/_toc.yaml
+- title: "Code of conduct"
+  path: /CODE_OF_CONDUCT.md
+- title: "Respectful code"
+  path: /docs/contribute/respectful_code.md
+- title: "Contributing to Zircon"
+  path: /docs/contribute/contributing_to_zircon.md
+- title: "Contributing to FIDL"
+  section:
+  - include: /docs/contribute/contributing-to-fidl/_toc.yaml
+- title: "Contributing to Netstack3"
+  path: /docs/contribute/contributing_to_netstack3.md
+- title: "Documentation"
+  section:
+  - include: /docs/contribute/docs/_toc.yaml
+- title: "Open projects"
+  section:
+  - include: /docs/contribute/open_projects/_toc.yaml
+- title: "Report an issue"
+  path: /docs/contribute/report-issue.md

@@ -1,0 +1,3 @@
+include /src/sys/component_manager/OWNERS
+
+# COMPONENT: ComponentFramework>Documentation

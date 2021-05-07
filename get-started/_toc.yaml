@@ -1,0 +1,19 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/get-started/README.md
+- heading: "Get Started with Fuchsia"
+- title: "Get source code"
+  path: /docs/get-started/get_fuchsia_source.md
+- title: "Configure and build Fuchsia"
+  path: /docs/get-started/build_fuchsia.md
+- title: "Set up and start the Fuchsia emulator (FEMU)"
+  path: /docs/get-started/set_up_femu.md
+- title: "Explore Fuchsia"
+  path: /docs/get-started/explore_fuchsia.md

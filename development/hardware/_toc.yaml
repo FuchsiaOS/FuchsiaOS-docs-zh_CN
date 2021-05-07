@@ -1,0 +1,30 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Install Fuchsia on a device"
+  path: /docs/development/hardware/paving.md
+- title: "Install Fuchsia on Pixelbook"
+  path: /docs/development/hardware/pixelbook.md
+- title: "Install Fuchsia on Intel NUC"
+  path: /docs/development/hardware/intel_nuc.md
+- title: "Configure remote management for Intel NUC"
+  path: /docs/development/hardware/nuc-remote-management.md
+- title: "Prepare a USB flash drive to be a bootable disk"
+  path: /docs/development/hardware/usb_setup.md
+- title: "Create a bootable Fuchsia image"
+  path: /docs/development/hardware/installer.md
+- title: "Set up experimental hardware"
+  section:
+  - title: "Install Fuchsia on Acer Switch Alpha 12"
+    path: /docs/development/hardware/acer12.md
+  - title: "Install Fuchsia on iMX8M EVK"
+    path: /docs/development/hardware/imx8mevk.md
+  - title: "Install Fuchsia on Khadas VIM2 board"
+    path: /docs/development/hardware/khadas-vim.md
+  - title: "Install Fuchsia on Toulouse"
+    path: /docs/development/hardware/toulouse.md

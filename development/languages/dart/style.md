@@ -23,6 +23,7 @@ code tends to be hard to read. Adding the trailing commas allows `dartfmt`
 to do its job correctly.
 
 #### Without trailing commas:
+
 ``` dart
 children.add(Expanded(
   child: Center(
@@ -32,6 +33,7 @@ children.add(Expanded(
 ```
 
 #### With trailing commas:
+
 ``` dart
 children.add(Expanded(
   child: Center(
@@ -60,10 +62,9 @@ truncate the line.
 
 ## Repositories and Files
 
-### DO follow the [Fuchsia layer repository structure][Fuchsia-directory-style].
-
 ### DO prefix library names in `/lib` and `/public/lib` with `lib.`
 #### Example:
+
 ```
 Dart_library("lib.settings") {
   package_name = "lib.settings"
@@ -86,6 +87,7 @@ visibility using the `show` keyword.
 This also helps minimize the publicly visible surface.
 
 Example:
+
 ``` dart
 /// In src/apple.dart
 class Apple {}
@@ -119,20 +121,22 @@ This does not apply to external libraries, as only the absolute path can be
 used.
 
 #### Good:
+
 ``` dart
 import 'access_point.dart';
 ```
 
 #### Bad:
+
 ``` dart
 import 'package:wifi/access_point.dart';
 ```
 
 ### DO use namespacing when you import FIDL packages.
 
-This adds clarity and readability. FIDL namespaces (library statements) are not 
-respected in Dart (e.g. `fuchsia.io.Node` becomes `Node`). 
-Because of tight namespaces, people tend to use more generic names in FIDL 
+This adds clarity and readability. FIDL namespaces (library statements) are not
+respected in Dart (e.g. `fuchsia.io.Node` becomes `Node`).
+Because of tight namespaces, people tend to use more generic names in FIDL
 (Error, File, Node, etc.), which result in more collisions/ambiguity in Dart.
 
 #### Good:
@@ -200,7 +204,7 @@ import 'package:flutter/material.dart show Container, Row, Column, Padding,
   Expanded, ...;
 ```
 
-## Coding practicies
+## Coding practices
 
 ### DON'T use `new` or use `const` redundantly.
 
@@ -209,6 +213,7 @@ in time. The `const` keyword is also optional where it can be inferred by the
 compiler.
 
 `const` can be inferred in:
+
 * A const collection literal.
 * A const constructor call.
 * A metadata annotation.
@@ -220,6 +225,7 @@ This guidance will eventually be part of Effective Dart due to the changes for
 Dart 2.
 
 #### Good:
+
 ``` dart
 final foo = Foo();
 const foo = Foo();
@@ -228,12 +234,12 @@ const Foo(): bar = Bar();
 ```
 
 #### Bad:
+
 ``` dart
 final foo = new Foo();
 const foo = const Foo();
 foo = const [const A(), const B()];
 const Foo(): bar = const Bar();
-
 ```
 
 ### DON'T do useful work in assert statements.
@@ -278,11 +284,13 @@ A `StatefulWidget` should contain only internal widget state that can be lost
 without any consequences.
 
 Examples of stuff to store in a `ScopedModel`:
+
 * User selections
 * App state
 * Anything that needs to be shared by widgets
 
 Examples of stuff to store in a `StatefulWidget`'s `State`:
+
 * Animation state that doesn't need to be controlled
 
 ### AVOID mixing named and positional parameters.
@@ -300,6 +308,7 @@ In the Fuchsia repository, positional parameters should be reserved for simple
 operational functions with only a few parameters.
 
 #### Good:
+
 ``` dart
 int add(int a, int b);
 int addNumbers(int a, [int b, int c, int d]);
@@ -315,6 +324,7 @@ Widget buildButton({
 ```
 
 #### Bad:
+
 ``` dart
 int add({int a, int b});
 Foo fromJson({@required String json});
@@ -330,6 +340,5 @@ Widget buildButton(
 ### DO add [logging statements][dart-logging]
 
 [effective-dart]: https://www.dartlang.org/guides/language/effective-dart
-[fuchsia-directory-style]: /development/source_code/layer_repository_structure.md#
-[dart-logging]: /development/languages/dart/logging.md
+[dart-logging]: /docs/development/languages/dart/logging.md
 [dartstyle-80-chars]: https://www.dartlang.org/guides/language/effective-dart/style#avoid-lines-longer-than-80-characters

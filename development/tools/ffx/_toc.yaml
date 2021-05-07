@@ -1,0 +1,22 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/tools/ffx/overview.md
+- title: "Using ffx"
+  path: /docs/development/tools/ffx/getting-started.md
+- title: "Developing for ffx"
+  section:
+  - include: /docs/development/tools/ffx/development/_toc.yaml
+- title: "Commands"
+  section:
+  - include: /docs/development/tools/ffx/commands/_toc.yaml
+- title: "Architecture"
+  section:
+  - include: /docs/development/tools/ffx/architecture/_toc.yaml
+

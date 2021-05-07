@@ -1,0 +1,26 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Developer Guide"
+  section:
+  - include: /docs/development/drivers/developer_guide/_toc.yaml
+- title: "Driver Guides"
+  section:
+  - include: /docs/development/drivers/driver_guides/_toc.yaml
+- title: "Testing"
+  section:
+  - include: /docs/development/drivers/testing/_toc.yaml
+- title: "Diagnostics and tools"
+  section:
+  - include: /docs/development/drivers/diagnostics/_toc.yaml
+- title: "Tutorials"
+  section:
+  - include: /docs/development/drivers/tutorials/_toc.yaml
+- title: "Best practices"
+  section:
+  - include: /docs/development/drivers/best_practices/_toc.yaml

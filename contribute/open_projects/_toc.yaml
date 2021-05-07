@@ -1,0 +1,42 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/community/contribute/docs/documentation_navigation_toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Introduction"
+  path: /docs/contribute/open_projects/README.md
+- title: "Project template"
+  path: /docs/contribute/open_projects/template.md
+- title: "Build projects"
+  section:
+  - title: "package() migration"
+    path: /docs/contribute/open_projects/build/package_migration.md
+  - title: "Bringup test modernization"
+    path: /docs/contribute/open_projects/build/bringup_test_modernization.md
+  - title: "zx_* wrappers deprecation"
+    path: /docs/contribute/open_projects/build/zx_wrappers_deprecation.md
+  - title: "Hermetic actions"
+    path: /docs/contribute/open_projects/build/hermetic_actions.md
+- title: "Source control projects"
+  section:
+  - title: "Layer Cake deprecation"
+    path: /docs/contribute/open_projects/srcs/layer_cake_deprecation.md
+- title: "C++ projects"
+  section:
+  - title: "Implicit conversions"
+    path: /docs/contribute/open_projects/cpp/wconversion.md
+  - title: "Undefined behavior issues"
+    path: /docs/contribute/open_projects/cpp/ubsan.md
+  - title: "Low-level C++ typed channel migration"
+    path: /docs/contribute/open_projects/cpp/typed_channels.md
+- title: "Logging"
+  section:
+  - title: "Dismantle the global log severity file"
+    path: /docs/contribute/open_projects/logging/global_severity.md
+- title: "Graduated projects"
+  section:
+  - title: "Overview"
+    path: /docs/contribute/open_projects/graduated/README.md

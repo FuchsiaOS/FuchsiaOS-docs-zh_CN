@@ -1,0 +1,86 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/README.md
+- heading: "Hardware setup"
+- title: "Set up Fuchsia hardware"
+  section:
+  - include: /docs/development/hardware/_toc.yaml
+- heading: "Build and run"
+- title: "Build"
+  section:
+  - include: /docs/development/build/_toc.yaml
+- title: "Run"
+  section:
+  - include: /docs/development/run/_toc.yaml
+- heading: "Write code"
+- title: "Configure editors"
+  section:
+  - include: /docs/development/editors/_toc.yaml
+- title: "ffx"
+  section:
+  - include: /docs/development/tools/ffx/_toc.yaml
+- title: "FIDL"
+  section:
+  - include: /docs/development/languages/fidl/_toc.yaml
+- title: "Modify the kernel"
+  section:
+  - include: /docs/development/kernel/_toc.yaml
+- title: "Drivers"
+  section:
+  - include: /docs/development/drivers/_toc.yaml
+- title: "Develop components"
+  section:
+  - include: /docs/development/components/_toc.yaml
+- title: "Develop sessions"
+  section:
+  - include: /docs/development/sessions/_toc.yaml
+- title: "Develop using the IDK"
+  section:
+  - include: /docs/development/idk/_toc.yaml
+- title: "Languages"
+  section:
+  - include: /docs/development/languages/_toc.yaml
+- title: "Internationalization"
+  section:
+  - include: /docs/development/internationalization/_toc.yaml
+- title: "Settings"
+  section:
+  - include: /docs/development/settings/_toc.yaml
+- heading: "Test and debug"
+- title: "Test"
+  section:
+  - include: /docs/development/testing/_toc.yaml
+- title: "Diagnose"
+  section:
+  - include: /docs/development/diagnostics/_toc.yaml
+- title: "Benchmark"
+  section:
+  - include: /docs/development/benchmarking/_toc.yaml
+- title: "Debug"
+  section:
+  - include: /docs/development/debugging/_toc.yaml
+- title: "Monitoring"
+  section:
+  - include: /docs/development/monitoring/_toc.yaml
+- title: "Trace"
+  section:
+  - include: /docs/development/tracing/_toc.yaml
+- heading: "Publish and deploy"
+- title: "Publish prebuilt packages"
+  section:
+  - include: /docs/development/prebuilt_packages/_toc.yaml
+- heading: "Contribute code"
+- title: "Contribute source code"
+  section:
+  - include: /docs/development/source_code/_toc.yaml
+- heading: "Troubleshooting"
+- title: "Error Codes"
+  section:
+  - include: /docs/development/error_codes/_toc.yaml

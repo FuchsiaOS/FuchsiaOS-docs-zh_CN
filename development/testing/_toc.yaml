@@ -1,0 +1,42 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Run Fuchsia tests"
+  path: /docs/development/testing/run_fuchsia_tests.md
+- title: "Run an end-to-end test"
+  path: /docs/development/testing/run_an_end_to_end_test.md
+- title: "Create a new end-to-end test"
+  path: /docs/development/testing/create_a_new_end_to_end_test.md
+
+# TODO(fxbug.dev/60809)
+# - title: "Test with Diagnostics"
+#   path: /docs/development/testing/diagnostics.md
+
+- title: "Testing Scenic and Escher"
+  path: /docs/development/testing/scenic_testing.md
+- title: "Questions and answers"
+  path: /docs/development/testing/faq.md
+- title: "Zircon testing"
+  section:
+  - title: "Zircon testing overview"
+    path: /docs/development/testing/testing.md
+  - title: "Block device testing"
+    path: /docs/development/testing/block_device_testing.md
+  - title: "NAND testing"
+    path: /docs/development/testing/nand_testing.md
+- title: "Fuzzing"
+  section:
+  - include: /docs/development/testing/fuzzing/_toc.yaml
+- title: "Host-target interaction tests"
+  path: /docs/development/testing/host_target_interaction_tests.md
+- title: "Testing for flakiness in CQ"
+  path: /docs/development/testing/testing_for_flakiness_in_cq.md
+- title: "Stress tests"
+  path: /docs/development/testing/stress_tests.md
+- title: "Rust stress test library"
+  path: /docs/development/testing/rust_stress_test_library.md

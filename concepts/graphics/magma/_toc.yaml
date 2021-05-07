@@ -1,0 +1,20 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/concepts/graphics/magma
+- title: "Design"
+  path: /docs/concepts/graphics/magma/design.md
+- title: "Test strategy"
+  path: /docs/concepts/graphics/magma/test_strategy.md
+- title: "Vulkan"
+  path: /docs/concepts/graphics/magma/vulkan.md
+- title: "Porting"
+  path: /docs/concepts/graphics/magma/porting.md
+- title: "Contributing"
+  path: /docs/concepts/graphics/magma/contributing.md

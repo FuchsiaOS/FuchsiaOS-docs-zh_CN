@@ -1,0 +1,16 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/tracing
+- title: "Tutorial"
+  section:
+  - include: /docs/development/tracing/tutorial/_toc.yaml
+- title: "Advanced"
+  section:
+  - include: /docs/development/tracing/advanced/_toc.yaml

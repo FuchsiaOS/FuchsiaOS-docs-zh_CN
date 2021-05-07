@@ -1,0 +1,14 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/community/contribute/docs/documentation_navigation_toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Building and running a session"
+  path: /docs/development/sessions/building-and-running-a-session.md
+- title: "Writing a Hello World session"
+  path: /docs/development/sessions/writing-a-hello-world-session.md
+- title: "Session roles and responsibilities, by example"
+  path: /docs/development/sessions/roles-and-responsibilities.md

@@ -1,0 +1,20 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer
+toc:
+- title: "Overview"
+  path: /docs/reference/fidl/bindings/overview.md
+- title: "LLCPP bindings"
+  path: /docs/reference/fidl/bindings/llcpp-bindings.md
+- title: "HLCPP bindings"
+  path: /docs/reference/fidl/bindings/hlcpp-bindings.md
+- title: "Dart bindings"
+  path: /docs/reference/fidl/bindings/dart-bindings.md
+- title: "Rust bindings"
+  path: /docs/reference/fidl/bindings/rust-bindings.md
+- title: "Go bindings"
+  path: /docs/reference/fidl/bindings/go-bindings.md

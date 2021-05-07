@@ -1,0 +1,32 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/languages
+- title: "Configure linters and formatter"
+  path: /docs/development/languages/lint_and_format.md
+- title: "Fuchsia endian policy"
+  path: /docs/development/languages/endian.md
+- title: "Support new languages"
+  section:
+  - include: /docs/development/languages/new/_toc.yaml
+- title: "C/C++"
+  section:
+  - include: /docs/development/languages/c-cpp/_toc.yaml
+- title: "Dart"
+  section:
+  - include: /docs/development/languages/dart/_toc.yaml
+- title: "Go"
+  section:
+  - include: /docs/development/languages/go/_toc.yaml
+- title: "Python"
+  section:
+  - include: /docs/development/languages/python/_toc.yaml
+- title: "Rust"
+  section:
+  - include: /docs/development/languages/rust/_toc.yaml

@@ -1,0 +1,32 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "System calls"
+  section:
+  - include: /docs/reference/syscalls/_toc.yaml
+- title: "Kernel objects"
+  section:
+  - include: /docs/reference/kernel_objects/_toc.yaml
+- title: "Tools"
+  section:
+  - include: /docs/reference/tools/_toc.yaml
+- title: "Kernel"
+  section:
+  - include: /docs/reference/kernel/_toc.yaml
+- title: "Tracing"
+  section:
+  - include: /docs/reference/tracing/_toc.yaml
+- title: "FIDL language"
+  section:
+  - include: /docs/reference/fidl/language/_toc.yaml
+- title: "FIDL bindings"
+  section:
+  - include: /docs/reference/fidl/bindings/_toc.yaml
+- title: "Diagnostics"
+  section:
+  - include: /docs/reference/diagnostics/_toc.yaml

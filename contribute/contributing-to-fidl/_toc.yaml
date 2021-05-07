@@ -1,0 +1,16 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/contribute/contributing-to-fidl
+- title: "Cultural tenets"
+  path: /docs/contribute/contributing-to-fidl/cultural_tenets.md
+- title: "FIDL Tests & GN"
+  path: /docs/contribute/contributing-to-fidl/fidl-tests-and-gn.md
+- title: "Project checklists"
+  path: /docs/contribute/contributing-to-fidl/fidl-project-checklist.md

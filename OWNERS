@@ -1,0 +1,26 @@
+# POLICIES FOR DOCS REVIEWS
+# =========================
+#
+# - For smaller, technical-focused changes to keep the documentation in sync with the code,
+#   get a normal technical review and CC a member of the docs team (see below). You do not have
+#   to wait for docs team approval before checking in, but please follow-up with any updates should
+#   they have comments.
+#
+# - For larger changes, significant exposition, introductions, guides, or any changes to the
+#   organization of the documentation, add a docs team member (see below) as a normal reviewer
+#   and wait for their approval before checking in.
+#
+# - When in doubt, involve the docs team more! If you notice any reviews that should have docs team
+#   involvement, please add an appropriate reviewer. Our ability to have a lightweight docs review
+#   process depends on everybody following the rules.
+#
+# DOCS TEAM MEMEBRS
+# =================
+# nickvander@google.com
+# kyol@google.com
+# kadolor@google.com
+# mkearney@google.com
+
+*
+
+# COMPONENT: DeveloperExperience>Fuchsiadev_Docs

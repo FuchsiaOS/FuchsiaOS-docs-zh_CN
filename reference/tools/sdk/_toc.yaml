@@ -1,0 +1,58 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+toc:
+- title: "Overview"
+  path: /docs/reference/tools/sdk/README.md
+- title: "ffx command"
+  path: /docs/reference/tools/sdk/ffx.md
+- title: "Coding commands"
+  section:
+  - title: "cmc"
+    path: /docs/reference/tools/sdk/cmc.md
+  - title: "fidl-format"
+    path: /docs/reference/tools/sdk/fidl-format.md
+  - title: "fidlc"
+    path: /docs/reference/tools/sdk/fidlc.md
+  - title: "fidlcat"
+    path: /docs/reference/tools/sdk/fidlcat.md
+  - title: "fidlgen"
+    path: /docs/reference/tools/sdk/fidlgen.md
+- title: "Debugging commands"
+  section:
+  - title: "symbol-index"
+    path: /docs/reference/tools/sdk/symbol-index.md
+  - title: "symbolize"
+    path: /docs/reference/tools/sdk/symbolize.md
+  - title: "symbolizer"
+    path: /docs/reference/tools/sdk/symbolizer.md
+  - title: "triage"
+    path: /docs/reference/tools/sdk/triage.md
+  - title: "zxdb"
+    path: /docs/reference/tools/sdk/zxdb.md
+- title: "Device management commands"
+  section:
+  - title: "bootserver"
+    path: /docs/reference/tools/sdk/bootserver.md
+  - title: "fconfig"
+    path: /docs/reference/tools/sdk/fconfig.md
+  - title: "fserve"
+    path: /docs/reference/tools/sdk/fserve.md
+  - title: "fssh"
+    path: /docs/reference/tools/sdk/fssh.md
+  - title: "fvdl"
+    path: /docs/reference/tools/sdk/fvdl.md
+  - title: "fvm"
+    path: /docs/reference/tools/sdk/fvm.md
+  - title: "minfs"
+    path: /docs/reference/tools/sdk/minfs.md
+  - title: "zbi"
+    path: /docs/reference/tools/sdk/zbi.md
+- title: "Packaging commands"
+  section:
+  - title: "blobfs-compression"
+    path: /docs/reference/tools/sdk/blobfs-compression.md
+  - title: "fpublish"
+    path: /docs/reference/tools/sdk/fpublish.md
+  - title: "pm"
+    path: /docs/reference/tools/sdk/pm.md

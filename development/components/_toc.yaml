@@ -1,0 +1,28 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Components v1"
+  section:
+  - title: "Enable verbose logging for input events"
+    path: /docs/development/components/v1/verbose_logging.md
+- title: "Components v2"
+  section:
+  - title: "Migrating system components"
+    path: /docs/development/components/v2/migration.md
+  - title: "Troubleshooting components"
+    path: /docs/development/components/v2/troubleshooting.md
+  - title: "Unstable CML features"
+    path: /docs/development/components/v2/unstable_features.md
+- title: "Build components"
+  path: /docs/development/components/build.md
+- title: "Provide data files to components"
+  path: /docs/development/components/data.md
+- title: "Define an index of components that use storage"
+  path: /docs/development/components/component_id_index.md
+- title: "Common capabilities"
+  path: /docs/development/components/common_capabilities.md

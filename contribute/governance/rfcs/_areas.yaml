@@ -1,0 +1,43 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# TODO(pascallouis): Align with docs/contribute/governance/areas/_areas.yaml
+
+- Bringup
+- Camera
+- Cast
+- Chromium
+- Cobalt
+- Component Framework
+- Connectivity
+- Dart
+- Developer
+- Devices
+- Diagnostics
+- Factory
+- FIDL
+- Firmware
+- Flutter
+- Fonts
+- General
+- Governance
+- Graphics
+- HCI
+- HWinfo
+- Identity
+- Internationalization
+- lib
+- Media
+- Modular
+- Power
+- Recovery
+- Security
+- Session
+- Speech
+- Storage
+- System
+- Testing
+- View System
+- Virtualization
+- Zircon

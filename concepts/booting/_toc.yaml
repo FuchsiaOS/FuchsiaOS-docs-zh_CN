@@ -1,0 +1,20 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Bootsvc"
+  path: /docs/concepts/booting/bootsvc.md
+- title: "Everything between power on and your component"
+  path: /docs/concepts/booting/everything_between_power_on_and_your_component.md
+- title: "Process creation"
+  path: /docs/concepts/booting/process_creation.md
+- title: "Program loading"
+  path: /docs/concepts/booting/program_loading.md
+- title: "Userspace bootstrapping"
+  path: /docs/concepts/booting/userboot.md
+- title: "Why Fuchsia devices reboot"
+  path: /docs/concepts/booting/why_fuchsia_devices_reboot.md

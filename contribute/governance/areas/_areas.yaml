@@ -1,0 +1,109 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# TODO(pascallouis): Align with docs/contribute/governance/rfcs/_areas.yaml
+
+- name: 'Bluetooth'
+  api_primary: 'jamuraa@google.com'
+  api_secondary: 'silberst@google.com'
+
+- name: 'Component Framework'
+  api_primary: 'geb@google.com'
+  api_secondary: 'lindkvist@google.com'
+
+- name: 'Developer'
+  api_primary: 'dschuyler@google.com'
+  api_secondary: 'crjohns@google.com'
+
+- name: 'Diagnostics'
+  api_primary: 'crjohns@google.com'
+  api_secondary: ''
+
+- name: 'Drivers'
+  api_primary: 'ravoorir@google.com'
+  api_secondary: 'jocelyndang@google.com'
+
+- name: 'Driver SDK'
+  api_primary: 'jocelyndang@google.com'
+  api_secondary: 'ravoorir@google.com'
+
+- name: 'Experiences'
+  api_primary: 'chaselatta@google.com'
+  api_secondary: 'ianloic@google.com'
+
+- name: 'FIDL'
+  api_primary: 'ianloic@google.com'
+  api_secondary: ''
+
+- name: 'Firmware'
+  api_primary: 'dpursell@google.com'
+  api_secondary: ''
+
+- name: 'Graphics'
+  api_primary: 'jbauman@google.com'
+  api_secondary: ''
+
+- name: 'HCI'
+  api_primary: 'neelsa@google.com'
+  api_secondary: 'jaeheon@google.com'
+
+- name: 'Identity'
+  api_primary: 'jsankey@google.com'
+  api_secondary: ''
+
+- name: 'Kernel'
+  api_primary: 'cpu@google.com'
+  api_secondary: 'abarth@google.com'
+
+- name: 'Ledger'
+  api_primary: 'qsr@google.com'
+  api_secondary: ''
+
+- name: 'Media'
+  api_primary: 'dalesat@google.com'
+  api_secondary: ''
+
+- name: 'Metrics'
+  api_primary: 'camrdale@google.com'
+  api_secondary: ''
+
+- name: 'Netstack'
+  api_primary: 'brunodalbo@google.com'
+  api_secondary: ''
+
+- name: 'Security'
+  api_primary: 'jsankey@google.com'
+  api_secondary: ''
+
+- name: 'Sessions'
+  api_primary: 'lindkvist@google.com'
+  api_secondary: ''
+
+- name: 'Software Delivery'
+  api_primary: 'computerdruid@google.com'
+  api_secondary: ''
+
+- name: 'Storage'
+  api_primary: 'manalib@google.com'
+  api_secondary: ''
+
+- name: 'Toolchain'
+  api_primary: 'mcgrathr@google.com'
+  api_secondary: ''
+
+- name: 'View System'
+  api_primary: 'jaeheon@google.com'
+  api_secondary: 'neelsa@google.com'
+
+- name: 'Virtualization'
+  api_primary: 'abdulla@google.com'
+  api_secondary: ''
+
+- name: 'Web'
+  api_primary: 'wez@google.com'
+  api_secondary: 'ianloic@google.com'
+
+- name: 'WLAN'
+  api_primary: 'silberst@google.com'
+  api_secondary: ''

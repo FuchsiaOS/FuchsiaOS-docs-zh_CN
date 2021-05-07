@@ -1,0 +1,14 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Publish prebuilt packages to CIPD"
+  path: /docs/development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md
+- title: "Publish a CIPD symbols package for ELF binaries"
+  path: /docs/development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md
+- title: "Make your CIPD package visible to Fuchsia developers"
+  path: /docs/development/prebuilt_packages/make_your_cipd_package_visible_to_fuchsia_developers.md

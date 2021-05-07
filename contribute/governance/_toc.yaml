@@ -1,0 +1,32 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/contribute/governance/index.md
+- title: "Governance"
+  path: /docs/contribute/governance/governance.md
+- title: "Eng Council"
+  path: /docs/contribute/governance/eng_council.md
+- title: "API"
+  section:
+  - title: "API Council"
+    path: /docs/contribute/governance/api_council.md
+  - title: "API Design Document template"
+    path: /docs/contribute/governance/api-design-template.md
+- title: "Project policy"
+  section:
+  - include: /docs/contribute/governance/policy/_toc.yaml
+- title: "RFCs"
+  section:
+  - include: /docs/contribute/governance/rfcs/_toc.yaml
+- title: "APIs"
+  section:
+  - include: /docs/contribute/governance/apis/_toc.yaml
+- title: "Areas"
+  section:
+  - include: /docs/contribute/governance/areas/_toc.yaml

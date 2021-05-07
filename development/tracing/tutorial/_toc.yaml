@@ -1,0 +1,20 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Registering a trace provider"
+  path: /docs/development/tracing/tutorial/registering-a-trace-provider.md
+  step_group: tracing_tutorial
+- title: "Adding tracing in your code"
+  path: /docs/development/tracing/tutorial/adding-tracing-in-code.md
+  step_group: tracing_tutorial
+- title: "Recording a Fuchsia trace"
+  path: /docs/development/tracing/tutorial/recording-a-fuchsia-trace.md
+  step_group: tracing_tutorial
+- title: "Converting and visualizing a trace"
+  path: /docs/development/tracing/tutorial/converting-visualizing-a-trace.md
+  step_group: tracing_tutorial

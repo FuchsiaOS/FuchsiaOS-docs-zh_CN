@@ -3,6 +3,7 @@
 
 `unsafe` is a dangerous but sometimes necessary escape hatch in Rust.
 When writing or reviewing `unsafe` code, it's essential that you:
+
 - clearly identify all of the assumptions and invariants required by every
   `unsafe` block;
 - ensure that those assumptions are met;
@@ -12,11 +13,12 @@ In order to ensure that `unsafe` invariants are not broken by future editors,
 each usage of `unsafe` must be accompanied by a clear, concise comment
 explaining what assumptions are being made.
 
-Where possible, package up unsafety into a single function or module which
+Where possible, package up unsafety into a single function or module that
 provides a safe abstraction to the outside world. FFI calls should usually
 be exposed through a safe function whose only purpose is to provide a safe
 wrapper around the function in question. These functions should contain
 a comment with the following information (if applicable):
+
 - Preconditions (e.g. what are the valid states of the arguments?)
 - Failure handling (e.g. what values should be free'd? forgotten? invalidated?)
 - Success handling (e.g. what values are created or consumed?)
@@ -26,7 +28,7 @@ Example:
 ```rust
 impl Channel {
     /// Write a message to a channel. Wraps the
-    /// [zx_channel_write](https://fuchsia.googlesource.com/zircon/+/master/docs/syscalls/channel_write.md)
+    /// [zx_channel_write](//docs/zircon/syscalls/channel_write.md)
     /// syscall.
     pub fn write(&self, bytes: &[u8], handles: &mut Vec<Handle>)
             -> Result<(), Status>

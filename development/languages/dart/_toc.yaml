@@ -1,0 +1,26 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/languages/dart
+- title: "Analysis"
+  path: /docs/development/languages/dart/analysis.md
+- title: "FIDL"
+  path: /docs/development/languages/dart/fidl.md
+- title: "IDEs"
+  path: /docs/development/languages/dart/ides.md
+- title: "Logging"
+  path: /docs/development/languages/dart/logging.md
+- title: "Flutter module development"
+  path: /docs/development/languages/dart/mods.md
+- title: "Dart style guide"
+  path: /docs/development/languages/dart/style.md
+- title: "Testing"
+  path: /docs/development/languages/dart/testing.md
+- title: "Third-party Dart packages"
+  path: /docs/development/languages/dart/third_party.md
