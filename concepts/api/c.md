@@ -52,7 +52,7 @@ with a handful of exceptions for the DDK described below.
 
 ## 目标
 
-### ABI 稳定
+### ABI 稳定性
 
 一些带有稳定 ABI 的 Fuchsia 接口将作为 C 库发布。本文档的一个目标是使 Fuchsia 开发人员易于编写和维护一个稳定的 ABI。因此，我们建议不要使用 C 语言的某些特性，这些特性可能会使接口的 ABI 产生潜在问题或复杂的影响。我们也不允许非标准编译器扩展，因为我们不能假定第三方正在使用任何特定的编译器，下面描述的 DDK 有几个例外。
 
