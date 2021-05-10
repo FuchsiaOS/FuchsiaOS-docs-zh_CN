@@ -160,7 +160,7 @@ own headers there.
 
 ### C++
 
-虽然 C++ 不是 C 的精确超集，但我们仍然设计了可用于 C++ 的 C 库。Fuchsia C 头应该兼容 C++11、C++14 和 C++17 标准。特别是，函数声明必须是 `extern "C"`，如下所述。
+虽然C ++不一定完全是C的父集，但我们仍然设计了可用于 C++ 的 C 库。Fuchsia C 头应该兼容 C++11、C++14 和 C++17 标准。特别是，函数声明必须是 `extern "C"`，如下所述。
 
 C 和 C++ 接口不应该混写在一个头中。相反，创建一个单独的 `CPP` 子目录，并在它们自己的头中写 C++ 接口。
 
@@ -312,9 +312,9 @@ There are several types of compile time constants.
 
 编译时常量有几种类型。
 
-- 单整数常量
-- 枚举整数常量
-- 浮点常量
+- 单整型常量
+- 枚举整型常量
+- 浮点整型常量
 
 <!--
 #### Single integer constants
