@@ -123,8 +123,8 @@ The thread locals should use the `thread_local` spelling from
 prefer `alignas` and `alignof` from `<stdalign.h>`, rather than
 `_Alignas` and `_Alignof`.
 
-Note that compilers support flags which may alter the ABI of the
-code. For instance, GCC has a `-m96bit-long-double` flag which alters
+Note that compilers support flags that may alter the ABI of the
+code. For instance, GCC has a `-m96bit-long-double` flag that alters
 the size of a long double. We assume that such flags are not used.
 -->
 
@@ -134,7 +134,7 @@ the size of a long double. We assume that such flags are not used.
 
 <!--
 Finally, some libraries (such as Fuchsia's C standard library) in our
-SDK are a mix of externally defined interfaces and Fuchsia specific
+IDK are a mix of externally defined interfaces and Fuchsia specific
 extensions. In these cases, we allow some pragmatism. For instance,
 libc defines functions like `thrd_get_zx_handle` and
 `dlopen_vmo`. These names are not strictly in accordance with the
@@ -143,7 +143,7 @@ make the names fit less well next to other functions like
 `thrd_current` and `dlopen`, and so we allow the exceptions.
 -->
 
-最后，我们 SDK 中的一些库（比如 Fuchsia 的 C 标准库）混合了外部定义接口和 Fuchsia 的特定扩展。在这些情况下，我们允许一些例外发生。例如，libc 定义了诸如 `thrd_get_zx_handle` 和 `dlopen_vmo` 之类的函数。这些名字不是严格按照下面的规则命名的：没有使用库的名称做前缀。这样做会使名称与其他诸如 `thrd_current` 和 `dlopen` 之类的函数不太匹配，但我们允许这种例外发生。
+最后，我们  中的一些库（比如 Fuchsia 的 C 标准库）混合了外部定义接口和 Fuchsia 的特定扩展。在这些情况下，我们允许一些例外发生。例如，libc 定义了诸如 `thrd_get_zx_handle` 和 `dlopen_vmo` 之类的函数。这些名字不是严格按照下面的规则命名的：没有使用库的名称做前缀。这样做会使名称与其他诸如 `thrd_current` 和 `dlopen` 之类的函数不太匹配，但我们允许这种例外发生。
 
 <!--
 ### C++
@@ -237,6 +237,7 @@ Use #ifndef guards in headers. These look like:
 ```
 
 The exact form of the define is as follows:
+
 - Take the canonical include path to the header
 - Replace all ., /, and - with _
 - Convert all letters to UPPERCASE
@@ -401,13 +402,15 @@ typedef uint32_t tag_name_t;
 
 不要包含太多值，因为随着常数集的增长会很难维护。
 
-<!--#### Floating point constants
+<!--
+#### Floating point constants
 
 Floating point constants are similar to single integer constants,
 except that a different mechanism is used to describe the type. Float
 constants must end in `f` or `F`; double constants have no suffix;
 long double constants must end in `l` or `L`. Hexadecimal versions of
-floating point constants are allowed.-->
+floating point constants are allowed.
+-->
 
 #### 浮点常量
 
@@ -626,10 +629,12 @@ Typedefs for function types are permitted.
 
 允许使用函数类型的 typedef。
 
-<!--Functions should not overload return values with a `zx_status_t` on
+<!--
+Functions should not overload return values with a `zx_status_t` on
 failure and a positive success value. Functions should not overload
 return values with a `zx_status_t` that contains additional values not
-described in [zircon/errors.h].-->
+described in [zircon/errors.h].
+-->
 
 函数不应重载失败时的 `zx_status_t` 返回值和成功时的正值返回值。函数不应重载具有 `zx_status_t` 的返回值，该 `zx_status_t` 包含 [zircon/errors.h] 中未描述的附加值。
 
@@ -694,8 +699,8 @@ global) should be avoided in new code.
 ## Linkage
 
 The default symbol visibility in a library should be hidden. Use
-either a whitelist of exported symbols, or explicit visibility
-annotations, on symbols to exported.
+either an allowlist of exported symbols, or explicit visibility
+annotations on symbols to exported.
 
 C libraries must not export C++ symbols.
 -->
@@ -766,7 +771,7 @@ have a lot of nonintuitive sharp edges.
 C 的位字段是被禁止的。从 ABI 的角度来看，它们是不可靠的，而且有很多 nonintuitive sharp edges。
 
 <!--
-Note that this applies to the C language feature, not to an API which
+Note that this applies to the C language feature, not to an API that
 exposes bit flags. The C bitfield feature looks like:
 -->
 
@@ -804,7 +809,7 @@ C 函数允许 `with_empty_parameter_lists()`，这与 `functions_that_take(void
 <!--
 ### Flexible Array Members
 
-This is the C99 feature which allows declaring an incomplete array as
+This is the C99 feature that allows declaring an incomplete array as
 the last member of a struct with more than one parameter. For example:
 -->
 
@@ -837,7 +842,7 @@ similarly disallowed.
 <!--
 ### Module Maps
 
-These are a Clang extension to C-like languages which attempt to solve
+These are part of a Clang extension to C-like languages that attempt to solve
 many of the issues with header-driven compilation. While the Fuchsia
 toolchain team is very likely to invest in these in the future, we
 currently do not support them.
