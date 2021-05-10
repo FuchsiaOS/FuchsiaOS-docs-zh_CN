@@ -282,7 +282,7 @@ Some libraries may also depend on a subset of POSIX headers. Exactly
 which are appropriate is pending a forthcoming libc API review.
 -->
 
-### 包含物
+### 包含
 
 头应该包括它们使用的内容。特别是，库中的任何公共头都应该安全地优先包含在源文件中。
 
