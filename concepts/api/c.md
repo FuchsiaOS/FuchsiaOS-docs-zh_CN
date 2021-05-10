@@ -314,7 +314,7 @@ There are several types of compile time constants.
 
 - 单整型常量
 - 枚举整型常量
-- 浮点整型常量
+- 浮点型常量
 
 <!--
 #### Single integer constants
