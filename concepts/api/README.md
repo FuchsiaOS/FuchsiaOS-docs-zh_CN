@@ -6,7 +6,7 @@ APIs for Fuchsia.
 -->
 # API 开发
 
-本文档是与为Fuchsia API相关的文档的顶层入口。
+本文档是与为 Fuchsia API 相关的文档的顶层入口。
 <!--
 ## What this covers
 
@@ -18,7 +18,7 @@ these guidelines.
 -->
 ## 这包含了什么
 
-虽然此目录中的文档适用于所有Fuchsia API, 它将强制用于Fuchsia的面向公众的层面: 通过IDK发布面向开发者的Fuchsia api.  公众面对的API变化将由[API委员会][api-council] 审查，以保持这些准则的一致性.
+虽然此目录中的文档适用于所有 Fuchsia API, 它将强制用于 Fuchsia 的面向公众的层面: 通过IDK发布面向开发者的 Fuchsia api.  公众面对的 API 变化将由[API 委员会][api-council] 审查，以保持这些准则的一致性.
 <!--
 ## Rubrics
 
@@ -28,7 +28,7 @@ below is not complete: as Fuchsia evolves, more rubrics will be added.
 -->
 ## 标准
 
-这个目录中的文档以标题的形式出现，它们是用于设计和构建api的协议。请注意，下面的列表并不完整:随着Fuchsia的发展，将添加更多的标准
+这个目录中的文档以标题的形式出现，它们是用于设计和构建 api 的协议。请注意，下面的列表并不完整:随着 Fuchsia 的发展，将添加更多的标准
 <!--
 
  * [API Documentation](documentation.md)
