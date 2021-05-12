@@ -677,24 +677,16 @@ means don't use a config file; instead do
 `--no-config` means don't load a config file.
 -->
 
-#### Keyed Options
+#### 键控选项
 
-Keyed options consist of a key and a value. Keys are similar in syntax to
-switches except that a keyed option expects a value for the key.
-E.g. `-o <my_output_file>` has a key '`-o`' and a value of '`my_output_file`'.
+键控选项由一个键和一个值组成。 键在语法上与开关相似，不同之处在于键控选项需要键的值。
+例如。 `-o <my_output_file>` 具有键 '`-o`' 和 '`my_output_file`'值。
 
-Do not use an equals punctuation (or similar) to separate the key and value.
-E.g. do not do `-o=<my_output_file>`.
+请勿使用等号标点（或类似标点）来分隔键和值。
+例如。 不要执行 `-o=<my_output_file>`。
 
-Note about a rare case: Avoid making optional keys (where the value appears
-without its key) or optional values (where the key appears without its
-value). It's clearer to consider the key/value pair optional, but inseparable.
-I.e. if the key is present a value is required and vice versa. Consider making
-an argument instead of a keyed option with an optional key. E.g. rather than
-"`do-something [--config [<config_file>]]`" where not passing `[<config_file>]`
-means don't use a config file; instead do
-"`do-something [--config <config_file>|--no-config]`" where passing
-`--no-config` means don't load a config file.
+请注意以下几种罕见情况：避免使用可选键（其中的值显示时没有键）或可选值（键中的显示时没有值）。 将键/值对视为可选但不可分割的更清楚些。
+也就是说，如果键出现，则需要一个值，反之亦然。考虑使用一个参数代替一个带可选键的键控选项。 例如，与其使用"`do-something [--config [<config_file>]]`" 倒不如使用 `[<config_file>]` 来表示不要使用配置文件; 传递 "`do-something [--config <config_file>|--no-config]`" 则表示在不加载配置文件的地方使用 `--no-config` 。
 
 ##### Mutually Exclusive Options
 
