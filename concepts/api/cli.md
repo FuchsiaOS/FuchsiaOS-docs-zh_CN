@@ -920,8 +920,9 @@ info, warning, error, fatal.
 
 日志不同于正常的输出。日志的受众通常是工具开发人员或试图调试问题的高级用户。在特殊情况下，日志记录可以转到标准输出，例如当请求 `--verbose` 输出时。
 
-来自多个线程的日志记录不会在同一行，也就是说，输出的最小单位是一整行。每一行都将加上表示该行严重程度的前缀。严重性将是以下各项之一： detail,info, warning, error, fatal（细节，信息，警告，错误，致命）。
+来自多个线程的日志记录不会在同一行，也就是说，输出的最小单位是一整行。每一行都将加上表示该行严重程度的前缀。严重性将是以下各项之一： detail(细节),info(信息), warning(警告), error(错误), fatal（致命）。
 
+<!--
 ## Metrics
 
 Every tool must file a Privacy Design Document (PDD) in order to collect usage
@@ -947,12 +948,34 @@ The type and content of the metrics collected must be carefully chosen. We will
 go through the Google-standard PDD review process to ensure we are compliant
 with Google's practices and policies. Tools must get approval on which metrics
 are collected before collection.
+-->
 
+## 指标
+
+每个工具都必须提交一份隐私设计文档（PDD），以收集使用情况指标。
+
+指标对于推动质量和业务决策很重要。我们想用指标来回答的问题包括：
+
+- 我们的用户正在使用哪个操作系统？-因此，我们知道如何为各种平台确定工作的优先级
+- 他们使用哪些工具？-因此，我们知道如何确定投入的优先次序，并了解当前正在使用的工作流程，以便我们可以确定投入的优先次序或确定薄弱环节
+- 他们多久使用一次工具？-因此，我们知道如何确定投入的优先次序，并了解当前正在使用的工作流程，以便我们可以确定投入的优先次序或确定薄弱环节
+- 我们的工具会崩溃吗？多久会发生？-因此，我们知道如何优先考虑的工具维护
+- 他们如何使用工具？-假设某个工具可以完成一项或多项任务，我们将学习如何在该工具的特定工作流程中确定投入的优先级
+
+必须仔细选择收集的指标的类型和内容。我们将按照Google标准的PDD审核流程进行操作，以确保我们符合Google的惯例和政策。工具必须在收集之前就收集哪些度量标准获得批准。
+
+<!--
 ## Configuration and Environment
 
 Tools often need to know something about the context they are running. Let's
 look at how that context should be gathered or stored.
+-->
 
+## 配置与环境
+
+工具通常需要了解一些有关他们正在运行的环境。 让我们看看这方面应该如何收集或储存。
+
+<!--
 #### Reading Information
 
 Tools should not attempt to gather or intuit settings or other state directly
@@ -970,7 +993,17 @@ settings.
 
 Tools will be unbiased towards any build system or environment as well.
 Accessing a common file such as build input dependency file is okay.
+-->
 
+#### 读取信息
+
+工具不应尝试直接从环境中收集或了解设置或其他状态。诸如附加目标的IP地址，构建产品的输出目录或用于写入临时文件的目录之类的信息将从平台无关的源中收集。分离执行平台特定工作的代码将使工具在不同平台之间保持可移植性。
+
+在可行的情况下，配置信息应以主机用户熟悉的方式存储（例如，在Windows上，使用注册表）。工具应从SDK文件或特定于平台的工具收集信息，这些工具应封装了从Windows注册表，Linux环境或Mac设置读取的工作方式。
+
+工具也不会偏向任何构建系统或环境。可以访问诸如构建输入依赖项文件之类的通用文件。
+
+<!--
 #### Writing Information
 
 Tools will not modify configuration or environment settings, except when the
@@ -979,22 +1012,43 @@ environment.
 
 If modifying the environment outside of the tool's normal scope may help the
 user, the tool may do so with the express permission of the user.
+-->
 
+#### 写入信息
 
+工具不会修改配置或环境设置，除非该工具明确用于修改环境的预期部分。
+
+如果在工具的正常范围之外修改环境可能对用户有所帮助，则该工具可以在用户的​​明确许可下这样做。
+
+<!--
 ## Execution Success and Failure
 
 Command line tools return an integer value in the range [0..127] when they exit.
 A zero represents success (no error) and 1-127 are various forms of error. The
 value 1 is used as a general error. Any values other than 0 and 1 that may be
 returned must be documented for the user.
+-->
 
+## 执行成功与失败
+
+命令行工具退出时会返回 [0..127] 范围内的整数值。零表示成功（无错误），而1-127是各种形式的错误。值1用作一般错误。必须为用户记录除0和1以外的任何其他值。
+
+<!--
 ### Succeed with Grace
 
 If there were no errors encountered, return a result code of zero.
 
 Avoid producing unnecessary output on success. Don't print "succeeded" (unless
 the user is asking for verbose output).
+-->
 
+### 静默成功
+
+如果没有遇到错误，则返回结果代码零。
+
+避免在成功时产生不必要的输出。不要输出 "succeeded" （除非用户要求详细输出）。
+
+<!--
 ### If Something is Unclear, Stop
 
 If the tool encounters an ambiguous situation or is in danger of corrupting
@@ -1002,13 +1056,25 @@ data, do not continue. E.g. if the path to the directory you're being asked to
 delete comes back as just "`/`", there was likely an error trying to get that
 configuration information, avoid 'soldiering on' and removing everything under
 "`/`".
+-->
 
+### 如果有任何不明白，请停止
+
+如果工具遇到模棱两可的情况或有损坏数据的危险，请不要继续。例如，如果要求您删除的目录路径返回为 "`/`"，则尝试获取该配置信息时可能出错，避免 'soldiering on(继续)' 继续使用并删除 "`/`"下的所有内容。
+
+<!--
 ### Do Not Fail Silently
 
 Tools must clearly indicate failure by returning a non-zero error code. If
 appropriate (if it makes sense for the tool or if the user explicitly asked for
 verbose output) print an error message explaining what went wrong.
+-->
 
+### 请勿静默失败
+
+工具必须通过返回非零错误代码来明确指示故障。如果合适（如果对工具有意义，或者用户明确要求详细输出），则打印一条错误消息，说明出了什么问题。
+
+<!--
 ### Provide Direction on Failure
 
 When a tool execution fails, be clear about whether the error came from bad
@@ -1029,7 +1095,19 @@ If the error came from bad inputs
    documentation regarding the specific error. If the tool has the capacity to
    provide more details, describe that (like how `gn` can explain how to run the
    tool to get more help).
+-->
 
+### 提供失败指导
+
+当工具执行失败时，请弄清错误是由于错误的输入，缺少的依赖关系还是工具内部的错误引起的。使错误报告易于理解并且可以执行。
+
+如果错误来自错误的输入
+
+1. 如果用户向工具提供了错误的数据，请给出有关错误的上下文，并指导用户修复输入，例如，通过在发生输入错误的位置打印输入文件（如果适合输入，则输出错误目标行号地址）。
+   - 首选遵循此格式（易于使用正则表达式）输出： file_name:line:column:description。这是许多工具使用的通用格式。其他格式也是可以接受的，但是请尝试使用易于人们和工具解析的内容。
+2. 提供更多信息的参考。如果有可用的文档，请提供指向该工具常规文档或特定错误的文档的链接。如果该工具拥有提供更多详细信息的能力，请对此进行描述（例如，`gn` 可以解释如何运行该工具以获得更多帮助）。
+
+<!--
 If the error came from missing dependencies
 
 1. Be clear that the error is from missing dependencies. Don't leave the
@@ -1037,7 +1115,14 @@ If the error came from missing dependencies
 2. Provide instruction on how to satisfy the dependencies. This can be an
    example command to run (`apt-get install foo`) or a link to further
    instructions (`see: http:example.com/how-to-install-foo`).
+-->
 
+如果错误来自缺少依赖项
+
+1. 请确认错误是由于缺少依赖项引起的。如果这不是问题，请不要让用户尝试调试其输入数据。
+2. 提供有关如何满足依赖关系的说明。这可以是如何运行的示例命令，如 (`apt-get install foo`) ，也可以是其他说明的链接，如 (`see: http:example.com/how-to-install-foo`)。
+
+<!--
 If the error came from an unexpected state (i.e. a bug) in the tool
 
 1. Apologize. Explain that the tool got into an unexpected state. Don't leave
@@ -1048,26 +1133,51 @@ If the error came from an unexpected state (i.e. a bug) in the tool
 3. Invite the user to enter a bug report and make that as easy as possible.
    Provide a link that goes to the bug database with the tool and platform
    information prepopulated.
+-->
 
+如果错误来自工具中的意外状态（即错误）
 
+1. 表达歉意并说明该工具进入了意外状态。不要让用户试图猜测他们的输入数据是错误的还是缺少依赖项。
+2. 建议一个邮件列表或论坛以获取帮助。帮助用户找出错误是否已在下一工具版本中修复；或有人找到了解决方法。
+3. 请求用户输入尽可能简单的错误报告，提供一个链接到错误数据库的链接，其中包含预先填充的工具和平台信息。
+
+<!--
 ## Include Tests
 
 Tools must include tests that guarantee its correct behavior. Include both unit
 tests and integration tests with each tool. Tests will run in Fuchsia continuous
 integration.
+-->
 
+## 包含测试
+
+工具必须包含保证其正确行为的测试。每个工具都包括单元测试和集成测试。测试将在Fuchsia持续集成中运行。
+
+<!--
 > **IDK**
 >
 > It's especially important that IDK tools imported from the Fuchsia build (pm,
 > etc.) have tests that run in Fuchsia continuous integration because the IDK
 > bot does not currently prevent breaking changes.
+-->
 
+> **IDK**
+>
+> 特别重要的是，从Fuchsia构建(pm等)导入的IDK工具拥有在Fuchsia持续集成中运行的测试，因为IDK bot目前不能阻止更改。
+
+<!--
 > **ffx**
 > The `ffx` platform provides a framework for introducing tests that are
 > run automatically in Fuchsia continuous integration. Contributors can
 > see examples of plugin tests and end-to-end self-tests in the `ffx`
 > [source](/src/developer/ffx).
+-->
 
+> **ffx**
+>
+>  `ffx` 平台提供了一个框架，用于引入在紫红色连续集成中自动运行的测试。开发者可以在 `ffx` [源代码](/src/developer/ffx)中看到插件测试和端到端自测的示例。
+
+<!--
 ## Documentation
 
 The Markdown documentation is the right place to put more verbose usage examples
@@ -1077,7 +1187,17 @@ and explanations.
 >
 > All tools included in the IDK and intended to be executed directly by an end
 > user must have a corresponding Markdown documentation file.
+-->
 
+## 文献资料
+
+Markdown文档是放置更详细的使用示例和解释的合适地方。
+
+> **IDK**
+>
+> IDK中包含的所有旨在由最终用户直接执行的工具都必须具有相应的Markdown文档文件。
+
+<!--
 ## User vs. Programmatic Interaction
 
 A tool may be run interactively by a human user or programmatically via a script
@@ -1087,7 +1207,15 @@ While each tool will default to interactive or non-interactive mode if they can
 glean which is sensible, they must also accept explicit instruction to run in a
 given mode (e.g. allow the user to execute the programmatic interface even if
 they are running in an interactive shell).
+-->
 
+## 用户与程序交互
+
+工具可以和用户交互式运行，也可以通过脚本（或其他工具）以编程方式运行。
+
+如果明智的话每个工具都可以收集将工具默认设置为交互或非交互模式，但它们还是必须接受在给定模式下运行显式指令（即使用户以交互方式运行，也应允许用户执行命令界面）。
+
+<!--
 ### Stdin
 
 For tools that are not normally interactive, avoid requesting user input
@@ -1095,7 +1223,15 @@ e.g. readline or linenoise). Don't suddenly put up an unexpected prompt to
 ask the user a question.
 
 For interactive tools (e.g. `zxdb`) prompting the user for input is expected.
+-->
 
+### 标准输入
+
+对于通常不是交互式的工具，请避免请求用户输入，例如，readline（逐行读取）或linenoise（逐行/多行读取）。也不要突然出现提示来询问用户问题。
+
+对于交互式工具（例如 `zxdb`），通过提示来请求用户输入。
+
+<!--
 ### Stdout
 
 When sending output to the user on stdout use proper spelling, grammar, and
@@ -1104,7 +1240,14 @@ an entry in the [glossary.md](/docs/glossary.md).
 
 Try to check for output to terminal, i.e. see if a user is there or whether the
 receiver is a program.
+-->
 
+### 标准输出
+在标准输出上将输出发送给用户时，请使用正确的拼写，语法，并避免使用不常见的缩写。如果使用了不寻常的缩写，请确保在[术语表.md](/docs/glossary.md)中有一个条目 
+
+尝试检查输出到终端，即查看是否有用户或接收方是一个程序。
+
+<!--
 #### ANSI Color
 
 Use of color is allowed with the following caveats
@@ -1117,7 +1260,18 @@ Use of color is allowed with the following caveats
   not be able to see a full range of color (e.g. color-blindness).
 - Never rely on color to convey information. Only use color as an enhancement.
   Seeing the color must not be needed for correct interpretation of the output.
+-->
 
+#### ANSI颜色
+
+下列注意事项允许使用颜色
+
+- 鼓励基于终端信息（即是否支持颜色）启用/禁用颜色输出，但这并不总是可行的（因为这不是必需的）
+  - 始终允许用户覆盖颜色使用（可以将其禁用）
+- 使用颜色时，请确保使用可能无法看到全部颜色的用户（例如色盲）可以分辨的颜色。
+- 切勿依靠颜色来传达信息。仅将颜色用作增强。正确显示输出内容时，不必一定需要看到颜色。
+
+<!--
 ### Stderr
 
 Use stderr for reporting invalid operation (diagnostic output) i.e. when the
@@ -1125,12 +1279,26 @@ tool is misbehaving. If the tool's purpose is to report issues (like a linter,
 where the tool is not failing) output those results to stdout instead of stderr.
 
 See Success and Failure for more information on reporting errors.
+-->
 
+### 标准错误
+
+使用标准错误报告无效操作（诊断输出），即工具行为异常时。如果该工具的目的是报告问题（例如linter(检查代码风格/错误的小工具)，工具没有失败的地方），则将这些结果输出到标准输出而不是标准错误。
+
+有关报告错误的更多信息，请参见成功与失败。
+
+<!--
 ### Full-Screen
 
 Avoid creating full-screen terminal applications. Use a GUI application for such
 a tool.
+-->
 
+### 全屏
+
+避免创建全屏应用终端且将GUI应用程序用于此类工具。
+
+<!--
 ### Non-interactive (Programmatic)
 
 Include a programmatic interface where reasonable to allow for automation.
@@ -1138,18 +1306,38 @@ Include a programmatic interface where reasonable to allow for automation.
 If there is an existing protocol for that domain, try to follow suit (or have a
 good reason not to). Otherwise consider using manifest or JSON files for
 machine input.
+-->
+ 
+### 非互动式（程序化）
 
+在合理的范围内包括一个编程接口，以实现自动化。
+
+如果该域已有协议，请尝试遵循（或有充分理由不这样做）。否则，请考虑将清单文件或JSON文件用于机器输入。
+
+<!--
 ### IDE (Semi-Programmatic)
 
 Allow for tools to be used by an Integrated Development Environment. This
 generally involves accepting a manifest for input and generating a manifest.
+-->
 
+### IDE（半编程）
+
+允许集成开发环境使用工具。通常，这涉及接受清单以进行输入并生成清单。
+
+<!--
 ### Interactive (User)
 
 Interacting with the user while the tool is running is an uncommon case for many
 tools. Some tools may run interactively as an option, e.g. `rm -i` will prompt
 the user before each removal.
+-->
 
+### 互动式（用户）
+
+在工具运行时与用户进行交互对于许多工具而言并不常见。一些工具可以作为选项交互地运行，例如 `rm -i` 将在每次删除之前提示用户。
+
+<!--
 ## State Files
 
 State files encode information for data sharing between tools. PID file and lock
@@ -1159,3 +1347,12 @@ Avoid using a PID file to contain the process ID of a running executable.
 
 Avoid using a lock file to manage mutual exclusion of resource access (i.e. a
 mutex).
+-->
+
+## 状态文件
+
+状态文件对信息进行编码，以便在工具之间共享数据。PID文件和锁定文件是状态文件的示例。
+
+避免使用PID文件包含正在运行的可执行文件的进程ID。
+
+避免使用锁定文件来管理资源访问的互斥（即互斥）。
