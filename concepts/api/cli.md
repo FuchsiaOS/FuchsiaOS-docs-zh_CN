@@ -766,29 +766,35 @@ interprets the last argument as the destination; if `cp` accepted multiple
 source and destination arguments the parsing would become ambiguous or unclear.
 -->
 
-##### Repeating Options
+##### 重复选项
 
-Repeating switches may be used to apply more emphasis (what more emphasis means
-is up to the tool, the description here is intentionally vague). A common
-example is increasing verbosity by passing more `-v` switches.
+重复开关可用于施加更多的强调（更多的强调手段取决于工具，此处的描述是含糊的）。 一个常见的例子是通过传递更多的 `-v` 开关来增加详细程度。
 
-Repeating keyed options may be used to pass multiple values to the same command.
-Often this is done to avoid calling the same command multiple times. Common
-commands that accept repeating options are `cp`, `rm`, `cat`. Care must be taken
-to ensure that repeating commands are unambiguous and clear. E.g. `cp` always
-interprets the last argument as the destination; if `cp` accepted multiple
-source and destination arguments the parsing would become ambiguous or unclear.
+重复键控选项可用于将多个值传递给同一命令。 通常这样做是为了避免多次调用同一个命令。 接受重复选项的常见命令是 `cp`, `rm`, `cat`。 必须注意确保重复的命令是明确且清晰的。 例如, `cp` 总是把最后一个参数解释为目的地。 如果 `cp` 接受多个源和目标参数，则解析将变得模棱两可。
 
+<!--
 #### Standard Input Alias
 
 In Fuchsia tools a single dash (`-`) is not interpreted as an alias to stdin. Use
 pipes to direct data into stdin or use `/dev/stdin` as an alias for stdin.
 (Note: `/dev/stdin` is not available on Fuchsia or Windows).
+-->
 
+#### 标准输入别名
+
+在Fuchsia工具中，一个破折号 (`-`) 不会被解释为标准输入的别名。使用管道将数据引导到标准输入中，或者使用 `/dev/stdin` 作为stdin的别名。(注意:: `/dev/stdin` 在Fuchsia或Windows上不可用)。
+
+<!--
 #### Single Dash
 
 A single dash ('-') on its own is reserved for future use.
+-->
 
+#### 单一的破折号
+
+单破折号 ('-') 单独保留以备将来使用。
+
+<!--
 #### Subcommands
 
 Tools may contain sub-command that accept independent command line arguments.
@@ -804,10 +810,30 @@ Arguments between the tool name and the subcommand are handled by the tool and
 arguments that follow the subcommand are handled by the subcommand. E.g. in
 `fx -a build -b` the `-a` is an argument for the `fx` tool, while the `-b`
 argument is handled by the `build` subcommand.
+-->
 
+#### 子命令
+
+工具可能包含接受独立命令行参数的子命令。(类似于 `git` 工具)。子命令不以任何破折号开头。例如，在`fx build` 中e `build` 参数是一个子命令。
+
+当工具包含许多子命令时，它还应该具有一个help子命令，该命令显示有关其他子命令的帮助。 例如。 "`fx help build`" 将提供有关build子命令的帮助。
+
+子命令可能具有其自己的参数，而主工具未处理这些参数。 工具和子命令之间的参数由工具处理，子命令后的参数由子命令处理。 例如。 在`fx -a build -b` 中 `-a` 是 `fx` 工具的参数，而 `-b` 参数由 `build` 子命令处理。
+
+<!--
 ### Common Features
 
 Command line tools are expected to support some common switches:
+
+- `--help`
+- `--quiet`
+- `--verbose`
+- `--version`
+-->
+
+### 共性
+
+命令行工具应该支持一些常见的开关：
 
 - `--help`
 - `--quiet`
