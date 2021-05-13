@@ -688,6 +688,7 @@ means don't use a config file; instead do
 请注意以下几种罕见情况：避免使用可选键（其中的值显示时没有键）或可选值（键中的显示时没有值）。 将键/值对视为可选但不可分割的更清楚些。
 也就是说，如果键出现，则需要一个值，反之亦然。考虑使用一个参数代替一个带可选键的键控选项。 例如，与其使用"`do-something [--config [<config_file>]]`" 倒不如使用 `[<config_file>]` 来表示不要使用配置文件; 传递 "`do-something [--config <config_file>|--no-config]`" 则表示在不加载配置文件的地方使用 `--no-config` 。
 
+<!--
 ##### Mutually Exclusive Options
 
 Some options don't make sense with other options. We call the options mutually
@@ -707,7 +708,20 @@ the tool will do one of the following:
   be documented in the Description, Options, ***and*** Notes; though
   "`See Notes`" may be used in Description and Options with the full write-up in
   `Notes`.
+-->
 
+##### 互斥选项
+
+有些选项与其他选项相比没有意义。我们称这些选项是互斥的。
+
+传递互斥选项被认为是用户操作失误。 发生这种情况时，该工具将执行以下操作之一：
+
+- 编写一条错误消息以说明问题，并以非零结果代码退出； 不执行任何操作（即没有数据因为调用而改变）。
+  这是预期的处理，因此不需要进一步的文档或说明。
+- 将一个选项优先于另一个选项。如， "`passing -z will override -y`"。在这种情况下，处理将记录在 `--help` 输出中。
+- 尽管不建议这样做，但也可以进行其他处理（第一个优先或最后一个优先）。 在这种情况下，处理内容将记录在说明中，选项，***和*** 注释； 尽管 "`See Notes`" 可以在描述和选项中使用，但应该在`Notes`中有完整记录。
+
+<!--
 ##### Grouping Options
 
 There is no specific syntax to indicate when enabling one option will also
@@ -716,7 +730,13 @@ disabled, specify that in the Options. E.g. "`passing -e implies -f`" means that
 if `-e` is enabled, `-f` will be enabled as if it were passed on the command
 line (regardless of whether `-f` was explicitly passed). The redundant passing
 of the implied value is harmless (not an error).
+-->
 
+##### 分组选项
+
+没有特定的语法指示何时启用一个选项也会影响另一选项。 当某个选项表示另一个选项已启用或禁用时，请在“选项”中指定该选项。如 "`passing -e implies -f`" 意味着如果 `-e` 被启用 `-f` 将被启用，就像它是在命令行上传递的一样(无论 `-f` 是否被显式传递)。隐式值的冗余传递是无害的（并不是错误）。
+
+<!--
 ##### Option Delimiter
 
 Two dashes ('`--`') on their own indicates the end of argument options. All
@@ -725,6 +745,26 @@ subsequent values are given to the tool as-is. For example, with
 a file name rather than a switch. Further, "`foo -a -- -a`" enables the switch
 `-a` (the first `-a`, before the `--`) and passes the literal text `-a` (the
 second `-a`).
+-->
+
+##### 选项分隔符
+
+两个破折号（'`--`'）表示参数选项的结束。所有后续值均按原样返回给工具。例如，使用"`Usage: foo [-a] <file>`"，命令 "`foo -- -a`" 可以将 `-a` 解释为文件名而不是开关。此外， "`foo -a -- -a`" 启用开关`-a` (第一个`-a` ，在 `--`之前)，并传递文本 `-a`(第二个 `-a`)。
+
+<!--
+##### Repeating Options
+
+Repeating switches may be used to apply more emphasis (what more emphasis means
+is up to the tool, the description here is intentionally vague). A common
+example is increasing verbosity by passing more `-v` switches.
+
+Repeating keyed options may be used to pass multiple values to the same command.
+Often this is done to avoid calling the same command multiple times. Common
+commands that accept repeating options are `cp`, `rm`, `cat`. Care must be taken
+to ensure that repeating commands are unambiguous and clear. E.g. `cp` always
+interprets the last argument as the destination; if `cp` accepted multiple
+source and destination arguments the parsing would become ambiguous or unclear.
+-->
 
 ##### Repeating Options
 
