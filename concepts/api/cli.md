@@ -840,6 +840,7 @@ Command line tools are expected to support some common switches:
 - `--verbose`
 - `--version`
 
+<!--
 #### Interactive Help (--help)
 
 A tool must accept a `--help` switch and provide usage information to the
@@ -858,7 +859,21 @@ in reading interactive help. For the novice, provide a note referring them to
 the Markdown documentation.
 
 Provide an option to generate machine parsable output.
+-->
 
+#### 交互式帮助(--help)
+
+在这种情况下，工具必须接受一个 `--help` 开关，并向命令行提供使用描述。[CLI工具帮助要求](/docs/concepts/api/cli_help.md).中描述了帮助文本的布局和语法
+
+显示帮助时，该工具不得执行其他工作（即，具有别的作用）。
+
+使用可以解析参数的库，并提供来自同一源的帮助信息。这样做可以保持两者同步。例如，避免将命令行帮助作为一段独立的文本。
+
+保持交互式帮助的合理简洁。 对于一个熟练的人员，即正在寻找有关如何使用该工具的提醒的人或经验丰富的阅读交互式帮助的开发人员。 对于新手，请提供一份注释，将他们引向Markdown文档。
+
+提供一个选项来生成机器可分析的输出。
+
+<!--
 #### Verbosity (--quiet and --verbose)
 
 The `--quiet` and `--verbose` switches decrease or increase informational output
@@ -866,7 +881,13 @@ to the user. Their implementation is optional, but all tools will accept them as
 arguments and must not use those terms for other purposes, e.g. don't use
 `--quiet` to turn off the audio output (use `--silence` or `--volume 0` or some
 other synonym).
+-->
 
+#### 输出量 (--quiet and --verbose)
+
+ `--quiet` 和 `--verbose` 开关可以减少或增加向用户输出的信息。它们的实现是可选的，但是所有工具都会接受它们作为参数，并且不得将这些术语用于其他目的，例如 不要使用`--quiet` 关闭音频输出（可以使用 `--silence` 或 `--volume 0` 或其他同义词）。
+
+<!--
 #### Interactive Version (--version)
 
 A tool must accept a `--version` switch and provide an indication of the code
@@ -874,7 +895,15 @@ used to build the tool in that case. The layout and syntax is not specified, but
 the version will include a version number of some kind.
 
 The tool must not do other work (have side effects) when reporting its version.
+-->
 
+#### 交互式版本 (--version)
+
+工具必须接受 `--version` 开关，并在这种情况下提供用于构建工具的代码的指示。 布局和语法没有规定，但版本将包括某种形式的版本号。
+
+该工具在报告其版本时不能做其他工作(有别的作用)。
+
+<!--
 ### Logging
 
 Logging is distinct from normal output. The audience for logging is normally the
@@ -885,6 +914,13 @@ Logging from multiple threads will not interlace words within a line, i.e. the
 minimum unit of output is a full text line. Each line will be prefixed with an
 indication of the severity of the line. The severity will be one of: detail,
 info, warning, error, fatal.
+-->
+
+### 日志
+
+日志不同于正常的输出。日志的受众通常是工具开发人员或试图调试问题的高级用户。在特殊情况下，日志记录可以转到标准输出，例如当请求 `--verbose` 输出时。
+
+来自多个线程的日志记录不会在同一行，也就是说，输出的最小单位是一整行。每一行都将加上表示该行严重程度的前缀。严重性将是以下各项之一： detail,info, warning, error, fatal（细节，信息，警告，错误，致命）。
 
 ## Metrics
 
