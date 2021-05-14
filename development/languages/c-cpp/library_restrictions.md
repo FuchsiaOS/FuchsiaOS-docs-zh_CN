@@ -1,51 +1,35 @@
-# Library restrictions
+# 库限制
 
 ## third_party/abseil-cpp
 
-Decision: **do not use** `absl` in new code. Generally, `absl` is a
-poor fit for use cases in Fuchsia. We will remove `absl` from the tree
-once existing clients of it are migrated away. This removal work is tracked in
-[fxbug.dev/59428](https://fxbug.dev/59428).
+决定：**请勿**在新代码中使用 `absl` 。通常，`absl` 不太适合 Fuchsia 的用例。一旦现有的客户端迁移完毕，将从树中删除 `absl`。在 [fxbug.dev/59428](https://fxbug.dev/59428) 处跟踪此删除工作。
 
 ## third_party/googletest
 
-Note: The googletest library includes both the former gtest and gmock
-projects.
+注意：googletest 库包括以前的 gtest 和 gmock 项目。
 
 ### Gtest
 
-Use the Gtest framework for writing tests everywhere except the Zircon
-directory. It provides the `TEST` and `TEST_F` macros as well as the `ASSERT`
-and `EXPECT` variants we use.
+使用 Gtest 框架在除 Zircon 目录之外的任何地方编写测试。它提供了 `TEST` 和 `TEST_F` 宏以及 `ASSERT` 和 `EXPECT` 变量。
 
-Inside the Zircon directory, use `system/ulib/zxtest` instead. It provides a
-Gtest-like interface with fewer dependencies on higher-level OS concepts like
-mutexes (things we want to test). It also supports writing tests in
-C which is required for some layers.
+在 Zircon 目录中，改用 `system/ulib/zxtest`。它提供了一个类似 Gtest 的接口，减少了对诸如互斥锁(想要测试的东西)等高级操作系统概念的依赖。它还支持用 C 编写测试，这是某些层所必需的。
 
 ### Gmock
 
-Gmock has several components. We allow the gmock matchers such as
-`ElementsAre()`.
+Gmock 有一些组件。允许使用 gmock 匹配器，例如 `ElementsAre()`。
 
-There are varying opinions on the team on the function mocking functions
-(`MOCK_METHOD` and `EXPECT_CALL`).
+关于函数 mocking 功能(`MOCK_METHOD` 和 `EXPECT_CALL`)，团队有不同的看法。
 
-Pros:
+赞成：
 
-  * It can be very efficient to do certain types of mocking.
-  * Some people feel that Gmock-generated mocks are easier to read than the
-    equivalent custom code.
-  * Lack of a mocking library means some people might not write good tests.
+  * 进行某些类型的 mocking 可能非常有效。
+  * 有些人认为 Gmock 生成的 mock 比等效的自定义代码更容易阅读。
+  * 缺少 mocking 库意味着有些人可能写不出好的测试。
 
-Cons:
+反对：
 
-  * Gmock provides a domain-specific language. Not everybody understands this
-    language, and the complex use of templates and macros make it hard to
-    diagnose problems.
-  * Some aspects of Gmock encourage overly constrained mocks.
-  * Combinations of the above can make it harder to make changes to mocked
-    code later.
+  * Gmock 提供了特定于域的语言。 并非每个人都懂这种语言，并且模板和宏的复杂使用使诊断问题变得困难。
+  * Gmock 的某些方面鼓励过度限制 mock。
+  * 上面的组合可能使以后更难对 mock 代码进行更改。
 
-Decision: **do not use** the mocking functionality of gmock (`MOCK_METHOD` and
-`EXPECT_CALL`).
+决定：**请勿使用** gmock 的 mocking 功能（`MOCK_METHOD` 和 `EXPECT_CALL`）。
