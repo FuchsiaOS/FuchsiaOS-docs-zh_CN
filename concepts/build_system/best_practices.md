@@ -732,9 +732,7 @@ files or build outputs. It can be used to read source files, for example to read
 a manifest file or a json file with which to populate build dependencies.
 Notably `read_file()` can not be used with `generated_file()` or `write_file()`.
  -->
-`read_file()` 出现在生成过程中，它不能安全地用于读取生成的文件和构建的输出。它可以用于读取源文件，例如导入构建依赖时读取 manifest 文件或 json 文件。
-
-注意 `read_file()` 不能与 `generated_file()` 或 `write_file()` 一同使用。
+`read_file()` 出现在生成过程中，它不能安全地用于读取生成的文件和构建的输出。它可以用于读取源文件，例如导入构建依赖时读取 manifest 文件或 json 文件。注意 `read_file()` 不能与 `generated_file()` 或 `write_file()` 一同使用。
 
 <!-- 
 ### Prefer `generated_file()` over `write_file()` {#prefer-generated_file-over-write_file}
@@ -752,6 +750,8 @@ this instance of `write_file()`:
  -->
 一言以蔽之，推荐您使用`generated_file()` 而非 `write_file()`。`generated_file()` 提供了附加特性，并且解决了一些 `write_file()` 的弊端。比如，`generated_file()` 可以并行执行，而 `write_file()` 在生成期间只能按序执行。
 
+两个命令的结构非常相似。例如，您可以将这个 `write_file()` 的示例：
+
 ```gn
 write_file("my_file", "My file contents")
 ```
@@ -759,7 +759,7 @@ write_file("my_file", "My file contents")
 <!-- 
 Into this instance of `generated_file()`:
  -->
-参考下例，使用了 `generated_file()`：
+转换为这个使用 `generated_file()` 的示例：
 
 ```gn
 generated_file("my_file") {
@@ -788,7 +788,7 @@ information about `rebase_path()` in its
  -->
 总是在 `rebase_path()` 中指定一个 `new_base`（新的基准位置），例如 `rebase_path("foo/bar.txt", root_build_dir)`。避免其单参数形式，即 `rebase_path("foo/bar.txt")`。
 
-GN 的 `rebase_path()` 拥有三个参数，其中后两个可选。它的单参数形式返回一个绝对路径，这种做法[不推荐][rebase-path-thread]。在构建模板和目标中应当避免。
+GN 的 `rebase_path()` 拥有三个参数，其中后两个可选。它的单参数形式返回一个绝对路径，这种做法[不推荐][rebase-path-thread]。在构建模板和目标中应当避免。`new_base` 的值会根据实际情况发生变化，而 `root_build_dir` 则是其常用选项，因为它是构建脚本执行的地方。请在 `rebase_path()` 的 [GN 参考手册][gn-reference-rebase-path]中参阅更多信息。
 
 <!-- 
 Relative paths can stay unchanged when paths to project or build output
@@ -853,7 +853,7 @@ output = _outputs[0]
 message = "My favorite output is $output"
 
 # 该表达式是无效的：`output = get_target_outputs(":other_target")[0]`
-# GN won't let you subscript an rvalue.
+# GN 不会允许您对右值进行下标操作。
 ```
 
 <!-- 
@@ -910,7 +910,9 @@ Sometimes you want to copy everything from the invoker, except for
 a particular variable that you want to copy from any enclosing
 scope. You’ll encounter this pattern:
  -->
-`forward_variables_from()` 将从给定作用域_或任何外封闭作用域_中将指定的变量复制到当前作用域下。除非指定 `"*"`——这种情况下它将仅从给定作用域下复制变量。
+`forward_variables_from()` 将从给定作用域_或任何外封闭作用域_中将指定的变量复制到当前作用域下。除非指定 `"*"`——这种情况下它将仅从给定作用域下复制变量。并且它绝不会替换您作用域中已经存在的变量——那是一个生成时错误。
+
+有时您希望从主调函数复制一切，除了某个你想从任何外封闭作用域中复制的特定变量。您将会用到这样的模式：
 
 ```gn
 forward_variables_from(invoker, "*", [ "visibility" ])
@@ -939,6 +941,8 @@ made to this allowlist.
 GN 的内置函数 [exec_script](https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#func_exec_script) 是增强 GN 能力的有力工具。与 `action()` 相同的是，`exec_script()` 可以调用外部工具。与 `action()` 不同的是，`exec_script()` 与构建生成**同步地**调用外部工具，这意味着您能够在您的 `BUILD.gn` 逻辑中使用该工具的输出。
 
 由于这造成了生成时期的性能瓶颈（即：`fx set` 耗时更长），因此该特性必须小心使用。要获取更多信息，请参阅由 Chromium 团队撰写的[这篇评论](https://chromium.googlesource.com/chromium/src/+/ab1c69b1814d3c905fdab7b0d177b478eecf40a3/.gn#291)。
+
+一份允许列表已被建立在 `//.gn`。请向 `OWNERS` 咨询针对该允许列表所做的改动。
 
 [rebase-path-thread]: https://groups.google.com/a/chromium.org/g/gn-dev/c/WOFiYgcGgjw
 [gn-reference-rebase-path]: https://gn.googlesource.com/gn/+/master/docs/reference.md#func_rebase_path
