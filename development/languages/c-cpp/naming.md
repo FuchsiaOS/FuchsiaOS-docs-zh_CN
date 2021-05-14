@@ -1,104 +1,88 @@
-Naming C/C++ objects
+命名 C/C++ 对象
 ====================
 
-## Include paths
+## 包含路径
 
-There are four categories of headers: system, global, library, and
-implementation.
+有四类头文件：系统、全局、库和实现。
 
-#### System headers
+#### 系统头文件
 
 ```
 #include <zircon/foo/bar.h>
 ```
 
-###### Definition
+###### 定义
 
-These headers define the interface between the kernel and userspace, also known
-as the vDSO interface. These headers define system calls, included related types
-and structures.  These headers also define some basic C and C++ machinery, for
-example for crashing in a well-defined sequence.
+此类头文件定义内核和用户空间之间的接口，也称为 vDSO 接口。这类头文件定义了系统调用，包括相关的类型和结构。这类头文件也定义了一些基本的 C 和 C++ 机制，例如，以明确定义的顺序崩溃。
 
-###### Notes
+###### 说明
 
-- System headers may be installed under `zircon/`, rather than `lib/zircon/`.
-- System call wrappers, such as `zx`, are not considered system headers. They
-  are library headers (see below) that depend on the system headers..
-- Standard system headers (e.g., from the C and C++ standard librareis) have
-  their   standard paths
+- 系统头文件可能安装在 `zircon/` 下，而不是 `lib/zircon/` 下。
+- 系统调用包装器（如 `zx`）不被视为系统头文件。它们是依赖于系统头文件的库文件（见下文）。
+- 标准系统头文件（例如，来自 C 和 C++ 标准库的头文件）具有其标准路径。
 
-###### Examples
+###### 示例
 
 - `#include <zircon/process.h>`
 - `#include <zircon/syscalls/hypervisor.h>`
 - `#include <stdint.h>`
 - `#include <algorithm>`
 
-#### Global headers
+#### 全局头文件
 
 ```
 #include <fuchsia/foo/bar.h>
 ```
 
-###### Definition
+###### 定义
 
-These headers define system-wide contracts between userspace components. These
-headers are generated from FIDL definitions of these contracts.
+此类头文件定义了用户空间组件之间的系统范围内的约定。该类头文件是根据这些约定的 FIDL 定义生成的。
 
 ###### Notes
 
-- Hand-written code should be presented in library headers rather than global
-  headers.
+- 手动编写的代码应该显示在库头文件中，而不是全局头文件中。
 
-###### Examples
+###### 示例
 
 - `#include <fuchsia/sys/cpp/fidl.h>`
 - `#include <fuchsia/sysmem/llcpp/fidl.h>`
 
-#### Library headers
+#### 库头文件
 
 ```
 #include <lib/foo/bar.h>
 ```
 
-###### Definition
+###### 定义
 
-Library headers are hand-written code that are used by applications. The
-interfaces they define are local to that application. Some libraries are
-Fuchsia-specific and provide an ergonomic wrapper around some lower-level
-system facilities. Some libraries might not be tied directly to Fuchsia.
+库头文件是用于应用程序而手动编写的代码。库头文件定义的接口是应用程序的本地接口。一些库是 Fuchsia 特有的，并为一些较低级别的系统设施提供人机工程包装器。有些库可能与 Fuchsia 没有直接关系。
 
-###### Notes
+###### 说明
 
-- All library headers are in the `lib/` directory to help avoid collisions with
-  other header used by applications.
-- Headers may not be placed straight under `lib/`. Subdirectories (`lib/foo/`)
-  are mandatory.
+- 所有的库头文件都在 `lib/` 目录中，以避免与应用程序使用的其他头文件冲突。
+- 库头文件不能直接放在 `lib/` 下，必须存在子目录（`lib/foo/`）。
 
-###### Examples
+###### 示例
 
 - `#include <lib/fit/function.h>`
 - `#include <lib/sys/cpp/component_context.h>`
 - `#include <lib/zx/event.h>`
 
-#### Implementation headers
+#### 实现头文件
 
 ```
 #include "src/foo/bar.h"
 ```
 
-###### Definition
+###### 定义
 
-Implementation headers are internal to the Fuchsia Platform Source Tree. They
-are never included in SDKs and are referenced by absolute path from the root of
-the source tree.
+实现头文件位于 Fuchsia 平台源代码树的内部。它们从未包含在 SDK 中，引用时使用从源代码树根目录开始的绝对路径。
 
-###### Notes
+###### 说明
 
-- Includes of implementation headers use `"` rather than `<` to indicate that
-  the path is relative to the root of the source tree.
+- 包含实现头文件使用 `"`（不是 `<` ）来表示路径相对于源代码树的根目录。
 
-###### Examples
+###### 示例
 
 - `#include "src/ui/scenic/bin/app.h"`
 - `#include "src/lib/fxl/observer_list.h"`
