@@ -1,122 +1,90 @@
-# Getting started with Zircon
+# 开始 Zircon 吧
 
-## Checking out the Zircon source code
+## 拉取Zircon 代码
 
-Note: The Fuchsia source includes Zircon. See Fuchsia's
-[Getting Started](/docs/get-started/README.md) documentation.
+注意：Fuchsia 代码包含了Zircon，请查看 Fuchsia的 [开始](/docs/get-started/README.md) 文档
 
-This guide assumes that the Fuchsia project is checked out into `$FUCHSIA_DIR`,
-and `fx` has been configured.
+该指南已假定Fuchsia项目已经拉取并设置好 $FUCHSIA_DIR` 和 `fx 的配置
 
-## Build Zircon with the default toolchain
+## 使用默认的工具链构建 Zircon
 
-The `fx` command wraps the various tools used to configure, build and interact
-with Fuchsia. The `fx set` command is used to specify the product and the board
-architecture. For example, to set your build target to be Zircon for `arm64`,
-run the following command:
+`fx ` 命令已使用配置封装好几个工具，用于构建和使用 Fuchsia。`fx set` 命令常用语制定版本（product）和系统架构（board）。比如：要设置 Zircon 到 `arm64` 上。
 
 ```sh
 fx set bringup.arm64
 ```
 
-Fuchsia uses the concept of
-[products](/docs/concepts/build_system/boards_and_products.md#products) to
-create a collection of build targets. The
-[bringup product](/docs/concepts/build_system/boards_and_products.md#bringup-product)
-is the smallest product with a minimal feature set.
+上面 Fuchsia 使用的 [版本](/concepts/build_system/boards_and_products.md#products) 概念是构建目标的一个集合。[bringup 版本](/concepts/build_system/boards_and_products.md#bringup-product) 是最简的特性集合而成的最小版本。
 
-The following command prints a list of other product configurations:
+下面这个命令就是打印出全部的版本的定义：
 
 ```sh
 fx list-products
 ```
 
-The following command prints a list of the defined board architectures:
+下面这个命令是打印出全部的系统架构的的定义：
 
 ```sh
 fx list-boards
 ```
 
-To execute the build, run the following command:
+然后运行下面命令，执行构建：
 
 ```sh
 fx build
 ```
 
-The build results are saved in `$FUCHSIA_DIR/out/default`.
+该构建的结果会保存在 `$FUCHSIA_DIR/out/default`
 
-## Explicitly set the target toolchain
+## 指定目标机器的工具链
 
-By default Fuchsia uses the `clang` toolchain. This can be set to `gcc` by using
-the `variants` argument with `fx set`:
+Fuchsia 默认是使用 `clang` 作为工具链，可以通过 `fx set` 中 `variants` 参数来设置 `gcc`：
 
 ```sh
 fx set bringup.x64 --variant gcc
 ```
 
-You can also enable asan by using the variant flag.
+你可以通过 variant 来开启 asan。
 
-## Building Zircon for all targets
+## 构建 Zircon 全部类型
 
-You can build for all targets with `fx multi` and using a file that contains all
-the specifications to build. The output for each target is found in
-`$FUCHSIA_DIR/out/<product>.<board>.variant`. An example of a multi build spec
-is <code>[bringup-cq](/tools/devshell/lib/multi-specs/bringup-cq)</code>, which
-approximates what is built for a CQ test.
+你可以通过 `fx multi` 和一个说明构建文件来构建全部类型。每个类型的输出都可以在`$FUCHSIA_DIR/out/<product>.<board>.variant` 找到。 多个构建例子在 <code>[bringup-cq](/tools/devshell/lib/multi-specs/bringup-cq)</code>, 它近似于 CQ测试的构建。
 
-Please build for all targets before submitting to ensure builds work on all
-architectures.
+请在构建前自己得明确全部系统架构的全部目的。
 
 ## QEMU
 
-You can skip this if you're only testing on actual hardware, but the emulator is
-handy for quick local tests and generally worth having around.
+你可以选择跳过这段，如果你仅在物理机上测试的话，但模拟器可以便捷的快速本地测试是非常值得拥有的。
 
-See [QEMU](/docs/development/debugging/qemu.md) for information on building and
-using QEMU with zircon.
+查看 [QEMU](/development/debugging/qemu.md) 获取更多的QEMU信息用于构建和使用 zircon。
 
-## Build Toolchains (Optional)
+## 构建工具链（可选）
 
-If the prebuilt toolchain binaries do not work for you, you can build your own
-from vanilla upstream sources.
+如果预设的工具链不能使用，你可以通过上层的来源来构建自己的工具链。
 
-*   The Clang toolchain is used to build Zircon by default or if you build with
-    `variants = [ "clang" ]` or `variants = [ "asan" ]`.
-*   The Clang toolchain is also used by default to build host-side code, but any
-    C++14-capable toolchain for your build host should work fine.
-*   The GCC toolchain is also available.
+- Clang 工具链默认是用于构建 Zircon 的 或者通过 `variants = [ "clang" ]` or `variants = [ "asan" ]` 来指定。
+- Clang 是默认的构建工具链，但 C++14 以上都可以胜任。
+- GCC 工具链也是可用的。
 
-Build one or the other or both, as needed for how you want build Zircon.
+无论构建工具链哪一种都需要你知道如何构建 Zircon。
 
-### GCC Toolchain
+### GCC 工具链
 
-We use GNU `binutils` 2.30[^1] and GCC 8.2, configured with
-`--enable-initfini-array --enable-gold`, and with `--target=x86_64-elf
---enable-targets=x86_64-pep` for x86-64 or `--target=aarch64-elf` for ARM64.
+我们使用 GNU `binutils` 2.30[^1] 和 GCC 8.2, 配置使用
+`--enable-initfini-array --enable-gold`, 和 `--target=x86_64-elf
+--enable-targets=x86_64-pep` for x86-64 或者对于 arm64 `--target=aarch64-elf` 
 
-For `binutils`, we recommend `--enable-deterministic-archives` but that switch
-is not necessary to get a working build.
+对于 `binutils`, 我们推荐 `--enable-deterministic-archives`但切换不是用于构建的必要条件。
 
-For GCC, it's necessary to pass `MAKEOVERRIDES=USE_GCC_STDINT=provide` on the
-`make` command line. This should ensure that the `stdint.h` GCC installs is one
-that works standalone (`stdint-gcc.h` in the source) rather than one that uses
-`#include_next` and expects another `stdint.h` file installed elsewhere.
+GCC 在 `make` 命令行中带上 `MAKEOVERRIDES=USE_GCC_STDINT=provide` ，我们应该明确 `stdint.h` 只有一个，而不是使用 `#include_next` 包含其他的 `stdint.h` 在其他地方。
 
-Only the C and C++ language support is required and no target libraries other
-than `libgcc` are required, so you can use various `configure` switches to
-disable other things and make your build of GCC itself go more quickly and use
-less storage, e.g. `--enable-languages=c,c++ --disable-libstdcxx
---disable-libssp --disable-libquadmath`. See the GCC installation documentation
-for more details.
+C 和 C++ 语言和 `libgcc` 是支持，所以你可以使用各种配置切换取消不同的事情并GCC构建，它本身运行得快使用更少的内存，例如： `--enable-languages=c,c++ --disable-libstdcxx
+--disable-libssp --disable-libquadmath`。 查看GCC文档了解更多。
 
-You may need various other `configure` switches or other prerequisites to build
-on your particular host system. See the GNU documentation.
+你可能需要不同的配置切换到不同的预设置去构建你指定的系统。查看 GNU 文档
 
-[^1]: The `binutils` 2.30 release has some harmless `make check` failures in the
-    `aarch64-elf` and `x86_64-elf` configurations. These are fixed on the
-    upstream `binutils-2_30-branch` git branch, which is what we actually
-    build. But the 2.30 release version works fine for building Zircon; it
-    just has some spurious failures in its own test suite.
+[^1]: The `binutils` 2.30 发布版验证，使用`make check` 检测故障
+    `aarch64-elf` and `x86_64-elf` 配置。这是在 `binutils-2_30-branch` 的分支做了更完善的修复,这就是我真正要构建的。但 2.30 版本本身就可以在 Zircon 的构建上运行良好，它只是在测试案例中有些虚报故障。
 
 ### Clang/LLVM Toolchain
 
