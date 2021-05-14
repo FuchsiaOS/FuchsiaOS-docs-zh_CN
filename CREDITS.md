@@ -9,8 +9,8 @@
 │   ├── architecture 									唐柠
 │   ├── bluetooth 										唐柠
 │   │   └── images
-│   ├── booting
-│   │   └── images
+│   ├── booting                                         Roy
+│   │   └── images
 │   ├── build_system									Whyto
 │   ├── components
 │   │   ├── v1
@@ -60,7 +60,7 @@
 │   │   └── utc
 │   ├── tracing
 │   │   └── images
-│   └── usb
+│   └── usb                                             Wilde Luo
 ├── contribute
 │   ├── community													yang-lite
 │   │   └── images
@@ -111,7 +111,7 @@
 │   ├── kernel														Dongchan
 │   │   ├── memory										
 │   │   └── threads
-│   ├── languages
+│   ├── languages                          yangxuan74
 │   │   ├── c-cpp
 │   │   ├── dart
 │   │   ├── fidl
