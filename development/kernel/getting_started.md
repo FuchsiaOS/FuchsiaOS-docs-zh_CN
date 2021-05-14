@@ -86,52 +86,39 @@ C 和 C++ 语言和 `libgcc` 是支持，所以你可以使用各种配置切换
 [^1]: The `binutils` 2.30 发布版验证，使用`make check` 检测故障
     `aarch64-elf` and `x86_64-elf` 配置。这是在 `binutils-2_30-branch` 的分支做了更完善的修复,这就是我真正要构建的。但 2.30 版本本身就可以在 Zircon 的构建上运行良好，它只是在测试案例中有些虚报故障。
 
-### Clang/LLVM Toolchain
+### Clang/LLVM 工具链
 
-We use a trunk snapshot of Clang and update to new snapshots frequently. Any
-build of recent-enough Clang with support for `x86_64` and `aarch64` compiled in
-should work. You'll need a toolchain that also includes the runtime libraries.
-We normally also use the same build of Clang for the host as well as for the
-`*-fuchsia` targets. See [here](/docs/development/build/toolchain.md) for
-details on how we build Clang.
+我们使用 Clang 的主干快照并经常更新到新的快找。任何支持 `x86_64` 和 `aarch64` 的近期 Clang 都可以有效构建。 你需要工具链并包括运行库。 我们自然也是使用相同的Clang 构建工具链， 查看[详情](/development/build/toolchain.md')。
 
-### Set up build arguments for toolchains
+### 为工具链设置构建参数
 
-If you're using the prebuilt toolchains, you can skip this step, since the build
-will find them automatically.
+如果你使用预构件的工具链，可以跳过这一步，构建的时候会自动发现它们的。
 
-Set the build argument that points to where you installed the toolchains:
+设置构建参数需指向工具链的位置，
+
+Clang
 
 ```sh
 fx set bringup.x64 --variant clang --args clang_tool_dir = "<absolute path to>/clang-install/bin/"
 ```
 
-or for GCC:
+GCC
 
 ```sh
 fx set bringup.x64 --variant gcc --args gcc_tool_dir = "<absolute path to>/gcc-install/bin/"
 ```
 
-Note that `*_tool_dir` should have a trailing slash. If the `clang` or `gcc` in
-your `PATH` works for Zircon, you can just use empty prefixes.
+注意 `*_tool_dir` 应该是尾部斜线，如果你的路径是相对于 Zircon的，使用空前缀即可。
 
-## Copying files to and from Zircon
+## 从Zircon 来回复制
 
-With local link IPv6 configured you can use `fx cp` to copy files to and from
-the device.
+当你本地使用 IPv6，可以使用 `fx cp` 从驱动中来回复制。
 
-## Including Additional Userspace Files
+## 包括附加的用户空间文件
 
-The Zircon build creates a bootfs image containing necessary userspace
-components for the system to boot (the device manager, some device drivers,
-etc). The kernel is capable of including a second bootfs image, which is provided
-by QEMU or the bootloader as a ramdisk image.
+Zircon的构建创建一个引导镜像包含了必须的用户空间组件为了系统的启动（驱动管理器，一些设备驱动等）。内核包含第二个引导镜像，它由QEMU 或 引导加载程序作为 ramdisk 镜像提供。
 
-To create such a bootfs image, use the zbi tool that's generated as part of the
-build. It can assemble a bootfs image for either source directories (in which
-case every file in the specified directory and its subdirectories are included)
-or via a manifest file that specifies, on a file-by-file basis, which files to
-include.
+使用 zbi 工具创建一个引导镜像，它是构建的一部分。它可以为源目录(在这种情况下，包含指定目录及其子目录中的每个文件)或通过一个清单文件组装一个引导映像，该清单文件按文件顺序指定要包含哪些文件。
 
 ```none
 $BUILDDIR/tools/zbi -o extra.bootfs @/path/to/directory
@@ -141,31 +128,22 @@ echo "etc/hosts=/etc/hosts" >> manifest
 $BUILDDIR/tools/zbi -o extra.bootfs manifest
 ```
 
-On the booted Zircon system, the files in the bootfs will appear under /boot, so
-in the above manifest example, the "hosts" file would appear at /boot/etc/hosts.
+在引导的 Zircon 系统中，引导中的文件将显示在 /boot 下，因此在上述示例中，"host" 文件将在 /boot/etc/hosts 中。
 
-## Network Booting
+## 网络启动
 
-Network booting is supported via two mechanisms: Gigaboot and Zirconboot.
-Gigaboot is an EFI based bootloader whereas zirconboot is a mechanism that
-allows a minimal zircon system to serve as a bootloader for zircon.
+网络启动是由2个机制支持的：Gigaboot 和 Zirconboot。Gigaboot 是基于 EFI 引导加载器，而 zirconboot 是一种允许最小 zircon 系统 作为 zircon 引导加载器的机制。
 
-On systems that boot via EFI (such as Acer and NUC), either option is viable. On
-other systems, zirconboot may be the only option for network booting.
+在系统上，通过 EFI 启动（例如 Acer 和 NUC）要么是可行的选项。在另外系统上，zirconboot 可能是唯一的网络启动。
 
-### Via Gigaboot
+### Gigaboot
 
-The [GigaBoot20x6](/src/firmware/gigaboot) bootloader speaks a simple network
-boot protocol (over IPV6 UDP), which does not require any special host
-configuration or privileged access to use.
+[GigaBoot20x6](/src/firmware/gigaboot) 引导启动器说是一种简单的网络启动协议（IPV6 UDP上）不需要指定 host 配置 或者权限即可访问使用。
 
-It does this by taking advantage of IPV6 Link Local Addressing and Multicast,
-allowing the device being booted to advertise its bootability and the host to
-find it and send a system image to it.
+它通过 IPV6 的优势 链接本地地址和多播，允许被引导的设备通告其引导性，并让主机找到并向它发送一个系统镜像。
 
-If you have a device (for example a Broadwell or Skylake Intel NUC) running
-GigaBoot20x6, first
-[create a USB drive](/docs/development/hardware/usb_setup.md).
+如果你有设备（比如是 Broadwell 或者 Skylake Intel NUC）运行 GigaBoot20x6, 第一步，
+[创建USB设备](/development/hardware/usb_setup.md).
 
 ```none
 $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin
@@ -174,39 +152,30 @@ $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin
 $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin /path/to/extra.bootfs
 ```
 
-By default bootserver will continue to run and every time it observes a netboot
-beacon it will send the kernel (and bootfs if provided) to that device. If you
-pass the -1 option, bootserver will exit after a successful boot instead.
+默认情况下，引导服务将继续运行，每次它观察到一个netboot信标，它会发送内核（和 bootfs 如果提供）到该设备上。如果你传递 -1 选项，引导服务器会在成功引导后退出。
 
-### Via Zirconboot
+### Zirconboot
 
-Zirconboot is a mechanism that allows a zircon system to serve as the bootloader
-for zircon itself. Zirconboot speaks the same boot protocol as Gigaboot
-described above.
+Zirconboot 是允许 zircon 系统作为引导加载器的机制。
 
-To use zirconboot, pass the `netsvc.netboot=true` argument to zircon via the
-kernel command line. When zirconboot starts, it will attempt to fetch and boot
-into a zircon system from a bootserver running on the attached host.
+对于zircon它自己来说，Zirconboot 是上面Gigaboot 相似的启动协议。
 
-## Network Log Viewing
+使用 zirconboot，通过内核命令行将 `netsvc.netboot=true` 参数传到zircon。当zirconboot 启动时，它会尝试从所连接的主机上运行的引导服务器获取并引导到 zircon 系统。
 
-The default build of Zircon includes a network log service that multicasts the
-system log over the link local IPv6 UDP. Please note that this is a quick hack
-and the protocol will certainly change at some point.
+## 网络日志查看
 
-For now, if you're running Zircon on QEMU with the -N flag or running on
-hardware with a supported ethernet interface (ASIX USB Dongle or Intel Ethernet
-on NUC), the loglistener tool will observe logs broadcast over the local link:
+Zircon 默认构建包括网络日志服务，通过本地 IPv6 UDP 链路多播系统日志。
+
+请注意，这是一个可快速破解，协议会在某个点改变。
+
+现在，如果你在QEMU 使用 -N 标示运行 Zircon 或者运行在以太网接口的硬件上（ASIX USB Dongle 或者 NUC 上的Intel Ethernet ）日志监听工具会在本地链接上观察日志广播。
 
 ```none
 $BUILDDIR/tools/loglistener
 ```
 
-## Debugging
+## 调试
 
-For random tips on debugging in the zircon environment see
-[debugging](/docs/development/debugging/tips.md).
+有关 zircon 环境中调试的随机提示，请查阅
+[调试](/development/debugging/tips.md).
 
-## Contribute changes
-
-*   See [CONTRIBUTING.md](/CONTRIBUTING.md#contributing-patches-to-zircon)
