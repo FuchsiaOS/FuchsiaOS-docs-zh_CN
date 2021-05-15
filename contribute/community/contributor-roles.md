@@ -616,7 +616,7 @@ Fuchsia Eng 委员会是高级技术领导人的小组，负责为 Fuchsia 提�
 
 <!-- #### Eng Council membership {:#eng-council-membership} -->
 
-####  Eng 委员会资格 {:#eng-council-membership}
+#### Eng 委员会资格 {:#eng-council-membership}
 
 <!-- There is no predetermined number of people on the Eng Council. However, in order
 to provide a coherent technical vision, the council has a small number of
