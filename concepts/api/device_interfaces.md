@@ -71,7 +71,7 @@ integer types when a field has a constrained set of non-arithmetic values.
 
 ## 枚举
 
-当字段表示非算术值约束集中某个值时，优先使用明确尺寸的枚举（例如: `enum Foo : uint32 { ... }`）而不是普通整数类型。
+当字段表示非算术值约束集中某个值时，优先使用明确大小的枚举（例如: `enum Foo : uint32 { ... }`）而不是普通整数类型。
 
 <!-- 
 ## Bitfields
