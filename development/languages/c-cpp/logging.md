@@ -1,11 +1,10 @@
 # Syslog
 
-This document explains how to get started with syslogger APIs.
+本文介绍如何使用 syslogger API。
 
-### Component manifest dependency
+### 组件清单依赖项
 
-Ensure that your component has the required capabilities to log by including the
-following in your component manifest:
+通过在组件清单中包含以下内容，确保组件具有所需的日志功能：
 
    * {.cmx}
 
@@ -29,9 +28,7 @@ following in your component manifest:
    }
    ```
 
-Note: The above is only available for in-tree development.
-This is tracked in [fxbug.dev/64207](http://fxbug.dev/64207).
-Out of tree developers should copy the snippets shown below instead.
+注意：以上内容仅适用于树内开发。在[fxbug.dev/64207](http://fxbug.dev/64207)处对此进行了跟踪。树外的开发人员应该复制下面显示的代码片段。
 
    * {.cmx}
 
@@ -56,25 +53,23 @@ Out of tree developers should copy the snippets shown below instead.
    }
    ```
 
-## Default configuration
+## 默认配置
 
-The global logger is lazily instantiated on the first use of the API (more
-specifically, on the first call to `fx_log_get_logger`). The default
-configuration for the global logger is:
+首次使用 API 时会延迟实例化全局 logger（更具体地说，是首次调用 `fx_log_get_logger` 时）。全局 logger 的默认配置为：
 
-- Use process name as the tag
-- Write logs to `fuchsia.logger.LogSink`
-- Min log level of `FX_LOG_INFO`
+- 使用进程名称作为标签
+- 将日志写入 `fuchsia.logger.LogSink`
+- `FX_LOG_INFO` 最低日志级别 
 
-## In C
+## 在 C 中
 
-### BUILD.gn dependency
+### BUILD.gn 依赖项
 
 ```gn
 //zircon/public/lib/syslog
 ```
 
-### Log messages
+### 日志消息
 
 ```C
 FX_LOGF(INFO, "tag", "my msg: %d", 10);
@@ -82,7 +77,7 @@ FX_LOG(INFO, "tag", "my msg");
 FX_LOGF(INFO, NULL, "my msg: %d", 10);
 ```
 
-### Using non-default configuration
+### 使用非默认配置
 
 ```C
 #include <lib/syslog/global.h>
@@ -97,30 +92,29 @@ int main(int argc, char** argv) {
 }
 ```
 
-### Reference
+### 参考
 
-[C APIs](/zircon/system/ulib/syslog/include/lib/syslog/global.h)
+[C API](/zircon/system/ulib/syslog/include/lib/syslog/global.h)
 
-## In C++
+## 在 C++ 中
 
-### BUILD.gn dependency
+### BUILD.gn 依赖项
 
 ```gn
 //sdk/lib/syslog/cpp
 //sdk/lib/syslog/cpp:backend_legacy
 ```
 
-### Log messages
+### 日志消息
 
 ```C++
 FX_LOGS(INFO) << "my message";
 FX_LOGST(INFO, "tag") << "my message";
 ```
 
-### Set tags
+### 设置标签
 
-By default, the process name is used as the tag, but this can be changed by
-calling `syslog::SetTags`.
+默认情况下，进程名称用作标签，但是可以通过调用 `syslog::SetTags` 进行更改。
 
 ```C++
 #include <lib/syslog/cpp/log_settings.h>
@@ -130,7 +124,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-### Set settings
+### 设置日志设置
 
 ```C++
 #include "<lib/syslog/cpp/log_settings.h>
@@ -141,7 +135,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-### Set settings from command line
+### 从命令行设置日志设置
 
 ```C++
 #include "src/lib/fxl/command_line.h"
@@ -153,18 +147,16 @@ int main(int argc, char** argv) {
 }
 ```
 
-### GTest main with syslog initialized from command line
+### 从命令行初始化 syslog 的 GTest main
 
-No initialization is required for using the default configuration of
-syslog. If you would like your test suite to change the configuration
-based on command line arguments (e.g. --verbose), use:
+使用 syslog 的默认配置不需要初始化。如果您希望测试套件根据命令行参数（例如 --verbose）更改配置，请使用：
 
 ```gn
 //src/lib/fxl/test:gtest_main
 ```
 
-### Reference
+### 参考
 
-[C++ APIs](/sdk/lib/syslog/cpp/macros.h)
+[C++ API](/sdk/lib/syslog/cpp/macros.h)
 <br/>
-[Command line initialization API](/src/lib/fxl/log_settings_command_line.h)
+[命令行初始化 API](/src/lib/fxl/log_settings_command_line.h)

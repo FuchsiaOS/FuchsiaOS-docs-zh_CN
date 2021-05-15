@@ -9,8 +9,8 @@
 │   ├── architecture 									唐柠
 │   ├── bluetooth 										唐柠
 │   │   └── images
-│   ├── booting
-│   │   └── images
+│   ├── booting                                         Roy
+│   │   └── images
 │   ├── build_system									Whyto
 │   ├── components
 │   │   ├── v1
