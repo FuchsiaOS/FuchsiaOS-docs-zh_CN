@@ -10,7 +10,7 @@ These principles apply to all modes of using the Fuchsia build, for instance
 whether by interactive engineering workflows or via automated systems such as
 CI/CQ.
  -->
-本文档详细介绍了与 Fuchsia 构建应当如何运作的设计原则和特定技术决策。这些原则适用于使用 Fuchsia 构建的所有模式，例如是否通过交互性工程工作流或通过诸如 CI/CQ 的自动化系统的方式。
+本文档详细介绍了与 Fuchsia 构建应当如何运作有关的设计原则和特定技术决策。这些原则适用于使用 Fuchsia 构建的所有模式，例如是否通过交互性工程工作流或通过诸如 CI/CQ 的自动化系统的方式。
 
 <!-- 
 ## Goals and priorities of the build
