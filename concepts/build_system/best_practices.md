@@ -401,7 +401,7 @@ Note that if the parent scope for the inner action defines `testonly`
 then `forward_variables_from(invoker, "*")` won’t forward it, as it
 avoids clobbering variables. Here are some patterns to work around this:
  -->
-请注意，如果内部操作的父作用域定义了 `testonly`，那么 `forward_variables_from(invoker, "*")` 为避免破坏变量将不会传递它。以下是一些解决方式：
+请注意，如果内部操作的父域定义了 `testonly`，那么 `forward_variables_from(invoker, "*")` 为避免破坏变量将不会传递它。以下是一些解决方式：
 
 <!-- 
 ```gn
@@ -867,7 +867,7 @@ types like maps or sets. Sometimes lists are used instead of sets. The
 example below has a list of build variants, and checks if one of them
 is the “profile” variant:
  -->
-GN 提供的聚合数据类型为列表（list）和 作用域（scope），但不提供诸如地图（map）和集合（set）这样的关联类型。有时列表被用来代替集合。下面的示例含有一个构建变量的列表，并检查其中之一是否是“profile”变量：
+GN 提供的聚合数据类型为列表（list）和 域（scope），但不提供诸如地图（map）和集合（set）这样的关联类型。有时列表被用来代替集合。下面的示例含有一个构建变量的列表，并检查其中之一是否是“profile”变量：
 
 ```gn
 if (variants + [ "profile" ] - [ "profile" ] != variants) {
@@ -910,9 +910,9 @@ Sometimes you want to copy everything from the invoker, except for
 a particular variable that you want to copy from any enclosing
 scope. You’ll encounter this pattern:
  -->
-`forward_variables_from()` 将从给定作用域_或任何外封闭作用域_中将指定的变量复制到当前作用域下。除非指定 `"*"`——这种情况下它将仅从给定作用域下复制变量。并且它绝不会替换您作用域中已经存在的变量——那是一个生成时错误。
+`forward_variables_from()` 将从给定域_或任何外封闭域_中将指定的变量复制到当前域下。除非指定 `"*"`——这种情况下它将仅从给定域下复制变量。并且它绝不会替换您域中已经存在的变量——那是一个生成时错误。
 
-有时您希望从主调函数复制一切，除了某个你想从任何外封闭作用域中复制的特定变量。您将会用到这样的模式：
+有时您希望从主调函数复制一切，除了某个你想从任何外封闭域中复制的特定变量。您将会用到这样的模式：
 
 ```gn
 forward_variables_from(invoker, "*", [ "visibility" ])
