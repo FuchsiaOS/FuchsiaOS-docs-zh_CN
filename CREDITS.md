@@ -62,7 +62,7 @@
 │   │   └── images
 │   └── usb                                             Wilde Luo
 ├── contribute
-│   ├── community													yang-lite
+│   ├── community													yang-lile
 │   │   └── images
 │   ├── contributing-to-fidl
 │   ├── docs
