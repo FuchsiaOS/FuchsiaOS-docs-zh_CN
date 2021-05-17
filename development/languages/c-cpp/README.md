@@ -1,9 +1,9 @@
 # C/C++
 
-- [Editor setup](editors.md)
-- [Naming conventions](naming.md)
-- [C++ style guide](cpp-style.md)
-- [Library restrictions](library_restrictions.md)
-- [Logging](logging.md)
-- [Perftest micro-benchmark library](/zircon/system/ulib/perftest/README.md)
+- [编辑器设设置](editors.md)
+- [命名规范](naming.md)
+- [C++ 编码风格指南](cpp-style.md)
+- [库限制](library_restrictions.md)
+- [日志](logging.md)
+- [Perftest 微基准测试](/zircon/system/ulib/perftest/README.md)
 - [Lint](lint.md)
