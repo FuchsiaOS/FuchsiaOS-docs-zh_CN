@@ -291,12 +291,12 @@ the Fuchsia project. -->
 
 <!-- ### Initiate a CQ Dry Run {:#initiate-a-cq-dry-run} -->
 
-### 建立一个 CQ 试运行 {:#initiate-a-cq-dry-run}
+### 建立一个代码质量演示 {:#initiate-a-cq-dry-run}
 
 <!-- A CQ Dry Run runs your change against the available tests in the Commit Queue.
 Committers, Owners, and Global Approvers can initiate a CQ Dry Run. -->
 
-CQ 试运行是根据“提交队列”中的可用测试进行运行更改。提交者、所有者、和终审员都可以建立一个 CQ 试运行。
+代码质量演示（译文注：CQ Dry Run）是根据“提交队列”中的可用测试运行你的更改。提交者、所有者、和终审员都可以建立一个代码质量演示。
 
 <!-- ### Score code reviews  {:#score-code-reviews} -->
 
@@ -333,7 +333,7 @@ Global Approver. -->
 <!-- When a change is  submitted, the change is moved to the Commit Queue (CQ).
 The Commit Queue verifies, commits, and merges changes to the master branch. -->
 
-当一个更改被提交（原文注：submit）后，更改会被移到提交队列中（CQ）。提交队列核实、提交（原文注：commit）、合并更改到主分支。
+当一个更改被提交（译文注：submit）后，更改会被移到提交队列中（CQ）。提交队列核实、提交（译文注：commit）、合并更改到主分支。
 
 <!-- ## Role matrix {:#role-matrix} -->
 
@@ -604,7 +604,7 @@ Council operates, see the [API Council Charter](/docs/contribute/governance/api_
 
 <!-- ### Eng Council member {:#eng-council-member} -->
 
-### Eng 委员会成员 {:#eng-council-member}
+### 工程师委员会成员 {:#eng-council-member}
 
 <!-- The Fuchsia Eng Council is a small group of senior technical leaders responsible
 for providing a coherent technical vision for Fuchsia. The Eng Council largely
@@ -612,23 +612,23 @@ operates by delegation and ratification, communicating engineering standards,
 values, and objectives throughout the community and then reviewing and ratifying
 concrete engineering proposals from project contributors. -->
 
-Fuchsia Eng 委员会是高级技术领导人的小组，负责为 Fuchsia 提供一致的技术远景。Eng 委员会主要通过授权和批准来运作，在整个社区中交流工程标准，价值和目标，然后审查和批准项目贡献者提出的具体工程建议。
+Fuchsia 工程师委员会是高级技术领导人的小组，负责为 Fuchsia 提供一致的技术远景。工程师委员会主要通过授权和批准来运作，在整个社区中交流工程标准，价值和目标，然后审查和批准项目贡献者提出的具体工程建议。
 
 <!-- #### Eng Council membership {:#eng-council-membership} -->
 
-#### Eng 委员会资格 {:#eng-council-membership}
+#### 工程师委员会资格 {:#eng-council-membership}
 
 <!-- There is no predetermined number of people on the Eng Council. However, in order
 to provide a coherent technical vision, the council has a small number of
 members. Eng Council members are appointed by the governing authority for the
 project. -->
 
-Eng 委员会没有预定的人数。通常情况下，但是，为了提供一致的技术远景，委员会中有少量成员。 Eng 委员会成员受该项目的管理机构委托。
+工程师委员会没有预定的人数。通常情况下，但是，为了提供一致的技术远景，委员会中有少量成员。工程师委员会成员受该项目的管理机构委托。
 
 <!-- For more details about the responsibilities of an API Reviewer and how the API
 Council operates, see the [Fuchsia Eng Council Charter](/docs/contribute/governance/eng_council.md). -->
 
-更多关于 Eng 审查员的责任和 Eng 委员会如何工作的详情，请查看 [Fuchsia Eng 委员会章程](/docs/contribute/governance/eng_council.md)
+更多关于工程师审查员的责任和 工程师委员会如何工作的详情，请查看 [Fuchsia 工程师委员会章程](/docs/contribute/governance/eng_council.md)
 
 <!-- ## Revoking Privileges {:#revoking-privileges} -->
 
