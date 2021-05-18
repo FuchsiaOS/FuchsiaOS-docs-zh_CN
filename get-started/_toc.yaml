@@ -5,15 +5,29 @@
 # Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
+
+# toc:
+# - title: "Overview"
+#   path: /docs/get-started/README.md
+# - heading: "Get Started with Fuchsia"
+# - title: "Get source code"
+#   path: /docs/get-started/get_fuchsia_source.md
+# - title: "Configure and build Fuchsia"
+#   path: /docs/get-started/build_fuchsia.md
+# - title: "Set up and start the Fuchsia emulator (FEMU)"
+#   path: /docs/get-started/set_up_femu.md
+# - title: "Explore Fuchsia"
+#   path: /docs/get-started/explore_fuchsia.md
+
 toc:
-- title: "Overview"
-  path: /docs/get-started/README.md
-- heading: "Get Started with Fuchsia"
-- title: "Get source code"
-  path: /docs/get-started/get_fuchsia_source.md
-- title: "Configure and build Fuchsia"
-  path: /docs/get-started/build_fuchsia.md
-- title: "Set up and start the Fuchsia emulator (FEMU)"
-  path: /docs/get-started/set_up_femu.md
-- title: "Explore Fuchsia"
-  path: /docs/get-started/explore_fuchsia.md
+  - title: "概述"
+    path: /docs/get-started/README.md
+  - heading: "Fuchsia 入门"
+  - title: "获取 Fuchsia 源代码"
+    path: /docs/get-started/get_fuchsia_source.md
+  - title: "构建 Fuchsia"
+    path: /docs/get-started/build_fuchsia.md
+  - title: "配置并运行 Fuchsia 模拟器(FEMU)"
+    path: /docs/get-started/set_up_femu.md
+  - title: "探索 Fuchsia"
+    path: /docs/get-started/explore_fuchsia.md
