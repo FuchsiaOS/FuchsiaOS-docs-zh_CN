@@ -70,12 +70,12 @@ We aim to meet these ideals and measure our progress against these measures.
 <!-- 
 ## Python scripts as build actions
  -->
-## Python 脚本作为构建动作
+## Python 脚本用于构建行为
 
 <!-- 
 Python scripts may be used as build actions.
  -->
-Python 脚本可用作构建动作（build action）。
+Python 脚本可用于构建行为（build action）。
 
 <!-- 
 Please follow the [Google style guide for Python][python-style].
@@ -95,7 +95,7 @@ Fuchsia 当前使用 Python 3.8。所有 Python 源文件都以下面的内容�
 <!-- 
 ## Shell scripts as build actions
  -->
-## Shell 脚本作为构建动作
+## Shell 脚本用于构建行为
 
 <!-- 
 Shell scripts may be used as build actions.
@@ -106,7 +106,7 @@ shell commands. For complex operations, other languages are preferred.
 Please follow the [Google style guide for shell scripting][bash-style].
 Please use [shellcheck] to find and correct common shell programming errors.
  -->
-shell 脚本可以用作构建动作。
+shell 脚本可以用于构建行为。
 
 我们鼓励使用 shell 脚本执行可以用一些简单的 shell 指令表示的任务。对于复杂操作，最好使用其他语言。
 
@@ -156,7 +156,7 @@ on a `config()` that applies this behavior. The use of a legacy tool or
 template to be replaced can be captured by a dependency on a `group()`
 target.
  -->
-构建系统可以协助执行诸如编译器特性、新工具或各种最佳实践激增的迁移。遗留的不良行为通常可以表示为对造成此行为应用的 `config()` 的依赖。对要替换的旧版工具或模板的使用可以通过对 `group（）` 目标的依赖来捕获。
+构建系统可以协助执行诸如编译器特性、新工具或各种最佳实践激增的迁移。遗留的不良行为通常可以表示为对于应用此行为的 `config()` 的依赖。对要被替换的旧版工具或模板的使用可以通过对 `group（）` 目标的依赖来捕获。
 
 <!-- 
 ### Commit to a plan
@@ -282,7 +282,7 @@ group("foo_allowlist") {
   #    \|_________|
   # 这是一份使用了不推荐的“foo”工具的目标的允许列表。
   # 截至 2021 年 4 月，我们不再使用“foo”。用户应当
-  # 迁移至新“bar”工具，这篇文章中对其进行了描述：
+  # 迁移至新工具“bar”，这篇文章中对其进行了描述：
   # https://fuchsia.dev/...
   #
   # 要重新生成：
