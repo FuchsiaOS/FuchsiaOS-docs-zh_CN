@@ -16,7 +16,7 @@ development community. Read the [Fuchsia roadmap](/docs/contribute/roadmap/index
 to get a high-level understanding of the various projects being considered
 within Fuchsia. -->
 
-Fuchsia 项目确定功能和改进的优先级以便支持我们的开发社区。通过阅读 [Fuchsia roadmap](/docs/contribute/roadmap/index.md) 来对 Fuchsia 内部正在考虑的各种项目有一个高水平的了解。
+Fuchsia 项目确定功能和改进的优先级以便支持我们的开发社区。通过阅读 [Fuchsia roadmap](/docs/contribute/roadmap/index.md) 来对 Fuchsia 内部正在考虑的各种项目有一个深入的了解。
 
 <!-- ## Understand the Request for Comments (RFC) process -->
 
@@ -25,14 +25,14 @@ Fuchsia 项目确定功能和改进的优先级以便支持我们的开发社区
 <!-- The Requests for Comments (RFC) process is intended to provide a consistent and
 transparent path for making project-wide technical decisions. -->
 
-征求意见 Request for Comments(RFC) 审核，其目的是为整个项目的技术决策提供一个一致和透明的途径。
+征求意见（Request for Comments (RFC)）审核，其目的是为整个项目的技术决策提供一个一致和透明的途径。
 
 <!-- RFCs are documents that inform and build on the technical direction of the
 Fuchsia project. RFCs can be proposed by anyone in the community. Using an RFC,
 a Fuchsia community member can submit an idea or technical concept for broader
 review or consideration. For more information, see [Fuchsia RFCs](/docs/contribute/governance/rfcs). -->
 
-征求意见集 (RFCs) 是为 Fuchsia 项目的技术方向提供信息和发展的文件。征求意见集可以由社区中的任何人提出。使用征求意见，Fuchsia 社区成员可以提交一个想法或技术概念，供更多人审查或考虑。更多相关信息，请查看 [Fuchsia 征求意见集](/docs/contribute/governance/rfcs)。
+征求意见集（RFCs）是为 Fuchsia 项目的技术方向提供信息和发展的文件。征求意见集可以由社区中的任何人提出。使用征求意见，Fuchsia 社区成员可以提交一个想法或技术概念，供更多人审查或考虑。更多相关信息，请查看 [Fuchsia 征求意见集](/docs/contribute/governance/rfcs)。
 
 <!-- ### Review completed RFCs -->
 
@@ -134,7 +134,7 @@ review, see [Creating an RFC.](/docs/contribute/governance/rfcs/create_rfc.md) -
 
 <!-- ### Topic discussion -->
 
-### 主题讨论
+### 专题讨论
 
 <!-- The following mailing lists are discussion channels for specific areas of
 Fuchsia: -->
@@ -508,8 +508,8 @@ Fuchsia 项目鼓励能编写测试良好、高质量的贡献者同时想要给
 
 ## 报告问题
 
-Did you see a line of documentation or code that you think needs to be improved?
+<!-- Did you see a line of documentation or code that you think needs to be improved?
 You can help get these kinds of concerns resolved by filing an issue in Monorail.
-For more information, see [Report an Issue](/docs/contribute/report-issue.md).
+For more information, see [Report an Issue](/docs/contribute/report-issue.md). -->
 
 您是否看到需要改进的文档或代码行？您可以通过在 Monorail 中提出问题来帮助解决这些问题。更多相关的信息，请查看 [报告问题](/docs/contribute/report-issue.md)
