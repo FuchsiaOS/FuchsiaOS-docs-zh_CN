@@ -5,6 +5,14 @@
 # Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
+# toc:
+# - title: "Overview"
+#   path: /docs/contribute/community/index.md
+# - title: "Get involved"
+#   path: /docs/contribute/community/get-involved.md
+# - title: "Contributor roles"
+#   path: /docs/contribute/community/contributor-roles.md
+
 toc:
 - title: "概述"
   path: /docs/contribute/community/index.md
