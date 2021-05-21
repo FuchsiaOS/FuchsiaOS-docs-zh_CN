@@ -10,7 +10,7 @@ These principles apply to all modes of using the Fuchsia build, for instance
 whether by interactive engineering workflows or via automated systems such as
 CI/CQ.
  -->
-本文档详细介绍了与 Fuchsia 构建应当如何运作有关的设计原则和特定技术决策。这些原则适用于使用 Fuchsia 构建的所有模式，例如是否通过交互性工程工作流或通过诸如 CI/CQ 的自动化系统的方式。
+本文档详细介绍了与 Fuchsia 构建应当如何运作有关的设计原则和特定技术决策。这些原则适用于使用 Fuchsia 构建的所有模式，例如是否通过交互性工程工作流或通过例如 CI/CQ 的自动化系统的方式。
 
 <!-- 
 ## Goals and priorities of the build
@@ -57,7 +57,7 @@ The following are considered to be good properties for the build:
 下列内容被认为是该构建的良好属性：
 
 * 封闭性（hermeticity）——构建是独立的，既不会影响外部软件和配置，也不会受到外部软件和配置的影响。<!-- 构建步骤 -->
-* 可重复性（repeatability）和可再现性（reproducibility）——来自同一源树（source tree）的两个构建确定性地产生相同的输出或相同的结果。可重复性能够提高安全性和审核效率，简化故障排除。
+* 可重复性（repeatability）和可再现性（reproducibility）——来自同一源工作区的两个构建确定性地产生相同的输出或相同的结果。可重复性能够提高安全性和审核效率，简化故障排除。
 * 高效（efficient）——构建应仅花费时间进行与构建相关的工作，并且必须力求将对人力和基础设施代价的影响降至最低。
 * 可移植性（portability）——构建应在所有受支持的主机平台上产生一致的结果。
 
