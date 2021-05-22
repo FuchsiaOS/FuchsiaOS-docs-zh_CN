@@ -32,11 +32,11 @@ Fuchsia project. RFCs can be proposed by anyone in the community. Using an RFC,
 a Fuchsia community member can submit an idea or technical concept for broader
 review or consideration. For more information, see [Fuchsia RFCs](/docs/contribute/governance/rfcs). -->
 
-征求意见集（RFCs）是为 Fuchsia 项目的技术方向提供信息和发展的文件。征求意见集可以由社区中的任何人提出。使用征求意见，Fuchsia 社区成员可以提交一个想法或技术概念，供更多人审查或考虑。更多相关信息，请查看 [Fuchsia 征求意见集](/docs/contribute/governance/rfcs)。
+征求意见书（RFCs）是为 Fuchsia 项目的技术方向提供信息和发展的文件。征求意见书可以由社区中的任何人提出。使用征求意见，Fuchsia 社区成员可以提交一个想法或技术概念，供更多人审查或考虑。更多相关信息，请查看 [Fuchsia 征求意见书](/docs/contribute/governance/rfcs)。
 
 <!-- ### Review completed RFCs -->
 
-### 审查完成的征求意见集
+### 审查完成的征求意见书
 
 <!-- To see a complete list of accepted and rejected RFC proposals, see [Accepted proposals](/docs/contribute/governance/rfcs#accepted)
 and [Rejected proposals](/docs/contribute/governance/rfcs#rejected). -->
@@ -46,7 +46,7 @@ and [Rejected proposals](/docs/contribute/governance/rfcs#rejected). -->
 
 <!-- ### Track ongoing RFCs -->
 
-### 追踪进行中的征求意见集
+### 追踪进行中的征求意见书
 
 <!-- To stay up-to-date with RFCs that are still in progress, you can bookmark this [saved search](https://fuchsia-review.googlesource.com/q/dir:docs/contribute/governance/rfcs+is:open)
 that lists any open Gerrit change in the `rfcs` directory. -->
