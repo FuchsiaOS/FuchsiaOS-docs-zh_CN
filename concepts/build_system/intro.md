@@ -19,7 +19,7 @@ In the Fuchsia checkout after running `jiri update`, the commands
  -->
 本文是 GN 的术语和思维方式的介绍。本文提供的背景知识足以使您了解 GN 以及它是如何在 Fuchsia 中使用的。GN（和 Fuchsia 构建）本身比下面将要讨论的内容更加复杂，但其多数内容普通开发者并不需要在更深层次了解。
 
-GN 文档页面[快速开始][QuickStart]和[语言][Language]给出了 GN 更加详细的背景知识，[参考手册][Reference]拥有完整的语言文档。使用 `gn help` 命令以交互性地打印独立主题的参考资料。[ninja][Ninja] 也拥有其单独的文档。
+GN 文档页面[快速开始][QuickStart]和[语言][Language]给出了 GN 更加详细的背景知识，[参考手册][Reference]拥有完整的语言文档。使用 `gn help` 命令以交互性地打印独立主题的参考资料。[Ninja][Ninja] 也拥有其单独的文档。
 
 在运行 `jiri update` 后的 Fuchsia 检查中，命令 `fx gn` 和 `fx ninja` 提供了对预构建二进制文件的访问。
 
@@ -56,7 +56,7 @@ tools that corresponds to a separation of running the build into two steps:
    changes after the first time you've built, `ninja` does it all.
  -->
 1. `gn gen` 接受所有配置选项，并作出所有决定。它是即所做的工作是在构建目录下生成 `.ninja` 文件。除非您更改配置或完全取消构建目录，其他情况下均无需手动进行这一步。总而言之，仅当 GN 文件改动时才需要执行此操作。在增量构建时，如果 GN 文件或配置改动，该操作会自动进行。
-1. `ninja` 运行命令进行编译和链接等操作。它处理增量构建和并行性。这一步是您每当改变源文件时都要做的，比如运行了 `make`。当相关的 `BUILD.gn` 文件发生改变后，GN 将通过再次运行 `gn gen` 来自动给出重新生成 ninja 文件的规则，因此对于大多数改动，在您首次构建后，`ninja` 就完成了所有工作。
+1. `ninja` 运行命令进行编译和链接等操作。它处理增量构建和并行性。这一步是您每当改变源文件时都要做的，比如运行了 `make`。当相关的 `BUILD.gn` 文件发生改变后，GN 将通过再次运行 `gn gen` 来自动给出重新生成 Ninja 文件的规则，因此对于大多数改动，在您首次构建后，`ninja` 就完成了所有工作。
 
 <!-- 
 Ninja is very simple compared to something like GNU `make`.  It just compares
@@ -64,7 +64,7 @@ times and runs commands and its input files are written by machines, not
 humans.  However, it builds in some useful things that we bend over backward
 to accomplish in `make`:
  -->
-相比于类似 GNU `make` 的命令，ninja 非常简单。它仅仅比较时间并运行命令，它的输入文件由机器编写，而非人类。然而，它内置的一些功能，我们在 `make` 中要费九牛二虎之力才能实现。
+相比于类似 GNU `make` 的命令，Ninja 非常简单。它仅仅比较时间并运行命令，它的输入文件由机器编写，而非人类。然而，它内置的一些功能，我们在 `make` 中要费九牛二虎之力才能实现。
 
 <!-- 
  - Rebuild each file when the command line changes.  Command lines will only
@@ -84,18 +84,18 @@ to accomplish in `make`:
    `Kbuild`-style messages for each command it runs, in a wordy-progress-meter
    style.  The -v switch is like V=1 in `Kbuild`, to show each actual command.
  -->
- - 当命令行更改时重建每个文件。仅当 GN 重新运行时，命令行才会真正改变。但接下来，ninja 聪明地针对已更改文件执行增量构建重新执行命令，而不针对未更改的文件。
- - 处理编译器生成的依赖文件。ninja 知道 makefile 子集由编译器在 `.d` 文件中给出，并会在被 GN 定向时直接使用它们。
+ - 当命令行更改时重构建每个文件。仅当 GN 重新运行时，命令行才会真正改变。但接下来，Ninja 聪明地针对已更改文件执行增量构建重新执行命令，而不针对未更改的文件。
+ - 处理编译器生成的依赖文件。Ninja 知道 makefile 子集由编译器在 `.d` 文件中给出，并会在被 GN 定向时直接使用它们。
  - 默认带 `-j$(getconf _NPROCESSORS_ONLN)` 运行。您可以在使用 Goma 时传递（pass）`-j1` 或 `-j1024` 以进行序列化，但它可以开箱即用，实现您所需要的并行性。
- - 防止并行作业中交错的 `stdout`/`stderr` 输出。ninja 对输出进行缓冲，以免错误信息不会从多个进程大量涌出而导致错乱。
- - 支持简洁/啰嗦模式的命令输出。默认情况下，ninja 会以啰嗦进度表样式为其运行的每条命令给出简短的 `Kbuild` 风格消息。-v 开关相当于 `Kbuild`中的 V=1，用来显示每条实际命令。
+ - 防止并行作业中交错的 `stdout`/`stderr` 输出。Ninja 对输出进行缓冲，以免错误信息不会从多个进程大量涌出而导致错乱。
+ - 支持简洁/啰嗦模式的命令输出。默认情况下，Ninja 会以啰嗦进度表样式为其运行的每条命令给出简短的 `Kbuild` 风格消息。-v 开关相当于 `Kbuild`中的 V=1，用来显示每条实际命令。
 
 <!-- 
 GN was developed as part of the Chromium project to replace older build
 systems.  Fuchsia inherited it from them, and it is now used across the tree as
 the primary build system.
  -->
-GN 作为 Chromium 项目的一部分，目的是取代旧版系统。Fuchsia 从它们中继承了 GN。现在 GN 在各个项目中被用作主要的构建系统。
+GN 作为 Chromium 项目的一部分，目的是取代旧版系统。Fuchsia 从它们中继承了 GN。现在 GN 被用作跨工作区的主要构建系统。
 
 <!-- 
 ## Build directories and `args.gn`
@@ -116,9 +116,9 @@ directory, and Fuchsia inherited that default.  But nothing cares what build
 directory names you choose, though the `out` subdirectory is in the top-level
 `.gitignore` file for Fuchsia.
  -->
-ninja 总是在构建目录中运行。ninja 的所有命令都从构建目录的根目录运行。通常的情况是 `ninja -C build-dir`。
+Ninja 总是在构建目录中运行。Ninja 的所有命令都从构建目录的根目录运行。通常的情况是 `ninja -C build-dir`。
 
-GN 和 ninja 都不关注您所使用的构建目录是什么。惯常做法是使用源目录的子目录，并且由于文件路径通常被重新定位（rebase）为构建目录的相对路径，因此如果您将您的构建路径置于别处，传给编译器的文件名中将会包含大量的 `../`；不过它应该依然运作。Chromium（早于 GN 本身）中长期以来的惯例是在源目录使用 `out/_something_`，Fuchsia 继承了这一默认行为。但是您所选择的目录名称不会受到关注，尽管 `out` 子目录列入了 Fuchsia 的顶层 `.gitignore` 文件。
+GN 和 Ninja 都不关注您所使用的构建目录是什么。惯常做法是使用源目录的子目录，并且由于文件路径通常被重新定位（rebase）为构建目录的相对路径，因此如果您将您的构建路径置于别处，传给编译器的文件名中将会包含大量的 `../`；不过它应该依然运作。Chromium（早于 GN 本身）中长期以来的惯例是在源目录使用 `out/_something_`，Fuchsia 继承了这一默认行为。但是您所选择的目录名称不会受到关注，尽管 `out` 子目录列入了 Fuchsia 的顶层 `.gitignore` 文件。
 
 <!-- 
 The basic command is `gn gen build-dir`.  This creates `build-dir/` if needed,
@@ -128,7 +128,7 @@ arguments (see below).  `args.gn` is a file in GN syntax that can assign values
 to GN build arguments that override any hardcoded defaults.  This means just
 repeating `gn gen build-dir` preserves what you did last time.
  -->
-`gn gen build-dir` 是基本命令。它在必要时创建 `build-dir`，并对当前配置导入 ninja 文件。如果 `build-dir/args.gn` 存在，那么 `gn gen` 将读取该文件以设置 GN 构建参数（见下）。`arg.gn` 是 GN 语法文件，可以向 GN 构建参数分配值，且会覆盖所有硬编码默认值。这意味着仅需重复执行 `gn gen build-dir` 即可保留您上次的操作。
+`gn gen build-dir` 是基本命令。它在必要时创建 `build-dir`，并对当前配置导入 Ninja 文件。如果 `build-dir/args.gn` 存在，那么 `gn gen` 将读取该文件以设置 GN 构建参数（见下）。`arg.gn` 是 GN 语法文件，可以向 GN 构建参数分配值，且会覆盖所有硬编码默认值。这意味着仅需重复执行 `gn gen build-dir` 即可保留您上次的操作。
 
 <!-- 
 You can also add `--args=...` to gn gen or use the `gn args` command to
@@ -140,7 +140,7 @@ will re-run `gn gen` for you with the new arguments.  You can also just edit
 Args can also be set using the `fx set` command, which invokes `gn gen`. For
 example to set `foxtrot` to ' `true` via `fx set`:
  -->
-您也可以通过向 `gn gen` 添加 `--args=...` 或使用 `gn args` 命令来培植您的构建参数。`gn args` 命令为您提供了一种方式来运行您的 `$EDITOR` 以编辑 `args.gn`，并在退出编辑器时，为您带着新参数再次运行 `gn gen` 命令。您也可以随时编辑 `args.gn`，下次 ninja 运行将会重新生成构建文件。
+您也可以通过向 `gn gen` 添加 `--args=...` 或使用 `gn args` 命令来培植您的构建参数。`gn args` 命令为您提供了一种方式来运行您的 `$EDITOR` 以编辑 `args.gn`，并在退出编辑器时，为您带着新参数再次运行 `gn gen` 命令。您也可以随时编辑 `args.gn`，下次 Ninja 运行将会重新生成构建文件。
 
 args 也可以用 `fx set` 命令设定，这将调用 `gn gen`。例如利用 `fx set` 设置 `foxtrot` 为 `true`：
 
@@ -190,7 +190,7 @@ to the directory containing the `BUILD.gn` file where the path string appears.
 They can also be "source-absolute", meaning relative to the root of the source
 tree.  Source-absolute paths begin with `//` in GN.
  -->
-GN 使用 POSIX 风格路径（path）（总以字符串表示），它们既用于文件，也用于提及 GN 定义的实体。路径可以是相对的，即路径的表示是相对于包含 `BUILD.gn` 文件目录的。他们也可以是“绝对于源的（source-absolute）”，即相对于源根目录。绝对于源的路径在 GN 中以 `//` 开头。
+GN 使用 POSIX 风格路径（path）（总以字符串表示），它们既用于文件，也用于提及 GN 定义的实体。路径可以是相对的，即路径的表示是相对于包含 `BUILD.gn` 文件目录的。他们也可以是“绝对于源的（source-absolute）”，即相对于源工作区。绝对于源的路径在 GN 中以 `//` 开头。
 
 <!-- 
 When source paths are eventually used in commands, they are translated into
@@ -264,7 +264,7 @@ etc.)  but doesn't use it as a direct input at build time, that file belongs in
 the `data_deps` list of target that uses it.  That will also be enough to get
 the thing into the BOOTFS image at its appointed place.
  -->
-有一种通用元目标（meta-target）类型称为 `group()`（组），它与构建生成的文件不对应，但却是一种很好地构造您依赖图的方式。顶层目标诸如 `default` 通常都是组（group）。您可以为一款硬件的所有驱动创建一个组，也可以为一个使用场景的所有二进制文件创建一个组，等等。
+有一种通用元目标（meta-target）类型称为 `group()`（组），它与构建生成的文件不对应，但却是一种很好地构造您依赖图的方式。顶层目标例如 `default` 通常都是组（group）。您可以为一款硬件的所有驱动创建一个组，也可以为一个使用场景的所有二进制文件创建一个组，等等。
 
 当某些代码在运行时使用某个文件（一个数据文件、另一个可执行文件等）而不将其作为构建时期的直接输入时，该文件属于使用它的目标的 `data_deps` 列表。这也足以使其被装入 BOOTFS 镜像的指定位置。
 
@@ -292,7 +292,7 @@ is at the granularity of an individual target.  So having some target in the
 toolchain, see below) available as targets on the Ninja command line even
 though they are not built by default.
  -->
-注意，获取 ninja 文件定义的目标是 `BUILD.gn` 粒度的，尽管来自默认或其他任何目标的依赖图时单个目标粒度的。因此，将一些在 `BUILD.gn` 中的目标置于图的默认值中，使得该文件中的所有目标即使在默认未被构建的情况下，也作为 ninja 命令行的目标而可用。
+注意，获取 Ninja 文件定义的目标是 `BUILD.gn` 粒度的，尽管来自默认或其他任何目标的依赖图时单个目标粒度的。因此，将一些在 `BUILD.gn` 中的目标置于图的默认值中，使得该文件中的所有目标即使在默认未被构建的情况下，也作为 Ninja 命令行的目标而可用。
 
 <!-- 
 ## More Advanced Concepts
@@ -310,7 +310,7 @@ the end of the day is to produce declarative Ninja rules.  Everything revolves
 around scopes, which is both the lexical binding construct of the language and
 a data type.
  -->
-GN 是简单的动态类型的命令式语言，其最终目的只是产生声明性的 ninja 规则。一切都围绕作用域决定，它既是该语言的词法绑定（lexical binding，即静态绑定）结构，也是数据类型。
+GN 是简单的动态类型的命令式语言，其最终目的只是产生声明性的 Ninja 规则。一切都围绕作用域决定，它既是该语言的词法绑定（lexical binding，即静态绑定）结构，也是数据类型。
 
 <!-- 
 GN values can take any of several types:
