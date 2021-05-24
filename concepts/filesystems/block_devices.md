@@ -12,7 +12,7 @@ Zircon). The devhost process then transforms these requests into
 driver-understood “I/O transactions”, where they are actually transmitted to the
 particular block device driver, and eventually to real hardware. -->
 
-Fuchsia块设备驱动程序与系统上的其他驱动程序一样，作为用户的服务实现，可通过IPC访问。使用块设备的程序将拥有这些底层驱动程序的一个或多个句柄。与文件系统客户端类似，文件系统客户端可以通过在RPC消息中编码这些请求来向服务端发送“读”或“写”请求，程序可以充当块设备的客户端，并且可以将RPC消息传输到“device host”（在Zircon中被称为“Devhost”）。然后，devhost进程将这些请求转换为驱动程序理解的“I/O事务”，在这些事务中，它们实际上被传输到特定的块设备驱动程序，并最终传输到真正的硬件。
+Fuchsia 块设备驱动程序与系统上的其他驱动程序一样，作为用户的服务实现，可通过 IPC 访问。使用块设备的程序将拥有这些底层驱动程序的一个或多个句柄。与文件系统客户端类似，文件系统客户端可以通过在 RPC 消息中编码这些请求来向服务端发送“读”或“写”请求，程序可以充当块设备的客户端，并且可以将 RPC 消息传输到 “device host”（在 Zircon 中被称为 “Devhost”）。然后，devhost 进程将这些请求转换为驱动程序理解的“I/O 事务”，在这些事务中，它们实际上被传输到特定的块设备驱动程序，并最终传输到真正的硬件。
 
 <!-- Particular block device drivers (USB, AHCI / SATA, Ramdisk, GPT, etc) implement
 the [`ZX_PROTOCOL_BLOCK_CORE` protocol](/zircon/system/public/zircon/device/block.h),
