@@ -29,7 +29,7 @@ messages of a limited size from an RPC protocol into an “I/O transaction”,
 repeated copying of large buffers is often required to access block devices. -->
 
 块设备驱动程序通常负责占用很大一部分内存，并对对特定设备的请求进行排队，以便对内存的一部分进行“read into”或“write from”。
-不幸的是，由于将有限大小的消息通过RPC协议传输到“I/O事务”，访问块设备通常需要重复复制到大缓冲区。
+不幸的是，由于将有限大小的消息通过 RPC 协议传输到“I/O 事务”，访问块设备通常需要重复复制到大缓冲区。
 
 <!-- To avoid this performance bottleneck, the block device drivers implement
 another mechanism to transmit reads and writes: a fast, FIFO-based protocol
