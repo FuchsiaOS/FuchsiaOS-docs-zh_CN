@@ -47,4 +47,4 @@ offset X of VMO Y to offset Z on a disk”. When combined with the “mmap”
 memory-mapping tools, this provides a “zero-copy” pathway directly from client
 programs to disk (or in the other direction) when accessing files. -->
 
-为了避免这种性能瓶颈，块设备驱动程序实现了另一种传输读写的机制：基于FIFO的快速协议，作用于共享的VMO。 文件系统(或称希望与块设备交互的客户端)可以从块设备获取FIFO，注册“transaction buffer”，并将VMO的句柄传递给块设备。 该协议的客户端可以在FIFO上发送快速、轻量级的控制消息，指示块设备驱动程序应该直接作用于已经注册的VMO，而不是发送具有大缓冲区的“read”或“write”消息。例如，在写入文件时，文件系统(将文件表示为VMO)可以发送一个小的FIFO消息，指示“从VMO Y的偏移量X开始将N个字节直接在磁盘上的偏移量Z位置开始写入”，而不是直接在IPC原语上传递字节，并将它们复制到块设备的内存中的新位置。当与“mmap”内存映射工具结合使用时，这在访问文件时提供了直接从客户端程序到磁盘(或相反方向)的“zero-copy”路径。
+为了避免这种性能瓶颈，块设备驱动程序实现了另一种传输读写的机制：基于 FIFO 的快速协议，作用于共享的 VMO。 文件系统（或称希望与块设备交互的客户端）可以从块设备获取 FIFO，注册“transaction buffer”，并将 VMO 的句柄传递给块设备。 该协议的客户端可以在 FIFO 上发送快速、轻量级的控制消息，指示块设备驱动程序应该直接作用于已经注册的 VMO，而不是发送具有大缓冲区的“读”或“写”消息。例如，在写入文件时，文件系统（将文件表示为 VMO）可以发送一个小的 FIFO 消息，指示“从 VMO Y 的偏移量 X 开始将 N 个字节直接在磁盘上的偏移量 Z 位置开始写入”，而不是直接在 IPC 原语上传递字节，并将它们复制到块设备的内存中的新位置。当与“mmap”内存映射工具结合使用时，这在访问文件时提供了直接从客户端程序到磁盘（或相反方向）的“zero-copy”路径。
