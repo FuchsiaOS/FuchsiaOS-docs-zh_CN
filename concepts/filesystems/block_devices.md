@@ -18,7 +18,7 @@ Fuchsia 块设备驱动程序与系统上的其他驱动程序一样，作为用
 the [`ZX_PROTOCOL_BLOCK_CORE` protocol](/zircon/system/public/zircon/device/block.h),
 which allows clients to queue transactions and query the block device. -->
 
-特定的块设备驱动程序(USB、AHCI/SATA、Ramdisk、GPT等)实现[`ZX_PROTOCOL_BLOCK_CORE`协议](/zircon/system/public/zircon/device/block.h),其允许客户端对事务进行排队并查询块设备。
+特定的块设备驱动程序（USB、AHCI/SATA、Ramdisk、GPT 等）实现 [`ZX_PROTOCOL_BLOCK_CORE` 协议](/zircon/system/public/zircon/device/block.h) ，其允许客户端对事务进行排队并查询块设备。
 
 ## Fast Block I/O
 
