@@ -31,7 +31,7 @@ Ninja.
 If you are unfamiliar with Fuchsia's build system and GN, see [Using GN
 build][gn-preso], which outlines the basic principles of the GN build system.
  -->
-如果您对 Fuchsia 的构建系统和 GN 不熟悉，请参阅 [使用 GN 构建][gn-preso]，该文章概述了 GN 构建系统的基本原则。
+如果您对 Fuchsia 的构建系统和 GN 不熟悉，请参阅[使用 GN 构建][gn-preso]，该文章概述了 GN 构建系统的基本原则。
 
 <!-- 
 ## Boards and Products
@@ -59,7 +59,7 @@ such as all tools or all tests. An overview of bundles is provided in
 [bundles](bundles.md). A set of top-level bundles are defined in
 [`//bundles`](/bundles/README.md).
  -->
-套装是源工作区一部分中相关包的分组，例如用于所有测试的所有工具。[套装](bundles.md)中提供了对于套装的概述。一组顶层套装定义在[`//bundles`](/bundles/README.md)中。
+套装（bundle）是源工作区一部分中相关包的分组，例如用于所有测试的所有工具。[套装](bundles.md)中提供了对于套装的概述。一组顶层套装定义在[`//bundles`](/bundles/README.md)中。
 
 <!-- 
 ## Build targets
@@ -91,7 +91,7 @@ declaration types) are defined in the [GN reference][gn-reference]. There are
 also a handful of custom templates in `.gni` files in the
 [`//build` project][build-project].
  -->
-可用命令（使用 gn cli 工具调用）和结构（内置目标声明类型）定义在 [GN 参考手册]中。[`//build` 项目][build-project]里的 `.gni` 文件中也有许多自定义模板。
+可用命令（使用 gn cli 工具调用）和结构（内置目标声明类型）定义在 [GN 参考手册][gn-reference]中。[`//build` 项目][build-project]里的 `.gni` 文件中也有许多自定义模板。
 
 <!-- 
 These custom templates mostly define custom target declaration types, such as
@@ -121,7 +121,7 @@ with `fx`, i.e. `fx gn` or `fx ninja`.
 执行构建的最简单方式就是通过 `fx` 工具，同 [fx 工作流](/docs/development/build/fx.md)所描述的一样。继续阅读以理解 `fx` 暗中的操作。
 
 文章的剩余部分假设 `gn` 和 `ninja` 命令在您的 `PATH` 中是可用的。这些命令可分别在 `prebuilt/third_party/gn/<platform>` 和
-`prebuilt/third_party/ninja/<platform>`中找到。或者，如果您不想修改您的 `PATH`，您可以在所有调用前加上 `fx`，即 `fx gn` 或 `fx ninja`。
+`prebuilt/third_party/ninja/<platform>` 中找到。或者，如果您不想修改您的 `PATH`，您可以在所有调用前加上 `fx`，即 `fx gn` 或 `fx ninja`。
 
 <!-- 
 ### Gen step
