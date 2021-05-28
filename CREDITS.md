@@ -15,7 +15,7 @@
 │   ├── components ---------------------|
 │   │   ├── v1                          |
 │   │   └── v2                          |
-│   ├── diagnostics --------------------|
+│   ├── diagnostics --------------------| Whyto
 │   │   ├── inspect                     |
 │   │   ├── lifecycle_events            |
 │   │   └── logs                        |

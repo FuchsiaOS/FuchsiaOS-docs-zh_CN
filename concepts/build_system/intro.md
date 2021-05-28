@@ -445,14 +445,14 @@ ways. In Fuchsia there will be several toolchains:
    enabling ASan or the like for parts of userland.
  -->
  - 主机（host）
- - Vanilla 用户区（Vanilla userland）（使用默认值 `-fPIE` 编译）
- - 用户区中的共享库（shared libraries in userland）（使用 `-fPIC` 编译）
+ - 原生用户空间（Vanilla userland）（使用默认值 `-fPIE` 编译）
+ - 用户空间中的共享库（shared libraries in userland）（使用 `-fPIC` 编译）
  - `userboot`
  - 内核（kernel）
  - 面向 ARM64 的物理地址模式内核（Kernel physical-address mode for ARM64）（使用 `-mstrict-align` 编译）
  - 面向 x86 的多重引导（Multiboot for x86）（使用 `-m32` 编译）
  - 面向 Gigaboot 的 UEFI（UEFI for Gigaboot）
- - 工具链也在[“变体”方案](/docs/gen/build_arguments.md#known_variants)中使用，这是我们允许选择性地为部分用户区启用 ASan 或类似功能的方式。
+ - 工具链也在[“变体”方案](/docs/gen/build_arguments.md#known_variants)中使用，这是我们允许选择性地为部分用户空间启用 ASan 或类似功能的方式。
 
 <!-- 
 Each toolchain is identified by a GN label.  The full syntax for target labels
