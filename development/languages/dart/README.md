@@ -7,7 +7,7 @@
 <!-- Dart artifacts are not built the same way in Fuchsia as they are on other
 platforms. -->
 
-Dart工件在 Fuchsia 中的构建方式与在其他平台上不同。
+Dart 工件在 Fuchsia 中的构建方式与在其他平台上不同。
 
 <!-- Instead of relying on [`pub`][pub] to manage dependencies, sources of
 third-party packages we depend on are checked into the tree under
@@ -101,7 +101,7 @@ my_package/
   |-- BUILD.gn               # 包含所有的目标
   |-- analysis_options.yaml  # 分析配置项 [必要的]
   |-- lib/                   # dart_library 内容
-  |-- bin/                   # dart_binary 的（目标）或dart_tool 的（宿主）
+  |-- bin/                   # dart_binary 的（目标）或 dart_tool 的（宿主）
   |-- test/                  # dart_test 内容
 ```
 
