@@ -1,7 +1,7 @@
 <!-- 
 # Best practices for writing GN templates
  -->
-# 编写GN模板的最佳实践
+# 编写 GN 模板的最佳实践
 
 <!-- 
 ## Overview {#overview}
