@@ -8,7 +8,7 @@ Health check is a standardized inspection metric.  Adding a `fuchsia.inspect.Hea
 to an Inspect Node gives that node the contained health information. This information can
 be aggregated by system-wide health-checking tools.
  -->
-健康检查（health check）是一种标准化的检查指标。向审视结点添加一个 `fuchsia.inspect.Health` 子结点，会为该子节点提供已被包含的健康信息。该信息能够通过系统范围的健康检查工具进行汇总。
+健康检查（health check）是一种标准化的检查指标。向审视结点添加一个 `fuchsia.inspect.Health` 子结点，会为该子结点提供已被包含的健康信息。该信息能够通过系统范围的健康检查工具进行汇总。
 
 <!-- 
 ## The layout of the health check node
