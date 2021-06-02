@@ -8,17 +8,17 @@ Health check is a standardized inspection metric.  Adding a `fuchsia.inspect.Hea
 to an Inspect Node gives that node the contained health information. This information can
 be aggregated by system-wide health-checking tools.
  -->
-健康检查（health check）是一种标准化的检查指标。向审视结点添加一个 `fuchsia.inspect.Health` 子结点，会为该子结点提供已被包含的健康信息。该信息能够通过系统范围的健康检查工具进行汇总。
+健康检查（health check）是一种标准化的检查指标。向审视节点添加一个 `fuchsia.inspect.Health` 子节点，会为该子节点提供已被包含的健康信息。该信息能够通过系统范围的健康检查工具进行汇总。
 
 <!-- 
 ## The layout of the health check node
  -->
-## 健康检查结点布局
+## 健康检查节点布局
 
 <!-- 
 The following properties and metrics are exported in any health check node:
  -->
-下面的属性和指标被导出至任何健康检查结点中：
+下面的属性和指标被导出至任何健康检查节点中：
 
 <!-- 
 | Name | Type | Description |
@@ -31,11 +31,11 @@ The following properties and metrics are exported in any health check node:
  -->
 | 名称 | 类型 | 描述 |
 |------|------|-------------|
-| `start_timestamp_nanos` | int64 | 该健康结点初始化时的单调时钟系统时间戳（即：首先变为 `STARTING UP`）|
+| `start_timestamp_nanos` | int64 | 该健康节点初始化时的单调时钟系统时间戳（即：首先变为 `STARTING UP`）|
 | `message` | String | 如果 `status==UNHEALTHY`，那么它包含可选的故障细节消息。|
-| `status` | Enum | `STARTING_UP`：<br>该健康结点已初始化，但尚未标记为运行。|
-|          |      | `OK`：<br>向该健康结点报告的子系统报告状况良好。 |
-|          |      | `UNHEALTHY`:<br>向该健康结点报告的子系统报告状况不佳。 |
+| `status` | Enum | `STARTING_UP`：<br>该健康节点已初始化，但尚未标记为运行。|
+|          |      | `OK`：<br>向该健康节点报告的子系统报告状况良好。 |
+|          |      | `UNHEALTHY`:<br>向该健康节点报告的子系统报告状况不佳。 |
 
 <!-- 
 ## User guide
