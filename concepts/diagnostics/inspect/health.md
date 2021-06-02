@@ -1,13 +1,26 @@
+<!-- 
 # Health check
+ -->
+# 健康检查
 
+<!-- 
 Health check is a standardized inspection metric.  Adding a `fuchsia.inspect.Health` child
 to an Inspect Node gives that node the contained health information. This information can
 be aggregated by system-wide health-checking tools.
+ -->
+健康检查（health check）是一种标准化的检查指标。向审视结点添加一个 `fuchsia.inspect.Health` 子结点，会为该子节点提供已被包含的健康信息。该信息能够通过系统范围的健康检查工具进行汇总。
 
+<!-- 
 ## The layout of the health check node
+ -->
+## 健康检查结点布局
 
+<!-- 
 The following properties and metrics are exported in any health check node:
+ -->
+下面的属性和指标被导出至任何健康检查结点中：
 
+<!-- 
 | Name | Type | Description |
 |------|------|-------------|
 | `start_timestamp_nanos` | int64 | The monotonic clock system timestamp at which this health node was initialized (i.e. first became `STARTING UP`) |
@@ -15,13 +28,29 @@ The following properties and metrics are exported in any health check node:
 | `status` | Enum | `STARTING_UP`:<br>The health node was initialized but not yet marked running. |
 |          |      | `OK`:<br>The subsystem reporting to this health node is reporting healthy. |
 |          |      | `UNHEALTHY`:<br>The subsystem reporting to this health node is reporting unhealthy. |
+ -->
+| 名称 | 类型 | 描述 |
+|------|------|-------------|
+| `start_timestamp_nanos` | int64 | 该健康结点初始化时的单调时钟系统时间戳（即：首先变为 `STARTING UP`）|
+| `message` | String | 如果 `status==UNHEALTHY`，那么它包含可选的故障细节消息。|
+| `status` | Enum | `STARTING_UP`：<br>该健康结点已初始化，但尚未标记为运行。|
+|          |      | `OK`：<br>向该健康结点报告的子系统报告状况良好。 |
+|          |      | `UNHEALTHY`:<br>向该健康结点报告的子系统报告状况不佳。 |
 
+<!-- 
 ## User guide
+ -->
+## 用户指南
 
+<!-- 
 The following example illustrates the use of [iquery] for getting information about
 the component health status.
 
 Examples:
+ -->
+下面的示例说明了在获取组件（component）健康状况信息时 [iquery] 的用法。
+
+示例：
 
 ```none
 $ iquery show `iquery list`
@@ -69,13 +98,20 @@ c:
       status = Ok
 ```
 
+<!-- 
 ## Using health checks in components
+ -->
+## 在组件中使用健康检查
 
+<!-- 
 The following sections explain how to use the library in Fuchsia components written in
 various programming languages.
+ -->
+下面的部分用不同编程语言解释了如何使用 Fuchsia 组件中的库。
 
 * {C++}
 
+<!--
   ```cpp
     #include <lib/async-loop/cpp/loop.h>
     #include <lib/async-loop/default.h>
@@ -98,9 +134,33 @@ various programming languages.
       return 0;
     }
   ```
+ -->
+  ```cpp
+    #include <lib/async-loop/cpp/loop.h>
+    #include <lib/async-loop/default.h>
+    #include <lib/sys/cpp/component_context.h>
+    #include <lib/sys/inspect/cpp/component.h>
+
+    int main(int argc, char** argv) {
+      async::Loop loop(&kAsyncLoopConfigAttachToCurrentThread);
+      auto context = sys::ComponentContext::CreateAndServeOutgoingDirectory();
+      sys::ComponentInspector inspector(context.get());
+      inspector.Health().StartingUp();
+
+      // ...进行启动工作...
+
+      inspector.Health().Ok();
+      inspector.Health().Unhealthy("I'm not feeling well.");
+      inspector.Health().Ok();
+
+      loop.Run();
+      return 0;
+    }
+  ```
 
 * {Rust}
 
+<!-- 
   ```rust
     use fuchsia_inspect as inspect;
     use fuchsia_inspect::health;
@@ -118,6 +178,25 @@ various programming languages.
       health.set_ok();  // The component is healthy again.
     }
   ```
+ -->
+  ```rust
+    use fuchsia_inspect as inspect;
+    use fuchsia_inspect::health;
+
+    fn main() {
+      // 如果您有您自己的检查器，那么也可以导出它的健康状态。
+
+      /* 检查器需要初始化 */
+      let inspector = /* ... */
+      let mut node = inspector::root();
+      let mut health = fuchsia_inspect::health::Node(node);
+      // ...
+      health.set_ok();
+      health.set_unhealthy("I'm not feeling well.");
+      health.set_ok();  // 组件恢复健康。
+    }
+  ```
+
 
 * {Dart}
 
