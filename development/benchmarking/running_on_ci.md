@@ -2,7 +2,7 @@
 # How to write benchmarks
 -->
 
-# 如何写评量基准
+# 如何编写评量基准
 
 <!--
 * Updated: 2018 August 9
