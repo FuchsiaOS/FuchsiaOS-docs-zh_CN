@@ -18,7 +18,7 @@ which allows clients to queue transactions and query the block device. -->
 
 # 块设备
 
-fuchsia 块设备驱动程序,跟其他系统一样,通过 IPC 访问用户空间服务来实现。使用块设备的程序将拥有这些底层驱动程序的一个或多个句柄(handle)。与 filesystem client 类似,客户端可以通过在RPC消息向服务器发送"read"或"write"的请求, 程序可以作为块设备的 clients，也可以将 RPC 消息发送到“设备主机”(Zircon 中称为“devhost”)。然后，devhost 进程将这些请求转换为驱动程序理解的 "I/O事务", 实际上他们被传输到特定的块设备驱动程序，最终传输到真实的硬件。
+Fuchsia 块设备驱动程序,跟其他系统一样,通过 IPC 访问用户空间服务来实现。使用块设备的程序将拥有这些底层驱动程序的一个或多个句柄(handle)。与 filesystem client 类似,客户端可以通过在RPC消息向服务器发送"read"或"write"的请求, 程序可以作为块设备的 clients，也可以将 RPC 消息发送到“设备主机”(Zircon 中称为“devhost”)。然后，devhost 进程将这些请求转换为驱动程序理解的 "I/O事务", 实际上他们被传输到特定的块设备驱动程序，最终传输到真实的硬件。
 
 特定的块设备驱动程序(USB, AHCI / SATA, Ramdisk, GPT等) 实现了 [`ZX_PROTOCOL_BLOCK_CORE`
 prototol](https://fuchsia.googlesource.com/zircon/+/master/system/public/zircon/device/block.h),它允许客户端进行队列事务和块设备查询。
