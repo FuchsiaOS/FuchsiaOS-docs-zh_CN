@@ -53,7 +53,7 @@ These are patterns that clients identify in their usage of Inspect that they can
 generalize and share. It’s intended to be at a higher level than
 `fuchsia-inspect`.
  -->
-该库是用于来自客户端的针对审视库的贡献的。这些是客户端在使用审视时识别的模式，它们可以将其概括与共享。其旨在处于比 'fuchsia-inspect' 更高的层次。
+该库是用于来自客户端的针对审视库的贡献的。这些是客户端在使用审视时识别的模式，它们可以将其概括与共享。其旨在处于比 `fuchsia-inspect` 更高的层次。
 
 ### [`fuchsia-inspect-derive`][fuchsia_inspect_derive]
 
