@@ -98,7 +98,7 @@ This library includes the convenient `ArchiveReader` which is useful for fetchin
 data from an archivist in a test or in production. It wraps the shared logic of
 connecting to the `ArchiveAccessor` and fetching data from it.
  -->
-该库包含了便捷的 `ArchiveReader`，在测试或生产中，它在取回来自归档器的审视数据方面很有用。它包装了连接至 `ArchiveAccessor` 并从中取回数据的共享逻辑。
+该库包含了便捷的 `ArchiveReader`，在测试或生产中，它在取回来自归档器的审视数据方面很有用。它包装了连接至 `ArchiveAccessor` 并从中取回数据这一共享逻辑。
 
 <!-- 
 ## Others
