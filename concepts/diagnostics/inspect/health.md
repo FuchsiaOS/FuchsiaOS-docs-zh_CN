@@ -48,7 +48,7 @@ the component health status.
 
 Examples:
  -->
-下面的示例说明了使用 [iquery]获取组件（component）健康状况信息的方法。
+下面的示例说明了使用 [iquery] 获取组件（component）健康状况信息的方法。
 
 示例：
 
