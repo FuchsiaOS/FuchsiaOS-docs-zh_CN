@@ -1084,4 +1084,4 @@ ZX is an abbreviation of "Zircon" used in Zircon C APIs/ABIs
 
 The native low-level system debugger.
 
--   [Reference](
+-   [Reference](/docs/development/debugger/README.md)
