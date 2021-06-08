@@ -54,23 +54,6 @@ the system-wide repository and within Individual project repositories.
 
 
 
-
-```
-<!-- 
-# Fuchsia getting started
-
-Welcome to Fuchsia! This guide walks you through the steps to get Fuchsia source code,
-build Fuchsia, and run Fuchsia on an emulator or hardware device. 
-
--->
-
-# Fuchsia 入门
-
-欢迎来到 Fuchsia 的世界！本文将通过源代码的获取、构建，再到虚拟机或者真机上运行 Fuchsia ，带领你一步一步地探索 Fuchsia 操作系统。
-```
-
-
-
 ### 翻译规范
 
 - 翻译之前，需参考[约定与术语表](./glossary/README.md)以规范翻译一致性。
