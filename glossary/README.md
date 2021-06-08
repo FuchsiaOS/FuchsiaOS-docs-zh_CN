@@ -1,11 +1,15 @@
 
-本仓库维护的是 Fuchsia 术语表，用于进行翻译时的对照和参考。以下词汇按照字母顺序排列。
+本篇章维护的是 Fuchsia 术语表，用于进行翻译时的对照和参考。以下词汇按照字母顺序排列。
 
 添加新词汇，请[提交Issue](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/issues/new)。*注：凡是新词汇翻译达到3个赞👍即以上即可录入到术语表。*
 
 
 
-## 术语表
+## [Fuchsia术语表](./glossary.md)
+
+
+
+## 翻译术语表
 
 - HTTP header：HTTP标头
 - TLS：Transport Layer Security（传输层安全）
