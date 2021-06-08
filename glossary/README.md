@@ -35,7 +35,7 @@
 - fault injection：故障注入
 - infrastructure：基础设施
 - ingress：入口，如果是作为Kubernetes中的资源对象则不翻译
-- inspect: 审视
+- Inspect: 审视
 - microservice：微服务
 - mount：挂载
 - mutual TLS：双向TLS
