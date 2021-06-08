@@ -27,6 +27,7 @@ the system-wide repository and within Individual project repositories.
 - [系统概念](concepts/index.md) - 关于 Fuchsia 是如何工作的
 - [Zircon](concepts/kernel/README.md) - 关于 Zircon 内核的说明
  - [运行组件例子](development/run/run-examples.md) - 运行例子在设备的说明
+ - [术语表](glossary/README.md) - 翻译术语 和 Fuchsia术语说明
  - [贡献社区](CONTRIBUTING.md)
 
 仓库的其他文件是 **系统范围** 的文档，个别子项目都在子仓库中有各自的文档。上面文档会链接到系统范围和个别子项目的仓库。
