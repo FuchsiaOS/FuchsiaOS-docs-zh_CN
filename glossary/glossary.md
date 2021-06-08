@@ -13,6 +13,10 @@ When adding new definitions, follow these guidelines:
 -   A definition should be complemented by a list of links to more detailed
     documentation and related topics.
 
+-   /docs/development/debugger/README.md)
+
+
+
 ## Terms
 
 ### **ABI** {#abi}
@@ -1080,4 +1084,4 @@ ZX is an abbreviation of "Zircon" used in Zircon C APIs/ABIs
 
 The native low-level system debugger.
 
--   [Reference](/docs/development/debugger/README.md)
+-   [Reference](
