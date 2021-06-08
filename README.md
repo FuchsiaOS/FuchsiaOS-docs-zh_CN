@@ -1,7 +1,7 @@
 # Fuchsia 中文社区简体中文文档
 
-2021 年新版文档翻译进行中, 欢迎 [加入](https://fuchsia-china.com/2021-document-call-for-volunteers/)
-
+2021 年新版文档翻译进行中, 欢迎 [加入翻译](https://fuchsia-china.com/2021-document-call-for-volunteers/) 或 [加入校稿](https://fuchsia-china.com/fuchsia-chinese-documents-start-publish/)
+ 
 <!-- 
  - [Code of conduct](/CODE_OF_CONDUCT.md)
  - [Glossary](glossary.md) - definitions of commonly used terms
