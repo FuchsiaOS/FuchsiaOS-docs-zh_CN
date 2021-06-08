@@ -1,7 +1,7 @@
 # Fuchsia 中文社区简体中文文档
 
-2021 年新版文档翻译进行中, 欢迎 [加入](https://fuchsia-china.com/2021-document-call-for-volunteers/)
-
+2021 年新版文档翻译进行中, 欢迎 [加入翻译](https://fuchsia-china.com/2021-document-call-for-volunteers/) 或 [加入校稿](https://fuchsia-china.com/fuchsia-chinese-documents-start-publish/)
+ 
 <!-- 
  - [Code of conduct](/CODE_OF_CONDUCT.md)
  - [Glossary](glossary.md) - definitions of commonly used terms
@@ -51,32 +51,6 @@ the system-wide repository and within Individual project repositories.
  - 电报  https://t.me/FuchsiaDevelopers
  - QQ群：241234421
  - 微信：https://fuchsia-china.com/join
-
-
-
-## 文档校对
-
-### 为什么要进行校对
-
-文档初稿翻译难免会有不太理想的地方，所以我们希望能有更多人志愿参与校对工作，进一步完善中文文档。
-
-### 文档的构成
-
-文档由若干 `md` 和 `html` 文档构成，翻译即是将原始 `md` 和 `html`文件中需要翻译的文字用 tag 注释包起来，然后再拷贝一份进行翻译。原始英文用符号 `<!-- -->` 注释掉，每一段英文，对应一段中文，方便其他译者 review，如下例：
-
-```
-<!-- 
-# Fuchsia getting started
-
-Welcome to Fuchsia! This guide walks you through the steps to get Fuchsia source code,
-build Fuchsia, and run Fuchsia on an emulator or hardware device. 
-
--->
-
-# Fuchsia 入门
-
-欢迎来到 Fuchsia 的世界！本文将通过源代码的获取、构建，再到虚拟机或者真机上运行 Fuchsia ，带领你一步一步地探索 Fuchsia 操作系统。
-```
 
 
 
