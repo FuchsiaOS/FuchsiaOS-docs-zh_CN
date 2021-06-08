@@ -13,6 +13,10 @@ When adding new definitions, follow these guidelines:
 -   A definition should be complemented by a list of links to more detailed
     documentation and related topics.
 
+-   /docs/development/debugger/README.md)
+
+
+
 ## Terms
 
 ### **ABI** {#abi}
