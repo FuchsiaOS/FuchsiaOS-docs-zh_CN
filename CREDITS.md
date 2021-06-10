@@ -118,7 +118,7 @@
 │   │   ├── go                          |
 │   │   ├── new                         |
 │   │   ├── python                      |
-│   │   └── rust                        |
+│   │   └── rust                        | Allen
 │   ├── monitoring ---------------------|
 │   │   ├── devtools                    |
 │   │   └── fidlcat                     |
