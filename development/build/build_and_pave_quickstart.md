@@ -270,6 +270,7 @@ To rebuild and redeploy with `fx`:
     In some cases, if `fx ota` does not complete successfully, consider repaving
     with `fx pave`.
 
+<!--
 ## Troubleshooting
 
 *   If `fx build` fails, make sure that your `PATH` environment variable is set
@@ -288,3 +289,16 @@ To rebuild and redeploy with `fx`:
     Make that sure that the output of your `PATH` variable is a list of
     directories separated by colons. Make sure that none of the directories are
     separated by `.`.
+-->
+
+## 问题排查
+
+* 若 `fx build` 失败，请检查PATH环境变量是否正确设置。
+    使用如下命令确认PATH环境变量的值：
+    
+    ```posix-terminal
+    echo $PATH
+    ```
+    
+    确保输出的信息是一系列由冒号`:`分隔的目录名，注意不是`.`分隔。
+    注意：`fx`相关命令会以某种方式重设工作目录，该方式可能会导致它所使用的命令（如touch）与在工作路径下的可执行程序产生冲突。
