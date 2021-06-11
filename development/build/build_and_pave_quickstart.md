@@ -227,6 +227,7 @@ To perform an initial build and deploy of Fuchsia with `fx`, do the following:
     
     注意：开机服务会连接到目标设备上，并上传Fuchsia镜像，之后部署到目标设备上。
 
+<!--
 ## Rebuild and redeploy Fuchsia
 
 To rebuild and redeploy with `fx`:
@@ -269,7 +270,47 @@ To rebuild and redeploy with `fx`:
 
     In some cases, if `fx ota` does not complete successfully, consider repaving
     with `fx pave`.
+-->
 
+## Fuchsia的重建和重部署
+
+采用`fx`进行重建和重部署：
+
+1.  确保版本状态正常，并指向[构建面板](https://luci-milo.appspot.com/p/fuchsia)
+
+1. 使用以下命令下载最新代码：
+
+    ```posix-terminal
+    jiri update
+    ```
+1. 构建Fuchsia镜像：
+1.  Build a Fuchsia image:
+
+    ```posix-terminal
+    fx build
+    ```
+    
+本命令构建Zircon并构建Fuchsia的其余部分。
+
+1. 设定防火墙规则（仅限于使用macOS的用户）
+
+    ```posix-terminal
+    fx setup-macos
+    ```
+    
+1. 从你构建的宿主机上启动一个开发打包服务器:
+
+    ```posix-terminal
+    fx serve
+    ```
+1. 在Zedboot USB设备未连接时启动目标设备.
+1. 从宿主机上推送Fuchsia更新包到目标设备:
+
+    ```posix-terminal
+    fx ota
+    ```
+某些情况下，如果`fx ota`命令没有成功执行，考虑用`fx pave`重发。
+    
 <!--
 ## Troubleshooting
 
