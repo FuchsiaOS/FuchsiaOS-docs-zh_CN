@@ -11,6 +11,7 @@ about recording and viewing logs.
 
 Fuchsia 上的 Go 程序通常使用 [syslog package] 及其中的 `syslog.Infof()` 函数。
 
+有关记录和查看日志的更多信息，请参阅 [语言无关的日志文档](/docs/concepts/diagnostics/logs/README.md)
 <!--
 ## Requirements
 
