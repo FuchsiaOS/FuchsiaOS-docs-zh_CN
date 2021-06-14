@@ -225,7 +225,7 @@ To perform an initial build and deploy of Fuchsia with `fx`, do the following:
     fx pave
     ```
     
-    注意：开机服务会连接到目标设备上，并上传Fuchsia镜像，之后部署到目标设备上。
+    注意：bootserver 会连接到目标设备上，并上传Fuchsia镜像，之后铺设。
 
 <!--
 ## Rebuild and redeploy Fuchsia
