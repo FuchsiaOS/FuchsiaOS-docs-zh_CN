@@ -40,10 +40,10 @@ fx mkzedboot
 ### fx
 
 通过以下命令确定USB设备的确切路径：
+注意：`fx`工具用于列出可用的USB设备，与具体的操作系统平台无关。
+
 ```posix-terminal
 fx mkzedboot
-```
-注意：`fx`工具用于列出可用的USB设备，与具体的操作系统平台无关。
 
 <!--
 ### Linux
