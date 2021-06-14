@@ -19,7 +19,7 @@ Note: For either operating system, you can run the command once with the USB
 drive disconnected, then run again with the USB drive connected, to see the
 difference.
 -->
-# 确定USB设备路径
+# 指定USB设备驱动路径{#usb-drive-device-path}
 
 在目标设备上构建和部署Fuchsia之前，需要了解您所使用的USB设备的路径。
 
