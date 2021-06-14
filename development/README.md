@@ -117,7 +117,7 @@ This section covers Fuchsia development hardware targets.
 -->
 ## 硬件
 
-本节涵盖Fushsia开发的目标硬件
+本节涵盖 Fuchsia 开发的硬件对象
 
  - [Acer Switch Alpha 12][acer_12]
  - [Intel NUC][intel-nuc]
