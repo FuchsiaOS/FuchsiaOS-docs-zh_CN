@@ -135,11 +135,11 @@ To perform an initial build and deploy of Fuchsia with `fx`, do the following:
 要使用`fx`从头构建Fuchsia，跟着如下步骤来：
 
 1. 设定构建类型：
+   注：本设定为在通用的x64架构主板上构建`core`核心产品。要想查看支持的产品和主板，可以相应的用`fx list-products`
+    和`fx list-boards`命令查看。
     ```posix-terminal
     fx set core.x64
     ```
-   注：本设定为在通用的x64架构主板上构建`core`核心产品。要想查看支持的产品和主板，可以相应的用`fx list-products`
-    和`fx list-boards`命令查看。
 
 <!--
 1.  Build a Fuchsia image:
