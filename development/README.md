@@ -101,7 +101,7 @@ and debugging Fuchsia and programs running on Fuchsia.
 -->
 ## SDK
 
- - [SDK](idk/README.md) - 开发Fuchsia SDK
+ - [SDK](idk/README.md) - 关于 Fuchsia SDK 开发
 
 <!--
 ## Hardware
