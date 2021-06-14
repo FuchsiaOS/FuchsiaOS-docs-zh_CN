@@ -38,6 +38,13 @@ the system-wide repository and within Individual project repositories.
  - 翻译小组成员: Logincat, Lua, Lumos Maxima, Roy, Salted Fish, Tanging, Vseann, Whyto, Yangxuan
  - 翻译项目协调人: Dongchan, N0B8D1
 
+**感谢所有为 FuchsiaOS 中文社区作出贡献的开发者**
+
+<a href="https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=FuchsiaOS/FuchsiaOS-docs-zh_CN" />
+</a>
+
+
 ## Fuchsia 中文社区
 
  - 网站  https://fuchsia-china.com

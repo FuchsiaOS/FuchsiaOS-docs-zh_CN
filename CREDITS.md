@@ -24,7 +24,7 @@
 │   │   ├── driver_architectures        |
 │   │   └── driver_development          |
 │   ├── emulator -----------------------|
-│   ├── fidl ---------------------------|
+│   ├── fidl ---------------------------| linen
 │   │   └── images                      |
 │   ├── filesystems --------------------|
 │   │   └── images                      |
@@ -82,7 +82,7 @@
 │       └── 2021                        |
 ├── development                         |
 │   ├── benchmarking -------------------|
-│   ├── build --------------------------|
+│   ├── build --------------------------| Eric
 │   ├── components ---------------------|
 │   │   ├── v1                          |
 │   │   └── v2                          |
@@ -92,7 +92,7 @@
 │   │   ├── inspect                     |
 │   │   ├── logs                        |
 │   │   └── triage                      |
-│   ├── drivers ------------------------|
+│   ├── drivers ------------------------| Eric
 │   │   ├── best_practices              |
 │   │   ├── developer_guide             |
 │   │   ├── diagnostics                 |
@@ -115,7 +115,7 @@
 │   │   ├── c-cpp                       |
 │   │   ├── dart                        | yang-lile
 │   │   ├── fidl                        |
-│   │   ├── go                          |
+│   │   ├── go                          | zhyChesterCheung
 │   │   ├── new                         |
 │   │   ├── python                      |
 │   │   └── rust                        | Allen
