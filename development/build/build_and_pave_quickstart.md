@@ -220,7 +220,7 @@ To perform an initial build and deploy of Fuchsia with `fx`, do the following:
     fx pave
     ```
 -->
-3. 使用如下命令启动开机服务：
+3. 在本机上开始 bootserver
     ```posix-terminal
     fx pave
     ```
