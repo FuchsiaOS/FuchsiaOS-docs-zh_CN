@@ -3,7 +3,7 @@
 This document is a top-level entry point to all of Fuchsia documentation related
 to developing Fuchsia and software running on Fuchsia.
 -->
-# 开发指导
+# 开发指南
 
 本文档是开发Fuchsia及在其上运行的软件的所有相关文档的顶层入口。
 <!--
