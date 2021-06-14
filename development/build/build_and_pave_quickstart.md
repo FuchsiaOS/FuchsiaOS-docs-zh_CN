@@ -104,7 +104,7 @@ diskutil list | grep external
 ```
 设备路径通常形如：`/dev/disk[n]`，比如：`/dev/disk2`。
 
-注意：如果执行了以上命令后出现`错误: 无法打开 /dev/disk[n]: 设备正忙`，可以先尝试断开USB设备：
+注意：如果执行了以上命令后出现`ERROR: Can't open /dev/disk[n]: Resource busy`，可以先尝试断开USB设备：
 
 ```posix-terminal
 hdiutil unmount /dev/disk[n]
