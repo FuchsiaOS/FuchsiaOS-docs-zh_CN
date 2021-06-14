@@ -92,7 +92,7 @@ and debugging Fuchsia and programs running on Fuchsia.
 
 ## ABI
 
- - [系统](/docs/concepts/system/abi/system.md) - 描述保持二进制稳定的Fuchsia系统接口
+ - [系统](/docs/concepts/system/abi/system.md) - 二进制类型的 Fuchsia 系统接口
 
 <!--
 ## SDK
