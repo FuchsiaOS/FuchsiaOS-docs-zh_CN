@@ -81,7 +81,7 @@ and debugging Fuchsia and programs running on Fuchsia.
  - [FIDL API][fidl-api] - FIDL协议设计准则
  - [FIDL风格][fidl-style] - FIDL风格准则
  - [C](/docs/concepts/api/c.md) - C库接口设计准则
- - [公具](/docs/concepts/api/tools.md) - 开发工具设计准则
+ - [工具](/docs/concepts/api/tools.md) - 开发工具设计准则
  - [设备](/docs/concepts/api/device_interfaces.md) - 设备接口设计准则
 
 <!--
