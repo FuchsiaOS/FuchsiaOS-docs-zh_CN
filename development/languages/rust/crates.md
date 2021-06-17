@@ -107,7 +107,7 @@
 
 * [fuchsia-trace/](/src/lib/trace/rust/)
 
-    一个安全的 Rust 接口，对接Fuchsia 的追踪接口
+    一个安全的 Rust 接口，对接 Fuchsia 的追踪接口
 
 * [storage](/src/lib/storage/)
 
@@ -141,7 +141,7 @@
 
 * [mundane/](/src/lib/mundane/)
 
-    一个受 BoringSSL 支持的 Rust 加密库
+    一个由 BoringSSL 支持的 Rust 加密库
 
 * [shared-buffer/](/src/lib/shared-buffer/)
 
