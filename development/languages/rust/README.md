@@ -129,6 +129,10 @@ your `fx set` will allow you to develop locally without being blocked by warning
 
 我们的构建配置会默认把所有的 Rust 告警当成错误来处理。这个要求在开发过程中很繁重， 而你希望在你的本地机器上看到的是告警就是告警，从而让 CQ 强制执行硬边界。
 
+GN 参数 `rust_cap_lints` 允许你在你的开发环境中控制这个行为。
+在 `fx args` 中设置 `rust_cap_lints = "warn"` 或把 `--args='rust_cap_lints = "warn"'` 添加到你的 `fx set` 将允许你在本地开发时不会受阻于告警。
+
+
 <!--
 ## Style
 

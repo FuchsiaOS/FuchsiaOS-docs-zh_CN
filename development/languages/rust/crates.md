@@ -141,7 +141,7 @@
 
 * [mundane/](/src/lib/mundane/)
 
-    一个受 BoringSSL 支持的 Rust 加密库
+    一个由 BoringSSL 支持的 Rust 加密库
 
 * [shared-buffer/](/src/lib/shared-buffer/)
 
