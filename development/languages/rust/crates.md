@@ -69,7 +69,7 @@
 
 * [fuchsia-scenic/](/src/lib/ui/fuchsia-scenic/)
 
-    Scenic 的 Rust 接口，Fuchsia作曲家
+    Fuchsia 合成器 Scenic 的 Rust 接口
 
 * [fuchsia-syslog-listener/](/src/lib/syslog/rust/syslog-listener/)
 
@@ -107,7 +107,7 @@
 
 * [fuchsia-trace/](/src/lib/trace/rust/)
 
-    一个安全的 Rust 接口，对接Fuchsia 的追踪接口
+    一个安全的 Rust 接口，对接 Fuchsia 的追踪接口
 
 * [storage](/src/lib/storage/)
 
