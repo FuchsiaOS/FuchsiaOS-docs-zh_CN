@@ -16,7 +16,7 @@ Fuchsia 项目遵循 [Google Python 风格指南](https://github.com/google/styl
 并且有一些 [改进](#refinements)。
 
 Google Python 风格指南允许更多的变化（大概涵盖了众多现有来源）。
-本指南有更严格的选择。所以Fuchsia Python 文件也将遵循 Google 风格指南，但一个 Google Python 文件可能不符合本指南。见[细化](#refinements)
+本指南有更严格的选择。所以Fuchsia Python 文件也将遵循 Google 风格指南，但一个 Google Python 文件可能不符合本指南。见[改进](#refinements)
 详情如下。
 
 <!--
