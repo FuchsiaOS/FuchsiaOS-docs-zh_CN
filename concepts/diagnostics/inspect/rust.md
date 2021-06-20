@@ -53,7 +53,7 @@ These are patterns that clients identify in their usage of Inspect that they can
 generalize and share. It’s intended to be at a higher level than
 `fuchsia-inspect`.
  -->
-该库是用于来自客户端的针对审视库的贡献的。这些是客户端在使用审视时识别的模式，它们可以将其概括与共享。其旨在处于比 'fuchsia-inspect' 更高的层次。
+该库是用于来自客户端的针对审视库的贡献的。这些是客户端在使用审视时识别的模式，它们可以将其概括与共享。其旨在处于比 `fuchsia-inspect` 更高的层次。
 
 ### [`fuchsia-inspect-derive`][fuchsia_inspect_derive]
 
@@ -98,7 +98,7 @@ This library includes the convenient `ArchiveReader` which is useful for fetchin
 data from an archivist in a test or in production. It wraps the shared logic of
 connecting to the `ArchiveAccessor` and fetching data from it.
  -->
-该库包含了便捷的 `ArchiveReader`，在测试或生产中，它在取回来自归档器的审视数据方面很有用。它包装了连接至 `ArchiveAccessor` 并从中取回数据的共享逻辑。
+该库包含了便捷的 `ArchiveReader`，在测试或生产中，它在取回来自归档器的审视数据方面很有用。它包装了连接至 `ArchiveAccessor` 并从中取回数据这一共享逻辑。
 
 <!-- 
 ## Others
