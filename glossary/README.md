@@ -41,6 +41,7 @@
 - mutual TLS：双向TLS
 - namespace：命名空间
 - organizational policy：组织策略
+- pave:  铺设
 - policy：策略
 - proxy：代理
 - remote：远程
