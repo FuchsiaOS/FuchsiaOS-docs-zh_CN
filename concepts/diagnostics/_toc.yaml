@@ -18,7 +18,8 @@ toc:
 # - title: "Component Lifecycle"
 #   path: /docs/concepts/diagnostics/lifecycle.md
 
-- title: "Inspect"
+# - title: "Inspect"
+- title: "审视"
   section:
   # TODO(fxbug.dev/60767)
   # - title: "Overview"
@@ -28,16 +29,21 @@ toc:
   # - title: "Principles"
   #   path: /docs/concepts/diagnostics/inspect/principles.md
 
-  - title: "Health"
+  # - title: "Health"
+  - title: "健康"
     path: /docs/concepts/diagnostics/inspect/health.md
-  - title: "Rust libraries"
+  #- title: "Rust libraries"
+  - title: "Rust 库"
     path: /docs/concepts/diagnostics/inspect/rust.md
-- title: "Logs"
+# - title: "Logs"
+- title: "日志"
   section:
-  - title: "Overview"
+  # - title: "Overview"
+  - title: "概述"
     path: /docs/concepts/diagnostics/logs/README.md
 
-  - title: "Attributing LogSink connections"
+  # - title: "Attributing LogSink connections"
+  - title: "添加 LogSink 连接属性"
     path: /docs/concepts/diagnostics/logs/attribution.md
 
   # TODO(fxbug.dev/60766)
@@ -48,9 +54,11 @@ toc:
   # - title: "Severity"
   #   path: /docs/concepts/diagnostics/logs/severity.md
 
-- title: "Lifecycle events"
+# - title: "Lifecycle events"
+- title: "生命周期事件"
   section:
-  - title: "Overview"
+  # - title: "Overview"
+  - title: "概述"
     path: /docs/concepts/diagnostics/lifecycle_events/README.md
 
 # TODO(fxbug.dev/60772)
