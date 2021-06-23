@@ -17,11 +17,11 @@ the producer of each log message.
  -->
 日志（log）是由 Fuchsia 程序发出的时间顺序的诊断数据流。它们最常采用面向人类的文本字符串的形式，描述子系统中的状态变化。
 
-参阅 [记录][Recording] 以获取关于 Fuchsia 软件如何撰写日志的更多信息。
+参阅[记录][Recording]以获取关于 Fuchsia 软件如何撰写日志的更多信息。
 
-参阅 [查看][Viewing] 以获取关于如何查看记录的日志的更多信息。
+参阅[查看][Viewing]以获取关于如何查看记录的日志的更多信息。
 
-参阅 [添加 LogSink 连接属性][Attributing LogSink connections] 以获取关于 Fuchsia 如何辨认每条日志消息生成者的更多信息。
+参阅[添加 LogSink 连接属性][Attributing LogSink connections]以获取关于 Fuchsia 如何辨认每条日志消息生成者的更多信息。
 
 <!-- 
 ## Contents
