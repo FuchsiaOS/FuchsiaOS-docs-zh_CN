@@ -11,10 +11,9 @@
 
 ## 翻译术语表
 
-- HTTP header：HTTP标头
-- TLS：Transport Layer Security（传输层安全）
 - application：应用/应用程序
-- archivist: 归档器
+- ArchiveAccessor：档案访问器
+- archivist：归档器
 - authentication：认证
 - authorization：授权
 - automatic retry：自动重试
@@ -33,15 +32,16 @@
 - distributed tracing：分布式追踪
 - egress：出口
 - fault injection：故障注入
+- HTTP header：HTTP标头
 - infrastructure：基础设施
 - ingress：入口，如果是作为Kubernetes中的资源对象则不翻译
-- Inspect: 审视
+- Inspect：审视
 - microservice：微服务
 - mount：挂载
 - mutual TLS：双向TLS
 - namespace：命名空间
 - organizational policy：组织策略
-- pave:  铺设
+- pave：铺设
 - policy：策略
 - proxy：代理
 - remote：远程
@@ -54,6 +54,7 @@
 - sidecar：边车，容器应用的部署模式中的固定术语，无须翻译
 - span：跨度，在分布式追踪中作为特有名词，无须翻译
 - target scrape：采样目标
+- TLS：Transport Layer Security（传输层安全）
 - traffic：流量
 - traffic routing：流量路由
 - traffic shadowing：流量复制（动词），影子流量（名词）
