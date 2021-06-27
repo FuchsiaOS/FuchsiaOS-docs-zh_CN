@@ -12,7 +12,7 @@
 │   ├── booting ------------------------| Roy
 │   │   └── images
 │   ├── build_system -------------------| Whyto
-│   ├── components ---------------------|
+│   ├── components ---------------------| Submarinee
 │   │   ├── v1                          |
 │   │   └── v2                          |
 │   ├── diagnostics --------------------| Whyto
