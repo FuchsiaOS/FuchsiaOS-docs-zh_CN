@@ -138,5 +138,5 @@ the FIDL crate must first have been built (e.g. using `fx build`).
 要手动检查给一个 FIDL crate 生成的 Rust 代码，可以在 `BUILD_DIR/fidling/gen` 目录下找到相关的 Rust 源代码（参考 [代码生成指南][generated-code] 获取示例）。要注意必须先构建相应的 FIDL crate （例如，使用 `fx build`）。
 
 <!-- xrefs -->
-[generated-code]: /docs/development/languages/fidl/guides/generated-code.md#rust
-[tutorials]: /docs/development/languages/fidl/tutorials/rust
+[generated-code]: /development/languages/fidl/guides/generated-code.md#rust
+[tutorials]: /development/languages/fidl/tutorials/rust
