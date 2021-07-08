@@ -1,46 +1,72 @@
-# Fuchsia Namespaces
+<!-- # Fuchsia Namespaces
 
-Namespaces are the backbone of file access and service discovery in Fuchsia.
+Namespaces are the backbone of file access and service discovery in Fuchsia. -->
 
-## Definition
+# Fuchsia 的命名空间
+
+命名空间是 Fuchsia 中文件访问与服务发现的基石。
+
+<!-- ## Definition
 
 A namespace is a composite hierarchy of files, directories, sockets, services,
 devices, and other named objects provided to a component by its
 environment.
 
-Let's unpack that a little bit.
+Let's unpack that a little bit. -->
 
-**Objects are named**: The namespace contains _objects_ which can be enumerated
-and accessed by name, much like listing a directory or opening a file.
+## 定义
 
-**Composite hierarchy**: The namespace is a _tree_ of objects that has been
+命名空间是文件、目录、套接字、服务、设备和其它由环境提供给某一组件的命名对象之间的复合层级结构。  
+
+下面我们展开进行一些解释。
+
+<!-- **Objects are named**: The namespace contains _objects_ which can be enumerated
+and accessed by name, much like listing a directory or opening a file. -->
+
+**对象已被命名**：包含 _对象_ 的命名空间能被枚举或通过名称访问，这与列出一个目录或打开一个文件非常相似。
+
+<!-- **Composite hierarchy**: The namespace is a _tree_ of objects that has been
 assembled by _combining_ together subtrees of objects from other namespaces
 into a composite structure where each part has been assigned a path prefix
-by convention.
+by convention. -->
 
-**Namespace per component**: Every component receives its own namespace
+**复合层级结构**：命名空间是一个对象组成的 _树_，这棵 _树_ 是由其它命名空间的对象 _组合_ 在一起的子树构成的一个复合结构，每个组成部分都按照规则约定了一个路径前缀。
+
+<!-- **Namespace per component**: Every component receives its own namespace
 tailored to meet its own needs.  It can also publish objects of its own
-to be included in other namespaces.
+to be included in other namespaces. -->
 
-**Constructed by the environment**: The environment, which instantiates a
+**每个组件的命名空间**：每个组件接收一个属于它自己的，根据其需求定制的命名空间。组件同样能够将它自己的对象发布并包含到其它的命名空间中去。
+
+<!-- **Constructed by the environment**: The environment, which instantiates a
 component, is responsible for constructing an appropriate namespace for that
-component within that scope.
+component within that scope. -->
 
-Namespaces can also be created and used independently from components although
-this document focuses on typical component-bound usage.
+**由环境构建**：如果某个环境实例化了一个组件，那么那个组件需要在其作用域内为那个组件构建一个合适的命名空间。
 
-## Namespaces in Action
+<!-- Namespaces can also be created and used independently from components although
+this document focuses on typical component-bound usage. -->
+
+命名空间同样能独立于组件之外被创建和使用，即使它的文档主要聚焦在与组件绑定的典型用法之上。
+
+<!-- ## Namespaces in Action
 
 You have probably already spent some time exploring a Fuchsia namespace;
 they are everywhere.  If you type `ls /` at a command-line shell prompt
 you will see a list of some of the objects that are accessible from the
-shell's namespace.
+shell's namespace. -->
 
-Unlike other operating systems, Fuchsia does not have a "root filesystem".
+## 命名空间实战
+
+你可能已经花了一些时间来探索 Fuchsia 的命名空间——它们无处不在。如果你在命令提示符中敲下 `ls /`，你会发现该终端命名空间下的一系列可访问的对象。
+
+<!-- Unlike other operating systems, Fuchsia does not have a "root filesystem".
 As described earlier, namespaces are defined per-component rather than
-globally or per-process.
+globally or per-process. -->
 
-This has some interesting implications:
+与其他操作系统不同，Fuchsia 并没有“根文件系统”。正如先前所说的，命名空间是为每一个组件定义的，而非全局定义或为每个进程定义。  
+
+<!-- This has some interesting implications:
 
 - There is no global "root" namespace.
 - There is no concept of "running in a chroot-ed environment" because every
@@ -49,9 +75,18 @@ This has some interesting implications:
 - Object paths may not be meaningful across namespace boundaries.
 - A process may have access to several distinct namespaces at once.
 - The mechanisms used to control access to files can also be used to control
-  access to services and other named objects on a per-component basis.
+  access to services and other named objects on a per-component basis. -->
 
-## Objects
+下面有一些很有趣的概念：
+
+- 不存在全局的“根”命名空间。
+- 不存在“运行在切换过根目录（chroot 命令）的环境中”的概念，因为事实上每个组件[都有它自己私有的“根”](/docs/concepts/filesystems/dotdot.md)。
+- 组件的命名空间是按照其需求定制的。
+- 对象的路径在跨越命名空间时可能并不起作用。
+- 一个进程可能会同时访问多个不同的命名空间。
+- 用于控制文件访问的机制同样可以用于控制服务和其它命名对象的访问，前提是在同一个组件上。
+
+<!-- ## Objects
 
 The items within a namespace are called objects.  They come in various flavors,
 including:
@@ -60,41 +95,71 @@ including:
 - Directories: objects that contain other objects
 - Sockets: objects that establish connections when opened, like named pipes
 - Services: objects that provide FIDL services when opened
-- Devices: objects that provide access to hardware resources
+- Devices: objects that provide access to hardware resources -->
 
-### Accessing Objects
+## 对象
+
+命名空间中的内容被称为对象。它们分为以下几种：
+
+- 文件：包含二进制数据的对象。
+- 目录：包含其它对象的对象。
+- 套接字：打开时能建立连接的对象，与命名管道相似。
+- 服务：打开时能提供 FIDL 服务的对象。
+- 设备：提供硬件资源访问的对象。
+
+<!-- ### Accessing Objects
 
 To access an object within a namespace, you must already have another object
 in your possession.  A component typically receives channel handles for
 objects in the scope of its namespace during
-[Namespace Transfer](#namespace_transfer).
+[Namespace Transfer](#namespace_transfer). -->
 
-You can also create new objects out of thin air by implementing the
-appropriate FIDL protocols.
+### 访问对象
 
-Given an object's channel, you can open a channel for one of its sub-objects
+为了访问一个命名空间中的对象，你必须已经拥有另外一个对象。一个组件，通常是在[命名空间转移](#namespace_transfer)时才在其命名空间作用域内接受对象的管道处理。
+
+<!-- You can also create new objects out of thin air by implementing the
+appropriate FIDL protocols. -->
+
+同样，你也能通过实现合适的 FIDL 协议来无中生有地创造一个新对象。
+
+<!-- Given an object's channel, you can open a channel for one of its sub-objects
 by sending it a FIDL message that includes an object relative path expression
 which identifies the desired sub-object.  This is much like opening files
-in a directory.
+in a directory. -->
 
-Notice that you can only access objects that are reachable from the ones
-you already have access to.  There is no ambient authority.
+给出一个对象的管道，通过传递一个包含某个对象的相关路径表达式（以此指明子对象）的 FIDL 信息，就能打开该对象的一个子对象的管道。这与打开一个目录中的文件非常相似。
 
-We will now define how object names and paths are constructed.
+<!-- Notice that you can only access objects that are reachable from the ones
+you already have access to.  There is no ambient authority. -->
 
-### Object Names
+注意，你只能访问那些能从你已经访问过的对象处访问的对象，没有环境权限（Ambient Authority）。
+
+<!-- We will now define how object names and paths are constructed. -->
+
+下面我们将介绍对象名和路径是如何构建的。
+
+<!-- ### Object Names
 
 An object name is a locally unique label by which an object can be located
 within a container (such as a directory).  Note that the name is a property
 of the container's table of sub-objects rather than a property of the object
-itself.
+itself. -->
 
-For example, `cat` designates a furry object located within some unspecified
-recipient of an `Open()` request.
+### 对象名
 
-Objects are fundamentally nameless but they may be called many names by others.
+一个对象名是一个本地的唯一标签，用于在某一容器（如目录）内定位一个对象。注意，对象名是其容器的子对象表中的属性，而非该对象本身的属性。
 
-Object names are represented as binary octet strings (arbitrary sequences
+<!-- For example, `cat` designates a furry object located within some unspecified
+recipient of an `Open()` request. -->
+
+例如，`猫`在某个`Open()`请求的接收器内定位了一个毛绒绒的对象。
+
+<!-- Objects are fundamentally nameless but they may be called many names by others. -->
+
+对象从根本上就被设计成无名的，但是它们能被其它对象用很多名字来指示。
+
+<!-- Object names are represented as binary octet strings (arbitrary sequences
 of bytes) subject to the following constraints:
 
 - Minimum length of 1 byte.
@@ -102,18 +167,33 @@ of bytes) subject to the following constraints:
 - Does not contain NULs (zero-valued bytes).
 - Does not contain `/`.
 - Does not equal `.` or `..`.
-- Always compared using byte-for-byte equality (implies case-sensitive).
+- Always compared using byte-for-byte equality (implies case-sensitive). -->
 
-Object names are valid arguments to a container's `Open()` method.
-See [FIDL Protocols](/docs/concepts/fidl/overview.md).
+对象名由具有以下规定的八位字节二进制字符串（任意的字节序列）表示：
 
-It is intended that object names be encoded and interpreted as human-readable
+- 最短为 1 字节
+- 最长为 255 字节
+- 不包含 NUL （0 值字节）
+- 不包含 `/`
+- 不包含 `.` 或 `..`
+- 逐比特对比是否相等（即大小写敏感）
+
+<!-- Object names are valid arguments to a container's `Open()` method.
+See [FIDL Protocols](/docs/concepts/fidl/overview.md). -->
+
+对象名是容器的 `Open()` 方法的合法参数。详见 [FIDL 协议](/docs/concepts/fidl/overview.md)。
+
+<!-- It is intended that object names be encoded and interpreted as human-readable
 sequences of UTF-8 graphic characters, however this property is not enforced
-by the namespace itself.
+by the namespace itself. -->
 
-Consequently clients are responsible for deciding how to present names
+为使其具有可读性，对象名可以使用 UTF-8 进行编解码，但是这一特性并非强制。
+
+<!-- Consequently clients are responsible for deciding how to present names
 which contain invalid, undisplayable, or ambiguous character sequences to
-the user.
+the user. -->
+
+因此，由客户端负责决定如何将含有非法、无法显示、有歧义的字符序列呈现给用户。
 
 <!-- _TODO(jeffbrown): Document a specific strategy for how to present names._ -->
 
