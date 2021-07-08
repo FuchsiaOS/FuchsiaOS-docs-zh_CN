@@ -6,28 +6,40 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Overview"
+# - title: "Overview"
+- title: "概述"
   path: /docs/concepts/build_system/index.md
-- title: "Fuchsia build system"
+# - title: "Fuchsia build system"
+- title: "Fuchsia 构建系统"
   path: /docs/concepts/build_system/fuchsia_build_system_overview.md
-- title: "Boards and products"
+# - title: "Boards and products"
+- title: "板型和产品"
   path: /docs/concepts/build_system/boards_and_products.md
   section:
-  - title: "Bringup Product Definition"
+  # - title: "Bringup Product Definition"
+  - title: "Bringup 产品定义"
     path: /docs/concepts/build_system/bringup.md
-- title: "Build system policies"
+# - title: "Build system policies"
+- title: "构建系统策略"
   path: /docs/concepts/build_system/policies.md
+# - title: "GN"
 - title: "GN"
   section:
-  - title: "Introduction to GN"
+  # - title: "Introduction to GN"
+  - title: "GN 介绍"
     path: /docs/concepts/build_system/intro.md
-  - title: "Bundles"
+  # - title: "Bundles"
+  - title: "套装"
     path: /docs/concepts/build_system/bundles.md
-  - title: "Variants"
+  # - title: "Variants"
+  - title: "变体"
     path: /docs/concepts/build_system/variants.md
-  - title: "GN in Zircon"
+  # - title: "GN in Zircon"
+  - title: "Zircon 中的 GN"
     path: /docs/concepts/build_system/zircon_gn.md
-  - title: "GN build arguments"
+  # - title: "GN build arguments"
+  - title: "GN 构建参数"
     path: https://fuchsia.googlesource.com/fuchsia/+/HEAD/docs/gen/build_arguments.md
-  - title: "GN Template Best Practices"
+  # - title: "GN Template Best Practices"
+  - title: "GN 模板最佳实践"
     path: /docs/concepts/build_system/best_practices.md

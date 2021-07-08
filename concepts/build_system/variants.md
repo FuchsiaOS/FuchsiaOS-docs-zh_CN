@@ -65,7 +65,7 @@ select_variant = [ "host_asan", "asan/cat", "asan/ledger" ]
 
  3. The third switch is like the second, but matches the binary named `ledger`.
  -->
- 1. 第一个开关应用 `host_asan` 匹配规则，该规则对所有为在构建主机上运行而构建的可执行文件启用 [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html)。
+ 1. 第一个开关（switch）应用 `host_asan` 匹配规则，该规则对所有为在构建主机上运行而构建的可执行文件启用 [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html)。
 
  2. 第二个开关应用 `asan` 匹配规则，该规则对 为在目标设备（即 Fuchsia 设备）上运行而构建的可执行文件启用 AddressSanitizer。`/cat` 后缀将此匹配规则仅限制在名为 `cat` 的二进制文件上。
 

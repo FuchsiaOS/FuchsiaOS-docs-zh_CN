@@ -28,7 +28,7 @@ The bringup product serves at least these purposes:
 bringup 产品至少满足以下用途：
 
 1. 适配工作（bringup）：当新平台由于所有必需的部分尚未完成或可靠工作（例如网络、存储器或 fx 设备发现所需配置和包管理），而无法运行 Fuchsia 时（`core` 或更高级产品配置）。
-2. 内核和低级（low level）驱动开发：开发需要正常运作的甚至是在 `core` 产品中运行的功能需要 bringup 产品。这应用于内核开发和在 `core` 中需要的驱动（如网络和存储器）。注意，当 core 所需的驱动尚未就绪时，诸如音频的高级驱动也能从 bringup 构建中获益。
+2. 内核和低级（low level）驱动开发：开发需要正常运作的甚至是在 `core` 产品中运行的功能需要 bringup 产品。这应用于内核开发和在 `core` 中需要的驱动（如网络和存储器）。注意，当 core 所需的驱动尚未就绪时，例如音频的高级驱动也能从 bringup 构建中获益。
 
 <!-- 
 A bringup build has these basic features:

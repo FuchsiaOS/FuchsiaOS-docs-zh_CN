@@ -25,8 +25,8 @@ these instructions:
 
 请参考下述文章，获取 Fuchsia 源代码，并设置构建环境：
 
- * [获取 Fuchsia 源代码](/docs/get-started/get_fuchsia_source.md)
- * [构建 Fuchsia](/docs/get-started/build_fuchsia.md)
+ * [获取 Fuchsia 源代码](/get-started/get_fuchsia_source.md)
+ * [构建 Fuchsia](/get-started/build_fuchsia.md)
 
 <!-- 
 ## Set up Fuchsia 
@@ -41,7 +41,7 @@ To set up and run the Fuchsia emulator (FEMU), see
 
 ### Fuchsia 模拟器 (FEMU)
 
-想要在模拟器上运行 Fuchsia，请参考 [配置 Fuchsia 模拟器(FEMU)](/docs/get-started/set_up_femu.md)。
+想要在模拟器上运行 Fuchsia，请参考 [配置 Fuchsia 模拟器(FEMU)](/get-started/set_up_femu.md)。
 
 <!-- 
 ### Fuchsia on a device
@@ -53,7 +53,7 @@ and [Build and pave quickstart](/docs/development/build/build_and_pave_quickstar
 
 ### 真机运行 Fuchsia 
 
-想在真机上运行 Fuchsia，请参考 [真机安装 Fuchsia](/docs/development/hardware/paving.md) 和[快速上手 Fuchsia 构建和部署](/docs/development/build/build_and_pave_quickstart.md)。
+想在真机上运行 Fuchsia，请参考 [真机安装 Fuchsia](/development/hardware/paving.md) 和[快速上手 Fuchsia 构建和部署](/development/build/build_and_pave_quickstart.md)。
 
 <!-- 
 ## Explore Fuchsia
@@ -72,12 +72,12 @@ You can explore Fuchsia further in the following guides:
 
 请参考下述文章，探索更多关于 Fuchsia 的内容:
 
- *   [探索 Fuchsia](/docs/get-started/explore_fuchsia.md)
- *   [运行一个 Fuchsia 组件示例](/docs/development/run/run-examples.md)
- *   [Fuchsia 工作流提示和问答](/docs/development/source_code/workflow_tips_and_faq.md)
- *   [配置代码编辑器](/docs/development/editors/)
- *   [为 Fuchsia 贡献源代码](/docs/development/source_code/contribute_changes.md)
- *   [选择一个入门项目](/docs/contribute/open_projects/)
+ *   [探索 Fuchsia](/get-started/explore_fuchsia.md)
+ *   [运行一个 Fuchsia 组件示例](/development/run/run-examples.md)
+ *   [Fuchsia 工作流提示和问答](/development/source_code/workflow_tips_and_faq.md)
+ *   [配置代码编辑器](/development/editors/)
+ *   [为 Fuchsia 贡献源代码](/development/source_code/contribute_changes.md)
+ *   [选择一个入门项目](/contribute/open_projects/)
 
 <!-- 
 ## Contribute to Zircon
@@ -89,5 +89,5 @@ that underpins Fuchsia. To work on Zircon, see
 
 ## 为 Zircon 做贡献
 
-作为 Fuchsia 最重要、最基础的部分，[Zircon](/docs/concepts/kernel/README.md) 内核已包含在了 Fuchsia 源代码之中. 如果您想要探索 Zircon，请参考
-[Zircon 入门](/docs/development/kernel/getting_started.md)。
+作为 Fuchsia 最重要、最基础的部分，[Zircon](/concepts/kernel/README.md) 内核已包含在了 Fuchsia 源代码之中. 如果您想要探索 Zircon，请参考
+[Zircon 入门](/development/kernel/getting_started.md)。

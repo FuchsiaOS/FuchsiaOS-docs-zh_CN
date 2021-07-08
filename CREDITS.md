@@ -12,10 +12,10 @@
 │   ├── booting ------------------------| Roy
 │   │   └── images
 │   ├── build_system -------------------| Whyto
-│   ├── components ---------------------|
+│   ├── components ---------------------| Submarinee
 │   │   ├── v1                          |
 │   │   └── v2                          |
-│   ├── diagnostics --------------------|
+│   ├── diagnostics --------------------| Whyto
 │   │   ├── inspect                     |
 │   │   ├── lifecycle_events            |
 │   │   └── logs                        |
@@ -24,7 +24,7 @@
 │   │   ├── driver_architectures        |
 │   │   └── driver_development          |
 │   ├── emulator -----------------------|
-│   ├── fidl ---------------------------|
+│   ├── fidl ---------------------------| linen
 │   │   └── images                      |
 │   ├── filesystems --------------------|
 │   │   └── images                      |
@@ -36,7 +36,7 @@
 │   ├── internationalization -----------|
 │   ├── kernel -------------------------|
 │   │   └── images                      |
-│   ├── media --------------------------|
+│   ├── media --------------------------|jack
 │   ├── modular ------------------------|
 │   │   └── guide                       |
 │   ├── monitoring ---------------------|
@@ -45,7 +45,7 @@
 │   │   └── images
 │   ├── prebuilt_packages --------------|
 │   ├── principles ---------------------|
-│   ├── process ------------------------|
+│   ├── process ------------------------|Robi
 │   ├── session ------------------------|
 │   │   └── images
 │   ├── settings -----------------------|
@@ -82,7 +82,7 @@
 │       └── 2021                        |
 ├── development                         |
 │   ├── benchmarking -------------------|
-│   ├── build --------------------------|
+│   ├── build --------------------------| Eric
 │   ├── components ---------------------|
 │   │   ├── v1                          |
 │   │   └── v2                          |
@@ -92,7 +92,7 @@
 │   │   ├── inspect                     |
 │   │   ├── logs                        |
 │   │   └── triage                      |
-│   ├── drivers ------------------------|
+│   ├── drivers ------------------------| Eric
 │   │   ├── best_practices              |
 │   │   ├── developer_guide             |
 │   │   ├── diagnostics                 |
@@ -115,10 +115,10 @@
 │   │   ├── c-cpp                       |
 │   │   ├── dart                        | yang-lile
 │   │   ├── fidl                        |
-│   │   ├── go                          |
-│   │   ├── new                         |
-│   │   ├── python                      |
-│   │   └── rust                        |
+│   │   ├── go                          | zhyChesterCheung
+│   │   ├── new                         | Rocksnake
+│   │   ├── python                      | Submarinee
+│   │   └── rust                        | Allen
 │   ├── monitoring ---------------------|
 │   │   ├── devtools                    |
 │   │   └── fidlcat                     |
@@ -134,7 +134,7 @@
 │   └── tracing  -----------------------|
 │       ├── advanced                    |
 │       └── tutorial                    |
-├── gen --------------------------------|
+├── gen --------------------------------| Sylsd
 ├── get-started ------------------------| Sylsd
 ├── images
 │   ├── benchmarking
