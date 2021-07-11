@@ -77,11 +77,11 @@ Dart -;
 
 <!-- ## Package layout {#layout} -->
 
-## Package 结构 {#layout}
+## 包结构 {#layout}
 
 <!-- We use a layout very similar to the [standard layout][package-layout]. -->
 
-我们使用和 [标准 Package 结构][package-layout] 十分相似的结构。
+我们使用和 [标准包结构][package-layout] 十分相似的结构。
 
 <!-- ```
 my_package/
