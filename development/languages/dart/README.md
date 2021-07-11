@@ -34,7 +34,7 @@ monitor the FIDL channels opened by Dart programs and as a result does not end
 the program normally, but rather waits for the explicit call to `fuchsia.exit()`
 to indicate the program should be ended. -->
 
-Fuchsia 的 Dart 运行程序不会监视 Dart 程序打开的 FIDL 通道，因此不会正常结束该程序，而是等待对 `fuchsia.exit()` 的显示调用以指示该程序应该结束。
+Fuchsia 的 Dart 运行程序不会监视 Dart 程序打开的 FIDL 通道，因此不会正常结束该程序，而是等待对 `fuchsia.exit()` 的显式调用以指示该程序应该结束。
 
 <!-- Note: Calling exit() from dart:io will result in an exception since components
 are not allowed to call this method since it would shutdown the dart_runner process. -->
