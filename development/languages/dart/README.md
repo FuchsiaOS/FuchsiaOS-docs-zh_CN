@@ -97,7 +97,7 @@ my_package/
 ```
 my_package/
   |
-  |-- pubspec.yaml           # 空的，用来做标记 [必要的]
+  |-- pubspec.yaml           # 空的，用来做标记【必需】
   |-- BUILD.gn               # 包含所有的目标
   |-- analysis_options.yaml  # 分析配置项 [必要的]
   |-- lib/                   # dart_library 内容
