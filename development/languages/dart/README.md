@@ -16,7 +16,7 @@ This is to ensure we use consistent versions of our dependencies across multiple
 builds. -->
 
 无需依靠 [`pub`][pub] 来管理依赖关系，而是将我们依赖的第三方 packages 的源检入到 `//third_party/dart-pkg` 下的树中。
-这是为了确保我们在多个版本中使用一致的依赖版本。
+这是为了确保我们在多个构建中使用一致的依赖版本。
 
 <!-- Likewise, no build output is placed in the source tree as everything goes under
 `out/`. That includes `.packages` files, which are generated as part of the build
