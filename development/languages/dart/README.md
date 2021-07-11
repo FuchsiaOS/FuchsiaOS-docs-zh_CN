@@ -77,7 +77,7 @@ Dart -;
 
 <!-- ## Package layout {#layout} -->
 
-## 包结构 {#layout}
+## 包 (package) 结构 {#layout}
 
 <!-- We use a layout very similar to the [standard layout][package-layout]. -->
 
