@@ -4,12 +4,12 @@
 
 <!-- Analysis is run as part of the Fuchsia build. -->
 
-分析是运行 Fuchsia 构建的一部分。
+分析的运行是 Fuchsia 构建的一部分。
 
 <!-- For each `dart_library` target, an analysis script gets
 also generated in the output directory under: -->
 
-对于每一个 `dart_library` 目标，分析脚本会获取并生成到输出目录下：
+对于每一个 `dart_library` 目标，分析脚本也会生成到位于下面路径中的输出路径下：
 
 ```sh
 out/<build-type>/gen/path/to/package/package.analyzer.sh

@@ -65,7 +65,7 @@ Dart -;
 - [`flutter_app`][target-flutter] defines a [Flutter][flutter] application;
 - [`dart_test`][target-test] defines a group of test. -->
 
-- [`dart_library`][target-library] 定义了能够被用户使用的 Dart 库；
+- [`dart_library`][target-library] 定义了一个能够被其他 Dart 目标使用的库；
 - [`dart_app`][target-app] 为 Fuchsia 定义了一个 Dart 可执行程序；
 - [`dart_tool`][target-tool] 为主机定义了一个 Dart 工具；
 - [`flutter_app`][target-flutter] 定义了一个 [Flutter][flutter] 应用程序；
@@ -117,7 +117,7 @@ my_package/
 - [Managing third_party dependencies](third_party.md)
 - [IDEs](ides.md) -->
 
-- [运行时分析](analysis.md)
+- [运行分析](analysis.md)
 - [样式](style.md)
 - [测试](testing.md)
 - [日志](logging.md)
