@@ -99,7 +99,7 @@ my_package/
   |
   |-- pubspec.yaml           # 空的，用来做标记【必需】
   |-- BUILD.gn               # 包含所有的目标
-  |-- analysis_options.yaml  # 分析配置项 [必要的]
+  |-- analysis_options.yaml  # 分析配置项【必需】
   |-- lib/                   # dart_library 内容
   |-- bin/                   # dart_binary 的（目标）或 dart_tool 的（宿主）
   |-- test/                  # dart_test 内容
