@@ -53,5 +53,5 @@ typically distributed with Fuchsia. For more information, see the
 
 <!--xrefs-->
 
-[i18n-guide]: /docs/development/internationalization
-[inclusive]: /docs/concepts/principles/inclusive.md#fuchsia_architecture_is_inclusive_by_design
+[i18n-guide]: /development/internationalization
+[inclusive]: /concepts/principles/inclusive.md#fuchsia_architecture_is_inclusive_by_design

@@ -60,7 +60,7 @@ FEMU features include:
 FEMU 特性包括：
 
 *   **图形用户界面（GUI）支持：**您能够选择使用（默认） GUI 或不使用 GUI 来运行 Fuchsia（通过使用 `--headless` 参数）。
-*   **GPU 支持：**您能够使用完整支持 [Vulkan](/docs/concepts/graphics/magma/vulkan.md) 的主机 GPU 或通过使用 [SwiftShader](https://swiftshader.googlesource.com/SwiftShader/) 来选择软件渲染。
+*   **GPU 支持：**您能够使用完整支持 [Vulkan](/concepts/graphics/magma/vulkan.md) 的主机 GPU 或通过使用 [SwiftShader](https://swiftshader.googlesource.com/SwiftShader/) 来选择软件渲染。
 *   **远程开发：**您能够通过 FEMU 使用远程桌面，无论是 Chrome 远程桌面，还是通过命令行使用 [fx emu-remote](https://fuchsia.dev/reference/tools/fx/cmd/emu-remote) 命令。
 
 <!-- 
@@ -78,7 +78,7 @@ page.
 
 If you’re using the Fuchsia IDK, `fvdl` supports the same flags as `fx vdl`
  -->
-要配置这些特性，请查看[配置并运行 Fuchsia 模拟器](/docs/get-started/set_up_femu.md)页面。
+要配置这些特性，请查看[配置并启动 Fuchsia 模拟器](/get-started/set_up_femu.md)页面。
 
 如果您使用的是 Fuchsia IDK，那么 `fvdl` 支持与 `fx vdl` 相同的标记。
 
@@ -133,7 +133,7 @@ emulated NIC. Instructions for setting up networking for FEMU is in
 
 Note: Without `-N`, your emulator won't be discoverable using `fx list-devices`. However, you can manually set the SSH address and use `fx` tools to interact with your emulator.
  -->
-在 Linux 上，Fuchsia 模拟器应当总体上带 `-N` 标记运行，它可以通过模拟的 NIC 提供网络。为 FEMU 设置网络的操作说明位于[设置 Fuchsia 模拟器](/docs/get-started/set_up_femu.md)中。
+在 Linux 上，Fuchsia 模拟器应当总体上带 `-N` 标记运行，它可以通过模拟的 NIC 提供网络。为 FEMU 设置网络的操作说明位于[设置 Fuchsia 模拟器](/get-started/set_up_femu.md)中。
 
 注意：无 `-N` 时，您的模拟器将无法通过使用 `fx list-devices` 而被发现。不过，您可以手动设置 SSH 地址并使用 `fx` 工具与您的模拟器交互。
 
@@ -177,7 +177,7 @@ If you only want to emulate Zircon, you must use `fx qemu` instead. Read
 learn more. This is for kernel developers. Most Fuchsia developers do not need
 to use this workflow.
  -->
-如果您只想模拟 Zircon，那么您反而必须使用 `fx qemu`。请阅读[利用 QEMU 调试内核](/docs/development/debugging/qemu.md)以了解更多内容。这是面向内核开发人员的。大多数 Fuchsia 开发者不需要使用这一工作流程。
+如果您只想模拟 Zircon，那么您反而必须使用 `fx qemu`。请阅读[利用 QEMU 调试内核](/development/debugging/qemu.md)以了解更多内容。这是面向内核开发人员的。大多数 Fuchsia 开发者不需要使用这一工作流程。
 
 <!-- 
 ## FEMU common usage  {#femu-common-usage}
@@ -197,12 +197,12 @@ Then you can use FEMU to do the following:
 *   [Test components](/docs/development/run/run-test-component.md)
 *   [Run end-to-end tests](/docs/development/testing/run_an_end_to_end_test.md)
  -->
-要使用 FEMU，您必须首先[下载 Fuchsia 源](/docs/get-started/get_fuchsia_source.md)并[构建 Fuchsia](/docs/get-started/build_fuchsia.md)。
+要使用 FEMU，您必须首先[下载 Fuchsia 源](/get-started/get_fuchsia_source.md)并[构建 Fuchsia](/get-started/build_fuchsia.md)。
 
 或者，您可以使用 Fuchsia IDK 和预构建系统镜像。
 
 然后您就能够使用 FEMU 处理如下事宜：
 
-*   [设置并运行 FEMU](/docs/get-started/set_up_femu.md)
-*   [测试组件](/docs/development/run/run-test-component.md)
-*   [运行端到端测试](/docs/development/testing/run_an_end_to_end_test.md)
+*   [设置并运行 FEMU](/get-started/set_up_femu.md)
+*   [测试组件](/development/run/run-test-component.md)
+*   [运行端到端测试](/development/testing/run_an_end_to_end_test.md)
