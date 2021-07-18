@@ -1131,7 +1131,7 @@ reference][language-reference], or the [contributing doc][fidl-contributing].
 
 ## 开始
 
-如果你想了解更多关于使用FIDL的内容，指导章节中有一些[开发者指南][developer-guides] 和[教程][fidl-tutorials]，你可以尝试了解。如果你将在Fuchsia上开发，并且想要了解怎样使用现有FIDL API绑定，可以参考[FIDL绑定参考][bindings-reference]。最后，如果你想要了解更多关于FIDL或者发布内容，请检查[FIDL语言参考][language-reference]，或者[发布文档][fidl-contributing]。
+如果你想了解更多关于使用FIDL的内容，可以尝试了解导章节中有一些[开发者指南][developer-guides] 和[教程][fidl-tutorials]。如果你将在Fuchsia上开发，可以参考[FIDL绑定参考][bindings-reference]了解怎样使用现有FIDL API绑定。最后，如果你想要了解更多关于FIDL或者发布内容，请参考[FIDL语言参考][language-reference]或者[发布文档][fidl-contributing]。
 
 <!-- xrefs -->
 
