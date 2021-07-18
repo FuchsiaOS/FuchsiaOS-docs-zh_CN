@@ -28,7 +28,7 @@ target that can also be analyzed. -->
 `analysis_options.yaml` file, which must be placed at the package root.
 This file may refer to a common set of options by way of an `include` directive: -->
 
-与标准 Dart Packages 一样，分析选项在 `analysis_options.yaml` 文件中定义，该文件必须放在 package 根目录下。
+与标准 Dart 包一样，分析选项在 `analysis_options.yaml` 文件中定义，该文件必须放在包的根目录下。
 该文件可以通过 `include` 指令引用一组通用选项：
 
 ```
@@ -39,7 +39,7 @@ include: relative/path/to/options.file
 It is customary to merely include that set from a local options file: -->
 
 这是一个规范集 [//topaz/tools/analysis_options.yaml](https://fuchsia.googlesource.com/topaz/+/HEAD/tools/analysis_options.yaml)
-通常只包含本地选项文件中的设置：
+通常只在本地选项文件中的包含该集合：
 
 ```
 include: path/to/topaz/tools/analysis_options.yaml
@@ -66,7 +66,7 @@ scripts/run-dart-action.py analyze --out out/<build-type> --tree //topaz/shell/*
 
 <!-- Regular analyzer flags may also be passed: -->
 
-也可以通过传递常规分析器标志：
+也可以传递常规分析器标志：
 
 ```sh
 scripts/run-dart-action.py analyze --out out/<build-type> --fatal-warnings --lints

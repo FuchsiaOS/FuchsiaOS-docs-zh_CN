@@ -3,7 +3,7 @@
 <!-- [FIDL targets][fidl] generate implicit Dart bindings targets. To use the
 bindings generated for: -->
 
-[FIDL 目标][fidl] 生成隐式 Dart 绑定目标。生成的绑定使用方法：
+[FIDL 目标][fidl] 生成隐式 Dart 绑定目标。要使用为下列对象生成的绑定：
 
 ```
 //foo/bar
@@ -12,7 +12,7 @@ bindings generated for: -->
 
 <!-- add a dependencies in BUILD.gn: -->
 
-在 BUILD.gn 中添加依赖：
+请在 BUILD.gn 中添加依赖：
 
 ```
 deps = [
@@ -26,7 +26,7 @@ deps = [
 <!-- There are 3 files generated for dart from FIDL.  These are found in
 `out/default/dartlang/gen/<path-to-target>/<fidl-servicename>_package/lib` -->
 
-FIDL 为 dart 生成了 3 个文件。你可以在 `out/default/dartlang/gen/<path-to-target>/<fidl-servicename>_package/lib` 找到。
+FIDL 为 dart 生成了 3 个文件。您可以在 `out/default/dartlang/gen/<path-to-target>/<fidl-servicename>_package/lib` 找到。
 
 <!-- * fidl.dart - the synchronous bindings
 * fidl_async.dart - the asynchronous bindings
@@ -72,10 +72,10 @@ import "package:fidl_foo_bar_blah/fidl_async.dart";
 * 它们各自生成的文件当前将放置在输出目录的同一子目录中。
   这意味着属于一个目标的文件将可供另一目标的客户端使用，这可能会混淆分析器。
   现在这不应该是一个构建问题，但如果客户端没有正确设置它们的依赖关系，一旦生成的 Dart 文件被放置在单独的目录中，就会成为一个问题。
-* 根据 Dart 包使用的 *另一个* FIDL 目标中的这些目标之一，会导致“无法读取 Dart 源……”错误。
-  FIDL 的绑定生成器基于包含包含的 FIDL 文件的目录结构构建 Dart 包名称，而 GN（用于计算 Dart 包的依赖关系）使用完整的 GN 目标名称来实现。
-  例如：依赖于 `lib/foo/fidl:bar` 生成一个像 `lib.foo.fidl._bar` 这样的包。
-  根据顶级目标 `lib/foo/fidl` 生成包 `lib.foo.fidl`，这与 Dart FIDL 绑定的假设一致。
+* 对于 Dart 包使用的 *另一* FIDL 目标中的这些目标之一的依赖，会导致“无法读取 Dart 源……”错误。
+  FIDL 的绑定生成器基于含有被包含 FIDL 文件的目录结构来构建 Dart 包名称，而 GN（用于计算 Dart 包的依赖关系）使用完整的 GN 目标名称来实现。
+  例如：对 `lib/foo/fidl:bar` 的依赖会生成一个形如 `lib.foo.fidl._bar` 的包。
+  对顶层目标 `lib/foo/fidl` 的依赖会生成包 `lib.foo.fidl`，这与 Dart FIDL 绑定的假设相符。
 
 <!-- ## Calling a FIDL service -->
 
