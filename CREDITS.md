@@ -23,7 +23,7 @@
 │   │   ├── device_driver_model         |
 │   │   ├── driver_architectures        |
 │   │   └── driver_development          |
-│   ├── emulator -----------------------|
+│   ├── emulator -----------------------| Whyto
 │   ├── fidl ---------------------------| linen
 │   │   └── images                      |
 │   ├── filesystems --------------------|
@@ -33,10 +33,10 @@
 │   │   ├── magma                       |
 │   │   ├── scenic                      |
 │   │   └── sysmem                      |
-│   ├── internationalization -----------|
+│   ├── internationalization -----------| Whyto
 │   ├── kernel -------------------------|
 │   │   └── images                      |
-│   ├── media --------------------------|jack
+│   ├── media --------------------------| jack
 │   ├── modular ------------------------|
 │   │   └── guide                       |
 │   ├── monitoring ---------------------|
@@ -45,7 +45,7 @@
 │   │   └── images
 │   ├── prebuilt_packages --------------|
 │   ├── principles ---------------------|
-│   ├── process ------------------------|Robi
+│   ├── process ------------------------| Robi
 │   ├── session ------------------------|
 │   │   └── images
 │   ├── settings -----------------------|

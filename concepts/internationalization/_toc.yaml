@@ -6,5 +6,6 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Introduction"
-  path: /docs/concepts/internationalization/introduction.md
+# - title: "Introduction"
+- title: "介绍"
+  path: /concepts/internationalization/introduction.md
