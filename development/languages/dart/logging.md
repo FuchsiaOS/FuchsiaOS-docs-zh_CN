@@ -5,12 +5,12 @@
 <!-- Dart programs on Fuchsia generally write log messages with the `lib.logging` package, consuming and
 initializing it through the `fuchsia_logger` package. -->
 
-在 Fuchsia 上的 Dart 程序通常使用 `lib.logging` 包来写入日志消息，通过 `fuchsia_logger` 包对其进行消费和初始化。
+在 Fuchsia 上的 Dart 程序通常使用 `lib.logging` 包来写入日志消息，通过 `fuchsia_logger` 包来获取和初始化。
 
 <!-- See the [language agnostic logging docs] for more information
 about recording and viewing logs. -->
 
-请参阅 [语言无关日志文档] 来获取更多关于记录和查看日志的信息。
+请参阅[语言无关日志文档]来获取更多关于记录和查看日志的信息。
 
 <!-- ## Requirements -->
 
@@ -36,7 +36,7 @@ See [Dart: Overview][dart-dev] for more information about building Dart within F
 
 `fuchsia_logger` 包也提供了 Dart 的 `lib.logging`。
 
-请参阅 [Dart: 概述][dart-dev] 以便了解更多有关于在 Fuchsia 中构建 Dart。
+请参阅 [Dart: 概述][dart-dev]以了解关于在 Fuchsia 中构建 Dart 的更多信息。
 
 <!-- ### Component manifest dependency -->
 
@@ -45,7 +45,7 @@ See [Dart: Overview][dart-dev] for more information about building Dart within F
 <!-- Ensure that your component has the required capabilities to log by including the
 following in your component manifest: -->
 
-通过在组件清单中包含以下内容，确保您的组件具有记录所需的功能
+请在组件清单中包含以下内容，以确保您的组件具有记录日志所需的功能：
 
    * {.cmx}
 
@@ -110,7 +110,7 @@ Note: 以上仅适用于树内开发。
 
 <!-- In your main function, call the `setupLogger()` function to initialize logging: -->
 
-在你的主函数中，调用 `setupLogger()` 函数来初始化日志。
+在您的主函数中，调用 `setupLogger()` 函数来初始化日志。
 
 <!-- ```dart
 import 'package:fuchsia_logger/logger.dart';
@@ -130,7 +130,7 @@ main() {
 }
 ```
 
-### Configure severity
+<!-- ### Configure severity -->
 
 ### 配置等级
 

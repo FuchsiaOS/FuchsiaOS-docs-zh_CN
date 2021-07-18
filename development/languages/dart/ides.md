@@ -55,9 +55,9 @@
 1.  安装以下扩展插件:
 
     *   [Dart Code](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code)：
-        支持 Dart 的编程语法，它将会自动的在 Fuchsia 树中查找到 dart-sdk。
+        提供 Dart 编程支持。它会在 Fuchsia 树中自动找到 dart-sdk。
     *   [FIDL language support](https://marketplace.visualstudio.com/items?itemName=fuchsia-authors.language-fidl)：
-        支持 Fuchsia 的 FIDL 文件的语法高亮。
+        提供 Fuchsia 的 FIDL 文件语法高亮支持
     *   [GN](https://marketplace.visualstudio.com/items?itemName=npclaudiu.vscode-gn)：
         GN 构建文件的语法高亮支持
     *   可选但有用的 git 拓展插件：
