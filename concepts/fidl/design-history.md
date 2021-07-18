@@ -1,26 +1,67 @@
+<!--
+
 # FIDL design history
+
+-->
+# FIDL设计历史
+
+<!---
 
 This page provides a starting point for navigating [RFCs] in the "FIDL" area. It
 organizes them in various ways and gives an updated status on each, bringing the
 reader up to speed with FIDL's history and current direction.
+
+-->
+
+本页面提供了在[RFCs]中“FIDL”部分的开始引导。本章采用不同方式集合来展现其每个阶段的更新状态，带领读者快速了解FIDL的相关历史和当前方向。
+
+<!---
 
 Previously, these design documents were called [FTPs] or FIDL Tuning Proposals.
 The FTP process was later [merged into][rfc-0017] the RFC process. Because of
 the way FTPs were renumbered as RFCs, RFC numbers do not imply chronology.
 However, each individual list on this page shows RFCs in chronological order.
 
+-->
+
+首先，这些设计文件被称为FTPs(FIDL Tuning Proposals)或者FIDL调试方案。FTP流程后续将合入到RFC（request for comments）流程中。因为FTPs被以RFCs方式进行重新编码，所以RFC编号并不代表着时间顺序。但是本页面上的每个列表都按时间顺序显示RFCs。
+
+<!---
+
 ## By theme
+
+--->
+
+## 按主题分类
+
+<!---
 
 This section organizes FIDL RFCs by theme. Each RFC is listed once, under its
 primary theme, even if it touches on multiple themes.
 
+--->
+
+本章节按照主题组织FIDL RFCs。每个RFC在基础主题下仅列出一次，即使它涉及多个主题。
+
+<!---
+
 ### Governance
+
+--->
+
+### 管理
 
 * [RFC-0018: FTP process: A modest proposal][rfc-0018]
 * [RFC-0049: FIDL tuning process evolution][rfc-0049]
 * [RFC-0017: The FTP Process is dead, long live the RFC Process!][rfc-0017]
 
+<!---
+
 ### Evolvability
+
+--->
+
+### 可进化性
 
 * [RFC-0047: Tables][rfc-0047]
 * (Rejected) [RFC-0063: OrdinalRange][rfc-0063]
@@ -36,7 +77,13 @@ primary theme, even if it touches on multiple themes.
 * [RFC-0048: Explicit union ordinals][rfc-0048]
 * [RFC-0083: FIDL versioning][rfc-0083]
 
+<!---
+
 ### Expressivity
+
+--->
+
+### 表现性
 
 * [RFC-0019: Type aliases with using][rfc-0019]
 * [RFC-0022: Default values for struct members][rfc-0022]
@@ -49,7 +96,13 @@ primary theme, even if it touches on multiple themes.
 * [RFC-0052: Type aliasing and new types][rfc-0052]
 * [RFC-0054: Parameter attributes][rfc-0054]
 
+<!---
+
 ### Syntax
+
+--->
+
+### 语法
 
 * (Rejected) [RFC-0038: Separating layout from constraints][rfc-0038]
 * (Rejected) [RFC-0039: Types come second][rfc-0039]
@@ -57,7 +110,13 @@ primary theme, even if it touches on multiple themes.
 * [RFC-0086: Updates to RFC-0050: FIDL attributes syntax][rfc-0086]
 * [RFC-0087: Updates to RFC-0050: FIDL method parameter syntax][rfc-0087]
 
+<!---
+
 ### Ergonomics
+
+--->
+
+### 工效学
 
 * [RFC-0053: Epitaphs][rfc-0053]
 * [RFC-0056: Empty structs][rfc-0056]
@@ -66,7 +125,13 @@ primary theme, even if it touches on multiple themes.
 * (Rejected) [RFC-0031: Typed epitaphs][rfc-0031]
 * [RFC-0057: Default no handles][rfc-0057]
 
+<!---
+
 ### Performance
+
+--->
+
+### 性能
 
 * (Rejected) [RFC-0026: Envelopes everywhere][rfc-0026]
 * [RFC-0027: You only pay for what you use][rfc-0027]
@@ -74,31 +139,67 @@ primary theme, even if it touches on multiple themes.
 * (Rejected) [RFC-0035: Automatic flow tracing][rfc-0035]
 * (Rejected) [RFC-0045: Zero-size empty structs][rfc-0045]
 
+<!---
+
 ### Safety & security
+
+--->
+
+### 功能安全和信息安全
 
 * [RFC-0051: Safer structs for C++][rfc-0051]
 * (Rejected) [RFC-0062: Method impossible][rfc-0062]
 * [RFC-0028: Handle rights][rfc-0028]
 * (Rejected) [RFC-0034: Null terminate strings][rfc-0034]
 
+<!---
+
 ### Tooling
+
+--->
+
+### 工具
 
 * [RFC-0076: FIDL API summaries][rfc-0076]
 
+<!---
+
 ### Documentation
+
+--->
+
+### 文档
 
 * [RFC-0055: Documentation comments][rfc-0055]
 * [RFC-0043: Documentation comment format][rfc-0043]
 
+<!---
+
 ### Simplify design space
+
+--->
+
+### 简化设计空间
 
 * [RFC-0030: FIDL is little endian][rfc-0030]
 * [RFC-0059: Reserved bits in vector, string, and array count fields][rfc-0059]
 
+<!---
+
 ## By language feature
+
+--->
+
+## 按语言特性分类
+
+<!---
 
 This section lists RFCs that introduced new feature that are easily visible in
 the FIDL language. It only includes current features, not obsolete ones.
+
+--->
+
+本章列出引入到FIDL语言中容易看见的新特性的RFCs。只包含当前特性，而不包含已经废除的特性。
 
 | Feature              | RFC        | Note
 | -------------------- | -----------| ------------------------------------------
@@ -121,9 +222,21 @@ the FIDL language. It only includes current features, not obsolete ones.
 <!-- TODO(fxbug.dev/67858): Uncomment when implemented. -->
 <!-- | `@available`      | [RFC-0083] | Version annotations -->
 
+<!---
+
 ## Current status
 
+--->
+
+## 当前状态
+
+<!---
+
 This section gives the current status of all FIDL RFCs.
+
+--->
+
+本章展示了所有FIDL RFCs的当前状态
 
 _Legend:_
 
