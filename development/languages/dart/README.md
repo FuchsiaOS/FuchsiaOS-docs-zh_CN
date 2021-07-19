@@ -39,7 +39,7 @@ Fuchsia 的 Dart 运行程序不会监视 Dart 程序打开的 FIDL 通道，因
 <!-- Note: Calling exit() from dart:io will result in an exception since components
 are not allowed to call this method since it would shutdown the dart_runner process. -->
 
-Note: 从 dart:io 调用 exit() 将导致异常，因为不允许组件调用此方法，因为它将关闭 dart_runner 进程。
+注意：从 dart:io 调用 exit() 将导致异常，因为不允许组件调用此方法，因为它将关闭 dart_runner 进程。
 
 ```dart
 import 'package:fuchsia/fuchsia.dart' as fuchsia;

@@ -73,7 +73,7 @@ following in your component manifest: -->
 This is tracked in [fxbug.dev/64207](http://fxbug.dev/64207).
 Out of tree developers should copy the snippets shown below instead. -->
 
-Note: 以上仅适用于树内开发。
+注意：以上仅适用于树内开发。
 这在 [fxbug.dev/64207](http://fxbug.dev/64207) 中进行了跟踪。
 树外开发人员应该复制下面展示的片段。
 

@@ -77,7 +77,7 @@
 <!-- Note: This configuration file is a JSON file. Make sure that you properly use
 curly braces. -->
 
-Note: 该配置文件是一个 JSON 文件。请确保您正确的使用了花括号。
+注意：该配置文件是一个 JSON 文件。请确保您正确的使用了花括号。
 
 <!-- * Auto-format your files when you save: -->
 
@@ -106,7 +106,7 @@ Note: 该配置文件是一个 JSON 文件。请确保您正确的使用了花�
 <!-- Note: For macOS, replace `linux-x64` with `mac-x64` in your supplied value for
 `dart.sdkPath`. -->
 
-Note: 对于 macOS，请在您的 `dart.sdkPath` 提供值中使用 `mac-x64` 替换 `linux-x64`。
+注意：对于 macOS，请在您的 `dart.sdkPath` 提供值中使用 `mac-x64` 替换 `linux-x64`。
 
 <!-- * Don't run pub with fuchsia. -->
 
