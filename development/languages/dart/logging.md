@@ -138,7 +138,7 @@ main() {
 by providing the `level` parameter in the `setupLogger()` call. -->
 
 默认情况下，仅打印具有“INFO”严重性或更高级别的消息。
-可以通过在 `setupLogger()` 调用中提供 `level` 参数来调整严重性级别。
+可以通过在 `setupLogger()` 调用中给出 `level` 参数来调整严重性级别。
 
 <!-- For example, to make all log messages appear in [`fx log`]: -->
 
