@@ -157,7 +157,7 @@ recipient of an `Open()` request. -->
 
 <!-- Objects are fundamentally nameless but they may be called many names by others. -->
 
-对象从根本上就被设计成无名的，但是它们能被其它对象用名字来指示。
+对象从根本上就被设计成无名的，但是它们能被其它对象用名字来调用。
 
 <!-- Object names are represented as binary octet strings (arbitrary sequences
 of bytes) subject to the following constraints:
