@@ -41,7 +41,7 @@ primary theme, even if it touches on multiple themes.
 
 --->
 
-本章节按照主题组织FIDL RFCs。每个RFC在基础主题下仅列出一次，即使它涉及多个主题。
+本章节按照主题组织FIDL RFCs。每个RFC即使涉及多个主题，但在本章内仅列出一次。
 
 <!---
 
@@ -199,7 +199,7 @@ the FIDL language. It only includes current features, not obsolete ones.
 
 --->
 
-本章列出引入到FIDL语言中容易看见的新特性的RFCs。只包含当前特性，而不包含已经废除的特性。
+本章列出在FIDL语言中引入的新特性的RFCs。它只包含当前特性，而不包含已被废弃的。
 
 | Feature              | RFC        | Note
 | -------------------- | -----------| ------------------------------------------
