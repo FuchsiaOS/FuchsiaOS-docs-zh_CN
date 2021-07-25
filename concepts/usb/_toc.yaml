@@ -7,10 +7,14 @@
 # team as reviewer.
 toc:
 - title: "USB system overview"
+- title: "USB系统概述"
   path: /docs/concepts/usb/overview.md
 - title: "Lifecycle of a USB request"
+- title: "一个USB请求的生命周期"
   path: /docs/concepts/usb/request-lifecycle.md
 - title: "USB mass storage driver"
+- title: "USB大容量存储设备驱动"
   path: /docs/concepts/usb/usb-mass-storage.md
 - title: "Testing a USB device"
+- title: "测试一个USB设备"
   path: /docs/concepts/usb/testing.md
