@@ -19,7 +19,7 @@
 │   │   ├── inspect                     |
 │   │   ├── lifecycle_events            |
 │   │   └── logs                        |
-│   ├── drivers ------------------------|
+│   ├── drivers ------------------------| linen
 │   │   ├── device_driver_model         |
 │   │   ├── driver_architectures        |
 │   │   └── driver_development          |
