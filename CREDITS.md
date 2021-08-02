@@ -41,9 +41,9 @@
 │   │   └── guide                       |
 │   ├── monitoring ---------------------|
 │   ├── networking ---------------------|
-│   ├── packages -----------------------|Robi
+│   ├── packages -----------------------| Robi
 │   │   └── images
-│   ├── prebuilt_packages --------------|
+│   ├── prebuilt_packages --------------| Whyto
 │   ├── principles ---------------------|
 │   ├── process ------------------------| Robi
 │   ├── session ------------------------|
