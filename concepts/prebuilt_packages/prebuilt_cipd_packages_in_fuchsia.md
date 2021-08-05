@@ -1,4 +1,6 @@
+<!-- 
 # Prebuilt CIPD packages in Fuchsia
+ -->
 # Fuchsia 中的预构建 CPID 包
 
 <!-- 
@@ -21,7 +23,7 @@ and is distributed to a Fuchsia checkout through the
 tool. Also, using the `cipd` command-line tool, you can download a CIPD package
 directly, for example, to examine its content.
  -->
-CIPD 包是文件的一个任意集合它保存在[远程的内容寻址存储](https://chrome-infra-packages.appspot.com/p/fuchsia){: .external}上，并通过 <code>[jiri](https://fuchsia.googlesource.com/jiri/+/HEAD/){:.external}</code> 分发至 Fuchsia checkout。同样，使用 `cipd`命令行工具，您可以直接下载 CIPD 包，例如，用来检查其内容。
+CIPD 包是文件的一个任意集合，它保存在[远程的内容寻址存储](https://chrome-infra-packages.appspot.com/p/fuchsia){: .external}上，并通过 <code>[jiri](https://fuchsia.googlesource.com/jiri/+/HEAD/){:.external}</code> 分发至 Fuchsia checkout。同样，使用 `cipd`命令行工具，您可以直接下载 CIPD 包，例如，用来检查其内容。
 
 <!-- 
 CIPD packages are typically used to distribute the following files:
@@ -53,7 +55,7 @@ process.
 <figcaption><b>Figure 1</b>. The CIPD UI shows the latest ref and other refs
 used for this CIPD package instances.</figcaption> </figure>
  -->
-一旦您使用 Fuchsia 设置了持续集成（continuous integration，CI），Fuchsia 的 CI 系统会取得新包并通过[全局整合](https://fuchsia.googlesource.com/integration/+/refs/heads/master)过程将它们整合进 Fuchsia 项目。
+一旦您使用 Fuchsia 设置了持续集成（continuous integration，CI），Fuchsia 的 CI 系统会取得新包并通过[全局整合](https://fuchsia.googlesource.com/integration/+/refs/heads/master)进程将它们整合进 Fuchsia 项目。
 
 <a name="figure-1"></a> <figure>
 <img src="/docs/images/prebuilt_packages/publish-prebuilt-packages-to-fuchsia-00.png" alt="CIPD 用户界面的最新参考实现和其他参考实现">
