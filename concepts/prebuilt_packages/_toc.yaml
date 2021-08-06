@@ -6,5 +6,7 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Prebuilt CIPD packages in Fuchsia"
-  path: /docs/concepts/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md
+# - title: "Prebuilt CIPD packages in Fuchsia"
+#   path: /docs/concepts/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md
+- title: "Fuchsia 中的预构建 CIPD 包"
+  path: /concepts/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md
