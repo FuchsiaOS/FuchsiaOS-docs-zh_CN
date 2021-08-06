@@ -21,7 +21,6 @@ the system-wide repository and within Individual project repositories.
 -->
 
 - [行为准则](CODE_OF_CONDUCT.md)
-- [术语表](/glossary/README.md) - 定义常用的专业术语
 - [入门](/get-started/README.md) - 任何人都可以从这开始入门 Fuchsia
 - [开发](development/README.md) - 构建，运行和测试 Fuchsia 以及在 Fuchsia 上运行的软件的说明
 - [系统概念](concepts/index.md) - 关于 Fuchsia 是如何工作的
