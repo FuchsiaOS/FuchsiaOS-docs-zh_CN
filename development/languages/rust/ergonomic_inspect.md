@@ -1,3 +1,4 @@
+<!--
 # Ergonomic Inspect
 
 This guide covers the usage of the
@@ -6,7 +7,13 @@ library, and assumes that you are familiar with
 [Inspect](/docs/development/diagnostics/inspect)
 and have basic experience with the
 [`fuchsia_inspect`](/src/lib/diagnostics/inspect/rust) library.
+-->
 
+# 工效学检查
+
+这份指南涵盖了 [`fuchsia_inspect_derive`](/src/lib/diagnostics/inspect/derive) 库的使用，并且认为你熟悉 [检查](/development/diagnostics/inspect)，对 [`fuchsia_inspect`](/src/lib/diagnostics/inspect/rust) 库有基本的经验。
+
+<!--
 ## Overview
 
 The `fuchsia_inspect_derive` library provides ergonomic macros, traits and
@@ -31,6 +38,18 @@ integration, by:
   updated independently.
 - Applying static dispatch only, to avoid additional runtime overhead.
 - Not using any additional synchronization primitives.
+-->
+
+## 概述
+
+`fuchsia_inspect_derive` 库提供了工效学宏， 在 `fuchsia_inspect` 库周边有 traits 和智能指针可以更容易的整合检查到你的 Rust 代码中，步骤如下：
+
+- 在相同的 RAII 类型下拥有源码数据和检查数据
+- 作为惯用语。为原语，普通内部可变模式和异步提供了第一级别的支持。
+- 生成重复的样板代码
+- 为[附加类型审查](#inspect-attaching)提供了统一的方式
+- 支持在现有代码基础上整体化渐进审查，那些还没有支持审查的，和那些被融合在 `fuchsia_inspect` 目录下的审查一样
+- 支持缺少整体审查的外部类型。
 
 ### Caveats
 
