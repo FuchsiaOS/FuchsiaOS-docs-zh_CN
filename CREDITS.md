@@ -19,7 +19,7 @@
 │   │   ├── inspect                     |
 │   │   ├── lifecycle_events            |
 │   │   └── logs                        |
-│   ├── drivers ------------------------|
+│   ├── drivers ------------------------| linen
 │   │   ├── device_driver_model         |
 │   │   ├── driver_architectures        |
 │   │   └── driver_development          |
@@ -41,9 +41,9 @@
 │   │   └── guide                       |
 │   ├── monitoring ---------------------|
 │   ├── networking ---------------------|
-│   ├── packages -----------------------|Robi
+│   ├── packages -----------------------| Robi
 │   │   └── images
-│   ├── prebuilt_packages --------------|
+│   ├── prebuilt_packages --------------| Whyto
 │   ├── principles ---------------------|
 │   ├── process ------------------------| Robi
 │   ├── session ------------------------|
