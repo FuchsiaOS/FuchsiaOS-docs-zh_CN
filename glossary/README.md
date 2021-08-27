@@ -31,6 +31,7 @@
 - data plane：数据平面
 - distributed tracing：分布式追踪
 - egress：出口
+- ergonomics：工效学
 - fault injection：故障注入
 - HTTP header：HTTP标头
 - infrastructure：基础设施
