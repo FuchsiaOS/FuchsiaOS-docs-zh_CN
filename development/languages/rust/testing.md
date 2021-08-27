@@ -14,12 +14,12 @@ The source code for this tutorial is available at
 
 # 测试 Rust 代码
 
-本文档描述了为 Rust 代码编写测试的最佳实践。
-也请参考[组件测试指南][component_tests]中关于定义测试包和组件的介绍，并运行它们。
+本文档描述了为 Rust 代码编写测试的最佳做法。
+也请参考[组件测试指南][component_tests]中关于定义测试包和组件以及运行它们的介绍。
 
-本文档面向的是在`fuchsia.git`中工作的开发人员，对工作流的描述不太可能适用于IDK消费者。
+本文档面向的是在`fuchsia.git`中工作的开发人员，对工作流的描述不太可能适用于啥也不懂的消费者。
 
-本教程的源代码可以在[`//examples/hello_world/rust`][example-src]中找到
+本教程的源代码可以在[`//examples/hello_world/rust`][example-src]中找到。
 
 <!--
 ## Unit tests
@@ -57,9 +57,9 @@ using an asynchronous executor.
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/src/main.rs" region_tag="test_mod" adjust_indentation="auto" %}
 ```
 
-这会生成一个新的、命名为 `tests` 的 mod， 这个 mod 仅在构建单元测试的时候能被包含。任何带有 `#[test]` 注解的方法都会被当成一个测试来运行，如果方法成功返回，就意味着测试通过。
+这会生成一个新的、命名为 `tests` 的 mod， 这个 mod 将仅在构建单元测试的时候被包含。任何带有 `#[test]` 注解的方法都会被当成一个测试来运行，如果方法成功返回，就意味着测试通过。
 
-为了练习测试异步代码，在使用异步执行器的时候，使用 `#[fasync::run_until_stalled(test)]` 注解是一个选项。
+对于异步代码测试，在使用异步执行器的时候，可以选择使用 `#[fasync::run_until_stalled(test)]` 注解。
 
 ```rust
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/src/main.rs" region_tag="async_test" adjust_indentation="auto" %}
@@ -74,7 +74,7 @@ The unit tests can be automatically built by Rust targets (i.e. either
 
 ### 构建测试
 
-单元测试可以由 Rust targets 自动生成（例如，`rustc_binary` 或者 `rustc_library`）。这些方法大体上是相似的。
+单元测试可以由 Rust 目标自动生成（即，`rustc_binary` 或者 `rustc_library`）。这些方法大体上是相似的。
 
 <!--
 #### Building tests for a Rust binary
@@ -106,14 +106,14 @@ In our example here, the executable names that are created are called:
 * `hello_world_rust_bin_test`.
 -->
 
-#### 为 Rust binary 构建测试
-如果你正在测试一个 rust *binary* （例如，你有一个 `main.rs`），这个章节会对你很有用。如果你是在测试 library ，请看下一章节
+#### 为 Rust 二进制构建测试
+如果你正在测试一个 rust *二进制* （即，你有一个 `main.rs`），这个章节会对你很有用。如果你是在测试库 ，请看下一章节
 
-你的 `BUILD.gn` 文件首先需要通过引用 `rust_binary` 模板来使其可用：
+你的 `BUILD.gn` 文件首先需要通过导入 `rust_binary` 模板来使其可用：
 ```gn
 import("//build/rust/rustc_binary.gni")
 ```
-单元测试只有在设置中加入了 `with_unit_tests = true` 才能被 `rustc_binary` GN 模板构建：
+只有在设置中加入了 `with_unit_tests = true` 时，单元测试才能被 `rustc_binary` GN 模板构建：
 
 ```gn
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/BUILD.gn" region_tag="rustc_tests" adjust_indentation="auto" %}
@@ -148,15 +148,15 @@ In this case, however, a **differently named** test binary is created:
 The binary names are important because they will be used in followup steps.
 -->
 
-#### 为 Rust library 构建测试
-你的 `BUILD.gn` 文件首先需要通过引用 `rust_library` 模板来使其可用：
+#### 为 Rust 库构建测试
+你的 `BUILD.gn` 文件首先需要通过导入 `rust_library` 模板来使其可用：
 ```gn
 import("//build/rust/rustc_library.gni")
 ```
-单元测试只有在设置中加入了 `with_unit_tests = true` 才能被 `rustc_library` GN 模板构建，和上边 `rustc_binary` 例子一样。
+只有在设置中加入了 `with_unit_tests = true` 时，单元测试才能被 `rustc_library` GN 模板构建，和上边 `rustc_binary` 例子一样。
 
-在这个示例中，当然，一个 `不同命名` 的测试二进制程序会被生成：
-* `hello_world_rust_lib_test`。注意 library 生成的名字和 binary 生成的名字是不一样的。
+然而在这个示例中，会生成一个 **名称不同** 的二进制测试程序：
+* `hello_world_rust_lib_test`。注意库生成的名字和二进制生成的名字是不一样的。
 
 二进制文件的名称很重要，因为它们会在下边的步骤中使用。
 
@@ -194,11 +194,11 @@ is:
 ```
 -->
 
-#### 书写包清单
-一个包清单目前是必要的。清单位于 `meta/` 子目录下，即包含你的 `BUILD.gn` 文件的目录下。
-一个最简清单如下所示，并且 **必须** 和上边的由 `rustc_binary` 或者 `rustc_library` 生成的目标的 `名称` 属性相同的命名。
+#### 编写包清单
+一个包清单目前是必要的。清单位于 `meta/` 子目录下，直接位于包含你的 `BUILD.gn` 文件的目录下。
+一个最简清单文件如下所示，并且文件的名称**必须**和上述由 `rustc_binary` 或 `rustc_library` 生成目标的 `name` 属性相同。
 
-由此，一个上边的 `rustc_binary` 示例清单，清单内容如下：
+在上述 `rustc_binary` 的情况下，相应的清单应为：
 ```cmx
 {
         "program": {
@@ -240,7 +240,7 @@ The `_lib_test` suffix is hard-coded in the `rustc_library` build rule, and
   * 你可能已经注意到包清单有些公式化。
     未来，我们将可以自动化生成包清单而不再需要手写。
 
-在 `rustc_library` 示例清单中，清单和命名方案是一样的。但是需要留意在 `program.binary` 小节中值的命名上的微小区别。
+在 `rustc_library` 的情况下，清单和命名方案是一样的。但是需要留意在 `program.binary` 小节中值的命名上的微小区别。
 
 ```cmx
 {
@@ -250,7 +250,7 @@ The `_lib_test` suffix is hard-coded in the `rustc_library` build rule, and
 }
 ```
 
-`_lib_test` 后缀在 `rustc_library` 构建规则中是硬编码，`hello_world_rust` 又一次从构建规则中的 `命名` 属性中得来。
+`_lib_test` 后缀在 `rustc_library` 构建规则中是硬编码，`hello_world_rust` 还是从构建规则中的 `name` 属性中得来。
 
 
 <!--
@@ -265,11 +265,11 @@ If you are building a library instead,
 then the library name will be `hello_world_rust_lib_test`.
 -->
 
-#### 书写包构建目标
+#### 编写包构建目标
 
-对于 Hello world 例子，测试包需要关联到生成的目标上， `bin_test` （基于目标名称 `bin` 和隐含的 `_test` 后缀），`hello_world_rust_bin_test` （基于 `命名` 小节中的值）。
+对于 Hello world 例子，测试包需要关联到生成的目标上， `bin_test` （基于目标名称 `bin` 和隐含的 `_test` 后缀），`hello_world_rust_bin_test` （基于 `name` 小节中的值）。
 
-如果你正在构建的是一个 library ，则 library 的名称会是 `hello_world_rust_lib_test`。
+如果你正在构建的是一个库，则库的名称会是 `hello_world_rust_lib_test`。
 
 ```gn
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/BUILD.gn" indented_block="^fuchsia_component\(\"hello-world-rust-tests-component\"\) {" %}
@@ -299,7 +299,7 @@ For information on packaging and running tests, see
 fx test hello_world_rust_tests
 ```
 
-注意：为了使用 `fx test`，你不能在你的 `package` 中重载 `package_name="..."` 或 `test_package` 声明。这个问题可以追踪 fxbug.dev/3143
+注意：为了使用 `fx test`，你不能在你的 `package` 中重写 `package_name="..."` 或 `test_package` 声明。这个问题可以追踪 fxbug.dev/3143
 
 更多关于打包和运行测试的信息，请查看[测试作为组件][component_tests]
 
@@ -315,14 +315,14 @@ The following in-tree third-party crates can help you write tests:
 These can be included in your `BUILD.gn` under `test_deps`.
 -->
 
-### 有用的  crates
+### 有用的 crates
 
 下列树内第三方 crate 可以帮助你测试：
 
-* [`matches`]: 提供 `assert_matches!` 宏，使模式断言符合人机工程学。
-* [`pretty_asssertions`]：提供了一个替代方案 `assert_eq!` 宏，在断言失败时显示不同的颜色。
+* [`matches`]: 提供 `assert_matches!` 宏，使模式断言符合工效学。
+* [`pretty_asssertions`]：提供了一个可选的 `assert_eq!` 宏，在断言失败时显示彩色的差异。
 
-这些可以包含在你的 `BUILD.gn` 中，在 `test_deps` 下。
+这些可以包含在你的 `BUILD.gn` 中的 `test_deps` 下。
 
 ```gn
 rustc_binary("bin") {
@@ -337,7 +337,7 @@ rustc_binary("bin") {
 }
 ```
 
-[component_tests]:/docs/concepts/testing/v1_test_component.md
+[component_tests]:/concepts/testing/v1_test_component.md
 [example-src]: /examples/hello_world/rust
 [`matches`]: https://fuchsia-docs.firebaseapp.com/rust/matches/index.html
 [`pretty_assertions`]: https://fuchsia-docs.firebaseapp.com/rust/pretty_assertions/index.html
