@@ -17,6 +17,7 @@
 - authentication：认证
 - authorization：授权
 - automatic retry：自动重试
+- best practice：最佳做法
 - bulkheading：隔离层
 - canary rollout：金丝雀发布
 - caveat：注意事项

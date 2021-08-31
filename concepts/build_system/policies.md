@@ -156,7 +156,7 @@ on a `config()` that applies this behavior. The use of a legacy tool or
 template to be replaced can be captured by a dependency on a `group()`
 target.
  -->
-构建系统可以协助执行诸如编译器特性、新工具或各种最佳实践激增的迁移。遗留的不良行为通常可以表示为对于应用此行为的 `config()` 的依赖。对要被替换的旧版工具或模板的使用可以通过对 `group（）` 目标的依赖来捕获。
+构建系统可以协助执行诸如编译器特性、新工具或各种最佳做法激增的迁移。遗留的不良行为通常可以表示为对于应用此行为的 `config()` 的依赖。对要被替换的旧版工具或模板的使用可以通过对 `group（）` 目标的依赖来捕获。
 
 <!-- 
 ### Commit to a plan

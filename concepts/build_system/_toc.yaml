@@ -41,5 +41,5 @@ toc:
   - title: "GN 构建参数"
     path: https://fuchsia.googlesource.com/fuchsia/+/HEAD/docs/gen/build_arguments.md
   # - title: "GN Template Best Practices"
-  - title: "GN 模板最佳实践"
+  - title: "GN 模板最佳做法"
     path: /docs/concepts/build_system/best_practices.md

@@ -1,7 +1,7 @@
 <!-- 
 # Best practices for writing GN templates
  -->
-# 编写 GN 模板的最佳实践
+# 编写 GN 模板的最佳做法
 
 <!-- 
 ## Overview {#overview}
@@ -23,7 +23,7 @@ for more information on GN features.
  -->
 在 GN 中，模板（template）提供了一种添加到 GN 内置目标类型的方法。根本上讲，模板是 GN 构建可重用功能的主要方式。模板定义放在 `.gni`（GN import）文件内，这种文件可以导入 `.gn` 目标文件。
 
-本文档详细介绍了创建 GN 模板的最佳做法，它们每一条都包含了一个示例。这些最佳实践是对 [Fuchsia 构建系统策略](policies.md)中概述的最佳实践的补充。
+本文档详细介绍了创建 GN 模板的最佳做法，它们每一条都包含了一个示例。这些最佳做法是对 [Fuchsia 构建系统策略](policies.md)中概述的最佳做法的补充。
 
 运行 `gn help template` 以获取更多信息和更完整的示例，查看 [GN 语言与操作](https://gn.googlesource.com/gn/+/HEAD/docs/language.md#templates)以获取有关 GN 特性的更多信息。
 
@@ -43,7 +43,7 @@ practice, however, is to define templates in `.gni` files, and
 targets in `.gn` files. This makes it clear to users what’s a template. Users
 want to import templates so they can use them, and never want to import targets.
  -->
-技术上是可以做到同时导入 `.gni` 和 `BUILD.gn` 文件的。不过，最佳实践是在 `.gni` 文件内定义模板，并在 `.gn` 文件内定义目标。这样一来，用户就可以清楚地知道模板是什么。用户希望导入模板以便使用，而从不想要导入目标。
+技术上是可以做到同时导入 `.gni` 和 `BUILD.gn` 文件的。不过，最佳做法是在 `.gni` 文件内定义模板，并在 `.gn` 文件内定义目标。这样一来，用户就可以清楚地知道模板是什么。用户希望导入模板以便使用，而从不想要导入目标。
 
 <!-- 
 ### Document templates and args {#document-templates-and-args}
@@ -594,7 +594,7 @@ It’s a good best practice to offer users an override:
  -->
 如果您的模板生成了单一输出，那么选用目标名称作为输出名称是良好的默认行为。但是，由于同一目录下目标名称必须唯一，因此您的用户并不总是能够将他们想用的名字用在目标和输出两者上。
 
-为用户提供覆盖功能是一个很好的最佳实践：
+为用户提供覆盖功能是一个良好的最佳做法：
 
 ```gn
 template("image") {
