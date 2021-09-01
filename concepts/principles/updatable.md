@@ -79,7 +79,7 @@ without the need for individual product coordination.
  -->
 **[Fuchsia 包](/concepts/packages/package.md) 是软件分发的单位**
 
-一切软件都是以包的形式交付的，可以独立更新、按需传递，就像网络一样。这使得脆弱性布丁能够立刻推送至所有 Fuchsia 产品，无需单独的产品协调。
+一切软件都是以包的形式交付的，可以独立更新、按需传递，就像网络一样。这使得脆弱性补丁能够立刻推送至所有 Fuchsia 产品，无需单独的产品协调。
 
 <!-- 
 ## On the roadmap
