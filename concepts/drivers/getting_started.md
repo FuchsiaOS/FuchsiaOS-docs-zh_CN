@@ -6,6 +6,8 @@
     found in the LICENSE file.
 -->
 
+<!---
+
 # Getting Started
 
 Writing a device driver is often viewed as a daunting task, fraught with complexities
@@ -14,6 +16,16 @@ and requiring arcane knowledge of little-known kernel secrets.
 The goal of this section is to demystify the process; you'll learn everything you
 need to know about how to write device drivers, starting with what they do, how
 they work, and how they fit into the overall system.
+
+--->
+
+## 开始指南
+
+编写设备驱动通常是被认为是一件充满复杂性，艰巨的任务，并且需要了解神秘且鲜为人知的内核秘密。
+
+本章的目的在于揭开这个过程的神秘面纱；你将会从它们的作用是什么，如何工作以及怎样融入整个系统开始，学习到关于如何编写设备驱动程序的一切知识。
+
+<!---
 
 List of documents to get started -
 
@@ -27,6 +39,16 @@ types
 
 The sections are listed above in default reading order, but it's perfectly fine to jump around and
 read them in order of interest or applicability.
+
+--->
+
+下面为开始指南的相关文档
+
+* [Fuchsia Driver Framework][fdf] - 驱动管理器和驱动主机的概述
+* [Fuchsia drivers][fuchsia-drivers-overview] - Fuchsia驱动模型概述
+* [Device and driver model][device-driver-model] - 设备和驱动模型解释
+* [Driver development][driver-development] - 中断，DMA和其他开发驱动相关文档
+* [Driver architectures][driver-architectures] - 特定驱动类型架构相关文档
 
 
 <!-- xrefs -->
