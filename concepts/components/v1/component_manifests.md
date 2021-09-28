@@ -475,7 +475,6 @@ The set of currently known features are as follows:
 
 - `isolated-cache-storage`，它请求访问设备的持久存储，位于包命名空间的 `/cache` 中。 此存储与提供给其他组件的存储隔离。 不像
   `isolated-persistent-storage`，当磁盘使用量接近容量时，系统将删除放置在此功能提供的存储中的项目以回收空间。
-
 <!--
 
 - `isolated-temp`, which requests that a temp directory be installed into the
@@ -489,8 +488,8 @@ The set of currently known features are as follows:
 
 - `hub`, which shows information about the component instance's realm and its
   children in a [directory structure][hub].
--->
 
+-->
 - `isolated-temp`, 它要求将临时目录安装到组件的`/tmp`命名空间。 这与系统临时目录和其他组件实例的临时目录隔离。
   该目录由内存文件系统支持，因此在设备重新启动时被清除。
 
@@ -517,11 +516,22 @@ The set of currently known features are as follows:
   graphics interface. This adds layer configuration data in the `/config/vulkan`
   directory in the package's namespace.
 
--->
-
 - `deprecated-ambient-replace-as-executable`, which provides legacy support for
   using the invalid handle with replace_as_executable.
 
+-->
+
+- `deprecated-shell`, 它请求访问适合于交互式命令行的资源 。 通常，shell 被授予访问所有
+  当前环境中可用的资源。 `deprecated-shell` 功能还暗示了“root-ssl-certificates”和“hub”功能。
+  顾名思义，此功能将被删除。 目前使用这个功能已明确列入许可名单，不鼓励新用途。
+
+- `shell-commands`, 它请求访问当前可用的 shell 二进制文件（注意：不是“已安装”，而是“可用”）。二进制文件被映射到 请求者命名空间中的`/bin`。 运行这些命令可能还需要请求 `fuchsia.process.Resolver` 
+和 `fuchsia.process.Launcher` 服务。
+
+- `vulkan`, 它请求访问使用 Vulkan 图形界面所需的资源。 这会在包命名空间的 `/config/vulkan`目录中添加图层配置数据。
+
+- `deprecated-ambient-replace-as-executable`, 它为将无效句柄与 replace_as_executable 一起使用提供了遗留支持。
+<!--
 - `factory-data`, which requests access to the read-only factory partition for
   the device and places it at `/factory` in the component's namespace.
 
@@ -531,6 +541,15 @@ The set of currently known features are as follows:
   and is only to be used for specific, approved use cases.
 
 See [sandboxing](/docs/concepts/process/sandboxing.md) for more information about sandboxing.
+-->
+
+- `factory-data`, 它请求访问设备的只读工厂分区，并将其放置在组件命名空间中的`/factory`。
+
+- `durable-data`, 它请求访问设备的读写持久分区，并将其放置在组件命名空间中的“/durable”。 
+此分区用于存储在恢复出厂设置后仍可保留的持久数据，并且仅用于特定的、经批准的用例。
+
+参考 [沙盒](/docs/concepts/process/sandboxing.md) 了解有关沙盒的更多信息.
+
 
 [hub]: /docs/concepts/components/v1/hub.md
 [runner]: /sdk/fidl/fuchsia.sys/runner.fidl

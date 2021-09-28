@@ -13,7 +13,7 @@
 │   │   └── images
 │   ├── build_system -------------------| Whyto
 │   ├── components ---------------------| Submarinee
-│   │   ├── v1                          |
+│   │   ├── v1                          | Submarinee
 │   │   └── v2                          |
 │   ├── diagnostics --------------------| Whyto
 │   │   ├── inspect                     |
