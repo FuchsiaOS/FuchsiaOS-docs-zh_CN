@@ -56,7 +56,7 @@ is true: -->
 * A package is the most recently resolved version of an ephemeral package according to its `meta` or `package` in the dynamic index. -->
 
 * 该包为静态索引中的基本包
-* 该包正在升级中（通过追踪  `meta.far` 和任意的缺失的 `BLOB` 的默克尔根，直到它们被完全解析）
+* 该包正在升级中（通过追踪  `meta.far` 和任意的缺失的 `BLOB` 的墨克根，直到它们被完全解析）
 * 该包是某个临时包的最新版本（根据其在动态索引中的 `meta` or `package` 来判断）
 
 <!-- When garbage collection runs, it deletes every `BLOB` in `blobfs` that is not referenced
@@ -70,7 +70,7 @@ by a live package. -->
 
 <!-- Existing garbage collection implementation is suboptimal. -->
 
-目前的垃圾回收并非最优实现。
+目前的垃圾回收机制并非最优，仍存在如下缺陷。
 
 <!-- * An old version of an ephemeral package that is open can be garbage
 collected. This may lead the garbage collector to erase a package out

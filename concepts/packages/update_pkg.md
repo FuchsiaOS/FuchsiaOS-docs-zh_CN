@@ -5,7 +5,7 @@ system. -->
 
 # 更新包
 
-更新包是一个包含文件以及规则的用于更新系统的包。
+更新包是一个包含文件以及更新规则的包。
 
 <!-- ## System update
 
@@ -17,7 +17,7 @@ system updater has updated the system. -->
 
 ## 系统更新
 
-系统更新检查器会查看更新包中系统镜像的默克尔根（Merkle Root）并将其与运行中的系统的默克尔根进行比较。它同时还会检查更新包的默克尔根并对比上次使用的系统更新检查器版本。如果不同，则说明上次更新并未经过系统更新器。
+系统更新检查器会查看更新包中系统镜像的墨克根（Merkle Root）并将其与运行中的系统的墨克根进行比较。同时，它还会检查此次更新与系统更新检查器所使用的版本。如果不一致，则说明上次更新并未使用系统更新器。
 
 <!-- The system updater reboots the device after a successful system update.
 
@@ -25,7 +25,7 @@ The system update checker periodically fetches the update package using the pack
 resolver and sees if it looks different. If the update package is different,
 the system triggers a package update. -->
 
-系统更新器会在系统更新成功后重启设备。系统更新检查器会通过包解析器周期性地获取更新包，并检查是否与目前更新包不一致。如果不一致，系统会启动一次包更新。
+系统更新器会在系统更新成功后重启设备。系统更新检查器会通过包解析器周期性地获取更新包，并检查是否与目前更新包不一致。如果不一致，系统会启动一次更新。
 
 <!-- The system updater is designed such that the process can be interrupted at
 any time and it does not leave the system in an unbootable or corrupt state. -->
@@ -72,7 +72,7 @@ The structure of the update package, `fuchsia-pkg://fuchsia.com/update`, contain
     ``` -->
 
 *   `/epoch.json`
-    系统不能通过 OTA 跨纪元降级。详见
+    系统不能通过 OTA 跨越 Epoch 降级。Epoch 指系统底层发生重大改变的一个版本，详见
     [RFC-0071](/docs/contribute/governance/rfcs/0071_ota_backstop.md).下例表示无法通过 OTA 将 epoch 降为 4：
 
     ```json
@@ -136,7 +136,7 @@ The structure of the update package, `fuchsia-pkg://fuchsia.com/update`, contain
     is required to be present if the `update-mode` is `normal`. -->
 
 *   `/zbi[.signed]`
-    内核镜像。在 `update-mode` 为 `force-recovery` 时必须不包含此项。在 `update-mode` 为 `normal` 时，`zbi` 或 `zbi.signed` 需要被显示出来。
+    内核镜像。在 `update-mode` 为 `force-recovery` 时必须不包含此项。在 `update-mode` 为 `normal` 时，`zbi` 或 `zbi.signed` 则必须包含此项。
 
 <!-- *   `/zedboot[.signed]`
     Recovery image -->
