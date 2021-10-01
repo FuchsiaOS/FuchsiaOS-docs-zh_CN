@@ -1,3 +1,5 @@
+<!---
+
 # Audio Drivers Architecture
 
 In Fuchsia there are many ways drivers can be architected as defined by the
@@ -5,6 +7,14 @@ number of drivers used, how they communicate and their responsibilities. Audio
 drivers responsibilities are determined by the interface(s) exposed to driver
 clients, clients could be other drivers or applications users of the drivers
 facilities.
+
+--->
+
+# 音频驱动架构
+
+在Fuchsia中，有很多方法可以构建驱动程序，这是由使用的驱动数量，它们的通信方式和它们的职责来定义。音频驱动的职责就是由暴露给驱动客户端的接口决定，客户端可以是其他驱动或者驱动的应用程序用户。
+
+<!---
 
 ## Definitions
 
@@ -20,6 +30,26 @@ facilities.
 | DAI                  | Digital Audio Interface. Interface between audio HW,  |
 :                      : for instance a TDM or PDM link between controllers    :
 :                      : and codecs.                                           :
+
+--->
+
+## 定义
+
+## 
+
+| 术语  | 定义                                                         |
+| ----- | ------------------------------------------------------------ |
+| Codec | 一个真实或者虚拟的设备对数字/模拟信号的编码/解码，包括所有组合 |
+
+:                      : 例如，数字到数字。
+:                      : 示例codecs包含DAC放大器组合和ADC转换器。
+| Controller or engine | 系统管理音频信号的硬件部分       |
+:                      : 例如一个SOC的音频子系统。     :
+| DAI                  | Digital Audio Interface. 在音频硬件之间的接口  |
+:                      : 例如在控制器间的TDM或者PDM连接和codecs   :
+:                      :                                        :
+
+<!---
 
 # Audio interfaces
 
@@ -45,6 +75,14 @@ the MediaTek MT8167S audio subsystem (audio engine) also providing the streaming
 interface for applications and communicating with any codec driver, for example
 a [tas58xx](/src/media/audio/drivers/codecs/tas58xx) exposing the codec
 interface as shown below:
+
+--->
+
+# 音频接口
+
+应用使用的主要API在 [Audio Streaming Interface](audio_streaming.md)中说明。API允许应用捕获或者渲染音频。使用音频驱动和音频流接口的音频应用示例包括 [audio_core](/src/media/audio/audio_core/README.md)和[audio-driver-ctl](/src/media/audio/tools/audio-driver-ctl)。前者为音频系统的核心（提供软件混合，路由等），后者为测试和启动一个新平台的实例。
+
+提供流媒体接口的驱动抽象了API中描述的硬件功能，但是它不需要称为实际配置所有硬件的驱动。在音频硬件中通用的分割方式是有一个音频引擎来配置DAI与音频硬件codec通信。[Codec Interface](audio_codec.md) 允许有一个codec实现的驱动和其他驱动配置音频引擎硬件包括DAI和codec(s)配置。在这个配置中，codec(s)是控制器的次级部分。例如
 
                                +-----------------+
                                |   audio_core    |
