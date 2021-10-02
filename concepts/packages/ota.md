@@ -1,47 +1,74 @@
-# OTA updates
+<!-- # OTA updates
 
 Over-The-Air updates (OTAs) are a mechanism for operating system updates on
-Fuchsia. This document details how OTA updates work on Fuchsia.
+Fuchsia. This document details how OTA updates work on Fuchsia. -->
 
-The update process is divided into the following phases:
+# OTA 更新
+
+Over-The-Air （OTA）是更新Fuchsia操作系统的一种途径。本文档将描述Fuchsia是如何通过OTA进行系统更新的。
+
+<!-- The update process is divided into the following phases:
 
 * [Checking for an update](#checking-for-update)
 * [Staging an update](#staging-update)
-* [Verifying an update](#verifying-update)
+* [Verifying an update](#verifying-update) -->
 
-## Checking for an update {#checking-for-update}
+升级过程被分为下列几个步骤：
+
+* [检查是否需要更新](#checking-for-update)
+* [进行更新](#staging-update)
+* [核验更新](#verifying-update)
+
+<!-- ## Checking for an update {#checking-for-update}
 
 The two entry points for the operating system update process are the `omaha-client`
 and the `system-update-checker` components.
 
 Both the `omaha-client` and `system-update-checker` serve the same
-purpose, to find out if there is an operating system update and start the update.
+purpose, to find out if there is an operating system update and start the update. -->
 
-Note: Omaha is an update availability management protocol. For more
-information about Omaha, see [Omaha](https://github.com/google/omaha).
+## 检查是否需要更新 {#checking-for-update}
 
-Generally, products should use `omaha-client` if they want to
+系统更新的入口有两个，`omaha-client` 和  `system-update-checker`。这两个组件目的相同，都是为了检查是否有系统更新并启动更新进程。
+
+<!-- Note: Omaha is an update availability management protocol. For more
+information about Omaha, see [Omaha](https://github.com/google/omaha). -->
+
+注意：Omaha 是一个更新可用性管理协议。若要了解更多Omaha相关，详见 [Omaha](https://github.com/google/omaha)。
+
+<!-- Generally, products should use `omaha-client` if they want to
 use Omaha to determine update availability. Products should use
 `system-update-checker` if they don’t want to use Omaha and instead
-want to check for updates directly from package repositories.
+want to check for updates directly from package repositories. -->
 
-On any given Fuchsia system, only one of these components may be running:
+一般来说，如果设备想要使用Omaha来决定更新是否可用，此时就需要使用 `omaha-client`。
+
+<!-- On any given Fuchsia system, only one of these components may be running:
 
 * [Update checks with omaha-client](#update-omaha)
-* [Update checks with system-update-checker](#update-system)
+* [Update checks with system-update-checker](#update-system) -->
 
-### Update checks with omaha-client {#update-omaha}
+在任何Fuchsia设备上，以下两个组件只会有一个在运行：
+
+* [使用 omaha-client 检查更新](#update-omaha)
+* [使用 system-update-checker 检查更新](#update-system)
+
+<!-- ### Update checks with omaha-client {#update-omaha}
 
 During the boot process, `omaha-client` starts up and begins periodic update
 checks. During these checks, `omaha-client` polls the Omaha server to check for
-updates.
+updates. -->
 
-The benefits of using Omaha are:
+### 使用 omaha-client 检查更新 {#update-omaha}
+
+在系统启动时，`omaha-client` 就开始运行并开始周期性检查更新。在检查的过程中，`omaha-client` 会轮询 Omaha 服务器来检查是否存在可用更新。
+
+<!-- The benefits of using Omaha are:
 
 Note: Omaha is an update availability management protocol. For more
-information about Omaha, see [Omaha](https://github.com/google/omaha).
+information about Omaha, see [Omaha](https://github.com/google/omaha). -->
 
-* It allows for a fractional rollout of system updates across a fleet of
+<!-- * It allows for a fractional rollout of system updates across a fleet of
   Fuchsia devices. For example, it can be configured that only 10% of the
   fleet of devices gets updated. This means that only 10% of these devices
   will see that there is an available update while polling Omaha. The
@@ -52,58 +79,91 @@ information about Omaha, see [Omaha](https://github.com/google/omaha).
   channel and get the most stable software. Channel information can
   be optionally given to Omaha along with product and version.
 
-![Figure: Checking for updates with omaha-client](images/omcl.png)
+![Figure: Checking for updates with omaha-client](images/omcl.png) -->
 
-**Figure 1**. A simplified version of the update check process with `omaha-client`. There are
-policies that gate whether `omaha-client` can check for an update or apply an update.
+使用 Omaha 的好处在于：
 
-Once `omaha-client` gets the update package URL from the Omaha server, `omaha-client`
-tells the `system-updater` to start an update.
+* 它可以只允许一部分Fushsia设备更新。例如，它能够被配置为只允许10%的设备能够更新。这表示只有10%的设备在Omaha轮询时能够看到有可用更新，而剩余的90%设备则无法得知存在更新。
+* 它允许不同渠道的更新。例如，测试用设备能从测试渠道获取到最新（也最不稳定）的更新。同样，也可以通过生产渠道获取最稳定的版本。渠道信息可以选择性地与产品和版本一起提供给Omaha。
 
-### Update checks with system-update-checker {#update-system}
+![图：使用 omaha-client 检查更新](images/omcl.png)
+
+<!-- **Figure 1**. A simplified version of the update check process with `omaha-client`. There are
+policies that gate whether `omaha-client` can check for an update or apply an update. -->
+
+**图 1**。简化后的 `omaha-client` 的更新流程图。图中给出了 `omaha-client` 是否检查更新或是否应用更新的限制策略。
+
+<!-- Once `omaha-client` gets the update package URL from the Omaha server, `omaha-client`
+tells the `system-updater` to start an update. -->
+
+一旦 `omaha-client` 从 Omaha 服务器获取到了更新包的 URL，`omaha-client` 将会通知 `system-updater` 启动更新进程。
+
+<!-- ### Update checks with system-update-checker {#update-system}
 
 Devices that don’t use `omaha-client` use the `system-update-checker`. Depending
 on how it is [configured], the `system-update-checker` regularly polls for
 an update package. These checks default to disabled if no `auto_update` is
-specified.
+specified. -->
 
-To check if an update is available, the `system-update-checker` checks the
-following conditions:
+### 使用 system-update-checker 检查更新 {#update-system}
 
-* Is the hash of the currently running system image (located in `/pkgfs/system/meta`) different from
+那些不使用 `omaha-client` 的设备就需要使用 `system-update-checker` 来进行更新检查。`system-update-checker` 会按照其配置，周期性检查是否存在可用更新。如果没有指定 `auto_update`，这些检查默认为禁用状态。
+
+<!-- To check if an update is available, the `system-update-checker` checks the
+following conditions: -->
+
+`system-update-checker` 会根据以下条件来确认是否存在可用更新：
+
+<!-- * Is the hash of the currently running system image (located in `/pkgfs/system/meta`) different from
   the hash of system image (found in `packages.json`) in the update package?
 * If the system image isn’t different, is the vbmeta that’s currently running on the system
   different from the vbmeta of the update package?
 * If there is no vbmeta, is the ZBI that’s currently running on the system different from the ZBI
-  of the update package?
+  of the update package? -->
 
-If any of these answers are yes, then the `system-update-checker` knows the
+* 当前运行中的系统镜像的哈希值（位于 `/pkgfs/system/meta`）是否与更新包镜像的哈希值（位于 `packages.json`）不一致？
+* 如果系统镜像相同，当前系统的 vbmeta 是否与更新包 vbmeta 不一致？
+* 如果不存在 vbmeta，当前系统的 ZBI 是否与更新包 ZBI 不一致？
+
+<!-- If any of these answers are yes, then the `system-update-checker` knows the
 update package has changed. Once the system-update-checker realizes the update
 package has changed, the `system-update-checker` triggers the `system-updater`
-to start an update using the default update package (fuchsia-pkg://fuchsia.com/update).
+to start an update using the default update package (fuchsia-pkg://fuchsia.com/update). -->
 
-![Figure: Checking for updates with the system-update-checker](images/system-update-checker.png)
+如果上述问题中有一个答案为不一致，`system-update-checker` 便会得知更新包已经被改变。一旦获知更新包改变，`system-update-checker` 会便触发 `system-updater` 来使用默认更新包（fuchsia-pkg://fuchsia.com/update）进行系统更新。
 
-**Figure 2**. A simplified version of the update check process with the `system-update-checker`.
+![图：使用 system-update-checker 检查更新](images/system-update-checker.png)
 
-Note: There is currently no way to check bootloader-only updates because
+<!-- **Figure 2**. A simplified version of the update check process with the `system-update-checker`. -->
+
+**图 2**。简化后的 `system-update-checker` 的更新流程图。
+
+<!-- Note: There is currently no way to check bootloader-only updates because
 there is no [paver API] to read the firmware. An update is not triggered
 even though the update package has changed. Until this is fixed, you
-should use `update force-install <update-pkg-url>` to force an update.
+should use `update force-install <update-pkg-url>` to force an update. -->
 
-If no update is required, the update checker saves the last known update
+注意：目前还无法检测仅 bootloader 的更新，因为没有 [paver API] 能读取固件。在修正这项之前，即使有可用更新也不会触发更新。你需要使用 `update force-install <update-pkg-url>` 来强制更新。
+
+<!-- If no update is required, the update checker saves the last known update
 package hash. On subsequent checks for an update, the hash
 of the update package that is fetched is checked against the last known
 hash. If the hashes are the same, no update is triggered. If the hashes
 are different, the vbmeta and ZBI are  checked for changes to determine
-if an update is necessary.
+if an update is necessary. -->
 
-## Staging an update {#staging-update}
+如果不需要更新，`system-update-checker` 会保存已知的上次更新包的哈希值，在后来的更新检查中，`system-update-checker` 会首先获取更新包的哈希值并与上次保存的哈希值进行对比。如果哈希值相同，则不存在更新也不会触发更新进程。如果不一致，将会继续检查 vbmeta 和 ZBI 来确认该更新的必要性。
 
-Regardless if an update was triggered by `omaha-client` or `system-update-checker`,
-or even a forced update check, an update needs to be written to disk.
+<!-- ## Staging an update {#staging-update} -->
 
-The update process is divided in the following steps:
+<!-- Regardless if an update was triggered by `omaha-client` or `system-update-checker`,
+or even a forced update check, an update needs to be written to disk. -->
+
+## 进行更新 {#staging-update}
+
+不论是 `omaha-client`、`system-update-checker`，还是是强制更新，最终该升级都需要被写进设备硬盘中。
+
+<!-- The update process is divided in the following steps:
 
 * [Initial garbage collection](#initial-garbage-collection)
 * [Fetch update package](#fetch-update-package)
@@ -113,28 +173,54 @@ The update process is divided in the following steps:
 * [Fetch remaining packages](#fetch-reamaining-packages)
 * [Write images to block device](#write-images-block-device)
 * [Set alternate partition as active](#set-alternate-active)
-* [Reboot](#reboot)
+* [Reboot](#reboot) -->
 
-![Figure: Starting state diagram](images/starting-state.png)
+更新进程被分为如下几步：
+
+* [初始化垃圾回收](#initial-garbage-collection)
+* [获取更新包](#fetch-update-package)
+* [第二轮垃圾回收](#secondary-garbage-collection)
+* [确认主板匹配](#verify-board)
+* [确认 epoch 匹配](#verify-epoch)
+* [获取额外的软件包](#fetch-reamaining-packages)
+* [将镜像写入块设备](#write-images-block-device)
+* [将可选分区设为活动分区](#set-alternate-active)
+* [重启](#reboot)
+
+<!-- ![Figure: Starting state diagram](images/starting-state.png) -->
+
+![图：启动更新](images/starting-state.png)
  
-**Figure 3**. The device is currently running hypothetical OS version 1 (on slot A) and begins to
+<!-- **Figure 3**. The device is currently running hypothetical OS version 1 (on slot A) and begins to
 update to hypothetical OS version 2 (to slot B). *Warning*: this may not be how the disk is
-partitioned in practice.
+partitioned in practice. -->
 
-### Initial garbage collection {#initial-garbage-collection}
+**图 3**。假设目前该设备正运行在系统版本 1 上（槽 A），并即将更新到系统版本 2（槽 B）。*注意*：实际中的硬盘分区可能并非如此。
+
+<!-- ### Initial garbage collection {#initial-garbage-collection}
 
 Note: This does not garbage collect the old update package because the old
-update package is referenced in the dynamic index.
+update package is referenced in the dynamic index. -->
 
-The `system-updater` instructs `pkg-cache` to perform garbage collection
+### 初始化垃圾回收 {#initial-garbage-collection}
+
+注意：此时并不会回收旧的更新包，因为旧更新包正被动态索引引用。
+
+<!-- The `system-updater` instructs `pkg-cache` to perform garbage collection
 which deletes all BLOBs that aren’t referenced in either the static or dynamic
-indexes. This cleans up most of the BLOBs referenced by the old system.
+indexes. This cleans up most of the BLOBs referenced by the old system. -->
 
-![Figure: Initial garbage collection](images/initial-gc.png)
+`system-updater` 构造 `pkg-cache` 来进行垃圾回收。垃圾回收会删除不被静态以及动态索引引用的全部 BLOB。这会清理掉被旧系统使用的绝大多数 BLOB。
+
+<!-- ![Figure: Initial garbage collection](images/initial-gc.png) -->
+
+![图：初始化垃圾回收](images/initial-gc.png)
 
 **Figure 4**. The `system-updater` instructs `pkg-cache` to garbage collect all the blobs referenced
 by slot B. Since slot B currently references version 0, all of the version 0 blobs are garbage
 collected.
+
+**图 4**。`system-updater` 构造 `pkg-cache` 来回收槽 B 引用的所有 BLOB。由于槽 B 目前引用着 版本 0 的系统，因此所有 0 号版本的 BLOB 都被回收了。
 
 ### Fetch update package {#fetch-update-package}
 
