@@ -72,8 +72,7 @@ The structure of the update package, `fuchsia-pkg://fuchsia.com/update`, contain
     ``` -->
 
 *   `/epoch.json`
-    系统不能通过 OTA 跨越 Epoch 降级。Epoch 指系统底层发生重大改变的一个版本，详见
-    [RFC-0071](/docs/contribute/governance/rfcs/0071_ota_backstop.md).下例表示无法通过 OTA 将 epoch 降为 4：
+    系统不能通过 OTA 跨越 Epoch 降级。Epoch 指系统底层发生重大改变的一个版本，详见 [RFC-0071](/docs/contribute/governance/rfcs/0071_ota_backstop.md).下例表示无法通过 OTA 将 epoch 降为 4：
 
     ```json
     {

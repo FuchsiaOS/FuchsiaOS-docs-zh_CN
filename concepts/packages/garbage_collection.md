@@ -42,7 +42,7 @@ or it can be triggered by the `system-updater`. The implementation of garbage
 collection uses the [`fuchsia.space/Manager` protocol](https://fuchsia.dev/reference/fidl/fuchsia.space?hl=en#fuchsia.space/Manager.Gc). The `system-updater` trigger
 happens twice; once before a system update and once after fetching the [update package](update_pkg.md). -->
 
-在 Fuchsia 中没有安装一个包或删除一个包的概念。准确地说，垃圾回收可以被当作是回收空间的一种手段。垃圾回收可以通过 `pkgctl gc` 来手动触发，也可以被 `system-updater` 触发。垃圾回收的实现可参考 [`fuchsia.space/Manager` protocol](https://fuchsia.dev/reference/fidl/fuchsia.space?hl=en#fuchsia.space/Manager.Gc)。通过 `system-updater` 会在两种情况下触发垃圾回收，一是系统升级之前，二是在获取到[更新包](update_pkg.md)之后。
+在 Fuchsia 中没有安装一个包或删除一个包的概念。准确地说，垃圾回收可以被当作是回收空间的一种手段。垃圾回收可以通过 `pkgctl gc` 来手动触发，也可以被 `system-updater` 触发。垃圾回收的实现可参考 [`fuchsia.space/Manager` protocol](https://fuchsia.dev/reference/fidl/fuchsia.space?hl=en#fuchsia.space/Manager.Gc)。通过 `system-updater` 会在两种情况下触发垃圾回收，一是系统升级之前，二是在获取到 [更新包](update_pkg.md)之后。
 
 <!-- The `pkgfs` garbage collector currently uses set differences to determine which
 packages are live packages. A package is considered live if any of the following

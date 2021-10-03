@@ -6,7 +6,7 @@
 including the [FAR Archive Format][far], the Blob Storage Filesystem, and the
 [Package Manager][pm]. -->
 
-在 Fuchsia 生态中，许多地方都运用到了[墨克树][merkletree]，包括 [FAR Archive Format][far]，Blob 文件系统和[包管理器][pm]。
+在 Fuchsia 生态中，许多地方都运用到了 [墨克树][merkletree]，包括 [FAR Archive Format][far]，Blob 文件系统和 [包管理器][pm]。
 
 <!-- In [Zircon][zircon] `zx-verity` provides an API for application components to
 read data from local storage. When retrieving data the integrity of the data is
@@ -14,7 +14,7 @@ verified and causing reads to fail when the data has been modified or corrupted.
 zx-verity is based on a [Merkle Tree][merkletree], and is derived from a similar
 system in [Chrome OS][dmverity]. -->
 
-在 [Zircon][zircon] `zx-verity` 中为应用组件提供了一个从本地存储中读取数据的 API。在检索数据时，将验证数据的完整性，并在数据被修改或损坏时导致读取失败。`zx-verity` 就是基于[墨克树][merkletree]的，并且源自 [Chrome OS][dmverity] 中一个相似的系统。
+在 [Zircon][zircon] `zx-verity` 中为应用组件提供了一个从本地存储中读取数据的 API。在检索数据时，将验证数据的完整性，并在数据被修改或损坏时导致读取失败。`zx-verity` 就是基于 [墨克树][merkletree]的，并且源自 [Chrome OS][dmverity] 中一个相似的系统。
 
 <!-- All of these implementations share the algorithm documented herein. -->
 
@@ -87,7 +87,7 @@ last block is 0 padded. -->
 
 5. 重复 1-4 直到处理完所有输入。
 6. 如果哈希值的长度为 32 字节，结束计算。
-7. 如果哈希的长度不是 8 kb 对齐的，则使用 0 将其填充到 8 kb 对齐。并重复 1-7，直到计算出一个包含 32 字节的摘要的根摘要。
+7. 如果哈希的长度不是 8 kb 对齐的，则使用 0 将其填充到 8 kb 对齐。并重复 1-7，直到计算出一个包含 32 字节的值的根摘要。
 
 <!-- ## Computation of a root digest
 
