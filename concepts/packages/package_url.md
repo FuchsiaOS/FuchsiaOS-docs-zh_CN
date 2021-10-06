@@ -1,26 +1,46 @@
-# Fuchsia package URLs
+<!-- # Fuchsia package URLs
 
 A Fuchsia package URL looks like the following:
 
 ```
 fuchsia-pkg://{{ '<var>' }}repository{{ '</var>' }}/{{ '<var>' }}package-name{{ '</var>' }}?hash={{ '<var>' }}package-hash{{ '</var>' }}#{{ '<var>' }}resource-path{{ '</var>' }}
+``` -->
+
+# Fuchsia 包 URL
+
+Fuchsia 包 URL 结构如下所示：
+
+```
+fuchsia-pkg://{{ '<var>' }}repository{{ '</var>' }}/{{ '<var>' }}package-name{{ '</var>' }}?hash={{ '<var>' }}package-hash{{ '</var>' }}#{{ '<var>' }}resource-path{{ '</var>' }}
 ```
 
-It consists of the following components, which form the full package URL:
+<!-- It consists of the following components, which form the full package URL:
 
 * [URL scheme](#url-scheme): Required
 * [Repository](#repository): Required
 * [Package name](#package-name): Required
 * [Package hash](#package-hash): Optional
-* [Resource path](#resource-path): Optional
+* [Resource path](#resource-path): Optional -->
 
-## URL scheme {#url-scheme}
+它包含如下组成部分，都是完整 URL 中的一部分：
+
+* [URL 方案](#url-scheme): 必须
+* [仓库](#repository): 必须
+* [包名](#package-name): 必须
+* [包哈希](#package-hash): 可选
+* [资源路径](#resource-path): 可选
+
+<!-- ## URL scheme {#url-scheme}
 
 The `fuchsia-pkg` URL scheme combines identifying characteristics to
 establish a means for referring to a repository, a package, or a
-resource, depending on which parts are included.
+resource, depending on which parts are included. -->
 
-### Syntax
+## URL 方案 {#url-scheme}
+
+`fuchsia-pkg` URL 方案组合标识特征来建立引用存储库、包或资源的方法，具体取决于 URL 中包含哪些部分。
+
+<!-- ### Syntax
 
 **Required**
 
@@ -31,9 +51,21 @@ resource, depending on which parts are included.
 The scheme of a Fuchsia package are the case-insensitive characters, `fuchsia-pkg://`.
 
 Although the canonical form is lower-case, URL scheme encoding is case-insensitive therefore
-the system handles all cases.
+the system handles all cases. -->
 
-## Repository {#repository}
+### 语法
+
+**必须**
+
+```
+{{ '<strong>' }}fuchsia-pkg://{{ '</strong>' }}<repository>[/<package-name>[?hash=<package-hash>][#<resource-path>]]
+```
+
+Fuchsia 包的格式是不区分大小写的字符，`fuchsia-pkg://`。  
+
+虽然规范形式是小写形式，但 URL 方案编码是不区分大小写的，因此系统可以处理所有情况。
+
+<!-- ## Repository {#repository}
 
 The package URL contains a repository [hostname] to identify the package's
 source. [RFC 1123] and [RFC 5890] specified that a hostname is a sequence of dot
@@ -46,44 +78,74 @@ following latin-1 characters in any order:
 
 No other characters are permitted.
 
-The total maximum length of a hostname is 253 characters including the dots.
+The total maximum length of a hostname is 253 characters including the dots. -->
 
-### Repository root verification (known sources)
+## 仓库 {#repository}
+
+包 URL 包含仓库的 [主机名] 来标识一个包的源。[RFC 1123] 和 [RFC 5890] 规定了主机名是由 （`.`）分隔的 [IDNA A-labels] 序列，每一部分由以下任意顺序的 latin-1 字符组成，长度范围为1 ~ 63个：
+
+* 数字（`0` to `9`）
+* 小写字母（`a` to `z`）
+* 连接符（`-`）
+
+不允许出现其它字符。  
+
+包含点在内，hostname 总长度不能超过 253 字符。
+
+<!-- ### Repository root verification (known sources)
 
 The repository's root role (a quorum of one or more public or private key pairs)
 establishes a chain of trust such that package authenticity, integrity, and
 freshness can be verified cryptographically. The root role signs keys for more
 limited roles which are then used to sign package metadata and the targets
 themselves. See [TUF Security][TUF Security] and
-[TUF roles and metadata][TUF METADATA] for more details.
+[TUF roles and metadata][TUF METADATA] for more details. -->
 
-To verify that a package is authentic, you must verify that the repository
-from which it is being downloaded is authentic.
+### 仓库根验证（已知源）
 
-This will be implemented by maintaining a list of known source repositories
+仓库的根角色（一个或多个公钥或私钥对的仲裁节点）建立了一个信任链，这样包的真实性、完整性和新鲜度可以通过加密方式进行验证。根角色为更受限的角色签名，然后使用这些签名后的键来签名包的元数据及目标角色本身。更多详见 [TUF 安全][TUF Security] 和 [TUF 角色与元数据][TUF METADATA]。
+
+<!-- To verify that a package is authentic, you must verify that the repository
+from which it is being downloaded is authentic. -->
+
+要验证包是可信的，您必须验证从其中下载包的存储库是可信的。
+
+<!-- This will be implemented by maintaining a list of known source repositories
 with their public keys on the device. Packages from unknown sources will
 be rejected, although, on certain build types, new repositories can be added
-at runtime.
+at runtime. -->
 
-### Syntax
+这将通过在设备上维护一个已知源仓库列表和它们的公钥来实现。来自未知来源的包将被拒绝，尽管在某些构建类型上，可以在运行时添加新的仓库。
 
-**Required**
+<!-- ### Syntax -->
+
+### 语法
+
+<!-- **Required** -->
+
+**必须**
 
 ```
 fuchsia-pkg://{{ '<strong>' }}<repository>{{ '</strong>' }}/<package-name>?hash=<package-hash>#<resource-path>
 ```
 
-#### Examples
+<!-- #### Examples -->
+
+#### 例子
 
 `fuchsia-pkg://{{ '<strong>' }}fuchsia.com{{ '</strong>' }}`
 
-## Package name {#package-name}
+<!-- ## Package name {#package-name}
 
 A package name is a symbolic label that identifies a logical collection of
 software artifacts (files), independent of any particular variant or revision
 of those artifacts. The package name is used to locate package metadata within
 a repository. Package metadata must be signed by a role which is trusted by
-the repository root.
+the repository root. -->
+
+## 包名
+
+包名是标识软件文件的逻辑集合的符号标签，独立于这些文件的任何特定变体或修改。包名用于在存储库中定位包元数据。包元数据必须由仓库根角色信任的角色签名。
 
 A package name consists of a sequence of up to 100 of the following latin-1
 characters in any order:
@@ -195,3 +257,14 @@ fuchsia-pkg://<repository>/<package-name>?hash=<package-hash>{{ '<strong>' }}#<r
 [Fuchsia filesystem paths]: /docs/concepts/process/namespaces.md#object-relative-path-expressions
 [RFC 3986]: https://tools.ietf.org/html/rfc3986#page-11
 [merkleroot]: /docs/concepts/packages/merkleroot.md
+
+[TUF Specification]: https://github.com/theupdateframework/specification/blob/HEAD/tuf-spec.md#4-document-formats
+[TUF 安全]: https://theupdateframework.github.io/security.html
+[TUF 元数据]: https://theupdateframework.github.io/metadata.html
+[主机名]: https://en.wikipedia.org/wiki/Hostname
+[RFC 1123]: https://tools.ietf.org/html/rfc1123
+[RFC 5890]: https://tools.ietf.org/html/rfc5890
+[IDNA A-labels]: https://tools.ietf.org/html/rfc5890#section-2.3.2.1
+[Fuchsia 文件系统路径]: /docs/concepts/process/namespaces.md#object-relative-path-expressions
+[RFC 3986]: https://tools.ietf.org/html/rfc3986#page-11
+[墨克根]: /docs/concepts/packages/merkleroot.md
