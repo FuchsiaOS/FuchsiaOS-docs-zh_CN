@@ -7,7 +7,7 @@ other package systems, that unit is composed of parts and is not a single binary
 
 # Fuchsia 包
 
-Fuchsia 包是具有层次结构的命名空间，它负责组织与分发文件，并为 Fuchsia 系统提供一个或多个程序、组件或者服务。Fuchsia包是一个代表分发单元的术语，尽管与许多其他包系统不同，但是该单元是由许多部分组成的，而不是单个二进制“BLOB”。
+Fuchsia 包是具有层次结构的命名空间，它负责组织与分发文件，并为 Fuchsia 系统提供一个或多个程序、组件或者服务。Fuchsia 包是一个代表分发单元的术语，尽管与许多其他包系统不同，但是该单元是由许多部分组成的，而不是单个二进制「BLOB」。
 
 <!-- Note: For more information on components, see
 [Introduction to the Fuchsia component framework](/docs/concepts/components/v2/README.md). -->
@@ -24,7 +24,7 @@ root as a key. This process is done to eliminate duplication of `BLOB`s that
 may exist between packages. For example, a shared library which exists in
 multiple packages is only stored once on the device. -->
 
-包以 `BLOB` 的形式从 Fuchsia 包服务器上被下载下来。包服务器是 HTTP(s) 服务器。这些 `BLOB` 使用墨克根作为唯一标识。`BLOB` 先被定义内容，然后才根据 [Fuchsia 墨克根](merkleroot.md) 算法为其命名。如果两个 `BLOB` 具有相同的内容，那么它们的名字也必定相同。因此，每一个 `BLOB` 都有它唯一的标识，并以其墨克根作为键被写入持久化存储中。这样做是为了消除不同包之间 `BLOB` 的重复，例如，一个被多个包使用的共享库只会在设备中保存一份。
+包以 `BLOB` 的形式从 Fuchsia 包服务器上被下载下来。包服务器是 HTTP（s） 服务器。这些 `BLOB` 使用墨克根作为唯一标识。`BLOB` 先被定义内容，然后才根据 [Fuchsia 墨克根](merkleroot.md) 算法为其命名。如果两个 `BLOB` 具有相同的内容，那么它们的名字也必定相同。因此，每一个 `BLOB` 都有它唯一的标识，并以其墨克根作为键被写入持久化存储中。这样做是为了消除不同包之间 `BLOB` 的重复，例如，一个被多个包使用的共享库只会在设备中保存一份。
 
 <!-- The package server can serve as a root of trust and validates the authenticity
 of each package. -->
@@ -81,7 +81,7 @@ system, these packages must be updated with
 [`fx ota`](https://fuchsia.dev/reference/tools/fx/cmd/ota) which triggers an
 over-the-air (OTA) update. -->
 
-由于这些包在系统运行期间无法修改，这些包必须通过 [`fx ota`](https://fuchsia.dev/reference/tools/fx/cmd/ota) 命令来开启 over-the-air (OTA) 更新。
+由于这些包在系统运行期间无法修改，这些包必须通过 [`fx ota`](https://fuchsia.dev/reference/tools/fx/cmd/ota) 命令来开启 over-the-air （OTA） 更新。
 
 ### Cached packages {#cached-packages}
 

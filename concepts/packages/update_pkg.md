@@ -135,7 +135,7 @@ The structure of the update package, `fuchsia-pkg://fuchsia.com/update`, contain
     is required to be present if the `update-mode` is `normal`. -->
 
 *   `/zbi[.signed]`
-    内核镜像。在 `update-mode` 为 `force-recovery` 时必须不包含此项。在 `update-mode` 为 `normal` 时，`zbi` 或 `zbi.signed` 则必须包含此项。
+    内核镜像。在 `update-mode` 为 `force-recovery` 时必须不包含此项。在 `update-mode` 为 `normal` 时，则必须包含`zbi` 或 `zbi.signed` 此项。
 
 <!-- *   `/zedboot[.signed]`
     Recovery image -->

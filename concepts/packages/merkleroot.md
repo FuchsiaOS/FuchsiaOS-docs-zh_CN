@@ -128,15 +128,15 @@ the SHA-256 of 12 0 bytes, the block identity of a single 0 length block. -->
 
  * 空输入的摘要：
  `15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b`
- * 8192 个字节的 `0xff` - “正好一块”
+ * 8192 个字节的 `0xff` - 「正好一块」
  `68d131bc271f9c192d4f6dcd8fe61bef90004856da19d0f2f514a7f4098b0737`
- * 65536 个字节的 `0xff` - “一小段输入”
+ * 65536 个字节的 `0xff` - 「一小段输入」
  `f75f59a944d2433bc6830ec243bfefa457704d2aed12f30539cd4f18bf1d62cf`
- * 2105344 个字节的 `0xff` - “超长的输入”
+ * 2105344 个字节的 `0xff` - 「超长的输入」
  `7d75dfb18bfd48e03b5be4e8e9aeea2f89880cb81c1551df855e0d0a0cc59a67`
- * 2109440 个字节的 `0xff` - “不是 8 kb 对齐的”
+ * 2109440 个字节的 `0xff` - 「不是 8 kb 对齐的」
  `7577266aa98ce587922fdc668c186e27f3c742fb1b732737153b70ae46973e43`
- * 重复了 `0xff0080` 次的 `0xff0080` - “去调色板试试？”
+ * 重复了 `0xff0080` 次的 `0xff0080` - 「去调色板试试？」
  `2feb488cffc976061998ac90ce7292241dfa86883c0edc279433b5c4370d0f30`
 
 [merkletree]: https://en.wikipedia.org/wiki/Merkle_tree "Merkle Tree"

@@ -402,7 +402,7 @@ its vbmeta to the slot that’s not currently booted (the alternate slot).
 Otherwise, the paver writes them to both the A and B partitions (if a B
 partition exists). -->
 
-其后，`system-updater` 指示铺设程序写入 Fuchsia ZBI 以及它的 vbmeta。这些镜像的最终位置由该设备是否支持 [ABR](/docs/glossary.md#ABR) 决定。如果设备支持 [ABR](/docs/glossary.md#ABR)，铺设程序会将 Fuchsia ZBI 及其 vbmeta 写入到目前没有启动的分区上（备份分区）。否则，铺设程序会将它们同时写入 A、B 两个Slot（如果存在Slot B 的话）。
+其后，`system-updater` 指示铺设程序写入 Fuchsia ZBI 以及它的 vbmeta。这些镜像的最终位置由该设备是否支持 [ABR](/docs/glossary.md#ABR) 决定。如果设备支持 [ABR](/docs/glossary.md#ABR)，铺设程序会将 Fuchsia ZBI 及其 vbmeta 写入到目前没有启动的分区上（备份分区）。否则，铺设程序会将它们同时写入 A、B 两个 Slot（如果存在 Slot B 的话）。
 
 <!-- Note: To see more information on how the Fuchsia paver works for assets,
 see [`fuchsia.paver`][fuchsia-paver-assets]. -->
@@ -421,7 +421,7 @@ location does not depend on if the device supports [ABR](/docs/glossary.md#ABR).
 
 ![图：将镜像写入块设备](images/write-images.png)
 
-**图 10**。`system-updater` 通过铺设程序将 v2 版本的镜像写入Slot B。
+**图 10**。`system-updater` 通过铺设程序将 v2 版本的镜像写入 Slot B。
 
 <!-- ### Set alternate partition as active {#set-alternate-active}
 
@@ -552,7 +552,7 @@ slot B. -->
 <!-- Note: For more information on how the bootloader determines the slot to boot
 into, see [`flow.c`][flow-c]. -->
 
-注意:更多有关 bootloader 是如何决定启动至哪个分区的细节,请查阅 [`flow.c`][flow-c]。 
+注意：更多有关 bootloader 是如何决定启动至哪个分区的细节，请查阅 [`flow.c`][flow-c]。 
 
 <!-- After early boot, `fshost` launches `pkgfs` using the new system-image package.
 This is the system image package that is referenced in the `packages.json`

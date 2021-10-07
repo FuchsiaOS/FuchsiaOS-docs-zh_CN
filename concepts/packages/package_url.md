@@ -24,11 +24,11 @@ fuchsia-pkg://{{ '<var>' }}repository{{ '</var>' }}/{{ '<var>' }}package-name{{ 
 
 它包含如下组成部分，都是完整 URL 中的一部分：
 
-* [URL 方案](#url-scheme): 必须
-* [仓库](#repository): 必须
-* [包名](#package-name): 必须
-* [包哈希](#package-hash): 可选
-* [资源路径](#resource-path): 可选
+* [URL 方案](#url-scheme)：必须
+* [仓库](#repository)：必须
+* [包名](#package-name)：必须
+* [包哈希](#package-hash)：可选
+* [资源路径](#resource-path)：可选
 
 <!-- ## URL scheme {#url-scheme}
 
@@ -82,7 +82,7 @@ The total maximum length of a hostname is 253 characters including the dots. -->
 
 ## 仓库 {#repository}
 
-包 URL 包含仓库的 [主机名] 来标识一个包的源。[RFC 1123] 和 [RFC 5890] 规定了主机名是由 （`.`）分隔的 [IDNA A-labels] 序列，每一部分由以下任意顺序的 latin-1 字符组成，长度范围为1 ~ 63个：
+包 URL 包含仓库的 [主机名] 来标识一个包的源。[RFC 1123] 和 [RFC 5890] 规定了主机名是由（`.`）分隔的 [IDNA A-labels] 序列，每一部分由以下任意顺序的 latin-1 字符组成，长度范围为 1 - 63 个：
 
 * 数字（`0` 到 `9`）
 * 小写字母（`a` 到 `z`）
@@ -223,7 +223,7 @@ from the newest revision of the package available to the client. -->
 of the following latin-1 characters: digits (`0` to `9`) and lower-case letters
 (`a` to `f`).  No other characters are permitted. -->
 
-一个包哈希表示为一个十六进制编码字符串，由 64 个拉丁-1字符组成:数字（`0` 到 `9`）和小写字母（`a` 到 `f`）。不允许使用其他字符。
+一个包哈希表示为一个十六进制编码字符串，由 64 个 latin-1 字符组成：数字（`0` 到 `9`）和小写字母（`a` 到 `f`）。不允许使用其他字符。
 
 <!-- ### Syntax
 
@@ -264,7 +264,7 @@ characters not equal to `.`, `..`, or `/`. Must begin with single `#` character.
 
 ## 资源路径 {#resource-path}
 
-资源路径是一个UTF-8字符串，用于标识包中的资源。  
+资源路径是一个 UTF-8 字符串，用于标识包中的资源。  
 这是一个文件路径，由单个 `/` 分隔的路径段序列组成，每个路径段都是非空序列，由不等于 `.`、`..` 或 `/` 的非零 UTF-8 字符组成。必须以单个 `#` 字符开头。
 
 <!-- This must be relative to the root of the package.
