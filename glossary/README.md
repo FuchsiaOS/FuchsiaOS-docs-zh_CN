@@ -17,6 +17,7 @@
 - authentication：认证
 - authorization：授权
 - automatic retry：自动重试
+- best practice：最佳做法
 - bulkheading：隔离层
 - canary rollout：金丝雀发布
 - caveat：注意事项
@@ -31,6 +32,7 @@
 - data plane：数据平面
 - distributed tracing：分布式追踪
 - egress：出口
+- ergonomics：工效学
 - fault injection：故障注入
 - HTTP header：HTTP标头
 - infrastructure：基础设施

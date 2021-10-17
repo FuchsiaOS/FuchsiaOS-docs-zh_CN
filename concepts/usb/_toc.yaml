@@ -5,12 +5,36 @@
 # Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
+
 toc:
+<!--
 - title: "USB system overview"
   path: /docs/concepts/usb/overview.md
+-->
+
+- title: "USB系统概述"
+  path: /concepts/usb/overview.md
+
+<!--
 - title: "Lifecycle of a USB request"
   path: /docs/concepts/usb/request-lifecycle.md
+-->
+
+- title: "一个USB请求的生命周期"
+  path: /concepts/usb/request-lifecycle.md
+
+<!--
 - title: "USB mass storage driver"
   path: /docs/concepts/usb/usb-mass-storage.md
+-->
+
+- title: "USB大容量存储设备驱动"
+  path: /concepts/usb/usb-mass-storage.md
+
+<!--
 - title: "Testing a USB device"
   path: /docs/concepts/usb/testing.md
+-->
+
+- title: "测试一个USB设备"
+  path: /concepts/usb/testing.md
