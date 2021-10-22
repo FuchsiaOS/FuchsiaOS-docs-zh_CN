@@ -46,7 +46,7 @@ And one for a flutter/dart component:
 
 <<../_v1_banner.md>>
 
-组件清单 (.cmx) 是文件扩展名为“.cmx”的 JSON 文件。
+组件清单 (.cmx) 是文件扩展名为`.cmx`的 JSON 文件。
 组件清单通常位于包的 `meta/` 目录中,包含声明如何运行组件和
 它收到资源的信息。 特别的是，组件清单描述了组件是如何被沙箱化的。
 
@@ -211,7 +211,7 @@ default, it is under `data/<component-name>`.
 ```
 
 `binary` 属性描述了在包命名空间中的哪个位置可以找到运行组件的二进制文件，可选的 `args` 属性包含要提供给进程的字符串参数。
-可选的 env_vars 属性指定要提供给二进制文件的环境变量，其中数组中的每个元素都使用`"VAR=VALUE"`格式，例如`"RUST_BACKTRACE=1"`。
+可选的 `env_vars` 属性指定要提供给二进制文件的环境变量，其中数组中的每个元素都使用`"VAR=VALUE"`格式，例如`"RUST_BACKTRACE=1"`。
 
 如果 [`runner`](#runner)存在，则  `program` 是一个自由格式的字符串 JSON 对象，被解释为传递给 runner 的 args。
 
@@ -293,7 +293,7 @@ additional services should be
 
 <!--
 
-## sandbox
+## sandbox 
 
 The `sandbox` property controls the environment in which the component
 executes. Specifically, the property controls which directories the component
@@ -342,7 +342,7 @@ The `sandbox` property is a JSON object with the following schema:
 
 -->
 
-## sandbox
+## sandbox 属性
 
 `sandbox` 属性控制组件执行所处的环境。具体来说，该属性控制组件在执行期间可访问的目录。
 `sandbox` 属性是一个具有以下架构的 JSON 对象：
@@ -396,7 +396,7 @@ to the `dev` array. Allowing access to individual `misc` devices is not possible
 
 `dev` 数组包含一个众所周知的设备目录列表，这些目录是提供给组件的。例如，如果字符串 `class/input` 出现在
 `dev` 数组，然后 `/dev/class/input` 将出现在从包中加载的组件的命名空间中。要允许访问 `misc` 设备，请添加字符串 `misc`
-到 `dev` 数组。不允许访问单个“misc”设备。
+到 `dev` 数组。不允许访问某些`misc`类型的设备。
 
 <!--
 The `system` array contains a list of well-known paths within the system package
@@ -411,8 +411,8 @@ namespaces of components loaded from the package, providing access to all
 packages fully cached on the system.
 -->
 
-`system` 数组包含系统包中提供给组件的已知路径的列表。例如，如果出现字符串`bin`
-在 `system` 数组中，那么 `/system/bin` 将出现在从包加载的组件。
+`system` 数组包含系统包中提供给组件的已知路径的列表。例如，如果字符串`bin`
+出现在 `system` 数组中，那么 `/system/bin` 将出现在从包加载的组件的命名空间中。
 
 `pkgfs` 数组包含 pkgfs 树中提供给组件的已知路径的列表。例如，如果字符串 `versions`
 出现在 `pkgfs` 数组中，然后 `/pkgfs/versions` 会出现在从包加载的组件的命名空间中，
@@ -461,8 +461,7 @@ The set of currently known features are as follows:
 
 - `isolated-cache-storage`, which requests access to persistent storage for the
   device, located in `/cache` in the package's namespace. This storage is
-  isolated from the storage provided to other components. Unlike
-  `isolated-persistent-storage`, items placed in the storage provided by this
+  isolated from the storage provided to other components. Unlike `isolated-persistent-storage`, items placed in the storage provided by this
   feature will be deleted by the system to reclaim space when disk usage is
   nearing capacity.
 
@@ -522,7 +521,7 @@ The set of currently known features are as follows:
 -->
 
 - `deprecated-shell`, 它请求访问适合于交互式命令行的资源 。 通常，shell 被授予访问所有
-  当前环境中可用的资源。 `deprecated-shell` 功能还暗示了“root-ssl-certificates”和“hub”功能。
+  当前环境中可用的资源。 `deprecated-shell` 功能还暗示了`root-ssl-certificates`和`hub`功能。
   顾名思义，此功能将被删除。 目前使用这个功能已明确列入许可名单，不鼓励新用途。
 
 - `shell-commands`, 它请求访问当前可用的 shell 二进制文件（注意：不是“已安装”，而是“可用”）。二进制文件被映射到 请求者命名空间中的`/bin`。 运行这些命令可能还需要请求 `fuchsia.process.Resolver` 
@@ -545,12 +544,12 @@ See [sandboxing](/docs/concepts/process/sandboxing.md) for more information abou
 
 - `factory-data`, 它请求访问设备的只读工厂分区，并将其放置在组件命名空间中的`/factory`。
 
-- `durable-data`, 它请求访问设备的读写持久分区，并将其放置在组件命名空间中的“/durable”。 
+- `durable-data`, 它请求访问设备的读写持久分区，并将其放置在组件命名空间中的`/durable`。 
 此分区用于存储在恢复出厂设置后仍可保留的持久数据，并且仅用于特定的、经批准的用例。
 
-参考 [沙盒](/docs/concepts/process/sandboxing.md) 了解有关沙盒的更多信息.
+参考 [沙盒](/concepts/process/sandboxing.md) 了解有关沙盒的更多信息.
 
 
-[hub]: /docs/concepts/components/v1/hub.md
+[hub]: /concepts/components/v1/hub.md
 [runner]: /sdk/fidl/fuchsia.sys/runner.fidl
-[test-components]: /docs/concepts/testing/v1_test_component.md
+[test-components]: /concepts/testing/v1_test_component.md
