@@ -56,7 +56,7 @@ is true: -->
 * A package is the most recently resolved version of an ephemeral package according to its `meta` or `package` in the dynamic index. -->
 
 * 该包为静态索引中的基本包
-* 该包正在升级中（通过追踪  `meta.far` 和任意的缺失的 `BLOB` 的墨克根，直到它们被完全解析）
+* 该包正在升级中（通过追踪  `meta.far` 和任意的缺失的 `BLOB` 的墨克根（merkle root），直到它们被完全解析）
 * 该包是某个临时包的最新版本（根据其在动态索引中的 `meta` or `package` 来判断）
 
 <!-- When garbage collection runs, it deletes every `BLOB` in `blobfs` that is not referenced
