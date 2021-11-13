@@ -236,7 +236,6 @@ Now, we unplug this USB WLAN device.
 *  USB XHCI 监测到设备移除并调用`device_async_remove(usb_device)`。
 
 *  这将导致USB 设备中`unbind()`函数将被调用。
-
   一旦完成解绑，它会调用`device_unbind_reply()`。
 
 ```c
@@ -268,8 +267,7 @@ Now, we unplug this USB WLAN device.
   (wlan_mac_0, wlan_mac_1).
 
 --->
-*  当 wlan_phy 完成解绑后，unbind() 将在它所有的子设备上被调用。
-  (wlan_mac_0, wlan_mac_1).
+*  当 wlan_phy 完成解绑后，unbind() 将在它所有的子设备(wlan_mac_0, wlan_mac_1)上被调用。
 
 ```c
     wlan_mac_unbind(void* ctx) {
@@ -290,6 +288,7 @@ Now, we unplug this USB WLAN device.
 --->
 *  一旦所有设备的客户端都完成移除后，设备就没有子设备了，
   它的 refcount 将被清零，并且release()方法被调用。
+  
 *  WLAN MAC 0和1的`release()`被调用。
 
 ```c
@@ -309,7 +308,6 @@ Now, we unplug this USB WLAN device.
 --->
 
 * wlan_phy 没有打开的连接，但是依然有子设备（ wlan_mac_0 和 wlan_mac_1 ）。
-
   一旦它们都被释放后，它的 refcount 最终被清零，并且 release() 方法被调用。
 
 

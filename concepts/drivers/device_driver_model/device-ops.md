@@ -133,6 +133,8 @@ different connections will be indeterminately sequenced.
 
 当 [zx_device_ops_t][device] *close*钩子函数开始运行时，设备连接生命周期结束。任意*read*/*write*/*message* 钩子函数在此之前顺序运行。
 
+因为*read*/*write*/*message*钩子函数只会在驱动主机的主线程中运行，它们将永远不会同时运行，但是从不同的连接中的外部请求处理将以不确定的序列执行。
+
 <!---
 
 ### Misc Device APIs
@@ -146,7 +148,6 @@ The one exception to this is that they are sequenced before the *release* hook.
 ### Misc设备API
 
 [zx_device_ops_t][device] 的*get_size* 和 *get_protocol*钩子函数与所有钩子函数相比是乱序的（包括对自己的并发性调用）。
-
 但是唯一例外为在 *release* 钩子函数之前被排序。
 
 [device]: /src/lib/ddk/include/lib/ddk/device.h

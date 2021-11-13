@@ -36,7 +36,6 @@ removed from this namespace and all bind property keys will be defined in bind l
 注意：驱动绑定正在开发中，本文档仅描述当前状态。不是所有驱动都使用这套绑定规则，但是目前正在迁移，以便其全部转换。
 
 关于这个阶段的迁移，需要注意的一点是，不支持在绑定库中定义设备属性键（见下文）。相反，旧驱动绑定系统（[lib/ddk/binding.h](/src/lib/ddk/include/lib/ddk/binding.h)）中的键是可以扩展的。
-
 这些键值在绑定编译器中是硬编码，在 `fuchsia` 命名空间下可用。例如， PCI 供应商 ID 键是`fuchsia.BIND_PCI_VID`。最终，这些硬编码键值将会从这个命名空间中移除，所有绑定属性键值都将在绑定库中定义。
 
 <!---
@@ -83,10 +82,10 @@ For more details, see [the driver development documentation](/docs/concepts/driv
 ZIRCON_DRIVER(Driver, Ops, VendorName, Version);
 ```
 
-* `Driver `是驱动的名字。
-* `Ops `是一个 `zx_driver_ops`，提供驱动操作钩子函数。
-* `VendorName` 是一个代表驱动供应商的字符串。
-* `Version` 是代表驱动版本的字符串。
+ - `Driver `是驱动的名字。
+ - `Ops `是一个 `zx_driver_ops`，提供驱动操作钩子函数。
+ - `VendorName` 是一个代表驱动供应商的字符串。
+ - `Version` 是代表驱动版本的字符串。
 
 需要了解更多细节，请参见[the driver development documentation](/docs/concepts/drivers/driver-development).
 
@@ -121,10 +120,10 @@ There are four kinds of statements:
 
 其中有4种类型的声明：
 
-* **条件声明** 是相等（或不相等）表达式，其形式为 `<key> == <value>`  (or  `<key> != <value>` )。
-* **接受声明**是一组给定键值的允许接受值。
-* **条件声明**提供简单的分支。
-* **真假声明**可以被用作明确评估绑定规则。
+ - **条件声明** 是相等（或不相等）表达式，其形式为 `<key> == <value>`  (或  `<key> != <value>` )。
+ - **接受声明**是一组给定键值的允许接受值。
+ - **条件声明**提供简单的分支。
+ - **真假声明**可以被用作明确评估绑定规则。
 
 <!---
 
@@ -185,7 +184,6 @@ bind rules are simple representations of the conditions under which a driver sho
 
 - **不允许出现空块**
   空块是否意味着驱动程序将被绑定还是终止，这一点是不明确的。作者应该使用明确的`true` 或者 `false` 来声明。
-
 - **if声明必须有else部分，并且是终端**
   这条限制通过明确的执行分支来提高可读性。由于没有声明可以跟在`if`声明后，所以很容易通过绑定规则追踪到路径。
 -  **真和假的陈述必须是其范围内的唯一陈述**
@@ -312,9 +310,9 @@ The JSON specification must be a list of test case objects, where each object co
 
 特定 JSON 必须是一系列的测试场景对象，每一个对象包含：
 
-* `name`，测试场景名字的字符串。
-* `expected `期待结果。必须是 `“match” `或者  `“abort” `。
-* `device` 为一系列键值对描述设备属性。这和 debugger 中 [device specifications](/docs/development/drivers/diagnostics/bind-debugger.md#device-specification)相似。
+ - `name`，测试场景名字的字符串。
+ - `expected `期待结果。必须是 `“match” `或者  `“abort” `。
+ - `device` 为一系列键值对描述设备属性。这和 debugger 中 [device specifications](/docs/development/drivers/diagnostics/bind-debugger.md#device-specification)相似。
 
 <!---
 
@@ -456,7 +454,7 @@ new PCI device ID `GIZMO_VER_1`.
 
 每一个命名空间都必须以供应商作为开始，并且每一个供应商应当保证在它们自己的命名空间内没有冲突。尽管如此，语言中允许一个供应商来扩展另一个库。Google将使用 `fuchsia` 作为公共库。
 
-库引入的任意值都是在命名空间内的。例如，下述库定义了一个新的 PCI 设备ID 为`GIZMO_VER_1`。
+库引入的任意值都是在命名空间内的。例如，下述库定义了一个新的 PCI 设备 ID 为`GIZMO_VER_1`。
 
 ```
 library gizmotronics.gizmo;

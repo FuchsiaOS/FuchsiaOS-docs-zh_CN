@@ -56,9 +56,7 @@ README.fuchsia必须包含至少以下指示符：
 * `License`
 * `License File`
 
-如果这是你第一次从主机系统中上传到 CIPD 中，
-
-使用以下指令授权 CIPD ：
+如果这是你第一次从主机系统中上传到 CIPD 中，使用以下指令授权 CIPD ：
 
 ```
 fx cipd auth-login
