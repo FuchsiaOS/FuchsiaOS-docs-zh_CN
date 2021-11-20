@@ -92,7 +92,7 @@ To facilitate bus arbitration, Zircon operates the following drivers:
 
 - USB根集线器驱动
 - 总线驱动
-- 主机控制器接口（Host controller interface，HCI）驱动
+- 主设备控制器接口（Host controller interface，HCI）驱动
 
 <!--
 These drivers operate together to respond to bus attachment and manage the
@@ -252,7 +252,7 @@ communication between the different parts of the USB stack.
 ## HCI driver (host only)
 -->
 
-## 主机控制器接口（Host controller interface，HCI）驱动（只有USB主设备模式）
+## 主设备控制器接口（Host controller interface，HCI）驱动（只有USB主设备模式）
 
 <!--
 The host controller interface (HCI) driver exists at the bottom layer of the USB
@@ -261,7 +261,7 @@ translating outstanding `usb_request_t` into the necessary hardware directives
 capable of servicing the request.
 -->
 
-当运行在USB主设备模式时，主机控制器接口（Host controller interface，HCI）驱动
+当运行在USB主设备模式时，主设备控制器接口（Host controller interface，HCI）驱动
 存在于USB协议栈的底层。它负责将尚未处理的`usb_request_t`翻译成必要的、能够
 为请求提供服务的硬件指令。
 
