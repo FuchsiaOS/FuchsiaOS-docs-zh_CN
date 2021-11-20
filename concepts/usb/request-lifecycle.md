@@ -25,7 +25,7 @@
     connected to.
 -->
 
-*   HCI -- 主机控制器接口（Host Controller Interface）：一个主机控制器接口驱动
+*   HCI -- 主设备控制器接口（Host Controller Interface）：一个主设备控制器接口驱动
     负责维护向硬件发送的USB请求的队列，并且在作为USB主设备时管理所连接设备的状态。
 *   DCI -- 设备控制器接口（Device controller interface）：一个设备控制器负责维护
     向该设备连接的USB主设备发送的USB请求的队列。
@@ -178,7 +178,7 @@ controller or device controller is as follows):
     request.
 -->
 
-一个USB请求的典型生命周期如下所示（从一个设备驱动到一个主机控制器或者设备控制器）：
+一个USB请求的典型生命周期如下所示（从一个设备驱动到一个主设备控制器或者设备控制器）：
 
 *   USB设备驱动将请求加入队列
 *   `usb-device`核心驱动接收这个请求，并拥有了这个请求对象。
@@ -281,7 +281,7 @@ xHCI (host controller) -> `usb-bus` -> `usb-device` (core USB device driver) ->
 `usb-mass-storage`
 -->
 
-xHCI （主机控制器） -> `usb-bus` -> `usb-device` (USB设备核心驱动) ->
+xHCI （主设备控制器） -> `usb-bus` -> `usb-device` (USB设备核心驱动) ->
 `usb-mass-storage`
 
 <!--
