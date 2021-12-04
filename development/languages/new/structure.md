@@ -1,7 +1,17 @@
+<!--
+
 # How to structure Fuchsia support for a language
 
 This document describes the structure languages typically when supporting
 Fuchsia.
+
+-->
+
+# 如何构建Fuchsia对某一种语言的支持
+
+当前文档描述了支持 Fuchsia 的通用结构语言。
+
+<!--
 
 ## System calls
 
@@ -18,6 +28,18 @@ The public entry points for the vDSO are defined in
 [//zircon/vdso](/zircon/vdso/).
 This file is processed by the [kazoo](/docs/concepts/kernel/vdso.md#kazoo-tool)
 tool.
+
+-->
+
+## 系统调用
+
+Fuchsia 底层支持允许 [Zircon 系统调用](/docs/reference/syscalls/)的语言，用这种语言编写的程序依赖于开放性的系统调用可以与内核交互，以及和系统其余结构互相传递信息。
+
+程序不能直接发起系统调用，然而，可以通过调用 [vDSO](/docs/concepts/kernel/vdso.md) 中的函数来完成系统调用，函数被加载在开发者在新创建的进程中。
+
+vDSO 函数的入口定义在 [//zircon/vdso](/zircon/vdso/)目录下，该文件由 [kazoo](/docs/concepts/kernel/vdso.md#kazoo-tool) 工具处理。
+
+<!--
 
 ## Async
 
@@ -51,12 +73,40 @@ You can wake up a thread by simply queuing a user packet to the thread's port
 using
 [zx_port_queue](/docs/reference/syscalls/port_queue.md).
 
+-->
+
+## 异步
+
+绝大多数 Fuchsia 中的程序充当着*服务者*的角色。开始运行后，这些程序会在消息线程中不断循环以接受消息，处理消息(可能发送消息到其他进程)，然后该进程进入休眠状态。
+
+Fuchsia 中的消息线程最基础的组成结构是 [端口](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/kernel_objects/port.md) ，线程可以通过  [`zx_port_wait`](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/port_wait.md) 进入休眠状态，当内核唤醒线程时，会发送一个数据*包*给到线程。
+
+通常，每个线程进入休眠状态时都会有一个单独的端口，当您使用您熟悉的编程语言编写大量代码时就会与之交互。语言维护者(运营者)通常会提供抽象化端口和异步等待的库，而不是直接开放接口。
+
+大多数异步等待操作都在  [`zx_object_wait_async`](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/object_wait_async.md) 中，通常，`port` 和 `key` 两个参数由库提供，`handle` 和 `signals` 两个参数由客户端提供。 当一个等待操作被创建，客户端通常还会提供一个向上调用(例如，一个闭包)供库在等待完成时调用，此时库会通过 `key` 参数恢复向上调用 (例如，从一个散列表中)。
+
+从另一个线程唤醒当前线程不需要额外的内核对象。您可以通过 [zx_port_queue](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/port_queue.md) 简要地为线程端口排列用户包信息来唤醒线程。
+
+<!--
+
 ### Examples
 
 * [async](/zircon/system/ulib/async)
   (C and C++)
 * [fuchsia-async](/src/lib/fuchsia-async/) (Rust)
 * [zxwait](https://fuchsia.googlesource.com/third_party/go/+/HEAD/src/syscall/zx/zxwait/) (Go)
+
+-->
+
+### 例子
+
+- [异步](/zircon/system/ulib/async) (C 和 C++ )
+
+- [Fuchsia 异步](/src/lib/fuchsia-async/) (Rust )
+
+-  [zxwait](https://fuchsia.googlesource.com/third_party/go/+/HEAD/src/syscall/zx/zxwait/) (Go )
+
+<!--
 
 ## FIDL
 
@@ -87,6 +137,23 @@ if possible in your language. The developer might wish to use newer versions of
 the same FIDL protocols without conflicting with the version used internally by
 the language runtime.
 
+-->
+
+## FIDL(Fuchsia 接口定义语言)
+
+Zircon 内核本身主要提供内存管理、调度和进程间通信。大部分系统接口实际上是由进程间通信提供的，通常是[管道通信](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/kernel_objects/channel.md)，而不是由内核直接提供。用于进程间通信的协议是用 [Fuchsia 接口定义语言 (FIDL)](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/development/languages/fidl/README.md) 定义的。
+
+对一种语言的 FIDL 支持通常包括以下两部分：
+
+1. 用于目标语言代码生成的 FIDL 编译器的特定语言后端
+2. 用目标语言编写的支持库，供第一部分生成的代码使用
+
+这些部分通常不是内置到语言实现或者语言运行库当中。反而，这些库应该独立于语言运行库，而是开发者所开发的程序或者版本控制中的一部分。程序和语言运行库之间的稳定接口应该是*系统调用*，而不是 FIDL 协议，这样开发人员就可以独立选择 FIDL 协议版本和语言运行库的版本。
+
+某些情况下，语言运行库需要内置使用 FIDL。如果发生这种情况，请尽可能在您的语言中对开发者的程序隐藏这个实现细节。开发人员可能希望使用相同 FIDL 协议的更新的版本，并且不与语言运行库内部所使用的版本冲突。
+
+<!--
+
 ### FIDL compiler backend
 
 The [FIDL compiler](/tools/fidl/fidlc/)
@@ -101,6 +168,19 @@ maintainer choose either Go or the target language.
 
  * [fidlgen](/garnet/go/src/fidl/compiler/backend) (C++, Rust, and Go)
  * [fidlgen_dart](https://fuchsia.googlesource.com/topaz/+/HEAD/bin/fidlgen_dart) (Dart)
+
+-->
+
+### FIDL 编译器后端
+
+[FIDL 编译器](/tools/fidl/fidlc/)有一个用于所有语言的前端和多个支持各种语言的后端。前端生成 [JSON 中间格式][json-ir]，由特定于语言的后端使用。
+
+您应该为您的语言的 FIDL 编译器创建一个新的后端。后端可以用您喜欢的任何语言编写，通常，语言维护者会选择Go 或目标语言。
+
+- [fidlgen](/garnet/go/src/fidl/compiler/backend) (C++, Rust, and Go)
+- [fidlgen_dart](https://fuchsia.googlesource.com/topaz/+/HEAD/bin/fidlgen_dart) (Dart)
+
+<!--
 
 ### Generated code
 
@@ -136,6 +216,23 @@ to avoid blocking on the remote end of the channel.
 Generally, we prefer to use *asynchronous* code whenever possible. Many FIDL
 protocols are designed to be used in an asynchronous, feed-forward pattern.
 
+-->
+
+### 代码生成
+
+生成的 FIDL 代码因语言而异，通常生成的代码将包含以下类型：
+
+- 数据结构定义，表示在 [FIDL语言](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/fidl/language/language.md) 中定义的数据结构。
+- 一种编解码器，它可以将这些数据结构序列化/反序列化成 [FIDL wire format](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/fidl/language/wire-format) (FIDL 线型结构)格式或逆转换
+- FIDL 协议的服务器端的子对象。通常，子对象有一个 *dispatch* 方法，该方法反序列化从 Zircon 通道读取的消息，并由消息的 *ordinal* 指定间接地跳转到方法的实现。
+- FIDL 协议的客户端的代理对象。通常，对代理对象的方法调用会导致消息被序列化并被通过 Zircon 通道发送。通常，代理对象具有事件消息的分发功能，类似于子消息请求中的 *dispatch* 方法。
+
+部分语言为生成的某些类型的代码提供了多种选择。例如，一个常见的模式是同时提供*同步*和*异步*代理对象。同步代理使用 [`zx_channel_call`](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/channel_call.md) 来有效地写消息，阻塞等待响应，然后读取响应，而异步代理使用[`zx_channel_write`](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/channel_write.md)， [`zx_object_wait_async`](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/object_wait_async.md)，以及 [`zx_channel_read`](https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN/blob/2021/docs/reference/syscalls/channel_read.md) 来避免在通道的远程端阻塞。
+
+通常，我们还是尽可能使用*异步*的代码，许多 FIDL 协议也被设计成用于异步的前馈模式。
+
+<!--
+
 ### Support library
 
 When designing the generated code for your language, pay particular attention to
@@ -160,6 +257,24 @@ deserialization, and dispatch.
  * [Dart](https://fuchsia.googlesource.com/topaz/+/HEAD/public/dart/fidl/)
  * [Go](https://fuchsia.googlesource.com/third_party/go/+/HEAD/src/syscall/zx/fidl/)
 
+-->
+
+### 支持库
+
+在为您的目标语言设计生成代码时，要特别注意二进制大小。复杂的程序经常与大量的 FIDL 协议交互，每个协议都可能定义许多数据结构和协议。
+
+减少二进制文件大小的一项重要技术是将尽可能多的代码分解到 FIDL *支持库*中。例如，在 C bindings 中，所有的序列化和反序列化逻辑都由支持库中的程序执行，生成的代码中只包含一个描述线型格式的表。
+
+通常，支持库是在异步库的上层，而异步库本身并不了解 FIDL。例如，大多数支持库包含一个 *reader* 对象，该对象管理通道上的异步等待和读取操作。然后生成的代码被局限于序列化、反序列化和分发。
+
+ * [C](/zircon/system/ulib/fidl)
+ * [C++](/sdk/lib/fidl/cpp/)
+ * [Rust](/src/lib/fidl/rust/fidl)
+ * [Dart](https://fuchsia.googlesource.com/topaz/+/HEAD/public/dart/fidl/)
+ * [Go](https://fuchsia.googlesource.com/third_party/go/+/HEAD/src/syscall/zx/fidl/)
+
+<!--
+
 ## POSIX-style IO
 
 POSIX-style IO operations (e.g., `open`, `close`, `read`, and `write`) are
@@ -175,7 +290,16 @@ to perform asynchronous waits on file descriptors. This library typically
 provides a less error-prone interface that abstracts these "unsafe" FDIO
 functions.
 
+-->
+
+## POSIX 样式(UNIX 下的命令行样式)的 IO
+
+POSIX 样式的 IO 操作(例如`打开`，`关闭`，`读`，和`写`)在 FIDL 架构的上层。如果您的语言具有和 C 的交互操作，您可以使用 [FDIO 库](/sdk/lib/fdio)，它将熟悉的 POSIX 操作转换为基础的 `fuchsia.io` FIDL协议。如果您的语言没有和 C 的交互操作，需要直接与 `fuchsia.io` 连接来提供POSIX 样式的 IO。
+
+您可以使用 [`lib/fdio/unsafe.h`](/sdk/lib/fdio/include/lib/fdio/unsafe.h) 来为文件描述符恢复底层的 Zircon 操作。 通常情况下，每种语言都有一个在异步库上层的用于在文件描述符上执行异步等待的库文件，这个库通常会提供低错误率的接口，用于抽象化这些 "不安全" 的 FDIO 函数。
+
 <!-- xrefs -->
+
 [json-ir]: /docs/reference/fidl/language/json-ir.md
 [fidl-language]: /docs/reference/fidl/language/language.md
 [fidl-wire-format]: /docs/reference/fidl/language/wire-format

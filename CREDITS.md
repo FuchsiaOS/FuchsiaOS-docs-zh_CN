@@ -12,18 +12,18 @@
 │   ├── booting ------------------------| Roy
 │   │   └── images
 │   ├── build_system -------------------| Whyto
-│   ├── components ---------------------|
-│   │   ├── v1                          |
+│   ├── components ---------------------| Submarinee
+│   │   ├── v1                          | Submarinee
 │   │   └── v2                          |
 │   ├── diagnostics --------------------| Whyto
 │   │   ├── inspect                     |
 │   │   ├── lifecycle_events            |
 │   │   └── logs                        |
-│   ├── drivers ------------------------|
+│   ├── drivers ------------------------| linen
 │   │   ├── device_driver_model         |
 │   │   ├── driver_architectures        |
 │   │   └── driver_development          |
-│   ├── emulator -----------------------|
+│   ├── emulator -----------------------| Whyto
 │   ├── fidl ---------------------------| linen
 │   │   └── images                      |
 │   ├── filesystems --------------------|
@@ -33,19 +33,19 @@
 │   │   ├── magma                       |
 │   │   ├── scenic                      |
 │   │   └── sysmem                      |
-│   ├── internationalization -----------|
+│   ├── internationalization -----------| Whyto
 │   ├── kernel -------------------------|
 │   │   └── images                      |
-│   ├── media --------------------------|jack
+│   ├── media --------------------------| jack
 │   ├── modular ------------------------|
 │   │   └── guide                       |
 │   ├── monitoring ---------------------|
 │   ├── networking ---------------------|Robi
 │   ├── packages -----------------------|Robi
 │   │   └── images
-│   ├── prebuilt_packages --------------|
+│   ├── prebuilt_packages --------------| Whyto
 │   ├── principles ---------------------|
-│   ├── process ------------------------|Robi
+│   ├── process ------------------------| Robi
 │   ├── session ------------------------|
 │   │   └── images
 │   ├── settings -----------------------|
