@@ -1,3 +1,5 @@
+<!---
+
 # Device model
 
 ## Introduction
@@ -16,11 +18,28 @@ the overall tree among Driver Hosts is based on system policy for isolating
 drivers for security or stability reasons and colocating drivers for performance
 reasons.
 
+--->
+
+# 设备模型
+
+## 简介
+
+在 Fuchsia 中，设备驱动以加载到驱动主机进程中的 ELF 共享库（DSOs）来实现。驱动管理进程包含设备协调程序，用来追踪驱动和设备状态，驱动管理进程管理驱动程序发现，创建和指导驱动程序主机进程，并维护设备文件系统（ devfs ），设备文件系统则是用户空间服务和应用程序（受其命名空间的限制）获得设备访问的机制。
+
+驱动管理器把设备看做单一统一树的部分。在驱动主机进程中的树的分支（次级分支）包含一些设备。关于如何在驱动主机间细分整个树的决定是基于系统策略，即出于安全或稳定的原因隔离驱动，以及出于性能原因搭配驱动。
+
+<!---
 
 ## Devices, Drivers, and Driver Hosts
 
 Here's a (slightly trimmed for clarity) dump of the tree of devices in
 Fuchsia running on Qemu x86-64:
+
+--->
+
+## 设备，驱动和驱动主机
+
+这里有一个（为清晰起见，略作修饰）在 Qemu x86-64 上运行的 Fuchsia 设备树的转储。
 
 ```sh
 $ dm dump
@@ -57,6 +76,8 @@ $ dm dump
             [00:1f:03] pid=1416 /boot/driver/bus-pci.so
 ```
 
+<!---
+
 The names in square brackets are devices. The names in angle brackets are
 proxy devices, which are instantiated in the "lower" driver host, when process
 isolation is being provided. The pid= field indicates the process object
@@ -71,3 +92,13 @@ and the intel ethernet driver is loaded and bound to it.
 
 Proxy devices are invisible within the Device filesystem, so this ethernet device
 appears as `/dev/sys/pci/00:02:00/e1000`.
+
+--->
+
+在方括号内的名称就是设备。在尖括号内的名称就是代理设备，当提供进程隔离时，代理设备通常在“低级”驱动主机内被实例化。pid= 字段表明了该设备所在的驱动主机进程的对象ID。path 表明了哪个驱动实现了该设备。
+
+在上述示例中，例如进程1416驱动主机包含了 pci 总线驱动，它对每一个系统内的 PCI 设备创建了设备。PCI设备在 00:02:00 时开始作为一个网络以太网接口，并且有一个驱动程序（e1000.so）。
+
+一个新的驱动主机（进程2052）被创建，在 00:02:00 时设置为 PCI 的代理设备，然后以太网驱动加载并绑定。
+
+代理设备在设备文件系统内是不可见的，所以这个以太网设备以`/dev/sys/pci/00:02:00/e1000`形式出现。
