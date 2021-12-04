@@ -40,8 +40,8 @@
 │   ├── modular ------------------------|
 │   │   └── guide                       |
 │   ├── monitoring ---------------------|
-│   ├── networking ---------------------|
-│   ├── packages -----------------------| Robi
+│   ├── networking ---------------------|Robi
+│   ├── packages -----------------------|Robi
 │   │   └── images
 │   ├── prebuilt_packages --------------| Whyto
 │   ├── principles ---------------------|
