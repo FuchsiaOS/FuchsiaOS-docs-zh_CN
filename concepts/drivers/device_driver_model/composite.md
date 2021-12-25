@@ -38,13 +38,13 @@ We'll use the `astro-audio` device for our examples:
 在本章内，我们将关注**复合设备**。
 复合设备是指一个设备中包含其他设备。
 
-这些设备解决了硬件级构成情况，其中“设备”（从用户的角度来看）是由几个不同的硬件块实现的。
+这些设备解决了硬件级构成问题，其中“设备”（从用户的角度来看）是由几个不同的硬件块实现的。
 
 示例中包括：
 
 * 一个由 I2C 设备和 GPIO 组成的触摸板，
 * 一个 MAC 芯片和一个或多个 PHY 组成的网络设备，或者
-* 一个音频控制器和一组解码器组成的音频设备
+* 一个音频控制器和一组编解码器组成的音频设备
 
 在这种场景下，硬件关系在启动时就已被板卡驱动程序所知（不管是静态还是动态方式，例如 ACPI ）。
 
@@ -155,7 +155,7 @@ These instructions are then placed into an array of structures
 
 这些绑定说明是用来寻找设备。
 
-示例中我们有4个绑定说明数组；`root_match[]`包含其他3个设备的通用信息，接下来就是其他3个设备： I2C （`i2c_match[]`）设备和两个 GPIO （`fault_gpio_match[]` 和`enable_gpio_match[]`）。
+示例中我们有4个绑定说明数组；`root_match[]`包含其他3个设备的共有信息，接下来就是其他3个设备： I2C （`i2c_match[]`）设备和两个 GPIO （`fault_gpio_match[]` 和`enable_gpio_match[]`）。
 
 接下来这些绑定说明被放入到一个结构体数组（`device_fragment_part_t`）中，它定义了各个分块：
 
@@ -194,7 +194,7 @@ At this point, we have three fragment devices, `i2c_fragment[]`,
 
 --->
 
-这时候，我们有3个分块设备，`i2c_fragment[]`,`fault_gpio_fragment[]`, 和`enable_gpio_fragment[]`。
+这时候，我们有3个分块设备，`i2c_fragment[]`,`fault_gpio_fragment[]`和`enable_gpio_fragment[]`。
 
 <!---
 
@@ -228,11 +228,11 @@ Finally, we combine them into an aggregate called `fragments[]` of type
 1. 第一个元素必须描述设备树的根 — 这就是为什么我们用`root_match`助记符。
    注意，这个需求可能会改变，因为大多数用户都会提供一个”始终匹配”元素。
 2. 最后一个元素必须描述目标设备自身。
-3. 其余元素必须从根到目标设备的链路上按顺序匹配设备。一些**设备**可能被跳过，但是每一个**元素**必须匹配。
+3. 剩余元素必须以从根到目标设备的链路按顺序匹配设备。一些**设备**可能被跳过，但是每一个**元素**必须匹配。
 4. 路径上每一个设备都有一个属性，范围从`BIND_TOPO_START`到 `BIND_TOPO_END` （基本上是总线，例如 I2C 和 PCI ）都必须匹配。这些匹配序列必须是唯一的。
 
-最后，我们将它们组合成一个类型为`device_fragment_t`叫做`fragments[]`的集合体中。
-   
+最后，我们将它们组合成一个类型为`device_fragment_t`放入`fragments[]`的集合体中。
+
 
 ![Figure: Gathering fragments into an aggregate](images/composite-fragments.png)
 
@@ -289,10 +289,6 @@ zx_status_t device_add_composite(
 
 The arguments are as follows:
 
---->
-
-其参数说明如下：
-
 Argument                  | Meaning
 --------------------------|---------------------------------------------------
 `dev`                     | Parent device
@@ -302,6 +298,20 @@ Argument                  | Meaning
 `fragments`              | The individual fragment devices
 `fragments_count`        | How many entries are in `fragments`
 `coresident_device_index` | Which driver host to use
+
+--->
+
+其参数说明如下：
+
+| Argument                  | Meaning                                                      |
+| ------------------------- | ------------------------------------------------------------ |
+| `dev`                     | 父设备                                                       |
+| `name`                    | 设备名                                                       |
+| `props`                   | 属性([see "Declaring a Driver"](/docs/development/drivers/developer_guide/driver-development.md#declaring-a-driver)) |
+| `props_count              | `props`中的条目数量                                          |
+| `fragments`               | 单个片段设备                                                 |
+| `fragments_count          | `fragments`中的条目数量                                      |
+| `coresident_device_index` | 使用的哪一个驱动主机                                         |
 
 <!---
 
@@ -342,9 +352,9 @@ This is done with **device_get_fragment()**:
 
 --->
 
-### 使用复合设备
+## 使用复合设备
 
-从编码角度来看，一个复合设备只是一个普通设备的角色，但是它没有banjo协议。这意味着你可以访问所有的组成复合设备的单独分块设备。
+从编码角度来看，一个复合设备只是一个普通设备的角色，但是它没有 banjo 协议。这意味着你可以访问所有的组成复合设备的单独分块设备。
 
 第一件事就是为每个分块检索出设备。
 这通过**device_get_fragment()**完成：
@@ -394,7 +404,7 @@ if (!found) {
 
 --->
 
-> 提供 **device_get_fragment()**的分块名和**device_fragment_t**提供给板卡驱动调用**device_add_composite()**中的名字是一样的。
+> 提供给 **device_get_fragment()**的分块名和**device_fragment_t**提供给板卡驱动调用**device_add_composite()**中的名字是一样的。
 
 <!---
 
@@ -415,7 +425,7 @@ initially shown:
 
 ### 复合设备和代理
 
-接下来将在`astro-audio` 驱动中展示的是一些比之前展示的更复杂的结构。
+接下来将以`astro-audio` 驱动中展示的是一些比之前展示的更复杂的结构。
 
 
 ![Figure: Composite hardware device using proxies](images/composite-proxy.png)
@@ -456,7 +466,7 @@ the other half in
 
 --->
 
-片段被绑定在一个内部驱动上（在[//src/devices/internal/drivers/fragment][fragment] 目录中）。
+分块设备被绑定在一个内部驱动上（在[//src/devices/internal/drivers/fragment][fragment] 目录中）。
 
 如果有必要，驱动会处理跨进程边界的代理。
 代理使用`DEVICE_ADD_MUST_ISOLATE` 机制（详情参见 [Isolate devices][isolate] 章节）。
@@ -470,7 +480,7 @@ the other half in
 
 普通设备实现一个`rxrpc` 回调，每次驱动运行时收到来自代理共享通道消息时调用该函数。
 
-所以，为了实现一个新的协议代理，必须修改`fragment.proxy.so`驱动来处理发送消息到普通设备的所需协议，然后修改`fragment.so` 驱动来适配这些服务消息。
+所以为了实现一个新的协议代理，必须修改`fragment.proxy.so`驱动来处理发送消息到普通设备的所需协议，然后修改`fragment.so` 驱动来适配这些服务消息。
 
 分块代理在[/src/devices/internal/drivers/fragment/fragment-proxy.cc][fragment-proxy.cc]实现，而另一半在[/src/devices/internal/drivers/fragment/fragment.cc][fragment.cc]。
 

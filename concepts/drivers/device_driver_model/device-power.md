@@ -31,16 +31,14 @@ suspend a device when auto suspend is configured.
 
 # 设备电源管理
 
- [zx_device_ops_t][device] *suspend* 钩子函数在自身之前也是排序的（例如，如果对D1发起挂起请求，并且在执行该请求的同时对D2也发起挂起请求，那么第一个请求将在后者开始之前就完成）。同样*resume*钩子函数也是如此。
+ [zx_device_ops_t][device] *suspend* 钩子函数对于自身也是有序的（例如，如果对 D1 发起挂起请求，并且在执行该请求的同时对 D2 也发起挂起请求，那么第一个请求将在后者开始之前就完成）。同样*resume*钩子函数也是如此。
 
-`set_performance_state`钩子函数在自身之前也是排序的。 suspend/resume钩子函数是没有特殊顺序的。在驱动从 set_performance_state 钩子函数成功返回之后，只要设备处在工作状态中，电源管理就会认为设备是要以要求的性能状态运行的。因为钩子函数仅在驱动主机主线程运行，则不会有多个请求需要同时运行。
+`set_performance_state`钩子函数对于自身也是有序的。 suspend/resume 钩子函数是没有特殊顺序的。在驱动 set_performance_state 钩子函数成功返回之后，只要设备处在工作状态中，电源管理就会认为设备是以要求的性能状态运行的。因为钩子函数仅在驱动主机主线程运行，则不会有多个请求需要同时运行。
 
 成功运行中，out_state 和 requested_state 是相同的。如果设备处在正在工作状态中，其性能状态会立即变更到 requested_state 。如果设备处在非工作状态中，无论什么时候设备变换工作状态，性能状态都将为requested_state。
-在失败运行中，out_state将表示有设备可进入的状态。
+在失败运行中，out_state 将表示有设备可进入的状态。
 
-`configure_autosuspend`钩子函数在自身之前也是排序的，它被用作配置设备是否可以根据其空闲状态而挂起或恢复自身。
-
-如果整个系统都处在挂起睡眠的状态，驱动应该期望 `suspend`钩子函数被调用，即使已经配置为自动挂起。当配置为自动挂起时，是不支持有选择地挂起设备。
+`configure_autosuspend` 钩子函数对于自身也是有序的，它被用作配置设备是否可以根据其空闲状态而挂起或恢复自身。当设备挂起时，`configure_autosuspend` 钩子函数在设备预期处于的最深睡眠状态下被调用。如果整个系统都处于睡眠状态被挂起，即使配置为自动挂起，驱动也会期待`suspend`钩子函数调用。当配置为自动挂起时，有选择地挂起设备是不支持的。
 
 
 [device]: /src/lib/ddk/include/lib/ddk/device.h
