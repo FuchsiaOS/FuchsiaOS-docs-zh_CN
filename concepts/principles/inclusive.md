@@ -143,7 +143,7 @@ Fuchsia 的价值观中包含对待他人要庄重。对于每个人来说，进
 and [mailing lists](/docs/contribute/community/get-involved.md)
 are public**
  -->
-**[我们的故障跟踪系统](/contribute/report-issue.md)和[邮件列表](/contribute/community/get-involved.md)]是公开的**
+**[我们的故障跟踪系统](/contribute/report-issue.md)和[邮件列表](/contribute/community/get-involved.md)是公开的**
 
 <!-- 
 The open source community can stay informed about Fuchsia updates and progress
