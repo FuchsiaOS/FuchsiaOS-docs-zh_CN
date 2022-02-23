@@ -66,7 +66,7 @@ There’s no need to modify or recompile drivers when there’s an
 update to Fuchsia. This allows for a large hardware ecosystem that
 is scalable and easier to maintain.
  -->
-**[Fuchsia 驱动框架](/concepts/drivers/fdf.md]为丰富的硬件生态系统着想**
+**[Fuchsia 驱动框架](/concepts/drivers/fdf.md)为丰富的硬件生态系统着想**
 
 Fuchsia 旨在拥有面向驱动的二进制稳定接口。在该方案下，开发人员可以编写驱动一次，这些驱动将随着 Fuchsia 更新迭代而持续运作。当 Fuchsia 更新时，不需要修改或重新编译驱动。这是为一个可扩展、易维护的大型硬件生态系统所做的考虑。
 
@@ -143,7 +143,7 @@ Fuchsia 的价值观中包含对待他人要庄重。对于每个人来说，进
 and [mailing lists](/docs/contribute/community/get-involved.md)
 are public**
  -->
-**[我们的故障跟踪系统](/contribute/report-issue.md)和[邮件列表](/contribute/community/get-involved.md)]是公开的**
+**[我们的故障跟踪系统](/contribute/report-issue.md)和[邮件列表](/contribute/community/get-involved.md)是公开的**
 
 <!-- 
 The open source community can stay informed about Fuchsia updates and progress
