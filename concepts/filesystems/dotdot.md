@@ -150,6 +150,5 @@ resource access can more naturally be composed through filesystem
 
 -->
 
-一旦克服了这些障碍，删除".."的好处是巨大的：
-对文件系统资源的访问自然适合能力系统，[sandboxing](/docs/concepts/process/sandboxing.md)
+一旦克服了这些障碍，删除".."的好处是巨大的：对文件系统资源的访问自然适合能力系统，[sandboxing](/docs/concepts/process/sandboxing.md)
 新进程变得非常容易， 并且资源访问可以更自然地通过文件系统 [namespaces](/docs/concepts/process/namespaces.md) 组成。 
