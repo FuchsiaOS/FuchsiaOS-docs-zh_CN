@@ -141,7 +141,7 @@ Escher 也可以在 Linux 上构建。 为此，您需要：
   * 每次要重建并运行`waterfall`示例时，请执行以下操作：
 
     ```
-    fx build host_x64/waterfall && out/default/host_x64/waterfall
+    fx build host_x64/waterfall && out/default/host_x64/waterfall 
     ```
 
   * Escher 单元测试的构建和运行方式类似：
