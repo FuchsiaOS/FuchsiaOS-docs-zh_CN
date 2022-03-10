@@ -28,7 +28,7 @@
 │   │   └── images                      |
 │   ├── filesystems --------------------| Lyrance
 │   │   └── images                      |
-│   ├── graphics -----------------------| Lyrance
+│   ├── graphics -----------------------| Lyrance 
 │   │   ├── escher                      |
 │   │   ├── magma                       |
 │   │   ├── scenic                      |
