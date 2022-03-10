@@ -31,7 +31,7 @@ Fuchsia SDK 没有公开它。
 
 * 体积柔和的阴影
 * 颜色渗色
-* 光扩散
+* 光扩散 
 * 镜头效果
 
 [escher_src]: /src/ui/lib/escher

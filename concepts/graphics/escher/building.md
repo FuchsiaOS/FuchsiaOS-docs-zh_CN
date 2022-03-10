@@ -147,6 +147,6 @@ Escher 也可以在 Linux 上构建。 为此，您需要：
   * Escher 单元测试的构建和运行方式类似：
 
     ```
-    fx build host_x64/escher_unittests && out/default/host_x64/escher_unittests
+    fx build host_x64/escher_unittests && out/default/host_x64/escher_unittests 
     fx build host_x64/escher_renderer_tests && out/default/host_x64/escher_renderer_tests
     ```
