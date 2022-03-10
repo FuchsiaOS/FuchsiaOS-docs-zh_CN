@@ -50,7 +50,7 @@ Escher 也可以在 Linux 上构建。 为此，您需要：
 
      ```
      sudo apt install libxinerama-dev libxrandr-dev libxcursor-dev libx11-xcb-dev libx11-dev mesa-common-dev
-     ``` 
+     ```
 
 <!--
 
@@ -82,7 +82,7 @@ Escher 也可以在 Linux 上构建。 为此，您需要：
 
         ```
        sudo apt install mesa-vulkan-drivers
-       ``` 
+       ```
 <!--
 
   * Set the `VK_LAYER_PATH` and `LD_LIBRARY_PATH` environment variables. Here we use the Vulkan layers

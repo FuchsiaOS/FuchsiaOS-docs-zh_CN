@@ -34,4 +34,4 @@ Fuchsia SDK 没有公开它。
 * 光扩散
 * 镜头效果
 
-[escher_src]：/src/ui/lib/escher 
+[escher_src]: /src/ui/lib/escher
