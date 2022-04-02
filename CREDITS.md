@@ -28,7 +28,7 @@
 │   │   └── images                      |
 │   ├── filesystems --------------------| Lyrance
 │   │   └── images                      |
-│   ├── graphics -----------------------|
+│   ├── graphics -----------------------| Lyrance
 │   │   ├── escher                      |
 │   │   ├── magma                       |
 │   │   ├── scenic                      |
@@ -165,4 +165,4 @@
 
 **校稿**： Dongchan
 
-**统筹**： up the world
+**统筹**： up the world 
