@@ -27,7 +27,7 @@ ordering properties that you may rely on.
 
 ![Hook ordering guarantees](/docs/images/zircon/ddk/driver-hook-ordering.png)
 
-驱动实现的钩子函数将被其他驱动和运行时调用。这种调用在一些使用场景中会和其他或者甚至相同钩子函数同时发生。本节内将会描述你可能依赖的顺序属性。
+驱动实现的钩子函数将被其他驱动和运行时调用。在某些使用场景中，这些调用会和其他或者甚至相同钩子函数同时发生。本节内将会描述你可能依赖的顺序属性。
 
 <!---
 
@@ -40,7 +40,7 @@ This section uses the terms *unsequenced*, *indeterminately sequenced*, and
 
 ### 术语表
 
-本节内使用术语 *乱序*，*不确定序列* 和 *序列前* 作为在C++运行模型中使用。
+本节内使用术语 *乱序*，*不确定序列* 和 *序列前* 作为在 C++ 运行模型中使用。
 
 <!---
 
@@ -53,7 +53,7 @@ hooks for that driver.
 
 ### 驱动初始化
 
- [zx_driver_ops_t][driver] *init* 钩子函数将在驱动中其他任意钩子函数之前完成运行。
+ [zx_driver_ops_t ][driver] *init*  钩子函数将在驱动中其他任意钩子函数之前完成运行。
 
 <!---
 
@@ -79,7 +79,7 @@ run_unit_tests hook.
 
 ### 驱动绑定
 
-如果测试被使能， [zx_driver_ops_t][driver] *bind*钩子函数将仅在run_unit_tests 钩子函数后开始运行。
+如果测试被打开， [zx_driver_ops_t ][driver]  *bind* 钩子函数将仅在 run_unit_tests 钩子函数后才开始运行。
 
 <!---
 
@@ -101,13 +101,13 @@ is unsequenced with respect to the end of the created device's lifecycle.
 
 ### 设备生命周期
 
-设备生命周期在驱动成功调用**device_add()**时开始。这可能发生在任意线程中。在设备生命周期开始之前或者结束之后， [zx_device_ops_t][device] 钩子函数都不会运行。
+在驱动成功调用**device_add()**时，设备生命周期就此开始。这可能发生在任意线程中。在设备生命周期开始之前或者结束之后， [zx_device_ops_t][device] 钩子函数都不会运行。
 
-设备生命周期在设备*release*钩子函数开始运行时结束。
+设备生命周期在设备 *release* 钩子函数开始运行时结束。
 
 除非另有规定，否则[zx_device_ops_t][device]钩子函数彼此之间是没有顺序的。
 
-**注意**：这意味着任何的代码在调用**device_add()**都可能运行，甚至在*bind*钩子函数中，对于所创建的设备生命周期的结束也是没有顺序的。
+**注意**：这意味着调用**device_add()**后，任何代码都可能运行，甚至在*bind*钩子函数中，对于所创建的设备生命周期的结束也是没有顺序的。
 
 <!---
 
@@ -147,7 +147,7 @@ The one exception to this is that they are sequenced before the *release* hook.
 
 ### Misc设备API
 
-[zx_device_ops_t][device] 的*get_size* 和 *get_protocol*钩子函数与所有钩子函数相比是乱序的（包括对自己的并发性调用）。
+[zx_device_ops_t][device] 的 *get_size*  和  *get_protocol* 钩子函数与所有钩子函数相比是乱序的（包括对自己的并发性调用）。
 但是唯一例外为在 *release* 钩子函数之前被排序。
 
 [device]: /src/lib/ddk/include/lib/ddk/device.h
