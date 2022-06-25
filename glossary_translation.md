@@ -15,6 +15,7 @@
 | ArchiveAccessor     | 档案访问器             | i                                                     |
 | archivist           | 归档器                 | i                                                     |
 | attach              | 挂接                   | G                                                     |
+| audience            | 受众群体               | G                                                     |
 | authentication      | 认证                   |                                                       |
 | authorization       | 授权                   |                                                       |
 | automatic retry     | 自动重试               | G                                                     |
