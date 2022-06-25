@@ -36,6 +36,20 @@ command, for example:
 
 `fx set ... --with //src/sys:tests`
 
+A test may also be disabled on certain product or variant configurations. If
+`fx test` does not find the test after adding the label using `fx set`, verify
+that the test is not excluded by a build rule. For example, a test might be
+excluded in coverage variants. This could appear as follows in the test's
+BUILD.gn file:
+
+```
+group("tests") {
+  if (!is_coverage) {
+    deps = [ ":my-test" ]
+  }
+}
+```
+
 If a newly added test is in the product configuration defined by `fx set` but
 still doesn't show in `tests.json`, you may need to run `fx gen` or `fx build`
 to update `tests.json` so that `fx test` knows how to run it.
@@ -47,14 +61,14 @@ There's the easy way if your QEMU has networking, and the hard way if it
 doesn't.
 
 A (with networking): In one terminal, start your QEMU instance with `fx qemu -N`.
-Next, on another terminal, type in `fx test scenic_tests`.
+Next, on another terminal, type in `fx test escher_tests`.
 
-This invocation runs all the test executables in the `scenic_tests` package.
+This invocation runs all the test executables in the `escher_tests` package.
 
 A (no networking): Start a QEMU instance (`fx qemu`), and then *manually* invoke
 the `runtests` command.
 
-In the QEMU shell, type in `run-test-component scenic_tests`. The
+In the QEMU shell, type in `run-test-component escher_tests`. The
 argument is a specific directory containing the test executables.
 
 Note Well! Without networking, the files are loaded into the QEMU instance at
@@ -75,8 +89,8 @@ while piping the output back to your workstation terminal. Slick!
 Make sure your device is running (hit Ctrl-D to boot an existing image) and
 connected to your workstation.
 
-From your workstation, `fx test scenic_tests` will serially run through all
-test executables contained in the `scenic_tests` package.
+From your workstation, `fx test escher_tests` will serially run through all
+test executables contained in the `escher_tests` package.
 
 To run just one test executable, use the following command:
 
@@ -89,7 +103,7 @@ flag. To learn more about the new `fx test` command, see
 [Run Fuchsia tests][run_fuchsia_tests].
 
 You can automatically rebuild, install, and run your tests on every source file
-change with `fx -i`. For instance: `fx -i test scenic_tests`.
+change with `fx -i`. For instance: `fx -i test escher_tests`.
 
 ## Q: Where are the test results captured?
 
@@ -107,7 +121,7 @@ test.
 ### Tag the test as flaky
 
 You can do this by adding "flaky" to the `tags` field in the
-[test environment](/docs/concepts/testing/environments.md). This operates
+[test environment](/docs/contribute/testing/environments.md). This operates
 on the entire test target (which corresponds to an executable). It will prevent this target
 from running on the builders in the commit queue, and enable the target on special flaky
 builders that continue to run the test in CI. Be sure to note the bug in a
@@ -125,10 +139,10 @@ prefixed with `DISABLED_`. One way to find them is therefore simply `git grep
 DISABLED_`.
 
 If running the test outputs `YOU HAVE 1 DISABLED TEST`, you can also pass the
-following flags to find out which test is disabled: `fx run-test scenic_tests --
+following flags to find out which test is disabled: `fx run-test escher_tests --
 --gtest_list_tests --gtest_filter=*DISABLED_*`.
 
-To force-run disabled tests: `fx run-test scenic_tests --
+To force-run disabled tests: `fx run-test escher_tests --
 --gtest_also_run_disabled_tests`.
 
 ### Rust only: apply the `#[ignore]` attribute

@@ -137,8 +137,8 @@ M  0000400cbba84000-0000400cbbac4000 rw-  256k:sz   4k:res  2513:vmo 'initial-st
 ...
 # The vDSO, which only has .text and .rodata.
 R  000047e1ab874000-000047e1ab87b000       28k:sz                    'useralloc'
- M 000047e1ab874000-000047e1ab87a000 r--   24k:sz  24k:res  1031:vmo 'vdso/full'
- M 000047e1ab87a000-000047e1ab87b000 r-x    4k:sz   4k:res  1031:vmo 'vdso/full'
+ M 000047e1ab874000-000047e1ab87a000 r--   24k:sz  24k:res  1031:vmo 'vdso/stable'
+ M 000047e1ab87a000-000047e1ab87b000 r-x    4k:sz   4k:res  1031:vmo 'vdso/stable'
 ...
 # The main binary for this process.
 R  000059f5c7068000-000059f5c708d000      148k:sz                    'useralloc'
@@ -166,7 +166,7 @@ It also shows whether a given VMO is a child, along with its parent's koid.
 $ vmos 1118
 rights  koid parent #chld #map #shr    size   alloc name
 rwxmdt  1170      -     0    1    1      4k      4k stack: msg of 0x5a
-r-xmdt  1031      -     2   28   14     28k     28k vdso/full
+r-xmdt  1031      -     2   28   14     28k     28k vdso/stable
      -  1298      -     0    1    1      2M     68k jemalloc-heap
      -  1381      -     0    3    1    516k      8k self-dump-thread:0x12afe79c8b38
      -  1233   1232     1    1    1   33.6k      4k libbacktrace.so

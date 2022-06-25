@@ -16,40 +16,58 @@ asynchronous clients.
 
 If you want to write the code yourself, delete the following directories:
 
-```
+```posix-terminal
 rm -r examples/fidl/rust/client_sync/*
 ```
 
-## Create a hello world component
+## Create the component
 
-1. Set up a hello world component in `examples/fidl/rust/client_sync`.
-   You can name the component `echo-client`, and give the package a name of
-   `echo-rust-client-sync`.
+Create a new component project at `examples/fidl/rust/client_sync`:
 
-   Note: If necessary, refer back to the [previous tutorial][server-tut].
+1. Add a `main()` function to `examples/fidl/rust/client_sync/src/main.rs`:
 
-1. Once you have created your component, ensure that the following works:
-
+   ```rust
+   fn main() {
+     println!("Hello, world!");
+   }
    ```
-   fx set core.x64 --with //examples/fidl/rust/client_sync
+
+1. Declare a target for the client in `examples/fidl/rust/client_sync/BUILD.gn`:
+
+   ```gn
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/BUILD.gn" region_tag="imports" %}
+
+   # Declare an executable for the client.
+   rustc_binary("bin") {
+     name = "fidl_echo_rust_client_sync"
+     edition = "2018"
+
+     sources = [ "src/main.rs" ]
+   }
+
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/BUILD.gn" region_tag="rest" %}
+   ```
+
+1. Add a component manifest in `examples/fidl/rust/client_sync/meta/client.cml`:
+
+   Note: The binary name in the manifest must match the output name of the
+   `executable` defined in the previous step.
+
+   ```json5
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/meta/client.cml" region_tag="example_snippet" %}
+   ```
+
+1. Once you have created your component, ensure that you can add it to the
+   build configuration:
+
+   ```posix-terminal
+   fx set core.qemu-x64 --with //examples/fidl/rust/client_sync:echo-client
    ```
 
 1. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
-   ```
-
-1. In a separate terminal, run:
-
-   ```
-   fx serve
-   ```
-
-1. In a separate terminal, run:
-
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-rust-client-sync#meta/echo-client.cmx
    ```
 
 ## Edit GN dependencies
@@ -57,29 +75,20 @@ rm -r examples/fidl/rust/client_sync/*
 1. Add the following dependencies to the `rustc_binary`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client/BUILD.gn" region_tag="deps" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/BUILD.gn" region_tag="deps" %}
    ```
 
 1. Then, import them in `main.rs`:
 
    ```rust
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client/src/main.rs" region_tag="imports" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/src/main.rs" region_tag="imports" %}
    ```
 
-These dependencies are explained in the  [server tutorial][server-tut].
+These dependencies are explained in the [server tutorial][server-tut].
 
 The one new dependency is `fuchsia-zircon`, which is a crate containing type safe
 bindings for making Zircon kernel syscalls. In this example, the crate is used to
 create a channel.
-
-## Edit component manifest
-
-1. Include the `Echo` protocol in the client component's sandbox by
-   editing the component manifest in `client.cmx`.
-
-   ```cmx
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/client.cmx" %}
-   ```
 
 ## Connect to the server {#main}
 
@@ -89,7 +98,7 @@ that connects the client to the server and makes requests to it.
 ### Initialize a channel
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/src/main.rs" region_tag="main" highlight="2,3" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/src/main.rs" region_tag="main" highlight="2,3" %}
 ```
 
 This channel will be used to communicate between the client and server.
@@ -97,7 +106,7 @@ This channel will be used to communicate between the client and server.
 ### Connect to the server
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/src/main.rs" region_tag="main" highlight="4,5,6,7,8" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client_sync/src/main.rs" region_tag="main" highlight="4,5,6,7,8" %}
 ```
 
 `connect_channel_to_service` will bind the provided channel end to the specified
@@ -140,7 +149,7 @@ The code makes two requests to the server:
 * A `SendString` request
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client/src/main.rs" region_tag="main" highlight="10,11,12,13,14,15" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client/src/main.rs" region_tag="main" highlight="10,11,12,13,14,15" %}
 ```
 
 The call to `echo_string` will block until a response is received from the server, and therefore
@@ -156,53 +165,63 @@ The [bindings reference][bindings-ref] describes how these methods are generated
 
 ## Run the client
 
-If you run the client directly, it will not connect to the server correctly because the
-client does not automatically get the `Echo` protocol provided in its
-sandbox (in `/svc`). To get this to work, a launcher tool is provided
-that launches the server, creates a new [`Environment`][environment] for
-the client that provides the server's protocol, then launches the client in it.
+In order for the client and server to communicate using the `Echo` protocol,
+component framework must route the `fuchsia.examples.Echo` capability from the
+server to the client. For this tutorial, a [realm][glossary.realm] component is
+provided to declare the appropriate capabilities and routes.
 
-1. Configure your GN build:
+Note: You can explore the full source for the realm component at
+[`//examples/fidl/echo-realm`](/examples/fidl/echo-realm)
 
-   ```
-   fx set core.x64 --with //examples/fidl/rust/server --with
-   //examples/fidl/rust/client_sync --with //examples/fidl/test:echo-launcher
-   ```
+1. Configure your build to include the provided package that includes the
+   echo realm, server, and client:
 
-2. Build the Fuchsia image:
+    ```posix-terminal
+    fx set core.qemu-x64 --with //examples/fidl/rust:echo-rust-client-sync
+    ```
 
-   ```
+1. Build the Fuchsia image:
+
+   ```posix-terminal
    fx build
    ```
 
-3. Run the launcher by passing it the client URL, the server URL, and
-   the protocol that the server provides to the client:
+1. Run the `echo_realm` component. This creates the client and server component
+   instances and routes the capabilities:
 
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-launcher#meta/launcher.cmx fuchsia-pkg://fuchsia.com/echo-rust-client-sync#meta/echo-client.cmx fuchsia-pkg://fuchsia.com/echo-rust-server#meta/echo-server.cmx fuchsia.examples.Echo
-   ```
+    ```posix-terminal
+    ffx component run fuchsia-pkg://fuchsia.com/echo-rust-client-sync#meta/echo_realm.cm
+    ```
 
-You should see the print output in the QEMU console (or using `fx log`).
+1. Start the `echo_client` instance:
 
+    ```posix-terminal
+    ffx component start /core/ffx-laboratory:echo_realm/echo_client
+    ```
+
+The server component starts when the client attempts to connect to the `Echo`
+protocol. You should see output similar to the following in the device logs
+(`ffx log`):
+
+```none {:.devsite-disable-click-to-copy}
+[echo_server][][I] Listening for incoming connections...
+[echo_server][][I] Received EchoString request for string "hello"
+[echo_server][][I] Response sent successfully
+[echo_client][][I] response: "hello"
+[echo_server][][I] Received SendString request for string "hi"
+[echo_server][][I] Event sent successfully
+[echo_client][][I] Received OnString event for string "hi"
 ```
-[109100.005] 505615:505617> Listening for incoming connections...
-[109100.099] 505615:505617> Received EchoString request for string "hello"
-[109100.100] 505615:505617> Response sent successfully
-[109100.100] 505864:505866> response: "hello"
-[109100.100] 505615:505617> Received SendString request for string "hi"
-[109100.100] 505615:505617> error sending event
-[109100.100] 505615:505617>
-[109100.100] 505615:505617> Caused by:
-[109100.100] 505615:505617>     0: A server encountered an IO error writing a FIDL response to a channel: PEER_CLOSED
-[109100.100] 505615:505617>     1: PEER_CLOSED
-```
 
-The server prints a `PEER_CLOSED` error when it tries to send the event, because the client
-terminates immediately after sending the `SendString` request without waiting for the `OnString`
-event. This is expected since synchronous clients cannot handle events. To see how to handle
-events, try following the [async client tutorial instead][async-client]
+Terminate the realm component to stop execution and clean up the component
+instances:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_realm
+```
 
 <!-- xrefs -->
+[glossary.realm]: /docs/glossary/README.md#realm
 [server-tut]: /docs/development/languages/fidl/tutorials/rust/basics/server.md
 [async-client]: /docs/development/languages/fidl/tutorials/rust/basics/client.md
 [overview]: /docs/development/languages/fidl/tutorials/overview.md

@@ -1,14 +1,14 @@
 # zx_process_exit
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Exits the currently running process.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -24,9 +24,9 @@ return code. The return code of a process can be queried via the
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
-TODO(fxbug.dev/32253)
+None.
 
 ## RETURN VALUE
 

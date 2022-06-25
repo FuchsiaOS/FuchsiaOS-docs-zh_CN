@@ -1,7 +1,7 @@
 # Zircon
 
 Zircon is the core platform that powers Fuchsia. Zircon is
-composed of a microkernel (source in [/zircon/kernel](/zircon/kernel))
+composed of a kernel (source in [/zircon/kernel](/zircon/kernel))
 as well as a small set of userspace services, drivers, and libraries
 (source in [/zircon/system/](/zircon/system)) necessary for the system
 to boot, talk to hardware, load userspace processes and run them, etc.
@@ -27,15 +27,15 @@ This page is a non-comprehensive index of the zircon documentation.
 + [Getting Started](/docs/development/kernel/getting_started.md)
 + [Contributing
   Patches to Zircon](/docs/development/source_code/contribute_changes.md#contributing-patches-to-zircon)
-+ [GN in Zircon](/docs/concepts/build_system/zircon_gn.md)
 
 + [Zircon Concepts](/docs/concepts/kernel/concepts.md)
 + [Kernel Objects](/docs/reference/kernel_objects/objects.md)
 + [Kernel Invariants](kernel_invariants.md)
 + [Kernel Scheduling](kernel_scheduling.md)
++ [Kernel Thread Signaling](kernel_thread_signaling.md)
 + [Fair Scheduler](fair_scheduler.md)
 + [Errors](errors.md)
-+ [Time](/docs/concepts/kernel/time.md)
++ [Time units](/docs/development/kernel/time.md)
 
 + [Process Objects](/docs/reference/kernel_objects/process.md)
 + [Thread Objects](/docs/reference/kernel_objects/thread.md)
@@ -46,11 +46,11 @@ This page is a non-comprehensive index of the zircon documentation.
 + [System Calls](/docs/reference/syscalls/README.md)
 + [zxcrypt](/docs/concepts/filesystems/zxcrypt.md)
 
-+ [Fuchsia Driver Framework](/docs/concepts/drivers/getting_started.md)
-+ [Driver interfaces - audio overview](/docs/concepts/drivers/driver_architectures/audio_drivers/audio_overview.md)
++ [Fuchsia Driver Framework](/docs/development/drivers/concepts/getting_started.md)
++ [Driver interfaces - audio overview](/docs/development/drivers/concepts/driver_architectures/audio_drivers/audio_overview.md)
 
 + [libc](/docs/development/languages/c-cpp/libc.md)
-+ [C++ fit::promise<> guide](/docs/development/languages/c-cpp/fit_promise_guide.md)
++ [C++ fpromise::promise<> guide](/docs/development/languages/c-cpp/fpromise_promise_guide.md)
 
 + [Testing](/docs/development/testing/testing.md)
 + [Kernel tracing](/docs/development/tracing/advanced/recording-a-kernel-trace.md)
@@ -59,7 +59,7 @@ This page is a non-comprehensive index of the zircon documentation.
 
 + [Compile-time object collections](/docs/development/languages/c-cpp/compile_time_object_collections.md)
 + [ACPI debugging](/docs/development/debugging/acpi.md)
-+ [Entropy collection TODOs](/docs/concepts/system/jitterentropy/entropy_collection_todos.md)
++ [Entropy collection TODOs](/docs/concepts/kernel/jitterentropy/entropy_collection_todos.md)
 + [Memory usage analysis tools](/docs/development/kernel/memory/memory.md)
 + [Symbolizer](/docs/reference/kernel/symbolizer_markup.md)
 + [Relationship with LK](zx_and_lk.md)

@@ -1,14 +1,14 @@
 # zx_channel_create
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create a channel.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -28,17 +28,23 @@ Two handles are returned on success, providing access to both sides
 of the channel.  Messages written to one handle may be read from
 the opposite.
 
-The handles will have **ZX_RIGHT_TRANSFER** (allowing them to be sent
-to another process via [`zx_channel_write()`]), **ZX_RIGHT_WRITE** (allowing
-messages to be written to them), and **ZX_RIGHT_READ** (allowing messages
-to be read from them).
+The handles will have these rights:
+
+ - **ZX_RIGHT_TRANSFER**: allowing them to be sent to another process via
+   [`zx_channel_write()`].
+ - **ZX_RIGHT_WAIT**: allowing one to wait for its signals.
+ - **ZX_RIGHT_INSPECT**
+ - **ZX_RIGHT_READ**: allowing messages to be read from them.
+ - **ZX_RIGHT_WRITE**: allowing messages to be written to them.
+ - **ZX_RIGHT_SIGNAL**
+ - **ZX_RIGHT_SIGNAL_PEER**
 
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
-TODO(fxbug.dev/32253)
+Caller job policy must allow **ZX_POL_NEW_CHANNEL**.
 
 ## RETURN VALUE
 

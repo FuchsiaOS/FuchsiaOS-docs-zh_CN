@@ -57,7 +57,7 @@ gracefully on invalid parameters is correct behavior.
 
 * {C/C++}
 
-  For C and C++, the fuzz target function must be have the signatue
+  For C and C++, the fuzz target function must have the signature
   `extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)` and return 0:
 
   ```cpp

@@ -1,14 +1,14 @@
 # zx_system_get_event
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Retrieve a handle to a system event.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -81,7 +81,7 @@ the closely following ZX_SYSTEM_EVENT_OUT_OF_MEMORY event (if there is one).
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 None.
 

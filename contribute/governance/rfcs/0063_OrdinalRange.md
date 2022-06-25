@@ -3,9 +3,9 @@
 # {{ rfc.name }}: {{ rfc.title }}
 <!-- SET the `rfcid` VAR ABOVE. DO NOT EDIT ANYTHING ELSE ABOVE THIS LINE. -->
 
-# Rejection rationale
-
 Note: Formerly known as [FTP](../deprecated-ftp-process.md)-010.
+
+## Rejection rationale
 
 We've had a number of discussions about how we want interfaces to evolve,
 and be inheritable.
@@ -21,6 +21,12 @@ would irreparably break inheritors.
 As a result, we're going to introduce, on a temporary basis (until we have
 a better solution), the requirement that any interface needing to be
 inherited must be annotated with `[FragileBase]`.
+
+### Relation to other RFCs
+
+This RFC was superseded by:
+
+* [RFC-0020: Interface ordinal hashing](0020_interface_ordinal_hashing.md)
 
 ## Summary {#summary}
 

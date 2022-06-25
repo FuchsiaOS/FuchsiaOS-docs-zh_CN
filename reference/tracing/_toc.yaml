@@ -6,8 +6,6 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Fuchsia trace format"
-  path: /docs/reference/tracing/trace-format.md
 - title: "Trace specification file"
   path: /docs/reference/tracing/trace-specification-file.md
 - title: "Tracing libraries"

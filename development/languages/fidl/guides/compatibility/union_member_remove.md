@@ -21,10 +21,10 @@ rust|[link](#rust-init)|[link](#rust-1)||[link](#rust-3)
 ### FIDL {#fidl-init}
 
 ```fidl
-flexible union JsonValue {
-    1: int32 int_value;
-    2: string:MAX string_value;
-    3: float32 float_value;
+type JsonValue = flexible union {
+    1: int_value int32;
+    2: string_value string:MAX;
+    3: float_value float32;
 };
 ```
 
@@ -128,29 +128,27 @@ std::string reader(const fidl_test::JsonValue& value) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-fidl_test::JsonValue writer(const std::string& s) {
+fidl_test::wire::JsonValue writer(fidl::AnyArena& allocator, const std::string& s) {
   std::optional<float> maybe_float = parse_as_float(s);
-  ;
   if (maybe_float) {
-    return fidl_test::JsonValue::WithIntValue(std::make_unique<int32_t>(*maybe_float));
+    return fidl_test::wire::JsonValue::WithIntValue(allocator, *maybe_float);
   }
   std::optional<int32_t> maybe_int = parse_as_int(s);
   if (maybe_int) {
-    return fidl_test::JsonValue::WithIntValue(std::make_unique<int32_t>(*maybe_int));
+    return fidl_test::wire::JsonValue::WithIntValue(allocator, *maybe_int);
   }
-  return fidl_test::JsonValue::WithStringValue(
-      std::make_unique<fidl::StringView>(fidl::heap_copy_str(s)));
+  return fidl_test::wire::JsonValue::WithStringValue(allocator, allocator, s);
 }
 
-std::string reader(const fidl_test::JsonValue& value) {
+std::string reader(const fidl_test::wire::JsonValue& value) {
   switch (value.which()) {
-    case fidl_test::JsonValue::Tag::kIntValue:
+    case fidl_test::wire::JsonValue::Tag::kIntValue:
       return std::to_string(value.int_value());
-    case fidl_test::JsonValue::Tag::kStringValue:
+    case fidl_test::wire::JsonValue::Tag::kStringValue:
       return std::string(value.string_value().data(), value.string_value().size());
-    case fidl_test::JsonValue::Tag::kFloatValue:
+    case fidl_test::wire::JsonValue::Tag::kFloatValue:
       return std::to_string(value.float_value());
-    case fidl_test::JsonValue::Tag::kUnknown:
+    case fidl_test::wire::JsonValue::Tag::kUnknown:
       return "<unknown>";
   }
 }
@@ -305,29 +303,27 @@ fn reader(value: fidl_lib::JsonValue) -> String {
 - Remove references to the soon-to-be-removed variant from any switch statements on the union tag. These must be temporarily handled as part of a default case.
 
 ```diff
-  fidl_test::JsonValue writer(const std::string& s) {
+  fidl_test::wire::JsonValue writer(fidl::AnyArena& allocator, const std::string& s) {
 -   std::optional<float> maybe_float = parse_as_float(s);
--   ;
 -   if (maybe_float) {
--     return fidl_test::JsonValue::WithIntValue(std::make_unique<int32_t>(*maybe_float));
+-     return fidl_test::wire::JsonValue::WithIntValue(allocator, *maybe_float);
 -   }
     std::optional<int32_t> maybe_int = parse_as_int(s);
     if (maybe_int) {
-      return fidl_test::JsonValue::WithIntValue(std::make_unique<int32_t>(*maybe_int));
+      return fidl_test::wire::JsonValue::WithIntValue(allocator, *maybe_int);
     }
-    return fidl_test::JsonValue::WithStringValue(
-        std::make_unique<fidl::StringView>(fidl::heap_copy_str(s)));
+    return fidl_test::wire::JsonValue::WithStringValue(allocator, allocator, s);
   }
   
-  std::string reader(const fidl_test::JsonValue& value) {
+  std::string reader(const fidl_test::wire::JsonValue& value) {
     switch (value.which()) {
-      case fidl_test::JsonValue::Tag::kIntValue:
+      case fidl_test::wire::JsonValue::Tag::kIntValue:
         return std::to_string(value.int_value());
-      case fidl_test::JsonValue::Tag::kStringValue:
+      case fidl_test::wire::JsonValue::Tag::kStringValue:
         return std::string(value.string_value().data(), value.string_value().size());
--     case fidl_test::JsonValue::Tag::kFloatValue:
+-     case fidl_test::wire::JsonValue::Tag::kFloatValue:
 -       return std::to_string(value.float_value());
-      case fidl_test::JsonValue::Tag::kUnknown:
+      case fidl_test::wire::JsonValue::Tag::kUnknown:
 +     default:
         return "<unknown>";
     }
@@ -369,10 +365,10 @@ fn reader(value: fidl_lib::JsonValue) -> String {
 - Remove the union variant
 
 ```diff
-  flexible union JsonValue {
-      1: int32 int_value;
-      2: string:MAX string_value;
--     3: float32 float_value;
+  type JsonValue = flexible union {
+      1: int_value int32;
+      2: string_value string:MAX;
+-     3: float_value float32;
   };
 
 ```
@@ -464,18 +460,18 @@ fn reader(value: fidl_lib::JsonValue) -> String {
 - The default case can now be removed from any switch statements on the union tag.
 
 ```diff
+      return fidl_test::wire::JsonValue::WithIntValue(allocator, *maybe_int);
     }
-    return fidl_test::JsonValue::WithStringValue(
-        std::make_unique<fidl::StringView>(fidl::heap_copy_str(s)));
+    return fidl_test::wire::JsonValue::WithStringValue(allocator, allocator, s);
   }
   
-  std::string reader(const fidl_test::JsonValue& value) {
+  std::string reader(const fidl_test::wire::JsonValue& value) {
     switch (value.which()) {
-      case fidl_test::JsonValue::Tag::kIntValue:
+      case fidl_test::wire::JsonValue::Tag::kIntValue:
         return std::to_string(value.int_value());
-      case fidl_test::JsonValue::Tag::kStringValue:
+      case fidl_test::wire::JsonValue::Tag::kStringValue:
         return std::string(value.string_value().data(), value.string_value().size());
-      case fidl_test::JsonValue::Tag::kUnknown:
+      case fidl_test::wire::JsonValue::Tag::kUnknown:
 -     default:
         return "<unknown>";
     }

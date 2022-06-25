@@ -1,9 +1,10 @@
-# Component topology (Components v2)
+# Component topology
 
 <<../_v2_banner.md>>
 
-The _component topology_ is a general concept that expresses the set of
-relationships between [component instances](#component-instances).
+The _[component topology][glossary.component topology]_ is a general concept
+that expresses the set of relationships between
+[component instances](#component-instances).
 
 These relationships are the following:
 
@@ -16,7 +17,7 @@ These relationships are the following:
 ## Component instances {#component-instances}
 
 A _component instance_ is a distinct embodiment of a
-[component][glossary-component] running in its own sandbox that is isolated from
+[component][glossary.component] running in its own sandbox that is isolated from
 other component instances (including other instances of the same component).
 
 You can often use the terms component and component instance interchangeably
@@ -54,7 +55,7 @@ Children can be created in two ways:
     destroys the child in a similar manner.
 
 The component topology represents the structure of these parent-child
-relationships as a [component instance tree][glossary-component-instance-tree].
+relationships as a [component instance tree][glossary.component-instance-tree].
 
 <br>![Diagram of component instance tree](images/topology_instance_tree.png)<br>
 
@@ -119,16 +120,17 @@ information.
 
 <br>![Diagram of capability routing](images/topology_capability_routing.png)<br>
 
+[glossary.component]: /docs/glossary/README.md#component
+[glossary.component instance tree]: /docs/glossary/README.md#component-instance-tree
+[glossary.component topology]: /docs/glossary#component-topology
 [doc-collections]: /docs/concepts/components/v2/realms.md#collections
 [doc-environments]: /docs/concepts/components/v2/environments.md
-[doc-expose]: /docs/concepts/components/v2/component_manifests.md#expose
+[doc-expose]: https://fuchsia.dev/reference/cml#expose
 [doc-realms]: /docs/concepts/components/v2/realms.md
 [doc-realm-framework-protocol]: /docs/concepts/components/v2/realms.md#realm-framework-protocol
-[doc-monikers]: /docs/concepts/components/v2/monikers.md
-[doc-component-urls]: /docs/concepts/components/component_urls.md
-[doc-capability-routing]: /docs/concepts/components/v2/component_manifests.md#capability-routing
-[doc-component-declaration]: /docs/concepts/components/v2/declarations.md
-[glossary-component]: /docs/glossary.md#component
-[glossary-component-instance-tree]: /docs/glossary.md#component-instance-tree
+[doc-monikers]: /docs/concepts/components/v2/identifiers.md#monikers
+[doc-component-urls]: /docs/concepts/components/v2/identifiers.md#component-urls
+[doc-capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[doc-component-declaration]: /docs/concepts/components/v2/component_manifests.md#component-declaration
 [wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege
 [wiki-object-composition]: https://en.wikipedia.org/wiki/Object_composition

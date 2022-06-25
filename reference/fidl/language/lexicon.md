@@ -56,7 +56,7 @@ declaration, i.e. a declaration is comprised of zero, one, or many members.
 For instance, consider the `Mode` bits declaration:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/misc.test.fidl" region_tag="mode" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/misc.test.fidl" region_tag="mode" %}
 ```
 
 Both `READ` and `WRITE` are members.
@@ -70,7 +70,7 @@ members as **variants**.
 For example, consider the `Command` union declaration:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/misc.test.fidl" region_tag="command" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/misc.test.fidl" region_tag="command" %}
 ```
 
 The two variants are `create_resource` and `release_resource`.
@@ -91,7 +91,7 @@ enum CommandTag {
     Release,
 }
 
-interface Command = {
+interface Command {
     tag: CommandTag,
     data: CreateResource | ReleaseResource,
 }
@@ -149,7 +149,7 @@ returning it directly or via an error callback.
 For methods with error types specified:
 
 ```fidl
-DoWork() -> (Data result) error uint32
+DoWork() -> (struct { result Data; }) error uint32
 ```
 
 The **result type** refers to the entire message that would be received by a

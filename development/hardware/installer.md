@@ -1,4 +1,4 @@
-# Create a bootable Fuchsia image
+# Use the Fuchsia installer (Legacy)
 
 ## Overview
 
@@ -45,7 +45,7 @@ These are the ways you can install Fuchsia:
   <code class="devsite-terminal">installer</code>
   <span class="no-select">Bootloader vendor = Intel Corp.
   Please select the disk you want to install Fuchsia to:
-  [0] /dev/sys/pci/00:17.0/ahci/sata2/block (119G)
+  [0] /dev/sys/platform/pci/00:17.0/ahci/sata2/block (119G)
   Enter a selection (0..0):
   </span>
   </pre>
@@ -60,7 +60,7 @@ These are the ways you can install Fuchsia:
   <pre class="prettyprint">
   <span class="no-select">
   Enter a selection (0..0): 0
-  Using /dev/sys/pci/00:17.0/ahci/sata2/block as installation target.
+  Using /dev/sys/platform/pci/00:17.0/ahci/sata2/block as installation target.
 
   WARNING: Installing Fuchsia will WIPE YOUR DISK. Make sure you've backed
   everything up before proceeding!
@@ -79,11 +79,11 @@ These are the ways you can install Fuchsia:
    Wiping old partition tables...
    Initializing Fuchsia partition tables...
    Success.
-   Partition[src=/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-002/block, pave_type=Bootloader]... OK
-   Partition[src=/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block, pave_type=Asset { type: Kernel, config: A }, asset=Kernel, config=A]... OK
-   Partition[src=/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block, pave_type=Asset { type: Kernel, config: A }, asset=Kernel, config=A] [-B]... OK
-   Partition[src=/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-004/block, pave_type=Asset { type: Kernel, config: Recovery }, asset=Kernel, config=Recovery]... OK
-   Partition[src=/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-005/block, pave_type=Volume]... OK
+   Partition[src=/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-002/block, pave_type=Bootloader]... OK
+   Partition[src=/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block, pave_type=Asset { type: Kernel, config: A }, asset=Kernel, config=A]... OK
+   Partition[src=/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block, pave_type=Asset { type: Kernel, config: A }, asset=Kernel, config=A] [-B]... OK
+   Partition[src=/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-004/block, pave_type=Asset { type: Kernel, config: Recovery }, asset=Kernel, config=Recovery]... OK
+   Partition[src=/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-005/block, pave_type=Volume]... OK
    </span>
    </pre>
 
@@ -103,25 +103,25 @@ These are the ways you can install Fuchsia:
   <pre class="prettyprint">
   <code class="devsite-terminal">lsblk</code>
   <span class="no-select">ID  SIZE TYPE         	LABEL            	FLAGS  DEVICE
-  000  28G                                   	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block
-  001  63M efi-system   	zedboot-efi      	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-000/block
-  002   1M cros-data    	efi              	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-001/block
-  003  25M cros-data    	zircon-a         	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-002/block
-  004  22M cros-data    	zircon-r         	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block
-  005 321M cros-data    	storage-sparse   	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-004/block
-  006 119G                                          	/dev/sys/pci/00:17.0/ahci/sata2/block
+  000  28G                                   	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block
+  001  63M efi-system   	zedboot-efi      	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-000/block
+  002   1M cros-data    	efi              	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-001/block
+  003  25M cros-data    	zircon-a         	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-002/block
+  004  22M cros-data    	zircon-r         	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block
+  005 321M cros-data    	storage-sparse   	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-004/block
+  006 119G                                          	/dev/sys/platform/pci/00:17.0/ahci/sata2/block
   </span>
   </pre>
 
-  In this case, `/dev/sys/pci/00:17.0/ahci/sata2/block` is the main disk of the
+  In this case, `/dev/sys/platform/pci/00:17.0/ahci/sata2/block` is the main disk of the
   target machine.
 
 1. Run `install-disk-image` to wipe and initialize the partition tables on the
-  target machine. Replace `/dev/sys/pci/00:17.0/ahci/sata2/block` with the path
+  target machine. Replace `/dev/sys/platform/pci/00:17.0/ahci/sata2/block` with the path
   you determined using the `lsblk` command.
 
   <pre class="prettyprint">
-  <code class="devsite-terminal">install-disk-image init-partition-tables --block-device <var>/dev/sys/pci/00:17.0/ahci/sata2/block</var></code>
+  <code class="devsite-terminal">install-disk-image init-partition-tables --block-device <var>/dev/sys/platform/pci/00:17.0/ahci/sata2/block</var></code>
   <span class="no-select">
   disk-pave: init-partition-tables operation succeeded.
   </span>
@@ -133,22 +133,22 @@ These are the ways you can install Fuchsia:
   <code class="devsite-terminal">lsblk</code>
   <span class="no-select">
   ID  SIZE TYPE         	LABEL            	FLAGS  DEVICE
-  000  28G                                   	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block
-  001  63M efi-system   	zedboot-efi      	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-000/block
-  002   1M cros-data    	efi              	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-001/block
-  003  25M cros-data    	zircon-a         	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-002/block
-  004  22M cros-data    	zircon-r         	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block
-  005 321M cros-data    	storage-sparse   	RE 	/dev/sys/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-004/block
-  006 119G                                          	/dev/sys/pci/00:17.0/ahci/sata2/block
-  052  16M efi-system   	efi-system              	/dev/sys/pci/00:17.0/ahci/sata2/block/part-000/block
-  053  64M zircon-a     	zircon-a                	/dev/sys/pci/00:17.0/ahci/sata2/block/part-001/block
-  054  64M zircon-b     	zircon-b                	/dev/sys/pci/00:17.0/ahci/sata2/block/part-002/block
-  055  96M zircon-r     	zircon-r                	/dev/sys/pci/00:17.0/ahci/sata2/block/part-003/block
-  056  64K vbmeta_a     	vbmeta_a                	/dev/sys/pci/00:17.0/ahci/sata2/block/part-004/block
-  057  64K vbmeta_b     	vbmeta_b                	/dev/sys/pci/00:17.0/ahci/sata2/block/part-005/block
-  058  64K vbmeta_r     	vbmeta_r                	/dev/sys/pci/00:17.0/ahci/sata2/block/part-006/block
-  059   4K misc         	misc                    	/dev/sys/pci/00:17.0/ahci/sata2/block/part-007/block
-  060  16G fuchsia-fvm  	fuchsia-fvm             	/dev/sys/pci/00:17.0/ahci/sata2/block/part-008/block
+  000  28G                                   	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block
+  001  63M efi-system   	zedboot-efi      	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-000/block
+  002   1M cros-data    	efi              	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-001/block
+  003  25M cros-data    	zircon-a         	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-002/block
+  004  22M cros-data    	zircon-r         	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-003/block
+  005 321M cros-data    	storage-sparse   	RE 	/dev/sys/platform/pci/00:14.0/xhci/usb-bus/001/001/ifc-000/ums/lun-000/block/part-004/block
+  006 119G                                          	/dev/sys/platform/pci/00:17.0/ahci/sata2/block
+  052  16M efi-system   	efi-system              	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-000/block
+  053  64M zircon-a     	zircon-a                	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-001/block
+  054  64M zircon-b     	zircon-b                	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-002/block
+  055  96M zircon-r     	zircon-r                	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-003/block
+  056  64K vbmeta_a     	vbmeta_a                	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-004/block
+  057  64K vbmeta_b     	vbmeta_b                	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-005/block
+  058  64K vbmeta_r     	vbmeta_r                	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-006/block
+  059   4K misc         	misc                    	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-007/block
+  060  16G fuchsia-fvm  	fuchsia-fvm             	/dev/sys/platform/pci/00:17.0/ahci/sata2/block/part-008/block
   </span>
   </pre>
 

@@ -162,6 +162,11 @@ indicate field contents:
 
   A nonnegative decimal integer.
 
+* `%i`
+
+  A nonnegative integer. The digits are hexadecimal if prefixed by `0x`, octal
+  if prefixed by `0`, or decimal otherwise.
+
 * `%x`
 
   A sequence of an even number of hexadecimal digits (using either
@@ -431,10 +436,10 @@ raw logging stream, accumulating context and massaging text as it goes.
   {{{module:1:libc.so:elf:83238ab56ba10497}}}
   ```
 
-* `{{{mmap:%p:%x:...}}}`
+* `{{{mmap:%p:%i:...}}}`
 
   This contextual element is used to give information about a particular
-  region in memory. `%p` is the starting address and `%x` gives the size
+  region in memory. `%p` is the starting address and `%i` gives the size
   in hex of the region of memory. The `...` part can take different forms
   to give different information about the specified region of memory. The
   allowed forms are the following:
@@ -442,7 +447,7 @@ raw logging stream, accumulating context and massaging text as it goes.
   * `load:%i:%s:%p`
 
     This subelement informs the filter that a segment was loaded from a
-    module. The module is identified by its module id `%i`. The `%s` is
+    module. The module is identified by its module ID `%i`. The `%s` is
     one or more of the letters 'r', 'w', and 'x' (in that order and in
     either upper or lower case) to indicate this segment of memory is
     readable, writable, and/or executable. The symbolizing filter can use

@@ -1,9 +1,8 @@
 # Packaging
 
 The generated JSON file from the previous section must be bundled together with
-the Fuchsia program so that it can be found at program runtime.  This is done
-by the regular Fuchsia build rules, such as those in
-[package.gni](/build/package.gni).
+the Fuchsia program so that it can be found at program runtime.
+See: [Provide data files to components][provide-data-guide].
 
 We have established some conventions for packaging resources (i.e. localized
 assets). The schema is intended to be extensible to other asset types, and also
@@ -26,7 +25,9 @@ still needs to be done manually.
 Packaging localized resources is best illustrated with an example.  Let us start
 with the `BUILD.gn` file and we can focus on particular sections later.
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/intl/example/BUILD.gn" adjust_indentation="auto" %}
+```gn
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/intl/example/BUILD.gn" adjust_indentation="auto" %}
+```
 
 ### Build rule to generate the localized resources
 
@@ -34,7 +35,9 @@ Localized resources are based on the files on the filesystem.  An example
 program at [//src/lib/intl/example](/src/intl/example/README.md) shows how
 you can build and deploy a Fuchsia program that contains localized messages.
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/intl/example/BUILD.gn" region_tag="strings" adjust_indentation="auto" %}
+```gn
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/intl/example/BUILD.gn" region_tag="strings" adjust_indentation="auto" %}
+```
 
 The build rule `intl_strings` instructs the build system to process the XML
 files containing strings.  Refer to the section on [message
@@ -64,10 +67,13 @@ listed in the `output_locales`, the build system expects a file named
 `strings_fr.xml`.  These resources will need to be packaged with the binary
 into a Fuchsia package.
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/intl/example/BUILD.gn" region_tag="resources" adjust_indentation="auto" %}
+```gn
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/intl/example/BUILD.gn" region_tag="resources" adjust_indentation="auto" %}
+```
 
 Make sure to package the JSON resource into the correct directory.  For
 translated messages, the correct directory path would be
 `assets/locales/fr/l10n.json` for the translated messages for French.  It is
 also required to package the ICU data, is defined in the `icudtl.dat` section.
 
+[provide-data-guide]: /docs/development/components/data.md

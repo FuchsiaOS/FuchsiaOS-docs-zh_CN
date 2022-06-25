@@ -16,8 +16,14 @@ toc:
   path: /docs/contribute/roadmap/2021/flatland.md
 - title: "Flutter-on-Fuchsia Velocity"
   path: /docs/contribute/roadmap/2021/flutter_on_fuchsia_velocity.md
+- title: "Invest in sanitizers"
+  path: /docs/contribute/roadmap/2021/invest_in_sanitizers.md
 - title: "Netstack3 - A Fuchsia owned rust based netstack"
   path: /docs/contribute/roadmap/2021/netstack3.md
+- title: "Out-of-tree component testing support"
+  path: /docs/contribute/roadmap/2021/oot_component_testing.md
+- title: "Out-of-tree system testing support"
+  path: /docs/contribute/roadmap/2021/oot_system_testing.md
 - title: "Scaling Product Assembly and Configuration"
   path: /docs/contribute/roadmap/2021/product_assembly.md
 - title: "Structured Configuration"

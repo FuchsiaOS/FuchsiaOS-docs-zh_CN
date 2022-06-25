@@ -47,7 +47,7 @@ centralize all artifacts of Fuchsia technical decisions.
 
 ### Differences between the two processes {#differences}
 
-#### Medium
+#### Medium {#medium}
 
 The FTP process does not mandate a medium, and author(s) are free to choose the
 medium they believe is best whilst adhering to the template imposed. In

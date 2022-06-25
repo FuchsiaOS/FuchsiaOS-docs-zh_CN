@@ -119,7 +119,7 @@ we learned:
     > the left-most bit (first transmitted) is the low-order (2^0) digit and
     > the right-most bit (last transmitted) is the high-order (2^7) digit"
 
-![Figure: Data Link Layer Frame Format](resources/ftp-030-figure1.png)
+![Figure: Data Link Layer Frame Format](resources/0030_fidl_is_little_endian/figure1.png)
 
 * USB is little endian.
 

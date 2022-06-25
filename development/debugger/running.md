@@ -1,36 +1,44 @@
-# Set up and run zxdb, Fuchsia's native debugger
+# Set up and run zxdb, Fuchsia's debugger for C++ and Rust code
 
-## Preparation: Boot with networking
-
-Boot the target system with networking support:
-
-  * Hardware devices: use the device instructions.
-  * AEMU: `fx emu -N`
-  * QEMU: `fx qemu -N`
-
-(If using x64 with an emulator on a Linux host, we also recommend the "-k" flag, which will make it
-run faster).
-
-To manually validate network connectivity run `fx shell` or `fx get-device-addr`.
-
-## Finding the debugger
-
-## Binary location (for SDK users)
-
-The binary is `tools/zxdb` in the Fuchsia SDK. SDK users will have to do an extra step to set up
-your symbols. See "Running out-of-tree" below for more.
-
-## Compiling the debugger from source (for Fuchsia team members)
-
-A Fuchsia "core" build includes (as of this writing) the necessary targets for the debugger. So this
-build configuration is sufficient:
+Launching zxdb on Fuchsia is as simple as one command:
 
 ```posix-terminal
-fx --dir=out/x64 set core.x64
+ffx debug connect
 ```
 
-If you're compiling with another product, you may not get it by default. If you don't have the
-debugger in your build, add `//bundles:tools` to your "universe", either with:
+When the debugger is launched, it should show
+
+```none
+Connecting (use "disconnect" to cancel)...
+Connected successfully.
+👉 To get started, try "status" or "help".
+[zxdb]
+```
+
+It'll work 95% of the time, regardless of whether you work in-tree or out-of-tree, using an emulator
+or a hardware device. If it doesn't work as expected, please check the troubleshooting below.
+
+## Troubleshooting
+
+### The build type is compatible
+
+Debuggers on Fuchsia depend on privileged syscalls, most notably
+[`zx_process_write_memory`](/docs/reference/syscalls/process_write_memory.md).
+These syscalls are only enabled when the kernel flag
+[`kernel.enable-debugging-syscalls`](/docs/gen/boot-options.md#kernelenable-debugging-syscallsbool)
+is set to `true`, which means debuggers are not available for `user` and `userdebug`
+[build types](/docs/contribute/governance/rfcs/0115_build_types.md).
+
+If you are building from source, most probably these syscalls are enabled.
+
+### zxdb and debug_agent are built
+
+Zxdb depends on a target-side component called debug\_agent.  If an error message says "The plugin
+service selector 'core/debug\_agent:expose:fuchsia.debugger.DebugAgent' did not match any services
+on the target", it means that debug\_agent is not built.  You can also check whether there's
+`debug_agent` and `host_x64/zxdb` in your build directory.
+
+If you don't have the debugger in your build, add `//bundles:tools` to your "universe", either with:
 
 ```posix-terminal
 fx <normal_stuff_you_use> --with //bundles:tools
@@ -42,9 +50,21 @@ Or you can edit your GN args directly by editing `<build_dir>/args.gn` and addin
 universe_package_labels += [ "//bundles:tools" ]
 ```
 
-## Simple method
+### ffx can talk with the device
 
-You can use the fx utility to start the debug agent and connect automatically.
+Make sure that ffx can discover the device, either a emulator or a hardware device, and
+RCS is started on the device.
+
+```
+$ ffx target list
+NAME       SERIAL       TYPE             STATE      ADDRS/IP                    RCS
+demo-emu   <unknown>    core.qemu-x64    Product    [10.0.2.15,                 Y
+                                                    fec0::90e:486e:b6b5:9780,
+                                                    fec0::487b:fabd:20fa:43ee,
+                                                    127.0.0.1]
+```
+
+### Package server is running
 
 For most build configurations, the debug agent will be in the "universe" (i.e. "available to use")
 but not in the base build so won't be on the system before boot. You will need to run:
@@ -53,98 +73,19 @@ but not in the base build so won't be on the system before boot. You will need t
 fx serve
 ```
 
-to make the debug agent's package available for serving to the system. Otherwise you will get the
-message "Timed out trying to find the Debug Agent".
+### Debug symbols are registered {#set-symbol-location}
 
-Once the server is running, launch the debugger in another terminal window:
-
-```posix-terminal
-fx debug
-```
-
-To manually validate packages can be loaded, run `ls` from within the Fuchsia shell (for most setups
-this requires `fx serve` to be successfully serving packages).
-
-## Manual method
-
-In some cases you may want to run the debug agent and connect manually. To do so, follow these
-steps:
-
-### 1. Run the debug agent on the target
-
-On the target system pick a port and run the debug agent:
-
-```posix-terminal
-run fuchsia-pkg://fuchsia.com/debug_agent#meta/debug_agent.cmx --port=2345
-```
-
-If you get an error "Cannot create child process: ... failed to resolve ..." it means the debug
-agent can't be loaded. You may need to run `fx serve` or its equivalent in your environment to make
-it available.
-
-You will want to note the target's IP address. Run `ifconfig` _on the target_ to see this, or run
-`fx get-device-addr` on the host.
-
-### 2. Run the client and connect
-
-On the host system (where you do the build), run the client. Use the IP address of the target and
-the port you picked above in the `connect` command. If running in-tree, `fx get-device-addr` will
-tell you this address.
-
-For QEMU, we recommend using IPv6 and link local addresses. These addresses have to be annotated
-with the interface they apply to, so make sure the address you use includes the appropriate
-interface (should be the name of the bridge device).
-
-The address should look like `fe80::5054:ff:fe63:5e7a%br0`
-
-```none {:.devsite-disable-click-to-copy}
-$ fx zxdb
-
-or
-
-out/<out_dir>/host_x64/zxdb
-
-[zxdb] connect [fe80::5054:ff:fe63:5e7a%br0]:2345
-```
-
-(Substitute your build directory as-needed).
-
-If you're connecting or running many times, there are command-line switches:
-
-```posix-terminal
-zxdb -c [fe80::5054:ff:fe63:5e7a%br0]:2345
-```
-
-  * The `status` command will give you a summary of the current state of the
-    debugger.
-
-  * See `help connect` for more examples, including IPv6 syntax.
-
-## Running out-of-tree
-
-You can run with kernels or user programs compiled elsewhere with some extra steps. We hope this
-will become easier over time.
-
-Be aware that we aren't yet treating the protocol as frozen. Ideally the debugger will be from the
-same build as the operating system itself (more precisely, it needs to match the debug\_agent). But
-the protocol does not change very often so there is some flexibility.
-
-When you run out-of-tree, you will need to tell zxdb where your symbols and source code are on the
-local development box (Linux or Mac). Zxdb can not use symbols in the binary that you pushed to the
-Fuchsia target device.
-
-See [Diagnosing symbol problems](#diagnosing-symbol-problems).
-
-### Set the symbol location {#set-symbol-location}
-
-There are three command-line flags to control the symbol lookup locations for zxdb:
-`--build-id-dir`, `--ids-txt`, and a general `--symbol-path`. They all have the corresponding
-settings that can be manipulated using `set` or `get`.
+Zxdb will by default obtain the locations of the debug symbols from the
+[symbol index](/docs/development/sdk/ffx/register-debug-symbols.md).
+The registrations of debug symbols from in-tree and most out-of-tree environments are automated.
+In case these doesn't work out, there are three command-line flags in zxdb to provide additional
+symbol lookup locations for zxdb: `--build-id-dir`, `--ids-txt`, and a general `--symbol-path`.
+They all have the corresponding settings that can be manipulated using `set` or `get`.
 
 For example, to add a ".build-id" directory, either use `--build-id-dir` flag:
 
 ```posix-terminal
-zxdb --build-id-dir some/other_location/.build-id
+ffx debug connect -- --build-id-dir some/other_location/.build-id
 ```
 
 Or add it to the `build-id-dirs` list option in the interactive UI:
@@ -153,7 +94,7 @@ Or add it to the `build-id-dirs` list option in the interactive UI:
 [zxdb] set build-id-dirs += some/other_location/.build-id
 ```
 
-For in-tree development, `fx debug` automatically sets up all necessary
+For in-tree development, `ffx debug connect` automatically sets up all necessary
 flags.
 
 #### `build-id-dir`
@@ -175,10 +116,10 @@ In addition, `--symbol-path` flag can be used to add arbitrary files or director
 If the path is pointing to a file, it will be treated as an ELF file and added to the symbol index.
 If it's a directory, all binaries under the given path are indexed.
 
-### Set the source code location {#set-source-code-location}
+### Source code location is correctly set up
 
 The Fuchsia build generates symbols relative to the build directory so relative paths look like
-`../../src/my_component/file.cc`).
+`../../src/my_component/file.cc`). The build directory is usually provided by the symbol index.
 
 If your files are not being found with the default build directories, you will need to provide a
 build directory to locate the files. This build directory does not need have been used to build, it
@@ -188,7 +129,7 @@ symbol file.
 You can add additional build directories on the command line:
 
 ```posix-terminal
-zxdb -b /home/me/fuchsia/out/x64
+ffx debug connect -- --build-dir /home/me/fuchsia/out/x64
 ```
 
 Or interactively from within the debugger:
@@ -207,4 +148,3 @@ the `+=`:
 If your build produces DWARF symbols with absolute file paths the files must be in that location on
 the local system. Absolute file paths in the symbols are not affected by the build search path.
 Clang users should use the `-fdebug-prefix-map`, which will also help with build hermeticity.
-

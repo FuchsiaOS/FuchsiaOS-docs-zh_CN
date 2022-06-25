@@ -14,7 +14,7 @@ compile time by setting the GN build argument `enable_fair_scheduler` to true.
 
 You can set this variable in your GN invocation like this:
 
-```
+```posix-terminal
 gn gen build-zircon --args='enable_fair_scheduler=true'
 ```
 
@@ -27,7 +27,7 @@ the GN build argument `detailed_scheduler_tracing` to true.
 
 You can set this variable in your GN invocation like this:
 
-```
+```posix-terminal
 gn gen build-zircon --args='enable_fair_scheduler=true detailed_scheduler_tracing=true'
 ```
 
@@ -36,8 +36,8 @@ information in your trace session. It's a good idea to also include the
 `kernel:irq` category because interrupts can cause scheduler activity that might
 otherwise appear unconnected to other events.
 
-```
-fx traceutil record -categories kernel:sched,kernel:irq,<other categories> -stream -duration 4s -buffer-size 64
+```posix-terminal
+ffx trace start --categories kernel:sched,kernel:irq,<other categories> --duration 4 --buffer-size 64
 ```
 
 ### Summary of Scheduler Events

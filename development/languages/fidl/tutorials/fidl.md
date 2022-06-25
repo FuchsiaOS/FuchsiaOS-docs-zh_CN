@@ -3,10 +3,10 @@
 ## Prerequisites
 
 This tutorial expects that you have completed the [Getting Started][getting-started]
-guide and are able to build and run Fuchsia (whether using `fx qemu` or on actual
-hardware). You should be familiar with running components on Fuchsia using
-`fx serve` and `fx shell run`, which are covered in [Run an example component][component].
-This tutorial is the first of the sequence of FIDL tutorials listed in the [overview][overview].
+guide and are able to build and run Fuchsia (using [FEMU][femu] or a physical device).
+You should be familiar with running components on Fuchsia, which is covered in
+[Run an example component][run-examples]. This tutorial is the first of the
+sequence of FIDL tutorials listed in the [overview][overview].
 
 ## Overview
 
@@ -33,29 +33,29 @@ The following are some examples of various FIDL language features as defined in
 `//examples/fidl/fuchsia.examples/types.test.fidl`:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="lib" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="lib" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols-preface" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols-preface" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
 ```
 
 and also add a protocol to `examples/fidl/fuchsia.examples/echo.test.fidl`:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" %}
 ```
 
 The `test.fidl` extension is used instead of just `.fidl`, since
@@ -67,7 +67,7 @@ exemptions to certain requirements like linting or API review are applied to
 Now we can define a target for our FIDL library that other code can depend on:
 
 ```gn
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/BUILD.gn" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/BUILD.gn" %}
 ```
 
 The `fuzzers = [...]` line is only needed to enable fuzzing of protocols
@@ -93,6 +93,7 @@ Fuchsia copyright notice at the top of each file.
 [sdk]: /sdk/fidl
 [fidl-template]: /build/fidl/fidl.gni
 [overview]: /docs/development/languages/fidl/tutorials/overview.md
+[femu]: /docs/get-started/set_up_femu.md
 [getting-started]: /docs/get-started/README.md
-[component]: /docs/development/run/run-examples.md
+[run-examples]: /docs/development/run/run-examples.md
 [fidl-fuzzing]: /docs/development/testing/fuzzing/fidl-fuzzing.md

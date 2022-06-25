@@ -94,19 +94,20 @@ at `//third_party/dart-pkg/pub/<package_name>`.
 
 To use any FIDL generated dart bindings, you need to first look at the
 `BUILD.gn` defining the `fidl` target that contains the desired `.fidl` file.
-For example, let's say we want to import and use the `module.fidl` file (located
-in `//peridot/public/lib/module/fidl/`) in our dart code. We should first
-look at the `BUILD.gn` file, in this case `//peridot/public/lib/BUILD.gn`. In
-this file we can see that the `module.fidl` file is included in the
+For example, let's say we want to import and use the `echo.test.fidl` file
+(located in `//examples/fidl/fuchsia.examples`) in our dart code. We should
+first look at the `BUILD.gn` file, in this case
+`//examples/fidl/fuchsia.examples/BUILD.gn`. In this file we can see that the
+`echo.test.fidl` file is included in the
 `fidl("fidl")` target.
 
 ```gn
-fidl("fidl") {
+fidl("fuchsia.examples") {
   sources = [
-    ...
-    "module/fidl/module.fidl",   # This is the fidl we want to use for now.
+    "echo.test.fidl",   # This is the fidl we want to use for now.
     ...
   ]
+  ...
 }
 ```
 

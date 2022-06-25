@@ -1,0 +1,42 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+- ACPI
+- Audio
+- Block
+- Bluetooth
+- Board
+- Bus
+- Camera
+- Connectivity
+- Clock
+- Display
+- DriverFramework
+- Ethernet
+- Firmware
+- GPIO
+- Graphics
+- I2C
+- Input
+- Light
+- Kernel
+- Media
+- Misc
+- ML
+- NAND
+- Networking
+- Openthread
+- PCI
+- Platform
+- Power
+- PWM
+- RTC
+- SPI
+- Storage
+- Telephony
+- Test
+- Thermal
+- UART
+- USB
+- Wlan

@@ -1,24 +1,19 @@
-# Developing for FFX
+# Developing an ffx plugin
 
-This page will walk you through how to create a plugin for FFX. If you are
-looking for a more advanced look into the internals of FFX plugins, visit
-[Plugin Internals](/docs/development/tools/ffx/development/plugin-internals.md) page.
+This page describes the basic steps for creating a plugin for `ffx`.
 
 The plugin system employs a combination of GN build rules and Rust attributes
-to decouple plugin code from FFX internals.
+to decouple plugin code from `ffx` internals.
 
-First, create a directory to store your plugin. Next, create a BUILD.gn in that
-directory.
+## GN Build Rule {#gn-rule}
 
-## GN Build Rule
+Use the [`ffx_plugin()`](/src/developer/ffx/build/ffx_plugin.gni) build rule
+template in your project's `BUILD.gn` file to create a build target for your
+plugin.
 
-You will need to create a GN build target for your plugin. You"ll need to use
-to use the `ffx_plugin` build rule template defined
-[here](/src/developer/ffx/build/ffx_plugin.gni).
+Your `BUILD.gn` file should look similar to the following example:
 
-Your BUILD.gn file should look something like this:
-
-```GN
+```gn
 import("//src/developer/ffx/build/ffx_plugin.gni")
 
 ffx_plugin("ffx_example") {
@@ -33,14 +28,17 @@ ffx_plugin("ffx_example") {
 }
 ```
 
-Next, create a "src" directory to store your code in the same directory as your
-BUILD.gn file (`ffx_plugin` wraps the `rustc_library` build template - so if you
-are familiar with that template, you should be familiar with this template).
+Note: `ffx_plugin()` wraps the `rustc_library()` build template, so the same set
+of attributes are available.
 
-## Args
+Inside the `src/` directory, the project should contain two source files:
 
-Inside the "src" directory, there needs to be two files. The first file will
-define the CLI params for your plugin. Create a file `src/args.rs`:
+-   `src/args.rs`: Defines the CLI parameters for your plugin.
+-   `src/lib.rs`: Contains the main plugin source code implementation.
+
+## Arguments {#args}
+
+Create the file `src/args.rs` containing the plugins supported arguments:
 
 ```rust
 use {argh::FromArgs, ffx_core::ffx_command};
@@ -56,8 +54,8 @@ documentation can be found [here](https://docs.rs/argh/0.1.3/argh/). This
 struct has been decorated by the `ffx_command` attribute that signifies that
 your plugin should run when someone types the following command:
 
-```sh
-$ fx ffx example
+```posix-terminal
+fx ffx example
 ```
 
 If you want to add more parameters for your plugins, you add them to
@@ -81,9 +79,9 @@ pub struct ExampleCommand {
 See more documentation:
 - [Argh](https://docs.rs/argh/0.1.3/argh/)
 
-## Plugin
+## Plugin {#plugin}
 
-Next, you will define the plugin execution code.  Create a file `src/lib.rs`:
+Create the file `src/lib.rs` containing the plugin implementation:
 
 ```rust
 use {
@@ -102,65 +100,180 @@ pub async fn example(_cmd: ExampleCommand) -> Result<()> {
 Plugin methods need to accept the argh command created in the `src/args.rs`
 file as a parameter even if they do not use them.
 
-If you want to unit tests your plugin, just follow the standard method for
-testing [rust code](/docs/development/languages/rust/testing.md)
-on a host. The `ffx_plugin` GN template will generate a library name
-"<target_name>_lib_test" for unit tests if the `with_unit_tests` parameter is
-set to `true`.
+Note: The `ffx_example_args::ExampleCommand` in the above example is generated
+automatically by the `ffx_plugin()` template. For more details, see
+[plugin internals](plugin-internals.md).
 
-Lastly, you"ll need to add the plugin as a dependency to FFX to include it in
-the build. You"ll need to edit this
-[file](/src/developer/ffx/BUILD.gn#25)
-to add your `ffx_plugin` target to the top level. Alternatively, you can add your
-plugin to the dependency list of any other plugin to create a
-subcommand.
+## Integration {#integration}
 
-You just need to add the plugin library as a dependency. It should
-look something like this:
+Add your plugin library as a dependency to `ffx` to include it in the build.
+Edit the `plugin_deps` array in the [`ffx` build target][ffx-build] to add your
+`ffx_plugin()` target to the top level:
 
-```GN
+```gn
   plugin_deps = [
     "//path/to/your/plugin/dir:ffx_example",
     ...
   ]
 ```
 
-And that's it! Build ffx:
+Note: Alternatively, you can add your plugin to the dependency list of another
+plugin to create a subcommand.
 
-```sh
-$fx build ffx
+To build and test your plugin, build `ffx`:
+
+```posix-terminal
+fx build ffx
 ```
 
-You should now see the output when you run your example:
+You should now see the output when you run your example command:
 
-```sh
+```none {:.devsite-disable-click-to-copy}
 $ fx ffx example
 Hello from the example plugin :)
 ```
 
-If your `lib.rs` contains tests, they can be invoked via:
-```sh
-$ fx test ffx_example_lib_test
+## Unit tests {#unit-tests}
+
+If you want to unit test your plugin, just follow the standard method for
+testing [rust code][rust-testing] on a host. The `ffx_plugin()` GN template
+generates a `<target_name>_lib_test` library target for unit tests when the
+`with_unit_tests` parameter is set to `true`.
+
+If your `lib.rs` contains tests, they can be invoked using `fx test`:
+
+```posix-terminal
+fx test ffx_example_lib_test
 ```
 
-Plugins can also use FIDL proxies to communicate with a target device through
-Overnet:
+If fx test doesn't find your test, check that the product configuration includes your test. You can include all the ffx tests with this command:
+```posix-terminal
+fx set ... --with=//src/developer/ffx:tests
+```
 
-- [Continue to next example](/docs/development/tools/ffx/development/proxy-plugin.md)
+## FIDL protocols {#fidl-proxy}
 
-Note: If this is the start of a larger project, introduce the new plugin by
-marking it experimental. This will allow for work-in-progress commits and
-allow others to try out your plugin by opting-in. See more at the
-[Experimental Plugins](/docs/development/tools/ffx/development/plugin-experimental.md) page.
+FFX plugins can communicate with a target device using FIDL protocols through
+[Overnet][overnet]. To access FIDL protocols from your plugin, follow the
+instructions in this section.
 
-You may notice that we imported the ExampleCommand in the `src/lib.rs` via a
-library that was automatically generated by the `ffx_plugin` template,
-"ffx_example_args". The ExampleCommand struct gets compiled into its own
-library due to the internal dependency graph of FFX which you can read more
-about in the [Plugin Internals](/docs/development/tools/ffx/development/plugin-internals.md) page. This is why there
-must be two different files for the two parts of the plugin. The name of this
-library will always be the name of your plugin library concatenated with
-"_args". If you want to run the unit tests for this library, the test libraries
-name will be "<target_name>_args_lib_test". For this example it would be
-"ffx_example_args_lib_test".
+1.  Add the FIDL Rust bindings as a dependency to the plugin's `BUILD.gn` file.
+    The following example adds bindings for the `fuchsia.device` FIDL library:
 
+    ```gn
+    import("//src/developer/ffx/build/ffx_plugin.gni")
+
+    ffx_plugin("ffx_example") {
+      version = "0.1.0"
+      edition = "2018"
+      with_unit_tests = true
+      deps = [
+        "//sdk/fidl/fuchsia.device:fuchsia.device-rustc",
+      ]
+      sources = [
+        "src/args.rs",
+        "src/lib.rs",
+      ]
+    }
+    ```
+
+1.  Import the necessary bindings int your plugin implementation. The following
+    example imports `NameProviderProxy` from `fuchsia.device`:
+
+    ```rust
+    use {
+        anyhow::Result,
+        ffx_core::ffx_plugin,
+        ffx_example_args::ExampleCommand,
+        fidl_fuchsia_device::NameProviderProxy,
+    };
+    ```
+
+1.  Include the FIDL proxy can be used in the plugin implementation. Plugins can
+    accept proxies in the parameters list:
+
+    ```rust
+    pub async fn example(
+        name_proxy: NameProviderProxy,
+        _cmd: ExampleCommand,
+    ) -> Result<()> { }
+    ```
+
+1.  Map the proxy type to a [component selector][component-select] representing
+    the component providing the FIDL protocol in the `ffx_plugin()` annotation:
+
+    ```rust
+    #[ffx_plugin(
+        NameProviderProxy = "core/appmgr:out:fuchsia.device.NameProvider"
+    )]
+    ```
+
+The example plugin implementation in `src/lib.rs` should now look like the
+following:
+
+```rust
+use {
+    anyhow::Result,
+    ffx_core::ffx_plugin,
+    ffx_example_args::ExampleCommand,
+    fidl_fuchsia_device::NameProviderProxy,
+};
+
+#[ffx_plugin(
+    NameProviderProxy = "core/appmgr:out:fuchsia.device.NameProvider"
+)]
+pub async fn example(
+    name_proxy: NameProviderProxy,
+    _cmd: ExampleCommand,
+) -> Result<()> {
+    if let Ok(name) = name_proxy.get_device_name().await? {
+        println!("Hello, {}", name);
+    }
+    Ok(())
+}
+```
+
+Repeat these steps to include additional FIDL proxies to your `ffx` plugin.
+
+The following FIDL proxies are built into `ffx`, and do not require additional
+dependencies or mappings:
+
+- [DaemonProxy](/sdk/fidl/fuchsia.developer.ffx/daemon.fidl)
+- [Remote Control Service (RCS)](/sdk/fidl/fuchsia.developer.remotecontrol/remote-control.fidl)
+
+You can simply add the above proxies to your plugin's parameter list to access
+them  in your implementation.
+
+### Proxy selector maps {#selector-maps}
+
+`ffx` and the Remote Control Service (RCS) provide a mechanism for maintaining
+compatibility with existing selectors used by `ffx` plugins if the selector
+representing a given FIDL proxy changes. For example:
+
+-   The FIDL proxy is provided by a new component
+-   The FIDL protocol name changes
+-   The proxy selector varies across product builds
+
+RCS supports this using *selector maps* that override the selectors defined in
+an `ffx` plugin's source and map it to a different value. To override a given
+selector, add an entry to
+[`//src/developer/remote-control/data/selector-maps.json`][selector-maps]
+in the following format:
+
+```json {:.devsite-disable-click-to-copy}
+{
+  ...
+  "original/moniker:out:fuchsia.MyService": "some/new/moniker:expose:fuchsia.MyOtherService"
+}
+```
+
+This example enables RCS to override references to
+`original/moniker:out:fuchsia.MyService` in `ffx` plugins and route them to
+`some/new/moniker:expose:fuchsia.MyOtherService` in any build which contains
+the mapping.
+
+[component-select]: /docs/development/tools/ffx/commands/component-select.md
+[ffx-build]: /src/developer/ffx/BUILD.gn
+[overnet]: /src/connectivity/overnet/
+[rust-testing]: /docs/development/languages/rust/testing.md
+[selector-maps]: /src/developer/remote-control/data/selector-maps.json

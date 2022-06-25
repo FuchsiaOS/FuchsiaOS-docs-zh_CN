@@ -1,0 +1,26 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+  - title: Overview
+    path: /docs/get-started/learn/intro/README.md
+    step_group: introfuchsia
+  - title: Fuchsia architecture
+    path: /docs/get-started/learn/intro/architecture.md
+    step_group: introfuchsia
+  - title: Zircon fundamentals
+    path: /docs/get-started/learn/intro/zircon.md
+    step_group: introfuchsia
+  - title: Software isolation model
+    path: /docs/get-started/learn/intro/sandboxing.md
+    step_group: introfuchsia
+  - title: Component-based software
+    path: /docs/get-started/learn/intro/components.md
+    step_group: introfuchsia
+  - title: Software delivery
+    path: /docs/get-started/learn/intro/packages.md
+    step_group: introfuchsia

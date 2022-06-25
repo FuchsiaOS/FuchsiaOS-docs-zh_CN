@@ -74,12 +74,13 @@ void client(fidl_test::ExamplePtr client) { client->ExistingMethod(); }
 ### LLCPP {#llcpp-init}
 
 ```cpp
-class Server final : public fidl_test::Example::Interface {
+class Server final : public fidl::WireServer<fidl_test::Example> {
  public:
-  void ExistingMethod(ExistingMethodCompleter::Sync& completer) final {}
+  void ExistingMethod(ExistingMethodRequestView request,
+                      ExistingMethodCompleter::Sync& completer) final {}
 };
 
-void client(fidl::Client<fidl_test::Example> client) { client->ExistingMethod(); }
+void client(fidl::WireClient<fidl_test::Example> client) { client->ExistingMethod(); }
 ```
 
 ### Rust {#rust-init}
@@ -169,7 +170,7 @@ async fn example_service(chan: fasync::Channel) -> Result<(), fidl::Error> {
 ```diff
   protocol Example {
       ExistingMethod();
-+     [Transitional]
++     @transitional
 +     NewMethod();
   };
 
@@ -258,14 +259,15 @@ async fn example_service(chan: fasync::Channel) -> Result<(), fidl::Error> {
 - Start using the new method in client code.
 
 ```diff
-  class Server final : public fidl_test::Example::Interface {
+  class Server final : public fidl::WireServer<fidl_test::Example> {
    public:
-    void ExistingMethod(ExistingMethodCompleter::Sync& completer) final {}
-+   void NewMethod(NewMethodCompleter::Sync& completer) final {}
+    void ExistingMethod(ExistingMethodRequestView request,
+                        ExistingMethodCompleter::Sync& completer) final {}
++   void NewMethod(NewMethodRequestView request, NewMethodCompleter::Sync& completer) final {}
   };
   
-- void client(fidl::Client<fidl_test::Example> client) { client->ExistingMethod(); }
-+ void client(fidl::Client<fidl_test::Example> client) {
+- void client(fidl::WireClient<fidl_test::Example> client) { client->ExistingMethod(); }
++ void client(fidl::WireClient<fidl_test::Example> client) {
 +   client->ExistingMethod();
 +   client->NewMethod();
 + }
@@ -312,7 +314,7 @@ async fn example_service(chan: fasync::Channel) -> Result<(), fidl::Error> {
 ```diff
   protocol Example {
       ExistingMethod();
--     [Transitional]
+-     @transitional
       NewMethod();
   };
 

@@ -99,7 +99,7 @@ Category                           | [DEPRECATED] C                    | Low-lev
 
 Generated types own all handles stored inline. Out-of-line handles e.g. those
 behind a pointer indirection are not closed when the containing object of the
-pointer goes away. In those cases, the bindings provide a `fidl::DecodedMessage`
+pointer goes away. In those cases, the bindings provide a `fidl::unstable::DecodedMessage`
 object to manage all handles associated with a call.
 
 ##### Footnote2
@@ -108,16 +108,16 @@ The bindings library can dispatch at most one in-flight transaction.
 
 ##### Footnote3
 
-The bindings library defined in [lib/fidl](/zircon/system/ulib/fidl) can
+The bindings library defined in [lib/fidl](/sdk/lib/fidl/llcpp) can
 dispatch an unbounded number of in-flight transactions via `fidl::BindServer`
 defined in
-[lib/fidl/llcpp/server.h](/zircon/system/ulib/fidl/include/lib/fidl/llcpp/server.h).
+[lib/fidl/llcpp/channel.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/channel.h).
 
 ##### Footnote4
 
-The bindings library [lib/fidl](/zircon/system/ulib/fidl) enables parallel
+The bindings library [lib/fidl](/sdk/lib/fidl/llcpp) enables parallel
 dispatch using the `EnableNextDispatch()` API defined in
-[lib/fidl/llcpp/async_transaction.h](/zircon/system/ulib/fidl/include/lib/fidl/llcpp/async_transaction.h).
+[lib/fidl/llcpp/async_transaction.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/async_transaction.h).
 
 ## Migrating From C Bindings To Low-Level C++
 

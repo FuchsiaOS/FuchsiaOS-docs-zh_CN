@@ -170,7 +170,7 @@ filter name:
 Job 2 state=Attached koid=30053 name=""
 
 [zxdb] job 2 attach *
-Attached Process 1 state=Running koid=28071 name=sysmem_connector.cmx
+Attached Process 1 state=Running koid=28071 name=sysmem_connector.cm
 ```
 
 > **Warning:** Be careful only to use the wildcard `attach *` command with an explicit,
@@ -226,10 +226,11 @@ Dump loaded successfully.
 Now the thread, stack, and memory commands can be used to inspect the state of the program. Use
 `disconnect` to close the dump.
 
-For in-tree users, the `fx debug` command can take the path to a core file as an argument.
+It's also possible to use the [`ffx debug core`](https://fuchsia.dev/reference/tools/sdk/ffx#core)
+command, for example:
 
-```posix-terminal {:.devsite-disable-click-to-copy}
-fx debug -c upload_file_minidump-e71256ba30163a0.dmp
+```none {:.devsite-disable-click-to-copy}
+ffx debug core upload_file_minidump-e71256ba30163a0.dmp
 ```
 
 #### Downloading symbols

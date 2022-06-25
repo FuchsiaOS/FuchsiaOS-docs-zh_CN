@@ -1,0 +1,14 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "How does platform updatability work"
+  path: /docs/contribute/updatability/how.md
+- title: "Next steps"
+  path: /docs/contribute/updatability/next-steps.md
+- title: "Best practices"
+  path: /docs/contribute/updatability/best-practices.md

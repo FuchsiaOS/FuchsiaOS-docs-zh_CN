@@ -1,7 +1,7 @@
 # Fuchsia Governance
 
 Fuchsia is an open source project with the goal of creating a production-grade
-operating system that is secure, updatable, inclusive, and pragmatic.
+operating system that is simple, secure, updatable, and performant.
 Learn more about [Fuchsia’s core principles](/docs/concepts/index.md).
 
 Google steers the direction of Fuchsia and makes platform decisions related to

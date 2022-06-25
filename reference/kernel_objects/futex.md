@@ -47,6 +47,14 @@ waiting on. The kernel does not currently modify the value of
 so). It is up to userspace code to correctly atomically modify this
 value across threads in order to build mutexes and so on.
 
+Note that with [address tagging][address_tagging], userspace pointers
+won't always have a 1-to-1 mapping of futex instances in the kernel. Addresses
+which have been stripped of architecture-specific tagging information are used
+for futex IDs. For example, on ARM where [Top-Byte-Ignore (TBI)][tbi] is
+enabled, a futex pointer with the value `0x0A000000FF123450` has the same
+futex ID as a futex pointer with the value `0x0B000000FF123450`, because while
+their tags (`0x0A` and `0x0B`) are different, their address bits are the same.
+
 See the [`zx_futex_wait()`], [`zx_futex_wake()`], [`zx_futex_requeue()`], and
 [`zx_futex_get_owner()`] man pages for more details.
 
@@ -191,3 +199,5 @@ assign ownership of the futex to the released thread.
 [`zx_futex_wait()`]: /docs/reference/syscalls/futex_wait.md
 [`zx_futex_wake()`]: /docs/reference/syscalls/futex_wake.md
 [`zx_futex_wake_single_owner()`]: /docs/reference/syscalls/futex_wake_single_owner.md
+[address_tagging]: /docs/contribute/governance/rfcs/0143_userspace_top_byte_ignore.md
+[tbi]: https://developer.arm.com/documentation/den0024/a/ch12s05s01

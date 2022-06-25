@@ -1,4 +1,4 @@
-# Implement a FIDL server
+# Implement an HLCPP FIDL server
 
 ## Prerequisites
 
@@ -12,7 +12,7 @@ This tutorial shows you how to implement a FIDL protocol
 of each kind: a fire and forget method, a two-way method, and an event:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
 ```
 
 This document covers how to complete the following tasks:
@@ -26,19 +26,17 @@ and run. Then, it gradually adds functionality to get the server up and running.
 
 If you want to write the code yourself, delete the following directories:
 
-```
+```posix-terminal
 rm -r examples/fidl/hlcpp/server/*
 ```
 
-## Create and run a component {#component}
-
-### Create the component
+## Create the component {#component}
 
 To create a component:
 
 1. Add a `main()` function to `examples/fidl/hlcpp/server/main.cc`:
 
-   ```c++
+   ```cpp
    #include <stdio.h>
 
    int main(int argc, const char** argv) {
@@ -50,7 +48,7 @@ To create a component:
 1. Declare a target for the server in `examples/fidl/hlcpp/server/BUILD.gn`:
 
    ```gn
-   import("//build/components.gni")
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/BUILD.gn" region_tag="imports" %}
 
    # Declare an executable for the server. This produces a binary with the
    # specified output name that can run on Fuchsia.
@@ -59,81 +57,76 @@ To create a component:
      sources = [ "main.cc" ]
    }
 
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/BUILD.gn" region_tag="rest" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/BUILD.gn" region_tag="rest" %}
    ```
 
-  To get the server component up and running, there are three targets that are
-  defined:
+   To get the server component up and running, there are three targets that are
+   defined:
 
-  * The raw executable file for the server that is built to run on Fuchsia.
-  * A component that is set up to simply run the server executable,
-    which is described using the component's manifest file.
-  * The component is then put into a package, which is the unit of software
-    distribution on Fuchsia. In this case, the package just contains a
-    single component.
+   * The raw executable file for the server that is built to run on Fuchsia.
+   * A component that is set up to simply run the server executable,
+     which is described using the component's manifest file.
+   * The component is then put into a package, which is the unit of software
+     distribution on Fuchsia. In this case, the package just contains a
+     single component.
 
-  For more details on packages, components, and how to build them, refer to
-  the [Building components](/docs/development/components/build.md) page.
+   For more details on packages, components, and how to build them, refer to
+   the [Building components][building-components] page.
 
-1. Add a component manifest in `examples/fidl/hlcpp/server/server.cmx`:
+1. Add a component manifest in `examples/fidl/hlcpp/server/meta/server.cml`:
 
    Note: The binary name in the manifest must match the output name of the `executable`
    defined in the previous step.
 
-   ```cmx
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/server.cmx" %}
+   ```json5
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/meta/server.cml" region_tag="example_snippet" %}
    ```
 
-### Run the component
+   <!-- TODO(fxbug.dev/58758) <<../../common/server/qemu.md>> -->
 
-Note: The instructions in this section are geared towards running the component
-on QEMU, as this is the simplest way to get started with running Fuchsia, but
-it is also possible to pick a different [product configuration][products] and
-run on actual hardware if you are familiar with running components on
-other product configurations.
+1. Add the server to your build configuration:
 
-1. Add the server to your configuration and build:
-
-   ```
-   fx set core.x64 --with //examples/fidl/hlcpp/server && fx build
+   ```posix-terminal
+   fx set core.qemu-x64 --with //examples/fidl/hlcpp/server:echo-hlcpp-server
    ```
 
-1. Ensure `fx serve` is running in a separate tab and connected to an instance of
-   Fuchsia (e.g. running in QEMU using `fx qemu`), then run the server:
+   Note: This build configuration assumes your device target is the emulator.
+   To run the example on a physical device, select the appropriate
+   [product configuration][products] for your hardware.
 
-   Note: The component should be referenced by its [URL][glossary-url], which
-   is determined with the [`fuchsia-pkg://` scheme][glossary-scheme]. The
-   package name in the URL matches the `package_name` field in the `fuchsia_package`
-   declaration, and the manifest path in `meta/` matches the target name of the
-   `fuchsia_component`.
+1. Build the Fuchsia image:
 
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-hlcpp-server#meta/echo-server.cmx
+   ```posix-terminal
+   fx build
    ```
 
 ## Implement the server
 
 ### Add a dependency on the FIDL library
 
-1. Add `"//examples/fidl/fuchsia.examples"` to the `deps` of the `executable`
-2. Include the bindings into the main file with `#include <fuchsia/examples/cpp/fidl.h>`
+1.  Add the `fuchsia.examples` FIDL library target as a dependency of your
+    `executable` in `examples/fidl/hlcpp/server/BUILD.gn`:
 
-The full `bin` target declaration should now look like this:
+    ```gn
+    executable("bin") {
+      output_name = "fidl_echo_hlcpp_server"
+      sources = [ "main.cc" ]
+      {{ '<strong>' }}deps = [ "//examples/fidl/fuchsia.examples" ]{{ '</strong>' }}
+    }
+    ```
 
-```
-executable("bin") {
-  output_name = "fidl_echo_hlcpp_server"
-  sources = [ "main.cc" ]
-  deps = [ "//examples/fidl/fuchsia.examples" ]
-}
-```
+1.  Import the HLCPP bindings at the top of `examples/fidl/hlcpp/server/main.cc`:
+
+    ```cpp
+    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="fidl_includes" %}
+    ```
 
 ### Add an implementation for the protocol {#impl}
 
 Add the following to `main.cc`, above the `main()` function:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="server" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="server" %}
 ```
 
 The implementation contains the following elements:
@@ -144,13 +137,13 @@ The implementation contains the following elements:
   callback on it.
 * The method for `SendString` does not take a callback since this method does
   not have a response. Instead, the implementation sends an `OnString` event
-  using the an `Echo_EventSender`.
+  using an `Echo_EventSender`.
 * The class contains a pointer to an `Echo_EventSender`. This will be set
   later in the `main()` function.
 
 You can verify that the implementation is correct by running:
 
-```
+```posix-terminal
 fx build
 ```
 
@@ -177,12 +170,35 @@ for incoming requests on an [async loop][async-loop].
 This complete process is described in further detail in the
 [Life of a protocol open][protocol-open].
 
+### Add new dependencies {#deps}
+
+This new code requires the following additional dependencies:
+
+* `"//zircon/system/ulib/async-loop:async-loop-cpp"` and
+  `"//zircon/system/ulib/async-loop:async-loop-default"`: These libraries contain
+  the async loop code.
+* `"//sdk/lib/sys/cpp"`: The component framework C++ runtime, which contains
+  utility code for interacting with the component's environment.
+
+1.  Add the library targets as dependencies of your `executable` in
+    `examples/fidl/hlcpp/server/BUILD.gn`:
+
+    ```gn
+    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/BUILD.gn" region_tag="bin" highlight="6,7,8" %}
+    ```
+
+1.  Import these dependencies at the top of `examples/fidl/hlcpp/server/main.cc`:
+
+    ```cpp
+    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="includes" %}
+    ```
+
 ### Initialize the event loop
 
 The first aspect is the use of an async loop:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="2,15" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="2,15" %}
 ```
 
 The code first initializes the loop and registers it as the default dispatcher
@@ -196,7 +212,7 @@ the rest of the code). At the end of the main function, the code runs the async 
 Then, the code initializes the `fidl::Binding` as mentioned above:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="4,5,6" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="4,5,6" %}
 ```
 
 In order to run, a binding needs two things:
@@ -215,7 +231,7 @@ the `EchoImpl` class.
 Next, the code defines a handler for incoming requests from a client:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="7,8,9,10" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="7,8,9,10" %}
 ```
 
 * An "incoming request" is not a request for a specific method of `Echo`
@@ -240,7 +256,7 @@ Next, the code defines a handler for incoming requests from a client:
 Finally, the code registers the handler with the component manager:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="11,12" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="11,12" %}
 ```
 
 The first line initializes and serves the outgoing directory, which contains
@@ -252,56 +268,59 @@ should be registered to. By default, this parameter is the name of the protocol
 being passed in, which is generated because of the presence [`[Discoverable]`
 attribute][discoverable] on the `Echo` protocol. In other words, after executing
 this line you should be able to call `ls` on the component's `/out` directory
-and see an entry called `"fuchsia.examples.Echo`.
+and see an entry called `fuchsia.examples.Echo`.
 
-### Add new dependencies {#deps}
+## Test the server
 
-This new code requires the following additional dependencies:
+Rebuild:
 
-* `"//zircon/system/ulib/async-loop:async-loop-cpp"` and `"//zircon/system/ulib/async-loop:async-loop-default"`, which contain the async loop code.
-* `"//sdk/lib/sys/cpp"`: The component framework C++ runtime, which contains
-  utility code for interacting with the component's environment.
-* `"//sdk/lib/fidl/cpp"`: The FIDL C++ runtime, which contains utility code for
-  using the FIDL bindings.
-
-The full `bin` target declaration should now look like this:
-
-```
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/BUILD.gn" region_tag="bin" %}
+```posix-terminal
+fx build
 ```
 
-Import the dependencies by including them at the top of `examples/fidl/hlcpp/server/main.cc`:
+Then run the server component:
 
-```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="includes" %}
+```posix-terminal
+ffx component run fuchsia-pkg://fuchsia.com/echo-hlcpp-server#meta/echo_server.cm
 ```
 
-## Run the server
+Note: Components are resolved using their [component URL][glossary.component-url],
+which is determined with the [`fuchsia-pkg://`][glossary.fuchsia-pkg-url] scheme.
 
-Run the server:
+You should see output similar to the following in the device logs
+(`ffx log`):
 
+```none {:.devsite-disable-click-to-copy}
+[ffx-laboratory:echo_server][][I] Running echo server
 ```
-fx shell run fuchsia-pkg://fuchsia.com/echo-hlcpp-server#meta/echo-server.cmx
+
+The server is now running and waiting for incoming requests.
+The next step will be to write a client that sends `Echo` protocol requests.
+For now, you can simply terminate the server component:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_server
 ```
 
-You should see the `printf` output from the `main()` function followed by the
-server hanging. This is expected. Instead of exiting right away, the server
-keeps waiting for incoming requests. The next step will be to write a client for
-the server.
+Note: Component instances are referenced by their
+[component moniker][glossary.moniker], which is determined by their location in
+the [component instance tree][glossary.component-instance-tree]
 
 <!-- xrefs -->
+[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: /docs/glossary/README.md#fuchsia-pkg-url
+[glossary.moniker]: /docs/glossary/README.md#moniker
 [fidl-intro]: /docs/development/languages/fidl/tutorials/hlcpp/basics/using-fidl.md
-[products]: /docs/concepts/build_system/boards_and_products.md
-[getting-started]: /docs/get-started/index.md
-[glossary-url]: /docs/glossary.md#component-url
-[glossary-scheme]: /docs/glossary.md#fuchsia-pkg-url
+[building-components]: /docs/development/components/build.md
+[products]: /docs/development/build/build_system/boards_and_products.md
 [declaring-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
 [depending-fidl]: /docs/development/languages/fidl/tutorials/hlcpp/basics/using-fidl.md
 [component-manager]: /docs/concepts/components/v2/component_manager.md
 [protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md
 [discoverable]: /docs/reference/fidl/bindings/hlcpp-bindings.md#discoverable
 [bindings-iface]: /docs/reference/fidl/bindings/hlcpp-bindings.md#protocols
-[pipeline]: /docs/concepts/api/fidl.md#request-pipelining
+[pipeline]: /docs/development/api/fidl.md#request-pipelining
 [pipeline-tut]: /docs/development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
 [compiling-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
 [async-loop]: /zircon/system/ulib/async-loop/include/lib/async-loop/cpp/loop.h

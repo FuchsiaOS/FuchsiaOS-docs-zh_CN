@@ -64,6 +64,7 @@ level when some clients cannot be migrated atomically:
 | enum     | member        | ✅ | [⚠️](#enum-member-add) | [⚠️](#enum-member-remove) | [⚠️](#enum-member-rename) | ❌ | -- | ✅ |
 | bits     | member        | ✅ | [⚠️](#bits-member-add) | [⚠️](#bits-member-remove) | [⚠️](#bits-member-rename) | ❌ | -- | ✅ |
 | const    | value         | -- | -- | -- | -- | ❌ | -- | [✅](#const-value-default-value) |
+| alias    | type          | -- | -- | -- | [⚠️](#type-alias-rename) | [⚠️](#type-alias-change-type) | -- | -- |
 | _all_    | attribute     | -- | [⚠️](#attributes) | [⚠️](#attributes) | -- | -- | -- | -- |
 | type     | constraint    | -- | [⚠️](#constraints) | [⚠️](#constraints) | -- | -- | -- | -- |
 | _decl_   | modifier      | -- | [⚠️](#modifiers) | [⚠️](#modifiers) | -- | -- | -- | -- |
@@ -102,8 +103,8 @@ To safely add a method to a protocol, mark the new method with
 [`[Transitional]`][transitional]. Once all implementations of the new method are
 in place, you can remove the [`[Transitional]`][transitional] attribute.
 
-Examples: removing [an event][example-event-remove], [a
-method][example-method-remove].
+Examples: adding [an event][example-protocol-event-add],
+[a method][example-protocol-method-add].
 
 ### Removing a method from a protocol {#protocol-method-remove}
 
@@ -123,7 +124,8 @@ Note: When using the Rust bindings, you need to manually add catch-all cases
 [`[Transitional]`][transitional] attribute. Read more about [how
 `[Transitional]` impacts the Rust bindings][transitional-rust].
 
-Examples: adding [an event][example-event-add], [a method][example-method-add].
+Examples: removing [an event][example-protocol-event-remove],
+[a method][example-protocol-method-remove].
 
 ### Renaming a method {#protocol-method-rename}
 
@@ -313,9 +315,43 @@ It is not source-compatible to rename a bits member.
 
 ### Updating value of constants {#const-value-default-value}
 
-It is safe to update the value of a `const` declaration. In rare circumstances,
-such a change could cause source-compatibility issues if the constant is used in
-static asserts that would fail with the updated value.
+**ABI**
+
+It is sometimes binary-compatible to update the value of a `const` declaration.
+If a constant value affects the public interface semantics (for example, by
+representing a runtime invariant in the interface), changing the constant value
+is binary-incompatible due to mismatched expectations between peers on different
+versions.
+
+**API**
+
+It is usually source-compatible to update the value of a `const` declaration. In
+rare circumstances, such a change could cause source-compatibility issues if the
+constant is used in static asserts that would fail with the updated value.
+
+## Type alias {#type-alias}
+
+### Renaming a type alias {#type-alias-rename}
+
+**ABI**
+
+It is ABI compatible to rename a type alias.
+
+**API**
+
+It is not source-compatible to rename a type alias.
+
+### Changing the underlying type of a type alias {#type-alias-change-type}
+
+**ABI**
+
+Typically, it is not ABI compatible to change the underlying type of a type
+alias. However, if the original underlying type and the replacement underlying
+type are ABI compatible, then a change is ABI compatible.
+
+**API**
+
+It is not source-compatible to change the underlying type of a type alias.
 
 ## Modifiers {#modifiers}
 
@@ -411,7 +447,7 @@ Example: changing a union declaration from [`strict` to
 `flexible`][example-union-strict-flexible], or [`flexible` to
 `strict`][example-union-flexible-strict].
 
-### Value vs resource
+### Value vs resource {#value-vs-resource}
 
 Adding or removing the `resource` modifier on a struct, table, or union is
 binary-compatible. Removing the `resource` modifier may cause runtime validation
@@ -450,35 +486,38 @@ from the old member to the new member, then deleting the old member. This
 approach can be quite direct with table fields for instance.
 
 Renames are binary-compatible, except in the case of libraries, protocols,
-methods and events. See the `[Selector]` attribute for binary-compatible renames
+methods and events. See the `@selector` attribute for binary-compatible renames
 of these.
 
 ### Attributes {#attributes}
 
-Removing `[Discoverable]` is a source-incompatible change. You first need to
+Removing `@discoverable` is a source-incompatible change. You first need to
 ensure that there are no references to the generated protocol name before
 removing this attribute.
 
-Adding or changing `[Selector]` is a binary-incompatible change on its own, but
+Adding or changing `@selector` is a binary-incompatible change on its own, but
 can be used in the same change as method renames to preserve
 binary-compatibility.
 
-Removing [`[Transitional]`][transitional] is a source-incompatible change. You
+Removing [`@transitional`][transitional] is a source-incompatible change. You
 first need to ensure that all implementations of the method are in place.
 
-Adding or changing `[Transport]` is a source-incompatible and
+Adding or changing `@transport` is a source-incompatible and
 binary-incompatible change.
 
 Changes to the following attributes have no effect on compatibility, although
 they often accompany other incompatible changes:
 
-* `[Deprecated]` (although it may in the future if/when implemented)
-* `[Doc]`
-* `[MaxBytes]`
-* `[MaxHandles]`
-* `[Unknown]`
+* `@deprecated` (although it may in the future if/when implemented)
+* `@doc`
+* `@max_bytes`
+* `@max_handles`
+* `@unknown`
 
 ### Constraints {#constraints}
+
+For more information on what a constraint is in FIDL, see
+[Type, layout, constraint][lexicon-type].
 
 **ABI**
 
@@ -543,6 +582,7 @@ languages that do not support ADTs like C++.
 [example-union-strict-flexible]: /docs/development/languages/fidl/guides/compatibility/union_strict_flexible.md
 [rfc-0057-motivation]: /docs/contribute/governance/rfcs/0057_default_no_handles.md#motivation
 [lexicon-tag]: /docs/reference/fidl/language/lexicon.md#union-terms
+[lexicon-type]: /docs/reference/fidl/language/lexicon.md#type-terms
 [Platform Versioning]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
 [rust-bindings-tables]: /docs/reference/fidl/bindings/rust-bindings.md#types-tables
 [rust-enum-macro]: /docs/reference/fidl/bindings/rust-bindings.md#types-enums

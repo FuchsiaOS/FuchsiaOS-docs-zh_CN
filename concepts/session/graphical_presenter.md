@@ -2,15 +2,17 @@
 
 ## Overview
 
-[Graphical Presenter] is a component role, within the session, that presents
-multiple graphical views to the user; most commonly, views from the session's
-[Elements].
+[Graphical presenter][glossary.GraphicalPresenter] is a component role, within
+the session, that presents multiple graphical views to the user; most commonly,
+views from the session's [components][glossary.component].
 
 Although the same session component could also implement the Graphical Presenter
-roll, there is a [FIDL](#fidl) protocol, [`fuchsia.element.GraphicalPresenter`],
-that allows a [session] component to delegate Graphical Presenter
-responsibilities another component. This makes it possible for each component to
-execute in different runtimes (such Rust versus Flutter/Dart) if needed.
+role, there is a [FIDL][glossary.FIDL] protocol,
+[`fuchsia.element.GraphicalPresenter`],
+that allows a [session][glossary.session]
+component to delegate Graphical Presenter responsibilities another component. This makes it possible
+for each component to execute in different runtimes
+ (such Rust versus Flutter/Dart) if needed.
 
 ## Displaying element views
 
@@ -27,29 +29,28 @@ presentation properties.
 
 The session calls the `GraphicalPresenter` method [`PresentView()`] to display a
 given view. `PresentView()` takes:
-1. A [`ViewSpec`], through which the session conveys where and how it wants the
-view to be displayed in the [`Scenic`] scene
+1. A [ViewSpec][glossary.ViewSpec], through which the session conveys where and how it wants the
+view to be displayed in the [scenic][glossary.scenic] scene
 graph.
 2. An `AnnotationController`, which is a handle to the element's annotations, through
 which the presenter can update the respective element's annotations.
 
 In return, the caller is given a handle to
-the view, as a [`ViewController`]. The caller can destroy
+the view, as a [ViewController][glossary.ViewController]. The caller can destroy
 the view (remove it from the display) by releasing or closing its `ViewController`.
 
 The developer guide includes an [example implementation of presenting an
 element's view][example-present-view].
 
-[component]: /docs/glossary.md#component
-[components]: /docs/glossary.md#component
+[glossary.GraphicalPresenter]: /docs/glossary/README.md#GraphicalPresenter
+[glossary.component]: /docs/glossary/README.md#component
+[glossary.FIDL]: /docs/glossary/README.md#FIDL
+[glossary.session]: /docs/glossary/README.md#session
+[glossary.ViewSpec]: /docs/glossary/README.md#ViewSpec
+[glossary.scenic]: /docs/glossary/README.md#scenic
+[glossary.ViewController]: /docs/glossary/README.md#ViewController
 [Element API]: /docs/concepts/session/element.md
-[Elements]: /docs/glossary.md#element
 [Element Annotations]: /docs/concepts/session/element.md#element-annotations
 [example-present-view]: /docs/development/sessions/roles-and-responsibilities.md#presenting-an-elements-view
-[`fuchsia.element.GraphicalPresenter`]: https://fuchsia.dev/reference/fidl/fuchsia.element#GraphicalPresenter
-[Graphical Presenter]: /docs/glossary.md#graphical-presenter
 [`PresentView()`]: https://fuchsia.dev/reference/fidl/fuchsia.element#fuchsia.element/GraphicalPresenter.PresentView
-[`Scenic`]: /docs/glossary.md#scenic
-[session]: /docs/glossary.md#session
-[`ViewController`]: /docs/glossary.md#view-controller
-[`ViewSpec`]: /docs/glossary.md#view-spec
+[`fuchsia.element.GraphicalPresenter`]: https://fuchsia.dev/reference/fidl/fuchsia.element#GraphicalPresenter

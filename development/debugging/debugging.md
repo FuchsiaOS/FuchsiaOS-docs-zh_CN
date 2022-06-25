@@ -49,7 +49,7 @@ $ crasher
 ```
 
 Since debug information is currently not available on the target, a program
-(`symbolize`) must be run on the development host to translate the raw addresses
+(`symbolizer`) must be run on the development host to translate the raw addresses
 in the backtrace to symbolic form. Any easy way to capture this output from the
 target is by running the `loglistener` program on your development host.
 

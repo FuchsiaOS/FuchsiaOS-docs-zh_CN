@@ -12,6 +12,17 @@ Due to lack of support for variable include, we use a switch of sorts to render
 each area's description.
 -->
 
+{% if area.name == "Foreign ABI Compatibility" %}
+The set of APIs used to run and interact with programs compiled for other operating systems.
+
+Currently this covers the Starnix (Linux binary compatibility) APIs, for example:
+
+* [fuchsia.starnix.developer](/sdk/fidl/fuchsia.starnix.developer/) contains protocols for starting
+  a component containing an unmodified Linux binary.
+* [Manager](/sdk/fidl/fuchsia.starnix.developer/developer.fidl) allows developers to connect their
+  development machine to a shell component running on a Fuchsia device.
+{% endif %} <!-- Foreign ABI Compatibility -->
+
 {% if area.name == "Bluetooth" %}
 The set of APIs for managing and communicating via Bluetooth.  This includes
 both connecting peer devices, searching for devices, advertising the local
@@ -47,7 +58,7 @@ Examples:
 
 {% if area.name == "Developer" %}
 Developer tool interfaces, such as the [Command-line Tools
-Rubric](/docs/concepts/api/cli.md). APIs that affect the developer experience in
+Rubric](/docs/development/api/cli.md). APIs that affect the developer experience in
 the host environment such as debugging, forensics, or the development kit.
 {% endif %} <!-- Developer -->
 
@@ -56,7 +67,7 @@ The set of APIs that are used to publish and query diagnostics data from
 components on the system. This includes the ability to [stream
 logs](/docs/reference/diagnostics/logs/access.md), view and publish [Inspect
 data](/docs/development/diagnostics/inspect/README.md), and [observe lifecycle
-events](/docs/concepts/diagnostics/lifecycle_events/README.md).
+events](/docs/concepts/components/diagnostics/lifecycle_events/README.md).
 
 Examples:
 
@@ -74,7 +85,7 @@ Most of the APIs exposed by drivers are in the `fuchsia.hardware.*` namespaces.
 
 Other APIs are distributed under the corresponding area (e.g. Bluetooth, WLAN,
 Graphics, HCI) that the driver tackles. Although these APIs do not live under
-`fuchisa.hardware.*` namespace they might interact with hardware, or other
+`fuchsia.hardware.*` namespace they might interact with hardware, or other
 drivers that interact with hardware.
 
 Examples:
@@ -147,7 +158,6 @@ framework.
 Examples:
 
 * [fuchsia.ui.input](/sdk/fidl/fuchsia.ui.input/)
-* [fuchsia.ui.text](/sdk/fidl/fuchsia.ui.text/)
 * [fuchsia.ui.pointer](/sdk/fidl/fuchsia.ui.pointer/)
 * [fuchsia.ui.input.accessibility](/sdk/fidl/fuchsia.ui.input.accessibility/)
 * [fuchsia.accessibility.semantics](/sdk/fidl/fuchsia.accessibility.semantics/)
@@ -225,7 +235,7 @@ cryptographic key management) or tools (for example fuzzers).
 
 Examples:
 
-* [fuchsia.fuzzer](/src/lib/fuzzing/fidl/fuzzer.fidl)
+* [fuchsia.fuzzer](/src/sys/fuzzing/fidl/overview.fidl)
 * [fuchsia.kms](/sdk/fidl/fuchsia.kms/)
 * [fuchsia.tee](/sdk/fidl/fuchsia.tee/)
 {% endif %} <!-- Security -->
@@ -255,9 +265,9 @@ System](#view-system) to identify component views.
 {% if area.name == "Storage" %}
 Storage is a combination of the following APIs:
 
-* [fuchsia.io](/sdk/fidl/fuchsia.io/) and [fuchsia.io2](/sdk/fidl/fuchsia.io/)
+* [fuchsia.io](/sdk/fidl/fuchsia.io/)
 
-  These libraries are the common way for service discovery, filesystem access,
+  Describes the common means of service discovery, filesystem access,
   and capability sharing on Fuchsia.
 
   They are used primarily for client interaction with the filesystem, where a

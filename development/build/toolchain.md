@@ -35,7 +35,7 @@ Note: It is recommended checking out to the revision that's currently used for
 Fuchsia.
 The latest upstream revision may be broken or fail to build Fuchsia, whereas it is
 guaranteed that the prebuilt revision can always build Fuchsia. This
-revision can be found in `[//integration/prebuilts]`. Search for the package
+revision can be found in `[//integration/toolchain]`. Search for the package
 `fuchsia/third_party/clang/${platform}`, and checkout the `git_revision`
 associated with it.
 
@@ -68,19 +68,17 @@ cipd install fuchsia/sdk/core/mac-amd64 latest -root ${IDK_DIR}
 
 ### Sysroot for Linux
 
-To include compiler runtimes and C++ library for Linux, download the sysroot
-for both `arm64` and `x64`. Both sysroots must be located in
-the directory pointed by the `${SYSROOT_DIR}` variable.
+To include compiler runtimes and C++ library for Linux, download the sysroot.
+It must be located in the directory pointed by the `${SYSROOT_DIR}` variable.
 
 ```bash
 SYSROOT_DIR=${HOME}/fuchsia-sysroot/
 ```
 
-To download the latest sysroots, you can use the following:
+To download the latest sysroot, you can use the following:
 
 ```bash
-cipd install fuchsia/sysroot/linux-arm64 latest -root ${SYSROOT_DIR}/linux-arm64
-cipd install fuchsia/sysroot/linux-amd64 latest -root ${SYSROOT_DIR}/linux-x64
+cipd install fuchsia/third_party/sysroot/linux latest -root ${SYSROOT_DIR}
 ```
 
 {% dynamic if user.is_googler %}
@@ -173,8 +171,8 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug \
   -DCMAKE_CXX_COMPILER_LAUNCHER=${GOMA_DIR}/gomacc \
   -DCMAKE_ASM_COMPILER_LAUNCHER=${GOMA_DIR}/gomacc \
   -DLLVM_ENABLE_LTO=OFF \
-  -DLINUX_x86_64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR}/linux-x64 \
-  -DLINUX_aarch64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR}/linux-arm64 \
+  -DLINUX_x86_64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR} \
+  -DLINUX_aarch64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR} \
   -DFUCHSIA_SDK=${IDK_DIR} \
   -DCMAKE_INSTALL_PREFIX= \
   -C ${LLVM_SRCDIR}/clang/cmake/caches/Fuchsia-stage2.cmake \
@@ -210,8 +208,8 @@ cmake -GNinja \
   -DCMAKE_CXX_COMPILER_LAUNCHER=${GOMA_DIR}/gomacc \
   -DCMAKE_ASM_COMPILER_LAUNCHER=${GOMA_DIR}/gomacc \
   -DCMAKE_INSTALL_PREFIX= \
-  -DSTAGE2_LINUX_aarch64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR}/linux-arm64 \
-  -DSTAGE2_LINUX_x86_64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR}/linux-amd64 \
+  -DSTAGE2_LINUX_aarch64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR} \
+  -DSTAGE2_LINUX_x86_64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR} \
   -DSTAGE2_FUCHSIA_SDK=${IDK_DIR} \
   -C ${LLVM_SRCDIR}/clang/cmake/caches/Fuchsia.cmake \
   ${LLVM_SRCDIR}/llvm
@@ -226,14 +224,15 @@ be very practical for day-to-day development.
 
 ### runtime.json
 
-If the Fuchsia build fails due to a missing `runtime.json` file, you can copy
-them over from the prebuilt toolchain.
+If the Fuchsia build fails due to a missing `runtime.json` file, you must generate a new `runtime.json` file by running the following command:
 
-```
-cp ${FUCHSIA_SRCDIR}/prebuilt/third_party/clang/linux-x64/lib/runtime.json ${INSTALL_DIR}/lib/
+```bash
+python3 ${FUCHSIA_SRCDIR}/scripts/clang/generate_runtimes.py  \
+  --clang-prefix ${INSTALL_DIR} --sdk-dir ${IDK_DIR}          \
+  --build-id-dir ${INSTALL_DIR}/lib/.build-id > ${INSTALL_DIR}/lib/runtime.json
 ```
 
-This file contains relative paths used by the Fuchsia build to know where
+The generated file contains relative paths used by the Fuchsia build to know where
 various libraries from the toolchain are located.
 
 ### Putting it All Together
@@ -241,7 +240,7 @@ various libraries from the toolchain are located.
 Copy-paste code for building a single-stage toolchain. This code can be run
 from inside your LLVM build directory and assumes a linux environment.
 
-```
+```bash
 cd ${LLVM_BUILD_DIR}  # The directory your toolchain will be installed in
 
 # Environment setup
@@ -254,8 +253,7 @@ GOMA_DIR=${FUCHSIA_SRCDIR}/prebuilt/third_party/goma/linux-x64/
 
 # Download necessary dependencies
 cipd install fuchsia/sdk/core/linux-amd64 latest -root ${IDK_DIR}
-cipd install fuchsia/sysroot/linux-arm64 latest -root ${SYSROOT_DIR}/linux-arm64
-cipd install fuchsia/sysroot/linux-amd64 latest -root ${SYSROOT_DIR}/linux-x64
+cipd install fuchsia/third_party/sysroot/linux latest -root ${SYSROOT_DIR}
 
 # CMake invocation
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release \
@@ -264,8 +262,8 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_COMPILER_LAUNCHER=${GOMA_DIR}/gomacc \
   -DCMAKE_CXX_COMPILER_LAUNCHER=${GOMA_DIR}/gomacc \
   -DLLVM_ENABLE_LTO=OFF \
-  -DLINUX_x86_64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR}/linux-x64 \
-  -DLINUX_aarch64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR}/linux-arm64 \
+  -DLINUX_x86_64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR} \
+  -DLINUX_aarch64-unknown-linux-gnu_SYSROOT=${SYSROOT_DIR} \
   -DFUCHSIA_SDK=${IDK_DIR} \
   -DCMAKE_INSTALL_PREFIX= \
   -C ${LLVM_SRCDIR}/clang/cmake/caches/Fuchsia-stage2.cmake \
@@ -275,18 +273,21 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE=Release \
 ninja distribution -j1000
 DESTDIR=${INSTALL_DIR} ninja install-distribution-stripped -j1000
 
-# Get runtimes.json
-cp ${FUCHSIA_SRCDIR}/prebuilt/third_party/clang/linux-x64/lib/runtime.json ${INSTALL_DIR}/lib/
+# Generate runtime.json
+
+python3 ${FUCHSIA_SRCDIR}/scripts/clang/generate_runtimes.py    \
+  --clang-prefix ${INSTALL_DIR} --sdk-dir ${IDK_DIR}            \
+  --build-id-dir ${INSTALL_DIR}/lib/.build-id > ${INSTALL_DIR}/lib/runtime.json
 ```
 
 ### Building Fuchsia with a Custom Clang
 
 To specify a custom clang toolchain for building Fuchsia, pass
-`--args clang_prefix=\"${LLVM_BUILD_DIR}/bin\" --no-goma`
+`--args clang_prefix=\"${INSTALL_DIR}/bin\" --no-goma`
 to `fx set` command and run `fx build`.
 
 ```bash
-fx set core.x64 --args=clang_prefix=\"${LLVM_BUILD_DIR}/bin\" --no-goma
+fx set core.x64 --args=clang_prefix=\"${INSTALL_DIR}/bin\" --no-goma
 fx build
 ```
 
@@ -477,7 +478,41 @@ It will provide you with a link to the BuildBucket page to track your build.
 You will need to run `led auth-login` prior to triggering any builds, and may need to
 file an infra ticket to request access to run led jobs.
 
+## [Googlers Only] Downloading Toolchains from CAS
+
+Our Clang Toolchain CI builders upload all build artifacts to Content Addressed Storage (CAS).
+It provides a convenient way to quickly download a specific toolchain without having to build from scratch.
+This can greatly speedup investigations into toolchain issues, since you can avoid the long LLVM build times, on top of building Fuchsia.
+
+Below is an example of how download a specific toolchain into a corpus directory using `cas`:
+
+```bash
+$ ${INFRA_PREBUILTS}/cas download -cas-instance chromium-swarm -digest \
+    ad53e1f315a849955190594fde6b07e11e76b40563db5779fcc69d6a6e04dc71/267 -dir corpus
+```
+In the example above the `-digest` field is passed a unique id, which is used by the `cas` tool to fetch the correct artifacts.
+The `digest` can be obtained from Fuchsia's CI builder by selecting the builder you want the toolchain from, then expanding the `clang`->`cas`->`archive` fields and then clicking on the `CAS_UI` link.
+The resulting page will give show you some information about the CAS upload, including the digest.
+
 {% dynamic endif %}
+
+## Downloading Toolchains from CAS
+
+Our Clang Toolchain CI builders upload all build artifacts to Content Addressed Storage (CAS).
+It provides a convenient way to quickly download a specific toolchain without having to build from scratch.
+This can greatly speedup investigations into toolchain issues, since you can avoid the long LLVM build times, on top of building Fuchsia.
+
+Below is an example of how to install the `cas` tool from scratch and download a specific toolchain into a corpus directory:
+
+```bash
+$ cipd install infra/tools/luci/cas/linux-amd64 latest -root luci
+$ ./luci/cas download -cas-instance chromium-swarm -digest \
+    ad53e1f315a849955190594fde6b07e11e76b40563db5779fcc69d6a6e04dc71/267 -dir corpus
+```
+In the example above the `-digest` field is passed a unique id, which is used by the `cas` tool to fetch the correct artifacts.
+The `digest` can be obtained from Fuchsia's CI builder by selecting the builder you want the toolchain from, then expanding the `clang`->`cas`->`archive` fields and then clicking on the `CAS_UI` link.
+The resulting page will give show you some information about the CAS upload, including the digest.
+
 
 ## Useful CMake Flags
 

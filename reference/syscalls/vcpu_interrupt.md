@@ -1,14 +1,14 @@
 # zx_vcpu_interrupt
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Raise an interrupt on a VCPU.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -23,7 +23,7 @@ called from any thread.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_VCPU** and have **ZX_RIGHT_SIGNAL**.
 
@@ -48,8 +48,9 @@ the current architecture.
  - [`zx_guest_create()`]
  - [`zx_guest_set_trap()`]
  - [`zx_vcpu_create()`]
+ - [`zx_vcpu_enter()`]
+ - [`zx_vcpu_kick()`]
  - [`zx_vcpu_read_state()`]
- - [`zx_vcpu_resume()`]
  - [`zx_vcpu_write_state()`]
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
@@ -57,6 +58,7 @@ the current architecture.
 [`zx_guest_create()`]: guest_create.md
 [`zx_guest_set_trap()`]: guest_set_trap.md
 [`zx_vcpu_create()`]: vcpu_create.md
+[`zx_vcpu_enter()`]: vcpu_enter.md
+[`zx_vcpu_kick()`]: vcpu_kick.md
 [`zx_vcpu_read_state()`]: vcpu_read_state.md
-[`zx_vcpu_resume()`]: vcpu_resume.md
 [`zx_vcpu_write_state()`]: vcpu_write_state.md

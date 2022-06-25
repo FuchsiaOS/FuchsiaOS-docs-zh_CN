@@ -1,14 +1,14 @@
 # zx_socket_create
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create a socket.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -31,9 +31,9 @@ The *options* must set either the **ZX_SOCKET_STREAM** or
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
-TODO(fxbug.dev/32253)
+Caller job policy must allow **ZX_POL_NEW_SOCKET**.
 
 ## RETURN VALUE
 
@@ -56,11 +56,11 @@ The maximum capacity is not currently set-able.
 ## SEE ALSO
 
  - [`zx_socket_read()`]
- - [`zx_socket_shutdown()`]
+ - [`zx_socket_set_disposition()`]
  - [`zx_socket_write()`]
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_socket_read()`]: socket_read.md
-[`zx_socket_shutdown()`]: socket_shutdown.md
+[`zx_socket_set_disposition()`]: socket_set_disposition.md
 [`zx_socket_write()`]: socket_write.md

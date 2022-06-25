@@ -72,7 +72,7 @@ On Linux:
 
 ```
 sudo ip tuntap add dev qemu mode tap user $USER
-sudo ifconfig qemu up
+sudo ip link set qemu up
 ```
 
 This is sufficient to enable link local IPv6 (as the loglistener tool uses).
@@ -92,7 +92,8 @@ sudo chown $USER /dev/tap0
 fx qemu -N
 
 # (In a different window) bring up tap0 with a link local IPv6 address
-sudo ifconfig tap0 inet6 fc00::/7 up
+sudo ip addr add dev tap0 fc00::/7
+sudo ip link set tap0 up
 ```
 
 <aside class="note">

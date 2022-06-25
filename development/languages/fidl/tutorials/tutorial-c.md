@@ -16,126 +16,39 @@ design and implementation of FIDL, as well as the
 
 The [reference](#reference) section documents the bindings.
 
-# Getting started
+## Getting started
 
-We'll use the `echo.test.fidl` sample that we discussed in the
-[FIDL concepts][concepts] doc, by opening
-[//garnet/examples/fidl/services/echo.test.fidl](/garnet/examples/fidl/services/echo.test.fidl).
-
-<!-- NOTE: the code snippets here need to be kept up to date manually by
-     copy-pasting from the actual source code. Please update a snippet
-     if you notice it's out of date. -->
-
+We'll use the
+[`//examples/fidl/fuchsia.examples/echo.test.fidl`][echo-fidl] FIDL library
+discussed in [Creating a FIDL library][fidl-intro].
 
 ```fidl
-library fidl.examples.echo;
+library fuchsia.examples;
 
-[Discoverable]
-protocol Echo {
-    EchoString(string? value) -> (string? response);
-};
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="max" adjust_indentation="auto" %}
+
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" adjust_indentation="auto" %}
 ```
-
-## Build
-
-Use the following steps to build:
-
-(@@@ to be completed)
 
 ## `Echo` server
 
-The example server code is in [//garnet/examples/fidl/echo_server_c/echo_server.c][server]:
+The example server code is in [//examples/fidl/c/server/echo_server.c][server]:
 
 ```c
-[01] // Copyright 2018 The Fuchsia Authors. All rights reserved.
-[02] // Use of this source code is governed by a BSD-style license that can be
-[03] // found in the LICENSE file.
-[04]
-[05] #include <lib/async-loop/loop.h>
-[06] #include <lib/fdio/fd.h>
-[07] #include <lib/fdio/fdio.h>
-[08] #include <lib/fdio/directory.h>
-[09] #include <lib/svc/dir.h>
-[10] #include <stdio.h>
-[11] #include <zircon/process.h>
-[12] #include <zircon/processargs.h>
-[13] #include <zircon/status.h>
-[14] #include <zircon/syscalls.h>
-[15]
-[16] static void connect(void* context, const char* service_name,
-[17]                     zx_handle_t service_request) {
-[18]   printf("Incoming connection for %s.\n", service_name);
-[19]   // TODO(abarth): Implement echo server once FIDL C bindings are available.
-[20]   zx_handle_close(service_request);
-[21] }
-[22]
-[23] int main(int argc, char** argv) {
-[24]   zx_handle_t directory_request = zx_take_startup_handle(PA_DIRECTORY_REQUEST);
-[25]   if (directory_request == ZX_HANDLE_INVALID) {
-[26]     printf("error: directory_request was ZX_HANDLE_INVALID\n");
-[27]     return -1;
-[28]   }
-[29]
-[30]   async_loop_t* loop = NULL;
-[31]   zx_status_t status =
-[32]       async_loop_create(&kAsyncLoopConfigAttachToCurrentThread, &loop);
-[33]   if (status != ZX_OK) {
-[34]     printf("error: async_loop_create returned: %d (%s)\n", status,
-[35]            zx_status_get_string(status));
-[36]     return status;
-[37]   }
-[38]
-[39]   async_dispatcher_t* dispatcher = async_loop_get_dispatcher(loop);
-[40]
-[41]   svc_dir_t* dir = NULL;
-[42]   status = svc_dir_create(dispatcher, directory_request, &dir);
-[43]   if (status != ZX_OK) {
-[44]     printf("error: svc_dir_create returned: %d (%s)\n", status,
-[45]            zx_status_get_string(status));
-[46]     return status;
-[47]   }
-[48]
-[49]   status = svc_dir_add_service(dir, "public", "fidl.examples.echo.Echo", NULL, connect);
-[50]   if (status != ZX_OK) {
-[51]     printf("error: svc_dir_add_service returned: %d (%s)\n", status,
-[52]            zx_status_get_string(status));
-[53]     return status;
-[54]   }
-[55]
-[56]   status = async_loop_run(loop, ZX_TIME_INFINITE, false);
-[57]   if (status != ZX_OK) {
-[58]     printf("error: async_loop_run returned: %d (%s)\n", status,
-[59]            zx_status_get_string(status));
-[60]     return status;
-[61]   }
-[62]
-[63]   svc_dir_destroy(dir);
-[64]   async_loop_destroy(loop);
-[65]
-[66]   return 0;
-[67] }
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/c/server/echo_server.c" region_tag="main" adjust_indentation="auto" %}
 ```
 
 ### main()
 
 **main()**:
 
-1. creates a startup handle (`[24` .. `28]`),
-2. initializes the asynchronous loop (`[30` .. `37]`),
-3. adds the **connect()** function to handle the echo service (`[49]`),
-   and finally
+1. creates a startup handle
+2. initializes the asynchronous loop
+3. adds the **connect()** function to handle the echo service
 4. runs the asynchronous loop in the foreground via
-   **async_loop_run()** (`[56]`).
+   **async_loop_run()**.
 
-When the async loop returns, we clean up (`[63]` and `[64]`) and exit.
-
-### connect()
-
-> The **connect()** function is waiting for `abarth` to implement it (`[19]`) :-)
-
-## `Echo` client
-
-(@@@ to be completed)
+When the async loop returns, we clean up and exit.
 
 # Reference
 
@@ -209,16 +122,19 @@ produces.
 | `uint64`                                       | `uint64_t`                 |
 | `float32`                                      | `float`                    |
 | `float64`                                      | `double`                   |
-| `handle`, `handle?`, `handle:T`, `handle:T?`   | `zx_handle_t`              |
-| `string`, `string?`                            | `fidl_string_t`            |
-| `vector`, `vector?`                            | `fidl_vector_t`            |
-| `array<T>:N`                                   | `T[N]`                     |
-| `protocol`, `protocol?`                        | typedef to `zx_handle_t`   |
-| `request<I>`, `request<I>?`                    | typedef to `zx_handle_t`   |
+| `handle`, `handle:optional`                    | `zx_handle_t`              |
+| `handle<T>`, `handle<T>:optional`              | `zx_handle_t`              |
+| `string`, `string:optional`                    | `fidl_string_t`            |
+| `string:<N,optional>`                          | `fidl_string_t`            |
+| `vector<T>`, `vector<T>:optional`              | `fidl_vector_t`            |
+| `vector<T>:<N,optional>`                       | `fidl_vector_t`            |
+| `array<T, N>`                                  | `T[N]`                     |
+| `client_end:P`, `client_end:<P,optional>`      | typedef to `zx_handle_t`   |
+| `client_end:P`, `server_end:<P,optional>`      | typedef to `zx_handle_t`   |
 | `struct`                                       | `struct Struct`            |
-| `struct?`                                      | `struct Struct*`           |
+| `box<struct>`                                  | `struct Struct*`           |
 | `union`                                        | `struct Union`             |
-| `union?`                                       | `struct Union*`            |
+| `union:optional`                               | `struct Union*`            |
 | `table`                                        | (not supported)            |
 | `enum`                                         | typedef to underlying type |
 
@@ -512,36 +428,6 @@ type. Unless the object encoding includes internal references that
 must be fixed up, the only work amounts to checking the object size and the
 ranges of data types such as enums and union tags.
 
-### fidl_validate
-
-```c
-zx_status_t fidl_validate(const fidl_type_t* type, const void* bytes, uint32_t num_bytes,
-                          uint32_t num_handles, const char** error_msg_out);
-zx_status_t fidl_validate_msg(const fidl_type_t* type, const fidl_outgoing_msg_t* msg,
-                              const char** out_error_msg);
-```
-
-Declared in
-[system/ulib/fidl/include/lib/fidl/coding.h](/zircon/system/ulib/fidl/include/lib/fidl/coding.h),
-defined in
-[system/ulib/fidl/decoding_and_validating.cc](/zircon/system/ulib/fidl/decoding_and_validating.cc).
-
-Validates the object in **bytes** in-place by performing a depth-first
-traversal of the encoding data from **type** to fix up internal
-references. This performs the same validation as **fidl_decode()**, but
-does not modify any passed-in data.
-
-The **bytes** buffer is not modified by the operation.
-
-If anything other than `ZX_OK` is returned, **error_msg_out** will be set.
-
-Result is the same as for **fidl_encode()** above.
-
-This function is effectively a simple interpreter of the contents of the
-type. Unless the object encoding includes internal references that
-must be fixed up, the only work amounts to checking the object size and the
-ranges of data types such as enums and union tags.
-
 ### fidl_epitaph_write
 
 ```c
@@ -626,19 +512,18 @@ language.
 ### Simple Layout
 
 In order to generate simple C bindings for a protocol, the protocol must have
-the `[Layout="Simple"]` attribute. This attribute enforces that the protocol,
-including the types referenced by it, conform to the language subset
+the `@for_deprecated_c_bindings` attribute. This attribute enforces that the
+protocol, including the types referenced by it, conform to the language subset
 supported by FIDL.
 
 Specifically, every message in the protocol (including both requests and
 response) must not have any secondary objects except strings and vectors of
-handles or primitives (see
-[wire format][wire-format]
-for a definition of secondary objects). This invariant simplifies the memory
-ownership semantics. Additionally, all strings and vectors must have explicit
-non-maximal length bounds. `vector<int64>:64` is a vector with such a bound, while
-`vector<int64>` lacks an explicit non-maximal bound. This requirement simplifies
-buffer management for clients that receive these values.
+handles or primitives (see [wire format][wire-format] for a definition of
+secondary objects). This invariant simplifies the memory ownership semantics.
+Additionally, all strings and vectors must have explicit non-maximal length
+bounds. `vector<int64>:64` is a vector with such a bound, while `vector<int64>`
+lacks an explicit non-maximal bound. This requirement simplifies buffer
+management for clients that receive these values.
 
 For example, structs and unions can embed other structs and unions, but they
 cannot contain nullable references to other structs or unions because nullable
@@ -650,21 +535,29 @@ Below is an example of a protocol that meets these requirements:
 ```fidl
 library unn.fleet;
 
-struct SolarPosition {
-    array<int64>:3 coord;
+type SolarPosition = struct {
+    coord array<int64,3>;
 };
 
-enum Alert {
+type Alert = flexible enum {
     GREEN = 1;
     YELLOW = 2;
     RED = 3;
 };
 
-[Layout="Simple"]
+@for_deprecated_c_bindings
 protocol SpaceShip {
-    AdjustHeading(SolarPosition destination) -> (int8 result);
-    ScanForLifeforms() -> (vector<uint32>:64 life_signs);
-    SetDefenseCondition(Alert alert);
+    AdjustHeading(struct {
+        destination SolarPosition;
+    }) -> (struct {
+        result int8;
+    });
+    ScanForLifeforms() -> (struct {
+        life_signs vector<uint32>:64;
+    });
+    SetDefenseCondition(struct {
+        alert Alert;
+    });
 };
 ```
 
@@ -753,8 +646,9 @@ the channel and calls through the given dispatcher (and ops table) when they
 arrive.
 
 <!-- xrefs -->
-[concepts]: /docs/concepts/fidl/overview.md
-[server]: /garnet/examples/fidl/echo_server_c/echo_server.c
 [c-family-comparison]: /docs/development/languages/fidl/guides/c-family-comparison.md
-[wire-format]: /docs/reference/fidl/language/wire-format
+[echo-fidl]: /examples/fidl/fuchsia.examples/echo.test.fidl
+[echo-server]: /examples/fidl/c/server/echo_server.c
+[fidl-intro]: /docs/development/languages/fidl/tutorials/fidl.md
 [llcpp-tutorial]: /docs/development/languages/fidl/tutorials/llcpp
+[wire-format]: /docs/reference/fidl/language/wire-format

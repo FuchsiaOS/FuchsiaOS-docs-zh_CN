@@ -1,14 +1,14 @@
 # zx_vmo_get_size
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Read the current size of a VMO object.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,11 +18,12 @@ zx_status_t zx_vmo_get_size(zx_handle_t handle, uint64_t* size);
 
 ## DESCRIPTION
 
-`zx_vmo_get_size()` returns the current size of the VMO.
+`zx_vmo_get_size()` returns the current size of the [virtual memory
+object](/docs/reference/kernel_objects/vm_object.md) (VMO).
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 TODO(fxbug.dev/32253)
 

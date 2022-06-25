@@ -1,0 +1,44 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# This file lists supported system configurations per
+# fuchsia.dev/fuchsia-src/contribute/governance/rfcs/0130_supported_hardware
+# To add new entries extend the list below including:
+# 1. name: Provides a name or model.
+# 2. description: Provides details about the system configuration with enough
+# description to fully define the exact system that is being tested by the
+# Fuchsia project.
+# 3. architecture: For instance ARM, x64 or RISC-V, optional.
+# 4. RAM: Amount and type of RAM, optional.
+# 5. storage: Amount and type of storage, optional.
+# 6. manufacturer_link: A link to the manufacturer, optional.
+# 7. board_driver_location: The location of the board driver that defines this
+# board configuration. URL showing the repository and path within that
+# repository.
+
+- name: 'VIM3'
+  description: 'Board computer based on a Amlogic A311D SoC'
+  architecture: 'ARM'
+  RAM: '2GB+ DDR4'
+  storage: '16GB+ eMMC5.1'
+  manufacturer_link: 'https://www.khadas.com/vim3'
+  board_driver_location: '/src/devices/board/drivers/vim3'
+- name: 'NUC7i5DNHE'
+  description: 'Intel NUC based on 7th Gen i5'
+  architecture: 'x64'
+  RAM: '4GB+ DDR4'
+  storage: 'Samsung 860 EVO SSD 250GB'
+  manufacturer_link: 'https://www.intel.com/content/www/us/en/products/sku/122488/intel-nuc-kit-nuc7i5dnhe/specifications.html'
+  board_driver_location: '/src/devices/board/drivers/x86'
+- name: 'NUC11TNHi5'
+  description: 'Intel NUC based on 11th Gen i5'
+  architecture: 'x64'
+  RAM: '4GB+ DDR4'
+  storage: '128GB NVMe PCIe M.2 SSD'
+  manufacturer_link: 'https://www.intel.com/content/www/us/en/products/sku/205594/intel-nuc-11-pro-kit-nuc11tnhi5/specifications.html'
+  board_driver_location: '/src/devices/board/drivers/x86'
+- name: 'Astro'
+  description: 'Based on the AMLogic S509D2G SoC, a complete system used for IoT applications'
+  architecture: 'ARM'
+  board_driver_location: '/src/devices/board/drivers/astro'

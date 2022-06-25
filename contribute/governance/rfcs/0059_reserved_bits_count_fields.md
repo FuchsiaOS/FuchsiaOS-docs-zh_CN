@@ -22,7 +22,7 @@ encoded bytes. This FTP proposes a few changes:
 A visualization of the breakdown of the existing 64-bit count field.
 
 ![Visualization: 32-bits for count, 24 bits unused, 8 bits reserved for
-bindings](resources/ftp-059-bits.png)
+bindings](resources/0059_reserved_bits_count_fields/bits.png)
 
 This would decrease the maximum vector, string and array encoding size from
 18.45 exabytes to 4.29 gigabytes.

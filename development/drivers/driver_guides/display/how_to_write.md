@@ -1,5 +1,10 @@
 # How to write a display driver
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1). Also the workflows documented on
+this page may only be specific to the Fuchsia source checkout
+(`fuchsia.git`) environment.
+
 So you've decided to bring up a new board. Before you dive into coding, ensure
 that you have everything you need by answering these questions:
 
@@ -59,11 +64,12 @@ To begin, create:
 # found in the LICENSE file.
 
 import("//build/bind/bind.gni")
-import("//build/config/fuchsia/rules.gni")
+import("//build/drivers.gni")
 
-bind_rules("fancy-display-bind") {
+driver_bind_rules("fancy-display-bind") {
   rules = "fancy-display.bind"
-  output = "fancy-display-bind.h"
+  header_output = "fancy-display-bind.h"
+  bind_output = "fancy-display.bindbc"
   tests = "bind_tests.json"
   deps = [
     "//src/devices/bind/board_maker_company.platform",
@@ -80,7 +86,7 @@ source_set("common") {
   ]
 }
 
-driver_module("fancy-display") {
+fuchsia_driver("fancy-display") {
   sources = []
   deps = [
     ":common",
@@ -91,7 +97,7 @@ driver_module("fancy-display") {
 
 1. Add `//src/graphics/display/drivers/fancy-display` as a dependency for the
 board(s) that you are using as test products. For example, if your device is
-part of a [Khadas VIM2 board][vim2-board], modify `//boards/vim2.gni` by adding
+part of a [Khadas VIM3 board][vim3-board], modify `//boards/vim3.gni` by adding
 your driver to the `_common_bootfs_deps` list.
 
 <!-- TODO: describe this in more detail, including how to build the `core` image
@@ -124,7 +130,7 @@ accept fuchsia.BIND_PCI_DID {
 ```
 
 For PC devices, the [intel-i915 bind rules][intel-bind] are a good example. For
-fixed-hardware SoCs, see the [VIM2 rules][vim2-bind].
+fixed-hardware SoCs, see the [Amlogic display rules][amlogic-display-bind].
 
 
 #### Minimal driver
@@ -160,11 +166,6 @@ class Device : public DeviceType {
   void DisplayControllerImplSetDisplayControllerInterface(
       const display_controller_interface_protocol* interface) {}
 
-  zx_status_t DisplayControllerImplImportVmoImage(
-      image_t* image, zx::vmo vmo, size_t offset) {
-    return ZX_ERR_NOT_SUPPORTED;
-  }
-
   zx_status_t DisplayControllerImplImportImage(
       image_t* image, zx_unowned_handle_t sysmem_handle, uint32_t index) {
     return ZX_ERR_NOT_SUPPORTED;
@@ -191,11 +192,6 @@ class Device : public DeviceType {
 
   zx_status_t DisplayControllerImplSetBufferCollectionConstraints(
       const image_t* config, uint32_t collection) {
-    return ZX_ERR_NOT_SUPPORTED;
-  }
-
-  zx_status_t DisplayControllerImplGetSingleBufferFramebuffer(
-      zx::vmo* out_vmo, uint32_t* out_stride) {
     return ZX_ERR_NOT_SUPPORTED;
   }
 
@@ -243,7 +239,7 @@ tracking, fences, etc.
 ### Implementation tips
 
 The driver decides when and how a configuration passed to `ApplyConfiguration`
-takes effect. In order to avoid [tearing][tearing]{:external}, drivers should
+takes effect. In order to avoid [tearing][tearing]{: .external}, drivers should
 apply new settings just after vsync.
 
 Most devices generate interrupts for vsync events. The easiest way to
@@ -280,17 +276,17 @@ basic bootloader driver. In most cases, your roadmap will be:
  2. Initialize clocks.
  3. Discover attached displays.
  4. Program PHYs for a compatible mode.
- 5. Program layouts (framebuffer addrs, etc.) on vsync to avoid [tearing][tearing]{:external}.
+ 5. Program layouts (framebuffer addrs, etc.) on vsync to avoid [tearing][tearing]{: .external}.
  6. Integrate with [Sysmem][sysmem].
 
 <!--xrefs-->
 [dcimpl]: /sdk/banjo/fuchsia.hardware.display.controller/display-controller.fidl
-[ddk-tl]: /docs/concepts/drivers/driver_development/using-ddktl.md
+[ddk-tl]: /docs/development/drivers/concepts/driver_development/using-ddktl.md
 [display-core]: /src/graphics/display/drivers/display/
-[driver-binding]: /docs/concepts/drivers/device_driver_model/driver-binding.md
+[driver-binding]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md
 [intel-bind]: /src/graphics/display/drivers/intel-i915/intel-i915.bind
 [license-policies]: /docs/contribute/governance/policy/open-source-licensing-policies.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
 [tearing]: https://en.wikipedia.org/wiki/Screen_tearing
-[vim2-bind]: /src/graphics/display/drivers/vim-display/vim-display.bind
-[vim2-board]: /boards/vim2.gni
+[amlogic-display-bind]: /src/graphics/display/drivers/amlogic-display/amlogic-display.bind
+[vim3-board]: /boards/vim3.gni

@@ -2,7 +2,7 @@ To do so, this tutorial implements the `EchoLauncher` protocol from the
 [fuchsia.examples library](/examples/fidl/fuchsia.examples/):
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="launcher" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="launcher" %}
 ```
 
 This is a protocol that lets clients retrieve an instance of the `Echo`

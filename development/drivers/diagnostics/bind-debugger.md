@@ -1,5 +1,8 @@
 # Bind Debugger
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 The debugger can be used to run a bind program against a particular device. It
 outputs a trace of the bind program's execution, describing why the driver
 would or would not bind to the device.
@@ -29,8 +32,8 @@ fx bindc debug \
 ```
 
 The bind program source and the library sources are in the formats described in
-the [bind rules](/docs/concepts/drivers/device_driver_model/driver-binding.md#bind-rules) and
-[bind libraries](/docs/concepts/drivers/device_driver_model/driver-binding.md#bind-libraries) sections,
+the [bind rules](/docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-rules) and
+[bind libraries](/docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries) sections,
 respectively. The `--debug` option takes a file containing a specification of
 the device to run the bind program against.
 
@@ -82,9 +85,7 @@ lines delimited by `/*` and `*/`.
 The debugger is run using its package URL. For example:
 
 ```
-fx run fuchsia-pkg://fuchsia.com/bind_debugger#meta/bind_debugger.cmx \
-    /system/driver/bt-hci-intel.so \
-    class/bt-transport/000
+ffx driver debug-bind /system/driver/bt-hci-intel.so class/bt-transport/000
 ```
 
 The command takes the path of the driver to debug and the path of the device to
@@ -95,13 +96,14 @@ debug it against.
 There are two ways to specify the device:
 
  - Its path within /dev/class, e.g. `class/bt-transport/000`.
- - Its topological path, e.g. `sys/pci/00:14.0/xhci/usb-bus/003/003/ifc-000/bt_transport_usb`.
+ - Its topological path, e.g. `sys/platform/pci/00:14.0/xhci/usb-bus/003/003/ifc-000/bt_transport_usb`.
 
 Both of the paths are relative to /dev/.
 
-The topological path can be determined from the ouptut of `dm dump`. For example,
-tracing the path to the node `[bt_transport_usb]` in the output below gives the
-topological path `sys/pci/00:14.0/xhci/usb-bus/003/003/ifc-000/bt_transport_usb`.
+The topological path can be determined from the output of `driver dump`. For
+example, tracing the path to the node `[bt_transport_usb]` in the output below
+gives the topological path
+`sys/platform/pci/00:14.0/xhci/usb-bus/003/003/ifc-000/bt_transport_usb`.
 
 ```
 [root]
@@ -138,6 +140,9 @@ topological path `sys/pci/00:14.0/xhci/usb-bus/003/003/ifc-000/bt_transport_usb`
                                     [bt_hci_intel] pid=4384 /system/driver/bt-hci-intel.so
                                        [bt_host] pid=4384 /system/driver/bt-host.so
 ```
+
+It should be noted that if driver framework version 2 (DFv2) is enabled, the
+node's topological path can't be determined from its place in the node graph.
 
 ## Debugger output
 

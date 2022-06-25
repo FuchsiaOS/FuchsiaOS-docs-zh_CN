@@ -12,6 +12,8 @@ toc:
   path: /docs/concepts/kernel/concepts.md
 - title: "Zircon and LK"
   path: /docs/concepts/kernel/zx_and_lk.md
+- title: "C library (libc)"
+  path: /docs/concepts/kernel/libc.md
 - title: "Kernel objects"
   section:
   - title: "Handles"
@@ -60,10 +62,17 @@ toc:
   section:
   - title: "Timer slack"
     path: /docs/concepts/kernel/timer_slack.md
-  - title: "Time units"
-    path: /docs/concepts/kernel/time.md
   - title: "Clock transformations"
     path: /docs/concepts/kernel/clock_transformations.md
+- title: "Time"
+  section:
+  - include: /docs/concepts/kernel/time/_toc.yaml
+- title: "Tracing"
+  section:
+  - title: "Fuchsia tracing system"
+    path: /docs/concepts/kernel/tracing-system.md
+  - title: "Tracing provider buffering modes"
+    path: /docs/concepts/kernel/tracing-provider-buffering-modes.md
 - title: "Advanced"
   section:
   - title: "Kernel invariants"
@@ -72,3 +81,10 @@ toc:
     path: /docs/concepts/kernel/sysret_problem.md
   - title: "Hardware watchdog timers"
     path: /docs/concepts/kernel/watchdog.md
+  - title: "Kernel Thread Signaling"
+    path: /docs/concepts/kernel/kernel_thread_signaling.md
+- title: "Entropy quality tests"
+  path:  /docs/concepts/kernel/entropy_quality_tests.md
+- title: "Jitterentropy"
+  section:
+  - include: /docs/concepts/kernel/jitterentropy/_toc.yaml

@@ -186,7 +186,7 @@ interface Science {
 ```
 
 We will update the
-[FIDL API rubric](/docs/concepts/api/fidl.md)
+[FIDL API rubric](/docs/development/api/fidl.md)
 to recommend appending "_" to the method name for the `Selector` to resolve clashes.
 `fidlc` will also suggest this fix.
 

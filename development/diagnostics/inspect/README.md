@@ -1,8 +1,8 @@
-# Fuchsia component inspection
+# Fuchsia component inspection overview
 
 Components in Fuchsia may expose structured information about themselves
 conforming to the Inspect API. This document describes the concepts of
-Component Inspection, the interface, the C++ language implementation
+component inspection, the interface, the C++ language implementation
 of the interface, and user-facing tools for interacting with components
 that expose information.
 
@@ -10,18 +10,23 @@ that expose information.
 
 ## Quick links
 
-**Not sure where to start? [Quick Start](quickstart.md)**
+**Not sure where to start?**
 
-* [iquery] &mdash; The userspace tool for inspecting components.
-* [Codelab](codelab/README.md) &mdash; A full codelab in C++, Rust, and Dart.
-* [Health checks] &mdash; Describes the health check subsystem.
+* [Quickstart](quickstart.md) – A get-started guide for component inspection.
+* [`ffx inspect`][ffx-inspect] – The `ffx` command for inspecting components.
+* [Codelab](codelab/README.md) – A full codelab in C++, Rust, and Dart.
+* API reference for [C++](https://fuchsia-docs.firebaseapp.com/cpp/inspect/index.html),
+  [Rust](https://fuchsia-docs.firebaseapp.com/rust/fuchsia_inspect/index.html),
+  and [Dart](https://fuchsia-docs.firebaseapp.com/dart/package-fuchsia_inspect_inspect/package-fuchsia_inspect_inspect-library.html).
+
+* [Health checks] – Describes the health check subsystem.
 
 ## Concepts
 
 Components may expose a tree of **Nodes**, each of which has a set of
 **Properties**.
 
-![Figure: A tree of **Nodes**s](tree.png)
+![Figure: A tree of Nodes](tree.png)
 
 ### Node
 
@@ -29,7 +34,7 @@ A node is an exported entity within a component that may have 0 or
 more children. Each node has a name, and each child of a node
 must have a unique name among the children.
 
-![Figure: A **Node**](node.png)
+![Figure: A Node](node.png)
 
 ### Property
 
@@ -203,15 +208,33 @@ about the component to the hub. For instance, appmgr exposes
 [Validator Architecture] describes an integration test framework for Inspect
 language libraries.
 
-## Userspace Tools
+## Userspace tools
 
-The primary userspace tool is [iquery], which has its own
-manual page.
+To examine the inspect hierarchies of components, you can use the
+[`ffx inspect show`][ffx-inspect-show] command:
 
-You can use the `fx iquery show` command to dump out data for the entire
-system, or `fx snapshot` to generate a directory of diagnostic
-information from the system (which includes inspect).
+*  Print all inspect hierarchies:
 
+   ```posix-terminal
+   ffx inspect show
+   ```
+
+*  Print the inspect hierarchy of a specific component (for example,
+   `core/font_provider`):
+
+   ```posix-terminal
+   ffx inspect show core/font_provider
+   ```
+
+Or run [`ffx target snapshot`][ffx-target-snapshot]
+to generate a ZIP archive containing the system's diagnostic information, which
+includes inspect:
+
+```posix-terminal
+ffx target snapshot
+```
+
+<!-- Reference links -->
 
 [cpp-1]: /zircon/system/ulib/inspect/include/lib/inspect/cpp/inspect.h
 [cpp-2]: /zircon/system/ulib/inspect/include/lib/inspect/cpp/reader.h
@@ -231,6 +254,9 @@ information from the system (which includes inspect).
 [dart-2]: https://fuchsia-docs.firebaseapp.com/dart/package-fuchsia_inspect_inspect/package-fuchsia_inspect_inspect-library.html
 [dart-3]: https://fuchsia-docs.firebaseapp.com/dart/package-fuchsia_inspect_inspect/Node/delete.html
 [iquery]: /docs/reference/diagnostics/consumers/iquery.md
-[Inspect File Format]: /docs/reference/diagnostics/inspect/vmo-format.md
+[Inspect File Format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
 [Validator Architecture]: /docs/reference/diagnostics/inspect/validator/README.md
-[Health checks]: /docs/concepts/diagnostics/inspect/health.md
+[Health checks]: /docs/development/diagnostics/inspect/health.md
+[ffx-inspect]: https://fuchsia.dev/reference/tools/sdk/ffx.md#inspect
+[ffx-inspect-show]: https://fuchsia.dev/reference/tools/sdk/ffx.md#show_3
+[ffx-target-snapshot]: https://fuchsia.dev/reference/tools/sdk/ffx.md#snapshot

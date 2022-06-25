@@ -52,7 +52,7 @@ the instructions below. For a full list of available images [install gsutil](htt
 and run: `gsutil ls gs://fuchsia/development/$(gsutil cat gs://fuchsia/development/LATEST_LINUX)/images`
 
 1. Setup your device and install Zedboot:
-   Find the instructions for your device (e.g. a [NUC](/docs/development/hardware/intel_nuc.md) or [Pixelbook](/docs/development/hardware/pixelbook.md))
+   Find the instructions for your device (e.g. a [NUC](/docs/development/hardware/intel_nuc.md) or [Chromebook](/docs/development/hardware/chromebook.md))
    to setup and install Zedboot on your device.
 
 1. From the `samples` directory, create Ninja build files for the samples by running the following command:
@@ -76,15 +76,15 @@ and run: `gsutil ls gs://fuchsia/development/$(gsutil cat gs://fuchsia/developme
 1. Start a package server from your host machine:
 
    ```shell
-   third_party/fuchsia-sdk/bin/fserve.sh --image generic-x64
+   third_party/fuchsia-sdk/tools/x64/fserve --image generic-x64
    ```
 
 1. To publish your packages open another another terminal window and run:
 
    ```shell
-   third_party/fuchsia-sdk/bin/fpublish.sh out/generic-x64/hello_far.far
-   third_party/fuchsia-sdk/bin/fpublish.sh out/generic-x64/rot13_server.far
-   third_party/fuchsia-sdk/bin/fpublish.sh out/generic-x64/rot13_client.far
+   third_party/fuchsia-sdk/tools/x64/fpublish out/generic-x64/hello_far.far
+   third_party/fuchsia-sdk/tools/x64/fpublish out/generic-x64/rot13_server.far
+   third_party/fuchsia-sdk/tools/x64/fpublish out/generic-x64/rot13_client.far
    ```
 
 1. Run the sample components on your Fuchsia device:
@@ -92,7 +92,7 @@ and run: `gsutil ls gs://fuchsia/development/$(gsutil cat gs://fuchsia/developme
     1. SSH to the device:
 
        ```shell
-       third_party/fuchsia-sdk/bin/fssh.sh
+       third_party/fuchsia-sdk/tools/x64/fssh
        ```
 
     1. Once SSHed into the device, run the hello world component on the device:
@@ -110,7 +110,7 @@ and run: `gsutil ls gs://fuchsia/development/$(gsutil cat gs://fuchsia/developme
     1. In a new terminal window on your host machine, open a new ssh connection to your device, and run the rot13 client:
 
        ```shell
-       third_party/fuchsia-sdk/bin/fssh.sh
+       third_party/fuchsia-sdk/tools/x64/fssh
        run fuchsia-pkg://fuchsia.com/rot13_client#meta/rot13_client.cmx
        ```
 

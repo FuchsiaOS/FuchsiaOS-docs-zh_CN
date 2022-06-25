@@ -1,0 +1,16 @@
+#Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- heading: "Drivers"
+- title: "Hardware drivers"
+  path: /docs/reference/hardware/drivers.md
+- title: "Deprecated hardware drivers"
+  path: /docs/reference/hardware/driver-epitaphs.md
+- heading: "System configuration"
+- title: "Supported system configuration"
+  path: /docs/reference/hardware/support-system-config.md

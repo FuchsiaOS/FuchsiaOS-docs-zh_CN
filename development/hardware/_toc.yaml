@@ -6,25 +6,25 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Install Fuchsia on a device"
-  path: /docs/development/hardware/paving.md
-- title: "Install Fuchsia on Pixelbook"
-  path: /docs/development/hardware/pixelbook.md
-- title: "Install Fuchsia on Intel NUC"
+- title: "Overview"
+  path: /docs/development/hardware/README.md
+- title: "Install Fuchsia on a Chromebook"
+  path: /docs/development/hardware/chromebook.md
+- title: "Install Fuchsia on a NUC"
   path: /docs/development/hardware/intel_nuc.md
-- title: "Configure remote management for Intel NUC"
-  path: /docs/development/hardware/nuc-remote-management.md
-- title: "Prepare a USB flash drive to be a bootable disk"
-  path: /docs/development/hardware/usb_setup.md
+- title: "Install Fuchsia on a NUC using Zedboot (Legacy)"
+  path: /docs/development/hardware/intel_nuc_with_zedboot.md
+- title: "Install Fuchsia on a Khadas VIM3 board"
+  path: /docs/development/hardware/khadas-vim3.md
 - title: "Create a bootable Fuchsia image"
-  path: /docs/development/hardware/installer.md
+  section:
+  - title: "Install Fuchsia from a USB flash drive"
+    path: /docs/development/hardware/usb_setup.md
+  - title: "Use the Fuchsia installer (Legacy)"
+    path: /docs/development/hardware/installer.md
 - title: "Set up experimental hardware"
   section:
   - title: "Install Fuchsia on Acer Switch Alpha 12"
     path: /docs/development/hardware/acer12.md
-  - title: "Install Fuchsia on iMX8M EVK"
-    path: /docs/development/hardware/imx8mevk.md
-  - title: "Install Fuchsia on Khadas VIM2 board"
-    path: /docs/development/hardware/khadas-vim.md
   - title: "Install Fuchsia on Toulouse"
     path: /docs/development/hardware/toulouse.md

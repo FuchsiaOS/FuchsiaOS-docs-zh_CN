@@ -14,10 +14,11 @@ only move data (not handles).
 Data is written into one end of a socket via [`zx_socket_write()`] and
 read from the opposing end via [`zx_socket_read()`].
 
-Upon creation, both ends of the socket are writable and readable. Via the
-**ZX_SOCKET_SHUTDOWN_READ** and **ZX_SOCKET_SHUTDOWN_WRITE** options to
-[`zx_socket_shutdown()`], one end of the socket can be closed for reading and/or
-writing.
+Upon creation, both ends of the socket are writable. Using the
+[`zx_socket_set_disposition()`] system call, each end of the socket can be
+enabled or disabled independently, using the
+**ZX_SOCKET_DISPOSITION_WRITE_ENABLED** and
+**ZX_SOCKET_DISPOSITION_WRITE_DISABLED**.
 
 ## PROPERTIES
 
@@ -52,15 +53,15 @@ The following signals may be set for a socket object:
 **ZX_SOCKET_PEER_CLOSED** the other endpoint of this socket has
 been closed.
 
-**ZX_SOCKET_PEER_WRITE_DISABLED** writing is disabled permanently for the other
-endpoint either because of passing **ZX_SOCKET_SHUTDOWN_READ** to this endpoint
-or passing **ZX_SOCKET_SHUTDOWN_WRITE** to the peer. Reads on a socket endpoint
-with this signal raised will succeed so long as there is data in the socket that
-was written before writing was disabled.
+**ZX_SOCKET_PEER_WRITE_DISABLED** writing is disabled for the other
+endpoint because its disposition was set to
+**ZX_SOCKET_DISPOSITION_WRITE_DISABLED**. Reads on a socket endpoint with this
+signal raised will succeed so long as there is data in the socket that was
+written before writing was disabled.
 
-**ZX_SOCKET_WRITE_DISABLED** writing is disabled permanently for this endpoint
-either because of passing **ZX_SOCKET_SHUTDOWN_WRITE** to this endpoint or
-passing **ZX_SOCKET_SHUTDOWN_READ** to the peer.
+**ZX_SOCKET_WRITE_DISABLED** writing is disabled for this endpoint because its
+disposition was set to **ZX_SOCKET_DISPOSITION_WRITE_DISABLED**. Writes on a
+socket endpoint with this signal raised will fail.
 
 **ZX_SOCKET_READ_THRESHOLD** data queued up on socket for reading exceeds
 the read threshold.
@@ -72,10 +73,10 @@ the write threshold.
 
  - [`zx_socket_create()`] - create a new socket
  - [`zx_socket_read()`] - read data from a socket
- - [`zx_socket_shutdown()`] - prevent reading or writing
+ - [`zx_socket_set_disposition()`] - set disposition of a socket
  - [`zx_socket_write()`] - write data to a socket
 
 [`zx_socket_create()`]: /docs/reference/syscalls/socket_create.md
 [`zx_socket_read()`]: /docs/reference/syscalls/socket_read.md
-[`zx_socket_shutdown()`]: /docs/reference/syscalls/socket_shutdown.md
+[`zx_socket_set_disposition()`]: /docs/reference/syscalls/socket_set_disposition.md
 [`zx_socket_write()`]: /docs/reference/syscalls/socket_write.md

@@ -1,11 +1,13 @@
 # Max out pagination
 
-Author: pascallouis@google.com
-
 This document describes the best ways to calculate the size both in terms of
 bytes and handles of elements as they are added to a vector. This should be
 done in order to maximize the number of elements that can be batched at once
 while satisfying the kernel caps on channel writes.
+
+Note: Use the [measure-tape](/tools/fidl/measure-tape/) tool to implement the
+techniques described below. In the Fuchsia Source Tree, this tool has direct
+build integration.
 
 ## Summary
 
@@ -30,7 +32,7 @@ Consider the [WatchPeers][bts-watch-peers] method of the
 `fuchsia.bluetooth.sys.Access` protocol, defined as:
 
 ```fidl
-WatchPeers() -> (vector<Peer> updated, vector<bt.PeerId> removed);
+WatchPeers() -> (vector<Peer>:MAX updated, vector<bt.PeerId>:MAX removed);
 ```
 
 First, a request or response is preceded by a header, i.e. a fixed 16 bytes or
@@ -68,7 +70,7 @@ Consider the [Enqueue][scenic-enqueue] method of the
 `fuchsia.scenic.Session` protocol, defined as:
 
 ```fidl
-Enqueue(vector<Command> cmds);
+Enqueue(vector<Command>:MAX cmds);
 ```
 
 A request or response is preceded by a header, i.e. a fixed 16 bytes or
@@ -95,29 +97,29 @@ The simplified definition of `SendPointerInputCmd` and all transitively
 reachable types through this struct is provided below:
 
 ```fidl
-struct SendPointerInputCmd {
-    uint32 compositor_id;
-    PointerEvent pointer_event;
+type SendPointerInputCmd = struct {
+    compositor_id uint32;
+    pointer_event PointerEvent;
 };
 
-struct PointerEvent {
-    uint64 event_time;
-    uint32 device_id;
-    uint32 pointer_id;
-    PointerEventType type;
-    PointerEventPhase phase;
-    float32 x;
-    float32 y;
-    float32 radius_major;
-    float32 radius_minor;
-    uint32 buttons;
+type PointerEvent = struct {
+    event_time uint64;
+    device_id uint32;
+    pointer_id uint32;
+    type PointerEventType;
+    phase PointerEventPhase;
+    x float32;
+    y float32;
+    radius_major float32;
+    radius_minor float32;
+    buttons uint32;
 };
 
-enum PointerEventType {
+type PointerEventType = flexible enum {
     // members elided
 };
 
-enum PointerEventPhase {
+type PointerEventPhase = flexible enum {
     // members elided
 };
 ```
@@ -160,7 +162,7 @@ This results in a total size of 104 bytes.
 
 <!-- xrefs -->
 [lostart]: http://www.catb.org/esr/structure-packing/
-[pagination-api]: /docs/concepts/api/fidl.md#pagination
+[pagination-api]: /docs/development/api/fidl.md#pagination
 
 [fidl-wire-format]: /docs/reference/fidl/language/wire-format
 [fidl-wire-format-union]: /docs/reference/fidl/language/wire-format#unions

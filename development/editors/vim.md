@@ -6,7 +6,7 @@ The [`fuchsia.vim`](/scripts/vim/fuchsia.vim) script sets up Vim to do the
 following:
 
 *   Set paths so that `:find` and `gf` know how to find files.
-*   Enable FIDL syntax highlighting (using `/lib/fidl/tools/vim/`).
+*   Enable FIDL syntax highlighting (using `/tools/fidl/editors/vim/`).
 *   Integrate basic build system so that `:make` builds and populates the
     QuickFix window.
 *   Configure [YouCompleteMe](/docs/development/editors/youcompleteme.md) (YCM)
@@ -103,3 +103,6 @@ augroup autoformat_gn
   autocmd FileType gn AutoFormatBuffer gn
 augroup END
 ```
+
+For highlighting Rust, see its [language-specific
+guide](/docs/development/languages/rust/editors.md#vim).

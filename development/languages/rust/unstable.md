@@ -65,18 +65,22 @@ If the feature is approved, the feature summary, usage, stabilization report,
 and owner listed in the doc are added to the "Currently Used Features" section listed
 below. This documentation must be checked in before the feature can be used.
 
-The current list of reviewers is as follows:
+{% dynamic if user.is_googler %}
 
-- bwb@google.com
-- etryzelaar@google.com
-- raggi@google.com
-- tkilbourn@google.com
-- tmandry@google.com
+Reviews are performed by the [Rust Working Group] (tq-rust-wg@google.com).
+
+[Rust Working Group]: https://goto.corp.google.com/tq-rust-wg
+
+{% dynamic else %}
+
+Reviews are performed by the Rust Working Group.
+
+{% dynamic endif %}
 
 ## Currently Used Features
 
-There are no longer any unstable features used in Fuchsia! The last one was
-`async_await`, which was stabilized in 2019 Q3.
+Unstable features are tracked by issues filed under the the
+[`Rust>unstable`](https://fxbug.dev?q=component:Rust>unstable) component.
 
 [the edition guide]: https://rust-lang-nursery.github.io/edition-guide/editions/index.html
 [Rust 2018: an early preview]: https://internals.rust-lang.org/t/rust-2018-an-early-preview/7776

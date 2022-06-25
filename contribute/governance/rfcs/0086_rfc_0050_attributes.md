@@ -10,6 +10,12 @@
 This document describes a new syntax for [attributes][fidl-attributes] in the
 FIDL language.
 
+**See also:**
+
+* [RFC-0050: FIDL Syntax Revamp](0050_syntax_revamp.md)
+* [RFC-0087: Updates to RFC-0050: FIDL Method Parameter Syntax](0087_fidl_method_syntax.md)
+* [RFC-0088: Updates to RFC-0050: FIDL Bits, Enum, and Constraints Syntax](0088_rfc_0050_bits_enums_constraints.md)
+
 ## Motivation
 
 FIDL attributes provide a clear way to attach compile-time metadata to FIDL
@@ -21,8 +27,7 @@ pertaining to documentation ([Doc][fidl-attributes-doc],
 [MaxHandles][fidl-attributes-max-handles]), code generation
 ([Transitional][fidl-attributes-transitional],
 [Transport][fidl-attributes-transport]), desired API availability
-([Discoverable][fidl-attributes-discoverable],
-[Internal][fidl-attributes-internal]), and so on. In addition to these
+([Discoverable][fidl-attributes-discoverable]), and so on. In addition to these
 "official" attributes, FIDL authors are allowed to define their own "custom"
 attributes, which do not affect compilation, but are still attached to the
 resulting [FIDL JSON Intermediate Representation][fidl-json-ir] for potential
@@ -173,7 +178,7 @@ definitions will appear as follows:
         "name",
         "value",
     ],
-    "properties": [
+    "properties": {
       "name": {
         "description": "Name of the attribute argument",
         "type": "string",
@@ -182,7 +187,11 @@ definitions will appear as follows:
         "description": "Value of the attribute argument",
         "$ref": "#/definitions/constant",
       },
-    ],
+      "location": {
+        "description": "Source location of the attribute argument",
+        "$ref": "#/definitions/location"
+      },
+    },
   },
 },
 "attribute-args": {
@@ -204,7 +213,7 @@ definitions will appear as follows:
         "arguments",
         "location",
     ],
-    "properties": [
+    "properties": {
       "name": {
         "description": "Attribute name",
         "type": "string",
@@ -217,34 +226,31 @@ definitions will appear as follows:
         "description": "Source location of the declaration",
         "$ref": "#/definitions/location",
       },
-    ],
+    },
   },
 },
 "compose": {
   {
-    "description": "Compose member of a protocol declaration",
+    "description": "Compose member of an interface declaration",
     "type": "object",
     "required": [
-        "composed",
+        "name",
         "location",
     ],
-    "properties": [
-      "composed": {
-        "description": "List of composed protocols",
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/identifier",
-        }
+    "properties": {
+      "name": {
+        "$ref": "#/definitions/compound-identifier",
+        "description": "Name of the composed interface"
       },
       "maybe_attributes": {
         "description": "Optional list of attributes of the compose declaration",
-        "$ref": "#/definitions/attributes.md-list",
+        "$ref": "#/definitions/attributes-list",
       },
       "location": {
         "description": "Source location of the compose declaration",
         "$ref": "#/definitions/location",
       },
-    ],
+    },
   },
 },
 ```
@@ -508,7 +514,6 @@ the syntax proposed in this document.
 [fidl-attributes-discoverable]: /docs/reference/fidl/language/attributes.md#discoverable
 [fidl-attributes-doc]: /docs/reference/fidl/language/attributes.md#doc
 [fidl-attributes-for-deprecated-c-bindings]: /docs/reference/fidl/language/attributes.md#layout
-[fidl-attributes-internal]: /docs/reference/fidl/language/attributes.md#internal
 [fidl-attributes-max-bytes]: /docs/reference/fidl/language/attributes.md#maxbytes
 [fidl-attributes-max-handles]: /docs/reference/fidl/language/attributes.md#maxhandles
 [fidl-attributes-no-doc]: /docs/reference/fidl/language/attributes.md#nodoc

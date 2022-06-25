@@ -224,7 +224,8 @@ Note the following:
     be the name of a Boolean-type selector or computation, or any suitable math
     expression.
 *   See the [Details](#details) section for more information about comparisons.
-*   Currently, `print` is the only available action.
+*   See the [config reference][triage-config-reference] for other supported
+    actions.
 
 ### Add a gauge
 

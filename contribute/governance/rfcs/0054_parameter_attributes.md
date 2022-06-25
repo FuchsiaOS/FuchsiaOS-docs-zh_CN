@@ -11,6 +11,12 @@ _"A Chance to write self documenting APIs"_
 
 We can already apply attributes to various elements of FIDL but not to parameters. This is a proposal to extend the grammar to accept parameter attributes.
 
+### Relation to other RFCs
+
+This RFC was superseded by:
+
+* [RFC-0050: Syntax revamp](0050_syntax_revamp.md)
+
 ## Motivation
 
 Having attributes on more language elements increases the language consistency

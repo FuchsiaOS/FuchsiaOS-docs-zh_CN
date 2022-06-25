@@ -428,7 +428,7 @@ Property: A hypothetical FIDL extension to facilitate observation / data binding
 Loosely speaking, the bindings would produce methods for accessing, modifying, and/or observing a value exposed by the interface.
 
 <!-- xref table -->
-[fidl-api]: /docs/concepts/api/fidl.md
+[fidl-api]: /docs/development/api/fidl.md
 [rfc0053]: /docs/contribute/governance/rfcs/0053_epitaphs.md
 [rfc0020]: /docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md
 [fuchsia.media]: /sdk/fidl/fuchsia.media/

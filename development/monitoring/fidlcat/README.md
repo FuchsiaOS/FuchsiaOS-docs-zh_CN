@@ -23,10 +23,10 @@ universe_package_labels += [ "//bundles:tools" ]
 ```
 
 To run `fidlcat`, you must boot with networking enabled. If you're running an
-emulator:
+emulator run the following command:
 
 ```sh
-fx emu -N
+ffx emu --net tap
 ```
 
 In a separate console, you need to ensure your target is able to fetch updates:
@@ -47,7 +47,7 @@ If you run the `ps` command in the shell, you can get a pid you want to monitor,
 and run:
 
 ```sh
-fx fidlcat --remote-pid=<pid>
+ffx debug fidl --remote-pid <pid>
 ```
 
 If your code is executed by a runner, you are likely to want to attach to the
@@ -64,13 +64,13 @@ You can then attach directly to that process, and view all FIDL messages sent by
 Dart programs:
 
 ```sh
-host$ fx fidlcat --remote-pid=21107
+host$ ffx debug fidl --remote-pid 21107
 ```
 
 You can use the `--remote-pid` flag multiple times to connect to multiple processes:
 
 ```sh
-fx fidlcat --remote-pid=<pid1> --remote-pid=<pid2>
+ffx debug fidl --remote-pid <pid1> --remote-pid <pid2>
 ```
 
 ### Launching a component with fidlcat
@@ -78,14 +78,14 @@ fx fidlcat --remote-pid=<pid1> --remote-pid=<pid2>
 Alternatively, you can launch a component directly using its URL:
 
 ```sh
-fx fidlcat run fuchsia-pkg://fuchsia.com/echo_client_rust#meta/echo_client_rust.cmx
+ffx debug fidl -- run fuchsia-pkg://fuchsia.com/echo_client_rust#meta/echo_client_rust.cmx
 ```
 
 You can also specify the URL with a bash regex that matches a unique URL known to the build:
 
 ```sh
-fx fidlcat run "echo_client_cpp_synchronous.*"
-fx fidlcat run echo_client_cpp.cmx
+ffx debug fidl -- run "echo_client_cpp_synchronous.*"
+ffx debug fidl -- run echo_client_cpp.cmx
 ```
 
 ### Attaching to a program on startup
@@ -97,7 +97,7 @@ command, fidlcat will connect to the system, and attach to all programs with the
 substring "echo_client".
 
 ```sh
-fx fidlcat --remote-name=echo_client
+ffx debug fidl --remote-name echo_client
 ```
 
 ### Mixed use
@@ -112,27 +112,27 @@ Examples (echo_server is launched by echo_client):
 
 Run and monitor echo_client.
 ```sh
-fx fidlcat run echo_client_cpp.cmx
+ffx debug fidl -- run echo_client_cpp.cmx
 ```
 
 Run and monitor echo_client.
 ```sh
-fx fidlcat --remote-name=echo_client run echo_client_cpp.cmx
+ffx debug fidl --remote-name echo_client -- run echo_client_cpp.cmx
 ```
 
 Run echo_client and monitor echo_server.
 ```sh
-fx fidlcat --remote-name=echo_server run echo_client_cpp.cmx
+ffx debug fidl --remote-name echo_server -- run echo_client_cpp.cmx
 ```
 
 Run echo_client and monitor echo_client and echo_server.
 ```sh
-fx fidlcat --remote-name=echo run echo_client_cpp.cmx
+ffx debug fidl --remote-name echo -- run echo_client_cpp.cmx
 ```
 
 Run echo_client and monitor echo_client and echo_server.
 ```sh
-fx fidlcat --remote-name=echo_client --remote-name=echo_server run echo_client_cpp.cmx
+ffx debug fidl --remote-name echo_client --remote-name echo_server -- run echo_client_cpp.cmx
 ```
 
 ### Monitoring a service
@@ -143,7 +143,7 @@ when one of of the "--remote-name" process is launched. Also, fidlcat stops when
 "--remote-name" process stops (even if some "--extra-name" processes are still monitored).
 
 ```sh
-fx fidlcat --remote-name=echo --extra-name=appmgr run echo_client_cpp.cmx
+ffx debug fidl --remote-name echo --extra-name appmgr -- run echo_client_cpp.cmx
 ```
 
 ### Input options
@@ -152,7 +152,8 @@ You have two input options:
 
  * --from=device This is the default option, which monitors a device in real time.
 
- * --from=&lt;path&gt; With this option, fidlcat replay a previously saved session.
+ * --from=&lt;path&gt; Playback. With this option, fidlcat replays a session previously saved with
+   --to=&lt;path&gt; (protobuf format).
 
 ### Session save
 

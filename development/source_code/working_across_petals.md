@@ -1,7 +1,9 @@
 # Make changes across different petals
 
 Because it is not possible to atomically commit a change to multiple Git
-repositories at once, coordinating changes that affect multiple petals.
+repositories at once, developers must carefully coordinate changes that
+affect multiple petals.
+
 For example, an API or ABI change in the Fuchsia tree that affects callers
 in Topaz or Experiences requires either a
 [soft transition](#soft-transitions) (preferred) or [hard transition](#hard-transitions).
@@ -29,6 +31,8 @@ Use the following steps to land a soft transition:
 1. Migrate `P` to use the new interface.
 1. Wait for the new revision of `P` to roll into the integration repository.
 1. Land a cleanup change in `D` to remove the old interface.
+
+Generally, updates to FIDL protocols can be achieved via a soft transition.
 
 ## Hard transitions {#hard-transitions}
 

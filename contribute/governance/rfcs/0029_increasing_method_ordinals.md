@@ -17,6 +17,12 @@ We propose:
    transactional header**;
 4. And **discontinue the use of the `[FragileBase]` attribute**.
 
+### Relation to other RFCs
+
+This RFC was superseded by:
+
+* [RFC-0037: Transactional message header v3](0037_transactional_message_header_v3.md)
+
 ## Motivation
 
 #### Combatting Breakage at a Distance {#breakage-at-a-distance}

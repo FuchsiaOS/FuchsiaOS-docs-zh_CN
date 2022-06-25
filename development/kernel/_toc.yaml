@@ -20,5 +20,7 @@ toc:
   path: /docs/development/kernel/handles.md
 - title: "Cross translation unit static analysis in Zircon"
   path: /docs/development/kernel/ctu_analysis.md
+- title: "Time units"
+  path: /docs/development/kernel/time.md
 - title: "Notes on kernel development"
   path: /docs/development/kernel/notes_on_kernel_development.md

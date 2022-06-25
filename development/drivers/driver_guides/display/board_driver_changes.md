@@ -1,11 +1,16 @@
 # Modifying board drivers
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1). Also the workflows documented on
+this page may only be specific to the Fuchsia source checkout
+(`fuchsia.git`) environment.
+
 Most system on chip (SoC) board rely on explicitly enumerated hardware
 resources, rather than discovery mechanisms like ACPI that are common on
 workstations, servers, or laptops. To add support for an SoC's display
 controller, you will need to modify the board driver to expose hardware
 resources that your display driver can use. See
-[vim2/vim-display.cc][vim-display] for an example. Most devices need some
+[amlogic-display.cc][amlogic-display] for an example. Most devices need some
 combination of the following:
 
  * MMIO regions
@@ -23,7 +28,7 @@ combination of the following:
  * [Sysmem] heaps, so that clients can allocate memory that is accessible to the
    device.
 
-After all these resources have been enumerated, call `CompositeDeviceAdd` to
+After all these resources have been enumerated, call `AddComposite` to
 [expose them][cda] as a unit. The device manager will look for drivers that can
 bind to this composite device and load the appropriate display driver.
 
@@ -32,6 +37,6 @@ bind to this composite device and load the appropriate display driver.
 <!-- xrefs -->
 [bti]: /docs/reference/kernel_objects/bus_transaction_initiator.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
-[cda]: https://fuchsia.googlesource.com/fuchsia/+/a7e9836345caf947df79d72882ac864eceae7eb8/src/devices/board/drivers/vim2/vim-display.cc#126
-[vim-display]: /src/devices/board/drivers/vim2/vim-display.cc
+[cda]: https://fuchsia.googlesource.com/fuchsia/+/7a5659579e2340a50cbd5063ee7925b46d4fcf6f/src/devices/board/drivers/astro/astro-display.cc#125
+[amlogic-display]: /src/graphics/display/drivers/amlogic-display/amlogic-display.cc
 [vim3-cl]: https://fxrev.dev/479034

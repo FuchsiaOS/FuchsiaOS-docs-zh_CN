@@ -13,7 +13,7 @@ multiple instances of a server (or multiple FIDL protocols), see the
 tutorial on [services][services-tut].
 
 The full example code for this tutorial is located at
-[//examples/fidl/hlcpp/multiple_clients][src].
+[`//examples/fidl/hlcpp/multiple_clients`][src].
 
 ## Implement the server
 
@@ -21,7 +21,7 @@ In the [previous implementation][server-tut-impl], the `main()` function initial
 a single `fidl::Binding`, and bound any incoming requests to it:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="5,7,8,9,10,12" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/server/main.cc" region_tag="main" highlight="5,7,8,9,10,12" %}
 ```
 
 This means that if a second client tries to connect to the server at the same
@@ -30,7 +30,7 @@ first client. To support multiple clients, keep track of multiple
 `fidl::Binding`s (one for each client) using a `fidl::BindingSet`:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/multiple_clients/server/main.cc" region_tag="main" highlight="5,7" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/multiple_clients/server/main.cc" region_tag="main" highlight="5,7" %}
 ```
 
 A binding set also simplifies the code since it no longer
@@ -47,7 +47,7 @@ runtime library provides an anolog to `fidl::BindingSet`: the
 connections to the same protocol:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/multiple_clients/client/main.cc" region_tag="main" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/multiple_clients/client/main.cc" region_tag="main" %}
 ```
 
 The code for setting up a proxy and making requests is the same as in the
@@ -62,28 +62,58 @@ To use `fidl::InterfacePtrSet`, include `lib/fidl/cpp/interface_ptr_set.h`.
 
 ## Run the example
 
-To run the example:
+In order for the client and server to communicate using the `Echo` protocol,
+component framework must route the `fuchsia.examples.Echo` capability from the
+server to the client. For this tutorial, a [realm][glossary.realm] component is
+provided to declare the appropriate capabilities and routes.
 
-1. Configure the GN build as follows:
+Note: You can explore the full source for the realm component at
+[`//examples/fidl/echo-realm`](/examples/fidl/echo-realm)
 
-   ```
-   fx set core.x64 --with //examples/fidl/hlcpp/multiple_clients/client --with //examples/fidl/hlcpp/multiple_clients/server --with //examples/fidl/test:echo-launcher
-   ```
+1. Configure your build to include the provided package that includes the
+   echo realm, server, and client:
+
+    ```posix-terminal
+    fx set core.qemu-x64 --with //examples/fidl/hlcpp:echo-hlcpp-multi-client
+    ```
 
 1. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
    ```
 
-1. Run the launcher by passing it the client URL, the server URL, and the protocol that
-   the server provides to the client:
+1. Run the `echo_realm` component. This creates the client and server component
+   instances and routes the capabilities:
 
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-launcher#meta/launcher.cmx fuchsia-pkg://fuchsia.com/echo-hlcpp-multi-client#meta/echo-client.cmx fuchsia-pkg://fuchsia.com/echo-hlcpp-multi-server#meta/echo-server.cmx fuchsia.examples.Echo
-   ```
+    ```posix-terminal
+    ffx component run fuchsia-pkg://fuchsia.com/echo-hlcpp-multi-client#meta/echo_realm.cm
+    ```
+
+1. Start the `echo_client` instance:
+
+    ```posix-terminal
+    ffx component start /core/ffx-laboratory:echo_realm/echo_client
+    ```
+
+The server component starts when the client attempts to connect to the `Echo`
+protocol. You should see output similar to the following in the device logs
+(`ffx log`):
+
+```none {:.devsite-disable-click-to-copy}
+[echo_server][][I] Running echo server
+[echo_client][][I] Got response Hello echoer 0
+```
+
+Terminate the realm component to stop execution and clean up the component
+instances:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_realm
+```
 
 <!-- xrefs -->
+[glossary.realm]: /docs/glossary/README.md#realm
 [client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
 [client-main]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md#main
 [server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md

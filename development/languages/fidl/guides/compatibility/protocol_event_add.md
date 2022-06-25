@@ -69,11 +69,11 @@ void sendEvents(fidl::Binding<fidl_test::Example>* server) { server->events().On
 
 ```cpp
 class AsyncEventHandler : public fidl::WireAsyncEventHandler<fidl_test::Example> {
-  void OnExistingEvent(fidl_test::Example::OnExistingEventResponse* event) override {}
+  void OnExistingEvent(fidl::WireResponse<fidl_test::Example::OnExistingEvent>* event) override {}
 };
 
 class SyncEventHandler : public fidl::WireSyncEventHandler<fidl_test::Example> {
-  void OnExistingEvent(fidl_test::Example::OnExistingEventResponse* event) override {}
+  void OnExistingEvent(fidl::WireResponse<fidl_test::Example::OnExistingEvent>* event) override {}
 };
 
 void sendEvents(fidl::ServerBindingRef<fidl_test::Example> server) { server->OnExistingEvent(); }
@@ -133,7 +133,7 @@ async fn receive_events(client: fidl_lib::ExampleProxy) -> Result<(), fidl::Erro
 ```diff
   protocol Example {
       -> OnExistingEvent();
-+     [Transitional]
++     @transitional
 +     -> OnNewEvent();
   };
 
@@ -210,13 +210,13 @@ async fn receive_events(client: fidl_lib::ExampleProxy) -> Result<(), fidl::Erro
 
 ```diff
   class AsyncEventHandler : public fidl::WireAsyncEventHandler<fidl_test::Example> {
-    void OnExistingEvent(fidl_test::Example::OnExistingEventResponse* event) override {}
-+   void OnNewEvent(fidl_test::Example::OnNewEventResponse* event) override {}
+    void OnExistingEvent(fidl::WireResponse<fidl_test::Example::OnExistingEvent>* event) override {}
++   void OnNewEvent(fidl::WireResponse<fidl_test::Example::OnNewEvent>* event) override {}
   };
   
   class SyncEventHandler : public fidl::WireSyncEventHandler<fidl_test::Example> {
-    void OnExistingEvent(fidl_test::Example::OnExistingEventResponse* event) override {}
-+   void OnNewEvent(fidl_test::Example::OnNewEventResponse* event) override {}
+    void OnExistingEvent(fidl::WireResponse<fidl_test::Example::OnExistingEvent>* event) override {}
++   void OnNewEvent(fidl::WireResponse<fidl_test::Example::OnNewEvent>* event) override {}
   };
   
 - void sendEvents(fidl::ServerBindingRef<fidl_test::Example> server) { server->OnExistingEvent(); }
@@ -262,7 +262,7 @@ async fn receive_events(client: fidl_lib::ExampleProxy) -> Result<(), fidl::Erro
 ```diff
   protocol Example {
       -> OnExistingEvent();
--     [Transitional]
+-     @transitional
       -> OnNewEvent();
   };
 

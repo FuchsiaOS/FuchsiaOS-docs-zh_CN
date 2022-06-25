@@ -5,7 +5,7 @@
 # Creating an RFC
 
 Once you are familiarized with the
-[RFC (request for comments) process](README.md) and criterias, you may
+[RFC (request for comments) process](README.md) and criteria, you may
 want to create a proposal for the [Fuchsia Eng Council][eng-council] to review.
 
 To create an RFC, you need to create a Gerrit change that contains at least the
@@ -16,6 +16,10 @@ Note: You may have additional files if you are including images in your RFC.
 * [Create metadata](#create-metadata)
 * [Create a markdown file](#create-markdown)
 * [Create a _toc.yaml entry](#toc)
+
+Note: You can use the `fx rfc` tool that automates these three steps. This
+tool helps you to interactively populate the required RFC metadata fields and
+creates a blank RFC markdown file using the [template][rfc-template].
 
 ## Create metadata {#create-metadata}
 
@@ -97,8 +101,8 @@ To identify your RFC, you need to edit the
               Define a list of the areas that your RFC affects.
             </p>
             <ul>
-              <li>For a single area, use this format ['area'].</li>
-              <li>For multiple areass, use this format ['area1', ...]</li>
+              <li>For a single area, use this format `['area']`.</li>
+              <li>For multiple areas, use this format `['area1', ...]`.</li>
             </ul>
             <devsite-expandable>
               <p>Valid areas</p>
@@ -149,7 +153,7 @@ To identify your RFC, you need to edit the
           <td><code>status</code></td><td><b>Required</b>
             <p>
               Define the status of your RFC. When you first submit an RFC, this
-              value should be blank. After your RFC is reviewed,
+              value should be <code>Pending</code>. After your RFC is reviewed,
               the status will be changed to <code>Accepted</code> or
               <code>Rejected</code>.
             </p>
@@ -159,6 +163,13 @@ To identify your RFC, you need to edit the
       <td><code>reviewers</code></td><td><b>Required once approved or rejected</b>
         <p>
           Define the reviewers of the RFC from the Gerrit change.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><code>consulted</code></td><td><b>Required once approved or rejected</b>
+        <p>
+        Stakeholders who were consulted about this RFC, but whose +1 is not required.
         </p>
       </td>
     </tr>
@@ -270,16 +281,23 @@ Once you have created a TOC entry, you are now ready to submit your RFC for revi
 Once you have edited the metadata file, created a markdown file, and added a TOC
 entry, you are ready to create a change for review.
 
+The first line of your change's commit message must be `[rfc]`, followed by the
+RFC's name. The body of the commit message may also include your RFC's short
+description. For example:
+
+```md
+[rfc] zx_channel_iovec_t support for zx_channel_write and zx_channel_call
+
+This RFC introduces a new mode to zx_channel_write and zx_channel_call that
+copies input data from multiple memory regions rather than from a single
+contiguous buffer.
+```
+
+Mail your change to your initial set of reviewers. The Fuchsia Eng Council will
+be automatically notified about the RFC's creation.
+
 Note: After you submit your change, update the metadata to include the assigned
 Gerrit change id and submit a patch to your change.
-
-You can add the current Fuchsia Eng Council as reviewers:
-
-<ul>
-  {% for member in eng_council.members %}
-  <li><a href="{{ gerrit_profile }}{{ member }}">{{ member }}</a></li>
-  {% endfor %}
-</ul>
 
 For more information, on creating a change in the Fuchsia project, see
 [Contribute changes].
@@ -355,7 +373,7 @@ After you receive a final status from the Eng Council, do the following:
 
 1. Once approved, submit your RFC.
 
-You have succesfully submitted an RFC proposal.
+You have successfully submitted an RFC proposal.
 
 [rfc-overview]: /docs/contribute/governance/rfcs/README.md
 [contribute changes]: /docs/development/source_code/contribute_changes.md

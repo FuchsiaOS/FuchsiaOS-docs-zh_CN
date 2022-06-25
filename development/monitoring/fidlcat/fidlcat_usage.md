@@ -1,393 +1,259 @@
 # fidlcat: Guide
 
-## Launching fidlcat
+Once you have [launched `fidlcat`](/docs/development/monitoring/fidlcat) and
+attached to a running process, the tool begins logging system calls sent and
+received using FIDL.
 
-For information about launching fidlcat: [fidlcat](/docs/development/monitoring/fidlcat).
+See the following basic example output from `fidlcat`:
 
-{% dynamic if request.tld != "dev" %}
+<pre><font color="#26A269">Monitoring </font><font color="#12488B">echo_client.cm</font> koid=<font color="#C01C28">193974</font>
 
->> #  Notice
->>
->> This file only renders correctly from fuchsia.dev. Please navigate to
->> https://fuchsia.dev/fuchsia-src/development/monitoring/fidlcat/fidlcat_usage.md to see the examples correctly!
-
-{% dynamic endif %}
-
-## Default display
-
-The default display for fidlcat is:
-
-
-<pre>echo_client_cpp_synchronous <font color="#CC0000">180768</font>:<font color="#CC0000">180781</font> zx_channel_call(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">14b21e1b</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, deadline:<font color="#4E9A06">time</font>: <font color="#3465A4">ZX_TIME_INFINITE</font>, rd_num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">65536</font>, rd_num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">64</font>)
-  <span style="background-color:#75507B"><font color="#D3D7CF">sent request</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-    value: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello synchronous world&quot;</font>
-  }
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-      response: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello synchronous world&quot;</font>
-    }
+echo_client.cm <font color="#C01C28">193974</font>:<font color="#C01C28">193976</font> zx_channel_create(options: <font color="#26A269">uint32</font> = <font color="#12488B">0</font>)
+  -&gt; <font color="#26A269">ZX_OK</font> (out0: <font color="#26A269">handle</font> = <font color="#C01C28">d7e9f83b</font>(<font color="#26A269">channel</font>:<font color="#12488B">0</font>), out1: <font color="#26A269">handle</font> = <font color="#C01C28">d6c9fd5f</font>(<font color="#26A269">channel</font>:<font color="#12488B">1</font>))
 </pre>
 
+The example output contains the following information:
 
-We have the following information:
+-   **echo_client.cm**: the name of the process that has generated this display.
 
--   **echo_client_cpp_synchronous**: the name of the application that has
-    generated this display.
+-   **193974**: the process koid.
 
--   **180768**: the process koid.
+-   **193976**: the thread koid.
 
--   **180781**: the thread koid.
+-   **zx_channel_create**: the name of the intercepted/displayed system call.
 
--   **zx_channel_call**: the name of the intercepted/displayed system call.
+-   system call input parameters (such as **handle** and **options**) listed by
+    name, type, and value.
 
--   all the basic input parameters of the system call (here **handle** and
-    **options**).
+-   system call return value (`ZX_OK`) and output parameters.
 
-    For each one, we have:
+For system calls representing a FIDL transaction, `fidlcat` displays additional
+input and output parameters. See the following example of a synchronous
+`fuchsia.examples/Echo.EchoString` request:
 
-    -   The name of the parameter in black.
-
-    -   The type of the parameter in green.
-
-    -   The value of the parameter (the color depends on the parameter type).
-
--   all the complex input parameters. Here we display a FIDL message. This is a
-    request, which is sent by our application.
-
-The display stops here. It will resume when the system call returns (sometimes
-it can be a very long time). For one thread, there will be no other display
-between the input arguments and the returned value. However, another thread
-display may be interleaved. When the system call returns, we display:
-
--   The returned value (-> ZX_OK)
-
--   The basic output parameters (there is no basic output parameters in this
-    example).
-
--   The complex output parameters. Here we display a FIDL message. This is the
-    response we received to the request we sent.
-
-For **zx_channel_read** we can have this display:
-
-
-<pre>echo_client_rust <font color="#CC0000">256109</font>:<font color="#CC0000">256122</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">e4c7c57f</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">48</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-      response: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello world!&quot;</font>
-    }
+<pre>echo_client.cm <font color="#C01C28">193974</font>:<font color="#C01C28">193976</font> zx_channel_call_etc(handle: <font color="#26A269">handle</font> = <font color="#C01C28">Channel:d089f8fb</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>), options: <font color="#26A269">uint32</font> = <font color="#12488B">ZX_CHANNEL_WRITE_USE_IOVEC</font>, deadline: <font color="#26A269">zx.time</font> = <font color="#12488B">ZX_TIME_INFINITE</font>, rd_num_bytes: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>, rd_num_handles: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>)
+  <span style="background-color:#A347BA"><font color="#D0CFCC">sent request</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { value: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
+  -&gt; <font color="#26A269">ZX_OK</font>
+    <span style="background-color:#A347BA"><font color="#D0CFCC">received response</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { response: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
 </pre>
 
-
-But, if there is an error, we can have:
-
-<pre>echo_client_rust <font color="#CC0000">256109</font>:<font color="#CC0000">256122</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">e4c7c57f</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  -&gt; <font color="#CC0000">ZX_ERR_SHOULD_WAIT</font>
-</pre>
-
-Or:
-
-<pre>echo_client_rust <font color="#CC0000">256109</font>:<font color="#CC0000">256122</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">e4c7c57f</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  -&gt; <font color="#CC0000">ZX_ERR_BUFFER_TOO_SMALL</font> (actual_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">48</font>, actual_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-</pre>
-
-In this last case, even if the system call fails, we have some valid output
-parameters. **actual_bytes** and **actual_handles** give the minimal values
-which should have been used to call **zx_channel_read**.
+Notice the FIDL request and response messages in the display output, including
+the method name and parameters.
 
 ## Modifying the display
 
-By default, we only display the process information on the first line.
+By default, `fidlcat` only displays process information on the first line of
+each message. Use the flag `--with-process-info` to include these details on
+each line:
 
-Eventually, we also display the process information before the returned value if
-a system call from another thread has been displayed between the call and the
-returned value:
-
-<pre>ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5861991</font> zx_channel_write(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">035393df</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  <span style="background-color:#75507B"><font color="#D3D7CF">sent request</font></span> <font color="#4E9A06">fuchsia.io/Directory.Open</font> = {
-    flags: <font color="#4E9A06">uint32</font> = <font color="#3465A4">12582912</font>
-    mode: <font color="#4E9A06">uint32</font> = <font color="#3465A4">0</font>
-    path: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;29/cache/cached_db&quot;</font>
-    object: <font color="#4E9A06">handle</font> = <font color="#CC0000">03f3b46b</font>
-  }
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font> zx_channel_write(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">035393df</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  <span style="background-color:#75507B"><font color="#D3D7CF">sent request</font></span> <font color="#4E9A06">fuchsia.io/Directory.Open</font> = {
-    flags: <font color="#4E9A06">uint32</font> = <font color="#3465A4">13107200</font>
-    mode: <font color="#4E9A06">uint32</font> = <font color="#3465A4">0</font>
-    path: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;.&quot;</font>
-    object: <font color="#4E9A06">handle</font> = <font color="#CC0000">0053b5fb</font>
-  }
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5861991</font>   -&gt; <font color="#4E9A06">ZX_OK</font>
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font>   -&gt; <font color="#4E9A06">ZX_OK</font>
+<pre>echo_client.cm <font color="#C01C28">60014</font>:<font color="#C01C28">60016</font> zx_channel_call_etc(handle: <font color="#26A269">handle</font> = <font color="#C01C28">Channel:35272afb</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>), options: <font color="#26A269">uint32</font> = <font color="#12488B">ZX_CHANNEL_WRITE_USE_IOVEC</font>, deadline: <font color="#26A269">zx.time</font> = <font color="#12488B">ZX_TIME_INFINITE</font>, rd_num_bytes: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>, rd_num_handles: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>)
+echo_client.cm <font color="#C01C28">60014</font>:<font color="#C01C28">60016</font>   <span style="background-color:#A347BA"><font color="#D0CFCC">sent request</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { value: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
+echo_client.cm <font color="#C01C28">60014</font>:<font color="#C01C28">60016</font>   -&gt; <font color="#26A269">ZX_OK</font>
+echo_client.cm <font color="#C01C28">60014</font>:<font color="#C01C28">60016</font>     <span style="background-color:#A347BA"><font color="#D0CFCC">received response</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { response: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
 </pre>
-
-Using the flag **--with-process-info**, we can display the process information
-on each line:
-
-<pre>echo_client_rust <font color="#CC0000">305640</font>:<font color="#CC0000">305653</font> zx_channel_write(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">4446ec4b</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-echo_client_rust <font color="#CC0000">305640</font>:<font color="#CC0000">305653</font>   <span style="background-color:#75507B"><font color="#D3D7CF">sent request</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-echo_client_rust <font color="#CC0000">305640</font>:<font color="#CC0000">305653</font>     value: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello world!&quot;</font>
-echo_client_rust <font color="#CC0000">305640</font>:<font color="#CC0000">305653</font>   }
-echo_client_rust <font color="#CC0000">305640</font>:<font color="#CC0000">305653</font>   -&gt; <font color="#4E9A06">ZX_OK</font>
-</pre>
-
-This is very useful if we want to do a **grep** on the output (for example, to
-only select one thread).
-
-## Interpreting the display
-
-Most of the time we want to link several messages to be able to understand what
-our program is doing.
-
-In this example:
-
-<pre>ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font> zx_channel_create(options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font> (out0:<font color="#4E9A06">handle</font>: <font color="#CC0000">0243b493</font>, out1:<font color="#4E9A06">handle</font>: <font color="#CC0000">0163b42b</font>)
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font> zx_channel_write(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">035393df</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  <span style="background-color:#75507B"><font color="#D3D7CF">sent request</font></span> <font color="#4E9A06">fuchsia.io/Directory.Open</font> = {
-    flags: <font color="#4E9A06">uint32</font> = <font color="#3465A4">12582912</font>
-    mode: <font color="#4E9A06">uint32</font> = <font color="#3465A4">0</font>
-    path: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;29&quot;</font>
-    object: <font color="#4E9A06">handle</font> = <font color="#CC0000">0163b42b</font>
-  }
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">0243b493</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">1</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">64</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">1</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fuchsia.io/Node.OnOpen</font> = {
-      s: <font color="#4E9A06">int32</font> = <font color="#3465A4">-25</font>
-      info: <font color="#4E9A06">fuchsia.io/NodeInfo</font> = <font color="#3465A4">null</font>
-    }
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">0243b493</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">1</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">64</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">1</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fuchsia.io/Node.OnOpen</font> = {
-      s: <font color="#4E9A06">int32</font> = <font color="#3465A4">0</font>
-      info: <font color="#4E9A06">fuchsia.io/NodeInfo</font> = { directory: <font color="#4E9A06">fuchsia.io/DirectoryObject</font> = {} }
-    }
-
-ledger.cmx <font color="#CC0000">5859666</font>:<font color="#CC0000">5859693</font> zx_channel_call(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">0243b493</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, deadline:<font color="#4E9A06">time</font>: <font color="#3465A4">ZX_TIME_INFINITE</font>, rd_num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">24</font>, rd_num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>)
-  <span style="background-color:#75507B"><font color="#D3D7CF">sent request</font></span> <font color="#4E9A06">fuchsia.io/Node.Close</font> = {}
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fuchsia.io/Node.Close</font> = {
-      s: <font color="#4E9A06">int32</font> = <font color="#3465A4">0</font>
-    }
-</pre>
-
-We first create a channel. The two handles **0243b493** and **0163b42b** are
-linked. That means that a write on one handle will result on a read on the other
-handle.
-
-We use handle **0163b42b** in the **Directory.Open** message. That means that
-the associated handle (**0243b493**) is the handle that controls the directory
-we just opened.
-
-When we receive **Node.OnOpen** on **0243b493** we know that it's a response to
-our **Directory.Open**. We also used the handle to call **Node.Close**.
 
 ## Stack frames
 
-By default, only the system calls are displayed. However, it's sometime
-interesting to know where a system call has been called. Using the flag
-**--stack** we can display the stack frames for every system call.
+Note: If a program crashes while `fidlcat` is attached, the stack frames print
+automatically to the display.
 
-By default (**--stack=0**), the stack frames are not displayed.
+Using the flag `--stack` you can display the stack frames for every system
+call. By default (`--stack=0`), the stack frames are not displayed.
 
-With **--stack=1** only the call site (1 to 4 frames) is displayed:
+With `--stack=1` only the call site (1 to 4 frames) is displayed:
 
-<pre>echo_client_cpp <font color="#CC0000">5231515</font>:<font color="#CC0000">5231528</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/fidl/message.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">62</font></span> fidl::Message::Read
-echo_client_cpp <font color="#CC0000">5231515</font>:<font color="#CC0000">5231528</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">a0575917</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">65536</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">64</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-      response: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello world&quot;</font>
-    }
+<pre>echo_client.cm <font color="#C01C28">675407</font>:<font color="#C01C28">675409</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">zircon/system/ulib/fidl/llcpp_message.cc</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">243:12</font></span> fidl::OutgoingMessage::CallImpl
+echo_client.cm <font color="#C01C28">675407</font>:<font color="#C01C28">675409</font> zx_channel_call_etc(handle: <font color="#26A269">handle</font> = <font color="#C01C28">Channel:8b745347</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>), options: <font color="#26A269">uint32</font> = <font color="#12488B">ZX_CHANNEL_WRITE_USE_IOVEC</font>, deadline: <font color="#26A269">zx.time</font> = <font color="#12488B">ZX_TIME_INFINITE</font>, rd_num_bytes: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>, rd_num_handles: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>)
+  <span style="background-color:#A347BA"><font color="#D0CFCC">sent request</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { value: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
+  -&gt; <font color="#26A269">ZX_OK</font>
+    <span style="background-color:#A347BA"><font color="#D0CFCC">received response</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { response: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
 </pre>
 
 This option doesn't add any overhead (except for the display).
 
-With **--stack=2** all the frames are displayed:
+With `--stack=2` all the frames are displayed:
 
-<pre>echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/third_party/ulib/musl/src/env/__libc_start_main.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">74</font></span> start_main
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">garnet/examples/fidl/echo_client_cpp/echo_client.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">40</font></span> main
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop_wrapper.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">25</font></span> async::Loop::Run
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">241</font></span> async_loop_run
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">284</font></span> async_loop_run_once
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">335</font></span> async_loop_dispatch_wait
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/message_reader.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">165</font></span> fidl::internal::MessageReader::CallHandler
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/message_reader.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">177</font></span> fidl::internal::MessageReader::OnHandleReady
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/message_reader.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">201</font></span> fidl::internal::MessageReader::ReadAndDispatchMessage
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/fidl/message.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">62</font></span> fidl::Message::Read
-echo_client_cpp <font color="#CC0000">5234749</font>:<font color="#CC0000">5234762</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">a95c4cdf</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">65536</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">64</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received response</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-      response: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello world&quot;</font>
-    }
+<pre>echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">3ac285b4811</font></span> _start
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">zircon/third_party/ulib/musl/src/env/__libc_start_main.c</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">215:5</font></span> __libc_start_main
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">zircon/third_party/ulib/musl/src/env/__libc_start_main.c</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">140:3</font></span> start_main
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">examples/fidl/llcpp/client_sync/main.cc</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">30:27</font></span> main
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">fidling/gen/examples/fidl/fuchsia.examples/fuchsia.examples/llcpp/fidl/fuchsia.examples/cpp/wire_messaging.h</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">2711:12</font></span> fidl::internal::WireSyncClientImpl&lt;fuchsia_examples::Echo&gt;::EchoString
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">fidling/gen/examples/fidl/fuchsia.examples/fuchsia.examples/llcpp/fidl/fuchsia.examples/cpp/wire_messaging.cc</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">1051:12</font></span> fidl::WireResult&lt;fuchsia_examples::Echo::EchoString&gt;::WireResult
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">zircon/system/ulib/fidl/include/lib/fidl/llcpp/message.h</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">205:3</font></span> fidl::OutgoingMessage::Call&lt;fidl::WireResponse&lt;fuchsia_examples::Echo::EchoString&gt;, zx::unowned&lt;zx::channel&gt; &gt;
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">zircon/system/ulib/fidl/include/lib/fidl/llcpp/message.h</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">196:5</font></span> fidl::OutgoingMessage::Call&lt;fidl::WireResponse&lt;fuchsia_examples::Echo::EchoString&gt; &gt;
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> <span style="background-color:#E9AD0C">at </span><span style="background-color:#E9AD0C"><font color="#C01C28">zircon/system/ulib/fidl/llcpp_message.cc</font></span><span style="background-color:#E9AD0C">:</span><span style="background-color:#E9AD0C"><font color="#12488B">243:12</font></span> fidl::OutgoingMessage::CallImpl
+echo_client.cm <font color="#C01C28">717533</font>:<font color="#C01C28">717535</font> zx_channel_call_etc(handle: <font color="#26A269">handle</font> = <font color="#C01C28">Channel:f751d2fb</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>), options: <font color="#26A269">uint32</font> = <font color="#12488B">ZX_CHANNEL_WRITE_USE_IOVEC</font>, deadline: <font color="#26A269">zx.time</font> = <font color="#12488B">ZX_TIME_INFINITE</font>, rd_num_bytes: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>, rd_num_handles: <font color="#26A269">uint32</font> = <font color="#12488B">64</font>)
+  <span style="background-color:#A347BA"><font color="#D0CFCC">sent request</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { value: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
+  -&gt; <font color="#26A269">ZX_OK</font>
+    <span style="background-color:#A347BA"><font color="#D0CFCC">received response</font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font> = { response: <font color="#26A269">string</font> = <font color="#C01C28">&quot;hello&quot;</font> }
 </pre>
 
 This option adds some overhead because we need to ask zxdb for the full stack
 for each system call (and fidlcat becomes even more verbose). You should use it
 only when you need to understand what part of your code called the system calls.
 
-## Exceptions
+## Filtering output
 
-Sometimes, your program crashes. If it's monitored by **fidlcat** you
-automatically have a stack where it crashed.
+### Syscalls
 
-For example:
+By default, `fidlcat` only displays `zx_channel` syscalls.
+The `--syscalls` option allows you to define a regular expression that selects
+the syscalls to decode and display.
 
-<pre>echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> zx_channel_read(handle:<font color="#4E9A06">handle</font>: <font color="#CC0000">ca322b6f</font>, options:<font color="#4E9A06">uint32</font>: <font color="#3465A4">0</font>, num_bytes:<font color="#4E9A06">uint32</font>: <font color="#3465A4">65536</font>, num_handles:<font color="#4E9A06">uint32</font>: <font color="#3465A4">64</font>)
-  -&gt; <font color="#4E9A06">ZX_OK</font>
-    <span style="background-color:#75507B"><font color="#D3D7CF">received request</font></span> <font color="#4E9A06">fidl.examples.echo/Echo.EchoString</font> = {
-      value: <font color="#4E9A06">string</font> = <font color="#CC0000">&quot;hello world&quot;</font>
-    }
+To display all the syscalls, use: `--syscalls=".\*"`
 
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/third_party/ulib/musl/src/env/__libc_start_main.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">93</font></span> start_main
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">garnet/examples/fidl/echo_server_cpp/echo_server.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">15</font></span> main
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop_wrapper.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">21</font></span> async::Loop::Run
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">194</font></span> async_loop_run
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">236</font></span> async_loop_run_once
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">zircon/system/ulib/async-loop/loop.c</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">277</font></span> async_loop_dispatch_wait
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/message_reader.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">165</font></span> fidl::internal::MessageReader::CallHandler
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/message_reader.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">177</font></span> fidl::internal::MessageReader::OnHandleReady
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/message_reader.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">228</font></span> fidl::internal::MessageReader::ReadAndDispatchMessage
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">sdk/lib/fidl/cpp/internal/stub_controller.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">32</font></span> fidl::internal::StubController::OnMessage
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">fidling/gen/garnet/examples/fidl/services/fidl/examples/echo/cpp/fidl.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">152</font></span> fidl::examples::echo::Echo_Stub::Dispatch_
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <span style="background-color:#FCE94F">at </span><span style="background-color:#FCE94F"><font color="#CC0000">garnet/examples/fidl/echo_server_cpp/echo_server_app.cc</font></span><span style="background-color:#FCE94F">:</span><span style="background-color:#FCE94F"><font color="#3465A4">22</font></span> echo::EchoServerApp::EchoString
-echo_server_cpp.cmx <font color="#CC0000">1707964</font>:<font color="#CC0000">1707977</font> <font color="#CC0000">thread stopped on exception</font>
-</pre>
+The `--exclude-syscalls` flag defines a regular expreission that excludes
+syscalls from the set selected by `--syscalls`.
 
-You have the stack frames for the exception even if you didn't ask for the stack
-frames with the **--stack** options.
+To be displayed, a syscall must satisfy the `--syscalls` pattern and not
+satisfy the `--exclude-syscalls` pattern.
 
-## Syscalls
+The following example displays all syscalls, **except** for `zx_handle`:
 
-By default, fidlcat only displays the zx_channel syscalls.
-
-You can display all the syscalls and choose which ones you want to display.
-
-The **--syscalls** option let you define a regular expression that selects the
-syscalls to decode and display.
-
-It can be passed multiple times.
-
-To display all the syscalls, use: **--syscalls=".\*"**
-
-The **--exclude-syscalls** flag lets you exclude some syscalls selected by
-**--syscalls**. It's a regular expression that selects the syscalls to not
-decode and display.
-
-It can be passed multiple times.
-
-To be displayed, a syscall must satisfy the **--syscalls** pattern and not
-satisfy the **--exclude-syscalls** pattern.
-
-To display all the syscalls but the zx_handle syscalls, use:
-
+```none
 --syscalls ".\*" --exclude-syscalls "zx_handle_.\*"
+```
 
-## Filtering messages
+### Messages
 
-By default, fidlcat displays all the messages.
-
+By default, `fidlcat` displays all the messages.
 You can specify the messages you want to display using:
 
-*   **--messages** allows you to specify one or more regular expressions the messages must satisfy
-to be displayed.
+*   `--messages` allows you to specify one or more regular expressions the
+    messages must satisfy to be displayed.
 
-*   **--exclude-messages** allows you to specify one or more regular expressions the messages must
-not satisfy to be displayed.
+*   `--exclude-messages` allows you to specify one or more regular expressions
+    the messages must not satisfy to be displayed.
 
-If both options are used at the same time, to be displayed, a message must satisfy one of the
-regular expressions specified with **--messages** and not satisfy any regular expression specified
-with **--exclude-messages**.
+If both options are used at the same time, to be displayed, a message must
+satisfy one of the regular expressions specified with `--messages` and not
+satisfy any regular expression specified with `--exclude-messages`.
 
-Message filtering works on the method's fully qualified name. For example, with:
+Message filtering works on the method's fully qualified name. For example,
+the following flag:
 
-```
+```none
 --messages=".*Open"
 ```
 
-Methods like:
+Matches methods like:
 
-```
+```none {:.devsite-disable-click-to-copy}
 fuchsia.io/Directory.Open
 fuchsia.io/Node.OnOpen
 ```
 
-Will match.
+### Threads
+
+When using the option `--thread=<thread koid>` only the events from the specified
+thread are displayed. The option can be used several times to display several
+threads.
+
+## Grouping output
+
+### Protocols
+
+Use the options `--with=top` and `--with=top=<path>` to generate a view that
+groups the output by process, protocol, and method. The groups are sorted by
+number of events, so groups with more associated events are listed earlier.
+
+### Threads
+
+Use the options `--with=group-by-thread` and `--with=group-by-thread=<path>` to
+generate a view that displays a short version of all the events for each thread.
 
 ## Postponing the message display
 
-By default, everything is displayed as soon as an application is monitored. You can differ the
-display using **--trigger**. With this option the display will start only if one message satisfying
-one of the regular expressions specified with **--trigger** is encountered.
+By default, `fidlcat` begins displaying messages immediately after it attaches
+to the process.
 
-This is really useful when you need to understand what's going on after you received or emit a
-particular message.
+You can use the `--trigger` option to defer the display until the provided
+regular expression matches an incoming message.
 
-## Filter threads
+This is really useful when you need to understand what's going on after you
+received or emit a particular message.
 
-When using the option `--thread=<thread koid>` only the events from the specified thread are
-displayed. The option can be used several times to display several threads.
+## Summary view
 
-## High level summary
+To configure `fidlcat` to display a high level summary of the session instead of
+listing individual messages, use the options `--with=summary` and
+`--with=summary=<path>`.
 
-Sometime, you don't need to display all the messages exchanged but only a high level view of the
-session. The options `--with=summary` and `--with=summary=&lt;path&gt;` generate a high level
-summary of the session.
+<pre>echo_client.cm <font color="#C01C28">1505832</font>: 16 handles
 
-With those options, fidlcat displays a list of all the monitored processes.
+  <font color="#C01C28">Process:ac4ce043</font>(<font color="#26A269">proc-self</font>)
 
-For each process, fidlcat displays a list of all the handles found for the process.
+  <font color="#C01C28">startup Vmar:a43cfe53</font>(<font color="#26A269">vmar-root</font>)
 
-For each handle, fidlcat displays the information we have about the process. That includes the data
-fidlcat has been able to infer. It also display if the handle is a startup handle (inherited while
-the process has been created) or a handle created during the process life.
+  <font color="#C01C28">startup Thread:d5dce00f</font>(<font color="#26A269">thread-self</font>)
 
-For channels, fidlcat tries to display the other end of the channel (even if the other end is own
-by another process).
+  <font color="#C01C28">startup Channel:91cce2f3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc</font>)
+      write <span style="background-color:#A347BA"><font color="#D0CFCC">request </font></span> <font color="#26A269">fuchsia.io/Directory.Open</font>(<font color="#C01C28">&quot;.&quot;</font>)
+        -&gt; <font color="#C01C28">Channel:c65ce1c3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc</font>)
 
-For non startup handles, fidlcat displays how the handle was created:
+  <font color="#C01C28">startup Channel:daece3fb</font>(<font color="#26A269">dir</font>:<font color="#12488B">/pkg</font>)
 
-*   by calling zx_channel_create, zx_port_create, zx_timer_create, ...
+  <font color="#C01C28">startup Socket:cb8ce31f</font>(<font color="#26A269">fd</font>:<font color="#12488B">1</font>)
+    closed by <font color="#26A269">zx_handle_close</font>
 
-*   by receiving a handle within a message.
+  <font color="#C01C28">startup Socket:df8ce687</font>(<font color="#26A269">fd</font>:<font color="#12488B">2</font>)
+    closed by <font color="#26A269">zx_handle_close</font>
 
-Then fidlcat displays a list of all the messages sent and received (only for channels).
+  <font color="#C01C28">startup Channel:93ccfcf7</font>(<font color="#26A269">directory-request</font>:<font color="#12488B">/</font>)
 
-Finally fidlcat displays how the handle was closed:
+  <font color="#C01C28">startup Clock:b7ecfe9b</font>()
 
-*   by calling zx_handle_close or zx_handle_close_many.
+  <font color="#C01C28">startup Job:674ce17f</font>(<font color="#26A269">job-default</font>)
 
-*   by sending the handle to another process.
+  <font color="#C01C28">startup Vmo:adbcfc9f</font>(<font color="#26A269">vdso-vmo</font>)
 
-If fidlcat doesn't display that a handle is closed, that probably means that the program forgot to
-close it.
+  <font color="#C01C28">startup Vmo:ef2ce06f</font>(<font color="#26A269">stack-vmo</font>)
 
-In addition to `--with=summary` you can use `--stack=2`. In that case, the stack frame is displayed
-for each channel creation.
+  <font color="#C01C28">Channel:c65ce1c3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc</font>)
+    linked to <font color="#C01C28">Channel:da9cebcb</font>(<font color="#26A269">channel</font>:<font color="#12488B">1</font>)
+    created by <font color="#26A269">zx_channel_create</font>
+      write <span style="background-color:#A347BA"><font color="#D0CFCC">request </font></span> <font color="#26A269">fuchsia.io/Directory.Open</font>(<font color="#C01C28">&quot;fuchsia.examples.Echo&quot;</font>)
+        -&gt; <font color="#C01C28">Channel:767ce3f3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>)
+    closed by <font color="#26A269">zx_handle_close</font>
+
+  <font color="#C01C28">Channel:da9cebcb</font>(<font color="#26A269">channel</font>:<font color="#12488B">1</font>)
+    linked to <font color="#C01C28">Channel:c65ce1c3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc</font>)
+    created by <font color="#26A269">zx_channel_create</font>
+    closed by <font color="#C01C28">Channel:91cce2f3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc</font>) sending <font color="#26A269">fuchsia.io/Directory.Open</font>
+
+  <font color="#C01C28">Channel:767ce3f3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>)
+    linked to <font color="#C01C28">Channel:f4bce307</font>(<font color="#26A269">channel</font>:<font color="#12488B">3</font>)
+    created by <font color="#26A269">zx_channel_create</font>
+      call  <span style="background-color:#A347BA"><font color="#D0CFCC">request </font></span> <font color="#26A269">fuchsia.examples/Echo.EchoString</font>
+      write <span style="background-color:#A347BA"><font color="#D0CFCC">request </font></span> <font color="#26A269">fuchsia.examples/Echo.SendString</font>
+      read  <span style="background-color:#A347BA"><font color="#D0CFCC">event   </font></span> <font color="#26A269">fuchsia.examples/Echo.OnString</font>
+    closed by <font color="#26A269">zx_handle_close</font>
+
+  <font color="#C01C28">Channel:f4bce307</font>(<font color="#26A269">channel</font>:<font color="#12488B">3</font>)
+    linked to <font color="#C01C28">Channel:767ce3f3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc/fuchsia.examples.Echo</font>)
+    created by <font color="#26A269">zx_channel_create</font>
+    closed by <font color="#C01C28">Channel:c65ce1c3</font>(<font color="#26A269">dir</font>:<font color="#12488B">/svc</font>) sending <font color="#26A269">fuchsia.io/Directory.Open</font>
+</pre>
+
+This displays a list of all the monitored processes, handles, and channels in
+the session with additional summary details:
+
+*   **Handles**: Whether the handle is a startup handle (inherited during
+    process creation) or created during the process life.
+    For non-startup handles, `fidlcat` also displays information about the
+    syscalls used to create and close each handle.
+
+*   **Channels**: Displays the handle responsible for the other end of the
+    channel and the list of FIDL messages sent and received.
 
 ## Continuous monitoring
 
-By default, fidlcat ends when all the monitored processes are ended.
+By default, the `fidlcat` session terminates when all the attached processes
+exit.
 
-With the option `--stay-alive`, fidlcat doesn't automatically end (which means a control-c to end
-it).
+Use the option `--stay-alive` to keep the session running until you manually
+exit `fidlcat` (for example, using Ctrl-C).
 
-This is useful to monitor a service you want to restart. When launched, fidlcat will monitor the
-current version of the service. When the service is restarted, fidlcat stops monitoring the old
-process and then automatically monitors the new process. This way you can have all the messages
-exchanged when the service is restarted.
-
-## Top protocols
-
-The options `--with=top` and `--with=top=&lt;path&gt;` generate a view that groups the output by
-process, protocol, and method. The groups are sorted by number of events, so groups with more
-associated events are listed earlier.
-
-## Group by thread
-
-The options `--with=group-by-thread` and `--with=group-by-thread=&lt;path&gt;` generate a view that, for each thread, displays a short version of all the events.
+This allows you to restart a program multiple times within the same monitoring
+session. With each restart, the `fidlcat` session attaches to the new process
+automatically.

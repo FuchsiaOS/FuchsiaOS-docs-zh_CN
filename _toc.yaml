@@ -8,17 +8,22 @@
 toc:
 - name: "Get started"
   contents:
-  - include: /docs/get-started/_toc.yaml
-  - title: "Overview"
-    path: /docs
-  - title: "Glossary"
-    path: /docs/glossary.md
+    - title: "Overview"
+      path: /docs
+    - title: "Fundamentals"
+      path: /docs/get-started/learn-fuchsia.md
+    - include: /docs/get-started/sdk/_toc.yaml
+    - include: /docs/get-started/_toc.yaml
+    - include: /docs/get-started/learn/_toc.yaml
 - name: "Concepts"
   contents:
-  - include: /docs/concepts/_toc.yaml
+    - include: /docs/concepts/_toc.yaml
+    - title: "Glossary"
+      path: /docs/glossary/README.md
 - name: "Development"
   contents:
   - include: /docs/development/_toc.yaml
+  - include: /docs/development/sdk/_toc.yaml
 - name: "Reference"
   contents:
   - include: /docs/reference/_toc.yaml
@@ -28,12 +33,20 @@ toc:
 - name: "Governance"
   contents:
   - include: /docs/contribute/governance/_toc.yaml
+- name: "Contribute to docs"
+  contents:
+  - include: /docs/contribute/docs/_toc.yaml
 - name: "Community"
   contents:
   - include: /docs/contribute/community/_toc.yaml
+  - include: /docs/contribute/docs/_toc.yaml
 
 # Orphaned files, these files don't display anywhere. Workaround for doc-checker, should be avoided
 - title: "Deprecated: FTP process"
   path: /docs/contribute/governance/deprecated-ftp-process.md
 - title: "Deprecated: FTP template"
   path: /docs/contribute/governance/deprecated-ftp-template.md
+- title: "Fuchsia.dev shortlinks"
+  path: /docs/go/README.md
+- title: "Deprecation notice"
+  path: /docs/contribute/docs/deprecation-notice.md

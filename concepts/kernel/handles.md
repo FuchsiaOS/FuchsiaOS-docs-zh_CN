@@ -235,16 +235,16 @@ to be valid. This is ensured because kernel objects are ref-counted
 and each handle holds a reference to its kernel object.
 
 The opposite does not hold. When a handle is destroyed it does not
-mean its object is destroyed. There could be other handles pointing
-to the object or the kernel itself could be holding a reference to
-the kernel object. An example of this is a handle to a thread; the
-fact that the last handle to a thread is closed it does not mean that
-the thread has been terminated.
+mean its corresponding kernel object is destroyed. There could be other
+handles pointing to the object or the kernel itself could be holding
+a reference to the kernel object.
 
 When the last reference to a kernel object is released, the kernel
 object is either destroyed or the kernel marks the object for
 garbage collection; the object will be destroyed at a later time
 when the current set of pending operations on it is completed.
+
+More detail in the [kernel object lifetimes][lifetime] page.
 
 ## Special Cases
 
@@ -296,3 +296,4 @@ the mentioned invalid cases.
 [zx-channel-read]: /docs/reference/syscalls/channel_read.md
 [zx-channel-call]: /docs/reference/syscalls/channel_call.md
 [zx-process-start]: /docs/reference/syscalls/process_start.md
+[lifetime]: /docs/reference/kernel_objects/objects.md#kernel-object-lifetime

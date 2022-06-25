@@ -2,100 +2,53 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# Please, read https://fuchsia.dev/docs/contribute/docs/documentation-navigation-toc
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
 - title: "Overview"
   path: /docs/concepts/index.md
-- title: "Software model"
-  path: /docs/concepts/software_model.md
-- title: "API"
-  section:
-  - include: /docs/concepts/api/_toc.yaml
-- title: "Architecture principles"
+- title: "Principles"
   section:
   - include: /docs/concepts/principles/_toc.yaml
-- title: "Architecture support"
+- title: "Software model"
+  path: /docs/concepts/software_model.md
+- title: "Accessibility"
   section:
-  - include: /docs/concepts/architecture/_toc.yaml
-- title: "Bluetooth"
-  section:
-  - include: /docs/concepts/bluetooth/_toc.yaml
-- title: "Booting"
-  section:
-  - include: /docs/concepts/booting/_toc.yaml
-- title: "Build system"
-  section:
-  - include: /docs/concepts/build_system/_toc.yaml
+  - include: /docs/concepts/accessibility/_toc.yaml
 - title: "Components"
   section:
   - include: /docs/concepts/components/_toc.yaml
-- title: "Diagnostics"
-  section:
-  - include: /docs/concepts/diagnostics/_toc.yaml
 - title: "Drivers"
   section:
   - include: /docs/concepts/drivers/_toc.yaml
-- title: "Fuchsia emulator (FEMU)"
-  path: /docs/concepts/emulator/index.md
 - title: "Filesystems"
   section:
   - include: /docs/concepts/filesystems/_toc.yaml
+- title: "Memory"
+  section:
+  - include: /docs/concepts/memory/_toc.yaml
 - title: "Process"
   section:
   - include: /docs/concepts/process/_toc.yaml
 - title: "FIDL"
   section:
   - include: /docs/concepts/fidl/_toc.yaml
-- title: "Graphics"
-  section:
-  - include: /docs/concepts/graphics/_toc.yaml
-- title: "Internationalization"
-  section:
-  - include: /docs/concepts/internationalization/_toc.yaml
 - title: "Kernel"
   section:
   - include: /docs/concepts/kernel/_toc.yaml
-- title: "Media"
-  section:
-  - include: /docs/concepts/media/_toc.yaml
-- title: "Modular"
-  section:
-  - include: /docs/concepts/modular/_toc.yaml
-- title: "Monitoring"
-  section:
-  - include: /docs/concepts/monitoring/_toc.yaml
-- title: "Networking"
-  section:
-  - include: /docs/concepts/networking/_toc.yaml
 - title: "Packages"
   section:
   - include: /docs/concepts/packages/_toc.yaml
-- title: "Prebuilt packages"
+- title: "Security"
   section:
-  - include: /docs/concepts/prebuilt_packages/_toc.yaml
+  - include: /docs/concepts/security/_toc.yaml
 - title: "Sessions"
   section:
   - include: /docs/concepts/session/_toc.yaml
-- title: "Settings"
-  section:
-  - include: /docs/concepts/settings/_toc.yaml
 - title: "Source code"
   section:
   - include: /docs/concepts/source_code/_toc.yaml
-- title: "System"
+- title: "User interface"
   section:
-  - include: /docs/concepts/system/_toc.yaml
-- title: "Testing"
-  section:
-  - include: /docs/concepts/testing/_toc.yaml
-- title: "Time"
-  section:
-  - include: /docs/concepts/time/_toc.yaml
-- title: "Tracing"
-  section:
-  - include: /docs/concepts/tracing/_toc.yaml
-- title: "USB"
-  section:
-  - include: /docs/concepts/usb/_toc.yaml
+  - include: /docs/concepts/ui/_toc.yaml

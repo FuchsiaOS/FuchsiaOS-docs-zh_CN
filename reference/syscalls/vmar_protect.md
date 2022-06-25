@@ -1,14 +1,14 @@
 # zx_vmar_protect
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Set protection of virtual memory pages.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -37,12 +37,15 @@ be a bitwise-or of one or more of the following:
   does not have **ZX_VM_CAN_MAP_EXECUTE** permissions or *handle* does
   not have the **ZX_RIGHT_EXECUTE** right.  It is also an error if the VMO handle
   used to create the mapping did not have the **ZX_RIGHT_EXECUTE** right.
+- **ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED** Map as readable if the system does
+  not support mapping execute-only pages. If the system can map execute-only
+  this flag is ignored.
 
 *len* must be page-aligned.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 If *options* & **ZX_VM_PERM_READ**, *handle* must be of type **ZX_OBJ_TYPE_VMAR** and have **ZX_RIGHT_READ**.
 

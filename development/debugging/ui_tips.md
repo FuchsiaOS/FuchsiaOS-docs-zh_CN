@@ -39,7 +39,7 @@ You can upload `filename.gltf` to any gltf viewer, such as this
 
 ### Dump the SceneGraph as Text
 
-The [SceneGraph](/docs/concepts/graphics/scenic/scenic.md#scenic-resource-graph)
+The [SceneGraph](/docs/concepts/ui/scenic/index.md#scenic-resource-graph)
 as text is useful when you want to see all the resources, including non-visible
 elements such as transform matrices.
 

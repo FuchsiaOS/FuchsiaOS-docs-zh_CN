@@ -33,12 +33,15 @@ This use case typically applies to device drivers.
 ## SYSCALLS
 
  - [`zx_vmo_create()`] - create a new vmo
- - [`zx_vmo_read()`] - read from a vmo
- - [`zx_vmo_write()`] - write to a vmo
+ - [`zx_vmo_create_child()`] - create a new child vmo
+ - [`zx_vmo_create_physical()`] - create a new physical vmo
  - [`zx_vmo_get_size()`] - obtain the size of a vmo
- - [`zx_vmo_set_size()`] - adjust the size of a vmo
  - [`zx_vmo_op_range()`] - perform an operation on a range of a vmo
+ - [`zx_vmo_read()`] - read from a vmo
+ - [`zx_vmo_replace_as_executable()`] - make an executable version of a vmo
  - [`zx_vmo_set_cache_policy()`] - set the caching policy for pages held by a vmo
+ - [`zx_vmo_set_size()`] - adjust the size of a vmo
+ - [`zx_vmo_write()`] - write to a vmo
 
 <br>
 
@@ -48,9 +51,12 @@ This use case typically applies to device drivers.
 [`zx_vmar_map()`]: /docs/reference/syscalls/vmar_map.md
 [`zx_vmar_unmap()`]: /docs/reference/syscalls/vmar_unmap.md
 [`zx_vmo_create()`]: /docs/reference/syscalls/vmo_create.md
+[`zx_vmo_create_child()`]: /docs/reference/syscalls/vmo_create_child.md
+[`zx_vmo_create_physical()`]: /docs/reference/syscalls/vmo_create_physical.md
 [`zx_vmo_get_size()`]: /docs/reference/syscalls/vmo_get_size.md
 [`zx_vmo_op_range()`]: /docs/reference/syscalls/vmo_op_range.md
 [`zx_vmo_read()`]: /docs/reference/syscalls/vmo_read.md
+[`zx_vmo_replace_as_executable()`]: /docs/reference/syscalls/vmo_replace_as_executable.md
 [`zx_vmo_set_cache_policy()`]: /docs/reference/syscalls/vmo_set_cache_policy.md
 [`zx_vmo_set_size()`]: /docs/reference/syscalls/vmo_set_size.md
 [`zx_vmo_write()`]: /docs/reference/syscalls/vmo_write.md

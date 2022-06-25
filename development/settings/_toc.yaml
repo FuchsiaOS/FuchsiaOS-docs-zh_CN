@@ -6,5 +6,9 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
+- title: "Introduction"
+  path: /docs/development/settings/introduction.md
+- title: "Policy concepts"
+  path: /docs/development/settings/policy_concepts.md
 - title: "Using Settings"
   path: /docs/development/settings/using_settings.md

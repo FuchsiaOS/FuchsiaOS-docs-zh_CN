@@ -1,124 +1,169 @@
-# 开始 Zircon 吧
+# Getting started with Zircon
 
-## 拉取Zircon 代码
+## Checking out the Zircon source code
 
-注意：Fuchsia 代码包含了Zircon，请查看 Fuchsia的 [开始](/docs/get-started/README.md) 文档
+Note: The Fuchsia source includes Zircon. See Fuchsia's
+[Getting Started](/docs/get-started/README.md) documentation.
 
-该指南已假定Fuchsia项目已经拉取并设置好 $FUCHSIA_DIR` 和 `fx 的配置
+This guide assumes that the Fuchsia project is checked out into `$FUCHSIA_DIR`,
+and `fx` has been configured.
 
-## 使用默认的工具链构建 Zircon
+## Build Zircon with the default toolchain
 
-`fx ` 命令已使用配置封装好几个工具，用于构建和使用 Fuchsia。`fx set` 命令常用语制定版本（product）和系统架构（board）。比如：要设置 Zircon 到 `arm64` 上。
+The `fx` command wraps the various tools used to configure, build and interact
+with Fuchsia. The `fx set` command is used to specify the product and the board
+architecture. For example, to set your build target to be Zircon for `arm64`,
+run the following command:
 
 ```sh
 fx set bringup.arm64
 ```
 
-上面 Fuchsia 使用的 [版本](/concepts/build_system/boards_and_products.md#products) 概念是构建目标的一个集合。[bringup 版本](/concepts/build_system/boards_and_products.md#bringup-product) 是最简的特性集合而成的最小版本。
+Fuchsia uses the concept of
+[products](/docs/development/build/build_system/boards_and_products.md#products) to
+create a collection of build targets. The
+[bringup product](/docs/development/build/build_system/boards_and_products.md#bringup-product)
+is the smallest product with a minimal feature set.
 
-下面这个命令就是打印出全部的版本的定义：
+The following command prints a list of other product configurations:
 
 ```sh
 fx list-products
 ```
 
-下面这个命令是打印出全部的系统架构的的定义：
+The following command prints a list of the defined board architectures:
 
 ```sh
 fx list-boards
 ```
 
-然后运行下面命令，执行构建：
+To execute the build, run the following command:
 
 ```sh
 fx build
 ```
 
-该构建的结果会保存在 `$FUCHSIA_DIR/out/default`
+The build results are saved in `$FUCHSIA_DIR/out/default`.
 
-## 指定目标机器的工具链
+## Explicitly set the target toolchain
 
-Fuchsia 默认是使用 `clang` 作为工具链，可以通过 `fx set` 中 `variants` 参数来设置 `gcc`：
+By default Fuchsia uses the `clang` toolchain. This can be set to `gcc` by using
+the `variants` argument with `fx set`:
 
 ```sh
 fx set bringup.x64 --variant gcc
 ```
 
-你可以通过 variant 来开启 asan。
+You can also enable asan by using the variant flag.
 
-## 构建 Zircon 全部类型
+## Building Zircon for all targets
 
-你可以通过 `fx multi` 和一个说明构建文件来构建全部类型。每个类型的输出都可以在`$FUCHSIA_DIR/out/<product>.<board>.variant` 找到。 多个构建例子在 <code>[bringup-cq](/tools/devshell/lib/multi-specs/bringup-cq)</code>, 它近似于 CQ测试的构建。
+You can build for all targets with `fx multi` and using a file that contains all
+the specifications to build. The output for each target is found in
+`$FUCHSIA_DIR/out/<product>.<board>.variant`. An example of a multi build spec
+is <code>[bringup-cq](/tools/devshell/lib/multi-specs/bringup-cq)</code>, which
+approximates what is built for a CQ test.
 
-请在构建前自己得明确全部系统架构的全部目的。
+Please build for all targets before submitting to ensure builds work on all
+architectures.
 
 ## QEMU
 
-你可以选择跳过这段，如果你仅在物理机上测试的话，但模拟器可以便捷的快速本地测试是非常值得拥有的。
+You can skip this if you're only testing on actual hardware, but the emulator is
+handy for quick local tests and generally worth having around.
 
-查看 [QEMU](/development/debugging/qemu.md) 获取更多的QEMU信息用于构建和使用 zircon。
+See [QEMU](/docs/development/debugging/qemu.md) for information on building and
+using QEMU with zircon.
 
-## 构建工具链（可选）
+## Build Toolchains (Optional)
 
-如果预设的工具链不能使用，你可以通过上层的来源来构建自己的工具链。
+If the prebuilt toolchain binaries do not work for you, you can build your own
+from vanilla upstream sources.
 
-- Clang 工具链默认是用于构建 Zircon 的 或者通过 `variants = [ "clang" ]` or `variants = [ "asan" ]` 来指定。
-- Clang 是默认的构建工具链，但 C++14 以上都可以胜任。
-- GCC 工具链也是可用的。
+*   The Clang toolchain is used to build Zircon by default or if you build with
+    `variants = [ "clang" ]` or `variants = [ "asan" ]`.
+*   The Clang toolchain is also used by default to build host-side code, but any
+    C++14-capable toolchain for your build host should work fine.
+*   The GCC toolchain is also available.
 
-无论构建工具链哪一种都需要你知道如何构建 Zircon。
+Build one or the other or both, as needed for how you want build Zircon.
 
-### GCC 工具链
+### GCC Toolchain
 
-我们使用 GNU `binutils` 2.30[^1] 和 GCC 8.2, 配置使用
-`--enable-initfini-array --enable-gold`, 和 `--target=x86_64-elf
---enable-targets=x86_64-pep` for x86-64 或者对于 arm64 `--target=aarch64-elf` 
+We use GNU `binutils` 2.30[^1] and GCC 8.2, configured with
+`--enable-initfini-array --enable-gold`, and with `--target=x86_64-elf
+--enable-targets=x86_64-pep` for x86-64 or `--target=aarch64-elf` for ARM64.
 
-对于 `binutils`, 我们推荐 `--enable-deterministic-archives`但切换不是用于构建的必要条件。
+For `binutils`, we recommend `--enable-deterministic-archives` but that switch
+is not necessary to get a working build.
 
-GCC 在 `make` 命令行中带上 `MAKEOVERRIDES=USE_GCC_STDINT=provide` ，我们应该明确 `stdint.h` 只有一个，而不是使用 `#include_next` 包含其他的 `stdint.h` 在其他地方。
+For GCC, it's necessary to pass `MAKEOVERRIDES=USE_GCC_STDINT=provide` on the
+`make` command line. This should ensure that the `stdint.h` GCC installs is one
+that works standalone (`stdint-gcc.h` in the source) rather than one that uses
+`#include_next` and expects another `stdint.h` file installed elsewhere.
 
-C 和 C++ 语言和 `libgcc` 是支持，所以你可以使用各种配置切换取消不同的事情并GCC构建，它本身运行得快使用更少的内存，例如： `--enable-languages=c,c++ --disable-libstdcxx
---disable-libssp --disable-libquadmath`。 查看GCC文档了解更多。
+Only the C and C++ language support is required and no target libraries other
+than `libgcc` are required, so you can use various `configure` switches to
+disable other things and make your build of GCC itself go more quickly and use
+less storage, e.g. `--enable-languages=c,c++ --disable-libstdcxx
+--disable-libssp --disable-libquadmath`. See the GCC installation documentation
+for more details.
 
-你可能需要不同的配置切换到不同的预设置去构建你指定的系统。查看 GNU 文档
+You may need various other `configure` switches or other prerequisites to build
+on your particular host system. See the GNU documentation.
 
-[^1]: The `binutils` 2.30 发布版验证，使用`make check` 检测故障
-    `aarch64-elf` and `x86_64-elf` 配置。这是在 `binutils-2_30-branch` 的分支做了更完善的修复,这就是我真正要构建的。但 2.30 版本本身就可以在 Zircon 的构建上运行良好，它只是在测试案例中有些虚报故障。
+[^1]: The `binutils` 2.30 release has some harmless `make check` failures in the
+    `aarch64-elf` and `x86_64-elf` configurations. These are fixed on the
+    upstream `binutils-2_30-branch` git branch, which is what we actually
+    build. But the 2.30 release version works fine for building Zircon; it
+    just has some spurious failures in its own test suite.
 
-### Clang/LLVM 工具链
+### Clang/LLVM Toolchain
 
-我们使用 Clang 的主干快照并经常更新到新的快找。任何支持 `x86_64` 和 `aarch64` 的近期 Clang 都可以有效构建。 你需要工具链并包括运行库。 我们自然也是使用相同的Clang 构建工具链， 查看[详情](/development/build/toolchain.md')。
+We use a trunk snapshot of Clang and update to new snapshots frequently. Any
+build of recent-enough Clang with support for `x86_64` and `aarch64` compiled in
+should work. You'll need a toolchain that also includes the runtime libraries.
+We normally also use the same build of Clang for the host as well as for the
+`*-fuchsia` targets. See [here](/docs/development/build/toolchain.md) for
+details on how we build Clang.
 
-### 为工具链设置构建参数
+### Set up build arguments for toolchains
 
-如果你使用预构件的工具链，可以跳过这一步，构建的时候会自动发现它们的。
+If you're using the prebuilt toolchains, you can skip this step, since the build
+will find them automatically.
 
-设置构建参数需指向工具链的位置，
-
-Clang
+Set the build argument that points to where you installed the toolchains:
 
 ```sh
 fx set bringup.x64 --variant clang --args clang_tool_dir = "<absolute path to>/clang-install/bin/"
 ```
 
-GCC
+or for GCC:
 
 ```sh
 fx set bringup.x64 --variant gcc --args gcc_tool_dir = "<absolute path to>/gcc-install/bin/"
 ```
 
-注意 `*_tool_dir` 应该是尾部斜线，如果你的路径是相对于 Zircon的，使用空前缀即可。
+Note that `*_tool_dir` should have a trailing slash. If the `clang` or `gcc` in
+your `PATH` works for Zircon, you can just use empty prefixes.
 
-## 从Zircon 来回复制
+## Copying files to and from Zircon
 
-当你本地使用 IPv6，可以使用 `fx cp` 从驱动中来回复制。
+With local link IPv6 configured you can use `fx cp` to copy files to and from
+the device.
 
-## 包括附加的用户空间文件
+## Including Additional Userspace Files
 
-Zircon的构建创建一个引导镜像包含了必须的用户空间组件为了系统的启动（驱动管理器，一些设备驱动等）。内核包含第二个引导镜像，它由QEMU 或 引导加载程序作为 ramdisk 镜像提供。
+The Zircon build creates a bootfs image containing necessary userspace
+components for the system to boot (the device manager, some device drivers,
+etc). The kernel is capable of including a second bootfs image, which is provided
+by QEMU or the bootloader as a ramdisk image.
 
-使用 zbi 工具创建一个引导镜像，它是构建的一部分。它可以为源目录(在这种情况下，包含指定目录及其子目录中的每个文件)或通过一个清单文件组装一个引导映像，该清单文件按文件顺序指定要包含哪些文件。
+To create such a bootfs image, use the zbi tool that's generated as part of the
+build. It can assemble a bootfs image for either source directories (in which
+case every file in the specified directory and its subdirectories are included)
+or via a manifest file that specifies, on a file-by-file basis, which files to
+include.
 
 ```none
 $BUILDDIR/tools/zbi -o extra.bootfs @/path/to/directory
@@ -128,22 +173,31 @@ echo "etc/hosts=/etc/hosts" >> manifest
 $BUILDDIR/tools/zbi -o extra.bootfs manifest
 ```
 
-在引导的 Zircon 系统中，引导中的文件将显示在 /boot 下，因此在上述示例中，"host" 文件将在 /boot/etc/hosts 中。
+On the booted Zircon system, the files in the bootfs will appear under /boot, so
+in the above manifest example, the "hosts" file would appear at /boot/etc/hosts.
 
-## 网络启动
+## Network Booting {#network-booting}
 
-网络启动是由2个机制支持的：Gigaboot 和 Zirconboot。Gigaboot 是基于 EFI 引导加载器，而 zirconboot 是一种允许最小 zircon 系统 作为 zircon 引导加载器的机制。
+Network booting is supported via two mechanisms: Gigaboot and Zirconboot.
+Gigaboot is an EFI based bootloader whereas zirconboot is a mechanism that
+allows a minimal zircon system to serve as a bootloader for zircon.
 
-在系统上，通过 EFI 启动（例如 Acer 和 NUC）要么是可行的选项。在另外系统上，zirconboot 可能是唯一的网络启动。
+On systems that boot via EFI (such as Acer and NUC), either option is viable. On
+other systems, zirconboot may be the only option for network booting.
 
-### Gigaboot
+### Via Gigaboot
 
-[GigaBoot20x6](/src/firmware/gigaboot) 引导启动器说是一种简单的网络启动协议（IPV6 UDP上）不需要指定 host 配置 或者权限即可访问使用。
+The [GigaBoot20x6](/src/firmware/gigaboot) bootloader speaks a simple network
+boot protocol (over IPV6 UDP), which does not require any special host
+configuration or privileged access to use.
 
-它通过 IPV6 的优势 链接本地地址和多播，允许被引导的设备通告其引导性，并让主机找到并向它发送一个系统镜像。
+It does this by taking advantage of IPV6 Link Local Addressing and Multicast,
+allowing the device being booted to advertise its bootability and the host to
+find it and send a system image to it.
 
-如果你有设备（比如是 Broadwell 或者 Skylake Intel NUC）运行 GigaBoot20x6, 第一步，
-[创建USB设备](/development/hardware/usb_setup.md).
+If you have a device (for example a Broadwell or Skylake Intel NUC) running
+GigaBoot20x6, first
+[create a USB drive](/docs/development/hardware/usb_setup.md).
 
 ```none
 $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin
@@ -152,30 +206,39 @@ $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin
 $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin /path/to/extra.bootfs
 ```
 
-默认情况下，引导服务将继续运行，每次它观察到一个netboot信标，它会发送内核（和 bootfs 如果提供）到该设备上。如果你传递 -1 选项，引导服务器会在成功引导后退出。
+By default bootserver will continue to run and every time it observes a netboot
+beacon it will send the kernel (and bootfs if provided) to that device. If you
+pass the -1 option, bootserver will exit after a successful boot instead.
 
-### Zirconboot
+### Via Zirconboot
 
-Zirconboot 是允许 zircon 系统作为引导加载器的机制。
+Zirconboot is a mechanism that allows a zircon system to serve as the bootloader
+for zircon itself. Zirconboot speaks the same boot protocol as Gigaboot
+described above.
 
-对于zircon它自己来说，Zirconboot 是上面Gigaboot 相似的启动协议。
+To use zirconboot, pass the `netsvc.netboot=true` argument to zircon via the
+kernel command line. When zirconboot starts, it will attempt to fetch and boot
+into a zircon system from a bootserver running on the attached host.
 
-使用 zirconboot，通过内核命令行将 `netsvc.netboot=true` 参数传到zircon。当zirconboot 启动时，它会尝试从所连接的主机上运行的引导服务器获取并引导到 zircon 系统。
+## Network Log Viewing
 
-## 网络日志查看
+The default build of Zircon includes a network log service that multicasts the
+system log over the link local IPv6 UDP. Please note that this is a quick hack
+and the protocol will certainly change at some point.
 
-Zircon 默认构建包括网络日志服务，通过本地 IPv6 UDP 链路多播系统日志。
-
-请注意，这是一个可快速破解，协议会在某个点改变。
-
-现在，如果你在QEMU 使用 -N 标示运行 Zircon 或者运行在以太网接口的硬件上（ASIX USB Dongle 或者 NUC 上的Intel Ethernet ）日志监听工具会在本地链接上观察日志广播。
+For now, if you're running Zircon on QEMU with the -N flag or running on
+hardware with a supported ethernet interface (ASIX USB Dongle or Intel Ethernet
+on NUC), the loglistener tool will observe logs broadcast over the local link:
 
 ```none
 $BUILDDIR/tools/loglistener
 ```
 
-## 调试
+## Debugging
 
-有关 zircon 环境中调试的随机提示，请查阅
-[调试](/development/debugging/tips.md).
+For random tips on debugging in the zircon environment see
+[debugging](/docs/development/debugging/tips.md).
 
+## Contribute changes
+
+*   See [CONTRIBUTING.md](/CONTRIBUTING.md#contributing-patches-to-zircon)

@@ -9,6 +9,12 @@ Note: Formerly known as [FTP](../deprecated-ftp-process.md)-009.
 
 Documenting FIDL.
 
+### Relation to other RFCs
+
+This RFC was amended by:
+
+* [RFC-0043: Documentation comment format](0043_documentation_comment_format.md)
+
 ## Motivation
 
 Not only is good documentation an important part of scaling a team, documenting

@@ -1,4 +1,4 @@
-# Component manager (Components v2)
+# Component manager
 
 <<../_v2_banner.md>>
 
@@ -24,7 +24,7 @@ manager, filesystems, network stack, and other essential services.
 The component manager intermediates all introductions between components at
 runtime.
 
-For example, when a component connects to a [service][doc-services], the
+For example, when a component connects to a [protocol][capability-protocol], the
 component manager validates the request, uses
 [capability routing][doc-capability-routing] to find the component that exposes
 the desired service, starts it if needed, establishes a direct connection
@@ -39,23 +39,30 @@ stability.
 
 The component manager offers a variety of framework capabilities to components.
 Components use these capabilities to interact with their environment with the
-help of the component manager.
+help of the component manager. For more details, see the corresponding
+capabilities documentation:
+
+-   [Protocol capabilities][capability-protocol]
+-   [Directory capabilities][capability-directory]
+-   [Event capabilities][capability-event]
 
 ## Framework extensions
 
 The component manager supports a variety of framework extensions that
-components can implement to integrate new functionality with their environment.
+components can implement to integrate new functionality with their
+[environment][doc-environments].
 
 - [Runners][doc-runners]: Integrate programming language runtimes and
   application frameworks.
 - [Resolvers][doc-resolvers]: Integrate software delivery systems.
 
+[capability-directory]: /docs/concepts/components/v2/capabilities/directory.md
+[capability-event]: /docs/concepts/components/v2/capabilities/event.md
+[capability-protocol]: /docs/concepts/components/v2/capabilities/protocol.md
 [doc-capabilities]: /docs/concepts/components/v2/capabilities
 [doc-capability-routing]: /docs/concepts/components/v2/topology.md#capability-routing
-[doc-hub]: /docs/concepts/components/v2/hub.md
+[doc-environments]: /docs/concepts/components/v2/environments.md
 [doc-lifecycle]: lifecycle.md
-[doc-realms]: /docs/concepts/components/v2/realms.md
 [doc-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
 [doc-runners]: /docs/concepts/components/v2/capabilities/runners.md
 [doc-topology]: /docs/concepts/components/v2/topology.md
-[doc-services]: /docs/concepts/components/v2/services.md

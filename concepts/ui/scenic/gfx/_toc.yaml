@@ -1,0 +1,18 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/concepts/ui/scenic/gfx/index.md
+- title: "Life of a Pixel"
+  path: /docs/development/graphics/scenic/concepts/life_of_a_pixel.md
+- title: "Views"
+  path: /docs/development/graphics/scenic/concepts/view_ref.md
+- title: "Resource lifecycle"
+  path: /docs/concepts/ui/scenic/gfx/scenic_resource_lifecycle.md
+- title: "Units and metrics"
+  path: /docs/concepts/ui/scenic/gfx/units_and_metrics.md

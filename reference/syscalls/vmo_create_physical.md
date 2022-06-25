@@ -1,14 +1,14 @@
 # zx_vmo_create_physical
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create a VM object referring to a specific contiguous range of physical memory.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +21,8 @@ zx_status_t zx_vmo_create_physical(zx_handle_t resource,
 
 ## DESCRIPTION
 
-`zx_vmo_create_physical()` creates a new virtual memory object (VMO), which represents the
+`zx_vmo_create_physical()` creates a new [virtual memory
+object](/docs/reference/kernel_objects/vm_object.md) (VMO), which represents the
 *size* bytes of physical memory beginning at physical address *paddr*.
 
 The content size of the VMO will be initialized to the given (unrounded) size.
@@ -35,23 +36,21 @@ size.
 
 The following rights will be set on the handle by default:
 
-**ZX_RIGHT_DUPLICATE** - The handle may be duplicated.
+  - **ZX_RIGHT_DUPLICATE** - The handle may be duplicated.
 
-**ZX_RIGHT_TRANSFER** - The handle may be transferred to another process.
+  - **ZX_RIGHT_TRANSFER** - The handle may be transferred to another process.
 
-**ZX_RIGHT_READ** - May be read from or mapped with read permissions.
+  - **ZX_RIGHT_READ** - May be read from or mapped with read permissions.
 
-**ZX_RIGHT_WRITE** - May be written to or mapped with write permissions.
+  - **ZX_RIGHT_WRITE** - May be written to or mapped with write permissions.
 
-**ZX_RIGHT_EXECUTE** - May be mapped with execute permissions.
+  - **ZX_RIGHT_EXECUTE** - May be mapped with execute permissions.
 
-**ZX_RIGHT_MAP** - May be mapped.
+  - **ZX_RIGHT_MAP** - May be mapped.
 
-**ZX_RIGHT_GET_PROPERTY** - May get its properties using
-[`zx_object_get_property()`].
+  - **ZX_RIGHT_GET_PROPERTY** - May get its properties using [`zx_object_get_property()`].
 
-**ZX_RIGHT_SET_PROPERTY** - May set its properties using
-[`zx_object_set_property()`].
+  - **ZX_RIGHT_SET_PROPERTY** - May set its properties using [`zx_object_set_property()`].
 
 The **ZX_VMO_ZERO_CHILDREN** signal is active on a newly created VMO. It becomes
 inactive whenever a child of the VMO is created and becomes active again when
@@ -65,7 +64,7 @@ The VMOs created by this syscall are not usable with [`zx_vmo_read()`] and
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *resource* must have resource kind **ZX_RSRC_KIND_MMIO**.
 
@@ -87,6 +86,8 @@ range of memory.
 **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
+
+**ZX_ERR_OUT_OF_RANGE**  Requested size is too large.
 
 ## SEE ALSO
 

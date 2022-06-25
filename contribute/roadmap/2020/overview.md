@@ -2,13 +2,13 @@
 
 ## FIDL
 
-The [Fuchsia Interface Definition Language (FIDL)](/docs/glossary.md#fidl) is a
+The [Fuchsia Interface Definition Language (FIDL)](/docs/glossary/README.md#fidl) is a
 language for defining protocols that are typically used over
-[channels](/docs/glossary.md#channel).
+[channels](/docs/glossary/README.md#channel).
 
 The FIDL team is actively exploring the following projects:
 
-### Unifying FIDL C++ bindings
+### Unifying FIDL C++ bindings {#unifying-fidl-cpp-bindings}
 
 Currently, there are two FIDL binding implementations,
 [high-level C++ bindings (HLCPP)](/docs/reference/fidl/bindings/hlcpp-bindings.md)
@@ -29,13 +29,6 @@ providing tooling to use a FIDL API at a user-specified version.
 The FIDL team is working to revamp the syntax for the FIDL language to help
 developers understand when changes to a FIDL definition break downstream code.
 
-## Migrating to fuchsia.io2
-
-The Process Framework team is actively exploring how to migrate Fuchsia
-libraries and applications from [fuchsia.io](/sdk/fidl/fuchsia.io/) to
-[fuchsia.io2](/sdk/fidl/fuchsia.io2/) in order to increase type safety and
-client reliability.
-
 ## Migrating to fuchsia.hardware.network
 
 The Connectivity team is actively exploring how to migrate existing Fuchsia
@@ -46,14 +39,14 @@ improve network performance.
 
 ## Components v2
 
-[Components v2](/docs/glossary.md#components-v2) is Fuchsia's component
-architecture that replaces [Components v1](/docs/glossary.md#components-v1).
+[Components v2](/docs/glossary/README.md#components-v2) is Fuchsia's component
+architecture that replaces [Components v1](/docs/glossary/README.md#components-v1).
 
 The following projects are currently underway:
 
 ### Continuing migration to Components v2
 
-The goal of the [Component Framework](/docs/glossary.md#component-framework) is
+The goal of the [Component Framework](/docs/glossary/README.md#component-framework) is
 to define Fuchsia's units of software execution as components, which are
 singular abstractions throughout the Fuchsia system.
 
@@ -64,11 +57,11 @@ following areas:
     the package cache and package resolver.
 -   The Netstack2 components, including migration of Netemul and associated
     tests to Test Runner Framework.
--   A subset of components under [sysmgr](/docs/glossary.md#sysmgr) that are
+-   A subset of components under `[sysmgr](/docs/glossary/README.md#sysmgr)` that are
     straightforward to migrate.
 
 For more information, see
-[State of the Components v2 migration](/docs/concepts/components/v2/migration.md).
+[Components v2 migration](/docs/contribute/open_projects/components/migration.md).
 
 ### Implementing drivers as components
 
@@ -85,7 +78,7 @@ teams:
 
 Teams are evaluating potential improvements that could be made to
 [MinFS](/docs/concepts/filesystems/minfs.md) and
-[VFS](/docs/concepts/system/life_of_an_open.md#vfs_layer), including generating
+[VFS](/docs/concepts/filesystems/life_of_an_open.md#vfs_layer), including generating
 a system for benchmarking and implementing paging within the VFS layer.
 
 ### Implementing accessibility and input improvements

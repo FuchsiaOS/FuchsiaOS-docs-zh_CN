@@ -58,7 +58,6 @@ in Gerrit, do the following:
 
     ```posix-terminal
     git checkout -b <branch_name>
-
     ```
 
 1.  Create or edit files in the new branch.
@@ -70,7 +69,7 @@ in Gerrit, do the following:
     ```
 
 1.  Commit the updated files and
-    [write a change message](#write-a-change-message):
+[write the change message](/docs/contribute/commit-message-style-guide.md):
 
     ```posix-terminal
     git commit
@@ -78,15 +77,22 @@ in Gerrit, do the following:
 
 1.  Upload the commit to Gerrit:
 
-    ```posix-terminal
-    jiri upload
-    ```
+You can use `jiri` or `git`.
 
-    If you want to use the `git` command instead, run the following command:
+`jiri` is a tool for working with multiple repositories that is [installed with Fuchsia](/docs/get-started/get_fuchsia_source.md).
+To upload your commit:
 
-    ```posix-terminal
-    git push origin HEAD:refs/for/master
-    ```
+```posix-terminal
+jiri upload
+```
+
+See also the [Jiri documentation](https://fuchsia.googlesource.com/jiri/+/HEAD/README.md) for more information.
+
+If you want to use the `git` command instead, run the following command:
+
+```posix-terminal
+git push origin HEAD:refs/for/main
+```
 
 See the
 [Gerrit documentation](https://gerrit-documentation.storage.googleapis.com/Documentation/2.12.3/intro-user.html#upload-change){:.external}
@@ -155,11 +161,11 @@ After creating a change, to upload a patch to your change, do the following:
 
 When Gerrit warns you of merge conflicts in your change, do the following:
 
-1.  Rebase from `origin/master`, which reveals the files that cause merge
+1.  Rebase from `origin/main`, which reveals the files that cause merge
     conflicts:
 
     ```posix-terminal
-    git rebase origin/master
+    git rebase origin/main
     ```
 
 1.  Edit those files to resolve the conflicts and finish the rebase:
@@ -192,71 +198,13 @@ git branch -d <branch_name>
 
 ## Write a change message {#write-a-change-message}
 
-When writing a change message, follow these guidelines:
-
-*   [Add commit message tags](#add-commit-message-tags)
-*   [Add test instructions](#add-test-instructions)
-
-### Add commit message tags {#add-commit-message-tags}
-
-Include `[tags]` in the subject of a commit message to indicate which module,
-library, and app are affected by your change. For instance, use `[docs]` for
-documentation, `[zircon]` for zircon, and `[fidl]` for FIDL.
-
-The following example of a commit message shows the tags in the subject:
-
-<pre>
-<b>[parent][component]</b> Update component in Topaz.
-
-Write the details of a commit message here.
-
-Test: Added test X.
-</pre>
-
-You can view the commit history of the files you've edited to check for the tags
-used previously. See these examples:
-
-*   [https://fuchsia-review.googlesource.com/c/fuchsia/+/441776](https://fuchsia-review.googlesource.com/c/fuchsia/+/441776){:.external}
-*   [https://fuchsia-review.googlesource.com/c/topaz/+/114013](https://fuchsia-review.googlesource.com/c/topaz/+/114013){:.external}
-
-Commit message tags are required. If the subject of a commit message
-doesn't include tags, Gerrit flags your
-change with `Needs Label: Commit-Message-has-tags`.
-
-### Add test instructions {#add-test-instructions}
-
-If a change requires non-obvious manual testing for validation, describe those
-testing steps in the change description beginning with `Test:`, for example:
-
-```none
-Test: Write the test instructions here.
-```
-
-If the instructions are complex, create a bug and provide a link to that bug in
-the change description. If the change doesn't intend to change behavior,
-indicate that fact in the commit message.
-
-In some cases, certain behavior changes cannot be tested because Fuchsia lacks
-some particular piece of infrastructure. If so, create an issue in the tracker
-about the necessary infrastructure support and provide the bug number in the
-change description, in addition to describing how the change is tested manually,
-for example:
-
-```none
-Test: Manually tested that [...]. Automated testing needs US-XXXX.
-```
-
-Developers are responsible for high-quality automated testing of their code.
-Reviewers are responsible for pushing back on changes that do not include
-sufficient tests. See
-[Fuchsia testability rubrics](/docs/concepts/testing/testability_rubric.md) for
-more information on how to introduce testable and tested code in the Fuchsia
-project.
+When writing a change message, follow the [Commit message style
+guide](/docs/contribute/commit-message-style-guide.md).
 
 ## Contribute a change to the API
 
 To contribute to the
-[Fuchsia API Surface](/docs/glossary.md#fuchsia-api-surface), do the following:
+[Fuchsia API Surface](/docs/glossary/README.md#fuchsia-api-surface), do the following:
 
 * Evaluate whether your change is large or small.
 
@@ -267,13 +215,15 @@ To contribute to the
     * If you have a large change to the API, that is, a change that
     significantly expands on the fuction of the API or modifies the
     API extensively, do the following:
-        * Create an [API Design Document](/docs/contribute/governance/api-design-template.md)
-        that explains the design of your modification to the API.
-        * Request a review of your API Design Document.
-        To read about the API Design Document and the API Design Document review
-        process, see [Decision process](/docs/contribute/governance/api_council.md#decision_process)
-        in the Fuchsia API Council Charter.
-        * After your API Design Document is approved, contribute your change by
+        * Create an [RFC](/docs/contribute/governance/rfcs/TEMPLATE.md) that
+        explains the design of your modification to the API.
+        * This RFC should be reviewed through the normal [RFC
+        process](/docs/contribute/governance/rfcs/rfc_process.md). The API
+        reviewer for the relevant area should be a stakeholder in the RFC. See
+        the [Fuchsia API Council
+        Charter](/docs/contribute/governance/api_council.md#area) to identify
+        API reviewers.
+        * After your API RFC is approved, contribute your change by
         completing the steps in
         [create a change in Gerrit](#create-a-change-in-gerrit), as you would
         for any Fuchsia source code change.
@@ -293,6 +243,5 @@ see the following pages:
 *   [Working across different petals](/docs/development/source_code/working_across_petals.md)
 *   [Upload changes from multiple repositories](/docs/development/source_code/upload_changes_from_multiple_repositories.md)
 
-See [Source code layout](/docs/concepts/source_code/layout.md) for more
+See [Source code layout](/docs/development/source_code/layout.md) for more
 information on the structure of the Fuchsia repository.
-

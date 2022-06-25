@@ -7,7 +7,7 @@ Note: Formerly known as [FTP](../deprecated-ftp-process.md)-044.
 
 ## Rejection rationale
 
-Obsoleted by [RFC-0050](/docs/contribute/governance/rfcs/0050_syntax_revamp.md).
+Obsoleted by [RFC-0050: Syntax revamp](0050_syntax_revamp.md).
 
 ## Summary
 

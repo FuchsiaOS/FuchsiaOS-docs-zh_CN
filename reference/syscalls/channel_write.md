@@ -1,14 +1,14 @@
 # zx_channel_write
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Write a message to a channel.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -76,7 +76,7 @@ are copied and the message is not sent. Usage for sending handles is unchanged.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_WRITE**.
 
@@ -88,24 +88,25 @@ Every entry of *handles* must have **ZX_RIGHT_TRANSFER**.
 
 ## ERRORS
 
-**ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle, any element in
-*handles* is not a valid handle, or there are repeated handles among the
-handles in the *handles* array.
+**ZX_ERR_BAD_HANDLE** `handle` is not a valid handle, any element in
+`handles` is not a valid handle, or there are repeated handles among the
+handles in the `handles` array.
 
-**ZX_ERR_WRONG_TYPE**  *handle* is not a channel handle.
+**ZX_ERR_WRONG_TYPE** `handle` is not a channel handle.
 
-**ZX_ERR_INVALID_ARGS**  *bytes* is an invalid pointer, *handles*
-is an invalid pointer, or *options* contains an invalid option bit.
+**ZX_ERR_INVALID_ARGS** `bytes` is an invalid pointer, `handles`
+is an invalid pointer, or `options` contains an invalid option bit.
 If the **ZX_CHANNEL_WRITE_USE_IOVEC** option is specified,
-**ZX_ERR_INVALID_ARGS** will be produced if the *buffer* field contains an
+**ZX_ERR_INVALID_ARGS** will be produced if the `buffer` field contains an
 invalid pointer or if the reserved field is non-zero.
 
-**ZX_ERR_NOT_SUPPORTED**  *handle* was found in the *handles* array, or
-one of the handles in *handles* was *handle* (the handle to the
-channel being written to).
+**ZX_ERR_NOT_SUPPORTED** `handle` was found in the `handles` array.
+A handle to the channel performing the write cannot be included in the
+`handles` array. In other words a channel handle cannot be written to its own channel. 
+Fix the error by making sure that `handle` is not in the `handles` array.
 
-**ZX_ERR_ACCESS_DENIED**  *handle* does not have **ZX_RIGHT_WRITE** or
-any element in *handles* does not have **ZX_RIGHT_TRANSFER**.
+**ZX_ERR_ACCESS_DENIED** `handle` does not have **ZX_RIGHT_WRITE** or
+any element in `handles` does not have **ZX_RIGHT_TRANSFER**.
 
 **ZX_ERR_PEER_CLOSED**  The other side of the channel is closed.
 
@@ -113,10 +114,10 @@ any element in *handles* does not have **ZX_RIGHT_TRANSFER**.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-**ZX_ERR_OUT_OF_RANGE**  *num_bytes* or *num_handles* are larger than
+**ZX_ERR_OUT_OF_RANGE**  `num_bytes` or `num_handles` are larger than
 **ZX_CHANNEL_MAX_MSG_BYTES** or **ZX_CHANNEL_MAX_MSG_HANDLES** respectively.
 If the **ZX_CHANNEL_WRITE_USE_IOVEC** option is specified,
-**ZX_ERR_OUT_OF_RANGE** will be produced if *num_bytes* is larger than
+**ZX_ERR_OUT_OF_RANGE** will be produced if `num_bytes` is larger than
 **ZX_CHANNEL_MAX_MSG_IOVEC** or the sum of the iovec capacities exceeds
 **ZX_CHANNEL_MAX_MSG_BYTES**.
 

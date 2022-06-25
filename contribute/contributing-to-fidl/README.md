@@ -20,8 +20,9 @@ The [FIDL][fidl-readme] toolchain is composed of roughly three parts:
 ### Code location
 
 #### Compiler front-end
+
 The front-end lives at [//tools/fidl/fidlc/][fidlc-source],
-with tests in [//zircon/system/utest/fidl-compiler/][fidlc-compiler-tests].
+with tests in [//tools/fidl/fidlc/tests][fidlc-compiler-tests].
 
 #### Compiler back-ends {#compiler-backends}
 
@@ -30,15 +31,16 @@ Target | Codegen | Runtime Libraries | Tests
 C | [/tools/fidl/fidlc/lib/c_generator.cc] | [/zircon/system/ulib/fidl] | [/src/lib/fidl/c]
 Coding Tables | [/tools/fidl/fidlc/lib/tables_generator.cc] | - | [/src/lib/fidl/c]
 HLCPP | [/tools/fidl/fidlgen_hlcpp] | [/sdk/lib/fidl/cpp] | *(located alongside runtime libraries)*
-LLCPP | [/tools/fidl/fidlgen_llcpp] | [/zircon/system/ulib/fidl] | [/src/lib/fidl/llcpp]
+LLCPP | [/tools/fidl/fidlgen_cpp] | [/sdk/lib/fidl/llcpp] | [/src/lib/fidl/llcpp]
+Unified C++ | [/tools/fidl/fidlgen_cpp] | [/src/lib/fidl/cpp] | *(located alongside runtime libraries)*
 Go | [/tools/fidl/fidlgen_go] | [/third_party/go/src/syscall/zx/fidl](https://fuchsia.googlesource.com/third_party/go/+/main/src/syscall/zx/fidl) | *(located alongside runtime libraries)*
 Rust | [/tools/fidl/fidlgen_rust] | [/src/lib/fidl/rust] | *(located alongside runtime libraries)*
 Dart | [/tools/fidl/fidlgen_dart] | [/sdk/dart/fidl] | [/src/tests/fidl/dart_bindings_test]
 
-Note: The tests column refers to hand-written tests that exercise both the generated code and
-the runtime libraries. There are also other tests, like unit tests for the
-codegen itself and GIDL generated tests, refer to the [tests section](#all-tests)
-for details.
+Note: The tests column refers to hand-written tests that exercise both the
+generated code and the runtime libraries. There are also other tests, like unit
+tests for the codegen itself and GIDL generated tests. Refer to the [tests
+section](#all-tests) for details.
 
 Supporting code for the target specific backends is located in
 [/tools/fidl/lib/fidlgen].
@@ -55,7 +57,7 @@ Path | Description
 -----|------------
 [/tools/fidl/gidl] | Source code and build templates for the GIDL tool itself.
 [/src/tests/fidl/conformance_suite] | Test definitions (`.fidl` and `.gidl` files) for conformance tests.
-[/sdk/lib/fidl/cpp/test/{test,handle}_utils.h](/sdk/lib/fidl/cpp/test) | Runtime support for HLCPP conformance tests.
+[/sdk/cts/tests/pkg/fidl/cpp/test/{test,handle}_util.h](/sdk/cts/tests/pkg/fidl/cpp/test) | Runtime support for HLCPP conformance tests.
 [/src/lib/fidl/llcpp/tests/conformance/conformance_utils.h] | Runtime support for LLCPP conformance tests.
 [/src/lib/fidl/rust/gidl_util] | Runtime support for Rust conformance tests.
 [/third_party/go/src/syscall/zx/fidl/fidl_test] | Runtime support for Go conformance tests.
@@ -90,15 +92,16 @@ Dangerous identifier tests are found in
 Some other FIDL related areas are:
 
 Path | Contents
--------|-----
+-----|---------
 [/tools/fidl/fidlgen_*](/tools/fidl/) | Various other compiler back-ends.
-[/tools/fidl/fidlc/{linter,compiler}](/tools/fidl/fidlc) | FIDL linter/formatter.
+[/tools/fidl/fidlc/formatter] | FIDL formatter.
+[/tools/fidl/fidlc/linter] | FIDL linter.
 [/tools/fidl/fidldoc] | Generate documentation for FIDL.
 [/tools/fidl/fidlmerge] | Tool for generating code from FIDL JSON.
 [/tools/fidl/measure-tape] | Tool to [max out pagination][pagination].
 [/tools/fidl/scripts] | Mostly one-off scripts for e.g. performing migrations that are kept for future reference.
-[/garnet/public/lib/fostr] | `fidlmerge` based tool to generate formatting code in C++.
-[/garnet/public/build/fostr] | Build templates for the `fostr` formatting library.
+[/src/lib/fostr] | `fidlmerge` based tool to generate formatting code in C++.
+[/src/lib/fostr/build] | Build templates for the `fostr` formatting library.
 [/src/lib/fidl_codec] | Library for encoding/decoding FIDL messages (used by `fidlcat`).
 
 Note: The FIDL team does not necessarily
@@ -129,7 +132,7 @@ use for working on the FIDL codebase.
 
 #### IDEs
 
-Most of the FIDL team uses VSCode for development. Some useful plugins and workflows:
+Most of the FIDL team uses VS Code for development. Some useful plugins and workflows:
 
 * The [remote ssh](https://code.visualstudio.com/docs/remote/ssh) feature works
 really well for doing remote work from your laptop.
@@ -156,42 +159,8 @@ really well for doing remote work from your laptop.
 
 ### Commit message style guide
 
-#### References to other CLs
-
-To reference another Gerrit change in a commit message, always use
-the `Change-ID`.
-
-Using the `Change-ID` is preferred since:
-
-* The git SHA is only known after a change is merged, and while guidance
-  could be given to use the `Change-Id` in one case, and the git SHA in the
-  other, we prefer a uniform guidance. Furthermore, you cannot reference other
-  repositories using the git SHA.
-* The link to the change is assigned by Gerrit, and is not part of the
-  persistent history of the repository. Should we change the review mechanism,
-  the `Change-Id` will continue to be part of the recorded history, whereas
-  change's number will not. There are also rare occurrences where change
-  numbers may be lost, e.g. due to re-indexing issues.
-
-For instance, to refer to the change that added [RFC-0042] we should use
-`I32b966810d21a249647887fa45b61720ad01714c`, and not the git SHA
-`5d40ee8c42d1b0e4d8b690786da12a0a947c1aaa` or the link to the
-change, https://fuchsia-review.googlesource.com/c/fuchsia/+/284569.
-
-#### Multi-step change
-
-When executing a change that requires multiple steps across various
-repositories, for instance to soft transition APIs defined in one repository and
-used in others, it is preferred to reference the last step taken, and the next
-step to be taken so that reviewers and those looking at the log can understand
-and navigate the totality of the change. When possible, it is encouraged to
-provide all steps to complete the migration in each commit log (but that may be
-impractical in some cases).
-
-For instance:
-
-* [Align Go union unknown data APIs](https://fuchsia-review.googlesource.com/q/Ia6d4ddeaf980e6599c8becbf9339df5b1910be89)
-* [Support for flexible enums](https://fuchsia-review.googlesource.com/q/Id71eb879e4d7dfabe228cc7b4e2fedb7f52db7b7)
+When writing a change message, follow the [Commit message style
+guide][commit-message].
 
 ### C++ style guide
 
@@ -203,7 +172,7 @@ further remove ambiguity around the application or interpretation of guidelines.
 Comments must respect 80 columns line size limit, unlike code, which can extend
 to 100 lines size limit.
 
-##### Lambda captures
+#### Lambda captures
 
 * If a lambda escapes the current scope, capture all variables explicitly.
 * If the lambda is local (does not escape the current scope), prefer using a default capture by
@@ -228,19 +197,20 @@ auto add_dependency = [&](const flat::Library* dep_library) {
 
 Read the [Fuchsia Getting Started][getting_started] guide first.
 
-### fx set
+### `fx set`
 
 If you are working on the FIDL toolchain, use:
 
 ```sh
-fx set core.x64 --with //bundles/fidl:tests
+fx set core.x64 --with //bundles/fidl:tests --with-base //src/dart:dart_jit_runner
 ```
+
+The `--with-base` flag is necessary to run Dart tests and benchmarks.
 
 If you are working on an LSC:
 
 ```sh
 fx set terminal.x64 --with //bundles:kitchen_sink \
-                    --with //topaz/packages/tests:all \
                     --with //sdk:modular_testing
 ```
 
@@ -271,8 +241,7 @@ alias fidldev=$FIDLMISC_DIR/fidldev/fidldev.py
 # optional; builds fidlc for the host with ASan <https://github.com/google/sanitizers/wiki/AddressSanitizer>
 fx set core.x64 --variant=host_asan
 
-# build fidlc
-fx ninja -C $(cat .fx-build-dir) host_x64/fidlc
+fx build host_x64/fidlc
 ```
 
 If you're doing extensive edit-compile-test cycles on `fidlc`, building with
@@ -300,22 +269,19 @@ git update-index --no-skip-worktree zircon/public/gn/config/levels.gni
 
 `fidlc` tests are at:
 
-* [//zircon/system/utest/fidl-compiler/][fidlc-compiler-tests].
-* [//src/lib/fidl/c/walker_tests/][walker-tests].
-* [//src/lib/fidl/c/coding_tables_tests/][fidlc-coding-tables-tests].
-* [//src/lib/fidl/c/simple_tests][fidl-simple] (C runtime tests).
+* [//tools/fidl/fidlc/{tests,goldens,testdata}][fidlc-compiler].
 
 To build and run `fidlc` tests:
 
 ```sh
-fidldev test fidlc
+fx test //tools/fidl/fidlc
 ```
 
 If you prefer to use `ninja` directly:
 
 ```sh
 fx_build_dir=$(cat .fx-build-dir) \
-    fidlc_tests_target=$(fx ninja -C $fx_build_dir -t targets all | grep -e 'unstripped.*fidl-compiler:' | awk -F : '{ print $1; }') \
+    fidlc_tests_target=$(fx ninja -C $fx_build_dir -t targets all | grep -e 'unstripped.*fidlc-test:' | awk -F : '{ print $1; }') \
     fx ninja -C $fx_build_dir $fidlc_tests_target && ./$fx_build_dir/$fidlc_tests_target
 ```
 
@@ -324,32 +290,9 @@ pattern. For instance:
 
 ```sh
 fx_build_dir=$(cat .fx-build-dir) \
-    fidlc_tests_target=$(fx ninja -C $fx_build_dir -t targets all | grep -e 'unstripped.*fidl-compiler:' | awk -F : '{ print $1; }') \
+    fidlc_tests_target=$(fx ninja -C $fx_build_dir -t targets all | grep -e 'unstripped.*fidlc-test:' | awk -F : '{ print $1; }') \
     fx ninja -C $fx_build_dir $fidlc_tests_target && ./$fx_build_dir/$fidlc_tests_target --gtest_filter 'EnumsTests.*'
 ```
-
-<!-- TODO(fxbug.dev/70247): update post migration -->
-During the migration for FTP-050, the `fidl-compiler` test exercises test cases
-for both the old and new syntax. This temporary state contains a number of
-different "flavors" of tests:
-
-* (1) Success tests that can run in either syntax: these tests are specified
-  using the old syntax, but use `ASSERT_COMPILED_AND_CONVERT` to compile and
-  check the result. This method will also convert into the new syntax and check
-  that the IR from the new syntax matches the IR from the old syntax.
-* (2) Success or failure tests that only run in one syntax: these are unchanged
-  from before. Tests that somehow only apply to one syntax or the other fall in
-  this category.
-* (3) Success tests that include dependent libraries must be duplicated, so that
-  two scenarios may be tested: the case in which the dependent library has been
-  converted to the old syntax, and the case in which it has not. For the latter,
-  the second test must be defined using a name identical to the first's with
-  `WithOldDep` appended. For example, the companion to `FooTest.UsingLibrary`
-  would be `FooTest.UsingLibraryWithOldDep`.
-* (4) Failure tests that run in either syntax: unfortunately, two copies must be
-  made in this scenario, for example `FooTest.SomeErrorOld` for the old syntax
-  and `FooTest.SomeError` for the corresponding new syntax test. These should
-  ideally be located next to each other in the same file.
 
 #### `fidlc` debugging
 
@@ -363,14 +306,14 @@ export ASAN_SYMBOLIZER_PATH="$(find `pwd` -name llvm-symbolizer | grep clang | h
 Once properly set up, you can run tests using the commands listed previously,
 with or without filtering.
 
-To step through a test, you can use [`gdb`](#gdb):
+To step through a test, you can use [GDB](#gdb):
 
 ```sh
 fx_build_dir=$(cat .fx-build-dir) \
-    fidlc_tests_target=$(fx ninja -C $fx_build_dir -t targets all | grep -e 'unstripped.*fidl-compiler:' | awk -F : '{ print $1; }') \
-    fx ninja -C $fx_build_dir $fidlc_tests_target && gdb --args ./$fx_build_dir/$fidlc_tests_target --gtest_filter 'AliasTests.invalid_recursive_alias'
+    fidlc_tests_target=$(fx ninja -C $fx_build_dir -t targets all | grep -e 'unstripped.*fidlc-test:' | awk -F : '{ print $1; }') \
+    fx ninja -C $fx_build_dir $fidlc_tests_target && fx gdb --args ./$fx_build_dir/$fidlc_tests_target --gtest_filter 'AliasTests.invalid_recursive_alias'
 ```
-  
+
 #### `fidlc` test style guide
 
 All `fidlc` compiler tests written in C++ must conform to the following rules:
@@ -378,6 +321,7 @@ All `fidlc` compiler tests written in C++ must conform to the following rules:
 *   Tests written using the `TEST` macro must have an UpperCamelCased group name
     of the format `<CATEGORY>Tests`. and an UpperCamelCased test case name.
     For example: `TEST(BitsTests, GoodValidBits) {...`.
+*   Test case names should not begin or end with "Test" since it's redundant.
 *   Test case names that test parsing and/or compilation must be prefixed with
     one of the following:
     *    `Good`: when the test case is expected to pass. Ex: `GoodValidMethod`.
@@ -403,7 +347,7 @@ These "golden" files are examples of what kind of JSON IR `fidlc` produces and
 are used to track changes. It is required to regenerate the golden files each
 time the JSON IR is changed in any way, otherwise the `json_generator_tests` fails.
 
-### fidlgen (LLCPP, HLCPP, Rust, Go)
+### fidlgen (LLCPP, HLCPP, Rust, Go, Dart)
 
 Build:
 
@@ -414,7 +358,7 @@ fx build tools/fidl
 Run:
 
 ```sh
-$FUCHSIA_DIR/out/default/host_x64/fidlgen_{llcpp, hlcpp, rust, go}
+$FUCHSIA_DIR/out/default/host_x64/fidlgen_{llcpp,hlcpp,rust,go,dart}
 ```
 
 Some example tests you can run:
@@ -422,6 +366,7 @@ Some example tests you can run:
 ```sh
 fx test fidlgen_hlcpp_golden_tests
 fx test fidlgen_golang_lib_tests
+fx test dart-bindings-test
 fidldev test --no-regen fidlgen
 ```
 
@@ -431,44 +376,18 @@ To regenerate the goldens:
 fidldev regen fidlgen
 ```
 
-### fidlgen_dart
-
-Build:
-
-```sh
-fx ninja -C out/default host_x64/fidlgen_dart
-```
-
-Run:
-
-```sh
-$FUCHSIA_DIR/out/default/host_x64/fidlgen_dart
-```
-
-Some example tests you can run:
-
-```sh
-fidldev test --no-regen fidlgen_dart
-```
-
-To regenerate the goldens:
-
-```sh
-fidldev regen fidlgen_dart
-```
-
 ### fidlgen_banjo
 
 Build:
 
 ```sh
-fx ninja -C out/default host_x64/fidlgen_banjo
+fx build host_x64/fidlgen_banjo
 ```
 
 Run tests:
 
 ```sh
-fx ninja -C out/default host_x64/fidlgen_banjo_unittests
+fx build host_x64/fidlgen_banjo_unittests
 ./out/default/host_x64/fidlgen_banjo_unittests
 ```
 
@@ -479,7 +398,7 @@ run on device and require having Fuchsia running in an emulator. Here are the
 steps:
 
 ```sh
-Tab 1> fx build && fx serve-updates
+Tab 1> fx build && fx serve
 
 Tab 2> fx qemu -kN
 ```
@@ -520,7 +439,6 @@ emulator:
 Tab 1> fx build && fx serve
 
 Tab 2> fx qemu -kN
-
 ```
 
 To run the compatibility tests:
@@ -547,6 +465,9 @@ fx build
 
 ### All tests {#all-tests}
 
+This section gives the full `fx test` commands to run all FIDL-related tests.
+Use these instead of `fidldev test` if you want to run a specific test.
+
 #### Bindings tests {#bindings-tests}
 
 On device tests generally have greater coverage than host tests, due to support
@@ -557,16 +478,19 @@ useful for debugging issues that prevent boot of the device.
 
 | Name                     | Test Command                        | Coverage
 |--------------------------|-------------------------------------|---------------------------
-| c runtime test, coding tables      | `fx test fidl_c_tests`    | //zircon/system/ulib/fidl                                                 |
+| c runtime test, coding tables      | `fx test fidl_c_tests`    | //zircon/system/ulib/fidl                                                |
 | walker, misc             | `fx test fidl-walker-tests`         |  //zircon/system/ulib/fidl
 | walker tests w/ handle closing checks | `fx test fidl-handle-closing-tests` | //zircon/system/ulib/fidl
-| hlcpp bindings tests including conformance tests     | `fx test fidl_hlcpp_tests`                | //sdk/lib/fidl                                                             |
-| llcpp bindings tests     | `fx test //src/lib/fidl/llcpp`      | //zircon/system/ulib/fidl/include/lib/fidl/llcpp
-| go bindings tests        | `fx test go-fidl-tests`             | //third_party/go/syscall/zx/fidl third_party/go/syscall/zx/fidl/fidl_test |
+| hlcpp bindings tests including conformance tests     | `fx test fidl_hlcpp_unit_test_package fidl_hlcpp_conformance_test_package`         | //sdk/lib/fidl                                                             |
+| llcpp bindings tests     | `fx test //src/lib/fidl/llcpp`      | //sdk/lib/fidl/llcpp
+| unified C++ bindings tests | `fx test //src/lib/fidl/cpp`      | //src/lib/fidl/cpp
+| go bindings tests        | `fx test go-fidl-tests`             | //third_party/go/syscall/zx/fidl //third_party/go/syscall/zx/fidl/fidl_test //src/tests/fidl/go_bindings_test |
 | dart bindings tests      | `fx test dart-bindings-test`<br>(_see note below_) | //sdk/dart/fidl                                                  |
 | rust bindings tests      | `fx test //src/lib/fidl/rust`           | //src/lib/fidl/rust |
 
-Note: While `fx test dart-bindings-test` prints test names as they run, it does not show stack traces for test failures. To see those, look at the `fx qemu` or `fx log` output.
+Note: `fx test dart-bindings-test` needs `--with-base //src/dart:dart_jit_runner` or it will fail.
+While `fx test dart-bindings-test` prints test names as they run, it does not show stack traces
+for test failures. To see those, look at the `fx qemu` or `ffx log` output.
 
 ##### Host
 
@@ -575,22 +499,21 @@ Note: While `fx test dart-bindings-test` prints test names as they run, it does 
 | walker, misc             | `fx test --host fidl-walker-host-tests`         | //zircon/system/ulib/fidl
 | hlcpp unittests          | `fx test --host fidl_hlcpp_unit_tests`          | //sdk/lib/fidl
 | hlcpp conformance tests  | `fx test --host fidl_hlcpp_conformance_tests`   | //sdk/lib/fidl
-| llcpp conformance tests  | `fx test --host fidl_llcpp_conformance_tests`    | //zircon/system/ulib/fidl/include/lib/fidl/llcpp
+| llcpp conformance tests  | `fx test --host fidl_llcpp_conformance_tests`   | //sdk/lib/fidl/llcpp
 | rust conformance tests   | `fx test --host fidl_rust_conformance_tests`    | //src/lib/fidl/rust
 | rust fidl lib tests      | `fx test --host fidl_rust_lib_tests`            | //src/lib/fidl/rust
 | go conformance tests     | `fx test --host fidl_go_conformance_tests`      | //third_party/go/syscall/zx/fidl
 | go fidl tests (extended) | `fx test --host go_extended_fidl_test`          | //third_party/go/syscall/zx/fidl
 | go unsafevalue test      | `fx test --host go_unsafevalue_test`            | //third_party/go/syscall/zx/fidl/internal/unsafevalue
 
-#### Fidlgen tests
+#### fidlgen tests
 
 | Name                       | Test Command                                       | Coverage
 |----------------------------|----------------------------------------------------|---------
 | fidlgen type definitions   | `fx test fidlgen_lib_test`                         | //tools/fidl/lib/fidlgen
 | fidlgen C++ specific IR    | `fx test fidlgen_cpp_ir_test`                      | //tools/fidl/lib/fidlgen_cpp
 | fidlgen hlcpp              | `fx test fidlgen_hlcpp_golden_tests`               | //tools/fidl/fidlgen_hlcpp
-| fidlgen cpp  natural types | `fx test fidlgen_hlcpp_natural_types_golden_tests` | //tools/fidl/fidlgen_hlcpp
-| fidlgen llcpp              | `fx test fidlgen_llcpp_golden_tests`               | //tools/fidl/fidlgen_llcpp
+| fidlgen llcpp              | `fx test fidlgen_cpp_golden_tests`               | //tools/fidl/fidlgen_cpp
 | fidlgen golang             | `fx test fidlgen_go_{lib,golden}_tests`            | //tools/fidl/fidlgen_golang
 | fidlgen rust               | `fx test fidlgen_rust_{lib,golden}_tests`          | //tools/fidl/fidlgen_rust
 | fidlgen syzkaller          | `fx test fidlgen_syzkaller_golden_tests`           | //tools/fidl/fidlgen_syzkaller
@@ -600,7 +523,7 @@ Note: While `fx test dart-bindings-test` prints test names as they run, it does 
 
 | Name                     | Test Command                        | Coverage
 |--------------------------|-------------------------------------|---------------------------
-| fidlc compiler           | `fx test fidl-compiler`<br>`fx test fidlc_golden_tests` | //tools/fidl/fidlc
+| fidlc compiler           | `fx test fidlc-test`<br>`fx test fidlc_golden_tests` | //tools/fidl/fidlc
 | gidl parser              | `fx test gidl_parser_test`          | //tools/fidl/gidl/parser
 | measure tape test        | `fx test measure-tape_test`         | //tools/fidl/measure-tape
 | Rust IR parser           | `fx build`                          | //src/devices/tools/fidlgen_banjo/tests/parser
@@ -652,11 +575,16 @@ fx test --e2e fidl_microbenchmarks_test
 
 ### All regen commands
 
+This section gives the `fx regen-goldens` commands to regnerate all FIDL-related
+golden files. This is what `fidldev regen` uses under the hood.
+
 | Name            | Regen commands                                 | Input                     |  Output
 |-----------------|------------------------------------------------|---------------------------|------------
+| (all goldens)   | fx regen-goldens |  |
 | fidlc goldens   | fx regen-goldens fidlc                         | tools/fidl/fidlc/testdata | tools/fidl/fidlc/goldens
 | fidlgen goldens | fx regen-goldens $TOOL                         | tools/fidl/fidlc/testdata | tools/fidl/$TOOL/goldens
 | fidldoc goldens | fx regen-goldens fidldoc                       | tools/fidl/fidlc/testdata | tools/fidl/fidldoc/goldens
+| gidl goldens    | fx regen-goldens gidl | src/tests/fidl/conformance_suite/golden{.gidl,.test.fidl} | tools/fidl/gidl/goldens
 | third party go  | fx exec $FUCHSIA_DIR/third_party/go/regen-fidl |                           |
 
 ### Compiling with `ninja`
@@ -679,29 +607,38 @@ fx ninja -C out/default host_x64/fidlgen_dart
 ## Debugging (host)
 
 There are several ways of debugging issues in host binaries. This section gives
-instructions for the example case where `fidlc --files test.fidl` is crashing:
+instructions for the case where `fidlc --files test.fidl` is crashing:
 
-- [`gdb`](#gdb)
-- [Asan](#ASan)
-- [Valgrind](#Valgrind)
+- [GDB](#gdb)
+- [ASan](#asan)
+- [Valgrind](#valgrind)
 
 Note: Even with all optimizations turned off, the binaries in
 `out/default/host_x64` are stripped. For debugging, you should use the binaries
 in the `exe.unstripped` subdirectory, such as `out/default/host_x64/exe.unstripped/fidlc`.
 
-### `gdb` {#gdb}
+### GDB {#gdb}
 
-Start `gdb`:
+First, `cd` to the build directory. You can also stay in `$FUCHSIA_DIR`, but
+then you need to run `dir out/default` in GDB for it to find source files.
 
 ```sh
-gdb --args out/default/host_x64/exe.unstripped/fidlc --files test.fidl
+cd $FUCHSIA_DIR/out/default
 ```
 
-Then, enter "r" to start the program. For additionl uses, and a convenient quick
-reference we've found this [GDB Cheat
+Next, start GDB. The copy on your system might work, but the prebuilt `fx gdb`
+is more likely to work with build artifacts in the Fuchsia project. See
+`fx gnu --help` for the full list of prebuilt GNU tools.
+
+```sh
+fx gdb --args host_x64/exe.unstripped/fidlc --files test.fidl
+```
+
+Then, enter "r" to start the program. For additional uses, and a convenient
+quick reference we've found this [GDB Cheat
 Sheet](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf) very useful.
 
-### ASan {#ASan}
+### ASan {#asan}
 
 Ensure you are compiling with ASan enabled:
 
@@ -713,12 +650,12 @@ fx build host_x64/fidlc
 Then run `out/default/host_x64/fidlc --files test.fidl`. That binary should be
 the same as `out/default/host_x64-asan/fidlc`.
 
-### Valgrind {#Valgrind}
+### Valgrind {#valgrind}
 
 On Google Linux machines, you may need to install a standard version of Valgrind
 instead of using the pre-installed binary:
 
-```
+```sh
 sudo apt-get install valgrind
 ```
 
@@ -736,18 +673,15 @@ To update all the saved `fidlgen` files, run the following command,
 which automatically searches for and generates the necessary go files:
 
 ```sh
-fx exec third_party/go/regen-fidl
+fx exec $FUCHSIA_DIR/third_party/go/regen-fidl
 ```
 
 ## FAQs
 
 ### Why is the C back-end different than all other back-ends?
 
-TBD
-
-### Why is fidlc in the zircon repo?
-
-TBD
+The current C bindings are deprecated. See <https://fxbug.dev/79003> for more
+information on the future of using FIDL in C.
 
 ### Why aren't all back-ends in one tool?
 
@@ -775,7 +709,8 @@ fidl fmt --library my_library.fidl -i
 [fidlc-source]: /tools/fidl/fidlc/
 [fidlc-coding-tables-tests]: /src/lib/fidl/c/coding_tables_tests/
 [fidl-simple]: /src/lib/fidl/c/simple_tests/
-[fidlc-compiler-tests]: /zircon/system/utest/fidl-compiler/
+[fidlc-compiler]: /tools/fidl/fidlc/
+[fidlc-compiler-tests]: /tools/fidl/fidlc/tests/
 [walker-tests]: /src/lib/fidl/c/walker_tests/
 [jsonir]: /docs/reference/fidl/language/json-ir.md
 [getting_started]: /docs/get-started/README.md
@@ -785,15 +720,19 @@ fidl fmt --library my_library.fidl -i
 [fidldev]: https://fuchsia.googlesource.com/fidl-misc/+/HEAD/fidldev
 [RFC-0042]: /docs/contribute/governance/rfcs/0042_non_nullable_types.md
 [pagination]: /docs/development/languages/fidl/guides/max-out-pagination.md
+[commit-message]: /docs/contribute/commit-message-style-guide.md
 
+[/tools/fidl/fidlc/formatter]: /tools/fidl/fidlc/formatter
+[/tools/fidl/fidlc/linter]: /tools/fidl/fidlc/linter
 [/tools/fidl/fidlc/lib/c_generator.cc]: /tools/fidl/fidlc/lib/c_generator.cc
 [/tools/fidl/fidlc/lib/tables_generator.cc]: /tools/fidl/fidlc/lib/tables_generator.cc
 [/tools/fidl/fidlgen_hlcpp]: /tools/fidl/fidlgen_hlcpp
-[/tools/fidl/fidlgen_llcpp]: /tools/fidl/fidlgen_llcpp
+[/tools/fidl/fidlgen_cpp]: /tools/fidl/fidlgen_cpp
 [/tools/fidl/fidlgen_go]: /tools/fidl/fidlgen_go
 [/tools/fidl/fidlgen_rust]: /tools/fidl/fidlgen_rust
 [/tools/fidl/fidlgen_dart]: /tools/fidl/fidlgen_dart
 [/sdk/lib/fidl/cpp]: /sdk/lib/fidl/cpp
+[/sdk/lib/fidl/llcpp]: /sdk/lib/fidl/llcpp
 [/src/lib/fidl/rust]: /src/lib/fidl/rust
 [/zircon/system/ulib/fidl]: /zircon/system/ulib/fidl
 [/third_party/go/src/syscall/zx/fidl]: /third_party/go/src/syscall/zx/fidl
@@ -821,6 +760,6 @@ fidl fmt --library my_library.fidl -i
 [/tools/fidl/fidlmerge]: /tools/fidl/fidlmerge
 [/tools/fidl/measure-tape]: /tools/fidl/measure-tape
 [/tools/fidl/scripts]: /tools/fidl/scripts
-[/garnet/public/lib/fostr]: /garnet/public/lib/fostr
-[/garnet/public/build/fostr]: /garnet/public/build/fostr
+[/src/lib/fostr]: /src/lib/fostr
+[/src/lib/fostr/build]: /src/lib/fostr/build
 [/src/lib/fidl_codec]: /src/lib/fidl_codec

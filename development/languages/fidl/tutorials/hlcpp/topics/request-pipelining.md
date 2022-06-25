@@ -21,7 +21,7 @@ This tutorial covers:
 * The request pipelining pattern and its benefits.
 
 The full example code for this tutorial is located at
-[//examples/fidl/hlcpp/request_pipelining][src].
+[`//examples/fidl/hlcpp/request_pipelining`][src].
 
 ### The FIDL protocol
 
@@ -29,7 +29,7 @@ To do so, this tutorial implements the `EchoLauncher` protocol from the
 [fuchsia.examples library][examples-fidl]:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="launcher" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="launcher" %}
 ```
 
 This is a protocol that lets clients retrieve an instance of the `Echo`
@@ -59,7 +59,7 @@ This implementation of `Echo` allows specifying a prefix in order to
 distinguish between the different instances of `Echo` servers:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="echo-impl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="echo-impl" %}
 ```
 
 The `SendString` handler is empty as the client just uses `EchoString`.
@@ -70,7 +70,7 @@ This class uses
 a binding set to keep track of all of the instances of `Echo` that it launches:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="launcher-impl" highlight="1,17,18" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="launcher-impl" highlight="1,17,18" %}
 ```
 
 The code explicitly specifies not just the protocol that the binding set is
@@ -81,7 +81,7 @@ instances of `EchoImpl`.
 This is the implentation of the two methods:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="launcher-impl" highlight="3,4,5,6,7,8,9,11,12,13,14,15" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="launcher-impl" highlight="3,4,5,6,7,8,9,11,12,13,14,15" %}
 ```
 
 For `GetEcho`, the code first needs to instantiate both ends of the
@@ -97,7 +97,7 @@ The main loop is the same as in the
 [server tutorial][server-tut-main] but serves an `EchoLauncher` instead of `Echo`.
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="main" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="main" %}
 ```
 
 ## Build the server
@@ -106,12 +106,12 @@ Optionally, o check that things are correct, try building the server:
 
 1. Configure your GN build to include the server:
 
-   ```
-   fx set core.x64 --with //examples/fidl/hlcpp/request_pipelining/server
+   ```posix-terminal
+   fx set core.x64 --with //examples/fidl/hlcpp/request_pipelining/server:echo-server
    ```
 2. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
    ```
 
@@ -128,7 +128,7 @@ code connects to one instance of `Echo` using `GetEcho` and another using
 This is the non-pipelined code:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/client/main.cc" region_tag="non-pipelined" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/client/main.cc" region_tag="non-pipelined" %}
 ```
 
 This code has two layers of callbacks:
@@ -145,7 +145,7 @@ Despite having to initialize the channels, the pipelined code is
 much simpler:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/client/main.cc" region_tag="pipelined" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/client/main.cc" region_tag="pipelined" %}
 ```
 
 ## Build the client
@@ -154,47 +154,63 @@ Optionally, to check that things are correct, try building the client:
 
 1. Configure your GN build to include the client:
 
-   ```
-   fx set core.x64 --with //examples/fidl/hlcpp/request_pipelining/client
+   ```posix-terminal
+   fx set core.x64 --with //examples/fidl/hlcpp/request_pipelining/client:echo-client
    ```
 2. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
    ```
 
 ## Run the example code
 
-To run the example code:
+For this tutorial, a [realm][glossary.realm] component is
+provided to declare the appropriate capabilities and routes for
+`fuchsia.examples.Echo` and `fuchsia.examples.EchoLauncher`.
 
-1. Configure your GN build as follows:
+Note: You can explore the full source for the realm component at
+[`//examples/fidl/echo-realm`](/examples/fidl/echo-realm)
 
-   ```
-   fx set core.x64 --with //examples/fidl/hlcpp/request_pipelining/client --with //examples/fidl/hlcpp/request_pipelining/server --with //examples/fidl/test:echo-launcher
-   ```
+1. Configure your build to include the provided package that includes the
+   echo realm, server, and client:
+
+    ```posix-terminal
+    fx set core.qemu-x64 --with //examples/fidl/hlcpp:echo-launcher-hlcpp
+    ```
 
 1. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
    ```
 
-1. Run the example:
+1. Run the `echo_realm` component. This creates the client and server component
+   instances and routes the capabilities:
 
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-launcher#meta/launcher.cmx fuchsia-pkg://fuchsia.com/echo-launcher-hlcpp-client#meta/echo-client.cmx fuchsia-pkg://fuchsia.com/echo-launcher-hlcpp-server#meta/echo-server.cmx fuchsia.examples.EchoLauncher
-   ```
+    ```posix-terminal
+    ffx component run fuchsia-pkg://fuchsia.com/echo-launcher-hlcpp#meta/echo_realm.cm
+    ```
 
-You should see the following print output in the QEMU console (or using `fx log`):
+1. Start the `echo_client` instance:
 
-```
-[120106.044] 769545:769547> Got non pipelined request
-[120106.044] 769545:769547> Got pipelined request
-[120106.044] 769545:769547> Got echo request for prefix pipelined:
-[120106.044] 769795:769797> Got non pipelined response
-[120106.044] 769545:769547> Got echo request for prefix not pipelined:
-[120106.044] 769795:769797> Got echo response pipelined: hello!
-[120106.044] 769795:769797> Got echo response not pipelined: hello!`
+    ```posix-terminal
+    ffx component start /core/ffx-laboratory:echo_realm/echo_client
+    ```
+
+The server component starts when the client attempts to connect to the
+`EchoLauncher` protocol. You should see output similar to the following
+in the device logs (`ffx log`):
+
+```none {:.devsite-disable-click-to-copy}
+[echo_server][][I] Running echo launcher server
+[echo_server][][I] Got non pipelined request
+[echo_server][][I] Got pipelined request
+[echo_server][][I] Got echo request for prefix pipelined:
+[echo_client][][I] Got non pipelined response
+[echo_client][][I] Got echo response pipelined: hello!
+[echo_server][][I] Got echo request for prefix not pipelined:
+[echo_client][][I] Got echo response not pipelined: hello!
 ```
 
 Based on the print order, you can see that the pipelined case is faster. The
@@ -202,15 +218,22 @@ echo response for the pipelined case arrives first, even though the non
 pipelined request is sent first, since request pipelining saves a roundtrip
 between the client and server. Request pipelining also simplifies the code.
 
-
 For further reading about protocol request pipelining, including how to handle
 protocol requests that may fail, see the [FIDL API rubric][rubric].
 
+Terminate the realm component to stop execution and clean up the component
+instances:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_realm
+```
+
 <!-- xrefs -->
+[glossary.realm]: /docs/glossary/README.md#realm
 [src]: /examples/fidl/hlcpp/request_pipelining
 [server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
 [server-tut-main]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#main
 [client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
-[rubric]: /docs/concepts/api/fidl.md#request-pipelining
+[rubric]: /docs/development/api/fidl.md#request-pipelining
 [overview]: /docs/development/languages/fidl/tutorials/hlcpp/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

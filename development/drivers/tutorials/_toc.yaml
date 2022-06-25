@@ -8,3 +8,5 @@
 toc:
 - title: "Banjo tutorial"
   path: /docs/development/drivers/tutorials/banjo-tutorial.md
+- title: "FIDL tutorial"
+  path: /docs/development/drivers/tutorials/fidl-tutorial.md

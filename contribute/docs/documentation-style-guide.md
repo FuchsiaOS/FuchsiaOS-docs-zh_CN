@@ -1,25 +1,38 @@
 # Documentation style guide
 
-This document gives writing style guidance for Fuchsia.dev, and these
+This document gives writing style guidance for Fuchsia.dev. These
 guidelines build on the general guidance in the [Google Developers Style
 Guide][google-dev-doc-style-guide].
 
-For information on general documentation standards, including file types,
-locations, and general tone, see the [Fuchsia documentation
-standards][doc-standard]. For specific guidance on word choice, style, and
-structure, see the [Fuchsia documentation style guide][style-guide].
+Note: This guide highlights some of the best practices for writing
+documentation for Fuchsia. Some of the topics may be covered more extensively
+in the resources in the following documents:
+
+* For information on general documentation standards, including file types,
+  locations, and general tone, see the [Fuchsia documentation
+  standards][doc-standard].
+* For specific guidance on word choice, style, and structure, see the
+  [Fuchsia documentation style guide][style-guide].
+* For the full Markdown reference guide, see the
+  [Markdown reference guide][markdown-guide].
 
 ## Text and links
 
-### Follow the 100 character limit
+### Follow the 80 character limit
 
-In the Fuchsia project, the maximum line length for documentation and code is
-100 characters.
+In the Fuchsia project, the maximum line length for code is 100 characters,
+while the maximum line length for documentation is 80 characters. A notable
+exception to this rule is URLs (i.e. links) which are written on one line,
+without wrapping.
+
+Code tends to be indented (blank space on the left of the page), while English
+prose (documentation) tends to form paragraphs of text. This difference leads to
+different width specification.
 
 ### Mark external links
 
-Use `{:.external}` to mark any links that are not within `fuchsia.dev` or
-`fuchsia.googlesource.com`:
+Use `{:.external}` to mark any links that are not within `fuchsia.dev`,
+`fuchsia.googlesource.com`, or `fuchsia-review.googlesource.com`:
 
 ```none
 This is an [external](http://example.com){:.external} link.
@@ -36,7 +49,7 @@ then refers to that identifier whenever you use the link in the doc. This makes
 links easy to update in the document.
 
 
-<span class="compare-better">Recommended</span>: Create an identifer where you
+<span class="compare-better">Recommended</span>: Create an identifier where you
 want the link.
 
 In this example, the link identifier is called `fuchsia-home`:
@@ -57,7 +70,42 @@ Welcome to the [Fuchsia home page](www.fuchsia.dev).
 ```
 
 You can read more about reference style links in the external
-[Markdown Guide][markdown-reference-links]{:.external}.
+[Markdown Guide][markdown-reference-links].
+
+### Use correct links to different Fuchsia content
+
+In the Fuchsia documentation you can link to three types of contents:
+
+* `/docs/` - Link to documents that are in the `/docs/` directory of the Fuchsia
+  source tree. These links must link to a file with an `.md` extension. For
+  example, `/docs/concepts/README.md`.
+* Source code - Link to source code files that exist within the Fuchsia source
+  tree. These links can link to any file extension, but these files must exist
+  in the source tree. For example, `/src/sys/sysmgr/main.cc`.
+* Reference documentation - Links to auto-generated Fuchsia reference
+  documentation.
+  * Most of the Fuchsia reference documentation doesn't exist in
+    the source tree, but is published on [fuchsia.dev][fuchsia-dev]. These links
+    must be used as fully qualified URLs. For example,
+    `https://fuchsia.dev/reference/fidl/fuchsia.io`.
+  * However, some Fuchsia reference documentation exists in the source
+    tree. These documents exist in `/docs/reference/` and are published in the
+    `https://fuchsia.dev/fuchsia-src/reference/` section. These links must link
+    to a file with an `.md` extension. For example,
+    `/docs/reference/syscalls/bti_create.md`.
+
+### Test your links before submitting a change
+
+Once you have created a valid markdown document, you should run `doc-checker`
+to ensure that your document uses valid links. When you try to submit a change
+that includes a `.md` file, Gerrit runs `doc-checker` and blocks submission if
+you have broken links.
+
+To run `doc-checker` locally, use the `fx format-code` tool:
+
+```posix-terminal
+fx format-code
+```
 
 ## Headers
 
@@ -168,7 +216,8 @@ Update the [state header][sh]
 
 [doc-standard]: /docs/contribute/docs/documentation-standards.md
 [style-guide]: /docs/contribute/docs/documentation-style-guide.md
+[markdown-guide]: /docs/contribute/docs/markdown.md
 [google-dev-doc-style-guide]: https://developers.google.com/style
-[markdown-reference-links]: https://www.markdownguide.org/basic-syntax/#reference-style-links
+[markdown-reference-links]: /docs/contribute/docs/markdown.md
 [external-link-example]: http://example.com
-
+[fuchsia-dev]: https://fuchsia.dev

@@ -1,14 +1,14 @@
 # zx_debuglog_write
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Write a message to the kernel debuglog.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -35,7 +35,7 @@ ZX_LOG_RECORD_MAX so that it may fit in the `data` field of `zx_log_record_t`.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_LOG** and have **ZX_RIGHT_WRITE**.
 
@@ -58,6 +58,13 @@ was an invalid pointer.
 ## SEE ALSO
 
  - [`fuchsia.boot.WriteOnlyLog`](https://fuchsia.dev/reference/fidl/fuchsia.boot#WriteOnlyLog)
+
+ - [`zx_debug_write()`]
  - [`zx_debuglog_create()`]
  - [`zx_debuglog_read()`]
- - [`zx_debug_write()`]
+
+<!-- References updated by update-docs-from-fidl, do not edit. -->
+
+[`zx_debug_write()`]: debug_write.md
+[`zx_debuglog_create()`]: debuglog_create.md
+[`zx_debuglog_read()`]: debuglog_read.md

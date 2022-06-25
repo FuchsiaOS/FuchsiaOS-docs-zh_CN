@@ -57,7 +57,7 @@ today but would be very nice to have.
    `Lookup` API already integrate with [`fuchsia.intl`][fi] to be aware of the
    user's locale preferences.
 
-[fioc]: https://fuchsia.dev/reference/fidl/fuchsia.intl#fuchsia.intl/PropertyProvider.OnChange
+[fioc]: https://fuchsia.dev/reference/fidl/fuchsia.intl#PropertyProvider.OnChange
 [fi]: https://fuchsia.dev/reference/fidl/fuchsia.intl
 
 ## Packaging

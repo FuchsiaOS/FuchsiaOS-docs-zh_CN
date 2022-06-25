@@ -8,7 +8,5 @@
 toc:
 - title: "Overview"
   path: /docs/concepts/fidl/overview.md
-- title: "Design principles"
-  path: /docs/concepts/fidl/design-principles.md
-- title: "Design history"
-  path: /docs/concepts/fidl/design-history.md
+- title: "Life of a handle"
+  path: /docs/concepts/fidl/life-of-a-handle.md

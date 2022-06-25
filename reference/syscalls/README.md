@@ -63,7 +63,7 @@
 ## Sockets
 + [socket_create](socket_create.md) - create a new socket
 + [socket_read](socket_read.md) - read data from a socket
-+ [socket_shutdown](socket_shutdown.md) - prevent reading or writing
++ [socket_set_disposition](socket_set_disposition.md) - set write disposition of a socket
 + [socket_write](socket_write.md) - write data to a socket
 
 ## Stream
@@ -128,12 +128,13 @@
 
 ## Time
 + [nanosleep](nanosleep.md) - sleep for some number of nanoseconds
-+ [clock_get](clock_get.md) - read a system clock (**DEPRECATED**)
 + [clock_get_monotonic](clock_get_monotonic.md) - read the monotonic system clock
++ [clock_create](clock_create.md) - Create a new clock object
++ [clock_get_details](clock_get_details.md) - Fetch all of the low level details of the clock's current status
++ [clock_update](clock_update.md) - Make adjustments to a clock object
 + [ticks_get](ticks_get.md) - read high-precision timer ticks
 + [ticks_per_second](ticks_per_second.md) - read the number of high-precision timer ticks in a second
 + [deadline_after](deadline_after.md) - Convert a time relative to now to an absolute deadline
-+ [clock_adjust](clock_adjust.md) (**DEPRECATED**)
 
 ## Timers
 + [timer_create](timer_create.md) - create a timer object
@@ -145,12 +146,13 @@
 + [guest_set_trap](guest_set_trap.md) - set a trap in a hypervisor guest
 
 ## Virtual CPUs
-+ [vcpu_create](vcpu_create.md) - create a virtual cpu
-+ [vcpu_resume](vcpu_resume.md) - resume execution of a virtual cpu
-+ [vcpu_interrupt](vcpu_interrupt.md) - raise an interrupt on a virtual cpu
-+ [vcpu_read_state](vcpu_read_state.md) - read state from a virtual cpu
-+ [vcpu_write_state](vcpu_write_state.md) - write state to a virtual cpu
-+ [interrupt_bind_vcpu](interrupt_bind_vcpu.md) - Bind an interrupt object to a VCPU
++ [vcpu_create](vcpu_create.md) - create a VCPU
++ [vcpu_enter](vcpu_enter.md) - enter a VCPU, and start or continue execution
++ [vcpu_kick](vcpu_kick.md) - kick a VCPU, and stop execution
++ [vcpu_interrupt](vcpu_interrupt.md) - raise an interrupt on a VCPU
++ [vcpu_read_state](vcpu_read_state.md) - read state from a VCPU
++ [vcpu_write_state](vcpu_write_state.md) - write state to a VCPU
++ [interrupt_bind_vcpu](interrupt_bind_vcpu.md) - bind an interrupt object to a VCPU
 
 ## Global system information
 + [system_get_dcache_line_size](system_get_dcache_line_size.md)
@@ -176,6 +178,8 @@
 + [system_mexec](system_mexec.md) - Soft reboot the system with a new kernel and bootimage
 + [system_mexec_payload_get](system_mexec_payload_get.md) - Return a ZBI containing ZBI entries necessary to boot this system
 + [system_powerctl](system_powerctl.md)
++ [system_get_performance_info](system_get_performance_info.md) - Get CPU performance info
++ [system_set_performance_info](system_set_performance_info.md) - Set CPU performance info
 
 ## DDK
 + [bti_create](bti_create.md) - create a new bus transaction initiator

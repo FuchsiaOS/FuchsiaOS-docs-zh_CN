@@ -1,63 +1,83 @@
-# Prepare a USB flash drive to be a bootable disk
+# Install Fuchsia from a USB flash drive
 
-You can use a USB flash drive to make your device to boot from the freshly-built
-OS on your network-connected host development machine. Alternatively, you can also
-direct your device to boot from the OS on the flash drive itself.
+You can use a USB flash drive to make your target device to boot from
+the Fuchsia installer, which then installs a freshly built Fuchsia
+image on the device directly from the USB.
 
-## Automatic configuration
+To prepare a USB flash drive to be a bootable disk, do the following:
 
-To prepare a USB flash drive to be a bootable disk for your device, complete the
-following steps:
+1. Set the build configuration to `workstation.x64` and include
+   the recovery package (`recovery-installer`):
 
-Note: This procedure only enables you to netboot or pave your device, it won't put
-anything on your internal storage.
+   ```posix-terminal
+   fx set workstation.x64 --with //build/images/recovery:recovery-installer
+   ```
 
-1. Run the following command to set the build configuration:
-  <pre class="prettyprint">
-  <code class="devsite-terminal">fx set core.x64</code>
-  </pre>
+1. Build a new Fuchsia image and its artifacts:
 
-1. Run the following command to build the fuchsia image:
-  <pre class="prettyprint">
-  <code class="devsite-terminal">fx build</code>
-  </pre>
+   ```posix-terminal
+   fx build
+   ```
 
-1. Run the following command to create a zedboot key, replacing `DEVICE-PATH`
-   with the path to your target device:
+1. Plug a USB flash drive into your workstation.
 
-  Note: To find the `device-path` to your USB drive, you can run `lsblk`.
-  If you identify your USB drive as `sda`, your `device-path` is `/dev/sda/`.
+1. Identify the path to the USB drive:
 
-  <pre class="prettyprint">
-  <code class="devsite-terminal">fx mkzedboot <b>DEVICE-PATH</b></code>
-  </pre>
+   ```posix-terminal
+   fx list-usb-disks
+   ```
 
-  This command requires that you `sudo` into your machine. As a result, you will
-  need to enter your password after running `fx mkzedboot`.
+   This command prints output similar to the following:
 
-    The `mkzedboot` command does the following:
+   ``` none {:.devsite-disable-click-to-copy}
+   $ fx list-usb-disks
+   /dev/sda - My Example USB Disk
+   ```
 
-    + Creates a File Allocation Table (FAT) partition that contains an Extensible
-    Firmware Interface (EFI) System Partition. The EFI System Partition contains
-    the Gigaboot EFI bootloader and a configuration that specifies that your
-    device always boot into Zedboot.
-    + Creates a ChromeOS bootable partition with a developer key signed Zedboot
-    kernel partition.
+1. Create a bootable USB drive:
 
-1. Connect your device to your host through built-in ethernet.
+   ```posix-terminal
+   fx mkinstaller -v --new-installer {{ "<var>" }}PATH_TO_USB_DRIVE{{ "</var>"}}
+   ```
 
-1. (Optional) To pave your target device with Fuchsia, run:
-  <pre class="prettyprint">
-  <code class="devsite-terminal">fx pave</code>
-  </pre>
+   Replace `PATH_TO_USB_DRIVE` with the path to the USB drive from the step above.
 
-1. (Optional) To netboot your target device, run:
-  <pre class="prettyprint">
-  <code class="devsite-terminal">fx netboot</code>
-  </pre>
+   The example command below selects the `/dev/sda` path:
 
-1. Power on your device.
+   ``` none {:.devsite-disable-click-to-copy}
+   $ fx mkinstaller -v --new-installer /dev/sda
+   ```
 
-## Manual configuration
+   When finished, the command prints output similar to the following in the end:
 
-Manually creating an EFI boot key is no longer supported.
+
+   ``` none {:.devsite-disable-click-to-copy}
+   $ fx mkinstaller -v --new-installer /dev/sda
+   mkinstaller: WARNING: Changing ownership of /dev/sda to alice
+   [sudo] password for alice:
+   ...
+   mkinstaller: INFO:    Writing image fvm.sparse.blk to partition storage-sparse...
+   mkinstaller: INFO:      Wrote 835.6M in 35.55s, 23.5M/s
+   mkinstaller: INFO: Done.
+   mkinstaller: INFO: Ejected USB disk
+   ```
+
+1. Unplug the USB drive from the workstation.
+
+1. Plug the bootable USB drive into your target device.
+
+1. Configure the target device's BIOS to boot from a USB drive.
+
+1. Reboot the target device.
+
+   The device boots into the Fuchsia Workstation Installer.
+
+1. Press **Enter** on prompts to continue the installation process.
+
+   When the installation is finished, the screen displays `Success! Please restart your computer.`
+
+1. Unplug the USB drive from the target device.
+
+1. Reboot the target device.
+
+   The target device is now booted into Fuchsia’s Workstation.

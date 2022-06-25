@@ -39,6 +39,12 @@ changes following these principles.
     [RFC-0044: Extensible Method Arguments][rfc-0044], i.e. accepting RFC-0050
     means rejecting RFC-0044 as "obsolete".
 
+This RFC was later amended by:
+
+*   [RFC-0086: Updates to RFC-0050: FIDL Attributes Syntax](0086_rfc_0050_attributes.md)
+*   [RFC-0087: Updates to RFC-0050: FIDL Method Parameter Syntax](0087_fidl_method_syntax.md)
+*   [RFC-0088: Updates to RFC-0050: FIDL Bits, Enum, and Constraints Syntax](0088_rfc_0050_bits_enums_constraints.md)
+
 ## Motivation {#motivation}
 
 ### Introductory Examples
@@ -134,7 +140,7 @@ protocol Peripheral {
         2: scan_response AdvertisingData;
         3: mode_hint AdvertisingModeHint;
         4: connectable bool;
-        5: handle server_end:AdvertisingHandle
+        5: handle server_end:AdvertisingHandle;
     }) -> () error PeripheralError;
 };
 ```
@@ -250,7 +256,7 @@ methods requests and responses rather than the current syntactic sugar for
 arguments borrowed from most programming languages. However, a competing design
 consideration is to help library authors in aggregate achieve consistency: in
 `enum` layout declaration, we prefer syntactic sugar over explicitly choosing a
-wrapped type, as having a sane default provides greater consistency for enums
+wrapped type, as having a sensible default provides greater consistency for enums
 across FIDL libraries. This in turn provides a migration path to switch enums
 down the road, e.g. should a library define a general purpose `ErrorStatus`
 enum, it could be replaced later by another 'better' general purpose
@@ -500,7 +506,7 @@ protocol Peripheral {
         2: scan_response AdvertisingData;
         3: mode_hint AdvertisingModeHint;
         4: connectable bool;
-        5: handle server_end:AdvertisingHandle
+        5: handle server_end:AdvertisingHandle;
     }) -> () error PeripheralError;
 };
 ```
@@ -1044,7 +1050,7 @@ marker defined above.
 
 With this added functionality, the build pipeline will be extended as follows:
 
-![Visualization: build pipeline strategy](resources/ftp-050-strategy.png)
+![Visualization: build pipeline strategy](resources/0050_syntax_revamp/strategy.png)
 
 That is:
 
@@ -1184,7 +1190,7 @@ Or at least, not without a good understanding of the wire format and care, e.g.
 ##### Footnote2
 
 While it may seem odd to prefer syntactic conciseness over explicitly choosing a
-wrapped type, having a sane default provides greater consistency for enums
+wrapped type, having a sensible default provides greater consistency for enums
 across FIDL libraries. This in term provides a migration path to switch enums
 down the road, e.g. should a library define a general purpose `ErrorStatus`
 enum, it could be replaced later by another 'better' general purpose

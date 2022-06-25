@@ -213,20 +213,20 @@ following steps:
 
         <p><pre><code class="devsite-terminal">fx serve</code></pre></p>
 
-  <li>In a new shell tab, navigate to your <code>fuchsia</code> directory and run <code>fx log</code>.</li>
+  <li>In a new shell tab, navigate to your <code>fuchsia</code> directory and run <code>ffx log</code>.</li>
 
         <p><pre><code class="devsite-terminal">cd ~/fuchsia</code></pre></p>
 
-        <p><pre><code class="devsite-terminal">fx log</code></pre></p>
+        <p><pre><code class="devsite-terminal">ffx log</code></pre></p>
 
   <li>In a new shell tab, navigate to your fuchsia directory and run the
       <code>hello_world_rust</code> component:</li>
 
         <p><pre><code class="devsite-terminal">cd ~/fuchsia</code></pre></p>
 
-        <p><pre><code class="devsite-terminal">fx shell run fuchsia-pkg://fuchsia.com/hello_world_rust#meta/hello_world_rust.cmx</code></pre></p>
+        <p><pre><code class="devsite-terminal">ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm</code></pre></p>
 
-  <li>Navigate to the shell tab where you ran <code>fx log</code>.</li>
+  <li>Navigate to the shell tab where you ran <code>ffx log</code>.</li>
 
       <p>You should be able to see your logging text, which in this example
       is <code>Hello log!</code>.</p>

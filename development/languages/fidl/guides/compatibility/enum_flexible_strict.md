@@ -21,7 +21,7 @@ rust|[link](#rust-init)|[link](#rust-1)||[link](#rust-3)
 ### FIDL {#fidl-init}
 
 ```fidl
-flexible enum Color : int32 {
+type Color = flexible enum : int32 {
     RED = 1;
     BLUE = 2;
 };
@@ -86,15 +86,15 @@ fidl_test::Color complement(fidl_test::Color color) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-fidl_test::Color complement(fidl_test::Color color) {
+fidl_test::wire::Color complement(fidl_test::wire::Color color) {
   if (color.IsUnknown()) {
     return color;
   }
   switch (color) {
-    case fidl_test::Color::RED:
-      return fidl_test::Color::BLUE;
-    case fidl_test::Color::BLUE:
-      return fidl_test::Color::RED;
+    case fidl_test::wire::Color::kRed:
+      return fidl_test::wire::Color::kBlue;
+    case fidl_test::wire::Color::kBlue:
+      return fidl_test::wire::Color::kRed;
     default:
       return color;
   }
@@ -186,15 +186,15 @@ fn complement(color: &fidl_lib::Color) -> Option<fidl_lib::Color> {
 - Remove usages of any flexible specific APIs
 
 ```diff
-  fidl_test::Color complement(fidl_test::Color color) {
+  fidl_test::wire::Color complement(fidl_test::wire::Color color) {
 -   if (color.IsUnknown()) {
 -     return color;
 -   }
     switch (color) {
-      case fidl_test::Color::RED:
-        return fidl_test::Color::BLUE;
-      case fidl_test::Color::BLUE:
-        return fidl_test::Color::RED;
+      case fidl_test::wire::Color::kRed:
+        return fidl_test::wire::Color::kBlue;
+      case fidl_test::wire::Color::kBlue:
+        return fidl_test::wire::Color::kRed;
       default:
         return color;
     }
@@ -228,8 +228,8 @@ fn complement(color: &fidl_lib::Color) -> Option<fidl_lib::Color> {
 - Change from `flexible` to `strict`
 
 ```diff
-- flexible enum Color : int32 {
-+ strict enum Color : int32 {
+- type Color = flexible enum : int32 {
++ type Color = strict enum : int32 {
       RED = 1;
       BLUE = 2;
   };

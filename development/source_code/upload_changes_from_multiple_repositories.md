@@ -1,12 +1,22 @@
 
 # Upload changes from multiple repositories
 
-Changes in two or more separate repos will be automatically tracked for you by
-Gerrit if you use the same topic.
+Certain changes require modifying more than one repository simultaneously.  There are two
+supported methods for accomplishing this: soft and hard transitions.
 
-Multipart changes that are tracked in Gerrit using the same topic will be tested together.
-These changes can be landed in Gerrit at the same time with `Submit Whole Topic`. Topics
-can be edited using the Gerrit UI on your browser.
+In general, prefer soft transitions over hard transitions (see
+[Making changes across multiple petals](working_across_petals.md#hard-and-soft-transitions) for
+further details). This means that if a change to one repository depends on a change in another
+repository, you must wait until the respective commit has been rolled before the dependent commit
+can be submitted to the queue.
+
+Most multi-Petal changes (including
+[updates to FIDL protocols](workflow_tips_and_faq.md#q_how_do_i_update_a_fidl_protocol)) should
+be attempted using a soft transition, whereas coordinating
+[changes across multiple Petals](workflow_tips_and_faq.md#q_how_do_i_coordinate_changes_across_multiple_petals)
+*may* require a hard transition.  Typically, one should use the techniques described in the above
+references to avoid hard transitions wherever possible.
+
 
 ## Using jiri upload {#using-jiri-upload}
 
@@ -67,12 +77,6 @@ Do the following:
     jiri upload -multipart
     ```
 
-    Or
-
-    ```
-    jiri upload -multipart -topic="custom_topic"
-    ```
-
 After the changes are submitted, clean up the local branches:
 
 ```
@@ -91,9 +95,12 @@ git branch -d add_my_new_feature
 You can also use the `git` command to upload all changes across repositories.
 The steps are identical as the steps in [Using jiri
 upload](#using-jiri-upload); however, instead of `jiri upload -multipart` in Step 3, use the
-following `git` command to upload your changes:
+following `git` command to upload your changes from each repository you have modified:
 
 ```
-git push origin HEAD:refs/for/master%topic=add_my_new_feature
+git push origin HEAD:refs/for/main
 ```
+
+Note that this command must be run from the working directory of each repository.
+
 

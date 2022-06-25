@@ -31,27 +31,29 @@ on FIDL protocols.
 
 ### The requested protocol is not defined in the component manifest
 
-Similar to incompatible FIDIL protocols, if the requested protocol is
-not defined in your component manifest, or `.cmx` file, you will get a
-`zx_err_peer_closed` error.
+Similar to incompatible FIDL protocols, if the requested protocol is
+not defined in your component manifest, you will get a `zx_err_peer_closed`
+error.
 
-Specifically, if you are using components v1, you will get a `zx_err_peer_closed` error
-in the following cases:
-  * Your `.cmx` file requests a protocol that is not present in your realm. If
+Specifically, if you are using legacy components, you will get a
+`zx_err_peer_closed` error in the following cases:
+  * Your manifest file requests a protocol that is not present in your realm. If
     in the sys realm, this means the sysmgr config doesn't include the service.
-  * Your `.cmx` file requested a protocol that is present in your realm, but
+  * Your manifest file requested a protocol that is present in your realm, but
     the component that is supposed to provide it is misconfigured and not actually
     providing the protocol.
 
-If this is the case, make sure your `.cmx` file includes the protocol that you are requesting. You
-can use `fidlcat` to help you diagnose the missing protocol.
+If this is the case, make sure your manifest file includes the protocol that you
+are requesting. You can use `fidlcat` to help you diagnose the missing protocol.
 
 For more information, see:
 
-* [Building components](/docs/development/components/build.md) for more information on `.cmx` files.
-* [Fidlcat: Monitor and debug your fidl calls](/docs/development/monitoring/fidlcat/README.md) for more
-  information on `fidlcat`.
-* [Component Realms](/docs/concepts/components/v2/realms.md) for more information on realms.
+* [Building components](/docs/development/components/build.md) for details on
+  component manifests.
+* [Fidlcat: Monitor and debug your fidl calls](/docs/development/monitoring/fidlcat/README.md)
+  for more information on `fidlcat`.
+* [Component Realms](/docs/concepts/components/v2/realms.md) for more information
+  on realms.
 
 ### A requested file cannot be accessed
 
@@ -63,7 +65,7 @@ the following reasons:
 
 If this is the case, verify that you are requesting an existing file, or that the file and directory
 have the appropriate rights. You can learn more about
-[directory rights and how they're specified](/docs/concepts/components/v2/component_manifests.md#directory-rights).
+[directory rights and how they're specified](/docs/concepts/components/v2/capabilities/directory.md#directory-capability-rights).
 
 ### Peer has crashed and the process has been terminated
 

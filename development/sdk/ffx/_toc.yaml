@@ -1,0 +1,51 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- heading: ffx workflows
+- title: Overview
+  path: /docs/development/sdk/ffx/index.md
+- title: Devices
+  section:
+  - title: Start the Fuchsia emulator
+    path: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
+  - title: Flash a Fuchsia image on a device
+    path: /docs/development/sdk/ffx/flash-a-device.md
+  - title: Create SSH keys for Fuchsia devices
+    path: /docs/development/sdk/ffx/create-ssh-keys-for-devices.md
+  - title: View device information
+    path: /docs/development/sdk/ffx/view-device-information.md
+  - title: View device logs
+    path: /docs/development/sdk/ffx/view-device-logs.md
+- title: Components
+  section:
+  - title: View component information
+    path: /docs/development/sdk/ffx/view-component-information.md
+  - title: Start a component during development
+    path: /docs/development/sdk/ffx/start-a-component-during-development.md
+  - title: Copy files to and from a component
+    path: /docs/development/sdk/ffx/copy-files-to-and-from-a-component.md
+- title: Packages
+  section:
+  - title: Create a Fuchsia package repository
+    path: /docs/development/sdk/ffx/create-a-package-repository.md
+  - title: Update Fuchsia packages on a device
+    path: /docs/development/sdk/ffx/update-packages-on-a-device.md
+- title: Debugging
+  section:
+  - title: Register debug symbols
+    path: /docs/development/sdk/ffx/register-debug-symbols.md
+  - title: Symbolize logs
+    path: /docs/development/sdk/ffx/symbolize-logs.md
+  - title: Start the Fuchsia debugger
+    path: /docs/development/sdk/ffx/start-the-fuchsia-debugger.md
+  - title: Monitor FIDL messages on a device
+    path: /docs/development/sdk/ffx/monitor-fidl-messages-on-a-device.md
+- title: Performance
+  section:
+  - title: Record traces for performance analysis
+    path: /docs/development/sdk/ffx/record-traces.md

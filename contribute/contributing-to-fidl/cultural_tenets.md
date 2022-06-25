@@ -45,6 +45,13 @@ should provide the same advice. If we have differing opinions in the team, it is
 our responsibility to resolve them, so that we can present a common view to our
 users.
 
+Another example, when authoring an [RFC] on behalf of the FIDL team, we are
+implicitly stating that all of the team is supportive of the general direction
+of the design (though often details are discussed on the CL). This implies that
+before an RFC moves to the [iterate] step some alignment has been reached
+within the team, possibly through pre-work occurring in [another medium][medium]
+than a Gerrit CL such as a Google Doc.
+
 Failure to align internally spills our indecisiveness or doubts onto our users,
 who have less context of the technical trade offs that we do. Sometimes, that
 means that we have to acknowledge that "we don't know", or that we "don't have a
@@ -133,3 +140,8 @@ craft of being an engineer. Practice makes perfect.
 [^2]: This tenet's punchy title "We start small" is borrowed from Jack Dorsey's
  "Square's Four Corners" which were the company values circa 2012. The tenet
  itself is expanded here to be relevant to our work.
+
+<!-- link labels -->
+[iterate]: /docs/contribute/governance/rfcs/rfc_process.md#iterate
+[medium]: /docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md#medium
+[RFC]: /docs/contribute/governance/rfcs/rfc_process.md

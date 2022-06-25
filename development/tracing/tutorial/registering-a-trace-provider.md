@@ -7,7 +7,7 @@ since the devhost process does it through `libdriver.so`.
 To register a trace provider, you must do the following:
 
 Note: For more information on the Fuchsia tracing system, see
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 * [Register with the trace manager](#register-with-the-trace-manager)
 * [Give the trace manager component access](#give-trace-manager-component-access)
@@ -26,7 +26,7 @@ For example:
 
   Note: This example uses `fdio` to set up the FIDL channel with Trace Manager. For
   more information, see
-  [`fdio`](/docs/concepts/system/life_of_an_open.md#fdio).
+  [`fdio`](/docs/concepts/filesystems/life_of_an_open.md#fdio).
 
   ```cpp
   #include <lib/async-loop/cpp/loop.h>

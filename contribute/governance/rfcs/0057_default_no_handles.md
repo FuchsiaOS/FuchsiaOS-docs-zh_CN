@@ -10,9 +10,9 @@ _"Look Ma, no hand(le)s!"_
 ## Summary
 
 We propose to disallow handles in FIDL type declarations by default, and add a
-new keyword `resource` [[1]](#Footnote1) to mark types that are allowed to
-contain handles or other resource types. Adding or removing a `resource`
-modifier MAY be a source-breaking change.
+new keyword `resource`[^1] to mark types that are allowed to contain handles or
+other resource types. Adding or removing a `resource` modifier MAY be a
+source-breaking change.
 
 ## Motivation {#motivation}
 
@@ -191,18 +191,31 @@ The following tasks need to be done:
     and resource types, and provide instructions for transitioning between them
     (if possible).
 
-## Backwards Compatibility
+## Backwards Compatibility {#backwards-compatibility}
 
 This proposal has no impact on ABI compatibility.
 
+> *Amendment (Jul 2021).* During implementation, we discovered an edge case in
+> this proposal's interaction with [RFC-0033: Handling of unknown fields and
+> strictness][rfc-0033]. Some bindings store unknown members when decoding
+> tables and flexible unions; this is not possible for value types if the
+> unknown member contains handles, so decoding must fail in this case. See the
+> [compatibility guide][compat-resource] for more details.
+>
+> *Amendment (Oct 2021).* After [RFC-0137: Discard unknown data in
+> FIDL][rfc-0137], bindings no longer store unknown data, so there is no more
+> edge case. The value/resource distinction thus has no impact on ABI
+> compatibility.
+
 Adding or removing a `resource` modifier is **neither source-compatible nor
-transitionable**,[[2]](#Footnote2) in the sense of
-[RFC-0024](/docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md). The bindings are
-explicitly allowed to generate incompatible APIs for two types that differ only
-in the presence of the modifier, and it may in fact be impossible to write code
-that compiles before and after adding/removing the modifier. Library authors
-wishing to transition to/from `resource` in a source-compatible manner must
-create new types and methods instead of changing existing ones.
+transitionable**,[^2] in the sense of
+[RFC-0024](/docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md).
+The bindings are explicitly allowed to generate incompatible APIs for two types
+that differ only in the presence of the modifier, and it may in fact be
+impossible to write code that compiles before and after adding/removing the
+modifier. Library authors wishing to transition to/from `resource` in a
+source-compatible manner must create new types and methods instead of changing
+existing ones.
 
 Once bindings authors start taking advantage of the value/resource distinction,
 we will revisit this decision. It might be worthwhile to require a
@@ -323,18 +336,15 @@ the concept of annotating types in a way that "infects" all use-sites is common
 in programming languages. For example, async functions in JavaScript, Python,
 and Rust have this behaviour, as well as the IO monad in Haskell.
 
---------------------------------------------------------------------------------------------
+[^1]: An earlier version of this proposal instead called the keyword `entity`.
 
-##### Footnote1
+[^2]: An earlier version of this proposal required the change to be
+    transitionable.
 
-An earlier version of this proposal instead called the keyword `entity`.
-
-##### Footnote2
-
-An earlier version of this proposal required the change to be transitionable.
-
-<!-- xrefs -->
+<!-- link labels -->
 [api-council-values]: /docs/contribute/governance/api_council.md#values
+[compat-resource]: /docs/development/languages/fidl/guides/compatibility/README.md#value-vs-resource
+[rfc-0033]: /docs/contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
 [rfc-0052]: /docs/contribute/governance/rfcs/0052_type_aliasing_named_types.md
-<!-- TODO: add link when this FTP is published -->
 [rfc-0058]: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
+[rfc-0137]: /docs/contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md

@@ -80,7 +80,7 @@ The protocol supports this behavior in the following ways:
 
 ### `VmoFile` {#vmofile}
 
-Components may expose any number of [Inspect VMOs][inspect-vmo]
+Components may expose any number of [Inspect VMOs][vmo-format]
 in their `out/diagnostics` directory ending in the file extension
 `.inspect`. By convention, components expose their "root" inspect tree at
 `diagnostics/root.inspect`.
@@ -132,11 +132,12 @@ which are separated by a `:`:
 3. The property path: The name of the property.
 
 For `iquery` only (1) is required. If only (1) is provided (for example
-`realm/component.cmx` then iquery will use a selector `realm/component.cmx:*` to
+`realm/component.cmx`) then iquery will use a selector `realm/component.cmx:*` to
 fetch all the inspect data.
 
 `iquery` includes two utility commands to know what components are available and
 what selectors can be used:
+
 - `list`: iquery will print all component selectors that are available, this is
   all v2 monikers and all v1 realm paths with component names.
 - `selectors`: iquery will print all selectors available under the provided
@@ -145,7 +146,7 @@ what selectors can be used:
 These modes could be used together as follows:
 
 ```
-$ iquery show `iquery list | grep component_name`
+iquery show `iquery list | grep component_name`
 ```
 
 Alternatively `iquery` also allows to print the inspect data at a location. A
@@ -200,14 +201,14 @@ following:
 - **Started**: sent to the Archivist when a component is started.
 - **Running**: sent to the Archivist when subscribing for components that were
   already running.
-- **Capability ready**: with a filter for `/diagnostics`. Sent to the Archivist
+- **Directory ready**: with a filter for `/diagnostics`. Sent to the Archivist
   when a component exposes a `/diagnostics` directory to the framework.
 - **Stopped**: sent to the Archivist when a component is stopped.
 
 A component that wishes to expose Inspect needs to expose a `/diagnostics`
 directory to the framework. This typically looks as follows:
 
-```
+```json5
 {
     capabilities: [
         {
@@ -228,10 +229,10 @@ directory to the framework. This typically looks as follows:
 
 There's a useful manifest include that simplifies this and is required by Inspect libraries:
 
-```
+```json5
 {
     include: [
-        "sdk/lib/diagnostics/inspect/client.shard.cml",
+        "inspect/client.shard.cml",
     ]
 }
 ```
@@ -249,4 +250,4 @@ running components.
 [inspect]: /docs/development/diagnostics/inspect/README.md
 [iquery]: /docs/reference/diagnostics/consumers/iquery.md
 [tree-fidl]: /sdk/fidl/fuchsia.inspect/tree.fidl
-[vmo-format]: vmo-format.md
+[vmo-format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md

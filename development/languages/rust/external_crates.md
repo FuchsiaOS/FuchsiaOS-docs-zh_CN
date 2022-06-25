@@ -22,9 +22,8 @@ Generally, adding or updating an external crate involves the following:
 -  Waiting to be granted OSRB approval.
 
    Warning: You must receive approval from the OSRB _before_ pushing a commit to
-   Gerrit that adds or updates an external crate. Do not request a code
-   review for adding or updating an external crate until you have approval
-   from the OSRB.
+   Gerrit that adds an external crate. Do not request a code review for adding an
+   external crate until you have approval from the OSRB.
 
 -  Uploading the change for code review.
 
@@ -59,7 +58,7 @@ To add an external crate, do the following:
 
       `fx update-rustc-third-party` downloads all of the crates listed in
       [`rust_crates/Cargo.toml`][external-cargo-toml] as well as their
-      dependencies,places the downloaded crates in the `vendor` directory, and
+      dependencies, places the downloaded crates in the `vendor` directory, and
       then updates `Cargo.toml` and `Cargo.lock`.
 
       You may need to provide additional configuration in a `[gn.package.<crate>]`
@@ -83,13 +82,14 @@ To add an external crate, do the following:
          - Leave the **Owner** field blank.
             - The OSRB team meets regularly to review the issues.
             Please allow about a week for a response.
-         - Specify all of the crates that you want to add. Include the crate(s)
-         that you're adding as well as the dependency crates identified after
-         running `fx update-rustc-third-party`.
+         - Specify all of the crates that you want to **add** (no need to list
+           previously approved crates). Include the crate(s) that you're adding
+           as well as the dependency crates identified after running
+           `fx update-rustc-third-party`.
          - If there are any files in the source repository that are not included
-         when vendored, specify those files in your issue to the OSRB. For
-         example, font files that are only used for testing but are excluded
-         when the crate is vendored would need to be included in an OSRB issue.
+           when vendored, specify those files in your issue to the OSRB. For
+           example, font files that are only used for testing but are excluded
+           when the crate is vendored would need to be included in an OSRB issue.
 
       Note: As part of the OSRB review, you may be asked to import only a subset
       of the files in an external crate. See
@@ -121,8 +121,9 @@ To add an external crate, do the following:
 ## Updating an external crate
 
 Warning: You must receive approval from the OSRB _before_ pushing a commit to
-Gerrit that updates an external crate. Do not request a code
-review for updating an external crate until you have approval from the OSRB.
+Gerrit if updating an external crate changes the license or pulls in a new crate
+as a dependency. Do not request a code review until you have approval from the
+OSRB in these circumstances.
 
 To update an external crate, do the following:
 
@@ -142,6 +143,12 @@ To update an external crate, do the following:
       configuration is used by `cargo-gnaw`, which generates the GN rules from
       the `Cargo.toml` file.
       See [cargo-gnaw's README][cargo-gnaw-readme] for more details.
+
+   1. Run the following command to perform a build test:
+
+      ```posix-terminal
+      fx set core.x64 && fx build
+      ```
 
    1. Request OSRB approval by doing the following:
       - Create an issue with the
@@ -207,12 +214,12 @@ external repository that's incompatible with Fuchsia's license requirements.
 Here's [an example](https://fuchsia-review.googlesource.com/c/fuchsia/+/369174)
 OSRB review in which this happened.
 
-To do this, you'll need to add the crate's files to `/third_party/rust_crates/tiny_mirrors`.
+To do this, you'll need to add the crate's files to `/third_party/rust_crates/forks`.
 
 1. Follow the [instructions for adding an external crate](#adding_an_external_crate).
 1. After running `fx update-rustc-third-party`, move the downloaded copy of your
    crate from `/third_party/rust_crates/vendor/<my_crate>` to
-   `/third_party/rust_crates/tiny_mirrors`.
+   `/third_party/rust_crates/forks/<my_crate>`.
 1. Make the changes you need to make to the imported files.
 1. Add a line to the `[patch.crates-io]` section of
    `/third_party/rust_crates/Cargo.toml` to point to your new crate:
@@ -220,10 +227,13 @@ To do this, you'll need to add the crate's files to `/third_party/rust_crates/ti
    ```
    [patch.crates-io]
    ...
-   my_crate = { path = "tiny_mirrors/my_crate" }
+   my_crate = { path = "forks/<my_crate>" }
    ...
    ```
 1. Re-run `fx update-rustc-third-party` and `fx build`.
+1. Add a `/third_party/rust_crates/forks/<my_crate>/README.fuchsia` file which matches the format of
+   other crates' `README.fuchsia`s there. See [/third_party/rust_crates/forks/README.md] for what it
+   should contain.
 
 ## Unicode crates
 
@@ -231,9 +241,9 @@ If the project requires importing a new external crate to handle
 functionality related to Unicode and internationalization, prefer crates from
 the [UNIC project](https://crates.io/crates/unic){: .external} when available.
 
-### Grandfathered non-UNIC crates
+### Exempted non-UNIC crates
 
-The following non-UNIC crates are already vendored and are grandfathered:
+The following non-UNIC crates are already vendored and are exempted:
 
 * `unicode-bidi`
 * `unicode-normalization`
@@ -278,7 +288,10 @@ needs the metadata from the completion of a maximal "kitchen sink" build:
 
 1. Include `//bundles/buildbot:core` and `//bundles:kitchen_sink` in your build
 2. Run `fx build`
-3. Run `fx update-rust-3p-owners`
+3. Run `fx update-rust-3p-owners --num-threads <NUM_THREADS>`. It's usually a good idea to limit
+   the number of threads to 50% of available CPUs (see [#75382] for details).
+
+[#75382]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=75382
 
 ### Adding overrides
 
@@ -299,6 +312,25 @@ paths.
 A member of the Rust on Fuchsia team is currently responsible for running the
 tool on a regular cadence. See [https://fxbug.dev/73348](https://fxbug.dev/73348)
 to track the process of automating updates to OWNERS files.
+
+## Overriding locally
+
+It can be useful to override a third party crate if you're contributing upstream
+and want to run in-tree builds or tests. That can be achieved with the following
+steps.
+
+1. Clone (or symlink) the upstream repository under
+   `third_party/rust_crates/forks/<my_crate>`.
+1. Add the override to the `[patch.crates-io]` section in
+   `third_party/rust_crates/Cargo.toml`.
+
+```
+[patch.crates-io]
+my_crate = { path = "forks/<my_crate>" }
+```
+1. You must make sure that the version under the crate's `Cargo.toml` matches
+   all references to that crate in `third_party/rust_crates/Cargo.toml`.
+1. Run `fx update-rustc-third-party`.
 
 ## Troubleshooting
 ### Broken Config

@@ -3,7 +3,7 @@
 This section contains style-related information for
 [Fuchsia Interface Definition Language](/docs/development/languages/fidl/README.md) files.
 
-See also the [FIDL API Rubric](/docs/concepts/api/fidl.md).
+See also the [FIDL API Rubric](/docs/development/api/fidl.md).
 
 [TOC]
 
@@ -153,7 +153,7 @@ target languages, primitive aliases are replaced by the underlying primitive
 type and therefore do not cause name collisions.
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="primitive-alias" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="primitive-alias" %}
 ```
 
 ### Constants
@@ -165,7 +165,7 @@ Constants that describe minimum and maximum bounds should use the prefix `MIN_`
 and `MAX_`, respectively.
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="constants" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="constants" %}
 ```
 
 ### Protocols
@@ -194,11 +194,9 @@ broad scope.  For example, `fuchsia.power.Manager`. However, be warned that
 functionality that might be better factored into multiple protocols.
 
 Protocols must not include the name `service.` All protocols define services.
-The term is meaningless. For example, `fuchsia.net.oldhttp.HttpService`
-violates this rubric in two ways.  First, the `http` prefix is redundant with
-the library name. Second, the `service` suffix is banned.
-Notice that the successor library simply omits this altogether by being
-explicit in naming the service it offers `fuchsia.net.http.Loader`.
+The term is meaningless. For example, `fuchsia.tts.TtsService` violates this
+rubric in two ways.  First, the `Tts` prefix is redundant with the library
+name. Second, the `Service` suffix is banned.
 
 #### Methods
 
@@ -304,7 +302,7 @@ enclosing type.
  * Never use tabs.
  * Avoid trailing whitespace.
  * Separate declarations for `bits`, `enum`, `protocol`, `struct`, `table`,
-   `table`, and `union` constructs from other declarations with
+   and `union` constructs from other declarations with
    one blank line (two consecutive newline characters).
  * End files with exactly one newline character.
 
@@ -358,7 +356,7 @@ reiterate the name of the documented entity, or its particular type of FIDL
 language element (e.g., `struct` or `protocol`).
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="good-docs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="good-docs" %}
 ```
 
 The following are examples of what you should not do:
@@ -379,7 +377,7 @@ phrase should end with a period.
 A full example:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="good-docs-2" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="good-docs-2" %}
 ```
 
 Types or values defined by some external source of truth should be commented
@@ -388,7 +386,7 @@ specification that describes a configuration structure.  Similarly, if a
 structure must match an ABI defined in a C header, reference the C header.
 
 For more information about what your comments should contain, see the [API
-Documentation Rubric](/docs/concepts/api/documentation.md).
+Documentation Rubric](/docs/development/api/documentation.md).
 
 #### Referencing FIDL protocols or protocol methods
 
@@ -405,13 +403,13 @@ name may be left off: `ProtocolName.Method`.
 Similarly, when referring to a method in the same protocol as the comment,
 the library name and protocol name may be left off: `Method`.
 
-#### Library Overview
+#### Library Overview {#library-overview}
 
 You can provide a library overview as a documentation comment on the
 `library` statement. The 'library' statement starts FIDL files. For example:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="library-overview" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="library-overview" %}
 ```
 
 Library overviews should provide general documentation to define the library.
@@ -450,7 +448,7 @@ Non flow-through comments:
 Both style of comments can be combined:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="comments-combined" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/style.test.fidl" region_tag="comments-combined" %}
 ```
 
 ### Files {#files}

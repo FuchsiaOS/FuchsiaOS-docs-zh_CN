@@ -1,12 +1,12 @@
-# Life of a protocol open (Components v2)
-
-<<../../_v2_banner.md>>
+# Life of a protocol open
 
 This document describes the steps that occur when a component attempts to
 connect to a protocol in its namespace.
 
-These steps apply to the components v2 model as run under component manager.
-Portions of it also apply to the components v1 model as run under appmgr.
+These steps apply to the [Components v2][glossary.components-v2] model as run
+under component manager.
+Portions of it also apply to the [Components v1][glossary.components-v1] model
+as run under appmgr.
 
 At a high level these steps are:
 
@@ -216,10 +216,10 @@ With the provider found the client component is now bound to the provider. This
 will cause the component to start running if it is currently stopped.
 
 Every component upon being started receives a server handle to an
-[_outgoing directory_][abi-system] in its handle table. When a component is
-bound to, component manager forwards the server end of the protocol channel to
-the providing component's outgoing directory, under the source path in the
-providing component's `offer` or `expose` declaration
+[outgoing directory][glossary.outgoing-directory] in its handle table.
+When a component is bound, component manager forwards the server end of the
+protocol channel to the providing component's outgoing directory, under the
+source path in the providing component's `offer` or `expose` declaration.
 
 In the above example component manager will send an `Open` request over the
 outgoing directory handle for component `A` to the `/svc/fuchsia.example.Foo`
@@ -254,27 +254,19 @@ directly used by (or will be implicitly provided to) components without their
 parent offering these capabilities. Currently these are:
 
 -   `/pkg`: a handle to the package from which the component was created.
--   [`/svc/fuchsia.sys2.Realm`][realm.fidl]: a protocol which components can use
+-   [`/svc/fuchsia.component.Realm`][realm.fidl]: a protocol which components can use
     to manage their own realm.
 
-### Parent may not `use` capabilities exposed to it
-
-Parent components can access capabilities offered by their children at runtime
-by calling the [`fuchsia.sys2.Realm.BindChild`][realm.fidl] method to start the
-child and receive a directory containing the child's exposed protocols.
-
-To prevent dependency cycles from occurring in component namespaces, a parent
-component cannot declare a static dependency on the protocols of its children
-with `use` declarations; it must use `BindChild()`.
-
+[binding]: #binding-to-a-component-and-sending-a-protocol-channel
+[cap-routing]: #the-open-triggers-capability-routing
+[channel]: /docs/reference/kernel_objects/channel.md
+[component-manifests]: /docs/concepts/components/v2/component_manifests.md
+[fuchsia.io]: https://fuchsia.dev/reference/fidl/fuchsia.io
+[glossary.components-v1]: /docs/glossary/README.md#components-v1
+[glossary.components-v2]: /docs/glossary/README.md#components-v2
+[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
+[handle]: /docs/concepts/kernel/handles.md
+[namespaces]: /docs/concepts/process/namespaces.md
 [ns-construction]: #constructing-a-components-namespace
 [protocol-open]: #a-component-opens-a-protocol
-[cap-routing]: #the-open-triggers-capability-routing
-[binding]: #binding-to-a-component-and-sending-a-protocol-channel
-[handle]: /docs/concepts/kernel/handles.md
-[channel]: /docs/reference/kernel_objects/channel.md
-[namespaces]: /docs/concepts/process/namespaces.md
-[component-manifests]: /docs/concepts/components/v2/component_manifests.md
-[fuchsia.io]: /sdk/fidl/fuchsia.io/io.fidl
-[abi-system]: /docs/concepts/system/abi/system.md
-[realm.fidl]: /sdk/fidl/fuchsia.sys2/realm.fidl
+[realm.fidl]: /sdk/fidl/fuchsia.component/realm.fidl

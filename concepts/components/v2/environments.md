@@ -1,4 +1,4 @@
-# Environments (Components v2)
+# Environments
 
 <<../_v2_banner.md>>
 
@@ -13,23 +13,48 @@ entire realm, unless some sub-realm overrides it (see
 
 Environments let you configure the following behavior of a realm:
 
--   [Setting the runners available to components](#runners)
--   [Setting the resolvers available to components](#resolvers)
+-   [Component runners](#runners)
+-   [Component resolvers](#resolvers)
 
 ### Runners {#runners}
 
-By registering a runner in an [environment declaration][doc-environments], you
-make it available to any component instance that has that environment assigned
-to it. Components specify which runner they use with a [`use`][doc-use]
-declaration naming the runner.
+The component framework is runtime-agnostic and can support new runtime
+environments and programming languages without requiring changes to
+component manager or to other components. Runners provide the extension point
+for components to interact with component manager and add runtime support to
+Fuchsia. Some example runners are:
+
+-   The [ELF runner][elf-runner] runs binaries compiled to the ELF file format.
+-   The Dart AOT runner provides a runtime for Dart programs, such as a VM.
+-   The Chromium web runner provides a runtime for components implemented as web
+    pages.
+
+Component manager identifies _what_ to execute and delegates _how_ execution
+works to the runner. Runner implementations are free to choose an appropriate
+strategy for executing their components, including:
+
+-   Start a new process for the component.
+-   Isolate the component within a virtual machine.
+-   Run the component in the same process as the runner.
+-   Execute the component as a job on a remote computer.
+
+For more details on using and implementing runners, see
+[runner capabilities](capabilities/runners.md).
 
 ### Resolvers {#resolvers}
 
-Resolvers registered to an [environment declaration][doc-environments] participate
-in component URL resolution for any child components which have that environment
-assigned to them through [propagation](#propagation).
+Component resolvers interact with component manager on behalf of a component to
+resolve its children from a given [component URL][glossary.component-url].
+Resolvers are registered with a particular URL scheme (`http`, `fuchsia-pkg`, etc.)
+and provide an implementation to fetch the component from the desired URL and
+return a [component declaration][glossary.component-declaration].
 
-See the [resolver capability](capabilities/resolvers.md) for more information.
+If the component being resolved has an associated package, the resolver also
+returns a [`fuchsia.io.Directory`][fidl-directory] handle representing the
+package directory.
+
+For more details on using and implementing resolvers, see
+[resolver capabilities](capabilities/resolvers.md).
 
 ## Declaring {#declaring}
 
@@ -86,18 +111,22 @@ capabilities are registered in an environment, which makes them available to any
 component in the realm to which that environment was assigned (unless some
 sub-realm decides to set a new environment with the runner absent).
 
-[doc-capability-routing]: ./component_manifests.md#capability-routing
-[doc-children]: ./component_manifests.md#children
-[doc-collections]: ./component_manifests.md#collections
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.component-declaration]: /docs/glossary/README.md#component-declaration
+[doc-capability-routing]: ./capabilities/README.md#routing
+[doc-children]: https://fuchsia.dev/reference/cml#children
+[doc-collections]: https://fuchsia.dev/reference/cml#collections
 [doc-component-manager]: ./component_manager.md
 [doc-root-component]: ./component_manager.md#booting-the-system
 [doc-component-manifests]: ./component_manifests.md
 [doc-elf-runner]: ./elf_runner.md
-[doc-environments]: ./component_manifests.md#environments
-[doc-expose]: ./component_manifests.md#expose
-[doc-offer]: ./component_manifests.md#offer
+[doc-environments]: https://fuchsia.dev/reference/cml#environments
+[doc-expose]: https://fuchsia.dev/reference/cml#expose
+[doc-offer]: https://fuchsia.dev/reference/cml#offer
 [doc-realms]: ./realms.md
 [doc-runners]: ./capabilities/runners.md
-[doc-use]: ./component_manifests.md#use
-[fidl-extends]: /sdk/fidl/fuchsia.sys2/decls/environment_decl.fidl
+[doc-use]: https://fuchsia.dev/reference/cml#use
+[elf-runner]: /docs/concepts/components/v2/elf_runner.md
+[fidl-directory]: /sdk/fidl/fuchsia.io/directory.fidl
+[fidl-extends]: /sdk/fidl/fuchsia.component.decl/environment.fidl
 [wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege

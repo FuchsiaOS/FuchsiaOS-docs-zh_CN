@@ -8,49 +8,75 @@ The ICU library consists roughly of two different parts: the ICU library *code*
 which contains the ICU algorithms, and the ICU library *data*, which contains
 locale-specific information that is packaged for independent reuse.
 
-The code is available through appropriate shared libraries in
-`//third_party/icu` (see below).
+Note: For a complete example of using the ICU library in Fuchsia, see
+[`//examples/intl/wisdom`][wisdom].
 
-# Prerequisites
+## Add ICU library dependencies
 
-## `icu_data` library
+Include the necessary library dependencies in your `BUILD.gn` file:
 
-In Fuchsia, the ICU data is made available to be loaded at runtime. Please see
-the [ICU data use instructions](icu_data.md) on how to load this data.
+* {C++}
 
-## `icu_data` `BUILD.gn` rules need changing
+  The ICU library is a single third-party dependency `//third_party/icu`:
 
-Since `icu_data` needs the ICU data files to be made available in the Fuchsia
-package, please see [ICU data use instructions](icu_data.md) for an example of
-how to make the data files available.
+  ```gn
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/cpp/client/BUILD.gn" region_tag="icu_library" adjust_indentation="auto" %}
+  ```
 
-# Using the ICU library
+* {Rust}
 
-This section assumes that you have read and followed the instructions from the
-Prerequisites section in full detail.
+  The `rust_icu` library is subdivided into several crates that correspond to
+  specific ICU4C headers:
 
-## C and C++
+  ```gn
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/rust/client/BUILD.gn" region_tag="icu_library" adjust_indentation="auto" %}
+  ```
 
-The ICU library is imported through a third-party dependency
-`//third_party/icu`. As an example use of the library, one can look at the [C++
-wisdom example][wisdomcpp].  This is a sample client-server collaboration that
-requests, serves and prints on screen date and time information using several
-different languages, calendars and scripts.
+## Import ICU headers
 
-## Rust
+Add the imports for the specific ICU library features your program requires:
 
-The ICU library is available in rust programs as well, through a binding of the
-ICU4C library into Rust.
+* {C++}
 
-The library is subdivided into [several
-crates](https://fuchsia-docs.firebaseapp.com/rust/?search=rust_icu), each one
-corresponding to a specific part of the ICU4C headers, and named after the
-corresponding one.  Today, the functionality is partial, and is constructed to
-serve Fuchsia's Unicode needs.
+  The [ICU documentation][cpp-reference]{: .external} provides additional
+  information about the APIs the library supports.
 
-As a demonstration of the rust bindings for ICU4C, we made a rust equivalent of
-the wisdom server.  This example is available as the [rust wisdom
-example][wisdomrust].
+  ```cpp
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/cpp/client/intl_wisdom_client.cc" region_tag="imports" adjust_indentation="auto" %}
+  ```
 
-[wisdomcpp]: /garnet/examples/intl/wisdom/cpp/
-[wisdomrust]: /garnet/examples/intl/wisdom/rust/
+* {Rust}
+
+  The [rust_icu reference][rust-reference]{: .external} provides additional
+  information about the APIs the library supports.
+
+  ```rust
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/rust/client/src/wisdom_client_impl.rs" region_tag="imports" adjust_indentation="auto" %}
+  ```
+
+## Initialize ICU data
+
+In Fuchsia, the ICU data *must* be loaded by the program at runtime. Initialize
+the ICU data with the `icu_data` library:
+
+* {C++}
+
+  ```cpp
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/cpp/server/intl_wisdom_server_impl.cc" region_tag="loader_example" adjust_indentation="auto" %}
+  ```
+
+* {Rust}
+
+  ```rust
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/rust/server/src/main.rs" region_tag="loader_example" adjust_indentation="auto" %}
+  ```
+
+For more details instructions on loading ICU data from various sources,
+see [ICU timezone data](icu_data.md).
+
+You are now ready to use the ICU library features in your Fuchsia program.
+
+<!-- xrefs -->
+[cpp-reference]: https://unicode-org.github.io/icu/
+[rust-reference]: https://docs.rs/crate/rust_icu/1.0.1
+[wisdom]: /examples/intl/wisdom/

@@ -1,0 +1,33 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+
+toc:
+- title: "API development overview"
+  path: /docs/development/api/README.md
+- title: "CLI tool help requirements"
+  path: /docs/development/api/cli_help.md
+- title: "Command-line tools rubric"
+  path: /docs/development/api/cli.md
+- title: "C library readability rubric"
+  path: /docs/development/api/c.md
+- title: "Dart API readability rubric"
+  path: /docs/development/api/dart.md
+- title: "Fuchsia device interface rubric"
+  path: /docs/development/api/device_interfaces.md
+- title: "API documentation readability rubric"
+  path: /docs/development/api/documentation.md
+- title: "FIDL API readability rubric"
+  path: /docs/development/api/fidl.md
+- title: "Zircon system interface rubric"
+  path: /docs/development/api/system.md
+- title: "Developer tool guidelines"
+  path: /docs/development/api/tools.md
+- title: "Go rubric"
+  path: /docs/development/api/go.md
+- title: "Rust rubric"
+  path: /docs/development/api/rust.md

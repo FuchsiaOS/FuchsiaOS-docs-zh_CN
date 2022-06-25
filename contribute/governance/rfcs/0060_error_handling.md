@@ -13,7 +13,7 @@ allows the caller to take corrective action.
 This proposes a syntax that will allow FIDL interfaces to describe how errors
 will be reported.
 
-# Motivation
+## Motivation
 
 Most programming languages offer error handling constructs like exceptions,
 Futures/Promises, result types or error types.
@@ -32,7 +32,7 @@ This diversity of APIs is hard for developers to understand.
 The lack of explicit syntax to differentiate a method result from error
 information makes it impossible to produce idiomatic bindings.
 
-# Design
+## Design
 
 We should extend the FIDL method syntax to allow interfaces to describe
 different *result* return type and *error* return type.
@@ -116,7 +116,7 @@ meantime we could implement enough of that proposal to satisfy the needs of
 FIDL.
 Go bindings should use a custom error type for error returns.
 
-# Implementation strategy
+## Implementation strategy
 
 This would be implemented in the following steps:
 
@@ -131,7 +131,7 @@ This would be implemented in the following steps:
 * Encourage interface authors to evolve their interfaces to use error
   return types.
 
-# Documentation and examples
+## Documentation and examples
 
 This is a significant change to FIDL.
 The [language] and [wire-format] documentation would have to be updated to
@@ -141,27 +141,27 @@ use error returns correctly.
 The [API techniques rubric][rubric] needs to be updated to describe appropriate use
 of this feature.
 
-# Backwards compatibility
+## Backwards compatibility
 
 Most existing FIDL interfaces will remain compatible with this change.
 The only breaking change is that `error` becomes a reserved word.
 
-# Performance
+## Performance
 
 There should be very little performance impact.
 
-# Security
+## Security
 
 Standardizing error reporting semantics will simplify code that calls FIDL
 methods.
 Explicit is better than implicit.
 
-# Testing
+## Testing
 
 This will need tests for `fidlc`, compatibility tests and probably language
 binding specific tests to ensure that the bindings are idiomatic.
 
-# Drawbacks, alternatives, and unknowns
+## Drawbacks, alternatives, and unknowns
 
 This adds some complexity to the language but that complexity simply describes
 semantics that are already implicitly expressed in our interfaces.
@@ -191,7 +191,7 @@ and would have limited our flexibility as we seek to align errors with epitaphs
 and re-examine error folding.
 We're adopting a more conservative idea of error representation for now.
 
-# Prior art and references
+## Prior art and references
 
 * [GRPC returns a status code with each result][grpc]
 * [DBus method calls return either result data or an error object][dbus]
@@ -206,7 +206,7 @@ We're adopting a more conservative idea of error representation for now.
 [grpc]: https://grpc.io/docs/guides/error.html
 [http]: https://tools.ietf.org/html/rfc1945#section-9
 [language]: /docs/reference/fidl/language/language.md
-[rubric]: /docs/concepts/api/fidl.md
+[rubric]: /docs/development/api/fidl.md
 [testinterface]: /src/tests/fidl/compatibility/compatibility_service.test.fidl
 [tutorial]: /docs/development/languages/fidl/tutorials/overview.md
 [wire-format]: /docs/reference/fidl/language/wire-format/README.md

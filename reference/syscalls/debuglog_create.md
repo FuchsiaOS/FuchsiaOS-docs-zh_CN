@@ -1,14 +1,14 @@
 # zx_debuglog_create
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create an object allowing access to the kernel debuglog.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -31,7 +31,7 @@ debuglog.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *resource* must have resource kind **ZX_RSRC_KIND_ROOT**.
 
@@ -54,3 +54,8 @@ In the event of failure, a negative error value is returned.
 
  - [`zx_debuglog_read()`]
  - [`zx_debuglog_write()`]
+
+<!-- References updated by update-docs-from-fidl, do not edit. -->
+
+[`zx_debuglog_read()`]: debuglog_read.md
+[`zx_debuglog_write()`]: debuglog_write.md

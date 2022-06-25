@@ -1,93 +1,58 @@
-<!-- 
-# Fuchsia getting started
+# Get started with Fuchsia
 
-Welcome to Fuchsia! This guide walks you through the steps to get Fuchsia source code,
-build Fuchsia, and run Fuchsia on an emulator or hardware device. 
+Welcome to Fuchsia!
 
--->
+This get-started section provides instructions on how to download the
+Fuchsia source code, build a Fuchsia system image, and run Fuchsia on
+an emulator.
 
-# Fuchsia 入门
+Note: If you want to run Fuchsia on a hardware device, see
+[Install Fuchsia on a device][install-fuchsia-on-a-device] after completing
+Step 2 below.
 
-欢迎来到 Fuchsia 的世界！本文将通过源代码的获取、构建，再到虚拟机或者真机上运行 Fuchsia ，带领你一步一步地探索 Fuchsia 操作系统。
+The steps are:
 
-<!-- 
-## Get Fuchsia source and build Fuchsia
+1.  [Download the Fuchsia source code][download-fuchsia].
+1.  [Configure and build Fuchsia][build-fuchsia].
+1.  [Start the Fuchsia emulator][start-the-fuchsia-emulator].
+1.  [Explore Fuchsia][explore-fuchsia].
 
-To download the Fuchsia source code and set up your build environment, follow
-these instructions:
+## Appendices
 
- * [Get Fuchsia source code](/docs/get-started/get_fuchsia_source.md)
- * [Build Fuchsia](/docs/get-started/build_fuchsia.md) 
+### Learn more about Fuchsia
 
--->
+If you are new to Fuchsia, explore [Fuchsia fundamentals][fuchsia-fundamentals]
+to gain a better understanding of the platform and developer tools.
 
-## Fuchsia 源代码的获取、构建
+If you're ready to go deeper into Fuchsia concepts and start contributing,
+check out the following resources:
 
-请参考下述文章，获取 Fuchsia 源代码，并设置构建环境：
+*   [Fuchsia's software model][software-model]
+*   [Components][components]
+*   [Fuchsia packages][fuchsia-packages]
+*   [Contribute changes][contribute-changes]
+*   [Find a starter project][find-a-starter-project]
 
- * [获取 Fuchsia 源代码](/get-started/get_fuchsia_source.md)
- * [构建 Fuchsia](/get-started/build_fuchsia.md)
+### Get started with Zircon
 
-<!-- 
-## Set up Fuchsia 
+The Fuchsia project includes [Zircon][zircon], the core (kernel) platform
+that powers Fuchsia.
 
-### Fuchsia emulator (FEMU)
+If you're interested in working on Zircon, see
+[Getting started with Zircon][get-started-with-zircon].
 
-To set up and run the Fuchsia emulator (FEMU), see
-[Set up the Fuchsia emulator (FEMU)](/docs/get-started/set_up_femu.md). 
--->
+<!-- Reference links -->
 
-## 配置 Fuchsia 
-
-### Fuchsia 模拟器 (FEMU)
-
-想要在模拟器上运行 Fuchsia，请参考 [配置 Fuchsia 模拟器(FEMU)](/get-started/set_up_femu.md)。
-
-<!-- 
-### Fuchsia on a device
-
-To set up a hardware device, follow the steps in
-[Installing Fuchsia on a device](/docs/development/hardware/paving.md)
-and [Build and pave quickstart](/docs/development/build/build_and_pave_quickstart.md). 
--->
-
-### 真机运行 Fuchsia 
-
-想在真机上运行 Fuchsia，请参考 [真机安装 Fuchsia](/development/hardware/paving.md) 和[快速上手 Fuchsia 构建和部署](/development/build/build_and_pave_quickstart.md)。
-
-<!-- 
-## Explore Fuchsia
-
-You can explore Fuchsia further in the following guides:
-
- *   [Explore Fuchsia basics](/docs/get-started/explore_fuchsia.md)
- *   [Run an example Fuchsia component](/docs/development/run/run-examples.md)
- *   [Fuchsia workflow tips and questions](/docs/development/source_code/workflow_tips_and_faq.md)
- *   [Configure editors](/docs/development/editors/)
- *   [Contribute to Fuchsia source code](/docs/development/source_code/contribute_changes.md)
- *   [Find a starter project](/docs/contribute/open_projects/) 
- -->
-
-## 探索 Fuchsia
-
-请参考下述文章，探索更多关于 Fuchsia 的内容:
-
- *   [探索 Fuchsia](/get-started/explore_fuchsia.md)
- *   [运行一个 Fuchsia 组件示例](/development/run/run-examples.md)
- *   [Fuchsia 工作流提示和问答](/development/source_code/workflow_tips_and_faq.md)
- *   [配置代码编辑器](/development/editors/)
- *   [为 Fuchsia 贡献源代码](/development/source_code/contribute_changes.md)
- *   [选择一个入门项目](/contribute/open_projects/)
-
-<!-- 
-## Contribute to Zircon
-
-Fuchsia source code includes [Zircon](/docs/concepts/kernel/README.md), the core platform
-that underpins Fuchsia. To work on Zircon, see
-[Getting started with Zircon](/docs/development/kernel/getting_started.md). 
--->
-
-## 为 Zircon 做贡献
-
-作为 Fuchsia 最重要、最基础的部分，[Zircon](/concepts/kernel/README.md) 内核已包含在了 Fuchsia 源代码之中. 如果您想要探索 Zircon，请参考
-[Zircon 入门](/development/kernel/getting_started.md)。
+[install-fuchsia-on-a-device]: /docs/development/hardware/README.md
+[download-fuchsia]: /docs/get-started/get_fuchsia_source.md
+[build-fuchsia]: /docs/get-started/build_fuchsia.md
+[start-the-fuchsia-emulator]: /docs/get-started/set_up_femu.md
+[explore-fuchsia]: /docs/get-started/explore_fuchsia.md
+[software-model]: /docs/concepts/software_model.md
+[components]: /docs/concepts/components/v2/
+[fuchsia-packages]: /docs/concepts/packages/package.md
+[contribute-changes]: /docs/development/source_code/contribute_changes.md
+[find-a-starter-project]: /docs/contribute/open_projects/
+[zircon]: /docs/concepts/kernel/README.md
+[get-started-with-zircon]: /docs/development/kernel/getting_started.md
+[fuchsia-fundamentals]: /docs/get-started/learn/README.md

@@ -26,6 +26,12 @@ Specifically, we propose:
 *   Define and **recommend APIs that bindings provide for clients to
     inspect messages with unknown fields**.
 
+### Relation to other RFCs
+
+This RFC was amended by:
+
+* [RFC-0137: Discard unknown data in FIDL](0137_discard_unknown_data_in_fidl.md)
+
 ## Motivation
 
 Extensible messages are a valuable mechanism to enable a data interchange

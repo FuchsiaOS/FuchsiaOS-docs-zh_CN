@@ -25,7 +25,7 @@ Having a magic number in headers:
   note), and symmetrically provide a mechanisn for writers to indicate the
   format of messages sent.
 * Ordering of magic numbers is a non-goal, magic numbers should simply checked,
-  and if not compatible (i.e. the same), rejected. Specifically, we shy away
+  and if not compatible (i.e. not supported), rejected. Specifically, we shy away
   from the term "version" since we want pairwise compatibility checks, and not
   range based compatibility as in "supports v5 through v8".
 
@@ -82,7 +82,7 @@ syscall has stabilized, and this requirement is no longer needed.
 <!-- xrefs -->
 [zx_channel_call]: /docs/reference/syscalls/channel_call.md
 
-### Version 3
+### Version 3 {#version-3}
 
 We stabilize the transactional message header ("v3") to be:
 
@@ -98,9 +98,9 @@ bindings.
 
 As a [wire format diagram][wire-format] we have:
 
-![drawing](resources/ftp-037-transaction-header.png)
+![drawing](resources/0037_transactional_message_header_v3/transaction-header.png)
 
-### When should a new magic number be assigned
+### When should a new magic number be assigned {#new-magic-number}
 
 The initial magic number will be `0x01`. We reserve funnier numbers for later.
 

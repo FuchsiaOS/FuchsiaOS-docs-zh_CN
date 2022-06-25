@@ -28,4 +28,4 @@ Other topics:
 
   * [Developing and debugging the debugger](developing.md)
 
-  * [Report a zxdb bug](https://bugs.fuchsia.dev/p/fuchsia/issues/entry?components=DeveloperExperience%3Ezxdb)
+  * [Report a zxdb bug](https://bugs.fuchsia.dev/p/fuchsia/issues/entry?components=Tools%3Ezxdb)

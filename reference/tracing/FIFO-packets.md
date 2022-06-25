@@ -1,7 +1,7 @@
 # FIFO packets
 
 For more information on how FIFO packets work in the Fuchsia tracing system,
-see [Fuchsia tracing system](/docs/concepts/tracing/README.md).
+see [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 ## Format
 

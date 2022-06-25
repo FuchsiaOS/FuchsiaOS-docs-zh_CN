@@ -1,14 +1,14 @@
 # zx_system_mexec_payload_get
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Return a ZBI containing ZBI entries necessary to boot this system.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -22,7 +22,7 @@ zx_status_t zx_system_mexec_payload_get(zx_handle_t resource,
 
 `zx_system_mexec_payload_get()` accepts a resource handle and a
 pointer/length corresponding to an output buffer. The head of the buffer is
-overwritten with an incomplete ZBI containing a sequence of entries that should
+overwritten with non-bootable ZBI containing a sequence of entries that should
 be appended to a ZBI before passing that image to [`zx_system_mexec()`]; the
 tail of the buffer is left untouched.
 
@@ -36,7 +36,7 @@ the function returns **ZX_ERR_NOT_SUPPORTED**.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *resource* must have resource kind **ZX_RSRC_KIND_ROOT**.
 
@@ -48,6 +48,8 @@ the function returns **ZX_ERR_NOT_SUPPORTED**.
 on the kernel command line.
 
 **ZX_ERR_BUFFER_TOO_SMALL**  If the provided buffer is too small for the ZBI.
+In this case, the caller is expected to make the syscall again with a larger
+buffer.
 
 ## SEE ALSO
 

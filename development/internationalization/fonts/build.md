@@ -42,7 +42,7 @@ available for use in Fuchsia product builds.
 
 The metadata and list of external sources for font files is maintained in a
 _font data repo_. For Fuchsia's open-source fonts, this is found at
-[`//fontdata`](https://goto.google.com/fuchsia-fontdata).
+[`//fontdata`](https://fuchsia.googlesource.com/fontdata/).
 <!-- TODO: Add fuchsia/fontdata to validProjects -->
 
 Note: The `fontdata` repo is not part of Fuchsia's standard `jiri` checkout; for
@@ -256,7 +256,7 @@ groups are declared in
 _Defined in [fonts.gni](/src/fonts/build/fonts.gni)_
 
 A local font bundle is a set of font assets that are placed directly into the
-Font Provider's incoming namespace using
+Font Provider's namespace using
 [build-time configuration data](/docs/development/components/data.md)
 (`config_data()`).
 
@@ -266,7 +266,9 @@ Most local font bundles are declared in
 Example:
 
 ```gn
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/fonts/collections/BUILD.gn" indented_block="local_font_bundle\(\"open-fonts-local\"\)" adjust_indentation="auto" %}
+```gn
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/fonts/collections/BUILD.gn"
+ indented_block="local_font_bundle\(\"small-open-fonts-local\"\)" adjust_indentation="auto" %}
 ```
 
 ### `font_package_group` {#font_package_group}
@@ -288,7 +290,7 @@ The target `//src/fonts/groups:roboto-slab` contains a `group` of all of the
 ## Product-specific font configurations {#product-specific}
 
 Finally, every
-[product target](/docs/concepts/build_system/boards_and_products.md#products)
+[product target](/docs/development/build/build_system/boards_and_products.md#products)
 that uses fonts needs to be configured with the specific font assets and
 metadata that it will include.
 

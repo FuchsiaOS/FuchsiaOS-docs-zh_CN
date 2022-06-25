@@ -1,14 +1,14 @@
 # zx_vmo_op_range
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Perform an operation on a range of a VMO.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -23,7 +23,8 @@ zx_status_t zx_vmo_op_range(zx_handle_t handle,
 
 ## DESCRIPTION
 
-`zx_vmo_op_range()` performs cache and memory operations against pages held by the VMO.
+`zx_vmo_op_range()` performs cache and memory operations against pages held by the [virtual memory
+object](/docs/reference/kernel_objects/vm_object.md) (VMO).
 
 *offset* byte offset specifying the starting location for *op* in the VMO's held memory.
 
@@ -95,22 +96,48 @@ counted as committed pages.
 The entire VMO should be unlocked at once, so *offset* should be 0 and *size* should be the current
 size of the VMO. Requires the **ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right.
 
-**ZX_VMO_OP_CACHE_SYNC** - Performs a cache sync operation.
+**ZX_VMO_OP_CACHE_SYNC** - Synchronize instruction caches with data caches, so previous writes are
+visible to instruction fetches.
 Requires the **ZX_RIGHT_READ** right.
 
-**ZX_VMO_OP_CACHE_INVALIDATE** - Performs a cache invalidation operation.
+**ZX_VMO_OP_CACHE_INVALIDATE** - Performs a cache invalidation operation so that future reads see
+external changes to main memory. Note, this operation is only available when
+`kernel.enable-debugging-syscalls` is true. When debugging syscalls are not enabled, this operation
+will fail with **ZX_ERR_NOT_SUPPORTED**
 Requires the **ZX_RIGHT_WRITE** right.
 
-**ZX_VMO_OP_CACHE_CLEAN** - Performs a cache clean operation.
+**ZX_VMO_OP_CACHE_CLEAN** - Clean (write back) data caches, so previous writes are visible in main
+memory.
 Requires the **ZX_RIGHT_READ** right.
 
 **ZX_VMO_OP_CACHE_CLEAN_INVALIDATE** - Performs cache clean and invalidate operations together.
 Requires the **ZX_RIGHT_READ** right.
 
+**ZX_VMO_OP_DONT_NEED** - Hints that pages in the specified range are not needed anymore and should
+be considered for memory reclamation. Intended to be used with VMOs created with
+[`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially succeeds for
+other VMOs.
+
+This only applies to pages in the given range that are already committed, i.e. no new pages will be
+committed as a result of this op. If required, *offset* will be rounded down to the previous page
+boundary and *offset*+*size* will be rounded up to the next page boundary.
+
+**ZX_VMO_OP_ALWAYS_NEED** - Hints that pages in the specified range are important and should be
+protected from memory reclamation. The kernel may decide to override this hint when the system is
+under extreme memory pressure. This hint also does not prevent pages from being freed by means other
+than memory reclamation (e.g. a decommit, VMO resize, or VMO destruction). Intended to be used with
+VMOs created with [`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially
+succeeds for other VMOs.
+
+This may commit pages in the given range where applicable, e.g. if the VMO is directly backed by a
+pager, its pages will be committed, or in the case of a clone, pages in the parent that are visible
+to the clone will be committed. If required, *offset* will be rounded down to the previous page
+boundary and *offset*+*size* will be rounded up to the next page boundary.
+
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 If *op* is **ZX_VMO_OP_COMMIT**, *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_WRITE**.
 
@@ -148,7 +175,8 @@ and range was not page aligned.
 
 **ZX_ERR_NOT_SUPPORTED**  *op* was **ZX_VMO_OP_LOCK**, **ZX_VMO_OP_TRY_LOCK** or
 **ZX_VMO_OP_UNLOCK** and the VMO is not discardable, or *op* was **ZX_VMO_OP_DECOMMIT** and the
-underlying VMO does not allow decommiting.
+underlying VMO does not allow decommiting, or *op* was **ZX_VMO_OP_CACHE_INVALIDATE** and
+`kernel.enable-debugging-syscalls` is false.
 
 **ZX_ERR_UNAVAILABLE** *op* was **ZX_VMO_OP_TRY_LOCK**, the VMO was discardable and the VMO has been
 discarded by the kernel.
@@ -174,6 +202,7 @@ contents that were read in by the pager for the pages being committed are corrup
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
+[`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_vmo_create()`]: vmo_create.md
 [`zx_vmo_create_child()`]: vmo_create_child.md
 [`zx_vmo_get_size()`]: vmo_get_size.md

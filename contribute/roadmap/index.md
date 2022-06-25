@@ -1,5 +1,5 @@
 {% set toc2021 | yamlloads %}
-{% include "fuchsia-src/contribute/roadmap/2021/_toc.yaml" %}
+{% include "docs/contribute/roadmap/2021/_toc.yaml" %}
 {% endset %}
 
 # Fuchsia roadmap

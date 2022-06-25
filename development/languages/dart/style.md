@@ -4,7 +4,7 @@ Dart style guide
 The Fuchsia project follows the guidelines in [Effective Dart][effective-dart],
 but with some additions.
 
-All code must be formatted using `dartfmt` before being checked in.
+All code must be formatted using `dart format` before being checked in.
 
 # Additional Style Rules
 
@@ -18,9 +18,9 @@ documentation and development is still useful.
 
 ### DO use trailing commas on all tree structures longer than one line.
 
-Without trailing commas, code that builds widget trees or similar types of
-code tends to be hard to read. Adding the trailing commas allows `dartfmt`
-to do its job correctly.
+Without trailing commas, code that builds widget trees or similar types of code
+tends to be hard to read. Adding the trailing commas allows `dart format` to do
+its job correctly.
 
 #### Without trailing commas:
 
@@ -55,8 +55,8 @@ This formatter doesn’t appear to be available outside of the supported IDEs.
 ### PREFER to keep lines below 80 characters unless it would be more readable.
 This is a slight amendment from the general Dart [rule][dartstyle-80-chars].
 Unlike that rule, it is fine to have lines above 80 characters in the Fuchsia
-repository, as long as it improves readability, and dartfmt won't automatically
-truncate the line.
+repository, as long as it improves readability, and `dart format` won't
+automatically truncate the line.
 
 # Additional Usage Rules
 

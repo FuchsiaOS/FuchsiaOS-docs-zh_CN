@@ -1,5 +1,8 @@
 # Banjo tutorial
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 Banjo is a "transpiler" (like [FIDL's
 `fidlc`](/docs/development/languages/fidl/README.md))
 &mdash; a program that converts an interface definition language (**IDL**) into target language
@@ -217,6 +220,13 @@ representation because:
 
 The downside is that we don't get type safety, which is why you see the helper macros (like
 **UINT32_C()** above); they just cast the constant to the appropriate type.
+
+Note: Adding the `[Namespaced]` attribute to constant declarations for
+Banjo C bindings will cause the variable name to be prefaced by the FIDL
+library name. In this example, adding the `[Namespaced]` attribute to `I2C_MAX_RW_OPS`
+would cause the variable name to be `fuchsia_hardware_i2c_I2C_MAX_RW_OPS`
+instead. This may be required to avoid name conflicts with FIDL hlcpp constant
+bindings in the same build target.
 
 ### Protocol structures
 
@@ -720,10 +730,10 @@ struct callback {
 
 ### The Async attribute
 
-Within the `protocl` section, we see another attribute: the `[Async]` attribute:
+Within the `protocol` section, we see another attribute: the `[Async]` attribute:
 
 ```banjo
-[20] protocl I2c {
+[20] protocol I2c {
 ...      /// comments (removed)
 [27]     [Async]
 ```
@@ -822,6 +832,38 @@ used as buffers. In practice, it only affects the names of the generated paramet
 When applied to a protocol method output parameter of type `vector`, the attribute conveys the fact
 that the contents of the vector should be allocated by the receiver of the method call.
 
+### The DeriveDebug attribute (C bindings only)
+
+When applied to an enum declaration, a helper `*_to_str()` function
+will be generated for C bindings which returns a `const char*` for each
+value of the enum. For example, an enum declared with this attribute such
+as
+
+```banjo
+[DeriveDebug]
+enum ExampleEnum {
+    VAL_ONE = 1;
+    VAL_TWO = 2;
+};
+```
+
+will result in the following generated definition.
+
+```c
+#ifndef FUNC_EXAMPLE_ENUM_TO_STR_
+#define FUNC_EXAMPLE_ENUM_TO_STR_
+static inline const char* example_enum_to_str(example_enum_t value) {
+  switch (value) {
+    case EXAMPLE_ENUM_VAL_ONE:
+      return "EXAMPLE_ENUM_VAL_ONE";
+    case EXAMPLE_ENUM_VAL_TWO:
+      return "EXAMPLE_ENUM_VAL_TWO";
+  }
+  return "UNKNOWN";
+}
+#endif
+```
+
 ### The InnerPointer attribute
 
 In the context of a protocol input parameter of type `vector`, this attribute turns the contents of
@@ -835,6 +877,13 @@ turning it into an "in-out" parameter.
 ### The Mutable attribute
 
 This attribute should be used to make `struct`/`union` fields of type `vector` or `string` mutable.
+
+### The Namespaced attribute
+
+This attribute applies to `const` declarations and makes it so that the C backend prefaces the
+constant name with the snake-cased FIDL library name, e.g. `library_name_CONSTANT_K` instead
+of `CONSTANT_K`. This attribute may be required to avoid name conflicts with FIDL hlcpp constant
+bindings in the same build target.
 
 ### The OutOfLineContents attribute
 
@@ -855,7 +904,7 @@ tests.
 
 Tests in Zircon get the mock headers automatically. Tests outsize of Zircon must depend on the
 protocol target with a `_mock` suffix, e.g.
-`//zircon/public/banjo/fuchsia.hardware.gpio:fuchsia.hardware.gpio_banjo_cpp_mock`.
+`//sdk/banjo/fuchsia.hardware.gpio:fuchsia.hardware.gpio_banjo_cpp_mock`.
 
 ## Using the mocks
 
@@ -919,7 +968,7 @@ TEST(SomeTest, SomeTestCase) {
     CodeUnderTest dut(gpio.GetProto());
     EXPECT_OK(dut.DoSomething());
 
-    ASSERT_NO_FATAL_FAILURES(gpio.VerifyAndClear());
+    ASSERT_NO_FATAL_FAILURE(gpio.VerifyAndClear());
 }
 ```
 

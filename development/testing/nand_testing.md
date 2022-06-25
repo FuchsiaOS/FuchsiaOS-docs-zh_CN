@@ -26,8 +26,8 @@ extension, file systems must be unmounted before a block device is removed.
 Note that this requirement is likely to render a running system unusable, as
 the backing for the OS may be going away. Netboot may be the only viable option.
 
-Note that all other devices created by nandpart must also be removed. Use `dm
-dump` to inspect the device tree.
+Note that all other devices created by nandpart must also be removed. Use
+`driver dump` to inspect the device tree.
 
 ## Protocol testing
 
@@ -38,7 +38,7 @@ For example, this command will test an existing ram-nand device making sure the
 test does not modify anything outside blocks [100, 109]:
 
 ```shell
-$ /boot/test/sys/nand-test --device /dev/misc/nand-ctl/ram-nand-0 --first-block 100 --num-blocks 10
+$ /boot/test/sys/nand-test --device /dev/sys/platform/00:00:2e/nand-ctl/ram-nand-0 --first-block 100 --num-blocks 10
 ```
 
 ## Correctness testing
@@ -47,7 +47,7 @@ $ /boot/test/sys/nand-test --device /dev/misc/nand-ctl/ram-nand-0 --first-block 
 test.
 
 ```shell
-$ nand-util --device /dev/misc/nand-ctl/ram-nand-0 --check
+$ nand-util --device /dev/sys/platform/00:00:2e/nand-ctl/ram-nand-0 --check
 ```
 
 ## Inspection / manipulation

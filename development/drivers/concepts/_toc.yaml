@@ -1,0 +1,31 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Getting started"
+  path: /docs/development/drivers/concepts/getting_started.md
+- title: "Fuchsia Driver Framework"
+  path: /docs/development/drivers/concepts/fdf.md
+- title: "Device driver model"
+  section:
+  - include: /docs/development/drivers/concepts/device_driver_model/_toc.yaml
+- title: "Driver architectures"
+  section:
+  - title: "Overview"
+    path: /docs/development/drivers/concepts/driver_architectures/README.md
+  - title: "Audio drivers"
+    section:
+    - include: /docs/development/drivers/concepts/driver_architectures/audio_drivers/_toc.yaml
+  - title: "Input drivers drivers"
+    section:
+    - include: /docs/development/drivers/concepts/driver_architectures/input_drivers/_toc.yaml
+  - title: "SDMMC drivers"
+    section:
+    - include: /docs/development/drivers/concepts/driver_architectures/sdmmc_drivers/_toc.yaml
+- title: "Driver development"
+  section:
+  - include: /docs/development/drivers/concepts/driver_development/_toc.yaml

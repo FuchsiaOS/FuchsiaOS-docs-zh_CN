@@ -21,7 +21,7 @@
   authors: ['abarth@google.com']
   file: '0001_rfc_process.md'
   area: ['Governance']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['366393']
   status: 'Accepted'
   reviewers: ['kulakowski@google.com', 'pylaligand@google.com', 'jln@google.com', 'benwright@google.com', 'cpu@google.com', 'ccherubino@google.com', 'dglazkov@google.com', 'lanechr@google.com', 'pascallouis@google.com']
@@ -35,7 +35,7 @@
   file: '0002_platform_versioning.md'
   area: ['General']
   status: 'Accepted'
-  issue: []
+  issue: ['']
   gerrit_change_id: ['376759']
   reviewers: ['jsanky@google.com', 'jln@google.com', 'kulakowski@google.com', 'geb@google.com', 'raggi@google.com', 'gridman@google.com', 'pascallouis@google.com', 'pylaligand@google.com', 'cpu@google.com']
   submitted: '2020-04-30'
@@ -47,7 +47,7 @@
   authors: ['fsamuel@google.com', 'shayba@google.com']
   area: ['General']
   file: '0003_logging.md'
-  issue: []
+  issue: ['']
   gerrit_change_id: ['395561']
   status: 'Accepted'
   reviewers: ['abarth@google.com', 'pascallouis@google.com', 'rlb@google.com', 'edcoyne@google.com', 'adamperry@google.com', 'crjohns@google.com', 'frousseau@google.com', 'drees@google.com']
@@ -60,7 +60,7 @@
   authors: ['dschuyler@google.com']
   file: '0004_units_of_bytes.md'
   area: ['Governance']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['397239']
   status: 'Accepted'
   reviewers: ['nathaniel@google.com', 'pascallouis@google.com', 'jaredb@google.com', 'heygray@google.com', 'cpu@google.com', 'abbogart@google.com', 'mcgrathr@google.com']
@@ -73,7 +73,7 @@
   authors: ['csuter@google.com', 'jfsulliv@google.com']
   file: '0005_blobfs_snapshots.md'
   area: ['Storage']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['424179']
   status: 'Rejected'
   reviewers: ['jfsulliv@google.com', 'computerdruid@google.com', 'abarth@google.com', 'wittrock@google.com', 'brettw@google.com']
@@ -86,7 +86,7 @@
   authors: ['cpu@google.com']
   file: '0006_addendum_to_rfc_process_for_zircon.md'
   area: ['Governance']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['417975']
   status: 'Accepted'
   reviewers: ['abarth@google.com', 'eieio@google.com', 'maniscalco@google.com', 'abdulla@google.com', 'kulakowski@google.com']
@@ -98,8 +98,8 @@
   short_description: 'This document discusses the removal of thread killing functionality and the reasoning behind that removal.'
   authors: ['dgilhooley@google.com']
   file: '0007_remove_thread_killing.md'
-  area: ['Zircon']
-  issue: []
+  area: ['Kernel']
+  issue: ['']
   gerrit_change_id: ['431174']
   status: 'Accepted'
   reviewers: ['cpu@google.com', 'kulakowski@google.com']
@@ -111,7 +111,7 @@
   short_description: 'Defines the plan to deprecate and then remove the zx_clock_get and zx_clock_adjust syscalls.'
   authors: ['jsankey@google.com', 'johngro@google.com']
   file: '0008_remove_zx_clock_get_and_adjust.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['61987']
   gerrit_change_id: ['438135']
   status: 'Accepted'
@@ -124,7 +124,7 @@
   short_description: 'The proposal is that, if the ZX_WAIT_ASYNC_EDGE flag is specified, the initial check is omitted and the signal set added to the interest list of the DispatchObject regardless of the initial signal state. In this mode of operation, one of the signals must transition from inactive to active for a packet to be queued on the supplied port (possibly requiring a signal to become inactive in the process).'
   authors: ['steveaustin@google.com']
   file: '0009_edge_triggered_async_wait.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['45709', '62553']
   gerrit_change_id: ['442834']
   status: 'Accepted'
@@ -137,7 +137,7 @@
   short_description: 'This RFC introduces a new mode to zx_channel_write and zx_channel_call which copies input data from multiple memory regions rather than from a single contiguous buffer.'
   authors: ['bprosnitz@google.com']
   file: '0010_channel_iovec.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['60623']
   gerrit_change_id: ['433621']
   status: 'Accepted'
@@ -150,8 +150,8 @@
   short_description: 'Proposes adding a new topic - `ZX_INFO_KMEM_STATS_EXTENDED`, to the `zx_object_get_info()` syscall.'
   authors: ['rashaeqbal@google.com']
   file: '0011_getinfo_kmemstats_extended.md'
-  area: ['Zircon']
-  issue: []
+  area: ['Kernel']
+  issue: ['']
   gerrit_change_id: ['446786']
   status: 'Accepted'
   reviewers: ['cpu@google.com','adanis@google.com','maniscalco@google.com']
@@ -163,7 +163,7 @@
   short_description: 'Describes a mechanism for userspace applications to indicate to the kernel that certain memory buffers are eligible for reclamation.'
   authors: ['rashaeqbal@google.com']
   file: '0012_zircon_discardable_memory.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['60237']
   gerrit_change_id: ['441994']
   status: 'Accepted'
@@ -176,7 +176,7 @@
   short_description: 'A system call that creates a CoW clone of a VMO from a mapping, without needing a handle to it.'
   authors: ['tbodt@google.com']
   file: '0013_cloning_a_vmo_mapping.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['60232']
   gerrit_change_id: ['443437']
   status: 'Accepted'
@@ -189,7 +189,7 @@
   short_description: 'Permit `zx_fifo_create` calls with element counts that are not powers of two.'
   authors: ['jfsulliv@google.com']
   file: '0014_relax_fifo_create_constraints.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['65697']
   gerrit_change_id: ['457334']
   status: 'Accepted'
@@ -215,8 +215,8 @@
   short_description: 'Replace PAGE_SIZE constant with a vdsocall.'
   authors: ['adanis@google.com']
   file: '0016_boot_time_page_sizes.md'
-  area: ['Zircon']
-  issue: []
+  area: ['Kernel']
+  issue: ['']
   gerrit_change_id: ['457076']
   status: 'Accepted'
   reviewers: ['cpu@google.com']
@@ -229,7 +229,7 @@
   authors: ['pascallouis@google.com']
   file: '0017_folding_ftp_into_rfc.md'
   area: ['FIDL','Governance']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['458035']
   status: 'Accepted'
   reviewers: ['vaas@google.com']
@@ -242,7 +242,7 @@
   authors: ['kulakowski@google.com']
   file: '0018_ftp_process.md'
   area: ['FIDL','Governance']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -255,7 +255,7 @@
   authors: ['abarth@google.com']
   file: '0019_using_evolution_uint64.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -268,7 +268,7 @@
   authors: ['apang@google.com', 'ianloic@google.com']
   file: '0020_interface_ordinal_hashing.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -281,7 +281,7 @@
   authors: ['ianloic@google.com']
   file: '0021_soft_transitions_methods_add_remove.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -294,7 +294,7 @@
   authors: ['porce@google.com']
   file: '0022_default_values_for_struct.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -307,7 +307,7 @@
   authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
   file: '0023_compositional_model_protocols.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -320,7 +320,7 @@
   authors: ['cramertj@google.com']
   file: '0024_mandatory_source_compatibility.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -333,7 +333,7 @@
   authors: ['kulakowski@google.com']
   file: '0025_bit_flags.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -346,7 +346,7 @@
   authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
   file: '0026_envelopes_everywhere.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -359,7 +359,7 @@
   authors: ['abarth@google.com']
   file: '0027_you_only_pay_what_you_use.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -372,7 +372,7 @@
   authors: ['kulakowski@google.com', 'bprosnitz@google.com']
   file: '0028_handle_rights.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -385,7 +385,7 @@
   authors: ['pascallouis@google.com']
   file: '0029_increasing_method_ordinals.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -398,7 +398,7 @@
   authors: ['ctiller@google.com', 'pascallouis@google.com']
   file: '0030_fidl_is_little_endian.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -411,7 +411,7 @@
   authors: ['pascallouis@google.com']
   file: '0031_typed_epitaphs.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['486059']
   status: 'Rejected'
   reviewers: ['']
@@ -424,7 +424,7 @@
   authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
   file: '0032_efficient_envelopes.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -435,9 +435,9 @@
   title: 'Handling of unknown fields and strictness'
   short_description: 'This FTP amends and clarifies the behavior of FIDL decoders when encountering tables, extensible unions, enums, and bits — extensible messages — contain fields where the type is unknown.'
   authors: ['apang@google.com', 'pascallouis@google.com']
-  file: '0033_handling_unkown_fields_strictness.md'
+  file: '0033_handling_unknown_fields_strictness.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -450,7 +450,7 @@
   authors: ['ianloic@google.com']
   file: '0034_null_terminate_strings.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -463,7 +463,7 @@
   authors: ['bwb@google.com', 'nathanrogers@google.com']
   file: '0035_automatic_flow_tracing.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -476,7 +476,7 @@
   authors: ['pascallouis@google.com']
   file: '0036_update_struct_declarations.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -485,11 +485,11 @@
 
 - name: 'RFC-0037'
   title: 'Transactional message header v3'
-  short_description: 'This proposal modifies the FIDL wire format. The reserved bytes of the transaction header are allocated to a one byte magic number to identify the wire format used aAnd three bytes for flags meant to be temporarily used for soft migrations.'
+  short_description: 'This proposal modifies the FIDL wire format. The reserved bytes of the transaction header are allocated to a one byte magic number to identify the wire format used and three bytes for flags meant to be temporarily used for soft migrations.'
   authors: ['pascallouis@google.com']
   file: '0037_transactional_message_header_v3.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -502,7 +502,7 @@
   authors: ['pascallouis@google.com']
   file: '0038_seperating_layout_from_constraints.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -515,7 +515,7 @@
   authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com']
   file: '0039_types_come_second.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -528,7 +528,7 @@
   authors: ['ianloic@google.com']
   file: '0040_identifier_uniqueness.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -541,7 +541,7 @@
   authors: ['abdulla@google.com', 'jeffbrown@google.com', 'pascallouis@google.com', 'abarth@google.com']
   file: '0041_unifying_services_devices.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -554,7 +554,7 @@
   authors: ['ianloic@google.com']
   file: '0042_non_nullable_types.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -567,7 +567,7 @@
   authors: ['jeremymanson@google.com']
   file: '0043_documentation_comment_format.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -580,7 +580,7 @@
   authors: ['vardhan@google.com', 'ianloic@google.com']
   file: '0044_extensible_method_arguments.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -593,7 +593,7 @@
   authors: ['apang@google.com']
   file: '0045_zero_size_empty_structs.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -606,7 +606,7 @@
   authors: ['ctiller@google.com']
   file: '0047_tables.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -619,7 +619,7 @@
   authors: ['pascallouis@google.com']
   file: '0048_explicit_union_ordinals.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -632,7 +632,7 @@
   authors: ['pascallouis@google.com']
   file: '0049_fidl_tuning_process_evolution.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -640,12 +640,12 @@
   reviewed: '2019-12-19'
 
 - name: 'RFC-0050'
-  title: 'Syntax revamp'
+  title: 'FIDL Syntax Revamp'
   short_description: 'We establish guiding principles for syntactic choices, and make a few syntax changes following these principles.'
   authors: ['pascallouis@google.com']
   file: '0050_syntax_revamp.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -658,9 +658,9 @@
   authors: ['ianloic@google.com']
   file: '0051_safer_structs_for_cpp.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
-  status: 'Accepted'
+  status: 'Rejected'
   reviewers: ['']
   submitted: '2018-07-19'
   reviewed: '2019-03-14'
@@ -671,7 +671,7 @@
   authors: ['godtamit@google.com']
   file: '0052_type_aliasing_named_types.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -684,7 +684,7 @@
   authors: ['jeremymanson@google.com']
   file: '0053_epitaphs.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -697,7 +697,7 @@
   authors: ['xazax@google.com', 'phosek@google.com']
   file: '0054_parameter_attributes.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -710,7 +710,7 @@
   authors: ['bwb@google.com']
   file: '0055_documentation_comments.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -723,7 +723,7 @@
   authors: ['ianloic@google.com']
   file: '0056_empty_structs.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -736,7 +736,7 @@
   authors: ['mkember@google.com']
   file: '0057_default_no_handles.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -749,7 +749,7 @@
   authors: ['pascallouis@google.com']
   file: '0058_deprecated_attribute.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -762,7 +762,7 @@
   authors: ['bprosnitz@google.com']
   file: '0059_reserved_bits_count_fields.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -775,7 +775,7 @@
   authors: ['ianloic@google.com']
   file: '0060_error_handling.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -788,7 +788,7 @@
   authors: ['pascallouis@google.com']
   file: '0061_extensible_unions.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -801,7 +801,7 @@
   authors: ['ianloic@google.com']
   file: '0062_method_impossible.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -814,7 +814,7 @@
   authors: ['abarth@google.com']
   file: '0063_OrdinalRange.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -827,7 +827,7 @@
   authors: ['jeffbrown@google.com']
   file: '0064_box_knox.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -840,7 +840,7 @@
   authors: ['kulakowski@google.com']
   file: '0065_optional_strings_or_vectors.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Rejected'
   reviewers: ['']
@@ -853,7 +853,7 @@
   authors: ['ianloic@google.com']
   file: '0066_programmer_advisory_explicit.md'
   area: ['FIDL']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['']
@@ -866,7 +866,7 @@
   authors: ['vaas@google.com']
   file: '0067_rfc_process_additions.md'
   area: ['Governance']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['458183']
   status: 'Accepted'
   reviewers: ['shayba@google.com', 'abarth@google.com', 'aaronwood@google.com', 'fmil@google.com', 'pascallouis@google.com', 'jamesr@google.com']
@@ -878,7 +878,7 @@
   short_description: 'Mechanism for userspace applications to hint to the kernel a relative order of eviction for user pager backed memory.'
   authors: ['rashaeqbal@google.com']
   file: '0068_eviction_hints.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['65334']
   gerrit_change_id: ['468630']
   status: 'Accepted'
@@ -892,7 +892,7 @@
   authors: ['yaneury@google.com']
   file: '0069_stdio_in_elf_runner.md'
   area: ['Component Framework']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['480362']
   status: 'Accepted'
   reviewers: ['jamesr@google.com', 'shayba@google.com', 'geb@google.com', 'adamperry@google.com', 'pascallouis@google.com', 'abarth@google.com', 'vaas@google.com', 'cpu@google.com']
@@ -904,7 +904,7 @@
   short_description: 'Mitigations for spurious PCI legacy interrupts.'
   authors: ['cja@google.com']
   file: '0070_pci_protocol_legacy_interrupt_changes.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['71188']
   gerrit_change_id: ['457076']
   status: 'Accepted'
@@ -931,7 +931,7 @@
   authors: ['aaronwood@google.com']
   file: '0072_standalone_image_assembly_tool.md'
   area: ['Build']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['478494']
   status: 'Accepted'
   reviewers: ['cpu@google.com', 'amathes@google.com', 'shayba@google.com', 'digit@google.com', 'abarth@google.com', 'mesch@google.com', 'jamesr@google.com']
@@ -943,8 +943,8 @@
   short_description: 'Raise the minimum x86-64 platform from v1 + extensions to v2'
   authors: ['venkateshs@chromium.org']
   file: '0073_x86_64_platform_requirement.md'
-  area: ['Zircon']
-  issue: []
+  area: ['Kernel']
+  issue: ['']
   gerrit_change_id: ['484898']
   status: 'Socialization'
   reviewers: ['travisg@google.com', 'mcgrathr@google.com', 'kostyak@google.com']
@@ -956,8 +956,8 @@
   short_description: 'Make process start time queryable from userspace.'
   authors: ['joshuaseaton@google.com']
   file: '0074_expose_process_start_time.md'
-  area: ['Zircon']
-  issue: []
+  area: ['Kernel']
+  issue: ['']
   gerrit_change_id: ['488412']
   status: 'Accepted'
   reviewers: ['cpu@google.com', 'maniscalco@google.com']
@@ -970,7 +970,7 @@
   authors: ['amituttam@google.com']
   file: '0075_deprecate_zedboot_paving.md'
   area: ['General']
-  issue: []
+  issue: ['']
   gerrit_change_id: ['491819']
   status: 'Accepted'
   reviewers: ['rudymathu@google.com', 'nmulcahey@google.com', 'dpursell@google.com', 'wittrock@google.com', 'andresoportus@google.com', 'vaas@google.com', 'dkrahn@google.com', 'jfsulliv@google.com']
@@ -995,7 +995,7 @@
   short_description: 'Changes to zx_clock_update that let clock maintainers opt in to supplying more information and achieving higher accuracy.'
   authors: ['jsankey@google.com']
   file: '0077_zx_clock_update_accuracy.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['65726']
   gerrit_change_id: ['495844']
   status: 'Accepted'
@@ -1008,8 +1008,8 @@
   short_description: 'Export Fuchsia kernel code coverage so it can be used for fuzzing with Syzkaller.'
   authors: ['eep@google.com', 'mvanotti@google.com', 'markdittmer@google.com']
   file: '0078_kernel_coverage_for_fuchsia_fuzzing.md'
-  area: ['Zircon']
-  issue: []
+  area: ['Kernel']
+  issue: ['']
   gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: ['phosek@google.com', 'mcgrathr@google.com', 'maniscalco@google.com', 'cpu@google.com']
@@ -1021,7 +1021,7 @@
   short_description: 'A revised mechanism for detecting debuglog data loss.'
   authors: ['maniscalco@google.com']
   file: '0079_detecting_debuglog_data_loss.md'
-  area: ['Zircon', 'Diagnostics']
+  area: ['Kernel', 'Diagnostics']
   issue: ['69290']
   gerrit_change_id: ['487876']
   status: 'Accepted'
@@ -1034,9 +1034,9 @@
   short_description: 'This RFC proposes a new flag `ZX_INFO_VMO_IMMUTABLE` that makes it possible to determine if a VMO is immutable and has been since creation.'
   authors: ['bprosnitz@google.com']
   file: '0080_detecting_vmo_immutability.md'
-  area: ['Zircon']
-  issue: []
-  gerrit_change_id: []
+  area: ['Kernel']
+  issue: ['']
+  gerrit_change_id: ['']
   status: 'Accepted'
   reviewers: [ 'bryanhenry@google.com', 'adanis@google.com', 'mseaborn@google.com', 'pascallouis@google.com', 'ctiller@google.com', 'rashaeqbal@google.com', 'cpu@google.com' ]
   submitted: '2021-02-18'
@@ -1056,11 +1056,11 @@
   reviewed: '2021-03-25'
 
 - name: 'RFC-0082'
-  title: 'Runnning unmodified Linux programs on Fuchsia'
+  title: 'Running unmodified Linux programs on Fuchsia'
   short_description: 'This document proposes a mechanism for running unmodified Linux programs on Fuchsia.'
   authors: ['abarth@google.com']
   file: '0082_starnix.md'
-  area: ['PosixCompat']
+  area: ['Foreign ABI Compatibility']
   issue: ['70225']
   gerrit_change_id: ['485181']
   status: 'Accepted'
@@ -1086,7 +1086,7 @@
   short_description: 'Adds additional metrics to zx_info_task_runtime_t to debug media performance problems.'
   authors: ['tombergan@google.com']
   file: '0084_zircon_more_per_task_runtime_information.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['67477']
   gerrit_change_id: ['485181']
   status: 'Accepted'
@@ -1099,7 +1099,7 @@
   short_description: 'Reduce the range of valid zx_status_t values, allowing the type to be more easily embedded in other types.'
   authors: ['dgreenaway@google.com', 'kulakowski@google.com']
   file: '0085_reducing_zx_status_t_space.md'
-  area: ['Zircon', 'System']
+  area: ['Kernel', 'System']
   issue: ['74211', '74212']
   gerrit_change_id: ['436685']
   status: 'Accepted'
@@ -1164,7 +1164,7 @@
   short_description: 'Add an allowlist for drivers shared libraries.'
   authors: ['dgilhooley@google.com']
   file: '0090_drivers_shared_library_allowlist.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['']
   gerrit_change_id: ['508918']
   status: 'Accepted'
@@ -1177,7 +1177,7 @@
   short_description: 'Proposes adding a new event - `ZX_SYSTEM_EVENT_IMMINENT_OUT_OF_MEMORY`, to the `zx_system_get_event()` syscall.'
   authors: ['rashaeqbal@google.com']
   file: '0091_getevent_imminent_oom.md'
-  area: ['Zircon']
+  area: ['Kernel']
   issue: ['73872']
   gerrit_change_id: ['514760']
   status: 'Accepted'
@@ -1190,7 +1190,7 @@
   short_description: 'Defines the role of the session component.'
   authors: ['lindkvist@google.com']
   file: '0092_sessions.md'
-  area: ['Session']
+  area: ['Sessions']
   issue: ['']
   gerrit_change_id: ['513028']
   status: 'Accepted'
@@ -1210,3 +1210,998 @@
   reviewers: ['jjosh@google.com', 'geb@google.com', 'pascallouis@google.com', 'abarth@google.com', 'mesch@google.com', 'thatguy@google.com', 'shrike@google.com', 'brunodalbo@google.com']
   submitted: '2021-04-26'
   reviewed: '2021-05-05'
+
+- name: 'RFC-0094'
+  title: 'Carnelian Virtcon'
+  short_description: 'Convert Virtcon from a C++ program to a Rust based Carnelian application.'
+  authors: ['reveman@google.com']
+  file: '0094_carnelian_virtcon.md'
+  area: ['General']
+  issue: ['74628']
+  gerrit_change_id: ['519560']
+  status: 'Accepted'
+  reviewers: [ 'andresoportus@google.com', 'chaselatta@google.com', 'cpu@google.com', 'dgilhooley@google.com', 'robtsuk@google.com', 'surajmalhotra@google.com', 'travisg@google.com']
+  submitted: '2021-04-21'
+  reviewed: '2021-05-04'
+
+- name: 'RFC-0095'
+  title: 'Build and assemble Workstation out-of-tree'
+  short_description: 'Creates a workflow which allows users to build and assemble the Workstation product outside of fuchsia.git.'
+  authors: ['chaselatta@google.com']
+  file: '0095_build_and_assemble_workstation_out_of_tree.md'
+  area: ['General']
+  issue: ['']
+  gerrit_change_id: ['506567']
+  status: 'Accepted'
+  reviewers: ['jeremymanson@google.com', 'jjosh@google.com', 'shayba@google.com', 'pascallouis@google.com', 'jamesr@google.com', 'maruel@google.com']
+  submitted: '2021-03-24'
+  reviewed: '2021-05-19'
+
+- name: 'RFC-0096'
+  title: 'User input architecture'
+  short_description: 'The high-level architecture for delivering user input events (keyboard, mouse, touch, etc.) on Fuchsia on systems with a graphical user interface and multiple runtimes.'
+  authors: ['neelsa@google.com']
+  file: '0096_user_input_arch.md'
+  area: ['HCI']
+  issue: ['72908']
+  gerrit_change_id: ['516176']
+  status: 'Accepted'
+  reviewers: ['jaeheon@google.com', 'jsankey@google.com', 'pascallouis@google.com', 'quiche@google.com', 'reveman@google.com', 'thatguy@google.com', ]
+  submitted: '2021-04-15'
+  reviewed: '2021-05-26'
+
+- name: 'RFC-0097'
+  title: 'FIDL Toolchain'
+  short_description: 'Description of a canonical FIDL toolchain.'
+  authors: ['pascallouis@google.com']
+  file: '0097_fidl_toolchain.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['521520']
+  status: 'Accepted'
+  reviewers: ['jeremymanson@google.com', 'mkember@google.com', 'shayba@google.com']
+  submitted: '2021-04-27'
+  reviewed: '2021-05-26'
+
+- name: 'RFC-0098'
+  title: 'Component Framework RFC Criteria'
+  short_description: 'An addendum to the RFC process that defines broad impact for Component Framework.'
+  authors: ['thatguy@google.com']
+  file: '0098_component_framework_rfc_criteria.md'
+  area: ['Component Framework', 'Governance']
+  issue: ['']
+  gerrit_change_id: ['']
+  status: 'Accepted'
+  reviewers: [ 'ypomortsev@google.com', 'geb@google.com', 'shayba@google.com', 'pascallouis@google.com' ]
+  submitted: '2021-05-20'
+  reviewed: '2021-06-01'
+
+- name: 'RFC-0099'
+  title: 'Introduce `zx_socket_set_disposition`'
+  short_description: 'Introduce `zx_socket_set_disposition` to replace `zx_socket_shutdown` with a reversible operation.'
+  authors: ['tamird@google.com']
+  file: '0099_socket_set_disposition.md'
+  area: ['Kernel']
+  issue: ['67465']
+  gerrit_change_id: ['526441']
+  status: 'Accepted'
+  reviewers: [ 'maniscalco@google.com', 'shanyu@google.com', 'brunodalbo@google.com', 'scottmg@google.com', 'pascallouis@google.com', 'iyerm@google.com', 'mcgrathr@google.com', 'abarth@google.com' ]
+  submitted: '2021-05-06'
+  reviewed: '2021-06-03'
+
+- name: 'RFC-0100'
+  title: 'Product Metadata'
+  short_description: 'A canonical representation for product metadata'
+  authors: ['gridman@google.com', 'jeremymanson@google.com']
+  file: '0100_product_metadata.md'
+  area: ['Developer']
+  issue: ['']
+  gerrit_change_id: ['523152']
+  status: 'Accepted'
+  reviewers: ['chonggu@google.com', 'omerlevran@google.com', 'wilkinsonclay@google.com']
+  submitted: '2021-04-30'
+  reviewed: '2021-06-02'
+
+- name: 'RFC-0101'
+  title: 'Dynamic components with numbered handles'
+  short_description: 'Provides a way to pass numbered handles to dynamic components.'
+  authors: ['lindkvist@google.com', 'geb@google.com']
+  file: '0101_dynamic_components_with_numbered_handles.md'
+  area: ['Component Framework']
+  issue: ['']
+  gerrit_change_id: ['531642']
+  status: 'Accepted'
+  reviewers: [ 'bryanhenry@google.com', 'geb@google.com', 'dgonyeo@google.com', 'shayba@google.com', 'thatguy@google.com']
+  submitted: '2021-05-18'
+  reviewed: '2021-06-02'
+
+- name: 'RFC-0102'
+  title: 'Forbid CHILD_NO_WRITE with CHILD_RESIZABLE'
+  short_description: 'Make it an error to pass ZX_VMO_CHILD_NO_WRITE with ZX_VMO_CHILD_RESIZABLE to zx_vmo_create_child'
+  authors: ['adanis@google.com']
+  file: '0102_forbid_no_write_with_resizable.md'
+  area: ['Kernel']
+  issue: ['77315']
+  gerrit_change_id: ['533409']
+  submitted: '2021-05-25'
+  status: 'Accepted'
+  reviewers: ['bryanhenry@google.com','bprosnitz@google.com','rashaeqbal@google.com','cpu@google.com']
+  reviewed: '2021-06-10'
+
+- name: 'RFC-0103'
+  title: 'Software Delivery RFC Criteria'
+  short_description: 'An addendum to the RFC process for changes which affect the Software Delivery codebase or policies.'
+  authors: ['wittrock@google.com']
+  file: '0103_software_delivery_rfc_criteria.md'
+  area: ['Software Delivery', 'Governance']
+  issue: ['']
+  gerrit_change_id: ['531983']
+  status: 'Accepted'
+  reviewers: ['computerdruid@google.com', 'pascallouis@google.com']
+  submitted: '2021-05-19'
+  reviewed: '2021-06-10'
+
+- name: 'RFC-0104'
+  title: 'Relative Component URLs'
+  short_description: 'Relative component URLs that resolve to their parent components package.'
+  authors: ['dgilhooley@google.com']
+  file: '0104_relative_urls.md'
+  area: ['Component Framework']
+  issue: ['74628']
+  gerrit_change_id: ['532808']
+  status: 'Accepted'
+  reviewers: ['ampearce@google.com', 'shayba@google.com', 'surajmalhotra@google.com', 'geb@google.com', 'jamesr@google.com']
+  submitted: '2021-05-20'
+  reviewed: '2021-06-14'
+
+- name: 'RFC-0105'
+  title: 'Regular expression libraries'
+  short_description: 'Restrict the set of regular expression libraries that may be used in Fuchsia.'
+  authors: ['tombergan@google.com']
+  file: '0105_regular_expression_libraries.md'
+  area: ['General']
+  issue: ['77811']
+  gerrit_change_id: ['521301']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'shayba@google.com', 'phosek@google.com', 'vbelliard@google.com', 'brettw@google.com', 'maruel@google.com', 'pascallouis@google.com']
+  submitted: '2021-04-26'
+  reviewed: '2021-06-16'
+
+- name: 'RFC-0106'
+  title: 'Component manifest includes in the Fuchsia SDK'
+  short_description: 'Create a component manifest include shards sysroot in the SDK and distribute it to out-of-tree integrators.'
+  authors: ['shayba@google.com', 'jayzhuang@google.com']
+  file: '0106_manifest_includes_in_sdk.md'
+  area: ['Component Framework']
+  issue: ['76601']
+  gerrit_change_id: ['529382']
+  status: 'Accepted'
+  reviewers: ['crjohns@google.com', 'geb@google.com', 'ddorwin@google.com', 'gridman@google.com', 'jayzhuang@google.com']
+  submitted: '2021-05-12'
+  reviewed: '2021-06-23'
+
+- name: 'RFC-0107'
+  title: 'Dynamic Offers'
+  short_description: 'Allow creation of offers at runtime in CFv2.'
+  authors: ['hjfreyer@google.com']
+  file: '0107_dynamic_offers.md'
+  area: ['Component Framework']
+  issue: ['']
+  gerrit_change_id: ['534042']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'ypomortsev@google.com', 'abdulla@google.com', 'surajmalhotra@google.com', 'bryanhenry@google.com', 'abarth@google.com', 'jsankey@google.com']
+  submitted: '2021-05-24'
+  reviewed: '2021-06-24'
+
+- name: 'RFC-0108'
+  title: 'Component binder protocol'
+  short_description: 'Framework-provided protocol that allows components to start other components.'
+  authors: ['yaneury@google.com']
+  file: '0108_component_binder_protocol.md'
+  area: ['Component Framework']
+  issue: ['']
+  gerrit_change_id: ['533701']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'thatguy@google.com', 'hjfreyer@google.com', 'shayba@google.com']
+  submitted: '2021-05-21'
+  reviewed: '2021-06-30'
+
+- name: 'RFC-0109'
+  title: 'Fast UDP sockets'
+  short_description: 'Implement network UDP socket data transport using zircon sockets.'
+  authors: ['tamird@google.com']
+  file: '0109_socket_datagram_socket.md'
+  area: ['Netstack']
+  issue: ['']
+  gerrit_change_id: ['544642']
+  status: 'Socializing'
+  reviewers: ['maniscalco@google.com', 'brunodalbo@google.com', 'abarth@google.com', 'iyerm@google.com']
+  submitted: '2021-06-17'
+  reviewed: '2021-06-25'
+
+- name: 'RFC-0110'
+  title: 'Reboot for termination of critical components'
+  short_description: 'v2 component feature providing parity with v1 critical_components'
+  authors: ['geb@google.com']
+  file: '0110_reboot_for_critical_components.md'
+  area: ['Component Framework']
+  issue: ['']
+  gerrit_change_id: ['535167']
+  status: 'Accepted'
+  reviewers: [ 'thatguy@google.com, brunodalbo@google.com, pschickel@google.com, shayba@google.com, surajmalhotra@google.com, claridge@google.com, computerdruid@google.com, mnck@google.com, ypomortsev@google.com, hjfreyer@google.com' ]
+  submitted: '2021-05-26'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0111'
+  title: 'Initial Fuchsia hardware platform specifications'
+  short_description: 'An initial minimum set of requirements, contribution processes and support standards for hardware platforms to run Fuchsia.'
+  authors: ['kadolor@google.com', 'andresoportus@google.com', 'curtisgalloway@google.com']
+  file: '0111_fuchsia_hardware_specifications.md'
+  area: ['Governance']
+  issue: ['']
+  gerrit_change_id: ['540102']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'johngro@google.com', 'cpu@google.com', 'jsankey@google.com', 'surajmalhotra@google.com']
+  submitted: '2021-06-07'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0112'
+  title: 'ACPI support on x86'
+  short_description: 'Improvements to ACPI support on x86.'
+  authors: ['simonshields@google.com']
+  file: '0112_acpi_support_on_x86.md'
+  area: ['Devices']
+  issue: ['78198']
+  gerrit_change_id: ['542001']
+  status: 'Accepted'
+  reviewers: [ 'abarth@google.com', 'adanis@google.com', 'cja@google.com', 'cpu@google.com', 'kostyak@google.com', 'surajmalhotra@google.com', 'travisg@google.com' ]
+  submitted: '2021-06-11'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0113'
+  title: 'Efficient envelopes'
+  short_description: 'This FTP proposes a more compact encoding for envelopes.'
+  authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com', 'bprosnitz@google.com']
+  file: '0032_efficient_envelopes.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['545861']
+  status: 'Accepted'
+  reviewers: ['pascallouis@google.com', 'mkember@google.com', 'yifeit@google.com', 'ianloic@google.com']
+  submitted: '2021-06-21'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0114'
+  title: 'Inlining small values in FIDL envelopes'
+  short_description: 'This RFC proposes a FIDL wire format change that inlines values <= 4-bytes in size into the body of envelopes.'
+  authors: ['bprosnitz@google.com']
+  file: '0114_fidl_envelope_inlining.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['545282']
+  status: 'Accepted'
+  reviewers: ['pascallouis@google.com', 'mkember@google.com', 'yifeit@google.com']
+  submitted: '2021-06-24'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0115'
+  title: 'Build Types'
+  short_description: 'A canonical definition of product build types.'
+  authors: ['amituttam@google.com']
+  file: '0115_build_types.md'
+  area: ['System']
+  issue: ['']
+  gerrit_change_id: ['552446']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'raggi@google.com', 'wittrock@google.com', 'ampearce@google.com', 'maniscalco@google.com', 'frousseau@google.com']
+  submitted: '2021-07-06'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0116'
+  title: 'Wire format support for sparser FIDL tables'
+  short_description: 'This RFC introduces changes to the FIDL wire format that optimize tables for a sparser distribution of present ordinals.'
+  authors: ['bprosnitz@google.com']
+  file: '0116_fidl_sparser_tables.md'
+  area: ['FIDL']
+  issue: ['79093']
+  gerrit_change_id: ['538805']
+  status: 'Rejected'
+  reviewers: ['']
+  submitted: '2021-06-16'
+  reviewed: '2021-07-21'
+
+- name: 'RFC-0117'
+  title: 'Component fuzzing framework'
+  short_description: 'A Fuchsia-native, cross-process fuzzing framework.'
+  authors: ['aarongreen@google.com']
+  file: '0117_component_fuzzing_framework.md'
+  area: ['Testing']
+  issue: ['24740']
+  gerrit_change_id: ['529348']
+  status: 'Accepted'
+  reviewers: [ 'abarth@google.com', 'anmittal@google.com', 'crjohns@google.com', 'jsankey@google.com', 'jeremymanson@google.com', mvanotti@google.com', 'satsukiu@google.com', 'shayba@google.com', 'shrike@google.com']
+  submitted: '2021-05-24'
+  reviewed: '2021-07-28'
+
+- name: 'RFC-0118'
+  title: 'SWD policy at image assembly'
+  short_description: 'Short-term change to apply SWD policy at image assembly time.'
+  authors: ['arkay@google.com']
+  file: '0118_swd_policy_at_image_assembly_rfc.md'
+  area: ['Software Delivery']
+  issue: ['71476']
+  gerrit_change_id: ['540944']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'abarth@google.com', 'ampearce@google.com', 'dhobsd@google.com']
+  submitted: '2021-06-28'
+  reviewed: '2021-07-28'
+
+- name: 'RFC-0119'
+  title: 'System-absolute paths considered harmful'
+  short_description: 'Enacting a policy to use relative paths everywhere wherever possible.'
+  authors: ['shayba@google.com']
+  file: '0119_system_absolute_paths_considered_harmful.md'
+  area: ['Build']
+  issue: ['79082']
+  gerrit_change_id: ['545707']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'jsankey@google.com', 'jayzhuang@google.com', 'raggi@google.com', 'fangism@google.com', 'abarth@google.com', 'maruel@google.com']
+  submitted: '2021-06-20'
+  reviewed: '2021-07-28'
+
+- name: 'RFC-0120'
+  title: 'Standalone use of the FIDL wire format'
+  short_description: 'This RFC formalizes the requirements to use (i.e. encode and decode) the FIDL wire format absent of a transport. It also specifies a rubric on how bindings should expose this functionality.'
+  authors: ['yifeit@google.com']
+  file: '0120_standalone_use_of_fidl_wire_format.md'
+  area: ['FIDL']
+  issue: ['45252']
+  gerrit_change_id: ['551813']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'geb@google.com', 'mkember@google.com', 'tamird@google.com', 'surajmalhotra@google.com']
+  submitted: '2021-07-02'
+  reviewed: '2021-08-04'
+
+- name: 'RFC-0121'
+  title: 'Component lifecycle events'
+  short_description: 'This RFC formalizes Component framework event capabilities.'
+  authors: ['miguelfrde@google.com']
+  file: '0121_component_events.md'
+  area: ['Component Framework']
+  issue: ['81980']
+  gerrit_change_id: ['535692']
+  status: 'Accepted'
+  reviewers: [ 'geb@google.com', 'abarth@google.com', 'jmatt@google.com', 'shayba@google.com', 'crjohns@google.com', 'fsamuel@google.com' ]
+  submitted: '2021-05-26'
+  reviewed: '2021-08-11'
+
+- name: 'RFC-0122'
+  title: 'RFC Stakeholders'
+  short_description: 'Amend the RFC process around identifying and managing stakeholders'
+  authors: ['neelsa@google.com', 'wittrock@google.com', 'pascallouis@google.com']
+  file: '0122_stakeholders.md'
+  area: ['Governance']
+  issue: ['']
+  gerrit_change_id: ['545958']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'wittrock@google.com', 'pascallouis@google.com', 'aaronwood@google.com', 'dgilhooley@google.com', 'simonshields@google.com', 'bprosnitz@google.com']
+  submitted: '2021-06-21'
+  reviewed: '2021-08-16'
+
+- name: 'RFC-0123'
+  title: 'CPU performance info syscalls'
+  short_description: 'Interface for communicating with the kernel regarding CPU performance'
+  authors: ['claridge@google.com']
+  file: '0123_cpu_performance_info.md'
+  area: ['Kernel']
+  issue: ['']
+  gerrit_change_id: ['554188']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'eieio@google.com', 'gkalsi@google.com', 'maniscalco@google.com', 'pshickel@google.com', 'travisg@google.com']
+  consulted: ['wez@google.com']
+  submitted: '2021-07-20'
+  reviewed: '2021-08-18'
+
+- name: 'RFC-0124'
+  title: 'Decentralized Product Integration: Artifact Description and Propagation'
+  short_description: 'A mechanism to describe and propagate artifacts for decentralized product integration.'
+  authors: ['lijiaming@google.com','mesch@google.com','schilit@google.com']
+  file: '0124_decentralized_product_integration_artifact_description_and_propagation.md'
+  area: ['General']
+  issue: ['']
+  gerrit_change_id: ['509131']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'etryzelaar@google.com', 'wittrock@google.com',
+    'atyfto@google.com', 'marvinpaul@google.com', 'jsankey@google.com', 'enoharemaien@google.com',
+    'schilit@google.com']
+  submitted: '2021-03-30'
+  reviewed: '2021-08-30'
+
+- name: 'RFC-0125'
+  title: 'Shortlinks on Fuchsia.dev'
+  short_description: 'Allow redirecting fuchsia.dev/go/<keyword> to specific Fuchsia artifacts.'
+  authors: ['nickvander@google.com', 'curtisgalloway@google.com']
+  file: '0125_shortlink_fuchsia_dev.md'
+  area: ['Developer']
+  issue: ['']
+  gerrit_change_id: ['553175']
+  status: 'Accepted'
+  reviewers: ['curtisgalloway@google.com', 'mkearney@google.com', 'tkilbourn@google.com']
+  submitted: '2021-07-09'
+  reviewed: '2021-09-01'
+
+- name: 'RFC-0126'
+  title: 'Driver Runtime'
+  short_description: 'Specification of new runtime for drivers to operate within.'
+  authors: ['surajmalhotra@google.com']
+  file: '0126_driver_runtime.md'
+  area: ['Devices']
+  issue: ['']
+  gerrit_change_id: ['564883']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'abdulla@google.com', 'ampearce@google.com', 'eieio@google.com', 'hansens@google.com', 'jamesr@google.com', 'jocelyndang@google.com', 'yifeit@google.com']
+  submitted: '2021-08-04'
+  reviewed: '2021-09-21'
+
+- name: 'RFC-0127'
+  title: 'Structured Configuration'
+  short_description: 'A new configuration system to solve a set of common component configuration problems.'
+  authors: ['jsankey@google.com']
+  file: '0127_structured_configuration.md'
+  area: ['Component Framework']
+  issue: ['52436']
+  gerrit_change_id: ['549661']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'abarth@google.com', 'adamperry@google.com', 'ampearce@google.com', 'crjohns@google.com', 'curtisgalloway@google.com', 'ddorwin@google.com', 'ejia@google.com', 'geb@google.com', 'shayba@google.com', 'surajmalhotra@google.com', 'wittrock@google.com']
+  submitted: '2021-07-08'
+  reviewed: '2021-09-22'
+
+- name: 'RFC-0128'
+  title: 'Introduce `zx_vcpu_kick`'
+  short_description: 'A new syscall, `zx_vcpu_kick`, that can cause a running VCPU to exit to the host and return to user-space.'
+  authors: ['abdulla@google.com']
+  file: '0128_vcpu_kick.md'
+  area: ['Kernel']
+  issue: ['']
+  gerrit_change_id: ['573781']
+  status: 'Accepted'
+  reviewers: ['adanis@google.com', 'cpu@google.com', 'dgreenaway@google.com', 'mvanotti@google.com', 'tamird@google.com']
+  submitted: '2021-08-26'
+  reviewed: '2021-09-25'
+
+- name: 'RFC-0129'
+  title: 'Python Support in Fuchsia'
+  short_description: 'Define the versioning and script requirements for Python sources within the Fuchsia project.'
+  authors: ['hansens@google.com']
+  file: '0129_python_in_fuchsia.md'
+  area: ['governance']
+  issue: ['77963']
+  gerrit_change_id: ['538447', '538448', '538449', '538450', '538451', '538452', '538453', '538454', '538455', '538456', '538457', '538459', '538460', '538561', '539023']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'cpu@google.com', 'dschuyler@google.com', 'jamesr@google.com', 'nathaniel@google.com', 'shayba@google.com']
+  submitted: '2021-06-15'
+  reviewed: '2021-09-24'
+
+- name: 'RFC-0130'
+  title: 'Supported Hardware'
+  short_description: 'List of hardware supported by the Fuchsia project.'
+  authors: ['andresoportus@google.com']
+  file: '0130_supported_hardware.md'
+  area: ['Governance']
+  issue: ['']
+  gerrit_change_id: ['572597']
+  status: 'Accepted'
+  reviewers: ['nicoh@google.com', 'nmulcahey@goole.com', 'smithdave@google.com', 'nickvander@google.com', 'curtisgalloway@google.com']
+  submitted: '2021-08-24'
+  reviewed: '2021-09-28'
+
+- name: 'RFC-0131'
+  title: 'Design principles of the FIDL wire format'
+  short_description: 'We describe various design principles underpinning the FIDL wire format.'
+  authors: ['pascallouis@google.com']
+  file: '0131_fidl_wire_format_principles.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['543461']
+  status: 'Accepted'
+  reviewers: ['jeremymanson@google.com','abarth@google.com','yifeit@google.com','bprosnitz@google.com']
+  submitted: '2021-06-15'
+  reviewed: '2021-09-29'
+
+- name: 'RFC-0132'
+  title: 'FIDL table size limit'
+  short_description: 'This RFC limits FIDL tables to at most 64 entries.'
+  authors: ['bprosnitz@google.com']
+  file: '0132_fidl_table_size_limit.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['583341']
+  status: 'Accepted'
+  reviewers: ['pascallouis@google.com', 'mkember@google.com', 'yifeit@google.com']
+  submitted: '2021-09-20'
+  reviewed: '2021-10-04'
+
+- name: 'RFC-0133'
+  title: 'Software Delivery Goals'
+  short_description: 'A set of long-term goals for the Software Delivery area.'
+  authors: ['wittrock@google.com']
+  file: '0133_swd_goals.md'
+  area: ['Software Delivery']
+  issue: ['']
+  gerrit_change_id: ['578622']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'amathes@google.com', 'computerdruid@google.com', 'hjfreyer@google.com', 'ampearce@google.com']
+  submitted: '2021-09-08'
+  reviewed: '2021-10-04'
+
+- name: 'RFC-0134'
+  title: 'Software updates time dependency'
+  short_description: 'Removes time synchronization as a dependency of software updates.'
+  authors: ['senj@google.com']
+  file: '0134_software_updates_time_dependency.md'
+  area: ['Software Delivery']
+  issue: ['78423']
+  gerrit_change_id: ['559721']
+  status: 'Accepted'
+  reviewers: ['ampearce@google.com', 'cpu@google.com', 'jsankey@google.com', 'abarth@google.com', 'wittrock@google.com', 'computerdruid@google.com', 'dhobsd@google.com']
+  submitted: '2021-07-24'
+  reviewed: '2021-10-06'
+
+- name: 'RFC-0135'
+  title: 'Package ABI revisions'
+  short_description: 'Encoding the system ABI revision into packages.'
+  authors: ['etryzelaar@google.com']
+  file: '0135_package_abi_revision.md'
+  area: ['Software Delivery']
+  issue: ['85820']
+  gerrit_change_id: ['588486']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'raggi@google.com', 'computerdruid@google.com', 'mkember@google.com', 'wittrock@google.com' ]
+  submitted: '2021-09-30'
+  reviewed: '2021-11-05'
+
+- name: 'RFC-0136'
+  title: 'Fxfs'
+  short_description: 'High level overview of a new Fuchsia filesystem.'
+  authors: ['csuter@google.com', 'jfsulliv@google.com']
+  file: '0136_fxfs.md'
+  area: ['Storage']
+  issue: ['']
+  gerrit_change_id: ['588001']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'brettw@google.com', 'palmer@google.com']
+  submitted: '2021-09-30'
+  reviewed: '2021-10-13'
+
+- name: 'RFC-0137'
+  title: 'Discard unknown data in FIDL'
+  short_description: 'Make FIDL bindings discard unknown data instead of preserving and proxying it.'
+  authors: ['mkember@google.com']
+  file: '0137_discard_unknown_data_in_fidl.md'
+  area: ['FIDL']
+  issue: ['85383']
+  gerrit_change_id: ['574045']
+  status: 'Accepted'
+  reviewers: ['pascallouis@google.com', 'yifeit@google.com']
+  submitted: '2021-08-25'
+  reviewed: '2021-10-13'
+
+- name: 'RFC-0138'
+  title: 'Handling unknown interactions'
+  short_description: 'We expand the FIDL semantics to allow peers to handle unknown interactions.'
+  authors: ['pascallouis@google.com']
+  file: '0138_handling_unknown_interactions.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['534921']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'ianloic@google.com', 'yifeit@google.com']
+  submitted: '2021-05-25'
+  reviewed: '2021-10-27'
+
+- name: 'RFC-0139'
+  title: 'Bazel SDK'
+  short_description: 'Plan and requirements to design and distribute an official Bazel SDK.'
+  authors: ['chriscraws@google.com']
+  file: '0139_bazel_sdk.md'
+  area: ['General']
+  issue: ['']
+  gerrit_change_id: ['560368']
+  status: 'Accepted'
+  reviewers: [ 'amathes@google.com', 'chandarren@google.com', 'chaselatta@google.com', 'lijiaming@google.com', 'shayba@google.com', 'dworsham@google.com', 'sethladd@google.com', 'ejia@google.com', 'maruel@google.com', 'hjfreyer@google.com', 'crjohns@google.com', 'mangini@google.com']
+  submitted: '2021-11-16'
+  reviewed: '2021-11-10'
+
+- name: 'RFC-0140'
+  title: 'Realm Builder'
+  short_description: 'The design an feature set of Realm Builder is outlined and described'
+  authors: ['dgonyeo@google.com']
+  file: '0140_realm_builder.md'
+  area: ['Component Framework']
+  issue: ['']
+  gerrit_change_id: ['576844']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'yaneury@google.com', 'peterjohnston@google.com', 'jaeheon@google.com']
+  submitted: '2021-09-06'
+  reviewed: '2021-11-10'
+
+- name: 'RFC-0141'
+  title: 'CTS Process'
+  short_description: 'Describes a process for driving CTS tests to full coverage.'
+  authors: ['jeremymanson@google.com']
+  file: '0141_cts_process.md'
+  area: ['Testing']
+  issue: ['']
+  gerrit_change_id: ['583561']
+  status: 'Accepted'
+  reviewers: [ 'ananthak@google.com', 'dworsham@google.com', 'jcecil@google.com', 'pascallouis@google.com', 'shayba@google.com']
+  submitted: '2021-09-20'
+  reviewed: '2021-11-15'
+
+- name: 'RFC-0142'
+  title: 'zx_thread_legacy_yield'
+  short_description: 'Introduces a specialized syscall for yield.'
+  authors: ['gevalentino@google.com']
+  file: '0142_zx_thread_legacy_yield.md'
+  area: ['Kernel']
+  issue: ['']
+  gerrit_change_id: ['590273']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'eieio@google.com', 'travisg@google.com', 'mvanotti@google.com', 'surajmalhotra@google.com']
+  submitted: '2021-11-29'
+  reviewed: '2021-10-13'
+
+- name: 'RFC-0143'
+  title: 'Userspace Top-Byte-Ignore'
+  short_description: 'Changes the kernel ABI to support tagged userspace pointers.'
+  authors: ['leonardchan@google.com']
+  file: '0143_userspace_top_byte_ignore.md'
+  area: ['Kernel']
+  issue: ['']
+  gerrit_change_id: ['571312']
+  status: 'Accepted'
+  reviewers: ['maniscalco@google.com', 'shayba@google.com', 'dangyi@google.com', 'cpu@google.com', 'travisg@google.com', 'mvanotti@google.com', 'mcgrathr@google.com']
+  submitted: '2021-11-30'
+  reviewed: '2021-11-30'
+
+- name: 'RFC-0144'
+  title: 'Size Check Tool'
+  short_description: 'Proposes a rewrite of size_checker.go to create a more cohesive in-tree and out-of-tree developer experience.'
+  authors: ['awolter@google.com']
+  file: '0144_size_check_tool.md'
+  area: ['Developer']
+  issue: ['85371']
+  gerrit_change_id: ['609963']
+  status: 'Accepted'
+  reviewers: ['sebmarchand@google.com', 'amituttam@google.com', 'samans@google.com', 'atyfto@google.com', 'rohpavone@google.com', 'hjfreyer@google.com']
+  submitted: '2021-11-22'
+  reviewed: '2021-12-10'
+
+- name: 'RFC-0145'
+  title: 'Eager package updates'
+  short_description: 'Eager updates to packages outside of the system monolith.'
+  authors: ['wittrock@google.com', 'computerdruid@google.com']
+  file: '0145_eager_package_updates.md'
+  area: ['Software Delivery']
+  issue: ['83496']
+  gerrit_change_id: ['583842']
+  status: 'Accepted'
+  reviewers: ['hjfreyer@google.com', 'geb@google.com', 'ampearce@google.com', 'computerdruid@google.com', 'senj@google.com', 'jsankey@google.com', 'marvinpaul@google.com', 'camrdale@google.com']
+  submitted: '2021-10-15'
+  reviewed: '2021-12-13'
+
+- name: 'RFC-0146'
+  title: 'Structured Config Schemas in CML'
+  short_description: 'Design, implementation strategy and other decisions made regarding structured config schemas in CML'
+  authors: ['xbhatnag@google.com']
+  file: '0146_structured_config_schemas_in_cml.md'
+  area: ['Component Framework']
+  issue: ['86128']
+  gerrit_change_id: ['595204']
+  status: 'Accepted'
+  reviewers: ['adamperry@google.com', 'jsankey@google.com', 'geb@google.com', 'pascallouis@google.com', 'cpu@google.com']
+  consulted: ['aaronwood@google.com', 'yifeit@google.com', 'surajmalhotra@google.com', 'shayba@google.com']
+  submitted: '2021-10-18'
+  reviewed: '2021-12-22'
+
+- name: 'RFC-0147'
+  title: 'View System'
+  short_description: 'Describes the windowing system for the Fuchsia platform and ratifies its role in the platform.'
+  authors: ['dworsham@google.com', 'jaeheon@google.com', 'neelsa@google.com']
+  file: '0147_view_system.md'
+  area: ['HCI, UI']
+  issue: ['83310']
+  gerrit_change_id: ['602783']
+  status: 'Accepted'
+  reviewers: ['reveman@google.com', 'jjosh@google.com', 'emircan@google.com', 'quiche@google.com', 'ypomortsev@google.com', 'kostyak@google.com', 'wez@google.com']
+  consulted: ['sanjayc@google.com', 'hjfreyer@google.com', 'lindkvist@google.com', 'jsankey@google.com']
+  submitted: '2021-11-03'
+  reviewed: '2022-01-05'
+
+- name: 'RFC-0148'
+  title: 'CI Guidelines'
+  short_description: 'Guidelines for project and infrastructure owners in the Fuchsia ecosystem to create sustainable CI (Continuous Integration) experiences.'
+  authors: ['atyfto@google.com']
+  file: '0148_ci_guidelines.md'
+  area: ['Developer', 'Governance']
+  issue: ['']
+  gerrit_change_id: ['613084']
+  status: 'Accepted'
+  reviewers: ['maruel@google.com', 'awolter@google.com', 'chaselatta@google.com', 'shayba@google.com', 'nsylvain@google.com', 'mangini@google.com', 'nmulcahey@google.com', 'dgilhooley@google.com', 'lijiaming@google.com', 'hjfreyer@google.com']
+  submitted: '2021-12-02'
+  reviewed: '2022-01-18'
+
+- name: 'RFC-0149'
+  title: 'FIDL encode validation not mandatory'
+  short_description: 'No longer require validation during FIDL encode. However, validation still will take place during decode and padding must be zeroed during encode.'
+  authors: ['bprosnitz@google.com']
+  file: '0149_fidl_encode_validation_not_mandatory.md'
+  area: ['FIDL']
+  issue: ['']
+  gerrit_change_id: ['608742']
+  status: 'Accepted'
+  reviewers: [ 'pascallouis@google.com', 'yifeit@google.com', 'mkember@google.com']
+  submitted: '2021-11-19'
+  reviewed: '2022-01-22'
+
+- name: 'RFC-0150'
+  title: 'Update opt-out'
+  short_description: 'Policy and features for product owners to allow users to opt out of software updates.'
+  authors: ['wittrock@google.com', 'ampearce@google.com']
+  file: '0150_update_opt_out.md'
+  area: ['Software Delivery']
+  issue: ['91299']
+  gerrit_change_id: ['631609']
+  status: 'Accepted'
+  reviewers: ['kevinwells@google.com', 'ampearce@google.com', 'pascallouis@google.com']
+  consulted: ['borthakur@google.com', 'marvinpaul@google.com', 'gtsai@google.com', 'leannogasawara@google.com']
+  submitted: '2022-01-14'
+  reviewed: '2022-01-31'
+
+- name: 'RFC-0151'
+  title: 'Compiler tuning flags for CPU targeting'
+  short_description: 'Proposed changes to compiler flags that govern CPU targeting, and their effects on the platform and SDK build.'
+  authors: ['shayba@google.com']
+  file: '0151_compiler_cpu_targeting.md'
+  area: ['Toolchain']
+  issue: ['90784']
+  gerrit_change_id: ['624521']
+  status: 'Accepted'
+  reviewers: ['phosek@google.com', 'aaronwood@google.com', 'mvanotti@google.com', 'mcgrathr@google.com', 'digit@google.com', 'travisg@google.com', 'cpu@google.com']
+  submitted: '2022-01-04'
+  reviewed: '2022-02-02'
+
+- name: 'RFC-0152'
+  title: 'Improved OOM handling behavior'
+  short_description: 'Improves out of memory handling by allowing vastly more userspace code to exit and creating a signal path for userspace to inform the kernel when userspace cleanup is complete.'
+  authors: ['jmatt@google.com']
+  file: '0152_improved_oom_handling.md'
+  area: ['Drivers', 'Kernel', 'Power']
+  issue: ['66786']
+  gerrit_change_id: ['622788']
+  status: 'Accepted'
+  reviewers: ['dgilhooley@google.com', 'frousseau@google.com', 'maniscalco@google.com', 'palmer@google.com', 'pankhurst@google.com', 'ppi@google.com', 'pshickel@google.com', 'rashaeqbal@google.com', 'shayba@google.com', 'surajmalhotra@google.com']
+  submitted: '2021-12-20'
+  reviewed: '2022-02-09'
+
+- name: 'RFC-0153'
+  title: 'Ninja customization for Fuchsia'
+  short_description: 'Proposal to use a customized version of the Ninja build tool for Fuchsia to speed up the build, improve status reporting and usability.'
+  authors: ['digit@google.com', 'shayba@google.com', 'tmandry@google.com']
+  file: '0153_ninja_customization.md'
+  area: ['Build']
+  issue: ['91545']
+  gerrit_change_id: ['635356']
+  status: 'Accepted'
+  reviewers: ['shayba@google.com', 'maruel@google.com', 'abarth@google.com', 'fangism@google.com', 'jayzhuang@google.com', 'rudymathu@google.com']
+  submitted: '2022-01-22'
+  reviewed: '2022-03-17'
+
+- name: 'RFC-0154'
+  title: 'Subpackages'
+  short_description: 'Allow packages to declare dependencies on version-specific subpackages, to improve hermeticity and relocatability.'
+  authors: ['richkadel@google.com', 'crjohns@google.com']
+  file: '0154_subpackages.md'
+  area: ['Software Delivery']
+  issue: ['89252']
+  gerrit_change_id: ['637489']
+  status: 'Accepted'
+  reviewers: ['hjfreyer@google.com', 'wittrock@google.com', 'jsankey@google.com', 'abarth@google.com', 'wittrock@google.com', 'geb@google.com', 'shayba@google.com', 'ampearce@google.com', 'etryzelaar@google.com', 'aaronwood@google.com', 'dgonyeo@google.com']
+  submitted: '2022-01-25'
+  reviewed: '2022-03-23'
+
+- name: 'RFC-0155'
+  title: 'Optional capability routes'
+  short_description: 'A new field is added to the offer and use sections of component manifests to denote when a given capability may not exist.'
+  authors: ['dgonyeo@google.com']
+  file: '0155_optional_capability_routes.md'
+  area: ['Component Framework']
+  issue: ['87164']
+  gerrit_change_id: ['642862']
+  status: 'Accepted'
+  reviewers: ['markdittmer@google.com', 'geb@google.com', 'mnck@google.com', 'aniramakri@google.com', 'yaar@google.com', 'hjfreyer@google.com']
+  submitted: '2022-02-07'
+  reviewed: '2022-04-14'
+
+- name: 'RFC-0156'
+  title: 'Stream Append Mode'
+  short_description: 'Add an append mode to streams.'
+  authors: ['cdrllrd@google.com']
+  file: '0156_stream_append_mode.md'
+  area: ['Kernel']
+  issue: ['88678']
+  gerrit_change_id: ['664693']
+  status: 'Accepted'
+  reviewers: ['jamesr@google.com', 'abarth@google.com', 'rashaeqbal@google.com', 'csuter@google.com']
+  submitted: '2022-04-06'
+  reviewed: '2022-04-20'
+
+- name: 'RFC-0157'
+  title: 'Fxfs encryption and multi-volume support'
+  short_description: 'Describes encryption and multi-volume support in Fxfs.'
+  authors: ['csuter@google.com']
+  file: '0157_fxfs_encryption_and_multi_volume_support.md'
+  area: ['Storage']
+  issue: ['92275']
+  gerrit_change_id: ['666884']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'enoharemaien@google.com', 'palmer@google.com', 'jfsulliv@google.com', 'jsankey@google.com', 'zarvox@google.com']
+  submitted: '2022-04-07'
+  reviewed: '2022-04-28'
+
+- name: 'RFC-0158'
+  title: 'Structured Config Accessors'
+  short_description: 'High-level philosophy and requirements for user-facing config accessors.'
+  authors: ['adamperry@google.com']
+  file: '0158_structured_config_accessors.md'
+  area: ['Component Framework']
+  issue: ['95371']
+  gerrit_change_id: ['609977']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'jsankey@google.com', 'yifeit@google.com']
+  submitted: '2021-12-20'
+  reviewed: '2022-05-04'
+
+- name: 'RFC-0159'
+  title: 'Execute Only Memory'
+  short_description: 'Support for mapping execute-only memory.'
+  authors: ['abrachet@google.com']
+  file: '0159_execute_only_memory.md'
+  area: ['Zircon', 'Toolchain']
+  issue: ['89845']
+  gerrit_change_id: ['641406']
+  status: 'Accepted'
+  reviewers: ['travisg@google.com', 'maniscalco@google.com', 'palmer@google.com', 'mcgrathr@google.com', 'mvanotti@google.com', 'curtisgalloway@google.com']
+  submitted: '2022-03-29'
+  reviewed: '2022-05-10'
+
+- name: 'RFC-0160'
+  title: 'Remove support for FIDL struct defaults'
+  short_description: 'This RFC proposes removing the ability to specify default values on FIDL struct fields.'
+  authors: ['bprosnitz@google.com']
+  file: '0160_fidl_remove_struct_defaults.md'
+  area: ['FIDL']
+  issue: ['100530']
+  gerrit_change_id: ['623161']
+  status: 'Accepted'
+  reviewers: ['ianloic@google.com', 'yifeit@google.com']
+  submitted: '2021-12-29'
+  reviewed: '2022-05-17'
+
+- name: 'RFC-0161'
+  title: 'Scenic Allocator API'
+  short_description: 'Former API design document for the Scenic Allocator for API calibration.'
+  authors: ['emircan@google.com']
+  file: '0161_scenic_allocator.md'
+  area: ['Graphics']
+  issue: ['']
+  gerrit_change_id: ['504760']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'jbauman@google.com', 'jaeheon@google.com']
+  submitted: '2021-03-19'
+  reviewed: '2021-04-05'
+
+- name: 'RFC-0162'
+  title: 'Flatland API'
+  short_description: 'Describes Flatland, the 2D composition API for Fuchsia.'
+  authors: ['emircan@google.com']
+  file: '0162_flatland.md'
+  area: ['Graphics']
+  issue: ['']
+  gerrit_change_id: ['534141']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com']
+  submitted: '2021-05-24'
+  reviewed: '2021-05-30'
+
+- name: 'RFC-0163'
+  title: 'Test Output Format'
+  short_description: 'Defines, but does not yet use, an initial stable version of the test output format produced by ffx test.'
+  authors: ['satsukiu@google.com']
+  file: '0163_test_output_format.md'
+  area: ['Testing']
+  issue: ['81195']
+  gerrit_change_id: ['649303']
+  status: 'Accepted'
+  reviewers: ['anmittal@google.com', 'maruel@google.com', 'marshallk@google.com', 'crjohns@google.com', 'gridman@google.com', 'olivernewman@google.com', 'dragonbear@google.com']
+  submitted: '2022-02-22'
+  reviewed: '2022-05-18'
+
+- name: 'RFC-0164'
+  title: 'Test Suite API'
+  short_description: 'API review to publish suite protocol to sdk'
+  authors: ['anmittal@google.com']
+  file: '0164_test_suite.md'
+  area: ['Testing']
+  issue: ['']
+  gerrit_change_id: ['655031']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'crjohns@google.com', 'satsukiu@google.com']
+  submitted: '2022-03-07'
+  reviewed: '2022-05-05'
+
+- name: 'RFC-0165'
+  title: 'SDK categories'
+  short_description: 'SDK atoms have categories that describe their maturity and intended audience.'
+  authors: ['abarth@google.com']
+  file: '0165_sdk_categories.md'
+  area: ['Developer']
+  issue: ['']
+  gerrit_change_id: ['679446']
+  status: 'Accepted'
+  reviewers: ['dschuyler@google.com', 'jamesr@google.com', 'jeremymanson@google.com', 'neelsa@google.com', 'sebmarchand@google.com', 'sethladd@google.com']
+  submitted: '2022-05-13'
+  reviewed: '2022-05-31'
+
+- name: 'RFC-0166'
+  title: 'One UI Stack'
+  short_description: 'Clarifies plans and policy to move all Fuchsia Products to a single graphics and input stack.'
+  authors: ['neelsa@google.com']
+  file: '0166_ui_stack.md'
+  area: ['UI']
+  issue: ['100308']
+  gerrit_change_id: ['676347']
+  status: 'Accepted'
+  reviewers: ['jjosh@google.com', 'emircan@google.com', 'jaeheon@google.com', 'lucasradaelli@google.com', 'quiche@google.com', 'dworsham@google.com']
+  consulted: ['yeg@google.com']
+  submitted: '2022-05-04'
+  reviewed: '2022-06-03'
+
+- name: 'RFC-0167'
+  title: 'Packages in early userspace bootstrapping'
+  short_description: 'Introduction of packages to BootFS and boot resolution.'
+  authors: ['lukenicholson@google.com']
+  file: '0167_early_boot_packages.md'
+  area: ['Component Framework']
+  issue: ['97517']
+  gerrit_change_id: ['677144']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'mcgrathr@google.com', 'surajmalhotra@google.com', 'aaronwood@google.com', 'galbanum@google.com', 'wittrock@google.com', 'jfsulliv@google.com']
+  submitted: '2022-05-10'
+  reviewed: '2022-06-13'
+
+- name: 'RFC-0168'
+  title: 'Exposing Inspect through InspectSink'
+  short_description: 'Define the mechanism through which Inspect is exposed by components.'
+  authors: ['miguelfrde@google.com']
+  file: '0168_exposing_inspect_through_inspectsink.md'
+  area: ['Diagnostics', 'Component Framework']
+  issue: ['100583', '93344']
+  gerrit_change_id: ['680702']
+  status: 'Accepted'
+  reviewers: ['crjohns@google.com', 'geb@google.com', 'shayba@google.com']
+  submitted: '2022-05-17'
+  reviewed: '2022-06-15'
+
+- name: 'RFC-0170'
+  title: 'Remove binary images from the update package'
+  short_description: 'Reorder image writes during an OTA to save space.'
+  authors: ['nolivia@google.com']
+  file: '0170_remove_binary_images_from_the_update_package.md'
+  area: ['Software Delivery']
+  issue: ['100214']
+  gerrit_change_id: ['678884']
+  status: 'Accepted'
+  reviewers: ['wittrock@google.com', 'jsankey@google.com', 'gtsai@google.com', 'awolter@google.com', 'kevinwells@google.com', 'ampearce@google.com', 'billstevenson@google.com']
+  submitted: '2022-05-12'
+  reviewed: '2022-06-22'

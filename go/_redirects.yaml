@@ -1,0 +1,51 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as a reviewer.
+# Using ? or * is not supported in the redirect links.
+redirects:
+# Component Framework links
+- from: /docs/go/components/build
+  to: /docs/development/components/build.md
+- from: /docs/go/components/build-errors
+  to: /docs/development/components/build.md#troubleshooting
+- from: /docs/go/components/collections
+  to: https://fuchsia.dev/reference/cml#collections
+- from: /docs/go/components/connect
+  to: /docs/development/components/connect.md
+- from: /docs/go/components/connect-errors
+  to: /docs/development/components/connect.md#troubleshooting
+- from: /docs/go/components/instance-id
+  to: /docs/development/components/component_id_index
+- from: /docs/go/components/run
+  to: /docs/development/components/run.md
+- from: /docs/go/components/run-errors
+  to: /docs/development/components/run.md#troubleshooting
+- from: /docs/go/components/runners
+  to: /docs/concepts/components/v2/capabilities/runners
+- from: /docs/go/components/restricted-features
+  to: /docs/development/components/build.md#restricted-features
+- from: /docs/go/components/test-errors
+  to: /docs/development/testing/components/test_runner_framework.md#troubleshooting
+- from: /docs/go/components/test-runners
+  to: /docs/development/testing/components/test_runner_framework.md#test-runners
+- from: /docs/go/components/url
+  to: /docs/reference/components/url
+- from: /docs/go/components/structured-config
+  to: /docs/development/components/structured_config
+- from: /docs/go/components/declaration
+  to: https://fuchsia.dev/reference/fidl/fuchsia.component.decl
+- from: /docs/go/components/realm-builder-reference
+  to: https://fuchsia.dev/reference/fidl/fuchsia.component.test
+- from: /docs/go/components/capabilities
+  to: /docs/concepts/components/v2/capabilities
+  # Keep this item last as the default fallback path
+- from: /docs/go/components/...
+  to: /docs/concepts/components/v2/README.md
+
+# Hardware links
+- from: /fuchsia-src/go/intree-drivers
+  to: /fuchsia-src/reference/hardware/drivers

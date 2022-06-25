@@ -1,0 +1,22 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+
+toc:
+- title: "Overview"
+  path: /docs/development/testing/components/README.md
+- title: "Test components"
+  path: /docs/development/testing/components/test_component.md
+- title: "Test Runner Framework"
+  path: /docs/development/testing/components/test_runner_framework.md
+- title: "Integration testing"
+  path: /docs/development/testing/components/integration_testing.md
+- title: "Realm builder"
+  path: /docs/development/testing/components/realm_builder.md
+- title: "Hermetic testing using OpaqueTest"
+  path: /docs/development/testing/components/opaque_test.md
+  status: deprecated

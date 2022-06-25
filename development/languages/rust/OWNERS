@@ -1,7 +1,7 @@
 tmandry@google.com
 dnordstrom@google.com
 
-per-file add-logging.md,logging.md = file: /src/diagnostics/OWNERS
+per-file logging.md = file: /src/diagnostics/OWNERS
 per-file third_party.md = file: /third_party/rust_crates/OWNERS
 
 per-file bloat.md = adamperry@google.com

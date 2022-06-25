@@ -139,7 +139,7 @@ valuable for reproducing the test, such as the random seed used.
 #[derive(Debug)]
 pub struct FilesystemEnvironment {
     fs_actor: Arc<Mutex<FilesystemActor>>,
-    seed: u128,
+    seed: u64,
     ...
 }
 
@@ -191,7 +191,7 @@ implemented in the Environment and Actors. Use the main function to collect comm
 arguments (if any), initialize logging and set log severity.
 
 Note: The stress test library offers a `StdoutLogger` that prints all logs to stdout. This
-functionality can be used by any stress test that runs as a v1 (cmx) component.
+functionality can be used by any stress test that runs as a legacy (cmx) component.
 
 ```rust
 #[fuchsia_async::run_singlethreaded]

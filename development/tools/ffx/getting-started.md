@@ -3,10 +3,6 @@
 This doc will guide you through some of the features of `ffx`. For an overview
 of the design and components of `ffx`, see [the ffx overview](/docs/development/tools/ffx/overview.md).
 
-Warning: **`ffx` is currently in alpha. Its APIs, command-line surface, and
-documentation are subject to change.**
-
-
 ## Contacting the ffx team
 
 If you discover possible bugs or have questions or suggestions,
@@ -16,29 +12,34 @@ If you discover possible bugs or have questions or suggestions,
 
 To follow the examples in this doc, you'll need a Fuchsia device running. If you
 don't have a physical device connected, you can use an emulator with networking
-enabled (`-N`).
+enabled by starting the emulator with the `--net tap` option.
 
-Tip: To start a headless emulator, run `fx emu --headless --software-gpu -N`.
+To start an emulator with networking enabled but without graphical user
+interface support,
+run `ffx emu start --net tap --headless`.
+
+For more information on configuring the emulator
+see, [Start the Fuchsia emulator](/docs/get-started/set_up_femu.md).
 
 Your device must be running a `core`
-[product configuration](/docs/concepts/build_system/boards_and_products.md)
+[product configuration](/docs/development/build/build_system/boards_and_products.md)
 or a product configuration that extends `core` (such as `workstation`).
 
-Optionally, you can run `fx log`, which will provide some additional information
+Optionally, you can run `ffx log`, which will provide some additional information
 about the interactions between `ffx` and your Fuchsia target device.
 
 ## Introduction
 
 After following all the prerequisites, run the following in a terminal:
 
-```sh
+```posix-terminal
 fx ffx help
 ```
 
 This will list all of the available `ffx` subcommands. You'll see something
 like:
 
-```
+```none
 Usage: ffx [-c <config>] [-e <env>] [-t <target>] [<command>] [<args>]
 
 Fuchsia's developer tool
@@ -72,26 +73,20 @@ more about any subcommand.
 
 In a terminal, run the following:
 
-```sh
+```posix-terminal
 fx ffx target list
 ```
 
 You'll see a list of devices that `ffx` has discovered. For example, with a
 single emulator running, output looks like:
 
+```none
+NAME                    SERIAL       TYPE       STATE      ADDRS/IP                       RCS
+fuchsia-emulator  <unknown>    Unknown    Product    [fe80::5054:ff:fe63:5e7a%4]    N
 ```
-NAME                    TYPE       STATE      ADDRS/IP                       AGE     CS
-fuchsia-5254-0063-5e7a  Unknown    Unknown    [fe80::5054:ff:fe63:5e7a%4]    0m0s    N
-```
 
-NOTE: Ignore the `TYPE` and `STATE` columns - they have no values besides
-`UNKNOWN` right now.
-
-A couple of columns are worth explanation:
-
-- `AGE`: This is the time since `ffx` was last able to reach the device.
-- `RCS`: Indicates whether there is a reachable instance of the
-  Remote Control Service (RCS) running on the device.
+`RCS`: Indicates whether there is a reachable instance of the Remote Control
+Service (RCS) running on the device.
 
 In order to get `ffx` to automatically connect to a device, you must either have
 set the target's nodename to be the default target, or attempt to interact with the
@@ -99,7 +94,7 @@ device.
 
 To set the target to be the default, run:
 
-```sh
+```posix-terminal
 fx ffx target default set $NODENAME
 ```
 
@@ -109,28 +104,28 @@ should yield a change to the `RCS` status to show `Y`.
 If the default target has been set after starting the daemon, attempting to interact
 with the target should be sufficient to kick off a connection, like the following
 
-```sh
+```posix-terminal
 fx ffx component list
 ```
 
-NOTE: if the default target has been set, and you are unable to run that command
+Note: If the default target has been set, and you are unable to run that command
 against the target, [reach out](#contacting_the_ffx_team) to the `ffx` team.
 
 Then the next time you list targets you should see that an `RCS` connection
-isn't active.
+is active.
 
-```sh
+```none
 $ fx ffx target list
-NAME                    TYPE       STATE      ADDRS/IP                       AGE     RCS
-fuchsia-5254-0063-5e7a  Unknown    Unknown    [fe80::5054:ff:fe63:5e7a%4]    0m6s    Y
+NAME                    SERIAL       TYPE       STATE      ADDRS/IP                       RCS
+fuchsia-emulator  <unknown>    Unknown    Product    [fe80::5054:ff:fe63:5e7a%4]    Y
 ```
 
 If a target has been set as default there will be a `*` next to it.
 
-If you had `fx log` running, you should also see something like the following in
+If you had `ffx log` running, you should also see something like the following in
 the logs:
 
-```
+```none
 [00009.776170][28540][28542][remote-control, remote_control_bin] INFO: published remote control service to overnet
 ```
 
@@ -142,14 +137,14 @@ ffx, [reach out](#contacting_the_ffx_team) to the `ffx` team.
 
 Above we covered setting the default target using the command
 
-```sh
+```posix-terminal
 fx ffx target default set
 ```
 
 It is also possible to set the default target on a per-command basis using the
 `--target` flag like so.
 
-```sh
+```posix-terminal
 fx ffx --target $NODENAME component list
 ```
 
@@ -176,14 +171,14 @@ in [component selector documentation](/docs/development/tools/ffx/commands/compo
 
 You can use the `component select` command to
 * inspect services in the
-[component topology](/docs/concepts/components/v2/topology.md)
+  [component topology](/docs/concepts/components/v2/topology.md)
 * search for components that expose a service.
 
 For example, the following command will display all services offered by
-[v1 components](/docs/glossary.md#components-v1):
+[legacy components](/docs/glossary/README.md#components-v1):
 
-```sh
-$ fx ffx component select moniker 'core/appmgr:out:*'`
+```none
+$ fx ffx component select moniker 'core/appmgr:out:*'
 
 core/appmgr
 |
@@ -214,20 +209,19 @@ large number of services.
 
 The following command will display all components that expose `diagnostics`:
 
-```sh
-$ fx ffx component select capability diagnostics
-
-./bootstrap/archivist
-./bootstrap/driver_manager
-./bootstrap/fshost
-./bootstrap/power_manager
-./core/appmgr
-./core/detect
-./core/last_reboot
-./core/log-stats
-./core/pkg-cache
-./core/sampler
-./core/system-update-committer
+```none
+fx ffx component select capability diagnostics
+/bootstrap/archivist
+/bootstrap/driver_manager
+/bootstrap/fshost
+/bootstrap/power_manager
+/core/appmgr
+/core/detect
+/core/last_reboot
+/core/log-stats
+/core/pkg-cache
+/core/sampler
+/core/system-update-committer
 ```
 
 ### Verifying a service is up
@@ -239,43 +233,71 @@ and only if the channel isn't closed.
 The component framework will start the component that provides the service
 on-demand.
 
-Note: the selector you pass to `knock` may contain a wildcard but must match
+Note: the service you pass to `knock` may contain a wildcard but must match
 _exactly one_ service. You cannot `knock` on multiple services at once.
 
 For example:
 
-```
-$ fx ffx component knock 'core/appmgr:out:fuchsia.hwinfo.P*'
+```none
+$ fx ffx component knock /core/appmgr fuchsia.hwinfo.P*
 Success: service is up. Connected to 'core/appmgr:out:fuchsia.hwinfo.Product'.
+```
 
-$ fx ffx component knock 'core/appmgr:out:not.a.real.service'
+```none
+$ fx ffx component knock /core/appmgr not.a.real.service
 Failed to connect to service: NoMatchingServices
 ```
 
-### Running a component
+### Running a CML component
 
-`ffx` can run components on a device given their package URL and arguments.
-`stdout` and `stderr` will be streamed to the corresponding descriptor on the
-host terminal.
+`ffx` can run CML components in an isolated realm given their package URL. Currently, this isolated
+realm provides the following capabilities:
 
-Only v1 components can be `run`: v2 components are only started on-demand by
-the framework. Learn more about the component lifecycle
-[here](/docs/concepts/components/v2/lifecycle.md).
+* `fuchsia.logger.LogSink` protocol
+* `fuchsia.process.Launcher` protocol
+* `tmp` storage
+* `data` storage
+* [`dev` directory](/docs/concepts/process/namespaces.md#typical_directory_structure): the root
+device tree of the system
+* [`boot` directory](/docs/concepts/process/namespaces.md#typical_directory_structure): the full
+bootfs filesystem used by the system during bootup
 
-Note: `fx serve ` must be running in order to `component run` a package that is
-not
-[in base or cached](/docs/concepts/build_system/boards_and_products.md#dependency_sets).
+CML components are run with the `ffx component run` subcommand. These components are automatically
+destroyed when they stop.
+
+Note: `fx serve` must be running in order to run a package that is not
+[in base or cached](/docs/development/build/build_system/boards_and_products.md#dependency_sets).
 
 Here's an example of running the Rust hello-world component. First, you'll need
 the hello-world package in your universe:
 
-```
+```none
 $ fx set <product>.<board> --with //examples/hello_world/rust:hello-world-rust && fx build
 ...
-$ fx ffx component run fuchsia-pkg://fuchsia.com/hello-world-rust#meta/hello-world-rust.cmx
-Hello, world!
+$ fx ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
+URL: fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
+Moniker: /core/ffx-laboratory:hello-world-rust
+Creating component instance...
+...
+$ fx ffx component show hello-world-rust
+               Moniker: /core/ffx-laboratory:hello-world-rust
+                   URL: fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
+                  Type: v2 dynamic component
+       Execution State: Running
+                Job ID: 50775
+            Process ID: 50819
+...
 ```
 
+### Running a CMX component
+
+`ffx` can run CMX components on a device given their package URL and arguments.
+
+CMX components are run with the `ffx component run-legacy` subcommand. `stdout` and `stderr` will
+be streamed to the corresponding descriptor on the host terminal.
+
+Note: `fx serve` must be running in order to run a package that is not
+[in base or cached](/docs/development/build/build_system/boards_and_products.md#dependency_sets).
 
 ## Resolving connectivity issues
 
@@ -290,7 +312,7 @@ a target device and start the Remote Control Service.
 
 If you try running `ffx doctor` under normal circumstances, you should see:
 
-```
+```none
 $ fx ffx doctor
 Checking for a running daemon...none running.
 Attempting to kill any zombie daemons...killed at least one daemon.
@@ -310,7 +332,7 @@ also provide a link to the Monorail component in which you can file a bug if you
 persistently have problems. For example, if `doctor` is unable to start the RCS,
 you would see the following:
 
-```
+```none
 $ fx ffx doctor
 Checking for a running daemon...found
 Attempting to connect to the daemon. This may take a couple seconds...success

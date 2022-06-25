@@ -78,7 +78,7 @@ reseeding:
 * Entropy from hardware RNG such as the `RDSEED` instruction on x86 devices and
 other hardware specific RNGs.
 
-* [Jitter Entropy](/docs/concepts/system/jitterentropy/README.md)
+* [Jitter Entropy](/docs/concepts/kernel/jitterentropy/README.md)
 
 The kernel cmdline is only used at initial seeding because it is a constant
 passed in at boot for one-time use only. The entropy from hardware and jitter

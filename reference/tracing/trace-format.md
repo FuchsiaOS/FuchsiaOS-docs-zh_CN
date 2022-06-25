@@ -6,7 +6,7 @@ You can use this document to search for detailed information
 about each field in the Fuchsia trace format.
 
 Note: For information about the Fuchsia tracing system,
-see [Fuchsia tracing system](/docs/concepts/tracing/README.md).
+see [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 ## Overview
 
@@ -1080,6 +1080,7 @@ There are the following argument types:
 - [String argument](#string-argument)
 - [Pointer argument](#pointer-argument)
 - [Kernel object id argument](#kernel-object-id-argument)
+- [Boolean argument](#boolean-argument)
 
 ### Argument header {#argument-header}
 
@@ -1302,6 +1303,25 @@ _argument name stream_ (omitted unless string ref denotes inline string)
 _argument value word_
 
 - `[0 .. 63]`: the koid (kernel object id)
+
+### Boolean argument (argument type = 9) {#boolean-argument}
+
+Represents a boolean.
+
+##### Format
+
+![drawing](images/trace-format/argument9.png)
+
+_argument header word_
+
+- `[0 .. 3]`: argument type (9)
+- `[4 .. 15]`: argument size (inclusive of this word) as a multiple of 8 bytes
+- `[16 .. 31]`: argument name (string ref)
+- `[32 .. 63]`: 1 bit padded with zeros
+
+_argument name stream_ (omitted unless string ref denotes inline string)
+
+- UTF-8 string, padded with zeros to 8 byte alignment
 
 <!-- xrefs -->
 

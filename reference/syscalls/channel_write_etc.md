@@ -1,14 +1,14 @@
 # zx_channel_write_etc
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Write a message to a channel.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -32,8 +32,8 @@ transferred with *handles* being an array of `zx_handle_disposition_t`:
 typedef struct zx_handle_disposition {
     zx_handle_op_t operation;
     zx_handle_t handle;
-    zx_rights_t rights;
     zx_obj_type_t type;
+    zx_rights_t rights;
     zx_status_t result;
 } zx_handle_disposition_t;
 ```
@@ -107,7 +107,7 @@ are copied and the message is not sent. Usage for sending handles is unchanged.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_WRITE**.
 

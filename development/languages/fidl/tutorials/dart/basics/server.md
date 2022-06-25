@@ -14,7 +14,7 @@ This tutorial shows you how to implement a FIDL protocol
 of each kind: a fire and forget method, a two-way method, and an event:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
 ```
 
 For more on FIDL methods and messaging models, refer to the [FIDL concepts][concepts] page.
@@ -51,7 +51,7 @@ To create a component:
 1. Declare a target for the server in `examples/fidl/dart/server/BUILD.gn`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/BUILD.gn" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/BUILD.gn" %}
    ```
 
    The `dart_app` template defines multiple parts:
@@ -70,13 +70,13 @@ To create a component:
     The dependencies will used later when implementing the FIDL server, and are not needed yet
     at this step.
 
-1. Add a component manifest in `examples/fidl/rust/server/server.cmx`:
+1. Add a component manifest in `examples/fidl/dart/server/server.cmx`:
 
    Note: The binary name in the manifest must match the name of the `dart_app`, which is used
    to define the Dart executable.
 
    ```cmx
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/meta/server.cmx" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/meta/server.cmx" %}
    ```
 
 ### Run the component
@@ -98,14 +98,15 @@ other product configurations.
 1. Ensure `fx serve` is running in a separate tab and connected to an instance of
    Fuchsia (e.g. running in QEMU using `fx qemu`), then run the server:
 
-   Note: The component should be referenced by its [URL][glossary-url], which
-   is determined with the [`fuchsia-pkg://` scheme][glossary-scheme]. The
+   Note: The component should be referenced by its
+   [URL][glossary.component url], which
+   is determined with the `[fuchsia-pkg://][glossary.fuchsia-pkg URL]` scheme. The
    package name in the URL matches the `package_name` field in the `fuchsia_package`
    declaration, and the manifest path in `meta/` matches the target name of the
    `fuchsia_component`.
 
    ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-rust-dart#meta/echo-server.cmx
+   fx shell run fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo-server.cmx
    ```
 
 ## Implement the server
@@ -115,7 +116,7 @@ other product configurations.
 Import the required dependencies in `lib/main.dart`:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="imports" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="imports" %}
 ```
 
 ### Implement an Echo server
@@ -123,7 +124,7 @@ Import the required dependencies in `lib/main.dart`:
 Add the following to `lib/main.dart`, above the `main()` function:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="impl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="impl" %}
 ```
 
 The implementation consists of the following elements:
@@ -172,7 +173,7 @@ This complete process is described in further detail in the
 First, the code initializes the `EchoBinding` as mentioned above:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="main" highlight="4,5,6,7" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="main" highlight="4,5,6,7" %}
 ```
 
 In order to run, a binding needs two things:
@@ -188,7 +189,7 @@ connect to an `Echo` server.
 Then, the code calls the component manager to expose the `Echo` FIDL protocol to other components:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="main" highlight="10,11,12,13,14,15,16,17" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="main" highlight="10,11,12,13,14,15,16,17" %}
 ```
 
 It does so using the `fuchsia_services` package, which provides an API to access the startup context
@@ -235,18 +236,18 @@ Then run the server:
 fx shell run fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo-server.cmx
 ```
 
-You should see server hanging and the startup log using `fx log`.
+You should see server hanging and the startup log using `ffx log`.
 This is expected because an
 [event loop](https://dart.dev/tutorials/language/futures) to handle incoming
 requests is running. The next step will be to write a client for the server.
 
 <!-- xrefs -->
+[glossary-url]: /docs/glossary/README.md#component-url
+[glossary-scheme]: /docs/glossary/README.md#fuchsia-pkg-url
 [fidl-packages]: /docs/development/languages/fidl/tutorials/dart/basics/using-fidl.md
 [building-components]: /docs/development/components/build.md
-[products]: /docs/concepts/build_system/boards_and_products.md
+[products]: /docs/development/build/build_system/boards_and_products.md
 [getting-started]: /docs/get-started/index.md
-[glossary-url]: /docs/glossary.md#component-url
-[glossary-scheme]: /docs/glossary.md#fuchsia-pkg-url
 [declaring-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
 [depending-fidl]: /docs/development/languages/fidl/tutorials/dart/basics/using-fidl.md
 [component-manager]: /docs/concepts/components/v2/component_manager.md

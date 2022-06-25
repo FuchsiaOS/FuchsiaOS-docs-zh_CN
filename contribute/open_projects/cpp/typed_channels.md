@@ -126,7 +126,7 @@ the protocol implementation. We can avoid creating raw Zircon channels with the
   if (status != ZX_OK)
     return status;
   foo.HandleBar(std::move(server_end));
-  fidl::Client<Bar> bar(std::move(client_end), &dispatcher);
+  fidl::WireClient<Bar> bar(std::move(client_end), &dispatcher);
   ```
 
 * {After}
@@ -136,7 +136,7 @@ the protocol implementation. We can avoid creating raw Zircon channels with the
   if (!bar_ends.is_ok())
     return bar_ends.status_value();
   foo.HandleBar(std::move(bar_ends->server));
-  fidl::Client bar(std::move(bar_ends->client), &dispatcher);
+  fidl::WireClient bar(std::move(bar_ends->client), &dispatcher);
 
   // Alternatively, |CreateEndpoints| supports returning the client-end by address,
   // which would be useful when the client-end is an instance variable, for example
@@ -148,8 +148,8 @@ the protocol implementation. We can avoid creating raw Zircon channels with the
   foo.HandleBar(std::move(*bar_server_end));
   ```
 
-Note that the protocol template parameter to `fidl::Client` may be omitted when
-typed channels are used, leading to more succinct code.
+Note that the protocol template parameter to `fidl::WireClient` may be omitted
+when typed channels are used, leading to more succinct code.
 
 #### Sync clients
 
@@ -184,7 +184,7 @@ created ergonomic wrappers: [`service::Connect<Protocol>`][service-connect],
   status = fdio_service_connect("/svc/fuchsia.Foo", server_end.release());
   if (status != ZX_OK)
     return status;
-  fidl::Client<Foo> foo(std::move(client_end), &dispatcher);
+  fidl::WireClient<Foo> foo(std::move(client_end), &dispatcher);
   ```
 
 * {After}
@@ -197,7 +197,7 @@ created ergonomic wrappers: [`service::Connect<Protocol>`][service-connect],
   if (!client_end.is_ok())
     return client_end.status_value();
   // Note: can omit template argument
-  fidl::Client foo(std::move(*client_end), &dispatcher);
+  fidl::WireClient foo(std::move(*client_end), &dispatcher);
   ```
 
 #### Opening service directory
@@ -212,7 +212,7 @@ created ergonomic wrappers: [`service::Connect<Protocol>`][service-connect],
   status = fdio_service_connect("/svc", server_end.release());
   if (status != ZX_OK)
     return status;
-  fidl::Client<::fuchsia_io::Directory> dir(std::move(client_end));
+  fidl::WireClient<::fuchsia_io::Directory> dir(std::move(client_end));
   ```
 
 * {After}
@@ -225,7 +225,7 @@ created ergonomic wrappers: [`service::Connect<Protocol>`][service-connect],
   if (!client_end.is_ok())
     return client_end.status_value();
   // Note: can omit template argument
-  fidl::Client dir(std::move(*client_end), &dispatcher);
+  fidl::WireClient dir(std::move(*client_end), &dispatcher);
   ```
 
 ### Note: propagating protocol types
@@ -246,7 +246,7 @@ migrating a `zx::unowned_channel`:
   ```c++
   // |client| should speak the |fuchsia.foobar/Baz| protocol.
   zx_status_t DoThing(zx::unowned_channel client, int64_t args) {
-    return fidl::WireCall<fuchsia_foobar::Baz>(std::move(client)).Method(args).status();
+    return fidl::WireCall<fuchsia_foobar::Baz>(std::move(client))->Method(args).status();
   }
   ```
 
@@ -255,7 +255,7 @@ migrating a `zx::unowned_channel`:
   ```c++
   // The intended protocol is encoded in the type system. No need for comment.
   zx_status_t DoThing(fidl::UnownedClientEnd<fuchsia_foobar::Baz> client, int64_t args) {
-    return fidl::WireCall(client).Method(args).status();
+    return fidl::WireCall(client)->Method(args).status();
   }
   ```
 
@@ -309,7 +309,7 @@ You may add one of ianloic@, yifeit@ if need specific review from the FIDL team.
   `fidl::ClientEnd<::my_thing::Protocol>` and
   `fidl::InterfaceHandle<my::thing::Protocol>` to easily convert into one
   another, and same for servers.
-* HLCPP and V1 component framework APIs (`sys::ServiceDirectory`,
+* HLCPP and legacy component framework APIs (`sys::ServiceDirectory`,
   `sys::OutgoingDirectory`) use HLCPP `InterfaceHandle` and `InterfaceRequest`
   types, hence need additional conversion into LLCPP typed channels.
 
@@ -327,12 +327,12 @@ Reach out for questions or for status updates:
 [fix-protocol-3]:
 https://fuchsia-review.googlesource.com/c/fuchsia/+/478491/28/src/storage/lib/paver/partition-client.h#b46
 [bind-server]:
-https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/ulib/fidl/include/lib/fidl/llcpp/server.h?q=fidl::BindServer&ss=fuchsia%2Ffuchsia
+https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/server.h?q=fidl::BindServer&ss=fuchsia%2Ffuchsia
 [typed-channel]: /docs/reference/fidl/bindings/llcpp-bindings.md#typed-channels
 [raw-channel-interface]:
 https://cs.opensource.google/search?q=RawChannelInterface&sq=&ss=fuchsia%2Ffuchsia
 [create-endpoints]:
-https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/ulib/fidl/include/lib/fidl/llcpp/connect_service.h;l=36?q=fidl::CreateEndpoints&ss=fuchsia%2Ffuchsia
+https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/connect_service.h;l=36?q=fidl::CreateEndpoints&ss=fuchsia%2Ffuchsia
 [fdio-service-connect]:
 https://cs.opensource.google/search?q=fdio_service_connect&ss=fuchsia%2Ffuchsia&start=11
 [service-connect]:

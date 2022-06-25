@@ -6,5 +6,9 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
+- title: "Building a Driver"
+  path: /docs/development/drivers/best_practices/build.md
 - title: "Driver stack performance"
   path: /docs/development/drivers/best_practices/driver_stack_performance.md
+- title: "VMO Registration Pattern"
+  path: /docs/development/drivers/best_practices/vmo-registration-pattern.md

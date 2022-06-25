@@ -317,7 +317,7 @@ void fun(uint64_t block_number) {
 Above `checked_cast` asserts if block_number is greater than
 `std::numberic_limits<uint32_t>::max()`.
 
-To use safemath, add the `//zircon/public/lib/safemath` as dependency in
+To use safemath, add the `//zircon/third_party/ulib/safemath` as dependency in
 `BUILD.gn` file. BUILD.gn example can be seen [here](https://fuchsia.googlesource.com/fuchsia/+/be0a0c3f97b29231c9207a934063b3ce9e562dd1/src/storage/minfs/BUILD.gn#97)
 and example usage can be seen [here](https://fuchsia.googlesource.com/fuchsia/+/be0a0c3f97b29231c9207a934063b3ce9e562dd1/src/storage/minfs/minfs.cc#1428).
 

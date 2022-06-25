@@ -21,7 +21,7 @@ rust|[link](#rust-init)||[link](#rust-2)
 ### FIDL {#fidl-init}
 
 ```fidl
-flexible bits Flags {
+type Flags = flexible bits {
     OPTION_A = 1;
     OPTION_B = 2;
 };
@@ -79,11 +79,11 @@ void use_member(fidl_test::Flags bits) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-void use_bits(fidl_test::Flags bits) {
-  if (bits & fidl_test::Flags::OPTION_A) {
+void use_bits(fidl_test::wire::Flags bits) {
+  if (bits & fidl_test::wire::Flags::kOptionA) {
     printf("option A is set\n");
   }
-  if (bits & fidl_test::Flags::OPTION_B) {
+  if (bits & fidl_test::wire::Flags::kOptionB) {
     printf("option B is set\n");
   }
   if (bits.has_unknown_bits()) {
@@ -113,7 +113,7 @@ fn use_bits(bits: &fidl_lib::Flags) {
 - Add the new member
 
 ```diff
-  flexible bits Flags {
+  type Flags = flexible bits {
       OPTION_A = 1;
       OPTION_B = 2;
 +     OPTION_C = 4;
@@ -195,14 +195,14 @@ fn use_bits(bits: &fidl_lib::Flags) {
 - You can now use the new member
 
 ```diff
-  void use_bits(fidl_test::Flags bits) {
-    if (bits & fidl_test::Flags::OPTION_A) {
+  void use_bits(fidl_test::wire::Flags bits) {
+    if (bits & fidl_test::wire::Flags::kOptionA) {
       printf("option A is set\n");
     }
-    if (bits & fidl_test::Flags::OPTION_B) {
+    if (bits & fidl_test::wire::Flags::kOptionB) {
       printf("option B is set\n");
     }
-+   if (bits & fidl_test::Flags::OPTION_C) {
++   if (bits & fidl_test::wire::Flags::kOptionC) {
 +     printf("option C is set\n");
 +   }
     if (bits.has_unknown_bits()) {

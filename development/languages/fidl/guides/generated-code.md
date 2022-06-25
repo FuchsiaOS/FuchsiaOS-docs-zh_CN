@@ -92,13 +92,28 @@ The Go bindings are generated in the root directory as
 
     out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/fuchsia.io.fidl/impl.go
 
-#### HLCPP, LLCPP, and C {#c-family}
+#### C++ {#c-family}
 
-The C family bindings are generated in subdirectories of the root directory
+C++ bindings use a source layout in subdirectories of the root
+directory follow the pattern: `${target_name}/${binding_flavor}/fuchsia.io/cpp`.
+
+From there LLCPP outputs `wire.cc`, `wire.h` and `wire_test_base.h`.
+As the unified C++ bindings take shape more bindings will follow this pattern.
+See below for how the not-yet unified bindings are generated.
+
+For example, using `fuchsia.io` with the LLCPP bindings creates the following
+files:
+
+    out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/llcpp/fidl/fuchsia.io/cpp/wire.cc
+    out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/llcpp/fidl/fuchsia.io/cpp/wire.h
+    out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/llcpp/fidl/fuchsia.io/cpp/wire_test_base.h
+
+#### HLCPP, and C {#hlcpp-c}
+
+HLCPP and C bindings are generated in subdirectories of the root directory
 following the pattern `${target_name}/${binding_flavor}/fuchsia/io`. From there,
 
 - HLCPP outputs `cpp/fidl.cc`, `cpp/fidl.h`, and `cpp/fidl_test_base.h`.
-- LLCPP outputs `llcpp/fidl.cc`, `llcpp/fidl.h`, and `llcpp/fidl_test_base.h`.
 - C outputs `c/fidl.client.c`, `c/fidl.server.c`, and `fidl.h`.
 
 For example, using `fuchsia.io` with the HLCPP bindings creates the
@@ -107,12 +122,6 @@ following files:
     out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/hlcpp/fuchsia/io/cpp/fidl.cc
     out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/hlcpp/fuchsia/io/cpp/fidl.h
     out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/hlcpp/fuchsia/io/cpp/fidl_test_base.h
-
-and using `fuchsia.io` with the LLCPP bindings creates the following files:
-
-    out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/llcpp/fuchsia/io/llcpp/fidl.cc
-    out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/llcpp/fuchsia/io/llcpp/fidl.h
-    out/default/fidling/gen/sdk/fidl/fuchsia.io/fuchsia.io/llcpp/fuchsia/io/llcpp/fidl_test_base.h
 
 #### Dart {#dart}
 

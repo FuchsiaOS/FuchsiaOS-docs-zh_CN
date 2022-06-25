@@ -53,7 +53,7 @@ $ git commit
 # Upload your work to Gerrit for review
 $ jiri upload
 # OR
-$ git push origin HEAD:refs/for/master
+$ git push origin HEAD:refs/for/main
 ```
 
 Congratulations, you made your first Gerrit change!
@@ -82,7 +82,7 @@ $ git commit --amend
 # Now upload the new patchset to Gerrit:
 $ jiri upload
 # OR
-$ git push origin HEAD:refs/for/master
+$ git push origin HEAD:refs/for/main
 ```
 
 When you want to update your `myfeature` branch because you got some review
@@ -106,11 +106,11 @@ $ git reset HEAD
 # Now you can upload your modified changes to Gerrit:
 $ jiri upload
 # OR
-$ git push origin HEAD:refs/for/master
+$ git push origin HEAD:refs/for/main
 ```
 
 When you see "merge conflict" in Gerrit because your change can't cleanly be
-integrated with the `master` branch:
+integrated with the `main` branch:
 
 ```shell
 # Checkout the branch for the change you need to update (e.g. "myfeature"):
@@ -118,12 +118,12 @@ $ git checkout myfeature
 # Update your git repository:
 $ git fetch
 # Update your branch:
-$ git rebase origin/master
+$ git rebase origin/main
 # Fixup and continue the rebase as necessary, until you see "Successfully rebased ..."
 # Then upload your newly updated code:
 $ jiri upload
 # OR
-$ git push origin HEAD:refs/for/master
+$ git push origin HEAD:refs/for/main
 ```
 
 When you've been working for more than a day, and you need to "sync your
@@ -191,7 +191,7 @@ $ jiri upload
 Attempt a rebase:
 
 ```shell
-$ git fetch origin && git rebase origin/master
+$ git fetch origin && git rebase origin/main
 # Resolve conflicts as needed...
 $ jiri upload
 ```
@@ -223,7 +223,7 @@ convenience wrapper around many tools built in the Fuchsia tree, and helps
 with many daily workflow tasks, such as building, running tests, consuming
 logs, connecting to shells on devices, and many other operations.
 
-### Q: Will a git rebase to origin/master mess up my jiri-updated (i.e. synchronized) view of the repository?
+### Q: Will a git rebase to origin/main mess up my jiri-updated (i.e. synchronized) view of the repository?
 
 A: Yes, unless jiri is configured to sync the rebased repository/petal to HEAD
 instead of the globally integrated version. This is not the case if you use the
@@ -232,14 +232,14 @@ repos, but may be the case if you set up your checkout in the past or used `fx
 set-petal X`.
 
 When working at petal X (accomplished with `fx set-petal X`), `jiri update` will
-rebase the local branches in repo X onto HEAD of origin/master. But other
+rebase the local branches in repo X onto HEAD of origin/main. But other
 petals' repos will be synced to specific revisions that may be behind HEAD of
-their origin/master.
+their origin/main.
 
 Fuchsia's continuous integration system (specifically rollers) makes a new revision
 of a petal available to other petals only after testing that the new revision
 doesn't break other petals. `jiri update` will always leave other petals synced
-to these successfully-tested revisions. But a git rebase to origin/master for a
+to these successfully-tested revisions. But a git rebase to origin/main for a
 petal may advance that repo beyond the tested revision, which has the potential
 to introduce breaking changes. The result may be that you can build for a
 certain petal, but not for other petals (e.g., correctly build garnet, but not
@@ -286,8 +286,8 @@ Let's assume you want to produce four builds:
 
  * a "bringup" product for x64
  * a "workstation" product for x64
- * a "core" product for vim2
- * a "workstation" product for vim2
+ * a "core" product for vim3
+ * a "workstation" product for vim3
 
 First, one must build Zircon, as the Zircon build directory is shared across
 Fuchsia build targets. It doesn't matter at this stage which product/board
@@ -305,25 +305,25 @@ Now you have Zircon built, you can start building several other builds concurren
 $ fx --dir out/workstation.x64 set workstation.x64
 $ fx --dir out/workstation.x64 build > workstation.x64.build.log &
 
-$ fx --dir out/core.vim2 set core.arm64
-$ fx --dir out/core.vim2 build > core.vim2.build.log &
+$ fx --dir out/core.vim3 set core.arm64
+$ fx --dir out/core.vim3 build > core.vim3.build.log &
 
-$ fx --dir out/workstation.vim2 set workstation.arm64
-$ fx --dir out/workstation.vim2 build > workstation.vim2.build.log &
+$ fx --dir out/workstation.vim3 set workstation.arm64
+$ fx --dir out/workstation.vim3 build > workstation.vim3.build.log &
 ```
 
 You can reference each of these builds while running `fx` tools by passing
-`--dir` to your fx command, e.g. to run `fx serve` using the vim2 workstation
+`--dir` to your fx command, e.g. to run `fx serve` using the vim3 workstation
 product, you would use:
 
 ```shell
-$ fx --dir out/workstation.vim2 serve
+$ fx --dir out/workstation.vim3 serve
 ```
 
 You can also change which build directory is your current default by using `fx use`:
 
 ```shell
-$ fx use out/core.vim2
+$ fx use out/core.vim3
 ```
 
 ### Q: What if I want to build at a previous snapshot across the repos?

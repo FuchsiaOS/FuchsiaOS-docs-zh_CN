@@ -6,11 +6,11 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
+- title: "Simple"
+  path: /docs/concepts/principles/simple.md
 - title: "Secure"
   path: /docs/concepts/principles/secure.md
 - title: "Updatable"
   path: /docs/concepts/principles/updatable.md
-- title: "Inclusive"
-  path: /docs/concepts/principles/inclusive.md
-- title: "Pragmatic"
-  path: /docs/concepts/principles/pragmatic.md
+- title: "Performant"
+  path: /docs/concepts/principles/performant.md

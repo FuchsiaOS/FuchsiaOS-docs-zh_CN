@@ -57,7 +57,7 @@ provided since by design service discovery is dynamic.
 
 **Interaction with request pipelining**
 
-The [request pipelining](/docs/concepts/api/fidl.md#request-pipelining) pattern
+The [request pipelining](/docs/development/api/fidl.md#request-pipelining) pattern
 can be thought of as a generalization of the service discovery pattern, and
 imposes similarly strong restrictions on epitaphs.
 

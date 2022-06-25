@@ -14,3 +14,13 @@ toc:
   path: /docs/development/source_code/upload_changes_from_multiple_repositories.md
 - title: "Make changes across different petals"
   path: /docs/development/source_code/working_across_petals.md
+- title: "Source code layout"
+  path: /docs/development/source_code/layout.md
+- title: "Owners"
+  path: /docs/development/source_code/owners.md
+- title: "Gerrit auto-submit"
+  path: /docs/development/source_code/auto_submit.md
+- title: "README.fuchsia file syntax"
+  path: /docs/development/source_code/third-party-metadata.md
+- title: "Fuchsia archive format (FAR)"
+  path: /docs/development/source_code/archive_format.md

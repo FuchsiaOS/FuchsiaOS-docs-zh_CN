@@ -6,11 +6,9 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Source code layout"
-  path: /docs/concepts/source_code/layout.md
-- title: "Owners"
-  path: /docs/concepts/source_code/owners.md
-- title: "README.fuchsia file syntax"
-  path: /docs/concepts/source_code/third-party-metadata.md
-- title: "Fuchsia archive format (FAR)"
-  path: /docs/concepts/source_code/archive_format.md
+- title: "Third-party source management"
+  path: /docs/concepts/source_code/third-party-management.md
+
+
+
+

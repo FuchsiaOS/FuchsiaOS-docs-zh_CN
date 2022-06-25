@@ -55,13 +55,13 @@ rm -r examples/fidl/dart/client/*
 1. Add the following dependencies:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/BUILD.gn" region_tag="deps" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/BUILD.gn" region_tag="deps" %}
    ```
 
 1. Then, import them in `lib/main.dart`:
 
-   ```rust
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="imports" %}
+   ```dart
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="imports" %}
    ```
 
 These dependencies are explained in the [server tutorial][server-tut].
@@ -72,7 +72,7 @@ These dependencies are explained in the [server tutorial][server-tut].
    editing the component manifest in `client.cmx`.
 
    ```cmx
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/client/client.cmx" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/meta/client.cmx" %}
    ```
 
 ## Connect to the server {#main}
@@ -87,7 +87,7 @@ to a server, called a proxy class. To connect to the server, the client needs to
 a proxy class and then bind it to the server:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="main" highlight="4,5,6,7" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="main" highlight="4,5,6,7" %}
 ```
 
 Similar to the server code, the client uses `ComponentContext` to access the component's
@@ -126,7 +126,7 @@ The code makes two requests to the server:
 * A `SendString` request
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="main" highlight="9,10,11,12,13,14" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="main" highlight="9,10,11,12,13,14" %}
 ```
 
 The call to `EchoString` returns a future, which resolves to the response
@@ -144,7 +144,7 @@ The [bindings reference][bindings-ref] describes how these proxy methods are gen
 The code then waits for a single `OnString` event from the server:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="main" highlight="15,16,17" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/lib/main.dart" region_tag="main" highlight="15,16,17" %}
 ```
 
 This is done by [taking the event stream][events] from the client object, then waiting
@@ -177,7 +177,8 @@ the client that provides the server's protocol, then launches the client in it.
     fx shell run fuchsia-pkg://fuchsia.com/example-launcher-dart#meta/example-launcher-dart.cmx fuchsia-pkg://fuchsia.com/echo-dart-client#meta/echo-dart-client.cmx fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo-dart-server.cmx fuchsia.examples.Echo
     ```
 
-You should see the print output in the QEMU console (or using `fx log`).
+You should see output similar to the following in the QEMU console
+(or using `ffx log`):
 
 ```
 [105541.570] 489493:489495> Listening for incoming connections...
@@ -198,5 +199,5 @@ You should see the print output in the QEMU console (or using `fx log`).
 [overview]: /docs/development/languages/fidl/tutorials/overview.md
 [environment]: /docs/concepts/components/v2/environments.md
 [service-name]: /docs/reference/fidl/bindings/dart-bindings.md#discoverable
-[pipeline]: /docs/concepts/api/fidl.md#request-pipelining
+[pipeline]: /docs/development/api/fidl.md#request-pipelining
 [pipeline-tut]: /docs/development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md

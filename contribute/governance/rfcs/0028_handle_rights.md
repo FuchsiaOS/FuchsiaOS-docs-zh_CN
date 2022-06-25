@@ -164,7 +164,7 @@ This will require documentation changes to:
 
 * [FIDL language specification]
 
-* [Kernel rights documentation] (pointing to how rights can be specified)
+* [Kernel rights documentation] - how rights can be specified
 
 ## Backwards Compatibility
 

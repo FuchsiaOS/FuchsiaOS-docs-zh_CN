@@ -33,13 +33,13 @@ Relative paths in the rest of the tutorial will be relative to this directory.
 
 ## Write a Dart host test {#write-a-dart-test}
 
-1. Add a dummy test to `test/types_test.dart`:
+1. Add a sample test to `test/types_test.dart`:
 
    ```dart
    import 'package:test/test.dart';
 
    void main() {
-     test('dummy', () {
+     test('sample', () {
        expect(1 + 1, equals(2));
      });
    }
@@ -49,14 +49,14 @@ Relative paths in the rest of the tutorial will be relative to this directory.
    To do this, add the following to `BUILD.gn`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/BUILD.gn" region_tag="imports" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/BUILD.gn" region_tag="imports" %}
 
     dart_test("fidl-example-dart-test") {
       sources = [ "types_test.dart" ]
       deps = [ "//third_party/dart-pkg/pub/test" ]
     }
 
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/BUILD.gn" region_tag="group" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/BUILD.gn" region_tag="group" %}
    ```
 
    Note: `dart_test` will look for source files in the `test` dir by default, so `types_test.dart`
@@ -66,14 +66,7 @@ Relative paths in the rest of the tutorial will be relative to this directory.
 1. Create an empty pubspec file at `pubspec.yaml`:
 
    ```yaml
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/pubspec.yaml" %}
-   ```
-
-1. (Optional) Create an analysis configuration file at `analysis_options.yaml`. You can reuse the common Fuchsia analysis
-   configuration:
-
-   ```yaml
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/analysis_options.yaml" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/pubspec.yaml" %}
    ```
 
 1. Run the empty test suite:
@@ -83,7 +76,7 @@ Relative paths in the rest of the tutorial will be relative to this directory.
    fx test -vo fidl-example-dart-test
    ```
 
-   You should see test output for the dummy test that was added.
+   You should see test output for the sample test that was added.
 
 ## Add the Dart FIDL bindings as a dependency {#add-dependency}
 
@@ -95,7 +88,7 @@ Add a dependency on the Dart bindings by referencing this generated crate. The n
 target should look like:
 
 ```gn
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/BUILD.gn" region_tag="test" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/BUILD.gn" region_tag="test" %}
 ```
 
 (Optional) To view the newly generated bindings:
@@ -116,7 +109,7 @@ To import the package, add the following import statement to the top of the
 `types_test.dart` file:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="import" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="import" adjust_indentation="auto" %}
 ```
 
 In the Fuchsia tree, FIDL package imports are often aliased to `fidl_[library]` for readability.
@@ -129,15 +122,15 @@ information on the bindings, see [Dart Bindings Reference][bindings-ref].
 To get started, you can also use some example code. You can add the following tests inside `main()`:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="bits" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="bits" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="enums" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="enums" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="structs" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="structs" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="unions" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="unions" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="tables" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/fidl_packages/test/types_test.dart" region_tag="tables" adjust_indentation="auto" %}
 ```
 
 To rebuild and rerun the tests, run:

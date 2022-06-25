@@ -5,7 +5,7 @@
 
 ## Summary
 
-[Logging](/docs/concepts/diagnostics/logs/README.md) is used extensively throughout
+[Logging](/docs/concepts/components/diagnostics/logs/README.md) is used extensively throughout
 Fuchsia's code, but messages are logged with inconsistent severities. This
 diminishes the value of information in the logs. Below we propose semantic
 meaning for different log severity levels, and implications for logging at

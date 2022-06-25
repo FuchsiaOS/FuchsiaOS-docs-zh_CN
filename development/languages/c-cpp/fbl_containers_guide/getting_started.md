@@ -166,7 +166,7 @@ The required include files for each container type are:
 | `fbl::WAVLTree<>`         | `#include <fbl/intrusive_wavl_tree.h>`   |
 | `fbl::HashTable<>`        | `#include <fbl/intrusive_hash_table.h>`  |
 
-Users also must add the library `//zircon/public/lib/fbl` to either the `deps`
+Users also must add the library `//zircon/system/ulib/fbl` to either the `deps`
 or `public_deps` section of their project's `BUILD.gn` file.  The reference
 belongs in the `deps` section in the case that the user is writing an
 executable, or using `fbl` only in the private portions of their library.  If

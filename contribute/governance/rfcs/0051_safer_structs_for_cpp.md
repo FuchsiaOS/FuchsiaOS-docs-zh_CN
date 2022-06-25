@@ -5,6 +5,13 @@
 
 Note: Formerly known as [FTP](../deprecated-ftp-process.md)-004.
 
+## Rejection rationale
+
+On March 14, 2019, this RFC was initially accepted. However, the
+[implementation][safer-structs-impl] was never merged, and the C++ bindings have
+changed significantly since then. Recognizing this, we are retroactively
+rejecting this RFC.
+
 ## Summary
 
 Allow C++ developers to write FIDL code that will break at compile
@@ -138,3 +145,4 @@ changes that leave some fields uninitialized.
 
 <!-- xrefs -->
 [FIDL tutorial]: /docs/development/languages/fidl/tutorials/overview.md
+[safer-structs-impl]: https://fuchsia-review.googlesource.com/c/garnet/+/139083

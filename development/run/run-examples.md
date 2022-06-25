@@ -1,78 +1,102 @@
 # Run an example component
 
-This guide shows you how to build Fuchsia to include an example package
-from Fuchsia's source [`//examples`](/examples/)
-directory and run that component on your Fuchsia device.
+This guide shows you how to build Fuchsia to include an example package from
+Fuchsia's source [`//examples`](/examples/) directory and run a component on
+your Fuchsia target.
 
-Note: This guide is specific to [components v1](/docs/glossary.md#components-v1) and uses
-[component manifests](/docs/concepts/components/v1/component_manifests.md).
+Note: You can find the source code for the "Hello, World" example at
+[`//examples/hello_world`](/examples/hello_world).
 
-## Exploring the example Fuchsia package {#exploring-the-example-fuchsia-package}
+## Prerequisites
 
-Open the [`examples/hello_world/BUILD.gn`](/examples/hello_world/BUILD.gn) file.
+Before you can run an example component, you must:
 
-This example, written in both C++ and Rust, prints `Hello, world!`. Each
-language-dependent directory has the following:
+*   [Set up the Fuchsia development environment](/docs/get-started/get_fuchsia_source.md)
 
-*  A [`BUILD.gn`](#build-gn) file that defines its [Fuchsia package](#fuchsia-package).
-*  A `meta` subdirectory with [component manifests](#component-manifest) (`.cmx`) files.
+## Exploring the example {#exploring-the-example}
 
-### BUILD.gn {#build-gn}
+This example component prints `Hello, world!` to the system log. The example has
+three main elements:
 
-Generate Ninja (GN) is a meta build system. Output files from GN serve as inputs to
-[Ninja](https://ninja-build.org/){:.external}, the actual build system.
-If you aren't familiar with GN, see
-[Introduction to GN](/docs/concepts/build_system/intro.md).
+*   An [executable binary](#executable-program) written in a supported language.
+*   A [component manifest](#component-manifest) (`.cml`) file to declare the
+    component and its capabilities.
+*   A [`BUILD.gn`](#build-gn) file to define the component build target and
+    include it in a Fuchsia package.
 
-In the [`examples/hello_world/BUILD.gn`](/examples/hello_world/BUILD.gn) file,
-the `hello_world` target is a group containing other dependencies,
-notably `cpp` and `rust`. Therefore, this target builds both of them:
+### Executable program {#executable-program}
 
-```none
-group("hello_world") {
-  testonly = true
-  deps = [
-    ":tests",
-    "cpp",
-    "rust",
-  ]
-}
-```
+Fuchsia components can execute programs written in any language with a supported
+runtime. The most common runtime used for C++ and Rust programs is the
+[ELF runner](/docs/concepts/components/v2/elf_runner.md).
 
-To learn more about how GN defines Fuchsia packages,
-see the [`build/package.gni`](/build/package.gni) file.
+* {C++}
+
+  ```cpp
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/cpp/hello_world.cc" region_tag="main" adjust_indentation="auto" %}
+  ```
+
+* {Rust}
+
+  ```rust
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/src/main.rs" region_tag="main" adjust_indentation="auto" %}
+  ```
 
 ### Component manifest {#component-manifest}
 
-A `.cmx` file, known as a
-[component manifest](/docs/glossary.md#component-manifest), describes how to run
-an application on Fuchsia as a [component](/docs/glossary.md#component). In
-other words, a component manifest creates a [Fuchsia package](/docs/glossary.md#fuchsia-package).
+A [component manifest](/docs/glossary/README.md#component-manifest) describes
+how to run a Fuchsia program as a [component](/docs/glossary/README.md#component).
+This includes declaring program binary, runtime information, and any capabilities
+the component requires to execute, such as logging support.
 
-### Fuchsia package {#fuchsia-package}
+* {C++}
 
-To include a package in your Fuchsia image, you have the following options:
+  ```json5
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/cpp/meta/hello_world_cpp.cml" adjust_indentation="auto" %}
+  ```
 
-*   Base: Packages that are produced by build and included in paving images.
-    These packages are included in over-the-air updates and are always updated as a
-    single unit.
+* {Rust}
 
-*   Cache: Packages that are included in paving images, but are not included in
-    over-the-air system updates. These packages can be updated at any time
-    when updates are available.
+  ```json5
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/meta/hello_world_rust.cml" adjust_indentation="auto" %}
+  ```
 
-*   Universe: Packages that are not included in paving image. These
-    optional packages are fetched and run on-demand.
+For more details on component manifests and their declaration syntax,
+see [component manifests](/docs/concepts/components/v2/component_manifests.md).
 
+### BUILD.gn {#build-gn}
 
-## Include the example package in your Fuchsia image {#include-the-example-package-in-your-fuchsia-image}
+Fuchsia uses the Generate Ninja (GN) meta-build system to generate inputs for
+[Ninja](https://ninja-build.org/){:.external}, which executes the actual build.
+The `BUILD.gn` file declares the build targets for a `fuchsia_component()` and
+`fuchsia_package()`.
 
-Note: If you already built Fuchsia and you're not changing your product or board, these commands
-take less than a few minutes to run. If you are changing your product or board, these changes can
-take up to 90 minutes to run.
+Note: If you aren't familiar with GN, see
+[Introduction to GN](/docs/development/build/build_system/intro.md).
 
-To include the example package in Universe so that it can be fetched on-demand,
-use the `--with` flag when setting your product and board environment and building Fuchsia:
+* {C++}
+
+  ```gn
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/cpp/BUILD.gn" region_tag="cpp_bin" adjust_indentation="auto" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/cpp/BUILD.gn" region_tag="fuchsia_component" adjust_indentation="auto" %}
+  ```
+
+* {Rust}
+
+  ```gn
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/BUILD.gn" region_tag="rustc_tests" adjust_indentation="auto" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/hello_world/rust/BUILD.gn" region_tag="fuchsia_component" adjust_indentation="auto" %}
+  ```
+
+To learn more about how Fuchsia uses GN to define components and packages,
+see: [Building components](/docs/development/components/build.md).
+
+## Include the example package in your Fuchsia image {#include-the-example}
+
+Note: For new build configurations, these commands can take up to 90 minutes.
+
+To include the example package in your build configuration, use the `--with` flag
+when setting your product and board environment:
 
 <pre class="prettyprint">
 <code class="devsite-terminal">fx set <var>product</var>.<var>board</var> --with //examples/hello_world</code>
@@ -103,42 +127,12 @@ command:
 fx build
 ```
 
-You now have a build that includes the example package in Universe.
-
-## Run the example component {#run-the-example-component}
-
-To run a Fuchsia component, use its
-[Fuchsia package URL](/docs/glossary.md#fuchsia-pkg-url) as an argument
-to the `fx shell run` command:
-
-1.  Open a terminal and run `fx serve-updates`:
-
-    ```posix-terminal
-    fx serve-updates
-    ```
-
-1.  Open another terminal and run the example component:
-
-    ```posix-terminal
-    fx shell run fuchsia-pkg://fuchsia.com/hello-world-cpp#meta/hello-world-cpp.cmx
-    ```
-
-This command prints the following output:
-
-```none
-Hello, World!
-```
-
-If `fx serve-updates` is not running, the command prints an error message from
-the device or emulator.
-
-If `fx serve-updates` is running, but the package is not found,
-then [try going through these steps again](#include-the-example-package-in-your-fuchsia-image),
-rebuilding your Fuchsia image to include this package and repaving it to the device.
+You now have a build that includes the example package that can be
+[fetched and launched on demand](/docs/development/build/build_system/boards_and_products.md#universe).
 
 ### Explore your product configuration {#explore-your-product-configuration}
 
-You can explore the contents of your product configuration using the 
+You can explore the contents of your product configuration using the
 `list-packages` command.
 
 List all:
@@ -152,9 +146,54 @@ There may be many entries, so add the name to find the one you're looking for:
 ```posix-terminal
 fx list-packages hello-world
 hello-world-cpp-unittests
-hello-world-dart
 hello-world-rust-tests
 hello-world-cpp
 hello-world-rust
 ```
 
+## Run the example component {#run-the-example-component}
+
+To run a Fuchsia component, use its
+[Fuchsia package URL](/docs/glossary/README.md#fuchsia-pkg-url) as an argument
+to the `run` command:
+
+1.  Open a terminal and run `fx serve-updates`:
+
+    ```posix-terminal
+    fx serve-updates
+    ```
+
+1.  Open another terminal and run the example component:
+
+    * {C++}
+
+      ```posix-terminal
+      ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
+      ```
+
+    * {Rust}
+
+      ```posix-terminal
+      ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
+      ```
+
+1.  Open another terminal and view the system log:
+
+    ```posix-terminal
+    ffx log --filter hello-world
+    ```
+
+    The component prints the following output to the log:
+
+    ```none {:.devsite-disable-click-to-copy}
+    [ffx-laboratory:hello-world] INFO: Hello, World!
+    ```
+
+### Troubleshooting {#troubleshooting}
+
+If `fx serve-updates` is not running, the command prints an error message from
+the device or emulator.
+
+If `fx serve-updates` is running, but the package is not found,
+[repeat these steps](#include-the-example) and rebuild your Fuchsia image to
+include the appropriate packages.

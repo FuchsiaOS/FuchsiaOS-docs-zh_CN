@@ -27,13 +27,15 @@ Interface. For example, FDIO is a client library that provides a POSIX-like
 abstraction over the underlying fuchsia.io protocol in the Fuchsia System
 Interface.
 
-The *Fuchsia IDK* is a collection of libraries and tools that the Fuchsia
+The *Fuchsia IDK* is a collection of libraries, metadata, and tools that the Fuchsia
 project provides to people writing software for Fuchsia. Among other things, the
 Fuchsia IDK contains a definition of the Fuchsia System Interface as well as a
 number of client libraries.
 
-The *Fuchsia API Surface* is the combination of the Fuchsia System Interface and
-the client libraries included in the Fuchsia IDK.
+The *Fuchsia API Surface* is the collection of artifacts that we include in the IDK.
+This includes, but is not limited to, the Fuchsia System Interface,
+the client libraries included in the Fuchsia IDK, the IDK metadata, and the core
+Fuchsia developer tools.
 
 *Fuchsia contributors* are people who are involved in creating the Fuchsia
 operating system, including people who work for Google and people who do not.
@@ -213,12 +215,12 @@ this Gerrit feature.
 For small API changes, especially incremental refinements to existing APIs, a
 code review is usually sufficient for an API reviewer to give the change
 API-Review+1. However, for larger changes, especially those that expand the API
-surface significantly, the API designer should write an *API Design Document*
-(see [Fuchsia API Design Template][api-design-template]), which explains the
-design of the API, including use cases and examples, as well as security and
-privacy considerations. An API reviewer can always request the API designer to
-write an API Design Document, even for small changes if the API reviewer does
-not feel comfortable approving the change purely through code review.
+surface significantly, the API designer should write an RFC (see [Fuchsia RFC
+Template][rfc-template]), which explains the design of the API, including use
+cases and examples, as well as security and privacy considerations. An API
+reviewer can always request the API designer to write an RFC, even for small
+changes if the API reviewer does not feel comfortable approving the change
+purely through code review.
 
 For inclusion in the Fuchsia SDK, an API must clear two hurdles: there must be a
 ready and willing customer, and the API must have gone through [API
@@ -232,20 +234,20 @@ designers to help design the best API. API designers can also seek feedback
 early in the design process from the full council by asking the chair for a slot
 in the agenda for an upcoming API calibration session (see the next section).
 
-The API reviewer should work with the API designer to improve the API Design
-Document to the point where the API reviewer feels comfortable approving the
-document. An approved document serves as the plan of record for the API in
-question. However, individual CLs that modify the API surface still need to
-review API-Review+1 before being merged. API designers should expect that CLs
-that follow the plan laid out in an approved API Design Document should review
-API-Review+1 quite easily, even from other council members.
+The API reviewer should work with the API designer to improve the API RFC to the
+point where the API reviewer feels comfortable approving the document. An
+approved document serves as the plan of record for the API in question. However,
+individual CLs that modify the API surface still need to review API-Review+1
+before being merged. API designers should expect that CLs that follow the plan
+laid out in an approved API RFC should review API-Review+1 quite easily, even
+from other council members.
 
-API designers or reviewers can refer a API Design Document to the full council
-by asking the chair for a slot in the agenda for an upcoming API calibration
-session (see the next section). For example, an API reviewer might refer a
-document to the full council if the API reviewer does not feel sufficiently
-calibrated, if the API is particularly complex or important, or if the reviewer
-feels pressured by looming deadlines or other teams.
+API designers or reviewers can refer an API RFC to the full council by asking
+the chair for a slot in the agenda for an upcoming API calibration session (see
+the next section). For example, an API reviewer might refer a document to the
+full council if the API reviewer does not feel sufficiently calibrated, if the
+API is particularly complex or important, or if the reviewer feels pressured by
+looming deadlines or other teams.
 
 ### API calibration {#calibration}
 
@@ -259,9 +261,10 @@ Fuchsia contributors can observe API calibration meetings. Observing these
 meetings can be a good way to learn best practices about evolving our API
 surface.
 
-#### Review API Design Documents
+#### Review RFCs with API changes
 
-The first priority in API calibration is to review any API Design Documents that
+In some cases, an API change may warrant an [RFC][rfc] discussing the proposed
+changes. The first priority in API calibration is to review any RFCs that
 have been referred to the full council. If there are multiple pending documents,
 the chair will select the order in which the council works through the
 documents.
@@ -328,8 +331,9 @@ on early drafts of this document.
 
 <!-- Reference links -->
 
-[api-council-group]: https://groups.google.com/a/fuchsia.com/forum/#!forum/api-council
-[api-design-template]: /docs/contribute/governance/api-design-template.md
+[api-council-group]: https://groups.google.com/a/fuchsia.dev/forum/#!forum/api-council
+[rfc-template]: /docs/contribute/governance/rfcs/TEMPLATE.md
 [eng-council]: /docs/contribute/governance/eng_council.md
 [review-labels]: https://gerrit-review.googlesource.com/Documentation/config-labels.html
+[rfc]: /docs/contribute/governance/rfcs/rfc_process.md
 [rough-consensus]: https://en.wikipedia.org/wiki/Rough_consensus

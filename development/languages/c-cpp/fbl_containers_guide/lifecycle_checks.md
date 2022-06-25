@@ -3,7 +3,7 @@
 To assist developers in catching some simple mistakes, there are a couple of
 checks run by `fbl::` containers when node state structure and
 containers are destroyed. They are implemented using `ZX_DEBUG_ASSERT` and are
-therefor only present when debug asserts are enabled.
+therefore only present when debug asserts are enabled.
 
 First, it is illegal for a node state structure to be destroyed while it exists
 in a container. Doing so is considered to be an error and will trigger an

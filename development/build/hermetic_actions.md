@@ -227,7 +227,8 @@ action("foo") {
 ### Expanding arguments from a file
 
 There is a common pattern used especially in Python scripts to expand the
-contents of a file as arguments. In `BUILD.gn` you will find:
+contents of a file as arguments (also known as a "response file"). In `BUILD.gn`
+you will find:
 
 ```gn
 action("foo") {
@@ -237,7 +238,8 @@ action("foo") {
 }
 ```
 
-Then in the associated Python file `myaction.py` you will find:
+Then in the associated Python file `myaction.py` you will find
+an argument parser with [`fromfile_prefix_chars`][fromfile_prefix_chars]:
 
 ```python
 def main():
@@ -258,11 +260,96 @@ action("foo") {
 }
 ```
 
+If you need to quickly populate such a file from a list in GN, you can use
+[`write_file()`][write_file]:
+
+```gn
+action("foo") {
+  args_file = "${target_gen_dir}/${target_name}.args"
+  write_file(args_file, a_very_long_list_of_args)
+  args = [ "@" + rebase_path(args_file, root_build_dir) ]
+  ...
+}
+```
+
+Note GN provides [`response_file_contents`][response_file_contents] as a
+convenient alternative, instead of `write_file`, for this purpose. However due
+to a [bug][response_file_bug] rooted in Ninja, we currently don't allow
+`response_file_contents` in our builds.
+
+### Creating and deleting temporary files
+
+It is a common pattern in build actions to create temporary files.
+It's ok to not list temporary files as outputs so long as the same action that
+creates the temporary files also deletes them before returning.
+
+Temporary files should be saved under `target_out_dir` or `target_gen_dir`.
+Use of global temporary storage such as `/tmp` or `$TMPDIR`, or any reads and
+writes outside of the checkout or output directories, is discouraged because
+it can make troubleshooting of build failures more difficult as files may need
+to be recovered from other places in the filesystem to indicate what went
+wrong.
+
+### Creating and deleting temporary directories
+
+Sometimes temporary files need to be created in temporary directories.
+Again this is fine as long as the action that creates the temporary directory
+also recursively deletes it before returning.
+
+[`shutil.rmtree`][shutil_rmtree] is a common function used to delete temporary
+directories. However, due to a limitation in our tracer, this would sometimes
+result in spurious unexpected reads. See also: [Issue 75057: Properly handle
+directory deletion from shutil.rmtree in action tracer][shutil_rmtree_bug].
+
+One way to get around this limitation is to only create temporary files, not
+temporary directories. Temporary files should be written under `target_out_dir`
+or `target_gen_dir`.
+
+Sometimes this is not possible, for instance when the temporary directory is
+created by an external build tool that cannot be modified. In this case, an
+alternative is to give your temporary directories a special name, for instance
+`__untraced_foo_tmp_outputs__`, and allowlist them in the
+[action tracer][action_tracer_ignored_path_parts]. Accesses to files in this
+special directory will be ignored by the tracer. __Because of this, this
+feature should not be used lightly.__
+
+For example, assuming `bar.py` always deletes all files in the `--tmp-dir`
+passed to it, then re-populates:
+
+```gn
+action(target_name) {
+  script = "bar.py"
+  args = [
+    "--tmp-dir"
+    rebase_path("${target_gen_dir}/${target_name}/__untraced_bar_tmp_outputs__", root_build_dir)
+  ]
+  ...
+}
+```
+
+Then in the action tracer, add an entry in `ignored_path_parts`:
+
+```py
+ignored_path_parts = {
+  # Comment with clear explanation on why this is necessary,
+  # preferably with a link to an associated bug for more context.
+  "__untraced_bar_tmp_outputs__",
+  ...
+}
+```
+
 See also: [hermetic actions in open projects][hermetic-actions-bb]
 
 [action]: https://gn.googlesource.com/gn/+/master/docs/reference.md#func_action
 [action_foreach]: https://gn.googlesource.com/gn/+/master/docs/reference.md#func_action_foreach
+[action_tracer_ignored_path_parts]: https://cs.opensource.google/fuchsia/fuchsia/+/main:build/tracer/action_tracer.py;l=873;drc=57a94b356da70385d8439b1dd3f355d9850c2db2
 [depfile]: https://gn.googlesource.com/gn/+/master/docs/reference.md#var_depfile
+[fromfile_prefix_chars]: https://docs.python.org/3/library/argparse.html#fromfile-prefix-chars
 [hermetic-actions-bb]: /docs/contribute/open_projects/build/hermetic_actions.md
 [no_op]: /docs/development/build/ninja_no_op.md
-[relative-paths]: /docs/concepts/build_system/best_practices.md#prefer-relative-paths-from-rebase-path
+[relative-paths]: /docs/development/build/build_system/best_practices.md#prefer-relative-paths-from-rebase-path
+[response_file_bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=76068
+[response_file_contents]: https://gn.googlesource.com/gn/+/master/docs/reference.md#var_response_file_contents
+[shutil_rmtree]: https://docs.python.org/3/library/shutil.html#shutil.rmtree
+[shutil_rmtree_bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=75057
+[write_file]: https://gn.googlesource.com/gn/+/master/docs/reference.md#func_write_file

@@ -1,12 +1,12 @@
-# Kernel tracing
+# Recording a kernel trace
 
 The kernel traces various actions by writing records to an internal buffer,
 which can later be retrieved and printed.
 
 ## Kernel trace format
 
-The kernel trace format is described in the 
-[ktrace.h](/zircon/system/ulib/zircon-internal/include/lib/zircon-internal/ktrace.h) and 
+The kernel trace format is described in the
+[ktrace.h](/zircon/system/ulib/zircon-internal/include/lib/zircon-internal/ktrace.h) and
 [ktrace-def.h](/zircon/system/ulib/zircon-internal/include/lib/zircon-internal/ktrace-def.h) files under
 [system/ulib/zircon-internal/include/lib/zircon-internal](/zircon/system/ulib/zircon-internal/include/lib/zircon-internal).
 
@@ -77,7 +77,7 @@ to send it to a file and then view it in your editor or whatever.
 Fuchsia's tracing system supports collecting kernel trace records through
 the `ktrace_provider` trace provider.
 For documentation of Fuchsia's tracing system see the documentation in
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 ## More information
 

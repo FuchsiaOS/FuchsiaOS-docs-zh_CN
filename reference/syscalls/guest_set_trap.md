@@ -1,14 +1,14 @@
 # zx_guest_set_trap
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Sets a trap within a guest.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -33,7 +33,7 @@ specified, then *addr* and *size* must both be page-aligned.
 **ZX_GUEST_TRAP_BELL** is an asynchronous trap, and both **ZX_GUEST_TRAP_MEM**
 and **ZX_GUEST_TRAP_IO** are synchronous traps.
 
-Packets for synchronous traps will be delivered through [`zx_vcpu_resume()`] and
+Packets for synchronous traps will be delivered through [`zx_vcpu_enter()`] and
 packets for asynchronous traps will be delivered through *port_handle*.
 
 *port_handle* must be **ZX_HANDLE_INVALID** for synchronous traps. For
@@ -63,7 +63,7 @@ additional VCPU.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_GUEST** and have **ZX_RIGHT_WRITE**.
 
@@ -79,13 +79,13 @@ returned.
 **ZX_ERR_ACCESS_DENIED** *handle* or *port_handle* do not have the
 **ZX_RIGHT_WRITE** right.
 
-**ZX_ERR_ALREADY_EXISTS** A trap with the same *kind* and *addr* already exists.
+**ZX_ERR_ALREADY_EXISTS** A trap for *kind* already exists that intersects with
+*addr* and *size*.
 
 **ZX_ERR_BAD_HANDLE** *handle* or *port_handle* are invalid handles.
 
-**ZX_ERR_INVALID_ARGS** *kind* is not a valid address space, *addr* or *size*
-do not meet the requirements of *kind*, *size* is 0, or **ZX_GUEST_TRAP_MEM** was
-specified with a *port_handle*.
+**ZX_ERR_INVALID_ARGS** *kind* is not a valid address space, or
+**ZX_GUEST_TRAP_MEM** was specified with a *port_handle*.
 
 **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 There is no good way for userspace to handle this (unlikely) error.
@@ -113,9 +113,10 @@ acceleration when available.
  - [`zx_port_create()`]
  - [`zx_port_wait()`]
  - [`zx_vcpu_create()`]
+ - [`zx_vcpu_enter()`]
  - [`zx_vcpu_interrupt()`]
+ - [`zx_vcpu_kick()`]
  - [`zx_vcpu_read_state()`]
- - [`zx_vcpu_resume()`]
  - [`zx_vcpu_write_state()`]
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
@@ -124,7 +125,8 @@ acceleration when available.
 [`zx_port_create()`]: port_create.md
 [`zx_port_wait()`]: port_wait.md
 [`zx_vcpu_create()`]: vcpu_create.md
+[`zx_vcpu_enter()`]: vcpu_enter.md
 [`zx_vcpu_interrupt()`]: vcpu_interrupt.md
+[`zx_vcpu_kick()`]: vcpu_kick.md
 [`zx_vcpu_read_state()`]: vcpu_read_state.md
-[`zx_vcpu_resume()`]: vcpu_resume.md
 [`zx_vcpu_write_state()`]: vcpu_write_state.md

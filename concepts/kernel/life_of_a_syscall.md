@@ -19,10 +19,16 @@ Example declaration of `zx_channel_create`:
 ```
 library zx;
 
-[Transport = "Syscall"]
+@transport("Syscall")
 protocol channel {
-  channel_create(uint32 options) -> (status status, handle out0, handle out1);
-}
+    channel_create(struct {
+        options uint32;
+    }) -> (resource struct {
+        status status;
+        out0 handle;
+        out1 handle;
+    });
+};
 ```
 
 When the kernel is built,

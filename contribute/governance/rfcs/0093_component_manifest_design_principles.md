@@ -25,9 +25,9 @@ Most of the decisions described below were made in the years 2018-2019.
     format for component manifests.
 -   `.cm` is the common filename extension for files that contain a
     [ComponentDecl] in the [FIDL envelope][fidl-envelope] binary format.
--   `[cmc]` is a command line host tool for generating `.cm` files from `.cml`
-    files. It is built in the Fuchsia source tree and distributed as a prebuilt
-    executable through the [Fuchsia SDK][sdk].
+-   [`cmc`][cmc] is a command line host tool for generating `.cm` files from
+    `.cml` files. It is built in the Fuchsia source tree and distributed as a
+    prebuilt executable through the [Fuchsia SDK][sdk].
 
 ## #1: Component manifests have a frontend and backend {#frontend-backend}
 
@@ -151,7 +151,7 @@ Following the URLs between manifests yields a
 comprehensive description of the software that constitutes a Fuchsia image. This
 makes it possible to perform security auditing with confidence over a given
 system image, such as with `[fx
-scrutiny](https://fuchsia.dev/reference/tools/fx/cmd/scrutiny?hl=en)`.
+scrutiny](https://fuchsia.dev/reference/tools/fx/cmd/scrutiny)`.
 
 ## #3: Component manifests are declarative {#declarative}
 
@@ -206,14 +206,17 @@ component's manifest is shipped as a blob in this package, usually in `meta/`.
 
 ## Notes
 
-\[^1\]: In the future, there is a high probability that manifests need to
-support some sort of parameterization feature to support variants and product
-configurability. When we do so, we should approach this in a way that avoids the
-common pitfalls associated with parameterizable configurations.
+[^1]:
+     In the future, there is a high probability that manifests need to
+     support some sort of parameterization feature to support variants and
+     product configurability. When we do so, we should approach this in a way
+     that avoids the common pitfalls associated with parameterizable
+     configurations.
 
-\[^2\]: For more context on this point, Kubernetes has extensive
-[documentation][k8s-declarative-configuration] explaining many of the downsides
-of non-declarative configuration.
+[^2]:
+     For more context on this point, Kubernetes has extensive
+     [documentation][k8s-declarative-configuration] explaining many of the
+     downsides of non-declarative configuration.
 
 [blobfs]: /docs/concepts/filesystems/blobfs.md
 [borgcfg]: https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43438.pdf
@@ -222,9 +225,9 @@ of non-declarative configuration.
 [component-manifest]: /docs/concepts/components/v2/component_manifests.md
 [component-manifest-include]: /docs/concepts/components/v2/component_manifests.md#include
 [component-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
-[ComponentDecl]: /sdk/fidl/fuchsia.sys2/decls/component_decl.fidl
+[ComponentDecl]: /sdk/fidl/fuchsia.component.decl/component.fidl
 [DSL]: https://en.wikipedia.org/wiki/Domain-specific_language
-[elf]: /docs/concepts/booting/program_loading.md?hl=en#elf_and_the_system_abi
+[elf]: /docs/concepts/process/program_loading.md#elf_and_the_system_abi
 [elf-runner]: /docs/concepts/components/v2/elf_runner.md
 [FIDL]: /docs/development/languages/fidl/README.md
 [fidl-envelope]: /docs/reference/fidl/language/wire-format/README.md#envelopes
@@ -239,8 +242,8 @@ of non-declarative configuration.
 [GCL]: https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43438.pdf
 [package]: /docs/concepts/packages/package.md
 [package-url]: /docs/concepts/packages/package_url.md
-[resolver]: https://fuchsia.dev/reference/fidl/fuchsia.sys2?hl=en#ComponentResolver
+[resolver]: https://fuchsia.dev/reference/fidl/fuchsia.component.resolution#Resolver
 [rfc-0057]: /docs/contribute/governance/rfcs/0057_default_no_handles.md
-[sdk]: /docs/reference/tools/sdk/README.md
+[sdk]: https://fuchsia.dev/reference/tools/sdk/README.md
 [Starlark]: https://github.com/bazelbuild/starlark
 [topology]: /docs/concepts/components/v2/topology.md

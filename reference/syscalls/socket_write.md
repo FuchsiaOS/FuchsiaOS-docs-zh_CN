@@ -1,14 +1,14 @@
 # zx_socket_write
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Write data to a socket.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -22,8 +22,9 @@ zx_status_t zx_socket_write(zx_handle_t handle,
 
 ## DESCRIPTION
 
-`zx_socket_write()` attempts to write *buffer_size* bytes to the socket specified
-by *handle*. The pointer to *bytes* may be NULL if *buffer_size* is zero.
+`zx_socket_write()` attempts to write *buffer_size* bytes to the socket
+specified by *handle*. The pointer to *bytes* may be NULL if *buffer_size* is
+zero.
 
 If a NULL *actual* is passed in, it will be ignored.
 
@@ -43,7 +44,7 @@ capacity will fail with **ZX_ERR_OUT_OF_RANGE**.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_SOCKET** and have **ZX_RIGHT_WRITE**.
 
@@ -55,7 +56,8 @@ capacity will fail with **ZX_ERR_OUT_OF_RANGE**.
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
-**ZX_ERR_BAD_STATE**  writing has been disabled for this socket endpoint via [`zx_socket_shutdown()`].
+**ZX_ERR_BAD_STATE**  writing has been disabled for this socket endpoint via
+[`zx_socket_set_disposition()`].
 
 **ZX_ERR_WRONG_TYPE**  *handle* is not a socket handle.
 
@@ -78,7 +80,7 @@ In a future build this error will no longer occur.
 
  - [`zx_socket_create()`]
  - [`zx_socket_read()`]
- - [`zx_socket_shutdown()`]
+ - [`zx_socket_set_disposition()`]
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
@@ -86,4 +88,4 @@ In a future build this error will no longer occur.
 [`zx_object_wait_one()`]: object_wait_one.md
 [`zx_socket_create()`]: socket_create.md
 [`zx_socket_read()`]: socket_read.md
-[`zx_socket_shutdown()`]: socket_shutdown.md
+[`zx_socket_set_disposition()`]: socket_set_disposition.md

@@ -1,419 +1,333 @@
-<!-- 
-# Set up and start the Fuchsia emulator (FEMU)
+# Start the Fuchsia emulator
 
-This document describes how to set up and run the Fuchsia emulator (FEMU), including networking
-and GPU support setup. 
--->
+This guide provides instructions on how to set up and launch the
+Fuchsia emulator (FEMU) on your machine.
 
-# 配置并运行 Fuchsia 模拟器(FEMU)
+The steps are:
 
-本文将向你介绍如何配置并运行 Fuchsia 模拟器(FEMU)，其中包括网络和 GPU 支持的配置。
+1. [Prerequisites](#prerequisites).
+1. [Build Fuchsia for FEMU](#build-fuchsia-for-femu).
+1. [Enable VM acceleration (Optional)](#enable-vm-acceleration).
+1. [Start FEMU](#start-femu).
+1. [Discover FEMU](#discover-femu).
 
-<!-- 
-## Prerequisites
+## 1. Prerequisites {#prerequisites}
 
-To run FEMU, you must have:
+Running FEMU requires that you've completed the following guides:
 
- * [Checked out the Fuchsia source and set up some environment variables](/docs/get-started/get_fuchsia_source.md)
- * [Configured and built Fuchsia](/docs/get-started/build_fuchsia.md) 
- -->
+ * [Download the Fuchsia source code][get-fuchsia-source]
+ * [Configure and build Fuchsia][build-fuchsia]
 
-## 前提条件
+## 2. Build Fuchsia for FEMU {#build-fuchsia-for-femu}
 
-运行 FEMU 之前，请先阅读下述文章：
+To run FEMU, you first need to build a Fuchsia system image that supports
+the emulator environment. This guide uses `qemu-x64` for the board
+and `workstation` for the product as an example.
 
- * [下载 Fuchsia 源代码并设置环境变量](/docs/get-started/get_fuchsia_source.md)
- * [配置和构建 Fuchsia](/docs/get-started/build_fuchsia.md)
+To build a FEMU Fuchsia image, do the following:
 
-<!-- 
-### Building Fuchsia for FEMU
+1. Set the Fuchsia build configuration:
 
-Before you can use FEMU, you need to build Fuchsia using `fx set`, 
-specifying a qemu board and supported product. This example uses
-`qemu-x64` for the board and `workstation` for the product:
--->
+   ```posix-terminal
+   fx set workstation.qemu-x64 --release
+   ```
 
-### 构建 Fuchsia 以适配 FEMU
+2. Build Fuchsia:
 
-使用 FEMU 之前，你需要通过设置 `fx set` 命令的参数，来指定适用于 qemu 的主板硬件配置和产品软件配置。
-下面的示例中，我们选择 `qemu-x64` 为主板硬件配置，`workstation` 为产品软件配置：
+   ```posix-terminal
+   fx build
+   ```
 
-<!-- 
-<pre class="prettyprint">
-<code class="devsite-terminal">fx set workstation.qemu-x64 --release [--with=...]</code>
-<code class="devsite-terminal">fx build</code>
-</pre>
+For more information on supported boards and products, see the
+[Fuchsia emulator (FEMU)][femu-overview] overview page.
 
-Note: More information on supported boards and products is in the
-[Fuchsia emulator overview](/docs/concepts/emulator/index.md).
--->
+## 3. Enable VM acceleration (Optional) {#enable-vm-acceleration}
 
-<pre class="prettyprint">
-<code class="devsite-terminal">fx set workstation.qemu-x64 --release [--with=...]</code>
-<code class="devsite-terminal">fx build</code>
-</pre>
+(**Linux only**) Most Linux machines support VM acceleration through
+KVM, which greatly improves the performance and usability of the emulator.
 
-说明：参考[Fuchsia 模拟器概述](/docs/concepts/emulator/index.md)一文获取更多配置信息。
+If KVM is available on your machine, update your group permission to
+enable KVM.
 
-<!-- 
-## Configure network
+* {Linux}
 
-For Fuchsia's ephemeral software to work with FEMU, you need to configure
-an IPv6 network.
+  To enable KVM on your machine, do the following:
 
-  * [Linux configuration](#linux-config)
-  * [macOS configuration](#mac-config)
--->
+  Note: You only need to do this once per machine.
 
-## 配置网络信息
+  1.  Add yourself to the `kvm` group on your machine:
 
-为了使 Fuchsia 的临时软件能够在 FEMU 中使用，您需要进行 IPv6 网络配置。
+      ```posix-terminal
+      sudo usermod -a -G kvm ${USER}
+      ```
 
-  * [Linux 配置](#linux-config)
-  * [macOS 配置](#mac-config)
+  1.  Log out of all desktop sessions to your machine and then log in again.
 
-<!-- 
-### Linux {#linux-config}
+  1.  To verify that KVM is configured correctly, run the following command:
 
-To enable networking in FEMU using [tap networking](https://wiki.qemu.org/Documentation/Networking#Tap), run the following commands:
+      ```posix-terminal
+      if [[ -r /dev/kvm ]] && grep '^flags' /proc/cpuinfo | grep -qE 'vmx|svm'; then echo 'KVM is working'; else echo 'KVM not working'; fi
+      ```
 
-<pre class="prettyprint">
-<code class="devsite-terminal">sudo ip tuntap add dev qemu mode tap user $USER</code>
-<code class="devsite-terminal">sudo ip link set qemu up</code>
-</pre>
--->
+      Verify that this command prints the following line:
 
-### Linux {#linux-config}
+      ```none {:.devsite-disable-click-to-copy}
+      KVM is working
+      ```
 
-为了在 FEMU 中启用 [分流网络模式](https://wiki.qemu.org/Documentation/Networking#Tap)，请执行下述命令：
+      If you see `KVM not working`, you may need to reboot your machine for
+      the permission change to take effect.
 
-<pre class="prettyprint">
-<code class="devsite-terminal">sudo ip tuntap add dev qemu mode tap user $USER</code>
-<code class="devsite-terminal">sudo ip link set qemu up</code>
-</pre>
+* {macOS}
 
-<!-- 
-### macOS {#mac-config}
+  No additional setup is required for macOS.
 
-[User Networking (SLIRP)](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29){: .external} is the default networking set up for FEMU on macOS. This networking set up does not support Fuchsia device discovery.
--->
+  Instead of KVM, the Fuchsia emulator on macOS uses the
+  [Hypervisor framework][hypervisor-framework]{: .external}.
 
-### macOS {#mac-config}
+## 4. Start FEMU {#start-femu}
 
-[User 网络模式(SLIRP)](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29){: .external} 是 FEMU 在 macOS 上的默认网络模式，该模式不支持 Fuchsia 设备发现功能。
 
-<!-- 
-## Start FEMU
+### Start the package server
 
-The most common way to run FEMU is with networking enabled, using the following commands.
--->
-## 启动 FEMU
+Prior to starting the emulator, start the package server.
 
-常用的 FEMU 启动方式一般会同时启用网络功能，命令如下： 
-
-<!-- 
-### Linux {#linux-start-femu}
-
-To support device discovery without access to external networks.
-
-```posix-terminal
-fx vdl start -N
-```
--->
-
-### Linux {#linux-start-femu}
-
-若要启用设备发现功能，但不访问外部网络，请执行：
-
-```posix-terminal
-fx vdl start -N
-```
-
-<!-- 
-To get access to external networks:
-
-{% dynamic if user.is_googler %}
-Note: Command will differ depending on the type of machines you use.
-
-* {Corp}
-
-  To use FEMU on a corp machine, see [go/fuchsia-emulator-corp](http://go/fuchsia-emulator-corp).
-
-* {Non-Corp}
-
-  Note: `FUCHSIA_ROOT` is the path to the Fuchsia checkout on your local machine (ex: `~/fuchsia`).
+To start the the package server, run the following command:
 
   ```posix-terminal
-  fx vdl start -N -u {{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh
+  fx serve
   ```
+Note: Alternatively you can background the `fx serve` process.
 
-{% dynamic else %}
+### Start the emulator
 
-Note: `FUCHSIA_ROOT` is the path to the Fuchsia checkout on your local machine (ex: `~/fuchsia`).
+To start the emulator on your Linux machine, do the following:
 
-```posix-terminal
-fx vdl start -N -u {{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh
-```
-{% dynamic endif %}
--->
+* {Linux}
 
-若想访问外部网络：
+  1. Configure the upscript by running the following command:
 
-{% dynamic if user.is_googler %}
-说明：根据你的电脑的不同，命令将会有所不同
-
-* {Corp}
-
-  想要在 corp 机器上运行 FEMU，请参见 [go/fuchsia-emulator-corp](http://go/fuchsia-emulator-corp).
-
-* {Non-Corp}
-
-  说明：参数 `FUCHSIA_ROOT` 指向的是 Fuchsia 源代码在你电脑上的保存位置 (例如: `~/fuchsia`)。
-
-  ```posix-terminal
-  fx vdl start -N -u {{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh
-  ```
-
-{% dynamic else %}
-
-说明：参数 `FUCHSIA_ROOT` 指向的是 Fuchsia 源代码在你电脑上的保存位置 (例如: `~/fuchsia`)。
-
-```posix-terminal
-fx vdl start -N -u {{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh
-```
-{% dynamic endif %}
-
-<!-- 
-Once you run the command, a separate window opens with the title "Fuchsia Emulator". After
-the Fuchsia emulator launches successfully, the terminal starts with the SSH console. You
-can run shell commands in this window, just like you would on a Fuchsia device.
--->
-
-命令运行后，会打开一个名为"Fuchsia Emulator"的新窗口。当模拟器启动成功后，终端会打开一个 SSH 会话。在该窗口中，你可以执行作用于这个 Fuchsia 设备的 Shell 命令。
-
-<!-- 
-### macOS {#mac-start-femu}
-
-On macOS, Fuchsia device discovery does not work. However, you can still use `fx` tools such as `fx ssh`.
+      Note: If your machine is behind a firewall, you may need to apply some additional
+      configuration to allow the emulator to access the network. This is typically
+      accomplished by running an "upscript", which sets up the interfaces and firewall
+      access rules for the current process. If you're on a corporate network, check
+      with your internal networking team to see if they have an existing upscript
+      for you to use.
+      If you're not behind a firewall, there's still some configuration needed to
+      enable tun/tap networking. The example upscript
+      at <code>{{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh</code>
+      should work for the majority of non-corporate users.
 
 
-```posix-terminal
-fx vdl start
-```
+      ```posix-terminal
+      ffx config set emu.upscript {{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh
+      ```
+      * `start-unsecure-internet.sh` is an example upscript.
+      * `FUCHSIA_ROOT` is the path to your Fuchsia directory.
 
-From the output, take note of the instruction on running `fx set-device`, you will need it for the steps below. 
--->
+  1. Start FEMU
 
-### macOS {#mac-start-femu}
+      1. To start the emulator with access to external networks, run the
+         following command:
 
-在 macOS 上，Fuchsia 设备发现功能不可用。 但你仍可以正常使用 `fx` 工具，比如 `fx ssh` 命令。
+          ```posix-terminal
+          ffx emu start --net tap
+          ```
 
+          * `--net` specifies the networking mode for the emulator. `--net tap`
+          attaches to a Tun/Tap interface.
 
-```posix-terminal
-fx vdl start
-```
+      1. To start the emulator without access to external networks, run
+         the following command:
 
-从命令的输出中，记下关于 `fx set-device` 的说明，我们下面会用到它。
+          ```posix-terminal
+          ffx emu start --net none
+          ```
 
-<!-- 
-Note: When you launch FEMU for the first time on your Mac machine after starting up (ex: after a reboot),
-a window pops up asking if you want to allow the process “aemu” to run on your machine.
-Click “allow”.
+    Starting the emulator opens a new window with the
+    title **Fuchsia Emulator**. When the emulator is finished booting, you are
+    returned to the command prompt, and the emulator runs in the background.
 
-Run `fx set-device` to specify the launched Fuchsia emulator SSH port. For `SSH_PORT`, use the value that the `fx vdl start --host-gpu` command outputted.
+* {macOS}
 
+  To start FEMU on macOS, do the following:
 
-```posix-terminal
-fx set-device 127.0.0.1:{{ '<var>' }}SSH_PORT{{ '</var>' }}
-```
--->
+  1. Start FEMU:
 
-说明：每次 Mac 电脑启动后，首次运行 FEMU，都会弹出窗口，询问你是否允许“aemu”在你的电脑上运行，点击“允许”即可。
+     ```posix-terminal
+     ffx emu start
+     ```
 
-执行下述 `fx set-device` 命令来给已经启动的 Fuchsia 模拟器指定 SSH 端口，命令中，参数`SSH_PORT`由上述 `fx vdl start --host-gpu` 命令的输出中获取。 
+     If you launch FEMU for the first time on your macOS (including after a reboot),
+     a window pops up asking if you want to allow the process `aemu` to run on your
+     machine. Click **Allow**.
 
-```posix-terminal
-fx set-device 127.0.0.1:{{ '<var>' }}SSH_PORT{{ '</var>' }}
-```
+     This command opens a new window with the title **Fuchsia Emulator**.
+     When the emulator is finished booting, you are returned to the command
+     prompt, and the emulator runs in the background.
 
-<!-- 
-## Additional FEMU options
+  2. (Optional) If you need to specify the launched Fuchsia emulator, you can
+     run the `fx set-device` command in the same terminal:
 
-### Input options
+     ```posix-terminal
+     fx set-device {{ '<var>' }}NAME{{ '</var>' }}
+     ```
 
-By default FEMU uses multi-touch input. You can add the argument `--pointing-device mouse`
-for mouse cursor input instead.
+     Replace the following:
+
+     * `NAME`: Use the desired value from the `ffx emu list` or `ffx target list`
+       command's output. `fuchsia-emulator` is the default value.
+
+## 5. Discover FEMU {#discover-femu}
+
+To discover the Fuchsia emulator as a running Fuchsia device, run the
+following command:
 
 ```posix-terminal
-fx vdl start --pointing-device mouse
+ffx target list
 ```
--->
 
-## 其他 FEMU 选项
+This command prints output similar to the following:
 
-### 输入 选项
+```none {:.devsite-disable-click-to-copy}
+$ ffx target list
+NAME                      SERIAL       TYPE                    STATE      ADDRS/IP                            RCS
+fuchsia-emulator    <unknown>    workstation.qemu-x64    Product    [fe80::866a:a5ea:cd9e:69f6%qemu]    N
+```
 
-FEMU 默认使用多点触屏输入。你可以使用参数 `--pointing-device mouse` 来指定使用鼠标作为输入源。
+`fuchsia-emulator` is the default node name of the Fuchsia emulator.
+
+The output of `ffx target list` is influenced by the `--net` option in the
+following ways:
+
+   * `--net none` disables networking, which causes the device to not be
+   discoverable when running `ffx target list`.
+   * `--net tap` and `--net user` allow the device to be discoverable
+   when running `ffx target list`.
+
+
+## Next steps
+
+To learn more about Fuchsia device commands and Fuchsia workflows, see
+[Explore Fuchsia][explore-fuchsia].
+
+## Appendices
+
+This section provides additional FEMU options.
+
+### See all available flags
+
+To see a full list of the emulator's supported flags:
 
 ```posix-terminal
-fx vdl start --pointing-device mouse
+ffx emu start --help
 ```
 
-<!-- 
 ### Run FEMU without GUI support
 
-If you don't need graphics or working under the remote workflow, you can run FEMU in headless mode:
+If you don't need graphics or working under the remote workflow,
+you can run FEMU in headless mode:
 
 ```posix-terminal
-fx vdl start --headless
-```
--->
-
-### 无图形界面运行 FEMU 
-
-如果你不需要图形界面，又或者使用远程工作流来工作，则可以以 headless 模式运行 FEMU：
-
-```posix-terminal
-fx vdl start --headless
+ffx emu start --headless
 ```
 
-<!-- 
 ### Specify GPU used by FEMU
 
-By default, FEMU launcher uses software rendering using [SwiftShader](https://swiftshader.googlesource.com/SwiftShader/). 
-To force FEMU to use a specific graphics emulation method, use the parameters `--host-gpu` or `--software-gpu` to the `fx vdl start` command.
--->
+By default, the FEMU launcher uses software rendering using
+[SwiftShader][swiftshader]{: .external}. To force FEMU to use a specific
+graphics emulation method, use the parameters `--gpu host` or
+`--gpu guest` with the `ffx emu start` command.
 
-### 让 FEMU 使用指定的 GPU
-
-默认情况下，FEMU 启动器会使用 [SwiftShader](https://swiftshader.googlesource.com/SwiftShader/) 来进行软件渲染。
-要强制 FEMU 使用指定的图形模拟方法，可以在命令 `fx vdl start` 中使用参数 `--host-gpu` 或者 `--software-gpu` 。
-
-<!-- 
 These are the valid commands and options:
 
 <table><tbody>
   <tr>
    <th>GPU Emulation method</th>
    <th>Explanation</th>
-   <th><code>fx vdl start</code> flag</th>
+   <th>Flag</th>
   </tr>
   <tr>
    <td>Hardware (host GPU)</td>
-   <td>Uses the host machine’s GPU directly to perform GPU processing.</td>
-   <td><code>fx vdl start --host-gpu</code></td>
+   <td>Uses the host machine's GPU directly to perform GPU processing.</td>
+   <td><code>ffx emu start --gpu host</code></td>
   </tr>
   <tr>
    <td>Software (host CPU)</td>
-   <td>Uses the host machine’s CPU to simulate GPU processing.</td>
-   <td><code>fx vdl start --software-gpu</code></td>
-  </tr>
-</tbody></table>
--->
-
-可用的选项及参数如下：
-
-<table><tbody>
-  <tr>
-   <th>GPU 模拟方法</th>
-   <th>解释</th>
-   <th>用法</th>
+   <td>Uses the host machine's CPU to simulate GPU processing.</td>
+   <td><code>ffx emu start --gpu guest</code></td>
   </tr>
   <tr>
-   <td>硬件模拟 (使用宿主机GPU)</td>
-   <td>直接使用宿主机 GPU 处理图形计算</td>
-   <td><code>fx vdl start --host-gpu</code></td>
+   <td>SwiftShader</td>
+   <td>Uses SwiftShader libraries to simulate GPU processing.</td>
+   <td><code>ffx emu start --gpu swiftshader_indirect</code></td>
   </tr>
   <tr>
-   <td>软件模拟 (使用宿主机 CPU)</td>
-   <td>使用宿主机 CPU 来模拟 GPU 图形计算</td>
-   <td><code>fx vdl start --software-gpu</code></td>
+   <td>Auto</td>
+   <td>Resolves to <code>host</code> if there is a hardware GPU available or
+       <code>swiftshader_indirect</code> if there isn't a hardware GPU available.
+       <code>auto</code> is the current default.</td>
+   <td><code>ffx emu start --gpu auto</code></td>
   </tr>
 </tbody></table>
 
-<!-- 
-### Supported hardware for graphics acceleration {#supported-hardware}
+### Reboot FEMU {#reboot-femu}
 
-FEMU currently supports a limited set of GPUs on macOS and Linux for
-hardware graphics acceleration. FEMU uses a software renderer fallback for unsupported GPUs.
+To reboot FEMU, run the following `ffx` command:
 
-<table>
-  <tbody>
-    <tr>
-      <th>Operating System</th>
-      <th>GPU Manufacturer</th>
-      <th>OS / Driver Version</th>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>Nvidia Quadro</td>
-      <td>Nvidia Linux Drivers <a href="https://www.nvidia.com/download/driverResults.aspx/160175/en-us">440.100</a>+</td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td><a href="https://support.apple.com/en-us/HT204349#intelhd">Intel HD Graphics</a></td>
-      <td>macOS version 10.15+</td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>AMD Radeon Pro</td>
-      <td>macOS version 10.15+</td>
-    </tr>
-  </tbody>
-</table>
--->
+```posix-terminal
+ffx target reboot
+```
 
-### 受支持的图形加速硬件列表 {#supported-hardware}
+### Stop FEMU {#stop-femu}
 
-在 macOS 和 Linux 上，FEMU 支持使用部分 GPU 进行硬件图形加速。对于不支持的 GPU，FEMU 则使用软件渲染器来实现加速功能。
+To stop FEMU, run the following `ffx` command:
 
-<table>
-  <tbody>
-    <tr>
-      <th>操作系统</th>
-      <th>GPU 制造商</th>
-      <th>系统/驱动版本</th>
-    </tr>
-    <tr>
-      <td>Linux</td>
-      <td>Nvidia Quadro</td>
-      <td>Nvidia Linux Drivers <a href="https://www.nvidia.com/download/driverResults.aspx/160175/en-us">440.100</a>+</td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td><a href="https://support.apple.com/en-us/HT204349#intelhd">Intel HD Graphics</a></td>
-      <td>macOS 10.15+</td>
-    </tr>
-    <tr>
-      <td>macOS</td>
-      <td>AMD Radeon Pro</td>
-      <td>macOS 10.15+</td>
-    </tr>
-  </tbody>
-</table>
+```posix-terminal
+ffx emu stop
+```
 
-<!-- 
-## Exit FEMU
+### Configure IPv6 network {#configure-ipv6-network}
 
-To exit FEMU, run `dm poweroff` in the FEMU terminal.
+This section provides instructions on how to configure an IPv6 network
+for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
 
-## Next steps
+* {Linux}
 
- *  To learn more about how FEMU works, see the
-    [Fuchsia emulator (FEMU) overview](/docs/concepts/emulator/index.md).
- *  To learn more about Fuchsia device commands and Fuchsia workflows, see
-    [Explore Fuchsia](/docs/get-started/explore_fuchsia.md).
+  Note: This has to be completed once per machine.
 
--->
+  To enable networking in FEMU using
+  [tap networking][tap-networking]{: .external}, do the following:
 
-## 退出 FEMU
+  1. Set up `tuntap`:
 
-想要退出 FEMU, 请在 FEMU 终端执行命令 `dm poweroff` 。
+     ```posix-terminal
+     sudo ip tuntap add dev qemu mode tap user $USER
+     ```
 
-## 下一步
+  1. Enable the network for `qemu`:
 
- *  了解 FEMU 工作原理，参见
-    [Fuchsia 模拟器(FEMU)概述](/docs/concepts/emulator/index.md).
- *  了解 Fuchsia 设备指令及 Fuchsia 工作流，参见
-    [探索 Fuchsia](/docs/get-started/explore_fuchsia.md).
+     ```posix-terminal
+     sudo ip link set qemu up
+     ```
 
+* {macOS}
+
+  No additional IPv6 network setup is required for macOS.
+
+  [User Networking (SLIRP)][slirp]{: .external} is the default network setup
+  for FEMU on macOS – while this setup does not support Fuchsia device
+  discovery, you can still use `fx` tools (for example,`fx ssh`) to
+  interact with your FEMU instance.
+
+<!-- Reference links -->
+
+[get-fuchsia-source]: /docs/get-started/get_fuchsia_source.md
+[build-fuchsia]: /docs/get-started/build_fuchsia.md
+[femu-overview]: /docs/development/build/emulator.md
+[hypervisor-framework]: https://developer.apple.com/documentation/hypervisor
+[explore-fuchsia]: /docs/get-started/explore_fuchsia.md
+[swiftshader]: https://swiftshader.googlesource.com/SwiftShader/
+[tuntap]: https://en.wikipedia.org/wiki/TUN/TAP
+[tap-networking]: https://wiki.qemu.org/Documentation/Networking#Tap
+[slirp]: https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29

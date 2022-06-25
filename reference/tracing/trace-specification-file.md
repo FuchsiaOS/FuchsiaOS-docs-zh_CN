@@ -14,7 +14,7 @@ The file supports the following top level-parameters:
  - `measure`: array of measurement specifications, see Benchmarking
 
 For information about the Fuchsia tracing system,
-see [Fuchsia tracing system](/docs/concepts/tracing/README.md).
+see [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 For information on how to record a trace, see
 [Recording a Fuchsia

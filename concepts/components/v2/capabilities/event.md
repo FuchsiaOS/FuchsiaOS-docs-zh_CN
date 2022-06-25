@@ -1,90 +1,70 @@
-# Event capabilities (Components v2) {#event-capabilities}
+# Event capabilities
 
 <<../../_v2_banner.md>>
 
-Event capabilities allow components receive or offer events under the scope of a
-particular realm.
+Event capabilities allow components to subscribe to specific events that occur
+during the various stages of the [component lifecycle][doc-lifecycle].
+This includes information about component state changes as well as capability
+routing.
 
-Components that wish to listen for events should have routed to them:
+For a complete list of supported events and their descriptions, see the
+[`fuchsia.sys2.EventType`][event-type] reference documentation.
 
--   [`fuchsia.sys2.EventSource`][event-source]: allows the
-    component to listen for events. Component manager will wait
-    for the component to handle the event. This is used for
-    [hermetic tests][hermetic-tests].
+## Providing event capabilities {#provide}
 
-At the moment, events can only originate from the framework itself and are
-limited to lifecycle events. Refer to [`fuchsia.sys2.EventType`][event-type] for
-the complete list of supported events and their explanations.
+Event capabilities always originate from component manager. They are provided to
+components as a *framework capability*. Individual components cannot declare
+events in their manifest `capabilities`.
 
-## Event filters {#event-filters}
+Each event capability covers a specific *scope*, determined by the
+[realm][doc-realms] of the component where the capability was initially offered.
+The scope of the capability does not change, even when the capability is
+[routed](#route) to another component.
 
-Most event declarations consist of only the event name. However, some of them
-may contain filters. Event filters support filtering events based on additional
-parameters defined in a key-value mapping.
+## Routing event capabilities {#route}
 
-These filters can be routed as subsets. For example, let's say component A
-offers an event `foo` with filters `x: [/a, /b, /c]`. A component B might route
-this event using only a subset of filters `x: [/b, /c]` and a component C could
-use this event using a single filter `x: /b`.
+Components can [offer](#offer) and [expose](#expose) event capabilities that
+they receive from the framework to other components.
 
-For example, the `capability_ready` event defines a filter for the `path`. The
-`path` is one or more paths exposed to framework that the component is
-interested in offering or listening to.
+For more details on how the framework routes component capabilities,
+see [capability routing][capability-routing].
 
-## Static Event Streams {#event-streams}
+### Exposing {#expose}
 
-Event subscriptions can be set up statically in CML files via static event streams.
-Static event streams are similar to dynamically created event streams but are set
-up during the resolution of a component's manifest. The following is an example of the
-syntax of a static event stream.
+Exposing an event capability gives the component's parent access to that
+capability:
 
 ```json5
 {
-    event: "resolved",
-    modes: [ "sync" ],
-    from: "framework",
-},
-{
-    event_stream: "StartComponentTree",
-    subscriptions: [
+    expose: [
         {
-            event: "resolved",
-            mode: "sync",
-        }
-    ],
-},
+            event: "started",
+            from: "framework",
+        },
+    ]
+}
 ```
 
-In the syntax above, the component synchronously listens for `resolved` events of child
-components. This blocks children from starting, giving components an opportunity to set
-up dynamic event streams prior to starting child components so that no events are missed.
+The `from: "framework"` directive means that the protocol capability is
+[provided](#provide) by component manager.
 
-`StartComponentTree` is the conventional name to use for blocking child components and used
-by client libraries via a `start_component_tree` API.
+### Offering {#offer}
 
-## Offering events {#offering-events}
+Offering an event capability gives a child component access to that
+capability:
 
-Events may be [offered][routing-terminology] to children. For example, a
-component wishing to expose `started`, `stopped` and `capability_ready` to a
-child of itself could do the following:
-
-```
+```json5
 {
     offer: [
         {
-            event: [
-                "started",
-                "stopped",
-            ],
+            event: "started",
             from: "parent",
-            to: [ "#child" ],
+            to: [ "#child-a", "#child_b" ],
         },
         {
-            event: "capability_ready",
-            from: "parent",
-            as: "foo_bar_ready",
-            filter: { path: [ "/foo", "/bar"] },
-            to: [ "#child" ],
+            event: "stopped",
+            from: "framework",
+            to: "#child-c",
         }
     ]
 }
@@ -92,71 +72,184 @@ child of itself could do the following:
 
 Events can be offered from two sources:
 
--   `parent`: A component that was offered an event (`started` for example) can
-    offer this same event from its parent. The scope of the offered event will
-    be the same scope of the `started` event that the component was offered.
+-   `framework`: The event capability provided by component manager.
+    The scope of this event will be the offering component's realm.
+-   `parent`: An event capability that was offered to the parent by another
+    component. The scope of the offered capability matches the component that
+    originally routed the capability from `framework`.
 
--   `framework`: A component can also offer an event that its parent didn't
-    offer to it. The scope of this event will be the component's realm itself
-    and all its descendants.
+## Consuming event capabilities {#consume}
 
-## Using events {#using-events}
+To consume an event capability, the component must request the
+[`fuchsia.sys2.EventSource`][event-source] protocol and the set of
+[`fuchsia.sys2.EventType`][event-type] for subscription.
 
-A component that wants to receive events declares in its manifest the events it
-is interested in and the `EventSource` protocol. Both the protocol and the
-events should be offered to the component.
+To request the capability, add a `use` declaration for it:
 
-Events can come from two sources:
-
--   `framework`: events used from framework are scoped to the component using
-    them. For example, given a topology `A -> B -> C` where `A` is the parent of
-    `B` and `B` of `C`. Suppose that `B` uses `started` from `framework`. `B`
-    will be able to see when `C` starts but it won't be able to see when a
-    sibling of itself (another child of `A`) starts.
-
--   `parent`: events used from the parent have been offered by the parent and
-    are scoped to the parent's scope. For example, given a topology `A -> B ->
-    C` where `A` is the parent of `B` and `B` of `C`. Suppose that `A` offers
-    `started` to `B` and `B` uses `started` from `parent`. `B` will be able to
-    see when `C` starts but it will also be able to see when a sibling of itself
-    (a child of `A`) starts.
-
-For example, a component that was offered the events from the
-[example above](#offering-events) could use some of them as follows:
-
-```
+```json5
 {
     use: [
-        {
-            protocol: "fuchsia.sys2.EventSource",
-            from: "parent",
+        { protocol: "fuchsia.sys2.EventSource" },
+        { 
+            event: [
+                "started",
+                "stopped",
+            ],
+            from: "framework",
         },
-        {
-            event: "started",
-            from: "parent",
-        },
-        {
-            event: ["stopped", "destroyed"],
-            from: "framework"
-        }
-        {
-            event: "foo_bar_ready",
-            from: "parent",
-            filter: { path: "/foo" },
-        }
     ]
 }
 ```
 
-Above, the component was offered `started`, `stopped` and `foo_bar_ready`. In
-this example, the component uses the `started` it was offered and
-`foo_bar_ready` but only for `/foo` capabilities, not `/bar`. Also, the
-component decided to not use the `stopped` event it was offered. Instead the
-component used the event from `framework`, which means that it will only see
-`stopped` and `destroyed` events for components in its own realm.
+Events can be used from two sources:
 
-[hermetic-tests]: ../opaque_test.md
-[event-source]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventSource
+-   `framework`: The event capability provided by component manager.
+    The scope of this event will be the consuming component's realm.
+-   `parent`: An event capability that was offered to the parent by another
+    component. The scope of the offered capability matches the component that
+    originally routed the capability from `framework`.
+
+Caution: The default source for capabilities is `parent` unless otherwise
+specified.
+
+## Static event streams {#event-streams}
+
+Event subscriptions can be set up statically in the component manifest using
+*static event streams*.
+Static event streams are similar to event streams created through the
+`fuchsia.sys2.EventSource/Subscribe` FIDL method but they are set up by the
+framework during the resolution of a component's manifest.
+
+The following is an example of the syntax of a static event stream declaration:
+
+```json5
+use: [
+    {
+        event: "started",
+        from: "parent",
+    },
+    {
+        event_stream: "MyEventStream",
+        subscriptions: [
+            {
+                event: "started",
+            }
+        ],
+    },
+]
+```
+
+To connect to a static event stream, call the
+`fuchsia.sys2.EventSource/TakeStaticEventStream` FIDL method and provide the
+name of the event stream defined in the manifest. In the above example, the
+name is `MyEventStream`.
+
+Static event streams are limited to the events listed in the `subscriptions`
+section of the manifest. Attempting to subscribe to a different event produces a
+validation error. In the above example, the only events available to the stream
+are `started` events.
+
+## Event routing example {#example}
+
+Consider the following example of a component topology:
+
+![A visual tree representation of the declarations explained below][example-img]
+
+Notice the following key aspects of this example:
+
+-   `core/archivist`: Receives `started` events for the entire topology through
+    an events capability routed from `root`.
+
+    ```json5
+    // root.cml
+    {
+        offer: [
+            {
+                protocol: "fuchsia.sys2.EventSource",
+                from: "parent",
+                to: "#core",
+            },
+            {
+                event: "started",
+                from: "parent",
+                to: "#core",
+            },
+        ]
+    }
+
+    // core.cml
+    {
+        offer: [
+            {
+                protocol: "fuchsia.sys2.EventSource",
+                from: "parent",
+                to: [ "#archivist", "#test_manager" ],
+            },
+            {
+                event: "started",
+                from: "parent",
+                to: [ "#archivist", "#test_manager" ],
+            },
+        ]
+    }
+
+    // archivist.cml
+    {
+        use: [
+            { protocol: "fuchsia.sys2.EventSource" },
+            { event: "started" },
+        ]
+    }
+    ```
+
+-   `core/test_manager/archivist`: Receives `started` events for all test
+    components through an events capability routed from `test_manager`.
+
+    ```json5
+    // test_manager.cml
+    {
+        offer: [
+            {
+                protocol: "fuchsia.sys2.EventSource",
+                from: "parent",
+                to: [ "#tests", "#archivist" ],
+            },
+            {
+                event: "started",
+                from: "framework",
+                to: "#archivist",
+            },
+        ]
+    }
+
+    // archivist.cml
+    {
+          use: [
+              { protocol: "fuchsia.sys2.EventSource" },
+              { event: "started" },
+        ]
+    }
+    ```
+
+-   `core/test_manager/tests:test-12345`: Receives started events for `foo` and
+    `bar` through the events capability provided by `framework`.
+
+    ```json5
+    // test-12345.cml
+    {
+        use: [
+            { protocol: "fuchsia.sys2.EventSource" },
+            {
+                event: "started",
+                from: "framework",
+            },
+        ]
+    }
+    ```
+
+[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[doc-lifecycle]: /docs/concepts/components/v2/lifecycle.md
+[doc-realms]: /docs/concepts/components/v2/realms.md
 [event-source]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventSource
 [event-type]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventType
-[routing-terminology]: ../component_manifests.md#routing-terminology
+[example-img]: ../images/event-example.png

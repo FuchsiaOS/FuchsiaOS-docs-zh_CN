@@ -28,8 +28,8 @@ toc:
   path: /docs/development/languages/c-cpp/cxx.md
 - title: "Compile time collections"
   path: /docs/development/languages/c-cpp/compile_time_object_collections.md
-- title: "fit::promise<> guide"
-  path: /docs/development/languages/c-cpp/fit_promise_guide.md
+- title: "fpromise::promise<> guide"
+  path: /docs/development/languages/c-cpp/fpromise_promise_guide.md
 - title: "fbl:: (Fuchsia Base Library) intrusive container guide"
   section:
   - include: /docs/development/languages/c-cpp/fbl_containers_guide/_toc.yaml

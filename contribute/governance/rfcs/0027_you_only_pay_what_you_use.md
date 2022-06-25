@@ -21,7 +21,7 @@ functionality that imposes costs on people who do not use the functionality.
 
 One of the most important aspects of FIDL is that Fuchsia uses FIDL pervasively
 for interprocess communication and therefore for defining the [system
-ABI](/docs/concepts/system/abi/system.md).
+ABI](/docs/concepts/packages/system.md).
 
 Many use cases for interprocess communication are performance-critical.  When
 people are evaluating technologies for these performance-critical use cases,
@@ -172,8 +172,7 @@ Many other languages have adopted the "you only pay for what you use" design
 principle, including C++[^1] and Rust[^2].
 
 [^1]: B. Stroustrup. The Design and Evolution of C++. Addison Wesley, ISBN
-0-201-54330-3. March 1994.
+    0-201-54330-3. March 1994.
 
 [^2]: J. Orendorff, J. Blandy. Programming Rust. O'Reilly Media, ISBN
-9781491927274.
-https://www.oreilly.com/library/view/programming-rust/9781491927274/ch01.html
+    9781491927274. https://www.oreilly.com/library/view/programming-rust/9781491927274/ch01.html

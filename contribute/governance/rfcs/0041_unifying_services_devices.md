@@ -32,7 +32,7 @@ This prevents us from describing more complex relationships:
 
 Providing this flexibility allows a service to be more clearly expressed,
 without resorting to the use of workarounds like [service
-hubs](/docs/concepts/api/fidl.md#service_hubs).
+hubs](/docs/development/api/fidl.md#service_hubs).
 With that flexibility, we can define devices as services.
 Concretely, we plan to evolve `/svc/`**`$Protocol`**
 which implies "only one protocol per process namespace" to:

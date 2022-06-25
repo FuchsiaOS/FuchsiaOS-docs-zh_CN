@@ -31,7 +31,6 @@ Property         |   Description
 * [cc_prebuilt_library](/build/sdk/meta/cc_prebuilt_library.json)
 * [cc_source_library](/build/sdk/meta/cc_source_library.json)
 * [dart_library](/build/sdk/meta/dart_library.json)
-* [device_profile](/build/sdk/meta/device_profile.json)
 * [documentation](/build/sdk/meta/documentation.json)
 * [fidl_library](/build/sdk/meta/fidl_library.json)
 * [host_tool](/build/sdk/meta/host_tool.json)

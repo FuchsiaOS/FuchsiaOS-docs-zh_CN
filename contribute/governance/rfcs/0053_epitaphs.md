@@ -112,7 +112,7 @@ closure that takes an int variable representing the error code, and remove the
 existing one.  Potential future work involves having a "sensible default" error
 handler, although it is not currently clear what this would be.
 
-Any pending reads from this channel will return ```ZX_ERR_PEER_CLOSED```.
+Any pending reads from this channel will return `ZX_ERR_PEER_CLOSED`.
 
 CL for C++ bindings: https://fuchsia-review.googlesource.com/c/garnet/+/177939
 
@@ -141,18 +141,18 @@ This section describes the intended behavior and usage of epitaphs.
    channel that may have been sent by a non-conforming server implementation.
 
 3. When a client observes peer closed without having received an epitaph, then
-   it must proceed as if it has received a ```ZX_ERR_PEER_CLOSED``` epitaph;
+   it must proceed as if it has received a `ZX_ERR_PEER_CLOSED` epitaph;
    these two states are semantically equivalent.
 
-4. A server is expected to send a ```ZX_OK``` epitaph when the closure of the
+4. A server is expected to send a `ZX_OK` epitaph when the closure of the
    channel was an anticipated side-effect of the protocol reaching its
    designated successful end state.
 
    a. Example: When a client calls Commit() on an interface representing an
    individual database transaction, the server should attempt to apply the
-   requested changes.  If successful, the server must send a ```ZX_OK``` epitaph
+   requested changes.  If successful, the server must send a `ZX_OK` epitaph
    before closing its end of the channel.  The client may reasonably construe
-   that the ```ZX_OK``` epitaph indicates that the transaction was successfully
+   that the `ZX_OK` epitaph indicates that the transaction was successfully
    committed.
 
    b. Counter-example: Many protocols do not have designated successful end
@@ -160,27 +160,27 @@ This section describes the intended behavior and usage of epitaphs.
    unbounded number of requests without observing peer closed until such time as
    the client closes its own end of the channel.  In these situations, the
    server closing its end of the channel constitutes an abnormal end state, so
-   the server should never send a ```ZX_OK``` epitaph.
+   the server should never send a `ZX_OK` epitaph.
 
-5. A server may send a non-```ZX_OK``` epitaph prior to closing its end of a
+5. A server may send a non-`ZX_OK` epitaph prior to closing its end of a
    channel for any reason other than the protocol reaching its designated
    successful end state.  We suggest the following convention:
 
    a. If the server is closing the connection because the client sent it an
-   malformed FIDL message, it should send a ```ZX_ERR_INVALID_ARGS``` epitaph.
+   malformed FIDL message, it should send a `ZX_ERR_INVALID_ARGS` epitaph.
 
    b. If the server is closing the connection because the client sent it a
    request that is not valid in its present state, it should send a
-   ```ZX_ERR_BAD_STATE``` epitaph.
+   `ZX_ERR_BAD_STATE` epitaph.
 
    c. If the server was unreachable (e.g. could not be started) when the client
    attempted to connect to it via a service discovery mechanism, this mechanism
-   should send a ```ZX_ERR_UNAVAILABLE``` epitaph.  (See also this sketch.)
+   should send a `ZX_ERR_UNAVAILABLE` epitaph.  (See also this sketch.)
 
    d. If the server is unable to continue serving the protocol for reasons that
    are not in response to actions performed by the client (e.g. shutting down or
    out of memory), it does not have to send any epitaph.  The client will
-   perceive this as ```ZX_ERR_PEER_CLOSED``` as described above.
+   perceive this as `ZX_ERR_PEER_CLOSED` as described above.
 
    e. If a server encounters an application specific error, it should send an
    application-defined error code.  For example, if the server controls a
@@ -214,7 +214,7 @@ each supported FIDL binding gets support, we should augment the set of
 
 ## Drawbacks, alternatives, and unknowns
 
-We considered making a ```System``` interface containing the ```Epitaph```
+We considered making a `System` interface containing the `Epitaph`
 event, which would be the parent of all other interface messages.  Epitaphs, on
 their own, do not warrant such a large change.  There are also currently two
 implementation hurdles to this.  First, derived types do not currently work,
@@ -227,14 +227,14 @@ The API changes that will result from this FTP will not prevent Epitaph support
 from moving into a future System message.
 
 An idea was floated of incorporating some epitaph handling into the source
-language, allowing the ```zx_status``` flag to be mapped as a FIDL-defined enum.
+language, allowing the `zx_status` flag to be mapped as a FIDL-defined enum.
 This is deferred to future work.
 
 
 The proposed implementation is racy.  If one thread writes a message
 concurrently with another thread closing the channel, the epitaph may be written
 prior to the other thread's message, but before the call to
-```zx_channel_close()```.  Alternatives include locking the channel or providing
+`zx_handle_close()`. Alternatives include locking the channel or providing
 an explicit system call.  We are starting with the thread-unsafe version to
 further develop our understanding of the problem space.
 

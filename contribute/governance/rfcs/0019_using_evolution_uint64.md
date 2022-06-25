@@ -11,6 +11,12 @@ Add a mechanism to give more descriptive names to primitive types.
 Remove status as a built-in feature of the language.  Introduce a zx
 library to contain the primitive types from `<zircon/types.h>`.
 
+### Relation to other RFCs
+
+This RFC was superseded by:
+
+* [RFC-0052: Type aliasing and new types](0052_type_aliasing_named_types.md)
+
 ## Motivation
 
 Often developers want to assign more descriptive names to primitive

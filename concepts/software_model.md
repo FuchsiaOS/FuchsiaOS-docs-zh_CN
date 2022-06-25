@@ -7,7 +7,7 @@ important to understand how the software model works in Fuchsia.
 In Fuchsia, almost everything is a component and it is the unit of
 executable software. The Component framework is what runs all components on
 Fuchsia. For more information on components and the component framework, see
-[Introduction to the Fuchsia component framework](/docs/concepts/components/v2/README.md).
+[Introduction to the Fuchsia component framework](/docs/concepts/components/v2/introduction.md).
 
 An API dependency allows different components to define a dependency on another
 component. These API dependencies are abstract which means that the implementation

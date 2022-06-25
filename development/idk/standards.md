@@ -33,7 +33,7 @@ Fuchsia IDK.
 ## Fuchsia System Interface
 
 The Fuchsia System Interface is defined in [Fuchsia System
-Interface](/docs/concepts/system/abi/system.md). Generally speaking, the binary interface to the system
+Interface](/docs/concepts/packages/system.md). Generally speaking, the binary interface to the system
 is only the FIDL wireformat used by programs to communicate with the system and the syscalls exposed
 in `libzircon`.
 

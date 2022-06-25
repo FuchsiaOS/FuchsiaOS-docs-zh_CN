@@ -12,11 +12,13 @@ these responsibilities.
 
 ## Presenting an element's view {#presenting-an-elements-view}
 
-In the following example, a session forwards an [`Element`'s] view to a
-[`GraphicalPresenter`], by calling `PresentView()` with a [`ViewSpec`]. The
-`ViewSpec` includes the duplicated [`ViewRef`] \(a sharable handle to the
+In the following example, a session forwards an `[Elements](/docs/glossary/README.md#element)` view to a
+`[GraphicalPresenter](/docs/glossary/README.md#graphicalpresenter)`,
+by calling `PresentView()` with a
+`[ViewSpec](/docs/glossary/README.md#viewspec)`. The
+`ViewSpec` includes the duplicated `[ViewRef](/docs/glossary/README.md#ViewRef)` \(a sharable handle to the
 `Element`'s View), and an optional set of initial, product-specific
-[`Annotation`s].
+`[Annotations](/docs/glossary/README.md#element-annotation)`.
 
 The component that implements the Graphical Presenter role knows how to open
 the view on a connected display.
@@ -56,18 +58,13 @@ the view on a connected display.
     }
 ```
 
-[`Annotation`s]: /docs/glossary.md#element-annotation
-[`Element`'s]: /docs/glossary.md#element
-[`GraphicalPresenter`]: /docs/glossary.md#graphical-presenter
-[`ViewRef`]: /docs/glossary.md#view-ref
-[`ViewSpec`]: /docs/glossary.md#view-spec
-
 ## Handling input {#handling-input}
 
 In the following example, if the `MouseHandler` detects a mouse-typed input
 event, the handler sends the event to Scenic and returns an empty vector. On all
 other types of input events, the `MouseHandler` returns a vector containing the
-[`InputEvent`] for the next [`InputHandler`] to process.
+`[InputEvent](/docs/glossary/README.md#InputEvent)` for the next
+`[InputHandler](/docs/glossary/README.md#InputHandler)` to process.
 
 ```rust
 #[async_trait]
@@ -85,11 +82,8 @@ impl InputHandler for MouseHandler {
                self.send_events_to_scenic(...)).await;
                vec![] // InputEvent is consumed because it was sent to Scenic
            }
-           _ => vec![input_event], // InputEvent is returned for the next InputHanlder
+           _ => vec![input_event], // InputEvent is returned for the next InputHandler
        }
    }
 }
 ```
-
-[`InputEvent`]: /docs/glossary.md#input-pipeline-input-event
-[`InputHandler`]: /docs/glossary.md#input-pipeline-input-handler

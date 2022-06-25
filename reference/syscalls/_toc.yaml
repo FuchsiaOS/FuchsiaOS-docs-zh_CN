@@ -52,6 +52,8 @@ toc:
     path: /docs/reference/syscalls/thread_start.md
   - title: "zx_thread_write_state"
     path: /docs/reference/syscalls/thread_write_state.md
+  - title: "zx_thread_legacy_yield"
+    path: /docs/reference/syscalls/thread_legacy_yield.md
 - title: "Processes"
   section:
   - title: "zx_process_create"
@@ -114,8 +116,8 @@ toc:
     path: /docs/reference/syscalls/socket_create.md
   - title: "zx_socket_read"
     path: /docs/reference/syscalls/socket_read.md
-  - title: "zx_socket_shutdown"
-    path: /docs/reference/syscalls/socket_shutdown.md
+  - title: "zx_socket_set_disposition"
+    path: /docs/reference/syscalls/socket_set_disposition.md
   - title: "zx_socket_write"
     path: /docs/reference/syscalls/socket_write.md
 - title: "Stream"
@@ -222,6 +224,10 @@ toc:
     path: /docs/reference/syscalls/pager_supply_pages.md
   - title: "zx_pager_op_range"
     path: /docs/reference/syscalls/pager_op_range.md
+  - title: "zx_pager_query_dirty_ranges"
+    path: /docs/reference/syscalls/pager_query_dirty_ranges.md
+  - title: "zx_pager_query_vmo_stats"
+    path: /docs/reference/syscalls/pager_query_vmo_stats.md
 - title: "Cryptographically secure RNG"
   section:
   - title: "zx_cprng_add_entropy"
@@ -232,12 +238,8 @@ toc:
   section:
   - title: "zx_nanosleep"
     path: /docs/reference/syscalls/nanosleep.md
-  - title: "zx_clock_adjust"
-    path: /docs/reference/syscalls/clock_adjust.md
   - title: "zx_clock_create"
     path: /docs/reference/syscalls/clock_create.md
-  - title: "zx_clock_get"
-    path: /docs/reference/syscalls/clock_get.md
   - title: "zx_clock_get_details"
     path: /docs/reference/syscalls/clock_get_details.md
   - title: "zx_clock_get_monotonic"
@@ -270,12 +272,14 @@ toc:
   section:
   - title: "zx_vcpu_create"
     path: /docs/reference/syscalls/vcpu_create.md
+  - title: "zx_vcpu_enter"
+    path: /docs/reference/syscalls/vcpu_enter.md
+  - title: "zx_vcpu_kick"
+    path: /docs/reference/syscalls/vcpu_kick.md
   - title: "zx_vcpu_interrupt"
     path: /docs/reference/syscalls/vcpu_interrupt.md
   - title: "zx_vcpu_read_state"
     path: /docs/reference/syscalls/vcpu_read_state.md
-  - title: "zx_vcpu_resume"
-    path: /docs/reference/syscalls/vcpu_resume.md
   - title: "zx_vcpu_write_state"
     path: /docs/reference/syscalls/vcpu_write_state.md
 - title: "Global system information"
@@ -320,6 +324,10 @@ toc:
     path: /docs/reference/syscalls/system_mexec_payload_get.md
   - title: "zx_system_powerctl"
     path: /docs/reference/syscalls/system_powerctl.md
+  - title: "zx_system_get_performance_info"
+    path: /docs/reference/syscalls/system_get_performance_info.md
+  - title: "zx_system_set_performance_info"
+    path: /docs/reference/syscalls/system_set_performance_info.md
 - title: "DDK"
   section:
   - title: "zx_bti_create"

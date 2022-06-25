@@ -1,14 +1,14 @@
 # zx_vmo_read
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Read bytes from the VMO.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +21,8 @@ zx_status_t zx_vmo_read(zx_handle_t handle,
 
 ## DESCRIPTION
 
-`zx_vmo_read()` attempts to read exactly *buffer_size* bytes from a VMO at *offset*.
+`zx_vmo_read()` attempts to read exactly *buffer_size* bytes from a [virtual memory
+object](/docs/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
 
 *buffer* pointer to a user buffer to read bytes into.
 
@@ -30,7 +31,7 @@ enough for at least this many bytes.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_READ**.
 

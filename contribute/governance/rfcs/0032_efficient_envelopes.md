@@ -3,13 +3,16 @@
 # {{ rfc.name }}: {{ rfc.title }}
 <!-- SET the `rfcid` VAR ABOVE. DO NOT EDIT ANYTHING ELSE ABOVE THIS LINE. -->
 
+Note: A version of this RFC was resubmitted and accepted as
+[RFC-0113](0113_efficient_envelopes.md)
+
 Note: Formerly known as [FTP](../deprecated-ftp-process.md)-032.
 
 _"Turning Envelopes into Postcards"_
 
 ## Rejection rationale
 
-In February 21, 2019, this RFC was initially accepted. The FIDL team worked to
+On February 21, 2019, this RFC was initially accepted. The FIDL team worked to
 stabilize the wire format for most of 2019, culminating in an all-hands-on-deck
 effort which spanned Q3 and Q4. The migration completed on Dec 1<sup>st</sup>,
 2019.
@@ -37,9 +40,16 @@ change would have no material impact.
 
 It's time to face the truth, this ain't going to happen. Rejected.
 
+### Relation to other RFCs
+
+In June 2021, this topic was revisited and performance was measured with
+targeted benchmarks. This was conclusive and
+[RFC-0113](0113_efficient_envelopes.md) proposed reintroducing the change, which
+was accepted.
+
 ## Summary
 
-This FTP proposes a more compact encoding for [envelopes][[1]](#Footnote1).
+This FTP proposes a more compact encoding for envelopes[^1].
 
 ## Motivation
 
@@ -54,7 +64,7 @@ and wire size matter.
 The proposed envelope format is:
 
 ![Figure: 64 bit little endian word, MSB 32 bits size, 16 bits handle_count,
-16 bits reserved](resources/ftp-032-figure1.png)
+16 bits reserved](resources/0032_efficient_envelopes/figure1.png)
 
 Compared with the [existing envelope format][envelopes]:
 
@@ -89,7 +99,7 @@ Compared with the [existing envelope format][envelopes]:
 *   **A size of `UINT32_MAX` and handle count of `0` is special: it
     represents envelope content that is present, but has zero size.**
     *   This is reserved for future use if [zero-size empty structs][rfc-0045]
-        become a reality[[2]](#Footnote2), and does not impose any performance
+        become a reality[^2], and does not impose any performance
         or complexity penalty on decoders today.
         We wish to mention this now so that a possible future implementation
         does not break the wire format.
@@ -298,18 +308,12 @@ consensus on the following decisions:
 This FTP is a slimmed-down version of [rfc-0026], which was rejected since
 there wasn't enough consensus around the whole FTP.
 
-------------------------------------------------------------------------------
-
-##### Footnote1
-
-This FTP is based on [rfc-0026], but with _only_ the out-of-line envelope
+[^1]: This FTP is based on [rfc-0026], but with _only_ the out-of-line envelope
 proposal.
 Inlining, envelopes everywhere, and moving the string/vector count
 out-of-line, have all been removed.
 
-##### Footnote2
-
-Note that today, empty (zero-field) structs occupy one byte on-the-wire.
+[^2]: Note that today, empty (zero-field) structs occupy one byte on-the-wire.
 
 <!-- xrefs -->
 [envelopes]: /docs/contribute/governance/rfcs/0047_tables.md#envelopes

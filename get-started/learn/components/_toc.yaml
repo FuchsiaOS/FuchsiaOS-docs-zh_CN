@@ -1,0 +1,26 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+  - title: Overview
+    path: /docs/get-started/learn/components/README.md
+    step_group: fuchsiacomponents
+  - title: Declaring components
+    path: /docs/get-started/learn/components/declaring-components.md
+    step_group: fuchsiacomponents
+  - title: Organizing components
+    path: /docs/get-started/learn/components/organizing-components.md
+    step_group: fuchsiacomponents
+  - title: Component tests
+    path: /docs/get-started/learn/components/component-tests.md
+    step_group: fuchsiacomponents
+  - title: Debugging components
+    path: /docs/get-started/learn/components/debugging-components.md
+    step_group: fuchsiacomponents
+  - title: Building a cohesive product
+    path: /docs/get-started/learn/components/build-product.md
+    step_group: fuchsiacomponents

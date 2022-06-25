@@ -21,6 +21,8 @@ toc:
   section:
   - title: "Debug the kernal using QEMU"
     path: /docs/development/debugging/qemu.md
+  - title: "JTRACE"
+    path: /docs/development/debugging/jtrace.md
   - title: "Kernel debugging tips"
     path: /docs/development/debugging/tips.md
 - title: "Advanced"

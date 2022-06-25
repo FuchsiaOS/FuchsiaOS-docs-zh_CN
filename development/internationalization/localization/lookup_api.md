@@ -24,9 +24,9 @@ public:
     // The resource was unavailable as requested.
     UNAVAILABLE = 1,
   };
-  static fit::result<std::unique_ptr<Lookup>, Lookup::Status>
+  static fpromise::result<std::unique_ptr<Lookup>, Lookup::Status>
     New(const std::vector<std::string>& locale_ids);
-  fit::result<std::string_view, Lookup::Status> String(uint64_t message_id);
+  fpromise::result<std::string_view, Lookup::Status> String(uint64_t message_id);
 };
 ```
 

@@ -28,7 +28,7 @@ First, user-mode components should not write to debuglog as that is reserved
 for kernel usage and highly privileged user-mode components -- rather,
 most user-mode components should instead write to the  LogSink service. Second,
 providing two outbound streams without an explicit opt in violates the
-[Principle of Least Privilege][doc-cf-principles].
+[Principle of Least Privilege][wiki-least-privilege].
 
 Today, component manager lacks this feature altogether, and we want to bring it
 back while addressing the two shortcomings which existed previously. Instead of
@@ -240,11 +240,11 @@ a socket, as proposed above, it'll be POSIX compliant "out of the box".
 [debuglog]: /docs/reference/kernel_objects/debuglog.md
 [doc-appmgr]: /docs/concepts/components/v1/component_manifests.md
 [doc-cf-intro]: /docs/concepts/components/v2/introduction.md
-[doc-cf-principles]: /docs/concepts/components/v2/design_principles.md
-[doc-cf-migration]: /docs/concepts/components/v2/migration.md
+[doc-cf-migration]: /docs/contribute/open_projects/components/migration.md
 [doc-elf-runner]: /docs/concepts/components/v2/elf_runner.md
 [doc-logs-recording]: /docs/development/diagnostics/logs/recording.md
 [doc-principles-inclusive]: /docs/concepts/principles/inclusive.md
 [doc-principles-pragmatism]: /docs/concepts/principles/pragmatic.md
 [fxr-370683]: https://fuchsia-review.googlesource.com/c/fuchsia/+/370683/
 [rust-doc-lossy]: https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy
+[wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege

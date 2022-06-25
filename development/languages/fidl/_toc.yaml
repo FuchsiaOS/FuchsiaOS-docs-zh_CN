@@ -44,8 +44,14 @@ toc:
     - title: "Getting started"
       section:
       - include: /docs/development/languages/fidl/tutorials/llcpp/basics/_toc.yaml
-    - title: "Async server responses"
+    - title: "Responding asynchronously"
       path: /docs/development/languages/fidl/tutorials/llcpp/topics/async-completer.md
+    - title: "Memory ownership of domain objects"
+      path: /docs/development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
+    - title: "Thread safety and memory safety"
+      path: /docs/development/languages/fidl/tutorials/llcpp/topics/threading.md
+    - title: "Communicating over the driver transport"
+      path: /docs/development/languages/fidl/tutorials/llcpp/topics/driver-transport.md
     - title: "Request pipelining"
       path: /docs/development/languages/fidl/tutorials/llcpp/topics/request-pipelining.md
     - title: "Services"
@@ -72,3 +78,4 @@ toc:
       path: /docs/development/languages/fidl/tutorials/dart/topics/request-pipelining.md
   - title: "C"
     path: /docs/development/languages/fidl/tutorials/tutorial-c.md
+    status: deprecated

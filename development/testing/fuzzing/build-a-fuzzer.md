@@ -19,7 +19,7 @@ templates.
 Each language has a specific fuzzer GN template. All of these templates support certain common
 parameters, as detailed in [fuzzer.gni]:
 
- * An optional [component manifest][cmx] file. A manifest for fuzzing is always generated. If a
+ * An optional [component manifest][glossary.component manifest source] (cmx) file. A manifest for fuzzing is always generated. If a
    `cmx` file is provided, it is combined with and overrides the generated file.
  * An optional [`dictionary`][dictionary]. If not provided, an empty dictionary file is created.
  * An optional list of libFuzzer [`options`]. These key-value pairs are written to a options file.
@@ -163,7 +163,8 @@ length, you can simply return early.
 
 ## Fuzzers package GN template {#fuzzers-package}
 
-The `fuzzers_package` [template][fuzzer.gni] bundles fuzzers into a Fuchsia [package] similar to how
+The `fuzzers_package` [template][fuzzer.gni] bundles fuzzers into a Fuchsia
+[package][glossary.package] similar to how
 a normal `package` bundles binaries or a `test_package` bundles tests. The `fuzzers_package`
 template is distinguished from these other package templates in how it interacts with the currently
 selected toolchain [variants].
@@ -186,7 +187,7 @@ fuzzers_package("my-fuzzers") {
 It is not necessary to include a list if the package has no fuzzers written in the corresponding
 languages.
 
-A `fuzzers_package` can use all the same parameters as a [`package`][gn-package].
+A `fuzzers_package` can use all the same parameters as a [`fuchsia_package`][gn-package].
 
 For example:
 
@@ -281,32 +282,32 @@ compiler configuration changes. If building fails, try [`fx clean-build`][fx-bui
 After running `fx set`, you can view the currently configured fuzzers with `fx fuzz list`.
 Additional `fx fuzz` commands can be used to [run a fuzzer](run-a-fuzzer.md).
 
+[glossary.package]: /docs/glossary/README.md#package
+[glossary.component manifest source]: /docs/glossary/README.md#component-manifest-source
 [asan]: https://clang.llvm.org/docs/AddressSanitizer.html
 [asan-hbo]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleHeapOutOfBounds
 [asan-sbo]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleStackOutOfBounds
 [asan-uaf]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleUseAfterFree
 [asan-uar]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleUseAfterReturn
-[cmx]: /docs/glossary.md#component-manifest
 [cpp_fuzzer.gni]: /build/cpp/cpp_fuzzer.gni
 [dictionary]: https://llvm.org/docs/LibFuzzer.html#dictionaries
-[fuchsia-gn]: /docs/concepts/build_system/intro.md
+[fuchsia-gn]: /docs/development/build/build_system/intro.md
 [fuzz-target]: https://llvm.org/docs/LibFuzzer.html#fuzz-target
 [fuzzer.gni]: /build/fuzzing/fuzzer.gni
 [fx-build]: /docs/development/build/fx.md#execute-a-build
 [fx-set]: /docs/development/build/fx.md#configure-a-build
 [gn-deps]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#var_deps
-[gn-package]: /build/package.gni
+[gn-package]: /docs/development/components/build.md
 [gn-targets]: https://gn.googlesource.com/gn/+/HEAD/docs/language.md#Targets
 [gn-templates]: https://gn.googlesource.com/gn/+/HEAD/docs/language.md#Templates
 [go_fuzzer.gni]: /build/go/go_fuzzer.gni
 [known_variants]: /docs/gen/build_arguments.md#known_variants
 [lsan]: https://clang.llvm.org/docs/LeakSanitizer.html
 [options]: https://llvm.org/docs/LibFuzzer.html#options
-[package]: /docs/glossary.md#fuchsia-package
 [rustc_fuzzer.gni]: /build/rust/rustc_fuzzer.gni
 [sanitizers]: https://github.com/google/sanitizers/wiki
 [test-harness]: /src/lib/fuzzing/cpp/fuzzer_test.cc
 [ubsan]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
 [ubsan-sio]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#usage
 [ubsan-all]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#available-checks
-[variants]: /docs/concepts/build_system/variants.md
+[variants]: /docs/development/build/build_system/variants.md

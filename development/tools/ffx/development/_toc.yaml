@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Overview"
+  path: /docs/development/tools/ffx/development/README.md
+- title: "Developing an ffx plugin"
   path: /docs/development/tools/ffx/development/plugins.md
 - title: "Plugin internals"
   path: /docs/development/tools/ffx/development/plugin-internals.md
-- title: "Proxy plugins"
-  path: /docs/development/tools/ffx/development/proxy-plugin.md
 - title: "Experimental plugins"
   path: /docs/development/tools/ffx/development/plugin-experimental.md

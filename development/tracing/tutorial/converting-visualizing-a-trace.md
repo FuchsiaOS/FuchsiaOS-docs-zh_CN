@@ -1,50 +1,44 @@
 # Converting and visualizing a trace
 
-When you record a trace with the Fuchsia trace system, the data can be
-stored in various file formats. For every data format, there
-is a specific tool to visualize the data.
-
-Note: For more information on the Fuchsia tracing system, see
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+The [Fuchsia trace system](/docs/concepts/kernel/tracing-system.md)
+supports various file formats for recording traces. Each data format
+requires a specific tool to visualize trace results.
 
 ## Prerequisites
 
-Before you attempt to convert or analyze a trace file, make sure you have
-done the following:
-
-* Recorded a trace. See
-  [Recording a Fuchsia provider](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
+Before you attempt to convert or analyze a trace file, make sure you've
+[recorded a trace](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
 
 ## Fuchsia trace file formats
 
 The following types of file formats can store Fuchsia trace data:
 
- * FXT, or [Fuchsia Trace Format](/docs/reference/tracing/trace-format.md), is a binary format
+ * FXT (or [Fuchsia trace format](/docs/reference/tracing/trace-format.md)) is a binary format
    that is a direct encoding of the original trace data that is produced by
-   the various programs. For information on how to view this trace format,
-   see [FXT trace](#fxt-trace).
- * JSON, or
-   [Chrome Trace Format](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit).
-   For information on how to view this trace format, see
-   [JSON trace](#json-trace).
- * HTML, a standalone file that includes both the viewer and trace data. For
-   information on how to view this data, see
-   [HTML trace](#html-trace).
+   the various programs. For more information, see [FXT trace](#fxt-trace).
+ * JSON is used for viewing trace data on Chrome. For more information, see [JSON trace](#json-trace).
+ * HTML is a standalone file that includes both the viewer and trace data. For
+   more information, see [HTML trace](#html-trace).
 
 ## Convert Fuchsia trace files
 
-You can convert one or more files from FXT to JSON with the following:
+To convert one or more files from FXT to JSON, run the following
+command:
 
-Note: If you collect your trace with `fx traceutil record`, the conversion
-is performed automatically.
+```posix-terminal
+fx trace2json < <FXT_FILE> > trace.json
+```
 
-<pre class="prettyprint">
-<code class="devsite-terminal">fx traceutil convert <var>FILE</var></code>
-</pre>
+Replace `FXT_FILE` with a trace output file in FXT format, for example:
+
+```none {:.devsite-disable-click-to-copy}
+fx trace2json < trace.fxt > trace.json
+```
 
 ## Visualize a trace
 
-There are different ways to visualize a trace based on the format of that trace:
+There are different ways to visualize a trace based on the format
+of the trace:
 
 * [FXT trace](#fxt-trace)
 * [JSON trace](#json-trace)
@@ -52,36 +46,42 @@ There are different ways to visualize a trace based on the format of that trace:
 
 ### FXT trace {#fxt-trace}
 
-To visualize an FXT trace, you can use the
-[Perfetto Trace Viewer](https://ui.perfetto.dev), which also allows you to
-[use SQL to query your trace data](https://www.perfetto.dev/#/trace-processor.md).
+To visualize an FXT trace, use the
+[Perfetto viewer](https://ui.perfetto.dev){:.external}, which also
+allows you to use SQL to
+[query your trace data](https://www.perfetto.dev/#/trace-processor.md){:.external}.
 
 ### JSON trace {#json-trace}
 
-To visualize this data, you can use Chromium's
-[Trace-Viewer](https://github.com/catapult-project/catapult/tree/HEAD/tracing).
-The viewer is built into [Chrome](https://google.com/chrome) and can be loaded with chrome://tracing.
-For more information on how to use Chrome's trace viewer, see
-[The Trace Event Profiling Tool](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool).
-
+To visualize a JSON trace, use Chromium's
+[Trace-Viewer](https://github.com/catapult-project/catapult/tree/HEAD/tracing){:.external}.
+The viewer is built into [Chrome](https://google.com/chrome) and can be
+loaded with `chrome://tracing`. For more information on Chrome's trace
+viewer, see
+[The Trace Event Profiling Tool](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool){:.external}.
 
 ### HTML trace {#html-trace}
 
-To generate an HTML trace (viewer bundled with trace data) you'll need to run trace2html
-from the [Chromium Catapult Repository](https://github.com/catapult-project). From the
-catapult repository, run:
+To generate an HTML trace (which is a viewer bundled with trace data), you need to run
+`trace2html` from the [Chromium Catapult Repository](https://github.com/catapult-project){:.external}.
 
-<pre class="prettyprint">
-<code class="devsite-terminal">./tracing/bin/trace2html <var>JSON_TRACE_FILE</var></code>
-</pre>
+From the Catapult repository, run the following command:
+
+```posix-terminal
+./tracing/bin/trace2html <JSON_TRACE_FILE>
+```
 
 ## Analyze a trace file {#analyze-a-trace-file}
 
-Note: These instructions detail how to visualize an [JSON trace](#json-trace) with
-Google Chrome.
+Note: The instructions in this section detail how to visualize
+an [JSON trace](#json-trace) with a Chrome browser.
 
-To analyze a JSON trace file, open a new tab in Google Chrome and navigate to chrome://tracing.
-Click the `Load` button and open your JSON trace file.
+To analyze a JSON trace file:
+
+1. Open a new tab in Chrome.
+2. Navigate to `chrome://tracing`.
+3. Click the **Load** button.
+4. Open your JSON trace file.
 
 ### Navigation controls
 
@@ -103,47 +103,69 @@ can click to see help information.
 
 ### Interpret the trace data {#interpret-the-trace-data}
 
-This example shows a trace of what the system is doing while running the
-`du` command. The `du` command shows disk usage.
+The example in this section shows a trace of what the system is doing
+while running the `du` command, which shows disk usage.
 
 Before you can record trace data, you must start a Fuchsia instance. From
 your host, if you don't have a Fuchsia target device, you can start a
 Fuchsia emulator with networking:
 
 Note: For more information on getting started with Fuchsia, see
-[Fuchsia](/docs/get-started/README.md). For more information about
-[`fx emu`](https://fuchsia.dev/reference/tools/fx/cmd/emu).
+[Fuchsia](/docs/get-started/README.md).
 
-```sh
-fx emu -N
+```posix-terminal
+ffx emu --net tap
 ```
 
-This command configures and runs Fuchsia.
+This command configures and starts the Fuchsia emulator.
 
-From a new terminal, run `traceutil` to record a trace of `du`:
+To record a trace of `du`, do the following:
 
-Note: For more information on recording a trace in Fuchsia, see
-[Recording a Fuchsia trace](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
+1. In a new terminal, run `ffx trace start`:
 
-```sh
-fx traceutil record --buffer-size=64 \
-    --categories=all --spawn \
-    /boot/bin/sh -c "'\
-        sleep 2 ;\
-        i=0 ;\
-        while [ \$i -lt 10 ] ;\
-        do /bin/du /boot ;\
-            i=\$(( \$i + 1 )) ;\
-        done'"
-```
+   Note: For more information on recording a trace in Fuchsia, see
+   [Recording a Fuchsia trace](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
 
-This command runs `du` in a loop, sets a recording buffer size of 64 megabytes,
-records all tracing categories, and launches `du` with `fdio_spawn()`.
+   ```posix-terminal
+   ffx trace start --buffer-size 64 --categories all
+   ```
 
-Note: For more information on creating a process in Fuchsia, see
-[Process creation](/docs/concepts/booting/process_creation.md).
+   This command sets a recording buffer size of 64 megabytes and
+   records all tracing categories.
 
-Once the command finishes running, it creates an HTML file:
+2. In the Fuchsia emulator's terminal, run the following command:
+
+   ```sh
+   /boot/bin/sh -c "'\
+      sleep 2 ;\
+      i=0 ;\
+      while [ \$i -lt 10 ] ;\
+      do /bin/du /boot ;\
+          i=\$(( \$i + 1 )) ;\
+      done'"
+   ```
+
+   This command runs `du` in a loop,
+
+   Note: For more information on creating a process in Fuchsia, see
+   [Process creation](/docs/concepts/process/process_creation.md).
+
+3. To finish the tracing, press `Enter` key in the terminal
+   on your host machine.
+
+   When the tracing is finished, it generated an FXT file,
+
+4. Convert this FXT file to JSON:
+
+   ```posix-terminal
+   fx trace2json < trace.fxt > trace.json
+   ```
+
+5. Generate an HTML trace (see [HTML Trace](#html-trace) above):
+
+   ```posix-terminal
+   ./tracing/bin/trace2html trace.json
+   ```
 
 ![drawing](images/trace-example-overview.png)
 

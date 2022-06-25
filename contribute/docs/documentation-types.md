@@ -139,4 +139,4 @@ For the style guide for API documentation, see the
 [doc-standard]: /docs/contribute/docs/documentation-standards.md
 [style-guide]: /docs/contribute/docs/documentation-style-guide.md
 [code-sample-style-guide]: /docs/contribute/docs/code-sample-style-guide.md
-[api-style]: /docs/concepts/api/documentation.md
+[api-style]: /docs/development/api/documentation.md

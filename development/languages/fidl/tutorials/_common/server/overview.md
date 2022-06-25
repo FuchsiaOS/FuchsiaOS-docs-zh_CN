@@ -3,7 +3,7 @@ This tutorial shows you how to implement a FIDL protocol
 of each kind: a fire and forget method, a two-way method, and an event:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
 ```
 
 For more on FIDL methods and messaging models, refer to the [FIDL concepts][concepts] page.

@@ -1,0 +1,20 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- heading: "SDK fundamentals"
+- title: Overview
+  path: /docs/get-started/sdk/learn/README.md
+- title: Introduction to Fuchsia
+  section:
+  - include: /docs/get-started/sdk/learn/intro/_toc.yaml
+- title: Fuchsia components
+  section:
+  - include: /docs/get-started/sdk/learn/components/_toc.yaml
+- title: Fuchsia interfaces
+  section:
+  - include: /docs/get-started/sdk/learn/fidl/_toc.yaml

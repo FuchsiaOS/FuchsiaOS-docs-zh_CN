@@ -1,14 +1,14 @@
 # zx_object_get_property
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Ask for various properties of various kernel objects.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -58,10 +58,18 @@ The name of the object, as a NUL-terminated string.
 
 *value* type: `uintptr_t`
 
-Allowed operations: **set**
+Allowed operations: **get**, **set**
 
-The value of the x86 FS or GS segment register. `value` must be a
-canonical address, and must be a userspace address.
+The value of the x86 FS.BASE or GS.BASE register, respectively. `value` must
+be a canonical address.
+
+This is a software substitute for the `rdfsbase`, `wrfsbase` and `rdgsbase`,
+`wrgsbase` instruction pairs supported on newer x86-64 CPUs, and should behave
+exactly the same as using the CPU instructions directly (except that
+attempting to set a noncanonical address as the value just gets an error
+return rather than generating a machine exception).  When using a CPU that
+supports these instructions (as reported by the `cpuid` instruction), it's
+more efficient and simpler to use the machine instructions directly.
 
 Only defined for x86-64.
 
@@ -97,12 +105,14 @@ The dynamic loader sets the expected value of `ZX_PROP_PROCESS_DEBUG_ADDR` befor
 triggering this debug trap. Exception handlers can use this property to query the
 dynamic loader's state.
 
-When the dynamic loader issues the debug trap, it sets the value of the `r_brk_on_load`
-member on the `r_debug` struct exposed by the dynamic loader. The address of this
-struct can be obtained by the `ZX_PROP_PROCESS_DEBUG_ADDR` property.
+When the dynamic loader issues the debug trap, it also sets the value of
+`ZX_PROP_PROCESS_BREAK_ON_LOAD` to the address of the debug trap, so that
+a debugger could compare the value with the address of the exception to
+determine whether the debug trap was triggered by the dynamic loader.
 
 Any non-zero value is considered to activate this feature. Setting this property to
-zero will disable it.
+zero will disable it. A debugger could also use this property to detect whether
+there's already another debugger attached to the same process.
 
 Note: Depending on the architecture, the address reported by the exception might be
 different that the one reported by this property. For example, an x64 platform reports
@@ -187,8 +197,10 @@ Allowed operations: **get**, **set**
 
 When set to `ZX_EXCEPTION_STATE_HANDLED`, closing the exception handle will
 finish exception processing and resume the underlying thread.
-`ZX_EXCEPTION_STATE_TRY_NEXT` will instead continue exception processing by
-trying the next handler in order.
+When set to `ZX_EXCEPTION_STATE_TRY_NEXT`, closing the exception handle will
+continue exception processing by trying the next handler in order.
+When set to `ZX_EXCEPTION_STATE_THREAD_EXIT`, closing the exception handle will
+cause the thread that generated the exception to exit.
 
 ### ZX_PROP_EXCEPTION_STRATEGY
 
@@ -207,7 +219,7 @@ is any other type will result in ZX_ERR_BAD_STATE.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must have **ZX_RIGHT_GET_PROPERTY**.
 

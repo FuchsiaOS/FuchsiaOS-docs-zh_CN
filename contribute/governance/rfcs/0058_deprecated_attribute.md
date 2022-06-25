@@ -14,6 +14,12 @@ Use a new attribute `[Deprecated]` to indicate deprecation of types (enums,
 structs, unions, using declarations), consts, methods, or whole interfaces.
 Carry this over to target languages in the best possible way.
 
+### Relation to other RFCs
+
+This RFC was superseded by:
+
+* [RFC-0083: FIDL versioning](0083_fidl_versioning.md)
+
 ## Motivation
 
 We have a number of comments indicating that a type, method, or interface
@@ -214,7 +220,7 @@ for this field anymore, code should stop using this data."
 [donotuse1]: https://fuchsia.googlesource.com/fuchsia/+/caa3f20aa7b64240f4265ede5e6deddf0f2d0cf7/garnet/public/fidl/fuchsia.media/audio_renderer.fidl#7
 [donotuse2]: https://fuchsia.googlesource.com/fuchsia/+/ce931e090d0c54030a80397bd24f217132983794/peridot/public/fidl/fuchsia.modular/module/module_context.fidl#79
 [three-recommended-forms]: https://github.com/golang/go/issues/10909#issuecomment-136492606
-[fidl-api]: /docs/concepts/api/fidl.md#Good-Design-Patterns
+[fidl-api]: /docs/development/api/fidl.md#Good-Design-Patterns
 [rust-deprecated]: https://doc.rust-lang.org/reference/attributes.html#deprecation
 [rust-deny-warnings]: https://doc.rust-lang.org/reference/attributes.html#lint-check-attributes
 [rust-allow-deprecated]: https://doc.rust-lang.org/reference/attributes.html#lint-check-attributes

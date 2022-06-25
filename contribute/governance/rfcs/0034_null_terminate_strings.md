@@ -89,6 +89,9 @@ compile.
 
 ## Implementation Strategy
 
+Note: this section lists paths to source code that have changed since this
+document was written. The references were correct at the time of writing.
+
 This is a breaking wire-format change. Its deployment will need to be carefully
 coordinated across all uses of FIDL.
 
@@ -103,7 +106,7 @@ Behind some build-time flag(s) the following code will need to be updated:
 *   `//third_party/go/src/syscall/zx/fidl/encoding.go` (update `marshalString`,
     `unmarshalString`)
 *   `//third_party/go/src/syscall/zx/fidl/encoding_new.go` (update `mString`)
-*   `//topaz/public/dart/fidl/lib/src/types.dart` (update `StringType`)
+*   `//sdk/dart/fidl/lib/src/types.dart` (update `StringType`)
 *   llcpp bindings
 *   out-of-tree bindings for other languages
 

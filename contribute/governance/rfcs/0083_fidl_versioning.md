@@ -118,8 +118,9 @@ A _platform identifier_ is a label that gives context to versions. Platform
 identifiers must be a valid FIDL library name element, i.e. as of this writing
 match the regex `[a-z][a-z0-9_]*`.
 
-A _version identifier_ an unsigned 64-bit integer. The highest version
-identifer, `0xffffffffffffffff`, is called `HEAD` and is treated specially.
+A _version identifier_ is an unsigned 64-bit integer between 1 and 2^63-1
+(inclusive) or equal to 2^64-1. The latter version identifier is known as `HEAD`
+and is treated specially.
 
 Version identifiers are totally ordered by an "is newer than" relationship.
 Version _X_ is newer than version _Y_ when _X_ > _Y_.
@@ -127,7 +128,7 @@ Version _X_ is newer than version _Y_ when _X_ > _Y_.
 The _availability_ of a FIDL element with respect to a platform refers to the
 version when the element was _introduced_, and optionally the versions when it
 was _deprecated_ and _removed_. Deprecation and removal must be newer than
-introduction. If both are supplied, removal must be newer than deprecation.
+introduction.[^1] If both are supplied, removal must be newer than deprecation.
 
 A FIDL element is _versioned under_ a platform if it has an availability with
 respect to that platform. It is _versioned_ if versioned under any platform.
@@ -152,7 +153,7 @@ Fuchsia Platform. In this case, all libraries are versioned with respect to the
 
 ### Syntax
 
-An _availability attribute_ has the following form,[^1] inspired by [Swift's
+An _availability attribute_ has the following form,[^2] inspired by [Swift's
 `available` attribute][swift-attr]:
 
     @available(added=<V>, deprecated=<V>, removed=<V>)
@@ -362,8 +363,8 @@ be given multiple times for distinct platform identifiers. For example:
 
 If the version selection is missing a platform or has an unused platform
 (compared to the platforms the given libraries are versioned under), fidlc
-produces an error. If any library is deprecated/absent with repsect to the
-version selection, fidlc produces a warning/error.
+produces an error. If any library is deprecated/absent with respect to the
+version selection, fidlc produces a warning/error.[^3]
 
 ## Policy {#policy}
 
@@ -410,7 +411,7 @@ visitor approach as fidl-format.
 ## Implementation
 
 This design can mostly be implemented in fidlc. Parsing the `@available` syntax
-is dependent on [another RFC][rfc-NNNN] to change FIDL's annotation syntax. The
+is dependent on [another RFC][rfc-0086] to change FIDL's annotation syntax. The
 semantics will likely be implemented behind an experimental flag at first.
 
 When fidlc compiles a library, even though it produces JSON IR at a single
@@ -715,9 +716,18 @@ include it in URI paths. In this way services can support multiple major
 versions at once, and clients receive backwards-compatible updates in place,
 i.e. without taking action to migrate.
 
-<!-- TODO(fxbug.dev/68792): Change "RFC:" to "RFC-NNNN:" once accepted. -->
-[^1]: This document uses the syntax introduced by [RFC: New
-    FIDL Attributes Syntax][rfc-NNNN].
+[^1]: During implementation, this rule was relaxed to allow introduction and
+    deprecation to coincide. This makes it possible to manually decompose FIDL
+    declarations at any version boundary by [swapping](#versioning-properties).
+
+[^2]: This document uses the syntax introduced by [RFC-0086: Updates to
+    RFC-0050: FIDL Attributes Syntax][rfc-0086].
+
+[^3]: During implementation, these rules were omitted to simplify integration
+    with the build system. For the version selection, fidlc uses `HEAD` by
+    default and ignores unused platforms. For library declarations, the
+    availability has no effect apart from inheritance, so an absent library is
+    equivalent to an empty one, and there is no warning for deprecation.
 
 <!-- xrefs -->
 [rfc-0002]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
@@ -727,11 +737,9 @@ i.e. without taking action to migrate.
 [rfc-0002-security]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#security-considerations
 [rfc-0002-prior-art]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#prior-art-and-references
 [rfc-0076]: /docs/contribute/governance/rfcs/0076_fidl_api_summaries.md
-<!-- TODO(fxbug.dev/68792): Change to RFC link once accepted. -->
-[rfc-NNNN]: https://fuchsia-review.googlesource.com/c/fuchsia/+/499278
-<!-- [rfc-NNNN]: /docs/contribute/governance/rfcs/NNNN_new_fidl_attributes_syntax.md -->
 [rfc-0058]: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
 [rfc-0052]: /docs/contribute/governance/rfcs/0052_type_aliasing_named_types.md
+[rfc-0086]: /docs/contribute/governance/rfcs/0086_rfc_0050_attributes.md
 [language]: /docs/reference/fidl/language/language.md
 [attrs]: /docs/reference/fidl/language/attributes.md
 [swift-attr]: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID583

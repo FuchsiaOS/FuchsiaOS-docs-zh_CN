@@ -21,7 +21,7 @@ rust|[link](#rust-init)|||[link](#rust-3)
 ### FIDL {#fidl-init}
 
 ```fidl
-strict bits Flags {
+type Flags = strict bits {
     OPTION_A = 1;
     OPTION_B = 2;
 };
@@ -75,10 +75,10 @@ fidl_test::Flags use_bits(fidl_test::Flags bits) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-uint32_t use_bits(fidl_test::Flags bits) {
-  auto result = fidl_test::Flags::TruncatingUnknown(7u);
-  if (bits & fidl_test::Flags::OPTION_A) {
-    result |= fidl_test::Flags::kMask;
+uint32_t use_bits(fidl_test::wire::Flags bits) {
+  auto result = fidl_test::wire::Flags::TruncatingUnknown(7u);
+  if (bits & fidl_test::wire::Flags::kOptionA) {
+    result |= fidl_test::wire::Flags::kMask;
   }
   return uint32_t(result);
 }
@@ -122,8 +122,8 @@ fn use_bits(bits: &fidl_lib::Flags) -> fidl_lib::Flags {
 - Switch from `strict` to `flexible`
 
 ```diff
-- strict bits Flags {
-+ flexible bits Flags {
+- type Flags = strict bits {
++ type Flags = flexible bits {
       OPTION_A = 1;
       OPTION_B = 2;
   };
@@ -157,10 +157,10 @@ fn use_bits(bits: &fidl_lib::Flags) -> fidl_lib::Flags {
 - You can now use flexible-specific APIs
 
 ```diff
-  uint32_t use_bits(fidl_test::Flags bits) {
-    auto result = fidl_test::Flags::TruncatingUnknown(7u);
-    if (bits & fidl_test::Flags::OPTION_A) {
-      result |= fidl_test::Flags::kMask;
+  uint32_t use_bits(fidl_test::wire::Flags bits) {
+    auto result = fidl_test::wire::Flags::TruncatingUnknown(7u);
+    if (bits & fidl_test::wire::Flags::kOptionA) {
+      result |= fidl_test::wire::Flags::kMask;
 +     printf("%d\n", uint32_t(result.unknown_bits()));
     }
     return uint32_t(result);

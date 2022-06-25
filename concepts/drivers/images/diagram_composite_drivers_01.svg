@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="370" height="271" viewBox="0 0 370 271">
+  <defs>
+    <style>
+      .d {
+        fill: #d4feff;
+      }
+
+      .d, .e, .f {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .g {
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+
+      .e {
+        fill: none;
+        stroke-width: 2px;
+      }
+
+      .f {
+        fill: #7fd1d3;
+      }
+
+      .h {
+        font-family: Arial-ItalicMT, Arial;
+        font-size: 10px;
+      }
+    </style>
+  </defs>
+  <g id="a" data-name="Grouping"/>
+  <g id="b" data-name="Main">
+    <g>
+      <rect class="f" x=".5" y=".5" width="117" height="49.5"/>
+      <rect class="d" x="5" y="5" width="108" height="18"/>
+      <rect class="d" x="5" y="27.5" width="108" height="18"/>
+      <text class="g" transform="translate(39.66 17.78)"><tspan x="0" y="0">aml-i2c</tspan></text>
+      <text class="g" transform="translate(51.32 40.18)"><tspan x="0" y="0">i2c</tspan></text>
+      <line class="e" x1="59" y1="23" x2="59" y2="27.5"/>
+    </g>
+    <g>
+      <rect class="f" x="153.5" y="81.5" width="162" height="72"/>
+      <rect class="d" x="158" y="86" width="153" height="18"/>
+      <rect class="d" x="158" y="108.5" width="153" height="18"/>
+      <text transform="translate(162.54 99.09)"><tspan><tspan class="g" x="0" y="0">aml-mipicsi</tspan><tspan class="h" x="60" y="0" xml:space="preserve"> (camera interface)</tspan></tspan></text>
+      <text transform="translate(173.53 121.31)"><tspan><tspan class="g" x="0" y="0">imx227</tspan><tspan class="h" x="38.68" y="0" xml:space="preserve"> (sensor controller)</tspan></tspan></text>
+      <rect class="d" x="158" y="131" width="153" height="18"/>
+      <text transform="translate(170.49 143.9)"><tspan><tspan class="g" x="0" y="0">isp </tspan><tspan class="h" x="18.67" y="0">(image signal processor)</tspan></tspan></text>
+      <line class="e" x1="234.5" y1="126.5" x2="234.5" y2="131"/>
+      <line class="e" x1="234.5" y1="104" x2="234.5" y2="108.5"/>
+    </g>
+    <g>
+      <rect class="f" x="252.5" y=".5" width="117" height="49.5"/>
+      <rect class="d" x="257" y="5" width="108" height="18"/>
+      <rect class="d" x="257" y="27.5" width="108" height="18"/>
+      <text class="g" transform="translate(285.66 17.78)"><tspan x="0" y="0">aml-clock</tspan></text>
+      <text class="g" transform="translate(297.32 40.18)"><tspan x="0" y="0">clock</tspan></text>
+      <line class="e" x1="311" y1="23" x2="311" y2="27.5"/>
+    </g>
+    <g>
+      <rect class="f" x="126.5" y=".5" width="117" height="49.5"/>
+      <rect class="d" x="131" y="5" width="108" height="18"/>
+      <rect class="d" x="131" y="27.5" width="108" height="18"/>
+      <text class="g" transform="translate(161.99 17.78)"><tspan x="0" y="0">aml-gpio</tspan></text>
+      <text class="g" transform="translate(173.65 40.18)"><tspan x="0" y="0">gpio</tspan></text>
+      <line class="e" x1="185" y1="23" x2="185" y2="27.5"/>
+    </g>
+    <g>
+      <rect class="f" x=".5" y="243.5" width="117" height="27"/>
+      <rect class="d" x="5" y="248" width="108" height="18"/>
+      <text class="g" transform="translate(36.67 260.78)"><tspan x="0" y="0">sysmem</tspan></text>
+    </g>
+    <g>
+      <rect class="f" x="252.5" y="171.5" width="117" height="99"/>
+      <rect class="d" x="257" y="176" width="108" height="90"/>
+      <text transform="translate(264.32 216.09)"><tspan class="g"><tspan x="0" y="0">camera-controller</tspan></tspan><tspan class="h"><tspan x="6.11" y="12">(high-level device)</tspan></tspan></text>
+    </g>
+    <g>
+      <rect class="f" x=".5" y="171.5" width="117" height="27"/>
+      <rect class="d" x="5" y="176" width="108" height="18"/>
+      <text class="g" transform="translate(49.33 188.78)"><tspan x="0" y="0">gdc</tspan></text>
+    </g>
+    <g>
+      <rect class="f" x=".5" y="207.5" width="117" height="27"/>
+      <rect class="d" x="5" y="212" width="108" height="18"/>
+      <text class="g" transform="translate(45.65 224.78)"><tspan x="0" y="0">ge2d</tspan></text>
+    </g>
+    <g>
+      <rect class="f" x=".5" y="126.5" width="117" height="27"/>
+      <rect class="d" x="5" y="131" width="108" height="18"/>
+      <text class="g" transform="translate(28.32 143.78)"><tspan x="0" y="0">aml-canvas</tspan></text>
+    </g>
+    <g>
+      <line class="e" x1="113" y1="221" x2="249.94" y2="221"/>
+      <polygon points="257 221 247.05 225.07 249.41 221 247.05 216.94 257 221"/>
+    </g>
+    <line class="e" x1="234.5" y1="149" x2="234.5" y2="221"/>
+    <polyline class="e" points="113 185 135.5 185 135.5 257 113 257"/>
+    <g>
+      <line class="e" x1="113" y1="140" x2="150.94" y2="140"/>
+      <polygon points="158 140 148.05 144.07 150.41 140 148.05 135.94 158 140"/>
+    </g>
+    <line class="e" x1="185" y1="45.5" x2="185" y2="68"/>
+    <polyline class="e" points="311 45.5 311 68 59 68 59 45.5"/>
+    <g>
+      <polyline class="e" points="150.94 117.5 135.5 117.5 135.5 68"/>
+      <polygon points="158 117.5 148.05 113.43 150.41 117.5 148.05 121.56 158 117.5"/>
+    </g>
+  </g>
+  <g id="c" data-name="Correspondences"/>
+</svg>

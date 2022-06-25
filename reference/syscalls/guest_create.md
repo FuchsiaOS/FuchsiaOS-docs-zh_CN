@@ -1,14 +1,14 @@
 # zx_guest_create
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create a guest.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -29,7 +29,7 @@ To create a guest, a *resource* of **ZX_RSRC_KIND_HYPERVISOR** must be supplied.
 
 In order to begin execution within the guest, a VMO should be mapped into
 *vmar_handle* using [`zx_vmar_map()`], and a VCPU must be created using
-[`zx_vcpu_create()`], and then run using [`zx_vcpu_resume()`].
+[`zx_vcpu_create()`], and then run using [`zx_vcpu_enter()`].
 
 Additionally, a VMO should be mapped into *vmar_handle* to provide a guest with
 physical memory.
@@ -48,7 +48,7 @@ See [`zx_vmo_create()`] for the set of rights applied to *vmar_handle*.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *resource* must have resource kind **ZX_RSRC_KIND_HYPERVISOR**.
 
@@ -58,6 +58,8 @@ See [`zx_vmo_create()`] for the set of rights applied to *vmar_handle*.
 returned.
 
 ## ERRORS
+
+**ZX_ERR_NOT_SUPPORTED** The hypervisor is not supported by the device.
 
 **ZX_ERR_ACCESS_DENIED** *resource* is not of **ZX_RSRC_KIND_HYPERVISOR**.
 
@@ -74,9 +76,10 @@ In a future build this error will no longer occur.
 
  - [`zx_guest_set_trap()`]
  - [`zx_vcpu_create()`]
+ - [`zx_vcpu_enter()`]
  - [`zx_vcpu_interrupt()`]
+ - [`zx_vcpu_kick()`]
  - [`zx_vcpu_read_state()`]
- - [`zx_vcpu_resume()`]
  - [`zx_vcpu_write_state()`]
  - [`zx_vmar_map()`]
  - [`zx_vmo_create()`]
@@ -85,9 +88,10 @@ In a future build this error will no longer occur.
 
 [`zx_guest_set_trap()`]: guest_set_trap.md
 [`zx_vcpu_create()`]: vcpu_create.md
+[`zx_vcpu_enter()`]: vcpu_enter.md
 [`zx_vcpu_interrupt()`]: vcpu_interrupt.md
+[`zx_vcpu_kick()`]: vcpu_kick.md
 [`zx_vcpu_read_state()`]: vcpu_read_state.md
-[`zx_vcpu_resume()`]: vcpu_resume.md
 [`zx_vcpu_write_state()`]: vcpu_write_state.md
 [`zx_vmar_map()`]: vmar_map.md
 [`zx_vmo_create()`]: vmo_create.md

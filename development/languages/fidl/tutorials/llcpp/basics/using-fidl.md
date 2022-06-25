@@ -40,20 +40,20 @@ rm -r examples/fidl/llcpp/unittests/*
    } // namespace
    ```
 
-1. Define a `test` target, and a package containg the test in
+1. Define a `test` target, and a package containing the test in
    `examples/fidl/llcpp/unittests/BUILD.gn`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/BUILD.gn" region_tag="imports" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/BUILD.gn" region_tag="imports" %}
 
    test("test") {
      testonly = true
      output_name = "fidl_example_llcpp_test"
      sources = [ "main.cc" ]
-     deps = [ "//third_party/googletest:gtest_main" ]
+     deps = [ "//src/lib/fxl/test:gtest_main" ]
    }
 
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/BUILD.gn" region_tag="package" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/BUILD.gn" region_tag="package" %}
    ```
 
 1. Build and run the empty test suite on a running instance of Fuchsia:
@@ -94,7 +94,7 @@ Add a dependency on the LLCPP bindings by referencing this target. The new `test
 target should look like:
 
 ```gn
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/BUILD.gn" region_tag="test" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/BUILD.gn" region_tag="test" %}
 ```
 
 (Optional) To view the newly generated bindings:
@@ -115,7 +115,7 @@ To include the bindings, add the following include statement to the top of
 `examples/fidl/llcpp/unittests/main.cc`
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="include" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="include" %}
 ```
 
 ## Inspect and use the generated bindings code {#inspect-user-generated-bindings}
@@ -127,21 +127,21 @@ To get started, you can also use some example code. You can add this inside the
 anonymous namespace in `main.cc`:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="bits" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="bits" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="enums" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="structs" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="unions" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/unittests/main.cc" region_tag="tables" %}
 ```
 
 To rebuild and rerun the tests, run:
 
 ```
-fx test -vo fidl_example_llcpp_test
+fx test -vo fidl-example-llcpp-test
 ```
 
 <!-- xrefs -->

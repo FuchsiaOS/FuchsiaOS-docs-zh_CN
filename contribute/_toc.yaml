@@ -2,31 +2,40 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# Please, read https://fuchsia.dev/docs/contribute/docs/documentation-navigation-toc
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Contributing to Fuchsia"
-  path: /CONTRIBUTING.md
-- title: "Fuchsia roadmap"
-  section:
-  - include: /docs/contribute/roadmap/_toc.yaml
+- include: /docs/contribute/community/_toc.yaml
+- heading: Before you contribute
 - title: "Code of conduct"
   path: /CODE_OF_CONDUCT.md
 - title: "Respectful code"
   path: /docs/contribute/respectful_code.md
+- title: "Contributing to Fuchsia"
+  path: /CONTRIBUTING.md
+- title: "Commit message style guide"
+  path: /docs/contribute/commit-message-style-guide.md
+- title: "Platform evolution"
+  section:
+  - include: /docs/contribute/updatability/_toc.yaml
 - title: "Contributing to Zircon"
   path: /docs/contribute/contributing_to_zircon.md
 - title: "Contributing to FIDL"
   section:
   - include: /docs/contribute/contributing-to-fidl/_toc.yaml
-- title: "Contributing to Netstack3"
-  path: /docs/contribute/contributing_to_netstack3.md
-- title: "Documentation"
+- title: "Contributing to Netstack"
+  section:
+  - include: /docs/contribute/contributing-to-netstack/_toc.yaml
+- title: "Contributing to documentation"
   section:
   - include: /docs/contribute/docs/_toc.yaml
+- heading: Platform testing
+- include: /docs/contribute/testing/_toc.yaml
+- heading: Start contributing
 - title: "Open projects"
   section:
   - include: /docs/contribute/open_projects/_toc.yaml
+- heading: Issues
 - title: "Report an issue"
   path: /docs/contribute/report-issue.md

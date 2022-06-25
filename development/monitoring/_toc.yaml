@@ -6,9 +6,6 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Fuchsia DevTools"
-  section:
-  - include: /docs/development/monitoring/devtools/_toc.yaml
 - title: "fidlcat"
   section:
   - include: /docs/development/monitoring/fidlcat/_toc.yaml

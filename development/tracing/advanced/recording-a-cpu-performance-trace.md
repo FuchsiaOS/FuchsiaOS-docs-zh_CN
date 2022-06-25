@@ -1,10 +1,10 @@
-# CPU performance monitor
+# Recording a CPU performance trace
 
 ## Introduction
 
 The CPU Performance Monitor Trace Provider gives the user access to the
 performance counters built into the CPU using the
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 At present this is only supported for Intel chipsets.
 
@@ -29,34 +29,26 @@ of what h/w events to enable. The full set of categories can be found
 in the `.inc` files in this directory. A representative set of categories
 is described below.
 
-To collect trace data, run `trace record` on your Fuchsia system,
-or indirectly via the `traceutil` host tool. The latter is recommended
-as it automates the download of the collected "trace.json" file to your
-desktop.
+To collect trace data, run `ffx trace start` on your host machine,
+or run `trace` on a Fuchsia device directly.
 
 Example:
 
-```shell
-host$ categories="gfx"
-host$ categories="$categories,cpu:fixed:unhalted_reference_cycles"
-host$ categories="$categories,cpu:fixed:instructions_retired"
-host$ categories="$categories,cpu:l2_lines,cpu:sample:10000"
-host$ fx traceutil record --buffer-size=64 --duration=2s \
-  --categories=$categories
-Starting trace; will stop in 2 seconds...
-Stopping trace...
-Trace file written to /data/trace.json
-Downloading trace... done
-Converting trace-2017-11-12T17:55:45.json to trace-2017-11-12T17:55:45.html... done.
+```none {:.devsite-disable-click-to-copy}
+$ categories="gfx"
+$ categories="$categories,cpu:fixed:unhalted_reference_cycles"
+$ categories="$categories,cpu:fixed:instructions_retired"
+$ categories="$categories,cpu:l2_lines,cpu:sample:10000"
+$ ffx trace start --buffer-size 64 --duration 2 --categories $categories
 ```
 
-After you have the `.json` file on your desktop you can load it into
-`chrome://tracing`. If you are using `traceutil` an easier way to view
-the trace is by loading the corresponding `.html` file that `traceutil`
-generates. The author finds it easiest to run `traceutil` from the top level
-Fuchsia directory, view that directory in Chrome (e.g.,
-`file:///home/dje/fnl/ipt/fuchsia`), hit Refresh after each new trace
-and then view the trace file in a separate tab.
+After you have the `.fxt` file on your desktop you can load it into
+the [Perfetto viewer][perfetto-viewer]{:.external}.
+
+If you're using `traceutil`, an easier way to view the trace is by loading
+the corresponding `.html` file that `traceutil` generates. The author finds
+it easiest to run `traceutil` from the top level Fuchsia directory, view
+that directory in Chrome (e.g., `file:///home/dje/fnl/ipt/fuchsia`).
 
 ## Basic Operation
 
@@ -132,7 +124,7 @@ doing so means we forego collecting statistical pc data for each event
 A sample rate must be provided in addition to the timebase counter.
 
 See below for the set of timebase counters as of this writing,
-and `garnet/bin/cpuperf_provider/intel-timebase-categories.inc`
+and `src/performance/bin/cpuperf_provider/intel-timebase-categories.inc`
 in the source tree for the current set.
 
 ### Tally Mode
@@ -145,14 +137,13 @@ the "cpu:sample:* categories.
 
 Example:
 
-```shell
-host$ categories="cpu:l2_summary"
-host$ categories="$categories,cpu:fixed:unhalted_reference_cycles"
-host$ categories="$categories,cpu:fixed:instructions_retired"
-host$ categories="$categories,cpu:mem:bytes,cpu:mem:requests"
-host$ categories="$categories,cpu:tally"
-host$ fx traceutil record --buffer-size=64 --duration=2s \
-  --categories=$categories --report-type=tally --stdout
+```none {:.devsite-disable-click-to-copy}
+$ categories="cpu:l2_summary"
+$ categories="$categories,cpu:fixed:unhalted_reference_cycles"
+$ categories="$categories,cpu:fixed:instructions_retired"
+$ categories="$categories,cpu:mem:bytes,cpu:mem:requests"
+$ categories="$categories,cpu:tally"
+$ ffx trace start --buffer-size 64 --duration 2 --categories $categories
 ```
 
 ### Options
@@ -161,7 +152,7 @@ host$ fx traceutil record --buffer-size=64 --duration=2s \
 
 - cpu:user - collect data for code running in userspace.
 
-- cpu:profile_pc - collect pc data associated with each event
+- cpu:pc - collect pc data associated with each event
 
 This is useful when wanting to know where, for example, cache misses
 are generally occurring (statistically speaking, depending upon the
@@ -198,9 +189,9 @@ in the source tree.
 
 To simplify specifying the programmable counters they have been grouped
 into categories defined in
-`garnet/bin/cpuperf_provider/intel-pm-categories.inc`
+`src/performance/bin/cpuperf_provider/intel-pm-categories.inc`
 and
-`garnet/bin/cpuperf_provider/skylake-pm-categories.inc`
+`src/performance/bin/cpuperf_provider/skylake-pm-categories.inc`
 in the source tree. See these files for a full list.
 
 Only one of these categories may be specified at a time.
@@ -274,3 +265,7 @@ More will be added in time.
 
 - cpu:timebase:fixed:unhalted_reference_cycles
   - same counter as cpu:fixed:unhalted_reference_cycles
+
+<!-- Reference links -->
+
+[perfetto-viewer]: https://ui.perfetto.dev/#!/

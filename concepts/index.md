@@ -1,35 +1,64 @@
-# Overview
+# About Fuchsia
 
-Fuchsia is a new open source operating system created at Google
-that is currently under active development.
-We are building Fuchsia from the kernel up
-to meet the needs of today’s growing ecosystem of connected devices.
+You can learn more about Fuchsia by diving deeper into the concepts driving its
+design. Fuchsia  is still evolving rapidly, but the underlying principles and
+values of the system have remained relatively constant throughout the project.
 
-Fuchsia is still evolving rapidly,
-but the underlying principles and values of the system
-have remained relatively constant throughout the project.
-The core architectural principles guiding Fuchsia’s design and development are:
-secure, updatable, inclusive, and pragmatic.
+## Principles
 
-## [Secure](/docs/concepts/principles/secure.md)
+The core principles guiding Fuchsia’s design and development are simple, secure,
+updatable, and performant.
 
-All software that runs on Fuchsia receives the least privilege it needs
-to perform its job,
-and gains access only to information it needs to know.
+### [Simple][simple]
 
-## [Updatable](/docs/concepts/principles/updatable.md)
+Fuchsia makes it easy to create, maintain, and integrate software and hardware
+across a wide range of devices.
 
-Much like the web,
-software on Fuchsia is designed to come and go as needed,
-and security patches can be pushed to all products on demand.
+* Fuchsia prioritizes clarity and minimalism in its architecture and design.
+* Fuchsia strives to be easy to understand and easy to maintain.
+* Fuchsia provides the core foundations of an operating system—like hardware access, resource
+management, and software abstraction—in a coherent way, creating a robust, stable platform for
+products.
 
-## [Inclusive](/docs/concepts/principles/inclusive.md)
 
-Fuchsia is an open source project that currently supports a variety
-of languages and runtimes, including C++, Web, Rust, Go, Flutter, and Dart.
+### [Secure][secure]
 
-## [Pragmatic](/docs/concepts/principles/pragmatic.md)
+Fuchsia has a kernel and software model designed for modern computing.
 
-Fuchsia is not a science experiment,
-it’s a production-grade operating system that must adhere to fundamentals,
-like performance.
+* A capability-based system fully isolates processes by default, and limits program access to only
+the capabilities and resources that have been explicitly granted.
+* Software components are distributed as hermetic packages that provide security boundaries and
+guarantees.
+* Software isolation, or “sandboxing,” is enforced by the operating system, which lowers the
+resource costs for security.
+
+
+### [Updatable][updatable]
+
+As a modular operating system, Fuchsia allows the kernel, drivers, and software
+components to be independently updatable.
+
+* Stable ABIs make it possible for the operating system, device drivers, and product software to
+remain compatible over longer time horizons. This reduces the maintenance burden on product
+developers, and extends the lifespan of devices for consumers.
+* Software is delivered in packages that can be updated independently and even delivered on demand,
+like the web.
+* Google is committed to updating and maintaining Fuchsia over time.
+
+
+### [Performant][performant]
+
+Fuchsia is designed for real world product requirements and optimized for
+performance.
+
+* Fuchsia is a general purpose operating system that enables high performance across a variety of
+platforms, architectures, and devices.
+* Fuchsia efficiently manages system resources—processors, memory, storage, networking, and power—
+to optimize performance.
+* Fuchsia meets performance goals in commercial devices currently in production.
+
+
+[performant]: /docs/concepts/principles/performant.md
+[simple]: /docs/concepts/principles/simple.md
+[secure]: /docs/concepts/principles/secure.md
+[updatable]: /docs/concepts/principles/updatable.md

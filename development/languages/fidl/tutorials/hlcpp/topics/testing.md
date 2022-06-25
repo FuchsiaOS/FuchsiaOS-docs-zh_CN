@@ -15,7 +15,7 @@ available for testing FIDL protocols implemented in HLCPP:
 
 If you want to write the code yourself, delete the following directories:
 
-```
+```posix-terminal
 rm -r examples/fidl/hlcpp/testing/*
 ```
 
@@ -28,13 +28,13 @@ To set up dependencies:
 1. Include the libraries that are needed for the test:
 
   ```cpp
-  {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="includes" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="includes" %}
   ```
 
 2. Add a build rule for the test in `examples/fidl/hlcpp/testing/BUILD.gn`:
 
   ```gn
-  {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/BUILD.gn" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/BUILD.gn" %}
   ```
 
 ## Create a server implementation
@@ -44,7 +44,7 @@ To create a server implementation:
 1. Add an implementation for the `Echo` protocol that is tested:
 
    ```cpp
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="impl" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="impl" %}
    ```
 
    Rather than inheriting from `fuchsia::examples::Echo`, this implementation
@@ -57,7 +57,7 @@ To create a server implementation:
 1. Create a test class that wraps the logic of publishing the echo protocol:
 
    ```cpp
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="wrapper" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="wrapper" %}
    ```
 
    This is similar to the code that is explained in the
@@ -66,10 +66,10 @@ To create a server implementation:
    This enables the code to publish the echo protocol on each test case given
    a new instance of the test component context.
 
-## Implement the text fixture class
+## Implement the test fixture class
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="fixture" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="fixture" %}
 ```
 
 The test fixture does the following:
@@ -82,10 +82,10 @@ The test fixture does the following:
 
 ## Add tests
 
-This is an example test that can you can write with the text fixture:
+This is an example test that can you can write with the test fixture:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="test" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/testing/main.cc" region_tag="test" %}
 ```
 
 ## Run the test
@@ -94,13 +94,13 @@ To run the test:
 
 1. Configure your GN build to include the test:
 
-   ```
+   ```posix-terminal
    fx set core.x64 --with //examples/fidl/hlcpp/testing
 
    ```
 1. Run the test:
 
-   ```
+   ```posix-terminal
    fx test -vo example-hlcpp-protocol-test
    ```
 
@@ -115,7 +115,7 @@ You should see the test output indicating a success.
   during a test. This is useful to e.g. provide specific capabilities to the
   a component.
 * The HLCPP bindings test scaffolding provides a test base for each protocol
-  class that has a dummy implementation for each method. This allows tests
+  class that has a placeholder implementation for each method. This allows tests
   to only implement the methods under test.
 
 <!-- xrefs -->

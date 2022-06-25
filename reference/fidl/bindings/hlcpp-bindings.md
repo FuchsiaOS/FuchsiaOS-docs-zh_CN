@@ -18,7 +18,7 @@ All [constants][lang-constants] are generated as a `constexpr`. For example, the
  following constants:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
 ```
 
 Are generated in the header file as:
@@ -55,15 +55,15 @@ The FIDL types are converted to C++ types based on the following table:
 |`uint64`|`uint64_t`|
 |`float32`|`float`|
 |`float64`|`double`|
-|`array:N`|`std::array`|
-|`vector:N`|`std::vector`|
-|`vector:N?`|`fidl::VectorPtr`|
+|`array<T, N>`|`std::array`|
+|`vector<T>:N`|`std::vector`|
+|`vector<T>:<N, optional>`|`fidl::VectorPtr`|
 |`string`|`std::string`|
-|`string?`|`fidl::StringPtr`|
-|`request<P>`, `request<P>?`|`fidl::InterfaceRequest`|
-|`P`,`P?`|`fidl::InterfaceHandle`|
-|`handle`, `handle?`|`zx::handle`|
-|`handle:S`, `handle:S?`|The corresponding zx type is used. For example, `zx::vmo` or `zx::channel`.|
+|`string:optional`|`fidl::StringPtr`|
+|`server_end:P`, `server_end:<P, optional>`|`fidl::InterfaceRequest`|
+|`client_end:P`, `client_end:<P, optional>`|`fidl::InterfaceHandle`|
+|`zx.handle`, `zx.handle:optional`|`zx::handle`|
+|`zx.handle:S`, `zx.handle:<S, optional>`|The corresponding zx type is used. For example, `zx::vmo` or `zx::channel`.|
 
 ### User defined types {#user-defined-types}
 
@@ -75,7 +75,7 @@ Definitions](#type-definitions)). For a nullable user-defined type `T`,
 ### Request, response, and event parameters {#request-response-event-parameters}
 
 Whenever FIDL needs to generate a single type representing parameters for a
-request, response, or event (e.g. when generating [`fit::result` compatible result types](#protocols-results)),
+request, response, or event (e.g. when generating [`fpromise::result` compatible result types](#protocols-results)),
 it uses the following rules:
 
 * Multiple arguments are generated as an `std::tuple` of the parameter types.
@@ -89,7 +89,7 @@ it uses the following rules:
 Given the [bits][lang-bits] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
 ```
 
 The FIDL toolchain generates a C++ `enum class` using the specified underlying
@@ -118,7 +118,7 @@ the `bits` are based on). In the above example, `FileModeMask` has a value of
 Example usage:
 
 ```c++
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="bits" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="bits" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
 ```
 
 #### Flexible bits {#flexible-bits}
@@ -161,7 +161,7 @@ members, the resulting bits value is only defined for the known bits.
 Given the [enum][lang-enums] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
 ```
 
 The FIDL toolchain generates a C++ `enum class` using the specified underlying
@@ -178,7 +178,7 @@ enum class LocationType : uint32_t {
 Example usage:
 
 ```c++
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="enums" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="enums" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
 ```
 
 #### Flexible enums {#flexible-enums}
@@ -212,7 +212,7 @@ guaranteed to match the members of the `enum class` in the equivalent
 Given a [struct][lang-structs] declaration:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
 ```
 
 The FIDL toolchain generates a `Color` type with public members and methods.
@@ -239,7 +239,7 @@ Structs may have additional members if they represent the response variant of a
 Example usage:
 
 ```c++
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="structs" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="structs" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
 ```
 
 ### Unions {#unions}
@@ -247,7 +247,7 @@ Example usage:
 Given the union definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
 ```
 
 FIDL generates a `JsonValue` class. `JsonValue` contains a public tag enum
@@ -307,7 +307,7 @@ Unions may have additional methods if they represent the response variant of a
 Example usage:
 
 ```c++
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="unions" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="unions" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
 ```
 
 #### Flexible unions and unknown variants
@@ -368,7 +368,7 @@ decoding an unknown variant with handles.
 Given the [table][lang-tables] definition:
 
 ```table
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
 ```
 
 The FIDL toolchain generates a `User` class with the following methods:
@@ -422,15 +422,20 @@ If `User` is a [value][lang-resource] type, it will have the following methods:
 Example usage:
 
 ```c++
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="tables" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="tables" adjust_indentation="auto" exclude_regexp="^TEST|^}" %}
 ```
+
+### Inline layouts
+
+The generated C++ code uses the [the name reserved by `fidlc`][anon-names] for
+inline layouts.
 
 ## Protocols {#protocols}
 
 Given the [protocol][lang-protocols]:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
 ```
 
 Note: The `MakeMove` method above returns a bool representing success, and a
@@ -540,27 +545,33 @@ Given the method with an error type:
 
 ```fidl
 protocol TicTacToe {
-    MakeMove(uint8 row, uint8 col) -> (GameState new_state) error MoveError;
+    MakeMove(struct {
+      row uint8;
+      col uint8;
+    }) -> (struct {
+      new_state GameState;
+    }) error MoveError;
 };
 ```
 
-FIDL generates code so that clients and servers can use `fit::result` in place
-of the generated `MakeMove` response type. This is done by generating a
+FIDL generates code so that clients and servers can use `fpromise::result` in
+place of the generated `MakeMove` response type. This is done by generating a
 `TicTacToe_MakeMove_Result` class to represent the response that is
-interchangeable with `fit::result<GameState, MoveError>`. Using this feature, an
-example implementation of `MakeMove` on the server side could look like:
+interchangeable with `fpromise::result<GameState, MoveError>`. Using this
+feature, an example implementation of `MakeMove` on the server side could look
+like:
 
 ```c++
 void  MakeMove(MakeMoveCallback callback) override {
-    callback(fit::ok(game_state_.state()));
-    // or, in the error case: callback(fit::error(Error::kInvalid);
+    callback(fpromise::ok(game_state_.state()));
+    // or, in the error case: callback(fpromise::error(Error::kInvalid);
 }
 ```
 
 An example of using this on the client side, in the async case would be:
 
 ```c++
-async_game->MakeMove([&](fit::result<GameState, MoveError>> response) { ... });
+async_game->MakeMove([&](fpromise::result<GameState, MoveError>> response) { ... });
 ```
 
 When generating code, the FIDL toolchain treats `TicTacToe_MakeMove_Result` as a
@@ -568,23 +579,23 @@ When generating code, the FIDL toolchain treats `TicTacToe_MakeMove_Result` as a
 below, and `err`, which is the error type (in this case `uint32`), which means
 that it provides all the methods available to a [regular union](#unions). In
 addition, `TicTacToe_MakeMove_Result` provides methods that allow interop with
-`fit::result`:
+`fpromise::result`:
 
-* `TicTacToe_MakeMove_Result(fit::result<GameState, MoveError>&& result)`: Move
-  constructor from a `fit::result`.
-* `TicTacToe_MakeMove_Result(fit::ok_result<GameState>&& result)`: Move
-  constructor from a `fit::ok_result`.
-* `TicTacToe_MakeMove_Result(fit::error_result<MoveError>&& result)`: Move
-  constructor from a `fit::error_result`.
-* `operator fit::result<GameState, MoveError>() &&`: Conversion to a
-  `fit::result`.
+* `TicTacToe_MakeMove_Result(fpromise::result<GameState, MoveError>&& result)`: Move
+  constructor from a `fpromise::result`.
+* `TicTacToe_MakeMove_Result(fpromise::ok_result<GameState>&& result)`: Move
+  constructor from a `fpromise::ok_result`.
+* `TicTacToe_MakeMove_Result(fpromise::error_result<MoveError>&& result)`: Move
+  constructor from a `fpromise::error_result`.
+* `operator fpromise::result<GameState, MoveError>() &&`: Conversion to a
+  `fpromise::result`.
 
-Note that the successful result type parameter of the `fit::result` follows the
+Note that the successful result type parameter of the `fpromise::result` follows the
 [parameter type conversion rules](#protocol-and-method-attributes): if
 `MakeMove` returned multiple values on success, the result type would be a tuple
-of the response parameters `fit::result<std::tuple<...>, ...>`, and if
+of the response parameters `fpromise::result<std::tuple<...>, ...>`, and if
 `MakeMove` returned an empty response, the result type would be
-`fit::result<void, ...>`.
+`fpromise::result<void, ...>`.
 
 The FIDL toolchain also generates a `TicTacToe_MakeMove_Response` class, which
 is the type of the `response` variant of `TicTacToe_MakeMove_Result`. This class
@@ -634,7 +645,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional
 
 For protocol methods annotated with the
-[`[Transitional]`](/docs/reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/docs/reference/fidl/language/attributes.md#transitional)
 attribute, the `virtual` methods on the protocol class are not pure. This allows
 implementations of the protocol class with missing method overrides to compile
 successfully.
@@ -642,7 +653,7 @@ successfully.
 #### Discoverable {#discoverable}
 
 A protocol annotated with the
-[`[Discoverable]`](/docs/reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/docs/reference/fidl/language/attributes.md#discoverable)
 attribute causes the FIDL toolchain to generate an additional `static const char
 Name_[]` field on the protocol class, containing the full protocol name. For a
 protocol `Baz` in the library `foo.bar`, the generated name is `"foo.bar.Baz"`.
@@ -679,6 +690,7 @@ For the same `TicTacToe` protocol listed above, the FIDL toolchain generates a
 
 
 <!-- xrefs -->
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
 [client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
 [server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
 [lang-constants]: /docs/reference/fidl/language/language.md#constants
@@ -694,5 +706,5 @@ For the same `TicTacToe` protocol listed above, the FIDL toolchain generates a
 [union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
 [unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
 [traversal]: /docs/reference/fidl/language/wire-format/README.md#traversal-order
-[fostr]: /garnet/public/lib/fostr
+[fostr]: /src/lib/fostr
 [fostr-tutorial]: /docs/development/languages/fidl/tutorials/hlcpp/topics/fostr.md

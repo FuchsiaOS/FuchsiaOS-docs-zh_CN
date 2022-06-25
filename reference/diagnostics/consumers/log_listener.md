@@ -2,7 +2,7 @@
 
 The `log_listener` binary is included in all device builds that include `pkgfs` and is currently
 the primary tool used by engineers to interactively read a live log stream. In-tree developers
-usually invoke it with [`fx log`](https://fuchsia.dev/reference/tools/fx/cmd/log).
+usually invoke it with [`ffx log`](https://fuchsia.dev/reference/tools/sdk/ffx.md).
 
 <table>
   <tr>
@@ -21,6 +21,19 @@ usually invoke it with [`fx log`](https://fuchsia.dev/reference/tools/fx/cmd/log
    <td><code>--suppress &lt;comma-separated-words></code>
    </td>
    <td>Exclude lines containing any of the specified words.
+   </td>
+  </tr>
+  <tr>
+   <td><code>--select &lt;comma-separated-component-interests></code>
+   </td>
+   <td>
+      Configure the minimum severity level for logs emitted by components on the target device
+      matching the selector.
+
+      Specify using the format <code>&lt;component-selector&gt;#&lt;log-level&gt;</code>, where
+      <code>log-level</code> must be one of <code>FATAL|ERROR|WARN|INFO|DEBUG|TRACE</code>.
+      <p>
+      Multiple component selections are delimited by commas.
    </td>
   </tr>
   <tr>
@@ -66,13 +79,20 @@ usually invoke it with [`fx log`](https://fuchsia.dev/reference/tools/fx/cmd/log
    </td>
   </tr>
   <tr>
+   <td><code>--hide_metadata yes</code>
+   </td>
+   <td>Hides extraneous metadata (such as PID, TID) from log output. When paired with
+   <code>--pretty</code>, lines are colorized by severity.
+   </td>
+  </tr>
+  <tr>
    <td><code>--severity &lt;level></code>
    </td>
    <td>Minimum severity to include. Defaults to <code>INFO</code>.
 <p>
 Does not have any impact on the logs produced by components.
 <p>
-<code><level></code> must be one of <code>TRACE|DEBUG|INFO|WARN_ERROR|FATAL</code>.
+<code>&lt;level></code> must be one of <code>TRACE|DEBUG|INFO|WARN_ERROR|FATAL</code>.
    </td>
   </tr>
   <tr>

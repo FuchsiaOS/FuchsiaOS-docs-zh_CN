@@ -53,11 +53,13 @@ in the current scope. In other words, for a type like `vector`, it must contain
 both the inner type and size constraint.
 
 For example, this would be valid:
+
 ```fidl
 alias SmallBytes = vector<uint8>:SMALL_NUM;
 ```
 
-But his would not (partial type reference on the right hand side of the equals):
+But this would not (partial type reference on the right hand side of the equals):
+
 ```fidl
 alias SmallVec = vector:SMALL_NUM;
 ```
@@ -65,6 +67,7 @@ alias SmallVec = vector:SMALL_NUM;
 While FIDL today supports partial type references (illustrated by the `SmallVec`
 example) with a `using` alias, this feature will be removed. The reasoning of
 this deprecation is threefold:
+
 1. Type generics have not been fully defined or reviewed for FIDL. In a future
 where type generics exist, the language would have a better and more formal way
 to describe types and type aliases that can be parameterized.
@@ -238,8 +241,8 @@ class MyNumber {
   UnderlyingType value_;
 };
 ```
-
 Rust
+
 ```rust
 #[derive(Copy, Clone, Hash, Eq, PartialEq, Ord, PartialOrd)]
 struct MyNumber(u32);
@@ -279,8 +282,7 @@ impl Mul for MyNumber {
 
 ##### Footnote1
 
-Go will have generics in the near future:
-https://blog.golang.org/generics-next-step.
+Go [will have generics](https://blog.golang.org/generics-next-step) in the near future.
 
 ##### Footnote2
 

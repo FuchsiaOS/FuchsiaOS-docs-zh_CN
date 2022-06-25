@@ -12,18 +12,16 @@ toc:
   path: /docs/contribute/open_projects/template.md
 - title: "Build projects"
   section:
-  - title: "package() migration"
-    path: /docs/contribute/open_projects/build/package_migration.md
   - title: "Bringup test modernization"
     path: /docs/contribute/open_projects/build/bringup_test_modernization.md
   - title: "zx_* wrappers deprecation"
     path: /docs/contribute/open_projects/build/zx_wrappers_deprecation.md
   - title: "Hermetic actions"
     path: /docs/contribute/open_projects/build/hermetic_actions.md
-- title: "Source control projects"
+- title: "Components projects"
   section:
-  - title: "Layer Cake deprecation"
-    path: /docs/contribute/open_projects/srcs/layer_cake_deprecation.md
+  - title: "Components v2 migration"
+    path: /docs/contribute/open_projects/components/migration.md
 - title: "C++ projects"
   section:
   - title: "Implicit conversions"
@@ -32,11 +30,21 @@ toc:
     path: /docs/contribute/open_projects/cpp/ubsan.md
   - title: "Low-level C++ typed channel migration"
     path: /docs/contribute/open_projects/cpp/typed_channels.md
-- title: "Logging"
+- title: "Dart projects"
   section:
-  - title: "Dismantle the global log severity file"
-    path: /docs/contribute/open_projects/logging/global_severity.md
+  - title: "Null safety"
+    path: /docs/contribute/open_projects/dart/null_safety.md
+- title: "Testing"
+  section:
+  - title: "Migrate driver unit tests to mock-ddk"
+    path: /docs/contribute/open_projects/testing/mock_ddk_migration.md
 - title: "Graduated projects"
   section:
   - title: "Overview"
     path: /docs/contribute/open_projects/graduated/README.md
+  - title: "Dismantle the global log severity file"
+    path: /docs/contribute/open_projects/graduated/global_severity.md
+  - title: "Layer Cake deprecation"
+    path: /docs/contribute/open_projects/graduated/layer_cake_deprecation.md
+  - title: "package() migration"
+    path: /docs/contribute/open_projects/graduated/package_migration.md

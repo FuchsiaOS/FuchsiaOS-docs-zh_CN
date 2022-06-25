@@ -1,14 +1,14 @@
 # zx_vmo_create_child
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create a child of a VM Object.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -22,8 +22,9 @@ zx_status_t zx_vmo_create_child(zx_handle_t handle,
 
 ## DESCRIPTION
 
-`zx_vmo_create_child()` creates a new virtual memory object (VMO) a child of
-an existing vmo. The behavior of the semantics depends on the type of the child.
+`zx_vmo_create_child()` creates a new [virtual memory
+object](/docs/reference/kernel_objects/vm_object.md) (VMO) a child of an existing vmo. The behavior
+of the semantics depends on the type of the child.
 
 One handle is returned on success, representing an object with the requested
 size.
@@ -60,17 +61,13 @@ access to only a subrange of the parent vmo, and allowing for the
 **ZX_VMO_ZERO_CHILDREN** signal to be used. This flag may be used with vmos created with
 [`zx_vmo_create_physical()`] or [`zx_vmo_create_contiguous()`] and their descendants.
 
-An alias child type of **ZX_VMO_CHILD_COPY_ON_WRITE** is also defined and is equivalent to
-**ZX_VMO_CHILD_SNAPSHOT_AT_LEAST_ON_WRITE**. This alias is intended to be used when
-**ZX_VMO_CHILD_SNAPSHOT** is desired, but the VMO may be backed by a user pager. In all other cases,
-you should use one of the precise child types as this alias may change or become deprecated.
-
 In addition, *options* can contain zero or more of the following flags to
 further specify the child's behavior:
 
 - **ZX_VMO_CHILD_RESIZABLE** - Create a resizable child VMO.
 
-- **ZX_VMO_CHILD_NO_WRITE** - Create a child that cannot be written to.
+- **ZX_VMO_CHILD_NO_WRITE** - Create a child that cannot be written to. This is incompatible with
+                              **ZX_VMO_CHILD_RESIZABLE**.
 
 *offset* must be page aligned.
 
@@ -92,7 +89,7 @@ discussion of the details of each right.
 
 In all cases if **ZX_VMO_NO_WRITE** is set then **ZX_RIGHT_WRITE** will be removed.
 
-If *options* is **ZX_VMO_CHILD_COPY_ON_WRITE** or **ZX_VMO_CHILD_PRIVATE_PAGER_COPY** and
+If *options* is **ZX_VMO_CHILD_SNAPSHOT** or **ZX_VMO_CHILD_SNAPSHOT_AT_LEAST_ON_WRITE** and
 **ZX_VMO_CHILD_NO_WRITE** is not set then **ZX_RIGHT_WRITE** will be added and **ZX_RIGHT_EXECUTE**
 will be removed.
 
@@ -114,7 +111,7 @@ Non-slice child vmos will interact with the VMO syscalls in the following ways:
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_DUPLICATE** and have **ZX_RIGHT_READ**.
 
@@ -130,7 +127,7 @@ of failure, a negative error value is returned.
 **ZX_ERR_ACCESS_DENIED**  Input handle does not have sufficient rights.
 
 **ZX_ERR_INVALID_ARGS**  *out* is an invalid pointer or NULL
-or the offset is not page aligned.
+or the offset is not page aligned, or an incompatible combination of *options* was given.
 
 **ZX_ERR_OUT_OF_RANGE**  *offset* + *size* is too large.
 

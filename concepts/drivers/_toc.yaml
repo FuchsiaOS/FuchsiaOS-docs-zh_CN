@@ -6,16 +6,15 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Getting started"
-  path: /docs/concepts/drivers/getting_started.md
-- title: "Fuchsia Driver Framework"
-  path: /docs/concepts/drivers/fdf.md
-- title: "Device and driver model"
-  section:
-  - include: /docs/concepts/drivers/device_driver_model/_toc.yaml
-- title: "Driver development"
-  section:
-  - include: /docs/concepts/drivers/driver_development/_toc.yaml
-- title: "Driver architectures"
-  section:
-  - include: /docs/concepts/drivers/driver_architectures/_toc.yaml
+- title: "Overview"
+  path: /docs/concepts/drivers/README.md
+- title: "Driver framework (DFv2)"
+  path: /docs/concepts/drivers/driver_framework.md
+- title: "Comparison between DFv1 and DFv2"
+  path: /docs/concepts/drivers/comparison_between_dfv1_and_dfv2.md
+- title: "Drivers and nodes"
+  path: /docs/concepts/drivers/drivers_and_nodes.md
+- title: "Driver binding"
+  path: /docs/concepts/drivers/driver_binding.md
+- title: "Driver communication"
+  path: /docs/concepts/drivers/driver_communication.md

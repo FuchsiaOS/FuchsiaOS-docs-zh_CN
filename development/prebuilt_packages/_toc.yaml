@@ -6,6 +6,8 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
+- title: "Overview"
+  path: /docs/development/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md
 - title: "Publish prebuilt packages to CIPD"
   path: /docs/development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md
 - title: "Publish a CIPD symbols package for ELF binaries"

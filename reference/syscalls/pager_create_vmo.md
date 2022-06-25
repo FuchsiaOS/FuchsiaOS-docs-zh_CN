@@ -1,14 +1,14 @@
 # zx_pager_create_vmo
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Create a pager owned vmo.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -24,7 +24,12 @@ zx_status_t zx_pager_create_vmo(zx_handle_t pager,
 ## DESCRIPTION
 
 Creates a VMO owned by a pager object. *size* will be rounded up to the next page size
-boundary, and *options* must be zero or **ZX_VMO_RESIZABLE**.
+boundary, and *options* must be zero or any combination of the following flags:
+
+**ZX_VMO_RESIZABLE** - if the VMO can be resized.
+
+**ZX_VMO_TRAP_DIRTY** - if writes to clean pages in the VMO should be trapped by the kernel and
+forwarded to the pager service for acknowledgement before proceeding with the write.
 
 On success, the returned vmo has the same rights as a vmo created with [`zx_vmo_create()`], as well
 as having the same behavior with respect to **ZX_VMO_ZERO_CHILDREN**. Syscalls that operate on VMOs
@@ -56,6 +61,11 @@ the packet depends on *command*, which can take one of the following values:
 pager service should populate the range [offset, offset + length) in the registered vmo with
 [`zx_pager_supply_pages()`]. Supplying pages is an implicit positive acknowledgement of the request.
 
+**ZX_PAGER_VMO_DIRTY**: Sent when an application writes to a resident clean page in a pager's VMO
+created with the **ZX_VMO_TRAP_DIRTY** flag. The pager service should acknowledge that the range
+[offset, offset + length) can be dirtied, allowing the write to proceed, with
+[`zx_pager_op_range()`] **ZX_PAGER_OP_DIRTY**.
+
 **ZX_PAGER_VMO_COMPLETE**: Sent when no more pager requests will be sent for the corresponding
 VMO, either because of [`zx_pager_detach_vmo()`] or because no references to the VMO remain.
 
@@ -65,7 +75,7 @@ If *pager* is closed, then no more packets will be delivered to *port* (includin
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *pager* must be of type **ZX_OBJ_TYPE_PAGER**.
 
@@ -93,12 +103,14 @@ If *pager* is closed, then no more packets will be delivered to *port* (includin
 ## SEE ALSO
 
  - [`zx_pager_detach_vmo()`]
+ - [`zx_pager_op_range()`]
  - [`zx_pager_supply_pages()`]
  - [`zx_port_wait()`]
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_detach_vmo()`]: pager_detach_vmo.md
+[`zx_pager_op_range()`]: pager_op_range.md
 [`zx_pager_supply_pages()`]: pager_supply_pages.md
 [`zx_port_wait()`]: port_wait.md
 [`zx_vmo_create()`]: vmo_create.md

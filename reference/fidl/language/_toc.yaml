@@ -10,6 +10,8 @@ toc:
   path: /docs/reference/fidl/language/language.md
 - title: "Attributes"
   path: /docs/reference/fidl/language/attributes.md
+- title: "Versioning"
+  path: /docs/reference/fidl/language/versioning.md
 - title: "Grammar"
   path: /docs/reference/fidl/language/grammar.md
 - title: "Internal library: 'zx'"

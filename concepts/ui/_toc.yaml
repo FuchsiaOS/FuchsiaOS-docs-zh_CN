@@ -1,0 +1,47 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/concepts/ui/index.md
+- title: "User interface client"
+  path: /docs/concepts/ui/ui-client.md
+- title: "Scenic"
+  section:
+  - title: "Overview"
+    path: /docs/concepts/ui/scenic/index.md
+  - title: "Flatland"
+    path: /docs/concepts/ui/scenic/flatland/index.md
+  - title: "Gfx"
+    section:
+    - include: /docs/concepts/ui/scenic/gfx/_toc.yaml
+  - title: "Frame scheduling"
+    path: /docs/concepts/ui/scenic/frame_scheduling.md
+  - title: "View tree"
+    path: /docs/concepts/ui/scenic/view_tree.md
+  - title: "Display"
+    path: /docs/concepts/ui/scenic/display.md
+- title: "Input"
+  section:
+  - title: "Overview"
+    path: /docs/concepts/ui/input/index.md
+  - title: "Mouse"
+    path: /docs/concepts/ui/input/mouse.md
+  - title: "Mouse scroll"
+    path: /docs/concepts/ui/input/mouse_scroll.md
+  - title: "Focus"
+    path: /docs/concepts/ui/input/focus.md
+  - title: "Hit testing"
+    path: /docs/concepts/ui/input/hit_testing.md
+  - title: "Semantic visibility"
+    path: /docs/concepts/ui/input/semantic_visibility.md
+  - title: "Scene root"
+    path: /docs/concepts/ui/input/scene_root.md
+  - title: "Testing"
+    section:
+    - title: "Overview"
+      path: /docs/concepts/ui/input/testing/index.md

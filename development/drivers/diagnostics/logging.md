@@ -1,5 +1,8 @@
 # Driver Logging
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 You can have a driver send log messages to the
 [syslog](/docs/development/diagnostics/logs/recording.md) through the use of the
 `zxlogf(<log_level>,...)` macro, which is defined in

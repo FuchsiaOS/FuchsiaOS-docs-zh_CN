@@ -6,6 +6,9 @@
 
 # Getting descriptors and endpoints from USB
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 The `usb` class contains several subclasses providing access to the interfaces, descriptors,
 and endpoints of the usb device. The subclasses included are:
 

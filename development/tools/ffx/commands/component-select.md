@@ -9,19 +9,17 @@ component topology.
 
 In the special case of a query that uniquely matches a single service, RCS can
 connect to that service and pass a handle to it to the host for FFX to use.
-This is how the the [plugin system](/docs/development/tools/ffx/development/proxy-plugin.md) is able to create FIDL
+This is how the the [plugin system][ffx-plugins] is able to create FIDL
 proxies using the component selector mapping.
 
-To query for services on a target, write a
-[selector](https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#Selector) to
+To query for services on a target, write a [selector][fidl-selector] to
 match the service(s) of interest.
 
 ### Selector syntax
 
 Many `ffx` commands that interact with components or services take component
 selectors as a parameter. Component selectors in `ffx` use the same syntax as
-the component selectors in the
-[diagnostics library](https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#Selector).
+the [diagnostics selectors][selectors].
 
 Here are some example selectors, all of which select the Remote Control Service:
 
@@ -36,17 +34,15 @@ core/*:expose:fuchsia.developer.remotecontrol.R*
 
 #### Selector segments
 
-There are three constituent segments of a selector:
+There are three constituent segments of a [selector][selectors]:
 `<component moniker>:<node selector>:<property selector>`. Each is discussed
 below. The wildcard (`*`) is valid in each segment of a selector.
 
 Consider this example:
   `core/remote-control:out:fuchsia.developer.remotecontrol.RemoteControl`
 
-- `core/remote-control` is the
-  [component moniker](/docs/concepts/components/v2/monikers.md).
-  This uniquely specifies a path in the
-  [component topology](/docs/concepts/components/v2/topology.md).
+- `core/remote-control` is the [component moniker][component-moniker].
+  This uniquely specifies a path in the [component topology][component-topology].
 
   Note: You can use `*` to wildcard a particular level in the topology, but *`*`
   is not recursive*. That is, `a/*/c` will match `a/b/c` but would not match
@@ -54,8 +50,7 @@ Consider this example:
 
 - `out` is the node selector. In `ffx`, this must be one of the following
   values, which correspond to the routing terminology used in the component
-  manifest and defined in
-  [routing terminology documentation](/docs/concepts/components/v2/component_manifests.md#routing-terminology).
+  manifest and defined in [routing terminology documentation][component-routing].
   - `out`: services offered by the component. Corresponds to `offer` in the
     component manifest.
   - `expose`: services exposed by the component. Corresponds to `expose` in the
@@ -68,3 +63,10 @@ Consider this example:
 
 You may optionally omit the property selector: `core/remote-control:out` is
 equivalent to `core/remote-control:out:*`.
+
+[component-moniker]: /docs/reference/components/moniker.md
+[component-routing]: /docs/concepts/components/v2/capabilities/README.md#routing-terminology
+[component-topology]: /docs/concepts/components/v2/topology.md
+[ffx-plugins]: /docs/development/tools/ffx/development/plugins.md
+[fidl-selector]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#Selector
+[selectors]: /docs/reference/diagnostics/selectors.md

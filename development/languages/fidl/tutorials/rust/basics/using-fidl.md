@@ -35,14 +35,14 @@ rm -r examples/fidl/rust/fidl_crates/*
 1. Add the main function to `examples/fidl/rust/fidl_crates/src/main.rs`:
 
    ```rust
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="main" adjust_indentation="auto" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="main" adjust_indentation="auto" %}
    ```
 
 1. Define a `rustc_binary` and then create a depencency on the test through the `$host_toolchain`, which will build the binary for the host.
    To do this, add the following to `examples/fidl/rust/fidl_crates/BUILD.gn`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/BUILD.gn" region_tag="imports" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/BUILD.gn" region_tag="imports" %}
 
    rustc_binary("fidl_crates_bin") {
      edition = "2018"
@@ -133,21 +133,21 @@ mod test {
 You then need to build with tests by setting the `with_unit_tests` argument:
 
 ```gn
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/BUILD.gn" region_tag="test" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/BUILD.gn" region_tag="test" %}
 ```
 
 This will generate a `fidl_crates_bin_test` target, which should then be added
 to the build group:
 
 ```
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/BUILD.gn" region_tag="group" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/BUILD.gn" region_tag="group" %}
 ```
 
 To import the crate, add the following to the top of the `tests` module.
 In the Fuchsia tree, FIDL crates are often aliased to shorter names for brevity:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="import" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="import" %}
 ```
 
 ## Use the generated bindings code {#inspect-user-generated-bindings}
@@ -159,15 +159,15 @@ To get started, you can also use the example code below. You can add this inside
 `fidl_crates_usage` test:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="bits" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="bits" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="enums_init" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="enums_init" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="structs" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="structs" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="unions_init" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="unions_init" adjust_indentation="auto" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_init" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_init" adjust_indentation="auto" %}
 ```
 
 To rebuild and rerun the tests, run:

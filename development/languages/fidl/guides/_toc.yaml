@@ -21,5 +21,3 @@ toc:
     path: /docs/development/languages/fidl/guides/editors.md
   - title: "Hanging Gets in Rust"
     path: /docs/development/languages/fidl/guides/rust-hanging-get.md
-  - title: "Memory ownership in LLCPP"
-    path: /docs/development/languages/fidl/guides/llcpp-memory-ownership.md

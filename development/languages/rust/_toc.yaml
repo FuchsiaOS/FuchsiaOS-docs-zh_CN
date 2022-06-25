@@ -8,6 +8,8 @@
 toc:
 - title: "Overview"
   path: /docs/development/languages/rust
+- title: "Learn Rust"
+  path: /docs/development/languages/rust/learn_rust.md
 - title: "Fuchsia Rust crates"
   path: /docs/development/languages/rust/crates.md
 - title: "FIDL Rust crates"
@@ -30,5 +32,5 @@ toc:
   path: /docs/development/languages/rust/unsafe.md
 - title: "Unstable Rust features"
   path: /docs/development/languages/rust/unstable.md
-- title: "Add logging to hello world"
-  path: /docs/development/languages/rust/add-logging.md
+- title: "Integrating C/C++ using bindgen"
+  path: /docs/development/languages/rust/bindgen.md

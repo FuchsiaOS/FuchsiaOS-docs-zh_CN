@@ -95,7 +95,7 @@ To prevent `libfuzzer` from creating a debug exception channel, use the `--debug
 For example, to use [zxdb] while reproducing a specific test case:
 
 <pre class="prettyprint devsite-disable-click-to-copy">
-<code class="devsite-terminal">fx debug</code>
+<code class="devsite-terminal">ffx debug connect</code>
 [zxdb] attach noop-fuzzer
 [zxdb] break LLVMFuzzerTestOneInput
 </pre>

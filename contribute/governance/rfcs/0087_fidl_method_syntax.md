@@ -13,6 +13,12 @@ e.g. `(struct { name1 Type1; name2 Type2; })`. Users will also be allowed to
 specify request/response types of unions or tables in addition to structs. This
 RFC has no wire format impact.
 
+**See also:**
+
+* [RFC-0050: FIDL Syntax Revamp](0050_syntax_revamp.md)
+* [RFC-0086: Updates to RFC-0050: FIDL Attributes Syntax](0086_rfc_0050_attributes.md)
+* [RFC-0088: Updates to RFC-0050: FIDL Bits, Enum, and Constraints Syntax](0088_rfc_0050_bits_enums_constraints.md)
+
 ## Terminology
 
 In this RFC, "wrapping a type in a struct" refers to the process of taking an
@@ -114,7 +120,7 @@ becomes:
 protocol-method = ( attribute-list ) , IDENTIFIER , method-params
                   ( "->" , method-params ( "error" type-constructor ) ) ;
 protocol-event = ( attribute-list ) , "->" , IDENTIFIER , method-params;
-method-params = "(" , type , ")"
+method-params = "(" , type-constructor , ")"
 ```
 
 A `type` is [as defined in RFC-0050][grammar], i.e. it is either a
@@ -382,7 +388,7 @@ ordinals.
 <!-- xrefs -->
 
 [RFC-0050]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md
-[traits]: /zircon/system/ulib/fidl/include/lib/fidl/llcpp/traits.h
+[traits]: /sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/traits.h
 [fxbug.dev/7704]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=7704
 [extensible-method-args]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#extensible-method-args
 [flattened-name]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#flattened-name

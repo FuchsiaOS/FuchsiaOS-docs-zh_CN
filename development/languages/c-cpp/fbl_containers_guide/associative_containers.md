@@ -46,7 +46,7 @@ class Obj : public fbl::WAVLTreeContainable<Obj*>  {
   const uint32_t awesomeness_;
 };
 
-using ObjSortedByAwesomness = fbl::WAVLTree<uint32_t, Obj*>;
+using ObjSortedByAwesomeness = fbl::WAVLTree<uint32_t, Obj*>;
 ```
 
 Here, a container has been defined, which is keyed using 32 bit unsigned integers,
@@ -179,7 +179,7 @@ for (int i = 0; i < 100; ++i) {
 As noted earlier, elements in an associative container either have their
 enumeration order determined by key (`WAVLTree`), or do not have a guaranteed
 enumeration order (`HashTable`). They still have an enumeration order, however,
-and therefor a `front()` and a `back()`. Because of this, the methods used to
+and therefore a `front()` and a `back()`. Because of this, the methods used to
 remove elements from a `fbl::` associative collection are identical to those for
 a `DoublyLinkedList`, just without the `erase_next`.
 
@@ -267,14 +267,14 @@ the following:
 // Attempt to insert an object into the container, but do nothing in the case of
 // a collision.
 Obj* ptr = GetAnObj();
-conainer.insert_or_find(ptr);
+container.insert_or_find(ptr);
 
 // Attempt to insert an object into the container.  In the case of collision,
 // the reference stored in ptr will not be consumed.  Put it back and log a
 // message about the collision.
 ContainerType::iterator collided;
 std::unique_ptr<Obj> ptr = GetAnObj();
-if (!conainer.insert_or_find(std::move(ptr), &collided)) {
+if (!container.insert_or_find(std::move(ptr), &collided)) {
   ASSERT(ptr.get() != nullptr);
   ASSERT(collided.IsValid());
   printf("Collided with obj \"%s\" when trying to insert obj \"%s\"\n",
@@ -287,12 +287,12 @@ if (!conainer.insert_or_find(std::move(ptr), &collided)) {
 // destroying the object if this was a managed pointer and the last reference to
 // the object.
 std::unique_ptr<Obj> ptr = GetAnObj();
-conainer.insert_or_replace(std::move(ptr));
+container.insert_or_replace(std::move(ptr));
 
 // Attempt to insert an object into the container, recovering the object
 // replaced in the case of a collision.
 std::unique_ptr<Obj> ptr = GetAnObj();
-std::unique_ptr<Obj> replaced = conainer.insert_or_replace(std::move(ptr));
+std::unique_ptr<Obj> replaced = container.insert_or_replace(std::move(ptr));
 if (replaced != nullptr) {
   // We collided and replaced the element we collided with. Put this object
   // back.
@@ -314,16 +314,16 @@ an `Obj` in a container.
 ```cpp
 class Obj : public fbl::WAVLTreeContainable<Obj*>  {
  public:
-  explicit Obj(uint32_t awesomness) : awesomness_(awesomness) {}
-  uint32_t GetKey() const { return awesomness; }
+  explicit Obj(uint32_t awesomeness) : awesomeness_(awesomeness) {}
+  uint32_t GetKey() const { return awesomeness; }
 
-  void UpdateAwesomeness(uint32_t awesomness) {
+  void UpdateAwesomeness(uint32_t awesomeness) {
     ZX_DEBUG_ASSERT(!InContainer());
-    awesomness_ = awesomness;
+    awesomeness_ = awesomeness;
   }
 
  private:
-  uint32_t awesomness_;
+  uint32_t awesomeness_;
 };
 
 fbl::WAVLTree<uint32_t, Obj*> all_objs;
@@ -331,7 +331,7 @@ fbl::WAVLTree<uint32_t, Obj*> all_objs;
 void UpdateAwesomeness(Obj& obj, uint32_t new_val) {
   ZX_DEBUG_ASSERT(obj.InContainer());
   all_objs.erase(obj);
-  UpdateAwesomness(new_val);
+  UpdateAwesomeness(new_val);
   all_objs.insert(*obj);
 }
 ```
@@ -339,7 +339,7 @@ void UpdateAwesomeness(Obj& obj, uint32_t new_val) {
 Note that (to prevent accidents) the example asserts that an object being
 updated is not in the container at the time that the value of the key is
 changed. `InContainer` is implemented by the object's `WAVLTreeContainable`
-mix-in and may be invoked from the `UpdateAwesomness()` by simply saying
+mix-in and may be invoked from the `UpdateAwesomeness()` by simply saying
 `InContainer()`.
 
 Also that there is no need to find the object in the tree before removing it.

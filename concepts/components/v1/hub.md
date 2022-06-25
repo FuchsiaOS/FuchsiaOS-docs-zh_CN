@@ -94,7 +94,7 @@ The hub is organized as follows:
 > This directory tree is managed by the system to expose system-level
 > information about the components.
 
-**\<component instance id\>/in/**: component's incoming namespace
+**\<component instance id\>/in/**: component's [namespace](/docs/glossary/README.md#namespace)
 > A directory tree exposing objects that have been offered to the component by
 > its parent or are ambiently offered by the Component Framework.
 

@@ -20,3 +20,7 @@ toc:
   path: /docs/concepts/packages/update_pkg.md
 - title: "System updates"
   path: /docs/concepts/packages/ota.md
+- title: "Fuchsia system interface"
+  path: /docs/concepts/packages/system.md
+- title: "Software Update System"
+  path: /docs/concepts/packages/software_update_system.md

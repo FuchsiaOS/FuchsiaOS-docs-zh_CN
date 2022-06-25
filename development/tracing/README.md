@@ -1,7 +1,7 @@
 # Fuchsia tracing guides
 
 If you are unfamiliar with the Fuchsia tracing system, see
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 ## Tutorial
 

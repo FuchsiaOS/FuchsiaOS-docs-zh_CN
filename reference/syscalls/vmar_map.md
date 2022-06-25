@@ -1,14 +1,14 @@
 # zx_vmar_map
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Add a memory mapping.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -40,32 +40,43 @@ closing the VMO handle does not remove the mapping added by this function.
   other map/unmap/protect operations) replace existing mappings in the range
   specified by *vmar_offset* and *len*. If that range partially overlaps any
   mappings, then the portions of those mappings outside the range will remain mapped.
+- **ZX_VM_OFFSET_IS_UPPER_LIMIT**  Interpret the *vmar_offset* as an upper limit
+  to constrain the selection of the offset by the kernel, invalid if *handle*
+  does not have the **ZX_VM_CAN_MAP_SPECIFIC** permission. The resulting mapping
+  will have an offset + *len* that is <= *vmar_offset*. This option cannot be
+  specified if **ZX_VM_SPECIFIC** or **ZX_VM_SPECIFIC_OVERWRITE** is used.
 - **ZX_VM_PERM_READ**  Map *vmo* as readable.  It is an error if *handle*
   does not have **ZX_VM_CAN_MAP_READ** permissions, the *handle* does
   not have the **ZX_RIGHT_READ** right, or the *vmo* handle does not have the
   **ZX_RIGHT_READ** right.
 - **ZX_VM_PERM_WRITE**  Map *vmo* as writable.  It is an error if *handle*
   does not have **ZX_VM_CAN_MAP_WRITE** permissions, the *handle* does
-  not have the **ZX_RIGHT_WRITE** right, or the *vmo* handle does not have the
-  **ZX_RIGHT_WRITE** right.
+  not have the **ZX_RIGHT_WRITE** right, the *vmo* handle does not have the
+  **ZX_RIGHT_WRITE** right, or *options* does not specify **ZX_VM_PERM_READ**.
 - **ZX_VM_PERM_EXECUTE**  Map *vmo* as executable.  It is an error if *handle*
   does not have **ZX_VM_CAN_MAP_EXECUTE** permissions, the *handle* handle does
-  not have the **ZX_RIGHT_EXECUTE** right, or the *vmo* handle does not have the
-  **ZX_RIGHT_EXECUTE** right.
+  not have the **ZX_RIGHT_EXECUTE** right, the *vmo* handle does not have the
+  **ZX_RIGHT_EXECUTE** right, or *options* does not specify **ZX_VM_PERM_READ**.
 - **ZX_VM_MAP_RANGE**  Immediately page into the new mapping all backed
   regions of the VMO.  This cannot be specified if
   **ZX_VM_SPECIFIC_OVERWRITE** is used.
 - **ZX_VM_ALLOW_FAULTS** Required if it would be possible for the created
   mapping to generate faults. In particular, it is required if *vmo* is resizable,
-  if *vmo* is non-resizable but the mapping extends past the end of *vmo*, or if
-  *vmo* was created from [`zx_pager_create_vmo()`].
+  if *vmo* is non-resizable but the mapping extends past the end of *vmo*, if
+  *vmo* is discardable, or if *vmo* was created from [`zx_pager_create_vmo()`].
+- **ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED** Map *vmo* as readable if the system does
+  not support mapping execute-only pages. If the system can map execute-only
+  this flag is ignored.
 
-*vmar_offset* must be 0 if *options* does not have **ZX_VM_SPECIFIC** or
-**ZX_VM_SPECIFIC_OVERWRITE** set.  If neither of those are set, then
-the mapping will be assigned an offset at random by the kernel (with an
-allocator determined by policy set on the target VMAR).
+*vmar_offset* must be 0 if *options* does not have **ZX_VM_SPECIFIC**,
+**ZX_VM_SPECIFIC_OVERWRITE** or **ZX_VM_OFFSET_IS_UPPER_LIMIT** set.
+**ZX_VM_OFFSET_IS_UPPER_LIMIT** serves to constrain the selection range, and
+otherwise behaves similarly to the case where neither **ZX_VM_SPECIFIC** nor
+**ZX_VM_SPECIFIC_OVERWRITE** are set, with the mapping being assigned an offset
+at random by the kernel (with an allocator determined by policy set on the
+target VMAR).
 
-*len* must be page-aligned.
+*len* must be non-zero and page-aligned.
 
 In addition one of the following power-of-two alignment flags can added:
 
@@ -82,7 +93,7 @@ base address + *vmo_offset* are not aligned to the requested value.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_VMAR**.
 
@@ -102,17 +113,25 @@ and non-zero.  In the event of failure, a negative error value is returned.
 
 **ZX_ERR_BAD_STATE**  *handle* refers to a destroyed VMAR.
 
-**ZX_ERR_INVALID_ARGS** *mapped_addr* or *options* are not valid, *vmar_offset* is
-non-zero when neither **ZX_VM_SPECIFIC** nor
-**ZX_VM_SPECIFIC_OVERWRITE** are given,
-**ZX_VM_SPECIFIC_OVERWRITE** and **ZX_VM_MAP_RANGE** are both given,
-*vmar_offset* and *len* describe an unsatisfiable allocation due to exceeding the region bounds,
-*vmar_offset* or *vmo_offset* or *len* are not page-aligned,
-`vmo_offset + ROUNDUP(len, PAGE_SIZE)` overflows.
+**ZX_ERR_INVALID_ARGS** for any of the following:
+ - *mapped_addr* or *options* is not valid.
+ - *vmar_offset* is non-zero when none of **ZX_VM_SPECIFIC**, **ZX_VM_SPECIFIC_OVERWRITE** or
+   **ZX_VM_OFFSET_IS_UPPER_LIMIT** is specified.
+ - **ZX_VM_SPECIFIC_OVERWRITE** and **ZX_VM_MAP_RANGE** are both specified.
+ - **ZX_VM_OFFSET_IS_UPPER_LIMIT** is specified together with either **ZX_VM_SPECIFIC**
+   or **ZX_VM_SPECIFIC_OVERWRITE**.
+ - *vmar_offset* and *len* describe an unsatisfiable allocation due to exceeding the region bounds.
+ - *vmar_offset* or *vmo_offset* is not page-aligned.
+ - *len* is 0 or not page-aligned.
+
+**ZX_ERR_ALREADY_EXISTS**  **ZX_VM_SPECIFIC** has been specified without
+**ZX_VM_SPECIFIC_OVERWRITE**, and the requested range overlaps with another mapping.
+
+**ZX_ERR_NO_RESOURCES** If a spot could not be found in the VMAR to create the mapping.
 
 **ZX_ERR_ACCESS_DENIED**  Insufficient privileges to make the requested mapping.
 
-**ZX_ERR_NOT_SUPPORTED** If the vmo is resizable, or backed by a pager but
+**ZX_ERR_NOT_SUPPORTED** If the vmo is resizable, discardable, or backed by a pager but
 **ZX_VM_ALLOW_FAULTS** is not set.
 
 **ZX_ERR_BUFFER_TOO_SMALL** The VMO is not resizable and the mapping extends past the end
@@ -122,9 +141,7 @@ of the VMO but **ZX_VM_ALLOW_FAULTS** is not set.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-**ZX_ERR_NO_MEMORY**  **ZX_VM_SPECIFIC** has been specified,
-**ZX_VM_SPECIFIC_OVERWRITE** has not been specified,
-and the requested range overlaps with another mapping.
+**ZX_ERR_OUT_OF_RANGE** `vmo_offset + ROUNDUP(len, PAGE_SIZE)` overflows.
 
 ## NOTES
 

@@ -21,10 +21,10 @@ rust|[link](#rust-init)|[link](#rust-1)|
 ### FIDL {#fidl-init}
 
 ```fidl
-table Profile {
-    1: Timezone timezone;
-    2: TemperatureUnit temperature_unit;
-    3: bool dark_mode;
+type Profile = table {
+    1: timezone Timezone;
+    2: temperature_unit TemperatureUnit;
+    3: dark_mode bool;
 };
 ```
 
@@ -89,7 +89,7 @@ void use_table(const fidl_test::Profile& profile) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-void use_table(const fidl_test::Profile& profile) {
+void use_table(const fidl_test::wire::Profile& profile) {
   if (profile.has_timezone()) {
     printf("timezone: %s", profile.timezone().data());
   }
@@ -197,7 +197,7 @@ fn use_table(profile: &fidl_lib::Profile) {
 - Remove references to the soon-to-be-removed member
 
 ```diff
-  void use_table(const fidl_test::Profile& profile) {
+  void use_table(const fidl_test::wire::Profile& profile) {
     if (profile.has_timezone()) {
       printf("timezone: %s", profile.timezone().data());
     }
@@ -240,10 +240,10 @@ fn use_table(profile: &fidl_lib::Profile) {
 - Remove the member
 
 ```diff
-  table Profile {
-      1: Timezone timezone;
-      2: TemperatureUnit temperature_unit;
--     3: bool dark_mode;
+  type Profile = table {
+      1: timezone Timezone;
+      2: temperature_unit TemperatureUnit;
+-     3: dark_mode bool;
   };
 
 ```

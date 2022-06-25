@@ -69,7 +69,7 @@ have recommended meanings with recommended standard schemas.
 [doc-component]: /docs/concepts/components/v2/introduction.md
 [doc-component-manifest]: /docs/concepts/components/v2/component_manifests.md
 [doc-capability-routing]: /docs/concepts/components/v2/topology.md#capability-routing
-[doc-scenic]: /docs/concepts/graphics/scenic/scenic.md
+[doc-scenic]: /docs/concepts/ui/scenic/index.md
 [doc-component-collection]: /docs/concepts/components/v2/realms.md#collections
 [doc-graphical-presenter]: /docs/concepts/session/graphical_presenter.md
 [sdk-graphical-presenter]: /sdk/fidl/fuchsia.element/graphical_presenter.fidl

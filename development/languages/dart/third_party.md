@@ -33,10 +33,10 @@ through the following procedure:
    //scripts/dart/update_3p_packages.py
    ```
 
-4. Merge your changes to `dart_dependencies.yaml` to master.
-5. Merge the files, downloaded by running the `update_3p_packages.py` script, to master.
-6. In the `//topaz/manifest/dart` manifest, update the project node `third_part/dart-pkg` revision attribute with the SHA from your commit of `dart_dependencies.yaml`..
-7. Merge your change to the `//topaz/manifest/dart` manifest file to master.
+4. Merge your changes to `dart_dependencies.yaml` to main.
+5. Merge the files, downloaded by running the `update_3p_packages.py` script, to main.
+6. In the `//integration/fuchsia/third_party/dart` manifest, update the project node `third_part/dart-pkg` revision attribute with the SHA from your commit of `dart_dependencies.yaml`..
+7. Merge your change to the `//integration/fuchsia/third_party/dart` manifest file to main.
 
 [pub]: https://pub.dartlang.org/ "Pub"
 [dart-3p]: https://fuchsia.googlesource.com/third_party/dart-pkg/+/main "Third-party dependencies"

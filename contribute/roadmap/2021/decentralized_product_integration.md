@@ -6,9 +6,9 @@
 ## Problem statement
 
 Fuchsia customers need the ability not just to create Fuchsia software outside
-of the Fuchsia repository, but also to integrate products from such software
-and the Fuchsia platform software outside of the Fuchsia repository and the
-currently used global integration build process.
+of the Fuchsia repository, but also to integrate [products][glossary.product]
+from such software and the Fuchsia platform software outside of the Fuchsia
+repository and the currently used global integration build process.
 
 The former is supported by the existing SDK; the latter is currently
 "impossible", i.e. it's not done in practice, a theoretical understanding of
@@ -89,3 +89,5 @@ intensity. This might expose scaling issues with MOS that could interfere with
 the ongoing support for releases by existing customers. Mitigating is that none
 of the processes we propose to base on MOS/TUF are critical and can be stopped
 any time.
+
+[glossary.product]: /docs/glossary/README.md#product

@@ -14,188 +14,343 @@ toc:
   path: /docs/contribute/governance/rfcs/create_rfc.md
 - title: "RFC template"
   path: /docs/contribute/governance/rfcs/TEMPLATE.md
-- heading: Proposals
-- title: "RFC-0001: RFC Process"
-  path: /docs/contribute/governance/rfcs/0001_rfc_process.md
-- title: "RFC-0002: Platform Versioning"
-  path: /docs/contribute/governance/rfcs/0002_platform_versioning.md
-- title: "RFC-0003: Logging"
-  path: /docs/contribute/governance/rfcs/0003_logging.md
-- title: "RFC-0004: Units of Bytes"
-  path: /docs/contribute/governance/rfcs/0004_units_of_bytes.md
-- title: "RFC-0005: Blobfs Snapshots"
-  path: /docs/contribute/governance/rfcs/0005_blobfs_snapshots.md
-- title: "RFC-0006: Addendum of the RFC Process for Zircon"
-  path: /docs/contribute/governance/rfcs/0006_addendum_to_rfc_process_for_zircon.md
-- title: "RFC-0007: Zircon Removal of Thread Killing"
-  path: /docs/contribute/governance/rfcs/0007_remove_thread_killing.md
-- title: "RFC-0008: Remove zx_clock_get and zx_clock_adjust"
-  path: /docs/contribute/governance/rfcs/0008_remove_zx_clock_get_and_adjust.md
-- title: "RFC-0009: Edge triggered async_wait"
-  path: /docs/contribute/governance/rfcs/0009_edge_triggered_async_wait.md
-- title: "RFC-0010: zx_channel_iovec_t support for zx_channel_write and zx_channel_call"
-  path: /docs/contribute/governance/rfcs/0010_channel_iovec.md
-- title: "RFC-0011: zx_object_get_info ZX_INFO_KMEM_STATS_EXTENDED"
-  path: /docs/contribute/governance/rfcs/0011_getinfo_kmemstats_extended.md
-- title: "RFC-0012: Zircon Discardable Memory"
-  path: /docs/contribute/governance/rfcs/0012_zircon_discardable_memory.md
-- title: "RFC-0013: Cloning a VMO mapping"
-  path: /docs/contribute/governance/rfcs/0013_cloning_a_vmo_mapping.md
-- title: "RFC-0014: Relax zx_fifo_create constraints"
-  path: /docs/contribute/governance/rfcs/0014_relax_fifo_create_constraints.md
-- title: "RFC-0015: Compatibility Test Suite"
-  path: /docs/contribute/governance/rfcs/0015_cts.md
-- title: "RFC-0016: Boot time page sizes"
-  path: /docs/contribute/governance/rfcs/0016_boot_time_page_sizes.md
-- title: "RFC-0017: The FTP Process is dead, long live the RFC Process!"
-  path: /docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md
-- title: "RFC-0018: FTP process: A modest proposal"
-  path: /docs/contribute/governance/rfcs/0018_ftp_process.md
-- title: "RFC-0019: Using evolution = uint64;"
-  path: /docs/contribute/governance/rfcs/0019_using_evolution_uint64.md
-- title: "RFC-0020: Interface ordinal hashing"
-  path: /docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md
-- title: "RFC-0021: Soft transitions for methods add and remove"
-  path: /docs/contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
-- title: "RFC-0022: Clarification: Default values for struct members"
-  path: /docs/contribute/governance/rfcs/0022_default_values_for_struct.md
-- title: "RFC-0023: Compositional model for protocols"
-  path: /docs/contribute/governance/rfcs/0023_compositional_model_protocols.md
-- title: "RFC-0024: Mandatory source compatibility"
-  path: /docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md
-- title: "RFC-0025: Bit flags"
-  path: /docs/contribute/governance/rfcs/0025_bit_flags.md
-- title: "RFC-0026: Envelopes everywhere"
-  path: /docs/contribute/governance/rfcs/0026_envelopes_everywhere.md
-- title: "RFC-0027: You only pay for what you use"
-  path: /docs/contribute/governance/rfcs/0027_you_only_pay_what_you_use.md
-- title: "RFC-0028: Handle rights"
-  path: /docs/contribute/governance/rfcs/0028_handle_rights.md
-- title: "RFC-0029: Increasing method ordinals"
-  path: /docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md
-- title: "RFC-0030: FIDL is little endian"
-  path: /docs/contribute/governance/rfcs/0030_fidl_is_little_endian.md
-- title: "RFC-0031: Typed Epitaphs"
-  path: /docs/contribute/governance/rfcs/0031_typed_epitaphs.md
-- title: "RFC-0032: Efficient envelopes"
-  path: /docs/contribute/governance/rfcs/0032_efficient_envelopes.md
-- title: "RFC-0033: Handling of unknown fields and strictness"
-  path: /docs/contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
-- title: "RFC-0034: Null terminate strings"
-  path: /docs/contribute/governance/rfcs/0034_null_terminate_strings.md
-- title: "RFC-0035: Automatic flow tracing"
-  path: /docs/contribute/governance/rfcs/0035_automatic_flow_tracing.md
-- title: "RFC-0036: Update to struct declarations"
-  path: /docs/contribute/governance/rfcs/0036_update_struct_declarations.md
-- title: "RFC-0037: Transactional message header v3"
-  path: /docs/contribute/governance/rfcs/0037_transactional_message_header_v3.md
-- title: "RFC-0038: Seperating layour from constraints"
-  path: /docs/contribute/governance/rfcs/0038_seperating_layout_from_constraints.md
-- title: "RFC-0039: Types come second"
-  path: /docs/contribute/governance/rfcs/0039_types_come_second.md
-- title: "RFC-0040: Identifier uniqueness"
-  path: /docs/contribute/governance/rfcs/0040_identifier_uniqueness.md
-- title: "RFC-0041: Support for unifying services and devices"
-  path: /docs/contribute/governance/rfcs/0041_unifying_services_devices.md
-- title: "RFC-0042: Non nullable types"
-  path: /docs/contribute/governance/rfcs/0042_non_nullable_types.md
-- title: "RFC-0043: Documentation comment format"
-  path: /docs/contribute/governance/rfcs/0043_documentation_comment_format.md
-- title: "RFC-0044: Extensible method arguments"
-  path: /docs/contribute/governance/rfcs/0044_extensible_method_arguments.md
-- title: "RFC-0045: Zero-size empty structs"
-  path: /docs/contribute/governance/rfcs/0045_zero_size_empty_structs.md
-- title: "RFC-0047: Tables"
-  path: /docs/contribute/governance/rfcs/0047_tables.md
-- title: "RFC-0048: Explicit union ordinals"
-  path: /docs/contribute/governance/rfcs/0048_explicit_union_ordinals.md
-- title: "RFC-0049: FIDL tuning process evolution"
-  path: /docs/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md
-- title: "RFC-0050: Syntax revamp"
-  path: /docs/contribute/governance/rfcs/0050_syntax_revamp.md
-- title: "RFC-0051: Safer structs for C++"
-  path: /docs/contribute/governance/rfcs/0051_safer_structs_for_cpp.md
-- title: "RFC-0052: Type aliasing and new types"
-  path: /docs/contribute/governance/rfcs/0052_type_aliasing_named_types.md
-- title: "RFC-0053: Epitaphs"
-  path: /docs/contribute/governance/rfcs/0053_epitaphs.md
-- title: "RFC-0054: Parameter attributes"
-  path: /docs/contribute/governance/rfcs/0054_parameter_attributes.md
-- title: "RFC-0055: Documentation comments"
-  path: /docs/contribute/governance/rfcs/0055_documentation_comments.md
-- title: "RFC-0056: Empty structs"
-  path: /docs/contribute/governance/rfcs/0056_empty_structs.md
-- title: "RFC-0057: Default no handles"
-  path: /docs/contribute/governance/rfcs/0057_default_no_handles.md
-- title: "RFC-0058: Introduce a deprecated attribute"
-  path: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
-- title: "RFC-0059: Reserved bits in vector, string, and array count fields"
-  path: /docs/contribute/governance/rfcs/0059_reserved_bits_count_fields.md
-- title: "RFC-0060: Error handling"
-  path: /docs/contribute/governance/rfcs/0060_error_handling.md
-- title: "RFC-0061: Extensible unions"
-  path: /docs/contribute/governance/rfcs/0061_extensible_unions.md
-- title: "RFC-0062: Method impossible"
-  path: /docs/contribute/governance/rfcs/0062_method_impossible.md
-- title: "RFC-0063: OrdinalRange"
-  path: /docs/contribute/governance/rfcs/0063_OrdinalRange.md
-- title: "RFC-0064: Box<Knox>"
-  path: /docs/contribute/governance/rfcs/0064_box_knox.md
-- title: "RFC-0065: No optional strings or vectors"
-  path: /docs/contribute/governance/rfcs/0065_optional_strings_or_vectors.md
-- title: "RFC-0066: Programmer advisory explicit defaults"
-  path: /docs/contribute/governance/rfcs/0066_programmer_advisory_explicit.md
-- title: "RFC-0067: Additions to Fuchsia RFC process"
-  path: /docs/contribute/governance/rfcs/0067_rfc_process_additions.md
-- title: "RFC-0068: Page Eviction Hints"
-  path: /docs/contribute/governance/rfcs/0068_eviction_hints.md
-- title: "RFC-0069: Standard I/O in ELF Runner"
-  path: /docs/contribute/governance/rfcs/0069_stdio_in_elf_runner.md
-- title: "RFC-0070: PCI protocol changes to support legacy interrupts"
-  path: /docs/contribute/governance/rfcs/0070_pci_protocol_legacy_interrupt_changes.md
-- title: "RFC-0071: OTA backstop"
-  path: /docs/contribute/governance/rfcs/0071_ota_backstop.md
-- title: "RFC-0072: Standalone Image Assembly Tool"
-  path: /docs/contribute/governance/rfcs/0072_standalone_image_assembly_tool.md
-- title: "RFC-0073: Raising x86-64 platform requirement to x86-64-v2"
-  path: /docs/contribute/governance/rfcs/0073_x86_64_platform_requirement.md
-- title: "RFC-0074: Expose Process Start Time"
-  path: /docs/contribute/governance/rfcs/0074_expose_process_start_time.md
-- title: "RFC-0075: Deprecate Zedboot-based paving for provisioning devices"
-  path: /docs/contribute/governance/rfcs/0075_deprecate_zedboot_paving.md
-- title: "RFC-0076: FIDL API summaries"
-  path: /docs/contribute/governance/rfcs/0076_fidl_api_summaries.md
-- title: "RFC-0077: zx_clock_update accuracy improvement"
-  path: /docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md
-- title: "RFC-0078: Kernel Sanitizer Coverage for Fuchsia Fuzzing"
-  path: /docs/contribute/governance/rfcs/0078_kernel_coverage_for_fuchsia_fuzzing.md
-- title: "RFC-0079: Detecting debuglog data loss"
-  path: /docs/contribute/governance/rfcs/0079_detecting_debuglog_data_loss.md
-- title: "RFC-0080: Detecting VMO Immutability"
-  path: /docs/contribute/governance/rfcs/0080_detecting_vmo_immutability.md
-- title: "RFC-0081: fastboot boot"
-  path: /docs/contribute/governance/rfcs/0081_fastboot_boot.md
-- title: "RFC-0082: Runnning unmodified Linux programs on Fuchsia"
-  path: /docs/contribute/governance/rfcs/0082_starnix.md
-- title: "RFC-0083: FIDL Versioning"
-  path: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
-- title: "RFC-0084: Add more metrics to zx_info_task_runtime_t"
-  path: /docs/contribute/governance/rfcs/0084_zircon_more_per_task_runtime_information.md
-- title: "RFC-0085: Reducing the zx_status_t space"
-  path: /docs/contribute/governance/rfcs/0085_reducing_zx_status_t_space.md
-- title: "RFC-0086: Updates to RFC-0050: FIDL Attributes Syntax"
-  path: /docs/contribute/governance/rfcs/0086_rfc_0050_attributes.md
-- title: "RFC-0087: Updates to RFC-0050: FIDL Method Parameter Syntax"
-  path: /docs/contribute/governance/rfcs/0087_fidl_method_syntax.md
-- title: "RFC-0088: Updates to RFC-0050: FIDL Bits, Enum, and Constraints Syntax"
-  path: /docs/contribute/governance/rfcs/0088_rfc_0050_bits_enums_constraints.md
-- title: "RFC-0089: Core realm variations"
-  path: /docs/contribute/governance/rfcs/0089_core_realm_variations.md
-- title: "RFC-0090: Driver shared libraries allowlist"
-  path: /docs/contribute/governance/rfcs/0090_drivers_shared_library_allowlist.md
-- title: "RFC-0091: zx_system_get_event ZX_SYSTEM_EVENT_IMMINENT_OUT_OF_MEMORY"
-  path: /docs/contribute/governance/rfcs/0091_getevent_imminent_oom.md
-- title: "RFC-0092: Sessions"
-  path: /docs/contribute/governance/rfcs/0092_sessions.md
-- title: "RFC-0093: Component manifest design principles"
-  path: /docs/contribute/governance/rfcs/0093_component_manifest_design_principles.md
+- title: "Best practices"
+  path: /docs/contribute/governance/rfcs/best_practices.md
+- title: Proposals
+  section:
+  - title: "RFC-0001: RFC Process"
+    path: /docs/contribute/governance/rfcs/0001_rfc_process.md
+  - title: "RFC-0002: Platform Versioning"
+    path: /docs/contribute/governance/rfcs/0002_platform_versioning.md
+  - title: "RFC-0003: Logging"
+    path: /docs/contribute/governance/rfcs/0003_logging.md
+  - title: "RFC-0004: Units of Bytes"
+    path: /docs/contribute/governance/rfcs/0004_units_of_bytes.md
+  - title: "RFC-0005: Blobfs Snapshots"
+    path: /docs/contribute/governance/rfcs/0005_blobfs_snapshots.md
+  - title: "RFC-0006: Addendum of the RFC Process for Zircon"
+    path: /docs/contribute/governance/rfcs/0006_addendum_to_rfc_process_for_zircon.md
+  - title: "RFC-0007: Zircon Removal of Thread Killing"
+    path: /docs/contribute/governance/rfcs/0007_remove_thread_killing.md
+  - title: "RFC-0008: Remove zx_clock_get and zx_clock_adjust"
+    path: /docs/contribute/governance/rfcs/0008_remove_zx_clock_get_and_adjust.md
+  - title: "RFC-0009: Edge triggered async_wait"
+    path: /docs/contribute/governance/rfcs/0009_edge_triggered_async_wait.md
+  - title: "RFC-0010: zx_channel_iovec_t support for zx_channel_write and zx_channel_call"
+    path: /docs/contribute/governance/rfcs/0010_channel_iovec.md
+  - title: "RFC-0011: zx_object_get_info ZX_INFO_KMEM_STATS_EXTENDED"
+    path: /docs/contribute/governance/rfcs/0011_getinfo_kmemstats_extended.md
+  - title: "RFC-0012: Zircon Discardable Memory"
+    path: /docs/contribute/governance/rfcs/0012_zircon_discardable_memory.md
+  - title: "RFC-0013: Cloning a VMO mapping"
+    path: /docs/contribute/governance/rfcs/0013_cloning_a_vmo_mapping.md
+  - title: "RFC-0014: Relax zx_fifo_create constraints"
+    path: /docs/contribute/governance/rfcs/0014_relax_fifo_create_constraints.md
+  - title: "RFC-0015: Compatibility Test Suite"
+    path: /docs/contribute/governance/rfcs/0015_cts.md
+  - title: "RFC-0016: Boot time page sizes"
+    path: /docs/contribute/governance/rfcs/0016_boot_time_page_sizes.md
+  - title: "RFC-0017: The FTP Process is dead, long live the RFC Process!"
+    path: /docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md
+  - title: "RFC-0018: FTP process: A modest proposal"
+    path: /docs/contribute/governance/rfcs/0018_ftp_process.md
+  - title: "RFC-0019: Using evolution = uint64;"
+    path: /docs/contribute/governance/rfcs/0019_using_evolution_uint64.md
+  - title: "RFC-0020: Interface ordinal hashing"
+    path: /docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md
+  - title: "RFC-0021: Soft transitions for methods add and remove"
+    path: /docs/contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
+  - title: "RFC-0022: Clarification: Default values for struct members"
+    path: /docs/contribute/governance/rfcs/0022_default_values_for_struct.md
+  - title: "RFC-0023: Compositional model for protocols"
+    path: /docs/contribute/governance/rfcs/0023_compositional_model_protocols.md
+  - title: "RFC-0024: Mandatory source compatibility"
+    path: /docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md
+  - title: "RFC-0025: Bit flags"
+    path: /docs/contribute/governance/rfcs/0025_bit_flags.md
+  - title: "RFC-0026: Envelopes everywhere"
+    path: /docs/contribute/governance/rfcs/0026_envelopes_everywhere.md
+  - title: "RFC-0027: You only pay for what you use"
+    path: /docs/contribute/governance/rfcs/0027_you_only_pay_what_you_use.md
+  - title: "RFC-0028: Handle rights"
+    path: /docs/contribute/governance/rfcs/0028_handle_rights.md
+  - title: "RFC-0029: Increasing method ordinals"
+    path: /docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md
+  - title: "RFC-0030: FIDL is little endian"
+    path: /docs/contribute/governance/rfcs/0030_fidl_is_little_endian.md
+  - title: "RFC-0031: Typed Epitaphs"
+    path: /docs/contribute/governance/rfcs/0031_typed_epitaphs.md
+  - title: "RFC-0032: Efficient envelopes"
+    path: /docs/contribute/governance/rfcs/0032_efficient_envelopes.md
+  - title: "RFC-0033: Handling of unknown fields and strictness"
+    path: /docs/contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
+  - title: "RFC-0034: Null terminate strings"
+    path: /docs/contribute/governance/rfcs/0034_null_terminate_strings.md
+  - title: "RFC-0035: Automatic flow tracing"
+    path: /docs/contribute/governance/rfcs/0035_automatic_flow_tracing.md
+  - title: "RFC-0036: Update to struct declarations"
+    path: /docs/contribute/governance/rfcs/0036_update_struct_declarations.md
+  - title: "RFC-0037: Transactional message header v3"
+    path: /docs/contribute/governance/rfcs/0037_transactional_message_header_v3.md
+  - title: "RFC-0038: Separating layout from constraints"
+    path: /docs/contribute/governance/rfcs/0038_seperating_layout_from_constraints.md
+  - title: "RFC-0039: Types come second"
+    path: /docs/contribute/governance/rfcs/0039_types_come_second.md
+  - title: "RFC-0040: Identifier uniqueness"
+    path: /docs/contribute/governance/rfcs/0040_identifier_uniqueness.md
+  - title: "RFC-0041: Support for unifying services and devices"
+    path: /docs/contribute/governance/rfcs/0041_unifying_services_devices.md
+  - title: "RFC-0042: Non nullable types"
+    path: /docs/contribute/governance/rfcs/0042_non_nullable_types.md
+  - title: "RFC-0043: Documentation comment format"
+    path: /docs/contribute/governance/rfcs/0043_documentation_comment_format.md
+  - title: "RFC-0044: Extensible method arguments"
+    path: /docs/contribute/governance/rfcs/0044_extensible_method_arguments.md
+  - title: "RFC-0045: Zero-size empty structs"
+    path: /docs/contribute/governance/rfcs/0045_zero_size_empty_structs.md
+  - title: "RFC-0047: Tables"
+    path: /docs/contribute/governance/rfcs/0047_tables.md
+  - title: "RFC-0048: Explicit union ordinals"
+    path: /docs/contribute/governance/rfcs/0048_explicit_union_ordinals.md
+  - title: "RFC-0049: FIDL tuning process evolution"
+    path: /docs/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md
+  - title: "RFC-0050: FIDL Syntax Revamp"
+    path: /docs/contribute/governance/rfcs/0050_syntax_revamp.md
+  - title: "RFC-0051: Safer structs for C++"
+    path: /docs/contribute/governance/rfcs/0051_safer_structs_for_cpp.md
+  - title: "RFC-0052: Type aliasing and new types"
+    path: /docs/contribute/governance/rfcs/0052_type_aliasing_named_types.md
+  - title: "RFC-0053: Epitaphs"
+    path: /docs/contribute/governance/rfcs/0053_epitaphs.md
+  - title: "RFC-0054: Parameter attributes"
+    path: /docs/contribute/governance/rfcs/0054_parameter_attributes.md
+  - title: "RFC-0055: Documentation comments"
+    path: /docs/contribute/governance/rfcs/0055_documentation_comments.md
+  - title: "RFC-0056: Empty structs"
+    path: /docs/contribute/governance/rfcs/0056_empty_structs.md
+  - title: "RFC-0057: Default no handles"
+    path: /docs/contribute/governance/rfcs/0057_default_no_handles.md
+  - title: "RFC-0058: Introduce a deprecated attribute"
+    path: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
+  - title: "RFC-0059: Reserved bits in vector, string, and array count fields"
+    path: /docs/contribute/governance/rfcs/0059_reserved_bits_count_fields.md
+  - title: "RFC-0060: Error handling"
+    path: /docs/contribute/governance/rfcs/0060_error_handling.md
+  - title: "RFC-0061: Extensible unions"
+    path: /docs/contribute/governance/rfcs/0061_extensible_unions.md
+  - title: "RFC-0062: Method impossible"
+    path: /docs/contribute/governance/rfcs/0062_method_impossible.md
+  - title: "RFC-0063: OrdinalRange"
+    path: /docs/contribute/governance/rfcs/0063_OrdinalRange.md
+  - title: "RFC-0064: Box<Knox>"
+    path: /docs/contribute/governance/rfcs/0064_box_knox.md
+  - title: "RFC-0065: No optional strings or vectors"
+    path: /docs/contribute/governance/rfcs/0065_optional_strings_or_vectors.md
+  - title: "RFC-0066: Programmer advisory explicit defaults"
+    path: /docs/contribute/governance/rfcs/0066_programmer_advisory_explicit.md
+  - title: "RFC-0067: Additions to Fuchsia RFC process"
+    path: /docs/contribute/governance/rfcs/0067_rfc_process_additions.md
+  - title: "RFC-0068: Page Eviction Hints"
+    path: /docs/contribute/governance/rfcs/0068_eviction_hints.md
+  - title: "RFC-0069: Standard I/O in ELF Runner"
+    path: /docs/contribute/governance/rfcs/0069_stdio_in_elf_runner.md
+  - title: "RFC-0070: PCI protocol changes to support legacy interrupts"
+    path: /docs/contribute/governance/rfcs/0070_pci_protocol_legacy_interrupt_changes.md
+  - title: "RFC-0071: OTA backstop"
+    path: /docs/contribute/governance/rfcs/0071_ota_backstop.md
+  - title: "RFC-0072: Standalone Image Assembly Tool"
+    path: /docs/contribute/governance/rfcs/0072_standalone_image_assembly_tool.md
+  - title: "RFC-0073: Raising x86-64 platform requirement to x86-64-v2"
+    path: /docs/contribute/governance/rfcs/0073_x86_64_platform_requirement.md
+  - title: "RFC-0074: Expose Process Start Time"
+    path: /docs/contribute/governance/rfcs/0074_expose_process_start_time.md
+  - title: "RFC-0075: Deprecate Zedboot-based paving for provisioning devices"
+    path: /docs/contribute/governance/rfcs/0075_deprecate_zedboot_paving.md
+  - title: "RFC-0076: FIDL API summaries"
+    path: /docs/contribute/governance/rfcs/0076_fidl_api_summaries.md
+  - title: "RFC-0077: zx_clock_update accuracy improvement"
+    path: /docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md
+  - title: "RFC-0078: Kernel Sanitizer Coverage for Fuchsia Fuzzing"
+    path: /docs/contribute/governance/rfcs/0078_kernel_coverage_for_fuchsia_fuzzing.md
+  - title: "RFC-0079: Detecting debuglog data loss"
+    path: /docs/contribute/governance/rfcs/0079_detecting_debuglog_data_loss.md
+  - title: "RFC-0080: Detecting VMO Immutability"
+    path: /docs/contribute/governance/rfcs/0080_detecting_vmo_immutability.md
+  - title: "RFC-0081: fastboot boot"
+    path: /docs/contribute/governance/rfcs/0081_fastboot_boot.md
+  - title: "RFC-0082: Runnning unmodified Linux programs on Fuchsia"
+    path: /docs/contribute/governance/rfcs/0082_starnix.md
+  - title: "RFC-0083: FIDL Versioning"
+    path: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
+  - title: "RFC-0084: Add more metrics to zx_info_task_runtime_t"
+    path: /docs/contribute/governance/rfcs/0084_zircon_more_per_task_runtime_information.md
+  - title: "RFC-0085: Reducing the zx_status_t space"
+    path: /docs/contribute/governance/rfcs/0085_reducing_zx_status_t_space.md
+  - title: "RFC-0086: Updates to RFC-0050: FIDL Attributes Syntax"
+    path: /docs/contribute/governance/rfcs/0086_rfc_0050_attributes.md
+  - title: "RFC-0087: Updates to RFC-0050: FIDL Method Parameter Syntax"
+    path: /docs/contribute/governance/rfcs/0087_fidl_method_syntax.md
+  - title: "RFC-0088: Updates to RFC-0050: FIDL Bits, Enum, and Constraints Syntax"
+    path: /docs/contribute/governance/rfcs/0088_rfc_0050_bits_enums_constraints.md
+  - title: "RFC-0089: Core realm variations"
+    path: /docs/contribute/governance/rfcs/0089_core_realm_variations.md
+  - title: "RFC-0090: Driver shared libraries allowlist"
+    path: /docs/contribute/governance/rfcs/0090_drivers_shared_library_allowlist.md
+  - title: "RFC-0091: zx_system_get_event ZX_SYSTEM_EVENT_IMMINENT_OUT_OF_MEMORY"
+    path: /docs/contribute/governance/rfcs/0091_getevent_imminent_oom.md
+  - title: "RFC-0092: Sessions"
+    path: /docs/contribute/governance/rfcs/0092_sessions.md
+  - title: "RFC-0093: Component manifest design principles"
+    path: /docs/contribute/governance/rfcs/0093_component_manifest_design_principles.md
+  - title: "RFC-0094: Carnelian Virtcon"
+    path: /docs/contribute/governance/rfcs/0094_carnelian_virtcon.md
+  - title: "RFC-0095: Build and assemble Workstation out-of-tree"
+    path: /docs/contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
+  - title: "RFC-0096: User input architecture"
+    path: /docs/contribute/governance/rfcs/0096_user_input_arch.md
+  - title: "RFC-0097: FIDL Toolchain"
+    path: /docs/contribute/governance/rfcs/0097_fidl_toolchain.md
+  - title: "RFC-0098: Component Framework RFC Criteria"
+    path: /docs/contribute/governance/rfcs/0098_component_framework_rfc_criteria.md
+  - title: "RFC-0099: Introduce `zx_socket_set_disposition`"
+    path: /docs/contribute/governance/rfcs/0099_socket_set_disposition.md
+  - title: "RFC-0100: Product Metadata"
+    path: /docs/contribute/governance/rfcs/0100_product_metadata.md
+  - title: "RFC-0101: Dynamic components with numbered handles"
+    path: /docs/contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md
+  - title: 'RFC-0102: Forbid CHILD_NO_WRITE with CHILD_RESIZABLE'
+    path: /docs/contribute/governance/rfcs/0102_forbid_no_write_with_resizable.md
+  - title: "RFC-0103: Software Delivery RFC Criteria"
+    path: /docs/contribute/governance/rfcs/0103_software_delivery_rfc_criteria.md
+  - title: "RFC-0104: Relative URLs"
+    path: /docs/contribute/governance/rfcs/0104_relative_urls.md
+  - title: "RFC-0105: Regular expression libraries"
+    path: /docs/contribute/governance/rfcs/0105_regular_expression_libraries.md
+  - title: "RFC-0106: Component manifest includes in the Fuchsia SDK"
+    path: /docs/contribute/governance/rfcs/0106_manifest_includes_in_sdk.md
+  - title: "RFC-0107: Dynamic Offers"
+    path: /docs/contribute/governance/rfcs/0107_dynamic_offers.md
+  - title: "RFC-0108: Component binder protocol"
+    path: /docs/contribute/governance/rfcs/0108_component_binder_protocol.md
+  - title: "RFC-0109: Fast UDP sockets"
+    path: /docs/contribute/governance/rfcs/0109_socket_datagram_socket.md
+  - title: "RFC-0110: Reboot for termination of critical components"
+    path: /docs/contribute/governance/rfcs/0110_reboot_for_critical_components.md
+  - title: "RFC-0111: Initial Fuchsia hardware platform specifications"
+    path: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
+  - title: "RFC-0112: ACPI support on x86"
+    path: /docs/contribute/governance/rfcs/0112_acpi_support_on_x86.md
+  - title: "RFC-0113: Efficient envelopes"
+    path: /docs/contribute/governance/rfcs/0113_efficient_envelopes.md
+  - title: "RFC-0114: Inlining small values in FIDL envelopes"
+    path: /docs/contribute/governance/rfcs/0114_fidl_envelope_inlining.md
+  - title: "RFC-0115: Build Types"
+    path: /docs/contribute/governance/rfcs/0115_build_types.md
+  - title: "RFC-0116: Wire format support for sparser FIDL tables"
+    path: /docs/contribute/governance/rfcs/0116_fidl_sparser_tables.md
+  - title: "RFC-0117: Component fuzzing framework"
+    path: /docs/contribute/governance/rfcs/0117_component_fuzzing_framework.md
+  - title: "RFC-0118: SWD policy at image assembly"
+    path: /docs/contribute/governance/rfcs/0118_swd_policy_at_image_assembly_rfc.md
+  - title: "RFC-0119: System-absolute paths considered harmful"
+    path: /docs/contribute/governance/rfcs/0119_system_absolute_paths_considered_harmful.md
+  - title: "RFC-0120: Standalone use of the FIDL wire format"
+    path: /docs/contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
+  - title: "RFC-0121: Component lifecycle events"
+    path: /docs/contribute/governance/rfcs/0121_component_events.md
+  - title: "RFC-0122: Stakeholders"
+    path: /docs/contribute/governance/rfcs/0122_stakeholders.md
+  - title: "RFC-0123: CPU performance info syscalls"
+    path: /docs/contribute/governance/rfcs/0123_cpu_performance_info.md
+  - title: "RFC-0124: Decentralized Product Integration: Artifact Description and Propagation"
+    path: /docs/contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md
+  - title: "RFC-0125: Shortlinks on Fuchsia.dev"
+    path: /docs/contribute/governance/rfcs/0125_shortlink_fuchsia_dev.md
+  - title: "RFC-0126: Driver Runtime"
+    path: /docs/contribute/governance/rfcs/0126_driver_runtime.md
+  - title: "RFC-0127: Structured Configuration"
+    path: /docs/contribute/governance/rfcs/0127_structured_configuration.md
+  - title: "RFC-0128: Introduce `zx_vcpu_kick`"
+    path: /docs/contribute/governance/rfcs/0128_vcpu_kick.md
+  - title: "RFC-0129: Python in Fuchsia"
+    path: /docs/contribute/governance/rfcs/0129_python_in_fuchsia.md
+  - title: "RFC-0130: Supported hardware"
+    path: /docs/contribute/governance/rfcs/0130_supported_hardware.md
+  - title: "RFC-0131: Design principles of the FIDL wire format"
+    path: /docs/contribute/governance/rfcs/0131_fidl_wire_format_principles.md
+  - title: "RFC-0132: FIDL table size limit"
+    path: /docs/contribute/governance/rfcs/0132_fidl_table_size_limit.md
+  - title: "RFC-0133: Software delivery goals"
+    path: /docs/contribute/governance/rfcs/0133_swd_goals.md
+  - title: "RFC-0134: Software updates time dependency"
+    path: /docs/contribute/governance/rfcs/0134_software_updates_time_dependency.md
+  - title: "RFC-0135: Encoding the system ABI revisions into packages"
+    path: /docs/contribute/governance/rfcs/0135_package_abi_revision.md
+  - title: "RFC-0136: Fxfs"
+    path: /docs/contribute/governance/rfcs/0136_fxfs.md
+  - title: "RFC-0137: Discard unknown data in FIDL"
+    path: /docs/contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md
+  - title: "RFC-0138: Handling unknown interactions"
+    path: /docs/contribute/governance/rfcs/0138_handling_unknown_interactions.md
+  - title: "RFC-0139: Bazel SDK"
+    path: /docs/contribute/governance/rfcs/0139_bazel_sdk.md
+  - title: "RFC-0140: Realm Builder"
+    path: /docs/contribute/governance/rfcs/0140_realm_builder.md
+  - title: "RFC-0141: CTS Process"
+    path: /docs/contribute/governance/rfcs/0141_cts_process.md
+  - title: "RFC-0142: zx_thread_legacy_yield"
+    path: /docs/contribute/governance/rfcs/0142_zx_thread_legacy_yield.md
+  - title: "RFC-0143: Userspace Top-Byte-Ignore"
+    path: /docs/contribute/governance/rfcs/0143_userspace_top_byte_ignore.md
+  - title: "RFC-0144: Size Check Tool"
+    path: /docs/contribute/governance/rfcs/0144_size_check_tool.md
+  - title: "RFC-0145: Eager Package Updates"
+    path: /docs/contribute/governance/rfcs/0145_eager_package_updates.md
+  - title: "RFC-0146: Structured Config Schemas in CML"
+    path: /docs/contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md
+  - title: "RFC-0147: View System"
+    path: /docs/contribute/governance/rfcs/0147_view_system.md
+  - title: "RFC-0148: CI Guidelines"
+    path: /docs/contribute/governance/rfcs/0148_ci_guidelines.md
+  - title: "RFC-0149: FIDL encode validation not mandatory"
+    path: /docs/contribute/governance/rfcs/0149_fidl_encode_validation_not_mandatory.md
+  - title: "RFC-0150: Update Opt-out"
+    path: /docs/contribute/governance/rfcs/0150_update_opt_out.md
+  - title: "RFC-0151: Compiler tuning flags for CPU targeting"
+    path: /docs/contribute/governance/rfcs/0151_compiler_cpu_targeting.md
+  - title: "RFC-0152: Improved OOM handling behavior"
+    path: /docs/contribute/governance/rfcs/0152_improved_oom_handling.md
+  - title: "RFC-0153: Ninja Customization For The Fuchsia Build"
+    path: /docs/contribute/governance/rfcs/0153_ninja_customization.md
+  - title: "RFC-0154: Subpackages"
+    path: /docs/contribute/governance/rfcs/0154_subpackages.md
+  - title: "RFC-0155: Optional capability routes"
+    path: /docs/contribute/governance/rfcs/0155_optional_capability_routes.md
+  - title: "RFC-0156: Add an append mode to streams"
+    path: /docs/contribute/governance/rfcs/0156_stream_append_mode.md
+  - title: "RFC-0157: Fxfs Encryption and Multi-Volume Support"
+    path: /docs/contribute/governance/rfcs/0157_fxfs_encryption_and_multi_volume_support.md
+  - title: "RFC-0158: Structured Config Accessors"
+    path: /docs/contribute/governance/rfcs/0158_structured_config_accessors.md
+  - title: "RFC-0159: Execute Only Memory"
+    path: /docs/contribute/governance/rfcs/0159_execute_only_memory.md
+  - title: "RFC-0160: Remove support for FIDL struct defaults"
+    path: /docs/contribute/governance/rfcs/0160_fidl_remove_struct_defaults.md
+  - title: "RFC-0161: Scenic Allocator API"
+    path: /docs/contribute/governance/rfcs/0161_scenic_allocator.md
+  - title: "RFC-0162: Flatland API"
+    path: /docs/contribute/governance/rfcs/0162_flatland.md
+  - title: "RFC-0163: Test Output Format"
+    path: /docs/contribute/governance/rfcs/0163_test_output_format.md
+  - title: "RFC-0164: Test Suite API"
+    path: /docs/contribute/governance/rfcs/0164_test_suite.md
+  - title: "RFC-0165: SDK categories"
+    path: /docs/contribute/governance/rfcs/0165_sdk_categories.md
+  - title: "RFC-0166: One UI Stack"
+    path: /docs/contribute/governance/rfcs/0166_ui_stack.md
+  - title: "RFC-0167: Packages in early userspace bootstrapping"
+    path: /docs/contribute/governance/rfcs/0167_early_boot_packages.md
+  - title: "RFC-0168: Exposing Inspect"
+    path: /docs/contribute/governance/rfcs/0168_exposing_inspect_through_inspectsink.md
+  - title: "RFC-0170: Remove binary images from the update package"
+    path: /docs/contribute/governance/rfcs/0170_remove_binary_images_from_the_update_package.md

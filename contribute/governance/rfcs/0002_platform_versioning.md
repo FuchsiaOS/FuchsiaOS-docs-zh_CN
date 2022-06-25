@@ -465,7 +465,7 @@ operating systems from older APIs to newer APIs.
 [^1]: [RFC-0083: FIDL Versioning][rfc-0083] amends this, restricting
     API levels to 63 bits in order to reserve the high bit for other uses.
 
-[Fuchsia System Interface]: /docs/concepts/system/abi/system.md
+[Fuchsia System Interface]: /docs/concepts/packages/system.md
 [Fuchsia IDK]: /docs/development/idk/README.md
 [`uses-sdk`]: https://developer.android.com/guide/topics/manifest/uses-sdk-element
 [`SupportedOS`]: https://docs.microsoft.com/en-us/windows/win32/win7appqual/compatibility---application-manifest#leveraging-feature-capabilities

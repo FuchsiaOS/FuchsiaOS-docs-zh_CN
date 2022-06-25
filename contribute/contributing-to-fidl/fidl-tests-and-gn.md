@@ -339,7 +339,7 @@ tests. Using `fx test`, we can already
 [Run Fuchsia tests]: /docs/development/testing/run_fuchsia_tests.md
 [Fuchsia component manifest]: /docs/concepts/components/v1/component_manifests.md
 [Fuchsia package URLs]: /docs/concepts/packages/package_url.md
-[Source code layout]: /docs/concepts/source_code/layout.md
+[Source code layout]: /docs/development/source_code/layout.md
 [Building components]: /docs/development/components/build.md
-[Complex topologies and integration testing]: /docs/concepts/testing/v2/v2_integration_testing.md
+[Complex topologies and integration testing]: /docs/development/testing/components/integration_testing.md
 [with_unit_tests]: https://fuchsia.googlesource.com/fuchsia/+/9d9f092f2b30598c3929bd30d0058d4e052bb0f4/build/rust/rustc_library.gni#91

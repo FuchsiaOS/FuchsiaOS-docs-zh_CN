@@ -1,14 +1,14 @@
 # zx_pci_get_bar
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
-TODO(fxbug.dev/32938)
+This function is obsolete and should not be used.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,11 +21,13 @@ zx_status_t zx_pci_get_bar(zx_handle_t handle,
 
 ## DESCRIPTION
 
-TODO(fxbug.dev/32938)
+This function is obsolete and should not be used. Drivers should instead get the PCI Base Address
+Register information from the [PCI driver
+interface](/docs/development/drivers/concepts/driver_development/bar.md);
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_PCI_DEVICE** and have **ZX_RIGHT_READ** and have **ZX_RIGHT_WRITE**.
 

@@ -25,15 +25,30 @@ library fuchsia.examples;
 The corresponding FIDL crate is named `fidl_fuchsia_examples`:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="import" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="import" adjust_indentation="auto" %}
 ```
+
+## Traits {#traits}
+
+Some methods and constants in FIDL Rust crates are provided by implementing
+traits from the [FIDL runtime crate](/src/lib/fidl/rust/fidl/). To access them,
+you must import the corresponding traits. The easiest way to do this is to
+import them all at once from the prelude module:
+
+```rust
+use fidl::prelude::*;
+```
+
+The prelude re-exports traits using the `as _` syntax, so the glob import only
+brings traits into scope for resolving methods and constants. It does not import
+the trait names themselves.
 
 ## Constants {#constants}
 
 Given the [constants][lang-constants]:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
 ```
 
 The FIDL toolchain generates the following constants:
@@ -52,8 +67,9 @@ parameters to a protocol method.
 
 ### Built-in types {#builtins}
 
-Note: In Rust, the equivalent type for a nullable FIDL type `T?` is an `Option`
-of the Rust type for `T`. These are not explicitly listed in the table below.
+Note: In Rust, the equivalent type for a optional FIDL type `T:optional` is an
+`Option` of the Rust type for `T`. These are not explicitly listed in the table
+below.
 
 In following table, when both an "owned" and "borrowed" variant are specified,
 the "owned" type refers to the type that would appear in an aggregate type (e.g.
@@ -82,26 +98,26 @@ reuse the input value if it does not contain handles.
 |`uint64`|`u64`|
 |`float32`|`f32`|
 |`float64`|`f64`|
-|`array:N`|`&mut [T; N]` *(borrowed)*<br> `[T, N]` *(owned)*|
-|`vector:N`|`&[T]` *(borrowed, when T is a numeric primitive)*<br> `&mut dyn ExactSizeIterator` *(borrowed)*<br>`Vec` *(owned)*|
+|`array<T, N>`|`&mut [T; N]` *(borrowed)*<br> `[T, N]` *(owned)*|
+|`vector<T>:N`|`&[T]` *(borrowed, when T is a numeric primitive)*<br> `&mut dyn ExactSizeIterator` *(borrowed)*<br>`Vec` *(owned)*|
 |`string`|`&str` *(borrowed)*<br>`String` *(owned)*|
-|`request`|`fidl::endpoints::ServerEnd<PMarker>`, *where `PMarker` is the [marker type](#protocols) for this protocol.*|
-|`P`|`fidl::endpoints::ClientEnd<PMarker>` *where `PMarker` is the [marker type](#protocols) for this protocol.*|
-|`handle`|`fidl::Handle`|
-|`handle`|The corresponding handle type is used. For example,`fidl::Channel` or `fidl::Vmo`|
+|`server_end:P`|`fidl::endpoints::ServerEnd<PMarker>`, *where `PMarker` is the [marker type](#protocols) for this protocol.*|
+|`client_end:P`|`fidl::endpoints::ClientEnd<PMarker>` *where `PMarker` is the [marker type](#protocols) for this protocol.*|
+|`zx.handle`|`fidl::Handle`|
+|`zx.handle:S`|The corresponding handle type is used. For example,`fidl::Channel` or `fidl::Vmo`|
 
 
 #### User defined types {#user-defined-types}
 
 Bits, enums, and tables are always referred to using their generated type `T`.
-structs and unions  can be either non-nullable or nullable, and used in an owned
+structs and unions  can be either required or optional, and used in an owned
 context or borrowed context, which means that there are four possible equivalent
 Rust types. For a given `struct T` or `union T`, the types are as follows:
 
 ||owned|borrowed|
 |--- |--- |--- |
-|non-nullable|`T`|`&mut T`|
-|nullable|`Option<T>`|`Option<&mut T>`|
+|required|`T`|`&mut T`|
+|optional|`Option<T>`|`Option<&mut T>`|
 
 ### Request, response, and event parameters {#request-response-event-parameters}
 
@@ -120,15 +136,13 @@ uses the following rules:
 Given the [bits][lang-bits] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
 ```
 
 The FIDL toolchain generates a set of
 [`bitflags`](https://fuchsia-docs.firebaseapp.com/rust/bitflags/) called
-`FileMode` with flags `FileMode::Read`, `FileMode::Write`, and
-`FileMode::Execute`. Bits members are emitted in camel case in the generated
-Rust code.
-<!-- TODO(fxbug.dev/47034): Should be UPPER_SNAKE_CASE, not CamelCase. -->
+`FileMode` with flags `FileMode::READ`, `FileMode::WRITE`, and
+`FileMode::EXECUTE`.
 
 The `bitflags` struct also provides the following methods:
 
@@ -145,7 +159,7 @@ rules](#derives).
 Example usage:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="bits" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="bits" adjust_indentation="auto" %}
 ```
 
 ### Enums {#types-enums}
@@ -153,7 +167,7 @@ Example usage:
 Given the [enum][lang-enums] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
 ```
 
 The FIDL toolchain generates a Rust `enum` using the specified underlying type,
@@ -197,7 +211,7 @@ rules](#derives).
 Example usage:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="enums_init" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="enums_init" adjust_indentation="auto" %}
 ```
 
 To provide source-compatibility, [flexible][lang-flexible] enums have an unknown
@@ -205,7 +219,7 @@ macro that should be used to match against unknown members instead of the `_`
 pattern. For example, see the use of the `LocationTypeUnknown!()` macro:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="enums_flexible_match" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="enums_flexible_match" adjust_indentation="auto" %}
 ```
 
 The unknown macro acts the same as a `_` pattern, but it can be configured to
@@ -216,7 +230,7 @@ expand to an exhaustive match. This is useful for discovering missing cases.
 Given the [struct][lang-structs] declaration:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
 ```
 
 The FIDL toolchain generates a Rust `struct`:
@@ -237,7 +251,7 @@ The generated `Color` `struct` follows the [`#[derive]` rules](#derives).
 Example usage:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="structs" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="structs" adjust_indentation="auto" %}
 ```
 
 ### Unions {#types-unions}
@@ -245,7 +259,7 @@ Example usage:
 Given the [union][lang-unions] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
 ```
 
 The FIDL toolchain generates a Rust `enum`:
@@ -281,7 +295,7 @@ The generated `JsonValue` `enum` follows the [`#[derive]` rules](#derives).
 Example usage:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="unions_init" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="unions_init" adjust_indentation="auto" %}
 ```
 
 #### Flexible unions and unknown variants
@@ -295,7 +309,7 @@ unknown macro that should be used to match against unknown members instead of
 the `_` pattern. For example, see the use of the `JsonValueUnknown!()` macro:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="unions_flexible_match" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="unions_flexible_match" adjust_indentation="auto" %}
 ```
 
 The unknown macro acts the same as a `_` pattern, but it can be configured to
@@ -317,7 +331,7 @@ decoding an unknown variant with handles.
 Given the [table][lang-tables] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
 ```
 
 The FIDL toolchain generates a `struct` `User` with optional members:
@@ -351,17 +365,22 @@ causes API breakage when new fields are added. Instead, you should use the
 struct update syntax to fill in unspecified fields with `empty()`. For example:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_init" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_init" adjust_indentation="auto" %}
 ```
 
 Similarly, tables do not permit exhaustive matching. Instead, you must use the
 `..` syntax to ignore unspecified fields. For example:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_match" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_match" adjust_indentation="auto" %}
 ```
 
 The generated `User` `struct` follows the [`#[derive]` rules](#derives).
+
+### Inline layouts
+
+The generated Rust code uses the [the name reserved by `fidlc`][anon-names] for
+inline layouts.
 
 ### Derives {#derives}
 
@@ -384,11 +403,11 @@ type. See [Appendix B](#fill-derives) for implementation details.
 Given a [protocol][lang-protocols]:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
 ```
 
 Note: The `MakeMove` method above returns a bool representing success, and a
-nullable response value. This is considered un-idiomatic, you should use an [error type](#protocols-results)
+optional response value. This is considered un-idiomatic, you should use an [error type](#protocols-results)
 instead.
 
 The main entrypoint for interacting with `TicTacToe` is the `TicTacToeMarker`
@@ -403,10 +422,13 @@ struct, which contains two associated types:
   implementing this protocol will need to handle. In this example, this is
   `TicTacToeRequestStream`, which is generated by FIDL.
 
-Additionally, `TicTacToeMarker` has the following associated constants:
+Additionally, `TicTacToeMarker` has the following associated constants from
+implementing `fidl::endpoints::ProtocolMarker`:
 
 * `DEBUG_NAME: &’static str`: The name of the service suitable for debug
-  purposes
+  purposes.
+
+Note: To use `DEBUG_NAME` you must [import the `ProtocolMarker` trait](#traits).
 
 Other code may be generated depending on the [Protocol and method
 attributes](#protocol-method-attributes) applied to the protocol or its methods.
@@ -447,6 +469,8 @@ Methods from implementing `fidl::endpoints::Proxy`:
 * `on_closed<'a>(&'a self) -> fuchsia_async::OnSignals<'a>`: Get a future that
   completes when the proxy receives the `PEER_CLOSED` signal.
 
+Note: To use the above methods you must [import the `Proxy` trait](#traits).
+
 Methods from implementing `TicTacToeProxyInterface`:
 
 * `start_game(&self, mut start_first: bool) -> Result<(), fidl::Error>`: Proxy
@@ -482,22 +506,26 @@ impl TicTacToeProxyInterface for FakeTicTacToeProxy {
 
 #### Synchronous {#protocols-client-synchronous}
 
-For synchronous clients of the `TicTacToe` protocols, the FIDL toolchain
+For synchronous clients of the `TicTacToe` protocol, the FIDL toolchain
 generates a `TicTacToeSynchronousProxy` struct with the following methods:
 
 * `new(channel: fidl::Channel) -> TicTacToeSynchronousProxy`: Returns a new
   synchronous proxy over the client end of a channel. The server end is assumed
   to implement the `TicTacToe` protocol.
 * `into_channel(self) -> fidl::Channel`: Convert the proxy back into a channel.
-* `start_game(&mut self, mut a: i64) -> Result<(), fidl::Error>`: Proxy method
+* `start_game(&self, mut a: i64) -> Result<(), fidl::Error>`: Proxy method
   for a fire and forget method: it takes the request parameters as arguments and
   returns an empty result.
-* `make_move(&mut self, mut row: u8, mut col: u8, __deadline: zx::Time) ->
+* `make_move(&self, mut row: u8, mut col: u8, __deadline: zx::Time) ->
   Result<(bool, Option<Box<GameState>>), fidl::Error>`: Proxy method for a two
   way method. It takes the request parameters as arguments followed by a
   deadline parameter, which dictates how long the method call will wait for a
   response (or `zx::Time::INFINITE` to block indefinitely). It returns a
   `Result` of the [response parameters](#request-response-event-parameters).
+* `wait_for_event(&self, deadline: zx::Time) ->
+  Result<TicTacToeEvent, fidl::Error>`: Blocks until an event is received or the
+  deadline expires (use `zx::Time::INFINITE` to block indefinitely). It returns
+  a `Result` of the [`TicTacToeEvent` enum](#protocols-events-client).
 
 An example of setting up a synchronous proxy is available in the
 [Rust tutorial][tutorial].
@@ -560,11 +588,16 @@ following methods:
 
 #### Client {#protocols-events-client}
 
-For receiving events on the client, the FIDL toolchain generates a
+For receiving events on the asynchronous client, the FIDL toolchain generates a
 `TicTacToeEventStream`, which can be obtained using the `take_event_stream()`
 method on the [`TicTacToeProxy`](#protocols-client-asynchronous).
 `TicTacToeEventStream` implements `futures::Stream<Item = Result<TicTacToeEvent,
 fidl::Error>>`.
+
+For receiving events on the synchronous client, the FIDL toolchain generates a
+`wait_for_event` method on the
+[`TicTacToeSynchronousProxy`](#protocols-client-synchronous) that returns a
+`TicTacToeEvent`.
 
 `TicTacToeEvent` is an enum representing the possible events. It has the
 following variants:
@@ -595,7 +628,12 @@ For a method with an error type:
 
 ```fidl
 protocol TicTacToe {
-    MakeMove(uint8 row, uint8 col) -> (GameState new_state) error MoveError;
+    MakeMove(struct {
+      row uint8;
+      col uint8;
+    }) -> (struct {
+      new_state GameState;
+    }) error MoveError;
 };
 ```
 
@@ -639,13 +677,13 @@ protocol B {
 
 #### Transitional
 
-The `[Transitional]` attribute only affects the `ProxyInterface` trait, which is
+The `@transitional` attribute only affects the `ProxyInterface` trait, which is
 sometimes used in test code. For non-test code, protocols can be transitioned on
 the server side by having request handlers temporarily use a catch-all match arm
 in the `Request` handler. Client code does not need to be soft transitioned
 since the generated proxy will always implement all methods.
 
-For methods annotated with the `[Transitional]` attribute,  the `ProxyInterface`
+For methods annotated with the `@transitional` attribute,  the `ProxyInterface`
 trait for [asynchronous clients](#protocols-client-asynchronous}) provides
 default implementations that call `unimplemented!()`. As noted earlier, this has
 no effect on the `Proxy` type, which always implements all the trait's methods.
@@ -654,13 +692,56 @@ used for fake proxies in client-side unit tests.
 
 #### Discoverable
 
-For protocols annotated with the `[Discoverable]` attribute, the Marker type
-additionally implements the `fidl::endpoints::DiscoverableService` trait.
+For protocols annotated with the `@discoverable` attribute, the Marker type
+additionally implements the `fidl::endpoints::DiscoverableProtocolMarker` trait.
+This provides the `PROTOCOL_NAME` associated constant.
+
+## Explicit encoding and decoding {#encoding-decoding}
+
+FIDL messages are automatically encoded when they are sent and decoded when they
+are received. You can also encode and decode explicitly, for example to persist
+FIDL data to a file. This works for [non-resource][lang-resource] structs,
+tables, and unions.
+
+### Simple method {#encoding-decoding-simple-method}
+
+The easiest way to to explicitly encode and decode is to use
+[`encode_persistent`] and [`decode_persistent`].
+
+For example, you can encode a [`Color` struct](#types-structs):
+
+```rust
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="simple_method_encode" adjust_indentation="auto" %}
+```
+
+And then decode it later:
+
+```rust
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="simple_method_decode" adjust_indentation="auto" %}
+```
+
+### Separating the header
+
+The [simple method](#encoding-decoding-simple-method) automatically places a
+small header at the beginning that stores FIDL metadata. For advanced use cases,
+you can manage the header manually. For example, you can encode both a
+[`JsonValue` union](#types-unions) and a [`User` table](#types-tables) using
+only one header instead of two:
+
+```rust
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="separate_header_encode" adjust_indentation="auto" %}
+```
+
+Then, you must first decode the header and use it to decode the other values:
+
+```rust
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="separate_header_decode" adjust_indentation="auto" %}
+```
 
 ## Appendix A: Derived traits {#derived-traits}
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="tools/fidl/fidlgen_rust/codegen/ir.go" region_tag="derived_traits" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="tools/fidl/fidlgen_rust/codegen/ir.go" region_tag="derived_traits" adjust_indentation="auto" %}
 ```
 
 ## Appendix B: Fill derives {#fill-derives}
@@ -669,10 +750,13 @@ The calculation of traits derivation rules is visible in
 [fidlgen_rust](/tools/fidl/fidlgen_rust/codegen/ir.go):
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="tools/fidl/fidlgen_rust/codegen/ir.go" region_tag="fill_derives" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="tools/fidl/fidlgen_rust/codegen/ir.go" region_tag="fill_derives" adjust_indentation="auto" %}
 ```
 
-<!-- xrefs -->
+<!-- link labels -->
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
+[`decode_persistent`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.decode_persistent.html
+[`encode_persistent`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.encode_persistent.html
 [lang-bits]: /docs/reference/fidl/language/language.md#bits
 [lang-constants]: /docs/reference/fidl/language/language.md#constants
 [lang-enums]: /docs/reference/fidl/language/language.md#enums

@@ -56,7 +56,7 @@ files in a secure manner.
 
 ### FVM Image
 The FVM image is the block-device image for the
-[Fuchsia Volume Manager](/docs/glossary.md#fuchsia-volume-manager).
+[Fuchsia Volume Manager](/docs/glossary/README.md#Fuchsia-volume-manager).
 
 ### System Image Artifacts
 The set of final output artifacts that are created by the build which contain
@@ -72,8 +72,8 @@ The verified-boot metadata is used by the bootloader(s) running on the device to
 validate that the zbi is trusted for execution by the bootloader.
 
 ### ZBI
-The [zbi] is the Zircon Boot Image.  This is the kernel and the ramdisk
-[boot filesystem][bootfs].  This contains everyting needed to
+The [ZBI](/docs/glossary/README.md#zircon-boot-image) is the Zircon Boot Image.  This is the kernel and the ramdisk
+[bootfs](/docs/glossary/README.md#bootfs).  This contains everyting needed to
 [bootstrap Fuchsia][bootstrap].
 
 ## Design
@@ -295,8 +295,7 @@ The core library will have unit tests which covers:
 The `ffx` interface for this tool will need to be documented.
 
 [blobfs-docs]: /docs/concepts/filesystems/blobfs.md
-[bootfs]: /docs/glossary.md#bootfs
-[bootstrap]: /docs/concepts/booting/everything_between_power_on_and_your_component.md
+[bootstrap]: /docs/concepts/process/everything_between_power_on_and_your_component.md
 [build_images_BUILD_gn]: https://fuchsia.googlesource.com/fuchsia/+/7461d8882167e7a9d1b494e3b1734d2c063830fc/build/resources/BUILD.gn#221
 [build_package_gni]: https://fuchsia.googlesource.com/fuchsia/+/7461d8882167e7a9d1b494e3b1734d2c063830fc/build/package.gni#604
 [fuchsia.git]: https://fuchsia.googlesource.com/fuchsia/
@@ -306,5 +305,4 @@ The `ffx` interface for this tool will need to be documented.
 [pkgfs]: /docs/concepts/packages/garbage_collection.md
 [pkgfs-cmd]: /docs/reference/kernel/kernel_cmdline.md#zirconsystempkgfscmdcommand
 [update-pkg]: /docs/concepts/packages/update_pkg.md
-[zbi]: /docs/glossary.md#zircon-boot-image
 [zircon]: /docs/concepts/kernel/README.md

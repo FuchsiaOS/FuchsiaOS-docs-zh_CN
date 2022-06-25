@@ -1,8 +1,10 @@
-# sysmgr
+# sysmgr (Components v1)
+
+<<../_v1_banner.md>>
 
 sysmgr is one of the two major pieces of Components v1 (appmgr being the other).
-It is responsible for hosting the 'sys' [realm](/docs/glossary.md#realm) that
-contains 'global' system services. (The term 'realm' is used throughout this,
+It is responsible for hosting the `sys` [realm](/docs/glossary/README.md#realm) that
+contains `global` system services. (The term `realm` is used throughout this,
 but note that in v1 it is a synonym for 'environment'.)
 
 Most v1 components on Fuchsia today still run directly in the 'sys' realm,
@@ -138,7 +140,7 @@ of services is fixed at realm creation time.
 Components in the `services` map are started lazily as the services they provide
 are connected to. In other words, in the example above `foo.cmx` will not be
 started until another component attempts to connect to `fuchsia.foo.Service`. If
-your component needs to be stared eagerly, see `startup_services` or `apps`
+your component needs to be started eagerly, see `startup_services` or `apps`
 below.
 
 ### `startup_services` and `apps`
@@ -257,13 +259,14 @@ Disclaimer: this feature is not intended for general use. Please consult before
 using.
 
 Critical components are a list of components which cause the system to reboot
-if they ever crash. The primary use-case are components which are critical to
+if they ever terminate. The primary use-case are components which are critical to
 the system's functionality and must always be running. Note that listing a
 component under `critical_components` does not mean it will necessarily launch
 when sysmgr starts; the component may initially launch through other means,
 such as via `startup_services`.
 
 Here is an example configuration snippet:
+
 ```json
 {
   "startup_services": [

@@ -23,8 +23,8 @@ live device. For more information about where logs are stored on-device, see [Co
 
 ### syslog and kernel log
 
-During development, running `fx log` is a good default to see all logs. This script connects to the
-target device with SSH and runs the [`log_listener`] program, printing every message from the system
+During development, running `ffx log` is a good default to see all logs. Under the hood, this
+command runs the [`log_listener`] program, printing every message from the system
 log. This includes those [forwarded from the klog].
 
 [`log_listener`] receives logs through the [`fuchsia.logger.Log`] and
@@ -51,7 +51,18 @@ and thread=1904 at time=278.14, the default output would be:
 [278.14][1902][1904][my-component.cmx] WARN: something happened
 ```
 
-With a running device available, run `fx log -h` to see the options for modifying the output format.
+[`log_listener`] has `--hide_metadata` and `--pretty` flags that reduces the printed metadata,
+and color codes log lines by severity, respectively. With these flags, some metadata is hidden
+(PID, TID, etc.) while others are trimmed down (timestamp, severity).
+
+For example, if the message "something happened" is printed at WARN level by my-component.cmx at
+time=278.14, the pretty output will look like:
+
+```
+[278.14][my-component.cmx][W] something happened
+```
+
+With a running device available, run `ffx log --help` to see the options for modifying the output format.
 
 #### `fx test`
 
@@ -67,7 +78,7 @@ The klog is [printed over the kernel console] and serial.
 
 It's also [forwarded over UDP by netsvc], which is what's printed when you run `fx klog`. Running
 `fx klog` in a background terminal can be a good way to capture logs if your SSH session fails, or
-as a backup if there are other issues with running `fx log`.
+as a backup if there are other issues with running `ffx log`.
 
 If neither of the above are options, you can also use [`dlog`] from a device shell directly to dump
 the kernel debug logs.
@@ -92,6 +103,30 @@ resulting output would be:
 [00278.140] 01902:01904> something happened
 ```
 
+The `fx pretty_serial` command can be used to reduce the metadata printed by klog and color code
+log lines by severity. With this command, some metadata is hidden (PID, TID, filenames, etc.)
+while others are trimmed down (timestamp, severity).
+
+Serial output should be piped in from the emulator or from other sources:
+
+```
+fx emu | fx pretty_serial
+```
+
+For example, if the message "something happened" is printed to klog at WARN level by
+my-component.cmx at time=278.14, the pretty output will look like:
+
+```
+[278.14][my-component.cmx][W] something happened
+```
+
+For example, if the message "something happened" is printed to klog by an unknown component with
+unknown severity at time=278.14, the pretty output will look like:
+
+```
+[278.14] something happened
+```
+
 ## Offline: CQ/GI
 
 When running tests, a [Swarming] bot invokes [botanist], which collects several output streams to be
@@ -106,7 +141,7 @@ stdout, stderr, and logs from the test environment and prints them inline.
 ### syslog.txt
 
 Botanist runs `log_listener` on the target device and saves that output to syslog.txt. This is
-comparable to running `fx log` at a development machine.
+comparable to running `ffx log` at a development machine.
 
 ### infra_and_test_std_and_klog.txt
 
@@ -121,9 +156,9 @@ Normally this includes the following notable items, all interleaved:
 This aggregate log is run through the equivalent of `fx symbolize` before upload.
 
 [monotonic clock]: /docs/reference/syscalls/clock_get_monotonic.md
-[Concepts: Storage]: /docs/concepts/diagnostics/logs/README.md#storage
+[Concepts: Storage]: /docs/concepts/components/diagnostics/logs/README.md#storage
 [forwarded from the klog]: /docs/development/diagnostics/logs/recording.md#forwarding-klog-to-syslog
-[`log_listener`]: /garnet/bin/log_listener/README.md
+[`log_listener`]: /src/diagnostics/log_listener/README.md
 [`fuchsia.logger.Log`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#Log
 [`fuchsia.logger.LogListenerSafe`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#LogListenerSafe
 [printed over the kernel console]: /zircon/kernel/lib/debuglog/debuglog.cc

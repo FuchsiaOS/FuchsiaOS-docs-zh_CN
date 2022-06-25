@@ -3,10 +3,6 @@
 # {{ rfc.name }} - {{ rfc.title }}
 <!-- *** DO NOT EDIT ABOVE THIS LINE -->
 
-<!--
-*** This should begin with an H2 element (for example, ## Summary).
--->
-
 ## Summary
 
 This document describes the role and responsibilities of a Fuchsia session.
@@ -32,14 +28,12 @@ since the [Modular Framework][modular] was deprecated.
 The Fuchsia platform aims to support many products. These products are composed
 of product-specific and platform components. The product-specific components
 must live somewhere in the component instance tree. The session is the root of
-the the product-specific component instance tree that drives the user
-experience.
+the product-specific component instance tree that drives the user experience.
 
 The session serves as a boundary between the Fuchsia platform and the product.
 As such, the session can be used to improve the product development cycle. For
 example, the session can be destroyed and recreated to "restart" the product's
 user experience.
-
 
 ## Design
 
@@ -52,7 +46,7 @@ section describes some potential long-term approaches at a high level.
 `core` is a non-executable component that provisions capabilities that are
 consistent across products. `core` is the parent of `session_manager`.
 `session_manager` is instantiated in response to `startup` connecting to
-`fuchsia.sessionmanager/Startup` exposed by `session_manager`.
+the `fuchsia.sessionmanager/Startup` protocol exposed by `session_manager`.
 
 `session_manager` reads the initial boot session from a configuration file
 located in its `/config/data`. It then instantiates the session as a child in a
@@ -91,8 +85,8 @@ can no longer provide guarantees about the scene graph, since any product has
 the ability to circumvent them.
 
 Scenic is currently instantiated as a "v1" component under `appmgr`. When Scenic
-is migrated to the "v2" (`component_manager`) component hierarchy, a decision
-will need to be made about where in the component hierarchy it is instantiated.
+is migrated to "v2" (`component_manager`) component hierarchy, a decision will
+need to be made about where in the component hierarchy it is instantiated.
 
 To determine whether or not a component should be instantiated within the
 session, consider the question: "should interaction with this capability be
@@ -124,7 +118,6 @@ session:
   * Graphical presentation ("shell") components.
   * Components that contribute directly to the user experience (e.g., video
     player, terminal, etc.).
-
 
 ## Implementation
 
@@ -206,6 +199,6 @@ number of offered protocols.
 [examples]: /src/session/examples
 [experiences]: /src/experiences/session_shells/ermine/session
 [documentation]: /docs/concepts/session/introduction.md
-[modular]: /docs/concepts/modular/overview.md
+[modular]: /docs/development/modular/overview.md
 [session_manager]: /src/session/bin/session_manager
 [rfc_0089]: /docs/contribute/governance/rfcs/0089_core_realm_variations.md

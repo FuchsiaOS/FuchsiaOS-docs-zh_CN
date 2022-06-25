@@ -68,11 +68,11 @@ from other sources:
 ```json
 {
     "version": 1,
-    "moniker": "netstack.cmx",
+    "moniker": "core/network/netstack",
     "metadata": {
         "timestamp": 1234567890,
         "severity": "INFO",
-        "component_url": "fuchsia-pkg://fuchsia.com/netstack#meta/netstack.cmx",
+        "component_url": "fuchsia-pkg://fuchsia.com/network#meta/netstack.cm",
         "size_bytes": 123
     },
     "payload": {
@@ -107,15 +107,9 @@ not possible in today's system to *guarantee* the timestamps in the metadata of 
 Logs from components run by appmgr and Component Manager are identical.
 
 However, there are two systems for [reporting `LogSink` connections][attribution] to Archivist. As a
-result, v1 monikers from appmgr come as a realm path starting from appmgr plus the manifest
-filename, `sys/netstack.cmx` for example. In v2, an explicit component name replaces the manifest
-filename and all realms are included.
-
-Caution: Due to an [issue with CapabilityRequested events](https://fxbug.dev/64197) the v2 monikers
-returned start at the archivist rather than the topology root. For components in the same realm,
-this results in a slightly confusing moniker like `.\\archivist:0/driver_manager:0`. For components
-with a different parent realm it is even more confusing:
-`.\\archivist:0\\bootstrap:0/core:0/system-update-committer:0`.
+result, v1 monikers from appmgr come as a realm path starting from appmgr `app/sys` plus the
+manifest filename, `netstack.cmx` for example. In v2, an explicit component name replaces the
+manifest filename and all realms are included, `core/pkg-resolver` for example.
 
 #### Dropped logs
 
@@ -167,7 +161,7 @@ the unsafe `fuchsia.logger.LogListener` API is [planned](https://fxbug.dev/48758
 
 [ArchiveAccessor]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#ArchiveAccessor
 [ArchiveAccessor reference]: /src/diagnostics/docs/reference/access.md
-[attribution]: /docs/concepts/diagnostics/logs/attribution.md
+[attribution]: /docs/concepts/components/diagnostics/logs/attribution.md
 [BatchIterator]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#BatchIterator
 [ClientSelectorConfiguration]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#ClientSelectorConfiguration
 [DataType]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#DataType

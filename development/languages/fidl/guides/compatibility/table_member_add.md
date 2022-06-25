@@ -21,9 +21,9 @@ rust|[link](#rust-init)||[link](#rust-2)
 ### FIDL {#fidl-init}
 
 ```fidl
-table Profile {
-    1: Timezone timezone;
-    2: TemperatureUnit temperature_unit;
+type Profile = table {
+    1: timezone Timezone;
+    2: temperature_unit TemperatureUnit;
 };
 ```
 
@@ -79,7 +79,7 @@ void use_table(const fidl_test::Profile& profile) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-void use_table(const fidl_test::Profile& profile) {
+void use_table(const fidl_test::wire::Profile& profile) {
   if (profile.has_timezone()) {
     printf("timezone: %s", profile.timezone().data());
   }
@@ -112,10 +112,10 @@ fn use_table(profile: &fidl_lib::Profile) {
 - Add the new member
 
 ```diff
-  table Profile {
-      1: Timezone timezone;
-      2: TemperatureUnit temperature_unit;
-+     3: bool dark_mode;
+  type Profile = table {
+      1: timezone Timezone;
+      2: temperature_unit TemperatureUnit;
++     3: dark_mode bool;
   };
 
 ```
@@ -194,7 +194,7 @@ fn use_table(profile: &fidl_lib::Profile) {
 - You can now use the new member
 
 ```diff
-  void use_table(const fidl_test::Profile& profile) {
+  void use_table(const fidl_test::wire::Profile& profile) {
     if (profile.has_timezone()) {
       printf("timezone: %s", profile.timezone().data());
     }

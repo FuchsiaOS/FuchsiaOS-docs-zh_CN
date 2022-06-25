@@ -30,3 +30,9 @@ toc:
 - title: "Diagnostics"
   section:
   - include: /docs/reference/diagnostics/_toc.yaml
+- title: "Hardware"
+  section:
+   - include: /docs/reference/hardware/_toc.yaml
+- title: "Platform specifications"
+  section:
+  - include: /docs/reference/platform-spec/_toc.yaml

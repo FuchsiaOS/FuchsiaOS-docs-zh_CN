@@ -1,5 +1,8 @@
 # Using Inspect for drivers
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 ## Pre-requisites
 
 In case you are not familiarized with Inspect, it is recommend that you read the

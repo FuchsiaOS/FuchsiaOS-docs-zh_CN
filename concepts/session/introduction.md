@@ -102,6 +102,6 @@ that implement the `ElementManager` protocol.
 [doc-capability]: /docs/concepts/components/v2/capabilities
 [doc-component]: /docs/concepts/components/v2/introduction.md
 [doc-component-manager]: /docs/concepts/components/v2/component_manager.md
-[doc-compositors]: /docs/concepts/graphics/scenic/scenic.md#compositors
+[doc-compositors]: /docs/concepts/ui/scenic/index.md#compositors
 [doc-fidl]: /docs/concepts/fidl/overview.md
 [doc-element]: /docs/concepts/session/element.md

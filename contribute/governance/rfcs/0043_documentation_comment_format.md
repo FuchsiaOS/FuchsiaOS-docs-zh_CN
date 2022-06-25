@@ -292,4 +292,4 @@ This proposal is heavily influenced by the documentation styles for Rust
 and Kotlin.
 
 <!-- xrefs -->
-[API documentation rubric]: /docs/concepts/api/documentation.md
+[API documentation rubric]: /docs/development/api/documentation.md

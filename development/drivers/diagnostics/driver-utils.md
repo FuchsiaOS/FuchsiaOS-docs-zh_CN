@@ -1,5 +1,8 @@
 # Driver utilities
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 Driver utilities are Fuchsia applications that communicate with devices used for
 diagnostics and exported by drivers. For example Inter-Integrated Circuit (I2C)
 devices can be scanned and communicated through the
@@ -33,7 +36,7 @@ TODO(fxbug.dev/45662): Add inspect usage description.
 ## Discovery
 
 The Fuchsia driver model defines a `devfs` filesystem (see
-[Device Model](/docs/concepts/drivers/device_driver_model/device-model.md), which is the mechanism
+[Device Model](/docs/development/drivers/concepts/device_driver_model/device-model.md), which is the mechanism
 through which userspace services and applications gain access to devices. As a
 user, you can navigate the `devfs` filesystem to see what devices are exported,
 note that there are multiple ways to access the same device, you can use the
@@ -64,18 +67,15 @@ To enable FIDL communication in C++ drivers that do not already offer a FIDL
 API, complete the following steps:
 
 1. Make the device messagable by deriving from `ddk::Messageable`.
-2. Add a DdkMessage method to handle incoming FIDL messages.
-3. Add methods for the FIDL protocol methods of the given FIDL API.
+2. Add methods for the FIDL protocol methods of the given FIDL API.
 
 For instance for [SPI](/src/devices/spi/drivers/spi/spi.h):
 
 ```
-using SpiChildType = ddk::Device<SpiChild, ddk::Messageable>;
+using SpiChildType =
+    ddk::Device<SpiChild, ddk::Messageable<fuchsia_hardware_spi::Device>::Mixin>;
 class SpiChild : public SpiChildType,
-                 public fuchsia_hardware_spi::Device::Interface,
                  public ddk::SpiProtocol<SpiChild, ddk::base_protocol> {
-...
-  zx_status_t DdkMessage(fidl_incoming_msg_t* msg, fidl_txn_t* txn);
 ...
   // FIDL methods.
   void Transmit(fidl::VectorView<uint8_t> data, TransmitCompleter::Sync completer) override;

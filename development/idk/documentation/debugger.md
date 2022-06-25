@@ -19,8 +19,9 @@ run fuchsia-pkg://fuchsia.com/debug_agent#meta/debug_agent.cmx --port=2345
 The `zxdb` client program is run on the host computer. It can be connected to
 the `debug_agent` via the interactive `connect` debugger command or it can
 automatically connect based on a command-line flag. Both IPv4 and IPv6
-addresses are supported (see [device discovery](device_discovery.md) to find
-the address). The port should match the port number passed to the agent.
+addresses are supported (see [ffx](https://fuchsia.dev/reference/tools/sdk/ffx.md) to find
+the address). The port should match the port number passed to the
+agent.
 
 ```
 zxdb -c "[f370::5051:ff:1e53:589a%qemu]:2345"

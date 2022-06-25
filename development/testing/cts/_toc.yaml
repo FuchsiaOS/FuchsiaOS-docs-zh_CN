@@ -1,0 +1,29 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/testing/cts/overview.md
+- title: "Introduction"
+  path:  /docs/development/testing/cts/compatibility_testing.md
+- title: "Contributing"
+  section:
+  - title: "Contributing Tests"
+    path: /docs/development/testing/cts/contributing_tests.md
+  - title: "CTS Test Realm"
+    path: /docs/development/testing/cts/test_realm.md
+  - title: "Testing Guidelines"
+    path: /docs/development/testing/cts/testing_guidelines.md
+  - title: "Diagnosing Test Failures"
+    path: /docs/development/testing/cts/diagnosing_test_failures.md
+- title: "Platform Surface Area (Plasa)"
+  path: /docs/development/testing/cts/plasa_overview.md
+  section:
+  - title: "Plasa manifest"
+    path: /docs/development/testing/cts/plasa_manifest.md
+- title: "Frequently Asked Questions"
+  path: /docs/development/testing/cts/faq.md

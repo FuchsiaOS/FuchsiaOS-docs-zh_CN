@@ -65,7 +65,8 @@ Envelopes can refer to data that is either:
 An out-of-line envelope is:
 
 ![Figure: out of line envelope, 64 bit little endian, lower 48 bits size with
-least significant bit zero, 16 bits handle_count](resources/ftp-026-figure1.png)
+least significant bit zero, 16 bits
+handle_count](resources/0026_envelopes_everywhere/figure1.png)
 
 As a C struct:
 
@@ -143,9 +144,9 @@ content.
 
 Inline envelopes are encoded as:
 
-![Figure: in line envelope, 64 bit little endian, least significant bit
-is the value 1 indicating tag, 31 bits reserved, then 8, 16, or 32
-bits of inline data](resources/ftp-026-figure2.png)
+![Figure: in line envelope, 64 bit little endian, least significant bit is the
+value 1 indicating tag, 31 bits reserved, then 8, 16, or 32 bits of inline
+data](resources/0026_envelopes_everywhere/figure2.png)
 
 As a C struct:
 
@@ -217,7 +218,8 @@ To encode a handle, an encoder MUST encode it as an out-of-line envelope,
 with `size` set to 0, and `handle_count` set to 1:
 
 ![Figure: little-endian 64 bit data field with bottom 48 bits of size set to
-zero and next 16 bits indicating handle_count set to 1](resources/ftp-026-figure3.png)
+zero and next 16 bits indicating handle_count set to
+1](resources/0026_envelopes_everywhere/figure3.png)
 
 This encoding instructs a decoder to look up the handle value in the
 out-of-line handle table.
@@ -229,8 +231,9 @@ If a decoder wishes to decode in-place, the decoder SHOULD:
 *   set the handle field of the fidl_inline_envelope_t struct to the actual
     handle value.
 
-![Figure: little-endian 64 bit data field with least significant bit tag set
-to 1, next 31 bits reserved, next 32 bits handle_value](resources/ftp-026-figure4.png)
+![Figure: little-endian 64 bit data field with least significant bit tag set to
+1, next 31 bits reserved, next 32 bits
+handle_value](resources/0026_envelopes_everywhere/figure4.png)
 
 See the [Examples](#examples) section for an example encoded/decoded handle.
 

@@ -10,7 +10,7 @@ In the `Echo` implementation from the [server tutorial][server-tut], the server 
 to `EchoString` requests using the completer.
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/server/main.cc" region_tag="impl" highlight="14,15,16" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/server/main.cc" region_tag="impl" highlight="32,33,34,35,36" %}
 ```
 
 Notice that the type for the completer has `::Sync`. This indicates the default mode of operation:
@@ -28,7 +28,7 @@ The full example code for this tutorial is located at
 This example uses the `Echo` protocol from the examples library:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
 ```
 
 As part of this tutorial, you will implement a client that makes multiple `EchoString` requests in
@@ -45,7 +45,7 @@ After connecting to the server, the client will make multiple `EchoString` reque
 for loop:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/async_completer/client/main.cc" region_tag="main" highlight="14,16,17,18,19,20,21,22,23,24,25,26" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/async_completer/client/main.cc" region_tag="main" highlight="14,15,16,17,18,19,20,21,22,23,24,25,26" %}
 ```
 
 The loop is run `kNumEchoes` times (which is by default 3), and will print the time elapsed since
@@ -58,7 +58,7 @@ The `main()` function from the server code is the same as in the [server tutoria
 The difference lies in the implementation of `Echo`:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/async_completer/server/main.cc" region_tag="impl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/llcpp/async_completer/server/main.cc" region_tag="impl" %}
 ```
 
 When an `EchoString` request is received, the server calls `async::PostDelayedTask`. This function
@@ -69,37 +69,72 @@ request value back to the client.
 
 A key point is that the completer being moved into the lambda capture is the async completer. A
 `::Sync` completer can be converted to the `::Async` counterpart by using the `ToAsync()` method.
-
 For further information on the completer API, refer to the [LLCPP bindings reference][bindings-ref].
+
+Another noteworthy aspect is that the request views provided to method handlers
+do not own the request message. In order to use the request parameters after the
+`EchoString` method returns, we need to copy relevant fields to an owned type,
+here `value_owned` in the lambda captures. For further information on the memory
+ownership, refer to the [LLCPP Memory Management][memory-management].
 
 ## Run the example
 
-First, build the code:
+In order for the client and server to communicate using the `Echo` protocol,
+component framework must route the `fuchsia.examples.Echo` capability from the
+server to the client. For this tutorial, a [realm][glossary.realm] component is
+provided to declare the appropriate capabilities and routes.
 
+Note: You can explore the full source for the realm component at
+[`//examples/fidl/echo-realm`](/examples/fidl/echo-realm)
+
+1. Configure your build to include the provided package that includes the
+   echo realm, server, and client:
+
+    ```posix-terminal
+    fx set core.qemu-x64 --with //examples/fidl/llcpp:echo-llcpp-async
+    ```
+
+1. Build the Fuchsia image:
+
+   ```posix-terminal
+   fx build
+   ```
+
+1. Run the `echo_realm` component. This creates the client and server component
+   instances and routes the capabilities:
+
+    ```posix-terminal
+    ffx component run fuchsia-pkg://fuchsia.com/echo-llcpp-async#meta/echo_realm.cm
+    ```
+
+1. Start the `echo_client` instance:
+
+    ```posix-terminal
+    ffx component start /core/ffx-laboratory:echo_realm/echo_client
+    ```
+
+The server component starts when the client attempts to connect to the `Echo`
+protocol. You should see output similar to the following in the device logs
+(`ffx log`):
+
+```none {:.devsite-disable-click-to-copy}
+[echo_server][][I] Running echo server
+[echo_server][][I] echo_server_llcpp: Incoming connection for fuchsia.examples.Echo
+...
+[echo_client][][I] Got response after 5 seconds
+[echo_client][][I] Got response after 5 seconds
+[echo_client][][I] Got response after 5 seconds
 ```
-fx set core.x64 --with //examples/fidl/llcpp/async_completer/client --with //examples/fidl/llcpp/async_completer/server --with //examples/fidl/test:echo-launcher
 
-fx build
+By using the async completer, the client receives all 3 responses after 5 seconds,
+rather than individually at 5 second intervals.
+
+Terminate the realm component to stop execution and clean up the component
+instances:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_realm
 ```
-
-Then run the example:
-
-```
-fx shell run fuchsia-pkg://fuchsia.com/echo-launcher#meta/launcher.cmx fuchsia-pkg://fuchsia.com/echo-llcpp-client-async#meta/echo-client.cmx fuchsia-pkg://fuchsia.com/echo-llcpp-server-async#meta/echo-server.cmx fuchsia.examples.Echo
-```
-
-You should see the following print output in the QEMU console (or using `fx log`):
-
-```
-[193539.863] 884542:884544> Running echo server
-[193539.871] 884542:884544> echo_server_llcpp: Incoming connection for fuchsia.examples.Echo
-[193544.899] 884632:884636> Got response after 5 seconds
-[193544.899] 884632:884636> Got response after 5 seconds
-[193544.899] 884632:884636> Got response after 5 seconds
-```
-
-By using the async completer, the client receives all 3 responses after 5 seconds, rather than in
-5/10/15 seconds.
 
 <!-- xrefs -->
 [src]: /examples/fidl/llcpp/async_completer
@@ -107,3 +142,4 @@ By using the async completer, the client receives all 3 responses after 5 second
 [client-tut]: /docs/development/languages/fidl/tutorials/llcpp/basics/client.md
 [overview]: /docs/development/languages/fidl/tutorials/llcpp/README.md
 [bindings-ref]: /docs/reference/fidl/bindings/llcpp-bindings.md#server-completers
+[memory-management]: /docs/development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md

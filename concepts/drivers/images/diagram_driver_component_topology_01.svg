@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="451" height="203.5" viewBox="0 0 451 203.5">
+  <defs>
+    <style>
+      .d, .e, .f, .g, .h, .i, .j, .k {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .d, .e, .g, .h {
+        fill: none;
+      }
+
+      .e {
+        stroke-dasharray: 0 0 2.01 2.01;
+      }
+
+      .f {
+        fill: #c8eded;
+      }
+
+      .l {
+        font-family: Arial-BoldMT, Arial;
+      }
+
+      .m, .n {
+        font-size: 12px;
+      }
+
+      .m, .o {
+        font-family: ArialMT, Arial;
+      }
+
+      .g {
+        stroke-width: 2px;
+      }
+
+      .h {
+        stroke-dasharray: 0 0 2 2;
+      }
+
+      .i {
+        fill: #7fd1d3;
+      }
+
+      .j {
+        fill: #a1dbdb;
+      }
+
+      .p {
+        letter-spacing: -.06em;
+      }
+
+      .k {
+        fill: #e8ceef;
+      }
+    </style>
+  </defs>
+  <g id="a" data-name="Grouping"/>
+  <g id="b" data-name="Main">
+    <rect class="k" x="90.5" y=".5" width="117" height="36"/>
+    <text class="m" transform="translate(114.37 22.59)"><tspan x="0" y="0">bootstrap.cm</tspan></text>
+    <rect class="k" x="14" y="63.5" width="117" height="36"/>
+    <text class="m" transform="translate(31.54 85.59)"><tspan x="0" y="0">driver-index.cm</tspan></text>
+    <rect class="k" x="167" y="63.5" width="117" height="36"/>
+    <text class="m" transform="translate(174.2 85.59)"><tspan x="0" y="0">driver_manage</tspan><tspan class="p" x="80.04" y="0">r</tspan><tspan x="83.38" y="0">.cm</tspan></text>
+    <g>
+      <rect class="f" x="9.5" y="135.5" width="117" height="36"/>
+      <rect class="j" x="14" y="140" width="117" height="36"/>
+      <g>
+        <rect class="i" x="18.5" y="144.5" width="117" height="36"/>
+        <text class="m" transform="translate(43.37 166.59)"><tspan x="0" y="0">driver-host-0</tspan></text>
+      </g>
+    </g>
+    <g>
+      <rect class="f" x="162.5" y="135.5" width="117" height="36"/>
+      <rect class="j" x="167" y="140" width="117" height="36"/>
+      <g>
+        <rect class="i" x="171.5" y="144.5" width="117" height="36"/>
+        <text class="m" transform="translate(209.71 166.59)"><tspan x="0" y="0">driver-0</tspan></text>
+      </g>
+    </g>
+    <g>
+      <rect class="f" x="315.5" y="135.5" width="117" height="36"/>
+      <rect class="j" x="320" y="140" width="117" height="36"/>
+      <g>
+        <rect class="i" x="324.5" y="144.5" width="117" height="36"/>
+        <text class="m" transform="translate(362.71 166.59)"><tspan x="0" y="0">driver-4</tspan></text>
+      </g>
+    </g>
+    <g>
+      <polyline class="d" points="144.5 202 144.5 203 143.5 203"/>
+      <line class="h" x1="141.5" y1="203" x2="2.5" y2="203"/>
+      <polyline class="d" points="1.5 203 .5 203 .5 202"/>
+      <line class="e" x1=".5" y1="199.99" x2=".5" y2="128.51"/>
+      <polyline class="d" points=".5 127.5 .5 126.5 1.5 126.5"/>
+      <line class="h" x1="3.5" y1="126.5" x2="142.5" y2="126.5"/>
+      <polyline class="d" points="143.5 126.5 144.5 126.5 144.5 127.5"/>
+      <line class="e" x1="144.5" y1="129.51" x2="144.5" y2="200.99"/>
+    </g>
+    <text class="m" transform="translate(31.54 85.59)"><tspan x="0" y="0">driver-index.cm</tspan></text>
+    <text class="n" transform="translate(5 198.09)"><tspan class="l" x="0" y="0">driver-hosts</tspan><tspan class="o" x="69.35" y="0" xml:space="preserve"> collection</tspan></text>
+    <g>
+      <polyline class="d" points="297.5 202 297.5 203 296.5 203"/>
+      <line class="h" x1="294.5" y1="203" x2="155.5" y2="203"/>
+      <polyline class="d" points="154.5 203 153.5 203 153.5 202"/>
+      <line class="e" x1="153.5" y1="199.99" x2="153.5" y2="128.51"/>
+      <polyline class="d" points="153.5 127.5 153.5 126.5 154.5 126.5"/>
+      <line class="h" x1="156.5" y1="126.5" x2="295.5" y2="126.5"/>
+      <polyline class="d" points="296.5 126.5 297.5 126.5 297.5 127.5"/>
+      <line class="e" x1="297.5" y1="129.51" x2="297.5" y2="200.99"/>
+    </g>
+    <text class="n" transform="translate(158 198.09)"><tspan class="l" x="0" y="0">boot-drivers</tspan><tspan class="o" x="70.01" y="0" xml:space="preserve"> collection</tspan></text>
+    <g>
+      <polyline class="d" points="450.5 202 450.5 203 449.5 203"/>
+      <line class="h" x1="447.5" y1="203" x2="308.5" y2="203"/>
+      <polyline class="d" points="307.5 203 306.5 203 306.5 202"/>
+      <line class="e" x1="306.5" y1="199.99" x2="306.5" y2="128.51"/>
+      <polyline class="d" points="306.5 127.5 306.5 126.5 307.5 126.5"/>
+      <line class="h" x1="309.5" y1="126.5" x2="448.5" y2="126.5"/>
+      <polyline class="d" points="449.5 126.5 450.5 126.5 450.5 127.5"/>
+      <line class="e" x1="450.5" y1="129.51" x2="450.5" y2="200.99"/>
+    </g>
+    <text class="n" transform="translate(311 198.09)"><tspan class="l" x="0" y="0">pkg-drivers</tspan><tspan class="o" x="65.36" y="0" xml:space="preserve"> collection</tspan></text>
+    <polyline class="g" points="72.5 144.5 72.5 113 378.5 113 378.5 144.5"/>
+    <line class="g" x1="225.5" y1="99.5" x2="225.5" y2="144.5"/>
+    <polyline class="g" points="72.5 63.5 72.5 50 225.5 50 225.5 63.5"/>
+    <line class="g" x1="144.5" y1="36.5" x2="144.5" y2="50"/>
+  </g>
+  <g id="c" data-name="Correspondences"/>
+</svg>

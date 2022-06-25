@@ -1,4 +1,4 @@
-# Hub (Components v2)
+# Hub
 
 <<../_v2_banner.md>>
 
@@ -20,8 +20,8 @@ instances at runtime. The hub provides information such as:
 
 The hub’s structure is mostly read-only. It is not possible to create, rename,
 delete, or otherwise modify directories and files that form the structure of
-the hub itself. However, the [outgoing](/docs/concepts/system/abi/system.md)
-directory of an instance may include mutable directories, files, and services
+the hub itself. However, the [outgoing directory][glossary.outgoing-directory]
+of an instance may include mutable directories, files, and services
 which can be accessed through the hub.
 
 ### Scoping
@@ -48,7 +48,7 @@ Like other capabilities, hub access is requested with a `use` declaration in the
 [component manifest](component_manifests.md). This example shows the manifest
 file of a component that accesses its own hub.
 
-```
+```json5
 {
     program: {
         runner: "elf",
@@ -58,6 +58,7 @@ file of a component that accesses its own hub.
         {
             directory: "hub",
             from: "framework",
+            rights: [ "r*" ],
         },
     ]
 }
@@ -71,16 +72,22 @@ section for more details.
 Once the capability is added to the manifest, a component can access the hub
 from `/hub`.
 
+Note: in [shell][sshd-use-hub] [environments][console-launcher-use-hub], the v2
+hub included in the namespace as `/hub-v2`, not `/hub`. So replace `/hub` with
+`/hub-v2` for all the examples on this page when exploring the hub via the shell.
+
+[sshd-use-hub]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/developer/sshd-host/meta/sshd-host.cml;l=76-80;drc=35c04b3fb6c0476555cfcaeb3656a6733e764df5
+[console-launcher-use-hub]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/bringup/bin/console-launcher/meta/console-launcher.cml;l=45-49;drc=82ce40f543731cfe645222f34903347a634de240
+
 ## Structure of the hub
 
 ### `/hub`
 
 The directory structure of `/hub` looks like:
 
-```
+```none
 /hub
 ├── children
-├── deleting
 ├── exec
 ├── component_type
 ├── id
@@ -93,7 +100,6 @@ realm.
 Directories:
 
 -   [`/hub/children`](#hub-children)
--   [`/hub/deleting`](#hub-deleting)
 -   [`/hub/exec`](#hub-exec)
 
 Files:
@@ -113,25 +119,22 @@ Files:
 
 The directory structure of `/hub/children` looks like:
 
-```
+```none
 /hub/children
 ├── foo
 |   ├── children
-|   ├── deleting
 |   ├── exec
 |   ├── component_type
 |   ├── id
 |   └── url
 ├── bar
 |   ├── children
-|   ├── deleting
 |   ├── exec
 |   ├── component_type
 |   ├── id
 |   └── url
 └── baz:qux
     ├── children
-    ├── deleting
     ├── component_type
     ├── id
     └── url
@@ -149,49 +152,11 @@ The hub gives a name to each child’s hub directory based on this format:
 -   For static instances, the format is `<instance name>`
 -   For dynamic instances, the format is `<collection name>:<instance name>`
 
-### `/hub/deleting` {#hub-deleting}
-
-The directory structure of `/hub/deleting` looks like:
-
-```
-/hub/deleting
-├── baz:qux:1
-|   ├── children
-|   ├── deleting
-|   ├── component_type
-|   ├── id
-|   └── url
-└── baz:qux:2
-    ├── children
-    ├── deleting
-    ├── exec
-    ├── component_type
-    ├── id
-    └── url
-```
-
-Since deletion is not an atomic process, the deleting directory contains
-information about children that are in the process of being deleted. When a
-child’s deletion is complete, it is removed from this directory and ceases to
-exist in its parent’s hub. The full deletion process is explained later in this
-document.
-
-The hub gives a name to each child’s hub directory based on this format:
-
--   For static instances, the format is `<instance name>:<instance id>`
--   For dynamic instances, the format is `<collection name>:<instance
-    name>:<instance id>`
-
-Unlike the `/hub/children` directory, the instance ID is a part of the format
-for the `/hub/deleting` directory because multiple versions of the same instance
-may be in the process of deletion and the instance ID is used to distinguish
-between them.
-
 ### `/hub/exec` {#hub-exec}
 
 The directory structure of `/hub/exec` looks like:
 
-```
+```none
 /hub/exec
 ├── exposed
 ├── in
@@ -218,19 +183,20 @@ Files:
 
 ### `/hub/exec/exposed` {#hub-exec-exposed}
 
-The instance's exposed services as listed in its manifest file. A component can
-connect directly to these services from the hub by opening the provided path.
+The instance's [exposed services][glossary.exposed-directory] as listed in its
+manifest file. A component can connect directly to these services from the hub
+by opening the provided path.
 
 ### `/hub/exec/in` {#hub-exec-in}
 
-The instance's incoming namespace, as supplied by the component manager. This
-contains a listing of services and directories accessible to the given component
-instance. A component can open the provided path to connect directly to these
-services from the Hub.
+The instance's [namespace][glossary.namespace] supplied by the component manager.
+This contains a listing of services and directories accessible to the given
+component instance. A component can open the provided path to connect directly
+to these services from the Hub.
 
 ### `/hub/exec/out/` {#hub-exec-out}
 
-The instance's outgoing namespace, served by the instance itself. A component
+The instance's [outgoing directory][glossary.outgoing-directory]. A component
 can connect directly to these services from the hub by opening the provided
 path.
 
@@ -238,7 +204,7 @@ path.
 
 The directory structure of `/hub/exec/runtime` looks like:
 
-```
+```none
 /hub/exec/runtime
 └── elf
     ├── args
@@ -277,12 +243,12 @@ can inspect information about its parent and siblings through `/parent_hub`.
 
 In the parent component manifest:
 
-```
+```json5
 {
     offer: [
         // Route the root hub to hub_client.
         {
-          directory: "/hub",
+          directory: "hub",
           from: "framework",
           to: "#hub_client",
         },
@@ -304,7 +270,7 @@ In the parent component manifest:
 
 In `hub_client.cml`:
 
-```
+```json5
 {
     program: {
         runner: "elf",
@@ -312,9 +278,10 @@ In `hub_client.cml`:
     },
     use: [
         {
-          directory: "/hub",
+          directory: "hub",
           from: "parent",
-          as: "/parent_hub"
+          rights: [ "r*" ],
+          path: "/parent_hub"
         }
     ]
 }
@@ -324,11 +291,11 @@ In `hub_client.cml`:
 
 In this example, `hub_client_sibling` exposes its view of the hub to its parent.
 The realm, in turn, offers that view of the hub as `/sibling_hub` to
-`hub_client`. `hub_client` maps that view of the hub to its incoming namespace.
+`hub_client`. `hub_client` maps that view of the hub to its namespace.
 
 In `hub_client_sibling.cml`:
 
-```
+```json5
 {
     program: {
         runner: "elf",
@@ -336,7 +303,7 @@ In `hub_client_sibling.cml`:
     },
     expose: [
         {
-            directory: "/hub",
+            directory: "hub",
             from: "framework",
         },
     ],
@@ -345,15 +312,15 @@ In `hub_client_sibling.cml`:
 
 In the parent component manifest file:
 
-```
+```json5
 {
     // Route hub_client_sibling's view of the hub to hub_client.
     offer: [
         {
-            directory: "/hub",
+            directory: "hub",
             from: "#hub_client_sibling",
             to: "#hub_client",
-            as: "/sibling_hub",
+            as: "sibling_hub",
         }
     ],
     children: [
@@ -371,9 +338,9 @@ In the parent component manifest file:
 }
 ```
 
-In hub_client.cml:
+In `hub_client.cml`:
 
-```
+```json5
 {
     program: {
         runner: "elf",
@@ -381,8 +348,10 @@ In hub_client.cml:
     },
     use: [
         {
-            directory: "/sibling_hub",
+            directory: "sibling_hub",
             from: "parent",
+            rights: [ "r*" ],
+            path: "/sibling_hub"
         }
     ]
 }
@@ -398,9 +367,9 @@ To illustrate how the hub changes in response to lifecycle events, consider an
 example involving 3 components named `A`, `B` and `C`. The manifest of each
 component is given below:
 
--   `A.cmx`
+-   `A.cml`
 
-    ```
+    ```json5
     {
         program: {
             runner: "elf",
@@ -408,8 +377,9 @@ component is given below:
         },
         use: [
             {
-                directory: "/hub",
+                directory: "hub",
                 from: "framework",
+                rights: [ "r*" ],
             },
         ]
         collections: [
@@ -421,9 +391,9 @@ component is given below:
     }
     ```
 
--   `B.cmx`
+-   `B.cml`
 
-    ```
+    ```json5
     {
         program: {
             binary: "bin/B"
@@ -438,10 +408,9 @@ component is given below:
     }
     ```
 
--   `C.cmx`
+-   `C.cml`
 
-    ```
-    // C.cmx
+    ```json5
     {
         program: {
             binary: "bin/C"
@@ -468,7 +437,7 @@ Also consider 3 instances, one for each component:
 `foo` can see its own hub by listing the contents of `/hub`. In Rust, this looks
 like:
 
-```
+```rust
 let entries = std::fs::read_dir("/hub")?;
 for entry in entries {
     println!("{}", entry?.path());
@@ -478,10 +447,9 @@ for entry in entries {
 Without making any changes to the component hierarchy, the hub will look like
 the following:
 
-```
+```none
 /hub
 ├── children
-├── deleting
 ├── exec
 |    ├── exposed
 |    ├── in
@@ -499,7 +467,7 @@ A component must connect to the
 [Realm framework protocol](realms.md#realm-framework-service) to manipulate its
 dynamic children. In Rust, this looks like:
 
-```
+```rust
 let realm = connect_to_protocol::<fsys::RealmMarker>()?;
 ```
 
@@ -508,7 +476,7 @@ let realm = connect_to_protocol::<fsys::RealmMarker>()?;
 `foo` can define an instance of `B` called `bar` under the
 [collection](realms.md#collections) `coll`. In Rust, this looks like:
 
-```
+```rust
 // Define the child and the collection
 let mut collection_ref = fsys::CollectionRef { name: String::from("coll") };
 let child_decl = fsys::ChildDecl {
@@ -523,16 +491,14 @@ realm.create_child(&mut collection_ref, child_decl).await??;
 
 After executing this code, the hub changes to the following:
 
-```
+```none
 /hub
 ├── children
 |    └── coll:bar
 |         ├── children
-|         ├── deleting
 |         ├── component_type => "dynamic"
 |         ├── id => "1"
 |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/B.cm"
-├── deleting
 ├── exec
 |    ├── exposed
 |    ├── in
@@ -555,7 +521,7 @@ directory.
 `foo` can now bind to the instance `bar` and start it. In Rust, this looks like
 the following:
 
-```
+```rust
 // Create a reference to the dynamic child
 let mut child_ref = fsys::ChildRef {
     name: "bar".to_string(),
@@ -578,7 +544,6 @@ After executing this code, the hub changes to the following:
 |         ├── children
 |         |    └── baz
 |         |         ├── children
-|         |         ├── deleting
 |         |         ├── exec
 |         |         |    ├── exposed
 |         |         |    ├── in
@@ -589,7 +554,6 @@ After executing this code, the hub changes to the following:
 |         |         ├── component_type => "static"
 |         |         ├── id => "0"
 |         |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/C.cm"
-|         ├── deleting
 |         ├── exec
 |         |    ├── exposed
 |         |    ├── in
@@ -600,7 +564,6 @@ After executing this code, the hub changes to the following:
 |         ├── component_type => "dynamic"
 |         ├── id => "1"
 |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/B.cm"
-├── deleting
 ├── exec
 |    ├── exposed
 |    ├── in
@@ -623,7 +586,7 @@ have been started.
 
 `foo` can destroy the instance `bar`. In Rust, this looks like the following:
 
-```
+```rust
 // Create a reference to the dynamic child
 let mut child_ref = fsys::ChildRef {
     name: "bar".to_string(),
@@ -638,65 +601,18 @@ The above code begins the deletion process for `bar`. This process has several
 stages, most of which occur asynchronously. As a result, the hub’s structure
 changes several times.
 
-1.  `bar` is marked for deletion. The hub changes to the following:
-
-    ```
-    /hub
-    ├── children
-    ├── deleting
-    |    └── coll:bar:1
-    |         ├── children
-    |         |    └── baz
-    |         |         ├── children
-    |         |         ├── deleting
-    |         |         ├── exec
-    |         |         |    ├── exposed
-    |         |         |    ├── in
-    |         |         |    ├── out
-    |         |         |    ├── runtime
-    |         |         |    ├── used
-    |         |         |    └── resolved_url
-    |         |         ├── component_type => "static"
-    |         |         ├── id => "0"
-    |         |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/C.cm"
-    |         ├── deleting
-    |         ├── exec
-    |         |    ├── exposed
-    |         |    ├── in
-    |         |    ├── out
-    |         |    ├── runtime
-    |         |    ├── used
-    |         |    └── resolved_url
-    |         ├── component_type => "dynamic"
-    |         ├── id => "1"
-    |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/B.cm"
-    ├── exec
-    |    ├── exposed
-    |    ├── in
-    |    ├── out
-    |    ├── runtime
-    |    ├── used
-    |    └── resolved_url
-    ├── component_type => "static"
-    ├── id => "0"
-    └── url => "fuchsia-pkg://fuchsia.com/example#meta/A.cm"
-    ```
-
 1.  `baz` is stopped. The hub changes to the following:
 
-    ```
+    ```none
     /hub
     ├── children
-    ├── deleting
     |    └── coll:bar:1
     |         ├── children
     |         |    └── baz
     |         |         ├── children
-    |         |         ├── deleting
     |         |         ├── component_type => "static"
     |         |         ├── id => "0"
     |         |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/C.cm"
-    |         ├── deleting
     |         ├── exec
     |         |    ├── exposed
     |         |    ├── in
@@ -721,46 +637,13 @@ changes several times.
 
 1.  `bar` is stopped. The hub changes to the following:
 
-    ```
+    ```none
     /hub
     ├── children
-    ├── deleting
     |    └── coll:bar
     |         ├── children
     |         |    └── baz
     |         |         ├── children
-    |         |         ├── deleting
-    |         |         ├── component_type => "static"
-    |         |         ├── id => "0"
-    |         |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/C.cm"
-    |         ├── deleting
-    |         ├── component_type => "dynamic"
-    |         ├── id => "1"
-    |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/B.cm"
-    ├── exec
-    |    ├── exposed
-    |    ├── in
-    |    ├── out
-    |    ├── runtime
-    |    ├── used
-    |    └── resolved_url
-    ├── component_type => "static"
-    ├── id => "0"
-    └── url => "fuchsia-pkg://fuchsia.com/example#meta/A.cm"
-    ```
-
-1.  `baz` is marked for deletion. The hub changes to the following:
-
-    ```
-    /hub
-    ├── children
-    ├── deleting
-    |    └── coll:bar:1
-    |         ├── children
-    |         ├── deleting
-    |         |    └── baz:0
-    |         |         ├── children
-    |         |         ├── deleting
     |         |         ├── component_type => "static"
     |         |         ├── id => "0"
     |         |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/C.cm"
@@ -781,13 +664,11 @@ changes several times.
 
 1.  `baz` is deleted. The hub changes to the following:
 
-    ```
+    ```none
     /hub
     ├── children
-    ├── deleting
     |    └── coll:bar:1
     |         ├── children
-    |         ├── deleting
     |         ├── component_type => "dynamic"
     |         ├── id => "1"
     |         └── url => "fuchsia-pkg://fuchsia.com/example#meta/B.cm"
@@ -805,10 +686,9 @@ changes several times.
 
 1.  `bar` is deleted. The hub changes to the following:
 
-    ```
+    ```none
     /hub
     ├── children
-    ├── deleting
     ├── exec
     |    ├── exposed
     |    ├── in
@@ -820,3 +700,7 @@ changes several times.
     ├── id => "0"
     └── url => "fuchsia-pkg://fuchsia.com/example#meta/A.cm"
     ```
+
+[glossary.namespace]: /docs/glossary/README.md#namespace
+[glossary.exposed-directory]: /docs/glossary/README.md#exposed-directory
+[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory

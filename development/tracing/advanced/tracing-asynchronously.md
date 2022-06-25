@@ -1,16 +1,16 @@
-# Asynchronous tracing
+# Tracing asynchronously
 
 This guide shows how to add asynchronous tracing to your code.
 
 Note: For more information on the Fuchsia tracing system, see
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 ## Prerequisites
 
 Before you begin, make sure you have completed the following:
 
 * Familiarized yourself with the Fuchsia tracing system. See
-  [Fuchsia tracing system](/docs/concepts/tracing/README.md).
+  [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 * Registered your component as a tracing provider. See
   [Registering a trace provider](/docs/development/tracing/tutorial/registering-a-trace-provider.md).
 * Familiarized yourself with adding synchronous tracing your code. See

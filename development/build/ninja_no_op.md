@@ -59,7 +59,7 @@ Modifying inputs in actions can also introduce race conditions that make
 reproducing the problem non-deterministic. If multiple actions depend on the
 same input and one of them modifies the input, then the build will fail to
 converge if one of those actions results in an input timestamp that is newer
-than any of the actions' outputs. In depedency-ordered execution, the relative
+than any of the actions' outputs. In dependency-ordered execution, the relative
 ordering of independent actions cannot be guaranteed.
 
 _Avoid modifying inputs._

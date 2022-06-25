@@ -6,6 +6,9 @@
 
 # Driver stack performance
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1).
+
 The purpose of this document is to provide an overview into good and bad practices in regards to
 performance for authoring new drivers or interacting with existing ones in Fuchsia.
 

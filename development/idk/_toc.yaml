@@ -30,8 +30,6 @@ toc:
       path: /docs/development/idk/documentation/debugger.md
     - title: "Devices"
       path: /docs/development/idk/documentation/devices.md
-    - title: "Device discovery"
-      path: /docs/development/idk/documentation/device_discovery.md
     - title: "Logging"
       path: /docs/development/idk/documentation/logging.md
     - title: "Packages"

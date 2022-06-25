@@ -21,9 +21,9 @@ rust|[link](#rust-init)|[link](#rust-1)||[link](#rust-3)
 ### FIDL {#fidl-init}
 
 ```fidl
-flexible union JsonValue {
-    1: int32 int_value;
-    2: string:MAX string_value;
+type JsonValue = flexible union {
+    1: int_value int32;
+    2: string_value string:MAX;
 };
 ```
 
@@ -89,15 +89,15 @@ void use_union(fidl_test::JsonValue value) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-void use_union(fidl_test::JsonValue* value) {
+void use_union(fidl_test::wire::JsonValue* value) {
   switch (value->which()) {
-    case fidl_test::JsonValue::Tag::kIntValue:
+    case fidl_test::wire::JsonValue::Tag::kIntValue:
       printf("int value: %d\n", value->int_value());
       break;
-    case fidl_test::JsonValue::Tag::kStringValue:
+    case fidl_test::wire::JsonValue::Tag::kStringValue:
       printf("string value: %s\n", value->string_value().data());
       break;
-    case fidl_test::JsonValue::Tag::kUnknown:
+    case fidl_test::wire::JsonValue::Tag::kUnknown:
       printf("<unknown data>\n");
       break;
   }
@@ -197,15 +197,15 @@ fn use_union(value: &fidl_lib::JsonValue) {
 - Remove usages of any flexible union specific APIs
 
 ```diff
-  void use_union(fidl_test::JsonValue* value) {
+  void use_union(fidl_test::wire::JsonValue* value) {
     switch (value->which()) {
-      case fidl_test::JsonValue::Tag::kIntValue:
+      case fidl_test::wire::JsonValue::Tag::kIntValue:
         printf("int value: %d\n", value->int_value());
         break;
-      case fidl_test::JsonValue::Tag::kStringValue:
+      case fidl_test::wire::JsonValue::Tag::kStringValue:
         printf("string value: %s\n", value->string_value().data());
         break;
--     case fidl_test::JsonValue::Tag::kUnknown:
+-     case fidl_test::wire::JsonValue::Tag::kUnknown:
 -       printf("<unknown data>\n");
 -       break;
 +     default:
@@ -237,10 +237,10 @@ fn use_union(value: &fidl_lib::JsonValue) {
 - Change the union from `flexible` to `strict`
 
 ```diff
-- flexible union JsonValue {
-+ strict union JsonValue {
-      1: int32 int_value;
-      2: string:MAX string_value;
+- type JsonValue = flexible union {
++ type JsonValue = strict union {
+      1: int_value int32;
+      2: string_value string:MAX;
   };
 
 ```
@@ -300,12 +300,12 @@ fn use_union(value: &fidl_lib::JsonValue) {
 - You can now remove the default case
 
 ```diff
-  void use_union(fidl_test::JsonValue* value) {
+  void use_union(fidl_test::wire::JsonValue* value) {
     switch (value->which()) {
-      case fidl_test::JsonValue::Tag::kIntValue:
+      case fidl_test::wire::JsonValue::Tag::kIntValue:
         printf("int value: %d\n", value->int_value());
         break;
-      case fidl_test::JsonValue::Tag::kStringValue:
+      case fidl_test::wire::JsonValue::Tag::kStringValue:
         printf("string value: %s\n", value->string_value().data());
         break;
 -     default:

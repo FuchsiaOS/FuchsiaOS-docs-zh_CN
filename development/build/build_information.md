@@ -1,68 +1,39 @@
 # Retrieve build information
 
-Metrics and error reports are collected from devices in several ways:
-Cobalt, feedback reports, crash reports, manual reports from developers
-and QA.  Interpreting these signals requires knowing where they are generated
-from to varying levels of detail.  This document describes the places where
-version information about the system are stored for use in these types of
-reports.  Note that this information only applies to the base system -
-dynamically or ephemerally added software will not be included here.
+Metrics and error reports are collected from devices in several ways: Cobalt,
+feedback reports, crash reports, manual reports from developers and QA.
+Interpreting these signals requires knowing where they are generated from to
+varying levels of detail. This document describes the places where version
+information about the system are stored for use in these types of reports.
 
+Note that this information only applies to the base system; dynamically or
+ephemerally added software will not be included here.
 
-To view this data via the commandline, you can use `fx shell`. For example:
+## View build information using CLI {#view-build-information-using-cli}
 
-```sh
-fx shell cat /config/build-info/latest-commit-date
+To view the device's build information using a command line, run the following
+`ffx` command:
+
+```posix-terminal
+ffx target show
 ```
 
-To access this data at runtime, add the feature "build-info" to the
-[component manifest][component-manifest] of the component that needs to
-read these fields.
+## Access build information at runtime {#access-build-information-at-runtime}
 
+To access build information at runtime, use the
+[`fuchsia.buildinfo.Provider`][buildinfo-provider]
+[protocol capability][protocol-capability] in your
+[component manifest][component-manifest].
 
-## Product
-### Location
-`/config/build-info/product`
+Typed build information is defined and documented in the
+[`BuildInfo` type][buildinfo-type]. In addition, a `jiri snapshot` taken at
+build time may be retrieved.
 
-### Description
-String describing the product configuration used at build time.  Defaults to the value passed as PRODUCT in fx set.
-Example: “products/core.gni”, “products/workstation.gni”
+Lastly, the kernel version may be retrieved with
+[`zx_system_get_version_string`][zx-system-get-version-string].
 
-## Board
-### Location
-`/config/build-info/board`
-
-### Description
-String describing the board configuration used at build time to specify the target hardware.  Defaults to the value passed as BOARD in fx set.
-Example: “boards/x64.gni”
-
-## Version
-### Location
-`/config/build-info/version`
-
-### Description
-String describing the version of the build.  Defaults to the same string used currently in ‘latest-commit-date’.  Can be overridden by build infrastructure to provide a more semantically meaningful version, e.g. to include the release train the build was produced on.
-
-## Latest-commit-date
-### Location
-`/config/build-info/latest-commit-date`
-
-### Description
-String containing a timestamp of the most recent commit to the integration repository (specifically, the "CommitDate" field) formatted in strict ISO 8601 format in the UTC timezone.  Example: “2019-03-28T15:42:20+00:00”.
-
-## Snapshot
-### Location
-`/config/build-info/snapshot`
-
-### Description
-Jiri snapshot of the most recent ‘jiri update’
-
-## Kernel version
-
-### Location
-Stored in vDSO.  Accessed through [`zx_system_get_version_string`]( /docs/reference/syscalls/system_get_version_string.md)
-
-### Description
-Zircon revision computed during the kernel build process.
-
-[component-manifest]: /docs/concepts/components/v1/component_manifests.md
+[buildinfo-provider]: https://fuchsia.dev/reference/fidl/fuchsia.buildinfo#Provider
+[buildinfo-type]: https://fuchsia.dev/reference/fidl/fuchsia.buildinfo#BuildInfo
+[component-manifest]: /docs/concepts/components/v2/component_manifests.md
+[protocol-capability]: /docs/concepts/components/v2/capabilities/protocol.md
+[zx-system-get-version-string]: /docs/reference/syscalls/system_get_version_string.md

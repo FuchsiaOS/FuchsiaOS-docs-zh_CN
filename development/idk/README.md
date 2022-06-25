@@ -5,6 +5,10 @@ For information on the GN C++ Frontend SDK see [this getting started guide](/doc
 
 > [Download the Fuchsia IDK](download.md)
 
+## Support
+
+Please note that at this time, Fuchsia does not support public usage of
+the Fuchsia IDK. The APIs in the IDK are subject to change at any time without notice.
 
 ## Strategy {#strategy}
 

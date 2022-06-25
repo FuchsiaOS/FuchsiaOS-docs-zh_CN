@@ -1,0 +1,23 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+  - title: Overview
+    path: /docs/get-started/learn/build/README.md
+    step_group: buildfuchsia
+  - title: Fuchsia source tree
+    path: /docs/get-started/learn/build/source-tree.md
+    step_group: buildfuchsia
+  - title: Build system
+    path: /docs/get-started/learn/build/build-system.md
+    step_group: buildfuchsia
+  - title: Product packages
+    path: /docs/get-started/learn/build/product-packages.md
+    step_group: buildfuchsia
+  - title: Working with devices
+    path: /docs/get-started/learn/build/working-with-devices.md
+    step_group: buildfuchsia

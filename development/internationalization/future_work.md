@@ -8,7 +8,7 @@ For information about the future work related to localization, see
 ## Internationalization preferences
 
 -   Migrate `fuchsia.intl.PropertyProvider` change watcher API to a
-    [hanging get](/docs/concepts/api/fidl.md#hanging-get) design and migrate all
+    [hanging get](/docs/development/api/fidl.md#hanging-get) design and migrate all
     existing clients.
 
 -   Instead of having a single `fuchsia.intl.PropertyProvider` implemented by
@@ -54,8 +54,6 @@ For information about the future work related to localization, see
     reviewing and testing out fonts available in a given build.
 
 ## Time zones
-
--   Finish removing `fuchsia.deprecatedtimezone.Timezone`.
 
 -   Implement a FIDL service that provides a listing of time zone IDs and
     localized display names. This will initially be used in the workstation

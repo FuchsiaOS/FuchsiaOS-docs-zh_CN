@@ -22,23 +22,28 @@ There are two ways of enabling the Process Limbo:
 
 ### Manual activation
 
-The Process Limbo comes with a CLI tool that permits the user to query the current state of the
-limbo:
+There's an ffx plugin that permits the user to query the current state of the limbo:
 
 ```
-$ run run fuchsia-pkg://fuchsia.com/limbo-client#meta/limbo_client.cmx
-Usage: limbo [--help] <option>
+$ ffx debug limbo --help
+Usage: ffx debug limbo <command> [<args>]
 
-  The process limbo is a service that permits the system to suspend any processes that throws an
-  exception (crash) for later processing/debugging. This CLI tool permits to query and modify the
-  state of the limbo.
+control the process limbo on the target
 
-  Options:
-    --help: Prints this message.
-    enable: Enable the process limbo. It will now begin to capture crashing processes.
-    disable: Disable the process limbo. Will free any pending processes waiting in it.
-    list: Lists the processes currently waiting on limbo. The limbo must be active.
-    release: Release a process from limbo. The limbo must be active. Usage: limbo release <pid>.
+Options:
+  --help            display usage information
+
+Commands:
+  status            query the status of the process limbo.
+  enable            enable the process limbo. It will now begin to capture
+                    crashing processes.
+  disable           disable the process limbo. Will free any pending processes
+                    waiting in it.
+  list              lists the processes currently waiting on limbo. The limbo
+                    must be active.
+  release           release a process from limbo. The limbo must be active.
+
+See 'ffx help <command>' for more information on a specific command.
 ```
 
 ### Enable on startup
@@ -71,9 +76,7 @@ The main user of JITD is zxdb, which is able to attach to a process waiting in t
 starting zxdb, it will display the processes that are waiting in it:
 
 ```
-> fx debug
-Checking for debug agent on [fe80::2e0:4cff:fe68:8d%3]:2345.
-Debug agent not found. Starting one.
+$ ffx debug connect
 Connecting (use "disconnect" to cancel)...
 Connected successfully.
 
@@ -122,9 +125,7 @@ Within zxdb you can also do `help process-limbo` to get more information about h
 ### Process Limbo FIDL Service
 
 The Process Limbo presents itself as a FIDL service, which is what the Process Limbo CLI tool and
-zxdb use. The FIDL protocol is defined in `zircon/system/fidl/fuchsia-exception/process_limbo.fidl`.
-
-A good example about how to use the API is the Process Limbo CLI tool itself: `src/developer/forensics/exceptions/limbo_client/limbo_client.cc`.
+zxdb use. The FIDL protocol is defined in `//sdk/fidl/fuchsia.exception/process_limbo.fidl`.
 
 ## Implementation
 

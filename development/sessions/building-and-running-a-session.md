@@ -1,4 +1,4 @@
-# Building and running a session {#building-and-running-a-session} 
+# Building and running a session {#building-and-running-a-session}
 
 A session is the first product-specific component started on boot. The session
 component is responsible for building a product's user experience. For more
@@ -9,12 +9,12 @@ information on sessions, see
 
 To boot into a session, do the following:
 
-1. For a session to run at boot you need to create a configuration file with the
-session component URL.
+1. For a session to run at boot you need to configure the product build with
+the session's URL. Identify the component URL for your session:
 
-   <pre><code>{
-       "session_url": "fuchsia-pkg://fuchsia.com/<var>pkg-name</var>#meta/<var>your_session.cm</var>"
-   }</code></pre>
+   <pre><code>
+       fuchsia-pkg://fuchsia.com/<var>pkg-name</var>#meta/<var>your_session.cm</var>
+   </code></pre>
 
    Replace the following:
    * <var>pkg-name</var>: the package name
@@ -22,27 +22,21 @@ session component URL.
    extension.
 
    For more information, see
-   [`fuchsia-pkg`](/docs/concepts/components/component_urls.md#fuchsia-pkg) and
+   [`fuchsia-pkg`](/docs/reference/components/url.md#fuchsia-pkg) and
    [Package name](/docs/concepts/packages/package_url.md#package-name).
 
-1.  In the `BUILD.gn` file, include the configuration file for the session
-component
+1. Run the following command to include `session_manager` and `your_session`
+   in your base image, configuring `session_manager` to start your session:
 
-   ```json
-   import("//src/session/build/session_config.gni")
+   <pre class="prettyprint"><code class="devsite-terminal">
+      fx set <var>product</var>.<var>board</var> \
+         --with-base=//src/session/bin/session_manager \
+         --with-base=<var>//path/to/your/session</var> \
+         --args=product_config.session_url="fuchsia-pkg://fuchsia.com/<var>pkg-name</var>#meta/<var>your_session.cm</var>"
+   </code></pre>
 
-   session_config("your_session_config") {
-       config = "path/to/config.json"
-   }
-   ```
-
-1. Run the following command to include the `session_manager`, `your_session`,
-   and `:your_session_config` in your base image:
-
-   <pre class="prettyprint"><code class="devsite-terminal">fx set <var>product</var>.<var>board</var> --with-base=//src/session,<var>//path/to/your/session</var>,<var>//path/to/your/session:your_session_config</var></code></pre>
-
-   Note: Selecting a product that already has a session_config will result
-   in a build error because the configurations will conflict. The `core`
+   Note: Selecting a product that already has a session manager package will
+   result in a build error because the packages will conflict. The `core`
    product would be a good choice as a starting point as it includes only the
    bare minimum needed to launch Fuchsia.
 
@@ -65,17 +59,16 @@ World Session](/docs/development/sessions/writing-a-hello-world-session.md).
 ## Launch a session from the command line {#launch-a-session-from-the-command-line}
 
 There are cases when you don't want your session to launch at boot but still
-want to be able to launch it from the command line. There still needs to be a
-session launched at boot so configure the build to use the default
-`session_manager` configuration.
+want to be able to launch it from the command line. `session_manager` needs
+to be running to launch a session. The `session_manager` target
+ensures `session_manager` itself starts, but does not launch a session.
 
 To launch a session from the command line, do the following:
 
-1. Run the following command to include the `session_manager` and the
-`session_manager` configuration file, `session_manager.config`, in the base
-image while also including your session in the build.
+1. Add the `session_manager` target in the base dependency set, in
+addition to the session target.
 
-   <pre class="prettyprint"><code class="devsite-terminal">fx set <var>product</var>.<var>board</var> --with-base=//src/session,//src/session/bin/session_manager:session_manager.config --with=<var>//path/to/your/session</var></code></pre>
+   <pre class="prettyprint"><code class="devsite-terminal">fx set <var>product</var>.<var>board</var> --with-base=//src/session/bin/session_manager --with=<var>//path/to/your/session</var></code></pre>
 
    `fx list-products` and `fx list-boards` will show lists of the products and
    boards available to be used in the `fx set` command. For more information on

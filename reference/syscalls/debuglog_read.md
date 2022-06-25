@@ -1,14 +1,14 @@
 # zx_debuglog_read
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Read a single log record from the kernel debuglog.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -34,7 +34,8 @@ The returned record will have the following format:
 
 ```c
 typedef struct zx_log_record {
-  uint32_t rollout;
+  uint64_t sequence;
+  uint32_t unused;
   uint16_t datalen;
   uint8_t severity;
   uint8_t flags;
@@ -49,10 +50,10 @@ The fields are defined as follows:
 
 | Field       | Description                                                    |
 | ----------- | -------------------------------------------------------------- |
-| *rollout*   | Number of bytes of log messages (including headers) dropped    |
-:             : since the last call to `zx_debuglog_read` on this object. The  :
-:             : kernel will drop the oldest log messages when its internal     :
-:             : buffer becomes full.                                           :
+| *sequence*  | The sequence number of this record. Each record's sequence     :
+:             : number is 1 greater than the preceding records's. The sequence :
+:             : starts with 0. Gaps in the sequence indidate dropped log       :
+:             : records.                                                       :
 | *datalen*   | Number of bytes of data in the *data* field.                   |
 | *severity*  | Severity of this log message. Standard severity levels are     |
 :             : defined in the header `zircon/syscalls/log.h`.                 :
@@ -74,7 +75,7 @@ discarded. Callers should ensure that their input buffer is at least
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_LOG** and have **ZX_RIGHT_READ**.
 
@@ -100,5 +101,11 @@ was an invalid pointer.
 ## SEE ALSO
 
  - [`fuchsia.boot.ReadOnlyLog`](https://fuchsia.dev/reference/fidl/fuchsia.boot#ReadOnlyLog)
+
  - [`zx_debuglog_create()`]
  - [`zx_debuglog_write()`]
+
+<!-- References updated by update-docs-from-fidl, do not edit. -->
+
+[`zx_debuglog_create()`]: debuglog_create.md
+[`zx_debuglog_write()`]: debuglog_write.md

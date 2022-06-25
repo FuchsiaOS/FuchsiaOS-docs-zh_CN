@@ -21,7 +21,7 @@ rust|[link](#rust-init)|[link](#rust-1)||[link](#rust-3)|
 ### FIDL {#fidl-init}
 
 ```fidl
-strict enum Color : int32 {
+type Color = strict enum : int32 {
     RED = 1;
     BLUE = 2;
     UNKNOWN_COLOR = 3;
@@ -117,26 +117,26 @@ std::string reader(fidl_test::Color color) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-template <fidl_test::Color color>
+template <fidl_test::wire::Color color>
 class ComplementaryColors {};
 
-fidl_test::Color writer(std::string s) {
+fidl_test::wire::Color writer(std::string s) {
   if (s == "red") {
-    return fidl_test::Color::RED;
+    return fidl_test::wire::Color::kRed;
   } else if (s == "blue") {
-    return fidl_test::Color::BLUE;
+    return fidl_test::wire::Color::kBlue;
   } else {
-    return fidl_test::Color::UNKNOWN_COLOR;
+    return fidl_test::wire::Color::kUnknownColor;
   }
 }
 
-std::string reader(fidl_test::Color color) {
+std::string reader(fidl_test::wire::Color color) {
   switch (color) {
-    case fidl_test::Color::RED:
+    case fidl_test::wire::Color::kRed:
       return "red";
-    case fidl_test::Color::BLUE:
+    case fidl_test::wire::Color::kBlue:
       return "blue";
-    case fidl_test::Color::UNKNOWN_COLOR:
+    case fidl_test::wire::Color::kUnknownColor:
       return "unknown";
     default:
       return "error";
@@ -194,20 +194,20 @@ fn reader(color: fidl_lib::Color) -> &'static str {
 - Remove any usages of the enum as a non-type template parameter. These usages are not supported for flexible enums.
 
 ```diff
-- template <fidl_test::Color color>
+- template <fidl_test::wire::Color color>
 - class ComplementaryColors {};
 - 
-  fidl_test::Color writer(std::string s) {
+  fidl_test::wire::Color writer(std::string s) {
     if (s == "red") {
-      return fidl_test::Color::RED;
+      return fidl_test::wire::Color::kRed;
     } else if (s == "blue") {
-      return fidl_test::Color::BLUE;
+      return fidl_test::wire::Color::kBlue;
     } else {
-      return fidl_test::Color::UNKNOWN_COLOR;
+      return fidl_test::wire::Color::kUnknownColor;
     }
   }
   
-  std::string reader(fidl_test::Color color) {
+  std::string reader(fidl_test::wire::Color color) {
     switch (color) {
 
 ```
@@ -243,11 +243,11 @@ fn reader(color: fidl_lib::Color) -> &'static str {
 - If the enum had a member representing an unknown enum, add the `[Unknown]` attribute to it
 
 ```diff
-- strict enum Color : int32 {
-+ flexible enum Color : int32 {
+- type Color = strict enum : int32 {
++ type Color = flexible enum : int32 {
       RED = 1;
       BLUE = 2;
-+     [Unknown]
++     @unknown
       UNKNOWN_COLOR = 3;
   };
 
@@ -367,27 +367,27 @@ fn reader(color: fidl_lib::Color) -> &'static str {
 - You can now use any flexible enum specific APIs
 
 ```diff
-  fidl_test::Color writer(std::string s) {
+  fidl_test::wire::Color writer(std::string s) {
     if (s == "red") {
-      return fidl_test::Color::RED;
+      return fidl_test::wire::Color::kRed;
     } else if (s == "blue") {
-      return fidl_test::Color::BLUE;
+      return fidl_test::wire::Color::kBlue;
     } else {
--     return fidl_test::Color::UNKNOWN_COLOR;
-+     return fidl_test::Color::Unknown();
+-     return fidl_test::wire::Color::kUnknownColor;
++     return fidl_test::wire::Color::Unknown();
     }
   }
   
-  std::string reader(fidl_test::Color color) {
+  std::string reader(fidl_test::wire::Color color) {
 +   if (color.IsUnknown()) {
 +     return "unknown";
 +   }
     switch (color) {
-      case fidl_test::Color::RED:
+      case fidl_test::wire::Color::kRed:
         return "red";
-      case fidl_test::Color::BLUE:
+      case fidl_test::wire::Color::kBlue:
         return "blue";
--     case fidl_test::Color::UNKNOWN_COLOR:
+-     case fidl_test::wire::Color::kUnknownColor:
 -       return "unknown";
       default:
         return "error";
@@ -428,10 +428,10 @@ fn reader(color: fidl_lib::Color) -> &'static str {
 - If transitioning away from a custom unknown member, you can now remove the placeholder member at this point.
 
 ```diff
-  flexible enum Color : int32 {
+  type Color = flexible enum : int32 {
       RED = 1;
       BLUE = 2;
--     [Unknown]
+-     @unknown
 -     UNKNOWN_COLOR = 3;
   };
 

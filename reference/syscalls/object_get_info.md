@@ -1,14 +1,14 @@
 # zx_object_get_info
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Query information about an object.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -187,46 +187,14 @@ Note that |exited| will immediately report that the job has exited following a
 |zx_task_kill| or equivalent (e.g. an OOM kill), but child jobs and processes
 may still be in the process of exiting.
 
-### ZX_INFO_PROCESS (a.k.a. ZX_INFO_PROCESS_V1)
+### ZX_INFO_PROCESS
 
 *handle* type: **Process**
 
 *buffer* type: `zx_info_process_t[1]`
 
-TODO(fxbug.dev/30751): Deprecated in favor of ZX_INFO_PROCESS_V2.
-
 ```
 typedef struct zx_info_process {
-    // The process's return code; only valid if |exited| is true.
-    // Guaranteed to be non-zero if the process was killed by |zx_task_kill|.
-    int64_t return_code;
-
-    // True if the process has ever left the initial creation state,
-    // even if it has exited as well.
-    bool started;
-
-    // If true, the process has exited and |return_code| is valid.
-    bool exited;
-
-    // True if a debugger is attached to the process.
-    bool debugger_attached;
-} zx_info_process_t;
-```
-
-Note that |exited| will immediately report that the process has exited following
-a |zx_task_kill|, but child threads may still be in the process of exiting.
-
-### ZX_INFO_PROCESS_V2
-
-*handle* type: **Process**
-
-*buffer* type: `zx_info_process_v2_t[1]`
-
-TODO(fxbug.dev/30751): This will replace `ZX_INFO_PROCESS_V1` and will be
-renamed to `ZX_INFO_PROCESS` later in the transition.
-
-```
-typedef struct zx_info_process_v2 {
     // The process's return code; only valid if the
     // |ZX_PROCESS_INFO_FLAG_EXITED| flag is set. If the process was killed, it
     // will be one of the |ZX_TASK_RETCODE| values.
@@ -238,7 +206,7 @@ typedef struct zx_info_process_v2 {
 
     // Bitwise OR of ZX_INFO_PROCESS_FLAG_* values.
     uint32_t flags;
-} zx_info_process_v2_t;
+} zx_info_process_t;
 ```
 
 Note that |flags| will immediately report that the process has exited (i.e. it
@@ -379,12 +347,56 @@ typedef struct zx_info_thread_stats {
 
 Returns **ZX_ERR_BAD_STATE** if the thread has exited.
 
+### ZX_INFO_GUEST_STATS
+
+*handle* type: **Resource** (Specifically, the info resource)
+
+*buffer* type: `zx_info_guest_stats_t[1]`
+
+```
+// Each machine has its own format for the same ZX_INFO_GUEST_STATS topic.
+// In each build, zx_info_guest_stats_t is a typedef alias for the type.
+// Cross-tools can select the machine-specific type to use based on the
+// source of the data they are working with.
+typedef struct zx_arm64_info_guest_stats {
+    uint32_t cpu_number;
+    uint32_t flags;
+    uint64_t vm_entries;
+    uint64_t vm_exits;
+    uint64_t wfi_wfe_instructions;
+    uint64_t instruction_aborts;
+    uint64_t data_aborts;
+    uint64_t system_instructions;
+    uint64_t smc_instructions;
+    uint64_t interrupts;
+} zx_arm64_info_guest_stats_t;
+
+typedef struct zx_x86_64_info_guest_stats {
+    uint32_t cpu_number;
+    uint32_t flags;
+    uint64_t vm_entries;
+    uint64_t vm_exits;
+    uint64_t interrupts;
+    uint64_t interrupt_windows;
+    uint64_t cpuid_instructions;
+    uint64_t hlt_instructions;
+    uint64_t control_register_accesses;
+    uint64_t io_instructions;
+    uint64_t rdmsr_instructions;
+    uint64_t wrmsr_instructions;
+    uint64_t ept_violations;
+    uint64_t xsetbv_instructions;
+    uint64_t pause_instructions;
+    uint64_t vmcall_instructions;
+} zx_x86_64_info_guest_stats;
+```
+
 ### ZX_INFO_CPU_STATS
 
 Note: many values of this topic are being retired in favor of a different
 mechanism.
 
-*handle* type: **Resource** (Specifically, the root resource)
+*handle* type: **Resource** (Specifically, the info resource)
 
 *buffer* type: `zx_info_cpu_stats_t[1]`
 
@@ -822,7 +834,7 @@ the VMOs of arbitrary processes by koid.
 
 ### ZX_INFO_KMEM_STATS
 
-*handle* type: **Resource** (Specifically, the root resource)
+*handle* type: **Resource** (Specifically, the info resource)
 
 *buffer* type: `zx_info_kmem_stats_t[1]`
 
@@ -864,7 +876,7 @@ typedef struct zx_info_kmem_stats {
 
 ### ZX_INFO_KMEM_STATS_EXTENDED
 
-*handle* type: **Resource** (Specifically, the root resource)
+*handle* type: **Resource** (Specifically, the info resource)
 
 *buffer* type: `zx_info_kmem_stats_extended_t[1]`
 
@@ -957,9 +969,8 @@ The resource kind is one of
 *   **ZX_RSRC_KIND_MMIO**
 *   **ZX_RSRC_KIND_IOPORT**
 *   **ZX_RSRC_KIND_IRQ**
-*   **ZX_RSRC_KIND_HYPERVISOR**
-*   **ZX_RSRC_KIND_VMEX**
 *   **ZX_RSRC_KIND_SMC**
+*   **ZX_RSRC_KIND_SYSTEM**
 
 ### ZX_INFO_BTI
 
@@ -990,72 +1001,55 @@ typedef struct zx_info_bti {
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
-If *topic* is **ZX_INFO_PROCESS**, *handle* must be of type
-**ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_PROCESS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_JOB**, *handle* must be of type **ZX_OBJ_TYPE_JOB** and
-have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_JOB**, *handle* must be of type **ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_PROCESS_THREADS**, *handle* must be of type
-**ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_ENUMERATE**.
+If *topic* is **ZX_INFO_PROCESS_THREADS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_ENUMERATE**.
 
-If *topic* is **ZX_INFO_JOB_CHILDREN**, *handle* must be of type
-**ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_ENUMERATE**.
+If *topic* is **ZX_INFO_JOB_CHILDREN**, *handle* must be of type **ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_ENUMERATE**.
 
-If *topic* is **ZX_INFO_JOB_PROCESSES**, *handle* must be of type
-**ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_ENUMERATE**.
+If *topic* is **ZX_INFO_JOB_PROCESSES**, *handle* must be of type **ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_ENUMERATE**.
 
-If *topic* is **ZX_INFO_THREAD**, *handle* must be of type
-**ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_THREAD**, *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_THREAD_EXCEPTION_REPORT**, *handle* must be of type
-**ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_THREAD_EXCEPTION_REPORT**, *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_THREAD_STATS**, *handle* must be of type
-**ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_THREAD_STATS**, *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_TASK_STATS**, *handle* must be of type
-**ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_TASK_STATS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_PROCESS_MAPS**, *handle* must be of type
-**ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_PROCESS_MAPS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_PROCESS_VMOS**, *handle* must be of type
-**ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_PROCESS_VMOS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
 
 If *topic* is **ZX_INFO_VMO**, *handle* must be of type **ZX_OBJ_TYPE_VMO**.
 
-If *topic* is **ZX_INFO_VMAR**, *handle* must be of type **ZX_OBJ_TYPE_VMAR**
-and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_VMAR**, *handle* must be of type **ZX_OBJ_TYPE_VMAR** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_CPU_STATS**, *handle* must have resource kind
-**ZX_RSRC_KIND_ROOT**.
+If *topic* is **ZX_INFO_GUEST_STATS**, *handle* must have resource kind **ZX_RSRC_KIND_SYSTEM** with base **ZX_RSRC_SYSTEM_INFO_BASE**.
 
-If *topic* is **ZX_INFO_KMEM_STATS**, *handle* must have resource kind
-**ZX_RSRC_KIND_ROOT**.
+If *topic* is **ZX_INFO_CPU_STATS**, *handle* must have resource kind **ZX_RSRC_KIND_SYSTEM** with base **ZX_RSRC_SYSTEM_INFO_BASE**.
 
-If *topic* is **ZX_INFO_RESOURCE**, *handle* must be of type
-**ZX_OBJ_TYPE_RESOURCE** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_KMEM_STATS**, *handle* must have resource kind **ZX_RSRC_KIND_SYSTEM** with base **ZX_RSRC_SYSTEM_INFO_BASE**.
+
+If *topic* is **ZX_INFO_KMEM_STATS_EXTENDED**, *handle* must have resource kind **ZX_RSRC_KIND_SYSTEM** with base **ZX_RSRC_SYSTEM_INFO_BASE**.
+
+If *topic* is **ZX_INFO_RESOURCE**, *handle* must be of type **ZX_OBJ_TYPE_RESOURCE** and have **ZX_RIGHT_INSPECT**.
 
 If *topic* is **ZX_INFO_HANDLE_COUNT**, *handle* must have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_BTI**, *handle* must be of type **ZX_OBJ_TYPE_BTI** and
-have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_BTI**, *handle* must be of type **ZX_OBJ_TYPE_BTI** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_PROCESS_HANDLE_STATS**, *handle* must be of type
-**ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_PROCESS_HANDLE_STATS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_SOCKET**, *handle* must be of type
-**ZX_OBJ_TYPE_SOCKET** and have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_SOCKET**, *handle* must be of type **ZX_OBJ_TYPE_SOCKET** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_MSI**, *handle* must be of type **ZX_OBJ_TYPE_MSI** and
-have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_MSI**, *handle* must be of type **ZX_OBJ_TYPE_MSI** and have **ZX_RIGHT_INSPECT**.
 
-If *topic* is **ZX_INFO_TASK_RUNTIME**, *handle* must be of type
-**ZX_OBJ_TYPE_THREAD**, **ZX_OBJ_TYPE_PROCESS**, or **ZX_OBJ_TYPE_JOB**, and
-have **ZX_RIGHT_INSPECT**.
+If *topic* is **ZX_INFO_TASK_RUNTIME**, *handle* must be of type **ZX_OBJ_TYPE_THREAD**, **ZX_OBJ_TYPE_PROCESS**, or **ZX_OBJ_TYPE_JOB**, and have **ZX_RIGHT_INSPECT**.
 
 ## RETURN VALUE
 
@@ -1120,10 +1114,10 @@ void examine_threads(zx_handle_t proc) {
 
 ## SEE ALSO
 
--   [`zx_handle_close()`]
--   [`zx_handle_duplicate()`]
--   [`zx_handle_replace()`]
--   [`zx_object_get_child()`]
+ - [`zx_handle_close()`]
+ - [`zx_handle_duplicate()`]
+ - [`zx_handle_replace()`]
+ - [`zx_object_get_child()`]
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 

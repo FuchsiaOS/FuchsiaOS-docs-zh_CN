@@ -74,29 +74,41 @@ using-list = ( using , ";" )* ;
 
 using = "using" , compound-identifier , ( "as" , IDENTIFIER ) ;
 
-declaration-list = ( declaration , ";" )* ;
-
 compound-identifier = IDENTIFIER ( "." , IDENTIFIER )* ;
 
-declaration = bits-declaration | const-declaration | enum-declaration | protocol-declaration
-            | struct-declaration | table-declaration | union-declaration
+declaration-list = ( declaration , ";" )* ;
+
+declaration = const-declaration | layout-declaration | protocol-declaration
             | type-alias-declaration | resource-declaration | service-declaration ;
 
-declaration-modifiers = "flexible" | "strict" | "resource"; [NOTE 1]
+const-declaration = ( attribute-list ) , "const" , IDENTIFIER , type-constructor , "=" , constant ;
 
-const-declaration = ( attribute-list ) , "const" , type-constructor , IDENTIFIER , "=" , constant ;
+layout-declaration = ( attribute-list ) , "type" , IDENTIFIER , "=" , inline-layout ; [NOTE 1]
 
-enum-declaration = ( attribute-list ) , ( declaration-modifiers )* , "enum" , IDENTIFIER ,
-                   ( ":" , type-constructor ) , "{" , ( bits-or-enum-member , ";" )+ ,
-                   "}" ; [NOTE 2]
+inline-layout = ( attribute-list ) , ( declaration-modifiers )* , layout-kind , ( layout-subtype ) ,
+                layout-body ;
 
-bits-declaration = ( attribute-list ) , ( declaration-modifiers )* , "bits" , IDENTIFIER ,
-                   ( ":" , type-constructor ) , "{" , ( bits-or-enum-member , ";" )+ ,
-                   "}" ; [NOTE 3]
+declaration-modifiers = "flexible" | "strict" | "resource" ; [NOTE 2]
 
-bits-or-enum-member = ( attribute-list ) , IDENTIFIER , "=" , bits-or-enum-member-value ;
+layout-subtype = ":" , type-constructor ; [NOTE 3]
 
-bits-or-enum-member-value = IDENTIFIER | literal ; [NOTE 4]
+layout-kind = "struct" | "bits" | "enum" | "union" | "table" ;
+
+layout-body = value-layout | struct-layout | ordinal-layout ;
+
+value-layout = "{" , ( value-layout-member , ";" )+ , "}" ;
+
+value-layout-member = ( attribute-list ) , IDENTIFIER , "=" , constant ; [NOTE 4]
+
+struct-layout =  "{" , ( struct-layout-member, ";" )* , "}" ;
+
+struct-layout-member = ( attribute-list ) , member-field ;
+
+ordinal-layout =  "{" , ( ordinal-layout-member , ";" )* , "}" ; [NOTE 5]
+
+ordinal-layout-member = ( attribute-list ) , ordinal , ":" , ordinal-layout-member-body ; [NOTE 6]
+
+ordinal-layout-member-body = member-field | "reserved" ;
 
 protocol-declaration = ( attribute-list ) , "protocol" , IDENTIFIER ,
                        "{" , ( protocol-member , ";" )*  , "}" ;
@@ -104,60 +116,49 @@ protocol-declaration = ( attribute-list ) , "protocol" , IDENTIFIER ,
 protocol-member = protocol-method | protocol-event | protocol-compose ;
 
 protocol-method = ( attribute-list ) , IDENTIFIER , parameter-list,
-                  ( "->" , parameter-list , ( "error" type-constructor ) ) ; [NOTE 5]
+                  ( "->" , parameter-list , ( "error" type-constructor ) ) ; [NOTE 7]
 
 protocol-event = ( attribute-list ) , "->" , IDENTIFIER , parameter-list ;
 
-parameter-list = "(" , ( parameter ( "," , parameter )+ ) , ")" ;
-
-parameter = ( attribute-list ) , type-constructor , IDENTIFIER ;
+parameter-list = "(" , ( type-constructor ) , ")" ; [NOTE 8]
 
 protocol-compose = "compose" , compound-identifier ;
-
-struct-declaration = ( attribute-list ) , "struct" , IDENTIFIER , "{" , ( member-field , ";" )* ,
-                     "}" ;
-
-union-declaration = ( attribute-list ) , ( declaration-modifiers )* , "union" , IDENTIFIER , "{" ,
-                    ( ordinal-member-field , ";" )+ , "}" ;
-
-table-declaration = ( attribute-list ) , ( declaration-modifiers )* , "table" , IDENTIFIER , "{" ,
-                    ( ordinal-member-field , ";" )* , "}" ;
-
-member-field = ( attribute-list ) , type-constructor , IDENTIFIER , ( "=" , constant ) ;
-
-ordinal-member-field = ( attribute-list ) , ordinal , ":" , ordinal-member-field-body ; [NOTE 6]
-
-ordinal-member-field-body = member-field | "reserved";
 
 type-alias-declaration = ( attribute-list ) , "alias" , IDENTIFIER ,  "=" , type-constructor ;
 
 resource-declaration = ( attribute-list ) , "resource_definition" , IDENTIFIER , ":",
                        "uint32" , "{" , resource-properties ,  "}" ;
 
-resource-properties = "properties" , "{" , ( type-constructor , IDENTIFIER  , ";" )* , "}" , ";"
+resource-properties = "properties" , "{" , ( member-field  , ";" )* , "}" , ";"
 
 service-declaration = ( attribute-list ) , "service" , IDENTIFIER , "{" ,
                       ( service-member , ";" )* , "}" ;
 
-service-member = ( attribute-list ) , type-constructor , IDENTIFIER ; [NOTE 7]
+service-member = ( attribute-list ) , member-field ; [NOTE 9]
 
-attribute-list = "[" , attributes , "]" ;
+member-field = IDENTIFIER , type-constructor ;
 
-attributes = attribute | attribute , "," , attributes ;
+attribute-list = ( attribute )* ;
 
-attribute = IDENTIFIER , ( "=" , STRING-LITERAL ) ;
+attribute = "@", IDENTIFIER , ( "(" , constant | attribute-args, ")" ) ;
 
-type-constructor = compound-identifier ( "<" type-constructor ">" ) , (  type-constraint ) , ( "?" )
-                 | handle-type ;
+attribute-args = attribute-arg | attribute-arg, "," attribute-args ;
 
-handle-type = "handle" , ( "<" , handle-subtype , ">" ) , ( "?" ) ;
+attribute-arg = IDENTIFIER , "=" , constant ;
 
-handle-subtype = "bti" | "channel" | "clock" | "debuglog" | "event" | "eventpair" | "exception"
-               | "fifo" | "guest" | "interrupt" | "iommu" | "job" | "pager" | "pcidevice"
-               | "pmt" | "port" | "process" | "profile" | "resource" | "socket" | "suspendtoken"
-               | "thread" | "timer" | "vcpu" | "vmar" | "vmo" ;
+type-constructor = layout , ( "<" , layout-parameters , ">" ) , ( ":" type-constraints ) ;
 
-type-constraint = ":" , constant ;
+layout = compound-identifier | inline-layout ;
+
+layout-parameters = layout-parameter | layout-parameter , "," , layout-parameters ;
+
+layout-parameter = type-constructor | constant ;
+
+type-constraints = type-constraint | "<" type-constraint-list ">" ;
+
+type-constraint-list = type-constraint | type-constraint , "," , type-constraint-list ;
+
+type-constraint = constant ;
 
 constant = compound-identifier | literal ;
 
@@ -166,44 +167,96 @@ ordinal = NUMERIC-LITERAL ;
 literal = STRING-LITERAL | NUMERIC-LITERAL | "true" | "false" ;
 ```
 
+### `STRING-LITERAL`
+
+The grammar for `STRING-LITERAL` is as follows:
+
+```
+STRING-LITERAL       = "\"" ( unicode-value | byte-value )* "\"" ;
+unicode-value        = limited-unicode-char | little-u-value |
+                       big-u-value | escaped-char ;
+limited-unicode-char = any unicode character except CR, LF, "\" or "\"" ;
+byte-value           = octal-byte-value | hex-byte-value ;
+octal-byte-value     = "\" octal-digit octal-digit octal-digit ;
+hex-byte-value       = "\x" hex-digit hex-digit ;
+little-u-value       = "\u" hex-digit hex-digit hex-digit hex-digit ;
+big-u-value          = "\U" hex-digit hex-digit hex-digit hex-digit
+                            hex-digit hex-digit hex-digit hex-digit ;
+escaped-char         = "\" ( "a" | "b" | "f" | "n" | "r" | "t" | "v" | "\" | "\"" ) ;
+```
+
 ----------
 
 ### NOTE 1
+
+Attributes for an anonymous layout introduction can be placed in one of two
+locations:
+
+* before the `type` keyword, or
+* as part of the `inline-layout`.
+
+Placing attributes in both locations for a single layout definition is not
+allowed by the compiler.
+
+### NOTE 2
+
 The grammar allows `( declaration-modifiers )*` on all declarations, but the
 compiler limits this as follows:
 
 * A modifier cannot occur twice on the same declaration.
 * The `flexible` and `strict` modifiers cannot be used together.
-* The `flexible` and `strict` modifiers can only be used on `bits`, `enum`, and `union`.
-* The `resource` modifier can only be used on `struct`, `table`, and `union`.
-
-### NOTE 2
-The `enum-declaration` allows the more liberal `type-constructor` in the
-grammar, but the compiler limits this to signed or unsigned integer types,
-see [primitives].
+* The `flexible` and `strict` modifiers can only be used when the `layout-kind`
+  is `bits`, `enum`, or `union`.
+* The `resource` modifier can only be when the `layout-kind` is `struct`,
+  `table`, or `union`.
 
 ### NOTE 3
-The `bits-declaration` allows the more liberal `type-constructor` in the grammar, but the compiler
-limits this to unsigned integer types, see [primitives].
+
+The grammar allows `( layout-subtype )` on all declarations, but the compiler limits
+this to only be allowed when the `layout-kind` is `bits` or `enum`.
+
+Further, `layout-subtype` allows the more liberal `type-constructor` in the
+grammar, but the compiler limits this to signed or unsigned integer types
+(see [primitives]) for enums and unsigned integer types for bits.
 
 ### NOTE 4
-The `bits-or-enum-member-value` allows the more liberal `literal` in the grammar, but the compiler limits this to:
 
-* A `NUMERIC-LITERAL` in the context of an `enum`;
-* A `NUMERIC-LITERAL`, which must be a power of two, in the context of a `bits`.
+The `value-layout-member` allows the more liberal `constant` in the grammar, but
+the compiler limits the values the `constant` may take:
+
+* Any value that fits the specified `subtype`, in the context of an `enum`.
+* Any value that fits the specified `subtype` and is a power of two, in the
+  context of a `bits`.
 
 ### NOTE 5
+
+The `ordinal-layout` grammar allows any number of members, but unions
+specifically must at least one non-reserved member.
+
+### NOTE 6
+
+<!-- TODO(fxbug.dev/77958): remove when complete -->
+Attributes cannot be placed on a reserved member.
+
+Also, though ordinals can be any numeric literal, the compiler enforces that
+the specified ordinals for any union or table cover a contiguous range starting
+from 1.
+
+### NOTE 7
+
 The `protocol-method` error stanza allows the more liberal `type-constructor`
 in the grammar, but the compiler limits this to an `int32`, `uint32`, or
 an enum thereof.
 
-### NOTE 6
-Attributes cannot be placed on a reserved member.
+### NOTE 8
 
-### NOTE 7
-The `service-member` allows the more liberal `type-constructor` in the grammar, but the compiler
-limits this to protocols.
+The `parameter-list` allows the more liberal `type-constructor` in the grammar,
+but the compiler only supports layouts that are structs, tables, or unions.
 
+### NOTE 9
+
+The `service-member` allows the more liberal `type-constructor` in the grammar,
+but the compiler limits this to protocols.
 
 <!-- xrefs -->
 [primitives]: /docs/reference/fidl/language/language.md#primitives

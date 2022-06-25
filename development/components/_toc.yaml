@@ -6,23 +6,19 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Components v1"
-  section:
-  - title: "Enable verbose logging for input events"
-    path: /docs/development/components/v1/verbose_logging.md
-- title: "Components v2"
-  section:
-  - title: "Migrating system components"
-    path: /docs/development/components/v2/migration.md
-  - title: "Troubleshooting components"
-    path: /docs/development/components/v2/troubleshooting.md
-  - title: "Unstable CML features"
-    path: /docs/development/components/v2/unstable_features.md
 - title: "Build components"
   path: /docs/development/components/build.md
+- title: "Connect components"
+  path: /docs/development/components/connect.md
+- title: "Run components"
+  path: /docs/development/components/run.md
 - title: "Provide data files to components"
   path: /docs/development/components/data.md
-- title: "Define an index of components that use storage"
+- title: "Structured Configuration"
+  path: /docs/development/components/structured_config.md
+  status: experimental
+- title: "Component storage index"
   path: /docs/development/components/component_id_index.md
-- title: "Common capabilities"
-  path: /docs/development/components/common_capabilities.md
+- title: "Migrating legacy components"
+  section:
+  - include: /docs/development/components/v2/migration/_toc.yaml

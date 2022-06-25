@@ -166,14 +166,30 @@ formatter has a root-level configuration file (`rustfmt.toml`).
 `rustfmt` runs on source files as follows:
 
 ```sh
-prebuilt/third_party/rust_tools/${HOST_PLATFORM}/bin/rustfmt \
+prebuilt/third_party/rust/${HOST_PLATFORM}/bin/rustfmt \
 --config-path=rustfmt.toml \
 --unstable-features \
 --skip-children \
 $FILES
 ```
 
-TODO(fxbug.dev/27311): Document clippy once implementation details are finalized.
+`clippy` can be invoked locally on GN targets with our fx helper script:
+
+```sh
+fx clippy TARGET
+fx clippy --files FILE1 FILE2 # Filters lints for a list of specific files
+fx lint # Same as --files but implicitly runs on locally changed files
+```
+
+### Enabling clippy lints
+**By default all clippy lints are silenced.** To see lints for your target you'll need to enable them in one of the following ways:
+
+- Put an attribute in your source root such as `#![warn(clippy::needless_return)]` or `#![warn(clippy::all)]`.
+- Locally enable all clippy lints as warnings with the gn arg: `fx set core.x64 --args clippy_warn=true`. This is useful for figuring out which lints are common before enabling them for your targets, or gathering statistics like lint frequency across the project.
+
+[Here is the list](https://rust-lang.github.io/rust-clippy/stable/) of all available clippy lints and their names.
+
+TODO(fxbug.dev/27311): document once clippy is enabled in tricium and can block CL's on denied lints in CQ
 
 ## Go
 
@@ -190,29 +206,33 @@ TODO(fxbug.dev/27310): Document go vet once implementation details are finalized
 
 ## Dart
 
-Dart uses [`dartfmt`](https://github.com/dart-lang/dart_style) and [`dartanalyzer`](https://github.com/dart-lang/sdk/tree/HEAD/pkg/analyzer_cli). These are distributed as prebuilts from the Dart toolchain. The
-`dartanalyzer` is run as part of the build rather than as a check, as it performs type-checking and
-other assertive checks.
+Dart uses [`dart format`](https://github.com/dart-lang/dart_style) and
+[`dartanalyzer`](https://github.com/dart-lang/sdk/tree/HEAD/pkg/analyzer_cli).
+These are distributed as prebuilts from the Dart toolchain. The `dartanalyzer`
+is run as part of the build rather than as a check, as it performs
+type-checking and other assertive checks.
 
-`dartfmt` runs on source files as follows:
+`dart format` runs on source files as follows:
 
 ```sh
-prebuilt/third_party/dart/${HOST_PLATFORM}/bin/dartfmt -w $FILES
+prebuilt/third_party/dart/${HOST_PLATFORM}/bin/dart format $FILES
 ```
 
 The `dartanalyzer` is run as part of the build, triggered when the [`dart_library`](/build/dart/dart_library.gni) GN template is
-invoked. The [invocation](/build/dart/gen_analyzer_invocation.py) is:
+invoked. The [invocation](/build/dart/run_analysis.py) is:
 
 ```sh
 prebuilt/third_party/dart/${HOST_PLATFORM}/bin/dartanalyzer \
   --packages=$DOT_PACKAGES_FILE \
   --dart-sdk=prebuilt/third_party/dart/${HOST_PLATFORM} \
+  --options=$PACKAGE_ROOT/analysis_options \
   --fatal-warnings \
   --fatal-hints \
   --fatal-lints \
-  --options=$PACKAGE_ROOT/analysis_options \
+  --enable-experiment \
+  non-nullable \
   $FILES
-  ```
+```
 
 ## FIDL
 

@@ -20,3 +20,5 @@ toc:
   path: /docs/concepts/filesystems/block_devices.md
 - title: "zxcrypt"
   path: /docs/concepts/filesystems/zxcrypt.md
+- title: "POSIX I/O (libfdio)"
+  path: /docs/concepts/filesystems/life_of_an_open.md

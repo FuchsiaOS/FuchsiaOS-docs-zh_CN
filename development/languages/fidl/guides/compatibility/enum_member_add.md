@@ -21,7 +21,7 @@ rust|[link](#rust-init)|[link](#rust-1)||[link](#rust-3)
 ### FIDL {#fidl-init}
 
 ```fidl
-flexible enum Color {
+type Color = flexible enum {
     RED = 1;
     BLUE = 2;
 };
@@ -107,21 +107,21 @@ std::string reader(fidl_test::Color color) {
 ### LLCPP {#llcpp-init}
 
 ```cpp
-fidl_test::Color writer(std::string s) {
+fidl_test::wire::Color writer(std::string s) {
   if (s == "red") {
-    return fidl_test::Color::RED;
+    return fidl_test::wire::Color::kRed;
   } else if (s == "blue") {
-    return fidl_test::Color::BLUE;
+    return fidl_test::wire::Color::kBlue;
   } else {
-    return fidl_test::Color::Unknown();
+    return fidl_test::wire::Color::Unknown();
   }
 }
 
-std::string reader(fidl_test::Color color) {
+std::string reader(fidl_test::wire::Color color) {
   switch (color) {
-    case fidl_test::Color::RED:
+    case fidl_test::wire::Color::kRed:
       return "red";
-    case fidl_test::Color::BLUE:
+    case fidl_test::wire::Color::kBlue:
       return "blue";
     default:
       return "<unknown>";
@@ -180,7 +180,7 @@ fn reader(color: fidl_lib::Color) -> &'static str {
 - Add the new member
 
 ```diff
-  flexible enum Color {
+  type Color = flexible enum {
       RED = 1;
       BLUE = 2;
 +     YELLOW = 3;
@@ -293,25 +293,25 @@ fn reader(color: fidl_lib::Color) -> &'static str {
 - Writers can now produce instances of the new enum member.
 
 ```diff
-  fidl_test::Color writer(std::string s) {
+  fidl_test::wire::Color writer(std::string s) {
     if (s == "red") {
-      return fidl_test::Color::RED;
+      return fidl_test::wire::Color::kRed;
     } else if (s == "blue") {
-      return fidl_test::Color::BLUE;
+      return fidl_test::wire::Color::kBlue;
 +   } else if (s == "yellow") {
-+     return fidl_test::Color::YELLOW;
++     return fidl_test::wire::Color::kYellow;
     } else {
-      return fidl_test::Color::Unknown();
+      return fidl_test::wire::Color::Unknown();
     }
   }
   
-  std::string reader(fidl_test::Color color) {
+  std::string reader(fidl_test::wire::Color color) {
     switch (color) {
-      case fidl_test::Color::RED:
+      case fidl_test::wire::Color::kRed:
         return "red";
-      case fidl_test::Color::BLUE:
+      case fidl_test::wire::Color::kBlue:
         return "blue";
-+     case fidl_test::Color::YELLOW:
++     case fidl_test::wire::Color::kYellow:
 +       return "yellow";
       default:
         return "<unknown>";

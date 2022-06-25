@@ -15,7 +15,7 @@ To pave and boot on a generic `x64` target, run:
 bootserver \
     --boot "$IMAGES_PATH/fuchsia.zbi" \
     --bootloader "$IMAGES_PATH/fuchsia.esp.blk" \
-    --fvm "$IMAGES_PATH/obj/build/images/fvm.sparse.blk" \
+    --fvm "$IMAGES_PATH/obj/build/images/fuchsia/fuchsia/fvm.sparse.blk" \
     --zircona "$IMAGES_PATH/fuchsia.zbi" \
     --zirconr "$IMAGES_PATH/zedboot.zbi"
 ```
@@ -28,9 +28,9 @@ To pave and boot on a `chromebook` target, run:
 ```
 bootserver \
     --boot "$IMAGES_PATH/fuchsia.zbi" \
-    --fvm "$IMAGES_PATH/obj/build/images/fvm.sparse.blk" \
-    --zircona "$IMAGES_PATH/fuchsia.zbi.vboot" \
-    --zirconr "$IMAGES_PATH/zedboot.vboot"
+    --fvm "$IMAGES_PATH/obj/build/images/fuchsia/fuchsia/fvm.sparse.blk" \
+    --zircona "$IMAGES_PATH/fuchsia.zbi.signed" \
+    --zirconr "$IMAGES_PATH/zedboot.zbi.signed"
 ```
 
 
@@ -41,7 +41,7 @@ To pave and boot on an `arm64` target, run:
 ```
 bootserver \
     --boot "$IMAGES_PATH/fuchsia.zbi" \
-    --fvm "$IMAGES_PATH/obj/build/images/fvm.sparse.blk" \
+    --fvm "$IMAGES_PATH/obj/build/images/fuchsia/fuchsia/fvm.sparse.blk" \
     --zircona "$IMAGES_PATH/fuchsia.zbi" \
     --zirconr "$IMAGES_PATH/zedboot.zbi"
 ```

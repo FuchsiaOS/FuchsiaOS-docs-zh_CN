@@ -22,11 +22,11 @@ you'd like to learn more about.
 {% for item in tocmeta.toc %}
   {% if item.path and item.title != "Introduction" and item.title != "Project template" %}
     <li><a href="{{ item.path }}">{{ item.title }}</a></li>
-  {% elif item.section and item.title != "Graduated projects" %}
+  {% elif item.section %}
       <h3>{{ item.title }}</h3>
         <ul>
     {% for sectionItem in item.section %}
-        {% if sectionItem.path %}
+        {% if sectionItem.path and sectionItem.title != "Overview" %}
           <li><a href="{{ sectionItem.path }}">{{ sectionItem.title }}</a></li>
         {% endif %}
     {% endfor %}

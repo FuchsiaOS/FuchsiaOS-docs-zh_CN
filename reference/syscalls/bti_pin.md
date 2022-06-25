@@ -1,14 +1,14 @@
 # zx_bti_pin
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Pin pages and grant devices access to them.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -50,23 +50,25 @@ committed.
 VMO pages.  These addresses may be given to devices that issue memory
 transactions with the hardware transaction ID associated with the BTI.  The
 number of addresses returned depends on whether the **ZX_BTI_COMPRESS** or
-**ZX_BTI_CONTIGUOUS** options were given.  It number of addresses will be either
-1) If neither is set, one per page (`size*/*PAGE_SIZE`)
-2) If **ZX_BTI_COMPRESS** is set, `size/minimum-contiguity`, rounded up
+**ZX_BTI_CONTIGUOUS** options were given. The number of addresses will be one
+of three possibilities:
+
+1. If neither is set, one per page (`size / PAGE_SIZE`).
+2. If **ZX_BTI_COMPRESS** is set, `size / minimum-contiguity`, rounded up
    (each address representing a run of *minimum-contiguity* run of bytes,
    with the last one being potentially short if *size* is not a multiple of
    *minimum-contiguity*).  It is guaranteed that all returned addresses will be
    *minimum-contiguity*-aligned.  Note that *minimum-contiguity* is discoverable
    via [`zx_object_get_info()`].
-3) If **ZX_BTI_CONTIGUOUS** is set, the single address of the start of the memory.
+3. If **ZX_BTI_CONTIGUOUS** is set, the single address of the start of the memory.
 
-*addrs_count* is the number of entries in the *addrs* array.  It is an error for
-*addrs_count* to not match the value calculated above.
+*num_addrs* is the number of entries in the *addrs* array.  It is an error for
+*num_addrs* to not match the value calculated above.
 
-The pmt retains a reference to the associated vmo, so the underlying vmo won't be
-destroyed until the pmt is unpinned.
+The PMT retains a reference to the associated VMO, so the underlying VMO won't be
+destroyed until the PMT is unpinned.
 
-Resizable vmos can be pinned. If a call to [`zx_vmo_set_size()`] would discard
+Resizable VMOs can be pinned. If a call to [`zx_vmo_set_size()`] would discard
 pinned pages, that call will fail.
 
 ## OPTIONS
@@ -79,7 +81,7 @@ pinned pages, that call will fail.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_BTI** and have **ZX_RIGHT_MAP**.
 
@@ -104,23 +106,26 @@ In the event of failure, a negative error value is returned.
 
 **ZX_ERR_BAD_HANDLE**  *handle* or *vmo* is not a valid handle.
 
-**ZX_ERR_WRONG_TYPE**  *handle* is not a BTI handle or *vmo* is not a VMO handle.
+**ZX_ERR_WRONG_TYPE**  *handle* is not a BTI handle or *vmo* is not a VMO
+handle.
 
-**ZX_ERR_ACCESS_DENIED** *handle* or *vmo* does not have the **ZX_RIGHT_MAP**, or
-*options* contained a permissions flag corresponding to a right that *vmo* does not have.
+**ZX_ERR_ACCESS_DENIED** *handle* or *vmo* does not have the **ZX_RIGHT_MAP**,
+or *options* contained a permissions flag corresponding to a right that *vmo*
+does not have.
 
-**ZX_ERR_INVALID_ARGS** *options* is 0 or contains an undefined flag, either *addrs* or *pmt*
-is not a valid pointer, *addrs_count* is not the same as the number of entries that would be
-returned, or *offset* or *size* is not page-aligned.
+**ZX_ERR_INVALID_ARGS** *options* is 0 or contains an undefined flag, either
+*addrs* or *pmt* is not a valid pointer, *num_addrs* is not the same as the
+number of entries that would be returned, or *offset* or *size* is not
+page-aligned.
 
-**ZX_ERR_OUT_OF_RANGE** *offset* + *size* is out of the bounds of *vmo*.
+**ZX_ERR_OUT_OF_RANGE** `offset + size` is out of the bounds of *vmo*.
 
-**ZX_ERR_UNAVAILABLE** (Temporary) At least one page in the requested range could
-not be pinned at this time.
+**ZX_ERR_UNAVAILABLE** (Temporary) At least one page in the requested range
+could not be pinned at this time.
 
-**ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
-There is no good way for userspace to handle this (unlikely) error.
-In a future build this error will no longer occur.
+**ZX_ERR_NO_MEMORY**  Failure due to lack of memory. There is no good way for
+userspace to handle this (unlikely) error. In a future build this error will no
+longer occur.
 
 ## SEE ALSO
 

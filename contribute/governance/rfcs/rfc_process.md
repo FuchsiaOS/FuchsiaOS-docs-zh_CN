@@ -6,8 +6,12 @@ The Fuchsia RFC process has evolved from the following RFCs:
 * [RFC-0006: Addendum of the RFC process for Zircon](0006_addendum_to_rfc_process_for_zircon.md)
 * [RFC-0067: Additions to Fuchsia RFC process](0067_rfc_process_additions.md)
 * [RFC-0017: The FTP Process is dead, long live the RFC Process!](0017_folding_ftp_into_rfc.md)
+* [RFC-0122: RFC Stakeholders](0122_stakeholders.md)
 
 This page collates the above RFCs and captures the current process.
+
+After reviewing this process, you can follow
+[this guide to create an RFC][create].
 
 [TOC]
 
@@ -31,28 +35,29 @@ direction of the project.
 
 This section describes the design of the RFC process.
 
-### When to use the process
+### When to use the process {#when-to-use-the-process}
 
-The vast majority of changes to Fuchsia do not require an RFC. Instead, these
-changes can be made using the [code review
+The RFC process can be used for any change to Fuchsia that would benefit from
+its structured approach to decision making and its durable record of the
+decision.
+
+The vast majority of changes do not _require_ an RFC. Instead, these changes can
+be made using the [code review
 process](/docs/development/source_code/contribute_changes.md). However,
 technical decisions that have broad impact across the project require broader
 agreement and must be socialized with the project using the RFC process.
 
 The following kinds of changes must use the RFC process:
 
- * *Changing the project roadmap.* The project roadmap describes changes that
-   have broad impact across the system, often touching a large fraction of the
-   system or crossing boundaries between subsystems.
-
  * *Adding constraints on future development.* Some decisions, once made,
    constrain the future development of the system. We need to be careful when
    making such decisions because they can be difficult to revise later.
 
  * *Making project policy.* Project policies have broad impact across the
-   system, often affecting contributors throughout the project. For example,
-   changing the set of supported languages impacts everyone who needs to debug
-   and understand the system, even if not everyone uses the new language.
+   system, often affecting contributors throughout the project. Examples
+   include: changing the set of supported languages (impacts everyone who needs
+   to debug and understand the system), deprecating a widely-used API, and
+   changing testing requirements for a broad class of code changes.
 
  * *Changing the system architecture.* The system architecture describes how the
    system fits together as a whole. Changing the system architecture, by
@@ -74,91 +79,36 @@ The following kinds of changes must use the RFC process:
    decision can be escalated to the RFC process either by one of the disagreeing
    parties or by another contributor.
 
-In addition to the general considerations outlined above, Zircon changes in
-the source directories:
+In addition to the general considerations outlined above, some areas declare
+additional criteria. Please consult these documents when relevant:
 
- * /zircon
- * /src/zircon
- * /src/bringup
+| Area                | Criteria RFC |
+|---------------------|--------------|
+| Component Framework | [RFC-0098](0098_component_framework_rfc_criteria.md)
+| FIDL                | [RFC-0049](0049_fidl_tuning_process_evolution.md)
+| Software Delivery   | [RFC-0103](0103_software_delivery_rfc_criteria.md)
+| Zircon              | [RFC-0006](0006_addendum_to_rfc_process_for_zircon.md)
 
-that meet the following criteria must use RFC process:
+Other changes that might benefit of the RFC process are ones that require manual
+or automated large scale changes of the codebase. For example how logs are
+written or how error paths are handled. Rather than live with islands of
+consistency, the aspiration is to find the best patterns and uniformly apply
+them to the entire codebase.
 
- * *Adding or removing Zircon system interfaces.* The syscall interface, associated
-   structures and constants is the ground truth for the entire system and has broad
-   impact beyond Zircon itself and needs broad consensus before implementation.
-
- * *Changing resource handling behaviors.*  How the system handles partitioning or
-   virtualizing resources such as memory, I/O, processor time or energy consumption
-   and what it does when they are oversubscribed or scarce.
-
- * *Modifying isolation guarantees.* How and what is private and isolated among
-    equal tasks and what privileged tasks can observe and modify. Changes here need to
-    be approved via this process in consultation with the security team.
-
- * *Significant changes of performance or memory use.* Sometimes when additional
-    security, monitoring or features are added, there is a corresponding decrease in
-    performance or higher memory use that need to be vetted via this process.
-
- * *Favoring a single platform.* Zircon strives to have an equal baseline of features
-    and services across all supported architectures and boards. Changes that leverage
-    one platform capabilities but are not feasible or practical on other supported
-    platforms need to use this process.
-
- * *Adding or Downgrading support for a platform.* Adding new boards or architectures,
-    or deprecating/reducing support for an existing platform needs to be vetted via
-    this process.
-
- * *New build configurations.* Adding new build configurations increases the development
-   and testing burden across the entire project and needs to be vetted beforehand.
-
- * *Significant increases on the dependency graph.* Zircon dependencies affect the
-   entire project and significant changes, for example a new dependency on a package
-   that itself has significant dependencies or that is large by itself, should use
-   the RFC process.
-
-In addition to the general considerations outlined above, FIDL changes that meet
-the following criteria must use RFC process:
-
-1. The **solution space is large**, i.e. the change is one of many possibly good
-   other solutions and there is a difficult design tradeoff to make;
-
-2. The **change has a large impact**, i.e. The change modifies the behavior of
-   FIDL in a substantial way such that it may introduce risk to many-or-all
-   users of FIDL;
-
-3. The **change has a large scope**, i.e. The change touches enough pieces of
-   FIDL such that careful attention is required to determine whether it may or
-   may not have a large impact.
-
-For instance, changes to the following FIDL areas will likely require an RFC:
-
-* FIDL governance
-* Design principles
-* Language grammar
-* Type system
-* Protocol semantics
-* Wire format
-* Bindings specification
-
-Additional details are provided in [RFC-0049: FIDL Tuning Process
-Evolution](/docs/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md).
-
-Other changes that might benefit of the RFC process are ones that require manual or
-automated large scale changes of the codebase. For example how logs are written or how
-error paths are handled. Rather than live with islands of consistency, the aspiration
-is to find the best patterns and uniformly apply them to the entire codebase.
-
-The RFC process may also be used for other kinds of changes that would benefit
-from its structured approach to decision making and its durable record of the
-decision.
-
-### Roles and responsibilities
+### Roles and responsibilities {#roles-and-responsibilities}
 
 People interact with the RFC process in several roles:
 
  * *RFC Authors.* An RFC Author is a person who writes an RFC. Everyone who
    contributes to Fuchsia can be an RFC Author. A given RFC can have one or more
    authors. The authors of a given RFC drive the process for that RFC.
+
+ * *Eng Council.* The [Eng Council (FEC)](../eng_council.md) facilitate
+   discussion and make the final decision as to whether the project accepts an
+   RFC.
+
+ * *Facilitator.* The person appointed by FEC to shepherd this RFC through the
+   RFC process. Today, this person must be an FEC member.
 
  * *Stakeholder.* A stakeholder is a person who has a stake in whether the
    project accepts a given RFC. Stakeholders are typically Fuchsia contributors,
@@ -169,9 +119,13 @@ People interact with the RFC process in several roles:
    often *represented* by someone, often a technical lead or other person
    responsible for a group of stakeholders.
 
- * *Eng Council.* The [Eng Council (FEC)](../eng_council.md) facilitate
-   discussion and make the final decision as to whether the project accepts an
-   RFC.
+ * *Reviewer(s).* The stakeholders whose +1 or -1 will be considered when the
+   FEC decides to accept or reject the RFC. (While a +2 is the "approve" on code
+   CLs, we tend to look to reviewers to +1 or -1 to indicate their support or
+   lack thereof, and look to the facilitator to +2 upon approval.)
+
+ * *Consulted.* The stakeholders whose feedback on the RFC was sought, but whose
+   +1 or -1 is not considered when the FEC decides to accept or reject the RFC.
 
 ### How the process works
 
@@ -208,6 +162,9 @@ technical leads for areas related to the problem you are trying to solve. For
 example, you might want to consult with people in the `OWNERS` files for the
 areas of the codebase will need to be modified to execute your idea.
 
+During this phase, the RFC author should start to identify the stakeholders for
+this RFC.
+
 If you are unsure how to socialize your idea, consider asking a technical leader
 for advice. They will often have more experience socializing ideas and might be
 able to point you in a good direction.
@@ -222,14 +179,14 @@ able to point you in a good direction.
 This step is meant to help the author crystalize the goal(s) and potential solutions.
 If they feel that this is accomplished, then they can proceed to the next step.
 
-#### Step 2: Draft
+#### Step 2: Draft {#draft}
 
 Once you have gathered all the background and context you can through
 socialization, you are ready to start the formal part of the RFC process. The
 next step is to write a first draft of the RFC document itself.
 
 Mechanically, an RFC is a markdown file in the
-`//docs/contribute/governance/rfcs` directory. To create and RFC, you create a
+`//docs/contribute/governance/rfcs` directory. To create an RFC, you create a
 CL that adds a file to that directory. You must start by making a copy of the
 [RFC template](TEMPLATE.md). The template is designed to guide you towards
 writing a high-quality RFC by prompting you to think through the problem you are
@@ -243,9 +200,20 @@ Do not worry about assigning a number to your RFC at this stage. Instead, use
 `NNNN` as a placeholder. For example, the file name should be something like
 `NNNN_my_idea.md`. The RFC will get a number shortly before landing.
 
+The RFC author should propose an initial set of stakeholders in consultation
+with the experts in their RFC [area](/docs/contribute/governance/areas). The set
+of stakeholders may initially be left empty or incomplete. If there is any
+ambiguity, they should consult FEC for assistance identifying stakeholders.
+
+> *Tip.* Consult the [RFC best practices doc](best_practices.md) for advice
+> about drafting and iterating on your RFC.
 
 > *Suggestion.* Consider marking the CL containing your RFC as a
 > "work-in-progress" until you are ready for feedback.
+
+The act of uploading the CL is sufficient to get a facilitator assigned to
+your RFC. FEC monitors new RFC CLs as the
+signal to identify the right facilitator for the new RFC.
 
 *Exit criteria*: CL containing your RFC is created.
 
@@ -260,11 +228,20 @@ early in the process, thus reducing the likelihood of a surprise at the
 submission step.
 
 Mechanically, you should invite stakeholders to provide feedback on your RFC by
-adding them to the "Reviewers" or "CC" fields in the CL, as you would for a
-normal code review. In addition, you may email your CL to
-eng-council-discuss@fuchsia.dev soliciting additional feedback.
-The stakeholders should provide you feedback by leaving
-comments on your RFC in the code review tool.
+adding them to the "Reviewers" (for stakeholders whose +1 is required) or "CC"
+fields (for "consulted" stakeholders) in the CL, as you would for a normal code
+review. In addition, you may email your CL to eng-council-discuss@fuchsia.dev
+soliciting additional feedback. The stakeholders should provide you feedback by
+leaving comments on your RFC in the code review tool.
+
+Anyone can propose an additional stakeholder for a given RFC, including
+themselves, by commenting on the RFC CL, although these proposals may not always
+be accepted. If there is broad agreement, the RFC author should add the
+stakeholder. FEC may also request that the author add stakeholders.
+
+A stakeholder may 'opt out' and ask to be removed, or may delegate their review
+(for example, to another expert in the relevant area). FEC may request that a
+stakeholder be removed or moved from "reviewer" to "consulted".
 
 If the discussion is too complex for the code review tool, consider scheduling a
 meeting with the relevant stakeholders to have a more efficient discussion.
@@ -278,6 +255,11 @@ providing additional structure to the discussion or moving the discussion to
 another forum. Regardless of how the discussion proceeds, the results of any
 off-CL discussion must be captured in the CL, often by posting a summary of the
 discussion as a CL comment.
+
+Feedback may include comments from people who are not stakeholders. The author
+should respond to these comments if relevant, but settling them is not
+necessarily required to move to the last call stage. If the comments point to a
+disagreement about who is a stakeholder, FEC can help resolve this.
 
 At FEC's discretion, RFCs that would benefit from more socialization should be
 scheduled for an [engineering
@@ -312,7 +294,7 @@ effectively in the CL.
 *Exit criteria:* All stakeholders identified and approved by Eng Council; feedback
 solicited and incorporated.
 
-#### Step 4: Last call
+#### Step 4: Last call {#last-call}
 
 Once the iterations on the RFC are converging, the author must email
 eng-council@fuchsia.dev requesting them to move the RFC's status to last call.
@@ -320,11 +302,9 @@ An Eng Council member will send an email to all stakeholders and
 eng-council-discuss@fuchsia.dev to solicit any final feedback before moving to
 the decision step. The RFC will be open for feedback for the next 7 calendar days.
 
-Typically, stakeholders who need to approve a CL (i.e., whose sign-off
-is required for the RFC to move forward) should
-sign-off with a +2 whereas stakeholders whose approval is not required should
-sign-off with a +1, but all stakeholders are welcome to sign-off with a +2 if
-they wish to express their enthusiasm for the RFC.
+Typically, reviewers sign off with a +1 and the facilitator will sign off with a
++2. Consulted stakeholders may also sign off with a +1 or +2 if they wish to
+express their enthusiasm for the RFC, although this is not required.
 
 Stakeholders who wish to object to an RFC can set the Code-Review flag to -1 or
 -2, depending on how strongly they feel that the RFC should not move forward.
@@ -476,3 +456,6 @@ existing processes:
    similar process [to make decisions about the FIDL
    language](/docs/contribute/governance/deprecated-ftp-process.md). This
    proposal exists because of the success of that decision-making process.
+
+[swd]: /docs/contribute/governance/rfcs/0103_software_delivery_rfc_criteria.md
+[create]: /docs/contribute/governance/rfcs/create_rfc.md

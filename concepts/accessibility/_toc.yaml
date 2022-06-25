@@ -1,0 +1,16 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Accessibility Framework"
+  path: /docs/concepts/accessibility/accessibility_framework.md
+- title: "Semantics"
+  path: /docs/concepts/accessibility/semantics.md
+- title: "Accessibility Focus"
+  path: /docs/concepts/accessibility/accessibility-focus.md
+- title: "Text-to-speech for accessibility"
+  path: /docs/concepts/accessibility/tts.md

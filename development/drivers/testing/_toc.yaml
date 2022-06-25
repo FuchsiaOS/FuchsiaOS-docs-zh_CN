@@ -8,3 +8,7 @@
 toc:
 - title: "Overview"
   path: /docs/development/drivers/testing/overview.md
+- title: "Mock DDK"
+  path: /docs/development/drivers/testing/mock_ddk.md
+- title: "Driver Test Realm"
+  path: /docs/development/drivers/testing/driver_test_realm.md

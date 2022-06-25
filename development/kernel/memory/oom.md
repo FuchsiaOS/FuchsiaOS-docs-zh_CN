@@ -74,34 +74,6 @@ job.
 
 ## Components
 
-### Kernel OOM thread
-
-A kernel thread that periodically checks the amount of free memory in the
-system, and kills a job if the free amount is too low (below the "redline").
-
-Use `k oom info` to see the state of the OOM thread (on the kernel console):
-
-```
-$ k oom info
-OOM info:
-  running: true
-  printing: false
-  simulating lowmem: false
-  sleep duration: 1000ms
-  redline: 50M (52428800 bytes)
-```
-
-The redline, sleep duration, and auto-start values are controlled by
-`kernel.oom.*` [kernel commandline flags](/docs/reference/kernel/kernel_cmdline.md).
-
-The thread can be started with `k oom start` and stopped with `k oom stop`.
-
-`k oom print` will toggle a flag that prints the current free and total memory
-every time the thread wakes up.
-
-`k oom lowmem` will trigger a false low-memory event the next time the thread
-wakes up, potentially killing a job.
-
 ### OOM-ranker driver
 
 TODO(dbort/maniscalco): Implement and document.

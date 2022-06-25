@@ -25,6 +25,9 @@ A job is an object consisting of the following:
 Jobs allow "applications" that are composed of more than one process to be
 controlled as a single entity.
 
+For more information, see [Jobs](/docs/concepts/process/jobs.md).
+
+
 ## SYSCALLS
 
  - [`zx_job_create()`] - create a new child job.

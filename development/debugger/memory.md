@@ -57,7 +57,8 @@ The following are relevant VMO names that could be included in output from the `
     and loader code.
   * `scudo:*`: Pages allocated with the scudo memory manager. If the process is using scudo, these
     regions are the application heap.
-  * `vdso/full`: The built-in library that implements system calls.
+  * `vdso/next`: The built-in library that implements the next system calls.
+  * `vdso/stable`: The built-in library that implements the stable system calls.
   * `blob-*`: Mapped library coming from blobfs. The `libs` command can tell you the library name
     for that address.
 

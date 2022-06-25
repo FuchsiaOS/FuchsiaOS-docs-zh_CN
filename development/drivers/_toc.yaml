@@ -6,10 +6,10 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Developer Guide"
+- title: "Developer guide"
   section:
   - include: /docs/development/drivers/developer_guide/_toc.yaml
-- title: "Driver Guides"
+- title: "Driver guides"
   section:
   - include: /docs/development/drivers/driver_guides/_toc.yaml
 - title: "Testing"
@@ -24,3 +24,6 @@ toc:
 - title: "Best practices"
   section:
   - include: /docs/development/drivers/best_practices/_toc.yaml
+- title: "Concepts"
+  section:
+  - include: /docs/development/drivers/concepts/_toc.yaml

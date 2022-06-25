@@ -77,7 +77,6 @@ Specifically:
 
 * [bootserver](documentation/bootserver.md)
 * [zxdb](documentation/debugger.md)
-* [device-finder](documentation/device_discovery.md)
 * [ssh](documentation/ssh.md)
 * [logging and symbolizer](documentation/logging.md)
 * [package manager](documentation/packages.md)

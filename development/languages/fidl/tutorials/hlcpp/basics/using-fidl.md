@@ -44,18 +44,23 @@ rm -r examples/fidl/hlcpp/unittests/*
    To do this, add the following to `examples/fidl/hlcpp/unittests/BUILD.gn`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/BUILD.gn" region_tag="first" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/BUILD.gn" region_tag="first" %}
 
    test("example-cpp-host-test") {
      sources = [ "main.cc" ]
-     deps = [ "//third_party/googletest:gtest_main" ]
+     deps = [ "//src/lib/fxl/test:gtest_main" ]
    }
    ```
 
+1. Add the test suite to your configuration:
+
+<pre class="prettyprint">
+<code class="devsite-terminal">fx set <var>product</var>.<var>board</var> --with //examples/fidl/hlcpp/unittests</code>
+</pre>
+
 1. Run the empty test suite:
 
-   ```
-   fx set core.x64 --with //examples/fidl/hlcpp/unittests
+   ```posix-terminal
    fx test -vo example-cpp-host-test
    ```
 
@@ -68,7 +73,7 @@ Add a dependency on the HLCPP bindings by referencing the FIDL target
 directly. The new `test` target should look like:
 
 ```gn
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/BUILD.gn" region_tag="test" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/BUILD.gn" region_tag="test" %}
 ```
 
 (Optional) To view the newly generated bindings:
@@ -78,7 +83,7 @@ directly. The new `test` target should look like:
    `out/default/fidling/gen/examples/fidl/fuchsia.examples/fuchsia/examples`, where
    the generated files are located.
    You may need to change `out/default` if you have set a different build output
-   directory. You can check your build output directory with `cat .fx-build-dir`.
+   directory. You can check your build output directory with `fx get-build-dir`.
 
 For more information on how to find generated bindings code, see
 [Viewing generated bindings code][generated-code].
@@ -89,7 +94,7 @@ To include the bindings, add the following include statement to the top of
 `examples/fidl/hlcpp/unittests/main.cc`
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="include" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="include" %}
 ```
 
 ## Inspect and use the generated bindings code {#inspect-user-generated-bindings}
@@ -101,20 +106,20 @@ To get started, you can also use some example code. You can add this inside the
 anonymous namespace in `main.cc`:
 
 ```cpp
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="bits" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="bits" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="enums" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="structs" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="unions" %}
 
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/unittests/main.cc" region_tag="tables" %}
 ```
 
 To rebuild and rerun the tests, run:
 
-```
+```posix-terminal
 fx test -vo example-cpp-host-test
 ```
 

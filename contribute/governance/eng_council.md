@@ -7,10 +7,9 @@ responsible for providing a coherent technical vision for Fuchsia. The council
 largely operates by delegation and ratification, promulgating engineering
 standards, values, and objectives throughout the community and then reviewing
 and ratifying concrete engineering proposals from project contributors.
-Concretely, the Eng Council is charged with maintaining the platform roadmap,
-approving or rejecting Fuchsia RFCs using the
-[Fuchsia RFC Process][rfc-process], and resolving technical disputes that
-cannot be resolved within subteams.
+Concretely, the Eng Council is charged with approving or rejecting Fuchsia RFCs
+using the [Fuchsia RFC Process][rfc-process] and resolving technical disputes
+that cannot be resolved within subteams.
 
 ## Goals
 
@@ -49,23 +48,6 @@ In making trade-offs, the council aims to uphold the project’s values:
 The council is responsible for the following activities. The bulk of these
 activities occur in public, but the council can communicate privately if the
 council needs to consider non-public information.
-
-### Platform roadmap
-
-The council maintains the platform roadmap, which is a time-oriented
-description of the technical problems the project is planning to solve to
-support long-term product requirements. The roadmap describes the general
-approach for each problem rather than a detailed design document or engineering
-plan. Those documents should instead be published using the
-[Fuchsia RFC Process][rfc-process]. The roadmap can also identify technical
-problems the project plans to solve where the project does not yet have an
-agreed approach.
-
-The platform roadmap evolves as the project progresses and as product
-requirements evolve. At least once a year, the council runs an inclusive
-planning process to ensure broad community input into the platform roadmap.
-However, the council can update the platform roadmap outside of formal planning
-cycles if the need arises.
 
 ### System architecture
 

@@ -21,11 +21,12 @@ See [log_listener CLI] for a list of available flags.
 
 ## Symbolization
 
-`//tools/symbolize` should be used to symbolize stack traces. It should be
+`//tools/symbolizer` should be used to symbolize stack traces. It should be
 pointed to the `.build-id` directory at the root of the SDK, where debug symbols
 are hosted:
-```
-tools/symbolize --build-id-dir .build-id
+
+```posix-terminal
+symbolizer --build-id-dir .build-id
 ```
 
 [log_listener CLI]: /docs/reference/diagnostics/consumers/log_listener.md

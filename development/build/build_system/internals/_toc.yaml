@@ -1,0 +1,15 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/build/build_system/internals/index.md
+- title: "Manifest file formats"
+  path: /docs/development/build/build_system/internals/manifest_formats.md
+- title: "GN toolchains and the Fuchsia build"
+  section:
+  - include: /docs/development/build/build_system/internals/toolchains/_toc.yaml

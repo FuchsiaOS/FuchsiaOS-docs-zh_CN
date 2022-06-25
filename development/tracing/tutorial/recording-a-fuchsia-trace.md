@@ -1,9 +1,7 @@
-# Recording a trace
+# Recording a Fuchsia trace
 
-This document describes how to record a trace with Fuchsia's tracing system.
-
-Note: For more information on the Fuchsia tracing system, see
-[Fuchsia tracing system](/docs/concepts/tracing/README.md).
+This document describes how to record a trace with Fuchsia's
+[tracing system](/docs/concepts/kernel/tracing-system.md).
 
 ## Prerequisites
 
@@ -25,8 +23,8 @@ done the following:
 ## Use the utilities
 
 Traces are recorded with the `trace` utility on a Fuchsia target.
-The `fx traceutil` command, which you can run from your development
-host, calls the `trace` utility on your Fuchsia target.
+The [`ffx trace start`][ffx-trace] command, which you can run from
+your development host, calls the `trace` utility on your Fuchsia target.
 
 You can record a trace from your Fuchsia target from your development host
 or directly from the Fuchsia target.
@@ -37,39 +35,35 @@ or directly from the Fuchsia target.
 ### From a development host {#from-a-development-host}
 
 To record a trace for a Fuchsia target from a development host,
-run the following:
+run the following command:
 
 Note: You can also configure parameters of tracing with a
-tracing specification file. For more information, see
-[Tracing specification file](/docs/reference/tracing/trace-specification-file.md).
+[tracing specification file](/docs/reference/tracing/trace-specification-file.md).
 
-<pre class="prettyprint">
-<code class="devsite-terminal">fx traceutil record <var>component</var> <var>arg1 ...</var> --with-base</code>
-</pre>
+```posix-terminal
+ffx trace start [--duration <SECONDS>]
+```
 
-`fx traceutil record` does the following:
+`ffx trace start` does the following:
 
- * Takes a 10 second trace on the Fuchsia target with the default options.
-   This records basic graphics data and thread CPU usage.
- * Copies the trace from the Fuchsia target device to your development host.
+ * Starts a trace on the Fuchsia target with the default options.
+ * Runs the tracing until the `Enter` key is pressed, or the duration is
+   reached if provided.
+ * Prints the trace results from the Fuchsia target device to an output file
+   on your development host.
 
-If you specify a component, the component runs after tracing has started.
-This behavior is intended to not miss any early trace events in the component.
+For a complete list of the `ffx trace start` options, run `ffx trace start --help`.
 
-For a full list of the `record` option, run `fx traceutil record --help`.
-
-Once you have trace file, you can now convert and analyze that
-trace file. For more information, see
-[Converting and visualizing a trace](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md).
+Once you have the trace output file, you can
+[convert and analyze that trace file](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md).
 
 ### From a Fuchsia target {#from-a-fuchsia-target}
 
-To record a trace directly from a Fuchsia target, run the following in
-a shell on your target:
+To record a trace directly from a Fuchsia target, run the following
+command in a shell on your target:
 
-Note: You can also configure parameters of tracing with a tracing specification
-file. For more information, see
-[Tracing specification file](/docs/reference/tracing/trace-specification-file.md).
+Note: You can also configure parameters of tracing with a
+[tracing specification file](/docs/reference/tracing/trace-specification-file.md).
 
 <pre class="prettyprint">
 <code class="devsite-terminal">trace record</code>
@@ -78,7 +72,9 @@ file. For more information, see
 This saves your trace in `/data/trace.json` on your Fuchsia target by default.
 For more information on the `trace` utility, run `trace --help` at a Fuchsia shell.
 
-Once you have trace file, you can now convert and analyze that
-trace file. For more information, see
-[Converting and visualizing a trace](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md).
+Once you have the trace output file, you can
+[convert and analyze that trace file](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md).
 
+<!-- Reference links -->
+
+[ffx-trace]: https://fuchsia.dev/reference/tools/sdk/ffx#trace

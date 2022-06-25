@@ -33,7 +33,7 @@ This tutorial implements the `EchoLauncher` protocol from the
 [fuchsia.examples library][examples-fidl]:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="launcher" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="launcher" %}
 ```
 
 This is a protocol that lets clients retrieve an instance of the `Echo`
@@ -63,7 +63,7 @@ This implementation of `Echo` allows specifying a prefix in order to
 distinguish between the different instances of `Echo` servers:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/server/lib/main.dart" region_tag="echo-impl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/server/lib/main.dart" region_tag="echo-impl" %}
 ```
 
 The `SendString` handler is empty as the client just uses `EchoString`.
@@ -76,7 +76,7 @@ server to a channel.
 This class uses stores a list of all of the instances of `Echo` that it launches:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/server/lib/main.dart" region_tag="launcher-impl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/server/lib/main.dart" region_tag="launcher-impl" %}
 ```
 
 Both of the `EchoLauncher` methods are handled by calling the `launchEchoServer` helper method on
@@ -91,7 +91,7 @@ The main loop should is the same as in the
 [server tutorial][server-tut-main] but serves an `EchoLauncher` instead of `Echo`.
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/server/lib/main.dart" region_tag="main" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/server/lib/main.dart" region_tag="main" %}
 ```
 
 ## Build the server
@@ -122,7 +122,7 @@ code connects to one instance of `Echo` using `GetEcho` and another using
 This is the non-pipelined code:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/client/lib/main.dart" region_tag="main" highlight="9,10,11,12,13,14,15,16" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/client/lib/main.dart" region_tag="main" highlight="9,10,11,12,13,14,15,16" %}
 ```
 
 This code chains together two futures. First, it makes the `GetEcho` request to the client. It then
@@ -136,7 +136,7 @@ the futures get completed.
 The pipelined code is much simpler:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/client/lib/main.dart" region_tag="main" highlight="18,19,20,21,22,23,24,25,26" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/client/lib/main.dart" region_tag="main" highlight="18,19,20,21,22,23,24,25,26" %}
 ```
 
 The call to `pipelinedEcho.ctrl.request()` creates a channel, binds the client object to one end,
@@ -147,7 +147,7 @@ Finally, the two futures corresponding to the non-pipelined and pipelined calls 
 completion concurrently, to see which one completes first:
 
 ```dart
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/client/lib/main.dart" region_tag="main" highlight="28,29" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/request_pipelining/client/lib/main.dart" region_tag="main" highlight="28,29" %}
 ```
 
 ## Build the client
@@ -181,12 +181,13 @@ To run the example code:
    fx shell run fuchsia-pkg://fuchsia.com/example-launcher-dart#meta/example-launcher-dart.cmx fuchsia-pkg://fuchsia.com/echo-launcher-dart-client#meta/echo-launcher-dart-client.cmx fuchsia-pkg://fuchsia.com/echo-launcher-dart-server#meta/echo-launcher-dart-server.cmx fuchsia.examples.EchoLauncher
    ```
 
-You should see the following print output in the QEMU console (or using `fx log`):
+You should see output similar to the following in the QEMU console
+(or using `ffx log`):
 
 ```
-[269547.480853][3][790426877][echo-launcher-server, main.dart(86)] INFO: Running EchoLauncher server
-[269547.605037][3][1058778107][echo-launcher-client, main.dart(39)] INFO: Got echo response pipelined: hello
-[269547.609355][3][1058778107][echo-launcher-client, main.dart(27)] INFO: Got echo response not pipelined: hello
+[echo-launcher-server][][I] Running EchoLauncher server
+[echo-launcher-server][][I] Got echo response pipelined: hello
+[echo-launcher-server][][I] Got echo response not pipelined: hello
 ```
 
 Based on the print order, you can see that the pipelined case is faster. The
@@ -202,6 +203,6 @@ protocol requests that may fail, see the [FIDL API rubric][rubric].
 [server-tut]: /docs/development/languages/fidl/tutorials/dart/basics/server.md
 [server-tut-main]: /docs/development/languages/fidl/tutorials/dart/basics/server.md#main
 [client-tut]: /docs/development/languages/fidl/tutorials/dart/basics/client.md
-[rubric]: /docs/concepts/api/fidl.md#request-pipelining
+[rubric]: /docs/development/api/fidl.md#request-pipelining
 [overview]: /docs/development/languages/fidl/tutorials/dart/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

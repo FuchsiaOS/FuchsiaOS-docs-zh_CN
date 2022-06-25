@@ -19,7 +19,7 @@ of each kind:
 * `OnString` is an event.
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" region_tag="echo" %}
 ```
 
 For more on FIDL methods and messaging models, refer to the [FIDL concepts][concepts] page.
@@ -35,13 +35,11 @@ and run. Then, it gradually adds functionality to get the server up and running.
 
 If you want to write the code yourself, delete the following directories:
 
-```
+```posix-terminal
 rm -r examples/fidl/rust/server/*
 ```
 
-## Create and run a component {#component}
-
-### Create the component
+## Create the component {#component}
 
 To create a component:
 
@@ -56,7 +54,7 @@ To create a component:
 1. Declare a target for the server in `examples/fidl/rust/server/BUILD.gn`:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/BUILD.gn" region_tag="imports" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/BUILD.gn" region_tag="imports" %}
 
    # Declare an executable for the server. This produces a binary with the
    # specified output name that can run on Fuchsia.
@@ -67,59 +65,49 @@ To create a component:
      sources = [ "src/main.rs" ]
    }
 
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/BUILD.gn" region_tag="rest" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/BUILD.gn" region_tag="rest" %}
    ```
 
-  <!-- TODO(fxbug.dev/58758) <<../../common/server/packages.md>> -->
+   <!-- TODO(fxbug.dev/58758) <<../../common/server/packages.md>> -->
 
-  To get the server component up and running, there are three targets that are
-  defined:
+   To get the server component up and running, there are three targets that are
+   defined:
 
-  * The raw executable file for the server that is built to run on Fuchsia.
-  * A component that is set up to simply run the server executable,
-    which is described using the component's manifest file.
-  * The component is then put into a package, which is the unit of software
-    distribution on Fuchsia. In this case, the package just contains a
-    single component.
+   * The raw executable file for the server that is built to run on Fuchsia.
+   * A component that is set up to simply run the server executable,
+     which is described using the component's manifest file.
+   * The component is then put into a package, which is the unit of software
+     distribution on Fuchsia. In this case, the package just contains a
+     single component.
 
-  For more details on packages, components, and how to build them, refer to
-  the [Building components](/docs/development/components/build.md) page.
+   For more details on packages, components, and how to build them, refer to
+   the [Building components][building-components] page.
 
-1. Add a component manifest in `examples/fidl/rust/server/server.cmx`:
+1. Add a component manifest in `examples/fidl/rust/server/meta/server.cml`:
 
    Note: The binary name in the manifest must match the output name of the `executable`
    defined in the previous step.
 
-   ```cmx
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/server.cmx" %}
-
-### Run the component
-
-<!-- TODO(fxbug.dev/58758) <<../../common/server/qemu.md>> -->
-
-Note: The instructions in this section are geared towards running the component
-on QEMU, as this is the simplest way to get started with running Fuchsia, but
-it is also possible to pick a different [product configuration][products] and
-run on actual hardware if you are familiar with running components on
-other product configurations.
-
-1. Add the server to your configuration and build:
-
-   ```
-   fx set core.x64 --with //examples/fidl/rust/server && fx build
+   ```json5
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/meta/server.cml" region_tag="example_snippet" %}
    ```
 
-1. Ensure `fx serve` is running in a separate tab and connected to an instance of
-   Fuchsia (e.g. running in QEMU using `fx qemu`), then run the server:
+   <!-- TODO(fxbug.dev/58758) <<../../common/server/qemu.md>> -->
 
-   Note: The component should be referenced by its [URL][glossary-url], which
-   is determined with the [`fuchsia-pkg://` scheme][glossary-scheme]. The
-   package name in the URL matches the `package_name` field in the `fuchsia_package`
-   declaration, and the manifest path in `meta/` matches the target name of the
-   `fuchsia_component`.
+1. Add the server to your build configuration:
 
+   ```posix-terminal
+   fx set core.qemu-x64 --with //examples/fidl/rust/server:echo-rust-server
    ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-rust-server#meta/echo-server.cmx
+
+   Note: This build configuration assumes your device target is the emulator.
+   To run the example on a physical device, select the appropriate
+   [product configuration][products] for your hardware.
+
+1. Build the Fuchsia image:
+
+   ```posix-terminal
+   fx build
    ```
 
 ## Implement the server
@@ -127,7 +115,7 @@ other product configurations.
 First you'll implement the behavior of the Echo protocol. In Rust, this is expressed
 as code that can handle the protocol's associated request stream type, which in this case is an
 `EchoRequestStream`. This type is a stream of Echo requests, i.e. it implements
-`futures::Stream<Item = Rersult<EchoRequest, fidl::Error>>`.
+`futures::Stream<Item = Result<EchoRequest, fidl::Error>>`.
 
 You'll implement `run_echo_server()` to handle the request stream,
 which is an async function that handles incoming service requests.
@@ -163,7 +151,7 @@ tutorials.
 ### Define `run_echo_server`:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" %}
 ```
 
 The implementation consists of the following elements:
@@ -172,7 +160,7 @@ The implementation consists of the following elements:
   context using the `.context()` method on each result:
 
   ```rust
-  {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" highlight="3,4" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" highlight="3,4" %}
   ```
 
   At this stage, the stream of `Result<EchoRequest, fidl::Error>` becomes a stream of
@@ -184,13 +172,13 @@ The implementation consists of the following elements:
   will return immediately with that error:
 
   ```rust
-  {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" highlight="5,23" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" highlight="5,23" %}
   ```
 * The contents of the closure handle incoming `EchoRequest`s by matching on them to
   determine what kind of request they are:
 
   ```rust
-  {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" highlight="6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="impl" highlight="6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22" %}
   ```
 
   This implementation handles `EchoString` requests by echoing the input back, and it handles
@@ -207,7 +195,7 @@ The implementation consists of the following elements:
 
 You can verify that the implementation is correct by running:
 
-```
+```posix-terminal
 fx build
 ```
 
@@ -235,13 +223,13 @@ connect to a protocol matching the specified name.
 1. Add them as build dependencies to the `rustc_binary` target. The full target looks like:
 
    ```gn
-   {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/BUILD.gn" region_tag="server" %}
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/BUILD.gn" region_tag="server" %}
    ```
 
 ### Define the `main` function
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="1,2,20" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="1,2,20" %}
 ```
 
 The main function is async since it consists of listening for incoming connections to the
@@ -263,7 +251,7 @@ Since the server will be run singlethreaded, use
 `ServiceFs::new_local()` instead of `ServiceFs::new()` (the latter is multithreaded capable).
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="4" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="4" %}
 ```
 
 ### Add the Echo FIDL service
@@ -272,7 +260,7 @@ Ask the component manager to expose the Echo FIDL service. There are two parts t
 function call:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="5" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="5" %}
 ```
 
 * The component manager must know what to do with incoming connection requests. This is specified
@@ -282,7 +270,7 @@ function call:
   is to define an enum of the possible services offered by the server, in this example:
 
   ```rust
-  {%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="enum" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="enum" %}
   ```
 
   and then passing the enum variant "constructor" as the closure. When there are multiple services
@@ -292,7 +280,7 @@ function call:
 
 * The component manager must also know *where* this service is going to be available.
   Since this is an outgoing service (i.e. a service that is offered to other components),
-  the service must at a path inside `/svc` directory. `add_fidl_service` obtains this
+  the service must add a path inside `/svc` directory. `add_fidl_service` obtains this
   path implicitly by taking the [`SERVICE_NAME`](https://fuchsia-docs.firebaseapp.com/rust/fidl/endpoints/trait.DiscoverableService.html)
   associated with the closure input argument.
   In this case, the closure argument (`IncomingService::Echo`) has an input argument of type
@@ -303,7 +291,7 @@ function call:
 ### Serve the outgoing directory
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="7,8" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="7,8" %}
 ```
 
 This call will bind the `ServiceFs` to the `DirectoryRequest` startup handle for the component, and
@@ -321,7 +309,7 @@ This process is described further in
 Run the `ServiceFs` to completion in order to listen for incoming connections:
 
 ```rust
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="10,11,12,13,14,15,16,17" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/server/src/main.rs" region_tag="main" highlight="10,11,12,13,14,15,16,17" %}
 ```
 
 This runs the `ServiceFs` future, handling up to 10,000 incoming
@@ -340,34 +328,51 @@ Echo server at the same time, so this stream of requests is handled concurrently
 requests for a single client happen in sequence so there is no benefit to processing requests
 concurrently.
 
-## Run the server
+## Test the server
 
 Rebuild:
 
-```
+```posix-terminal
 fx build
 ```
 
-Then run the server:
+Then run the server component:
 
-```
-fx shell run fuchsia-pkg://fuchsia.com/echo-rust-server#meta/echo-server.cmx
+```posix-terminal
+ffx component run fuchsia-pkg://fuchsia.com/echo-rust-server#meta/echo_server.cm
 ```
 
-You should see the `println!` output from the `main()` function followed by the
-server hanging. This is expected. Instead of exiting right away, the server
-keeps waiting for incoming requests. The next step will be to write a client for
-the server.
+Note: Components are resolved using their [component URL][glossary.component-url],
+which is determined with the [`fuchsia-pkg://`][glossary.fuchsia-pkg-url] scheme.
+
+You should see output similar to the following in the device logs (`ffx log`):
+
+```none {:.devsite-disable-click-to-copy}
+[ffx-laboratory:echo_server][][I] Listening for incoming connections...
+```
+
+The server is now running and waiting for incoming requests.
+The next step will be to write a client that sends `Echo` protocol requests.
+For now, you can simply terminate the server component:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_server
+```
+
+Note: Component instances are referenced by their
+[component moniker][glossary.moniker], which is determined by their location in
+the [component instance tree][glossary.component-instance-tree]
 
 <!-- xrefs -->
+[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: /docs/glossary/README.md#fuchsia-pkg-url
+[glossary.moniker]: /docs/glossary/README.md#moniker
 [concepts]: /docs/concepts/fidl/overview.md
 [fidl-crates]: /docs/development/languages/fidl/tutorials/rust/basics/using-fidl.md
 [building-components]: /docs/development/components/build.md
-[products]: /docs/concepts/build_system/boards_and_products.md
+[products]: /docs/development/build/build_system/boards_and_products.md
 [control-handle]: /docs/reference/fidl/bindings/rust-bindings.md#protocol-control-handle
-[getting-started]: /docs/get-started/index.md
-[glossary-url]: /docs/glossary.md#component-url
-[glossary-scheme]: /docs/glossary.md#fuchsia-pkg-url
 [declaring-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
 [component-manager]: /docs/concepts/components/v2/component_manager.md
 [protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel

@@ -26,7 +26,7 @@ support.To install it, select **Settings**, then **Plugins**, and then click
 
 ## Sublime Text {#sublime}
 
-[Sublime syntax highlighting support](/garnet/public/lib/fidl/tools/sublime).
+[Sublime syntax highlighting support](/tools/fidl/editors/sublime).
 
 To install, select **Sublime Text**, then **Preferences**, then
 **Browse Packages** and copy or symlink the files `FIDL.sublime-syntax`, and
@@ -34,7 +34,7 @@ To install, select **Sublime Text**, then **Preferences**, then
 
 ## Vim {#vim}
 
-[Vim syntax highlighting support and instructions](/garnet/public/lib/fidl/tools/vim).
+[Vim syntax highlighting support and instructions](/tools/fidl/editors/vim).
 
 ## Visual Studio Code {#visual-studio-code}
 
@@ -47,7 +47,7 @@ Contributions to the various plugins are welcome. Their respective code is in:
 
 * [Atom](https://fuchsia.googlesource.com/atom-language-fidl/)
 * [IntelliJ](https://fuchsia.googlesource.com/intellij-language-fidl/)
-* [Sublime](/garnet/public/lib/fidl/tools/sublime)
-* [vim](/garnet/public/lib/fidl/tools/vim)
+* [Sublime](/tools/fidl/editors/sublime)
+* [vim](/tools/fidl/editors/vim/)
 * [Visual Studio Code](https://fuchsia.googlesource.com/vscode-language-fidl/)
 

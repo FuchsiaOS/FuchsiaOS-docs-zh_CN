@@ -80,12 +80,12 @@ Fahrenheit for temperature" in a locale ID.
 ## Accessing i18n preferences {#access}
 
 To send i18n preferences between Fuchsia
-[components](/docs/glossary.md#component), use the
+[components](/docs/glossary/README.md#component), use the
 [`fuchsia.intl.Profile`](https://fuchsia.dev/reference/fidl/fuchsia.intl#Profile)
 FIDL table:
 
 ```fidl {:.devsite-disable-click-to-copy}
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="sdk/fidl/fuchsia.intl/intl.fidl" indented_block="table Profile" exclude_regexp="(//.*)|(^$)" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="sdk/fidl/fuchsia.intl/intl.fidl" indented_block="type Profile" exclude_regexp="(//.*)|(^$)" %}
 ```
 
 The locale ID is only a building block in the `Profile`. A profile contains a
@@ -117,8 +117,8 @@ requirements, or some combination of the above.
 Fuchsia has no ambient or system locale. Locale and other i18n preferences
 depend on the context in which a component is running. This is in contrast to
 other operating systems, which may have APIs to obtain global or default locale
-settings. See Fuchsia's design principle of
-[no ambient authority](/docs/concepts/components/v2/design_principles.md#no-ambient-authority).
+settings, following Fuchsia's design principle of
+[no ambient authority](/docs/concepts/principles/secure.md)
 
 In runtimes where the standard library offers access to some default locale (for
 example, `Platform.localeName` in Dart and Flutter), it is the responsibility of
@@ -147,7 +147,7 @@ A basic C++ library implementing `fuchsia.intl.PropertyProvider` is found at
 [`//src/lib/intl/intl_property_provider_impl`](/src/lib/intl/intl_property_provider_impl).
 
 The
-[`core`](/docs/concepts/build_system/boards_and_products.md#key_product_configurations)
+[`core`](/docs/development/build/build_system/boards_and_products.md#key_product_configurations)
 product configuration includes [`intl_services`](/src/intl/intl_services), a
 component that wraps this implementation.
 
@@ -196,7 +196,7 @@ is used to write and monitor internationalization-related settings.
 ```
 
 ```fidl {:.devsite-disable-click-to-copy}
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="sdk/fidl/fuchsia.settings/intl.fidl" indented_block="table IntlSettings" exclude_regexp="(//.*)|(^$)" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="sdk/fidl/fuchsia.settings/intl.fidl" indented_block="type IntlSettings" exclude_regexp="(//.*)|(^$)" %}
 ```
 
 This protocol is intended specifically for components that require direct access
@@ -209,9 +209,8 @@ through `fuchsia.intl.PropertyProvider`.
 
 ### Implementation: `setui_service` {#setui-service}
 
-The protocol `fuchsia.settings.Intl` is
-[implemented](/garnet/bin/setui/src/intl/) by the
-[`setui_service`](/garnet/bin/setui/) (along with the other protocols under
+The protocol `fuchsia.settings.Intl` is implemented by the
+[`setui_service`](/src/settings/service) (along with the other protocols under
 `fuchsia.settings`). This service serves as the backend for settings UIs in
 Fuchsia products.
 

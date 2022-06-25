@@ -1,14 +1,14 @@
 # zx_vmo_set_size
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Resize a VMO object.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +18,8 @@ zx_status_t zx_vmo_set_size(zx_handle_t handle, uint64_t size);
 
 ## DESCRIPTION
 
-`zx_vmo_set_size()` sets the new size of a VMO object.
+`zx_vmo_set_size()` sets the new size of a [virtual memory
+object](/docs/reference/kernel_objects/vm_object.md) (VMO).
 
 The size will be rounded up to the next page size boundary.
 Subsequent calls to [`zx_vmo_get_size()`] will return the rounded up size.
@@ -34,7 +35,7 @@ will be overritten with zeros.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_WRITE**.
 

@@ -15,30 +15,30 @@ and returns the first value found:
 
 ## Runtime Configuration
 
-Configuration can be set at runtime when ffx is invoked. The top level command
+Configuration can be set at runtime when ffx is invoked. The top-level command
 accepts a configuration parameter:
 
 ```sh
-$fx ffx --config "config=runtime" ...
+$ fx ffx --config "config=runtime" ...
 ```
 
 For example, run:
 
 ```sh
-$fx ffx --config "config-test=runtime" config get --name config-test
+$ fx ffx --config "config-test=runtime" config get --name config-test
 ```
 
 The runtime parameter takes the format of comma separated key-value pairs
 ("{key}={value},{key}={value},etc...") because this is not strongly typed, any
 configurations set here will be assumed to be strings.
 
-The daemon runs as it's own process and currently the runtime
+The daemon runs as its own process and currently the runtime
 configuration is not transferred from the CLI to the daemon if the daemon is
 started up. It's expected that if you want to configure the the daemon using
 the runtime configurations, the daemon command will be run manually:
 
 ```sh
-$fx ffx --config "config-test=runtime" daemon
+$ fx ffx --config "config-test=runtime" daemon
 ```
 
 ## Environment variables

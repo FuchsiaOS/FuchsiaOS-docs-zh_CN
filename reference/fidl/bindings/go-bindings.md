@@ -23,7 +23,7 @@ import "fidl/fuchsia/examples"
 following constants:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
 ```
 
 Are generated as:
@@ -61,15 +61,15 @@ The FIDL types are converted to Go types based on the following table.
 |`uint64`|`uint64`|
 |`float32`|`float32`|
 |`float64`|`float64`|
-|`array<T>:N`|`[N]T`|
+|`array<T, N>`|`[N]T`|
 |`vector<T>:N`|`[]T`|
 |`vector<T>:N?`|`*[]T`|
 |`string`|`string`|
-|`string?`|`*string`|
-|`request<P>`|The generated server end type `PInterfaceRequest`, see [Protocols](#protocols)|
-|`P`|The generated client end type `PInterface`, see [Protocols](#protocols)|
-|`handle:S`,`handle:S?`|The equivalent handle type is used if it is supported by the Go runtime (e.g. `zx.VMO`, `zx.Channel`, and `zx.Event`). Otherwise, `zx.Handle` is used|
-|`handle`,`handle?`|`zx.Handle`|
+|`string:optional`|`*string`|
+|`server_end:P`|The generated server end type `PInterfaceRequest`, see [Protocols](#protocols)|
+|`client_end:P`|The generated client end type `PInterface`, see [Protocols](#protocols)|
+|`zx.handle:S`,`zx.handle:<S, optional>`|The equivalent handle type is used if it is supported by the Go runtime (e.g. `zx.VMO`, `zx.Channel`, and `zx.Event`). Otherwise, `zx.Handle` is used|
+|`zx.handle`,`zx.handle:optional`|`zx.Handle`|
 
 ### User defined types {#user-defined-types}
 
@@ -89,7 +89,7 @@ include non-exported fields that cannot be inspected with reflection.
 Given the [bits][lang-bits] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
 ```
 
 FIDL generates a type alias for the underyling type (or `uint32` if not
@@ -128,7 +128,7 @@ In addition, it provides the following methods for `FileMode`:
 Example usage:
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="bits" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="bits" %}
 ```
 
 ### Enums {#enums}
@@ -136,7 +136,7 @@ Example usage:
 Given the [enum][lang-enums] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
 ```
 
 FIDL generates a type alias for the underyling type (or `uint32` if not
@@ -173,7 +173,7 @@ member.
 Example usage:
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="enums" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="enums" %}
 ```
 
 ### Structs {#structs}
@@ -181,7 +181,7 @@ Example usage:
 Given the [struct][lang-structs] declaration:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
 ```
 
 The FIDL toolchain generates a `Color` struct with matching fields:
@@ -198,7 +198,7 @@ The Go bindings do not currently support default values on struct fields.
 Example usage:
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="structs" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="structs" %}
 ```
 
 ### Unions {#unions}
@@ -206,7 +206,7 @@ Example usage:
 Given the union definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
 ```
 
 FIDL generates an alias and associated constants representing the
@@ -256,7 +256,7 @@ of `JsonValue`:
 Example usage:
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="unions" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="unions" %}
 ```
 
 #### Flexible unions and unknown variants
@@ -286,7 +286,7 @@ decoding an unknown variant with handles.
 Given the following [table][lang-tables] definition:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
 ```
 
 The FIDL toolchain generates a `User` struct that with presence fields for each
@@ -324,15 +324,20 @@ type User struct {
 Example usage:
 
 ```go
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="tables" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/go/fidl_packages/fidl_test.go" region_tag="tables" %}
 ```
+
+### Inline layouts
+
+The generated Go code uses the [the name reserved by `fidlc`][anon-names] for
+inline layouts.
 
 ## Protocols {#protocols}
 
 Given the [protocol][lang-protocols]:
 
 ```fidl
-{%includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
 ```
 
 Note: The `MakeMove` method above returns a bool representing success, and a
@@ -427,7 +432,12 @@ Given the method with an error type:
 
 ```fidl
 protocol TicTacToe {
-    MakeMove(uint8 row, uint8 col) -> (GameState new_state) error MoveError;
+    MakeMove(struct {
+      row uint8;
+      col uint8;
+    }) -> (struct {
+      new_state GameState;
+    }) error MoveError;
 };
 ```
 
@@ -482,15 +492,15 @@ The generated code is identical except for the method ordinals.
 
 #### Transitional {#transitional}
 
-In order to support the `[Transitional]` attribute in Go, FIDL generates a
+In order to support the `@transitional` attribute in Go, FIDL generates a
 `TicTacToeWithCtxTransitionalBase` type, which provides default implementations
-for every method marked as `[Transitional]`. Server implementations that embed
+for every method marked as `@transitional`. Server implementations that embed
 `TicTacToeWithCtxTransitionalBase` will continue to build a new transitional
 method is added.
 
 #### Discoverable
 
-When marked as `[Discoverable]`, the generated `InterfaceRequest` type (in this
+When marked as `@discoverable`, the generated `InterfaceRequest` type (in this
 example `TicTacToeWithCtxInterfaceRequest`) implements `fidl.ServiceRequest`,
 which allows the server end to be used in service discovery.
 
@@ -498,6 +508,7 @@ In addition, FIDL generates a `TicTacToeName` constant that contains the
 protocol name.
 
 <!-- xrefs -->
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
 [example-client]: /examples/fidl/go/client
 [example-server]: /examples/fidl/go/server
 [lang-constants]: /docs/reference/fidl/language/language.md#constants

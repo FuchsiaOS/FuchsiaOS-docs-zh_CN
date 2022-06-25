@@ -5,11 +5,11 @@ Area(s): Build, Developer
 
 ## Problem statement
 
-Product assembly, the process of creating an "image" out of the built software
-and configuration data in the Fuchsia platform (fuchsia.git) and the product's
-own repo(s), is currently restricted to a compilation-time operation that's
-part of fuchsia.git.  It can only be done "in-tree" after the compilation steps
-for all software are completed.
+[Product][glossary.product] assembly, the process of creating an "image" out of
+the built software and configuration data in the Fuchsia platform (fuchsia.git)
+and the product's own repo(s), is currently restricted to a compilation-time
+operation that's part of fuchsia.git.  It can only be done "in-tree" after the
+compilation steps for all software are completed.
 
 There has been a continual explosion of product configurations, across multiple
 dimensions (`_eng`, `_eng_arrested`, `_user`, `_userdebug`, LSDi, etc), to
@@ -120,3 +120,5 @@ The main risks are:
      components/labels and working up to fully-defined sub-assemblies.
    * Mitigation: Implementation plan is centered around a measured approach
      without boiling the ocean.
+
+[glossary.product]: /docs/glossary/README.md#product

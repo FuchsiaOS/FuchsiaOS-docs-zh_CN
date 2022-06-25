@@ -1,5 +1,10 @@
 # RAMdisk Device
 
+Caution: This page may contain information that is specific to the legacy
+version of the driver framework (DFv1). Also the workflows documented on
+this page may only be specific to the Fuchsia source checkout
+(`fuchsia.git`) environment.
+
 ## Overview
 
 In this section, we'll examine a simplified RAM-disk driver.

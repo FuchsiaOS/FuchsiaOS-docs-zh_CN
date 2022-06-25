@@ -10,3 +10,5 @@ toc:
   path: /docs/development/drivers/driver_guides/display/how_to_write.md
 - title: "Preparing for new SoCs"
   path: /docs/development/drivers/driver_guides/display/board_driver_changes.md
+- title: "Understanding the role of display controllers"
+  path: /docs/development/drivers/driver_guides/display/hardware_concepts.md

@@ -1,65 +1,95 @@
-# C++ 编辑器/IDE 设置
+# C++ Editor/IDE Setup
 
-本页面列出了各种社区贡献的插件，供不同的编辑器使用。注意，这些插件均不受官方支持，但是一些用户反映使用体验较好。
+This page lists various community-contributed plugins for different editors.
+Note that none of these plugins are officially supported, but some users
+have reported good experiences.
 
 ## CLion
 
-按照下面的**编译数据库**说明在 fuchsia 根目录中创建适当的项目描述文件。
+Follow the **Compilation Database** instructions below to create the
+appropriate project description file in the fuchsia root directory.
 
-然后，在 Clion 中选择*从源导入项目*，并选择 fuchsia 根目录。
+Then in CLion choose *Import Project from Sources* and select the
+fuchsia root directory.
 
-### CLion 性能调整
+### CLion Performance Tweaks
 
-您可以尝试以下一些或全部方法以提高性能。这些方法仅是建议，最好直接与 JetBrains（<https://intellij-support.jetbrains.com/hc>）进行联系，以确保最适合您的环境。
+To improve performance you can try some or all of the following. They
+are only suggestions, we recommend checking with directly with JetBrains
+at <https://intellij-support.jetbrains.com/hc> to be sure what works
+best for your environment.
 
-#### 排除目录
+#### Exclude Directories
 
-为了加快索引时间，您可以排除不使用的目录。您可以在项目视图中通过右键单击每个目录并选择*将目录标记为->排除*来执行此操作。注意，受影响的配置存储在 `<project>/.idea/misc.xml` 中。
+To speed up indexing time you can exclude directories you are not
+working with. You can do that in the Project View by
+right-clicking each directory and choosing
+*Mark directory as->Excluded*. Note the affected configuration is stored
+in `<project>/.idea/misc.xml`
 
-有关详细信息，请参阅
-[控制源目录、库目录和排除目录 \- 帮助 \| CLion](https://www.jetbrains.com/help/clion/controlling-source-library-and-exclude-directories.html)
-。
+See
+[Control Source, Library, and Exclude Directories \- Help \| CLion](https://www.jetbrains.com/help/clion/controlling-source-library-and-exclude-directories.html)
+for more information.
 
-#### 注销 Git 存储库
+#### Unregister Git Repositories
 
-fuchsia 的源代码树有大量的 git 存储库。CLion 扫描它们占用 CPU 周期。您可以在*文件 -> 设置 -> 版本控制*下注销未使用的 git 存储库。它们仍将在此处列出，因此您以后可以根据需要重新添加它们。
+The fuchsia source tree has a fair number of git repositories. Scanning
+them can use CPU cycles for CLion. You can unregister the git
+repositories you are not working on under
+*File -> Settings -> Version Control*. They will still be listed there
+so you can add them back later if needed.
 
-#### 调整 JVM 选项和平台属性
+#### Tune JVM Options and Platform Properties
 
-有关调整 CLion JVM 选项和平台属性的一般提示，请参阅[调整 CLion \- 帮助 \| CLion](https://www.jetbrains.com/help/clion/tuning-the-ide.html)。如链接所示，请联系 CLion 支持人员，以获取有关可能会帮助您解决所遇到问题的选项和值的说明。
+See
+[Tuning CLion \- Help \| CLion](https://www.jetbrains.com/help/clion/tuning-the-ide.html)
+for general tips on tweaking CLion JVM Options and Platform Properties.
+As that link suggests, contact CLion support for instructions
+regarding the options and values that might help you with whatever issue
+you are trying to solve.
 
-### 编译数据库
+### Compilation Database
 
-[编译数据库](https://clang.llvm.org/docs/JSONCompilationDatabase.html) 文件 `compile_commands.json` 将由 `fx` 在当前构建目录中自动创建，并自动符号链接到源根目录。
+A [Compilation
+Database](https://clang.llvm.org/docs/JSONCompilationDatabase.html) file,
+`compile_commands.json`, will be created automatically by `fx` within your
+current build directory as well as automatically symlinked to your source root.
 
-请注意，此文件仅用于帮助 IDE 查找和解析源文件。构建过程仍应使用 `fx build` 来完成。
+Note that this file is only intended to help the IDE find and parse
+the source files. Building should still be done with `fx build`.
 
-注意：CLion 在 Fuchsia 源代码中显示数百个文件的编译器错误，这是一个持续存在的问题。其他文件在 CLion 中应该可以正常工作。
+Note: There is an ongoing issue where CLion shows compiler errors for a few
+hundred files in the Fuchsia source code. Other files should work
+fine in CLion.
 
 ## Vim
 
-请参阅[Fuchsia 开发的有用 Vim 工具](/scripts/vim/README.md)。
+See [Helpful Vim tools for Fuchsia development](/scripts/vim/README.md).
 
 ## Visual Studio Code (VS Code) {#visual-studio-code}
 
-请参阅更多关于
-[Fuchsia 贡献者的 VS Code 配置建议](/docs/development/editors/vscode.md)。
+See more
+[VS Code configuration recommendations for Fuchsia contributors](/docs/development/editors/vscode/README.md).
 
 ### clangd
 
-安装 [vscode-clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)。如果安装了默认的 C/C++ 扩展，请禁用它。
+Install
+[vscode-clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd).
+Disable the default C/C++ extension if you have it installed.
 
-在设置中，添加：
+If you don't have `clangd` available in your environment (that is, included in `$PATH`), or if you
+want to ensure that you use the same version of `clangd` that is used by the Fuchsia toolchain,
+update VS Code's `settings.json` file to set the path to `clangd` as follows:
+
+Note: The path to `FUCHSIA_CHECKOUT_ROOT_DIRECTORY` below needs to be an absolute path.
 
 ```
-"clangd.path": "<absolute path to fuchsia root directory>/prebuilt/third_party/clang/<platform>/bin/clangd",
+"clangd.path": "<FUCHSIA_CHECKOUT_ROOT_DIRECTORY>/prebuilt/third_party/clang/<PLATFORM>/bin/clangd",
 ```
 
-注意：指向 clangd 的路径必须是绝对路径。
+After updating the `settings.json` file, you need to restart VS Code.
 
-最后，按照下面的**编译数据库**说明在 fuchsia 根目录中生成 `compile_commands.json`。然后重新加载 VS Code 以生效。
-
-您还可以使用以下设置启用后台索引和 clang-tidy 功能：
+You may also benefit from enabling background indexing and clang-tidy using the following settings:
 
 ```
 "clangd.arguments": [
@@ -68,4 +98,4 @@ fuchsia 的源代码树有大量的 git 存储库。CLion 扫描它们占用 CPU
 ]
 ```
 
-有关 clangd 设置的更多详细信息，请参见[此处](https://clang.llvm.org/extra/clangd/Installation.html)。
+Further details on clangd setup can be found [here](https://clang.llvm.org/extra/clangd/Installation.html).

@@ -46,7 +46,7 @@ maintainer requests a change to the clock they are effectively supplying a new
 line segment in this transform as illustrated in Figure 1.
 
 **Figure 1 - A clock as a transform from reference to synthetic time**  
-![This figure presents the relationship between reference time on the x-axis and synthetic time on the y-axis as a line with multiple segments, some adjacent and some disjoint.](resources/zx_clock_update_accuracy/figure_1.svg "Figure 1")
+![This figure presents the relationship between reference time on the x-axis and synthetic time on the y-axis as a line with multiple segments, some adjacent and some disjoint.](resources/0077_zx_clock_update_accuracy/figure_1.svg "Figure 1")
 
 In the existing design a clock maintainer supplies the gradient of this line
 segment using `zx_clock_update_args_v1_t.rate_adjust` and the y-coordinate at
@@ -58,7 +58,7 @@ This definition of the segment start, with two coordinates set by different
 entities, is the root cause of the clock error as illustrated in Figure 2.
 
 **Figure 2 - Delays between calculation and handling lead to clock error**  
-![This figure illustrates both an intended and an actual correlation between reference time on the x-axis and synthetic time on the y-axis, with the difference being a clock error.](resources/zx_clock_update_accuracy/figure_2.svg "Figure 2")
+![This figure illustrates both an intended and an actual correlation between reference time on the x-axis and synthetic time on the y-axis, with the difference being a clock error.](resources/0077_zx_clock_update_accuracy/figure_2.svg "Figure 2")
 
 We propose a change to the `zx_clock_update` arguments that lets
 a clock maintainer fully specify its intended line, while the kernel determines
@@ -97,7 +97,7 @@ determined by `zx_clock_update_args_v2_t.rate_adjust` as illustrated in
 Figure 3.
 
 **Figure 3 - Updating both the value and rate of a clock**  
-![This figure illustrates updating a clock by specifying a reference time, a synthetic time, and a gradient.](resources/zx_clock_update_accuracy/figure_3.svg "Figure 3")
+![This figure illustrates updating a clock by specifying a reference time, a synthetic time, and a gradient.](resources/0077_zx_clock_update_accuracy/figure_3.svg "Figure 3")
 
 When `REFERENCE_VALUE_VALID` and `SYNTHETIC_VALUE_VALID` are set but
 `RATE_ADJUST_VALID` is not set, `zx_clock_update` starts a new line segment at
@@ -107,7 +107,7 @@ the current reference time, intersecting a point
 determined by the prior clock rate as illustrated in Figure 4.
 
 **Figure 4 - Updating only the clock value**  
-![This figure illustrates updating a clock by specifying a reference time and synthetic time.](resources/zx_clock_update_accuracy/figure_4.svg "Figure 4")
+![This figure illustrates updating a clock by specifying a reference time and synthetic time.](resources/0077_zx_clock_update_accuracy/figure_4.svg "Figure 4")
 
 When `REFERENCE_VALUE_VALID` and `RATE_ADJUST_VALID` are set but
 `SYNTHETIC_VALUE_VALID` is not set, `zx_clock_update` starts a new line
@@ -117,7 +117,7 @@ determined by `zx_clock_update_args_v2_t.rate_adjust` as illustrated in
 Figure 5.
 
 **Figure 5 - Updating only the clock rate**  
-![This figure illustrates updating a clock by specifying a reference time and an updated rate.](resources/zx_clock_update_accuracy/figure_5.svg "Figure 5")
+![This figure illustrates updating a clock by specifying a reference time and an updated rate.](resources/0077_zx_clock_update_accuracy/figure_5.svg "Figure 5")
 
 When `REFERENCE_VALUE_VALID` is set but neither `RATE_ADJUST_VALID` nor
 `SYNTHETIC_VALUE_VALID` are set, `zx_clock_update` returns an
@@ -217,7 +217,7 @@ a point (`monotonic=0`, `synthetic=zx_clock_update_args_v1_t.value`) as
 illustrated in Figure 6.
 
 **Figure 6 - Alternative solution based on synthetic offset**  
-![This figure shows reference time on the x-axis and synthetic time on the y-axis and illustrates setting using a position on x=0 and a gradient.](resources/zx_clock_update_accuracy/figure_6.svg "Figure 6")
+![This figure shows reference time on the x-axis and synthetic time on the y-axis and illustrates setting using a position on x=0 and a gradient.](resources/0077_zx_clock_update_accuracy/figure_6.svg "Figure 6")
 
 
 This has the effect of fully specifying the new line with a smaller change in
@@ -230,7 +230,7 @@ alternative would create more bugs.
 [kernel_objects/clock](/docs/reference/kernel_objects/clock.md) provides an
 overview of the operation of userspace clocks.
 
-[UTC synchronization algorithms](/docs/concepts/time/utc/algorithms.md)
+[UTC synchronization algorithms](/docs/concepts/kernel/time/utc/algorithms.md)
 summarizes the current UTC synchronization design.
 
 "Zircon Syscalls Struct Evolution" is a Google-internal document from May 2019

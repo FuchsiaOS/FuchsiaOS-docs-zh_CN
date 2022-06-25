@@ -1,14 +1,14 @@
 # zx_thread_write_state
 
-## NAME
+## SUMMARY
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 Write one aspect of thread state.
 
-## SYNOPSIS
+## DECLARATION
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 ```c
 #include <zircon/syscalls.h>
@@ -27,6 +27,10 @@ thread is suspended.
 
 The thread state is highly processor specific. See the structures in
 zircon/syscalls/debug.h for the contents of the structures on each platform.
+
+To use the `zx_thread_write_state()` function with the `ZX_THREAD_STATE_DEBUG_REGS`
+flag, you must specify `kernel.enable-serial-syscalls=true` on the kernel command line.
+Otherwise, the function returns **ZX_ERR_NOT_SUPPORTED**.
 
 ## STATES
 
@@ -64,7 +68,7 @@ needed is to set the correct address in DBGBVR and write 1 to DBGBCR.
 
 ## RIGHTS
 
-<!-- Updated by update-docs-from-fidl, do not edit. -->
+<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
 
 *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_WRITE**.
 
@@ -96,7 +100,9 @@ to an exception.
 
 **ZX_ERR_NOT_SUPPORTED**  *kind* is not supported.
 This can happen, for example, when trying to read a register set that
-is not supported by the hardware the program is currently running on.
+is not supported by the hardware the program is currently running on,
+or when using the `ZX_THREAD_STATE_DEBUG_REGS` kind without specifying
+`kernel.enable-serial-syscalls=true` on the kernel command line.
 
 #### ARM
 

@@ -1,7 +1,12 @@
+<!-- mdformat off(templates not supported) -->
 {% set rfcid = "RFC-0000" %}
 {% include "docs/contribute/governance/rfcs/_common/_rfc_header.md" %}
 # {{ rfc.name }}: {{ rfc.title }}
+{# Fuchsia RFCs use templates to display various fields from _rfcs.yaml. View the #}
+{# fully rendered RFCs at https://fuchsia.dev/fuchsia-src/contribute/governance/rfcs #}
 <!-- SET the `rfcid` VAR ABOVE. DO NOT EDIT ANYTHING ELSE ABOVE THIS LINE. -->
+
+<!-- mdformat on -->
 
 <!-- This should begin with an H2 element (for example, ## Summary).-->
 
@@ -13,25 +18,58 @@ A one paragraph description of the rest of the proposal.
 
 What problem does this proposal solve?
 
+## Stakeholders
+
+Who has a stake in whether this RFC is accepted? (This section is optional but
+encouraged.)
+
+_Facilitator:_
+
+The person appointed by FEC to shepherd this RFC through the RFC
+process.
+
+_Reviewers:_
+
+List people whose vote (+1 or -1) will be taken into consideration by FEC when
+deciding whether this RFC is accepted or rejected. Where applicable, also list
+the area they are expected to focus on, such as "FIDL" or "security".  In some
+cases this section may be initially left blank and stakeholder discovery
+completed after an initial round of socialization. In general, "reviewers"
+should be listed on the reviewers line in gerrit and people who are "consulted"
+should be CCed. Care should be taken to keep the number of reviewers manageable,
+although the exact number will depend on the scope of the RFC in question.
+
+
+_Consulted:_
+
+List people who should review the RFC, but whose approval is not required.
+
+
+_Socialization:_
+
+This section may be used to describe how the design was socialized before
+advancing to the "Iterate" stage of the RFC process. For example: "This RFC went
+through a design review with the Component Framework team."
+
 ## Design
 
 This is the technically detailed version of your proposal.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [IETF RFC
-2119](https://tools.ietf.org/html/rfc2119).
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+interpreted as described in
+[IETF RFC 2119](https://tools.ietf.org/html/rfc2119).
 
 _Area: FIDL_
 
 One important high-level bit of your proposal is what part of FIDL your proposal
 modifies. This includes at least:
 
-* The FIDL source language
-* The FIDL wire format
-* The first-class language bindings (C, C++, Dart, Go, Rust)
-* The FIDL style guide and API rubric
-* The FIDL tuning process
+*   The FIDL source language
+*   The FIDL wire format
+*   The first-class language bindings (C, C++, Dart, Go, Rust)
+*   The FIDL style guide and API rubric
+*   The FIDL tuning process
 
 Your proposal should talk about all the relevant areas. For instance, if your
 proposal adds a new type to the FIDL language, it also needs to discuss the
@@ -41,8 +79,8 @@ style guide for that feature, and how to implement it in the bindings.
 
 How will you go about implementing this design? Can the change be made in a
 single Gerrit change or does the change involve a complex migration of
-third-party dependencies? Do you plan to structure the implementation
-into phases? What dependencies exist at each phase?
+third-party dependencies? Do you plan to structure the implementation into
+phases? What dependencies exist at each phase?
 
 ## Performance
 
@@ -112,8 +150,8 @@ for `fidlc`, or for the C++ bindings?
 If your change affects encoding or decoding, plan to update the conformance test
 suite.
 
-If your change affects source compatibility, plan to update the [source
-compatibility test suite](/src/tests/fidl/source_compatibility).
+If your change affects source compatibility, plan to update the
+[source compatibility test suite](/src/tests/fidl/source_compatibility).
 
 How will uses of your new feature be tested? If you add a language feature, how
 will you test it in each language's bindings?
@@ -124,6 +162,12 @@ Do we need to create or update any documentation to cover this feature? For
 example, do we need to add or remove an entry from the project roadmap? Do we
 need to change the architecture document? Would end-developers benefit from
 documentation related to this proposal?
+
+[Don't use the RFC itself as documentation for your feature.][rfcs-vs-docs]
+Documentation needs to kept up-to-date, and RFCs shouldn't change once they're
+accepted.
+
+[rfcs-vs-docs]: best_practices.md#rfcs-vs-docs
 
 _Area: FIDL_
 

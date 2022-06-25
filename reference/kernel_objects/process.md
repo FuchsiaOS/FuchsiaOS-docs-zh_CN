@@ -25,6 +25,8 @@ Processes are owned by [jobs](job.md) and allow an application that is
 composed by more than one process to be treated as a single entity, from the
 perspective of resource and permission limits, as well as lifetime control.
 
+For more information, see [Processes Overview](/docs/concepts/process/overview.md).
+
 ### Lifetime
 A process is created via [`zx_process_create()`] and its execution begins with
 [`zx_process_start()`].

@@ -53,8 +53,8 @@ struct Tag1 {};
 struct Tag2 {};
 class Obj : public fbl::RefCounted<Obj>,
             public fbl::ContainableBaseClasses<
-              fbl::TaggedDoulbyLinkedListable<fbl::RefPtr<Obj>, Tag1>,
-              fbl::TaggedDoulbyLinkedListable<fbl::RefPtr<Obj>, Tag2>
+              fbl::TaggedDoublyLinkedListable<fbl::RefPtr<Obj>, Tag1>,
+              fbl::TaggedDoublyLinkedListable<fbl::RefPtr<Obj>, Tag2>
             > {
  public:
   explicit Obj(int val) : val_(val) {}
@@ -63,8 +63,8 @@ class Obj : public fbl::RefCounted<Obj>,
   const int val_;
 };
 
-TaggedDoulbyLinkedList<fbl::RefPtr<Obj>, Tag1> stack_like;
-TaggedDoulbyLinkedList<fbl::RefPtr<Obj>, Tag2> queue_like;
+TaggedDoublyLinkedList<fbl::RefPtr<Obj>, Tag1> stack_like;
+TaggedDoublyLinkedList<fbl::RefPtr<Obj>, Tag2> queue_like;
 
 for (int i = 0; i < 5; ++i) {
   fbl::RefPtr<Obj> obj_ref = fbl::AdoptRef(new Obj(i));
@@ -120,7 +120,7 @@ list. The former will prepend the elements from the source to the destination,
 while the latter will append. Finishing the previous example:
 
 ```cpp
-TaggedDoulbyLinkedList<fbl::RefPtr<Obj>, Tag2> tmp;
+TaggedDoublyLinkedList<fbl::RefPtr<Obj>, Tag2> tmp;
 
 tmp.push_front(fbl::MakeRefCounted<Obj>(-1));
 tmp.push_front(fbl::MakeRefCounted<Obj>(-2));
