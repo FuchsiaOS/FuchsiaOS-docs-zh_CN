@@ -12,12 +12,12 @@
 | 英文原文            | 中文翻译对应词         | 备注                                                  |
 | ------------------- | ---------------------- | ----------------------------------------------------- |
 | application         | 应用 <br> 应用程序     |                                                       |
-| ArchiveAccessor     | 档案访问器             | i[^1]                                                 |
+| ArchiveAccessor     | 档案访问器             | i                                                     |
 | archivist           | 归档器                 | i                                                     |
 | attach              | 挂接                   | G                                                     |
 | authentication      | 认证                   |                                                       |
 | authorization       | 授权                   |                                                       |
-| automatic retry     | 自动重试               | G[^2]                                                 |
+| automatic retry     | 自动重试               | G                                                     |
 | backoff             | 退避                   | G                                                     |
 | best practice       | 最佳做法               | G & i                                                 |
 | caveats             | 注意事项               | G                                                     |
