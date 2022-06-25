@@ -39,7 +39,7 @@ futex_.  The ownership implications for each are discussed separately.
 Generally, if the call fails for any reason, no changes to ownership for either
 futex are made.
 
-See *Ownership and Priority Inheritance* in [futex](/docs/reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](reference/kernel_objects/futex.md) for
 details.
 
 ### Effects on the _wake futex_ target
@@ -95,7 +95,7 @@ None.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[futex objects]: /docs/reference/kernel_objects/futex.md
+[futex objects]: reference/kernel_objects/futex.md
 [`zx_futex_requeue_single_owner()`]: futex_requeue_single_owner.md
 [`zx_futex_wait()`]: futex_wait.md
 [`zx_futex_wake()`]: futex_wake.md

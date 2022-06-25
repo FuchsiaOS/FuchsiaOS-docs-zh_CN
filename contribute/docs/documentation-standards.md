@@ -14,25 +14,25 @@ This document outlines standards, structure, tone, and best practices for Fuchsi
 
     * <code>get-started</code>:
        Specific guidance to download, set up, and start developing on Fuchsia should go in
-       `/docs/get-started`. This content should contain opinionated, short tutorials that help new
+       `get-started`. This content should contain opinionated, short tutorials that help new
        users get started on Fuchsia, and link to additional documentation in Fuchsia.dev.
     *  <code>development</code>:
-        The `/docs/development/` directory (which displays on the site as "Guides") contains
+        The `development/` directory (which displays on the site as "Guides") contains
         instructions and tutorials for developers
         working on Fuchsia. This directory includes documentation
         on how to build, run, and test Fuchsia.
     *  <code>concepts</code>:
-        The `/docs/concepts` directory contains in-depth explanations of specific features of
+        The `concepts` directory contains in-depth explanations of specific features of
         Fuchsia and how they work, including operating system overviews, frameworks, architecture,
         and packages.
     *  <code>reference</code>:
-        The `/docs/reference/` directory contains generated reference docs on Fuchsia tools and APIs,
+        The `reference/` directory contains generated reference docs on Fuchsia tools and APIs,
         including FIDL and kernel reference.
     *  <code>contribute</code>:
-        The `/docs/contribute/` directory contains code and documentation contribution processes and
+        The `contribute/` directory contains code and documentation contribution processes and
         best practices, including documentation code and style guides, code polcies, and governance.
     *  `images`
-        The `/docs/images/` directory contains images used in the documentation. You should
+        The `images/` directory contains images used in the documentation. You should
         place images in this common directory.
 
 ## Document types
@@ -66,10 +66,10 @@ include the following:
   navigation on fuchsia.dev. See [Site navigation and TOC files](documentation-navigation-toc.md)
   for more information.
 - Cross-link documentation: Add links to documents on subjects that help readers better understand the
-  content of your document. For example, the conceptual document for the [Fuchsia emulator](/docs/development/build/emulator.md)
+  content of your document. For example, the conceptual document for the [Fuchsia emulator](development/build/emulator.md)
   links to relevant guides and getting started documents about the Fuchsia emulator.
 - Use consistent terminology: If you're writing about a specific concept in Fuchsia, verify that you are
-  using consistent terminology. Use the [glossary](/docs/glossary/README.md) to verify terms.
+  using consistent terminology. Use the [glossary](glossary/README.md) to verify terms.
 
 ## Documentation file formats and file names
 
@@ -89,7 +89,7 @@ contains a command with an underscore, then you can include the underscore.
 - **Write in plain U.S. English.** Write in clear, direct U.S. English that makes content
   easy to understand. Use simple words, be concise, and use contractions like _it's_ or _don't_.
 
-- **Be respectful.** Follow the guidelines set forth in [Respectful Code](/docs/contribute/respectful_code.md).
+- **Be respectful.** Follow the guidelines set forth in [Respectful Code](contribute/respectful_code.md).
 
 - **Write in second-person ("you").** Fuchsia documentation is written to the user ("you"). When
   For example, "You can install Fuchsia by doing the following...". Do not refer to the reader in the
@@ -125,7 +125,7 @@ contains a command with an underscore, then you can include the underscore.
 - **Define technical terms and avoid jargon.** Fuchsia documentation should be accessible
   to all levels of developers. Avoid overcomplicating documentation with uncommon or highly
   technical words. If you're using Fuchsia-specific terms, define them in
-  the [glossary](/docs/glossary/README.md). Avoid invented words.
+  the [glossary](glossary/README.md). Avoid invented words.
 
 - **Avoid colloquial phrases or regional idioms.** Keep in mind that many Fuchsia users
   may not be native English speakers. Avoid difficult to translate idioms, like
@@ -140,4 +140,4 @@ contains a command with an underscore, then you can include the underscore.
   _(s)he_ or other such punctuational approaches. Instead, use the singular _they._
 
 - **Use consistent terminology.** Ensure that terms are consistent in code, UI, and documentation.
-  Use common terms when possible, and use the [glossary](/docs/glossary/README.md) to verify terminology.
+  Use common terms when possible, and use the [glossary](glossary/README.md) to verify terminology.

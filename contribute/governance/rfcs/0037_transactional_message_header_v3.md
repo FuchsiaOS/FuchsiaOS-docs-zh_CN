@@ -34,14 +34,14 @@ Having flags in headers:
 * Provides a mechanism to help with soft transition, especially the requirement
   that bindings MUST NOT reject messages if they do not know about the use of
   certain flags, and instead just ignore them. For instance, this was used to
-  migrate [away from static unions](/docs/contribute/governance/rfcs/0061_extensible_unions.md#implementation_strategy).
+  migrate [away from static unions](contribute/governance/rfcs/0061_extensible_unions.md#implementation_strategy).
 * We prefer allocating more bytes to flags (3 bytes) than to magic numbers (1
   byte) as we expect a lot more features to be temporarily needed, than wire
   format flavors.
 
 On epitaph:
 
-* Epitaphs were [shoehorned](/docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md#wire_format) into the `reserved` bytes,
+* Epitaphs were [shoehorned](contribute/governance/rfcs/0029_increasing_method_ordinals.md#wire_format) into the `reserved` bytes,
   which are now used for the magic number and the flags;
 * Having epitaphs be a plain vanilla payload `struct{int32}` removes one special
   snowflake from the [wire format][wire-format], which typically simplifies
@@ -60,19 +60,19 @@ FIDL2 ("v2"):
 * Flags (`uint32`)
 * Ordinal (`uint32`)
 
-[RFC-0053](/docs/contribute/governance/rfcs/0053_epitaphs.md):
+[RFC-0053](contribute/governance/rfcs/0053_epitaphs.md):
 
 * Transaction ID (`uint32`)
 * Reserved (`uint32`) OR [Epitaph value
-  (zx.status)](/docs/contribute/governance/rfcs/0053_epitaphs.md#wire-format)
+  (zx.status)](contribute/governance/rfcs/0053_epitaphs.md#wire-format)
 * Flags (`uint32`)
 * Ordinal (`uint32`)
 
-[RFC-0029](/docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md):
+[RFC-0029](contribute/governance/rfcs/0029_increasing_method_ordinals.md):
 
 * Transaction ID (`uint32`)
 * Reserved (`uint32`) OR [Epitaph value
-  (zx.status)](/docs/contribute/governance/rfcs/0053_epitaphs.md#wire-format)
+  (zx.status)](contribute/governance/rfcs/0053_epitaphs.md#wire-format)
 * Ordinal (`uint64`)
 
 Initially, the reserved (`uint32`) field covering bytes 4 through 7 was meant to
@@ -80,7 +80,7 @@ align with requirements from [zx_channel_call][zx_channel_call]. However, the
 syscall has stabilized, and this requirement is no longer needed.
 
 <!-- xrefs -->
-[zx_channel_call]: /docs/reference/syscalls/channel_call.md
+[zx_channel_call]: reference/syscalls/channel_call.md
 
 ### Version 3 {#version-3}
 
@@ -115,4 +115,4 @@ transaction header, increases the minimal amount of bytes read from 16 bytes to
 bytes has minimal impact.
 
 <!-- xrefs -->
-[wire-format]: /docs/reference/fidl/language/wire-format
+[wire-format]: reference/fidl/language/wire-format

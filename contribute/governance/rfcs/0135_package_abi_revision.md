@@ -438,8 +438,8 @@ the application bundle's `Info.plist` file.
 
 [ABI revision]: 0002_platform_versioning.md#abi_revision
 [API level]: 0002_platform_versioning.md#api_level
-[FAR index chunk]: /docs/development/source_code/archive_format.md#index_chunk
-[Fuchsia System Interface]: /docs/concepts/packages/system.md
+[FAR index chunk]: development/source_code/archive_format.md#index_chunk
+[Fuchsia System Interface]: concepts/packages/system.md
 [LSMinimumSystemVersion]: https://developer.apple.com/documentation/bundleresources/information_property_list/lsminimumsystemversion?language=objc
 [MinimumOSVersion]: https://developer.apple.com/documentation/bundleresources/information_property_list/minimumosversion?language=objc
 [RFC-0002 Applications]: 0002_platform_versioning.md#applications
@@ -448,10 +448,10 @@ the application bundle's `Info.plist` file.
 [RFC-0002]: 0002_platform_versioning.md
 [SDK version history]: https://fuchsia.googlesource.com/fuchsia/+/main/sdk/version_history.json
 [SupportedOS]: https://docs.microsoft.com/en-us/windows/win32/win7appqual/compatibility---application-manifest#leveraging-feature-capabilities
-[blobfs]: /docs/concepts/filesystems/random-access-compression.md
-[meta.far]: /docs/concepts/packages/package.md#meta-far
-[package]: /docs/concepts/packages/package.md
-[packaging documentation]: /docs/concepts/packages/package.md
+[blobfs]: concepts/filesystems/random-access-compression.md
+[meta.far]: concepts/packages/package.md#meta-far
+[package]: concepts/packages/package.md
+[packaging documentation]: concepts/packages/package.md
 [persistent-FIDL packaging metadata]: https://fuchsia-review.googlesource.com/c/fuchsia/+/586937
 [system image]: 0072_standalone_image_assembly_tool.md#system_image_artifacts
 [uses-sdk]: https://developer.android.com/guide/topics/manifest/uses-sdk-element

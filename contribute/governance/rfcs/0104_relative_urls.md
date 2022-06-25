@@ -143,7 +143,7 @@ Here are the steps for RelativeResolver to resolve `#meta/child.cm`:
 
 The plan is to implement the RelativeResolver as a built-in resolver that is
 provided by the component manager. The RelativeResolver will be added into the
-root component's [environment](/docs/concepts/components/v2/environments.md), so
+root component's [environment](concepts/components/v2/environments.md), so
 that it can be used by any component that extends from that environment.
 
 ## Performance
@@ -189,7 +189,7 @@ This has several pros:
 This also has several cons:
 
 - CML in general does not want
-  [templating](/docs/contribute/governance/rfcs/0093_component_manifest_design_principles.md).
+  [templating](contribute/governance/rfcs/0093_component_manifest_design_principles.md).
 - Adds more integration between build systems and cmc.
 - Build system integration becomes more complicated as out-of-tree components
   can be built with different build systems.

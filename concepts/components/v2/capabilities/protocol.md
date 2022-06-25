@@ -170,14 +170,14 @@ Fuchsia supports the following framework protocols:
 }
 ```
 
-[glossary.namespace]: /docs/glossary/README.md#namespace
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
-[glossary.channel]: /docs/glossary/README.md#channel
-[glossary.protocol]: /docs/glossary/README.md#protocol
-[glossary.protocol-capability]: /docs/glossary/README.md#protocol-capability
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
-[fidl-reference]: /docs/reference/fidl/language/language.md
+[glossary.namespace]: glossary/README.md#namespace
+[glossary.outgoing-directory]: glossary/README.md#outgoing-directory
+[glossary.channel]: glossary/README.md#channel
+[glossary.protocol]: glossary/README.md#protocol
+[glossary.protocol-capability]: glossary/README.md#protocol-capability
+[capability-routing]: concepts/components/v2/capabilities/README.md#routing
+[fidl-reference]: reference/fidl/language/language.md
 [fidl-binder]: /sdk/fidl/fuchsia.component/binder.fidl
 [fidl-realm]: /sdk/fidl/fuchsia.component/realm.fidl
-[life-of-a-protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md
+[life-of-a-protocol-open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md
 [routing-example]: /examples/components/routing

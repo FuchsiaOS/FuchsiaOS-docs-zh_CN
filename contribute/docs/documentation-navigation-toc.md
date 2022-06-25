@@ -18,7 +18,7 @@ To change the documentation navigation for an existing document:
    tree.
 
    For example, if you want to modify the navigation for the
-   [concepts page of Zircon](/docs/concepts/kernel/concepts.md),
+   [concepts page of Zircon](concepts/kernel/concepts.md),
    you can see that there is a
    [`_toc.yaml`](https://fuchsia.googlesource.com/fuchsia/+show/HEAD/docs/concepts/kernel/_toc.yaml)
    file in the same directory.
@@ -54,7 +54,7 @@ with multiple entries:
   Paths must follow these requirements:
 
   * Paths to files should be the full path from the root of the project. For
-    example, `/docs/development/api/cli.md`.
+    example, `development/api/cli.md`.
   * Paths to directories should not include a trailing slash, and the directory
     must have a file named `README.md`.
 
@@ -64,7 +64,7 @@ with multiple entries:
 
   ```
   - title: "Kernel concepts"
-    path: /docs/concepts/kernel/concepts.md
+    path: concepts/kernel/concepts.md
   ```
 
 * Expandable section
@@ -72,7 +72,7 @@ with multiple entries:
   An expandable section is an expandable group of multiple entries in a table
   of contents. For example, see the expandable sections, such as Networking
   and Graphics, in the
-  [Concepts section](/docs/concepts/index.md). Each expandable
+  [Concepts section](concepts/index.md). Each expandable
   section has an arrow to the left of the section name.
 
   You can create a group of entries with a `section` element. Each section must
@@ -86,7 +86,7 @@ with multiple entries:
   ```yaml
   - title: "Zircon kernel"
     section:
-    - include: /docs/concepts/kernel/_toc.yaml
+    - include: concepts/kernel/_toc.yaml
   ```
 
 Once you have made these changes, you can submit your changes for review.

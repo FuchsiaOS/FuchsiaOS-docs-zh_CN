@@ -248,7 +248,7 @@ Note: For more information about `_toc.yaml` files, see
 
 To add a TOC entry:
 
-1. Edit the [//docs/contribute/governance/rfcs/_toc.yaml][toc-ref] file.
+1. Edit the [/contribute/governance/rfcs/_toc.yaml][toc-ref] file.
 1. Add your RFC entry below the last entry in the following format.
 
 <div>
@@ -257,7 +257,7 @@ To add a TOC entry:
     <h3>Reference</h3>
 <pre class="prettyprint">
    - title: "{{ "<var>" }}name{{ "</var>" }}: {{ "<var>" }}title{{ "</var>" }}"
-     path: /docs/contribute/governance/rfcs/{{ "<var>" }}file{{ "</var>" }}.md
+     path: contribute/governance/rfcs/{{ "<var>" }}file{{ "</var>" }}.md
 </pre>
 </section>
 
@@ -265,7 +265,7 @@ To add a TOC entry:
     <h3>Sample</h3>
 <pre class="prettyprint">
 - title: "RFC-0001: RFC Process"
-  path: /docs/contribute/governance/rfcs/0001_rfc_process.md
+  path: contribute/governance/rfcs/0001_rfc_process.md
 </pre>
   </section>
 </devsite-selector>
@@ -325,13 +325,13 @@ After you receive a final status from the Eng Council, do the following:
    if you were assigned `RFC-9999`, rename your file to `9999_<filename>.md`.
 
 1. Edit the TOC entry for your RFC in
-   [//docs/contribute/governance/rfcs/_toc.yaml][toc-file] to reflect the RFC number.
+   [/contribute/governance/rfcs/_toc.yaml][toc-file] to reflect the RFC number.
    For example, if you were assigned `RFC-9999`, your entry may look like
    the following:
 
    ```
    - title: "RFC-9999: My RFC proposal"
-     path: /docs/contribute/governance/rfcs/9999_<filename>.md
+     path: contribute/governance/rfcs/9999_<filename>.md
    ```
 
 1. Update the metadata for your RFC proposal. If you correctly filled out the
@@ -369,16 +369,16 @@ After you receive a final status from the Eng Council, do the following:
 1. Upload a patch to your change with the updates to the RFC files.
 
    Note: For more information on creating a patch, see
-   [Create and upload a patch](/docs/development/source_code/contribute_changes.md#create_and_upload_a_patch).
+   [Create and upload a patch](development/source_code/contribute_changes.md#create_and_upload_a_patch).
 
 1. Once approved, submit your RFC.
 
 You have successfully submitted an RFC proposal.
 
-[rfc-overview]: /docs/contribute/governance/rfcs/README.md
-[contribute changes]: /docs/development/source_code/contribute_changes.md
+[rfc-overview]: contribute/governance/rfcs/README.md
+[contribute changes]: development/source_code/contribute_changes.md
 [rfc-template]: TEMPLATE.md
 [eng-council]: ../eng_council.md
 [toc-file]: https://ci.android.com/edit?repo=fuchsia/fuchsia/master&file=docs/contribute/governance/rfcs/_toc.yaml
-[toc-ref]: /docs/contribute/docs/documentation-navigation-toc.md
+[toc-ref]: contribute/docs/documentation-navigation-toc.md
 [rfc-yaml]: https://ci.android.com/edit?repo=fuchsia/fuchsia/master&file=docs/contribute/governance/rfcs/_rfcs.yaml

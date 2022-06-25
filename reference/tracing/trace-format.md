@@ -6,7 +6,7 @@ You can use this document to search for detailed information
 about each field in the Fuchsia trace format.
 
 Note: For information about the Fuchsia tracing system,
-see [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
+see [Fuchsia tracing system](concepts/kernel/tracing-system.md).
 
 ## Overview
 
@@ -751,7 +751,7 @@ The following blob types are defined:
 - `TRACE_BLOB_TYPE_LAST_BRANCH` = `0x02`: Last Branch Record of Intel Performance Monitor.
   The format is defined by the
 [CPU performance
-monitor](/docs/development/tracing/advanced/recording-a-cpu-performance-trace.md).
+monitor](development/tracing/advanced/recording-a-cpu-performance-trace.md).
 
 ### Userspace object record (record type = 6) {#userspace-object-record}
 

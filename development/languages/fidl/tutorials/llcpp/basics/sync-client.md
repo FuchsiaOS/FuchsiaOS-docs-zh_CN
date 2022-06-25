@@ -218,13 +218,13 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /docs/glossary/README.md#realm
-[server-tut]: /docs/development/languages/fidl/tutorials/llcpp/basics/server.md
-[server-handler]: /docs/development/languages/fidl/tutorials/llcpp/basics/server.md#server-handler
-[async-client]: /docs/development/languages/fidl/tutorials/llcpp/basics/client.md
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
-[environment]: /docs/concepts/components/v2/environments.md
-[pipelining-tut]: /docs/development/languages/fidl/tutorials/llcpp/topics/request-pipelining.md
-[resultof]: /docs/reference/fidl/bindings/llcpp-bindings.md#resultof
-[sync-client]: /docs/reference/fidl/bindings/llcpp-bindings.md#sync-client
-[event-handlers]: /docs/reference/fidl/bindings/llcpp-bindings.md#events
+[glossary.realm]: glossary/README.md#realm
+[server-tut]: development/languages/fidl/tutorials/llcpp/basics/server.md
+[server-handler]: development/languages/fidl/tutorials/llcpp/basics/server.md#server-handler
+[async-client]: development/languages/fidl/tutorials/llcpp/basics/client.md
+[overview]: development/languages/fidl/tutorials/overview.md
+[environment]: concepts/components/v2/environments.md
+[pipelining-tut]: development/languages/fidl/tutorials/llcpp/topics/request-pipelining.md
+[resultof]: reference/fidl/bindings/llcpp-bindings.md#resultof
+[sync-client]: reference/fidl/bindings/llcpp-bindings.md#sync-client
+[event-handlers]: reference/fidl/bindings/llcpp-bindings.md#events

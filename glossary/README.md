@@ -8,7 +8,7 @@ the fully rendered glossary at https://fuchsia.dev/fuchsia-src/glossary-->
 The purpose of this document is to provide short definitions for a collection of
 technical terms used in Fuchsia.
 
-To add a glossary definition, see [Adding glossary entries](/docs/contribute/docs/glossary-entries.md).
+To add a glossary definition, see [Adding glossary entries](contribute/docs/glossary-entries.md).
 
 ## Terms
 

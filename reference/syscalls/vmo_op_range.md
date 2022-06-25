@@ -24,7 +24,7 @@ zx_status_t zx_vmo_op_range(zx_handle_t handle,
 ## DESCRIPTION
 
 `zx_vmo_op_range()` performs cache and memory operations against pages held by the [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO).
+object](reference/kernel_objects/vm_object.md) (VMO).
 
 *offset* byte offset specifying the starting location for *op* in the VMO's held memory.
 
@@ -35,7 +35,7 @@ object](/docs/reference/kernel_objects/vm_object.md) (VMO).
 *buffer* and *buffer_size* are currently unused.
 
 **ZX_VMO_OP_COMMIT** - Commit *size* bytes worth of pages starting at byte *offset* for the VMO.
-More information can be found in the [vm object documentation](/docs/reference/kernel_objects/vm_object.md).
+More information can be found in the [vm object documentation](reference/kernel_objects/vm_object.md).
 Requires the **ZX_RIGHT_WRITE** right.
 
 **ZX_VMO_OP_DECOMMIT** - Release a range of pages previously committed to the VMO from *offset*
@@ -45,7 +45,7 @@ children, and for slice children of such vmos. Provided range must be page align
 
 **ZX_VMO_OP_ZERO** - Resets the range of bytes in the VMO from *offset* to *offset*+*size* to
 0. This is semantically equivalent to writing 0's with
-[`zx_vmo_write()`](/docs/reference/syscalls/vmo_write.md), except that it is able to be done more
+[`zx_vmo_write()`](reference/syscalls/vmo_write.md), except that it is able to be done more
 efficiently and save memory by de-duping to shared zero pages. Requires the **ZX_RIGHT_WRITE** right.
 
 **ZX_VMO_OP_LOCK** - Locks a range of pages in a discardable VMO, preventing them from being
@@ -115,7 +115,7 @@ Requires the **ZX_RIGHT_READ** right.
 
 **ZX_VMO_OP_DONT_NEED** - Hints that pages in the specified range are not needed anymore and should
 be considered for memory reclamation. Intended to be used with VMOs created with
-[`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially succeeds for
+[`zx_pager_create_vmo()`](reference/syscalls/pager_create_vmo.md); trivially succeeds for
 other VMOs.
 
 This only applies to pages in the given range that are already committed, i.e. no new pages will be
@@ -126,7 +126,7 @@ boundary and *offset*+*size* will be rounded up to the next page boundary.
 protected from memory reclamation. The kernel may decide to override this hint when the system is
 under extreme memory pressure. This hint also does not prevent pages from being freed by means other
 than memory reclamation (e.g. a decommit, VMO resize, or VMO destruction). Intended to be used with
-VMOs created with [`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially
+VMOs created with [`zx_pager_create_vmo()`](reference/syscalls/pager_create_vmo.md); trivially
 succeeds for other VMOs.
 
 This may commit pages in the given range where applicable, e.g. if the VMO is directly backed by a

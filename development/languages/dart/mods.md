@@ -143,8 +143,8 @@ the corresponding fidl file path. (e.g. `module.fidl.dart`)
 
 # Using FIDL Dart Bindings
 
-See the [FIDL tutorial](/docs/development/languages/fidl/tutorials/dart) and
-[bindings reference](/docs/reference/fidl/bindings/dart-bindings.md)
+See the [FIDL tutorial](development/languages/fidl/tutorials/dart) and
+[bindings reference](reference/fidl/bindings/dart-bindings.md)
 
 ## Things to Watch Out For
 

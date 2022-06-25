@@ -21,7 +21,7 @@ CIPD packages are typically used to distribute the following files:
     [ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format){: .external}
     binaries generated out-of-tree (for example, Goldfish Vulkan ICD).
 *   Prebuilt Fuchsia archive
-    ([FAR](/docs/development/source_code/archive_format.md)) files that contain
+    ([FAR](development/source_code/archive_format.md)) files that contain
     binaries and metadata for software that is built for Fuchsia by other teams
     (for example,
     [chromium/fuchsia/webrunner-arm64](https://chrome-infra-packages.appspot.com/p/chromium/fuchsia/webrunner-arm64/+/){: .external}).
@@ -32,7 +32,7 @@ fetches those new packages and rolls them into the Fuchsia project through the
 process.
 
 <a name="figure-1"></a> <figure>
-<img src="/docs/images/prebuilt_packages/publish-prebuilt-packages-to-fuchsia-00.png" alt="The latest ref and other refs shown in the CIPD UI">
+<img src="images/prebuilt_packages/publish-prebuilt-packages-to-fuchsia-00.png" alt="The latest ref and other refs shown in the CIPD UI">
 <figcaption><b>Figure 1</b>. The CIPD UI shows the latest ref and other refs
 used for this CIPD package instances.</figcaption> </figure>
 

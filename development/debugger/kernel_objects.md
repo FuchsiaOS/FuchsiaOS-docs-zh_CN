@@ -1,6 +1,6 @@
 # Handles and kernel objects in zxdb
 
-List all handles and [VMOs](/docs/reference/kernel_objects/vm_object.md) (some of these "Virtual
+List all handles and [VMOs](reference/kernel_objects/vm_object.md) (some of these "Virtual
 Memory Objects" can be mapped but won't have open handles) with the `handles` command.
 
 ```none {:.devsite-disable-click-to-copy}

@@ -8,16 +8,16 @@
 toc:
 - title: "Escher (Physically-based renderer) concepts"
   section:
-  - include: /docs/development/graphics/escher/concepts/_toc.yaml
+  - include: development/graphics/escher/concepts/_toc.yaml
 - title: "Flutter (UI toolkit)"
   path: //flutter.io/
   status: external
 - title: "Magma (Vulkan driver) concepts"
   section:
-  - include: /docs/development/graphics/magma/concepts/_toc.yaml
+  - include: development/graphics/magma/concepts/_toc.yaml
 - title: "Scenic (Graphics engine) concepts"
   section:
-  - include: /docs/development/graphics/scenic/concepts/_toc.yaml
+  - include: development/graphics/scenic/concepts/_toc.yaml
 - title: "Sysmem (Shared memory manager) concepts"
   section:
-  - include: /docs/development/graphics/sysmem/concepts/_toc.yaml
+  - include: development/graphics/sysmem/concepts/_toc.yaml

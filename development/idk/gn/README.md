@@ -52,7 +52,7 @@ the instructions below. For a full list of available images [install gsutil](htt
 and run: `gsutil ls gs://fuchsia/development/$(gsutil cat gs://fuchsia/development/LATEST_LINUX)/images`
 
 1. Setup your device and install Zedboot:
-   Find the instructions for your device (e.g. a [NUC](/docs/development/hardware/intel_nuc.md) or [Chromebook](/docs/development/hardware/chromebook.md))
+   Find the instructions for your device (e.g. a [NUC](development/hardware/intel_nuc.md) or [Chromebook](development/hardware/chromebook.md))
    to setup and install Zedboot on your device.
 
 1. From the `samples` directory, create Ninja build files for the samples by running the following command:

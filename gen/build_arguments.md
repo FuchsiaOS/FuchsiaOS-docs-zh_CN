@@ -4498,7 +4498,7 @@ From //build/config/clang/time_trace.gni:8
 ### toolchain_variant
 *This should never be set as a build argument.*
 It exists only to be set in `toolchain_args`.
-See //docs/concepts/build_system/internals/toolchains/build_arguments.md#toolchain_variant
+See /concepts/build_system/internals/toolchains/build_arguments.md#toolchain_variant
 for details and documentation for each field.
 
 **Current value (from the default):**

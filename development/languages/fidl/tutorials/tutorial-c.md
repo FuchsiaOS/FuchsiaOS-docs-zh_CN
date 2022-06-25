@@ -12,7 +12,7 @@ using the FIDL InterProcess Communication (**IPC**) system in Fuchsia.
 
 Refer to the [main FIDL page](../README.md) for details on the
 design and implementation of FIDL, as well as the
-[instructions for getting and building Fuchsia](/docs/get-started/README.md).
+[instructions for getting and building Fuchsia](get-started/README.md).
 
 The [reference](#reference) section documents the bindings.
 
@@ -646,9 +646,9 @@ the channel and calls through the given dispatcher (and ops table) when they
 arrive.
 
 <!-- xrefs -->
-[c-family-comparison]: /docs/development/languages/fidl/guides/c-family-comparison.md
+[c-family-comparison]: development/languages/fidl/guides/c-family-comparison.md
 [echo-fidl]: /examples/fidl/fuchsia.examples/echo.test.fidl
 [echo-server]: /examples/fidl/c/server/echo_server.c
-[fidl-intro]: /docs/development/languages/fidl/tutorials/fidl.md
-[llcpp-tutorial]: /docs/development/languages/fidl/tutorials/llcpp
-[wire-format]: /docs/reference/fidl/language/wire-format
+[fidl-intro]: development/languages/fidl/tutorials/fidl.md
+[llcpp-tutorial]: development/languages/fidl/tutorials/llcpp
+[wire-format]: reference/fidl/language/wire-format

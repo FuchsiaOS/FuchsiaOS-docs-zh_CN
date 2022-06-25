@@ -140,7 +140,7 @@ $ ffx component storage make-directory c1a6d0aebbf7c092c53e8e696636af8ec0629ff39
 
 <!-- Reference links -->
 
-[storage-capabilities]: /docs/concepts/components/v2/capabilities/storage.md
+[storage-capabilities]: concepts/components/v2/capabilities/storage.md
 [ffx-component-storage]: https://fuchsia.dev/reference/tools/sdk/ffx#storage
 [ffx-component-show]: ./view-component-information.md#get-detailed-information-from-a-component
-[component-id-index]: /docs/development/components/component_id_index.md
+[component-id-index]: development/components/component_id_index.md

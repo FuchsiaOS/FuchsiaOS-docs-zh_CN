@@ -21,6 +21,6 @@ TODO
  - [`zx_object_signal()`] - set or clear the user signals on an object
  - [`zx_object_signal_peer()`] - set or clear the user signals in the opposite end
 
-[`zx_eventpair_create()`]: /docs/reference/syscalls/eventpair_create.md
-[`zx_object_signal()`]: /docs/reference/syscalls/object_signal.md
-[`zx_object_signal_peer()`]: /docs/reference/syscalls/object_signal_peer.md
+[`zx_eventpair_create()`]: reference/syscalls/eventpair_create.md
+[`zx_object_signal()`]: reference/syscalls/object_signal.md
+[`zx_object_signal_peer()`]: reference/syscalls/object_signal_peer.md

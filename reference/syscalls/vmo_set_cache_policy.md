@@ -19,7 +19,7 @@ zx_status_t zx_vmo_set_cache_policy(zx_handle_t handle, uint32_t cache_policy);
 ## DESCRIPTION
 
 `zx_vmo_set_cache_policy()` sets caching policy for a [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO). Generally used on VMOs
+object](reference/kernel_objects/vm_object.md) (VMO). Generally used on VMOs
 that point directly at physical memory. Such VMOs are generally only handed to
 userspace via bus protocol interfaces, so this syscall will typically only be
 used by drivers dealing with device memory. This call can also be used on a

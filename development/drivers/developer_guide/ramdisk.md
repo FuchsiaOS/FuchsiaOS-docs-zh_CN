@@ -12,8 +12,8 @@ In this section, we'll examine a simplified RAM-disk driver.
 This driver introduces:
 
 *   the block protocol's **query()** and **queue()** ops
-*   Virtual Memory Address Regions ([VMAR](/docs/reference/kernel_objects/vm_address_region.md)s)
-    and Virtual Memory Objects ([VMO](/docs/reference/kernel_objects/vm_object.md)s)
+*   Virtual Memory Address Regions ([VMAR](reference/kernel_objects/vm_address_region.md)s)
+    and Virtual Memory Objects ([VMO](reference/kernel_objects/vm_object.md)s)
 
 The source is in `//examples/drivers//ramdisk/demo-ramdisk.c`.
 
@@ -82,23 +82,23 @@ This is no different than any of the other drivers we've seen so far.
 The binding function, **ramdisk_driver_bind()**, does the following:
 
 1.  Allocates the device context block.
-2.  Creates a [VMO](/docs/reference/kernel_objects/vm_object.md).
-    The [VMO](/docs/reference/kernel_objects/vm_object.md)
+2.  Creates a [VMO](reference/kernel_objects/vm_object.md).
+    The [VMO](reference/kernel_objects/vm_object.md)
     is a kernel object that represents a chunk of memory.
     In this simplified RAM-disk driver, we're creating a
-    [VMO](/docs/reference/kernel_objects/vm_object.md) that's `RAMDISK_SIZE`
+    [VMO](reference/kernel_objects/vm_object.md) that's `RAMDISK_SIZE`
     bytes long.
     This chunk of memory **is** the RAM-disk &mdash; that's where the data is stored.
-    The [VMO](/docs/reference/kernel_objects/vm_object.md)
-    creation call, [**zx_vmo_create()**](/docs/reference/syscalls/vmo_create.md),
-    returns the [VMO](/docs/reference/kernel_objects/vm_object.md) handle through
+    The [VMO](reference/kernel_objects/vm_object.md)
+    creation call, [**zx_vmo_create()**](reference/syscalls/vmo_create.md),
+    returns the [VMO](reference/kernel_objects/vm_object.md) handle through
     its third argument, which is a member in our context block.
-3.  Maps the [VMO](/docs/reference/kernel_objects/vm_object.md) into our address space with
-    [**zx_vmar_map()**](/docs/reference/syscalls/vmar_map.md).
+3.  Maps the [VMO](reference/kernel_objects/vm_object.md) into our address space with
+    [**zx_vmar_map()**](reference/syscalls/vmar_map.md).
     This function returns a pointer to a
-    [VMAR](/docs/reference/kernel_objects/vm_address_region.md)
+    [VMAR](reference/kernel_objects/vm_address_region.md)
     that points to the entire
-    [VMO](/docs/reference/kernel_objects/vm_object.md) (because
+    [VMO](reference/kernel_objects/vm_object.md) (because
     we specified `RAMDISK_SIZE` as the mapping size argument) and gives us read and
     write access (because of the `ZX_VM_FLAG_PERM_*` flags).
     The pointer is stored in our context block's `mapped_addr` member.
@@ -128,9 +128,9 @@ The fields are:
 Type            | Field         | Description
 ----------------|---------------|----------------
 `zx_device_t*`  | zxdev         | the ramdisk device
-`uintptr_t`     | mapped_addr   | address of the [VMAR](/docs/reference/kernel_objects/vm_address_region.md)
+`uintptr_t`     | mapped_addr   | address of the [VMAR](reference/kernel_objects/vm_address_region.md)
 `uin32_t`       | flags         | device flags
-`zx_handle_t`   | vmo           | a handle to our [VMO](/docs/reference/kernel_objects/vm_object.md)
+`zx_handle_t`   | vmo           | a handle to our [VMO](reference/kernel_objects/vm_object.md)
 `bool`          | dead          | indicates if the device is still alive
 
 ### Operations
@@ -211,10 +211,10 @@ to indicate unbinding is complete.
 
 Sometime after **device_unbind_reply()** is called,
 the driver's **ramdisk_release()** will be called.
-Here we unmap the [VMAR](/docs/reference/kernel_objects/vm_address_region.md),
-with [**zx_vmar_unmap()**](/docs/reference/syscalls/vmar_unmap.md), and close the
-[VMO](/docs/reference/kernel_objects/vm_object.md),
-with [**zx_handle_close()**](/docs/reference/syscalls/handle_close.md).
+Here we unmap the [VMAR](reference/kernel_objects/vm_address_region.md),
+with [**zx_vmar_unmap()**](reference/syscalls/vmar_unmap.md), and close the
+[VMO](reference/kernel_objects/vm_object.md),
+with [**zx_handle_close()**](reference/syscalls/handle_close.md).
 As our final act, we release the device context block.
 At this point, the device is finished.
 
@@ -300,11 +300,11 @@ struct block_op {
 ```
 
 The transfer takes place to or from the `vmo` in the structure &mdash; in the case of
-a read, we transfer data to the [VMO](/docs/reference/kernel_objects/vm_object.md),
+a read, we transfer data to the [VMO](reference/kernel_objects/vm_object.md),
 and vice versa for a write.
 The `length` indicates the number of *blocks* (not bytes) to transfer, and the
 two offset fields, `offset_dev` and `offset_vmo`, indicate the relative offsets (again,
-in blocks not bytes) into the device and the [VMO](/docs/reference/kernel_objects/vm_object.md)
+in blocks not bytes) into the device and the [VMO](reference/kernel_objects/vm_object.md)
 of where the transfer should take place.
 
 The implementation is straightforward:
@@ -374,17 +374,17 @@ neither should allow offsets that exceed the size of the device, nor transfer
 more than the maximum transfer size.
 
 Similarly, in step (4) we compute the device address (that is, we establish a
-pointer to our [VMAR](/docs/reference/kernel_objects/vm_address_region.md)
+pointer to our [VMAR](reference/kernel_objects/vm_address_region.md)
 that's offset by the appropriate number of blocks as per the request).
 
-In step (5) we perform either a [**zx_vmo_read()**](/docs/reference/syscalls/vmo_read.md)
-or a [**zx_vmo_write()**](/docs/reference/syscalls/vmo_write.md), depending
+In step (5) we perform either a [**zx_vmo_read()**](reference/syscalls/vmo_read.md)
+or a [**zx_vmo_write()**](reference/syscalls/vmo_write.md), depending
 on the command.
 This is what transfers data between a pointer within our
-[VMAR](/docs/reference/kernel_objects/vm_address_region.md) (`addr`)
-and the client's [VMO](/docs/reference/kernel_objects/vm_object.md) (`bop->rw.vmo`).
-Notice that in the read case, we *write* to the [VMO](/docs/reference/kernel_objects/vm_object.md),
-and in the write case, we *read* from the [VMO](/docs/reference/kernel_objects/vm_object.md).
+[VMAR](reference/kernel_objects/vm_address_region.md) (`addr`)
+and the client's [VMO](reference/kernel_objects/vm_object.md) (`bop->rw.vmo`).
+Notice that in the read case, we *write* to the [VMO](reference/kernel_objects/vm_object.md),
+and in the write case, we *read* from the [VMO](reference/kernel_objects/vm_object.md).
 
 Finally, in step (6) (and the other two cases), we signal completion with the
 `completion` callback in the block ops structure.

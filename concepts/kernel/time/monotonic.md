@@ -15,4 +15,4 @@ Since monotonic time counts from power on, it is only meaningful in the context
 of a single power cycle on a single Fuchsia device.
 
 Components may read monotonic time using
-[`zx_clock_get_monotonic`](/docs/reference/syscalls/clock_get_monotonic.md).
+[`zx_clock_get_monotonic`](reference/syscalls/clock_get_monotonic.md).

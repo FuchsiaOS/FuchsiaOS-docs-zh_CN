@@ -235,11 +235,11 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /docs/glossary/README.md#realm
+[glossary.realm]: glossary/README.md#realm
 [src]: /examples/fidl/llcpp/request_pipelining
-[server-tut]: /docs/development/languages/fidl/tutorials/llcpp/basics/server.md
-[server-tut-main]: /docs/development/languages/fidl/tutorials/llcpp/basics/server.md#main
-[client-tut]: /docs/development/languages/fidl/tutorials/llcpp/basics/client.md
-[rubric]: /docs/development/api/fidl.md#request-pipelining
-[overview]: /docs/development/languages/fidl/tutorials/llcpp/README.md
+[server-tut]: development/languages/fidl/tutorials/llcpp/basics/server.md
+[server-tut-main]: development/languages/fidl/tutorials/llcpp/basics/server.md#main
+[client-tut]: development/languages/fidl/tutorials/llcpp/basics/client.md
+[rubric]: development/api/fidl.md#request-pipelining
+[overview]: development/languages/fidl/tutorials/llcpp/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

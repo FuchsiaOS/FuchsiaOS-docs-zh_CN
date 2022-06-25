@@ -90,6 +90,6 @@ To run the example:
    ```
 
 <!-- xrefs -->
-[compiling]: /docs/development/languages/fidl/tutorials/fidl.md
+[compiling]: development/languages/fidl/tutorials/fidl.md
 [fostr-dir]: /src/lib/fostr/fidl
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[overview]: development/languages/fidl/tutorials/overview.md

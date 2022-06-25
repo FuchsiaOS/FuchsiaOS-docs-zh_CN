@@ -32,7 +32,7 @@ This prevents us from describing more complex relationships:
 
 Providing this flexibility allows a service to be more clearly expressed,
 without resorting to the use of workarounds like [service
-hubs](/docs/development/api/fidl.md#service_hubs).
+hubs](development/api/fidl.md#service_hubs).
 With that flexibility, we can define devices as services.
 Concretely, we plan to evolve `/svc/`**`$Protocol`**
 which implies "only one protocol per process namespace" to:
@@ -521,7 +521,7 @@ There are no changes to the wire format.
 If you are introducing a new data type or language feature, consider what
 changes you would expect users to make to FIDL definitions without
 breaking users of the generated code.
-If your feature places any new [source compatibility](/docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md)
+If your feature places any new [source compatibility](contribute/governance/rfcs/0024_mandatory_source_compatibility.md)
 restrictions on the generated language bindings, list those here.
 
 ## Performance
@@ -779,4 +779,4 @@ The following questions are explored:
 
 <!-- xrefs -->
 [fdio_ns_get_installed]: /sdk/lib/fdio/include/lib/fdio/namespace.h#70
-[FIDL tutorial]: /docs/development/languages/fidl/tutorials/overview.md
+[FIDL tutorial]: development/languages/fidl/tutorials/overview.md

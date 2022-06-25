@@ -183,4 +183,4 @@ In the next module, you'll learn more about building Fuchsia's fundamental unit
 of software:
 
 <a class="button button-primary"
-    href="/docs/get-started/sdk/learn/components">Fuchsia components</a>
+    href="get-started/sdk/learn/components">Fuchsia components</a>

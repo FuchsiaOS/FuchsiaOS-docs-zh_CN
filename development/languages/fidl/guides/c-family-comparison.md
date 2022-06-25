@@ -124,6 +124,6 @@ dispatch using the `EnableNextDispatch()` API defined in
 TODO
 
 <!-- xrefs -->
-[layout-attribute]: /docs/reference/fidl/language/attributes.md#layout
-[llcpp-tutorial]: /docs/development/languages/fidl/tutorials/llcpp
-[hlcpp-tutorial]: /docs/development/languages/fidl/tutorials/hlcpp
+[layout-attribute]: reference/fidl/language/attributes.md#layout
+[llcpp-tutorial]: development/languages/fidl/tutorials/llcpp
+[hlcpp-tutorial]: development/languages/fidl/tutorials/hlcpp

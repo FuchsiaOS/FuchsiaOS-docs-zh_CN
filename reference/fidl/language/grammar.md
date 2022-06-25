@@ -259,7 +259,7 @@ The `service-member` allows the more liberal `type-constructor` in the grammar,
 but the compiler limits this to protocols.
 
 <!-- xrefs -->
-[primitives]: /docs/reference/fidl/language/language.md#primitives
+[primitives]: reference/fidl/language/language.md#primitives
 [fidldoc]: /tools/fidl/fidldoc/
-[doc_reference]: /docs/reference/fidl/language/attributes.md#doc
-[comment_style_guide]: /docs/development/languages/fidl/guides/style.md#comments
+[doc_reference]: reference/fidl/language/attributes.md#doc
+[comment_style_guide]: development/languages/fidl/guides/style.md#comments

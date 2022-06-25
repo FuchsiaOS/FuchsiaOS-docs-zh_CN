@@ -73,10 +73,10 @@ For more information, see [Run Fuchsia tests][executing-tests].
   interactions between multiple components in isolation from the rest of the
   system.
 
-[component-manifest]: /docs/concepts/components/v2/component_manifests.md
-[glossary.component]: /docs/glossary/README.md#component
-[executing-tests]: /docs/development/testing/run_fuchsia_tests.md
+[component-manifest]: concepts/components/v2/component_manifests.md
+[glossary.component]: glossary/README.md#component
+[executing-tests]: development/testing/run_fuchsia_tests.md
 [integration-testing]: integration_testing.md
-[test-packages]: /docs/development/components/build.md#test-packages
+[test-packages]: development/components/build.md#test-packages
 [trf]: test_runner_framework.md
-[unit-tests]: /docs/development/components/build.md#unit-tests
+[unit-tests]: development/components/build.md#unit-tests

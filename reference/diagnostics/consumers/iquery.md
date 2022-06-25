@@ -184,4 +184,4 @@ $ fx shell iquery show-file /dev/diagnostics/driver_manager/dm.inspect /hub/c/ar
 
 Prints usage information about `show-file`.
 
-[Inspect API]: /docs/development/diagnostics/inspect/README.md
+[Inspect API]: development/diagnostics/inspect/README.md

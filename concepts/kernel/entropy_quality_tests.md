@@ -133,10 +133,10 @@ statically allocated buffer. The default value if unspecified is 1MiB.
 
 The boot-time tests are controlled via kernel cmdlines. The relevant cmdlines
 are `kernel.entropy-test.*`, documented in
-[kernel\_cmdline.md](/docs/reference/kernel/kernel_cmdline.md).
+[kernel\_cmdline.md](reference/kernel/kernel_cmdline.md).
 
 Some entropy sources, notably jitterentropy, have parameter values that can be
-tweaked via kernel cmdline. Again, see [kernel\_cmdline.md](/docs/reference/kernel/kernel_cmdline.md)
+tweaked via kernel cmdline. Again, see [kernel\_cmdline.md](reference/kernel/kernel_cmdline.md)
 for further details.
 
 ### Boot-time tests: running

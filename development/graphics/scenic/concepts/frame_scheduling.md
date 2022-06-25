@@ -1,4 +1,4 @@
-> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/docs/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/docs/concepts/ui/index.md).
+> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](concepts/ui/index.md).
 
 # Frame Scheduling
 
@@ -93,7 +93,7 @@ examples assume that clients using the API have listeners registered for the
 that `session` is an initialized Scenic
 [Session](/sdk/fidl/fuchsia.ui.scenic/session.fidl)
 channel. For examples of how to set up scenic, see
-[Scenic examples](/docs/concepts/ui/scenic/index.md#examples-of-using-scenic).
+[Scenic examples](concepts/ui/scenic/index.md#examples-of-using-scenic).
 
 ### Example 1 {#example1}
 
@@ -311,4 +311,4 @@ void OnFramePresented(FramePresentedInfo info) {
 
 ```
 
-[scenic]: /docs/concepts/ui/scenic/index.md
+[scenic]: concepts/ui/scenic/index.md

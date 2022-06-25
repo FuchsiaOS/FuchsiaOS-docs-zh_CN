@@ -7,14 +7,14 @@
 # team as reviewer.
 toc:
 - title: "Fuchsia open source licensing policies"
-  path: /docs/contribute/governance/policy/open-source-licensing-policies.md
+  path: contribute/governance/policy/open-source-licensing-policies.md
 - title: "Open Source Review Board (OSRB) process"
-  path: /docs/contribute/governance/policy/osrb-process.md
+  path: contribute/governance/policy/osrb-process.md
 - title: "External dependencies"
-  path: /docs/contribute/governance/policy/external_dependencies.md
+  path: contribute/governance/policy/external_dependencies.md
 - title: "Programming languages"
-  path: /docs/contribute/governance/policy/programming_languages.md
+  path: contribute/governance/policy/programming_languages.md
 - title: "Update channel usage policy"
-  path: /docs/contribute/governance/policy/update_channel_usage_policy.md
+  path: contribute/governance/policy/update_channel_usage_policy.md
 - title: "Project Areas"
-- include: /docs/contribute/governance/areas/_toc.yaml
+- include: contribute/governance/areas/_toc.yaml

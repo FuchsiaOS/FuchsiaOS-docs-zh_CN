@@ -7,31 +7,31 @@
 # team as reviewer.
 toc:
 - title: "Build Workstation"
-  path: /docs/development/build/build_workstation.md
+  path: development/build/build_workstation.md
 - title: "fx workflows"
-  path: /docs/development/build/fx.md
+  path: development/build/fx.md
 - title: "Build and pave quickstart"
-  path: /docs/development/build/build_and_pave_quickstart.md
+  path: development/build/build_and_pave_quickstart.md
 - title: "Retrieve build information"
-  path: /docs/development/build/build_information.md
+  path: development/build/build_information.md
 - title: "Fuchsia emulator"
-  path: /docs/development/build/emulator.md
+  path: development/build/emulator.md
 - title: "Advanced"
   section:
   - title: "Build Clang toolchain"
-    path: /docs/development/build/toolchain.md
+    path: development/build/toolchain.md
   - title: "Build Rust for Fuchsia"
-    path: /docs/development/build/rust_toolchain.md
+    path: development/build/rust_toolchain.md
   - title: "Build Fuchsia with custom Rust"
-    path: /docs/development/build/fuchsia_custom_rust.md
+    path: development/build/fuchsia_custom_rust.md
   - title: "Run the Rust test suite"
-    path: /docs/development/build/rust_test_suite.md
+    path: development/build/rust_test_suite.md
   - title: "Run Clang static analysis"
-    path: /docs/development/build/static_analysis.md
+    path: development/build/static_analysis.md
   - title: "Ninja no-op check"
-    path: /docs/development/build/ninja_no_op.md
+    path: development/build/ninja_no_op.md
   - title: "Hermetic actions check"
-    path: /docs/development/build/hermetic_actions.md
+    path: development/build/hermetic_actions.md
 - title: "Build system"
   section:
-  - include: /docs/development/build/build_system/_toc.yaml
+  - include: development/build/build_system/_toc.yaml

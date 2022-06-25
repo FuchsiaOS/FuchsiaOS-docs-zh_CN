@@ -74,6 +74,6 @@ See the [Inspect Codelab][inspect-codelab] for detailed information on using
 `ArchiveReader`.
 
 [driver-pattern-example]: /examples/components/routing/integration_tests/
-[inspect-codelab]: /docs/development/diagnostics/inspect/codelab/codelab.md
+[inspect-codelab]: development/diagnostics/inspect/codelab/codelab.md
 [trf]: test_runner_framework.md
-[realm-builder]: /docs/development/testing/components/realm_builder.md
+[realm-builder]: development/testing/components/realm_builder.md

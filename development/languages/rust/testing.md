@@ -144,9 +144,9 @@ rustc_binary("bin") {
   ]
 }
 ```
-[build-tests]:/docs/development/components/build.md#test-packages
-[component-tests]:/docs/development/testing/components/test_component.md
+[build-tests]:development/components/build.md#test-packages
+[component-tests]:development/testing/components/test_component.md
 [example-src]: /examples/hello_world/rust
-[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
+[glossary.component-manifest]: glossary/README.md#component-manifest
 [`matches`]: https://fuchsia-docs.firebaseapp.com/rust/matches/index.html
 [`pretty_assertions`]: https://fuchsia-docs.firebaseapp.com/rust/pretty_assertions/index.html

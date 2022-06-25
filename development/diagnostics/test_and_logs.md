@@ -42,5 +42,5 @@ Valid values for `max_severity`: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FAT
 
 See also: [choosing severity for log records][choose-severity].
 
-[choose-severity]: /docs/development/diagnostics/logs/severity.md
-[syslog]: /docs/development/diagnostics/logs/README.md
+[choose-severity]: development/diagnostics/logs/severity.md
+[syslog]: development/diagnostics/logs/README.md

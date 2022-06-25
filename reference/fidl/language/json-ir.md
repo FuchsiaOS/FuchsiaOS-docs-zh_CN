@@ -14,4 +14,4 @@ the FIDL compiler][fidl-cli].
 
 <!-- xrefs -->
 [json-schema]: /tools/fidl/fidlc/schema.json
-[fidl-cli]: /docs/development/languages/fidl/guides/cli.md
+[fidl-cli]: development/languages/fidl/guides/cli.md

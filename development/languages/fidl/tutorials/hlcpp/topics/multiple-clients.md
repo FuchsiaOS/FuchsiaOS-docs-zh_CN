@@ -113,11 +113,11 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /docs/glossary/README.md#realm
-[client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
-[client-main]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md#main
-[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
-[server-tut-impl]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
-[services-tut]: /docs/development/languages/fidl/tutorials/hlcpp/topics/services.md
+[glossary.realm]: glossary/README.md#realm
+[client-tut]: development/languages/fidl/tutorials/hlcpp/basics/client.md
+[client-main]: development/languages/fidl/tutorials/hlcpp/basics/client.md#main
+[server-tut]: development/languages/fidl/tutorials/hlcpp/basics/server.md
+[server-tut-impl]: development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
+[services-tut]: development/languages/fidl/tutorials/hlcpp/topics/services.md
 [src]: /examples/fidl/hlcpp/multiple_clients
-[overview]: /docs/development/languages/fidl/tutorials/hlcpp/README.md
+[overview]: development/languages/fidl/tutorials/hlcpp/README.md

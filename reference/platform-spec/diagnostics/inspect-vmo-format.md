@@ -49,8 +49,8 @@ The Inspect Format described in this document has the following goals:
     A reader may maintain a handle to the VMO containing Inspect data even
     after the writing component terminates.
 
-[inspect]: /docs/development/diagnostics/inspect/README.md
-[updating-format]: /docs/reference/diagnostics/inspect/updating-vmo-format.md
+[inspect]: development/diagnostics/inspect/README.md
+[updating-format]: reference/diagnostics/inspect/updating-vmo-format.md
 
 ## Terminology
 
@@ -676,8 +676,8 @@ a new even number. Release ordering ensures that writes to the file are
 visible before the generation count update is visible.
 
 <!-- xrefs -->
-[bitfield-diagram]: /docs/reference/platform-spec/diagnostics/bitfield-diagram.md
+[bitfield-diagram]: reference/platform-spec/diagnostics/bitfield-diagram.md
 [block.h]: /zircon/system/ulib/inspect/include/lib/inspect/cpp/vmo/block.h
 [buddy]: https://en.wikipedia.org/wiki/Buddy_memory_allocation
 [rfc2119]: https://www.ietf.org/rfc/rfc2119.txt
-[VMO]: /docs/reference/kernel_objects/vm_object.md
+[VMO]: reference/kernel_objects/vm_object.md

@@ -47,7 +47,7 @@ Logical CPU numbers must be stored in increasing order in the array. The scale v
 fixed point Q32.32 format. The scale values should indicate the relative performance of the CPUs,
 with 1.0 corresponding to the highest operating point of the fastest CPU in the system.
 
-See [RFC 0123](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+See [RFC 0123](contribute/governance/rfcs/0123_cpu_performance_info.md)
 for further details on values and update protocols.
 
 ## RIGHTS
@@ -78,7 +78,7 @@ negative error value is returned.
 
 ## SEE ALSO
 
-- [RFC 0123: CPU performance info syscalls](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+- [RFC 0123: CPU performance info syscalls](contribute/governance/rfcs/0123_cpu_performance_info.md)
  
 
  - [`zx_system_get_performance_info()`]

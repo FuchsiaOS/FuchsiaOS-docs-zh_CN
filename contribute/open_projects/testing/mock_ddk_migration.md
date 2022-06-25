@@ -55,7 +55,7 @@ their accompanying device.
 
 Here is an interaction model of how the mock-ddk interacts with a driver:
 
-![Figure: Interaction Model](/docs/development/drivers/testing/images/interaction_model.png)
+![Figure: Interaction Model](development/drivers/testing/images/interaction_model.png)
 
 ### Major changes from the fake-ddk
 

@@ -21,7 +21,7 @@ zx_status_t zx_profile_create(zx_handle_t root_job,
 
 ## DESCRIPTION
 
-`zx_profile_create()` creates a new [profile](/docs/reference/kernel_objects/profile.md) object.
+`zx_profile_create()` creates a new [profile](reference/kernel_objects/profile.md) object.
 
 The parameter *profile* specifies the settings in the profile, which in turn
 will be applied to threads when [`zx_object_set_profile()`] is called. The

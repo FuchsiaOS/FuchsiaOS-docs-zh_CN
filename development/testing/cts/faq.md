@@ -199,7 +199,7 @@ directory's owners or file a bug in the [CTS bug component].
 
 
 [CTS bug component]: https://bugs.fuchsia.dev/p/fuchsia/templates/detail?saved=1&template=Fuchsia%20Compatibility%20Test%20Suite%20%28CTS%29&ts=1627669234
-[CTS overview]: /docs/development/testing/cts/overview.md
-[Run Fuchsia Tests]: /docs/development/testing/run_fuchsia_tests.md
+[CTS overview]: development/testing/cts/overview.md
+[Run Fuchsia Tests]: development/testing/run_fuchsia_tests.md
 [//sdk/cts/examples]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/sdk/cts/examples/
 [//sdk/cts/tests]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/sdk/cts/tests/

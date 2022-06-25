@@ -376,18 +376,18 @@ Apache Thrift [discards unknown fields][thrift-unknowns].
 
 <!-- link labels -->
 [`fidl_table_validation`]: https://fuchsia-docs.firebaseapp.com/rust/fidl_table_validation/index.html
-[Bindings reference]: /docs/reference/fidl/bindings/overview.md
-[domain objects]: /docs/contribute/governance/rfcs/0097_fidl_toolchain.md#terminology
-[fewest features]: /docs/contribute/contributing-to-fidl/design-principles.md#fewest-features
-[FIDL bindings specification]: /docs/reference/fidl/language/bindings-spec.md
-[FIDL language specification]: /docs/reference/fidl/language/language.md
-[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[Bindings reference]: reference/fidl/bindings/overview.md
+[domain objects]: contribute/governance/rfcs/0097_fidl_toolchain.md#terminology
+[fewest features]: contribute/contributing-to-fidl/design-principles.md#fewest-features
+[FIDL bindings specification]: reference/fidl/language/bindings-spec.md
+[FIDL language specification]: reference/fidl/language/language.md
+[lang-flexible]: reference/fidl/language/language.md#strict-vs-flexible
 [NaN]: https://en.wikipedia.org/wiki/NaN
-[partial update pattern]: /docs/development/api/fidl.md#controlling-settings
+[partial update pattern]: development/api/fidl.md#controlling-settings
 [proto-unknowns]: https://developers.google.com/protocol-buffers/docs/proto3#unknowns
-[rfc-0033]: /docs/contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
-[rfc-0057-bwd]: /docs/contribute/governance/rfcs/0057_default_no_handles.md#backwards-compatibility
-[rfc-0114-alternative-8-byte]: /docs/contribute/governance/rfcs/0114_fidl_envelope_inlining.md#alternative-8-byte
-[solve real problems]: /docs/contribute/contributing-to-fidl/design-principles.md#solve-real-problems
+[rfc-0033]: contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
+[rfc-0057-bwd]: contribute/governance/rfcs/0057_default_no_handles.md#backwards-compatibility
+[rfc-0114-alternative-8-byte]: contribute/governance/rfcs/0114_fidl_envelope_inlining.md#alternative-8-byte
+[solve real problems]: contribute/contributing-to-fidl/design-principles.md#solve-real-problems
 [thrift-unknowns]: http://mail-archives.apache.org/mod_mbox/thrift-user/201204.mbox/%3CCACK7Cy6GgDharG=HBm5dyt75xpCmBVkVZnG3f73bdd-JmqK_vQ@mail.gmail.com%3E
-[wire format metadata]: /docs/contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
+[wire format metadata]: contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md

@@ -158,7 +158,7 @@ server for this method, i.e. the union that consists of either a result of
 `Data` can be referred to as either the response type or the success type.
 
 <!-- xrefs -->
-[trailhead]: /docs/development/languages/fidl/README.md
-[wire-format]: /docs/reference/fidl/language/wire-format
-[grammar]: /docs/reference/fidl/language/grammar.md#grammar
-[rfc-050-layouts-constraints]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#layouts-constraints
+[trailhead]: development/languages/fidl/README.md
+[wire-format]: reference/fidl/language/wire-format
+[grammar]: reference/fidl/language/grammar.md#grammar
+[rfc-050-layouts-constraints]: contribute/governance/rfcs/0050_syntax_revamp.md#layouts-constraints

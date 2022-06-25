@@ -79,7 +79,7 @@ which is 65536.
 
 Messages are drained by [`zx_channel_read()`] or [`zx_channel_read_etc()`]. Failure to drain the
 messages in a timely fashion can cause excessive kernel memory to be used, which might generate an
-exception. See [ipc limits](/docs/concepts/kernel/ipc_limits.md) for details.
+exception. See [ipc limits](concepts/kernel/ipc_limits.md) for details.
 
 ### ZX_CHANNEL_WRITE_USE_IOVEC option
 

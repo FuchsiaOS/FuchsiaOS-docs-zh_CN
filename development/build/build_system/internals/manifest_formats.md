@@ -343,7 +343,7 @@ target in our build graph, and that there is no way to link everything together
 during the GN generation pass.
 
 [windows-ini]: https://en.wikipedia.org/wiki/INI_file
-[fuchsia-package-archive]: /docs/concepts/packages/package.md#structure-of-a-package
+[fuchsia-package-archive]: concepts/packages/package.md#structure-of-a-package
 [glossary.zircon boot image]: /docs//glossary/README.md#zircon-boot-image
 [pm-tool]: https://fuchsia.dev/reference/tools/sdk/pm.md
 [zbi-tool]: https://fuchsia.dev/reference/tools/sdk/zbi.md

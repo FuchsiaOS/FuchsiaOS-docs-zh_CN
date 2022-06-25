@@ -165,7 +165,7 @@ collection to delete all BLOBs that aren’t referenced in either the static or 
 the retained packages set. After garbage collection, the `system-updater` will retry the fetch. If
 the retry fails, the `system-updater` will [replace][replace-retained-packages-fidl] the retained
 packages set with just the update package it is trying to fetch (if the update package URL
-included the [hash](/docs/concepts/packages/package_url.md#package-hash), otherwise it will clear
+included the [hash](concepts/packages/package_url.md#package-hash), otherwise it will clear
 the retained package set) and then again trigger garbage collection and retry the update package
 fetch.
 
@@ -201,7 +201,7 @@ on slot A.
 The update package contains an epoch file (`epoch.json`). If the epoch of the update
 package (the target epoch) is less than the epoch of the `system-updater`
 (the source epoch), the OTA fails. For additional context,
-see [RFC-0071](/docs/contribute/governance/rfcs/0071_ota_backstop.md).
+see [RFC-0071](contribute/governance/rfcs/0071_ota_backstop.md).
 
 ![Figure: Verify epoch is supported](images/verify-epoch.png)
 
@@ -431,10 +431,10 @@ After this, the update is considered committed. This means:
   discovers a new update, the whole update process starts again.
 
 
-[glossary.ABR]: /docs/glossary/README.md#ABR
+[glossary.ABR]: glossary/README.md#ABR
 [configured]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/bin/system-update-checker/BUILD.gn;l=114;drc=50245a9ce68f3b877e165b004175e2a4fc12eaef
 [paver API]: https://fuchsia.dev/reference/fidl/fuchsia.paver#DataSink
-[update package]: /docs/concepts/packages/update_pkg.md
+[update package]: concepts/packages/update_pkg.md
 [recovery-mode-code]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/bin/system-updater/src/update.rs;l=429;drc=202c37fa01f75c431f61ca824b4d2f7c2ec82178
 [need]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/bin/pkg-resolver/src/cache.rs;l=275;drc=c557680c2d1d59f4ec4f31981b08610bec7c8514
 [update-rs]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/bin/system-updater/src/update.rs;l=507;drc=202c37fa01f75c431f61ca824b4d2f7c2ec82178

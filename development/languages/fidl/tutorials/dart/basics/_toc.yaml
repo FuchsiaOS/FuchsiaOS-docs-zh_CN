@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "FIDL Dart packages"
-  path: /docs/development/languages/fidl/tutorials/dart/basics/using-fidl.md
+  path: development/languages/fidl/tutorials/dart/basics/using-fidl.md
 - title: "Server"
-  path: /docs/development/languages/fidl/tutorials/dart/basics/server.md
+  path: development/languages/fidl/tutorials/dart/basics/server.md
 - title: "Client"
-  path: /docs/development/languages/fidl/tutorials/dart/basics/client.md
+  path: development/languages/fidl/tutorials/dart/basics/client.md

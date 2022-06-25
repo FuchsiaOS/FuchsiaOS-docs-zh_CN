@@ -51,4 +51,4 @@ dependent projects between steps 1 and 2.
 Only Google developers can make hard transitions. See internal documentation for
 instructions.
 
-[getting-source]: /docs/get-started/get_fuchsia_source.md "Getting source"
+[getting-source]: get-started/get_fuchsia_source.md "Getting source"

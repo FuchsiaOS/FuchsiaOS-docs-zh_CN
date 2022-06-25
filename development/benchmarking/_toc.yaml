@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Viewing Zircon microbenchmarks with Catapult"
-  path: /docs/development/benchmarking/catapult_user_guide.md
+  path: development/benchmarking/catapult_user_guide.md
 - title: "Benchmark results schema"
-  path: /docs/development/benchmarking/results_schema.md
+  path: development/benchmarking/results_schema.md

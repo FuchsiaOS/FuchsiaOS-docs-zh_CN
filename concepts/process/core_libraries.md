@@ -39,7 +39,7 @@ are useful library code for kernel and device driver environments (for
 instance, slab allocation).
 
 For more information about FBL,
-[read its overview](/docs/development/languages/c-cpp/cxx.md#fbl).
+[read its overview](development/languages/c-cpp/cxx.md#fbl).
 
 # FXL
 

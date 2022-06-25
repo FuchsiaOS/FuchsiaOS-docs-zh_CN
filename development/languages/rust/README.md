@@ -119,7 +119,7 @@ Public discussion happens on the [rust-users@fuchsia.dev] mailing list.
 [fargo]: https://fuchsia.googlesource.com/fargo
 [rustfmt-install]: https://github.com/rust-lang-nursery/rustfmt#quick-start
 [rustfmt-toml]: /rustfmt.toml
-[fidl-tutorial]: /docs/development/languages/fidl/tutorials/rust
+[fidl-tutorial]: development/languages/fidl/tutorials/rust
 [rust-users@fuchsia.dev]: https://groups.google.com/a/fuchsia.dev/g/rust-users
 [go/fuchsia-rust-googlers]: https://goto.google.com/fuchsia-rust-googlers
 [rust-proc-macros]: https://doc.rust-lang.org/reference/procedural-macros.html

@@ -10,7 +10,7 @@ Fuchsia manages git commits and code reviews through
 
 Before you begin, you need to:
 
-*   [Download the Fuchsia source code](/docs/get-started/get_fuchsia_source.md).
+*   [Download the Fuchsia source code](get-started/get_fuchsia_source.md).
 
     Note: You can complete the next prerequisite items while downloading the
     Fuchsia source code.
@@ -69,7 +69,7 @@ in Gerrit, do the following:
     ```
 
 1.  Commit the updated files and
-[write the change message](/docs/contribute/commit-message-style-guide.md):
+[write the change message](contribute/commit-message-style-guide.md):
 
     ```posix-terminal
     git commit
@@ -79,7 +79,7 @@ in Gerrit, do the following:
 
 You can use `jiri` or `git`.
 
-`jiri` is a tool for working with multiple repositories that is [installed with Fuchsia](/docs/get-started/get_fuchsia_source.md).
+`jiri` is a tool for working with multiple repositories that is [installed with Fuchsia](get-started/get_fuchsia_source.md).
 To upload your commit:
 
 ```posix-terminal
@@ -131,7 +131,7 @@ A change can be submitted after a repository owner applies the
 is submitted to the Commit Queue (CQ). The Commit Queue verifies and
 merges changes to the `main` branch.
 
-**Only contributors with [commit access](/docs/contribute/community/contributor-roles.md#committer)** can submit code directly
+**Only contributors with [commit access](contribute/community/contributor-roles.md#committer)** can submit code directly
 through the Gerrit interface. Regular members need to ask a Committer to submit code for them.
 
 ### Create and upload a patch
@@ -199,12 +199,12 @@ git branch -d <branch_name>
 ## Write a change message {#write-a-change-message}
 
 When writing a change message, follow the [Commit message style
-guide](/docs/contribute/commit-message-style-guide.md).
+guide](contribute/commit-message-style-guide.md).
 
 ## Contribute a change to the API
 
 To contribute to the
-[Fuchsia API Surface](/docs/glossary/README.md#fuchsia-api-surface), do the following:
+[Fuchsia API Surface](glossary/README.md#fuchsia-api-surface), do the following:
 
 * Evaluate whether your change is large or small.
 
@@ -215,13 +215,13 @@ To contribute to the
     * If you have a large change to the API, that is, a change that
     significantly expands on the fuction of the API or modifies the
     API extensively, do the following:
-        * Create an [RFC](/docs/contribute/governance/rfcs/TEMPLATE.md) that
+        * Create an [RFC](contribute/governance/rfcs/TEMPLATE.md) that
         explains the design of your modification to the API.
         * This RFC should be reviewed through the normal [RFC
-        process](/docs/contribute/governance/rfcs/rfc_process.md). The API
+        process](contribute/governance/rfcs/rfc_process.md). The API
         reviewer for the relevant area should be a stakeholder in the RFC. See
         the [Fuchsia API Council
-        Charter](/docs/contribute/governance/api_council.md#area) to identify
+        Charter](contribute/governance/api_council.md#area) to identify
         API reviewers.
         * After your API RFC is approved, contribute your change by
         completing the steps in
@@ -232,7 +232,7 @@ To contribute to the
 member. Select your API council reviewer based on the area of the
 Fuchsia API that you're modifying. For a list of API council members and their
 areas of focus, see
-[Membership](/docs/contribute/governance/api_council.md#membership) in the
+[Membership](contribute/governance/api_council.md#membership) in the
 Fuchsia API Council Charter.
 
 ## Manage changes that span multiple repositories
@@ -240,8 +240,8 @@ Fuchsia API Council Charter.
 To understand how to manage changes that span different repositories (petals),
 see the following pages:
 
-*   [Working across different petals](/docs/development/source_code/working_across_petals.md)
-*   [Upload changes from multiple repositories](/docs/development/source_code/upload_changes_from_multiple_repositories.md)
+*   [Working across different petals](development/source_code/working_across_petals.md)
+*   [Upload changes from multiple repositories](development/source_code/upload_changes_from_multiple_repositories.md)
 
-See [Source code layout](/docs/development/source_code/layout.md) for more
+See [Source code layout](development/source_code/layout.md) for more
 information on the structure of the Fuchsia repository.

@@ -206,29 +206,29 @@ future direction for transport generalization.
 FIDL too closely to the Zircon channel transport.
 
 <!-- link labels -->
-[API Council Charter]: /docs/contribute/governance/api_council.md#values
+[API Council Charter]: contribute/governance/api_council.md#values
 [Fuchsia FIDL Team]: /src/fidl/OWNERS
-[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
-[wire-format]: /docs/reference/fidl/language/wire-format
-[wire-format-dual-forms]: /docs/reference/fidl/language/wire-format#dual-forms
-[wire-format-padding]: /docs/reference/fidl/language/wire-format#padding
-[rfc-0027]: /docs/contribute/governance/rfcs/0027_you_only_pay_what_you_use.md
-[rfc-0029-breakage-at-a-distance]: /docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md#breakage-at-a-distance
-[rfc-0029]: /docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md
-[rfc-0032]: /docs/contribute/governance/rfcs/0032_efficient_envelopes.md
-[rfc-0040]: /docs/contribute/governance/rfcs/0040_identifier_uniqueness.md
-[rfc-0047-motivation]: /docs/contribute/governance/rfcs/0047_tables.md#motivation
-[rfc-0047-wire-format]: /docs/contribute/governance/rfcs/0047_tables.md#wire-format
-[rfc-0048-hashing-only-for-protocols]: /docs/contribute/governance/rfcs/0048_explicit_union_ordinals.md#hashing-only-for-protocols
-[rfc-0050-binary-wire-format-first]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#binary-wire-format-first
-[rfc-0050-fewest-features]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#fewest-features
-[rfc-0050-principles]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#principles
-[rfc-0050-transport-generalization]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md#transport-generalization
-[rfc-0056]: /docs/contribute/governance/rfcs/0056_empty_structs.md
-[rfc-0057]: /docs/contribute/governance/rfcs/0057_default_no_handles.md
-[rfc-0061-pros-and-cons]: /docs/contribute/governance/rfcs/0061_extensible_unions.md#pros-and-cons
-[rfc-0062]: /docs/contribute/governance/rfcs/0062_method_impossible.md
-[rfc-0113]: /docs/contribute/governance/rfcs/0113_efficient_envelopes.md
-[rfc-0116]: /docs/contribute/governance/rfcs/0116_fidl_sparser_tables.md
-[rfc-0131]: /docs/contribute/governance/rfcs/0131_fidl_wire_format_principles.md
-[rfc-0149]: /docs/contribute/governance/rfcs/0149_fidl_encode_validation_not_mandatory.md
+[lang-resource]: reference/fidl/language/language.md#value-vs-resource
+[wire-format]: reference/fidl/language/wire-format
+[wire-format-dual-forms]: reference/fidl/language/wire-format#dual-forms
+[wire-format-padding]: reference/fidl/language/wire-format#padding
+[rfc-0027]: contribute/governance/rfcs/0027_you_only_pay_what_you_use.md
+[rfc-0029-breakage-at-a-distance]: contribute/governance/rfcs/0029_increasing_method_ordinals.md#breakage-at-a-distance
+[rfc-0029]: contribute/governance/rfcs/0029_increasing_method_ordinals.md
+[rfc-0032]: contribute/governance/rfcs/0032_efficient_envelopes.md
+[rfc-0040]: contribute/governance/rfcs/0040_identifier_uniqueness.md
+[rfc-0047-motivation]: contribute/governance/rfcs/0047_tables.md#motivation
+[rfc-0047-wire-format]: contribute/governance/rfcs/0047_tables.md#wire-format
+[rfc-0048-hashing-only-for-protocols]: contribute/governance/rfcs/0048_explicit_union_ordinals.md#hashing-only-for-protocols
+[rfc-0050-binary-wire-format-first]: contribute/governance/rfcs/0050_syntax_revamp.md#binary-wire-format-first
+[rfc-0050-fewest-features]: contribute/governance/rfcs/0050_syntax_revamp.md#fewest-features
+[rfc-0050-principles]: contribute/governance/rfcs/0050_syntax_revamp.md#principles
+[rfc-0050-transport-generalization]: contribute/governance/rfcs/0050_syntax_revamp.md#transport-generalization
+[rfc-0056]: contribute/governance/rfcs/0056_empty_structs.md
+[rfc-0057]: contribute/governance/rfcs/0057_default_no_handles.md
+[rfc-0061-pros-and-cons]: contribute/governance/rfcs/0061_extensible_unions.md#pros-and-cons
+[rfc-0062]: contribute/governance/rfcs/0062_method_impossible.md
+[rfc-0113]: contribute/governance/rfcs/0113_efficient_envelopes.md
+[rfc-0116]: contribute/governance/rfcs/0116_fidl_sparser_tables.md
+[rfc-0131]: contribute/governance/rfcs/0131_fidl_wire_format_principles.md
+[rfc-0149]: contribute/governance/rfcs/0149_fidl_encode_validation_not_mandatory.md

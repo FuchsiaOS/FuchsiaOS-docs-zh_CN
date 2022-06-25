@@ -7,7 +7,7 @@ This document describes how to add tracing to device drivers.
 
 ## Overview
 
-Please read [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md)
+Please read [Fuchsia tracing system](concepts/kernel/tracing-system.md)
 for an overview of tracing.
 
 ## Trace Provider
@@ -85,7 +85,7 @@ The issue is that without this option then TraceManager won't be present
 when the driver starts and thus the driver won't be able to participate
 in tracing when TraceManager is started later.
 
-See the documentation for [fx](/docs/development/build/fx.md)
+See the documentation for [fx](development/build/fx.md)
 or even just the output of `fx help` and especially `fx help set` for further
 documentation of running `fx` in general and `fx set` specifically.
 
@@ -130,7 +130,7 @@ through these categories.
 
 ## Further Reading
 
-See the [Tracing Documentation](/docs/development/tracing/README.md)
+See the [Tracing Documentation](development/tracing/README.md)
 for more information.
 
 <!-- Reference links -->

@@ -165,8 +165,8 @@ includes a web browser and many other features. Similarly new product configurat
 for other architectures, for instance for ARM64 based systems.
 
 <!-- xrefs -->
-[glossary.bootfs]: /docs/glossary#bootfs
-[glossary.driver]: /docs/glossary#driver
-[fx]: /docs/development/build/fx.md
-[driver-development]: /docs/development/drivers/developer_guide/driver-development.md
-[rfc-0111]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
+[glossary.bootfs]: glossary#bootfs
+[glossary.driver]: glossary#driver
+[fx]: development/build/fx.md
+[driver-development]: development/drivers/developer_guide/driver-development.md
+[rfc-0111]: contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md

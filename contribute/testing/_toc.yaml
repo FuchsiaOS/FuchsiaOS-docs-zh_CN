@@ -7,18 +7,18 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/contribute/testing/README.md
+  path: contribute/testing/README.md
 - title: "Testing principles"
-  path: /docs/contribute/testing/principles.md
+  path: contribute/testing/principles.md
 - title: "Testing scope"
-  path: /docs/contribute/testing/scope.md
+  path: contribute/testing/scope.md
 - title: "Testing best practices"
-  path: /docs/contribute/testing/best-practices.md
+  path: contribute/testing/best-practices.md
 - title: "Test environments"
-  path: /docs/contribute/testing/environments.md
+  path: contribute/testing/environments.md
 - title: "Fuzz testing"
-  path: /docs/contribute/testing/fuzz_testing.md
+  path: contribute/testing/fuzz_testing.md
 - title: "Test coverage"
-  path:  /docs/contribute/testing/coverage.md
+  path:  contribute/testing/coverage.md
 - title: "Sanitizers"
-  path:  /docs/contribute/testing/sanitizers.md
+  path:  contribute/testing/sanitizers.md

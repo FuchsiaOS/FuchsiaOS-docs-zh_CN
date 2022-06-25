@@ -156,12 +156,12 @@ find that not enough "large" changes are going through the RFC process.
 * [Zircon RFC criteria][zircon-criteria]
 * [FIDL RFC criteria and process][fidl-criteria]
 
-[current-process]: /docs/contribute/governance/rfcs/rfc_process.md
-[far-format]: /docs/development/source_code/archive_format.md
+[current-process]: contribute/governance/rfcs/rfc_process.md
+[far-format]: development/source_code/archive_format.md
 [fidl-criteria]: 0049_fidl_tuning_process_evolution.md#criteria
-[ota-backstops]: /docs/contribute/governance/rfcs/0071_ota_backstop.md
-[package-schema]: /docs/concepts/packages/package.md#structure-of-a-package
-[rfc-process]: /docs/contribute/governance/rfcs/0001_rfc_process.md
-[swd]: /docs/contribute/governance/areas/README.md#software-delivery
-[tuf-structure]: /docs/concepts/packages/software_update_system.md#merkle-root
+[ota-backstops]: contribute/governance/rfcs/0071_ota_backstop.md
+[package-schema]: concepts/packages/package.md#structure-of-a-package
+[rfc-process]: contribute/governance/rfcs/0001_rfc_process.md
+[swd]: contribute/governance/areas/README.md#software-delivery
+[tuf-structure]: concepts/packages/software_update_system.md#merkle-root
 [zircon-criteria]: 0006_addendum_to_rfc_process_for_zircon.md

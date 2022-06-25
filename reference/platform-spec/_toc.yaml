@@ -10,25 +10,25 @@ toc:
 - title: "Component manifest (.cml)"
   path: /reference/cml.md
 - title: "Component moniker"
-  path: /docs/reference/components/moniker.md
+  path: reference/components/moniker.md
 - title: "Component URL"
-  path: /docs/reference/components/url.md
+  path: reference/components/url.md
 - heading: "FIDL"
 - title: "Bindings"
   section:
-  - include: /docs/reference/fidl/bindings/_toc.yaml
+  - include: reference/fidl/bindings/_toc.yaml
 - title: "Language"
   section:
-  - include: /docs/reference/fidl/language/_toc.yaml
+  - include: reference/fidl/language/_toc.yaml
 - heading: "Tracing"
 - title: "Fuchsia trace format"
-  path: /docs/reference/tracing/trace-format.md
+  path: reference/tracing/trace-format.md
 - heading: "Diagnostics"
 - title: "Diagnostics schema"
-  path: /docs/reference/platform-spec/diagnostics/schema.md
+  path: reference/platform-spec/diagnostics/schema.md
 - title: "Inspect VMO file format"
-  path: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
+  path: reference/platform-spec/diagnostics/inspect-vmo-format.md
 - title: "Log message encoding"
-  path: /docs/reference/platform-spec/diagnostics/logs-encoding.md
+  path: reference/platform-spec/diagnostics/logs-encoding.md
 - title: "Bitfields diagrams"
-  path: /docs/reference/platform-spec/diagnostics/bitfield-diagram.md
+  path: reference/platform-spec/diagnostics/bitfield-diagram.md

@@ -219,8 +219,8 @@ camera controller driver
 [binding-properties]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=48
 [capabilities]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=61
 [symbols]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=65
-[component-topology]: /docs/concepts/components/v2/topology.md
-[moniker]: /docs/concepts/components/v2/identifiers.md#monikers
+[component-topology]: concepts/components/v2/topology.md
+[moniker]: concepts/components/v2/identifiers.md#monikers
 [node-object]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=107
 [addchild]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=113
 [node-controller]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=73

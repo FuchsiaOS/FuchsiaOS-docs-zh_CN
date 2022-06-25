@@ -69,5 +69,5 @@ there wasn’t enough space in the diagram to fit those words. `Type` will only 
 set `{3, 10}`.
 
 
-[inspect_format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
-[log_format]: /docs/reference/platform-spec/diagnostics/logs-encoding.md
+[inspect_format]: reference/platform-spec/diagnostics/inspect-vmo-format.md
+[log_format]: reference/platform-spec/diagnostics/logs-encoding.md

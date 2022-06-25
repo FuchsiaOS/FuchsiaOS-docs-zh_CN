@@ -144,5 +144,5 @@ The required ones are marked as required so that the dartanalyzer can reject
 changes that leave some fields uninitialized.
 
 <!-- xrefs -->
-[FIDL tutorial]: /docs/development/languages/fidl/tutorials/overview.md
+[FIDL tutorial]: development/languages/fidl/tutorials/overview.md
 [safer-structs-impl]: https://fuchsia-review.googlesource.com/c/garnet/+/139083

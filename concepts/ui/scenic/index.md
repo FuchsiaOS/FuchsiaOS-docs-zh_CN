@@ -1,4 +1,4 @@
-> **_ATTENTION:_** This document describes behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/docs/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/docs/concepts/ui/index.md).
+> **_ATTENTION:_** This document describes behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](concepts/ui/index.md).
 
 # Scenic, the Fuchsia graphics engine
 
@@ -34,7 +34,7 @@ Scenic's responsibilities are:
 
 ### Scenic and Fuchsia {#scenic-and-fuchsia}
 
-![Diagram of Scenic within Fuchsia](/docs/concepts/ui/scenic/images/scenic_within_fuchsia_diagram.png)
+![Diagram of Scenic within Fuchsia](concepts/ui/scenic/images/scenic_within_fuchsia_diagram.png)
 
 Scenic's API allows any client to insert its UI into the global scene graph.
 Processes using the UI framework [_Flutter_](https://flutter.io/) are one
@@ -192,7 +192,7 @@ can contain either an `Image` (perhaps transformed by a matrix), or a
 
 #### Scenic Resource Graph {#scenic-resource-graph}
 
-![Scenic Resource Graph](/docs/concepts/ui/scenic/images/scenic_resource_graph.png)
+![Scenic Resource Graph](concepts/ui/scenic/images/scenic_resource_graph.png)
 
 {# ### TODO: More Resources {#todo-more-resources} #}
 
@@ -205,7 +205,7 @@ Scenic manages a global scene graph in a three dimensional space. Some of the ch
 this space are defined by Scenic itself, whereas some are defined by the root presenter or even
 other clients.
 
-![Scenic Axes](/docs/concepts/ui/scenic/images/scenic_axes.png)
+![Scenic Axes](concepts/ui/scenic/images/scenic_axes.png)
 
 #### Units {#units}
 
@@ -230,11 +230,11 @@ presenter and the handedness will match.
 
 The bounds of the root view are defined by a min and a max point as follows:
 
-![Scenic Root View Bounds](/docs/concepts/ui/scenic/images/scenic_root_view_bounds.png)
+![Scenic Root View Bounds](concepts/ui/scenic/images/scenic_root_view_bounds.png)
 
 ### Views and Bounds {#views-and-bounds}
 
-[View Bounds](/docs/development/graphics/scenic/concepts/view_bounds.md) shows how to set up your view bounds, how to debug
+[View Bounds](development/graphics/scenic/concepts/view_bounds.md) shows how to set up your view bounds, how to debug
 them with wireframe rendering, and explains how view bounds interact with hit testing.
 
 {# ## Fences {#fences} #}

@@ -12,7 +12,7 @@ Zxdb supports the following commands for inspecting memory:
 
 The `aspace` command, abbreviated `as`, outputs address space information for the process. In
 Fuchsia, virtual memory consists of a hierarchy of [Virtual Memory
-Objects](/docs/reference/kernel_objects/vm_object.md) (VMOs).
+Objects](reference/kernel_objects/vm_object.md) (VMOs).
 
 With no parameters, the `aspace` command shows all VMOs in the process.
 

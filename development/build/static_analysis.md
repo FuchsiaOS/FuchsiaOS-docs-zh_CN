@@ -55,5 +55,5 @@ chrome path/to/output/scan-build-date-hash/index.html
 * [Clang Tidy](https://clang.llvm.org/extra/clang-tidy/)
 * [Clang Static Analyzer](https://clang.llvm.org/docs/ClangStaticAnalyzer.html)
 
-[toolchain]: /docs/development/build/toolchain.md
-[lint]: /docs/development/languages/c-cpp/lint.md
+[toolchain]: development/build/toolchain.md
+[lint]: development/languages/c-cpp/lint.md

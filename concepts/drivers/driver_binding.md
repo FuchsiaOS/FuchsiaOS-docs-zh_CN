@@ -71,7 +71,7 @@ topology.
 
 <!-- Reference links -->
 
-[components]: /docs/concepts/components/v2/README.md
+[components]: concepts/components/v2/README.md
 [driver-framework]: driver_framework.md
 [driver-manager]: driver_framework.md#driver_manager
 [driver-host]: driver_framework.md#driver_host
@@ -81,4 +81,4 @@ topology.
 [nodes]: drivers_and_nodes.md
 [node-properties]: drivers_and_nodes.md#node_properties
 [node-capabilities]: drivers_and_nodes.md#node_capabilities
-[driver-binding-dfv1]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md
+[driver-binding-dfv1]: development/drivers/concepts/device_driver_model/driver-binding.md

@@ -3,7 +3,7 @@ Magma Test Strategy
 
 ## Architecture Diagram
 
-* [Magma Block Diagram](/docs/development/graphics/magma/block_diagram.svg)
+* [Magma Block Diagram](development/graphics/magma/block_diagram.svg)
 
 Four major interfaces
 
@@ -138,7 +138,7 @@ happens in connection with the Vulkan CTS. There are external efforts such as
 
 [graphicsfuzz]: https://github.com/google/graphicsfuzz
 [fake-ddk]: /src/devices/testing/fake_ddk
-[libfuzzer]: /docs/development/testing/fuzzing/write-a-fuzzer.md
-[seedcorpus]: /docs/development/testing/fuzzing/improve-a-fuzzer.md#measure_code_coverage
+[libfuzzer]: development/testing/fuzzing/write-a-fuzzer.md
+[seedcorpus]: development/testing/fuzzing/improve-a-fuzzer.md#measure_code_coverage
 [vulkanerrors]: https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#fundamentals-errors
 

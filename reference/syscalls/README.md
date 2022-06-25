@@ -1,6 +1,6 @@
 # Zircon System Calls
 
-[Life of a Fuchsia syscall](/docs/concepts/kernel/life_of_a_syscall.md)
+[Life of a Fuchsia syscall](concepts/kernel/life_of_a_syscall.md)
 
 ## Handles
 + [handle_close](handle_close.md) - close a handle

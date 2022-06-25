@@ -89,8 +89,8 @@ steps would apply with the roles reversed.
 1. **User code (receiver)**
     * Service `Method` using the `h` argument, which is `h3`.
 
-[`zx_channel_read_etc`]: /docs/reference/syscalls/channel_read_etc.md
-[`zx_channel_write_etc`]: /docs/reference/syscalls/channel_write_etc.md
-[`zx_handle_replace`]: /docs/reference/syscalls/handle_replace.md
-[`zx_vmo_create`]: /docs/reference/syscalls/vmo_create.md
-[Zircon handle]: /docs/concepts/kernel/handles.md
+[`zx_channel_read_etc`]: reference/syscalls/channel_read_etc.md
+[`zx_channel_write_etc`]: reference/syscalls/channel_write_etc.md
+[`zx_handle_replace`]: reference/syscalls/handle_replace.md
+[`zx_vmo_create`]: reference/syscalls/vmo_create.md
+[Zircon handle]: concepts/kernel/handles.md

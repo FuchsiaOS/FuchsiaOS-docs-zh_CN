@@ -343,11 +343,11 @@ Things to keep in mind:
   patterns. A strong indifference signal is interpreted as a hint that the point
   being discussed does not merit encoding as a pattern.
 
-[api-rust]: /docs/development/api/rust.md
+[api-rust]: development/api/rust.md
 [unused-results]: https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#unused-results
 [unused-results-explanation]: https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html#explanation-31
 [Netstack team]: /src/connectivity/network/OWNERS
-[discussion groups]: /docs/contribute/community/get-involved.md#join_a_discussion_group
+[discussion groups]: contribute/community/get-involved.md#join_a_discussion_group
 [rust_test_result]: https://doc.rust-lang.org/edition-guide/rust-2018/error-handling-and-panics/question-mark-in-main-and-tests.html
 [rust_backtrace_stabilize]: https://github.com/rust-lang/rust/pull/72981
 [rust_backtrace_disabled]: https://cs.opensource.google/fuchsia/fuchsia/+/main:third_party/rust_crates/Cargo.toml;l=308-309;drc=fb9288396656bf5c9174d39238acc183fa0c4882

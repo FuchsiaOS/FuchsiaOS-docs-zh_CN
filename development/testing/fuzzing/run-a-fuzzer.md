@@ -90,5 +90,5 @@ ClusterFuzz opens bugs, you can use its outputs to reproduce its findings.
 See [Handling results found through fuzzing](handle-results.md#clusterfuzz-bugs).
 
 [clusterfuzz]: https://google.github.io/clusterfuzz/
-[fuchsia-gn]: /docs/development/build/build_system/intro.md
+[fuchsia-gn]: development/build/build_system/intro.md
 [options]: https://llvm.org/docs/LibFuzzer.html#options

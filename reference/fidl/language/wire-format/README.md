@@ -852,14 +852,14 @@ of the `ZX_HANDLE_INVALID` constant.
 Read [The Lost Art of Structure Packing][lostart]{:.external} for an in-depth
 treatise on the subject.
 
-[channel call]: /docs/reference/syscalls/channel_call.md
-[channel write]: /docs/reference/syscalls/channel_write.md
-[RFC-0030]: /docs/contribute/governance/rfcs/0030_fidl_is_little_endian.md
-[RFC-0059]: /docs/contribute/governance/rfcs/0059_reserved_bits_count_fields.md
-[RFC-0061]: /docs/contribute/governance/rfcs/0061_extensible_unions.md
-[RFC-0114]: /docs/contribute/governance/rfcs/0114_fidl_envelope_inlining.md
-[abi-api-compat]: /docs/development/languages/fidl/guides/compatibility/README.md
+[channel call]: reference/syscalls/channel_call.md
+[channel write]: reference/syscalls/channel_write.md
+[RFC-0030]: contribute/governance/rfcs/0030_fidl_is_little_endian.md
+[RFC-0059]: contribute/governance/rfcs/0059_reserved_bits_count_fields.md
+[RFC-0061]: contribute/governance/rfcs/0061_extensible_unions.md
+[RFC-0114]: contribute/governance/rfcs/0114_fidl_envelope_inlining.md
+[abi-api-compat]: development/languages/fidl/guides/compatibility/README.md
 [lostart]: http://www.catb.org/esr/structure-packing/
-[concepts]: /docs/concepts/fidl/overview.md
-[c-tutorial]: /docs/development/languages/fidl/tutorials/tutorial-c.md
-[Life of a handle]: /docs/concepts/fidl/life-of-a-handle.md
+[concepts]: concepts/fidl/overview.md
+[c-tutorial]: development/languages/fidl/tutorials/tutorial-c.md
+[Life of a handle]: concepts/fidl/life-of-a-handle.md

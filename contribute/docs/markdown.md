@@ -489,11 +489,11 @@ Every image has the following properties:
 The following are valid inline image syntax:
 
 ```none {:.devsite-disable-click-to-copy}
-![Alt text](/docs/images/benchmarking/test_suite_example.png)
+![Alt text](images/benchmarking/test_suite_example.png)
 
-![Alt text](/docs/images/benchmarking/test_suite_example.png "Optional title")
+![Alt text](images/benchmarking/test_suite_example.png "Optional title")
 
-![Alt text](/docs/images/benchmarking/test_suite_example.png "Optional title"){: .my-custom-css-class}
+![Alt text](images/benchmarking/test_suite_example.png "Optional title"){: .my-custom-css-class}
 ```
 
 ### Reference syntax
@@ -514,7 +514,7 @@ Image references are defined using syntax identical to link references:
 You can specify the width of a Markdown image using the following syntax:
 
 ```none {:.devsite-disable-click-to-copy}
-![Alt text](/docs/images/benchmarking/test_suite_example.png){: width="123"}
+![Alt text](images/benchmarking/test_suite_example.png){: width="123"}
 ```
 
 ## Include code {#include-code}
@@ -818,7 +818,7 @@ title for the link, surrounded in quotes. For example:
     title attribute.</p>
 
 If you're referring to a local resource such as a file in the source tree, you can
-use relative paths. See the [docs README](/docs/README.md) for examples.
+use relative paths. See the [docs README](README.md) for examples.
 
 ### Reference links
 

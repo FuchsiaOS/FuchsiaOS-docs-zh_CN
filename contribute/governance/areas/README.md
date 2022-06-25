@@ -58,16 +58,16 @@ Examples:
 
 {% if area.name == "Developer" %}
 Developer tool interfaces, such as the [Command-line Tools
-Rubric](/docs/development/api/cli.md). APIs that affect the developer experience in
+Rubric](development/api/cli.md). APIs that affect the developer experience in
 the host environment such as debugging, forensics, or the development kit.
 {% endif %} <!-- Developer -->
 
 {% if area.name == "Diagnostics" %}
 The set of APIs that are used to publish and query diagnostics data from
 components on the system. This includes the ability to [stream
-logs](/docs/reference/diagnostics/logs/access.md), view and publish [Inspect
-data](/docs/development/diagnostics/inspect/README.md), and [observe lifecycle
-events](/docs/concepts/components/diagnostics/lifecycle_events/README.md).
+logs](reference/diagnostics/logs/access.md), view and publish [Inspect
+data](development/diagnostics/inspect/README.md), and [observe lifecycle
+events](concepts/components/diagnostics/lifecycle_events/README.md).
 
 Examples:
 

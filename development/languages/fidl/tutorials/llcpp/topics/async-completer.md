@@ -138,8 +138,8 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 
 <!-- xrefs -->
 [src]: /examples/fidl/llcpp/async_completer
-[server-tut]: /docs/development/languages/fidl/tutorials/llcpp/basics/server.md
-[client-tut]: /docs/development/languages/fidl/tutorials/llcpp/basics/client.md
-[overview]: /docs/development/languages/fidl/tutorials/llcpp/README.md
-[bindings-ref]: /docs/reference/fidl/bindings/llcpp-bindings.md#server-completers
-[memory-management]: /docs/development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
+[server-tut]: development/languages/fidl/tutorials/llcpp/basics/server.md
+[client-tut]: development/languages/fidl/tutorials/llcpp/basics/client.md
+[overview]: development/languages/fidl/tutorials/llcpp/README.md
+[bindings-ref]: reference/fidl/bindings/llcpp-bindings.md#server-completers
+[memory-management]: development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md

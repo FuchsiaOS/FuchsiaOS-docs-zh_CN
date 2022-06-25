@@ -786,23 +786,23 @@ offer: [
   interactions between multiple components in isolation from the rest of the
   system.
 
-[cf]: /docs/concepts/components/v2/
-[component-manifest]: /docs/concepts/components/v2/component_manifests.md
-[component-unit-tests]: /docs/development/components/build.md#unit-tests
-[CTS test realm]: /docs/development/testing/cts/test_realm.md
+[cf]: concepts/components/v2/
+[component-manifest]: concepts/components/v2/component_manifests.md
+[component-unit-tests]: development/components/build.md#unit-tests
+[CTS test realm]: development/testing/cts/test_realm.md
 [fidl-test-manager]: /sdk/fidl/fuchsia.test.manager/test_manager.fidl
 [fidl-test-suite]: /sdk/fidl/fuchsia.test/suite.fidl
-[ffx]: /docs/development/tools/ffx/overview.md
+[ffx]: development/tools/ffx/overview.md
 [fx-test]: https://fuchsia.dev/reference/tools/fx/cmd/test
-[integration-testing]: /docs/development/testing/components/integration_testing.md
+[integration-testing]: development/testing/components/integration_testing.md
 [manifests-offer]: https://fuchsia.dev/reference/cml#offer
 [manifests-use]: https://fuchsia.dev/reference/cml#use
-[resolvers]:  /docs/concepts/components/v2/capabilities/resolvers.md
-[restricted-logs]: /docs/development/diagnostics/test_and_logs.md#restricting_log_severity
-[runners]: /docs/concepts/components/v2/capabilities/runners.md
-[test-suite-protocol]: /docs/concepts/components/v2/realms.md
-[unit-tests]: /docs/development/components/build.md#unit_tests_with_generated_manifests
-[loader-service]: /docs/concepts/process/program_loading.md#the_loader_service
+[resolvers]:  concepts/components/v2/capabilities/resolvers.md
+[restricted-logs]: development/diagnostics/test_and_logs.md#restricting_log_severity
+[runners]: concepts/components/v2/capabilities/runners.md
+[test-suite-protocol]: concepts/components/v2/realms.md
+[unit-tests]: development/components/build.md#unit_tests_with_generated_manifests
+[loader-service]: concepts/process/program_loading.md#the_loader_service
 [caching-loader-service]: /src/sys/test_runners/src/elf/elf_component.rs
-[framework-capabilities]: /docs/concepts/components/v2/capabilities/protocol.md#framework
-[sys-migration-guide]: /docs/development/components/v2/migration/tests.md
+[framework-capabilities]: concepts/components/v2/capabilities/protocol.md#framework
+[sys-migration-guide]: development/components/v2/migration/tests.md

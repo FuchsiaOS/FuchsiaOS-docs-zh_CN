@@ -2,7 +2,7 @@
 
 Go programs on Fuchsia generally use the [syslog package] and its `syslog.Infof()` functions.
 
-See the [language agnostic logging docs](/docs/concepts/components/diagnostics/logs/README.md) for more information
+See the [language agnostic logging docs](concepts/components/diagnostics/logs/README.md) for more information
 about recording and viewing logs.
 
 ## Requirements
@@ -102,5 +102,5 @@ See [`stdout` & `stderr`] in the language-agnostic logging docs for details on t
 streams in the system.
 
 [syslog package]: /src/lib/syslog/go
-[go-dev]: /docs/development/languages/go/README.md
-[`stdout` & `stderr`]: /docs/development/diagnostics/logs/recording.md#stdout-stderr
+[go-dev]: development/languages/go/README.md
+[`stdout` & `stderr`]: development/diagnostics/logs/recording.md#stdout-stderr

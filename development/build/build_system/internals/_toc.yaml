@@ -7,9 +7,9 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/build/build_system/internals/index.md
+  path: development/build/build_system/internals/index.md
 - title: "Manifest file formats"
-  path: /docs/development/build/build_system/internals/manifest_formats.md
+  path: development/build/build_system/internals/manifest_formats.md
 - title: "GN toolchains and the Fuchsia build"
   section:
-  - include: /docs/development/build/build_system/internals/toolchains/_toc.yaml
+  - include: development/build/build_system/internals/toolchains/_toc.yaml

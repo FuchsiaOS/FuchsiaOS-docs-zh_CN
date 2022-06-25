@@ -38,7 +38,7 @@ version of the driver framework (DFv2).
 
 <!-- Reference links -->
 
-[components]: /docs/concepts/components/v2/README.md
+[components]: concepts/components/v2/README.md
 [driver-framework]: driver_framework.md
 [driver-manager]: driver_framework.md#driver_manager
 [driver-host]: driver_framework.md#driver_host

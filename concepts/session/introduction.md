@@ -99,9 +99,9 @@ Since the element proposer and the session use a protocol that is defined by
 the session framework, the same element proposer can be used across all sessions
 that implement the `ElementManager` protocol.
 
-[doc-capability]: /docs/concepts/components/v2/capabilities
-[doc-component]: /docs/concepts/components/v2/introduction.md
-[doc-component-manager]: /docs/concepts/components/v2/component_manager.md
-[doc-compositors]: /docs/concepts/ui/scenic/index.md#compositors
-[doc-fidl]: /docs/concepts/fidl/overview.md
-[doc-element]: /docs/concepts/session/element.md
+[doc-capability]: concepts/components/v2/capabilities
+[doc-component]: concepts/components/v2/introduction.md
+[doc-component-manager]: concepts/components/v2/component_manager.md
+[doc-compositors]: concepts/ui/scenic/index.md#compositors
+[doc-fidl]: concepts/fidl/overview.md
+[doc-element]: concepts/session/element.md

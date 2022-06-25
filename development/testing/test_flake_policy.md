@@ -52,7 +52,7 @@ queue. This can be achieved in the following ways:
 
 -   If the flake has been prompted by a recent patch: Submitting a revert of a
     patch that triggers this flake.
--   [Disable the test](/docs/development/testing/faq.md#disable-test).
+-   [Disable the test](development/testing/faq.md#disable-test).
 
 The above mechanisms are recommended because they remove the flaky test and
 prevent the commit queue from becoming unreliable. The first option (reverting code)
@@ -71,4 +71,4 @@ reproducing the failure. This will enable them to find the root cause, and fix t
 issue. Once the issue has been fixed, the bug can be closed, and the test can be
 re-enabled. If any reverted patches need to re-land, they can re-land safely.
 
-When fixing a flake, verify the fix by [testing for flakiness in CQ](/docs/development/testing/testing_for_flakiness_in_cq.md).
+When fixing a flake, verify the fix by [testing for flakiness in CQ](development/testing/testing_for_flakiness_in_cq.md).

@@ -156,7 +156,7 @@ parent job's *default_mode*. The possible values for *default_mode* are:
 + **ZX_TIMER_SLACK_EARLY**
 + **ZX_TIMER_SLACK_LATE**
 
-See [timer slack](/docs/concepts/kernel/timer_slack.md) for more information.
+See [timer slack](concepts/kernel/timer_slack.md) for more information.
 
 When setting timer slack policy, *options* must be **ZX_JOB_POL_RELATIVE** and
 **count** must be 1.

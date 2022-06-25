@@ -43,11 +43,11 @@ Prior to building Fuchsia with a custom Rust toolchain, you need to do the follo
 Note: These instructions are for Debian-based systems, but you should use the
 correct package manager for your machine.
 
-1. [Build a custom Rust toolchain](/docs/development/build/rust_toolchain.md)
+1. [Build a custom Rust toolchain](development/build/rust_toolchain.md)
    for Fuchsia.
 
 1. Complete the following guide to download the Fuchsia source:
-   [Get Fuchsia source code](/docs/get-started/get_fuchsia_source.md).
+   [Get Fuchsia source code](get-started/get_fuchsia_source.md).
    To confirm that jiri is in your PATH run <code>jiri -help</code>.
 
    Note: The below commands assume `DEV_ROOT` is set to the parent directory of

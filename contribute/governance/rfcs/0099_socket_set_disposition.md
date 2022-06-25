@@ -78,7 +78,7 @@ protocol socket {
 }
 ```
 
-### Document `zx_socket_set_disposition` in `/docs/reference/syscalls/socket_set_disposition.md`
+### Document `zx_socket_set_disposition` in `reference/syscalls/socket_set_disposition.md`
 
 #### DESCRIPTION
 
@@ -203,7 +203,7 @@ operating systems, from which the need to distinguish connected sockets from
 unconnected ones arises.
 
 [rights-fidl]: /zircon/vdso/rights.fidl
-[rights-doc]: /docs/concepts/kernel/rights.md
+[rights-doc]: concepts/kernel/rights.md
 [socket-fidl]: /zircon/vdso/socket.fidl
-[socket_write]: /docs/reference/syscalls/socket_write.md
-[socket_read]: /docs/reference/syscalls/socket_read.md
+[socket_write]: reference/syscalls/socket_write.md
+[socket_read]: reference/syscalls/socket_read.md

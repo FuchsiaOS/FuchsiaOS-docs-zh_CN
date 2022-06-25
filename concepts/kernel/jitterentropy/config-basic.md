@@ -58,7 +58,7 @@ parameter.  The inner loop advances an LFSR by 64 steps, each time XOR-ing in
 one bit from the most recent time sample. Passing the time sample through the
 LFSR this way serves as a processing step, generally tending to whiten the
 random timesteps. As described in the
-[entropy quality testing doc](/docs/concepts/kernel/entropy_quality_tests.md), it's important to
+[entropy quality testing doc](concepts/kernel/entropy_quality_tests.md), it's important to
 skip this processing when testing the entropic content of the CPU time
 variations.  It's also the case that enabling the processing increases the
 entropy estimates by a suspicious amount in some cases (see
@@ -74,7 +74,7 @@ relatively large chunk of memory, divided into `kernel.jitterentropy.bc`-many
 blocks of size `kernel.jitterentropy.bs` bytes each. The default values when I
 wrote the current document are `bc = 1024` and `bs = 64`; up-to-date defaults
 should be documented in
-[the cmdline document](/docs/reference/kernel/kernel_cmdline.md). For comparison, the defaults in
+[the cmdline document](reference/kernel/kernel_cmdline.md). For comparison, the defaults in
 the jitterentropy source code are `bc = 64` and `bs = 32`,
 [defined here](/zircon/third_party/lib/jitterentropy/include/lib/jitterentropy/jitterentropy.h#79).
 Per the comment above the `jent_memaccess` function, the total memory size
@@ -146,7 +146,7 @@ below.
 ## Testing process
 
 The procedure for running entropy source quality tests is documented in
-[the entropy quality tests document](/docs/concepts/kernel/entropy_quality_tests.md).
+[the entropy quality tests document](concepts/kernel/entropy_quality_tests.md).
 
 These preliminary results were gathered on a Zircon debug build on Raspberry Pi
 3, built from commit 18358de5e90a012cb1e042efae83f5ea264d1502 in the now-obsolete project: https://fuchsia.googlesource.com/zircon/+/a1a80a6a7d

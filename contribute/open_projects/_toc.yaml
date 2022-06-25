@@ -7,44 +7,44 @@
 # team as reviewer.
 toc:
 - title: "Introduction"
-  path: /docs/contribute/open_projects/README.md
+  path: contribute/open_projects/README.md
 - title: "Project template"
-  path: /docs/contribute/open_projects/template.md
+  path: contribute/open_projects/template.md
 - title: "Build projects"
   section:
   - title: "Bringup test modernization"
-    path: /docs/contribute/open_projects/build/bringup_test_modernization.md
+    path: contribute/open_projects/build/bringup_test_modernization.md
   - title: "zx_* wrappers deprecation"
-    path: /docs/contribute/open_projects/build/zx_wrappers_deprecation.md
+    path: contribute/open_projects/build/zx_wrappers_deprecation.md
   - title: "Hermetic actions"
-    path: /docs/contribute/open_projects/build/hermetic_actions.md
+    path: contribute/open_projects/build/hermetic_actions.md
 - title: "Components projects"
   section:
   - title: "Components v2 migration"
-    path: /docs/contribute/open_projects/components/migration.md
+    path: contribute/open_projects/components/migration.md
 - title: "C++ projects"
   section:
   - title: "Implicit conversions"
-    path: /docs/contribute/open_projects/cpp/wconversion.md
+    path: contribute/open_projects/cpp/wconversion.md
   - title: "Undefined behavior issues"
-    path: /docs/contribute/open_projects/cpp/ubsan.md
+    path: contribute/open_projects/cpp/ubsan.md
   - title: "Low-level C++ typed channel migration"
-    path: /docs/contribute/open_projects/cpp/typed_channels.md
+    path: contribute/open_projects/cpp/typed_channels.md
 - title: "Dart projects"
   section:
   - title: "Null safety"
-    path: /docs/contribute/open_projects/dart/null_safety.md
+    path: contribute/open_projects/dart/null_safety.md
 - title: "Testing"
   section:
   - title: "Migrate driver unit tests to mock-ddk"
-    path: /docs/contribute/open_projects/testing/mock_ddk_migration.md
+    path: contribute/open_projects/testing/mock_ddk_migration.md
 - title: "Graduated projects"
   section:
   - title: "Overview"
-    path: /docs/contribute/open_projects/graduated/README.md
+    path: contribute/open_projects/graduated/README.md
   - title: "Dismantle the global log severity file"
-    path: /docs/contribute/open_projects/graduated/global_severity.md
+    path: contribute/open_projects/graduated/global_severity.md
   - title: "Layer Cake deprecation"
-    path: /docs/contribute/open_projects/graduated/layer_cake_deprecation.md
+    path: contribute/open_projects/graduated/layer_cake_deprecation.md
   - title: "package() migration"
-    path: /docs/contribute/open_projects/graduated/package_migration.md
+    path: contribute/open_projects/graduated/package_migration.md

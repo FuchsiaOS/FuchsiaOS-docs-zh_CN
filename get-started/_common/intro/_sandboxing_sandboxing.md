@@ -34,4 +34,4 @@ detail later on.
 Some initial handles given to a process are directories that the process mounts
 into its **namespace**.
 
-[glossary.handle]: /docs/glossary/README.md#handle
+[glossary.handle]: glossary/README.md#handle

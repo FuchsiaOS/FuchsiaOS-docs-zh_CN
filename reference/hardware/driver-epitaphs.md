@@ -5,7 +5,7 @@
 {% comment %}
 The list of Fuchsia drivers is generated from the information in the following
 files:
-/docs/reference/hardware/_drivers_epitaphs.yaml
+reference/hardware/_drivers_epitaphs.yaml
 
 Since this page is generated from on a template, the full page is best viewed at
 http://www.fuchsia.dev/fuchsia-src/reference/hardware/driver-epitaphs

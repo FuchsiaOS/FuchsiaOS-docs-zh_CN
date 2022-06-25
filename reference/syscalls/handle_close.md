@@ -52,7 +52,7 @@ None.
  - [`zx_handle_replace()`]
 
 <!-- Reference links -->
-[peered-objects]: /docs/reference/kernel_objects/objects.md#peered-objects-and-the-peer-closed-state
+[peered-objects]: reference/kernel_objects/objects.md#peered-objects-and-the-peer-closed-state
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 

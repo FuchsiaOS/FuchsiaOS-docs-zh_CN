@@ -107,5 +107,5 @@ fx format-code
 ```
 
 <!-- xrefs -->
-[fidl-style]: /docs/development/languages/fidl/guides/style.md
+[fidl-style]: development/languages/fidl/guides/style.md
 [schema]: /tools/fidl/fidlc/schema.json

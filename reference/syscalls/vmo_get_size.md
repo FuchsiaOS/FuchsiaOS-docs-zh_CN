@@ -19,7 +19,7 @@ zx_status_t zx_vmo_get_size(zx_handle_t handle, uint64_t* size);
 ## DESCRIPTION
 
 `zx_vmo_get_size()` returns the current size of the [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO).
+object](reference/kernel_objects/vm_object.md) (VMO).
 
 ## RIGHTS
 

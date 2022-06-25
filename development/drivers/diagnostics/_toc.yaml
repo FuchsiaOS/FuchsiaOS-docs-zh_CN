@@ -7,12 +7,12 @@
 # team as reviewer.
 toc:
 - title: "Inspect"
-  path: /docs/development/drivers/diagnostics/inspect.md
+  path: development/drivers/diagnostics/inspect.md
 - title: "Logging"
-  path: /docs/development/drivers/diagnostics/logging.md
+  path: development/drivers/diagnostics/logging.md
 - title: "Tracing"
-  path: /docs/development/drivers/diagnostics/tracing.md
+  path: development/drivers/diagnostics/tracing.md
 - title: "Bind debugger"
-  path: /docs/development/drivers/diagnostics/bind-debugger.md
+  path: development/drivers/diagnostics/bind-debugger.md
 - title: "Driver utilities"
-  path: /docs/development/drivers/diagnostics/driver-utils.md
+  path: development/drivers/diagnostics/driver-utils.md

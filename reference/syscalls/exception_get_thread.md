@@ -50,6 +50,6 @@ In the event of failure, a negative error value is returned.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[exceptions]: /docs/concepts/kernel/exceptions.md
+[exceptions]: concepts/kernel/exceptions.md
 [`zx_exception_get_process()`]: exception_get_process.md
 [`zx_task_create_exception_channel()`]: task_create_exception_channel.md

@@ -345,9 +345,9 @@ See also: [hermetic actions in open projects][hermetic-actions-bb]
 [action_tracer_ignored_path_parts]: https://cs.opensource.google/fuchsia/fuchsia/+/main:build/tracer/action_tracer.py;l=873;drc=57a94b356da70385d8439b1dd3f355d9850c2db2
 [depfile]: https://gn.googlesource.com/gn/+/master/docs/reference.md#var_depfile
 [fromfile_prefix_chars]: https://docs.python.org/3/library/argparse.html#fromfile-prefix-chars
-[hermetic-actions-bb]: /docs/contribute/open_projects/build/hermetic_actions.md
-[no_op]: /docs/development/build/ninja_no_op.md
-[relative-paths]: /docs/development/build/build_system/best_practices.md#prefer-relative-paths-from-rebase-path
+[hermetic-actions-bb]: contribute/open_projects/build/hermetic_actions.md
+[no_op]: development/build/ninja_no_op.md
+[relative-paths]: development/build/build_system/best_practices.md#prefer-relative-paths-from-rebase-path
 [response_file_bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=76068
 [response_file_contents]: https://gn.googlesource.com/gn/+/master/docs/reference.md#var_response_file_contents
 [shutil_rmtree]: https://docs.python.org/3/library/shutil.html#shutil.rmtree

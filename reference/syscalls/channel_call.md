@@ -178,7 +178,7 @@ communications on a channel that is timing out.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[timer slack]: /docs/concepts/kernel/timer_slack.md
+[timer slack]: concepts/kernel/timer_slack.md
 [`zx_channel_create()`]: channel_create.md
 [`zx_channel_read()`]: channel_read.md
 [`zx_channel_write()`]: channel_write.md

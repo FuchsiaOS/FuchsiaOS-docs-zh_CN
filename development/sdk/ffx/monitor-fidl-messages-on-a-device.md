@@ -105,9 +105,9 @@ To exit `fidlcat`, press `Ctrl-C`.
 
 <!-- Reference links -->
 
-[fidl]: /docs/development/languages/fidl/README.md
-[fidlcat]: /docs/development/monitoring/fidlcat/fidlcat_usage.md
+[fidl]: development/languages/fidl/README.md
+[fidlcat]: development/monitoring/fidlcat/fidlcat_usage.md
 [zxdb]: ./start-the-fuchsia-debugger.md
 [register-debug-symbols]: ./register-debug-symbols.md
 [ffx-debug-fidl]: https://fuchsia.dev/reference/tools/sdk/ffx#fidl
-[fidl-ir]: /docs/reference/fidl/language/json-ir.md
+[fidl-ir]: reference/fidl/language/json-ir.md

@@ -98,7 +98,7 @@ The kernel supports a `ZX_VMO_ZERO_CHILDREN` signal to help with these
 use-cases - if all [children][vmo_create_child] of a VMO are closed then
 `ZX_VMO_ZERO_CHILDREN` will be signaled on the parent VMO.
 
-![VMO hierarchy](/docs/development/graphics/sysmem/images/vmo_hierarchy.png)
+![VMO hierarchy](development/graphics/sysmem/images/vmo_hierarchy.png)
 
 ### Client leaf VMOs
 These are the VMOs handed out to clients; clients name them by calling
@@ -277,18 +277,18 @@ clients still have references to VMOs.
 - Have component framework pass an unforgeable identifier to sysmem instead
 of having the client pass a forgeable debug name.
 
-[glossary.zircon boot image]: /docs/glossary/README.md#zircon-boot-image
-[vmo]: /docs/reference/kernel_objects/vm_object.md
-[pmt]: /docs/reference/kernel_objects/pinned_memory_token.md
-[vmo_create_child]: /docs/reference/syscalls/vmo_create_child.md
+[glossary.zircon boot image]: glossary/README.md#zircon-boot-image
+[vmo]: reference/kernel_objects/vm_object.md
+[pmt]: reference/kernel_objects/pinned_memory_token.md
+[vmo_create_child]: reference/syscalls/vmo_create_child.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
 [HeapType]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem#HeapType
 [BufferMemorySettings]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem#BufferMemorySettings
 [SetName]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem#BufferCollection.SetName
-[inspect]: /docs/development/diagnostics/inspect
-[FEMU]: /docs/development/build/emulator.md
+[inspect]: development/diagnostics/inspect
+[FEMU]: development/build/emulator.md
 [DRM]: https://en.wikipedia.org/wiki/Digital_rights_management
-[memoryusage]: /docs/development/kernel/memory/memory.md
+[memoryusage]: development/kernel/memory/memory.md
 [guest]: https://en.wikipedia.org/wiki/Virtualization
 [virtualmemory]: https://en.wikipedia.org/wiki/Virtual_memory
 [fragmentation]: https://en.wikipedia.org/wiki/Fragmentation_(computing)

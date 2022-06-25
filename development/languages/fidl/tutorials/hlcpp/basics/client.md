@@ -228,13 +228,13 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /docs/glossary/README.md#realm
-[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
-[server-tut-component]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#component
-[server-tut-impl]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
-[server-tut-deps]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#dependencies
-[server-tut-handler]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#handler
-[sync-client]: /docs/development/languages/fidl/tutorials/hlcpp/basics/sync_client.md
-[proxy]: /docs/reference/fidl/bindings/hlcpp-bindings.md#protocols-client
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
-[environment]: /docs/concepts/components/v2/environments.md
+[glossary.realm]: glossary/README.md#realm
+[server-tut]: development/languages/fidl/tutorials/hlcpp/basics/server.md
+[server-tut-component]: development/languages/fidl/tutorials/hlcpp/basics/server.md#component
+[server-tut-impl]: development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
+[server-tut-deps]: development/languages/fidl/tutorials/hlcpp/basics/server.md#dependencies
+[server-tut-handler]: development/languages/fidl/tutorials/hlcpp/basics/server.md#handler
+[sync-client]: development/languages/fidl/tutorials/hlcpp/basics/sync_client.md
+[proxy]: reference/fidl/bindings/hlcpp-bindings.md#protocols-client
+[overview]: development/languages/fidl/tutorials/overview.md
+[environment]: concepts/components/v2/environments.md

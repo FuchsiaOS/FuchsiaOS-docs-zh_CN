@@ -27,10 +27,10 @@ production, protecting the fuchsia.diagnostics FIDL from compatibility issues.
 
 Note: TODO: Dashboards are currently internal-only
 
-[overview]: /docs/development/testing/cts/compatibility_testing.md
-[rfc15]: /docs/contribute/governance/rfcs/0015_cts.md
-[faq]: /docs/development/testing/cts/faq.md
-[contributing]: /docs/development/testing/cts/contributing_tests.md
+[overview]: development/testing/cts/compatibility_testing.md
+[rfc15]: contribute/governance/rfcs/0015_cts.md
+[faq]: development/testing/cts/faq.md
+[contributing]: development/testing/cts/contributing_tests.md
 [hello c++]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/sdk/cts/examples/hello_world/
 [hello rust]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/sdk/cts/examples/rust/
 [diag]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/sdk/cts/tests/fidl/fuchsia.diagnostics/

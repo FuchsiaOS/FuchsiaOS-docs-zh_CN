@@ -9,7 +9,7 @@
 {%- set system_config_dir = "docs/reference/hardware/" %}
 {%- set system_config_yaml_file = "_supported_sys_config.yaml" %}
 {%- set architecture_yaml_file = "_supported_cpu_architecture.yaml" %}
-{%- set driver_page = "/docs/reference/hardware/drivers#" %}
+{%- set driver_page = "reference/hardware/drivers#" %}
 
 {%- set sysconfig | yamlloads %}
 {% include "docs/reference/hardware/_supported_sys_config.yaml" %}

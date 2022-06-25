@@ -730,18 +730,18 @@ i.e. without taking action to migrate.
     equivalent to an empty one, and there is no warning for deprecation.
 
 <!-- xrefs -->
-[rfc-0002]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
-[rfc-0002-lifecycle]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#lifecycle
-[rfc-0002-fidl]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#fidl
-[rfc-0002-dynamics]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#dynamics
-[rfc-0002-security]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#security-considerations
-[rfc-0002-prior-art]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#prior-art-and-references
-[rfc-0076]: /docs/contribute/governance/rfcs/0076_fidl_api_summaries.md
-[rfc-0058]: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
-[rfc-0052]: /docs/contribute/governance/rfcs/0052_type_aliasing_named_types.md
-[rfc-0086]: /docs/contribute/governance/rfcs/0086_rfc_0050_attributes.md
-[language]: /docs/reference/fidl/language/language.md
-[attrs]: /docs/reference/fidl/language/attributes.md
+[rfc-0002]: contribute/governance/rfcs/0002_platform_versioning.md
+[rfc-0002-lifecycle]: contribute/governance/rfcs/0002_platform_versioning.md#lifecycle
+[rfc-0002-fidl]: contribute/governance/rfcs/0002_platform_versioning.md#fidl
+[rfc-0002-dynamics]: contribute/governance/rfcs/0002_platform_versioning.md#dynamics
+[rfc-0002-security]: contribute/governance/rfcs/0002_platform_versioning.md#security-considerations
+[rfc-0002-prior-art]: contribute/governance/rfcs/0002_platform_versioning.md#prior-art-and-references
+[rfc-0076]: contribute/governance/rfcs/0076_fidl_api_summaries.md
+[rfc-0058]: contribute/governance/rfcs/0058_deprecated_attribute.md
+[rfc-0052]: contribute/governance/rfcs/0052_type_aliasing_named_types.md
+[rfc-0086]: contribute/governance/rfcs/0086_rfc_0050_attributes.md
+[language]: reference/fidl/language/language.md
+[attrs]: reference/fidl/language/attributes.md
 [swift-attr]: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID583
 [objc-attr]: https://developer.apple.com/documentation/swift/objective-c_and_c_code_customization/marking_api_availability_in_objective-c
 [rust-attr]: https://rustc-dev-guide.rust-lang.org/stability.html
@@ -754,8 +754,8 @@ i.e. without taking action to migrate.
 [gcp-versioning]: https://cloud.google.com/apis/design/versioning
 [gcp-compatibility]: https://cloud.google.com/apis/design/compatibility
 [nfa-dfa]: https://en.wikipedia.org/wiki/Powerset_construction
-[compositional model]: /docs/contribute/governance/rfcs/0023_compositional_model_protocols.md#compositional_model
-[strict-vs-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
-[value-vs-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
+[compositional model]: contribute/governance/rfcs/0023_compositional_model_protocols.md#compositional_model
+[strict-vs-flexible]: reference/fidl/language/language.md#strict-vs-flexible
+[value-vs-resource]: reference/fidl/language/language.md#value-vs-resource
 [max-bound]: https://fuchsia-review.googlesource.com/c/fuchsia/+/325737
-[style]: /docs/development/languages/fidl/guides/style.md#files
+[style]: development/languages/fidl/guides/style.md#files

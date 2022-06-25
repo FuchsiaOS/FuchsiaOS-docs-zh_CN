@@ -78,7 +78,7 @@ In the Fuchsia documentation you can link to three types of contents:
 
 * `/docs/` - Link to documents that are in the `/docs/` directory of the Fuchsia
   source tree. These links must link to a file with an `.md` extension. For
-  example, `/docs/concepts/README.md`.
+  example, `concepts/README.md`.
 * Source code - Link to source code files that exist within the Fuchsia source
   tree. These links can link to any file extension, but these files must exist
   in the source tree. For example, `/src/sys/sysmgr/main.cc`.
@@ -89,10 +89,10 @@ In the Fuchsia documentation you can link to three types of contents:
     must be used as fully qualified URLs. For example,
     `https://fuchsia.dev/reference/fidl/fuchsia.io`.
   * However, some Fuchsia reference documentation exists in the source
-    tree. These documents exist in `/docs/reference/` and are published in the
+    tree. These documents exist in `reference/` and are published in the
     `https://fuchsia.dev/fuchsia-src/reference/` section. These links must link
     to a file with an `.md` extension. For example,
-    `/docs/reference/syscalls/bti_create.md`.
+    `reference/syscalls/bti_create.md`.
 
 ### Test your links before submitting a change
 
@@ -214,10 +214,10 @@ Update the [state header][sh]
 
 <!-- Reference links -->
 
-[doc-standard]: /docs/contribute/docs/documentation-standards.md
-[style-guide]: /docs/contribute/docs/documentation-style-guide.md
-[markdown-guide]: /docs/contribute/docs/markdown.md
+[doc-standard]: contribute/docs/documentation-standards.md
+[style-guide]: contribute/docs/documentation-style-guide.md
+[markdown-guide]: contribute/docs/markdown.md
 [google-dev-doc-style-guide]: https://developers.google.com/style
-[markdown-reference-links]: /docs/contribute/docs/markdown.md
+[markdown-reference-links]: contribute/docs/markdown.md
 [external-link-example]: http://example.com
 [fuchsia-dev]: https://fuchsia.dev

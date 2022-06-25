@@ -1112,7 +1112,7 @@ is available for the Fuchsia package server.
 
 <!-- Reference links -->
 
-[using-the-sdk]: /docs/development/sdk/index.md
+[using-the-sdk]: development/sdk/index.md
 [sdk-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Bazel
 [kvm]: https://www.linux-kvm.org/page/Main_Page
 [qemu]: https://www.qemu.org/
@@ -1121,22 +1121,22 @@ is available for the Fuchsia package server.
 [git-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [bazel-install]: https://bazel.build/install
 [bazelisk-download]: https://github.com/bazelbuild/bazelisk/releases
-[fuchsia-ssh-keys]: /docs/development/sdk/ffx/create-ssh-keys-for-devices.md
+[fuchsia-ssh-keys]: development/sdk/ffx/create-ssh-keys-for-devices.md
 [ticket-01]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=97909
 [clang]: https://clang.llvm.org/
-[fuchsia-idk]: /docs/development/idk/README.md
-[fuchsia-package-repo]: /docs/development/sdk/ffx/create-a-package-repository.md
-[symbolize-logs]: /docs/development/sdk/ffx/symbolize-logs.md
-[fuchsia-component]: /docs/concepts/components/v2/README.md
-[fuchsia-debugger]: /docs/development/sdk/ffx/start-the-fuchsia-debugger.md
-[zxdb-user-guide]: /docs/development/debugger/README.md
-[inspect-overview]: /docs/development/diagnostics/inspect/README.md
+[fuchsia-idk]: development/idk/README.md
+[fuchsia-package-repo]: development/sdk/ffx/create-a-package-repository.md
+[symbolize-logs]: development/sdk/ffx/symbolize-logs.md
+[fuchsia-component]: concepts/components/v2/README.md
+[fuchsia-debugger]: development/sdk/ffx/start-the-fuchsia-debugger.md
+[zxdb-user-guide]: development/debugger/README.md
+[inspect-overview]: development/diagnostics/inspect/README.md
 [google-test]: https://google.github.io/googletest/
 [ffx]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fundamentals]: /docs/get-started/sdk/learn/README.md
-[femu]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
+[fundamentals]: get-started/sdk/learn/README.md
+[femu]: development/sdk/ffx/start-the-fuchsia-emulator.md
 [sdk-samples-repo]: https://fuchsia.googlesource.com/sdk-samples/getting-started
 [hello-world-component]: https://fuchsia.googlesource.com/sdk-samples/getting-started/+/refs/heads/main/src/hello_world/
-[fuchsia-package-server]: /docs/development/sdk/ffx/create-a-package-repository.md
+[fuchsia-package-server]: development/sdk/ffx/create-a-package-repository.md
 [hello-world-test-package]: https://fuchsia.googlesource.com/sdk-samples/getting-started/+/refs/heads/main/src/hello_world/BUILD.bazel#68
 [ticket-94614]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=94614

@@ -190,6 +190,6 @@ time. The device will reboot to the initial setup screen.
 
 To go back to the Fuchsia kernel, just re-pave the device.
 
-[get-fuchsia-source]: /docs/get-started/get_fuchsia_source.md
-[build-fuchsia]: /docs/get-started/build_fuchsia.md
+[get-fuchsia-source]: get-started/get_fuchsia_source.md
+[build-fuchsia]: get-started/build_fuchsia.md
 

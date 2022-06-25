@@ -3,7 +3,7 @@
 ## Checking out the Zircon source code
 
 Note: The Fuchsia source includes Zircon. See Fuchsia's
-[Getting Started](/docs/get-started/README.md) documentation.
+[Getting Started](get-started/README.md) documentation.
 
 This guide assumes that the Fuchsia project is checked out into `$FUCHSIA_DIR`,
 and `fx` has been configured.
@@ -20,9 +20,9 @@ fx set bringup.arm64
 ```
 
 Fuchsia uses the concept of
-[products](/docs/development/build/build_system/boards_and_products.md#products) to
+[products](development/build/build_system/boards_and_products.md#products) to
 create a collection of build targets. The
-[bringup product](/docs/development/build/build_system/boards_and_products.md#bringup-product)
+[bringup product](development/build/build_system/boards_and_products.md#bringup-product)
 is the smallest product with a minimal feature set.
 
 The following command prints a list of other product configurations:
@@ -72,7 +72,7 @@ architectures.
 You can skip this if you're only testing on actual hardware, but the emulator is
 handy for quick local tests and generally worth having around.
 
-See [QEMU](/docs/development/debugging/qemu.md) for information on building and
+See [QEMU](development/debugging/qemu.md) for information on building and
 using QEMU with zircon.
 
 ## Build Toolchains (Optional)
@@ -124,7 +124,7 @@ We use a trunk snapshot of Clang and update to new snapshots frequently. Any
 build of recent-enough Clang with support for `x86_64` and `aarch64` compiled in
 should work. You'll need a toolchain that also includes the runtime libraries.
 We normally also use the same build of Clang for the host as well as for the
-`*-fuchsia` targets. See [here](/docs/development/build/toolchain.md) for
+`*-fuchsia` targets. See [here](development/build/toolchain.md) for
 details on how we build Clang.
 
 ### Set up build arguments for toolchains
@@ -197,7 +197,7 @@ find it and send a system image to it.
 
 If you have a device (for example a Broadwell or Skylake Intel NUC) running
 GigaBoot20x6, first
-[create a USB drive](/docs/development/hardware/usb_setup.md).
+[create a USB drive](development/hardware/usb_setup.md).
 
 ```none
 $BUILDDIR/tools/bootserver $BUILDDIR/zircon.bin
@@ -237,7 +237,7 @@ $BUILDDIR/tools/loglistener
 ## Debugging
 
 For random tips on debugging in the zircon environment see
-[debugging](/docs/development/debugging/tips.md).
+[debugging](development/debugging/tips.md).
 
 ## Contribute changes
 

@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Accessibility Framework"
-  path: /docs/concepts/accessibility/accessibility_framework.md
+  path: concepts/accessibility/accessibility_framework.md
 - title: "Semantics"
-  path: /docs/concepts/accessibility/semantics.md
+  path: concepts/accessibility/semantics.md
 - title: "Accessibility Focus"
-  path: /docs/concepts/accessibility/accessibility-focus.md
+  path: concepts/accessibility/accessibility-focus.md
 - title: "Text-to-speech for accessibility"
-  path: /docs/concepts/accessibility/tts.md
+  path: concepts/accessibility/tts.md

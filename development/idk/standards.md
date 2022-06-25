@@ -33,7 +33,7 @@ Fuchsia IDK.
 ## Fuchsia System Interface
 
 The Fuchsia System Interface is defined in [Fuchsia System
-Interface](/docs/concepts/packages/system.md). Generally speaking, the binary interface to the system
+Interface](concepts/packages/system.md). Generally speaking, the binary interface to the system
 is only the FIDL wireformat used by programs to communicate with the system and the syscalls exposed
 in `libzircon`.
 
@@ -160,5 +160,5 @@ The FIDL protocols included in the Fuchsia System Interface resides in the top-l
 Fuchsia IDK. Clients of the Fuchsia IDK should not declare names in the top-level
 `fuchsia` namespace.
 
-[Fuchsia API Council]: /docs/contribute/governance/api_council.md
-[FIDL API style rubric]: /docs/development/languages/fidl/guides/style.md
+[Fuchsia API Council]: contribute/governance/api_council.md
+[FIDL API style rubric]: development/languages/fidl/guides/style.md

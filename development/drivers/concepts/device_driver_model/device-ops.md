@@ -7,7 +7,7 @@ Please refer to the [header comments][device] for descriptions of the methods.
 
 ## Hook ordering guarantees
 
-![Hook ordering guarantees](/docs/images/zircon/ddk/driver-hook-ordering.png)
+![Hook ordering guarantees](images/zircon/ddk/driver-hook-ordering.png)
 
 The hooks that a driver implements will be invoked by other drivers and by the
 runtime. These invocations in some occasions may occur in parallel with

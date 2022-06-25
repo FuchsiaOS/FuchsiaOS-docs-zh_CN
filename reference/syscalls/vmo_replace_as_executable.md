@@ -21,7 +21,7 @@ zx_status_t zx_vmo_replace_as_executable(zx_handle_t handle,
 ## DESCRIPTION
 
 `zx_vmo_replace_as_executable()` creates a replacement for *handle*, referring
-to the same underlying [virtual memory object](/docs/reference/kernel_objects/vm_object.md) (VMO),
+to the same underlying [virtual memory object](reference/kernel_objects/vm_object.md) (VMO),
 adding the right **ZX_RIGHT_EXECUTE**.
 
 *handle* is always invalidated.

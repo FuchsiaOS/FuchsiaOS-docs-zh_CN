@@ -7,75 +7,75 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/fidl
+  path: development/languages/fidl
 - title: "Developer guide"
   section:
-  - include: /docs/development/languages/fidl/guides/_toc.yaml
+  - include: development/languages/fidl/guides/_toc.yaml
 - title: "Compatibility guide"
   section:
-  - include: /docs/development/languages/fidl/guides/compatibility/_toc.yaml
+  - include: development/languages/fidl/guides/compatibility/_toc.yaml
 - title: "Tutorials"
   section:
   - title: "Overview"
-    path: /docs/development/languages/fidl/tutorials/overview.md
+    path: development/languages/fidl/tutorials/overview.md
   - title: "Compiling FIDL"
-    path: /docs/development/languages/fidl/tutorials/fidl.md
+    path: development/languages/fidl/tutorials/fidl.md
   - title: "HLCPP"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/README.md
+      path: development/languages/fidl/tutorials/hlcpp/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/hlcpp/basics/_toc.yaml
+      - include: development/languages/fidl/tutorials/hlcpp/basics/_toc.yaml
     - title: "Debug output"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/fostr.md
+      path: development/languages/fidl/tutorials/hlcpp/topics/fostr.md
     - title: "Serving multiple clients"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/multiple-clients.md
+      path: development/languages/fidl/tutorials/hlcpp/topics/multiple-clients.md
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
+      path: development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
     - title: "Services"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/services.md
+      path: development/languages/fidl/tutorials/hlcpp/topics/services.md
     - title: "Testing protocols"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/testing.md
+      path: development/languages/fidl/tutorials/hlcpp/topics/testing.md
   - title: "LLCPP"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/llcpp/README.md
+      path: development/languages/fidl/tutorials/llcpp/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/llcpp/basics/_toc.yaml
+      - include: development/languages/fidl/tutorials/llcpp/basics/_toc.yaml
     - title: "Responding asynchronously"
-      path: /docs/development/languages/fidl/tutorials/llcpp/topics/async-completer.md
+      path: development/languages/fidl/tutorials/llcpp/topics/async-completer.md
     - title: "Memory ownership of domain objects"
-      path: /docs/development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
+      path: development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
     - title: "Thread safety and memory safety"
-      path: /docs/development/languages/fidl/tutorials/llcpp/topics/threading.md
+      path: development/languages/fidl/tutorials/llcpp/topics/threading.md
     - title: "Communicating over the driver transport"
-      path: /docs/development/languages/fidl/tutorials/llcpp/topics/driver-transport.md
+      path: development/languages/fidl/tutorials/llcpp/topics/driver-transport.md
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/llcpp/topics/request-pipelining.md
+      path: development/languages/fidl/tutorials/llcpp/topics/request-pipelining.md
     - title: "Services"
-      path: /docs/development/languages/fidl/tutorials/llcpp/topics/services.md
+      path: development/languages/fidl/tutorials/llcpp/topics/services.md
   - title: "Rust"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/rust/README.md
+      path: development/languages/fidl/tutorials/rust/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/rust/basics/_toc.yaml
+      - include: development/languages/fidl/tutorials/rust/basics/_toc.yaml
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/rust/topics/request-pipelining.md
+      path: development/languages/fidl/tutorials/rust/topics/request-pipelining.md
     - title: "Services"
-      path: /docs/development/languages/fidl/tutorials/rust/topics/services.md
+      path: development/languages/fidl/tutorials/rust/topics/services.md
   - title: "Dart"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/dart/README.md
+      path: development/languages/fidl/tutorials/dart/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/dart/basics/_toc.yaml
+      - include: development/languages/fidl/tutorials/dart/basics/_toc.yaml
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/dart/topics/request-pipelining.md
+      path: development/languages/fidl/tutorials/dart/topics/request-pipelining.md
   - title: "C"
-    path: /docs/development/languages/fidl/tutorials/tutorial-c.md
+    path: development/languages/fidl/tutorials/tutorial-c.md
     status: deprecated

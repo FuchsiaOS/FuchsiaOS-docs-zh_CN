@@ -90,4 +90,4 @@ the ongoing support for releases by existing customers. Mitigating is that none
 of the processes we propose to base on MOS/TUF are critical and can be stopped
 any time.
 
-[glossary.product]: /docs/glossary/README.md#product
+[glossary.product]: glossary/README.md#product

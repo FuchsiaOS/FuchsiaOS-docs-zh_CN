@@ -128,4 +128,4 @@ ffx setui intl --help
 ```
 
 <!-- xrefs -->
-[product-config]: /docs/development/components/data.md#product-specific_configuration_with_config_data
+[product-config]: development/components/data.md#product-specific_configuration_with_config_data

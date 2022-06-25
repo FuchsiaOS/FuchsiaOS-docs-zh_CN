@@ -113,5 +113,5 @@ Examples:
 - `/alice:0/support:dan:0`: from root traverse down `alice:0` then down `support:dan:0`
 - `/alice:0/carol:0`: from root traverse down `alice:0` then down `carol:0`
 
-[glossary.moniker]: /docs/glossary/README.md#moniker
+[glossary.moniker]: glossary/README.md#moniker
 [cml-reference]: https://fuchsia.dev/reference/cml

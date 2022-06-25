@@ -7,4 +7,4 @@
 # team as reviewer.
 toc:
 - title: "Verified Execution"
-  path: /docs/concepts/security/verified_execution.md
+  path: concepts/security/verified_execution.md

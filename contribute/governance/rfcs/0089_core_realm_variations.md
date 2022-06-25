@@ -231,7 +231,7 @@ the place they are defined in GN. Additionally, markdown documentation will be
 maintained describing each manifest shard and the impact it will have on the
 product's core realm.
 
-[build-policy]: /docs/development/build/build_system/policies.md
+[build-policy]: development/build/build_system/policies.md
 [wip-cl]: https://fuchsia-review.googlesource.com/c/fuchsia/+/486644
 [generated-file]: https://gn.googlesource.com/gn/+/master/docs/reference.md#func_generated_file
 [cmc-merge]: /tools/cmc/build/cmc.gni

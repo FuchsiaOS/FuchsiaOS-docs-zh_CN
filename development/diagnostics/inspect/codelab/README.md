@@ -11,7 +11,7 @@ information to debug their programs.
 Inspect allows Fuchsia Components to expose structured, hierarchical
 information about their current state.
 
-Learn more about Inspect in the [Fuchsia Component Inspection](/docs/development/diagnostics/inspect/README.md)
+Learn more about Inspect in the [Fuchsia Component Inspection](development/diagnostics/inspect/README.md)
 documentation.
 
 ### What benefits does Inspect provide?

@@ -9,45 +9,45 @@ toc:
 - title: "Inspect"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/inspect
+    path: development/diagnostics/inspect
   - title: "Quickstart"
-    path: /docs/development/diagnostics/inspect/quickstart.md
+    path: development/diagnostics/inspect/quickstart.md
   # TODO(fxbug.dev/60767)
   # - title: "Overview"
-  #   path: /docs/development/diagnostics/inspect/README.md
+  #   path: development/diagnostics/inspect/README.md
 
   # TODO(fxbug.dev/60764)
   # - title: "Principles"
-  #   path: /docs/development/diagnostics/inspect/principles.md
+  #   path: development/diagnostics/inspect/principles.md
   - title: "Health"
-    path: /docs/development/diagnostics/inspect/health.md
+    path: development/diagnostics/inspect/health.md
   - title: "Rust libraries"
-    path: /docs/development/diagnostics/inspect/rust.md
+    path: development/diagnostics/inspect/rust.md
   - title: "Inspect codelab"
     section:
     - title: "Overview"
-      path: /docs/development/diagnostics/inspect/codelab/README.md
+      path: development/diagnostics/inspect/codelab/README.md
     - title: "Codelab"
-      path: /docs/development/diagnostics/inspect/codelab/codelab.md
+      path: development/diagnostics/inspect/codelab/codelab.md
   - title: "Using Inspect for drivers"
-    path: /docs/development/drivers/diagnostics/inspect.md
+    path: development/drivers/diagnostics/inspect.md
 - title: "Log"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/logs/README.md
+    path: development/diagnostics/logs/README.md
   - title: "Record"
-    path: /docs/development/diagnostics/logs/recording.md
+    path: development/diagnostics/logs/recording.md
   - title: "Choose severity"
-    path: /docs/development/diagnostics/logs/severity.md
+    path: development/diagnostics/logs/severity.md
   - title: "View"
-    path: /docs/development/diagnostics/logs/viewing.md
+    path: development/diagnostics/logs/viewing.md
   - title: "Logging and tests"
-    path: /docs/development/diagnostics/test_and_logs.md
+    path: development/diagnostics/test_and_logs.md
 - title: "Analyze with Triage"
-  path: /docs/development/diagnostics/triage/codelab.md
+  path: development/diagnostics/triage/codelab.md
 - title: "Diagnostics and Testing Workshop"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/workshop/README.md
+    path: development/diagnostics/workshop/README.md
   - title: "Codelab"
-    path: /docs/development/diagnostics/workshop/codelab.md
+    path: development/diagnostics/workshop/codelab.md

@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Trace specification file"
-  path: /docs/reference/tracing/trace-specification-file.md
+  path: reference/tracing/trace-specification-file.md
 - title: "Tracing libraries"
-  path: /docs/reference/tracing/libraries.md
+  path: reference/tracing/libraries.md
 - title: "Tracing: C and C++ macros"
-  path: /docs/reference/tracing/c_cpp_macros.md
+  path: reference/tracing/c_cpp_macros.md
 - title: "FIFO packets"
-  path: /docs/reference/tracing/FIFO-packets.md
+  path: reference/tracing/FIFO-packets.md

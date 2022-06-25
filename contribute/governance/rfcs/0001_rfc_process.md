@@ -27,7 +27,7 @@ This section describes the design of the RFC process.
 
 The vast majority of changes to Fuchsia do not require an RFC. Instead, these
 changes can be made using the [code review
-process](/docs/development/source_code/contribute_changes.md). However,
+process](development/source_code/contribute_changes.md). However,
 technical decisions that have broad impact across the project require broader
 agreement and must be socialized with the project using the RFC process.
 
@@ -128,7 +128,7 @@ socialization, you are ready to start the formal part of the RFC process. The
 next step is to write a first draft of the RFC document itself.
 
 Mechanically, an RFC is a markdown file in the
-`//docs/contribute/governance/rfcs` directory.
+`/contribute/governance/rfcs` directory.
 To create and RFC, you create a CL that adds a file to that directory. You
 should start by making a copy of the [RFC template](TEMPLATE.md). While not
 strictly required, the template is designed to guide you towards writing a
@@ -178,7 +178,7 @@ names associated with the new incarnation of the RFC.
 
 > *Suggestion.* If you are interested in RFCs, consider configuring the Gerrit
 > Code Review tool to [send you an email > notification](https://gerrit-review.googlesource.com/Documentation/user-notify.html)
-> when a CL modifies the `//docs/contribute/governance/rfcs` directory.
+> when a CL modifies the `/contribute/governance/rfcs` directory.
 
 #### Step 4: Approve {#approve}
 
@@ -301,6 +301,6 @@ existing processes:
 
  * *FIDL Tuning Proposal.* The Fuchsia project has had direct experience using a
    similar process [to make decisions about the FIDL
-   language](/docs/contribute/governance/deprecated-ftp-process.md). This
+   language](contribute/governance/deprecated-ftp-process.md). This
    proposal exists because of the success of that decision-making process.
 

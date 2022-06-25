@@ -23,7 +23,7 @@ zx_status_t zx_pci_get_bar(zx_handle_t handle,
 
 This function is obsolete and should not be used. Drivers should instead get the PCI Base Address
 Register information from the [PCI driver
-interface](/docs/development/drivers/concepts/driver_development/bar.md);
+interface](development/drivers/concepts/driver_development/bar.md);
 
 ## RIGHTS
 

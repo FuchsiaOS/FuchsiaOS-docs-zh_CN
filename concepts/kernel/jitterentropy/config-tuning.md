@@ -19,7 +19,7 @@ or to do a more thorough job of optimizing the parameters).
 The following tunable parameters control how fast jitterentropy runs, and how fast it collects
 entropy:
 
-### [`kernel.jitterentropy.ll`](/docs/reference/kernel/kernel_cmdline.md#kernel-jitterentropy-ll-num)
+### [`kernel.jitterentropy.ll`](reference/kernel/kernel_cmdline.md#kernel-jitterentropy-ll-num)
 
 "`ll`" stands for "LFSR loops". Jitterentropy uses a (deliberately inefficient implementation of a)
 LFSR to exercise the CPU, as part of its noise generation. The inner loop shifts the LFSR 64 times;
@@ -35,7 +35,7 @@ loops in a "random-ish" way. As described in [the basic config doc](config-basic
 the use of `kernel.jitterentropy.ll=0`.
 
 
-### [`kernel.jitterentropy.ml`](/docs/reference/kernel/kernel_cmdline.md#kernel-jitterentropy-ml-num)
+### [`kernel.jitterentropy.ml`](reference/kernel/kernel_cmdline.md#kernel-jitterentropy-ml-num)
 
 "`ml`" stands for "memory access loops". Jitterentropy walks through a moderately large chunk of
 RAM, reading and writing each byte. The size of the chunk and access pattern are controlled by the
@@ -47,7 +47,7 @@ this on RPi3 and qemu-arm64 so far.
 Much like `kernel.jitterentropy.ll`, if you set `kernel.jitterentropy.ml=0`, then jitterentropy will
 choose a "random-ish" value for the memory access loop count. I also discourage this.
 
-### [`kernel.jitterentropy.bs`](/docs/reference/kernel/kernel_cmdline.md#kernel-jitterentropy-bs-num)
+### [`kernel.jitterentropy.bs`](reference/kernel/kernel_cmdline.md#kernel-jitterentropy-bs-num)
 
 "`bs`" stands for "block size". Jitterentropy divides its chunk of RAM into blocks of this size. The
 memory access loop starts with byte 0 of block zero, then "byte -1" of block 1 (which is actually
@@ -57,7 +57,7 @@ so on. This pattern ensures that every byte gets hit, and most accesses go into 
 I have usually tested jitterentropy with `kernel.jitterentropy.bs=64`, based on the size of a cache
 line. I haven't tested yet to see whether there's a better option on some/all platforms.
 
-### [`kernel.jitterentropy.bc`](/docs/reference/kernel/kernel_cmdline.md#kernel-jitterentropy-bc-num)
+### [`kernel.jitterentropy.bc`](reference/kernel/kernel_cmdline.md#kernel-jitterentropy-bc-num)
 
 "`bc`" stands for "block count". Jitterentropy uses this many blocks of RAM, each of size
 `kernel.jitterentropy.bs`, in its memory access loops.
@@ -74,7 +74,7 @@ block count = 64) aren't big enough to overflow L1.
 
 The basic idea is simple: on a particular target device, try different values for the parameters.
 Collect a large amount of data for each parameter set (ideally around 1MB), then
-[run the NIST test suite to analyze the data](/docs/concepts/kernel/entropy_quality_tests.md#running-the-nist-test-suite).
+[run the NIST test suite to analyze the data](concepts/kernel/entropy_quality_tests.md#running-the-nist-test-suite).
 Determine which parameters give the best entropy per unit time. The time taken to draw the entropy
 samples is logged on the system under test.
 
@@ -104,7 +104,7 @@ disallowed in kernel code, and fixed-point arithmetic is confusing).
 
 The value should be determined by using the NIST test suite to analyze random data samples, as
 described in
-[the entropy quality tests document](/docs/concepts/kernel/entropy_quality_tests.md#running-the-nist-test-suite).
+[the entropy quality tests document](concepts/kernel/entropy_quality_tests.md#running-the-nist-test-suite).
 The test suite produces an estimate of the min-entropy; repeated tests of the same RNG have (in my
 experience) varied by a few tenths of a bit (which is pretty significant when entropy values can be
 around 0.5 bits per byte of data!). After getting good, consistent results from the test suites,

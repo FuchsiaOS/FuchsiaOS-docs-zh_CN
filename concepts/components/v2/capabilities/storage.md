@@ -170,13 +170,13 @@ provided by the `memfs` component in the same realm:
 For more details on implementing directories, see
 [directory capabilities][directory-capabilities].
 
-[glossary.directory-capability]: /docs/glossary/README.md#directory-capability
-[glossary.component-instance-identifier]: /docs/glossary/README.md#component-instance-identifier
-[glossary.moniker]: /docs/glossary/README.md#moniker
-[glossary.namespace]: /docs/glossary/README.md#namespace
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
-[glossary.storage-capability]: /docs/glossary/README.md#storage-capability
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[glossary.directory-capability]: glossary/README.md#directory-capability
+[glossary.component-instance-identifier]: glossary/README.md#component-instance-identifier
+[glossary.moniker]: glossary/README.md#moniker
+[glossary.namespace]: glossary/README.md#namespace
+[glossary.outgoing-directory]: glossary/README.md#outgoing-directory
+[glossary.storage-capability]: glossary/README.md#storage-capability
+[capability-routing]: concepts/components/v2/capabilities/README.md#routing
 [component-reference]: https://fuchsia.dev/reference/cml#references
-[directory-capabilities]: /docs/concepts/components/v2/capabilities/directory.md
-[storage-index]: /docs/development/components/component_id_index.md
+[directory-capabilities]: concepts/components/v2/capabilities/directory.md
+[storage-index]: development/components/component_id_index.md

@@ -69,10 +69,10 @@ This library provides an API for reading and writing the blocks of the
 [Inspect VMO format][inspect_vmo_format].
 
 
-[codelab]: /docs/development/diagnostics/inspect/codelab/codelab.md#rust
-[components-v1]: /docs/concepts/components/v1/README.md
-[ergonomic_inspect]: /docs/development/languages/rust/ergonomic_inspect.md
-[inspect_vmo_format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
+[codelab]: development/diagnostics/inspect/codelab/codelab.md#rust
+[components-v1]: concepts/components/v1/README.md
+[ergonomic_inspect]: development/languages/rust/ergonomic_inspect.md
+[inspect_vmo_format]: reference/platform-spec/diagnostics/inspect-vmo-format.md
 [inspect_format]: https://fuchsia-docs.firebaseapp.com/rust/inspect_format/index.html
 [inspect_runtime]: https://fuchsia-docs.firebaseapp.com/rust/inspect_runtime/index.html
 [fuchsia_inspect_derive]: https://fuchsia-docs.firebaseapp.com/rust/fuchsia_inspect_derive/index.html

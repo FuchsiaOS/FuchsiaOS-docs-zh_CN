@@ -194,10 +194,10 @@ allowlisted as shown below:
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/sys/run_test_component/test_metadata.cc" region_tag="allowed_system_services" adjust_indentation="auto" %}
 ```
 
-[glossary.component]: /docs/glossary/README.md#component
-[component-manifest]: /docs/concepts/components/v1/component_manifests.md
-[executing-tests]: /docs/development/testing/run_fuchsia_tests.md
-[run-test-component]: /docs/development/testing/run_fuchsia_tests.md
-[test-packages]: /docs/development/components/build.md#test-packages
-[testing-v2]: /docs/development/testing/components/README.md
-[unit-tests]: /docs/development/components/build.md#unit-tests
+[glossary.component]: glossary/README.md#component
+[component-manifest]: concepts/components/v1/component_manifests.md
+[executing-tests]: development/testing/run_fuchsia_tests.md
+[run-test-component]: development/testing/run_fuchsia_tests.md
+[test-packages]: development/components/build.md#test-packages
+[testing-v2]: development/testing/components/README.md
+[unit-tests]: development/components/build.md#unit-tests

@@ -46,8 +46,8 @@ modern component framework. For details on legacy components, see
 -   [Components vs. processes](components_vs_processes.md): how the concepts
     differ.
 
-[glossary.components v1]: /docs/glossary/README.md#components-v1
-[glossary.components v2]: /docs/glossary/README.md#components-v2
-[legacy-components]: /docs/concepts/components/v1/README.md
-[migration]: /docs/contribute/open_projects/components/migration.md
-[rfc0093]: /docs/contribute/governance/rfcs/0093_component_manifest_design_principles.md
+[glossary.components v1]: glossary/README.md#components-v1
+[glossary.components v2]: glossary/README.md#components-v2
+[legacy-components]: concepts/components/v1/README.md
+[migration]: contribute/open_projects/components/migration.md
+[rfc0093]: contribute/governance/rfcs/0093_component_manifest_design_principles.md

@@ -24,10 +24,10 @@ instances.
     policy. Web pages are typically isolated by being hosted in separate
     processes.
 
-[processes]: /docs/reference/kernel_objects/process.md
-[task objects]: /docs/reference/kernel_objects/objects.md#tasks
-[component instances]: /docs/concepts/components/v2/topology.md#component-instances
-[component runners]: /docs/concepts/components/v2/capabilities/runners.md
-[ELF Runner]: /docs/concepts/components/v2/elf_runner.md
-[job]: /docs/reference/kernel_objects/job.md
-[threads]: /docs/reference/kernel_objects/thread.md
+[processes]: reference/kernel_objects/process.md
+[task objects]: reference/kernel_objects/objects.md#tasks
+[component instances]: concepts/components/v2/topology.md#component-instances
+[component runners]: concepts/components/v2/capabilities/runners.md
+[ELF Runner]: concepts/components/v2/elf_runner.md
+[job]: reference/kernel_objects/job.md
+[threads]: reference/kernel_objects/thread.md

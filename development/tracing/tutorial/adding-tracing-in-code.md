@@ -3,18 +3,18 @@
 This guide shows how to add tracing to your code.
 
 Note: For more information on the Fuchsia tracing system, see
-[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
+[Fuchsia tracing system](concepts/kernel/tracing-system.md).
 
 ## Prerequisites
 
 Before you begin, make sure you have completed the following:
 
 * Familiarized yourself with the Fuchsia tracing system. See
-  [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
+  [Fuchsia tracing system](concepts/kernel/tracing-system.md).
 * Registered your component as a tracing provider. See
-  [Registering a trace provider](/docs/development/tracing/tutorial/registering-a-trace-provider.md).
+  [Registering a trace provider](development/tracing/tutorial/registering-a-trace-provider.md).
 * Included the `libtrace` library to capture trace data. See
-  [libtrace: The C and C++ trace event library](/docs/reference/tracing/libraries.md#libtrace-trace-event).
+  [libtrace: The C and C++ trace event library](reference/tracing/libraries.md#libtrace-trace-event).
 
 ## Add tracing to your component
 
@@ -23,7 +23,7 @@ types of tracing:
 
 Note: The tracing macros should be added to the code of your component.
 For more information on the C and C++ tracing macros, see
-[Tracing: C and C++ macros](/docs/reference/tracing/c_cpp_macros.md).
+[Tracing: C and C++ macros](reference/tracing/c_cpp_macros.md).
 
 * [Trace an instant event](#instant-event)
 * [Disable tracing](#disable-tracing)
@@ -44,7 +44,7 @@ This example specifies a category of `helloworld`, a name of `hello_world_test`,
 a scope of `TRACE_SCOPE_PROCESS`, and a key and value pair.
 
 For more information on the `TRACE_INSTANT` macro, see
-[TRACE_INSTANT](/docs/reference/tracing/c_cpp_macros.md#TRACE_INSTANT).
+[TRACE_INSTANT](reference/tracing/c_cpp_macros.md#TRACE_INSTANT).
 
 ### Disable tracing {#disable-tracing}
 
@@ -92,7 +92,7 @@ the recording of the statistics. For example, you can use the
   ```
 
 For more information on the `NTRACE` macro, see
-[NTRACE](/docs/reference/tracing/c_cpp_macros.md#NTRACE).
+[NTRACE](reference/tracing/c_cpp_macros.md#NTRACE).
 
 ### Determine if tracing is on {#determine-if-tracing-is-on}
 
@@ -122,7 +122,7 @@ together because the function `do_something_expensive()` might not exist in the
 trace-disabled version of your code.
 
 For more information on the `TRACE_ENABLED` macro, see
-[TRACE_ENABLED](/docs/reference/tracing/c_cpp_macros.md#TRACE_ENABLED).
+[TRACE_ENABLED](reference/tracing/c_cpp_macros.md#TRACE_ENABLED).
 
 ### Time an event {#time-an-event}
 
@@ -145,9 +145,9 @@ along with the size and number of blocks. Since this is a C++ example,
 the data types can be inferred by the compiler.
 
 For more information on the `TRACE_DURATION` macro, see
-[TRACE_DURATION](/docs/reference/tracing/c_cpp_macros.md#TRACE_DURATION).
+[TRACE_DURATION](reference/tracing/c_cpp_macros.md#TRACE_DURATION).
 
 Once you have added a tracing statement to your component, you can now collect a
 trace. For more information, see
-[Recording a Fuchsia trace](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
+[Recording a Fuchsia trace](development/tracing/tutorial/recording-a-fuchsia-trace.md).
 

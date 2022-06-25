@@ -928,8 +928,8 @@ killall pm
 
 <!-- Reference links -->
 
-[using-the-sdk]: /docs/development/sdk/index.md
-[get-started-sdk]: /docs/get-started/sdk/index.md
+[using-the-sdk]: development/sdk/index.md
+[get-started-sdk]: get-started/sdk/index.md
 [sdk-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Bazel
 [kvm]: https://www.linux-kvm.org/page/Main_Page
 [qemu]: https://www.qemu.org/
@@ -938,16 +938,16 @@ killall pm
 [git-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [bazel-install]: https://bazel.build/install
 [bazelisk-download]: https://github.com/bazelbuild/bazelisk/releases
-[fuchsia-ssh-keys]: /docs/development/sdk/ffx/create-ssh-keys-for-devices.md
+[fuchsia-ssh-keys]: development/sdk/ffx/create-ssh-keys-for-devices.md
 [ticket-01]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=97909
 [sdk-driver-sample-repo]: https://fuchsia.googlesource.com/sdk-samples/drivers
 [clang]: https://clang.llvm.org/
-[fuchsia-idk]: /docs/development/idk/README.md
+[fuchsia-idk]: development/idk/README.md
 [edu-device]: https://fuchsia.googlesource.com/third_party/qemu/+/refs/heads/main/docs/specs/edu.txt
 [qemu-edu]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/qemu_edu/
 [eductl-cml]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/qemu_edu/meta/eductl.cml
-[zxdb-user-guide]: /docs/development/debugger/README.md
-[driver-concepts]: /docs/concepts/drivers/README.md
-[driver-sample-walkthrough]: /docs/development/sdk/driver-sample-qemu-edu.md
-[driver-framework]: /docs/concepts/drivers/driver_framework.md
-[femu]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
+[zxdb-user-guide]: development/debugger/README.md
+[driver-concepts]: concepts/drivers/README.md
+[driver-sample-walkthrough]: development/sdk/driver-sample-qemu-edu.md
+[driver-framework]: concepts/drivers/driver_framework.md
+[femu]: development/sdk/ffx/start-the-fuchsia-emulator.md

@@ -80,7 +80,7 @@ Fahrenheit for temperature" in a locale ID.
 ## Accessing i18n preferences {#access}
 
 To send i18n preferences between Fuchsia
-[components](/docs/glossary/README.md#component), use the
+[components](glossary/README.md#component), use the
 [`fuchsia.intl.Profile`](https://fuchsia.dev/reference/fidl/fuchsia.intl#Profile)
 FIDL table:
 
@@ -107,7 +107,7 @@ protocol, which serves the `Profile` and notifies of changes:
 
 This protocol offers a _read-only_ view of an internationalization profile.
 Depending on the implementation of the service and the
-[realm](/docs/concepts/components/v2/realms.md) in which it is intended to
+[realm](concepts/components/v2/realms.md) in which it is intended to
 serve, the contents of the internationalization profile may be derived from
 [user settings](#store), a product's factory settings, a specific component's
 requirements, or some combination of the above.
@@ -118,11 +118,11 @@ Fuchsia has no ambient or system locale. Locale and other i18n preferences
 depend on the context in which a component is running. This is in contrast to
 other operating systems, which may have APIs to obtain global or default locale
 settings, following Fuchsia's design principle of
-[no ambient authority](/docs/concepts/principles/secure.md)
+[no ambient authority](concepts/principles/secure.md)
 
 In runtimes where the standard library offers access to some default locale (for
 example, `Platform.localeName` in Dart and Flutter), it is the responsibility of
-the [runner](/docs/concepts/components/v2/capabilities/runners.md) to retrieve
+the [runner](concepts/components/v2/capabilities/runners.md) to retrieve
 the needed values from the realm of the component being run. In most cases, the
 runner should call `fuchsia.intl.PropertyProvider.GetProfile`. See
 [Runner integrations](#runner-integrations) below.
@@ -138,7 +138,7 @@ article about Mallorca may choose to launch a map component with an `es-ES` UI,
 while at the same time an English-language (`en-US`) article launches the same
 map component, but tells it to display an `en-US` UI. This can be accomplished
 with two different
-[sub-realms](/docs/concepts/components/v2/realms.md#definitions) that each
+[sub-realms](concepts/components/v2/realms.md#definitions) that each
 receives a different `PropertyProvider` instance.
 
 ### `intl_services` library {#intl-services}
@@ -147,7 +147,7 @@ A basic C++ library implementing `fuchsia.intl.PropertyProvider` is found at
 [`//src/lib/intl/intl_property_provider_impl`](/src/lib/intl/intl_property_provider_impl).
 
 The
-[`core`](/docs/development/build/build_system/boards_and_products.md#key_product_configurations)
+[`core`](development/build/build_system/boards_and_products.md#key_product_configurations)
 product configuration includes [`intl_services`](/src/intl/intl_services), a
 component that wraps this implementation.
 

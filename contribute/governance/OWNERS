@@ -1,4 +1,4 @@
-# Don't inherit "*" from the //docs/OWNERS file for this directory.
+# Don't inherit "*" from the /OWNERS file for this directory.
 set noparent
 
 include /OWNERS

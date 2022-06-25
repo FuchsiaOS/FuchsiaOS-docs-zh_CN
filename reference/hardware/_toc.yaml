@@ -8,9 +8,9 @@
 toc:
 - heading: "Drivers"
 - title: "Hardware drivers"
-  path: /docs/reference/hardware/drivers.md
+  path: reference/hardware/drivers.md
 - title: "Deprecated hardware drivers"
-  path: /docs/reference/hardware/driver-epitaphs.md
+  path: reference/hardware/driver-epitaphs.md
 - heading: "System configuration"
 - title: "Supported system configuration"
-  path: /docs/reference/hardware/support-system-config.md
+  path: reference/hardware/support-system-config.md

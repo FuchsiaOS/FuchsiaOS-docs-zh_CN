@@ -701,6 +701,6 @@ changes several times.
     └── url => "fuchsia-pkg://fuchsia.com/example#meta/A.cm"
     ```
 
-[glossary.namespace]: /docs/glossary/README.md#namespace
-[glossary.exposed-directory]: /docs/glossary/README.md#exposed-directory
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
+[glossary.namespace]: glossary/README.md#namespace
+[glossary.exposed-directory]: glossary/README.md#exposed-directory
+[glossary.outgoing-directory]: glossary/README.md#outgoing-directory

@@ -27,4 +27,4 @@ Fuchsia.
 
 ## 2020
 
-* [Fuchsia 2020 roadmap overview](/docs/contribute/roadmap/2020/overview.md)
+* [Fuchsia 2020 roadmap overview](contribute/roadmap/2020/overview.md)

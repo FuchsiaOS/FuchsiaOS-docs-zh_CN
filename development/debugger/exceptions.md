@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Exceptions in Zircon](/docs/concepts/kernel/exceptions.md) are handled in several phases:
+[Exceptions in Zircon](concepts/kernel/exceptions.md) are handled in several phases:
 
   1. The debugger is notified of the exception ("first chance"). The debugger might handle the
   exception at this stage (for example, the debugger might continue continue after a single-step or

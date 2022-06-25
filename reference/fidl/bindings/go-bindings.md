@@ -508,18 +508,18 @@ In addition, FIDL generates a `TicTacToeName` constant that contains the
 protocol name.
 
 <!-- xrefs -->
-[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
+[anon-names]: reference/fidl/language/language.md#inline-layouts
 [example-client]: /examples/fidl/go/client
 [example-server]: /examples/fidl/go/server
-[lang-constants]: /docs/reference/fidl/language/language.md#constants
-[lang-bits]: /docs/reference/fidl/language/language.md#bits
-[lang-enums]: /docs/reference/fidl/language/language.md#enums
-[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: /docs/reference/fidl/language/language.md#structs
-[lang-tables]: /docs/reference/fidl/language/language.md#tables
-[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
-[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
-[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
-[union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
-[traversal]: /docs/reference/fidl/language/wire-format/README.md#traversal-order
-[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
+[lang-constants]: reference/fidl/language/language.md#constants
+[lang-bits]: reference/fidl/language/language.md#bits
+[lang-enums]: reference/fidl/language/language.md#enums
+[lang-flexible]: reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: reference/fidl/language/language.md#structs
+[lang-tables]: reference/fidl/language/language.md#tables
+[lang-protocols]: reference/fidl/language/language.md#protocols
+[lang-resource]: reference/fidl/language/language.md#value-vs-resource
+[lang-protocol-composition]: reference/fidl/language/language.md#protocol-composition
+[union-lexicon]: reference/fidl/language/lexicon.md#union-terms
+[traversal]: reference/fidl/language/wire-format/README.md#traversal-order
+[unknown-attr]: reference/fidl/language/attributes.md#unknown

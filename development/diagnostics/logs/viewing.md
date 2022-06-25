@@ -155,9 +155,9 @@ Normally this includes the following notable items, all interleaved:
 
 This aggregate log is run through the equivalent of `fx symbolize` before upload.
 
-[monotonic clock]: /docs/reference/syscalls/clock_get_monotonic.md
-[Concepts: Storage]: /docs/concepts/components/diagnostics/logs/README.md#storage
-[forwarded from the klog]: /docs/development/diagnostics/logs/recording.md#forwarding-klog-to-syslog
+[monotonic clock]: reference/syscalls/clock_get_monotonic.md
+[Concepts: Storage]: concepts/components/diagnostics/logs/README.md#storage
+[forwarded from the klog]: development/diagnostics/logs/recording.md#forwarding-klog-to-syslog
 [`log_listener`]: /src/diagnostics/log_listener/README.md
 [`fuchsia.logger.Log`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#Log
 [`fuchsia.logger.LogListenerSafe`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#LogListenerSafe

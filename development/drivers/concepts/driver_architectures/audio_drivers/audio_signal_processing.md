@@ -238,5 +238,5 @@ single pipeline in topology id 2 starts with PE id 2 and ends with PE id 6.
 <!-- Reference links -->
 
 [pipeline]: https://en.wikipedia.org/wiki/Pipeline_(computing)
-[hanging-get]: /docs/development/api/fidl.md#hanging-get
+[hanging-get]: development/api/fidl.md#hanging-get
 

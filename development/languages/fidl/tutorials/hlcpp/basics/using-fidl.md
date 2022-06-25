@@ -124,7 +124,7 @@ fx test -vo example-cpp-host-test
 ```
 
 <!-- xrefs -->
-[generated-code]: /docs/development/languages/fidl/guides/generated-code.md#c-family
-[bindings-ref]: /docs/reference/fidl/bindings/hlcpp-bindings.md
-[fidl-intro]: /docs/development/languages/fidl/tutorials/fidl.md
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[generated-code]: development/languages/fidl/guides/generated-code.md#c-family
+[bindings-ref]: reference/fidl/bindings/hlcpp-bindings.md
+[fidl-intro]: development/languages/fidl/tutorials/fidl.md
+[overview]: development/languages/fidl/tutorials/overview.md

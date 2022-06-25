@@ -321,14 +321,14 @@ Reach out for questions or for status updates:
 * ianloic@google.com
 
 <!-- xrefs -->
-[fidl-protocol]: /docs/reference/fidl/language/language.md#protocols
+[fidl-protocol]: reference/fidl/language/language.md#protocols
 [fix-protocol-1]: https://fuchsia-review.googlesource.com/c/fuchsia/+/463034
 [fix-protocol-2]: https://fuchsia-review.googlesource.com/c/fuchsia/+/466169
 [fix-protocol-3]:
 https://fuchsia-review.googlesource.com/c/fuchsia/+/478491/28/src/storage/lib/paver/partition-client.h#b46
 [bind-server]:
 https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/server.h?q=fidl::BindServer&ss=fuchsia%2Ffuchsia
-[typed-channel]: /docs/reference/fidl/bindings/llcpp-bindings.md#typed-channels
+[typed-channel]: reference/fidl/bindings/llcpp-bindings.md#typed-channels
 [raw-channel-interface]:
 https://cs.opensource.google/search?q=RawChannelInterface&sq=&ss=fuchsia%2Ffuchsia
 [create-endpoints]:
@@ -342,7 +342,7 @@ https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/ulib/service/i
 [open-service-root]:
 https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/ulib/service/include/lib/service/llcpp/service.h;l=23?q=service::Connect&ss=fuchsia%2Ffuchsia
 [ulib-service]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/ulib/service/
-[rfc-0023]: /docs/contribute/governance/rfcs/0023_compositional_model_protocols.md#is_a_relationship_considered_harmful
+[rfc-0023]: contribute/governance/rfcs/0023_compositional_model_protocols.md#is_a_relationship_considered_harmful
 [target-allowlist]:
 https://cs.opensource.google/fuchsia/fuchsia/+/main:build/cpp/BUILD.gn?q=%22could%20be%20migrated%20to%20use%20typed%20channels%22&ss=fuchsia%2Ffuchsia:build%2Fcpp%2F
 [protocol-allowlist]:

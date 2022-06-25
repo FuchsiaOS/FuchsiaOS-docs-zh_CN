@@ -139,8 +139,8 @@ really well for doing remote work from your laptop.
   * Setting up tmux or screen is also helpful for remote work, to preserve
   history and manage multiple sessions in the shell.
 * The Fuchsia documentation has instructions for setting up language servers:
-  * [clangd](/docs/development/languages/c-cpp/editors.md) for c++
-  * [rust-analyzer](/docs/development/languages/rust/editors.md) for rust
+  * [clangd](development/languages/c-cpp/editors.md) for c++
+  * [rust-analyzer](development/languages/rust/editors.md) for rust
 * The [rewrap extension](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap) is useful
   for automatically reflowing lines to a certain length (e.g. when editing markdown files).
 * To get automatic syntax highlighting for the bindings golden files, update the
@@ -703,24 +703,24 @@ fidl fmt --library my_library.fidl -i
 ```
 
 <!-- xrefs -->
-[abi-api-compat]: /docs/development/languages/fidl/guides/compatibility/README.md
-[fidl-readme]: /docs/development/languages/fidl
-[cpp-style]: /docs/development/languages/c-cpp/cpp-style.md
+[abi-api-compat]: development/languages/fidl/guides/compatibility/README.md
+[fidl-readme]: development/languages/fidl
+[cpp-style]: development/languages/c-cpp/cpp-style.md
 [fidlc-source]: /tools/fidl/fidlc/
 [fidlc-coding-tables-tests]: /src/lib/fidl/c/coding_tables_tests/
 [fidl-simple]: /src/lib/fidl/c/simple_tests/
 [fidlc-compiler]: /tools/fidl/fidlc/
 [fidlc-compiler-tests]: /tools/fidl/fidlc/tests/
 [walker-tests]: /src/lib/fidl/c/walker_tests/
-[jsonir]: /docs/reference/fidl/language/json-ir.md
-[getting_started]: /docs/get-started/README.md
+[jsonir]: reference/fidl/language/json-ir.md
+[getting_started]: get-started/README.md
 [compat_readme]: /src/tests/fidl/compatibility/README.md
 [go-test-flags]: https://golang.org/cmd/go/#hdr-Testing_flags
 [fidl-misc]: https://fuchsia.googlesource.com/fidl-misc
 [fidldev]: https://fuchsia.googlesource.com/fidl-misc/+/HEAD/fidldev
-[RFC-0042]: /docs/contribute/governance/rfcs/0042_non_nullable_types.md
-[pagination]: /docs/development/languages/fidl/guides/max-out-pagination.md
-[commit-message]: /docs/contribute/commit-message-style-guide.md
+[RFC-0042]: contribute/governance/rfcs/0042_non_nullable_types.md
+[pagination]: development/languages/fidl/guides/max-out-pagination.md
+[commit-message]: contribute/commit-message-style-guide.md
 
 [/tools/fidl/fidlc/formatter]: /tools/fidl/fidlc/formatter
 [/tools/fidl/fidlc/linter]: /tools/fidl/fidlc/linter

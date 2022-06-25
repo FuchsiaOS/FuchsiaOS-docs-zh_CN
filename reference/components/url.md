@@ -94,12 +94,12 @@ The relative URL resolves to:
 fuchsia-pkg://fuchsia.com/package#meta/child.cm
 ```
 
-[glossary.component-url]: /docs/glossary/README.md#component-url
-[doc-manifests]: /docs/concepts/components/v2/component_manifests.md
-[doc-package]: /docs/concepts/packages/package.md
-[doc-package-url]: /docs/concepts/packages/package_url.md
-[doc-package-url-resource-path]: /docs/concepts/packages/package_url.md#resource-paths
-[doc-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
-[doc-runners]: /docs/concepts/components/v2/capabilities/runners.md
+[glossary.component-url]: glossary/README.md#component-url
+[doc-manifests]: concepts/components/v2/component_manifests.md
+[doc-package]: concepts/packages/package.md
+[doc-package-url]: concepts/packages/package_url.md
+[doc-package-url-resource-path]: concepts/packages/package_url.md#resource-paths
+[doc-resolvers]: concepts/components/v2/capabilities/resolvers.md
+[doc-runners]: concepts/components/v2/capabilities/runners.md
 [rfc-uri-scheme]: https://tools.ietf.org/html/rfc3986#section-3.1
 [url-rfc-3986]: https://datatracker.ietf.org/doc/html/rfc3986#section-4.2

@@ -7,29 +7,29 @@
 # team as a reviewer.
 toc:
 - title: "Overview"
-  path: /docs/contribute/docs/README.md
+  path: contribute/docs/README.md
 - heading: "Style"
 - title: "Documentation standards"
-  path: /docs/contribute/docs/documentation-standards.md
+  path: contribute/docs/documentation-standards.md
 - title: "Document types"
-  path: /docs/contribute/docs/documentation-types.md
+  path: contribute/docs/documentation-types.md
 - title: "Documentation style guide"
-  path: /docs/contribute/docs/documentation-style-guide.md
+  path: contribute/docs/documentation-style-guide.md
 - title: "Markdown reference guide"
-  path: /docs/contribute/docs/markdown.md
+  path: contribute/docs/markdown.md
 - title: "Code sample style guide"
-  path: /docs/contribute/docs/code-sample-style-guide.md
+  path: contribute/docs/code-sample-style-guide.md
 - heading: "Guides"
 - title: "Adding a glossary term"
-  path: /docs/contribute/docs/glossary-entries.md
+  path: contribute/docs/glossary-entries.md
 - title: "Using documentation widgets"
-  path: /docs/contribute/docs/widgets.md
+  path: contribute/docs/widgets.md
 - title: "Update site navigation and TOC"
-  path: /docs/contribute/docs/documentation-navigation-toc.md
+  path: contribute/docs/documentation-navigation-toc.md
 - title: "Modifying non-inclusive words in mdlint"
-  path: /docs/contribute/docs/modify-mdlint-inclusive-language.md
+  path: contribute/docs/modify-mdlint-inclusive-language.md
 - title: "Deprecating documentation"
-  path: /docs/contribute/docs/deprecating-docs.md
+  path: contribute/docs/deprecating-docs.md
 - title: Shortlinks
   section:
-  - include: /docs/contribute/docs/shortlinks/_toc.yaml
+  - include: contribute/docs/shortlinks/_toc.yaml

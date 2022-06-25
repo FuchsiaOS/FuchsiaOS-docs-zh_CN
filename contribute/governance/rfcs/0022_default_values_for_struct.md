@@ -93,7 +93,7 @@ struct Cat {
 
 ## Semantics
 
-Please refer to [RFC-006](/docs/contribute/governance/rfcs/0066_programmer_advisory_explicit.md), which clarified the semantics of defaults,
+Please refer to [RFC-006](contribute/governance/rfcs/0066_programmer_advisory_explicit.md), which clarified the semantics of defaults,
 and requirements on bindings.
 
 ## Supported Types
@@ -252,6 +252,6 @@ type Sample struct {
 
 <!-- xref -->
 
-[grammar]: /docs/reference/fidl/language/grammar.md
+[grammar]: reference/fidl/language/grammar.md
 [example-types]: https://fuchsia.googlesource.com/fuchsia/+/1d98ab5e39255f8305825a18cd385198d6517569/zircon/system/host/fidl/examples/types.test.fidl#45
 [proto3-defaults]: https://developers.google.com/protocol-buffers/docs/proto3#default

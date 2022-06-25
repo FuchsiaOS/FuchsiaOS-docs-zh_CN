@@ -4,7 +4,7 @@
 
 To view and search the Fuchsia source code, there are the following options:
 
-* [Download the Fuchsia source code](/docs/get-started/get_fuchsia_source.md):
+* [Download the Fuchsia source code](get-started/get_fuchsia_source.md):
   Requires cloning the git repo locally.
 * [View in Code Source](https://cs.opensource.google/fuchsia/fuchsia):
   Feature rich source viewer that supports full navigation and edit features.
@@ -59,7 +59,7 @@ Most third-party dependencies are stored in separate repositories. These
 repositories are included in a local checkout only when needed to support one of
 the following source tree configurations:
 
- * [Bringup](/docs/development/build/build_system/boards_and_products.md#bringup-product).
+ * [Bringup](development/build/build_system/boards_and_products.md#bringup-product).
    This source tree configuration contains enough code to build the
    [bringup](/products/bringup.gni) product.
  * Open Source. This source tree configuration contains all the open source code
@@ -123,7 +123,7 @@ pattern:
           Fuchsia Source Tree
         * The code is open source
     * See more details about `third_party` source layout in [third party source
-      management](/docs/concepts/source_code/third-party-management.md)
+      management](concepts/source_code/third-party-management.md)
  * `tools/` (optional)
    * This directory contains command-line tools provided by the area.  These
      are usually things that can (or must) be built for the development host

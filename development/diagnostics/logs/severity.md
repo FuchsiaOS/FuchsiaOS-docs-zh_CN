@@ -84,4 +84,4 @@ If you are still unsure how to label the event severity, consider the following 
   emerge.
 
 <!--xrefs-->
-[RFC-0003: Logging]: /docs/contribute/governance/rfcs/0003_logging.md
+[RFC-0003: Logging]: contribute/governance/rfcs/0003_logging.md

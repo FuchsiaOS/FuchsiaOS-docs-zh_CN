@@ -29,7 +29,7 @@ and aforementioned reviewers prior to starting this RFC process.
 
 ## Design
 
-Fxfs is described in [RFC-0136](/docs/contribute/governance/rfcs/0136_fxfs.md).
+Fxfs is described in [RFC-0136](contribute/governance/rfcs/0136_fxfs.md).
 
 ### Requirements
 

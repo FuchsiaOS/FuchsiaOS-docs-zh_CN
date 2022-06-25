@@ -11,7 +11,7 @@ The `bt-host` driver implements most of the Bluetooth Core Specification v5.2,
 Volume 3 (Host Subsystem).
 
 The Fuchsia project places a
-[strong emphasis on automated testing](/docs/development/testing/testability_rubric.md)
+[strong emphasis on automated testing](development/testing/testability_rubric.md)
 and the Bluetooth team strives to be
 [leaders of testing culture](/src/connectivity/bluetooth/README.md#tests).
 
@@ -39,7 +39,7 @@ tests.
 ### Resources
 
 `bt-host` is written in C++, and Fuchsia uses the
-[gUnit](/docs/development/languages/c-cpp/library_restrictions.md#third_partygoogletest)
+[gUnit](development/languages/c-cpp/library_restrictions.md#third_partygoogletest)
 [Googletest](https://github.com/google/googletest) library for C++ tests.
 
 To work with `bt-host` unit tests, you need a solid understanding of the
@@ -68,7 +68,7 @@ Most `bt-host` tests are written in the following pattern:
 
     Note: Fuchsia does not allow usage of the gMock framework, so any mock
           dependencies must be written without it. For more information, see
-          [Library restrictions](/docs/development/languages/c-cpp/library_restrictions.md).
+          [Library restrictions](development/languages/c-cpp/library_restrictions.md).
 
   1. Exercise a functionality within the LUT. For example, this guide examines
      the `FeatureExchangeBothSupportSCFeaturesHaveSC` test case.

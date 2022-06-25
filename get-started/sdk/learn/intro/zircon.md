@@ -92,11 +92,11 @@ security model.
   <b>Extra Credit: Fuchsia Startup</b>
   <p>Exploring the tree of running processes is also a great way to learn about
   the startup process of a Fuchsia device. Take a moment to review
-  <a href="/docs/concepts/process/everything_between_power_on_and_your_component.md">
+  <a href="concepts/process/everything_between_power_on_and_your_component.md">
   device startup</a> and map how the initial processes align with the
   <code>ps</code> output on the emulator.</p>
 </aside>
 
 <!-- Reference links -->
 
-[clone-the-sdk]: /docs/get-started/sdk/index.md#clone-the-sdk-samples-repository
+[clone-the-sdk]: get-started/sdk/index.md#clone-the-sdk-samples-repository

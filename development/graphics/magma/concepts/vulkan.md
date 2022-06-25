@@ -5,7 +5,7 @@ Vulkan Development
 
 The magma driver and libraries should already be built into a complete Fuchsia
 image. The correct driver will be built and loaded based on the
-[board](/docs/development/build/build_system/boards_and_products.md) that is selected
+[board](development/build/build_system/boards_and_products.md) that is selected
 when building.
 
 ### Add Vulkan driver support
@@ -38,7 +38,7 @@ Include the following to enable access to the Vulkan driver:
   }
   ```
 
-  A [test component](/docs/concepts/testing/v1_test_component.md) should instead
+  A [test component](concepts/testing/v1_test_component.md) should instead
   have these lines in its `.cmx` file:
 
   ```json
@@ -88,12 +88,12 @@ above shards, include the following:
   ```
 
   The `fuchsia.tracing.provider.Registry` service may optionally be included to
-  allow the client driver to report [trace events](/docs/concepts/kernel/tracing-system.md).
+  allow the client driver to report [trace events](concepts/kernel/tracing-system.md).
   `fuchsia.logger.LogSink` is also
   recommended to allow logs from the client driver to appear in the [system
-  log](/docs/development/diagnostics/logs/viewing.md).
+  log](development/diagnostics/logs/viewing.md).
 
-  A [test component](/docs/concepts/testing/v1_test_component.md) must also have
+  A [test component](concepts/testing/v1_test_component.md) must also have
   these lines in its `.cmx` file:
 
   ```json
@@ -120,7 +120,7 @@ A component that uses Vulkan must have these FIDL services routed to it:
 * `fuchsia.logger.LogSink`
 
 Test components can receive these capabilities by being placed into a
-[non-hermetic realm](/docs/development/testing/components/test_component.md#legacy_non-hermetic_tests):
+[non-hermetic realm](development/testing/components/test_component.md#legacy_non-hermetic_tests):
 
 * For `vulkan-test` include the `//src/lib/vulkan/vulkan-test.shard.cml` shard
 * For `system-test` include the `//src/sys/test_manager/system-test.shard.cml` shard
@@ -196,5 +196,5 @@ Again, may be an application error or driver bug. If you believe your app is inn
 > [WARNING] resetting render engine
 ```
 
-[cml]: /docs/concepts/components/v2/component_manifests.md
-[cmx]: /docs/concepts/components/v1/component_manifests.md
+[cml]: concepts/components/v2/component_manifests.md
+[cmx]: concepts/components/v1/component_manifests.md

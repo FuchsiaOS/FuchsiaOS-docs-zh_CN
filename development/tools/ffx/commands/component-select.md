@@ -64,9 +64,9 @@ Consider this example:
 You may optionally omit the property selector: `core/remote-control:out` is
 equivalent to `core/remote-control:out:*`.
 
-[component-moniker]: /docs/reference/components/moniker.md
-[component-routing]: /docs/concepts/components/v2/capabilities/README.md#routing-terminology
-[component-topology]: /docs/concepts/components/v2/topology.md
-[ffx-plugins]: /docs/development/tools/ffx/development/plugins.md
+[component-moniker]: reference/components/moniker.md
+[component-routing]: concepts/components/v2/capabilities/README.md#routing-terminology
+[component-topology]: concepts/components/v2/topology.md
+[ffx-plugins]: development/tools/ffx/development/plugins.md
 [fidl-selector]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#Selector
-[selectors]: /docs/reference/diagnostics/selectors.md
+[selectors]: reference/diagnostics/selectors.md

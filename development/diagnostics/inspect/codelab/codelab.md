@@ -27,7 +27,7 @@ When working on this codelab, you may continue adding your solutions to
 
 Set up your development environment.
 
-This codelab assumes you have completed [Getting Started](/docs/get-started/README.md) and have:
+This codelab assumes you have completed [Getting Started](get-started/README.md) and have:
 
 1. A checked out and built Fuchsia tree.
 2. A device or emulator (`ffx emu`) that runs Fuchsia.
@@ -364,7 +364,7 @@ See what the reverser definition is:
 Now that you know the code structure, you can start to instrument the
 code with Inspect to find the problem.
 
-Note: [Inspect](/docs/development/diagnostics/inspect/README.md) is a powerful instrumentation feature for
+Note: [Inspect](development/diagnostics/inspect/README.md) is a powerful instrumentation feature for
 Fuchsia Components. You can expose structured information about the component's state to diagnose
 the problem.
 
@@ -1758,4 +1758,4 @@ This section is under construction.
 [dart-part4-integration]: /examples/diagnostics/inspect/codelab/dart/part_4/test/integration_test.dart
 [dart-part4-integration-meta]: /examples/diagnostics/inspect/codelab/dart/part_4/meta/inspect_dart_codelab_part_4_integration_tests.cmx
 
-[fuchsia-inspect-derive]: /docs/development/languages/rust/ergonomic_inspect.md
+[fuchsia-inspect-derive]: development/languages/rust/ergonomic_inspect.md

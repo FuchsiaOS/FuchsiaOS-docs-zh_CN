@@ -24,8 +24,8 @@ developers, don't hesitate to reach out! We hang out on the
 
 ## Getting set up
 
-* [Get the source code](/docs/get-started/get_fuchsia_source.md)
-* [Configure and build Fuchsia](/docs/get-started/build_fuchsia.md)
+* [Get the source code](get-started/get_fuchsia_source.md)
+* [Configure and build Fuchsia](get-started/build_fuchsia.md)
   * Your `fx set` command will need to enable Netstack3 development using Cargo
     by including the flags `--with //src/connectivity/network/netstack3:bin
     --cargo-toml-gen`. Assuming you're developing on an x86 machine, use `fx set
@@ -100,6 +100,6 @@ spend time doing work that we won't end up accepting.
 If you're interested in diving deeper to understand Netstack3's design and
 architecture, check out [our docs](/src/connectivity/network/netstack3/docs).
 
-[Fuchsia Networking Contributor Guide]: /docs/contribute/contributing-to-netstack
+[Fuchsia Networking Contributor Guide]: contribute/contributing-to-netstack
 [good-first-bugs]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=%28component%3Anetworkstack%3Enetstack3+OR+component%3AConnectivity%3ELibraries%3Enet_types+OR+component%3AConnectivity%3ELibraries%3Einternet_checksum+OR+component%3AConnectivity%3ELibraries%3Epacket%29+label%3AGoodFirstBug&can=2
 [good-second-bugs]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=%28component%3Anetworkstack%3Enetstack3+OR+component%3AConnectivity%3ELibraries%3Enet_types+OR+component%3AConnectivity%3ELibraries%3Einternet_checksum+OR+component%3AConnectivity%3ELibraries%3Epacket%29+label%3AGoodSecondBug&can=2

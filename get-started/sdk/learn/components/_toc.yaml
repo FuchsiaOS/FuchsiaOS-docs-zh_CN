@@ -7,20 +7,20 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: /docs/get-started/sdk/learn/components/README.md
+    path: get-started/sdk/learn/components/README.md
     step_group: sdkfuchsiacomponents
   - title: Declaring components
-    path: /docs/get-started/sdk/learn/components/declaring-components.md
+    path: get-started/sdk/learn/components/declaring-components.md
     step_group: sdkfuchsiacomponents
   - title: Organizing components
-    path: /docs/get-started/sdk/learn/components/organizing-components.md
+    path: get-started/sdk/learn/components/organizing-components.md
     step_group: sdkfuchsiacomponents
   - title: Component tests
-    path: /docs/get-started/sdk/learn/components/component-tests.md
+    path: get-started/sdk/learn/components/component-tests.md
     step_group: sdkfuchsiacomponents
   - title: Debugging components
-    path: /docs/get-started/sdk/learn/components/debugging-components.md
+    path: get-started/sdk/learn/components/debugging-components.md
     step_group: sdkfuchsiacomponents
   - title: Building a cohesive product
-    path: /docs/get-started/sdk/learn/components/build-product.md
+    path: get-started/sdk/learn/components/build-product.md
     step_group: sdkfuchsiacomponents

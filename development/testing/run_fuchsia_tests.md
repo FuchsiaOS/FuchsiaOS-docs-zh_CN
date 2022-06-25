@@ -267,10 +267,10 @@ require rebuilding that test's package as well.
 
 <!-- Reference links -->
 
-[tests-as-components]: /docs/concepts/testing/v1_test_component.md
-[scripting-layer-for-fuchsia]: /docs/development/drivers/concepts/driver_development/sl4f.md
-[component-uri]: /docs/reference/components/url.md
+[tests-as-components]: concepts/testing/v1_test_component.md
+[scripting-layer-for-fuchsia]: development/drivers/concepts/driver_development/sl4f.md
+[component-uri]: reference/components/url.md
 [rust-glob-syntax]: https://docs.rs/glob/0.3.0/glob/struct.Pattern.html
-[fuchsia-package-name]: /docs/concepts/packages/package_url.md#package-name
-[resource-path]: /docs/concepts/packages/package_url.md#resource-paths
+[fuchsia-package-name]: concepts/packages/package_url.md#package-name
+[resource-path]: concepts/packages/package_url.md#resource-paths
 [fx-test-flags]: https://fuchsia.dev/reference/tools/fx/cmd/test

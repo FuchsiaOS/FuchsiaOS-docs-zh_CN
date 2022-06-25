@@ -15,4 +15,4 @@ You can learn more details about:
 
 You can find complete examples under [`//examples/fuzzers`](/examples/fuzzers).
 
-[background]: /docs/contribute/testing/fuzz_testing.md
+[background]: contribute/testing/fuzz_testing.md

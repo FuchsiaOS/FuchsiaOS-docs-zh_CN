@@ -63,4 +63,4 @@ driver][creating-a-new-drider].
 
 <!-- xrefs -->
 
-[creating-a-new-drider]: /docs/development/drivers/developer_guide/driver-development.md#creating_a_new_driver
+[creating-a-new-drider]: development/drivers/developer_guide/driver-development.md#creating_a_new_driver

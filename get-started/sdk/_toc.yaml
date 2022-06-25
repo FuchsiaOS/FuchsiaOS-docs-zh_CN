@@ -8,13 +8,13 @@
 toc:
 - heading: "SDK fundamentals"
 - title: Overview
-  path: /docs/get-started/sdk/learn/README.md
+  path: get-started/sdk/learn/README.md
 - title: Introduction to Fuchsia
   section:
-  - include: /docs/get-started/sdk/learn/intro/_toc.yaml
+  - include: get-started/sdk/learn/intro/_toc.yaml
 - title: Fuchsia components
   section:
-  - include: /docs/get-started/sdk/learn/components/_toc.yaml
+  - include: get-started/sdk/learn/components/_toc.yaml
 - title: Fuchsia interfaces
   section:
-  - include: /docs/get-started/sdk/learn/fidl/_toc.yaml
+  - include: get-started/sdk/learn/fidl/_toc.yaml

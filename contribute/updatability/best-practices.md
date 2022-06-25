@@ -36,12 +36,12 @@ exposing broadly-scoped capabilities or namespaces, and leaking implementation
 details via [component identifiers][identifiers] (such as `fuchsia-pkg://` URLs)
 and [diagnostics selectors][selectors].
 
-[fidl]: /docs/concepts/fidl/overview.md
-[fidl-compatibility]: /docs/development/languages/fidl/guides/compatibility/README.md
-[fidl-rubric]: /docs/development/api/fidl.md
-[identifiers]: /docs/concepts/components/v2/identifiers.md
-[rfc-0021]: /docs/contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
-[rfc-0048]: /docs/contribute/governance/rfcs/0048_explicit_union_ordinals.md
-[rfc-0061]: /docs/contribute/governance/rfcs/0061_extensible_unions.md
-[rfc-0083]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
-[selectors]: /docs/reference/diagnostics/selectors.md
+[fidl]: concepts/fidl/overview.md
+[fidl-compatibility]: development/languages/fidl/guides/compatibility/README.md
+[fidl-rubric]: development/api/fidl.md
+[identifiers]: concepts/components/v2/identifiers.md
+[rfc-0021]: contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
+[rfc-0048]: contribute/governance/rfcs/0048_explicit_union_ordinals.md
+[rfc-0061]: contribute/governance/rfcs/0061_extensible_unions.md
+[rfc-0083]: contribute/governance/rfcs/0083_fidl_versioning.md
+[selectors]: reference/diagnostics/selectors.md

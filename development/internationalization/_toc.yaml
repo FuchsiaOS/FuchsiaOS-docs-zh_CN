@@ -4,20 +4,20 @@
 
 toc:
 - title: "Overview"
-  path: /docs/development/internationalization/README.md
+  path: development/internationalization/README.md
 - title: "ICU"
-  path: /docs/development/internationalization/icu.md
+  path: development/internationalization/icu.md
 - title: "ICU data"
-  path: /docs/development/internationalization/icu_data.md
+  path: development/internationalization/icu_data.md
 - title: "Localizing mods"
-  path: /docs/development/internationalization/localizing_mods.md
+  path: development/internationalization/localizing_mods.md
 - title: "Internationalization preferences"
-  path: /docs/development/internationalization/i18n_preferences.md
+  path: development/internationalization/i18n_preferences.md
 - title: "Fonts"
   section:
-  - include: /docs/development/internationalization/fonts/_toc.yaml
+  - include: development/internationalization/fonts/_toc.yaml
 - title: "Localization"
   section:
-  - include: /docs/development/internationalization/localization/_toc.yaml
+  - include: development/internationalization/localization/_toc.yaml
 - title: "Future work"
-  path: /docs/development/internationalization/future_work.md
+  path: development/internationalization/future_work.md

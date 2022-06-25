@@ -353,7 +353,7 @@ case-by-case basis in terms of:
 As well as other criteria the owners see as appropriate.
 
 The list of local modifications will be tracked in a
-[`FUCHSIA.readme`]((/docs/development/source_code/third-party-metadata.md)
+[`FUCHSIA.readme`]((development/source_code/third-party-metadata.md)
 file as standard practice.
 
 The maintainers of that branch will be the Fuchsia Build Team, which is
@@ -523,7 +523,7 @@ unit testing.
 ## Documentation
 
 A standard
-[`README.fuchsia`](/docs/development/source_code/third-party-metadata.md)
+[`README.fuchsia`](development/source_code/third-party-metadata.md)
 file will be added at the top of the Fuchsia git branch explaining the
 differences between the current state of the branch and upstream.
 
@@ -574,7 +574,7 @@ first.
 
 Finally, Fuchsia now has a Bazel SDK and has demonstrated a Bazel
 build for Fuchsia components (see
-[RFC-0139](/docs/contribute/governance/rfcs/0139_bazel_sdk.md)).
+[RFC-0139](contribute/governance/rfcs/0139_bazel_sdk.md)).
 In the long term Fuchsia should consider alternatives to Ninja
 as a platform build backend and explore potential multi-year
 migrations. For the purpose of this RFC we consider such migrations

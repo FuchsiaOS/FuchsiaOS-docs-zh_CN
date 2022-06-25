@@ -73,10 +73,10 @@ The central database does not prevent future initiatives like hardware
 certification labs, hardware self certification, hardware conformance testing,
 etc.
 
-The central database will be a YAML file in `/docs/reference/hardware`. YAML
+The central database will be a YAML file in `reference/hardware`. YAML
 makes it easy to process this data and present it in an easy to navigate format
 similar to the one listing individual drivers at [Fuchsia hardware
-drivers](/docs/reference/hardware/drivers.md).
+drivers](reference/hardware/drivers.md).
 
 The process for adding new entries to this YAML file, and hence to add new
 hardware in the **Supported category**, is to create a new RFC. This is in
@@ -86,7 +86,7 @@ hardware added to the Fuchsia project **Supported category**.
 ## Implementation
 
 The list of system configurations in the **Supported category** will be
-maintained at `/docs/reference/hardware/_supported_sys_config.yaml`. The entries
+maintained at `reference/hardware/_supported_sys_config.yaml`. The entries
 in that YAML file will include:
 
 * name: Provides a name or model.
@@ -107,10 +107,10 @@ repository.
 ## System configurations epitaphs
 
 For system configurations removed from the central database, a
-`/docs/reference/hardware/_supported_sys_config_epitaphs.yaml` file will list
+`reference/hardware/_supported_sys_config_epitaphs.yaml` file will list
 all system configuration removed from the **Supported category**. This file will
 include the same YAML entries in
-`/docs/reference/hardware/_supported_sys_config.yaml`, plus:
+`reference/hardware/_supported_sys_config.yaml`, plus:
 
 * `gerrit_change_id`: The ID of the Gerrit change used to delete the system
   configuration from _supported_sys_config.yaml and hence from the **Supported
@@ -165,11 +165,11 @@ and Astro.
 ## Documentation
 
 We will create a fuchsia.dev page similar to
-[fuchsia.dev/fuchsia-src/reference/hardware/drivers](/docs/reference/hardware/drivers.md)
+[fuchsia.dev/fuchsia-src/reference/hardware/drivers](reference/hardware/drivers.md)
 in fuchsia.dev/fuchsia-src/reference/hardware/supported. Other pages that
 specify hardware in the **Supported category** will point to this new page, for
-instance [Install Fuchsia on a NUC](/docs/development/hardware/intel_nuc.md)
+instance [Install Fuchsia on a NUC](development/hardware/intel_nuc.md)
 will be updated to point to this new page.
 
 <!-- xrefs -->
-[rfc-0111]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
+[rfc-0111]: contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md

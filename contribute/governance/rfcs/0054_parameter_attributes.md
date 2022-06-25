@@ -142,7 +142,7 @@ require additional testing.
 
 The implementation cost is relatively low.
 
-[RFC-0044](/docs/contribute/governance/rfcs/0044_extensible_method_arguments.md) is a possible alternative. Accepting that proposal
+[RFC-0044](contribute/governance/rfcs/0044_extensible_method_arguments.md) is a possible alternative. Accepting that proposal
 introduces some inconsistencies into the language as one way of describing
 parameters would enable users to write parameter attributes while the other does
 not. Also, RFC-0044 has a performance costs so some protocols, like syscall
@@ -156,4 +156,4 @@ messages, which has a somewhat similar behavior to parameter attributes. FIDL
 already have attributes on some language elements like members and protocols.
 
 <!-- xrefs -->
-[grammar]: /docs/reference/fidl/language/grammar.md
+[grammar]: reference/fidl/language/grammar.md

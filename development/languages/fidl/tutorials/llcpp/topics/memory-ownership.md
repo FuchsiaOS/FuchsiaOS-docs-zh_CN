@@ -215,4 +215,4 @@ A `StringView` can also be created directly from string literals without using
 ```
 
 <!-- xrefs -->
-[fidl-wire-format]: /docs/reference/fidl/language/wire-format/README.md
+[fidl-wire-format]: reference/fidl/language/wire-format/README.md

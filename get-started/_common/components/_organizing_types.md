@@ -15,7 +15,7 @@ a new environment for their children.
 
 <aside class="key-point">
   <b>No ambient authority</b>
-  <p>One of Fuchsia's <a href="/docs/concepts/principles/secure.md">security
+  <p>One of Fuchsia's <a href="concepts/principles/secure.md">security
   design principles</a> is "no ambient authority" for programs on the system.
   This means that every operation must be scoped to an object capability rather
   than granting access based on a higher-level scope such as user identity or
@@ -101,5 +101,5 @@ provided by the environment:
 
 
 Note: For more details on individual capabilities, see
-[component capabilities](/docs/concepts/components/v2/capabilities/README.md)
-and [environments](/docs/concepts/components/v2/environments.md).
+[component capabilities](concepts/components/v2/capabilities/README.md)
+and [environments](concepts/components/v2/environments.md).

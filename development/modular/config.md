@@ -1,7 +1,7 @@
 # Guide to Configuring the Modular Framework
 
 Note: The Modular framework is being deprecated in favor of
-the [Session Framework](/docs/concepts/session/introduction.md).
+the [Session Framework](concepts/session/introduction.md).
 
 ## Requirements
 
@@ -137,5 +137,5 @@ ffx inspect show sessionmgr.cmx:root:config
     `session_agents` if they crash.
   - **default**: `false`
 
-[docs-inspect]: /docs/development/diagnostics/inspect/README.md
+[docs-inspect]: development/diagnostics/inspect/README.md
 [ffx-inspect]: https://fuchsia.dev/reference/tools/sdk/ffx.md#inspect

@@ -198,16 +198,16 @@ For more information about the open request, see
 Note: For a working example of routing a service capability between components,
 see [`//examples/components/services`][routing-example].
 
-[glossary.channel]: /docs/glossary/README.md#channel
-[glossary.namespace]: /docs/glossary/README.md#namespace
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
-[glossary.protocol]: /docs/glossary/README.md#protocol
-[glossary.service]: /docs/glossary/README.md#service
-[glossary.service-capability]: /docs/glossary/README.md#service-capability
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
-[collection]: /docs/concepts/components/v2/realms.md#collections
-[fidl-reference]: /docs/reference/fidl/language/language.md
-[life-of-a-protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md
+[glossary.channel]: glossary/README.md#channel
+[glossary.namespace]: glossary/README.md#namespace
+[glossary.outgoing-directory]: glossary/README.md#outgoing-directory
+[glossary.protocol]: glossary/README.md#protocol
+[glossary.service]: glossary/README.md#service
+[glossary.service-capability]: glossary/README.md#service-capability
+[capability-routing]: concepts/components/v2/capabilities/README.md#routing
+[collection]: concepts/components/v2/realms.md#collections
+[fidl-reference]: reference/fidl/language/language.md
+[life-of-a-protocol-open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md
 [directory.fidl]: https://fuchsia.dev/reference/fidl/fuchsia.io#Directory
 [realm.fidl]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#Realm
 [routing-example]: /examples/components/services

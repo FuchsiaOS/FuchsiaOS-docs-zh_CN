@@ -61,7 +61,7 @@ In a future build this error will no longer occur.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[rights]: /docs/concepts/kernel/rights.md
+[rights]: concepts/kernel/rights.md
 [`zx_channel_write_etc()`]: channel_write_etc.md
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_close_many()`]: handle_close_many.md

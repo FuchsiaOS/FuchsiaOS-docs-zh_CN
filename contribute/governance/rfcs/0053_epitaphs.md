@@ -239,5 +239,5 @@ an explicit system call.  We are starting with the thread-unsafe version to
 further develop our understanding of the problem space.
 
 <!-- xrefs -->
-[wire-format-epitaph]: /docs/reference/fidl/language/wire-format/README.md#epitaph-control-message-ordinal-0xffffffff
-[epitaphs]: /docs/reference/fidl/language/language.md#interfaces
+[wire-format-epitaph]: reference/fidl/language/wire-format/README.md#epitaph-control-message-ordinal-0xffffffff
+[epitaphs]: reference/fidl/language/language.md#interfaces

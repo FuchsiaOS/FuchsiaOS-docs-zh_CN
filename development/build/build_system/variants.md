@@ -10,7 +10,7 @@ The variants defined so far enable things like
 ### Specifying variants
 
 Variant specifications are passed in to the build using the GN build argument
-[`select_variant`](/docs/gen/build_arguments.md#select_variant). Note that the order of these
+[`select_variant`](gen/build_arguments.md#select_variant). Note that the order of these
 variant selectors matters as explained in the syntax section below.
 
 Using `fx set`, pass string variant selectors with the `--variant=` flag:
@@ -83,12 +83,12 @@ binary and use that name.
 You can also supply a GN "scope" in curly brackets as a variant selector which can give full
 control over exactly how matching targets are built. These must be set in the "gn args" rather
 than on the "fx set" command line. See the
-[`select_variant`](/docs/gen/build_arguments.md#select_variant) build argument documentation for
+[`select_variant`](gen/build_arguments.md#select_variant) build argument documentation for
 more details.
 
 To see the list of variants available and learn more about how to define
 new ones, see the
-[`known_variants`](/docs/gen/build_arguments.md#known_variants)
+[`known_variants`](gen/build_arguments.md#known_variants)
 build argument.
 
 ### Common variant names
@@ -113,7 +113,7 @@ build argument.
     only and only affects certain targets including the kernel.
 
 Fuzzer variants like `asan-fuzzer` are used when running tests under the
-[fuzzer](/docs/development/testing/fuzzing/overview.md) with a sanitizer. These variants aren't
+[fuzzer](development/testing/fuzzing/overview.md) with a sanitizer. These variants aren't
 meant for manual selection, instead follow the fuzzing instructions to set up the build.
 
 There are additionally some shorthand selectors that apply variants to host binaries (the tools

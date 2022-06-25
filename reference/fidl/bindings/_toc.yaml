@@ -7,14 +7,14 @@
 # team as reviewer
 toc:
 - title: "Overview"
-  path: /docs/reference/fidl/bindings/overview.md
+  path: reference/fidl/bindings/overview.md
 - title: "LLCPP bindings"
-  path: /docs/reference/fidl/bindings/llcpp-bindings.md
+  path: reference/fidl/bindings/llcpp-bindings.md
 - title: "HLCPP bindings"
-  path: /docs/reference/fidl/bindings/hlcpp-bindings.md
+  path: reference/fidl/bindings/hlcpp-bindings.md
 - title: "Dart bindings"
-  path: /docs/reference/fidl/bindings/dart-bindings.md
+  path: reference/fidl/bindings/dart-bindings.md
 - title: "Rust bindings"
-  path: /docs/reference/fidl/bindings/rust-bindings.md
+  path: reference/fidl/bindings/rust-bindings.md
 - title: "Go bindings"
-  path: /docs/reference/fidl/bindings/go-bindings.md
+  path: reference/fidl/bindings/go-bindings.md

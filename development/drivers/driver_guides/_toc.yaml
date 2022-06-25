@@ -8,7 +8,7 @@
 toc:
 - title: "Display drivers"
   section:
-  - include: /docs/development/drivers/driver_guides/display/_toc.yaml
+  - include: development/drivers/driver_guides/display/_toc.yaml
 - title: "USB development"
   section:
-  - include: /docs/development/drivers/driver_guides/usb/_toc.yaml
+  - include: development/drivers/driver_guides/usb/_toc.yaml

@@ -25,7 +25,7 @@ toolchain can be summarized as follows:
 
 ![Simplified toolchain](resources/0097_fidl_toolchain/simplified_toolchain.png)
 
-The [FIDL language](/docs/reference/fidl/language/language.md) is embodied by
+The [FIDL language](reference/fidl/language/language.md) is embodied by
 `fidlc`, which represents the **frontend compiler** (or **frontend** for short).
 This is where all language validation occurs.
 
@@ -41,7 +41,7 @@ Most commonly, the generated output is code in a **target language** (say C++,
 or Rust) which makes it possible to manipulate types, interact with protocols,
 open services, and use constants. This class of backends is called **FIDL
 bindings**[^1], and the code they generate should follow the [bindings
-specification](/docs/reference/fidl/language/bindings-spec.md). We often use a
+specification](reference/fidl/language/bindings-spec.md). We often use a
 shorthand **fidlgen** (or `fidlgen_<suffix>`, e.g. `fidlgen_rust` or
 `fidlgen_dart`) to refer to backends generating FIDL bindings. We refer to
 **domain objects** as the set of classes and types in the target language used
@@ -128,7 +128,7 @@ seeks to have all backends on a level-playing field.
 ### Per target language and per library backend selection
 
 With the FIDL language used to describe the [Kernel API](/zircon/vdso/), and the
-[Driver SDK in the works](/docs/contribute/roadmap/2021/stable_driver_runtime.md)
+[Driver SDK in the works](contribute/roadmap/2021/stable_driver_runtime.md)
 to follow, FIDL has become increasingly ubiquitous.
 
 Today however, there is a conflation in the toolchain between "the FIDL
@@ -384,7 +384,7 @@ floating point numbers (`float32` or `float64`), and then leverage this
 attribute in `fidlgen_rust` to both conditionally emit the `Eq` trait, and
 verify that the attribute is properly used (in a similar fashion to the
 [value-resource
-distinction](/docs/contribute/governance/rfcs/0057_default_no_handles.md)). But
+distinction](contribute/governance/rfcs/0057_default_no_handles.md)). But
 this temptation goes against the principle, as it implies `fidlgen_rust` is
 fallible. Validating a niche attribute like this in `fidlc` is not desirable
 either, since it leads to FIDL being complicated by a myriad of target language
@@ -470,7 +470,7 @@ For instance, in the Fuchsia Source Tree we would expect the configuration:
 ```
 
 With the [unified C++
-bindings](/docs/contribute/roadmap/2020/overview.md#unifying-fidl-cpp-bindings),
+bindings](contribute/roadmap/2020/overview.md#unifying-fidl-cpp-bindings),
 this configuration would change to:
 
 ```
@@ -632,4 +632,4 @@ As noted in text.
 [`fidlgen_rust`]: /tools/fidl/fidlgen_rust/
 [`kazoo`]: /zircon/tools/kazoo/
 [`measure-tape`]: /tools/fidl/measure-tape/
-[rfc-0057-terminology]: /docs/contribute/governance/rfcs/0057_default_no_handles.md#terminology
+[rfc-0057-terminology]: contribute/governance/rfcs/0057_default_no_handles.md#terminology

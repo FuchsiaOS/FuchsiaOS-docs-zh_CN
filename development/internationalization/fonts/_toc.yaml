@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Fonts"
-  path: /docs/development/internationalization/fonts/README.md
+  path: development/internationalization/fonts/README.md
 - title: "Build configuration"
-  path: /docs/development/internationalization/fonts/build.md
+  path: development/internationalization/fonts/build.md
 - title: "Font provider service"
-  path: /docs/development/internationalization/fonts/provider.md
+  path: development/internationalization/fonts/provider.md
 - title: "Maintenance tasks"
-  path: /docs/development/internationalization/fonts/tasks.md
+  path: development/internationalization/fonts/tasks.md

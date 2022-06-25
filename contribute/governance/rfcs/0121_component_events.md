@@ -637,8 +637,8 @@ Documentation about the current state of events can be found in
 the [Event capabilities][doc-events] and in the
 [Events FIDL definitions][sys2-events-fidl].
 
-[component-lifecycle-doc]: /docs/concepts/components/v2/lifecycle.md
-[doc-events]: /docs/concepts/components/v2/capabilities/event.md
+[component-lifecycle-doc]: concepts/components/v2/lifecycle.md
+[doc-events]: concepts/components/v2/capabilities/event.md
 [example-img]: resources/0121_component_events/routing_example.png
-[manifest-docs]: /docs/concepts/components/v2/component_manifests.md
+[manifest-docs]: concepts/components/v2/component_manifests.md
 [sys2-events-fidl]: /sdk/fidl/fuchsia.sys2/events.fidl

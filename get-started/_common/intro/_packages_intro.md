@@ -21,7 +21,7 @@ hash**.
   just the package hash!</p>
 
   <p>To learn more about Merkle roots and how they are used in Fuchsia, see
-  <a href="/docs/concepts/packages/merkleroot.md">Fuchsia package hash</a>.</p>
+  <a href="concepts/packages/merkleroot.md">Fuchsia package hash</a>.</p>
 </aside>
 
 The meta.far contains a `meta/` directory with at least the
@@ -34,7 +34,7 @@ following two items:
 
 ![Diagram showing the contents of a Fuchsia package consisting of "meta.far"
 metadata and a collection of content BLOBs.]
-(/docs/get-started/images/intro/meta-far.png){: width="544"}
+(get-started/images/intro/meta-far.png){: width="544"}
 
 If two or more packages share the same content (such as a library dependency,
 or font resource), their metadata will point to the same content address for

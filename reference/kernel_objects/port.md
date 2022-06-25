@@ -22,7 +22,7 @@ TODO
  - [`zx_port_wait()`] - wait for packets to arrive on a port
  - [`zx_object_wait_async()`] - cause packets to arrive on a port, when another object is signaled
 
-[`zx_port_create()`]: /docs/reference/syscalls/port_create.md
-[`zx_port_queue()`]: /docs/reference/syscalls/port_queue.md
-[`zx_port_wait()`]: /docs/reference/syscalls/port_wait.md
-[`zx_object_wait_async()`]: /docs/reference/syscalls/object_wait_async.md
+[`zx_port_create()`]: reference/syscalls/port_create.md
+[`zx_port_queue()`]: reference/syscalls/port_queue.md
+[`zx_port_wait()`]: reference/syscalls/port_wait.md
+[`zx_object_wait_async()`]: reference/syscalls/object_wait_async.md

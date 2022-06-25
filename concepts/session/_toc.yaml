@@ -7,12 +7,12 @@
 # team as reviewer.
 toc:
 - title: "Introduction to the session framework"
-  path: /docs/concepts/session/introduction.md
+  path: concepts/session/introduction.md
 - title: "Elements"
-  path: /docs/concepts/session/element.md
+  path: concepts/session/element.md
 - title: "Element Proposers"
-  path: /docs/concepts/session/element_proposer.md
+  path: concepts/session/element_proposer.md
 - title: "Graphical Presenter"
-  path: /docs/concepts/session/graphical_presenter.md
+  path: concepts/session/graphical_presenter.md
 - title: "Input client library"
-  path: /docs/concepts/session/input.md
+  path: concepts/session/input.md

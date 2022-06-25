@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "How does platform updatability work"
-  path: /docs/contribute/updatability/how.md
+  path: contribute/updatability/how.md
 - title: "Next steps"
-  path: /docs/contribute/updatability/next-steps.md
+  path: contribute/updatability/next-steps.md
 - title: "Best practices"
-  path: /docs/contribute/updatability/best-practices.md
+  path: contribute/updatability/best-practices.md

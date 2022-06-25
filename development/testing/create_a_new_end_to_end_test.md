@@ -2,7 +2,7 @@
 
 This guide provides instructions on how to create a new end-to-end test using
 the [Dart test library](https://pub.dev/packages/test){:.external} and
-[SL4F](/docs/development/drivers/concepts/driver_development/sl4f.md).
+[SL4F](development/drivers/concepts/driver_development/sl4f.md).
 
 The guide creates an end-to-end test that prints “Hello world!” in the log of a
 Fuchsia device. Once you verify that you can build and run this test from your
@@ -23,9 +23,9 @@ To create a new end-to-end test, the steps are:
 
 This guide requires that you're familiar with the following tasks:
 
-*   [Configure and build a Fuchsia image](/docs/get-started/build_fuchsia.md).
-*   [Start the emulator (FEMU)](/docs/get-started/set_up_femu.md).
-*   [Run an end-to-end test](/docs/development/testing/run_an_end_to_end_test.md).
+*   [Configure and build a Fuchsia image](get-started/build_fuchsia.md).
+*   [Start the emulator (FEMU)](get-started/set_up_femu.md).
+*   [Run an end-to-end test](development/testing/run_an_end_to_end_test.md).
 
 ## 2. Create a new test {#create-a-new-test}
 
@@ -143,7 +143,7 @@ Do the following:
     ```
 
     This
-    <code>[BUILD.gn](/docs/development/build/build_system/fuchsia_build_system_overview.md#build_targets)</code>
+    <code>[BUILD.gn](development/build/build_system/fuchsia_build_system_overview.md#build_targets)</code>
     file defines the <code>test</code> target group to include
     <code>my_new_e2e_test</code>.
 
@@ -333,8 +333,8 @@ Use the following resources for writing new tests:
     *   <code>[screen_is_not_black_test.dart](/src/tests/end_to_end/screen_is_not_black/test/screen_is_not_black_test.dart)</code>
 *   The source code of the <code>[sl4f](/src/tests/end_to_end/sl4f/test/)</code>
     end-to-end test, which tests various
-    [facades](/docs/development/drivers/concepts/driver_development/sl4f.md#facades-in-sl4f) in
-    [SL4F](/docs/development/drivers/concepts/driver_development/sl4f.md). See these tests to understand how
+    [facades](development/drivers/concepts/driver_development/sl4f.md#facades-in-sl4f) in
+    [SL4F](development/drivers/concepts/driver_development/sl4f.md). See these tests to understand how
     you may want to invoke some facades for testing certain features of a
     Fuchsia product, for example:
     *   [Audio facade test](/src/tests/end_to_end/sl4f/test/audio_test.dart) -

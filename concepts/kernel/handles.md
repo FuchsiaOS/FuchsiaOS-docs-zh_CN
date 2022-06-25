@@ -284,16 +284,16 @@ the mentioned invalid cases.
 
 <!-- Reference links -->
 
-[rights]: /docs/concepts/kernel/rights.md
-[objects]: /docs/reference/kernel_objects/objects.md
-[zx-event-create]: /docs/reference/syscalls/event_create.md
-[zx-process-create]: /docs/reference/syscalls/process_create.md
-[zx-thread-create]: /docs/reference/syscalls/thread_create.md
-[zx-handle-duplicate]: /docs/reference/syscalls/handle_duplicate.md
-[zx-handle-replace]: /docs/reference/syscalls/handle_replace.md
-[zx-handle-close]: /docs/reference/syscalls/handle_close.md
-[zx-channel-write]: /docs/reference/syscalls/channel_write.md
-[zx-channel-read]: /docs/reference/syscalls/channel_read.md
-[zx-channel-call]: /docs/reference/syscalls/channel_call.md
-[zx-process-start]: /docs/reference/syscalls/process_start.md
-[lifetime]: /docs/reference/kernel_objects/objects.md#kernel-object-lifetime
+[rights]: concepts/kernel/rights.md
+[objects]: reference/kernel_objects/objects.md
+[zx-event-create]: reference/syscalls/event_create.md
+[zx-process-create]: reference/syscalls/process_create.md
+[zx-thread-create]: reference/syscalls/thread_create.md
+[zx-handle-duplicate]: reference/syscalls/handle_duplicate.md
+[zx-handle-replace]: reference/syscalls/handle_replace.md
+[zx-handle-close]: reference/syscalls/handle_close.md
+[zx-channel-write]: reference/syscalls/channel_write.md
+[zx-channel-read]: reference/syscalls/channel_read.md
+[zx-channel-call]: reference/syscalls/channel_call.md
+[zx-process-start]: reference/syscalls/process_start.md
+[lifetime]: reference/kernel_objects/objects.md#kernel-object-lifetime

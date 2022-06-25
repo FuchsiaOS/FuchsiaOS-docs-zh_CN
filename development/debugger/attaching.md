@@ -101,7 +101,7 @@ work from the debugger's `run` command.
 ## Attaching to an existing process
 
 You can attach to most running processes given the process’ koid (the [kernel object
-ID](/docs/concepts/kernel/concepts.md) that, when applied to a process, is equivalent to a process
+ID](concepts/kernel/concepts.md) that, when applied to a process, is equivalent to a process
 ID on other systems). You can get the koid by running `ps` on the target Fuchsia system or use
 zxdb's built-in `ps` command:
 
@@ -113,7 +113,7 @@ j: 1030 root
 ...
 ```
 
-In this listing, "j:" indicates a [job](/docs/concepts/kernel/concepts.md) (a container for
+In this listing, "j:" indicates a [job](concepts/kernel/concepts.md) (a container for
 processes) and "p:" indicates a process. The number following the type prefix is the object's koid.
 
 Then to attach:

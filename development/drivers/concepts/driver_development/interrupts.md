@@ -124,7 +124,7 @@ You now have an interrupt handle.
 
 ## Waiting for the interrupt
 
-In your IHT, you call [**zx_interrupt_wait()**](/docs/reference/syscalls/interrupt_wait.md)
+In your IHT, you call [**zx_interrupt_wait()**](reference/syscalls/interrupt_wait.md)
 to wait for the interrupt.
 The following prototype applies:
 
@@ -138,7 +138,7 @@ The first argument is the handle you obtained from the call to
 and the second parameter can be `NULL` (typical), or it can be a pointer to a time
 stamp that indicates when the interrupt was triggered (in nanoseconds,
 relative to the monotonic clock source fetched with
-[`zx_clock_get_monotonic()`](/docs/reference/syscalls/clock_get_monotonic.md)).
+[`zx_clock_get_monotonic()`](reference/syscalls/clock_get_monotonic.md)).
 
 Therefore, a typical IHT would have the following shape:
 
@@ -174,7 +174,7 @@ interrupt to remain active until *all* devices have de-asserted their request li
 
 The Zircon kernel automatically masks and unmasks the interrupt as appropriate.
 For level-triggered hardware interrupts,
-[**zx_interrupt_wait()**](/docs/reference/syscalls/interrupt_wait.md)
+[**zx_interrupt_wait()**](reference/syscalls/interrupt_wait.md)
 masks the interrupt before returning, and unmasks it when called the next time.
 For edge-triggered interrupts, the interrupt remains unmasked.
 
@@ -184,9 +184,9 @@ For edge-triggered interrupts, the interrupt remains unmasked.
 ## Shutting down a driver that uses interrupts
 
 In order to cleanly shut down a driver that uses interrupts, you can use
-[**zx_interrupt_destroy()**](/docs/reference/syscalls/interrupt_destroy.md)
+[**zx_interrupt_destroy()**](reference/syscalls/interrupt_destroy.md)
 to abort the
-[**zx_interrupt_wait()**](/docs/reference/syscalls/interrupt_wait.md)
+[**zx_interrupt_wait()**](reference/syscalls/interrupt_wait.md)
 call.
 
 The idea is that when the foreground thread determines that the driver should be
@@ -222,7 +222,7 @@ static int irq_thread(void* arg) {
 
 The main thread, when requested to shut down, destroys the interrupt handle.
 This causes the IHT's
-[**zx_interrupt_wait()**](/docs/reference/syscalls/interrupt_wait.md)
+[**zx_interrupt_wait()**](reference/syscalls/interrupt_wait.md)
 call to wake up with an error code.
 The IHT looks at the error code (in this case, `ZX_ERR_CANCELED`) and makes
 the decision to end.
@@ -234,7 +234,7 @@ thread can finish its processing.
 The advanced reader is invited to look at some of the other interrupt related
 functions available:
 
-*   [**zx_interrupt_ack()**](/docs/reference/syscalls/interrupt_ack.md)
-*   [**zx_interrupt_bind()**](/docs/reference/syscalls/interrupt_bind.md)
-*   [**zx_interrupt_create()**](/docs/reference/syscalls/interrupt_create.md)
-*   [**zx_interrupt_trigger()**](/docs/reference/syscalls/interrupt_trigger.md)
+*   [**zx_interrupt_ack()**](reference/syscalls/interrupt_ack.md)
+*   [**zx_interrupt_bind()**](reference/syscalls/interrupt_bind.md)
+*   [**zx_interrupt_create()**](reference/syscalls/interrupt_create.md)
+*   [**zx_interrupt_trigger()**](reference/syscalls/interrupt_trigger.md)

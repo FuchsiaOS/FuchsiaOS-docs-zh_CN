@@ -7,22 +7,22 @@
 # team as reviewer
 toc:
 - title: "Overview"
-  path: /docs/reference/fidl/language/language.md
+  path: reference/fidl/language/language.md
 - title: "Attributes"
-  path: /docs/reference/fidl/language/attributes.md
+  path: reference/fidl/language/attributes.md
 - title: "Versioning"
-  path: /docs/reference/fidl/language/versioning.md
+  path: reference/fidl/language/versioning.md
 - title: "Grammar"
-  path: /docs/reference/fidl/language/grammar.md
+  path: reference/fidl/language/grammar.md
 - title: "Internal library: 'zx'"
-  path: /docs/reference/fidl/language/library-zx.md
+  path: reference/fidl/language/library-zx.md
 - title: "JSON internal representation"
-  path: /docs/reference/fidl/language/json-ir.md
+  path: reference/fidl/language/json-ir.md
 - title: "Wire format"
-  path: /docs/reference/fidl/language/wire-format/README.md
+  path: reference/fidl/language/wire-format/README.md
 - title: "fidlc internals"
-  path: /docs/reference/fidl/language/fidlc.md
+  path: reference/fidl/language/fidlc.md
 - title: "Lexicon"
-  path: /docs/reference/fidl/language/lexicon.md
+  path: reference/fidl/language/lexicon.md
 - title: "Bindings spec"
-  path: /docs/reference/fidl/language/bindings-spec.md
+  path: reference/fidl/language/bindings-spec.md

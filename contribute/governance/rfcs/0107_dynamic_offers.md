@@ -374,9 +374,9 @@ components that depend on them, even when the dependency is strong. Components
 can observe the fact that their dependencies are unavailable and quit if they so
 choose.
 
-[collections]: /docs/concepts/components/v2/realms.md#collections
-[offer]: /docs/concepts/components/v2/capabilities/README.md#routing-terminology
-[driver-framework]: /docs/development/drivers/concepts/fdf.md
+[collections]: concepts/components/v2/realms.md#collections
+[offer]: concepts/components/v2/capabilities/README.md#routing-terminology
+[driver-framework]: development/drivers/concepts/fdf.md
 [CreateChild]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.sys2/realm.fidl;l=58;drc=599c35934155b755453a2d9c228a434436e62db5
 [OfferDecl]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.sys2/decls/offer_decl.fidl;l=14;drc=1969824ecf7b1e2096ca1b6c1587545699706da8
-[RFC-0101]: /docs/contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md
+[RFC-0101]: contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md

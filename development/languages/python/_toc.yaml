@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/python
+  path: development/languages/python
 - title: "Python style guide"
-  path: /docs/development/languages/python/python_style.md
+  path: development/languages/python/python_style.md
 - title: "Testing"
-  path: /docs/development/languages/python/testing.md
+  path: development/languages/python/testing.md

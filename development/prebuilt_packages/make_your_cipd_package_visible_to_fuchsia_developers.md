@@ -1,7 +1,7 @@
 # Make your CIPD package visible to Fuchsia developers
 
 After
-[uploading a prebuilt package to CIPD](/docs/development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md),
+[uploading a prebuilt package to CIPD](development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md),
 to make it available to Fuchsia developers, you need to update a Jiri manifest
 listed under `${FUCHSIA_DIR}/integration/`.
 

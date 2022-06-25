@@ -7,29 +7,29 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/c-cpp
+  path: development/languages/c-cpp
 - title: "Editor setup"
-  path: /docs/development/languages/c-cpp/editors.md
+  path: development/languages/c-cpp/editors.md
 - title: "Naming conventions"
-  path: /docs/development/languages/c-cpp/naming.md
+  path: development/languages/c-cpp/naming.md
 - title: "C++ style guide"
-  path: /docs/development/languages/c-cpp/cpp-style.md
+  path: development/languages/c-cpp/cpp-style.md
 - title: "Lint"
-  path: /docs/development/languages/c-cpp/lint.md
+  path: development/languages/c-cpp/lint.md
 - title: "Libc support"
-  path: /docs/development/languages/c-cpp/libc.md
+  path: development/languages/c-cpp/libc.md
 - title: "Library restrictions"
-  path: /docs/development/languages/c-cpp/library_restrictions.md
+  path: development/languages/c-cpp/library_restrictions.md
 - title: "Logging"
-  path: /docs/development/languages/c-cpp/logging.md
+  path: development/languages/c-cpp/logging.md
 - title: "Perftest micro-benchmark library"
   path: https://fuchsia.googlesource.com/fuchsia/+/HEAD/zircon/system/ulib/perftest/README.md
 - title: "C++ in Zircon"
-  path: /docs/development/languages/c-cpp/cxx.md
+  path: development/languages/c-cpp/cxx.md
 - title: "Compile time collections"
-  path: /docs/development/languages/c-cpp/compile_time_object_collections.md
+  path: development/languages/c-cpp/compile_time_object_collections.md
 - title: "fpromise::promise<> guide"
-  path: /docs/development/languages/c-cpp/fpromise_promise_guide.md
+  path: development/languages/c-cpp/fpromise_promise_guide.md
 - title: "fbl:: (Fuchsia Base Library) intrusive container guide"
   section:
-  - include: /docs/development/languages/c-cpp/fbl_containers_guide/_toc.yaml
+  - include: development/languages/c-cpp/fbl_containers_guide/_toc.yaml

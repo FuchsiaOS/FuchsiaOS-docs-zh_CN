@@ -22,7 +22,7 @@ zx_status_t zx_vmo_read(zx_handle_t handle,
 ## DESCRIPTION
 
 `zx_vmo_read()` attempts to read exactly *buffer_size* bytes from a [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
+object](reference/kernel_objects/vm_object.md) (VMO) at *offset*.
 
 *buffer* pointer to a user buffer to read bytes into.
 

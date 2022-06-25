@@ -39,7 +39,7 @@ CML for declaring the capabilities from the previous example component tests.
 
 Note: For complete details on the Test Runner Framework and component testing,
 see the
-[testing documentation](/docs/development/testing/components/test_runner_framework.md).
+[testing documentation](development/testing/components/test_runner_framework.md).
 
 ## Unit tests
 

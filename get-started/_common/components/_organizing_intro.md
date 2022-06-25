@@ -13,7 +13,7 @@ external components dependent on its exposed capabilities.
 
 ![Diagram showing how component instances are organized into a tree and parent
 components determine the capabilities available to each child through
-"capability routing."](/docs/get-started/images/components/component-topology.png){: width="616"}
+"capability routing."](get-started/images/components/component-topology.png){: width="616"}
 
 In the above diagram, a protocol capability for `fuchsia.example.Foo` is routed
 through the component instance tree from the provider to the client. Components
@@ -110,4 +110,4 @@ the component framework relies on explicit routes to determine how to resolve
 the requests from each client.
 
 Note: For more details on component organization, see
-[Component topology](/docs/concepts/components/v2/topology.md).
+[Component topology](concepts/components/v2/topology.md).

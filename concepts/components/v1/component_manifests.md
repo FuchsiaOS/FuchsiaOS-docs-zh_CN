@@ -241,7 +241,7 @@ component may access. A typical component will require a number services from
 component will have the ability to launch other components and access network
 services. A component may declare any list of services in its `services`,
 but it will only be able to access services present in its
-[environment](/docs/glossary/README.md#environment). This property should be defined by
+[environment](glossary/README.md#environment). This property should be defined by
 all new components, and soon a migration will take place to convert all
 components to define `services`.
 
@@ -253,7 +253,7 @@ to use that feature.
 The set of currently known features are as follows:
 
 - `config-data`, which will provide any configuration data available to the
-  package this component is in that was provided in the [config-data](/docs/development/components/data.md)
+  package this component is in that was provided in the [config-data](development/components/data.md)
   package on the system.
 
 - `introspection`, which requests access to introspect the system. The
@@ -307,8 +307,8 @@ The set of currently known features are as follows:
   partition is for storing persistent data that will survive a factory reset,
   and is only to be used for specific, approved use cases.
 
-See [sandboxing](/docs/concepts/process/sandboxing.md) for more information about sandboxing.
+See [sandboxing](concepts/process/sandboxing.md) for more information about sandboxing.
 
-[hub]: /docs/concepts/components/v1/hub.md
+[hub]: concepts/components/v1/hub.md
 [runner]: /sdk/fidl/fuchsia.sys/runner.fidl
-[test-components]: /docs/concepts/testing/v1_test_component.md
+[test-components]: concepts/testing/v1_test_component.md

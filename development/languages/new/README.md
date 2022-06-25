@@ -6,4 +6,4 @@ contains documentation about how to bring a new language to Fuchsia.
 ## Topics
 
  * [How to structure Fuchsia support for a language](structure.md)
- * [Fuchsia System Interface](/docs/concepts/packages/system.md)
+ * [Fuchsia System Interface](concepts/packages/system.md)

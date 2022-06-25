@@ -32,8 +32,8 @@ fx bindc debug \
 ```
 
 The bind program source and the library sources are in the formats described in
-the [bind rules](/docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-rules) and
-[bind libraries](/docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries) sections,
+the [bind rules](development/drivers/concepts/device_driver_model/driver-binding.md#bind-rules) and
+[bind libraries](development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries) sections,
 respectively. The `--debug` option takes a file containing a specification of
 the device to run the bind program against.
 

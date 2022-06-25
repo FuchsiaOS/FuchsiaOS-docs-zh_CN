@@ -1,6 +1,6 @@
 ![Data table showing high-level diagram of the entire Fuchsia system
 architecture, highlighting core components and subsystems.]
-(/docs/get-started/images/intro/fuchsia-architecture.png){: width="1080"}
+(get-started/images/intro/fuchsia-architecture.png){: width="1080"}
 
 The following architectural principles guide Fuchsia's design and development:
 
@@ -25,8 +25,8 @@ reinforcing the **principle of least privilege**. This includes:
 *   Filesystems
 *   Network stacks
 
-[glossary.zircon]: /docs/glossary/README.md#zircon
-[simple]: /docs/concepts/principles/simple.md
-[secure]: /docs/concepts/principles/secure.md
-[updatable]: /docs/concepts/principles/updatable.md
-[performant]: /docs/concepts/principles/performant.md
+[glossary.zircon]: glossary/README.md#zircon
+[simple]: concepts/principles/simple.md
+[secure]: concepts/principles/secure.md
+[updatable]: concepts/principles/updatable.md
+[performant]: concepts/principles/performant.md

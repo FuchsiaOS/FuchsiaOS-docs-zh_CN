@@ -101,7 +101,7 @@ disable interrupts or pin ourselves to a CPU inside jitterentropy.
 
 ### More tuning
 
-See [the tuning doc](/docs/concepts/kernel/jitterentropy/config-tuning.md). The current universally hard-coded parameters
+See [the tuning doc](concepts/kernel/jitterentropy/config-tuning.md). The current universally hard-coded parameters
 seem to be decent, so this probably isn't incredibly urgent. Still, since jitterentropy is on the
 critical path for every single boot and since it will run during runtime as well (hopefully soon!),
 it's probably worth optimizing at some point.

@@ -162,11 +162,11 @@ This results in a total size of 104 bytes.
 
 <!-- xrefs -->
 [lostart]: http://www.catb.org/esr/structure-packing/
-[pagination-api]: /docs/development/api/fidl.md#pagination
+[pagination-api]: development/api/fidl.md#pagination
 
-[fidl-wire-format]: /docs/reference/fidl/language/wire-format
-[fidl-wire-format-union]: /docs/reference/fidl/language/wire-format#unions
-[fidl-language-enums]: /docs/reference/fidl/language/language.md#enums
+[fidl-wire-format]: reference/fidl/language/wire-format
+[fidl-wire-format-union]: reference/fidl/language/wire-format#unions
+[fidl-language-enums]: reference/fidl/language/language.md#enums
 
 [channel-byte-and-handle-caps]: https://fuchsia.googlesource.com/fuchsia/+/b7840e772fccb93be4fff73a9cb83f978095eac2/zircon/system/public/zircon/types.h#296
 [fidl-message-header-t]:        https://fuchsia.googlesource.com/fuchsia/+/b7840e772fccb93be4fff73a9cb83f978095eac2/zircon/system/public/zircon/fidl.h#358

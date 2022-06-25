@@ -7,7 +7,7 @@ and stay informed about Fuchsia.
 ## Review the Fuchsia roadmap
 
 The Fuchsia project prioritizes features and enhancements that support our
-development community. Read the [Fuchsia roadmap](/docs/contribute/roadmap/index.md)
+development community. Read the [Fuchsia roadmap](contribute/roadmap/index.md)
 to get a high-level understanding of the various projects being considered
 within Fuchsia.
 
@@ -19,12 +19,12 @@ transparent path for making project-wide technical decisions.
 RFCs are documents that inform and build on the technical direction of the
 Fuchsia project. RFCs can be proposed by anyone in the community. Using an RFC,
 a Fuchsia community member can submit an idea or technical concept for broader
-review or consideration. For more information, see [Fuchsia RFCs](/docs/contribute/governance/rfcs).
+review or consideration. For more information, see [Fuchsia RFCs](contribute/governance/rfcs).
 
 ### Review completed RFCs
 
-To see a complete list of accepted and rejected RFC proposals, see [Accepted proposals](/docs/contribute/governance/rfcs#accepted)
-and [Rejected proposals](/docs/contribute/governance/rfcs#rejected).
+To see a complete list of accepted and rejected RFC proposals, see [Accepted proposals](contribute/governance/rfcs#accepted)
+and [Rejected proposals](contribute/governance/rfcs#rejected).
 
 ### Track ongoing RFCs
 
@@ -34,7 +34,7 @@ that lists any open Gerrit change in the `rfcs` directory.
 ### Create an RFC
 
 If you want to create a proposal that you want the Fuchsia Eng Council to
-review, see [Creating an RFC.](/docs/contribute/governance/rfcs/create_rfc.md)
+review, see [Creating an RFC.](contribute/governance/rfcs/create_rfc.md)
 
 ## Join a discussion group
 
@@ -110,9 +110,9 @@ Fuchsia:
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/component-framework-dev">component-framework-dev</a>
    </td>
-   <td>For conversation about <a href="/docs/glossary.md#component-framework">Component Framework</a>,
-     <a href="/docs/glossary/README.md#session-framework">Session Framework</a>, and
-     <a href="/docs/development/modular/overview.md">Modular</a>.
+   <td>For conversation about <a href="glossary.md#component-framework">Component Framework</a>,
+     <a href="glossary/README.md#session-framework">Session Framework</a>, and
+     <a href="development/modular/overview.md">Modular</a>.
    </td>
   </tr>
   <tr>
@@ -126,8 +126,8 @@ Fuchsia:
    </td>
    <td>
     Discussions about the development of diagnostics features and services, such as
-    <a href="/docs/development/diagnostics/inspect/README.md">Inspect</a>,
-    <a href="/docs/concepts/components/diagnostics/logs/README.md">Logs</a>, and the Archivist.
+    <a href="development/diagnostics/inspect/README.md">Inspect</a>,
+    <a href="concepts/components/diagnostics/logs/README.md">Logs</a>, and the Archivist.
    </td>
   </tr>
   <tr>
@@ -237,7 +237,7 @@ Fuchsia’s leadership:
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/api-council">api-council</a>
    </td>
-   <td>Discussion list for communicating with the <a href="/docs/contribute/governance/api_council.md">Fuchsia API Council</a>.
+   <td>Discussion list for communicating with the <a href="contribute/governance/api_council.md">Fuchsia API Council</a>.
    </td>
   </tr>
   <tr>
@@ -249,13 +249,13 @@ Fuchsia’s leadership:
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/eng-council">eng-council</a>
    </td>
-   <td>Discussion list for communicating with the Fuchsia <a href="/docs/contribute/governance/eng_council.md">Eng Council</a> about review requests, <a href="/docs/contribute/governance/rfcs.md">RFC</a> feedback, or RFC escalations.
+   <td>Discussion list for communicating with the Fuchsia <a href="contribute/governance/eng_council.md">Eng Council</a> about review requests, <a href="contribute/governance/rfcs.md">RFC</a> feedback, or RFC escalations.
    </td>
   </tr>
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/eng-council-discuss">eng-council-discuss</a>
    </td>
-   <td>Discussion list for communicating with the Fuchsia <a href="/docs/contribute/governance/eng_council.md">Eng Council</a>.
+   <td>Discussion list for communicating with the Fuchsia <a href="contribute/governance/eng_council.md">Eng Council</a>.
    </td>
   </tr>
 </table>
@@ -266,7 +266,7 @@ The Fuchsia project encourages well-tested, high-quality contributions from
 anyone who wants to contribute to Fuchsia, not just from Googlers.
 
 To learn more about how to contribute a code change to Fuchsia,
-see [Contribute changes](/docs/development/source_code/contribute_changes.md).
+see [Contribute changes](development/source_code/contribute_changes.md).
 
 In Monorail, the `GoodFirstBug` label exists. This label signals to potential
 contributors that a particular bug could be a great entry point in terms of
@@ -280,7 +280,7 @@ To view the current list of bugs with the `GoodFirstBug` label, go to the
 
 Did you see a line of documentation or code that you think needs to be improved?
 You can help get these kinds of concerns resolved by filing an issue in Monorail.
-For more information, see [Report an Issue](/docs/contribute/report-issue.md).
+For more information, see [Report an Issue](contribute/report-issue.md).
 
 All participation in groups, bugs, and forums must adhere to the
 [Fuchsia Code of Conduct](/CODE_OF_CONDUCT.md).

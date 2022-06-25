@@ -49,7 +49,7 @@ following templates:
   <tr>
    <td>Open Source Review Board
    </td>
-   <td>Propose open source external code to be included in Fuchsia. Review the <a href="/docs/contribute/governance/policy/osrb-process.md">Open Source Review Board (OSRB) process</a>
+   <td>Propose open source external code to be included in Fuchsia. Review the <a href="contribute/governance/policy/osrb-process.md">Open Source Review Board (OSRB) process</a>
      before filing an issue with the Open Source Review Board (OSRB).
    </td>
   </tr>
@@ -109,13 +109,13 @@ action. Here are a few examples of alternative courses of action:
   <tr>
    <td>Proposing a change that would significantly affect the Fuchsia API.
    </td>
-   <td>Create an API Design Document. For more information, see <a href="/docs/contribute/governance/api_council.md">Fuchsia API Council Charter</a>.
+   <td>Create an API Design Document. For more information, see <a href="contribute/governance/api_council.md">Fuchsia API Council Charter</a>.
    </td>
   </tr>
   <tr>
    <td>Proposing a change that would affect a large part of the Fuchsia codebase or the technical direction of the Fuchsia project.
    </td>
-   <td>Propose a Request for Comments (RFC). For more information on RFCs, see <a href="/docs/contribute/governance/rfcs/create_rfc.md">Create an RFC</a>.
+   <td>Propose a Request for Comments (RFC). For more information on RFCs, see <a href="contribute/governance/rfcs/create_rfc.md">Create an RFC</a>.
    </td>
   </tr>
 </table>

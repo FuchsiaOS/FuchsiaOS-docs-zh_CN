@@ -65,7 +65,7 @@ on the kernel command line.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[kernel command line]: /docs/reference/kernel/kernel_cmdline.md
+[kernel command line]: reference/kernel/kernel_cmdline.md
 [`zx_debug_write()`]: debug_write.md
 [`zx_debuglog_read()`]: debuglog_read.md
 [`zx_debuglog_write()`]: debuglog_write.md

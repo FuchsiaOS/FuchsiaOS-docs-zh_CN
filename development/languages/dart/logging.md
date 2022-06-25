@@ -99,7 +99,7 @@ See [`stdout` & `stderr`] in the language-agnostic logging docs for details on t
 streams in the system.
 
 [Logger]: https://pub.dev/documentation/logging/latest/logging/Logger-class.html
-[`ffx log`]: /docs/development/diagnostics/logs/viewing.md
-[dart-dev]: /docs/development/languages/dart/README.md
-[`stdout` & `stderr`]: /docs/development/diagnostics/logs/recording.md#stdout-stderr
-[language agnostic logging docs]: /docs/concepts/components/diagnostics/logs/README.md
+[`ffx log`]: development/diagnostics/logs/viewing.md
+[dart-dev]: development/languages/dart/README.md
+[`stdout` & `stderr`]: development/diagnostics/logs/recording.md#stdout-stderr
+[language agnostic logging docs]: concepts/components/diagnostics/logs/README.md

@@ -47,7 +47,7 @@ platform we can make it easier for developers to play with Fuchsia.
 ## Design
 
 Moving Workstation out-of-tree builds on top of the [Standalone Image Assembly
-Tool RFC-0072](/docs/contribute/governance/rfcs/0072_standalone_image_assembly_tool.md),
+Tool RFC-0072](contribute/governance/rfcs/0072_standalone_image_assembly_tool.md),
 this proposal assumes that this tool exists.
 
 ### Repository
@@ -371,7 +371,7 @@ Compiling the Workstation product separately from the platform exposes us to
 potential ABI incompatibility issues. We need to make sure that we are always
 compiling the Workstation components with an SDK release version that is either
 equal to or older than, but within the compatibility window per
-[RFC-0002](/docs/contribute/governance/rfcs/0002_platform_versioning.md),
+[RFC-0002](contribute/governance/rfcs/0002_platform_versioning.md),
 the release version of the platform that the Workstation product is being
 assembled with. In order to ensure that we maintain this invariant, we will
 include the SDK version in metadata that rolls along with the platform and the

@@ -284,8 +284,8 @@ FBL not available outside the Platform Source Tree.
 
 ## ZX
 
-ZX contains C++ wrappers for the Zircon [objects](/docs/reference/kernel_objects/objects.md) and
-[syscalls](/docs/reference/syscalls/README.md).  These wrappers provide type safety and move semantics
+ZX contains C++ wrappers for the Zircon [objects](reference/kernel_objects/objects.md) and
+[syscalls](reference/syscalls/README.md).  These wrappers provide type safety and move semantics
 for handles but offer no opinion beyond what's in syscalls.abigen.  At some
 point in the future, we might autogenerate ZX from syscalls.abigen, similar to
 how we autogenerate the syscall wrappers in other languages.
@@ -313,7 +313,7 @@ module with a pure C external API and ABI but using C++ internally for its
 implementation, we call that _hermetic C++_.
 
  * The kernel itself could be said to be implemented in hermetic C++.
- * The [vDSO](/docs/concepts/kernel/vdso.md) is a shared library implemented in hermetic C++.
+ * The [vDSO](concepts/kernel/vdso.md) is a shared library implemented in hermetic C++.
  * Fuchsia's [standard C library](/zircon/system/ulib/c), while largely implemented
    in C, also uses hermetic C++ in its implementation.
  * Most Fuchsia device drivers are implemented in hermetic C++.

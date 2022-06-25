@@ -299,7 +299,7 @@ zx_status_t UsbXhci::InitPci() {
 This usage is typical.
 
 <!-- xref table -->
-[bti]: /docs/reference/kernel_objects/bus_transaction_initiator.md
+[bti]: reference/kernel_objects/bus_transaction_initiator.md
 [crtp]: https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
 [dev/block/zxcrypt/device.cpp]: /src/devices/block/drivers/zxcrypt/device.cc
 [dev/block/zxcrypt/device.h]: /src/devices/block/drivers/zxcrypt/device.h

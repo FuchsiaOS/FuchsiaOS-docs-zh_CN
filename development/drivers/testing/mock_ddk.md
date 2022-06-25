@@ -7,7 +7,7 @@ version of the driver framework (DFv1).
 
 Note: The fake-ddk library has been deprecated, and an effort is underway to migrate
 all usages to the mock-ddk.  More on this migration can be found at the
-[mock-ddk migration](/docs/contribute/open_projects/testing/mock_ddk_migration.md) page.
+[mock-ddk migration](contribute/open_projects/testing/mock_ddk_migration.md) page.
 
 Note: ***The mock-ddk is only for unit testing.***
 The mock_ddk does not test any interfaces for correctness, it is simply a

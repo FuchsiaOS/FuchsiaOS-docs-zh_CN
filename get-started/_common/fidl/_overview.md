@@ -19,4 +19,4 @@ libraries.
 
 ![Diagram showing how Fuchsia Interface Definition Language (FIDL) facilitates
 inter-process communication (IPC) through a common interface; regardless of the
-programming language used.](/docs/get-started/images/fidl/fuchsia-interface.png){: width="870"}
+programming language used.](get-started/images/fidl/fuchsia-interface.png){: width="870"}

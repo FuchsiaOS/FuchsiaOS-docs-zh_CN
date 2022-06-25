@@ -41,7 +41,7 @@ box does not matter too much to us as consumers as long as the input-output
 behavior of the process is upheld, and we're generally aware that the
 translation could take a while.  The resulting files are converted into a
 machine-readable form, and shipped alongside a Fuchsia program within the same
-[Fuchsia package](/docs/glossary/README.md#package).
+[Fuchsia package](glossary/README.md#package).
 An important feature of Fuchsia packages is that they are inherently not an
 archive, but rather a manifest that points to files by their content hash.  So
 multiple programs can share the same files, and languages closely related

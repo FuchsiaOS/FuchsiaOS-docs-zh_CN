@@ -91,7 +91,7 @@ See [signals] for more information about signals and their terminology.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[signals]: /docs/concepts/kernel/signals.md
-[timer slack]: /docs/concepts/kernel/timer_slack.md
+[signals]: concepts/kernel/signals.md
+[timer slack]: concepts/kernel/timer_slack.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_many()`]: object_wait_many.md

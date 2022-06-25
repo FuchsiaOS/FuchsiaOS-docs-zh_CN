@@ -19,45 +19,45 @@ Zircon actively manages the following resources:
 
 ### IPC
 
-+ [Channel](/docs/reference/kernel_objects/channel.md)
-+ [Socket](/docs/reference/kernel_objects/socket.md)
-+ [FIFO](/docs/reference/kernel_objects/fifo.md)
++ [Channel](reference/kernel_objects/channel.md)
++ [Socket](reference/kernel_objects/socket.md)
++ [FIFO](reference/kernel_objects/fifo.md)
 
 ### Tasks
 
-+ [Process](/docs/reference/kernel_objects/process.md)
-+ [Thread](/docs/reference/kernel_objects/thread.md)
-+ [Job](/docs/reference/kernel_objects/job.md)
-+ [Task](/docs/reference/kernel_objects/task.md)
++ [Process](reference/kernel_objects/process.md)
++ [Thread](reference/kernel_objects/thread.md)
++ [Job](reference/kernel_objects/job.md)
++ [Task](reference/kernel_objects/task.md)
 
 ### Scheduling
 
-+ [Profile](/docs/reference/kernel_objects/profile.md)
++ [Profile](reference/kernel_objects/profile.md)
 
 ### Signaling
 
-+ [Event](/docs/reference/kernel_objects/event.md)
-+ [Event Pair](/docs/reference/kernel_objects/eventpair.md)
-+ [Futex](/docs/reference/kernel_objects/futex.md)
++ [Event](reference/kernel_objects/event.md)
++ [Event Pair](reference/kernel_objects/eventpair.md)
++ [Futex](reference/kernel_objects/futex.md)
 
 ### Memory and address space
 
-+ [Virtual Memory Object](/docs/reference/kernel_objects/vm_object.md)
-+ [Virtual Memory Address Region](/docs/reference/kernel_objects/vm_address_region.md)
-+ [bus_transaction_initiator](/docs/reference/kernel_objects/bus_transaction_initiator.md)
-+ [Pager](/docs/reference/kernel_objects/pager.md)
++ [Virtual Memory Object](reference/kernel_objects/vm_object.md)
++ [Virtual Memory Address Region](reference/kernel_objects/vm_address_region.md)
++ [bus_transaction_initiator](reference/kernel_objects/bus_transaction_initiator.md)
++ [Pager](reference/kernel_objects/pager.md)
 
 ### Waiting
 
-+ [Port](/docs/reference/kernel_objects/port.md)
-+ [Timer](/docs/reference/kernel_objects/timer.md)
++ [Port](reference/kernel_objects/port.md)
++ [Timer](reference/kernel_objects/timer.md)
 
 ## Kernel objects for drivers
 
-+ [Interrupts](/docs/reference/kernel_objects/interrupts.md)
-+ [Message Signaled Interrupts](/docs/reference/kernel_objects/msi.md)
-+ [Resource](/docs/reference/kernel_objects/resource.md)
-+ [Debuglog](/docs/reference/kernel_objects/debuglog.md)
++ [Interrupts](reference/kernel_objects/interrupts.md)
++ [Message Signaled Interrupts](reference/kernel_objects/msi.md)
++ [Resource](reference/kernel_objects/resource.md)
++ [Debuglog](reference/kernel_objects/debuglog.md)
 
 ## Kernel object lifetime
 
@@ -115,10 +115,10 @@ Currently, the kernel defines the following object types as "peered" objects.
 
  Name                                                     | Peer-Closed Signal Name
 ----------------------------------------------------------+-------------------------
-[Channel](/docs/reference/kernel_objects/channel.md)      | `ZX_CHANNEL_PEER_CLOSED`
-[Socket](/docs/reference/kernel_objects/socket.md)        | `ZX_SOCKET_PEER_CLOSED`
-[FIFO](/docs/reference/kernel_objects/fifo.md)            | `ZX_FIFO_PEER_CLOSED`
-[Event Pair](/docs/reference/kernel_objects/eventpair.md) | `ZX_EVENTPAIR_PEER_CLOSED`
+[Channel](reference/kernel_objects/channel.md)      | `ZX_CHANNEL_PEER_CLOSED`
+[Socket](reference/kernel_objects/socket.md)        | `ZX_SOCKET_PEER_CLOSED`
+[FIFO](reference/kernel_objects/fifo.md)            | `ZX_FIFO_PEER_CLOSED`
+[Event Pair](reference/kernel_objects/eventpair.md) | `ZX_EVENTPAIR_PEER_CLOSED`
 
 All peered objects are created in pairs, which are internally linked to each
 other in a peer relationship.  When the active handle count of a peered object
@@ -147,15 +147,15 @@ can have two different handles to the same object with different rights.
 
 [Handles][handles]
 
-[handles]: /docs/concepts/kernel/handles.md
+[handles]: concepts/kernel/handles.md
 [reference-counted]: https://en.wikipedia.org/wiki/Reference_counting
-[`zx_handle_close`]: /docs/reference/syscalls/handle_close.md
-[`zx_handle_close_many`]: /docs/reference/syscalls/handle_close_many.md
-[`zx_handle_duplicate`]: /docs/reference/syscalls/handle_duplicate.md
-[`zx_thread_exit`]:/docs/reference/syscalls/thread_exit.md
-[`zx_task_kill`]: /docs/reference/syscalls/task_kill.md
-[VMOs]: /docs/reference/kernel_objects/vm_object.md
-[VMARs]: /docs/reference/kernel_objects/vm_address_region.md
-[threads]: /docs/reference/kernel_objects/thread.md
-[jobs]: /docs/reference/kernel_objects/job.md
-[channel-api]: /docs/reference/kernel_objects/channel.md
+[`zx_handle_close`]: reference/syscalls/handle_close.md
+[`zx_handle_close_many`]: reference/syscalls/handle_close_many.md
+[`zx_handle_duplicate`]: reference/syscalls/handle_duplicate.md
+[`zx_thread_exit`]:reference/syscalls/thread_exit.md
+[`zx_task_kill`]: reference/syscalls/task_kill.md
+[VMOs]: reference/kernel_objects/vm_object.md
+[VMARs]: reference/kernel_objects/vm_address_region.md
+[threads]: reference/kernel_objects/thread.md
+[jobs]: reference/kernel_objects/job.md
+[channel-api]: reference/kernel_objects/channel.md

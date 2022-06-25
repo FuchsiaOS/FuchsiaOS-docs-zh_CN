@@ -22,7 +22,7 @@ zx_status_t zx_vmo_create_physical(zx_handle_t resource,
 ## DESCRIPTION
 
 `zx_vmo_create_physical()` creates a new [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO), which represents the
+object](reference/kernel_objects/vm_object.md) (VMO), which represents the
 *size* bytes of physical memory beginning at physical address *paddr*.
 
 The content size of the VMO will be initialized to the given (unrounded) size.

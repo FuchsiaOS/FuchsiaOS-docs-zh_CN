@@ -235,12 +235,12 @@ access, buffering the file in memory while there are handles to the file.
 
 With demand paging enabled, BlobFS lazily loads in portions of files as they are
 accessed. BlobFS registers itself as the
-[pager](/docs/reference/kernel_objects/pager.md) for the VMO using the
-[zx_pager_create](/docs/reference/syscalls/pager_create.md) syscall. When a
+[pager](reference/kernel_objects/pager.md) for the VMO using the
+[zx_pager_create](reference/syscalls/pager_create.md) syscall. When a
 non-present page is accessed in the VMO, a page fault occurs, which BlobFS
 handles.
 
 BlobFS looks up the decompressed frames containing the target page(s), and
 decompresses each frame. After decompressing each frame, the data is verified,
 and committed to the pager-backed VMO through the
-[zx_pager_supply_pages](/docs/reference/syscalls/pager_supply_pages.md) syscall.
+[zx_pager_supply_pages](reference/syscalls/pager_supply_pages.md) syscall.

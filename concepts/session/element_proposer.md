@@ -33,8 +33,8 @@ and product configurations. Including an Element Proposer is accomplished by
 including it in the [component topology][doc-component-topology] for the
 session.
 
-[doc-session]: /docs/concepts/session/introduction.md
-[doc-element]: /docs/concepts/session/element.md
-[doc-component]: /docs/concepts/components/v2/introduction.md
-[doc-component-topology]: /docs/concepts/components/v2/topology.md
+[doc-session]: concepts/session/introduction.md
+[doc-element]: concepts/session/element.md
+[doc-component]: concepts/components/v2/introduction.md
+[doc-component-topology]: concepts/components/v2/topology.md
 [sdk-element-manager]: /sdk/fidl/fuchsia.element/element_manager.fidl

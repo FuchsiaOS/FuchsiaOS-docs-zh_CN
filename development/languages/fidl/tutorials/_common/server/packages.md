@@ -9,4 +9,4 @@
     single component.
 
   For more details on packages, components, and how to build them, refer to
-  the [Building components](/docs/development/components/build.md) page.
+  the [Building components](development/components/build.md) page.

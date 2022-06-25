@@ -125,6 +125,6 @@ $ ffx log --select core/audio#DEBUG --select core/network/**#ERROR
 Note: Unlike the `--severity` option, which filters the view after logs are captured from the
 target device, this configures whether the target components emit logs of the given severity.
 
-[component-select]: /docs/development/tools/ffx/commands/component-select.md
+[component-select]: development/tools/ffx/commands/component-select.md
 [ffx-reference]: https://fuchsia.dev/reference/tools/sdk/ffx
 [fidl-logsettings]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#LogSettings

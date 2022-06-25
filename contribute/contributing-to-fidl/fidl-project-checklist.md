@@ -89,27 +89,27 @@ Add coverage to:
 * The [source compatibility suite].
 
 <!-- xrefs -->
-[api-rubric]: /docs/development/api/fidl.md
+[api-rubric]: development/api/fidl.md
 [at-rest conformance suite]: /src/tests/fidl/conformance_suite/
 [banjo]: /src/devices/tools/fidlgen_banjo
-[bindings-refs]: /docs/reference/fidl/bindings/overview.md
-[bindings-spec]: /docs/reference/fidl/language/bindings-spec.md
-[bindings-tutorials]: /docs/development/languages/fidl/tutorials/overview.md
+[bindings-refs]: reference/fidl/bindings/overview.md
+[bindings-spec]: reference/fidl/language/bindings-spec.md
+[bindings-tutorials]: development/languages/fidl/tutorials/overview.md
 [dangerous identifiers suite]: /src/tests/fidl/dangerous_identifiers/
 [dynamic compatibility suite]: /src/tests/fidl/compatibility/
-[editors]: /docs/development/languages/fidl/guides/editors.md
+[editors]: development/languages/fidl/guides/editors.md
 [fidl-codec]: /src/lib/fidl_codec
 [fidlc-tests]: /tools/fidl/fidlc/tests
-[fidl-grammar]: /docs/reference/fidl/language/grammar.md
-[fidl-ref]: /docs/reference/fidl/language/language.md
+[fidl-grammar]: reference/fidl/language/grammar.md
+[fidl-ref]: reference/fidl/language/language.md
 [fidldoc]: /tools/fidl/fidldoc
 [fidlgen-lib]: /tools/fidl/lib/fidlgen
 [fidlgen-tests]: /tools/fidl/lib/fidlgentest
 [fidlmerge]: /tools/fidl/fidlmerge
 [gidl]: /tools/fidl/gidl
 [kazoo]: /zircon/tools/kazoo
-[lexicon]: /docs/reference/fidl/language/lexicon.md
-[llcpp-allocators]: /docs/development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
+[lexicon]: reference/fidl/language/lexicon.md
+[llcpp-allocators]: development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
 [measure-tape]: /tools/fidl/measure-tape
 [source compatibility suite]: /src/tests/fidl/source_compatibility/
 [span-tests]: /tools/fidl/fidlc/tests/span_tests.cc

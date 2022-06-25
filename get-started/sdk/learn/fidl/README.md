@@ -4,8 +4,8 @@
 
 ## Prerequisites
 
-*   [Introduction to Fuchsia](/docs/get-started/sdk/learn/intro/README.md)
-*   [Fuchsia Components](/docs/get-started/sdk/learn/components/README.md)
+*   [Introduction to Fuchsia](get-started/sdk/learn/intro/README.md)
+*   [Fuchsia Components](get-started/sdk/learn/components/README.md)
 
 ## What you'll learn
 

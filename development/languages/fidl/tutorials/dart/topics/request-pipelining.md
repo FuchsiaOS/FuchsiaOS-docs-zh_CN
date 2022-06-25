@@ -200,9 +200,9 @@ protocol requests that may fail, see the [FIDL API rubric][rubric].
 
 <!-- xrefs -->
 [src]: /examples/fidl/dart/request_pipelining
-[server-tut]: /docs/development/languages/fidl/tutorials/dart/basics/server.md
-[server-tut-main]: /docs/development/languages/fidl/tutorials/dart/basics/server.md#main
-[client-tut]: /docs/development/languages/fidl/tutorials/dart/basics/client.md
-[rubric]: /docs/development/api/fidl.md#request-pipelining
-[overview]: /docs/development/languages/fidl/tutorials/dart/README.md
+[server-tut]: development/languages/fidl/tutorials/dart/basics/server.md
+[server-tut-main]: development/languages/fidl/tutorials/dart/basics/server.md#main
+[client-tut]: development/languages/fidl/tutorials/dart/basics/client.md
+[rubric]: development/api/fidl.md#request-pipelining
+[overview]: development/languages/fidl/tutorials/dart/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

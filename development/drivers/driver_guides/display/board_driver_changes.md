@@ -35,7 +35,7 @@ bind to this composite device and load the appropriate display driver.
 [This change][vim3-cl] is a complete example of board driver modifications for the VIM3.
 
 <!-- xrefs -->
-[bti]: /docs/reference/kernel_objects/bus_transaction_initiator.md
+[bti]: reference/kernel_objects/bus_transaction_initiator.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
 [cda]: https://fuchsia.googlesource.com/fuchsia/+/7a5659579e2340a50cbd5063ee7925b46d4fcf6f/src/devices/board/drivers/astro/astro-display.cc#125
 [amlogic-display]: /src/graphics/display/drivers/amlogic-display/amlogic-display.cc

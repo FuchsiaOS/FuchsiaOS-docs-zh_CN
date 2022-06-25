@@ -12,4 +12,4 @@ framework APIs for elements such as window management, input event handling, or
 accessibility.
 
 Note: For more details on the session framework, see
-[Introduction to the session framework](/docs/concepts/session/introduction.md).
+[Introduction to the session framework](concepts/session/introduction.md).

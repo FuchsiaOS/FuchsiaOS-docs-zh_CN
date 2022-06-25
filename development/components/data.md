@@ -243,12 +243,12 @@ can be routed as subdirectories to components that expect them.
 
 Due to the above, always prefer using `resource()` if possible.
 
-[additional-packaged-resources]: /docs/development/components/build.md#additional-packaged-resources
-[build-components]: /docs/development/components/build.md
-[config-migration]: /docs/development/components/v2/migration/features.md#config-data
+[additional-packaged-resources]: development/components/build.md#additional-packaged-resources
+[build-components]: development/components/build.md
+[config-migration]: development/components/v2/migration/features.md#config-data
 [gn-placeholders]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#placeholders
-[icu-data]: /docs/development/internationalization/icu_data.md
+[icu-data]: development/internationalization/icu_data.md
 [icu-data-configs]: /src/lib/icu/tzdata/BUILD.gn
-[legacy-components]: /docs/concepts/components/v1/README.md
-[metafar]: /docs/concepts/packages/package.md#metafar
+[legacy-components]: concepts/components/v1/README.md
+[metafar]: concepts/packages/package.md#metafar
 [resource]: /build/dist/resource.gni

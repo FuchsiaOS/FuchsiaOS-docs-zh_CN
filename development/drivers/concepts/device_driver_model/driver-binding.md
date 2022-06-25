@@ -51,7 +51,7 @@ ZIRCON_DRIVER(Driver, Ops, VendorName, Version);
  - `Version` is a string representing the version of the driver.
 
 For more details, see [the driver development documentation]
-(/docs/concepts/drivers/driver-development).
+(concepts/drivers/driver-development).
 
 ## Bind rules {#bind-rules}
 
@@ -237,7 +237,7 @@ The JSON specification must be a list of test case objects, where each object co
  - `name` A string for the name of the test case.
  - `expected` The expected result. Must be `“match”` or `“abort”`.
  - `device` A list of string key value pairs describing the properties of a device. This is
-   similar to the debugger's [device specifications](/docs/development/drivers/diagnostics/bind-debugger.md#device-specification).
+   similar to the debugger's [device specifications](development/drivers/diagnostics/bind-debugger.md#device-specification).
 
 If the test is for a composite device, then each node in the device can have a
 list of test case objects. The JSON specification for the unit tests will be a
@@ -522,7 +522,7 @@ Driver   : None
 [ 5/  5] : Key "fuchsia.driver.framework.dfv2" Value true
 ```
 
-See the [drivers and nodes documentation](/docs/concepts/drivers/drivers_and_nodes.md) for more information on the printed topology.
+See the [drivers and nodes documentation](concepts/drivers/drivers_and_nodes.md) for more information on the printed topology.
 
 #####Driver properties in the driver source code
 

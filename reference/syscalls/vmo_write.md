@@ -22,7 +22,7 @@ zx_status_t zx_vmo_write(zx_handle_t handle,
 ## DESCRIPTION
 
 `zx_vmo_write()` attempts to write exactly *buffer_size* bytes to a [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
+object](reference/kernel_objects/vm_object.md) (VMO) at *offset*.
 
 *buffer* pointer to a user buffer to write bytes from.
 

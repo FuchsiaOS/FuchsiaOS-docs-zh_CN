@@ -11,7 +11,7 @@ for performing DMA.
 
 ## DESCRIPTION
 
-PMTs are obtained by [pinning memory with a BTI object](/docs/reference/syscalls/bti_pin.md).
+PMTs are obtained by [pinning memory with a BTI object](reference/syscalls/bti_pin.md).
 It is valid for the device associated with the BTI to access the memory represented
 by the PMT for as long as the PMT object is around.  When the PMT object is
 destroyed, either via [`zx_handle_close()`], [`zx_pmt_unpin()`], or process
@@ -31,6 +31,6 @@ underlying memory is *quarantined*.  See
  - [`zx_bti_pin()`] - pin memory and grant access to it to the BTI
  - [`zx_pmt_unpin()`] - revoke access and unpin memory
 
-[`zx_bti_pin()`]: /docs/reference/syscalls/bti_pin.md
-[`zx_handle_close()`]: /docs/reference/syscalls/handle_close.md
-[`zx_pmt_unpin()`]: /docs/reference/syscalls/pmt_unpin.md
+[`zx_bti_pin()`]: reference/syscalls/bti_pin.md
+[`zx_handle_close()`]: reference/syscalls/handle_close.md
+[`zx_pmt_unpin()`]: reference/syscalls/pmt_unpin.md

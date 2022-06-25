@@ -142,7 +142,7 @@ The implementation contains the following elements:
 * The method for `EchoString` replies synchronously with the request value by using the
   completer (for asynchronous replies, see
   [responding to requests asynchronously in
-  LLCPP](/docs/development/languages/fidl/tutorials/llcpp/topics/async-completer.md)).
+  LLCPP](development/languages/fidl/tutorials/llcpp/topics/async-completer.md)).
 * The method for `SendString` uses the `binding_` member (if defined) to send
   an `OnString` event containing the request value.
 
@@ -284,19 +284,19 @@ Note: Component instances are referenced by their
 the [component instance tree][glossary.component-instance-tree]
 
 <!-- xrefs -->
-[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
-[glossary.component-url]: /docs/glossary/README.md#component-url
-[glossary.fuchsia-pkg-url]: /docs/glossary/README.md#fuchsia-pkg-url
-[glossary.moniker]: /docs/glossary/README.md#moniker
-[fidl-intro]: /docs/development/languages/fidl/tutorials/llcpp/basics/using-fidl.md
-[building-components]: /docs/development/components/build.md
-[products]: /docs/development/build/build_system/boards_and_products.md
-[declaring-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
-[depending-fidl]: /docs/development/languages/fidl/tutorials/llcpp/basics/using-fidl.md
-[component-manager]: /docs/concepts/components/v2/component_manager.md
-[protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
-[bindings-iface]: /docs/reference/fidl/bindings/llcpp-bindings.md#protocols
-[compiling-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
+[glossary.component-instance-tree]: glossary/README.md#component-instance-tree
+[glossary.component-url]: glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: glossary/README.md#fuchsia-pkg-url
+[glossary.moniker]: glossary/README.md#moniker
+[fidl-intro]: development/languages/fidl/tutorials/llcpp/basics/using-fidl.md
+[building-components]: development/components/build.md
+[products]: development/build/build_system/boards_and_products.md
+[declaring-fidl]: development/languages/fidl/tutorials/fidl.md
+[depending-fidl]: development/languages/fidl/tutorials/llcpp/basics/using-fidl.md
+[component-manager]: concepts/components/v2/component_manager.md
+[protocol-open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
+[bindings-iface]: reference/fidl/bindings/llcpp-bindings.md#protocols
+[compiling-fidl]: development/languages/fidl/tutorials/fidl.md
 [async-loop]: /zircon/system/ulib/async-loop/include/lib/async-loop/cpp/loop.h
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
-[concepts]: /docs/concepts/fidl/overview.md
+[overview]: development/languages/fidl/tutorials/overview.md
+[concepts]: concepts/fidl/overview.md

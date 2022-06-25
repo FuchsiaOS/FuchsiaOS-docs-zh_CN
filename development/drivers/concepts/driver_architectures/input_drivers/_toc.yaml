@@ -7,4 +7,4 @@
 # team as reviewer.
 toc:
 - title: "Fuchsia input drivers"
-  path: /docs/development/drivers/concepts/driver_architectures/input_drivers/input.md
+  path: development/drivers/concepts/driver_architectures/input_drivers/input.md

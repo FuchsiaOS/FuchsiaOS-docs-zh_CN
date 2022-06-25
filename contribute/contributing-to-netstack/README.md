@@ -304,19 +304,19 @@ If you're working on changes that affect `fdio` and `third_party/go`, add:
 --with //sdk/lib/fdio:tests --with //third_party/go:go_stdlib_tests
 ```
 
-[getting_started]: /docs/get-started
-[contribute_changes]: /docs/development/source_code/contribute_changes.md
+[getting_started]: get-started
+[contribute_changes]: development/source_code/contribute_changes.md
 [spawn]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fuchsia-async/src/executor.rs#30
 [select]: https://docs.rs/futures/0.3.4/futures/macro.select.html
 [spawn_select]: https://fuchsia.googlesource.com/fuchsia/+/0c00fd3%5E%21/#F3
 [spawn_await]: https://fuchsia.googlesource.com/fuchsia/+/038d2b9%5E%21/#F0
 [magic_number]: https://en.wikipedia.org/wiki/Magic_number_(programming)
-[rfc_process]: /docs/contribute/governance/rfcs/0001_rfc_process.md
+[rfc_process]: contribute/governance/rfcs/0001_rfc_process.md
 [commit_guidelines]: https://www.git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines
 [commit_log-message-integration]: https://chromium.googlesource.com/infra/infra/+/HEAD/appengine/monorail/doc/userguide/power-users.md#commit_log-message-integration
 [flutter_philosophy]: https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo#philosophy
-[testability_rubrics]: /docs/development/testing/testability_rubric.md
-[tests_as_components]: /docs/development/testing/run_fuchsia_tests.md
+[testability_rubrics]: development/testing/testability_rubric.md
+[tests_as_components]: development/testing/run_fuchsia_tests.md
 [netemul]: /src/connectivity/network/testing/netemul/README.md
 [change_detector_tests]: https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html
 [rust_65218]: https://github.com/rust-lang/rust/issues/65218
@@ -324,5 +324,5 @@ If you're working on changes that affect `fdio` and `third_party/go`, add:
 [gtest_test_flags]: https://github.com/google/googletest/blob/main/docs/advanced.md#repeating-the-tests
 [`fuchsia_async::Executor::new_with_fake_time`]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fuchsia-async/src/executor.rs#345
 [fake-clock]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fake-clock
-[determinism]: /docs/contribute/testing/best-practices.md#write_reproducible_deterministic_tests
+[determinism]: contribute/testing/best-practices.md#write_reproducible_deterministic_tests
 [netemul-owners]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/connectivity/network/tests/integration/common/OWNERS

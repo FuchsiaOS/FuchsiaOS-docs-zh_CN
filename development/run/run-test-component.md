@@ -11,7 +11,7 @@ Note: You can find the source code for the "Hello, World" example at
 
 Before you can run this test component, you must:
 
-*   [Set up the Fuchsia development environment](/docs/get-started/get_fuchsia_source.md)
+*   [Set up the Fuchsia development environment](get-started/get_fuchsia_source.md)
 
 ## Exploring the example {#exploring-the-example}
 
@@ -25,7 +25,7 @@ various supported languages. A test component has two key elements:
 ### Executable test suite {#executable-test}
 
 Fuchsia test suites are built as components and execute within a
-[test runner](/docs/development/testing/components/test_runner_framework.md) for supported
+[test runner](development/testing/components/test_runner_framework.md) for supported
 testing frameworks, such as GoogleTest.
 The test suite binary includes test cases written against these
 language-specific frameworks.
@@ -43,7 +43,7 @@ language-specific frameworks.
    ```
 
 For more details on testing Fuchsia components, see
-[Testing with Components](/docs/development/testing/components)
+[Testing with Components](development/testing/components)
 
 ### BUILD.gn {#build-gn}
 
@@ -65,7 +65,7 @@ This template is specifically designed to package components containing tests.
    ```
 
 To learn more about how Fuchsia uses GN to define test packages,
-see: [Building components](/docs/development/components/build.md).
+see: [Building components](development/components/build.md).
 
 ## Include the example tests in your Fuchsia image {#include-the-example}
 
@@ -93,7 +93,7 @@ For a Fuchsia device with the minimum build configuration, the command is:
 fx set core.x64 --with //examples/hello_world:tests
 ```
 
-See [Configure a build](/docs/development/build/fx.md#configure-a-build) for
+See [Configure a build](development/build/fx.md#configure-a-build) for
 more options.
 
 Once you have set your build configuration, build Fuchsia with the following
@@ -104,7 +104,7 @@ fx build
 ```
 
 You now have a build that includes the example tests that can be
-[fetched and launched on demand](/docs/development/build/build_system/boards_and_products.md#universe).
+[fetched and launched on demand](development/build/build_system/boards_and_products.md#universe).
 
 ## Run the test suite {#run-the-test-suite}
 

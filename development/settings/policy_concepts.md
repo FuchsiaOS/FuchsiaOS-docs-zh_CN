@@ -155,4 +155,4 @@ The following is a recap of policy API concepts:
 
 <!-- link labels -->
 [volume_policy_fidl]: /sdk/fidl/fuchsia.settings.policy/volume_policy.fidl
-[hanging-get]: /docs/development/api/fidl.md#hanging-get
+[hanging-get]: development/api/fidl.md#hanging-get

@@ -36,6 +36,6 @@ FIDL supports the following method types:
   the `->` operator. In the `Echo` example, the `OnString()` method is an event.
 
 Note: For more details on FIDL language syntax and supported types, see the
-[FIDL Language specification](/docs/reference/fidl/language/language.md).
+[FIDL Language specification](reference/fidl/language/language.md).
 
-[glossary.handle]: /docs/glossary/README.md#handle
+[glossary.handle]: glossary/README.md#handle

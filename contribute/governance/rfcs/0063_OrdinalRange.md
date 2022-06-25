@@ -119,4 +119,4 @@ We assume other similar systems do something similar, but haven't
 researched it.
 
 <!-- xrefs -->
-[fidl-style]: /docs/development/languages/fidl/guides/style.md
+[fidl-style]: development/languages/fidl/guides/style.md
