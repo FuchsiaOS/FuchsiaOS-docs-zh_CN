@@ -31,6 +31,8 @@
 | emulator            | 模拟器                 | G                                                     |
 | ergonomics          | 工效学                 | i & G                                                 |
 | fault injection     | 故障注入               | G                                                     |
+| get stared          | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
+| get started with    | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
 | guidance            | 指导                   |                                                       |
 | guide               | 指南                   | G                                                     |
 | guideline           | 方针                   |                                                       |
