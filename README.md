@@ -4,14 +4,14 @@
 
 英文原版 README 请查阅 [README_en.md](./README_en.md)，其中部分介绍了文档的大致构成。下面是本项目中大致的文件构成。
 
- - [行为准则](./CODE_OF_CONDUCT.md)
+ - [行为准则](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/CODE_OF_CONDUCT.md)（英文）
  - [术语表](glossary/README.md) - 常用术语的定义
  - [使用入门](get-started/README.md) - 您要入门 Fuchsia 所需要的一切
  - [开发](development/README.md) - 针对进行构建、运行和测试 Fuchsia 及运行 Fuchsia 的软件的说明
  - [系统](concepts/index.md) - 针对 Fuchsia 运作机理的文档
  - [Zircon](concepts/kernel/README.md) - 针对 Zircon 内核的文档
  - [运行示例组件](development/run/run-examples.md) - 针对在设备上运行示例的说明
- - [贡献修改](./CONTRIBUTING.md)
+ - [贡献修改](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/CONTRIBUTING.md)（英文）
 
 本仓库内的其他文件是 Fuchsia 的**系统级**文档。**个体子项目**在其项目仓库内拥有各自的文档。上述文档链接至系统级仓库内和个体项目仓库内的个体文档。
 
