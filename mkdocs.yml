@@ -40,6 +40,10 @@ plugins:
   - exclude:
       glob:
         - _*
+  - pymdownx.inlinehilite
+  - codehilite:
+      guess_lang: false
+      linenums: true
 extra:
   social:
     - icon: material/web
