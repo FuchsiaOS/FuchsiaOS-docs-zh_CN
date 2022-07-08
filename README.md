@@ -1,6 +1,6 @@
 # 2022 年度 Fuchsia 文档简体中文翻译项目
 
-![Fuchsia中文文档翻译小组](https://fuchsia-china.com/wp-content/uploads/2022/06/fuchsia-new-trans-bg.png)
+![Fuchsia中文文档翻译小组](https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-trans-outlined.png)
 
 > 英文文档来源：https://fuchsia.googlesource.com/fuchsia/+/main/docs
 
