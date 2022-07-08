@@ -1,5 +1,7 @@
 # 2022 年度 Fuchsia 文档简体中文翻译项目
 
+![Fuchsia中文文档翻译小组](https://fuchsia-china.com/wp-content/uploads/2022/06/fuchsia-new-trans-bg.png)
+
 > 英文文档来源：https://fuchsia.googlesource.com/fuchsia/+/main/docs
 
 英文原版 README 请查阅 [README_en.md](README_en.md)，其中部分介绍了文档的大致构成。下面是本项目中大致的文件构成。
