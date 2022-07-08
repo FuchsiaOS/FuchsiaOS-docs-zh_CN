@@ -1,7 +1,7 @@
 site_name: Fuchsia中文文档
 repo_url: https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN
 site_author: Fuchsia中文文档翻译小组
-copyright: Fuchsia中文社区
+copyright: Copyright &copy; <a href='https://fuchsia-china.com'>Fuchsia中文社区</a>
 docs_dir: docs
 site_dir: site
 theme:
@@ -16,7 +16,6 @@ theme:
         name: 切换至暗色模式
       primary: purple
       accent: purple
-
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -25,14 +24,27 @@ theme:
         name: 切换至亮色模式
       primary: purple
       accent: purple
-
   logo: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-white.png
   favicon: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-outlined.png
   features:
     - navigation.top
+    - navigation.instant
+    # - navigation.tabs
+  custom_dir: overrides
 plugins:
   - search
   - ezlinks:
       warn_ambiguities: false
       wikilinks: false
       reference_links: true
+  - exclude:
+      glob:
+        - _*
+extra:
+  social:
+    - icon: material/web
+      link: https://fuchsia-china.com/
+      name: Fuchsia 中文社区
+    - icon: octicons/plus-circle-16
+      link: https://fuchsia-china.com/2022-document-group-recruitment/
+      name: 加入我们
