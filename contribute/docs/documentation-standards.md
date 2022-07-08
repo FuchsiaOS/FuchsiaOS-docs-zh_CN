@@ -32,43 +32,43 @@ This document outlines standards, structure, tone, and best practices for Fuchsi
     * <code>get-started</code>:
        <!-- 
        Specific guidance to download, set up, and start developing on Fuchsia should go in
-       `/docs/get-started`. This content should contain opinionated, short tutorials that help new
+       `/get-started`. This content should contain opinionated, short tutorials that help new
        users get started on Fuchsia, and link to additional documentation in Fuchsia.dev.
        -->
-       有关下载、设置、开始 Fuchsia 开发的具体指南应当放进 `/docs/get-started`。这类内容应当包含观点明确的、简短的教程，以帮助新用户入门 Fuchsia，并在 Fuchsia.dev 中链接至附加文档。
+       有关下载、设置、开始 Fuchsia 开发的具体指南应当放进 `/get-started`。这类内容应当包含观点明确的、简短的教程，以帮助新用户入门 Fuchsia，并在 Fuchsia.dev 中链接至附加文档。
     *  <code>development</code>:
         <!--
-        The `/docs/development/` directory (which displays on the site as "Guides") contains
+        The `/development/` directory (which displays on the site as "Guides") contains
         instructions and tutorials for developers
         working on Fuchsia. This directory includes documentation
         on how to build, run, and test Fuchsia. 
         -->
-        `/docs/development/` 目录（在网站上显示为“指南”（Guides））中包含了针对Fuchsia开发者的说明和教程。该目录包含关于如何构建、运行和测试 Fuchsia 的文档。
+        `/development/` 目录（在网站上显示为“指南”（Guides））中包含了针对Fuchsia开发者的说明和教程。该目录包含关于如何构建、运行和测试 Fuchsia 的文档。
     *  <code>concepts</code>:
         <!-- 
-        The `/docs/concepts` directory contains in-depth explanations of specific features of
+        The `/concepts` directory contains in-depth explanations of specific features of
         Fuchsia and how they work, including operating system overviews, frameworks, architecture,
         and packages.
         -->
-        `/docs/concepts` 目录包含针对 Fuchsia 具体特性及其工作原理的深入解释，包括操作系统概述、框架、架构和软件包（package）。
+        `/concepts` 目录包含针对 Fuchsia 具体特性及其工作原理的深入解释，包括操作系统概述、框架、架构和软件包（package）。
     *  <code>reference</code>:
         <!--
-        The `/docs/reference/` directory contains generated reference docs on Fuchsia tools and APIs,
+        The `/reference/` directory contains generated reference docs on Fuchsia tools and APIs,
         including FIDL and kernel reference.
         -->
-        `/docs/reference/` 目录包含生成的关于 Fuchsia 工具和 API 的参考文档，包括 FIDL 和内核的参考文档。
+        `/reference/` 目录包含生成的关于 Fuchsia 工具和 API 的参考文档，包括 FIDL 和内核的参考文档。
     *  <code>contribute</code>:
         <!--
-        The `/docs/contribute/` directory contains code and documentation contribution processes and
+        The `/contribute/` directory contains code and documentation contribution processes and
         best practices, including documentation code and style guides, code polcies, and governance.
         -->
-        `/docs/contribute/` 目录包含代码和文档贡献进度以及最佳做法，包含文档准则和风格指南、代码策略以及管理体系。
+        `/contribute/` 目录包含代码和文档贡献进度以及最佳做法，包含文档准则和风格指南、代码策略以及管理体系。
     *  `images`
         <!--
-        The `/docs/images/` directory contains images used in the documentation. You should
+        The `/images/` directory contains images used in the documentation. You should
         place images in this common directory.
         -->
-        `/docs/images/` 目录包含在文档中使用的图像。您应当将图像放在这一公共目录中。
+        `/images/` 目录包含在文档中使用的图像。您应当将图像放在这一公共目录中。
 
 <!-- 
 ## Document types
@@ -135,15 +135,15 @@ include the following:
  - 将您的文档添加至目录：在 fuchsia.dev 的左侧导航中添加文档链接。要获取更多信息，请参阅[网站导航和目录文件](documentation-navigation-toc.md)  
 <!-- 
 - Cross-link documentation: Add links to documents on subjects that help readers better understand the
-  content of your document. For example, the conceptual document for the [Fuchsia emulator](/docs/development/build/emulator.md)
+  content of your document. For example, the conceptual document for the [Fuchsia emulator](/development/build/emulator.md)
   links to relevant guides and getting started documents about the Fuchsia emulator.
 -->
-- 交叉链接文档：添加指向文档主题的链接，以帮助读者更好地理解文档的内容。 例如，[Fuchsia 模拟器] (/docs/development/build/emulator.md) 的概念文档链接到有关 Fuchsia 模拟器的相关指南和入门文档。
+- 交叉链接文档：添加指向文档主题的链接，以帮助读者更好地理解文档的内容。 例如，[Fuchsia 模拟器] (/development/build/emulator.md) 的概念文档链接到有关 Fuchsia 模拟器的相关指南和入门文档。
 <!-- 
 - Use consistent terminology: If you're writing about a specific concept in Fuchsia, verify that you are
-  using consistent terminology. Use the [glossary](/docs/glossary/README.md) to verify terms.
+  using consistent terminology. Use the [glossary](/glossary/README.md) to verify terms.
  -->
-- 使用一致的术语：如果您在撰写有关 Fuchsia 中特定概念的文章，请确认您使用的是一致的术语。 使用[术语表](/docs/glossary/README.md)来验证用语。
+- 使用一致的术语：如果您在撰写有关 Fuchsia 中特定概念的文章，请确认您使用的是一致的术语。 使用[术语表](/glossary/README.md)来验证用语。
 
 <!-- 
 ## Documentation file formats and file names
@@ -181,9 +181,9 @@ contains a command with an underscore, then you can include the underscore.
  -->
 - **使用简单的美国英语撰写。** 使用清晰、直白的美国英语撰写，以使内容易于理解。使用简单的词汇，保持简洁使用（常见）缩写，如 _it's_ 或 _don't_。
 <!-- 
-- **Be respectful.** Follow the guidelines set forth in [Respectful Code](/docs/contribute/respectful_code.md).
+- **Be respectful.** Follow the guidelines set forth in [Respectful Code](/contribute/respectful_code.md).
  -->
-- **心怀敬意。** 请遵循[尊重性规范](/docs/contribute/respectful_code.md)中规定的方针。
+- **心怀敬意。** 请遵循[尊重性规范](/contribute/respectful_code.md)中规定的方针。
 <!-- 
 - **Write in second-person ("you").** Fuchsia documentation is written to the user ("you"). When
   For example, "You can install Fuchsia by doing the following...". Do not refer to the reader in the
@@ -236,9 +236,9 @@ contains a command with an underscore, then you can include the underscore.
 - **Define technical terms and avoid jargon.** Fuchsia documentation should be accessible
   to all levels of developers. Avoid overcomplicating documentation with uncommon or highly
   technical words. If you're using Fuchsia-specific terms, define them in
-  the [glossary](/docs/glossary/README.md). Avoid invented words.
+  the [glossary](/glossary/README.md). Avoid invented words.
  -->
-- **定义技术术语，回避行话。** Fuchsia 文档应当易于各个层次的开发者理解。请避免使用不常用或高度技术性词语而使得文章过于复杂。如果您使用了 Fuchsia 特定的术语，请在[术语表](/docs/glossary/README.md)中对其进行定义。请回避自造词。
+- **定义技术术语，回避行话。** Fuchsia 文档应当易于各个层次的开发者理解。请避免使用不常用或高度技术性词语而使得文章过于复杂。如果您使用了 Fuchsia 特定的术语，请在[术语表](/glossary/README.md)中对其进行定义。请回避自造词。
 
 <!-- 
 - **Avoid colloquial phrases or regional idioms.** Keep in mind that many Fuchsia users
@@ -263,6 +263,6 @@ contains a command with an underscore, then you can include the underscore.
 
 <!-- 
 - **Use consistent terminology.** Ensure that terms are consistent in code, UI, and documentation.
-  Use common terms when possible, and use the [glossary](/docs/glossary/README.md) to verify terminology.
+  Use common terms when possible, and use the [glossary](/glossary/README.md) to verify terminology.
  -->
-- **使用一致的术语。**确保术语在代码、用户界面和文档中是一致的。尽可能使用常见术语，并使用[术语表](/docs/glossary/README.md)来验证用语。
+- **使用一致的术语。**确保术语在代码、用户界面和文档中是一致的。尽可能使用常见术语，并使用[术语表](/glossary/README.md)来验证用语。
