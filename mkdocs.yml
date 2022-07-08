@@ -7,7 +7,7 @@ site_dir: site
 theme:
   name: material
   language: zh
-  logo: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-trans-outlined.png
-  favicon: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-2.png
+  logo: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-outlined.png
+  favicon: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-outlined.png
   features:
     - navigation.top
