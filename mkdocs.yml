@@ -1,0 +1,9 @@
+site_name: Fuchsia中文文档测试
+repo_url: https://github.com/y2-Whyto/FuchsiaOS-docs-zh_CN
+docs_dir: docs
+site_dir: site
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.top
