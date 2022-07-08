@@ -1,2 +1,3 @@
 jinja2==3.0.3
 mkdocs-material
+mkdocs-ezlinks-plugin

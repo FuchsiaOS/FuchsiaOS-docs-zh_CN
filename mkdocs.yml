@@ -7,7 +7,32 @@ site_dir: site
 theme:
   name: material
   language: zh
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: 切换至暗色模式
+      primary: purple
+      accent: purple
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: 切换至亮色模式
+      primary: purple
+      accent: purple
+
   logo: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-white.png
   favicon: https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-logo-outlined.png
   features:
     - navigation.top
+plugins:
+  - search
+  - ezlinks:
+      warn_ambiguities: false
+      wikilinks: false
+      reference_links: true
