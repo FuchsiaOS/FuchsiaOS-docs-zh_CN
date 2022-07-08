@@ -16,7 +16,7 @@ As a consequence of this, some sections are incomplete.
 
 ## Summary
 
-[RFC-0056](contribute/governance/rfcs/0056_empty_structs.md) ("Empty Structs") improved language ergonomics by
+[RFC-0056](/contribute/governance/rfcs/0056_empty_structs.md) ("Empty Structs") improved language ergonomics by
 enabling empty structs to be defined.
 Empty structs carry no content, but they currently occupy one byte in the
 wire format to be compatible across all FIDL language implementations.
@@ -28,7 +28,7 @@ on the wire.
 
 ## Motivation
 
-[RFC-0056](contribute/governance/rfcs/0056_empty_structs.md) identifies use cases for empty structs:
+[RFC-0056](/contribute/governance/rfcs/0056_empty_structs.md) identifies use cases for empty structs:
 
 *   planned future use,
 *   as an option in a union,
@@ -244,7 +244,7 @@ Any method parameters that are empty structs can either be:
 
 ## Implementation strategy
 
-The implementation will be similar to the [RFC-0056](contribute/governance/rfcs/0056_empty_structs.md),
+The implementation will be similar to the [RFC-0056](/contribute/governance/rfcs/0056_empty_structs.md),
 and needs to be split across multiple CLs:
 
 *   CLs to update generated bindings for all languages, without updating

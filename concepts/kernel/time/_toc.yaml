@@ -7,13 +7,13 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: concepts/kernel/time/overview.md
+  path: /concepts/kernel/time/overview.md
 - title: "Monotonic"
-  path: concepts/kernel/time/monotonic.md
+  path: /concepts/kernel/time/monotonic.md
 - title: "Local"
-  path: concepts/kernel/time/local.md
+  path: /concepts/kernel/time/local.md
 - title: "Language Support"
-  path: concepts/kernel/time/language_support.md
+  path: /concepts/kernel/time/language_support.md
 - title: "UTC"
   section:
-  - include: concepts/kernel/time/utc/_toc.yaml
+  - include: /concepts/kernel/time/utc/_toc.yaml

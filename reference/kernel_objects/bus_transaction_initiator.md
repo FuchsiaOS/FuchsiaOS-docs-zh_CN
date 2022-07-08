@@ -45,7 +45,7 @@ TODO(teisenbe): Add details about failed transaction notification.
  - [`zx_bti_release_quarantine()`] - release quarantined PMTs
  - [`zx_pmt_unpin()`] - revoke access and unpin memory
 
-[`zx_bti_create()`]: reference/syscalls/bti_create.md
-[`zx_bti_pin()`]: reference/syscalls/bti_pin.md
-[`zx_bti_release_quarantine()`]: reference/syscalls/bti_release_quarantine.md
-[`zx_pmt_unpin()`]: reference/syscalls/pmt_unpin.md
+[`zx_bti_create()`]: /reference/syscalls/bti_create.md
+[`zx_bti_pin()`]: /reference/syscalls/bti_pin.md
+[`zx_bti_release_quarantine()`]: /reference/syscalls/bti_release_quarantine.md
+[`zx_pmt_unpin()`]: /reference/syscalls/pmt_unpin.md

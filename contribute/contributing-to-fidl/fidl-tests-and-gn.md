@@ -334,12 +334,12 @@ tests. Using `fx test`, we can already
 
 <!-- xrefs -->
 [GN target]: https://gn.googlesource.com/gn/+/HEAD/docs/language.md#Targets
-[Fuchsia package]: concepts/packages/package.md
-[Fuchsia component]: concepts/components/v2
-[Run Fuchsia tests]: development/testing/run_fuchsia_tests.md
-[Fuchsia component manifest]: concepts/components/v1/component_manifests.md
-[Fuchsia package URLs]: concepts/packages/package_url.md
-[Source code layout]: development/source_code/layout.md
-[Building components]: development/components/build.md
-[Complex topologies and integration testing]: development/testing/components/integration_testing.md
+[Fuchsia package]: /concepts/packages/package.md
+[Fuchsia component]: /concepts/components/v2
+[Run Fuchsia tests]: /development/testing/run_fuchsia_tests.md
+[Fuchsia component manifest]: /concepts/components/v1/component_manifests.md
+[Fuchsia package URLs]: /concepts/packages/package_url.md
+[Source code layout]: /development/source_code/layout.md
+[Building components]: /development/components/build.md
+[Complex topologies and integration testing]: /development/testing/components/integration_testing.md
 [with_unit_tests]: https://fuchsia.googlesource.com/fuchsia/+/9d9f092f2b30598c3929bd30d0058d4e052bb0f4/build/rust/rustc_library.gni#91

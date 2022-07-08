@@ -11,4 +11,4 @@ toc:
   - title: "Telephony"
     path: https://fuchsia.googlesource.com/fuchsia/+/HEAD/src/connectivity/telephony/
   - title: "Wireless"
-    path: development/networking/wireless_networking.md
+    path: /development/networking/wireless_networking.md

@@ -43,16 +43,16 @@ If you're interested in working on Zircon, see
 
 <!-- Reference links -->
 
-[install-fuchsia-on-a-device]: development/hardware/README.md
-[download-fuchsia]: get-started/get_fuchsia_source.md
-[build-fuchsia]: get-started/build_fuchsia.md
-[start-the-fuchsia-emulator]: get-started/set_up_femu.md
-[explore-fuchsia]: get-started/explore_fuchsia.md
-[software-model]: concepts/software_model.md
-[components]: concepts/components/v2/
-[fuchsia-packages]: concepts/packages/package.md
-[contribute-changes]: development/source_code/contribute_changes.md
-[find-a-starter-project]: contribute/open_projects/
-[zircon]: concepts/kernel/README.md
-[get-started-with-zircon]: development/kernel/getting_started.md
-[fuchsia-fundamentals]: get-started/learn/README.md
+[install-fuchsia-on-a-device]: /development/hardware/README.md
+[download-fuchsia]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md
+[start-the-fuchsia-emulator]: /get-started/set_up_femu.md
+[explore-fuchsia]: /get-started/explore_fuchsia.md
+[software-model]: /concepts/software_model.md
+[components]: /concepts/components/v2/
+[fuchsia-packages]: /concepts/packages/package.md
+[contribute-changes]: /development/source_code/contribute_changes.md
+[find-a-starter-project]: /contribute/open_projects/
+[zircon]: /concepts/kernel/README.md
+[get-started-with-zircon]: /development/kernel/getting_started.md
+[fuchsia-fundamentals]: /get-started/learn/README.md

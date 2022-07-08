@@ -427,14 +427,14 @@ test, and infrastructure technical debt over time which was often taken to meet
 project goals. This RFC does not seek to prevent technical debt, but rather to
 make such tradeoffs more informed and intentional.
 
-[rfc-0095]: contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
+[rfc-0095]: /contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
 [sdk-recipe]: https://fuchsia.googlesource.com/infra/recipes/+/179288fb999a853cc4cf78ccbf3de2ee5be57707/recipes/sdk.py
 [commit-ish]: https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefcommit-ishacommit-ishalsocommittish
 [hermeticity]: https://docs.bazel.build/versions/main/hermeticity.html
 [fint]: /tools/integration/fint/README.md
 [artifactory]: /tools/artifactory/README.md
 [gerrit-size-plugin]: https://chromium.googlesource.com/infra/gerrit-plugins/binary-size/+/HEAD/README.md
-[testing-scope]: contribute/testing/scope.md
+[testing-scope]: /contribute/testing/scope.md
 [reproducible-builds]: https://reproducible-builds.org
 [jiri]: https://fuchsia.googlesource.com/jiri
 [repo]: https://gerrit.googlesource.com/git-repo

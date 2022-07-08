@@ -811,13 +811,13 @@ know the type, and need to know how much data to ignore.
 Except allowing optionality on more types, if we wish to do that simultaneously.
 
 <!-- xrefs -->
-[RFC-0032]: contribute/governance/rfcs/0032_efficient_envelopes.md
-[RFC-0061]: contribute/governance/rfcs/0061_extensible_unions.md
-[wformat-handles]: reference/fidl/language/wire-format/README.md#handles
-[wformat-strings]: reference/fidl/language/wire-format/README.md#strings
-[wformat-vectors]: reference/fidl/language/wire-format/README.md#vectors
-[wformat-envelopes]: reference/fidl/language/wire-format/README.md#envelopes
-[wformat-transactional]: reference/fidl/language/wire-format/README.md#transactional-messages
+[RFC-0032]: /contribute/governance/rfcs/0032_efficient_envelopes.md
+[RFC-0061]: /contribute/governance/rfcs/0061_extensible_unions.md
+[wformat-handles]: /reference/fidl/language/wire-format/README.md#handles
+[wformat-strings]: /reference/fidl/language/wire-format/README.md#strings
+[wformat-vectors]: /reference/fidl/language/wire-format/README.md#vectors
+[wformat-envelopes]: /reference/fidl/language/wire-format/README.md#envelopes
+[wformat-transactional]: /reference/fidl/language/wire-format/README.md#transactional-messages
 [flexible-array-members]: https://en.wikipedia.org/wiki/Flexible_array_member
 [vectored-io]: https://en.wikipedia.org/wiki/Vectored_I/O
 [cognitive-chunking]: https://en.wikipedia.org/wiki/Chunking_(psychology)

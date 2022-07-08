@@ -12,7 +12,7 @@ Before running the Rust test suite on Fuchsia, you'll need to
 [build a custom Rust toolchain for Fuchsia]. Building a Fuchsia image is not
 required for running the test suite.
 
-[build a custom Rust toolchain for Fuchsia]: development/build/rust_toolchain.md
+[build a custom Rust toolchain for Fuchsia]: /development/build/rust_toolchain.md
 
 ## Running the Rust test suite
 

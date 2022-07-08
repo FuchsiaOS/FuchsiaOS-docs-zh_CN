@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Thread safety annotations"
-  path:  development/kernel/threads/thread_annotations.md
+  path:  /development/kernel/threads/thread_annotations.md
 - title: "Thread local storage"
-  path: development/kernel/threads/tls.md
+  path: /development/kernel/threads/tls.md

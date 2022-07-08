@@ -26,12 +26,12 @@ a scheduling configuration. The returned profile may then be applied to one or
 more threads using the [`zx_object_set_profile()`] syscall.
 
 Because profiles give significant control of the behaviour of the [kernel
-scheduler](concepts/kernel/kernel_scheduling.md), creating a profile requires the root
+scheduler](/concepts/kernel/kernel_scheduling.md), creating a profile requires the root
 resource. Once created, profiles may be delegated freely, however.
 
 Currently, only a single scheduler parameter `scheduler.priority` is supported,
 which determines the priority of the thread used by Zircon's [kernel
-scheduler](concepts/kernel/kernel_scheduling.md). [`zx_profile_create()`] describes how to
+scheduler](/concepts/kernel/kernel_scheduling.md). [`zx_profile_create()`] describes how to
 construct a profile object with a custom scheduler priority.
 
 ## SYSCALLS
@@ -39,5 +39,5 @@ construct a profile object with a custom scheduler priority.
  - [`zx_profile_create()`] - create a new profile object
  - [`zx_object_set_profile()`] - apply a profile to a thread
 
-[`zx_profile_create()`]: reference/syscalls/profile_create.md
-[`zx_object_set_profile()`]: reference/syscalls/object_set_profile.md
+[`zx_profile_create()`]: /reference/syscalls/profile_create.md
+[`zx_object_set_profile()`]: /reference/syscalls/object_set_profile.md

@@ -308,9 +308,9 @@ parameter `_N_` is not an [ABI-breaking][compat] change.
 
 > Strings should not be used to pass arbitrary binary data since bindings enforce
 > valid UTF-8. Instead, consider `bytes` for small data or
-> [`fuchsia.mem.Buffer`](development/api/fidl.md#consider-using-fuchsia_mem_buffer)
+> [`fuchsia.mem.Buffer`](/development/api/fidl.md#consider-using-fuchsia_mem_buffer)
 > for blobs. See
-> [Should I use string or vector?](development/api/fidl.md#should-i-use-string-or-vector)
+> [Should I use string or vector?](/development/api/fidl.md#should-i-use-string-or-vector)
 > for details.
 
 ### Vectors
@@ -363,18 +363,18 @@ Handles are denoted:
 *   **`zx.handle:<H, R, optional>`** : optional Zircon handle of type _H_ with
     rights _R_
 
-_H_ can be any [object](reference/kernel_objects/objects.md) supported by
+_H_ can be any [object](/reference/kernel_objects/objects.md) supported by
 Zircon, e.g. `channel`, `thread`, `vmo`. Please refer to the
 [grammar](grammar.md) for a full list.
 
-_R_ can be any [right](concepts/kernel/rights.md) supported by Zircon.
+_R_ can be any [right](/concepts/kernel/rights.md) supported by Zircon.
 Rights are bits-typed values, defined in the [`zx`](/zircon/vdso/rights.fidl)
 FIDL library, e.g. `zx.rights.READ`. In both the incoming and outgoing
 directions, handles are validated to have the correct Zircon object type and at
 least as many rights as are specified in FIDL. If the handle has more rights
 than is specified in FIDL, then its rights will be reduced by a call to
 `zx_handle_replace`. See [Life of a handle] for an example and [RFC-0028: Handle
-rights](contribute/governance/rfcs/0028_handle_rights.md) for further
+rights](/contribute/governance/rfcs/0028_handle_rights.md) for further
 details.
 
 Structs, tables, and unions containing handles must be marked with the
@@ -854,21 +854,21 @@ obtain a different reserved name:
 
 <!-- xref -->
 [mixin]: https://en.wikipedia.org/wiki/Mixin
-[rfc-0023]: contribute/governance/rfcs/0023_compositional_model_protocols.md
-[rfc-0031]: contribute/governance/rfcs/0031_typed_epitaphs.md
-[rfc-0033]: contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
-[rfc-0057]: contribute/governance/rfcs/0057_default_no_handles.md
-[rfc-0085]: contribute/governance/rfcs/0085_reducing_zx_status_t_space.md
-[fidl-overview]: concepts/fidl/overview.md
-[fidl-grammar]: reference/fidl/language/grammar.md
-[doc-attribute]: reference/fidl/language/attributes.md#Doc
-[naming-style]: development/languages/fidl/guides/style.md#Names
-[compat]: development/languages/fidl/guides/compatibility/README.md
-[union-compat]: development/languages/fidl/guides/compatibility/README.md#union
-[resource-compat]: development/languages/fidl/guides/compatibility/README.md#modifiers
-[bindings-reference]: reference/fidl/bindings/overview.md
-[lexicon-validate]: reference/fidl/language/lexicon.md#validate
-[wire-format]: reference/fidl/language/wire-format/README.md
-[naming-context]: contribute/governance/rfcs/0050_syntax_revamp.md#layout-naming-contexts
-[generated-name-attr]: reference/fidl/language/attributes.md#generated-name
-[Life of a handle]: concepts/fidl/life-of-a-handle.md
+[rfc-0023]: /contribute/governance/rfcs/0023_compositional_model_protocols.md
+[rfc-0031]: /contribute/governance/rfcs/0031_typed_epitaphs.md
+[rfc-0033]: /contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
+[rfc-0057]: /contribute/governance/rfcs/0057_default_no_handles.md
+[rfc-0085]: /contribute/governance/rfcs/0085_reducing_zx_status_t_space.md
+[fidl-overview]: /concepts/fidl/overview.md
+[fidl-grammar]: /reference/fidl/language/grammar.md
+[doc-attribute]: /reference/fidl/language/attributes.md#Doc
+[naming-style]: /development/languages/fidl/guides/style.md#Names
+[compat]: /development/languages/fidl/guides/compatibility/README.md
+[union-compat]: /development/languages/fidl/guides/compatibility/README.md#union
+[resource-compat]: /development/languages/fidl/guides/compatibility/README.md#modifiers
+[bindings-reference]: /reference/fidl/bindings/overview.md
+[lexicon-validate]: /reference/fidl/language/lexicon.md#validate
+[wire-format]: /reference/fidl/language/wire-format/README.md
+[naming-context]: /contribute/governance/rfcs/0050_syntax_revamp.md#layout-naming-contexts
+[generated-name-attr]: /reference/fidl/language/attributes.md#generated-name
+[Life of a handle]: /concepts/fidl/life-of-a-handle.md

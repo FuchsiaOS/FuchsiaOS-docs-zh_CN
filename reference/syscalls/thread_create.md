@@ -33,10 +33,10 @@ Thread handles may be waited on and will assert the signal
 **ZX_THREAD_TERMINATED** when the thread stops executing (due to
 [`zx_thread_exit()`] being called).
 
-*process* is the controlling [process object](reference/kernel_objects/process.md) for the
+*process* is the controlling [process object](/reference/kernel_objects/process.md) for the
 new thread, which will become a child of that process.
 
-For thread lifecycle details see [thread object](reference/kernel_objects/thread.md).
+For thread lifecycle details see [thread object](/reference/kernel_objects/thread.md).
 
 ## RIGHTS
 

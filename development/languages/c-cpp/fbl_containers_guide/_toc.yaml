@@ -7,22 +7,22 @@
 # team as reviewer.
 toc:
 - title: "Introduction to fbl intrusive containers"
-  path: development/languages/c-cpp/fbl_containers_guide/introduction.md
+  path: /development/languages/c-cpp/fbl_containers_guide/introduction.md
 - title: "Getting started"
-  path: development/languages/c-cpp/fbl_containers_guide/getting_started.md
+  path: /development/languages/c-cpp/fbl_containers_guide/getting_started.md
 - title: "Controlling container membership"
-  path: development/languages/c-cpp/fbl_containers_guide/container_membership.md
+  path: /development/languages/c-cpp/fbl_containers_guide/container_membership.md
 - title: "Sequenced containers"
-  path: development/languages/c-cpp/fbl_containers_guide/sequenced_containers.md
+  path: /development/languages/c-cpp/fbl_containers_guide/sequenced_containers.md
 - title: "Associative containers"
-  path: development/languages/c-cpp/fbl_containers_guide/associative_containers.md
+  path: /development/languages/c-cpp/fbl_containers_guide/associative_containers.md
 - title: "Iterators"
-  path: development/languages/c-cpp/fbl_containers_guide/iterators.md
+  path: /development/languages/c-cpp/fbl_containers_guide/iterators.md
 - title: "Testing an object for membership in a container"
-  path: development/languages/c-cpp/fbl_containers_guide/membership_tests.md
+  path: /development/languages/c-cpp/fbl_containers_guide/membership_tests.md
 - title: "Lifecycle checks"
-  path: development/languages/c-cpp/fbl_containers_guide/lifecycle_checks.md
+  path: /development/languages/c-cpp/fbl_containers_guide/lifecycle_checks.md
 - title: "size()'s order of operation"
-  path: development/languages/c-cpp/fbl_containers_guide/size_order_of_operation.md
+  path: /development/languages/c-cpp/fbl_containers_guide/size_order_of_operation.md
 - title: "Advanced scenarios"
-  path: development/languages/c-cpp/fbl_containers_guide/advanced_scenarios.md
+  path: /development/languages/c-cpp/fbl_containers_guide/advanced_scenarios.md

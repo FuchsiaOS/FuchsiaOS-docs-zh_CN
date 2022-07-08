@@ -5,12 +5,12 @@ documentation.
 
  - [Code of conduct](/CODE_OF_CONDUCT.md)
  - [Glossary](glossary/README.md) - definitions of commonly used terms
- - [Getting started](get-started/README.md) - everything you need to get started with Fuchsia
+ - [Getting started](/get-started/README.md) - everything you need to get started with Fuchsia
  - [Development](development/README.md) - instructions for building, running and
    testing Fuchsia and software that runs on Fuchsia
- - [System](concepts/index.md) - documentation for how Fuchsia works
- - [Zircon](concepts/kernel/README.md) - documentation for the Zircon kernel
- - [Run an example component](development/run/run-examples.md) - instructions for running examples
+ - [System](/concepts/index.md) - documentation for how Fuchsia works
+ - [Zircon](/concepts/kernel/README.md) - documentation for the Zircon kernel
+ - [Run an example component](/development/run/run-examples.md) - instructions for running examples
    on a device
  - [Contributing changes](/CONTRIBUTING.md)
 

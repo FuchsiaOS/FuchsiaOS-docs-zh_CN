@@ -14,7 +14,7 @@ attach additional properties of interest to your application.
 ![Tree diagram showing how component inspection provides structured metrics
 data as a tree of "nodes," where each node can contain one or more key/value
 "properties."]
-(get-started/images/fidl/component-inspect.png){: width="583"}
+(/get-started/images/fidl/component-inspect.png){: width="583"}
 
 You can retrieve the current set of metrics published to Inspect using the
 developer tools:
@@ -44,4 +44,4 @@ core/foo-example:
 ```
 
 Note: For more details on using the Inspect API, see
-[Fuchsia component inspection](development/diagnostics/inspect).
+[Fuchsia component inspection](/development/diagnostics/inspect).

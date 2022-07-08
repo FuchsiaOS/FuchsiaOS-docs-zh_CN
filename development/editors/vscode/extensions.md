@@ -170,15 +170,15 @@ from [Configuring workflow](#rust-configure-workflow):
 
 <!-- Reference links -->
 
-[set-up-env]: get-started/get_fuchsia_source.md#set-up-environment-variables
-[fidl]: development/languages/fidl/README.md
+[set-up-env]: /get-started/get_fuchsia_source.md#set-up-environment-variables
+[fidl]: /development/languages/fidl/README.md
 [rust-analyzer-latest]: https://github.com/rust-analyzer/rust-analyzer/releases
-[vscode-extension-guide]: development/editors/extensions.md#rust-analyzer
+[vscode-extension-guide]: /development/editors/extensions.md#rust-analyzer
 [vscode-download]: https://code.visualstudio.com/Download
 [vscode-update]:  https://vscode-docs.readthedocs.io/en/stable/supporting/howtoupdate/
 [vscode-disable-telemetry]: https://code.visualstudio.com/docs/getstarted/telemetry#_disable-telemetry-reporting
 [vscode-rust-analyzer]: https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer
 [vscode-downgrade]: https://code.visualstudio.com/updates/v1_30#_install-previous-versions
-[supported-rust-analyzer-version]: development/languages/rust/editors.md#supported-rust-analyzer-version
+[supported-rust-analyzer-version]: /development/languages/rust/editors.md#supported-rust-analyzer-version
 [lsp-definition]: https://microsoft.github.io/language-server-protocol/
-[vscode-remote-workspaces]: development/editors/vscode/remote-workspaces.md
+[vscode-remote-workspaces]: /development/editors/vscode/remote-workspaces.md

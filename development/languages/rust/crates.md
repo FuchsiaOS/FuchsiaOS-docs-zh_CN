@@ -22,7 +22,7 @@
 
 * [fuchsia-merkle/](/src/sys/pkg/lib/fuchsia-merkle/)
 
-    Protect and verify data blobs using [Merkle Trees](concepts/packages/merkleroot.md)
+    Protect and verify data blobs using [Merkle Trees](/concepts/packages/merkleroot.md)
 
 * [fuchsia-scenic/](/src/lib/ui/fuchsia-scenic/)
 

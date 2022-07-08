@@ -635,7 +635,7 @@ on the operation.
 [fsocket]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.posix.socket/socket.fidl;l=292-295;drc=0661adfd75b2c6c49b7cdb2c4edba7507c1e12ea
 [fsocket-provider-dgram-sock]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.posix.socket/socket.fidl;l=575;drc=0661adfd75b2c6c49b7cdb2c4edba7507c1e12ea
 [fuchsia-io-NodeInfo]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.io/io.fidl;l=15;drc=0661adfd75b2c6c49b7cdb2c4edba7507c1e12ea
-[max-size-in-channel]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/sync_call.h;l=30;drc=c58104675245f8b9ab9eec0101673a4730c63443
+[max-size-in-channel]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/sync_call.h;l=30;drc=c58104675245f8b9ab9eec0101673a4730c63443
 [fidl-at-rest]: 0120_standalone_use_of_fidl_wire_format.md
 [abi-revision]: 0002_platform_versioning.md#fidl
 [package-abi-revision]: 0135_package_abi_revision.md#design

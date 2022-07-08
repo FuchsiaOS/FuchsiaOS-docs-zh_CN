@@ -454,7 +454,7 @@ and user consent MUST be provided to upload crash, logs, and metrics.
 ## Documentation
 
 The build types will be further documented in
-[Fuchsia > Concepts > Build System](development/build/build_system/index.md)
+[Fuchsia > Concepts > Build System](/development/build/build_system/index.md)
 so there is a canonical reference for the different attributes and
 behaviors as they apply to products in Fuchsia.
 
@@ -557,32 +557,32 @@ The Android operating system:
 [android-build-types]: https://source.android.com/setup/build/building
 [android-userdebug]: https://source.android.com/setup/develop/new-device#userdebug-guidelines
 [chromium-dcheck]: https://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++.md
-[doc-auto-update]: gen/build_arguments.md#auto_update_packages
-[doc-base-packages]: concepts/packages/package.md#base-packages
-[doc-debugger]: development/idk/documentation/debugger.md
-[doc-dependency-sets]: development/build/build_system/boards_and_products.md#dependency_sets
-[doc-iquery]: reference/diagnostics/consumers/iquery.md
-[doc-otas]: concepts/packages/ota.md
-[doc-package-flavor]: gen/build_arguments.md#package_flavor_selections
-[doc-paving]: development/build/fx.md#what-is-paving
-[doc-products]: development/build/build_system/boards_and_products.md
-[doc-zircon]: concepts/kernel/README.md
-[doc-zx-assert]: gen/build_arguments.md#zx_assert_level
-[docs-femu]: get-started/set_up_femu.md
-[docs-ffx]: development/tools/ffx/overview.md
-[docs-rfc]: contribute/governance/rfcs/README.md
-[docs-test-runner]: development/testing/components/test_runner_framework.md
-[docs-testing]: development/drivers/concepts/driver_development/sl4f.md
+[doc-auto-update]: /gen/build_arguments.md#auto_update_packages
+[doc-base-packages]: /concepts/packages/package.md#base-packages
+[doc-debugger]: /development/idk/documentation/debugger.md
+[doc-dependency-sets]: /development/build/build_system/boards_and_products.md#dependency_sets
+[doc-iquery]: /reference/diagnostics/consumers/iquery.md
+[doc-otas]: /concepts/packages/ota.md
+[doc-package-flavor]: /gen/build_arguments.md#package_flavor_selections
+[doc-paving]: /development/build/fx.md#what-is-paving
+[doc-products]: /development/build/build_system/boards_and_products.md
+[doc-zircon]: /concepts/kernel/README.md
+[doc-zx-assert]: /gen/build_arguments.md#zx_assert_level
+[docs-femu]: /get-started/set_up_femu.md
+[docs-ffx]: /development/tools/ffx/overview.md
+[docs-rfc]: /contribute/governance/rfcs/README.md
+[docs-test-runner]: /development/testing/components/test_runner_framework.md
+[docs-testing]: /development/drivers/concepts/driver_development/sl4f.md
 [fidl-metrics]: https://fuchsia.dev/reference/fidl/fuchsia.metrics
 [fidl-crash-reporter]: https://fuchsia.dev/reference/fidl/fuchsia.feedback#CrashReporter
-[fuchsia-repository]: concepts/packages/package_url.md#repository_root_verification_known_sources
-[glossary-zbi]: glossary/README.md#zircon-boot-image
-[glossary-zedboot]: glossary/README.md#zedboot
-[k-commands]: development/debugging/tips.md
+[fuchsia-repository]: /concepts/packages/package_url.md#repository_root_verification_known_sources
+[glossary-zbi]: /glossary/README.md#zircon-boot-image
+[glossary-zedboot]: /glossary/README.md#zedboot
+[k-commands]: /development/debugging/tips.md
 [luci-gi]: https://ci.chromium.org/p/fuchsia/g/global_ci/console
 [optimization-flags]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/build/config/BUILD.gn#287
-[rfc-assembly]: contribute/governance/rfcs/0072_standalone_image_assembly_tool.md
-[rfc-session]: contribute/governance/rfcs/0092_sessions.md
-[rfc-zedboot]: contribute/governance/rfcs/0075_deprecate_zedboot_paving.md
-[sdk]: development/idk/download.md
+[rfc-assembly]: /contribute/governance/rfcs/0072_standalone_image_assembly_tool.md
+[rfc-session]: /contribute/governance/rfcs/0092_sessions.md
+[rfc-zedboot]: /contribute/governance/rfcs/0075_deprecate_zedboot_paving.md
+[sdk]: /development/idk/download.md
 [vbmeta]: /src/lib/assembly/vbmeta/README.md

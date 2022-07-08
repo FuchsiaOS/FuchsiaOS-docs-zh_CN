@@ -17,7 +17,7 @@ source-breaking change.
 ## Motivation {#motivation}
 
 A distinctive feature of FIDL is its support for [Zircon
-handles](concepts/kernel/handles.md). Handles are 32-bit integers in
+handles](/concepts/kernel/handles.md). Handles are 32-bit integers in
 memory, but they are treated specially: they must be moved rather than copied,
 and they must be closed to avoid leaking resources. This special treatment leads
 to problems when considering features that only make sense for plain data
@@ -39,7 +39,7 @@ The need to accommodate handles has led to compromise:
 * In Rust, adding a handle to a type for the first time is source-breaking
   because the type will no longer derive the `Clone` trait. (Properly cloning a
   handle requires invoking the
-  [zx_handle_duplicate](reference/syscalls/handle_duplicate.md) syscall,
+  [zx_handle_duplicate](/reference/syscalls/handle_duplicate.md) syscall,
   which can fail.)
 * The Rust bindings for protocols take FIDL objects by mutable reference and
   zero out handles, rather than explicitly taking ownership, so that objects
@@ -95,7 +95,7 @@ status from the type they wrap.
 
 ### Grammar
 
-This proposal modifies one rule in the [FIDL grammar](reference/fidl/language/grammar.md):
+This proposal modifies one rule in the [FIDL grammar](/reference/fidl/language/grammar.md):
 
 ```
 declaration-modifiers = "strict" | "resource" ;
@@ -209,7 +209,7 @@ This proposal has no impact on ABI compatibility.
 
 Adding or removing a `resource` modifier is **neither source-compatible nor
 transitionable**,[^2] in the sense of
-[RFC-0024](contribute/governance/rfcs/0024_mandatory_source_compatibility.md).
+[RFC-0024](/contribute/governance/rfcs/0024_mandatory_source_compatibility.md).
 The bindings are explicitly allowed to generate incompatible APIs for two types
 that differ only in the presence of the modifier, and it may in fact be
 impossible to write code that compiles before and after adding/removing the
@@ -325,7 +325,7 @@ Several open questions remain for this proposal:
 
 The goal of this proposal is to allow source-breaking changes to occur when
 changing a type's value/resource status.
-[RFC-0024](contribute/governance/rfcs/0024_mandatory_source_compatibility.md) is relevant to this
+[RFC-0024](/contribute/governance/rfcs/0024_mandatory_source_compatibility.md) is relevant to this
 goal, since it established the source-compatibility standard for FIDL. It also
 touched on the issue of handles making it difficult to use the `Clone` trait in
 Rust, which this proposal solves.
@@ -342,9 +342,9 @@ and Rust have this behaviour, as well as the IO monad in Haskell.
     transitionable.
 
 <!-- link labels -->
-[api-council-values]: contribute/governance/api_council.md#values
-[compat-resource]: development/languages/fidl/guides/compatibility/README.md#value-vs-resource
-[rfc-0033]: contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
-[rfc-0052]: contribute/governance/rfcs/0052_type_aliasing_named_types.md
-[rfc-0058]: contribute/governance/rfcs/0058_deprecated_attribute.md
-[rfc-0137]: contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md
+[api-council-values]: /contribute/governance/api_council.md#values
+[compat-resource]: /development/languages/fidl/guides/compatibility/README.md#value-vs-resource
+[rfc-0033]: /contribute/governance/rfcs/0033_handling_unknown_fields_strictness.md
+[rfc-0052]: /contribute/governance/rfcs/0052_type_aliasing_named_types.md
+[rfc-0058]: /contribute/governance/rfcs/0058_deprecated_attribute.md
+[rfc-0137]: /contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md

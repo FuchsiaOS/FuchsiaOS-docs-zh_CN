@@ -1,6 +1,6 @@
 # fidlcat: Guide
 
-Once you have [launched `fidlcat`](development/monitoring/fidlcat) and
+Once you have [launched `fidlcat`](/development/monitoring/fidlcat) and
 attached to a running process, the tool begins logging system calls sent and
 received using FIDL.
 

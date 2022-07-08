@@ -302,14 +302,14 @@ $ fx --dir out/bringup.x64 build
 Now you have Zircon built, you can start building several other builds concurrently:
 
 ```shell
-$ fx --dir out/workstation.x64 set workstation.x64
-$ fx --dir out/workstation.x64 build > workstation.x64.build.log &
+$ fx --dir out/workstation_eng.x64 set workstation_eng.x64
+$ fx --dir out/workstation_eng.x64 build > workstation_eng.x64.build.log &
 
 $ fx --dir out/core.vim3 set core.arm64
 $ fx --dir out/core.vim3 build > core.vim3.build.log &
 
-$ fx --dir out/workstation.vim3 set workstation.arm64
-$ fx --dir out/workstation.vim3 build > workstation.vim3.build.log &
+$ fx --dir out/workstation_eng.vim3 set workstation_eng.arm64
+$ fx --dir out/workstation_eng.vim3 build > workstation_eng.vim3.build.log &
 ```
 
 You can reference each of these builds while running `fx` tools by passing
@@ -317,7 +317,7 @@ You can reference each of these builds while running `fx` tools by passing
 product, you would use:
 
 ```shell
-$ fx --dir out/workstation.vim3 serve
+$ fx --dir out/workstation_eng.vim3 serve
 ```
 
 You can also change which build directory is your current default by using `fx use`:

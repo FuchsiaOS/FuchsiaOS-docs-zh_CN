@@ -472,5 +472,5 @@ less aligned than required by the language. This can be expressed via
 compiler extensions such as pragma pack.
 
 [compiler.h]: /zircon/system/public/zircon/compiler.h
-[library naming document]: development/languages/c-cpp/naming.md
+[library naming document]: /development/languages/c-cpp/naming.md
 [zircon/errors.h]: /zircon/system/public/zircon/errors.h

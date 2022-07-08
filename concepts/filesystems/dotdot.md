@@ -58,6 +58,6 @@ canonicalized to “/foo”.
 
 Once these hurdles have been overcome, the benefits of removing “..” are
 enormous: access to filesystem resources fits naturally within the capability
-system, [sandboxing](concepts/process/sandboxing.md) new processes becomes massively easier, and
+system, [sandboxing](/concepts/process/sandboxing.md) new processes becomes massively easier, and
 resource access can more naturally be composed through filesystem
-[namespaces](concepts/process/namespaces.md).
+[namespaces](/concepts/process/namespaces.md).

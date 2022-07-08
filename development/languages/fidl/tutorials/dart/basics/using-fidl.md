@@ -140,8 +140,8 @@ fx test -vo fidl-example-dart-test
 ```
 
 <!-- xrefs -->
-[package-layout]: development/languages/dart/README.md#layout
-[generated-code]: development/languages/fidl/guides/generated-code.md#dart
-[bindings-ref]: reference/fidl/bindings/dart-bindings.md
-[fidl-intro]: development/languages/fidl/tutorials/fidl.md
-[overview]: development/languages/fidl/tutorials/overview.md
+[package-layout]: /development/languages/dart/README.md#layout
+[generated-code]: /development/languages/fidl/guides/generated-code.md#dart
+[bindings-ref]: /reference/fidl/bindings/dart-bindings.md
+[fidl-intro]: /development/languages/fidl/tutorials/fidl.md
+[overview]: /development/languages/fidl/tutorials/overview.md

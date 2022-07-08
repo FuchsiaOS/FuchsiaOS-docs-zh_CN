@@ -42,11 +42,11 @@ Fuchsia's support for CPUs:
 
 <!-- Reference links -->
 
-[install-fuchsia-on-chromebook]: development/hardware/chromebook.md
-[install-fuchsia-on-nuc]: development/hardware/intel_nuc.md
-[install-fuchsia-on-nuc-legacy]: development/hardware/intel_nuc_with_zedboot.md
-[install-fuchsia-on-vim3]: development/hardware/khadas-vim3.md
-[prepare-usb]: development/hardware/usb_setup.md
-[use-the-installer-legacy]: development/hardware/installer.md
-[install-fuchsia-on-acer12]: development/hardware/acer12.md
-[install-fuchsia-on-toulouse]: development/hardware/toulouse.md
+[install-fuchsia-on-chromebook]: /development/hardware/chromebook.md
+[install-fuchsia-on-nuc]: /development/hardware/intel_nuc.md
+[install-fuchsia-on-nuc-legacy]: /development/hardware/intel_nuc_with_zedboot.md
+[install-fuchsia-on-vim3]: /development/hardware/khadas-vim3.md
+[prepare-usb]: /development/hardware/usb_setup.md
+[use-the-installer-legacy]: /development/hardware/installer.md
+[install-fuchsia-on-acer12]: /development/hardware/acer12.md
+[install-fuchsia-on-toulouse]: /development/hardware/toulouse.md

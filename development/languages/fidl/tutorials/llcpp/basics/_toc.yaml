@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Compiling LLCPP"
-  path: development/languages/fidl/tutorials/llcpp/basics/using-fidl.md
+  path: /development/languages/fidl/tutorials/llcpp/basics/using-fidl.md
 - title: "Server"
-  path: development/languages/fidl/tutorials/llcpp/basics/server.md
+  path: /development/languages/fidl/tutorials/llcpp/basics/server.md
 - title: "Async client"
-  path: development/languages/fidl/tutorials/llcpp/basics/client.md
+  path: /development/languages/fidl/tutorials/llcpp/basics/client.md
 - title: "Sync client"
-  path: development/languages/fidl/tutorials/llcpp/basics/sync-client.md
+  path: /development/languages/fidl/tutorials/llcpp/basics/sync-client.md

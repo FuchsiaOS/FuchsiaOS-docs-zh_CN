@@ -1,4 +1,4 @@
-> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](concepts/ui/index.md).
+> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/concepts/ui/index.md).
 
 # Views, Bounds, and Clipping
 
@@ -89,7 +89,7 @@ direction).
 
 All Scenic coordinate systems are right handed.
 
-![Coordinate Spaces Diagram](development/graphics/scenic/meta/coordinate_spaces.svg)
+![Coordinate Spaces Diagram](/development/graphics/scenic/meta/coordinate_spaces.svg)
 
 #### Layer Space (Screen Space)
 
@@ -222,7 +222,7 @@ will render at the minimum-coordinate of the view’s bounds. To fix this, apply
 another translation on the shape node to move it to the center of the view’s
 bounds.
 
-![Centering Geometry Diagram](development/graphics/scenic/meta/scenic_centering_geometry.png)
+![Centering Geometry Diagram](/development/graphics/scenic/meta/scenic_centering_geometry.png)
 
 ## Debug Wireframe Rendering {#debug-wireframe-rendering}
 
@@ -270,7 +270,7 @@ in the client’s local coordinate system?
 The conversion of input coordinates from Layer Space to World Space involves the
 input system, compositor layer, and camera.
 
-![Input Coordinate Spaces](development/graphics/scenic/meta/input_coordinate_spaces.png)
+![Input Coordinate Spaces](/development/graphics/scenic/meta/input_coordinate_spaces.png)
 
 To find which client we are sending the event to we perform a hit test. This is
 done by projecting a ray (in World Space) into the scene to see what objects it

@@ -28,10 +28,10 @@ with tests in [//tools/fidl/fidlc/tests][fidlc-compiler-tests].
 
 Target | Codegen | Runtime Libraries | Tests
 -------|---------|-------------------|-------
-C | [/tools/fidl/fidlc/lib/c_generator.cc] | [/zircon/system/ulib/fidl] | [/src/lib/fidl/c]
+C | [/tools/fidl/fidlc/lib/c_generator.cc] | [/sdk/lib/fidl_base] | [/src/lib/fidl/c]
 Coding Tables | [/tools/fidl/fidlc/lib/tables_generator.cc] | - | [/src/lib/fidl/c]
 HLCPP | [/tools/fidl/fidlgen_hlcpp] | [/sdk/lib/fidl/cpp] | *(located alongside runtime libraries)*
-LLCPP | [/tools/fidl/fidlgen_cpp] | [/sdk/lib/fidl/llcpp] | [/src/lib/fidl/llcpp]
+LLCPP | [/tools/fidl/fidlgen_cpp] | [/sdk/lib/fidl/cpp/wire] | [/src/lib/fidl/llcpp]
 Unified C++ | [/tools/fidl/fidlgen_cpp] | [/src/lib/fidl/cpp] | *(located alongside runtime libraries)*
 Go | [/tools/fidl/fidlgen_go] | [/third_party/go/src/syscall/zx/fidl](https://fuchsia.googlesource.com/third_party/go/+/main/src/syscall/zx/fidl) | *(located alongside runtime libraries)*
 Rust | [/tools/fidl/fidlgen_rust] | [/src/lib/fidl/rust] | *(located alongside runtime libraries)*
@@ -139,8 +139,8 @@ really well for doing remote work from your laptop.
   * Setting up tmux or screen is also helpful for remote work, to preserve
   history and manage multiple sessions in the shell.
 * The Fuchsia documentation has instructions for setting up language servers:
-  * [clangd](development/languages/c-cpp/editors.md) for c++
-  * [rust-analyzer](development/languages/rust/editors.md) for rust
+  * [clangd](/development/languages/c-cpp/editors.md) for c++
+  * [rust-analyzer](/development/languages/rust/editors.md) for rust
 * The [rewrap extension](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap) is useful
   for automatically reflowing lines to a certain length (e.g. when editing markdown files).
 * To get automatic syntax highlighting for the bindings golden files, update the
@@ -478,11 +478,11 @@ useful for debugging issues that prevent boot of the device.
 
 | Name                     | Test Command                        | Coverage
 |--------------------------|-------------------------------------|---------------------------
-| c runtime test, coding tables      | `fx test fidl_c_tests`    | //zircon/system/ulib/fidl                                                |
-| walker, misc             | `fx test fidl-walker-tests`         |  //zircon/system/ulib/fidl
-| walker tests w/ handle closing checks | `fx test fidl-handle-closing-tests` | //zircon/system/ulib/fidl
+| c runtime test, coding tables      | `fx test fidl_c_tests`    | //sdk/lib/fidl_base                                                |
+| walker, misc             | `fx test fidl-walker-tests`         |  //sdk/lib/fidl_base
+| walker tests w/ handle closing checks | `fx test fidl-handle-closing-tests` | //sdk/lib/fidl_base
 | hlcpp bindings tests including conformance tests     | `fx test fidl_hlcpp_unit_test_package fidl_hlcpp_conformance_test_package`         | //sdk/lib/fidl                                                             |
-| llcpp bindings tests     | `fx test //src/lib/fidl/llcpp`      | //sdk/lib/fidl/llcpp
+| llcpp bindings tests     | `fx test //src/lib/fidl/llcpp`      | //sdk/lib/fidl/cpp/wire
 | unified C++ bindings tests | `fx test //src/lib/fidl/cpp`      | //src/lib/fidl/cpp
 | go bindings tests        | `fx test go-fidl-tests`             | //third_party/go/syscall/zx/fidl //third_party/go/syscall/zx/fidl/fidl_test //src/tests/fidl/go_bindings_test |
 | dart bindings tests      | `fx test dart-bindings-test`<br>(_see note below_) | //sdk/dart/fidl                                                  |
@@ -496,10 +496,10 @@ for test failures. To see those, look at the `fx qemu` or `ffx log` output.
 
 | Name                     | Test Command                                    | Coverage
 |--------------------------|-------------------------------------------------|---------------------------
-| walker, misc             | `fx test --host fidl-walker-host-tests`         | //zircon/system/ulib/fidl
+| walker, misc             | `fx test --host fidl-walker-host-tests`         | //sdk/lib/fidl_base
 | hlcpp unittests          | `fx test --host fidl_hlcpp_unit_tests`          | //sdk/lib/fidl
 | hlcpp conformance tests  | `fx test --host fidl_hlcpp_conformance_tests`   | //sdk/lib/fidl
-| llcpp conformance tests  | `fx test --host fidl_llcpp_conformance_tests`   | //sdk/lib/fidl/llcpp
+| llcpp conformance tests  | `fx test --host fidl_llcpp_conformance_tests`   | //sdk/lib/fidl/cpp/wire
 | rust conformance tests   | `fx test --host fidl_rust_conformance_tests`    | //src/lib/fidl/rust
 | rust fidl lib tests      | `fx test --host fidl_rust_lib_tests`            | //src/lib/fidl/rust
 | go conformance tests     | `fx test --host fidl_go_conformance_tests`      | //third_party/go/syscall/zx/fidl
@@ -703,24 +703,24 @@ fidl fmt --library my_library.fidl -i
 ```
 
 <!-- xrefs -->
-[abi-api-compat]: development/languages/fidl/guides/compatibility/README.md
-[fidl-readme]: development/languages/fidl
-[cpp-style]: development/languages/c-cpp/cpp-style.md
+[abi-api-compat]: /development/languages/fidl/guides/compatibility/README.md
+[fidl-readme]: /development/languages/fidl
+[cpp-style]: /development/languages/c-cpp/cpp-style.md
 [fidlc-source]: /tools/fidl/fidlc/
 [fidlc-coding-tables-tests]: /src/lib/fidl/c/coding_tables_tests/
 [fidl-simple]: /src/lib/fidl/c/simple_tests/
 [fidlc-compiler]: /tools/fidl/fidlc/
 [fidlc-compiler-tests]: /tools/fidl/fidlc/tests/
 [walker-tests]: /src/lib/fidl/c/walker_tests/
-[jsonir]: reference/fidl/language/json-ir.md
-[getting_started]: get-started/README.md
+[jsonir]: /reference/fidl/language/json-ir.md
+[getting_started]: /get-started/README.md
 [compat_readme]: /src/tests/fidl/compatibility/README.md
 [go-test-flags]: https://golang.org/cmd/go/#hdr-Testing_flags
 [fidl-misc]: https://fuchsia.googlesource.com/fidl-misc
 [fidldev]: https://fuchsia.googlesource.com/fidl-misc/+/HEAD/fidldev
-[RFC-0042]: contribute/governance/rfcs/0042_non_nullable_types.md
-[pagination]: development/languages/fidl/guides/max-out-pagination.md
-[commit-message]: contribute/commit-message-style-guide.md
+[RFC-0042]: /contribute/governance/rfcs/0042_non_nullable_types.md
+[pagination]: /development/languages/fidl/guides/max-out-pagination.md
+[commit-message]: /contribute/commit-message-style-guide.md
 
 [/tools/fidl/fidlc/formatter]: /tools/fidl/fidlc/formatter
 [/tools/fidl/fidlc/linter]: /tools/fidl/fidlc/linter
@@ -732,9 +732,9 @@ fidl fmt --library my_library.fidl -i
 [/tools/fidl/fidlgen_rust]: /tools/fidl/fidlgen_rust
 [/tools/fidl/fidlgen_dart]: /tools/fidl/fidlgen_dart
 [/sdk/lib/fidl/cpp]: /sdk/lib/fidl/cpp
-[/sdk/lib/fidl/llcpp]: /sdk/lib/fidl/llcpp
+[/sdk/lib/fidl/cpp/wire]: /sdk/lib/fidl/cpp/wire
 [/src/lib/fidl/rust]: /src/lib/fidl/rust
-[/zircon/system/ulib/fidl]: /zircon/system/ulib/fidl
+[/sdk/lib/fidl_base]: /sdk/lib/fidl_base
 [/third_party/go/src/syscall/zx/fidl]: /third_party/go/src/syscall/zx/fidl
 [/sdk/dart/fidl]: /sdk/dart/fidl
 [/src/lib/fidl/c]: /src/lib/fidl/c

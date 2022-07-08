@@ -23,6 +23,6 @@ processes in the future.
  - [`zx_debuglog_write()`] - write log entry to debuglog
  - [`zx_debuglog_read()`] - read log entries from debuglog
 
-[`zx_debuglog_create()`]: reference/syscalls/debuglog_create.md
-[`zx_debuglog_read()`]: reference/syscalls/debuglog_read.md
-[`zx_debuglog_write()`]: reference/syscalls/debuglog_write.md
+[`zx_debuglog_create()`]: /reference/syscalls/debuglog_create.md
+[`zx_debuglog_read()`]: /reference/syscalls/debuglog_read.md
+[`zx_debuglog_write()`]: /reference/syscalls/debuglog_write.md

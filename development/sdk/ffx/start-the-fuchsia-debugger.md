@@ -72,4 +72,4 @@ see the [`zxdb` user guide][zxdb-user-guide].
 
 [ffx-debug-connect]: https://fuchsia.dev/reference/tools/sdk/ffx#connect
 [register-debug-symbols]: ./register-debug-symbols.md
-[zxdb-user-guide]: development/debugger/README.md
+[zxdb-user-guide]: /development/debugger/README.md

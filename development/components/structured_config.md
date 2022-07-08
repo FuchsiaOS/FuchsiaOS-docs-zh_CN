@@ -227,4 +227,4 @@ a component.
 Realm Builder validates the replaced value against the component's configuration schema.
 
 [cml-ref-doc]: https://fuchsia.dev/reference/cml#config
-[rb-feature-matrix]: development/testing/components/realm_builder.md#language-feature-matrix
+[rb-feature-matrix]: /development/testing/components/realm_builder.md#language-feature-matrix

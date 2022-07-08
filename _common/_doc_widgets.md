@@ -37,7 +37,7 @@ Help text glossary macros
           <abbr data-title="{{ item.term }}: {{ item.short_description|striptags }}">{{ title }}</abbr>
           {% set match=true %}
         {% else %}
-          <a href="glossary.md#{{ item.term|replace(' ', '-')|lower }}"><abbr data-title="{{ item.term }}: {{ item.short_description|striptags }}">{{ title }}</abbr></a>
+          <a href="/glossary.md#{{ item.term|replace(' ', '-')|lower }}"><abbr data-title="{{ item.term }}: {{ item.short_description|striptags }}">{{ title }}</abbr></a>
           {% set match=true %}
         {% endif %}
       {% else %}
@@ -45,7 +45,7 @@ Help text glossary macros
           <abbr data-title="{{ item.term }}: {{ item.short_description|striptags }}">{{ item.term }}</abbr>
           {% set match=true %}
         {% else %}
-          <a href="glossary.md#{{ item.term|replace(' ', '-')|lower }}"><abbr data-title="{{ item.term }}: {{ item.short_description|striptags }}">{{ item.term }}</abbr></a>
+          <a href="/glossary.md#{{ item.term|replace(' ', '-')|lower }}"><abbr data-title="{{ item.term }}: {{ item.short_description|striptags }}">{{ item.term }}</abbr></a>
           {% set match=true %}
         {% endif %}
       {% endif %}
@@ -72,7 +72,7 @@ Simple definition callout. Use between pargraphs.
          }
        </style>
        <aside class="key-term" style="width:100%">
-       <b><a href="glossary.md#{{ item.term|replace(' ', '-')|lower }}">{{ item.term }}</a>:</b>
+       <b><a href="/glossary.md#{{ item.term|replace(' ', '-')|lower }}">{{ item.term }}</a>:</b>
        {% if item.full_description != '' %}
         {{ item.full_description }}
        {% elif item.short_description != '' %}

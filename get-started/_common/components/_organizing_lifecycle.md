@@ -31,7 +31,7 @@ system shutdown. Before being destroyed, the framework moves components to a
 
 ![Diagram showing how components have two distinct states: instance and
 execution. Together, these states describe the "component lifecycle."]
-(get-started/images/components/component-lifecycle.png){: width="662"}
+(/get-started/images/components/component-lifecycle.png){: width="662"}
 
 Note: For more details on component states and execution, see
-[component lifecycle](concepts/components/v2/lifecycle.md).
+[component lifecycle](/concepts/components/v2/lifecycle.md).

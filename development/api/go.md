@@ -480,7 +480,7 @@ package name it is used to test. Examples in the standard library are
 [Effective Go embedding]: https://golang.org/doc/effective_go#embedding
 [Effective Go pointers_vs_values]: https://golang.org/doc/effective_go#pointers_vs_values
 [Effective Go]: https://golang.org/doc/effective_go
-[enum-fidl-rubric]: development/api/fidl.md#enum
+[enum-fidl-rubric]: /development/api/fidl.md#enum
 [Go Code Review Comments receiver-type]: https://github.com/golang/go/wiki/CodeReviewComments#receiver-type
 [Go Code Review Comments]: https://github.com/golang/go/wiki/CodeReviewComments
 [go-cmp]: https://github.com/google/go-cmp

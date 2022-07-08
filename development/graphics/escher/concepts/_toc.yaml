@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/graphics/escher/README.md
+  path: /development/graphics/escher/README.md
 - title: "Building"
-  path: development/graphics/escher/concepts/building.md
+  path: /development/graphics/escher/concepts/building.md

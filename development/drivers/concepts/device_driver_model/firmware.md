@@ -16,7 +16,7 @@ files:
 
 * One or more firmware files
 * A license file
-* [README.fuchsia](development/source_code/third-party-metadata.md)
+* [README.fuchsia](/development/source_code/third-party-metadata.md)
 
 README.fuchsia must contain at least the following directives:
 

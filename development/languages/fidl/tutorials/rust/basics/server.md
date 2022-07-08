@@ -364,19 +364,19 @@ Note: Component instances are referenced by their
 the [component instance tree][glossary.component-instance-tree]
 
 <!-- xrefs -->
-[glossary.component-instance-tree]: glossary/README.md#component-instance-tree
-[glossary.component-url]: glossary/README.md#component-url
-[glossary.fuchsia-pkg-url]: glossary/README.md#fuchsia-pkg-url
-[glossary.moniker]: glossary/README.md#moniker
-[concepts]: concepts/fidl/overview.md
-[fidl-crates]: development/languages/fidl/tutorials/rust/basics/using-fidl.md
-[building-components]: development/components/build.md
-[products]: development/build/build_system/boards_and_products.md
-[control-handle]: reference/fidl/bindings/rust-bindings.md#protocol-control-handle
-[declaring-fidl]: development/languages/fidl/tutorials/fidl.md
-[component-manager]: concepts/components/v2/component_manager.md
-[protocol-open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
-[compiling-fidl]: development/languages/fidl/tutorials/fidl.md
+[glossary.component-instance-tree]: /glossary/README.md#component-instance-tree
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: /glossary/README.md#fuchsia-pkg-url
+[glossary.moniker]: /glossary/README.md#moniker
+[concepts]: /concepts/fidl/overview.md
+[fidl-crates]: /development/languages/fidl/tutorials/rust/basics/using-fidl.md
+[building-components]: /development/components/build.md
+[products]: /development/build/build_system/boards_and_products.md
+[control-handle]: /reference/fidl/bindings/rust-bindings.md#protocol-control-handle
+[declaring-fidl]: /development/languages/fidl/tutorials/fidl.md
+[component-manager]: /concepts/components/v2/component_manager.md
+[protocol-open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
+[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
 [async-loop]: /zircon/system/ulib/async-loop/include/lib/async-loop/cpp/loop.h
-[overview]: development/languages/fidl/tutorials/overview.md
+[overview]: /development/languages/fidl/tutorials/overview.md
 [try-for-each]: https://docs.rs/futures/0.3.5/futures/stream/trait.TryStreamExt.html#method.try_for_each

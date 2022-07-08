@@ -624,12 +624,12 @@ would like to contribute, check out the [FIDL language
 reference][language-reference], or the [contributing doc][fidl-contributing].
 
 <!-- xrefs -->
-[fidl-tutorials]: development/languages/fidl/tutorials/overview.md
-[language-reference]: reference/fidl/language/language.md
-[bindings-reference]: reference/fidl/bindings/overview.md
-[wire-format]: reference/fidl/language/wire-format
-[language-spec]: reference/fidl/language/language.md
-[developer-guides]: development/languages/fidl/
-[fidl-contributing]: contribute/contributing-to-fidl/
-[compiler-spec]: development/languages/fidl/guides/
-[attributes]: reference/fidl/language/attributes.md#discoverable
+[fidl-tutorials]: /development/languages/fidl/tutorials/overview.md
+[language-reference]: /reference/fidl/language/language.md
+[bindings-reference]: /reference/fidl/bindings/overview.md
+[wire-format]: /reference/fidl/language/wire-format
+[language-spec]: /reference/fidl/language/language.md
+[developer-guides]: /development/languages/fidl/
+[fidl-contributing]: /contribute/contributing-to-fidl/
+[compiler-spec]: /development/languages/fidl/guides/
+[attributes]: /reference/fidl/language/attributes.md#discoverable

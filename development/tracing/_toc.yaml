@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/tracing
+  path: /development/tracing
 - title: "Tutorial"
   section:
-  - include: development/tracing/tutorial/_toc.yaml
+  - include: /development/tracing/tutorial/_toc.yaml
 - title: "Advanced"
   section:
-  - include: development/tracing/advanced/_toc.yaml
+  - include: /development/tracing/advanced/_toc.yaml

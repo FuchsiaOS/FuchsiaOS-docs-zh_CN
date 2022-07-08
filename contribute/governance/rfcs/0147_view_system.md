@@ -483,14 +483,14 @@ protocol](https://wayland.freedesktop.org/architecture.html).
 * The [input architecture RFC][input-rfc] describes details of how the View
 System interacts with Fuchsia's user-input subsystems.
 
-[input-rfc]: contribute/governance/rfcs/0096_user_input_arch.md
-[byor]: contribute/governance/rfcs/0082_starnix.md
-[component]: concepts/components/v2/README.md
-[scenic]: concepts/ui/scenic/index.md
-[viewref]: development/graphics/scenic/concepts/view_ref.md
+[input-rfc]: /contribute/governance/rfcs/0096_user_input_arch.md
+[byor]: /contribute/governance/rfcs/0082_starnix.md
+[component]: /concepts/components/v2/README.md
+[scenic]: /concepts/ui/scenic/index.md
+[viewref]: /development/graphics/scenic/concepts/view_ref.md
 [flatland]: /sdk/fidl/fuchsia.ui.composition/flatland.fidl
 [gfx]: /sdk/fidl/fuchsia.ui.scenic
 [compositor]: https://en.wikipedia.org/wiki/Compositing_window_manager
 [window-manager]: https://en.wikipedia.org/wiki/Window_manager
 [window-system]: https://en.wikipedia.org/wiki/Windowing_system
-[focus_chain]: development/graphics/scenic/concepts/focus_chain.md
+[focus_chain]: /development/graphics/scenic/concepts/focus_chain.md

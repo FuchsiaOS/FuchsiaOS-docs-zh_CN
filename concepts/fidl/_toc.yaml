@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: concepts/fidl/overview.md
+  path: /concepts/fidl/overview.md
 - title: "Life of a handle"
-  path: concepts/fidl/life-of-a-handle.md
+  path: /concepts/fidl/life-of-a-handle.md

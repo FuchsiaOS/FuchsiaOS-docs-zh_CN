@@ -68,11 +68,13 @@ library. Typically, that means that the `--output-base` flag will have the value
 ## Linter
 
 The FIDL linter is a command line program that processes one or more FIDL
-files, and prints warnings about content that compiles (technically valid FIDL),
-but appears to violate rules from the [FIDL Style Rubric][fidl-style].
-Readability is important, and style is a component of that, but the FIDL Rubric
-also defines rules that help ensure the FIDL API does not include things that are
-known to hamper cross-language portability.
+files, and issues warnings about content that compiles (technically valid FIDL),
+but appears to violate rules from the [FIDL Style Guide][fidl-style] or [FIDL
+API Rubric][fidl-rubric]. It enforces stylistic conventions and, when possible,
+mechanically-detectable rubric guidelines.
+
+Readability is important, and style is a component of that. In addition,
+following these guides helps ensure cross-language portability for the FIDL API.
 
 ### Use `fx lint`
 
@@ -107,5 +109,6 @@ fx format-code
 ```
 
 <!-- xrefs -->
-[fidl-style]: development/languages/fidl/guides/style.md
+[fidl-style]: /development/languages/fidl/guides/style.md
+[fidl-rubric]: /development/api/fidl.md
 [schema]: /tools/fidl/fidlc/schema.json

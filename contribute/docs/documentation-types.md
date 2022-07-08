@@ -16,13 +16,13 @@ Most documentation can be divided into these categories:
 - [Procedures (guides)](#procedural-documentation)
     - Get-started - Documentation that provides a step-by-step process for setting up a part of
       the Fuchsia developer environment, such as downloading and building Fuchsia. These are located
-      under `get-started`.
+      under `/get-started`.
     - Development, or Guides - Documentation that provides a step-by-step process for completing
-      any task related to Fuchsia. These are all located under `development/`.
+      any task related to Fuchsia. These are all located under `/development/`.
 - [Concepts](#conceptual-documentation) - Documentation that helps you understand a concept such
-  as mods in Fuchsia. This type of documentation is located under `concepts`.
+  as mods in Fuchsia. This type of documentation is located under `/concepts`.
 - [Reference](#reference-documentation) - Documentation that provides a source of information about
-  parts of a system such as API parameters or FIDL. These are located under `reference/`. Much
+  parts of a system such as API parameters or FIDL. These are located under `/reference/`. Much
   of the reference documentation is auto-generated.
 
 **You should write a procedural document** if you plan on explaining to a user how to use a specific
@@ -136,7 +136,7 @@ For the style guide for API documentation, see the
 
 <!-- Reference links -->
 
-[doc-standard]: contribute/docs/documentation-standards.md
-[style-guide]: contribute/docs/documentation-style-guide.md
-[code-sample-style-guide]: contribute/docs/code-sample-style-guide.md
-[api-style]: development/api/documentation.md
+[doc-standard]: /contribute/docs/documentation-standards.md
+[style-guide]: /contribute/docs/documentation-style-guide.md
+[code-sample-style-guide]: /contribute/docs/code-sample-style-guide.md
+[api-style]: /development/api/documentation.md

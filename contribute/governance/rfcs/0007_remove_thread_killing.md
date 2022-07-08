@@ -73,7 +73,7 @@ properly tested.
 
 ## Documentation
 
-The documentation for [zx_task_kill](reference/syscalls/task_kill.md) will be updated to
+The documentation for [zx_task_kill](/reference/syscalls/task_kill.md) will be updated to
 reflect that threads are not killable.
 
 ## Drawbacks, Alternatives, and Unknowns
