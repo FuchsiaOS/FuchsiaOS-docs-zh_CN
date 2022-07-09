@@ -40,10 +40,16 @@ plugins:
   - exclude:
       glob:
         - _*
+  - git-revision-date-localized:
+      locale: zh
+      type: custom
+      custom_format: '%Y 年 %-m 月 %-d 日（%A） %H:%M %Z'
+markdown_extensions:
   - pymdownx.inlinehilite
   - codehilite:
       guess_lang: false
       linenums: true
+  - meta
 extra:
   social:
     - icon: material/web
