@@ -1,7 +1,7 @@
-site_name: Fuchsia中文文档
+site_name: Fuchsia 中文文档
 repo_url: https://github.com/FuchsiaOS/FuchsiaOS-docs-zh_CN
-site_author: Fuchsia中文文档翻译小组
-copyright: Copyright &copy; <a href='https://fuchsia-china.com'>Fuchsia中文社区</a>
+site_author: Fuchsia 中文文档翻译小组
+copyright: Copyright &copy; <a href='https://fuchsia-china.com'>Fuchsia 中文社区</a>
 docs_dir: docs
 site_dir: site
 theme:
