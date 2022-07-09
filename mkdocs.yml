@@ -41,7 +41,8 @@ plugins:
       glob:
         - _*
   - git-revision-date-localized:
-      locale: zh
+      locale: zh_CN
+      timezone: Asia/Shanghai
       type: custom
       custom_format: '%Y 年 %-m 月 %-d 日（%A） %H:%M %Z'
 markdown_extensions:
