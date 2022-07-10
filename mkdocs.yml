@@ -46,7 +46,11 @@ plugins:
       type: custom
       custom_format: '%Y 年 %-m 月 %-d 日（%A） %H:%M %Z'
 markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
   - codehilite:
       guess_lang: false
       linenums: true
@@ -58,4 +62,4 @@ extra:
       name: Fuchsia 中文社区
     - icon: octicons/plus-circle-16
       link: https://fuchsia-china.com/2022-document-group-recruitment/
-      name: 加入我们
+      name: 志愿者招募公告
