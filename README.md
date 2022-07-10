@@ -1,6 +1,26 @@
 # 2022 年度 Fuchsia 文档简体中文翻译项目
 
+## 加入我们
+
+***
+
+<p align="center"><a href="https://fuchsia-china.com/2022-document-group-recruitment/">📢</a>&nbsp;<strong>2022 年度翻译小组志愿者持续招募中！详情请查看<a href="https://fuchsia-china.com/2022-document-group-recruitment/">招募公告</a>。</strong>&nbsp;<a href="https://fuchsia-china.com/2022-document-group-recruitment/">🙌</a></p>
+
+***
+
+您还可以通过以下方式获取最新消息：
+
+ - [Fuchsia 中文社区网站](https://fuchsia-china.com)
+ - [Fuchsia 中文论坛](https://forum.fuchsia-china.com)
+ - TG 群聊：[Fuchsia OS 中文社区](https://t.me/FuchsiaOSzh)、[Fuchsia 开发者社区](https://t.me/FuchsiaDevelopers)
+ - QQ 群聊：
+   - Fuchsia OS 中文社区：788645873
+   - Fuchsia 开发者社区：241234421
+ - [微信群聊](https://fuchsia-china.com/join)
+
 ![Fuchsia中文文档翻译小组](https://fuchsia-china.com/wp-content/uploads/2022/07/fuchsia-new-trans-outlined.png)
+
+## README
 
 > 英文文档来源：https://fuchsia.googlesource.com/fuchsia/+/main/docs
 
