@@ -19,7 +19,7 @@ segments. It lays out a plan for eventual kernel support for mapping
 execute-only pages on hardware that supports it. -->
 
 本文档提出了对内核API的更改，以支持带有仅执行段的二进制文件。本文档向 `zx_system_get_features` 
-中加入了新特性判断，更改了 `launchpad` 和 `process_builder` 加载器，并更改了 Fuchsia 自带的 libc 
+中加入了新特性判断，更改了 `launchpad` 和 `process_builder` 加载器，并更改了 Fuchsia 的 in-tree libc 
 中的动态链接器来支持 '--x' 参数。其为内核最终实现在支持的硬件上对仅执行页的映射提出了计划。
 <!-- 
 We don't typically need to read executable memory after it has been loaded.
@@ -45,9 +45,8 @@ need to be read, but just be executed. -->
 
 ARM 的 MMU 在 ARMv7m 中加入了对仅执行页的支持，允许内存页被映射为既不可读也不可写的仅执行状态。
 可写的代码页很早就被认为有安全威胁，但允许代码保持可读也将应用暴露于不必要的风险中。实际上，对代码页
-的读取常常成为攻击链的第一步，防止对代码的读取能对攻击形成阻碍。详见[可读代码安全性]
-(#readable-code-security)。而且，支持仅执行页不仅很好地符合了 Fuchsia 的权限模型，也更符合
-最小特权原则：代码通常并不需要读，而只用执行。
+的读取常常成为攻击链的第一步，防止对代码的读取能对攻击形成阻碍。详见[可读代码安全](#readable-code-security)。
+而且，支持仅执行页不仅很好地符合了 Fuchsia 的权限模型，也更符合最小特权原则：代码通常并不需要读，而只用执行。
 
 <!-- ## Stakeholders -->
 ## 相关方
@@ -321,7 +320,7 @@ POSIX 规定 `mmap` 可以允许对没有显式设置 `PROT_READ` 的页的读�
 分配仅执行内存的用户空间程序的支持迁移，需要一种在请求前判断操作系统能否映射仅执行页的方法。
 
 <!-- ### Readable Code Security -->
-### 可读代码的安全性
+### 可读代码安全
 <!-- 
 Many attacks rely on finding out information about the process through reading
 code pages to find “gadgets”, or executable code of interest. Address space
@@ -529,17 +528,20 @@ with `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED`.
 
 <!-- ### Compiler Toolchain Changes -->
 ### 编译器工具链更改
-
+<!-- 
 The clang driver will also be changed to always pass `--execute-only` to the
 linker when targeting `aarch64-*-fuchsia`. We will also need a way to opt out of
 this behavior, most likely by adding a new ‘--no-execute-only’ flag to the
 linker, so programs can easily opt out of the new default behavior.
-
+ -->
 clang driver 也会改为在目标为 `aarch64-*-fuchsia` 时总是向链接器传递 
-`--execute-only`。我们也需要一种
+`--execute-only`。我们也将需要一种退出这种行为的方法，最可能的是向链接器添加一个新的 
+‘--no-execute-only’ 标志，这样程序可以轻易退出新的默认行为。
 
-### Kernel XOM Implementation
+<!-- ### Kernel XOM Implementation -->
+### 内核 XOM 实现
 
+<!-- 
 Once hardware arrives that supports ePAN, the kernel can service a request for
 memory pages to have just `ZX_VM_PERM_EXECUTE`. The arm64 user-copy
 implementation may need updates to ensure it's consistent with how user memory
@@ -548,64 +550,114 @@ access is constrained. `user_copy` should be updated to use the `ldtr` and
 unreadable pages for them. Moreover, the kernel makes assumptions about mappings
 being readable in a couple of places and these will need to be changed where
 appropriate. This work will be done later.
+ -->
+一旦支持 ePAN 的硬件到来，内核就可以服务于那些对只有 `ZX_VM_PERM_EXECUTE` 的内核页的请求。
+arm64 的 user-copy 实现也需要更新，以保证其与用户内存的约束方式保持一致。`user_copy` 应该被更新
+以使用 `ldtr` 和 `sttr` 指令。这将确保用户不能欺骗内核为他们读取不可读的页面。此外，内核在一些地方
+假设了映射总是可读，这些也需要进行适当的修改。这项工作将在以后完成。
 
-### Unnecessary Changes
+<!-- ### Unnecessary Changes -->
+### 不必要的更改
 
+<!-- 
 `zx_process_read_memory` does not need to be changed, and debuggers should work
 normally when debugging execute-only binaries. `zx_process_read_memory` ignores
 the permissions of the pages it is reading from, and only checks that the
 process handle has `ZX_RIGHT_READ` and `ZX_RIGHT_WRITE`.
+ -->
+`zx_process_read_memory` 不需要更改，调试器在调试仅执行二进制时也应该正常工作。
+`zx_process_read_memory` 忽略了它所读取的页面的权限，只检查进程句柄是否有
+`ZX_RIGHT_READ` 和 `ZX_RIGHT_WRITE`。
 
+<!-- 
 `zx_vmar_protect` will continue to work as it does currently. Most notably this
 means that processes can protect their code pages with read permission in cases
 where that is necessary.
+ -->
+`zx_vmar_protect` 将继续像目前那样工作。最值得注意的是，这意味着必要时，
+进程可以用读取权限保护他们的代码页。
 
-## Performance
+<!-- ## Performance -->
+## 性能
 
-There is no expected impact in performance.
+<!-- There is no expected impact in performance. -->
+预计对性能没有影响。
 
-## Security
+<!-- ## Security -->
+## 安全
 
+<!-- 
 Until XOM is implemented in the kernel a binary with ‘--x’ segments will be just
 as secure as an equivalent binary using ‘r-x’ segments. Once XOM is supported
 both by hardware and the OS, programs which elect to use execute-only memory
 will become more secure. See sections [Permissions of Code
 Pages](#permissions-of-code-pages), [XOM and PAN](#xom-and-pan) and [Readable
 Code Security](#readable-code-security).
+ -->
+在 XOM 在内核中实现之前，使用 ‘--x’ 段的二进制文件只会与使用 ‘r-x’ 段的等效二进制文件一样安全。
+一旦硬件和操作系统都支持了 XOM，选择使用仅执行内存的程序将变得更加安全。参见
+[代码页权限](#permissions-of-code-pages)，[XOM 与 PAN](#xom-and-pan)和
+[可读代码安全](#readable-code-security) 这几节。
 
-## Privacy
+<!-- ## Privacy -->
+## 隐私
 
-No extra considerations other than those mentioned in [Security](#security).
+<!-- No extra considerations other than those mentioned in [Security](#security). -->
+除了在 [安全](#security) 中提到的以外无需额外考虑。
 
-## Testing
+<!-- ## Testing -->
+## 测试
 
+<!-- 
 `zx_system_get_features` will have trivial testing when we are forcing XOM
 support in the kernel where we can know at build time what we expect the
 syscall to return.
+ -->
+当我们在内核中强制对XOM的支持时，`zx_system_get_features` 会有一些 trivial 的测试，
+针对那些在构建时就知道系统调用应该返回什么的情况。
 
+<!-- 
 The `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` will be tested that it makes a page
 readable when it is reported by `zx_system_get_features` that the OS cannot
 create execute-only pages.
+ -->
+会有针对 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 的测试，测试其能否在
+`zx_system_get_features` 报告操作系统无法创建仅执行页时使内存页可读。
 
+<!-- 
 Likewise, the elfload library doesn't have any real testing, save for fuzz tests
 which don't test expected functionality. Instead its functionality is inherently
 tested by other components that rely on it. Testing should be added here to
 ensure '--x' segments are correctly mapped. The process_builder library does
 have tests, and these will ensure it properly requests readable and executable
 memory when XOM is not available.
+ -->
+类似地，elfload 库也没有任何真正的测试，除了模糊测试，但它并不测试预期功能。
+相反，它的功能是由依赖它的其他组件来测试的。这里应该增加测试，以确保 '--x' 段被正确映射。
+process_builder 库确实有测试，这些测试将确保它在 XOM 不可用时正确请求可读和可执行内存。
 
+<!-- 
 The changes to the current dynamic linker will not be tested directly. A new
 dynamic linker is planned and it will have extensive testing, including testing
 of ‘--x’ segments.
+ -->
+对当前动态链接器的改变将不会被直接测试。一个新的动态链接器正在计划中，它将有广泛的测试，
+包括对 '--x' 段的测试。
 
-The changes to the clang driver will have testing in upstream LLVM.
+<!-- The changes to the clang driver will have testing in upstream LLVM. -->
+对 clang driver 的更改会在上游 LLVM 中得到测试。
 
+<!-- 
 We will also set up testing configuration for enabling XOM on test bots, even if
 that hardware does not have ePAN and we would otherwise not enable XOM. This
 will help us catch in tree programs that read their code pages and need to opt
 out of execute-only.
+ -->
+我们也会设置测试配置，来在 test bot 上启用 XOM，虽然我们通常不会在那种没有 ePAN 的硬件上启用 XOM。
+这将有助于我们找到那些需要阅读代码页，从而需要退出只执行的 in-tree 程序。
 
-## Documentation
+<!-- ## Documentation -->
+## 文档
 
 The changes to `zx_system_get_features` will be documented, as well as the
 motivation for why user space would want to query with the kind
