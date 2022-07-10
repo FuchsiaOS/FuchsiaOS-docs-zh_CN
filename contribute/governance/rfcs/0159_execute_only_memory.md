@@ -18,16 +18,16 @@ loaders as well as the dynamic linker in Fuchsia's in-tree libc to support '--x'
 segments. It lays out a plan for eventual kernel support for mapping
 execute-only pages on hardware that supports it. -->
 
-本文档提出了对内核API的更改，以支持带有仅执行段的二进制文件。本文档向 `zx_system_get_features` 
+本文档提出了对内核 API 的更改，以支持带有仅执行段的二进制文件。本文档向 `zx_system_get_features` 
 中加入了新特性判断，更改了 `launchpad` 和 `process_builder` 加载器，并更改了 Fuchsia 自带的 libc 
-中的动态链接器来支持 '--x' 参数。其为内核最终实现在支持的硬件上对仅执行页的映射提出了计划。
+中的动态链接器来支持 '--x' 参数。其为内核最终实现在支持的硬件上对只执行页映射的支持提出了计划。
 <!-- 
 We don't typically need to read executable memory after it has been loaded.
 Enabling execute-only code by default increases security of Fuchsia’s userspace
 processes and furthers the engineering best practice of least permissions. -->
 
 我们通常并不需要读取已加载的可执行内存。默认启用仅执行代码能增强 Fuchsia 用户空间进程的安全性，
-并有助于推进最小权限的工程最佳做法。
+并有推进了最小权限的工程最佳做法。
 
 <!-- ## Motivation -->
 ## 动机
@@ -46,8 +46,8 @@ need to be read, but just be executed. -->
 ARM 的 MMU 在 ARMv7m 中加入了对仅执行页的支持，允许内存页被映射为既不可读也不可写的仅执行状态。
 可写的代码页很早就被认为有安全威胁，但允许代码保持可读也将应用暴露于不必要的风险中。实际上，对代码页
 的读取常常成为攻击链的第一步，防止对代码的读取能对攻击形成阻碍。详见[可读代码安全性]
-(#readable-code-security)。而且，支持仅执行页不仅很好地符合了 Fuchsia 的权限模型，也更符合
-最小特权原则：代码通常并不需要读，而只用执行。
+(#readable-code-security)。而且，支持仅执行页不仅很好地符合了 Fuchsia 的权限模型，也更强地符合
+最小特权原则：代码通常并不需要被读，而只用执行。
 
 <!-- ## Stakeholders -->
 ## 相关方
@@ -77,14 +77,14 @@ for XOM, however there are some considerations on older ISA’s. Discussed furth
 in [XOM and PAN](#xom-and-pan). -->
 
 仅执行内存（XOM）指没有读和写权限，仅能执行的内存页。ARMv7m 及之后的 ISA 原生支持 XOM，但对
-旧 ISA 的支持也在考虑中。进一步讨论请到 [XOM 与 PAN](#xom-and-pan)。
+旧 ISA 的支持也在考虑中。进一步的讨论在 [XOM 与 PAN](#xom-and-pan)。
 <!-- 
 This doc focuses almost exclusively on AArch64, however the implementation is
 architecture agnostic. When hardware and toolchain support matures for other
 architectures, they would all easily be able to take advantage of execute-only
 support in Fuchsia. -->
 
-本文几乎仅关注 AArch64，但具体实现与架构无关。当其他架构的硬件和工具链支持成熟后，应该能很容易受益于 
+本文几乎仅关注 AArch64，但其具体实现是架构无关的。当其他架构的硬件和工具链支持成熟后，应该能很容易受益于 
 Fuchsia 中的仅执行支持。
 
 <!-- ### Permissions of Code Pages -->
@@ -106,11 +106,11 @@ program's ability to misuse system resources through hardware enforced
 permission checks. -->
 
 最开始，计算机支持对物理内存的直接内存访问，没有任何检查或保护。MMU 的引入提供了关键的抽象，它以
-虚拟内存的形式将程序视角的内存和底层的物理资源解耦。这样就为一种灵活又安全的编程模式提供了便利，
-即允许操作系统通过进程这种抽象，在其上运行的程序间提供强大的隔离能力。如今的 MMU 提供了大量关键
-功能，如内存分页、快速地址翻译和权限检查，进而允许用户控制内存页的读、写与执行等权限，使用户对内存区域
-的访问和使用方式有了显著控制。这对于程序安全和错误隔离很关键，因为这样就能通过硬件强制的权限检查
-限制程序恶意使用系统资源的能力。
+虚拟内存的形式将程序视角的内存和底层的物理资源解耦。这促使了一种更加灵活又安全的编程模型，
+使得操作系统的作者可以通过进程的抽象，来提供程序间强大的隔离能力。如今的 MMU 提供了大量关键
+功能，如内存分页、快速地址翻译和权限检查，还使得用户对内存区域的访问和使用有了显著的控制。这种控制是通过内存页权限来实现的。内存页权限一般控制内存页是否可读可写或可执行。
+这是程序安全和错误隔离的关键属性，因为这样就能通过硬件强制的权限检查
+限制程序滥用系统资源的能力。
 <!-- 
 Memory that is both writable and executable is particularly dangerous because it
 provides an easy way for an adversary to achieve arbitrary code execution
@@ -128,12 +128,12 @@ permissive. Similarly, executable pages rarely ever need to be read [See
 exceptions](#readable-code). Allowing read operations on executable pages is
 generally unnecessary and should not be the default. -->
 
-既能写又能执行的内存相当危险，因为它为攻击者利用缓冲区溢出等常见漏洞达到任意代码执行提供了一种容易的路径。
-由于这个原因，许多操作系统的配置显式地禁止内存页同时可写和可执行（W^X）。这已成为十数年间的标准。
+既能写又能执行的内存相当危险，因为它为攻击者利用缓冲区溢出等常见漏洞达到任意代码执行提供了一种容易的途径。
+由于这个原因，许多操作系统的配置显式地禁止内存页同时可写和可执行（W^X）。这已成为标准十多年，
 OpenBSD 于 2003 年在 OpenBSD 3.3 中加入了对 W^X 的支持 [openbsd-wxorx]。也请参考 
 SELinux 的 W^X 政策 [selinux-wxorx]。可写的内存对于 just-in-time (JIT) 编译这种在
 运行时往内存里写入可执行指令的技术确实有用。由于不能允许 W|X 的页，JIT 需要绕过它。一种简便的
-方法是先将代码写入不可执行页，再通过 `mprotect` 或者 `zx_vmar_protect` 来将页保护状态变为可执行
+方法是先将代码写入不可执行页，再通过例如 `mprotect` 或者 `zx_vmar_protect` 来将页保护状态变为可执行
 但不可写 [example-fuchsia-test]。在几乎所有情况下 W|X 的页权限都过大了。与此类似，可执行
 页也几乎不怎么需要读 [参见例外](#readable-code)。允许对可执行页的读操作通常并无必要，也不应
 成为默认配置。
@@ -154,9 +154,9 @@ flag and alias `-mpure-code` but these are only meaningful on arm32 because
 these flags are inherent when targeting aarch64. -->
 
 由于 ARM 的指令是定长的，对立即数大小有约束，所以 load 操作会以相对 PC 寻址的方式实现。具体来说，
-`ldr Rd, =立即数` 伪指令会在临近的文字池中放置 `立即数`。这与 XOM 不兼容，因为它将数据放在了 text 
- section 中，必须要可读。我们在代码库里搜索文字池的使用以确保没有对可执行段的读操作时，
- 发现 Zircon 中有一些 `ldr Rd, =立即数` 的使用，但现在都移除了。Clang 不会在 aarch64 中使用
+伪指令 `ldr Rd, =imm` 会在该代码附近的文字池中放置 `imm`。这与 XOM 不兼容，因为它将数据放在了必须可读的
+ text section 中。我们在代码库里搜索文字池的使用以确保没有对可执行段的读操作时，
+ 发现 Zircon 中有一些 `ldr Rd, =imm` 的使用，但现在都移除了。Clang 不会在 aarch64 中使用
  文字池，而会生成多条指令来创建一个大立即数。Clang有个 `-mexecute-only` 标志和其别名 `-mpure-code`，
  但这只在 arm32 上有意义，因为 aarch64 本就蕴涵这个标志。
 
@@ -220,11 +220,11 @@ using the only 4 available bits. EL0 is the exception level for userspace. Rows
 0 and 2 show how to create userspace execute-only pages. See Table D5-34 Stage 1
 from the ARMv8 Reference Manual. -->
 
-这张 ARMv8 参考手册中的表格展示了使用四个二进制位能表示的内存保护状态。EL0 表示用户空间的特权级别。
+这张 ARMv8 参考手册中的表格展示了使用这四个二进制位能表示的内存保护状态。EL0 表示用户空间的例外级别。
 第0和第2行展示了创建用户空间仅执行页的方法。见 ARMv8 参考手册的表 D5-34 Stage 1。
 
 <!-- | UXN | PXN | AP[2:1] | Access from a higher Exception level | Access from EL0  | -->
-| UXN | PXN | AP[2:1] | 从更高特权级别访问                      | 从 EL0 访问       |
+| UXN | PXN | AP[2:1] | 从更高例外级别访问                    | 从 EL0 访问       |
 |-----|-----|---------|--------------------------------------|------------------|
 | 0   | 1   | 00      | R, W                                 | X                |
 | 0   | 1   | 01      | R, W                                 | R, W, X          |
@@ -265,7 +265,7 @@ ePAN was made [linux-re-land]. Support for ePAN on devices is out of our control
 and the incompatibility with PAN and XOM should not block the kernel’s
 implementation of PAN [See more](#risks). -->
 
-ARM 随后提出了一种称为“加强”PAN，或 ePAN 的解决方法，将 PAN 改为不仅检查内存页是否用户可读，也
+ARM 随后提出了一种称为“加强” PAN，或 ePAN 的解决方法，将 PAN 改为不仅检查内存页是否用户可读，也
 检查其是否用户可执行。然而，带有此特性的硬件也许好多年都不会出现在 Fuchsia 的目标设备上。Linux 
 在 ePAN 出现后重新添加了他们的 XOM 实现 [linux-re-land]。设备对 ePAN 的支持情况不在我们的
 掌控中，PAN 与 XOM 的不兼容也不应阻碍内核对 PAN 的实现 [详见](#risks)。
@@ -292,7 +292,7 @@ OS and loaders to enforce those permissions to the greatest extent the system
 allows [elf-segment-perm]. -->
 
 ELF 中的段权限表明代码需要哪些权限才能正确运行。也就是说，软件在构建时并不需要知道硬件是否支持 
-XOM，而应该只要不需要读代码页就无条件地使用 XOM。至于怎样将那些权限启用到系统允许的最大程度，应该由
+XOM，而应该只要不需要读代码页就无条件地使用 XOM。至于怎样将那些权限强制到系统允许的最大程度，应该由
 操作系统和程序加载器决定 [elf-segment-perm]。
 
 <!-- ### Virtual Memory Permissions -->
@@ -312,13 +312,13 @@ transition to supporting binaries with execute-only segments and userspace
 programs which allocate execute-only memory will require a way to check if the
 OS can map execute-only pages prior to requesting them. -->
 
-POSIX 规定 `mmap` 可以允许对没有显式设置 `PROT_READ` 的页的读取操作 [posix-mmap]。M1 芯片
-上的 macOS 和 x86 上的 Linux 和 macOS 在遇到用 mmap 请求内存页但只设置了 `PROT_EXEC` 的情况时都不会
-报错，而是将被请求内存页设为 `PROT_READ | PROT_EXEC`。这些系统调用的实现只是在能力范围内“尽力”满足
+POSIX 规定 `mmap` 可以允许对没有显式设置 `PROT_READ` 的页的读取操作 [posix-mmap]。Linux 和 macOS 在 x86上，
+以及 macOS 在 M1 芯片上，在遇到来自 mmap 的内存页请求时，对于只设置了 `PROT_EXEC` 的情况时都不会
+失败，而是将被请求内存页设为 `PROT_READ | PROT_EXEC`。这些系统调用的实现是在能力范围内“尽力”满足
 用户的请求。与此相对，Fuchsia 的系统调用在能否满足用户请求的问题上从来很明确。`zx_vmar_*` 系统调用
 并不会像 POSIX 中的对应调用按照标准允许的一样静默提升内存页权限。请求内存页时不设置 `ZX_VM_PERM_READ` 
-目前必定报错，因为硬件和操作系统不支持映射没有读权限的页。要平滑地向对带有仅执行段的二进制和
-分配仅执行内存的用户空间程序的支持迁移，需要一种在请求前判断操作系统能否映射仅执行页的方法。
+目前必定报错，因为硬件和操作系统不支持映射没有读权限的页。要平滑地迁移到支持带有仅执行段的二进制和
+用户空间程序分配只执行内存，需要一种在请求前判断操作系统能否映射仅执行页的方法。
 
 <!-- ### Readable Code Security -->
 ### 可读代码的安全性
@@ -331,7 +331,7 @@ by Fuchsia and many other OS to hinder attacks which rely on knowing where code
 or other data is in memory.  Making code unreadable further reduces the attack
 surface. -->
 
-许多攻击方式依赖于读取代码页来找出 gadget 或者说感兴趣的可执行代码，进而收集关于进程的信息。地址空间
+许多攻击依赖于读取代码页来找出 gadget -- 也就是感兴趣的可执行代码，来收集关于进程的信息。地址空间
 布局随机化（ASLR）是一种将二进制段加载到进程地址空间中半随机的位置的操作系统技术。Fuchsia 和
 许多其他操作系统利用这种技术来防范依赖于知晓代码或数据在内存中的位置的攻击。让代码不再可读更加
 减小了攻击面。
@@ -373,7 +373,7 @@ both when describing permissions of files, as well as ELF segments by tools like
 the permission is not granted. An execute-only segment will have ‘--x’
 permissions. -->
 
-这些记号表示 ELF 的段的权限。段按照对应权限被映射到进程地址空间。这种记号在描述文件权限和 `readelf` 之类的
+这些记号表示 ELF 段的权限。段按照对应权限被映射到进程地址空间。这种记号在描述文件权限和 `readelf` 之类的
 工具描述 ELF 的段权限时是通用的。r, w 和 x 分别表示读、写和执行，‘-’ 表示对应权限未授予。
 仅执行段的权限表示为 ‘--x’。
 
@@ -394,7 +394,7 @@ This is assembler syntax which marks a section as allocated and executable.
 Currently linkers will put “ax” sections into segments that are ‘r-x’. The
 `--execute-only` flag in lld will mark these segments as ‘--x’ instead.
  -->
-这是汇编中的一种标记，其将一个 section 标记为需分配内存且可执行。链接器目前会
+这是汇编器中的一种语法，其将一个 section 标记为已分配且可执行。链接器目前会
 将 “ax” 的 section 放进 ‘r-x’ 的段里，而 lld 中的 `--execute-only` 标志会将这些段
 标记为 ‘--x’。
 
@@ -411,7 +411,7 @@ permissions contain at least read, because this will no longer be true.
  -->
 为了支持 XOM，提高我们用户空间程序的安全性，我们的工具链和加载器都需要升级。clang driver 需要
 给链接器传递 ‘--execute-only’ 标志来让 “ax” 的 section 映射到 ‘--x’ 段而不是 ‘r-x’ 段。
-加载器也需要修改那些要求至少有读权限的 sanity check，因为现在不一定有读权限了。
+加载器也需要修改那些要求至少有读权限的健全性检查，因为现在不一定有读权限了。
 
 <!-- 
 As it will only be possible to use XOM on hardware that has ePAN, we will need
@@ -440,7 +440,7 @@ complex, it just would add a simple check in the loaders before deciding what
 memory permissions to request from the OS. The third option is helpful because
 it is less error prone in user code.
  -->
-无论怎么选，都有潜在的静默提权问题。第一种选项最容易实现，加载器除了移除 sanity check 外
+无论怎么选，都有潜在的静默提权问题。第一种选项最容易实现，加载器除了移除健全性检查外
 什么都不用改。第二种选项也没有复杂多少，只用在加载器决定向操作系统请求哪些内存权限前
 加一个简单的判断。第三种选项很有帮助，因为它在用户代码中更不容易出错。
 
@@ -457,7 +457,7 @@ a ‘--x’ segment into ‘r-x’ memory [elf-segment-perm].
 第一种选项会造成对 Fuchsia 目前与用户空间的严格约定的破坏，约定要求对系统调用能满足哪些用户请求
 必须明确表达。第二和第三种选项也会导致加载 ELF 文件时对内存权限的处理产生歧义。然而这是符合 
 ELF 规范的。段权限并不是说分配给这个段的内存只能有这些权限，而是说分配的内存必须至少有这些权限
-程序才能正常运行。ELF 加载器要把 ‘--x’ 的段映射进 ‘r-x’ 的内存也在权力范围内 [elf-segment-perm]。
+程序才能正常运行。ELF 加载器也有权把 ‘--x’ 的段映射进 ‘r-x’ 的内存 [elf-segment-perm]。
 
 <!-- 
 The first option of breaking Fuchsia’s current contract of explicit syscall
@@ -488,8 +488,8 @@ cannot map execute-only pages.
 权限标志的各种 `zx_vmar_*` 系统调用在 XOM 不受支持的情况下隐式添加读权限。按照逻辑，
 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 只能与 `ZX_VM_PERM_EXEC` 一起使用，不能
 与 `ZX_VM_PERM_READ` 一起使用。然而接收该标志的各种系统调用并不会处理得这么死板。
-`ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 可以安全地与任意其他标志组合，在系统不能映射
-仅执行页的情况下它只会被当作 `ZX_VM_PERM_READ`。
+`ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 可以安全地与任意其他标志组合，仅在系统不能映射
+仅执行页的情况下它会被当作 `ZX_VM_PERM_READ`。
 
 <!-- 
 A new `kind` value `ZX_FEATURE_KIND_VM` will be added for
@@ -503,7 +503,7 @@ is still important for userspace to be able to query for this functionality.
 将为 `zx_system_get_features` 添加新 `kind` 值 `ZX_FEATURE_KIND_VM`，其会返回
 与 `ZX_FEATURE_KIND_CPU` 类似的 bitset。也会有一个新特性 `ZX_VM_FEATURE_CAN_MAP_XOM`。
 目前的实现总会保持这个位为假，因为 XOM 目前暂不会启用。加载器不会使用这个，因为 ‘r-x’ 内存
-权限对于 ‘--x’ 段也是有效的，但让用户空间能够查询这一功能仍然很重要。
+权限对于 ‘--x’ 段也是合法的，但让用户空间能够查询这一功能仍然很重要。
 
 <!-- ### System Loader ABI Changes -->
 ### 系统加载器 ABI 更改
