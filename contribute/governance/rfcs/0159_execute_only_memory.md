@@ -453,8 +453,8 @@ segment will have, but rather which permissions the memory must at least have
 for the program to operate correctly. ELF loaders are within their rights to map
 a ‘--x’ segment into ‘r-x’ memory [elf-segment-perm].
  -->
-第一种选项会造成对 Fuchsia 目前与用户空间的严格约定的破坏，约定要求对系统调用能满足哪些用户请求
-必须明确表达。第二和第三种选项也会导致加载 ELF 文件时对内存权限的处理产生歧义。然而这是符合 
+第一种选项会破坏 Fuchsia 目前与用户空间的严格约定，约定要求系统调用能不能被满足必须明确。
+第二和第三种选项也会导致加载 ELF 文件时对内存权限的处理产生歧义。然而这是符合 
 ELF 规范的。段权限并不是说分配给这个段的内存只能有这些权限，而是说分配的内存必须至少有这些权限
 程序才能正常运行。ELF 加载器也有权把 ‘--x’ 的段映射进 ‘r-x’ 的内存 [elf-segment-perm]。
 
