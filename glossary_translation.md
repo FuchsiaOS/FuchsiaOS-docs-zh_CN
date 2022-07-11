@@ -48,6 +48,7 @@
 | policy              | 政策                   | G                                                     |
 | proxy               | 代理                   |                                                       |
 | remote              | 远程                   |                                                       |
+| sanity check        | 健全性检查              | G                                                     |
 | service             | 服务                   |                                                       |
 | service account     | 服务帐号               | G                                                     |
 | service mesh        | 服务网格               | G                                                     |
