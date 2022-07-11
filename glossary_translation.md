@@ -39,6 +39,7 @@
 | HTTP header         | HTTP 标头              | G                                                     |
 | infrastructure      | 基础架构               | G                                                     |
 | inspect             | 审视                   | Fuchsia 专有名词 <br> i                               |
+| just-in-time (JIT) compilation | 即时（JIT）编译  | G                                                |
 | mount               | 装载                   | G                                                     |
 | namespace           | 命名空间               | G                                                     |
 | path                | 路径                   | G                                                     |
