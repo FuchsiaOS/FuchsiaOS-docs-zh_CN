@@ -30,6 +30,7 @@
 | distributed tracing | 分布式跟踪             | G                                                     |
 | emulator            | 模拟器                 | G                                                     |
 | ergonomics          | 工效学                 | i & G                                                 |
+| execute-only memory | 只执行内存              | G                                                    |
 | fault injection     | 故障注入               | G                                                     |
 | get stared          | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
 | get started with    | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
@@ -39,6 +40,7 @@
 | HTTP header         | HTTP 标头              | G                                                     |
 | infrastructure      | 基础架构               | G                                                     |
 | inspect             | 审视                   | Fuchsia 专有名词 <br> i                               |
+| just-in-time (JIT) compilation | 即时（JIT）编译  | G                                                |
 | mount               | 装载                   | G                                                     |
 | namespace           | 命名空间               | G                                                     |
 | path                | 路径                   | G                                                     |
@@ -46,6 +48,7 @@
 | policy              | 政策                   | G                                                     |
 | proxy               | 代理                   |                                                       |
 | remote              | 远程                   |                                                       |
+| sanity check        | 健全性检查              | G                                                     |
 | service             | 服务                   |                                                       |
 | service account     | 服务帐号               | G                                                     |
 | service mesh        | 服务网格               | G                                                     |

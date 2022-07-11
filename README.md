@@ -51,7 +51,7 @@ The following documents provide details of build configuration and internal
 structure.
 ```
 
-译文：
+译文（**请注意将注释标记单独成行**，以便 GitHub 给出可读性更强的文件差异）：
 
 ```markdown
 <!-- 
@@ -76,3 +76,11 @@ structure.
 在翻译时，对于内联代码区的内容，如果本身是代码内容，则不译；如果是具有可读性的非代码内容，则可以考虑进行翻译，并在代码区后使用括号标注原文。
 
 在翻译时，要求英文和中文非标点、数字和中文非标点间用 1 个空格分割；英文或数字与中文标点见不空格。可以考虑使用[该软件](https://pypi.org/project/zhlint/)或类似程序进行自动化排版。另外，在非代码区域，应当尽量使用中文标点符号。
+
+## PR 提交要求
+
+ 1. 多个翻译请**分文件提交 PR**，即新建分支（branch），在每个分支中只更改一个文件并提交；
+ 1. PR 提交时请在**标题区域包含文件名**，以便进行记录；
+ 1. PR 的标题和内容最好使用中文；
+ 1. 为避免做重复性工作，请在翻译时**先试译若干节**，并将 PR **[以草稿形式提交](https://docs.github.com/cn/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests)**（[创建草稿 PR](https://docs.github.com/cn/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) 或[提交 PR 后进入并在右侧选择转换为草稿](https://docs.github.com/cn/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft)），以便校对人员提前开始校对，及时修正当前翻译中存在的可能会在下文中重复出现的格式或内容问题。
+ 
