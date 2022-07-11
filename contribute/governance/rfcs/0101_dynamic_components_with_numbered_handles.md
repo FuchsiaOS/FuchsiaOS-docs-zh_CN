@@ -286,6 +286,6 @@ Clients would also need to coordinate child management between the starter
 protocol and the realm protocol, instead of managing the child exclusively
 through the realm protocol.
 
-[runners]: concepts/components/v2/capabilities/runners.md
-[ffx]: development/tools/ffx/overview.md
-[collections]: concepts/components/v2/realms.md#collections
+[runners]: /concepts/components/v2/capabilities/runners.md
+[ffx]: /development/tools/ffx/overview.md
+[collections]: /concepts/components/v2/realms.md#collections

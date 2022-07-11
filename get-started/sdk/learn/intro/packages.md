@@ -26,19 +26,19 @@ ffx repository list
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-+----------------------+------+-----------------------------------------------+
-| NAME                 | TYPE | EXTRA                                         |
-+======================+======+===============================================+
-| fuchsiasamples.com   | pm   | /home/alice/.package_repos/sdk-samples        |
-+----------------------+------+-----------------------------------------------+
-| workstation.qemu-x64 | pm   | /home/alice/.local/share/Fuchsia/.../packages |
-+----------------------+------+-----------------------------------------------+
++--------------------------+------+-----------------------------------------------+
+| NAME                     | TYPE | EXTRA                                         |
++==========================+======+===============================================+
+| fuchsiasamples.com       | pm   | /home/alice/.package_repos/sdk-samples        |
++--------------------------+------+-----------------------------------------------+
+| workstation.qemu-x64     | pm   | /home/alice/.local/share/Fuchsia/.../packages |
++--------------------------+------+-----------------------------------------------+
 ```
 
-The workstation.qemu-x64 repository is created when you run the
+The `workstation.qemu-x64` repository is created when you run the
 `ffx product-bundle get` command (previously in "Get started with the Fuchsia SDK"
-quickstart guide).
-This repository contains additional system packages for the workstation.qemu-x64 prebuilt image.
+quickstart guide). This repository contains additional system packages for the
+`workstation.qemu-x64` prebuilt image.
 
 Start a local package server instance to begin serving these packages:
 
@@ -72,13 +72,13 @@ including the individual components.
 ### Monitor package loading
 
 Packages are resolved and loaded on demand by a Fuchsia device. Take a look at
-this in action with the `bouncing_ball` example package.
+this in action with the `spinning-square` example package.
 
 From the device shell prompt, you can confirm whether a known package is
 currently on the device:
 
 ```posix-terminal
-fssh pkgctl pkg-status fuchsia-pkg://fuchsia.com/bouncing_ball
+fssh pkgctl pkg-status fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 ```none {:.devsite-disable-click-to-copy}
@@ -102,22 +102,23 @@ server.
 From the device shell prompt, attempt to resolve the package:
 
 ```posix-terminal
-fssh pkgctl resolve fuchsia-pkg://fuchsia.com/bouncing_ball
+fssh pkgctl resolve fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 Notice the new lines added to the log output for `pkg-resolver`:
 
 ```none {:.devsite-disable-click-to-copy}
-[128.297][core/pkg-resolver][pkg-resolver][I] Fetching blobs for fuchsia-pkg://workstation.qemu-x64/bouncing_ball: [
-    9575f44e2e3eaa25d4e97864abc9e308ee83d2abfda836e3fd4454999b2166a9,
+[pkg-resolver][pkg-resolver][I] Fetching blobs for fuchsia-pkg://devhost/spinning-square-rs: [
+    6b547fb59fda56866eea01cda90add0aabc1af7c7418c7850011ec6e99a996f1,
+    7c1a9fd1c11e9b6b1d3c3184cf350cecfc91ec083b412d20c18b5187d0983d88,
 ]
-[128.386][core/pkg-resolver][pkg-resolver][I] resolved fuchsia-pkg://fuchsia.com/bouncing_ball as fuchsia-pkg://workstation.qemu-x64/bouncing_ball to bb0515ee231c3b07da82234d015508f8799ed26b828e8dae16b3e9c59bd87cf2 with TUF
+[pkg-resolver][pkg-resolver][I] resolved fuchsia-pkg://fuchsia.com/spinning-square-rs as fuchsia-pkg://devhost/spinning-square-rs to 21967ecc643257800b8ca14420c7f023c1ede7a76068da5faedf328f9d9d3649 with TUF
 ```
 
 From the device shell prompt, check the package status again on the device:
 
 ```posix-terminal
-fssh pkgctl pkg-status fuchsia-pkg://fuchsia.com/bouncing_ball
+fssh pkgctl pkg-status fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 ```none {:.devsite-disable-click-to-copy}
@@ -130,15 +131,15 @@ demand!
 
 ### Explore package metadata
 
-Now that the `bouncing_ball` package has successfully been resolved, you can
+Now that the `spinning-square` package has successfully been resolved, you can
 explore the package contents. Once resolved, the package is referenced on the
 target device using its content address.
 
 From the device shell prompt, use the `pkgctl get-hash` command to determine the
-package hash for `bouncing_ball`:
+package hash for `spinning-square`:
 
 ```posix-terminal
-fssh pkgctl get-hash fuchsia-pkg://fuchsia.com/bouncing_ball
+fssh pkgctl get-hash fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 ```none {:.devsite-disable-click-to-copy}
@@ -155,19 +156,27 @@ fssh pkgctl open ef65e2ed...
 ```none {:.devsite-disable-click-to-copy}
 opening ef65e2ed...
 package contents:
-/bin/bouncing_ball
+/bin/spinning_square
+/lib/VkLayer_khronos_validation.so
 /lib/ld.so.1
 /lib/libasync-default.so
 /lib/libbackend_fuchsia_globals.so
 /lib/libc++.so.2
 /lib/libc++abi.so.1
 /lib/libfdio.so
+/lib/librust-trace-provider.so
+/lib/libstd-e3c06c8874beb723.so
 /lib/libsyslog.so
+/lib/libtrace-engine.so
 /lib/libunwind.so.1
-/meta/bouncing_ball.cmx
+/lib/libvulkan.so
 /meta/contents
 /meta/package
+/meta/spinning-square-rs.cm
+/meta/spinning-square-rs.cmx
+/data/fonts/RobotoSlab-Regular.ttf
 /meta/fuchsia.abi/abi-revision
+/data/vulkan/explicit_layer.d/VkLayer_khronos_validation.json
 ```
 
 This lists the package metadata and each of the content BLOBs in the package.
@@ -183,4 +192,4 @@ In the next module, you'll learn more about building Fuchsia's fundamental unit
 of software:
 
 <a class="button button-primary"
-    href="get-started/sdk/learn/components">Fuchsia components</a>
+    href="/get-started/sdk/learn/components">Fuchsia components</a>

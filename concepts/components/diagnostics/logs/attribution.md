@@ -87,8 +87,8 @@ For more information, see [Life of a protocol open] and the [events documentatio
 [Archivist]: /src/diagnostics/archivist/README.md
 [Archivist's manifest]: /src/diagnostics/archivist/meta/archivist.cml
 [CapabilityRequested]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#CapabilityRequestedPayload
-[capability routing]: concepts/components/v2/capabilities/life_of_a_protocol_open.md#the-open-triggers-capability-routing
-[cm-events]: concepts/components/v2/capabilities/event.md
+[capability routing]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md#the-open-triggers-capability-routing
+[cm-events]: /concepts/components/v2/capabilities/event.md
 [ComponentDescriptor]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#ComponentDescriptor
 [connector-protocol]: /sdk/fidl/fuchsia.sys.internal/log_connector.fidl
 [Event]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#Event
@@ -96,6 +96,6 @@ For more information, see [Life of a protocol open] and the [events documentatio
 [listener-protocol]: /sdk/fidl/fuchsia.sys.internal/log_connector.fidl
 [log-connector]: /src/sys/appmgr/log_connector_impl.h
 [logsink-protocol]: /sdk/fidl/fuchsia.logger/logger.fidl
-[Life of a protocol open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md
+[Life of a protocol open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md
 [service-provider-dir]: /src/sys/appmgr/log_connector_impl.h
 [source-identity]: /sdk/fidl/fuchsia.sys.internal/source_identity.fidl

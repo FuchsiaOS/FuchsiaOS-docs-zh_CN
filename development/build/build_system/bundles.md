@@ -27,4 +27,4 @@ More information on the currently available bundles can be found in
   20GB of build artifacts and requires at least 2GB of storage on the target
   device (size estimates from Q1/2019).
 
-[fx-build-config]: development/build/fx.md#configure-a-build
+[fx-build-config]: /development/build/fx.md#configure-a-build

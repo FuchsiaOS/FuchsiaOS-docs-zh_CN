@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "GN toolchains overview"
-  path: development/build/build_system/internals/toolchains/gn_toolchains_overview.md
+  path: /development/build/build_system/internals/toolchains/gn_toolchains_overview.md
 - title: "ELF shared library redirection"
-  path: development/build/build_system/internals/toolchains/elf_shared_library_redirection.md
+  path: /development/build/build_system/internals/toolchains/elf_shared_library_redirection.md
 - title: "Build variants"
-  path: development/build/build_system/internals/toolchains/build_variants.md
+  path: /development/build/build_system/internals/toolchains/build_variants.md

@@ -50,6 +50,6 @@ any shared data structures with `struct` definitions and provide detailed
 documentation about participation in the protocol.  Packed structures are not
 currently supported.
 
-[fidl-style]: development/languages/fidl/guides/style.md
-[fidl-api]: development/api/fidl.md
-[bits]: development/api/fidl.md#bits
+[fidl-style]: /development/languages/fidl/guides/style.md
+[fidl-api]: /development/api/fidl.md
+[bits]: /development/api/fidl.md#bits

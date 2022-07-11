@@ -7,7 +7,7 @@
 # team as reviewer.
 toc:
 - title: "Getting descriptors and endpoints from usb"
-  path: development/drivers/driver_guides/usb/getting_descriptors_and_endpoints.md
+  path: /development/drivers/driver_guides/usb/getting_descriptors_and_endpoints.md
 - title: "Concepts"
   section:
-  - include: development/drivers/driver_guides/usb/concepts/_toc.yaml
+  - include: /development/drivers/driver_guides/usb/concepts/_toc.yaml

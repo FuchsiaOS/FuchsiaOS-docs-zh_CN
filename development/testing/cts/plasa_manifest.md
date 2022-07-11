@@ -117,15 +117,15 @@ being able to describe the content in sufficient detail.
 ```
 [
   {
-    "file": "//out/workstation.qemu-x64/gen/sdk/lib/fdio/fdio.fragment.plasa.json",
+    "file": "//out/workstation_eng.qemu-x64/gen/sdk/lib/fdio/fdio.fragment.plasa.json",
     "kind": "api_cc",
   },
   {
-    "file": "//out/workstation.qemu-x64/gen/sdk/lib/stdcompat/stdcompat.fragment.plasa.json",
+    "file": "//out/workstation_eng.qemu-x64/gen/sdk/lib/stdcompat/stdcompat.fragment.plasa.json",
     "kind": "api_cc",
   },
   {
-    "file": "//out/workstation.qemu-x64/gen/sdk/lib/fit/fit.fragment.plasa.json",
+    "file": "//out/workstation_eng.qemu-x64/gen/sdk/lib/fit/fit.fragment.plasa.json",
     "kind": "api_cc",
   }
 ]
@@ -201,11 +201,11 @@ platform surface area manifest:
 
 2. Represent other Plasa elements in the manifest.
 
-[abi]: concepts/packages/system.md#abi_surfaces
-[api]: contribute/governance/rfcs/0002_platform_versioning.md#implementation
-[cts]: development/testing/cts/overview.md
+[abi]: /concepts/packages/system.md#abi_surfaces
+[api]: /contribute/governance/rfcs/0002_platform_versioning.md#implementation
+[cts]: /development/testing/cts/overview.md
 [l1]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/BUILD.gn;l=53;drc=0590a9df6e18abbaafb719c42cc2ef59abb7fdb6
 [l2]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/cts/plasa/plasa_artifacts.gni;l=8
 [l3]: https://cs.opensource.google/search?q=plasa_artifacts.gni&ss=fuchsia%2Ffuchsia
-[rfc76]: contribute/governance/rfcs/0076_fidl_api_summaries.md
+[rfc76]: /contribute/governance/rfcs/0076_fidl_api_summaries.md
 

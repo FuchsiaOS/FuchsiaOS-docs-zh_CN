@@ -7,17 +7,17 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/testing/fuzzing/overview.md
+  path: /development/testing/fuzzing/overview.md
 - title: "Write a Fuzzer"
-  path: development/testing/fuzzing/write-a-fuzzer.md
+  path: /development/testing/fuzzing/write-a-fuzzer.md
 - title: "Build a Fuzzer"
-  path: development/testing/fuzzing/build-a-fuzzer.md
+  path: /development/testing/fuzzing/build-a-fuzzer.md
 - title: "Run a Fuzzer"
-  path: development/testing/fuzzing/run-a-fuzzer.md
+  path: /development/testing/fuzzing/run-a-fuzzer.md
 - title: "Handling Results Found Through Fuzzing"
-  path: development/testing/fuzzing/handle-results.md
+  path: /development/testing/fuzzing/handle-results.md
 - title: "Improving Your Fuzzer"
-  path: development/testing/fuzzing/improve-a-fuzzer.md
+  path: /development/testing/fuzzing/improve-a-fuzzer.md
   section:
   - title: "Additional Topics"
-    path: development/testing/fuzzing/fidl-fuzzing.md
+    path: /development/testing/fuzzing/fidl-fuzzing.md

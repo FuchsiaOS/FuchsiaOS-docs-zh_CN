@@ -86,7 +86,7 @@ code and inspect the stack frames.
 
 ![Diagram showing how the Fuchsia debugger (zxdb) interacts with the
 debug_agent service running on a Fuchsia device to perform interactive
-debugging of a process.](get-started/images/components/zxdb.png){: width="591"}
+debugging of a process.](/get-started/images/components/zxdb.png){: width="591"}
 
 Setting up the debug session requires the following high-level steps:
 
@@ -133,7 +133,7 @@ control and inspect the state of the process. Here is a short collection of
 common commands:
 
 Note: For complete details and reference on `zxdb` commands, see
-[The Fuchsia debugger](development/debugger).
+[The Fuchsia debugger](/development/debugger).
 
 <table>
   <tr>

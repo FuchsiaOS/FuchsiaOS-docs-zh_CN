@@ -36,7 +36,7 @@ When the last handle to a process is closed, the process is destroyed.
 Process handles may be waited on and will assert the signal
 **ZX_PROCESS_TERMINATED** when the process exits.
 
-*job* is the controlling [job object](reference/kernel_objects/job.md) for the new
+*job* is the controlling [job object](/reference/kernel_objects/job.md) for the new
 process, which will become a child of that job.
 
 ## RIGHTS

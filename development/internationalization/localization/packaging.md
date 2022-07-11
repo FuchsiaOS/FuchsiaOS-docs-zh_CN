@@ -76,4 +76,4 @@ translated messages, the correct directory path would be
 `assets/locales/fr/l10n.json` for the translated messages for French.  It is
 also required to package the ICU data, is defined in the `icudtl.dat` section.
 
-[provide-data-guide]: development/components/data.md
+[provide-data-guide]: /development/components/data.md

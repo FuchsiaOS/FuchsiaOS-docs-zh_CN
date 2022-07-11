@@ -48,7 +48,7 @@ scales (scalar values representing relative operating points) of each logical CP
 values reflect the most recent call to `zx_system_set_performance_info`, even if the values have not
 yet taken effect.
 
-See [RFC 0123](contribute/governance/rfcs/0123_cpu_performance_info.md)
+See [RFC 0123](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 for further details on values and update protocols.
 
 ### ZX_CPU_DEFAULT_PERF_SCALE
@@ -60,7 +60,7 @@ for further details on values and update protocols.
 Returns an array of `zx_cpu_performance_scale_t` with entries indicating the default performance
 scales used during boot of each logical CPU in the system.
 
-See [RFC 0123](contribute/governance/rfcs/0123_cpu_performance_info.md)
+See [RFC 0123](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 for further details.
 
 ## RIGHTS
@@ -90,7 +90,7 @@ negative error value is returned.
 
 ## SEE ALSO
 
-- [RFC 0123: CPU performance info syscalls](contribute/governance/rfcs/0123_cpu_performance_info.md)
+- [RFC 0123: CPU performance info syscalls](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 
  - [`zx_system_set_performance_info()`]
 

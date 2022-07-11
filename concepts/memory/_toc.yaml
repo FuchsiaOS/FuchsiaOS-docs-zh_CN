@@ -7,5 +7,5 @@
 # team as reviewer.
 toc:
 - title: "Address spaces"
-  path: concepts/memory/address_spaces.md
+  path: /concepts/memory/address_spaces.md
   status: beta

@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/modular/overview.md
+  path: /development/modular/overview.md
 - title: "Configuring the Modular framework"
-  path: development/modular/config.md
+  path: /development/modular/config.md

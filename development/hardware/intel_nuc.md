@@ -49,16 +49,16 @@ section.
 ## 2. Build Fuchsia {#build-fuchsia}
 
 Installing Fuchsia on a NUC device requires that you build a Workstation
-image (`workstation.x64`) and generate build artifacts (which include
+image (`workstation_eng.x64`) and generate build artifacts (which include
 the Fuchsia installer) on your workstation.
 
 To build Fuchsia for NUC installation, do the following:
 
-1. Set your build configuration to `workstation.x64` and include the
+1. Set your build configuration to `workstation_eng.x64` and include the
    recovery package (`recovery-installer`):
 
    ```posix-terminal
-   fx set workstation.x64 --with //build/images/recovery:recovery-installer
+   fx set workstation_eng.x64 --with //build/images/recovery:recovery-installer
    ```
 
 1.  Build Fuchsia:
@@ -139,7 +139,7 @@ do the following:
 1. In the **Boot Order** window on the left, click the **Legacy** tab.
 1. Uncheck **Legacy Boot**.
 
-   <img width="40%" src="images/developing_on_nuc/bios.jpg"/>
+   <img width="40%" src="/images/developing_on_nuc/bios.jpg"/>
 1. Click the **Advanced** button.
 1. Confirm the following boot configuration:
     * Under the **Boot Priority** tab:
@@ -271,9 +271,9 @@ To flash a Fuchsia image to your NUC, do the following:
 <!-- Reference links -->
 
 [nuc-wiki]: https://en.wikipedia.org/wiki/Next_Unit_of_Computing
-[get-started-with-fuchsia]: get-started/README.md
-[usb-setup]: development/hardware/usb_setup.md
-[supported-sys-config]: reference/hardware/support-system-config.md
+[get-started-with-fuchsia]: /get-started/README.md
+[usb-setup]: /development/hardware/usb_setup.md
+[supported-sys-config]: /reference/hardware/support-system-config.md
 [NUC7i5DNKE]: https://ark.intel.com/content/www/us/en/ark/products/122486/intel-nuc-kit-nuc7i5dnke.html
 [NUC7i5DNHE]: https://ark.intel.com/content/www/us/en/ark/products/122488/intel-nuc-kit-nuc7i5dnhe.html
 [NUC7i3DNKE]: https://ark.intel.com/content/www/us/en/ark/products/122495/intel-nuc-kit-nuc7i3dnke.html
@@ -283,5 +283,5 @@ To flash a Fuchsia image to your NUC, do the following:
 [NUC8i3BEK]: https://ark.intel.com/content/www/us/en/ark/products/126149/intel-nuc-kit-nuc8i3bek.html
 [NUC8i3BEH]: https://ark.intel.com/content/www/us/en/ark/products/126150/intel-nuc-kit-nuc8i3beh.html
 [ffx]: https://fuchsia.dev/reference/tools/sdk/ffx
-[ffx-workflows]: development/sdk/ffx/index.md
-[fuchsia-ssh-keys]: development/sdk/ffx/create-ssh-keys-for-devices.md
+[ffx-workflows]: /development/sdk/ffx/index.md
+[fuchsia-ssh-keys]: /development/sdk/ffx/create-ssh-keys-for-devices.md

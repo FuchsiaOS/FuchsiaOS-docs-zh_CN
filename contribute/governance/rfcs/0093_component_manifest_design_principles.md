@@ -218,21 +218,21 @@ component's manifest is shipped as a blob in this package, usually in `meta/`.
      [documentation][k8s-declarative-configuration] explaining many of the
      downsides of non-declarative configuration.
 
-[blobfs]: concepts/filesystems/blobfs.md
+[blobfs]: /concepts/filesystems/blobfs.md
 [borgcfg]: https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43438.pdf
 [borgmon]: https://cloud.google.com/blog/products/devops-sre/welcome-to-the-museum-of-modern-borgmon-art
 [cmc]: /tools/cmc
-[component-manifest]: concepts/components/v2/component_manifests.md
-[component-manifest-include]: concepts/components/v2/component_manifests.md#include
-[component-resolvers]: concepts/components/v2/capabilities/resolvers.md
+[component-manifest]: /concepts/components/v2/component_manifests.md
+[component-manifest-include]: /concepts/components/v2/component_manifests.md#include
+[component-resolvers]: /concepts/components/v2/capabilities/resolvers.md
 [ComponentDecl]: /sdk/fidl/fuchsia.component.decl/component.fidl
 [DSL]: https://en.wikipedia.org/wiki/Domain-specific_language
-[elf]: concepts/process/program_loading.md#elf_and_the_system_abi
-[elf-runner]: concepts/components/v2/elf_runner.md
-[FIDL]: development/languages/fidl/README.md
-[fidl-envelope]: reference/fidl/language/wire-format/README.md#envelopes
-[fidl-tables]: reference/fidl/language/wire-format/README.md#tables
-[fidl-unions]: reference/fidl/language/wire-format/README.md#unions
+[elf]: /concepts/process/program_loading.md#elf_and_the_system_abi
+[elf-runner]: /concepts/components/v2/elf_runner.md
+[FIDL]: /development/languages/fidl/README.md
+[fidl-envelope]: /reference/fidl/language/wire-format/README.md#envelopes
+[fidl-tables]: /reference/fidl/language/wire-format/README.md#tables
+[fidl-unions]: /reference/fidl/language/wire-format/README.md#unions
 [fx-scrutiny]: https://fuchsia.dev/reference/tools/fx/cmd/scrutiny
 [imperative-declarative]: https://dominik-tornow.medium.com/imperative-vs-declarative-8abc7dcae82e
 [JSON5]: https://www.json5.org
@@ -240,10 +240,10 @@ component's manifest is shipped as a blob in this package, usually in `meta/`.
 [k8s-design]: https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/declarative-application-management.md
 [k8s-declarative-configuration]: https://github.com/kubernetes/community/blob/master/contributors/design-proposals/architecture/declarative-application-management.md#declarative-configuration
 [GCL]: https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43438.pdf
-[package]: concepts/packages/package.md
-[package-url]: concepts/packages/package_url.md
+[package]: /concepts/packages/package.md
+[package-url]: /concepts/packages/package_url.md
 [resolver]: https://fuchsia.dev/reference/fidl/fuchsia.component.resolution#Resolver
-[rfc-0057]: contribute/governance/rfcs/0057_default_no_handles.md
+[rfc-0057]: /contribute/governance/rfcs/0057_default_no_handles.md
 [sdk]: https://fuchsia.dev/reference/tools/sdk/README.md
 [Starlark]: https://github.com/bazelbuild/starlark
-[topology]: concepts/components/v2/topology.md
+[topology]: /concepts/components/v2/topology.md

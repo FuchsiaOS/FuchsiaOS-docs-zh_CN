@@ -55,18 +55,18 @@ VFS layer, Fuchsia processes send requests to filesystem services which
 implement protocols for Files, Directories, and Devices. To send one of these
 open requests, a Fuchsia process must transmit an RPC message over an existing
 handle to a directory; for more detail on this process, refer to the [life of an
-open document](concepts/filesystems/life_of_an_open.md).
+open document](/concepts/filesystems/life_of_an_open.md).
 
 ### Namespaces
 
-On Fuchsia, a [namespace](concepts/process/namespaces.md) is a small filesystem that exists
+On Fuchsia, a [namespace](/concepts/process/namespaces.md) is a small filesystem that exists
 entirely within the client. At the most basic level, the idea of the client
 saving “/” as root and associating a handle with it is a very primitive
 namespace. Instead of a typical singular "global" filesystem namespace, Fuchsia
 processes can be provided an arbitrary directory handle to represent "root",
 limiting the scope of their namespace. In order to limit this scope, Fuchsia
 filesystems [intentionally do not allow access to parent directories via
-dotdot](concepts/filesystems/dotdot.md).
+dotdot](/concepts/filesystems/dotdot.md).
 
 Fuchsia processes may additionally redirect certain path operations to separate
 filesystem servers. When a client refers to “/bin”, the client may opt to
@@ -74,7 +74,7 @@ redirect these requests to a local handle representing the “/bin” directory,
 rather than sending a request directly to the “bin” directory within the “root”
 directory. Namespaces, like all filesystem constructs, are not visible from the
 kernel: rather, they are implemented in client-side runtimes (such as
-[libfdio](concepts/filesystems/life_of_an_open.md#Fdio)) and are interposed between most client code
+[libfdio](/concepts/filesystems/life_of_an_open.md#Fdio)) and are interposed between most client code
 and the handles to remote filesystems.
 
 Since namespaces operate on handles, and most Fuchsia resources and services
@@ -89,7 +89,7 @@ according to application-launching policy.
 
 For more detail the mechanisms and policies applied to restricting process
 capability, refer to the documentation on
-[sandboxing](concepts/process/sandboxing.md).
+[sandboxing](/concepts/process/sandboxing.md).
 
 ### Passing Data
 
@@ -213,8 +213,8 @@ filesystems to a namespace from the command line.
 
 [Blobfs](/src/storage/bin/blobfs/)
 is a simple, flat filesystem optimized for “write-once, then read-only” [signed
-data](concepts/packages/merkleroot.md), such as
-[packages](concepts/packages/package.md).
+data](/concepts/packages/merkleroot.md), such as
+[packages](/concepts/packages/package.md).
 Other than two small prerequisites (file names, which are deterministic, content
 addressable hashes of a file’s Merkle Tree root, for integrity-verification)
 and forward knowledge of file size (identified to Blobfs by a call to
@@ -292,7 +292,7 @@ The slice allocation table is made up of tightly packed slice entries
 
 FVM library can be found
 [here](/src/storage/fvm/). During
-[paving](development/build/fx.md#what-is-paving),
+[paving](/development/build/fx.md#what-is-paving),
 some partitions are copied from host to target. So the partitions and FVM
 file itself may be created on host. To do this there is host side utility
 [here](/src/storage/bin/fvm).

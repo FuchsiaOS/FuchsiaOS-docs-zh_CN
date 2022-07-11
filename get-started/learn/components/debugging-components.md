@@ -283,3 +283,11 @@ Exit the debugging session to return to the terminal:
 <pre class="devsite-click-to-copy">
 <span class="no-select">[zxdb] </span>exit
 </pre>
+
+### Destroy the instance
+
+Clean up the `echo-args` instance using the following command:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo-args
+```

@@ -26,7 +26,7 @@ None.
 
 ## DESCRIPTION
 
-Creates a new zircon clock object. See [clocks](reference/kernel_objects/clock.md) for an
+Creates a new zircon clock object. See [clocks](/reference/kernel_objects/clock.md) for an
 overview of clock objects.
 
 ### Options
@@ -55,7 +55,7 @@ The following options are defined for clock objects:
 ### Arguments
 
 One additional creation-time argument may be specified when configuring the clock, the backstop
-time. See [clocks](reference/kernel_objects/clock.md) for more details about backstop times.
+time. See [clocks](/reference/kernel_objects/clock.md) for more details about backstop times.
 
 In order to configure a backstop time, a user must pass a `zx_clock_create_args_v1_t` structure to
 the `zx_clock_create` call via the `args` parameter. Additionally, the `options` bits must have
@@ -111,7 +111,7 @@ and **ZX_RIGHT_WRITE** rights assigned to them.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[clocks]: reference/kernel_objects/clock.md
+[clocks]: /reference/kernel_objects/clock.md
 [`zx_clock_get_details()`]: clock_get_details.md
 [`zx_clock_read()`]: clock_read.md
 [`zx_clock_update()`]: clock_update.md

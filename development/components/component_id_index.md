@@ -2,13 +2,13 @@
 
 <!-- TODO(fxbug,dev/77043): Update this guide for modern components -->
 
-Note: This guide uses the [components v1](glossary/README.md#components-v1)
+Note: This guide uses the [components v1](/glossary/README.md#components-v1)
 architecture.
 
 ## Terminology
 
-[Moniker](glossary?style=box#moniker)
-[Component instance identifier](glossary?style=box#component-instance-identifier)
+[Moniker](/glossary?style=box#moniker)
+[Component instance identifier](/glossary?style=box#component-instance-identifier)
 
 ## Scope
 

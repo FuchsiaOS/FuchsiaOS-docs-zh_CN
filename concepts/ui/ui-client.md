@@ -7,7 +7,7 @@ touch, and keyboard.
 ## A UI is composed with multiple APIs
 
 These UI functions are divided between a number of FIDL APIs to serve a
-broad spectrum of [constituents](contribute/governance/api_council.md#values);
+broad spectrum of [constituents](/contribute/governance/api_council.md#values);
 hence there is no single "UI API". Instead, a client implements its UI using
 the APIs it needs.
 
@@ -22,7 +22,7 @@ Some examples include:
 
 ## A UI client has a View to place graphical content
 
-A UI client creates a [view](glossary#view) in the global view tree, and
+A UI client creates a [view](/glossary#view) in the global view tree, and
 within that view, presents graphical content to the user via a display.
 
 A view is the common unit of UI organization between UI clients on Fuchsia. For

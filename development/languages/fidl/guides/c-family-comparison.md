@@ -108,22 +108,22 @@ The bindings library can dispatch at most one in-flight transaction.
 
 ##### Footnote3
 
-The bindings library defined in [lib/fidl](/sdk/lib/fidl/llcpp) can
+The bindings library defined in [lib/fidl](/sdk/lib/fidl/cpp/wire) can
 dispatch an unbounded number of in-flight transactions via `fidl::BindServer`
 defined in
-[lib/fidl/llcpp/channel.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/channel.h).
+[lib/fidl/cpp/wire/channel.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/channel.h).
 
 ##### Footnote4
 
-The bindings library [lib/fidl](/sdk/lib/fidl/llcpp) enables parallel
+The bindings library [lib/fidl](/sdk/lib/fidl/cpp/wire) enables parallel
 dispatch using the `EnableNextDispatch()` API defined in
-[lib/fidl/llcpp/async_transaction.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/async_transaction.h).
+[lib/fidl/cpp/wire/async_transaction.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/async_transaction.h).
 
 ## Migrating From C Bindings To Low-Level C++
 
 TODO
 
 <!-- xrefs -->
-[layout-attribute]: reference/fidl/language/attributes.md#layout
-[llcpp-tutorial]: development/languages/fidl/tutorials/llcpp
-[hlcpp-tutorial]: development/languages/fidl/tutorials/hlcpp
+[layout-attribute]: /reference/fidl/language/attributes.md#layout
+[llcpp-tutorial]: /development/languages/fidl/tutorials/llcpp
+[hlcpp-tutorial]: /development/languages/fidl/tutorials/hlcpp

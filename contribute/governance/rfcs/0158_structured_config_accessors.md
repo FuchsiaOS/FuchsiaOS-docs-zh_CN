@@ -12,7 +12,7 @@ Requirements, design philosophy, and high-level implementation details for
 user-facing generated accessor libraries implementing [RFC-0127] for Structured
 Configuration.
 
-[RFC-0127]: contribute/governance/rfcs/0127_structured_configuration.md
+[RFC-0127]: /contribute/governance/rfcs/0127_structured_configuration.md
 
 ## Motivation
 
@@ -204,7 +204,7 @@ header as an [implementation header] for their component.
 When building accessors support in the SDK we will ensure that users can
 configure the include directory layout to match any style guidance they have.
 
-[implementation header]: development/languages/c-cpp/naming.md#implementation_headers
+[implementation header]: /development/languages/c-cpp/naming.md#implementation_headers
 
 #### Rust
 
@@ -257,7 +257,7 @@ manifests that were compiled from different schemas.
 An implication of this design is that components will need to be recompiled
 when their configuration schema changes.
 
-[cml-checksum]: contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md#fidl-specification
+[cml-checksum]: /contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md#fidl-specification
 
 A [rejected alternative](#runner-verification) would be to have the runner
 cooperate with Component Manager to verify the checksum before starting the
@@ -304,7 +304,7 @@ that if it is a commonly requested feature.
 The [rules for configuration field identifiers][cml-idents] mean that all config
 keys in CML are valid FIDL field identifiers, no mangling is required.
 
-[cml-idents]: contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md#cml-syntax
+[cml-idents]: /contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md#cml-syntax
 
 #### Generated FIDL library
 
@@ -383,7 +383,7 @@ directly by the ELF runner, even though they use the same language.
 Initially we will support C++ and Rust. Over time we will cover all target-side
 [supported languages].
 
-[supported languages]: contribute/governance/policy/programming_languages.md
+[supported languages]: /contribute/governance/policy/programming_languages.md
 
 ### Dependencies
 
@@ -423,7 +423,7 @@ evolution of configuration values may be supported by the overall Component
 Framework but from the component's perspective it will always receive a complete
 and consistent configuration.
 
-[configuration schema checksum]: contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md#fidl-specification
+[configuration schema checksum]: /contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md#fidl-specification
 
 ## Security considerations
 

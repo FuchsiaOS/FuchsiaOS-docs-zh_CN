@@ -307,21 +307,21 @@ Note: Component instances are referenced by their
 the [component instance tree][glossary.component-instance-tree]
 
 <!-- xrefs -->
-[glossary.component-instance-tree]: glossary/README.md#component-instance-tree
-[glossary.component-url]: glossary/README.md#component-url
-[glossary.fuchsia-pkg-url]: glossary/README.md#fuchsia-pkg-url
-[glossary.moniker]: glossary/README.md#moniker
-[fidl-intro]: development/languages/fidl/tutorials/hlcpp/basics/using-fidl.md
-[building-components]: development/components/build.md
-[products]: development/build/build_system/boards_and_products.md
-[declaring-fidl]: development/languages/fidl/tutorials/fidl.md
-[depending-fidl]: development/languages/fidl/tutorials/hlcpp/basics/using-fidl.md
-[component-manager]: concepts/components/v2/component_manager.md
-[protocol-open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md
-[discoverable]: reference/fidl/bindings/hlcpp-bindings.md#discoverable
-[bindings-iface]: reference/fidl/bindings/hlcpp-bindings.md#protocols
-[pipeline]: development/api/fidl.md#request-pipelining
-[pipeline-tut]: development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
-[compiling-fidl]: development/languages/fidl/tutorials/fidl.md
+[glossary.component-instance-tree]: /glossary/README.md#component-instance-tree
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: /glossary/README.md#fuchsia-pkg-url
+[glossary.moniker]: /glossary/README.md#moniker
+[fidl-intro]: /development/languages/fidl/tutorials/hlcpp/basics/using-fidl.md
+[building-components]: /development/components/build.md
+[products]: /development/build/build_system/boards_and_products.md
+[declaring-fidl]: /development/languages/fidl/tutorials/fidl.md
+[depending-fidl]: /development/languages/fidl/tutorials/hlcpp/basics/using-fidl.md
+[component-manager]: /concepts/components/v2/component_manager.md
+[protocol-open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md
+[discoverable]: /reference/fidl/bindings/hlcpp-bindings.md#discoverable
+[bindings-iface]: /reference/fidl/bindings/hlcpp-bindings.md#protocols
+[pipeline]: /development/api/fidl.md#request-pipelining
+[pipeline-tut]: /development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
+[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
 [async-loop]: /zircon/system/ulib/async-loop/include/lib/async-loop/cpp/loop.h
-[overview]: development/languages/fidl/tutorials/overview.md
+[overview]: /development/languages/fidl/tutorials/overview.md

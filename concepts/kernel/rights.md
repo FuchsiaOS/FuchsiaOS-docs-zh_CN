@@ -46,21 +46,21 @@ majority of handle types by default. These are **ZX_RIGHT_DUPLICATE**,
 These four rights are referred to as **ZX_RIGHTS_BASIC** when used together.
 
 ## See also
-[Objects](reference/kernel_objects/objects.md),
-[Handles](concepts/kernel/handles.md)
+[Objects](/reference/kernel_objects/objects.md),
+[Handles](/concepts/kernel/handles.md)
 
-[`zx_channel_write()`]: reference/syscalls/channel_write.md
-[`zx_handle_duplicate()`]: reference/syscalls/handle_duplicate.md
-[`zx_job_get_policy()`]: reference/syscalls/job_get_policy.md
-[`zx_job_set_policy()`]: reference/syscalls/job_set_policy.md
-[`zx_object_get_child()`]: reference/syscalls/object_get_child.md
-[`zx_object_get_info()`]: reference/syscalls/object_get_info.md
-[`zx_object_get_property()`]: reference/syscalls/object_get_property.md
-[`zx_object_set_profile()`]: reference/syscalls/object_set_profile.md
-[`zx_object_set_property()`]: reference/syscalls/object_set_property.md
-[`zx_object_signal()`]: reference/syscalls/object_signal.md
-[`zx_object_signal_peer()`]: reference/syscalls/object_signal_peer.md
-[`zx_object_wait_many()`]: reference/syscalls/object_wait_many.md
-[`zx_object_wait_one()`]: reference/syscalls/object_wait_one.md
-[`zx_socket_set_disposition()`]: reference/syscalls/socket_set_disposition.md
-[`zx_task_kill()`]: reference/syscalls/task_kill.md
+[`zx_channel_write()`]: /reference/syscalls/channel_write.md
+[`zx_handle_duplicate()`]: /reference/syscalls/handle_duplicate.md
+[`zx_job_get_policy()`]: /reference/syscalls/job_get_policy.md
+[`zx_job_set_policy()`]: /reference/syscalls/job_set_policy.md
+[`zx_object_get_child()`]: /reference/syscalls/object_get_child.md
+[`zx_object_get_info()`]: /reference/syscalls/object_get_info.md
+[`zx_object_get_property()`]: /reference/syscalls/object_get_property.md
+[`zx_object_set_profile()`]: /reference/syscalls/object_set_profile.md
+[`zx_object_set_property()`]: /reference/syscalls/object_set_property.md
+[`zx_object_signal()`]: /reference/syscalls/object_signal.md
+[`zx_object_signal_peer()`]: /reference/syscalls/object_signal_peer.md
+[`zx_object_wait_many()`]: /reference/syscalls/object_wait_many.md
+[`zx_object_wait_one()`]: /reference/syscalls/object_wait_one.md
+[`zx_socket_set_disposition()`]: /reference/syscalls/socket_set_disposition.md
+[`zx_task_kill()`]: /reference/syscalls/task_kill.md

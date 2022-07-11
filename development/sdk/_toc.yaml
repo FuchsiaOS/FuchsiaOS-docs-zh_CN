@@ -1,12 +1,12 @@
 toc:
 - title: Overview
-  path: development/sdk/index.md
+  path: /development/sdk/index.md
 - heading: Quickstart
 - title: "Get started with the Fuchsia SDK"
-  path: get-started/sdk/index.md
+  path: /get-started/sdk/index.md
 - heading: Driver development
 - title: "Get started with driver development"
-  path: get-started/sdk/get-started-with-driver.md
+  path: /get-started/sdk/get-started-with-driver.md
 - title: "Driver sample walkthrough: qemu_edu"
-  path: development/sdk/driver-sample-qemu-edu.md
-- include: development/sdk/ffx/_toc.yaml
+  path: /development/sdk/driver-sample-qemu-edu.md
+- include: /development/sdk/ffx/_toc.yaml

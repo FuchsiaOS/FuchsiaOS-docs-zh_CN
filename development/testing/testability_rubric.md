@@ -133,7 +133,7 @@ receiving `Code-Review+2`.
 
 ### If fixing a flake, test for flakiness in CQ
 
-If fixing a flake, verify the fix by [testing for flakiness in CQ](development/testing/testing_for_flakiness_in_cq.md).
+If fixing a flake, verify the fix by [testing for flakiness in CQ](/development/testing/testing_for_flakiness_in_cq.md).
 
 ### Tests should not sleep
 
@@ -201,4 +201,4 @@ change that.
     infrastructure is tracked in fxbug.dev/34478. A testability exception is granted
     until fxbug.dev/34478 is addressed.
 
-[determinism]: contribute/testing/best-practices.md#write_reproducible_deterministic_tests
+[determinism]: /contribute/testing/best-practices.md#write_reproducible_deterministic_tests

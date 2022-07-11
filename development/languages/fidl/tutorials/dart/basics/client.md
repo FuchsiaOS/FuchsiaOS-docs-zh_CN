@@ -191,13 +191,13 @@ You should see output similar to the following in the QEMU console
 ```
 
 <!-- xrefs -->
-[bindings-ref]: reference/fidl/bindings/dart-bindings.md
-[proxy]: reference/fidl/bindings/dart-bindings.md#proxy
-[events]: reference/fidl/bindings/dart-bindings.md#protocol-events-client
-[server-tut]: development/languages/fidl/tutorials/dart/basics/server.md
-[server-handler]: development/languages/fidl/tutorials/dart/basics/server.md#handler
-[overview]: development/languages/fidl/tutorials/overview.md
-[environment]: concepts/components/v2/environments.md
-[service-name]: reference/fidl/bindings/dart-bindings.md#discoverable
-[pipeline]: development/api/fidl.md#request-pipelining
-[pipeline-tut]: development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
+[bindings-ref]: /reference/fidl/bindings/dart-bindings.md
+[proxy]: /reference/fidl/bindings/dart-bindings.md#proxy
+[events]: /reference/fidl/bindings/dart-bindings.md#protocol-events-client
+[server-tut]: /development/languages/fidl/tutorials/dart/basics/server.md
+[server-handler]: /development/languages/fidl/tutorials/dart/basics/server.md#handler
+[overview]: /development/languages/fidl/tutorials/overview.md
+[environment]: /concepts/components/v2/environments.md
+[service-name]: /reference/fidl/bindings/dart-bindings.md#discoverable
+[pipeline]: /development/api/fidl.md#request-pipelining
+[pipeline-tut]: /development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md

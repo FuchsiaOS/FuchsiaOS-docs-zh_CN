@@ -75,8 +75,8 @@ gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#terminal.arm64
 gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#terminal.qemu-arm64
 gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#terminal.qemu-x64
 gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#terminal.x64
-gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#workstation.chromebook-x64-dfv2
-gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#workstation.qemu-x64*
+gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#workstation_eng.chromebook-x64-dfv2
+gs://fuchsia/development/8.20220511.2.1/sdk/product_bundles.json#workstation_eng.qemu-x64*
 ...
 ```
 
@@ -91,27 +91,27 @@ ffx product-bundle get {{ "<var>" }}PRODUCT_BUNDLE{{ "</var>" }}
 
 Replace `PRODUCT_BUNDLE` with the name of a product bundle.
 
-The example command below downloads the `workstation.qemu-x64` product bundle:
+The example command below downloads the `workstation_eng.qemu-x64` product bundle:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx product-bundle get workstation.qemu-x64
+$ ffx product-bundle get workstation_eng.qemu-x64
 ```
 
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx product-bundle get workstation.qemu-x64
+$ ffx product-bundle get workstation_eng.qemu-x64
 Getting product metadata.
 .
 Getting product metadata.
 .
-Getting product data for "workstation.qemu-x64"
+Getting product data for "workstation_eng.qemu-x64"
 ...........................................................................................
-Getting package data for "workstation.qemu-x64"
+Getting package data for "workstation_eng.qemu-x64"
 .
 ...........................................................................................
 ...........................................................................................
-........................................Download of product data for "workstation.qemu-x64" is complete.
+........................................Download of product data for "workstation_eng.qemu-x64" is complete.
 ```
 
 This command may take a few minutes to download the image and product metadata.
@@ -133,17 +133,17 @@ ffx emu start {{ "<var>" }}PRODUCT_BUNDLE{{ "</var>" }} [--name {{ "<var>" }}NAM
 Replace `PRODUCT_BUNDLE` with the name of a product bundle
 [downloaded](#download-a-product-bundle) on your host machine.
 
-The example command below uses the `workstation.qemu-x64` product bundle to
+The example command below uses the `workstation_eng.qemu-x64` product bundle to
 start the Fuchsia emulator:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64
+$ ffx emu start workstation_eng.qemu-x64
 ```
 
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64
+$ ffx emu start workstation_eng.qemu-x64
 Logging to "/home/alice/.local/share/Fuchsia/ffx/emu/instances/fuchsia-emulator/emulator.log"
 Waiting for Fuchsia to start (up to 60 seconds).............................
 Emulator is ready.
@@ -159,7 +159,7 @@ you need to launch multiple instances), you can use the `--name` flag, for
 example:.
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --name my-fuchsia-example-01
+$ ffx emu start workstation_eng.qemu-x64 --name my-fuchsia-example-01
 ```
 
 To see the list of all running emulator instances, you can use the
@@ -184,16 +184,16 @@ ffx emu start {{ "<var>" }}PRODUCT_BUNDLE{{ "</var>" }} --headless [--engine qem
 Replace `PRODUCT_BUNDLE` with the name of a product bundle
 [downloaded](#download-a-product-bundle) on your host machine.
 
-The example command below uses the `workstation.qemu-x64` product bundle:
+The example command below uses the `workstation_eng.qemu-x64` product bundle:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --headless --engine qemu
+$ ffx emu start workstation_eng.qemu-x64 --headless --engine qemu
 ```
 
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --headless --engine qemu
+$ ffx emu start workstation_eng.qemu-x64 --headless --engine qemu
 Logging to "/home/alice/.local/share/Fuchsia/ffx/emu/instances/fuchsia-emulator/emulator.log"
 Waiting for Fuchsia to start (up to 60 seconds).............................
 Emulator is ready.
@@ -374,16 +374,16 @@ ffx emu start {{ "<var>" }}PRODUCT_BUNDLE{{ "</var>" }} --net tap
 Replace `PRODUCT_BUNDLE` with the name of a product bundle
 [downloaded](#download-a-product-bundle) on your host machine.
 
-The example command below uses the `workstation.qemu-x64` product bundle:
+The example command below uses the `workstation_eng.qemu-x64` product bundle:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --net tap
+$ ffx emu start workstation_eng.qemu-x64 --net tap
 ```
 
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --net tap
+$ ffx emu start workstation_eng.qemu-x64 --net tap
 Logging to "/home/alice/.local/share/Fuchsia/ffx/emu/instances/fuchsia-emulator/emulator.log"
 Waiting for Fuchsia to start (up to 60 seconds)......................
 Emulator is ready.
@@ -420,7 +420,7 @@ instance is unrestricted. However, sending traffic to an emulator instance requi
 the following setup:
 
 - A virtual device’s specification, which is part of a
-  [product bundle](#product-bundles) (for instance, `workstation.qemu-x64`),
+  [product bundle](#product-bundles) (for instance, `workstation_eng.qemu-x64`),
   pre-defines the mapping of the ports needed for the device.
 - These ports can be mapped to unused ports on the host machine during the
   start-up of an emulator instance.
@@ -452,7 +452,7 @@ you can use the `--port-map` flag to map the name to an unused port on the host
 machine, for example:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --net user --port-map ssh:8022 --port-map debug:12345
+$ ffx emu start workstation_eng.qemu-x64 --net user --port-map ssh:8022 --port-map debug:12345
 ```
 
 Any ports in the virtual device specification that are not explicitly mapped using
@@ -478,7 +478,7 @@ Replace the following:
 The example command below starts the emulator in user networking mode:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --net user
+$ ffx emu start workstation_eng.qemu-x64 --net user
 ```
 
 Without specifying the `--port-map` flags, the emulator maps the services on the
@@ -488,7 +488,7 @@ The example command below specifies port maps when starting the emulator
 in user networking mode:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --net user --port-map ssh:8022 --port-map debug:12345
+$ ffx emu start workstation_eng.qemu-x64 --net user --port-map ssh:8022 --port-map debug:12345
 ```
 
 To see how ports are mapped for an emulator instance in user networking
@@ -550,7 +550,7 @@ Replace `PRODUCT_BUNDLE` with the name of a product bundle
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --net none
+$ ffx emu start workstation_eng.qemu-x64 --net none
 Logging to "/home/alice/.local/share/Fuchsia/ffx/emu/instances/fuchsia-emulator/emulator.log"
 Waiting for Fuchsia to start (up to 60 seconds).............................................................
 Emulator did not respond to a health check before timing out.
@@ -591,16 +591,16 @@ ffx emu start {{ "<var>" }}PRODUCT_BUNDLE{{ "</var>" }} --monitor
 Replace `PRODUCT_BUNDLE` with the name of a product bundle
 [downloaded](#download-a-product-bundle) on your host machine.
 
-The example command below uses the `workstation.qemu-x64` product bundle:
+The example command below uses the `workstation_eng.qemu-x64` product bundle:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --monitor
+$ ffx emu start workstation_eng.qemu-x64 --monitor
 ```
 
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --monitor
+$ ffx emu start workstation_eng.qemu-x64 --monitor
 QEMU 2.12.0 monitor - type 'help' for more information
 (qemu)
 ```
@@ -613,7 +613,7 @@ To exit the QEMU monitor prompt, you can issue the `quit` command, which also te
 the emulator instance, for example:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --monitor
+$ ffx emu start workstation_eng.qemu-x64 --monitor
 QEMU 2.12.0 monitor - type 'help' for more information
 (qemu) {{ '<strong>' }}quit{{ '</strong>' }}
 
@@ -636,16 +636,16 @@ ffx emu start {{ "<var>" }}PRODUCT_BUNDLE{{ "</var>" }} --console
 Replace `PRODUCT_BUNDLE` with the name of a product bundle
 [downloaded](#download-a-product-bundle) on your host machine.
 
-The example command below uses the `workstation.qemu-x64` product bundle:
+The example command below uses the `workstation_eng.qemu-x64` product bundle:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx emu start workstation.qemu-x64 --console
+$ ffx emu start workstation_eng.qemu-x64 --console
 ```
 
 This command prints output similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-alice@alice:~$ ffx emu start workstation.qemu-x64 --console
+alice@alice:~$ ffx emu start workstation_eng.qemu-x64 --console
 INFO    | Android emulator version 31.3.8.0 (build_id 8611574) (CL:N/A)
 [... various log entries]
 [00021.699] 01095:01158> [component_manager] INFO: Connecting fuchsia.sys2.LifecycleController

@@ -4,9 +4,9 @@ Fuchsia is an open source effort that strives to be
 [inclusive](/CODE_OF_CONDUCT.md).
 Google steers the direction of Fuchsia and makes platform decisions, but the
 Fuchsia project encourages contributions from the entire community.
-The [bug tracking system](contribute/report-issue.md) and
-[mailing lists](contribute/community/get-involved.md) are public, and the
-public [RFC process](contribute/governance/rfcs/README.md) provides a
+The [bug tracking system](/contribute/report-issue.md) and
+[mailing lists](/contribute/community/get-involved.md) are public, and the
+public [RFC process](/contribute/governance/rfcs/README.md) provides a
 consistent and transparent path for making project-wide, technical decisions.
 
 Fuchsia code is covered under multiple open source licenses:
@@ -21,9 +21,9 @@ is released under a different license is considered external code.
 
 Note: The complete list of approved licenses and policies regarding external
 code is available in
-[licensing policies](contribute/governance/policy/open-source-licensing-policies.md).
+[licensing policies](/contribute/governance/policy/open-source-licensing-policies.md).
 You can also learn more about contributing to Fuchsia in the
-[governance guidelines](contribute/governance/governance.md).
+[governance guidelines](/contribute/governance/governance.md).
 
 Contributing to an open source project begins with understanding how to navigate
 and build the code. In this training module, you will learn more about the
@@ -32,7 +32,7 @@ product.
 
 ## Prerequisites
 
-*   [Introduction to Fuchsia](get-started/learn/intro/README.md)
+*   [Introduction to Fuchsia](/get-started/learn/intro/README.md)
 
 ## What you'll learn
 
@@ -44,4 +44,4 @@ product.
 
 *   A development machine running Linux or macOS
 *   A configured build environment with the
-    [Fuchsia source code](get-started/get_fuchsia_source.md)
+    [Fuchsia source code](/get-started/get_fuchsia_source.md)

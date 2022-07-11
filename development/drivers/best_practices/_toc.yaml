@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Building a Driver"
-  path: development/drivers/best_practices/build.md
+  path: /development/drivers/best_practices/build.md
 - title: "Driver stack performance"
-  path: development/drivers/best_practices/driver_stack_performance.md
+  path: /development/drivers/best_practices/driver_stack_performance.md
 - title: "VMO Registration Pattern"
-  path: development/drivers/best_practices/vmo-registration-pattern.md
+  path: /development/drivers/best_practices/vmo-registration-pattern.md

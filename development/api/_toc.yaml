@@ -8,26 +8,26 @@
 
 toc:
 - title: "API development overview"
-  path: development/api/README.md
+  path: /development/api/README.md
 - title: "CLI tool help requirements"
-  path: development/api/cli_help.md
+  path: /development/api/cli_help.md
 - title: "Command-line tools rubric"
-  path: development/api/cli.md
+  path: /development/api/cli.md
 - title: "C library readability rubric"
-  path: development/api/c.md
+  path: /development/api/c.md
 - title: "Dart API readability rubric"
-  path: development/api/dart.md
+  path: /development/api/dart.md
 - title: "Fuchsia device interface rubric"
-  path: development/api/device_interfaces.md
+  path: /development/api/device_interfaces.md
 - title: "API documentation readability rubric"
-  path: development/api/documentation.md
+  path: /development/api/documentation.md
 - title: "FIDL API readability rubric"
-  path: development/api/fidl.md
+  path: /development/api/fidl.md
 - title: "Zircon system interface rubric"
-  path: development/api/system.md
+  path: /development/api/system.md
 - title: "Developer tool guidelines"
-  path: development/api/tools.md
+  path: /development/api/tools.md
 - title: "Go rubric"
-  path: development/api/go.md
+  path: /development/api/go.md
 - title: "Rust rubric"
-  path: development/api/rust.md
+  path: /development/api/rust.md

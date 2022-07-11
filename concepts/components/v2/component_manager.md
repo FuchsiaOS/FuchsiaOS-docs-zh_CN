@@ -56,13 +56,13 @@ components can implement to integrate new functionality with their
   application frameworks.
 - [Resolvers][doc-resolvers]: Integrate software delivery systems.
 
-[capability-directory]: concepts/components/v2/capabilities/directory.md
-[capability-event]: concepts/components/v2/capabilities/event.md
-[capability-protocol]: concepts/components/v2/capabilities/protocol.md
-[doc-capabilities]: concepts/components/v2/capabilities
-[doc-capability-routing]: concepts/components/v2/topology.md#capability-routing
-[doc-environments]: concepts/components/v2/environments.md
+[capability-directory]: /concepts/components/v2/capabilities/directory.md
+[capability-event]: /concepts/components/v2/capabilities/event.md
+[capability-protocol]: /concepts/components/v2/capabilities/protocol.md
+[doc-capabilities]: /concepts/components/v2/capabilities
+[doc-capability-routing]: /concepts/components/v2/topology.md#capability-routing
+[doc-environments]: /concepts/components/v2/environments.md
 [doc-lifecycle]: lifecycle.md
-[doc-resolvers]: concepts/components/v2/capabilities/resolvers.md
-[doc-runners]: concepts/components/v2/capabilities/runners.md
-[doc-topology]: concepts/components/v2/topology.md
+[doc-resolvers]: /concepts/components/v2/capabilities/resolvers.md
+[doc-runners]: /concepts/components/v2/capabilities/runners.md
+[doc-topology]: /concepts/components/v2/topology.md

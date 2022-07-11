@@ -7,6 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Banjo tutorial"
-  path: development/drivers/tutorials/banjo-tutorial.md
+  path: /development/drivers/tutorials/banjo-tutorial.md
+- title: "Bind tutorial"
+  path: /development/drivers/tutorials/bind-rules-tutorial.md
 - title: "FIDL tutorial"
-  path: development/drivers/tutorials/fidl-tutorial.md
+  path: /development/drivers/tutorials/fidl-tutorial.md

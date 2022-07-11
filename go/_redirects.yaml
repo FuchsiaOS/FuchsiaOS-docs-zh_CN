@@ -8,43 +8,45 @@
 # Using ? or * is not supported in the redirect links.
 redirects:
 # Component Framework links
-- from: go/components/build
-  to: development/components/build.md
-- from: go/components/build-errors
-  to: development/components/build.md#troubleshooting
-- from: go/components/collections
+- from: /go/components/build
+  to: /development/components/build.md
+- from: /go/components/build-errors
+  to: /development/components/build.md#troubleshooting
+- from: /go/components/collections
   to: https://fuchsia.dev/reference/cml#collections
-- from: go/components/connect
-  to: development/components/connect.md
-- from: go/components/connect-errors
-  to: development/components/connect.md#troubleshooting
-- from: go/components/instance-id
-  to: development/components/component_id_index
-- from: go/components/run
-  to: development/components/run.md
-- from: go/components/run-errors
-  to: development/components/run.md#troubleshooting
-- from: go/components/runners
-  to: concepts/components/v2/capabilities/runners
-- from: go/components/restricted-features
-  to: development/components/build.md#restricted-features
-- from: go/components/test-errors
-  to: development/testing/components/test_runner_framework.md#troubleshooting
-- from: go/components/test-runners
-  to: development/testing/components/test_runner_framework.md#test-runners
-- from: go/components/url
-  to: reference/components/url
-- from: go/components/structured-config
-  to: development/components/structured_config
-- from: go/components/declaration
+- from: /go/components/connect
+  to: /development/components/connect.md
+- from: /go/components/connect-errors
+  to: /development/components/connect.md#troubleshooting
+- from: /go/components/instance-id
+  to: /development/components/component_id_index
+- from: /go/components/run
+  to: /development/components/run.md
+- from: /go/components/run-errors
+  to: /development/components/run.md#troubleshooting
+- from: /go/components/runners
+  to: /concepts/components/v2/capabilities/runners
+- from: /go/components/restricted-features
+  to: /development/components/build.md#restricted-features
+- from: /go/components/test-errors
+  to: /development/testing/components/test_runner_framework.md#troubleshooting
+- from: /go/components/test-runners
+  to: /development/testing/components/test_runner_framework.md#test-runners
+- from: /go/components/url
+  to: /reference/components/url
+- from: /go/components/structured-config
+  to: /development/components/structured_config
+- from: /go/components/declaration
   to: https://fuchsia.dev/reference/fidl/fuchsia.component.decl
-- from: go/components/realm-builder-reference
+- from: /go/components/realm-builder-reference
   to: https://fuchsia.dev/reference/fidl/fuchsia.component.test
-- from: go/components/capabilities
-  to: concepts/components/v2/capabilities
+- from: /go/components/capabilities
+  to: /concepts/components/v2/capabilities
+- from: /go/components/directory
+  to: /concepts/components/v2/capabilities/directory.md
   # Keep this item last as the default fallback path
-- from: go/components/...
-  to: concepts/components/v2/README.md
+- from: /go/components/...
+  to: /concepts/components/v2/README.md
 
 # Hardware links
 - from: /fuchsia-src/go/intree-drivers

@@ -4,4 +4,4 @@
 
 toc:
 - heading: "SDK"
-- include: reference/tools/sdk/_toc.yaml
+- include: /reference/tools/sdk/_toc.yaml

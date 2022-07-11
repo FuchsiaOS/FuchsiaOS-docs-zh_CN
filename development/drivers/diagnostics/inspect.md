@@ -191,11 +191,11 @@ previous point.
 
 
 [selectors]: https://docs.google.com/document/d/1gI3FizKlTlth9DL8l7Ja9f7xuY_GKDffa5x1uZesLMY/edit
-[inspect_overview]: development/diagnostics/inspect/README.md
-[Inspect codelab]: development/diagnostics/inspect/codelab.md
-[roadmap_drivers_components]: contribute/roadmap/2020/overview.md#implementing_drivers_as_components
+[inspect_overview]: /development/diagnostics/inspect/README.md
+[Inspect codelab]: /development/diagnostics/inspect/codelab.md
+[roadmap_drivers_components]: /contribute/roadmap/2020/overview.md#implementing_drivers_as_components
 [example_test_driver]: /src/devices/tests/driver-inspect-test/test-driver.cc
-[property_types]: development/diagnostics/inspect/README.md#property
-[inspect_codelab]: development/diagnostics/inspect/codelab/README.md
+[property_types]: /development/diagnostics/inspect/README.md#property
+[inspect_codelab]: /development/diagnostics/inspect/codelab/README.md
 [driver_host_inspect_test]: /src/devices/bin/driver_host/inspect_test.cc
 [devmgr_integration_test]: /zircon/system/ulib/devmgr-integration-test/test/launcher_test.cc#113

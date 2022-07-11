@@ -34,7 +34,7 @@ futex wait queue.  If there is at least one thread to wake, the owner of the
 futex will be set to the thread that was woken.  Otherwise, the futex will have
 no owner.
 
-See *Ownership and Priority Inheritance* in [futex](reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](/reference/kernel_objects/futex.md) for
 details.
 
 ## RIGHTS
@@ -60,7 +60,7 @@ None.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[futex objects]: reference/kernel_objects/futex.md
+[futex objects]: /reference/kernel_objects/futex.md
 [`zx_futex_requeue()`]: futex_requeue.md
 [`zx_futex_wait()`]: futex_wait.md
 [`zx_futex_wake_single_owner()`]: futex_wake_single_owner.md

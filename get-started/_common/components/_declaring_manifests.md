@@ -29,12 +29,12 @@ running an ELF binary that prints a "Hello, World" message to the system log:
 This file declares two main sections of information about the component:
 
 Note: For more details on component manifests, see
-[component manifests](concepts/components/v2/component_manifests.md).
+[component manifests](/concepts/components/v2/component_manifests.md).
 
 * `program`: Describes the executable information such as the binary file,
   program arguments, and the associated runtime. In this example, a binary
   is compiled as an ELF executable and uses the built-in
-  [ELF runner](concepts/components/v2/elf_runner.md).
+  [ELF runner](/concepts/components/v2/elf_runner.md).
 * `use`: Declares the capabilities this component requires to run. In this
   example, the `fuchsia.logger.LogSink` protocol enables the component to write
   messages to the system log (`syslog`).

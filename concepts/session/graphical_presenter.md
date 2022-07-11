@@ -42,15 +42,15 @@ the view (remove it from the display) by releasing or closing its `ViewControlle
 The developer guide includes an [example implementation of presenting an
 element's view][example-present-view].
 
-[glossary.GraphicalPresenter]: glossary/README.md#GraphicalPresenter
-[glossary.component]: glossary/README.md#component
-[glossary.FIDL]: glossary/README.md#FIDL
-[glossary.session]: glossary/README.md#session
-[glossary.ViewSpec]: glossary/README.md#ViewSpec
-[glossary.scenic]: glossary/README.md#scenic
-[glossary.ViewController]: glossary/README.md#ViewController
-[Element API]: concepts/session/element.md
-[Element Annotations]: concepts/session/element.md#element-annotations
-[example-present-view]: development/sessions/roles-and-responsibilities.md#presenting-an-elements-view
+[glossary.GraphicalPresenter]: /glossary/README.md#GraphicalPresenter
+[glossary.component]: /glossary/README.md#component
+[glossary.FIDL]: /glossary/README.md#FIDL
+[glossary.session]: /glossary/README.md#session
+[glossary.ViewSpec]: /glossary/README.md#ViewSpec
+[glossary.scenic]: /glossary/README.md#scenic
+[glossary.ViewController]: /glossary/README.md#ViewController
+[Element API]: /concepts/session/element.md
+[Element Annotations]: /concepts/session/element.md#element-annotations
+[example-present-view]: /development/sessions/roles-and-responsibilities.md#presenting-an-elements-view
 [`PresentView()`]: https://fuchsia.dev/reference/fidl/fuchsia.element#fuchsia.element/GraphicalPresenter.PresentView
 [`fuchsia.element.GraphicalPresenter`]: https://fuchsia.dev/reference/fidl/fuchsia.element#GraphicalPresenter

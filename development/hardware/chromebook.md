@@ -25,7 +25,7 @@ Ensure that you have a `chromebook-x64` build for Fuchsia.
     configuration to use the following Chromebook product:
 
     ```posix-terminal
-    fx set workstation.chromebook-x64 --release
+    fx set workstation_eng.chromebook-x64 --release
     ```
 
 
@@ -190,6 +190,5 @@ time. The device will reboot to the initial setup screen.
 
 To go back to the Fuchsia kernel, just re-pave the device.
 
-[get-fuchsia-source]: get-started/get_fuchsia_source.md
-[build-fuchsia]: get-started/build_fuchsia.md
-
+[get-fuchsia-source]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md

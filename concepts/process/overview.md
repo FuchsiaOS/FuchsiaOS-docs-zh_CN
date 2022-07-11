@@ -16,7 +16,7 @@ the associated threads.
 
 Every process starts with a single Virtual Memory Address Region (VMAR), the
 process root VMAR, that spans the entire user address space
-(see [`zx_process_create()`](reference/syscalls/process_create.md)).
+(see [`zx_process_create()`](/reference/syscalls/process_create.md)).
 The root VMAR may be used directly or subdivided into child VMARs.
 
 VMARs are used to map Virtual Memory Objects (VMOs), which provide the code,
@@ -26,14 +26,14 @@ space of the process.
 A process stops execution when:
 
 *   The last thread in the process is terminated or exits.
-*   The process calls [`zx_process_exit()`](reference/syscalls/process_exit.md)
+*   The process calls [`zx_process_exit()`](/reference/syscalls/process_exit.md)
     to terminate itself.
 *   The parent job terminates the process.
 *   The parent job is destroyed.
 
 ## Processes and jobs
 
-Processes are owned by [jobs](concepts/process/jobs.md), which support
+Processes are owned by [jobs](/concepts/process/jobs.md), which support
 grouping one or more processes and sub-jobs into a single entity that manages
 resource limits and permissions, and also provides lifetime control for
 the group.
@@ -47,4 +47,4 @@ Many Fuchsia processes do not have a job handle and must use a mechanism
 provided by the system, such as the Component Framework, to start
 another process.
 
-For more information, see [jobs](concepts/process/jobs.md).
+For more information, see [jobs](/concepts/process/jobs.md).

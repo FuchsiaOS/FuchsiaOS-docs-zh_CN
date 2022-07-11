@@ -82,6 +82,6 @@ of text should reset the color to its original value at the end of the test.
 This prevents tests from affecting one another.
 
 [CTS bug component]: https://bugs.fuchsia.dev/p/fuchsia/templates/detail?saved=1&template=Fuchsia%20Compatibility%20Test%20Suite%20%28CTS%29&ts=1627669234
-[Documentation Guide]: contribute/docs/documentation-standards.md
-[Languages]: development/languages/README.md
-[Testing Best Practices]: contribute/testing/best-practices.md
+[Documentation Guide]: /contribute/docs/documentation-standards.md
+[Languages]: /development/languages/README.md
+[Testing Best Practices]: /contribute/testing/best-practices.md

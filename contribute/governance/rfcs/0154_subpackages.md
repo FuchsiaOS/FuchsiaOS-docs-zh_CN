@@ -143,7 +143,7 @@ of the CF team among the RFC's authors.
 
 A package declares references to subpackages by a package-scoped name for the
 subpackage, mapped to a
-[package hash](get-started/learn/intro/packages.md) of a package defined
+[package hash](/get-started/learn/intro/packages.md) of a package defined
 in the same package store and same package set. (For example, for a parent
 resolved from the "universe" package set, its subpackages MUST also be resolved
 from the "universe" package set). The rest of the RFC describes a notional
@@ -440,7 +440,7 @@ component):
 
   * The `component_url` is a URI fragment (for example,
     `#meta/other_component.cm`, as documented in [RFC-0104: Relative Component
-    URLs](contribute/governance/rfcs/0104_relative_urls.md):
+    URLs](/contribute/governance/rfcs/0104_relative_urls.md):
   * The fragment MUST refer to a component in the same package as another
     component (a "peer" component) that was previously resolved.
   * The `context` value MUST refer to the same package version (same package
@@ -620,7 +620,7 @@ use the `ffx package` replacement commands.
     `subpackages` (such as `download` and `import`). The impact to these
     commands will be investigated at implementation time. These changes may
     affect or be affected by other planned changes, as part of
-    [RFC-0124: Decentralized Product Integration: Artifact Description and Propagation](contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md).
+    [RFC-0124: Decentralized Product Integration: Artifact Description and Propagation](/contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md).
 
 ### Bundling package dependencies for distribution
 
@@ -657,7 +657,7 @@ atomicity property, so all required subpackages are guaranteed to have been
 resolved before the component starts.
 
 Enforcing eager package resolution may also support some of the requirements in
-the approved [RFC-0145: Eager Package Updates](contribute/governance/rfcs/0145_eager_package_updates.md),
+the approved [RFC-0145: Eager Package Updates](/contribute/governance/rfcs/0145_eager_package_updates.md),
 Notably, a package and its subpackage tree could be used to implement the Eager
 Package Updates RFC's prerequisite for a "package group".
 
@@ -1061,9 +1061,9 @@ reference, without requiring a special scheme).
 
 **Accepted Fuchsia RFCs**
 
-* [RFC-0104: Relative Component URLs](contribute/governance/rfcs/0104_relative_urls.md)
-* [RFC-0124: Decentralized Product Integration: Artifact Description and Propagation](contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md)
-* [RFC-0145: Eager Package Updates](contribute/governance/rfcs/0145_eager_package_updates.md)
+* [RFC-0104: Relative Component URLs](/contribute/governance/rfcs/0104_relative_urls.md)
+* [RFC-0124: Decentralized Product Integration: Artifact Description and Propagation](/contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md)
+* [RFC-0145: Eager Package Updates](/contribute/governance/rfcs/0145_eager_package_updates.md)
 
 **Potentially related draft Fuchsia RFCs**
 

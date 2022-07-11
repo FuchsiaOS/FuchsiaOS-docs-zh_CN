@@ -84,7 +84,7 @@ Reach out for questions or for status updates:
 *   <anmittal@google.com>
 *   <shayba@google.com>
 
-[logs]: concepts/components/diagnostics/logs/README.md
-[logs-tests]: development/diagnostics/test_and_logs.md
+[logs]: /concepts/components/diagnostics/logs/README.md
+[logs-tests]: /development/diagnostics/test_and_logs.md
 [max-severity-json]: https://fuchsia.googlesource.com/fuchsia/+/589aecf5a99689e33621137355b79dcebf6e0c48/garnet/bin/run_test_component/max_severity_fuchsia.json
 [restrict-legacy]: https://fuchsia.googlesource.com/fuchsia/+/66ed695f5c0fcf9ef642fb8736f3a85264e18bfd/docs/concepts/testing/test_component.md#restricting-log-severity

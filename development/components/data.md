@@ -134,7 +134,7 @@ version, depending on the package association.
 
 Sometimes a component is defined in one repository but its data is defined in
 another repository. For instance `fuchsia.git` defines a font provider service,
-but the `workstation` product configuration (defined in a different repository)
+but the `workstation_eng` product configuration (defined in a different repository)
 defines which fonts are available to the font provider.
 
 The `config_data()` template allows developers to make files available to
@@ -243,12 +243,12 @@ can be routed as subdirectories to components that expect them.
 
 Due to the above, always prefer using `resource()` if possible.
 
-[additional-packaged-resources]: development/components/build.md#additional-packaged-resources
-[build-components]: development/components/build.md
-[config-migration]: development/components/v2/migration/features.md#config-data
+[additional-packaged-resources]: /development/components/build.md#additional-packaged-resources
+[build-components]: /development/components/build.md
+[config-migration]: /development/components/v2/migration/features.md#config-data
 [gn-placeholders]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#placeholders
-[icu-data]: development/internationalization/icu_data.md
+[icu-data]: /development/internationalization/icu_data.md
 [icu-data-configs]: /src/lib/icu/tzdata/BUILD.gn
-[legacy-components]: concepts/components/v1/README.md
-[metafar]: concepts/packages/package.md#metafar
+[legacy-components]: /concepts/components/v1/README.md
+[metafar]: /concepts/packages/package.md#metafar
 [resource]: /build/dist/resource.gni

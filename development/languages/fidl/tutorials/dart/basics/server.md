@@ -242,21 +242,21 @@ This is expected because an
 requests is running. The next step will be to write a client for the server.
 
 <!-- xrefs -->
-[glossary-url]: glossary/README.md#component-url
-[glossary-scheme]: glossary/README.md#fuchsia-pkg-url
-[fidl-packages]: development/languages/fidl/tutorials/dart/basics/using-fidl.md
-[building-components]: development/components/build.md
-[products]: development/build/build_system/boards_and_products.md
-[getting-started]: get-started/index.md
-[declaring-fidl]: development/languages/fidl/tutorials/fidl.md
-[depending-fidl]: development/languages/fidl/tutorials/dart/basics/using-fidl.md
-[component-manager]: concepts/components/v2/component_manager.md
-[protocol-open]: concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
-[compiling-fidl]: development/languages/fidl/tutorials/fidl.md
-[overview]: development/languages/fidl/tutorials/overview.md
-[components]: development/components/build.md
-[bindings-iface]: reference/fidl/bindings/dart-bindings.md#protocols
-[events]: reference/fidl/bindings/dart-bindings.md#events
-[service-name]: reference/fidl/bindings/dart-bindings.md#discoverable
-[logging]: development/languages/dart/logging.md
-[concepts]: concepts/fidl/overview.md
+[glossary-url]: /glossary/README.md#component-url
+[glossary-scheme]: /glossary/README.md#fuchsia-pkg-url
+[fidl-packages]: /development/languages/fidl/tutorials/dart/basics/using-fidl.md
+[building-components]: /development/components/build.md
+[products]: /development/build/build_system/boards_and_products.md
+[getting-started]: /get-started/index.md
+[declaring-fidl]: /development/languages/fidl/tutorials/fidl.md
+[depending-fidl]: /development/languages/fidl/tutorials/dart/basics/using-fidl.md
+[component-manager]: /concepts/components/v2/component_manager.md
+[protocol-open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
+[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
+[overview]: /development/languages/fidl/tutorials/overview.md
+[components]: /development/components/build.md
+[bindings-iface]: /reference/fidl/bindings/dart-bindings.md#protocols
+[events]: /reference/fidl/bindings/dart-bindings.md#events
+[service-name]: /reference/fidl/bindings/dart-bindings.md#discoverable
+[logging]: /development/languages/dart/logging.md
+[concepts]: /concepts/fidl/overview.md

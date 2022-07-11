@@ -561,33 +561,33 @@ held by the union (see [lexicon][lexicon-tag]). This is often an enum in
 languages that do not support ADTs like C++.
 
 <!-- xrefs -->
-[bindings-ref]: reference/fidl/bindings/overview.md
-[example-bits-flexible-strict]: development/languages/fidl/guides/compatibility/bits_flexible_strict.md
-[example-bits-member-add]: development/languages/fidl/guides/compatibility/bits_member_add.md
-[example-bits-member-remove]: development/languages/fidl/guides/compatibility/bits_member_remove.md
-[example-bits-strict-flexible]: development/languages/fidl/guides/compatibility/bits_strict_flexible.md
-[example-enum-flexible-strict]: development/languages/fidl/guides/compatibility/enum_flexible_strict.md
-[example-enum-member-add]: development/languages/fidl/guides/compatibility/enum_member_add.md
-[example-enum-member-remove]: development/languages/fidl/guides/compatibility/enum_member_remove.md
-[example-enum-strict-flexible]: development/languages/fidl/guides/compatibility/enum_strict_flexible.md
-[example-protocol-event-add]: development/languages/fidl/guides/compatibility/protocol_event_add.md
-[example-protocol-event-remove]: development/languages/fidl/guides/compatibility/protocol_event_remove.md
-[example-protocol-method-add]: development/languages/fidl/guides/compatibility/protocol_method_add.md
-[example-protocol-method-remove]: development/languages/fidl/guides/compatibility/protocol_method_remove.md
-[example-table-member-add]: development/languages/fidl/guides/compatibility/table_member_add.md
-[example-table-member-remove]: development/languages/fidl/guides/compatibility/table_member_remove.md
-[example-union-flexible-strict]: development/languages/fidl/guides/compatibility/union_flexible_strict.md
-[example-union-member-add]: development/languages/fidl/guides/compatibility/union_member_add.md
-[example-union-member-remove]: development/languages/fidl/guides/compatibility/union_member_remove.md
-[example-union-strict-flexible]: development/languages/fidl/guides/compatibility/union_strict_flexible.md
-[rfc-0057-motivation]: contribute/governance/rfcs/0057_default_no_handles.md#motivation
-[lexicon-tag]: reference/fidl/language/lexicon.md#union-terms
-[lexicon-type]: reference/fidl/language/lexicon.md#type-terms
-[Platform Versioning]: contribute/governance/rfcs/0002_platform_versioning.md
-[rust-bindings-tables]: reference/fidl/bindings/rust-bindings.md#types-tables
-[rust-enum-macro]: reference/fidl/bindings/rust-bindings.md#types-enums
-[selector]: reference/fidl/language/attributes.md#selector
-[soft transitions]: contribute/governance/rfcs/0002_platform_versioning.md#terminology
-[transitional-rust]: reference/fidl/bindings/rust-bindings.md#transitional
-[transitional]: reference/fidl/language/attributes.md#transitional
-[unknown-attr]: reference/fidl/language/attributes.md#unknown
+[bindings-ref]: /reference/fidl/bindings/overview.md
+[example-bits-flexible-strict]: /development/languages/fidl/guides/compatibility/bits_flexible_strict.md
+[example-bits-member-add]: /development/languages/fidl/guides/compatibility/bits_member_add.md
+[example-bits-member-remove]: /development/languages/fidl/guides/compatibility/bits_member_remove.md
+[example-bits-strict-flexible]: /development/languages/fidl/guides/compatibility/bits_strict_flexible.md
+[example-enum-flexible-strict]: /development/languages/fidl/guides/compatibility/enum_flexible_strict.md
+[example-enum-member-add]: /development/languages/fidl/guides/compatibility/enum_member_add.md
+[example-enum-member-remove]: /development/languages/fidl/guides/compatibility/enum_member_remove.md
+[example-enum-strict-flexible]: /development/languages/fidl/guides/compatibility/enum_strict_flexible.md
+[example-protocol-event-add]: /development/languages/fidl/guides/compatibility/protocol_event_add.md
+[example-protocol-event-remove]: /development/languages/fidl/guides/compatibility/protocol_event_remove.md
+[example-protocol-method-add]: /development/languages/fidl/guides/compatibility/protocol_method_add.md
+[example-protocol-method-remove]: /development/languages/fidl/guides/compatibility/protocol_method_remove.md
+[example-table-member-add]: /development/languages/fidl/guides/compatibility/table_member_add.md
+[example-table-member-remove]: /development/languages/fidl/guides/compatibility/table_member_remove.md
+[example-union-flexible-strict]: /development/languages/fidl/guides/compatibility/union_flexible_strict.md
+[example-union-member-add]: /development/languages/fidl/guides/compatibility/union_member_add.md
+[example-union-member-remove]: /development/languages/fidl/guides/compatibility/union_member_remove.md
+[example-union-strict-flexible]: /development/languages/fidl/guides/compatibility/union_strict_flexible.md
+[rfc-0057-motivation]: /contribute/governance/rfcs/0057_default_no_handles.md#motivation
+[lexicon-tag]: /reference/fidl/language/lexicon.md#union-terms
+[lexicon-type]: /reference/fidl/language/lexicon.md#type-terms
+[Platform Versioning]: /contribute/governance/rfcs/0002_platform_versioning.md
+[rust-bindings-tables]: /reference/fidl/bindings/rust-bindings.md#types-tables
+[rust-enum-macro]: /reference/fidl/bindings/rust-bindings.md#types-enums
+[selector]: /reference/fidl/language/attributes.md#selector
+[soft transitions]: /contribute/governance/rfcs/0002_platform_versioning.md#terminology
+[transitional-rust]: /reference/fidl/bindings/rust-bindings.md#transitional
+[transitional]: /reference/fidl/language/attributes.md#transitional
+[unknown-attr]: /reference/fidl/language/attributes.md#unknown
