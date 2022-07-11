@@ -265,4 +265,4 @@ contains a command with an underscore, then you can include the underscore.
 - **Use consistent terminology.** Ensure that terms are consistent in code, UI, and documentation.
   Use common terms when possible, and use the [glossary](/glossary/README.md) to verify terminology.
  -->
-- **使用一致的术语。**确保术语在代码、用户界面和文档中是一致的。尽可能使用常见术语，并使用[术语表](/glossary/README.md)来验证用语。
+- **使用一致的术语。** 确保术语在代码、用户界面和文档中是一致的。尽可能使用常见术语，并使用[术语表](/glossary/README.md)来验证用语。
