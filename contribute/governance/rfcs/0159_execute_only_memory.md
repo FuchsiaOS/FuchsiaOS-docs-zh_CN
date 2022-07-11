@@ -43,7 +43,7 @@ supporting execute-only pages fits well with Fuchsia’s permissions model and
 more strongly aligns with the principle of least privilege: often code doesn’t
 need to be read, but just be executed. -->
 
-ARM 的 MMU 在 ARMv7m 中加入了对只执行页的支持，允许内存页被映射为既不可读也不可写的只执行状态。
+ARM 的内存管理单元（memory management unit，MMU）在 ARMv7m 中加入了对只执行页的支持，允许内存页被映射为既不可读也不可写的只执行状态。
 可写的代码页很早就被认为有安全威胁，但允许代码保持可读也将应用暴露于不必要的风险中。实际上，对代码页
 的读取常常成为攻击链的第一步，防止对代码的读取能对攻击形成阻碍。详见[可读代码的安全性](#readable-code-security)。
 而且，支持只执行页不仅很好地符合了 Fuchsia 的权限模型，也更强地符合最小特权原则：代码通常并不需要被读，而只用执行。
@@ -75,8 +75,8 @@ write permissions and can only be executed. ARMv7m and above have native support
 for XOM, however there are some considerations on older ISA’s. Discussed further
 in [XOM and PAN](#xom-and-pan). -->
 
-只执行内存（XOM）指没有读和写权限，仅能执行的内存页。ARMv7m 及之后的指令集架构原生支持 XOM，但对
-旧指令集架构的支持也在考虑中。进一步的讨论在 [XOM 与 PAN](#xom-and-pan)。
+只执行内存（execute-only memory，XOM）指没有读和写权限，只能执行的内存页。ARMv7m 及之后的指令集架构（instruction set architecture，ISA）原生支持 XOM，但对
+旧 ISA 的支持也在考虑中。进一步的讨论在 [XOM 与 PAN](#xom-and-pan)。
 <!-- 
 This doc focuses almost exclusively on AArch64, however the implementation is
 architecture agnostic. When hardware and toolchain support matures for other
@@ -152,7 +152,7 @@ multiple instructions to create a large immediate. Clang has a `-mexecute-only`
 flag and alias `-mpure-code` but these are only meaningful on arm32 because
 these flags are inherent when targeting aarch64. -->
 
-由于 ARM 的指令是定长的，对立即数大小有约束，所以 load 操作会以相对 PC 寻址的方式实现。具体来说，
+由于 ARM 的指令是定长的，对立即数大小有限制，所以 load 操作会以相对 PC 寻址的方式实现。具体来说，
 伪指令 `ldr Rd, =imm` 会在该代码附近的字面量池中放置 `imm`。这与 XOM 不兼容，因为它将数据放在了必须可读的
  text section 中。我们在代码库里搜索字面量池的使用以确保没有对可执行段的读操作时，
  发现 Zircon 中有一些 `ldr Rd, =imm` 的使用，但现在都移除了。Clang 不会在 aarch64 中使用
@@ -200,7 +200,7 @@ off or use the `ldtr` and `sttr` instructions for accessing those pages. PAN is
 not currently enabled for Fuchsia, but there are already plans to support it in
 zircon [pan-fxb]. -->
 
-特权访问禁止（PAN）是 ARM 芯片中阻止内核态以正常方式访问用户页内存的安全特性。这种特性有助于防范
+特权访问禁止（privileged access never，PAN）是 ARM 芯片中阻止内核态以正常方式访问用户页内存的安全特性。这种特性有助于防范
 潜在的内核漏洞，因为内核无法用正常的 load 和 store 指令接触用户内存。操作系统若要访问这些内存页，
 需要先关闭 PAN，或使用 `ldtr` 和 `sttr` 指令。PAN 现在在 Fuchsia 中并未启用，但已有在 Zircon 
 中提供相应支持的计划 [pan-fxb]。
@@ -239,7 +239,7 @@ make any future usage of PAN not useful against attacks trying to exploit the
 kernel touching user memory, however it would still be useful for detecting
 kernel bugs. -->
 
-很不幸，PAN 决定一个内存页能否被特权访问的算法只检查了这个页是否用户不可读。在 PAN 眼中，只能
+遗憾的是，PAN 决定一个内存页是否不应该被特权访问的算法检查了这个页是否用户可读。在 PAN 看来，只能
 被用户执行的页与能被特权访问的页看起来一样。这使内核能在本不应该的地方访问用户内存，从而绕过了 
 PAN 的设计意图，使得 PAN 与 XOM 不兼容 [pan-issue]。这样一来，尽管 PAN 还能用来探测内核 bug，
 但它再也无法用来防止那些意图通过攻破内核来接触用户内存的攻击。
@@ -312,11 +312,11 @@ programs which allocate execute-only memory will require a way to check if the
 OS can map execute-only pages prior to requesting them. -->
 
 POSIX 规定 `mmap` 可以允许对没有显式设置 `PROT_READ` 的页的读取操作 [posix-mmap]。Linux 和 macOS 在 x86上，
-以及 macOS 在 M1 芯片上，在遇到来自 mmap 的内存页请求时，对于只设置了 `PROT_EXEC` 的情况时都不会
+以及 macOS 在 M1 芯片上，在遇到来自 mmap 的内存页请求时，对于只设置了 `PROT_EXEC` 的情况都不会
 失败，而是将被请求内存页设为 `PROT_READ | PROT_EXEC`。这些系统调用的实现是在能力范围内“尽力”满足
 用户的请求。与此相对，Fuchsia 的系统调用在能否满足用户请求的问题上从来很明确。`zx_vmar_*` 系统调用
 并不会像 POSIX 中的对应调用按照标准允许的一样静默提升内存页权限。请求内存页时不设置 `ZX_VM_PERM_READ` 
-目前必定报错，因为硬件和操作系统不支持映射没有读权限的页。要平滑地迁移到支持带有只执行段的二进制和
+目前必定失败，因为硬件和操作系统不支持映射没有读权限的页。要平滑地迁移到支持带有只执行段的二进制和
 用户空间程序分配只执行内存，需要一种在请求前判断操作系统能否映射只执行页的方法。
 
 <!-- ### Readable Code Security -->
@@ -331,7 +331,7 @@ or other data is in memory.  Making code unreadable further reduces the attack
 surface. -->
 
 许多攻击依赖于读取代码页来找出 gadget ——也就是感兴趣的可执行代码，来收集关于进程的信息。地址空间
-布局随机化（ASLR）是一种将二进制段加载到进程地址空间中半随机的位置的操作系统技术。Fuchsia 和
+布局随机化（address space layout randomization，ASLR）是一种将二进制段加载到进程地址空间中半随机的位置的操作系统技术。Fuchsia 和
 许多其他操作系统利用这种技术来防范依赖于知晓代码或数据在内存中的位置的攻击。让代码不再可读更加
 减小了攻击面。
 <!-- 
@@ -655,7 +655,7 @@ will help us catch in tree programs that read their code pages and need to opt
 out of execute-only.
  -->
 虽然 test bot 的硬件不支持 ePAN, 我们也不会在其他这样的硬件上启用 XOM，但我们仍会在 test bot 上设置启用 XOM 的测试配置。
-这将有助于我们找到那些需要阅读代码页，从而需要退出只执行的附带程序。
+这将有助于我们找到那些需要阅读代码页，从而需要退出只执行的自带程序。
 
 <!-- ## Documentation -->
 ## 文档
@@ -668,8 +668,8 @@ motivation for why user space would want to query with the kind
 the various loaders and the clang driver defaults will not be documented outside
 of this RFC.
  -->
-对 `zx_system_get_features` 的改变，和用户空间需要查询 `ZX_VM_FEATURE_CAN_MAP_XOM` 
-的原因会被记录。新的 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 标志也会被记录。对各种加载器和 clang driver 的默认行为的改变
+对 `zx_system_get_features` 的更改及用户空间需要查询 `ZX_VM_FEATURE_CAN_MAP_XOM` 
+的原因会被记录在文档中。新的 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 标志也会被记录。对各种加载器和 clang driver 的默认行为的更改
 不会在此 RFC 外被记录。
 
 <!-- ## Drawbacks, Alternatives, Unknowns -->
@@ -687,11 +687,11 @@ to check at build time if a program relies on this behavior. However once it is
 identified that a program needs ‘r-x’ segments, opting out of the default ‘--x’
 will be simple.
  -->
-我们不知道当下和未来有多少外部代码依赖于可执行代码的可读性。这可能来自于手写汇编中对 text 中
+我们不知道现在和以后有多少外部代码会依赖于可执行代码的可读性。这可能来自于手写汇编中对 text 中
 数据常量的使用，由其他工具链或程序自审编译的代码。无论如何，需要可读的内存页的程序仍会受益，
-因为他们的共享库依赖，包括 libc，会被标记为只执行。将我们的 clang 工具链改为默认只执行段
-会破坏依赖于可读代码的程序。在编译时没有简单的方法能判断程序是否依赖这一行为。然而一旦程序被
-认定需要 ‘r-x’ 段，不使用默认的 ‘--x’ 会很简单。
+因为他们依赖的共享库，包括 libc，会被标记为只执行。将我们 clang 工具链的默认改为只执行段
+会破坏依赖于可读代码的程序。在编译时没有简单的方法能判断程序是否依赖这一行为。但一旦能够认定程序
+需要 ‘r-x’ 段，不使用默认的 ‘--x’ 会很简单。
 
 <!-- 
 For programs which need to be able to read some of their code but not all,
@@ -700,7 +700,7 @@ will strip read permissions from any executable segment, and there is no way to
 mark a single section as needed to be read. Programs which want this behavior
 will need to opt out of execute-only completely.
  -->
-对于那些只需要读取部分代码的程序，目前的工具无法轻易支持。`--execute-only linker` 
+对于那些只需要读取部分代码的程序，目前的工具不能简单支持。`--execute-only linker` 
 标志会从所有可执行段中去掉读权限。没有办法按需把某一个 section 标记为可读。
 需要这一行为的程序将需要完全禁用只执行。
 
@@ -719,14 +719,14 @@ likely not for out of tree code.
 对内部软件固然会有测试，但不太可能去测试外部软件。
 
 <!-- ## Prior Art and References -->
-## 已有工作与参考
+## 已有工作与参照
 
 <!-- 
 Because of the ambiguous handling of `mmap` permission flags in many POSIX
 implementations, they have no need for an analogue to
 `zx_system_get_features(ZX_FEATURE_KIND_CAN_MAP_XOM, &feature)`.
  -->
-因为在许多 POSIX 实现中对 `mmap` 权限标志处理的歧义性，它们不需要类似
+因为在许多 POSIX 实现中对 `mmap` 权限标志的处理有歧义，所以它们不需要类似
 `zx_system_get_features(ZX_FEATURE_KIND_CAN_MAP_XOM, &feature)` 的东西。
 
 <!-- 
