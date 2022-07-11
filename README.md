@@ -80,7 +80,7 @@ structure.
 ## PR 提交要求
 
  1. 多个翻译请**分文件提交 PR**，即新建分支（branch），在每个分支中只更改一个文件并提交；
- 1. PR 提交时请在**标题区域填写文件名**，以便进行记录；
+ 1. PR 提交时请在**标题区域包含文件名**，以便进行记录；
  1. PR 的标题和内容最好使用中文；
  1. 为避免做重复性工作，请在翻译时**先试译若干节**，并将 PR **[以草稿形式提交](https://docs.github.com/cn/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests#draft-pull-requests)**（[创建草稿 PR](https://docs.github.com/cn/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) 或[提交 PR 后进入并在右侧选择转换为草稿](https://docs.github.com/cn/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request#converting-a-pull-request-to-a-draft)），以便校对人员提前开始校对，及时修正当前翻译中存在的可能会在下文中重复出现的格式或内容问题。
  
