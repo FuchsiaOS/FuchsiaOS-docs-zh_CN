@@ -19,7 +19,7 @@ segments. It lays out a plan for eventual kernel support for mapping
 execute-only pages on hardware that supports it. -->
 
 本文档提出了对内核 API 的更改，以支持带有只执行段的二进制文件。本文档向 `zx_system_get_features` 
-中加入了新特性判断，更改了 `launchpad` 和 `process_builder` 加载器，并更改了 Fuchsia 自带的 libc 
+中加入了新特性判断，更改了 `launchpad` 和 `process_builder` 加载器，并更改了 Fuchsia 的树内 libc 
 中的动态链接器来支持 '--x' 参数。其为内核最终实现在支持的硬件上对只执行页映射的支持提出了计划。
 <!-- 
 We don't typically need to read executable memory after it has been loaded.
@@ -655,7 +655,7 @@ will help us catch in tree programs that read their code pages and need to opt
 out of execute-only.
  -->
 虽然 test bot 的硬件不支持 ePAN, 我们也不会在其他这样的硬件上启用 XOM，但我们仍会在 test bot 上设置启用 XOM 的测试配置。
-这将有助于我们找到那些需要阅读代码页，从而需要退出只执行的自带程序。
+这将有助于我们找到那些需要阅读代码页，从而需要退出只执行的树内程序。
 
 <!-- ## Documentation -->
 ## 文档
@@ -716,7 +716,7 @@ likely not for out of tree code.
  -->
 可能出现这种情况，clang driver 默认使用 `--execute-only`，但那些读取 ‘--x’ 段的代码要到
 支持 XOM 的硬件和内核落地后才会暴露问题。这给那些未做更改的软件造成了潜在的前向兼容问题。
-对内部软件固然会有测试，但不太可能去测试外部软件。
+对树内软件固然会有测试，但不太可能去测试树外软件。
 
 <!-- ## Prior Art and References -->
 ## 已有工作与参照
