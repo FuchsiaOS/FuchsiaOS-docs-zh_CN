@@ -30,6 +30,7 @@
 | distributed tracing | 分布式跟踪             | G                                                     |
 | emulator            | 模拟器                 | G                                                     |
 | ergonomics          | 工效学                 | i & G                                                 |
+| execute-only memory | 只执行内存              | G                                                    |
 | fault injection     | 故障注入               | G                                                     |
 | get stared          | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
 | get started with    | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
