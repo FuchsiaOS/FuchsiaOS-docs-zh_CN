@@ -202,7 +202,7 @@ contains a command with an underscore, then you can include the underscore.
 - **Keep sentences short and concrete.** Using punctuation allows your reader to follow
   instructions and understand concepts. Also, short sentences are easier to translate.
  -->
-- **保持语句简短具体。**使用标点符号可以便于您的读者跟进说明、理解概念。而且，短句更易于翻译。
+- **保持语句简短具体。** 使用标点符号可以便于您的读者跟进说明、理解概念。而且，短句更易于翻译。
 <!-- 
 - **Know your audience.** Define your audience before you write a document. Knowing your audience
   allows you to understand what information your audience should be familiar with. When a document
