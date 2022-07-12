@@ -90,7 +90,7 @@ Most documentation can be divided into the following categories:
 
 <!-- - [Conceptual](documentation-types.md#conceptual-documentation) - Foundational
   documentation focused on teaching more about Fuchsia, Fuchsia architecture, and Fuchsia components -->
-- [概念性的](documentation-types.md#conceptual-documentation) - 多侧重于教授 Fuchsia，Fuchsia 架构和 Fuchsia 组件的基础性文档
+- [概念性的](documentation-types.md#conceptual-documentation) - 多侧重于教授 Fuchsia、Fuchsia 架构和 Fuchsia 组件的基础性文档
 
 <!-- 
 - [Reference](documentation-types.md#reference-documentation) - Documentation focused on
@@ -179,7 +179,7 @@ contains a command with an underscore, then you can include the underscore.
 - **Write in plain U.S. English.** Write in clear, direct U.S. English that makes content
   easy to understand. Use simple words, be concise, and use contractions like _it's_ or _don't_.
  -->
-- **使用简单的美国英语撰写。** 使用清晰、直白的美国英语撰写，以使内容易于理解。使用简单的词汇，保持简洁使用（常见）缩写，如 _it's_ 或 _don't_。
+- **使用简单的美国英语撰写。** 使用清晰、直白的美国英语撰写，以使内容易于理解。请使用简单的词汇，保持简洁，并使用（常见）缩写，如 _it's_ 或 _don't_。
 <!-- 
 - **Be respectful.** Follow the guidelines set forth in [Respectful Code](/contribute/respectful_code.md).
  -->
@@ -220,7 +220,7 @@ contains a command with an underscore, then you can include the underscore.
   In most cases, if you use "by" this indicates that your sentence might be still be in passive
   voice.
  -->
-- **使用主动语态。** 请尽可能使用主动语态写作，因为被动语态会使句子模棱两可且难以理解。 下面是一个例子：
+- **使用主动语态。** 请尽量使用主动语态写作，因为被动语态会使句子模棱两可且难以理解。 下面是一个例子：
    - 主动语态：“操作系统运行一个进程。”（The operating system runs a process.）在这种情况下，主语执行动词表示的动作。
    - 被动语态：“一个进程正在被运行。”（A process is being run.）主语不再是“主动的”（_active_），而是被动词作用——它是“被动的”（_passive_）。
    大多数情况下，如果您使用了“by”，那么您的句子可能仍然是被动语态。
