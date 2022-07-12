@@ -39,43 +39,9 @@
 
 ## 翻译与校对概述
 
-除原文档的概述内容外，请在进行翻译或校对时，务必参考[翻译术语表](glossary_translation.md)，并在对翻译方式有所犹豫时及时查阅 Google 公司现有的帮助文档，进行借鉴。
+除原文档的概述内容外，在翻译开始前，请务必查看[文档总体翻译指南](general_translation_guide.md)，以统一小组内的翻译风格，提高文档的翻译质量和校对通过率。
 
-原文档中同时使用了 markdown 和 html 标记，在翻译时需要将英文文段使用 `<!-- -->` 注释掉，具体格式如下：
-
-原文：
-
-```markdown
-Most users control the build through [fx](/development/build/fx.md).
-The following documents provide details of build configuration and internal
-structure.
-```
-
-译文（**请注意将注释标记单独成行**，以便 GitHub 给出可读性更强的文件差异）：
-
-```markdown
-<!-- 
-Most users control the build through [fx](/development/build/fx.md).
-The following documents provide details of build configuration and internal
-structure.
- -->
-大多用户通过 [fx](/development/build/fx.md) 来控制构建。下面的文档提供了构建配置和内部结构的细节。
-```
-
-更多 markdown 和 html 语法请自行查阅，建议在翻译中针对不懂的位置进行查询即可，不必完全掌握。
-
-在翻译时，应尽可能考虑校对的可读性，即尽量分段翻译，不要对过多段落一次性进行注释和翻译，这样会降低校对可读性和效率，也不利于翻译工作本身的进行。
-
-在翻译时，请不要忘记翻译代码块内的可读英文**注释**部分，不要翻译文档中的超链接内容，即下文中的 `B` 处：
-
-```markdown
-[A](B)
-[A][B]
-```
-
-在翻译时，对于内联代码区的内容，如果本身是代码内容，则不译；如果是具有可读性的非代码内容，则可以考虑进行翻译，并在代码区后使用括号标注原文。
-
-在翻译时，要求英文和中文非标点、数字和中文非标点间用 1 个空格分割；英文或数字与中文标点见不空格。可以考虑使用[该软件](https://pypi.org/project/zhlint/)或类似程序进行自动化排版。另外，在非代码区域，应当尽量使用中文标点符号。
+除此之外，在进行翻译或校对时，请务必参考[翻译术语表](glossary_translation.md)，并在对翻译方式有所犹豫时及时查阅 Google 公司现有的帮助文档，进行借鉴。
 
 ## PR 提交要求
 
