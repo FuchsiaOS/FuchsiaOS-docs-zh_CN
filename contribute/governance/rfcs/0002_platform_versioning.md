@@ -857,7 +857,7 @@ Apple 已成功使用这些机制将这些操作系统的应用程序从旧 API 
  -->
 [^1]: [RFC-0083: FIDL Versioning][rfc-0083] 对此进行了修改，将 API 版本限制为 63 位，以便为其他用途保留高位。
 
-[Fuchsia System Interface]: /concepts/packages/system.md
+[Fuchsia 系统接口]: /concepts/packages/system.md
 [Fuchsia IDK]: /development/idk/README.md
 [`uses-sdk`]: https://developer.android.com/guide/topics/manifest/uses-sdk-element
 [`SupportedOS`]: https://docs.microsoft.com/en-us/windows/win32/win7appqual/compatibility---application-manifest#leveraging-feature-capabilities
