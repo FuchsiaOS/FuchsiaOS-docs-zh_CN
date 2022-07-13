@@ -2,9 +2,11 @@
 
 ## 文档中出现术语的翻译对照表
 
-本翻译对照表非常重要，请在翻译前认真、仔细地查看本表，并在翻译过程中尽可能按照表中记载的译法进行翻译。
+**本翻译对照表非常重要，请在翻译前认真、仔细地查看本表，并在翻译过程中尽可能按照表中记载的译法进行翻译。**
 
-要添加来自 Google 公司帮助文档的常用译法，请直接提交 PR 即可。请在提交 PR 的 summary 中附上帮助文档地址。
+为保证翻译文档风格的一致性，需要尽可能确定统一的翻译方式，具体**优先级从高到低依次为：翻译术语表、Google 公司帮助文档、协商或自定义**。特别地，若在 Google 公司的帮助文档中出现了常用的固定翻译方式，则小组成员可以将其添加至翻译术语表中。
+
+要添加来自 Google 公司帮助文档的常用译法，请直接提交 PR 即可。请在提交 PR 的 summary 中附上相关帮助文档的链接。
 
 下表的备注中，“i”表示该译法经由 issue 通过；“G”表示该译法来自 Google 公司的帮助文档。
 
@@ -30,6 +32,7 @@
 | distributed tracing | 分布式跟踪             | G                                                     |
 | emulator            | 模拟器                 | G                                                     |
 | ergonomics          | 工效学                 | i & G                                                 |
+| execute-only memory | 只执行内存              | G                                                    |
 | fault injection     | 故障注入               | G                                                     |
 | get stared          | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
 | get started with    | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
@@ -39,6 +42,7 @@
 | HTTP header         | HTTP 标头              | G                                                     |
 | infrastructure      | 基础架构               | G                                                     |
 | inspect             | 审视                   | Fuchsia 专有名词 <br> i                               |
+| just-in-time (JIT) compilation | 即时（JIT）编译  | G                                                |
 | mount               | 装载                   | G                                                     |
 | namespace           | 命名空间               | G                                                     |
 | path                | 路径                   | G                                                     |
@@ -46,6 +50,7 @@
 | policy              | 政策                   | G                                                     |
 | proxy               | 代理                   |                                                       |
 | remote              | 远程                   |                                                       |
+| sanity check        | 健全性检查              | G                                                     |
 | service             | 服务                   |                                                       |
 | service account     | 服务帐号               | G                                                     |
 | service mesh        | 服务网格               | G                                                     |
