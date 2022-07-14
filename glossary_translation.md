@@ -50,6 +50,7 @@
 | policy              | 政策                   | G                                                     |
 | proxy               | 代理                   |                                                       |
 | remote              | 远程                   |                                                       |
+| robust              | 可靠的                 | G                                                     |
 | sanity check        | 健全性检查              | G                                                     |
 | service             | 服务                   |                                                       |
 | service account     | 服务帐号               | G                                                     |
