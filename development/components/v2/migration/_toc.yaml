@@ -7,14 +7,14 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: development/components/v2/migration/README.md
+    path: /development/components/v2/migration/README.md
   - title: Migrate system components
-    path: development/components/v2/migration/components.md
+    path: /development/components/v2/migration/components.md
   - title: Migrate test components
-    path: development/components/v2/migration/tests.md
+    path: /development/components/v2/migration/tests.md
   - title: Component sandbox features
-    path: development/components/v2/migration/features.md
+    path: /development/components/v2/migration/features.md
   - title: Diagnostics capabilities
-    path: development/components/v2/migration/diagnostics.md
+    path: /development/components/v2/migration/diagnostics.md
   - title: Other common situations
-    path: development/components/v2/migration/common.md
+    path: /development/components/v2/migration/common.md

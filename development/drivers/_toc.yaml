@@ -8,22 +8,22 @@
 toc:
 - title: "Developer guide"
   section:
-  - include: development/drivers/developer_guide/_toc.yaml
+  - include: /development/drivers/developer_guide/_toc.yaml
 - title: "Driver guides"
   section:
-  - include: development/drivers/driver_guides/_toc.yaml
+  - include: /development/drivers/driver_guides/_toc.yaml
 - title: "Testing"
   section:
-  - include: development/drivers/testing/_toc.yaml
+  - include: /development/drivers/testing/_toc.yaml
 - title: "Diagnostics and tools"
   section:
-  - include: development/drivers/diagnostics/_toc.yaml
+  - include: /development/drivers/diagnostics/_toc.yaml
 - title: "Tutorials"
   section:
-  - include: development/drivers/tutorials/_toc.yaml
+  - include: /development/drivers/tutorials/_toc.yaml
 - title: "Best practices"
   section:
-  - include: development/drivers/best_practices/_toc.yaml
+  - include: /development/drivers/best_practices/_toc.yaml
 - title: "Concepts"
   section:
-  - include: development/drivers/concepts/_toc.yaml
+  - include: /development/drivers/concepts/_toc.yaml

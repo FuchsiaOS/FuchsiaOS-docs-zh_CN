@@ -134,7 +134,7 @@ zxdb use. The FIDL protocol is defined in `//sdk/fidl/fuchsia.exception/process_
 When a process throws an exception, Zircon will generate an associated `exception handle`. It will
 then look if there are any listeners in any associated exception channels that might be interested
 in handling that exception. That is how debuggers such as zxdb get the exceptions from running
-processes. See [the exceptions handling](concepts/kernel/exceptions.md) for more details.
+processes. See [the exceptions handling](/concepts/kernel/exceptions.md) for more details.
 
 But when there are no more exception handlers left, either because there weren't any or they all
 decided to pass on handling it, the root job has an exclusive handler called `crashsvc`. Once an

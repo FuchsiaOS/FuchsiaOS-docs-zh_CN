@@ -825,7 +825,7 @@ on the binding while the first thread is still in the handler. Note that
 repeated calls to `EnableNextDispatch()` on the same `Completer` are idempotent.
 
 Note: This use-case is currently possible only using the
-[lib/fidl](/sdk/lib/fidl/llcpp) bindings.
+[lib/fidl](/sdk/lib/fidl/cpp/wire) bindings.
 
 ```cpp
 void DirectedScan(int16_t heading, ScanForPlanetsCompleter::Sync& completer) override {
@@ -1069,7 +1069,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional
 
 For protocol methods annotated with the
-[`@transitional`](reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/reference/fidl/language/attributes.md#transitional)
 attribute, the `virtual` methods on the protocol class come with a default
 `Close(ZX_NOT_SUPPORTED)` implementation. This allows implementations of the
 protocol class with missing method overrides to compile successfully.
@@ -1077,7 +1077,7 @@ protocol class with missing method overrides to compile successfully.
 #### Discoverable
 
 A protocol annotated with the
-[`@discoverable`](reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/reference/fidl/language/attributes.md#discoverable)
 attribute causes the FIDL toolchain to generate an additional `static const char
 Name[]` field on the protocol class, containing the full protocol name.
 
@@ -1140,27 +1140,27 @@ The test base provides an implementation for the virtual protocol events
 
 
 <!-- xrefs -->
-[anon-names]: reference/fidl/language/language.md#inline-layouts
+[anon-names]: /reference/fidl/language/language.md#inline-layouts
 [cpp-style]: https://google.github.io/styleguide/cppguide.html#Naming
-[generated-name-attr]: reference/fidl/language/attributes.md#generated-name
-[llcpp-allocation]: development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
-[llcpp-async-example]: development/languages/fidl/tutorials/llcpp/topics/async-completer.md
-[llcpp-threading-guide]: development/languages/fidl/tutorials/llcpp/topics/threading.md
-[llcpp-tutorial]: development/languages/fidl/tutorials/llcpp
+[generated-name-attr]: /reference/fidl/language/attributes.md#generated-name
+[llcpp-allocation]: /development/languages/fidl/tutorials/llcpp/topics/memory-ownership.md
+[llcpp-async-example]: /development/languages/fidl/tutorials/llcpp/topics/async-completer.md
+[llcpp-threading-guide]: /development/languages/fidl/tutorials/llcpp/topics/threading.md
+[llcpp-tutorial]: /development/languages/fidl/tutorials/llcpp
 [llcpp-server-example]: /examples/fidl/llcpp/server
-[lang-constants]: reference/fidl/language/language.md#constants
-[lang-bits]: reference/fidl/language/language.md#bits
-[lang-enums]: reference/fidl/language/language.md#enums
-[lang-flexible]: reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: reference/fidl/language/language.md#structs
-[lang-tables]: reference/fidl/language/language.md#tables
-[lang-unions]: reference/fidl/language/language.md#unions
-[lang-resource]: reference/fidl/language/language.md#value-vs-resource
-[lang-protocols]: reference/fidl/language/language.md#protocols
-[lang-protocol-composition]: reference/fidl/language/language.md#protocol-composition
-[result-callback-use-after-free]: development/languages/fidl/tutorials/llcpp/topics/threading.md#additional_use-after-free_risks_with_thenexactlyonce
+[lang-constants]: /reference/fidl/language/language.md#constants
+[lang-bits]: /reference/fidl/language/language.md#bits
+[lang-enums]: /reference/fidl/language/language.md#enums
+[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /reference/fidl/language/language.md#structs
+[lang-tables]: /reference/fidl/language/language.md#tables
+[lang-unions]: /reference/fidl/language/language.md#unions
+[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
+[lang-protocols]: /reference/fidl/language/language.md#protocols
+[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
+[result-callback-use-after-free]: /development/languages/fidl/tutorials/llcpp/topics/threading.md#additional_use-after-free_risks_with_thenexactlyonce
 [specifying-asynchronous-continuation]: #specifying-asynchronous-continuation
-[union-lexicon]: reference/fidl/language/lexicon.md#union-terms
-[unknown-attr]: reference/fidl/language/attributes.md#unknown
-[wire-thenable-impl]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/internal/thenable.h;l=34?q=wirethenable&ss=fuchsia%2Ffuchsia
-[zircon-channel]: reference/kernel_objects/channel.md
+[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
+[unknown-attr]: /reference/fidl/language/attributes.md#unknown
+[wire-thenable-impl]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/internal/thenable.h;l=34?q=wirethenable&ss=fuchsia%2Ffuchsia
+[zircon-channel]: /reference/kernel_objects/channel.md

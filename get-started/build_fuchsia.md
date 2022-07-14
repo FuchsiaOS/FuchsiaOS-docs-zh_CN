@@ -20,7 +20,7 @@ Before you start, check out the following requirements:
 ### Source code setup {#source-code-setup}
 
 Complete the
-[Download the Fuchsia source code](get-started/get_fuchsia_source.md)
+[Download the Fuchsia source code](/get-started/get_fuchsia_source.md)
 guide to download the Fuchsia source code and set up the Fuchsia development
 environment on your machine.
 
@@ -49,7 +49,7 @@ fx set {{ '<var>' }}PRODUCT{{ '</var>' }}.{{ '<var>' }}BOARD{{ '</var>' }}
 Replace the following:
 
 * `PRODUCT`: The Fuchsia product that you want to build; for example, `core` and
-  `workstation`.
+  `workstation_eng`.
 * `BOARD`: The architecture of the product; for example, `x64` and `qemu-x64`
 
 The example command below sets a build configuration to `core.qemu-x64`:
@@ -67,15 +67,15 @@ In this example:
     [QEMU][qemu]{:.external}.
 
 On the other hand, the example below sets the build configuration to
-`workstation.x64`, which is commonly used to
+`workstation_eng.x64`, which is commonly used to
 [install Fuchsia's Workstation product on a device][build-workstation]:
 
 ```posix-terminal
-fx set workstation.x64
+fx set workstation_eng.x64
 ```
 
 For more information on the build configuration,
-see [Configure a build](development/build/fx.md#configure-a-build).
+see [Configure a build](/development/build/fx.md#configure-a-build).
 
 ## 3. Speed up the build (Optional) {#speed-up-the-build}
 
@@ -153,19 +153,19 @@ incremental build, or run the `fx -i build` command to start a watcher, which
 automatically builds whenever you update the source code.
 
 For more information on building Fuchsia,
-see [Execute a build](development/build/fx.md#execute-a-build).
+see [Execute a build](/development/build/fx.md#execute-a-build).
 
 ## Next steps
 
 To launch the Fuchsia emulator (FEMU) on your machine, see
-[Start the Fuchsia emulator](get-started/set_up_femu.md).
+[Start the Fuchsia emulator](/get-started/set_up_femu.md).
 
 However, if you want to run Fuchsia on a hardware device, see
-[Install Fuchsia on a device](development/hardware/README.md) instead.
+[Install Fuchsia on a device](/development/hardware/README.md) instead.
 
 <!-- Reference links -->
 
-[build-workstation]: development/build/build_workstation.md
+[build-workstation]: /development/build/build_workstation.md
 [fx-set-reference]: https://fuchsia.dev/reference/tools/fx/cmd/set
 [fx-build-reference]: https://fuchsia.dev/reference/tools/fx/cmd/build
 [qemu]: https://www.qemu.org/

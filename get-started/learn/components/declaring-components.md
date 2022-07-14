@@ -9,7 +9,7 @@
 <aside class="key-point">
 To review the merged CML output with all includes resolved, run the
 <code>fx cmc include</code> command with your manifest. For more details, see
-the <a href="reference/tools/sdk/cmc.md"> reference documentation</a>.
+the <a href="/reference/tools/sdk/cmc.md"> reference documentation</a>.
 </aside>
 
 ## Building components
@@ -98,7 +98,7 @@ fuchsia_package_with_single_component("hello-world") {
 ```
 
 Note: For more details on the GN syntax of the component build rules, see the
-[components build reference](development/components/build.md).
+[components build reference](/development/components/build.md).
 
 ## Exercise: Create a new component
 
@@ -306,7 +306,7 @@ on the length of the list.
   streams to a Fuchsia log buffer.</p>
 
   <p>For more details on logging from your code, see
-  <a href="development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
+  <a href="/development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
 </aside>
 
 ### Add to the build configuration
@@ -314,7 +314,7 @@ on the length of the list.
 Add your new component to the build configuration:
 
 ```posix-terminal
-fx set workstation.qemu-x64 --with //vendor/fuchsia-codelab/echo-args
+fx set workstation_eng.qemu-x64 --with //vendor/fuchsia-codelab/echo-args
 ```
 
 Run `fx build` and verify that the build completes successfully:

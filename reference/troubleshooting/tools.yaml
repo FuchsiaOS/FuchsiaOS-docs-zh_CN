@@ -1,0 +1,54 @@
+-
+ name: Inspect
+ team: Diagnostics
+ links:
+  Home: /development/diagnostics/inspect
+ description: |
+   Expose structured state about a component. Monitor the state of a component at an
+   instant in time.
+
+   The Inspect tool allows a component to expose an arbitrary hierarchy of typed key/value pairs
+   and update it over the course of its execution. This data can be snapshotted and inspected
+   while the component is still running.
+
+   Inspect is commonly used to represent information about the working set and recent history 
+   of a component to help during debugging.
+
+   Component authors use Inspect by depending on a library in their language of choice (Rust, C++,
+   and Dart are currently supported), and calling the appropriate methods to mutate their
+   recorded state.
+
+   Inspect data may be read using the <code>ffx component inspect</code>
+   tool or <code>ffx target snapshot</code>.
+ related:
+  - Triage
+
+-
+ name: Logs
+ team: Diagnostics
+ links:
+  Writing Logs: /development/diagnostics/logs/recording
+  Viewing Logs: /development/diagnostics/logs/viewing
+ description: |
+   Print string logs during the execution of a component.
+
+   Fuchsia, like many systems, supports basic logging of strings to record some information
+   when particular lines of source code are executed.
+
+   Logs are aggregated by the Archivist component. They may be read using `ffx log`.
+ related:
+  - Structured Logs
+
+-
+  name: Structured Logs
+  team: Diagnostics
+  links:
+   Structured log encoding reference: /reference/platform-spec/diagnostics/logs-encoding
+  description: |
+   Store structured key/value pairs in log messages.
+
+   In addition to text-based logs, Fuchsia supports fully structured
+   log records encoded as typed key/value hierarchies.
+
+   Developers may write structured logs using the <code>tracing</code> crate macros in Rust
+   or the <code>FX_SLOG</code> macro in C++.

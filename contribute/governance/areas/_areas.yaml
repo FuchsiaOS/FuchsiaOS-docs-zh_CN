@@ -18,7 +18,7 @@
 
 - name: 'Diagnostics'
   api_primary: 'crjohns@google.com'
-  api_secondary: ''
+  api_secondary: 'miguelfrde@google.com'
 
 - name: 'Drivers'
   api_primary: 'cja@google.com'
@@ -42,7 +42,11 @@
 
 - name: 'Foreign ABI Compatibility'
   api_primary: 'lindkvist@google.com'
-  api_secondary: ''
+  api_secondary: 'qsr@google.com'
+
+- name: 'Graphics'
+  api_primary: 'jbauman@google.com'
+  api_secondary: 'jaeheon@google.com'
 
 - name: 'HCI'
   api_primary: 'neelsa@google.com'
@@ -87,10 +91,6 @@
 - name: 'Toolchain'
   api_primary: 'mcgrathr@google.com'
   api_secondary: ''
-
-- name: 'UI'
-  api_primary: 'jbauman@google.com'
-  api_secondary: 'jaeheon@google.com'
 
 - name: 'View System'
   api_primary: 'jaeheon@google.com'

@@ -1012,7 +1012,7 @@ component manager - configuration override manager - runner interaction.
 
 ## Documentation
 
-Once this RFC is approved we will publish a document in `concepts`
+Once this RFC is approved we will publish a document in `/concepts`
 explaining the configuration mechanisms available on Fuchsia and their
 relationship.
 
@@ -1285,16 +1285,16 @@ ability for components to receive updates over FIDL.
 [chromium_config]: https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/configuration.md
 [windows_registry]: https://docs.microsoft.com/en-us/windows/win32/sysinfo/about-the-registry
 
-[config_data]: development/components/data.md#product-specific_configuration_with_config_data
-[fidl_contrib]: contribute/contributing-to-fidl/README.md
-[ffx]: development/tools/ffx/getting-started.md
-[component_instance_id]: glossary/README.md#component-instance-identifier
-[realm_builder]: development/testing/components/realm_builder.md
-[utc_algorithm]: concepts/kernel/time/utc/algorithms.md
+[config_data]: /development/components/data.md#product-specific_configuration_with_config_data
+[fidl_contrib]: /contribute/contributing-to-fidl/README.md
+[ffx]: /development/tools/ffx/getting-started.md
+[component_instance_id]: /glossary/README.md#component-instance-identifier
+[realm_builder]: /development/testing/components/realm_builder.md
+[utc_algorithm]: /concepts/kernel/time/utc/algorithms.md
 
-[roadmap_spac]: contribute/roadmap/2021/product_assembly.md
-[roadmap_dpi]: contribute/roadmap/2021/decentralized_product_integration.md
-[rfc_0002]: contribute/governance/rfcs/0002_platform_versioning.md
+[roadmap_spac]: /contribute/roadmap/2021/product_assembly.md
+[roadmap_dpi]: /contribute/roadmap/2021/decentralized_product_integration.md
+[rfc_0002]: /contribute/governance/rfcs/0002_platform_versioning.md
 
 [cl_frequency]: https://fuchsia-review.googlesource.com/c/fuchsia/+/514762
 

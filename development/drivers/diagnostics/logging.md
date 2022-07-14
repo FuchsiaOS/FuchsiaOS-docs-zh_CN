@@ -4,22 +4,22 @@ Caution: This page may contain information that is specific to the legacy
 version of the driver framework (DFv1).
 
 You can have a driver send log messages to the
-[syslog](development/diagnostics/logs/recording.md) through the use of the
+[syslog](/development/diagnostics/logs/recording.md) through the use of the
 `zxlogf(<log_level>,...)` macro, which is defined in
 [lib/ddk/debug.h](/src/lib/ddk/include/lib/ddk/debug.h).
 
 Depending on the type of log level, by default, log messages are sent to the
 following logs:
 
-* [syslog](development/diagnostics/logs/recording.md#logsinksyslog):
+* [syslog](/development/diagnostics/logs/recording.md#logsinksyslog):
   * `ERROR`
   * `WARNING`
   * `INFO`
-* [debuglog](development/diagnostics/logs/recording.md#debuglog_handles):
+* [debuglog](/development/diagnostics/logs/recording.md#debuglog_handles):
   * `SERIAL`
 
 To control which log levels are sent to the syslog (other than `SERIAL`), the
-[kernel commandline](reference/kernel/kernel_cmdline.md#drivernamelogflags)
+[kernel commandline](/reference/kernel/kernel_cmdline.md#drivernamelogflags)
 `driver.<driver_name>.log=<level>` can be used. For example,
 `driver.sdhci.log=TRACE` additionally enables `DEBUG` and `TRACE` logs for the
 sdhci driver, as we are setting a _minimum_ log level, and `TRACE` is lower than
@@ -32,4 +32,4 @@ particular logs.
 Note: There is both producer and consumer filtering applied to logs. The above
 covers the producer-side, for more information on the consumer-side, and on how
 to view driver logs, see
-[viewing logs](development/diagnostics/logs/viewing.md).
+[viewing logs](/development/diagnostics/logs/viewing.md).

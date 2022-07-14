@@ -58,16 +58,16 @@ Examples:
 
 {% if area.name == "Developer" %}
 Developer tool interfaces, such as the [Command-line Tools
-Rubric](development/api/cli.md). APIs that affect the developer experience in
+Rubric](/development/api/cli.md). APIs that affect the developer experience in
 the host environment such as debugging, forensics, or the development kit.
 {% endif %} <!-- Developer -->
 
 {% if area.name == "Diagnostics" %}
 The set of APIs that are used to publish and query diagnostics data from
 components on the system. This includes the ability to [stream
-logs](reference/diagnostics/logs/access.md), view and publish [Inspect
-data](development/diagnostics/inspect/README.md), and [observe lifecycle
-events](concepts/components/diagnostics/lifecycle_events/README.md).
+logs](/reference/diagnostics/logs/access.md), view and publish [Inspect
+data](/development/diagnostics/inspect/README.md), and [observe lifecycle
+events](/concepts/components/diagnostics/lifecycle_events/README.md).
 
 Examples:
 
@@ -166,13 +166,12 @@ Examples:
 {% endif %} <!-- HCI -->
 
 {% if area.name == "Identity" %}
-The set of APIs used to manage user accounts, authentication, and identity information for service providers.
+The set of APIs used to manage user accounts, authentication, and identity information.
 
 Examples:
 
 * [fuchsia.identity.account](/sdk/fidl/fuchsia.identity.account/)
-* [fuchsia.identity.tokens](/sdk/fidl/fuchsia.identity.tokens/)
-* [fuchsia.auth](/sdk/fidl/fuchsia.auth/)
+* [fuchsia.identity.authentication](/sdk/fidl/fuchsia.identity.authentication/)
 {% endif %} <!-- Identity -->
 
 {% if area.name == "Kernel" %}

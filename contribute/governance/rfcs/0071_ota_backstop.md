@@ -96,7 +96,7 @@ When proposing a CL to bump the backstop, authors should:
 
 ## Design
 
-Let's introduce an `epoch.json` file to be present both in the [update package](concepts/
+Let's introduce an `epoch.json` file to be present both in the [update package](/concepts/
 packages/update_pkg.md) and on the system. It should be a JSON file with two string keys:
 
 * "version", which should have a single string value for the `epoch.json` schema version. In
@@ -191,7 +191,7 @@ We'll need to create a document to describe the policy for updating `epoch_histo
 
 Also, we'll need to modify:
 
-* [Update package documentation](concepts/packages/update_pkg.md).
+* [Update package documentation](/concepts/packages/update_pkg.md).
 * OTA documentation (not yet posted on fuchsia.dev).
 
 ## Drawbacks, alternatives, and unknowns
@@ -212,7 +212,7 @@ to do this because in practice, some developers _do_ rely on these backwards OTA
 not break these developers.
 
 Another approach might be to directly integrate with Fuchsia platform versioning (see
-[RFC-0002](contribute/governance/rfcs/0002_platform_versioning.md)). However, there are
+[RFC-0002](/contribute/governance/rfcs/0002_platform_versioning.md)). However, there are
 several ambiguous questions with this. For example, should all backwards OTAs across an API level be
 prevented, or should we pick specific levels? Who would we break? Since there is precedent on
 Fuchsia for using different version identifiers for different parts of the system (e.g. file

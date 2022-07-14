@@ -43,7 +43,7 @@ This section describes the design of the RFC process.
 <!--
 The vast majority of changes to Fuchsia do not require an RFC. Instead, these
 changes can be made using the [code review
-process](development/source_code/contribute_changes.md). However,
+process](/development/source_code/contribute_changes.md). However,
 technical decisions that have broad impact across the project require broader
 agreement and must be socialized with the project using the RFC process.
 -->
@@ -202,7 +202,7 @@ next step is to write a first draft of the RFC document itself.
 当你准备好所有材料后，你已经准备好开始 RFC 流程的正式部分了。下一步就是编写 RFC 文档的初稿。
 <!--
 Mechanically, an RFC is a markdown file in the
-`/contribute/governance/rfcs` directory.
+`//contribute/governance/rfcs` directory.
 To create and RFC, you create a CL that adds a file to that directory. You
 should start by making a copy of the [RFC template](TEMPLATE.md). While not
 strictly required, the template is designed to guide you towards writing a
@@ -470,7 +470,7 @@ existing processes:
 <!--
  * *FIDL Tuning Proposal.* The Fuchsia project has had direct experience using a
    similar process [to make decisions about the FIDL
-   language](contribute/governance/deprecated-ftp-process.md). This
+   language](/contribute/governance/deprecated-ftp-process.md). This
    proposal exists because of the success of that decision-making process.
 -->
 

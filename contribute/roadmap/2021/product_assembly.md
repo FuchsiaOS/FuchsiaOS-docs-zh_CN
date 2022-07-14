@@ -121,4 +121,4 @@ The main risks are:
    * Mitigation: Implementation plan is centered around a measured approach
      without boiling the ocean.
 
-[glossary.product]: glossary/README.md#product
+[glossary.product]: /glossary/README.md#product

@@ -214,4 +214,4 @@ server stopped
 <!-- Reference links -->
 
 [ffx-repository]: https://fuchsia.dev/reference/tools/sdk/ffx#repository
-[fuchsia-package]: concepts/packages/package.md
+[fuchsia-package]: /concepts/packages/package.md

@@ -263,14 +263,14 @@ Fuchsia supports the following framework directories:
 }
 ```
 
-[glossary.directory-capability]: glossary/README.md#directory-capability
-[glossary.outgoing-directory]: glossary/README.md#outgoing-directory
-[capability-routing]: concepts/components/v2/capabilities/README.md#routing
-[doc-hub]: concepts/components/v2/hub.md
+[glossary.directory-capability]: /glossary/README.md#directory-capability
+[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
+[doc-hub]: /concepts/components/v2/hub.md
 [fidl-io-rights]: /sdk/fidl/fuchsia.io/rights-abilities.fidl
 [manifest-capabilities]: https://fuchsia.dev/reference/cml#capabilities
 [manifest-expose]: https://fuchsia.dev/reference/cml#expose
 [manifest-offer]: https://fuchsia.dev/reference/cml#offer
 [manifest-use]: https://fuchsia.dev/reference/cml#use
 [routing-example]: /examples/components/routing
-[storage-capabilities]: concepts/components/v2/capabilities/storage.md
+[storage-capabilities]: /concepts/components/v2/capabilities/storage.md

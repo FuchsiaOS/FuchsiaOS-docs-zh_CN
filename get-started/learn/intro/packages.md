@@ -49,13 +49,13 @@ are packages that can be delivered to the device.
 ### Monitor package loading
 
 Packages are resolved and loaded on demand by a Fuchsia device. Take a look at
-this in action with the `bouncing_ball` example package.
+this in action with the `spinning-square` example package.
 
 From the device shell prompt, you can confirm whether a known package is
 currently on the device:
 
 ```posix-terminal
-fx shell pkgctl pkg-status fuchsia-pkg://fuchsia.com/bouncing_ball
+fx shell pkgctl pkg-status fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 ```none {:.devsite-disable-click-to-copy}
@@ -75,22 +75,23 @@ server.
 From the device shell prompt, attempt to resolve the package:
 
 ```posix-terminal
-fx shell pkgctl resolve fuchsia-pkg://fuchsia.com/bouncing_ball
+fx shell pkgctl resolve fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 Notice the new lines added to the log output for `pkg-resolver`:
 
 ```none {:.devsite-disable-click-to-copy}
-[core/pkg-resolver][pkg-resolver][I] Fetching blobs for fuchsia-pkg://google3-devhost/bouncing_ball: [
-    e57c05aa909bcb38ca452d31abfbf9cc1d099751c9cd644b4d40cbf64e2af48b,
+[pkg-resolver][pkg-resolver][I] Fetching blobs for fuchsia-pkg://devhost/spinning-square-rs: [
+    6b547fb59fda56866eea01cda90add0aabc1af7c7418c7850011ec6e99a996f1,
+    7c1a9fd1c11e9b6b1d3c3184cf350cecfc91ec083b412d20c18b5187d0983d88,
 ]
-[core/pkg-resolver][pkg-resolver][I] resolved fuchsia-pkg://fuchsia.com/bouncing_ball as fuchsia-pkg://google3-devhost/bouncing_ball to 4ca324998ae9679241c74d2d9d9779fe86c79e2fa1f1627d941a37e987215895 with TUF
+[pkg-resolver][pkg-resolver][I] resolved fuchsia-pkg://fuchsia.com/spinning-square-rs as fuchsia-pkg://devhost/spinning-square-rs to 21967ecc643257800b8ca14420c7f023c1ede7a76068da5faedf328f9d9d3649 with TUF
 ```
 
 From the device shell prompt, check the package status again on the device:
 
 ```posix-terminal
-fx shell pkgctl pkg-status fuchsia-pkg://fuchsia.com/bouncing_ball
+fx shell pkgctl pkg-status fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 ```none {:.devsite-disable-click-to-copy}
@@ -103,15 +104,15 @@ demand!
 
 ### Explore package metadata
 
-Now that the `bouncing_ball` package has successfully been resolved, you can
+Now that the `spinning-square` package has successfully been resolved, you can
 explore the package contents. Once resolved, the package is referenced on the
 target device using its content address.
 
 From the device shell prompt, use the `pkgctl get-hash` command to determine the
-package hash for `bouncing_ball`:
+package hash for `spinning-square`:
 
 ```posix-terminal
-fx shell pkgctl get-hash fuchsia-pkg://fuchsia.com/bouncing_ball
+fx shell pkgctl get-hash fuchsia-pkg://fuchsia.com/spinning-square-rs
 ```
 
 The command returns the unique package hash:
@@ -128,24 +129,33 @@ fx shell pkgctl open {{ '<var>' }}ef65e2ed...{{ '</var>' }}
 ```
 
 ```none {:.devsite-disable-click-to-copy}
-opening ef65e2ed... with the selectors []
+opening ef65e2ed...
 package contents:
-/bin/bouncing_ball
+/bin/spinning_square
+/lib/VkLayer_khronos_validation.so
 /lib/ld.so.1
 /lib/libasync-default.so
 /lib/libbackend_fuchsia_globals.so
 /lib/libc++.so.2
 /lib/libc++abi.so.1
 /lib/libfdio.so
+/lib/librust-trace-provider.so
+/lib/libstd-e3c06c8874beb723.so
 /lib/libsyslog.so
+/lib/libtrace-engine.so
 /lib/libunwind.so.1
-/meta/bouncing_ball.cmx
+/lib/libvulkan.so
 /meta/contents
 /meta/package
+/meta/spinning-square-rs.cm
+/meta/spinning-square-rs.cmx
+/data/fonts/RobotoSlab-Regular.ttf
+/meta/fuchsia.abi/abi-revision
+/data/vulkan/explicit_layer.d/VkLayer_khronos_validation.json
 ```
 
 This lists the package metadata and each of the content BLOBs in the package.
-You can `bin/` entries for executables, `lib/` entries for shared library
+You can see `bin/` entries for executables, `lib/` entries for shared library
 dependencies, additional metadata and resources.
 
 ## What's Next?
@@ -157,4 +167,4 @@ In the next module, you'll learn more about the Fuchsia open source project and
 the tools used to build and customize the system:
 
 <a class="button button-primary"
-    href="get-started/learn/build">Building Fuchsia</a>
+    href="/get-started/learn/build">Building Fuchsia</a>

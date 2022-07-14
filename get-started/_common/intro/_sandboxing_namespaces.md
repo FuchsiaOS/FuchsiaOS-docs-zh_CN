@@ -33,5 +33,5 @@ capabilities to access those objects.
 
   <p>This also affects directory traversal, and how filesystem servers resolve
   paths containing <code>../.</code> For more details, see
-  <a href="concepts/filesystems/dotdot">dot-dot considered harmful</a>.<p>
+  <a href="/concepts/filesystems/dotdot">dot-dot considered harmful</a>.<p>
 </aside>

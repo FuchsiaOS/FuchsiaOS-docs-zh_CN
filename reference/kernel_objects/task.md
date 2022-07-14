@@ -19,5 +19,5 @@ TODO
  - [`zx_task_create_exception_channel()`] - listen for task exceptions
  - [`zx_task_kill()`] - cause a task to stop running
 
-[`zx_task_create_exception_channel()`]: reference/syscalls/task_create_exception_channel.md
-[`zx_task_kill()`]: reference/syscalls/task_kill.md
+[`zx_task_create_exception_channel()`]: /reference/syscalls/task_create_exception_channel.md
+[`zx_task_kill()`]: /reference/syscalls/task_kill.md

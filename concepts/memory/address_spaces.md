@@ -9,21 +9,21 @@ Modern operating systems use address spaces to isolate process memory.
 [An address space](https://en.wikipedia.org/wiki/Virtual_address_space)
 represents the set of virtual addresses that a process uses to reference memory.
 Virtual addresses map directly to physical addresses. Fuchsia uses
-[VMARs](reference/kernel_objects/vm_address_region.md)
+[VMARs](/reference/kernel_objects/vm_address_region.md)
 (Virtual Memory Address Regions) to represent address spaces.
 
 ## VMARs, Mappings, and VMOs
 
 In Fuchsia, every process has a root VMAR, and can partition into a hierarchy of
 VMARs and mappings. Mappings point to an underlying
-[VMO (Virtual Memory Object)](reference/kernel_objects/vm_object.md):
+[VMO (Virtual Memory Object)](/reference/kernel_objects/vm_object.md):
 
 ![Shows root VMAR, child VMAR, mappings, and VMOs](images/vmar_mappings_vmos.png)
 
 ### VMAR and VM mappings
 
 The
-[VMAR](reference/kernel_objects/vm_address_region.md)
+[VMAR](/reference/kernel_objects/vm_address_region.md)
 is a contiguous range of virtual addresses in a particular process' address
 space:
 
@@ -43,33 +43,33 @@ addresses which are backed by physical pages:
 
 The following are available VMAR and VM mapping syscalls:
 
- + [`zx_vmar_allocate()`](reference/syscalls/vmar_allocate.md) - create a new child VMAR
- + [`zx_vmar_map()`](reference/syscalls/vmar_map.md) - map a VMO into a process
- + [`zx_vmar_unmap()`](reference/syscalls/vmar_unmap.md) - unmap a memory region from a process
- + [`zx_vmar_protect()`](reference/syscalls/vmar_protect.md) - adjust memory access permissions
- + [`zx_vmar_destroy()`](reference/syscalls/vmar_destroy.md) - destroy a VMAR and all of its children
+ + [`zx_vmar_allocate()`](/reference/syscalls/vmar_allocate.md) - create a new child VMAR
+ + [`zx_vmar_map()`](/reference/syscalls/vmar_map.md) - map a VMO into a process
+ + [`zx_vmar_unmap()`](/reference/syscalls/vmar_unmap.md) - unmap a memory region from a process
+ + [`zx_vmar_protect()`](/reference/syscalls/vmar_protect.md) - adjust memory access permissions
+ + [`zx_vmar_destroy()`](/reference/syscalls/vmar_destroy.md) - destroy a VMAR and all of its children
 
-See also the [Virtual Memory Address Region reference](reference/kernel_objects/vm_address_region.md).
+See also the [Virtual Memory Address Region reference](/reference/kernel_objects/vm_address_region.md).
 
 ### VMOS
 
-[VMOs](reference/kernel_objects/vm_object.md)
+[VMOs](/reference/kernel_objects/vm_object.md)
 are containers of bytes of memory.
 They hold physical pages that can be mapped into address spaces through VM mappings.
 The following are VMO syscalls:
 
- + [`zx_vmo_create()`](reference/syscalls/vmo_create.md) - create a new VMO
- + [`zx_vmo_create_child()`](reference/syscalls/vmo_create_child.md) - create a new child VMO
- + [`zx_vmo_create_physical()`](reference/syscalls/vmo_create_physical.md) - create a new physical VMO
- + [`zx_vmo_get_size()`](reference/syscalls/vmo_get_size.md) - obtain the size of a VMO
- + [`zx_vmo_op_range()`](reference/syscalls/vmo_op_range.md) - perform an operation on a range of a VMO
- + [`zx_vmo_read()`](reference/syscalls/vmo_read.md) - read from a VMO
- + [`zx_vmo_replace_as_executable()`](reference/syscalls/vmo_replace_as_executable.md) - make an executable version of a VMO
- + [`zx_vmo_set_cache_policy()`](reference/syscalls/vmo_set_cache_policy.md) - set the caching policy for pages held by a VMO
- + [`zx_vmo_set_size()`](reference/syscalls/vmo_set_size.md) - adjust the size of a VMO
- + [`zx_vmo_write()`](reference/syscalls/vmo_write.md) - write to a VMO
+ + [`zx_vmo_create()`](/reference/syscalls/vmo_create.md) - create a new VMO
+ + [`zx_vmo_create_child()`](/reference/syscalls/vmo_create_child.md) - create a new child VMO
+ + [`zx_vmo_create_physical()`](/reference/syscalls/vmo_create_physical.md) - create a new physical VMO
+ + [`zx_vmo_get_size()`](/reference/syscalls/vmo_get_size.md) - obtain the size of a VMO
+ + [`zx_vmo_op_range()`](/reference/syscalls/vmo_op_range.md) - perform an operation on a range of a VMO
+ + [`zx_vmo_read()`](/reference/syscalls/vmo_read.md) - read from a VMO
+ + [`zx_vmo_replace_as_executable()`](/reference/syscalls/vmo_replace_as_executable.md) - make an executable version of a VMO
+ + [`zx_vmo_set_cache_policy()`](/reference/syscalls/vmo_set_cache_policy.md) - set the caching policy for pages held by a VMO
+ + [`zx_vmo_set_size()`](/reference/syscalls/vmo_set_size.md) - adjust the size of a VMO
+ + [`zx_vmo_write()`](/reference/syscalls/vmo_write.md) - write to a VMO
 
-See also the [Virtual Memory Object reference](reference/kernel_objects/vm_object.md).
+See also the [Virtual Memory Object reference](/reference/kernel_objects/vm_object.md).
 
 ## Virtual Memory Manager (VMM)
 
@@ -97,7 +97,7 @@ A node represents either a VMAR or a VM Mapping:
     address range.
 
 Learn more about
-[visualizing memory usage from the root VMAR.](development/kernel/memory/memory.md#visualize_memory_usage)
+[visualizing memory usage from the root VMAR.](/development/kernel/memory/memory.md#visualize_memory_usage)
 
 The VMM uses
 [Address space layout randomization](https://en.wikipedia.org/wiki/Address_space_layout_randomization)
@@ -124,7 +124,7 @@ needlessly allocating memory for pages that have not been accessed, or are only
 ever read from.
 
 VMOs can also be backed by a
-[userspace pager](reference/kernel_objects/pager.md),
+[userspace pager](/reference/kernel_objects/pager.md),
 which populates specific contents in the VMO on demand,
 for example, contents read from a file on disk.
 Learn [how to write a user pager](https://cs.opensource.google/fuchsia/fuchsia/+/main:src/storage/docs/paging.md).
@@ -139,14 +139,14 @@ To map a VMO:
     ```cpp
     zx_handle_t vmar = zx_vmar_root_self();
     ```
-1.  Use [`zx_vmo_create(...)`](reference/syscalls/vmo_create.md) to create a VMO.
+1.  Use [`zx_vmo_create(...)`](/reference/syscalls/vmo_create.md) to create a VMO.
     This returns the VMO handle, for example:
 
     ```cpp
     const size_t map_size = zx_system_get_page_size();
     zx_vmo_create(map_size, 0, &vmo);
     ```
-1.  Use [`zx_vmar_allocate(...)`](reference/syscalls/vmar_allocate.md)
+1.  Use [`zx_vmar_allocate(...)`](/reference/syscalls/vmar_allocate.md)
     to create a child VMAR within the parent VMAR.
     This returns a VMAR handle and it's start address, for example:
 
@@ -156,7 +156,7 @@ To map a VMO:
                      region_size, &region, &region_addr);
     ```
     This step is optional; you can also map the VMO directly to the parent.
-1.  Use [`zx-vmar_map(...)`](reference/syscalls/vmar_map.md) to map the VMO within a VMAR.
+1.  Use [`zx-vmar_map(...)`](/reference/syscalls/vmar_map.md) to map the VMO within a VMAR.
     This returns the start address of the VMO now mapped to the VMAR, for
     example:
 

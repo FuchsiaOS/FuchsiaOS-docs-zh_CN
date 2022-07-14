@@ -5,7 +5,7 @@
 
 ## Summary
 
-The [`zx_clock_update`](reference/syscalls/clock_update.md) syscall is
+The [`zx_clock_update`](/reference/syscalls/clock_update.md) syscall is
 used to set the time in a kernel clock object but the current API design limits
 the accuracy that may be achieved. This RFC describes changes to
 `zx_clock_update` that let clock maintainers opt in to supplying more
@@ -36,10 +36,10 @@ clock for UTC and for other future users of kernel clocks.
 
 ### Overview
 
-A [clock](reference/kernel_objects/clock.md) is a
-[one dimensional affine transformation](concepts/kernel/clock_transformations.md)
+A [clock](/reference/kernel_objects/clock.md) is a
+[one dimensional affine transformation](/concepts/kernel/clock_transformations.md)
 of the
-[clock monotonic](reference/syscalls/clock_get_monotonic.md) reference
+[clock monotonic](/reference/syscalls/clock_get_monotonic.md) reference
 timeline, defining how the "reference" time (i.e. the device's monotonic clock)
 should be translated to the "synthetic" time output by the clock. When a clock
 maintainer requests a change to the clock they are effectively supplying a new
@@ -202,7 +202,7 @@ tests will provide additional test coverage.
 
 ## Documentation
 
-The [`zx_clock_update` reference documentation](reference/syscalls/clock_update.md)
+The [`zx_clock_update` reference documentation](/reference/syscalls/clock_update.md)
 will be updated to describe this new behavior.
 
 ## Drawbacks, alternatives, and unknowns
@@ -227,10 +227,10 @@ alternative would create more bugs.
 
 ## Prior art and references
 
-[kernel_objects/clock](reference/kernel_objects/clock.md) provides an
+[kernel_objects/clock](/reference/kernel_objects/clock.md) provides an
 overview of the operation of userspace clocks.
 
-[UTC synchronization algorithms](concepts/kernel/time/utc/algorithms.md)
+[UTC synchronization algorithms](/concepts/kernel/time/utc/algorithms.md)
 summarizes the current UTC synchronization design.
 
 "Zircon Syscalls Struct Evolution" is a Google-internal document from May 2019

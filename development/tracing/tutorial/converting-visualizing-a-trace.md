@@ -1,19 +1,19 @@
 # Converting and visualizing a trace
 
-The [Fuchsia trace system](concepts/kernel/tracing-system.md)
+The [Fuchsia trace system](/concepts/kernel/tracing-system.md)
 supports various file formats for recording traces. Each data format
 requires a specific tool to visualize trace results.
 
 ## Prerequisites
 
 Before you attempt to convert or analyze a trace file, make sure you've
-[recorded a trace](development/tracing/tutorial/recording-a-fuchsia-trace.md).
+[recorded a trace](/development/tracing/tutorial/recording-a-fuchsia-trace.md).
 
 ## Fuchsia trace file formats
 
 The following types of file formats can store Fuchsia trace data:
 
- * FXT (or [Fuchsia trace format](reference/tracing/trace-format.md)) is a binary format
+ * FXT (or [Fuchsia trace format](/reference/tracing/trace-format.md)) is a binary format
    that is a direct encoding of the original trace data that is produced by
    the various programs. For more information, see [FXT trace](#fxt-trace).
  * JSON is used for viewing trace data on Chrome. For more information, see [JSON trace](#json-trace).
@@ -111,7 +111,7 @@ your host, if you don't have a Fuchsia target device, you can start a
 Fuchsia emulator with networking:
 
 Note: For more information on getting started with Fuchsia, see
-[Fuchsia](get-started/README.md).
+[Fuchsia](/get-started/README.md).
 
 ```posix-terminal
 ffx emu --net tap
@@ -124,7 +124,7 @@ To record a trace of `du`, do the following:
 1. In a new terminal, run `ffx trace start`:
 
    Note: For more information on recording a trace in Fuchsia, see
-   [Recording a Fuchsia trace](development/tracing/tutorial/recording-a-fuchsia-trace.md).
+   [Recording a Fuchsia trace](/development/tracing/tutorial/recording-a-fuchsia-trace.md).
 
    ```posix-terminal
    ffx trace start --buffer-size 64 --categories all
@@ -148,7 +148,7 @@ To record a trace of `du`, do the following:
    This command runs `du` in a loop,
 
    Note: For more information on creating a process in Fuchsia, see
-   [Process creation](concepts/process/process_creation.md).
+   [Process creation](/concepts/process/process_creation.md).
 
 3. To finish the tracing, press `Enter` key in the terminal
    on your host machine.

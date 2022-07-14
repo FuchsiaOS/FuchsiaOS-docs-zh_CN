@@ -4,7 +4,7 @@
 
 The CPU Performance Monitor Trace Provider gives the user access to the
 performance counters built into the CPU using the
-[Fuchsia tracing system](concepts/kernel/tracing-system.md).
+[Fuchsia tracing system](/concepts/kernel/tracing-system.md).
 
 At present this is only supported for Intel chipsets.
 
@@ -124,7 +124,7 @@ doing so means we forego collecting statistical pc data for each event
 A sample rate must be provided in addition to the timebase counter.
 
 See below for the set of timebase counters as of this writing,
-and `src/performance/bin/cpuperf_provider/intel-timebase-categories.inc`
+and `src/performance/cpuperf_provider/intel-timebase-categories.inc`
 in the source tree for the current set.
 
 ### Tally Mode
@@ -189,9 +189,9 @@ in the source tree.
 
 To simplify specifying the programmable counters they have been grouped
 into categories defined in
-`src/performance/bin/cpuperf_provider/intel-pm-categories.inc`
+`src/performance/cpuperf_provider/intel-pm-categories.inc`
 and
-`src/performance/bin/cpuperf_provider/skylake-pm-categories.inc`
+`src/performance/cpuperf_provider/skylake-pm-categories.inc`
 in the source tree. See these files for a full list.
 
 Only one of these categories may be specified at a time.

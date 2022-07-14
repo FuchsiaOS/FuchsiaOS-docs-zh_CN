@@ -108,7 +108,7 @@ synchronized, before reading it.
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/time/rust/src/main.rs" region_tag="utc" adjust_indentation="auto" %}
   ```
 
-[libc]: development/languages/c-cpp/libc.md
+[libc]: /development/languages/c-cpp/libc.md
 [c-clock-gettime]: https://linux.die.net/man/3/clock_gettime
 [c-time]: https://linux.die.net/man/2/time
 [cpp-steady-clock]: https://en.cppreference.com/w/cpp/chrono/steady_clock
@@ -116,9 +116,9 @@ synchronized, before reading it.
 [rust-instant]: https://doc.rust-lang.org/std/time/struct.Instant.html
 [rust-system-time]: https://doc.rust-lang.org/std/time/struct.SystemTime.html
 [fuchsia-utc-behavior]: utc/behavior.md#differences_from_other_operating_systems
-[zx-monotonic]: reference/syscalls/clock_get_monotonic.md
-[c-libzircon]: concepts/process/core_libraries.md#libzircon
-[cpp-libzx]: concepts/process/core_libraries.md#libzx
+[zx-monotonic]: /reference/syscalls/clock_get_monotonic.md
+[c-libzircon]: /concepts/process/core_libraries.md#libzircon
+[cpp-libzx]: /concepts/process/core_libraries.md#libzx
 [rust-runtime]: /src/lib/fuchsia-runtime
 [rust-zircon]: /src/lib/zircon/rust
 [rust-async]: /src/lib/fuchsia-async

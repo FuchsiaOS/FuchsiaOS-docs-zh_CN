@@ -16,7 +16,7 @@ more detail using the shell.
 
 ### Find a component in the hub
 
-Fuchsia provides the [Hub](concepts/components/v2/hub.md) as a
+Fuchsia provides the [Hub](/concepts/components/v2/hub.md) as a
 diagnostic interface to obtain information about component instances running
 on the system. You can explore the components and their namespaces using the
 hub's directory structure.

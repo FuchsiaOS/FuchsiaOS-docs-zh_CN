@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/editors/vscode/README.md
+  path: /development/editors/vscode/README.md
 - title: "Configuring remote workspaces"
-  path: development/editors/vscode/remote-workspaces.md
+  path: /development/editors/vscode/remote-workspaces.md
 - title: "Configuring file reloading"
-  path: development/editors/vscode/file-reloading.md
+  path: /development/editors/vscode/file-reloading.md
 - title: "Installing extensions"
-  path: development/editors/vscode/extensions.md
+  path: /development/editors/vscode/extensions.md

@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Memory usage analysis tools"
-  path: development/kernel/memory/memory.md
+  path: /development/kernel/memory/memory.md
 - title: "Out of memory system"
-  path: development/kernel/memory/oom.md
+  path: /development/kernel/memory/oom.md

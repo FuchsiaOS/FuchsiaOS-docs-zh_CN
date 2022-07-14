@@ -62,7 +62,7 @@ and may in fact be equivalent to `ZX_CACHE_POLICY_UNCACHED` on some architecture
 The next three arguments are return values.
 The `vaddr` and `size` return a pointer (and length) of the register region, while
 `out_handle` stores the created handle to the
-[VMO](reference/kernel_objects/vm_object.md).
+[VMO](/reference/kernel_objects/vm_object.md).
 
 ## Reading and writing memory
 

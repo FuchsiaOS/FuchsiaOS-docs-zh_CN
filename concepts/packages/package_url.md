@@ -201,6 +201,6 @@ fuchsia-pkg://{{ '<var>' }}repository{{ '</var>' }}/{{ '<var>' }}package-name{{ 
 [RFC 1123]: https://tools.ietf.org/html/rfc1123
 [RFC 5890]: https://tools.ietf.org/html/rfc5890
 [IDNA A-labels]: https://tools.ietf.org/html/rfc5890#section-2.3.2.1
-[Fuchsia filesystem paths]: concepts/process/namespaces.md#object-relative-path-expressions
+[Fuchsia filesystem paths]: /concepts/process/namespaces.md#object-relative-path-expressions
 [RFC 3986]: https://tools.ietf.org/html/rfc3986#page-11
-[merkleroot]: concepts/packages/merkleroot.md
+[merkleroot]: /concepts/packages/merkleroot.md

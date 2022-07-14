@@ -234,7 +234,7 @@ uses cryptographic hashes to guarantee the integrity of the blob's contents.
 ##### Merkle tree
 
 A blob's Merkle Tree is constructed as follows (for more details, see
-[Fuchsia Merkle Roots](concepts/packages/merkleroot.md)):
+[Fuchsia Merkle Roots](/concepts/packages/merkleroot.md)):
 
 *   Each leaf node is a sha256 hash of a single block's worth of data.
 *   Each non-leaf node is a sha256 hash combining its children's hashes.

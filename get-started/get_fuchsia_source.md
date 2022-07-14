@@ -107,7 +107,7 @@ actions:
 
     The `.jiri_root/bin` directory in the Fuchsia source contains the
     [`jiri`](https://fuchsia.googlesource.com/jiri) and
-    [`fx`](development/build/fx.md) tools that are essential to
+    [`fx`](/development/build/fx.md) tools that are essential to
     Fuchsia workflows. Fuchsia uses the `jiri` tool to manage repositories in
     the Fuchsia project, and the `fx` tool helps configure, build, run, and
     debug Fuchsia. The Fuchsia toolchain requires that `jiri` is available in
@@ -187,7 +187,7 @@ firewall rules. (For more information on this script, see [`setup-ufw`][setup-uf
 ## Next steps
 
 To build your first Fuchsia system image, see
-[Configure and build Fuchsia](get-started/build_fuchsia.md).
+[Configure and build Fuchsia](/get-started/build_fuchsia.md).
 
 ## Appendices
 

@@ -1909,7 +1909,7 @@
   short_description: 'Describes the windowing system for the Fuchsia platform and ratifies its role in the platform.'
   authors: ['dworsham@google.com', 'jaeheon@google.com', 'neelsa@google.com']
   file: '0147_view_system.md'
-  area: ['HCI, UI']
+  area: ['Graphics', 'HCI', 'View System']
   issue: ['83310']
   gerrit_change_id: ['602783']
   status: 'Accepted'
@@ -2158,7 +2158,7 @@
   short_description: 'Clarifies plans and policy to move all Fuchsia Products to a single graphics and input stack.'
   authors: ['neelsa@google.com']
   file: '0166_ui_stack.md'
-  area: ['UI']
+  area: ['Graphics', 'HCI', 'View System']
   issue: ['100308']
   gerrit_change_id: ['676347']
   status: 'Accepted'
@@ -2193,6 +2193,19 @@
   submitted: '2022-05-17'
   reviewed: '2022-06-15'
 
+- name: 'RFC-0169'
+  title: 'SDK Tool Compatibility'
+  short_description: 'Describes compatibility requirements for SDK tools'
+  authors: ['jeremymanson@google.com']
+  file: '0169_sdk_tool_compatibility.md'
+  area: ['Developer']
+  issue: ['99820']
+  gerrit_change_id: ['677102']
+  status: 'Draft'
+  reviewers: ['abarth@google.com', 'amituttam@google.com', 'dschuyler@google.com', 'maruel@google.com', 'sebmarchand@google.com', 'sethladd@google.com', 'yaar@google.com']
+  submitted: '2022-05-06'
+  reviewed: '2022-06-16'
+
 - name: 'RFC-0170'
   title: 'Remove binary images from the update package'
   short_description: 'Reorder image writes during an OTA to save space.'
@@ -2205,3 +2218,84 @@
   reviewers: ['wittrock@google.com', 'jsankey@google.com', 'gtsai@google.com', 'awolter@google.com', 'kevinwells@google.com', 'ampearce@google.com', 'billstevenson@google.com']
   submitted: '2022-05-12'
   reviewed: '2022-06-22'
+
+- name: 'RFC-0171'
+  title: 'Improved diagnostics routing'
+  short_description: 'Introduction of CML and CMC utilities to improve diagnostics routing'
+  authors: ['miguelfrde@google.com']
+  file: '0171_improved_diagnostics_routing.md'
+  area: ['Diagnostics', 'Component Framework']
+  issue: ['93346']
+  gerrit_change_id: ['681567']
+  status: 'Accepted'
+  reviewers: ['crjohns@google.com', 'geb@google.com', 'hjfreyer@google.com', 'shayba@google.com', 'zarvox@google.com']
+  submitted: '2022-05-19'
+  reviewed: '2022-06-23'
+
+- name: 'RFC-0172'
+  title: 'UI Activity Service'
+  short_description: 'Proposal for a service for determining user input active or idle state and notifying clients.'
+  authors: ['carolineliu@google.com']
+  file: '0172_ui_activity_service.md'
+  area: ['HCI', 'Graphics']
+  issue: ['86773']
+  gerrit_change_id: ['686247']
+  status: 'Accepted'
+  reviewers: ['jsankey@google.com', 'neelsa@google.com', 'sanjay@google.com','quiche@google.com', 'wittrock@google.com']
+  submitted: '2022-06-02'
+  reviewed: '2022-06-30'
+
+- name: 'RFC-0173'
+  title: 'Structured Configuration in Component Framework APIs'
+  short_description: 'Define the publicly-facing implementation of basic Structured Configuration features.'
+  authors: ['adamperry@google.com']
+  file: '0173_structured_config_cf_apis.md'
+  area: ['Component Framework']
+  issue: ['95372']
+  gerrit_change_id: ['668417']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'jsankey@google.com']
+  consulted: ['hjfreyer@google.com', 'xbhatnag@google.com', 'aaronwood@google.com', 'mcgrathr@google.com', 'shayba@google.com']
+  submitted: '2022-04-11'
+  reviewed: '2022-06-30'
+
+- name: 'RFC-0174'
+  title: 'Scale in Flatland'
+  short_description: 'Define how graphical scaling operations are handled in Flatland.'
+  authors: ['emircan@google.com']
+  file: '0174_scale_in_flatland.md'
+  area: ['Graphics']
+  issue: ['99312']
+  gerrit_change_id: ['686572']
+  status: 'Accepted'
+  reviewers: ['dworsham@google.com', 'jaeheon@google.com', 'jjosh@google.com', 'lucasradaelli@google.com', 'neelsa@google.com', 'quiche@google.com']
+  submitted: '2022-06-02'
+  reviewed: '2022-07-01'
+
+- name: 'RFC-0175'
+  title: 'ELF Runner stdio forwarding defaults'
+  short_description: 'Improving the component developer experience by forwarding stdout/stderr to LogSink by default.'
+  authors: ['adamperry@google.com']
+  file: '0175_elf_runner_stdio_forwarding_defaults.md'
+  area: ['Component Framework']
+  issue: ['91082']
+  gerrit_change_id: ['686908']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'yaneury@google.com']
+  consulted: ['hjfreyer@google.com', 'abdulla@google.com', 'miguelfrde@google.com', 'surajmalhotra@google.com', 'wez@google.com', 'shayba@google.com']
+  submitted: '2022-06-03'
+  reviewed: '2022-07-06'
+
+- name: 'RFC-0177'
+  title: 'Focus Observer for Parent Views'
+  short_description: 'API for parent view to learn how focus moves in its view tree'
+  authors: ['jaeheon@google.com']
+  file: '0177_focus_observer_parent_views.md'
+  area: ['View System', 'HCI']
+  issue: ['95669']
+  gerrit_change_id: ['687683']
+  status: 'Accepted'
+  reviewers: ['sanjayc@google.com', 'quiche@google.com', 'neelsa@google.com', 'akbiggs@google.com']
+  consulted: ['shiveshganju@google.com', 'fmil@google.com', 'emircan@google.com', 'jsankey@google.com']
+  submitted: '2022-06-06'
+  reviewed: '2022-07-07'

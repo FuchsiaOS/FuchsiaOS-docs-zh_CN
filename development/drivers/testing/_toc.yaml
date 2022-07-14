@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/drivers/testing/overview.md
+  path: /development/drivers/testing/overview.md
 - title: "Mock DDK"
-  path: development/drivers/testing/mock_ddk.md
+  path: /development/drivers/testing/mock_ddk.md
 - title: "Driver Test Realm"
-  path: development/drivers/testing/driver_test_realm.md
+  path: /development/drivers/testing/driver_test_realm.md

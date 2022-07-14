@@ -235,16 +235,16 @@ implemented using a LogSink forwarder in fdio. Also, an fdio-based implementatio
 would yield more uncertainties, and duplicate effort. Alternatively, if we use
 a socket, as proposed above, it'll be POSIX compliant "out of the box".
 
-[LogSink]: development/diagnostics/logs/recording.md
-[component manager]: concepts/components/v2/component_manager.md
-[debuglog]: reference/kernel_objects/debuglog.md
-[doc-appmgr]: concepts/components/v1/component_manifests.md
-[doc-cf-intro]: concepts/components/v2/introduction.md
-[doc-cf-migration]: contribute/open_projects/components/migration.md
-[doc-elf-runner]: concepts/components/v2/elf_runner.md
-[doc-logs-recording]: development/diagnostics/logs/recording.md
-[doc-principles-inclusive]: concepts/principles/inclusive.md
-[doc-principles-pragmatism]: concepts/principles/pragmatic.md
+[LogSink]: /development/diagnostics/logs/recording.md
+[component manager]: /concepts/components/v2/component_manager.md
+[debuglog]: /reference/kernel_objects/debuglog.md
+[doc-appmgr]: /concepts/components/v1/component_manifests.md
+[doc-cf-intro]: /concepts/components/v2/introduction.md
+[doc-cf-migration]: /contribute/open_projects/components/migration.md
+[doc-elf-runner]: /concepts/components/v2/elf_runner.md
+[doc-logs-recording]: /development/diagnostics/logs/recording.md
+[doc-principles-inclusive]: /concepts/principles/inclusive.md
+[doc-principles-pragmatism]: /concepts/principles/pragmatic.md
 [fxr-370683]: https://fuchsia-review.googlesource.com/c/fuchsia/+/370683/
 [rust-doc-lossy]: https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy
 [wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege

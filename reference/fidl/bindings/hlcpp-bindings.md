@@ -645,7 +645,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional
 
 For protocol methods annotated with the
-[`@transitional`](reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/reference/fidl/language/attributes.md#transitional)
 attribute, the `virtual` methods on the protocol class are not pure. This allows
 implementations of the protocol class with missing method overrides to compile
 successfully.
@@ -653,7 +653,7 @@ successfully.
 #### Discoverable {#discoverable}
 
 A protocol annotated with the
-[`@discoverable`](reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/reference/fidl/language/attributes.md#discoverable)
 attribute causes the FIDL toolchain to generate an additional `static const char
 Name_[]` field on the protocol class, containing the full protocol name. For a
 protocol `Baz` in the library `foo.bar`, the generated name is `"foo.bar.Baz"`.
@@ -690,21 +690,21 @@ For the same `TicTacToe` protocol listed above, the FIDL toolchain generates a
 
 
 <!-- xrefs -->
-[anon-names]: reference/fidl/language/language.md#inline-layouts
-[client-tut]: development/languages/fidl/tutorials/hlcpp/basics/client.md
-[server-tut]: development/languages/fidl/tutorials/hlcpp/basics/server.md
-[lang-constants]: reference/fidl/language/language.md#constants
-[lang-bits]: reference/fidl/language/language.md#bits
-[lang-enums]: reference/fidl/language/language.md#enums
-[lang-flexible]: reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: reference/fidl/language/language.md#structs
-[lang-tables]: reference/fidl/language/language.md#tables
-[lang-unions]: reference/fidl/language/language.md#unions
-[lang-protocols]: reference/fidl/language/language.md#protocols
-[lang-protocol-composition]: reference/fidl/language/language.md#protocol-composition
-[lang-resource]: reference/fidl/language/language.md#value-vs-resource
-[union-lexicon]: reference/fidl/language/lexicon.md#union-terms
-[unknown-attr]: reference/fidl/language/attributes.md#unknown
-[traversal]: reference/fidl/language/wire-format/README.md#traversal-order
+[anon-names]: /reference/fidl/language/language.md#inline-layouts
+[client-tut]: /development/languages/fidl/tutorials/hlcpp/basics/client.md
+[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
+[lang-constants]: /reference/fidl/language/language.md#constants
+[lang-bits]: /reference/fidl/language/language.md#bits
+[lang-enums]: /reference/fidl/language/language.md#enums
+[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /reference/fidl/language/language.md#structs
+[lang-tables]: /reference/fidl/language/language.md#tables
+[lang-unions]: /reference/fidl/language/language.md#unions
+[lang-protocols]: /reference/fidl/language/language.md#protocols
+[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
+[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
+[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
+[unknown-attr]: /reference/fidl/language/attributes.md#unknown
+[traversal]: /reference/fidl/language/wire-format/README.md#traversal-order
 [fostr]: /src/lib/fostr
-[fostr-tutorial]: development/languages/fidl/tutorials/hlcpp/topics/fostr.md
+[fostr-tutorial]: /development/languages/fidl/tutorials/hlcpp/topics/fostr.md

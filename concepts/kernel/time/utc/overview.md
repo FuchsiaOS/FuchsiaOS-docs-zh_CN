@@ -18,7 +18,7 @@ implemented by the central component in the time synchronization system,
 [Timekeeper](/src/sys/time/timekeeper).
 
 UTC is distributed to components using a
-[kernel clock object](reference/kernel_objects/clock.md), with each
+[kernel clock object](/reference/kernel_objects/clock.md), with each
 process holding a handle to this clock object (providing the parent process
 supplied this clock). If you are developing components that use UTC, you should
 read [UTC behavior](behavior.md) to learn how to acquire UTC time and understand

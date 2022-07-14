@@ -107,7 +107,7 @@ dependencies that are not themselves also in the Fuchsia SDK. Exceptions will be
 made for the following, well established, dependencies that are likely to be
 present in all environments. Any packages that should be added to this list
 must be approved by the [API
-Council](contribute/governance/api_council.md).
+Council](/contribute/governance/api_council.md).
 
 - [logger](https://pub.dev/packages/logging)
 - [meta](https://pub.dev/packages/meta)

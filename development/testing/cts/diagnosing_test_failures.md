@@ -96,7 +96,7 @@ Note: TODO(fxbug.dev/86421): Needs design
 
 Please reach out to the [CTS team][cts team] if this is required.
 
-[rfc2]: contribute/governance/rfcs/0002_platform_versioning.md
-[rfc15]: contribute/governance/rfcs/0015_cts.md
-[api council]: contribute/governance/api_council.md
+[rfc2]: /contribute/governance/rfcs/0002_platform_versioning.md
+[rfc15]: /contribute/governance/rfcs/0015_cts.md
+[api council]: /contribute/governance/api_council.md
 [cts team]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Fuchsia+Compatibility+Test+Suite+%28CTS%29

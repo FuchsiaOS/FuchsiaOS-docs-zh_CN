@@ -66,11 +66,11 @@ have recommended meanings with recommended standard schemas.
   for presenting elements using Fuchsia's graphical compositor,
   [Scenic][doc-scenic].
 
-[doc-component]: concepts/components/v2/introduction.md
-[doc-component-manifest]: concepts/components/v2/component_manifests.md
-[doc-capability-routing]: concepts/components/v2/topology.md#capability-routing
-[doc-scenic]: concepts/ui/scenic/index.md
-[doc-component-collection]: concepts/components/v2/realms.md#collections
-[doc-graphical-presenter]: concepts/session/graphical_presenter.md
+[doc-component]: /concepts/components/v2/introduction.md
+[doc-component-manifest]: /concepts/components/v2/component_manifests.md
+[doc-capability-routing]: /concepts/components/v2/topology.md#capability-routing
+[doc-scenic]: /concepts/ui/scenic/index.md
+[doc-component-collection]: /concepts/components/v2/realms.md#collections
+[doc-graphical-presenter]: /concepts/session/graphical_presenter.md
 [sdk-graphical-presenter]: /sdk/fidl/fuchsia.element/graphical_presenter.fidl
 [sdk-element-spec]: /sdk/fidl/fuchsia.element/element_manager.fidl

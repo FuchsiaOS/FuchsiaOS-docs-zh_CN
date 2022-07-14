@@ -9,7 +9,7 @@ following:
 *   Enable FIDL syntax highlighting (using `/tools/fidl/editors/vim/`).
 *   Integrate basic build system so that `:make` builds and populates the
     QuickFix window.
-*   Configure [YouCompleteMe](development/editors/youcompleteme.md) (YCM)
+*   Configure [YouCompleteMe](/development/editors/youcompleteme.md) (YCM)
     to provide error checking, code completion, and source navigation within the
     Fuchsia tree.
 
@@ -105,4 +105,4 @@ augroup END
 ```
 
 For highlighting Rust, see its [language-specific
-guide](development/languages/rust/editors.md#vim).
+guide](/development/languages/rust/editors.md#vim).

@@ -7,14 +7,14 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/graphics/magma/README.md
+  path: /development/graphics/magma/README.md
 - title: "Design"
-  path: development/graphics/magma/concepts/design.md
+  path: /development/graphics/magma/concepts/design.md
 - title: "Test strategy"
-  path: development/graphics/magma/concepts/test_strategy.md
+  path: /development/graphics/magma/concepts/test_strategy.md
 - title: "Vulkan"
-  path: development/graphics/magma/concepts/vulkan.md
+  path: /development/graphics/magma/concepts/vulkan.md
 - title: "Porting"
-  path: development/graphics/magma/concepts/porting.md
+  path: /development/graphics/magma/concepts/porting.md
 - title: "Contributing"
-  path: development/graphics/magma/concepts/contributing.md
+  path: /development/graphics/magma/concepts/contributing.md

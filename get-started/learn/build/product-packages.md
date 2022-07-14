@@ -29,7 +29,7 @@ Packages in a build configuration are assigned to one of three dependency sets:
 
 ![Diagram showing how packages live in the base, cache, or universe dependency
 sets of the build configuration. This set determines how new versions of the
-package get resolved.](get-started/images/build/packages.png){: width="645"}
+package get resolved.](/get-started/images/build/packages.png){: width="645"}
 
 <aside class="key-point">
 Fuchsia devices revert to the packages built into the system image on reboot.
@@ -64,7 +64,7 @@ services into the disk image for the target device. The examples would only be
 available on demand from a package server.
 
 Note: For more details on product configurations and dependencies, see
-[Products and Boards](development/build/build_system/boards_and_products.md).
+[Products and Boards](/development/build/build_system/boards_and_products.md).
 
 ## Manual build customization
 
@@ -79,10 +79,10 @@ these flags:
 This is a good way to temporarily enable packages for development that you don't
 want to include in the final build target, such as tests. For example, the
 following command adds all the packages in the Fuchsia `tests` bundle to a
-standard `workstation` build.
+standard `workstation_eng` build.
 
 ```posix-terminal
-fx set workstation.qemu-x64 --with //bundles:tests
+fx set workstation_eng.qemu-x64 --with //bundles:tests
 ```
 
 <aside class="key-point">
@@ -95,7 +95,7 @@ the build output directory. For more advanced use cases, you can use the
 <code>fx args</code> command to interactively edit <code>args.gn</code> before
 generating the build configuration.</p>
 <p>For a complete list of support build arguments, see
-<a href="gen/build_arguments.md">GN Build Arguments</a>.
+<a href="/gen/build_arguments.md">GN Build Arguments</a>.
 </aside>
 
 ### Developing with packages
@@ -111,7 +111,7 @@ following steps:
 
 ![Diagram showing how during development, the developer tools publish packages
 to the TUF repository, which notifies the Fuchsia device to resolve the latest
-version.](get-started/images/build/package-resolution.png){: width="644"}
+version.](/get-started/images/build/package-resolution.png){: width="644"}
 
 Developer tools such as `fx build` publish package updates to a local package
 repository as part of the build process. The **dependency set** where your
@@ -120,7 +120,7 @@ device:
 
 
 Note: For more details on the package development workflow, see
-[Developing with Fuchsia packages](concepts/packages/package_update.md).
+[Developing with Fuchsia packages](/concepts/packages/package_update.md).
 
 * Base packages can only be updated by performing a whole system update (OTA).
   Trigger a system update using `fx ota` or flash a new system image on the
@@ -130,18 +130,18 @@ Note: For more details on the package development workflow, see
 
 ## Exercise: Customize the build
 
-In this exercise, you'll customize the `workstation` build by temporarily
+In this exercise, you'll customize the `workstation_eng` build by temporarily
 including additional packages in the universe package set — making them
 available to the target device.
 
 ### Add packages to the build
 
 You can bundle additional targets with your build configuration using the
-`--with` flag of `fx set`. Reconfigure your `workstation` build to include all
+`--with` flag of `fx set`. Reconfigure your `workstation_eng` build to include all
 the Fuchsia examples:
 
 ```posix-terminal
-fx set workstation.qemu-x64 --with //examples
+fx set workstation_eng.qemu-x64 --with //examples
 ```
 
 This is commonly used to include test packages you need to run on the device or
@@ -249,7 +249,7 @@ You should see the following output in the device logs:
 ## Exercise: Create a new build product
 
 In this next exercise, you'll encapsulate these additional packages into a new
-product configuration that extends `workstation`.
+product configuration that extends `workstation_eng`.
 
 ### Declare the product configuration
 
@@ -263,11 +263,11 @@ Create a new file `fuchsialab.gni` under `//vendor/fuchsia-codelab/products`
 with the following contents:
 
 ```gn
-# Extend the workstation product
-import("//products/workstation.gni")
+# Extend the workstation_eng product
+import("//products/workstation_eng.gni")
 ```
 
-This creates a new product called `fuchsialab` that extends `workstation`,
+This creates a new product called `fuchsialab` that extends `workstation_eng`,
 inheriting all the package labels it defines.
 
 Verify that the build system recognizes your new product with the

@@ -257,7 +257,7 @@ _Defined in [fonts.gni](/src/fonts/build/fonts.gni)_
 
 A local font bundle is a set of font assets that are placed directly into the
 Font Provider's namespace using
-[build-time configuration data](development/components/data.md)
+[build-time configuration data](/development/components/data.md)
 (`config_data()`).
 
 Most local font bundles are declared in
@@ -290,7 +290,7 @@ The target `//src/fonts/groups:roboto-slab` contains a `group` of all of the
 ## Product-specific font configurations {#product-specific}
 
 Finally, every
-[product target](development/build/build_system/boards_and_products.md#products)
+[product target](/development/build/build_system/boards_and_products.md#products)
 that uses fonts needs to be configured with the specific font assets and
 metadata that it will include.
 
@@ -396,10 +396,10 @@ two JSON files above, as well as config_data targets for the local font assets.
 
 If a product only uses _local_ fonts, it is sufficient to add the
 `font_collection` target to the product's dependency labels (usually to
-[`base_package_labels`](gen/build_arguments.md#base_package_labels)).
+[`base_package_labels`](/gen/build_arguments.md#base_package_labels)).
 
 If a product also uses font `package`s and/or `font_package_group`s, those
 targets must be added explicitly to either
-[`base_package_labels`](gen/build_arguments.md#base_package_labels) or
-[`universe_package_labels`](gen/build_arguments.md#universe_package_labels),
+[`base_package_labels`](/gen/build_arguments.md#base_package_labels) or
+[`universe_package_labels`](/gen/build_arguments.md#universe_package_labels),
 depending on whether the packages are meant to be ephemeral.

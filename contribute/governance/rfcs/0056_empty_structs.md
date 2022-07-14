@@ -14,7 +14,7 @@ of that to be a struct with a single zero-valued `uint8`.
 
 Today, we see the need for empty structs come up in various areas.
 For instance, when using the
-[command pattern](development/api/fidl.md#Command-union)
+[command pattern](/development/api/fidl.md#Command-union)
 where one of the commands does not require any arguments.
 Say you have a "ping" command, where simply selecting this union option is enough to convey the intent.
 Generalizing, empty structs are useful to represent 'unit types' when simulating
@@ -92,6 +92,6 @@ We could leave things the way they are but this seems like a simple improvement.
 
 Most programming languages and IDLs allow empty structs.
 
-[identifiers]: reference/fidl/language/language.md#identifiers
-[structs]: reference/fidl/language/language.md#structs
-[wire-format]: reference/fidl/language/wire-format/README.md#Structs
+[identifiers]: /reference/fidl/language/language.md#identifiers
+[structs]: /reference/fidl/language/language.md#structs
+[wire-format]: /reference/fidl/language/wire-format/README.md#Structs

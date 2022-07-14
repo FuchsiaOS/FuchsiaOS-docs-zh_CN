@@ -4,8 +4,8 @@
 
 ## Prerequisites
 
-*   [Introduction to Fuchsia](get-started/learn/intro/README.md)
-*   [Building Fuchsia](get-started/learn/build/README.md)
+*   [Introduction to Fuchsia](/get-started/learn/intro/README.md)
+*   [Building Fuchsia](/get-started/learn/build/README.md)
 
 ## What you'll learn
 
@@ -16,6 +16,6 @@
 ## What you'll need
 
 *   A development machine running Linux or macOS
-*   [Fuchsia emulator](get-started/set_up_femu.md) (FEMU)
-*   A successful [Fuchsia build](get-started/get_fuchsia_source.md)
-    configured with `fx set workstation.qemu-x64`
+*   [Fuchsia emulator](/get-started/set_up_femu.md) (FEMU)
+*   A successful [Fuchsia build](/get-started/get_fuchsia_source.md)
+    configured with `fx set workstation_eng.qemu-x64`

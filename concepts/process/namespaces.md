@@ -44,7 +44,7 @@ This has some interesting implications:
 
 - There is no global "root" namespace.
 - There is no concept of "running in a chroot-ed environment" because every
-  component [effectively has its own private "root"](concepts/filesystems/dotdot.md).
+  component [effectively has its own private "root"](/concepts/filesystems/dotdot.md).
 - Components receive namespaces tailored to their specific needs.
 - Object paths may not be meaningful across namespace boundaries.
 - A process may have access to several distinct namespaces at once.
@@ -105,7 +105,7 @@ of bytes) subject to the following constraints:
 - Always compared using byte-for-byte equality (implies case-sensitive).
 
 Object names are valid arguments to a container's `Open()` method.
-See [FIDL Protocols](concepts/fidl/overview.md).
+See [FIDL Protocols](/concepts/fidl/overview.md).
 
 It is intended that object names be encoded and interpreted as human-readable
 sequences of UTF-8 graphic characters, however this property is not enforced
@@ -142,7 +142,7 @@ Object relative path expressions have the following additional constraints:
 - Always compared using byte-for-byte equality (implies case-sensitive).
 
 Object relative path expressions are valid arguments to a container's `Open()`
-method.  See [FIDL Protocols](concepts/fidl/overview.md).
+method.  See [FIDL Protocols](/concepts/fidl/overview.md).
 
 ### Client Interpreted Path Expressions
 
@@ -170,7 +170,7 @@ container.
 Client interpreted path expressions that contain these optional features
 are not valid arguments to a container's `Open()` method; they must be
 translated by the client prior to communicating with the namespace.
-See [FIDL Protocols](concepts/fidl/overview.md).
+See [FIDL Protocols](/concepts/fidl/overview.md).
 
 For example, `fdio` implements client-side interpretation of `..` paths
 in file manipulation APIs such as `open()`, `stat()`, `unlink()`, etc.
@@ -300,12 +300,12 @@ implementations.
 
 Components may have different kinds of configuration data exposed to them
 depending on the features listed in their
-[component manifest](concepts/components/v1/component_manifests.md)
+[component manifest](/concepts/components/v1/component_manifests.md)
 which are exposed as files in the `/config` namespace entry. These are
 defined by the feature set of the component.
 
-[glossary.protocol]: glossary/README.md#protocol
-[glossary.service]: glossary/README.md#service
-[hub]: concepts/components/v2/hub.md
-[protocol-capabilities]: concepts/components/v2/capabilities/protocol.md
-[service-capabilities]: concepts/components/v2/capabilities/service.md
+[glossary.protocol]: /glossary/README.md#protocol
+[glossary.service]: /glossary/README.md#service
+[hub]: /concepts/components/v2/hub.md
+[protocol-capabilities]: /concepts/components/v2/capabilities/protocol.md
+[service-capabilities]: /concepts/components/v2/capabilities/service.md
