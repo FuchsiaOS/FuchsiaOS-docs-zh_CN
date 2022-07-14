@@ -193,9 +193,9 @@ N/A
 
 The following documentation will need to be updated to reflect the policy here:
 
-* `/development/build/build_system/policies.md`
-* `/development/languages/python/python_style.md`
-* `/get-started/get_fuchsia_source.md`
+* `//development/build/build_system/policies.md`
+* `//development/languages/python/python_style.md`
+* `//get-started/get_fuchsia_source.md`
 
 ## Drawbacks, alternatives, and unknowns
 

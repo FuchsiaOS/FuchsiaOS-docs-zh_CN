@@ -32,13 +32,13 @@ at the [HLCPP and LLCPP comparison doc][c-family].
   * [Dart Tutorial][dart]
 
 <!-- xrefs -->
-[getting-started]: get-started/README.md
-[fidl-concepts]: concepts/fidl/overview.md
-[compiling-fidl]: development/languages/fidl/tutorials/fidl.md
+[getting-started]: /get-started/README.md
+[fidl-concepts]: /concepts/fidl/overview.md
+[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
 [hlcpp]: hlcpp/README.md
 [llcpp]: llcpp/README.md
 [rust]: rust/README.md
 [dart]: dart/README.md
-[c]: development/languages/fidl/tutorials/tutorial-c.md
-[c-family]: development/languages/fidl/guides/c-family-comparison.md
+[c]: /development/languages/fidl/tutorials/tutorial-c.md
+[c-family]: /development/languages/fidl/guides/c-family-comparison.md
 [examples]: /examples/fidl

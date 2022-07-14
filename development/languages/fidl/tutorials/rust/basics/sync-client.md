@@ -221,9 +221,9 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: glossary/README.md#realm
-[server-tut]: development/languages/fidl/tutorials/rust/basics/server.md
-[async-client]: development/languages/fidl/tutorials/rust/basics/client.md
-[overview]: development/languages/fidl/tutorials/overview.md
-[environment]: concepts/components/v2/environments.md
-[request-pipelining]: development/languages/fidl/tutorials/rust/topics/request-pipelining.md
+[glossary.realm]: /glossary/README.md#realm
+[server-tut]: /development/languages/fidl/tutorials/rust/basics/server.md
+[async-client]: /development/languages/fidl/tutorials/rust/basics/client.md
+[overview]: /development/languages/fidl/tutorials/overview.md
+[environment]: /concepts/components/v2/environments.md
+[request-pipelining]: /development/languages/fidl/tutorials/rust/topics/request-pipelining.md

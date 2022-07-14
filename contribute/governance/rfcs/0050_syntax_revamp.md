@@ -1196,14 +1196,14 @@ down the road, e.g. should a library define a general purpose `ErrorStatus`
 enum, it could be replaced later by another 'better' general purpose
 `ErrorStatusV2`.
 
-[envelopes]: contribute/governance/rfcs/0047_tables.md#envelopes
-[rfc-0028]: contribute/governance/rfcs/0028_handle_rights.md
-[rfc-0038]: contribute/governance/rfcs/0038_seperating_layout_from_constraints.md
-[rfc-0039]: contribute/governance/rfcs/0039_types_come_second.md
-[rfc-0044]: contribute/governance/rfcs/0044_extensible_method_arguments.md
-[rfc-0052]: contribute/governance/rfcs/0052_type_aliasing_named_types.md
-[bindings-spec]: reference/fidl/language/bindings-spec.md
-[language-spec]: reference/fidl/language/language.md
-[fidl-grammar]: reference/fidl/language/grammar.md
-[wire-format]: reference/fidl/language/wire-format
+[envelopes]: /contribute/governance/rfcs/0047_tables.md#envelopes
+[rfc-0028]: /contribute/governance/rfcs/0028_handle_rights.md
+[rfc-0038]: /contribute/governance/rfcs/0038_seperating_layout_from_constraints.md
+[rfc-0039]: /contribute/governance/rfcs/0039_types_come_second.md
+[rfc-0044]: /contribute/governance/rfcs/0044_extensible_method_arguments.md
+[rfc-0052]: /contribute/governance/rfcs/0052_type_aliasing_named_types.md
+[bindings-spec]: /reference/fidl/language/bindings-spec.md
+[language-spec]: /reference/fidl/language/language.md
+[fidl-grammar]: /reference/fidl/language/grammar.md
+[wire-format]: /reference/fidl/language/wire-format
 [mem-buffer]: /sdk/fidl/fuchsia.mem/buffer.fidl

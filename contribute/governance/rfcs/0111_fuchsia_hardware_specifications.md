@@ -11,7 +11,7 @@ categorized within the Fuchsia project. This RFC is intended to both codify an
 initial set of hardware specifications and to outline the process for proposing
 hardware-related source code contributions to the `fuchsia.git` repository.
 Changes to the hardware specifications can only made through the
-[Fuchsia RFC process](contribute/governance/rfcs).
+[Fuchsia RFC process](/contribute/governance/rfcs).
 
 ## Overview {#overview}
 
@@ -35,7 +35,7 @@ hardware choice.
 
 Specifications may be updated as the Fuchsia project evolves. Specification
 changes that have broad technical impact to the project are either approved or
-rejected through the [Fuchsia RFC process.](contribute/governance/rfcs)
+rejected through the [Fuchsia RFC process.](/contribute/governance/rfcs)
 
 This policy covers different kinds of hardware in Fuchsia, including
 the following:
@@ -241,7 +241,7 @@ control mechanisms.
 
 Fuchsia makes heavy use of virtual memory objects, so efficient memory
 management is critical to the operation of a Fuchsia hardware platform.
-Fuchsia's [basic security guarantees](concepts/principles/secure.md)
+Fuchsia's [basic security guarantees](/concepts/principles/secure.md)
 are not possible without hardware-enforced memory access controls.
 
 ###### Examples
@@ -267,7 +267,7 @@ All x86; all modern ARM processors are little-endian capable.
 
 Hardware platforms based on the x86-64 processor architecture must support
 the [x86-64-v2 instruction set architecture](https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels)
-(ISA) as described in [Fuchsia RFC-0073](contribute/governance/rfcs/0073_x86_64_platform_requirement.md).
+(ISA) as described in [Fuchsia RFC-0073](/contribute/governance/rfcs/0073_x86_64_platform_requirement.md).
 This covers all Intel Westmere and newer CPUs and all AMD Bulldozer and
 newer CPUs.
 
@@ -275,7 +275,7 @@ newer CPUs.
 
 Having a minimum ISA target allows useful optimizations that assume the
 presence of certain instructions. Full details are in
-[RFC-0073](contribute/governance/rfcs/0073_x86_64_platform_requirement.md):
+[RFC-0073](/contribute/governance/rfcs/0073_x86_64_platform_requirement.md):
 Raising x86-64 platform requirement to x86-64-v2.
 
 ##### Required: Clock and timers
@@ -446,7 +446,7 @@ by the Fuchsia project, are run on Supported hardware as a part of Fuchsia's
 continuous integration and testing process. Fuchsia-project hosted testing is
 performed on Supported hardware and its results can be seen by external
 contributors. Examples of Supported hardware include
-the [Intel NUC](development/hardware/intel_nuc.md)
+the [Intel NUC](/development/hardware/intel_nuc.md)
 and VIM3. For more information on the support expectations for
 Supported hardware, see [Specification Summary](#hardware-platform-summary).
 
@@ -672,7 +672,7 @@ Supported hardware has the following benefits:
 *   Supported hardware is tested by the Fuchsia project.
 *   No Experimental hardware contributions can break Supported hardware.
 *   The Fuchsia project is committed to responding to Monorail issues filed
-against Supported hardware. [Members](contribute/community/contributor-roles.md#member), as
+against Supported hardware. [Members](/contribute/community/contributor-roles.md#member), as
 defined in Fuchsia contributor roles, can propose patches to add new Supported hardware platforms
 or fix existing Supported hardware platforms.
 
@@ -685,7 +685,7 @@ hardware is built on a best-effort basis, meaning, Fuchsia may or may not work
 at any given point in time on that given hardware platform.
 
 Experimental hardware is not tested by the Fuchsia project and is not guaranteed
-to work, but [Members](contribute/community/contributor-roles.md#member) who develop for Fuchsia
+to work, but [Members](/contribute/community/contributor-roles.md#member) who develop for Fuchsia
 on the Experimental tier hardware can propose patches
 to add a new Experimental hardware or fix existing Experimental hardware.
 Gerrit changes that add new Experimental hardware or alter existing Experimental
@@ -728,7 +728,7 @@ hardware and Experimental hardware platforms.
 
 <li>Developers can expect to build and install Fuchsia on Supported hardware.
 
-<li>This hardware may not depend on any <a href="contribute/governance/policy/open-source-licensing-policies#external_code">external code</a>. </li>
+<li>This hardware may not depend on any <a href="/contribute/governance/policy/open-source-licensing-policies#external_code">external code</a>. </li>
 </li>
 
 </td>
@@ -841,7 +841,7 @@ Supported hardware won't be merged into the Fuchsia source.
 Changes that fix bugs in Fuchsia that would otherwise block Experimental
 hardware are encouraged, and go through the typical code review process
 described
-in [Contribute changes](development/source_code/contribute_changes.md). However, any proposed change may be rejected if it
+in [Contribute changes](/development/source_code/contribute_changes.md). However, any proposed change may be rejected if it
 introduces a substantial new testing, maintenance, or support burden for
 Supported hardware in the Fuchsia project.
 
@@ -860,7 +860,7 @@ architecture.
 ##### Boards and Drivers
 
 To add an Experimental board or driver, use Fuchsia's
-[code review process](development/source_code/contribute_changes.md)
+[code review process](/development/source_code/contribute_changes.md)
 and ensure that your Gerrit change conforms to the Rubric.
 
 ###### Code management
@@ -898,7 +898,7 @@ respective OWNERS file.
     [Change properties](https://gerrit-review.googlesource.com/Documentation/concept-changes.html)
     in the Gerrit documentation.
         *   Refactors include but aren't limited to the following:
-            *   [FDF](development/drivers/concepts/fdf.md),
+            *   [FDF](/development/drivers/concepts/fdf.md),
             driver [FIDL](/sdk/fidl/)
             `[fuchsia.hardware.\*]` and [Banjo](/sdk/banjo/)
             interfaces, syscalls
@@ -907,7 +907,7 @@ respective OWNERS file.
 
 Note: Modifications to FIDL interfaces that are used outside of `fuchsia.git`
 must comply with the FIDL
-[transitions](development/source_code/working_across_petals.md)
+[transitions](/development/source_code/working_across_petals.md)
 process.
 
 ##### Disabled boards and drivers
@@ -921,11 +921,11 @@ of not complying with the listed SLOs. Compliance with these SLOs indicate clear
 code in their repositories. If you wish to dispute the removal of your
 driver from `fuchsia.git`, you must confer with the
 Fuchsia Engineering Council through the
-[Fuchsia RFC process](contribute/governance/rfcs/rfc_process.md).
+[Fuchsia RFC process](/contribute/governance/rfcs/rfc_process.md).
 
 ###### Deleted Drivers
 
-For drivers removed based on this policy, a `reference/hardware/_driver_epitaphs.yaml` file
+For drivers removed based on this policy, a `/reference/hardware/_driver_epitaphs.yaml` file
 will list all deleted drivers and include the following information:
 
 *   `Short_description: `Provides a description of the deleted driver.
@@ -955,7 +955,7 @@ The process to delete a driver includes:
 1. Get approval from at least one OWNER of the driver. If all of the OWNERS
 have abandoned the driver and are not responding, then an OWNER higher in the
 Fuchsia tree needs to approve the CL that performs the deletion.
-2. Add an entry in the `reference/hardware/_driver_epitaphs.yaml` file
+2. Add an entry in the `/reference/hardware/_driver_epitaphs.yaml` file
 for each driver deleted, including a git hash for the fuchsia.git repository
 that contained the driver before deletion.
 
@@ -964,7 +964,7 @@ that contained the driver before deletion.
 #### Processor Architecture
 
 To propose adding a new architecture to the Fuchsia source, use
-the [Fuchsia RFC process](contribute/governance/rfcs).
+the [Fuchsia RFC process](/contribute/governance/rfcs).
 Adding a new architecture can add a significant amount of work to Fuchsia
 development and, as such, needs to be resolved through the RFC process.
 
@@ -975,7 +975,7 @@ Supported hardware.
 
 If your RFC is Accepted, then you can create a Gerrit change
 that includes your proposed architecture and request a code review using
-Fuchsia's [code review process](development/source_code/contribute_changes.md).
+Fuchsia's [code review process](/development/source_code/contribute_changes.md).
 In your Gerrit change include an OWNERS file that states
 the email address of each owner of the architecture. For more information on
 OWNERS' responsibilities, see [Responsibilities](#experimental-contributions-responsibilities).
@@ -983,7 +983,7 @@ OWNERS' responsibilities, see [Responsibilities](#experimental-contributions-res
 #### Boards and Drivers
 
 To add a Supported hardware board or driver, use the
-[Fuchsia RFC process](contribute/governance/rfcs).
+[Fuchsia RFC process](/contribute/governance/rfcs).
 Multiple drivers can be included in one RFC. A single RFC can also propose
 both a board and a driver.
 
@@ -995,13 +995,13 @@ this document.
 Adding a driver for a part of a computer system that was previously approved
 through the RFC process does not require a new RFC; it can simply be added
 through the
-code [review process](development/source_code/contribute_changes.md).
+code [review process](/development/source_code/contribute_changes.md).
 
 ##### Code management
 
 If your RFC is Accepted, then you can create a Gerrit change that includes
 your board or driver and request a code review using Fuchsia's
-[code review process](development/source_code/contribute_changes.md).
+[code review process](/development/source_code/contribute_changes.md).
 In your Gerrit change, make sure to create a folder in the appropriate location.
 For example, to add a board, create a new folder in `/src/devices/boards`. In
 your Gerrit change, include an OWNERS file that states the email address of

@@ -52,7 +52,7 @@ the IDK ingestion process. See [understanding metadata](understanding_metadata.m
 ### Documentation
 
 General documentation is available under `//docs` in the IDK distribution, or
- online at [fuchsia.dev/fuchsia-src/docs/development/idk](development/idk).
+ online at [fuchsia.dev/fuchsia-src/docs/development/idk](/development/idk).
 Some individual IDK elements will also provide documentation directly under the
 path where they are hosted in the IDK.
 

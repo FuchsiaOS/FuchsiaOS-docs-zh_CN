@@ -4,7 +4,7 @@ This guide describes a very high-level event plumbing and policy knobs for
 conveying a mouse device's events to a User Interface (UI) client. For a more
 general overview of input, beyond mouse, see the
 [User Input
-architecture](contribute/governance/rfcs/0096_user_input_arch.md) RFC.
+architecture](/contribute/governance/rfcs/0096_user_input_arch.md) RFC.
 
 ## Background
 
@@ -53,7 +53,7 @@ over a Zircon channel. Each device is initially surfaced as a file in
 
 The Input Pipeline component attaches to a mouse device by discovery in the
 `/dev/class/input-report`
-[directory](concepts/components/v2/capabilities/directory.md). Only platform
+[directory](/concepts/components/v2/capabilities/directory.md). Only platform
 components have access to this sensitive capability.
 
 This component provides a centralized location for routing mouse events and for
@@ -67,7 +67,7 @@ Button events and scroll wheel events also travel on the same injector channel.
 The Input Pipeline implements the following centralized policy decisions:
 
 *   Choosing which [view
-    tree](contribute/governance/rfcs/0147_view_system.md)
+    tree](/contribute/governance/rfcs/0147_view_system.md)
     to target for mouse event injection.
 *   Defining how to interpret a mouse's physical motion. For example, a mouse's
     physical motion could be set up to control the movement of the cursor, or
@@ -91,7 +91,7 @@ When a mouse target is identified, Scenic dispatches mouse events to that UI
 client over the
 [`MouseSource`](https://fuchsia/dev/reference/fidl/fuchsia.ui.pointer#MouseSource) API. UI
 clients listen for mouse events with a
-[hanging-get](development/api/fidl.md#hanging-get) FIDL pattern.
+[hanging-get](/development/api/fidl.md#hanging-get) FIDL pattern.
 
 ### UI clients and UI frameworks
 

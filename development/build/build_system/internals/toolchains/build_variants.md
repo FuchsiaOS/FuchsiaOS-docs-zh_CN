@@ -844,8 +844,8 @@ TBW
 TBW
 
 [gn-toolchain]: https://gn.googlesource.com/gn/+/main/docs/reference.md#toolchain-overview
-[gn-toolchains-overview]: development/build/build_system/internals/toolchains/gn_toolchains_overview.md
-[elf-shared-library-redirection]: development/build/build_system/internals/toolchains/elf_shared_library_redirection.md
+[gn-toolchains-overview]: /development/build/build_system/internals/toolchains/gn_toolchains_overview.md
+[elf-shared-library-redirection]: /development/build/build_system/internals/toolchains/elf_shared_library_redirection.md
 [clang-asan]: https://clang.llvm.org/docs/AddressSanitizer.html
 [clang-ubsan]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
 [enable-variants]: https://cs.opensource.google/fuchsia/fuchsia/+/main:build/toolchain/variant_toolchain_suite.gni;drc=28b4b027204084d695ba0659a7ecb733196b543f;l=180

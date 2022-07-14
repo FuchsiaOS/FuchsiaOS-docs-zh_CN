@@ -481,8 +481,8 @@ When component manager is in debug mode, it does the following:
 
 1. Starts up the root component (including any eager children).
 
-[concepts-hub]: concepts/components/v2/hub.md
-[concepts-manifest]: concepts/components/v2/component_manifests.md
-[concepts-realm]: concepts/components/v2/realms.md
-[event-capabilities]: concepts/components/v2/capabilities/event.md
-[testing-overview]: development/testing/components/README.md
+[concepts-hub]: /concepts/components/v2/hub.md
+[concepts-manifest]: /concepts/components/v2/component_manifests.md
+[concepts-realm]: /concepts/components/v2/realms.md
+[event-capabilities]: /concepts/components/v2/capabilities/event.md
+[testing-overview]: /development/testing/components/README.md

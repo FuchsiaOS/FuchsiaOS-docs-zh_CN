@@ -23,7 +23,7 @@ is, its **ZX_USER_SIGNAL_n** (where *n* is 0 through 7) signals can be
 manipulated using [`zx_object_signal()`].
 
 The newly-created handle will have the [basic
-rights](concepts/kernel/rights.md#zx_rights_basic) plus **ZX_RIGHT_SIGNAL**.
+rights](/concepts/kernel/rights.md#zx_rights_basic) plus **ZX_RIGHT_SIGNAL**.
 
 ## RIGHTS
 

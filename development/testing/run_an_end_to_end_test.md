@@ -3,7 +3,7 @@
 This guide provides instructions on how to run an end-to-end test for testing a
 Fuchsia product.
 
-This guide uses the Fuchsia emulator ([FEMU](get-started/set_up_femu.md)) to
+This guide uses the Fuchsia emulator ([FEMU](/get-started/set_up_femu.md)) to
 emulate a device that runs Fuchsia. As for the end-to-end test, the guide uses
 the
 [`screen_is_not_black`](/src/tests/end_to_end/screen_is_not_black/)
@@ -27,22 +27,22 @@ Also, to run any end-to-end test, see the [Appendices](#appendices) section.
 
 This guide requires that you've completed the following guides:
 
-*   [Download the Fuchsia source code](get-started/get_fuchsia_source.md).
-*   [Start the Fuchsia emulator](get-started/set_up_femu.md).
+*   [Download the Fuchsia source code](/get-started/get_fuchsia_source.md).
+*   [Start the Fuchsia emulator](/get-started/set_up_femu.md).
 
 ## 2. Build a Fuchsia image to include the end-to-end test {#build-a-fuchsia-image-to-include-the-end-to-end-test}
 
 Before you can run the `screen_is_not_black` end-to-end test, you first
 need to build your Fuchsia image to include the test in the build artifacts:
 
-Note: The examples in this guide use the `workstation` product. End-to-end tests work with most
+Note: The examples in this guide use the `workstation_eng` product. End-to-end tests work with most
 products except `core`.
 
 1.  To add the end-to-end test, run the `fx set` command with the following
     `--with` option:
 
     ```posix-terminal
-    fx set workstation.qemu-x64 --with //src/tests/end_to_end/screen_is_not_black
+    fx set workstation_eng.qemu-x64 --with //src/tests/end_to_end/screen_is_not_black
     ```
 
     `//src/tests/end_to_end/screen_is_not_black` is a test directory in the
@@ -65,7 +65,7 @@ products except `core`.
 ## 3. Start the emulator with the Fuchsia image {#start-the-emulator-with-the-fuchsia-image}
 
 Start the emulator with your Fuchsia image and run a
-[package repository server](development/build/fx.md#serve-a-build):
+[package repository server](/development/build/fx.md#serve-a-build):
 
 Note: The steps in this section assume that you don't have any terminals
 currently running FEMU or the `fx serve` command.
@@ -197,7 +197,7 @@ with all the end-to-end tests in the
 directory:
 
 ```none {:.devsite-disable-click-to-copy}
-$ fx set workstation.qemu-x64 --with //src/tests/end_to_end/perf:test
+$ fx set workstation_eng.qemu-x64 --with //src/tests/end_to_end/perf:test
 $ fx build
 ```
 
@@ -218,7 +218,7 @@ The following example shows the product configurations files in the
 
 ```none {:.devsite-disable-click-to-copy}
 ~/fuchsia/products$ ls *.gni
-bringup.gni  core.gni  terminal.gni  workstation.gni
+bringup.gni  core.gni  terminal.gni  workstation_eng.gni
 ```
 To see the list of all available product configurations, you can run the
 following command:
@@ -228,7 +228,7 @@ fx list-products
 ```
 
 Among these product configurations, <code>[terminal][terminal-gni]</code> and
-<code>[workstation][workstation-gni]</code> include end-to-end tests by
+<code>[workstation_eng][workstation-gni]</code> include end-to-end tests by
 default. The following example shows the end-to-end tests included
 in `terminal.gni`:
 
@@ -253,4 +253,4 @@ universe_package_labels += [
 
 [products-dir]: /products/
 [terminal-gni]: /products/terminal.gni
-[workstation-gni]: /products/workstation.gni
+[workstation-gni]: /products/workstation_eng.gni

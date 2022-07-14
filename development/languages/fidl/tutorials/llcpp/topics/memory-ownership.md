@@ -46,7 +46,7 @@ arena and constructor arguments for the value.
 
 ### fidl::StringView
 
-Defined in [lib/fidl/llcpp/string_view.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/string_view.h)
+Defined in [lib/fidl/cpp/wire/string_view.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/string_view.h)
 
 Holds a reference to a variable-length string stored within the buffer. C++
 wrapper of **fidl_string**. Does not own the memory of the contents.
@@ -60,7 +60,7 @@ It is memory layout compatible with **fidl_string**.
 
 ### fidl::VectorView\<T\>
 
-Defined in [lib/fidl/llcpp/vector_view.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/vector_view.h)
+Defined in [lib/fidl/cpp/wire/vector_view.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/vector_view.h)
 
 Holds a reference to a variable-length vector of elements stored within the
 buffer. C++ wrapper of **fidl_vector**. Does not own the memory of elements.
@@ -75,7 +75,7 @@ It is memory layout compatible with **fidl_vector**.
 
 ### fidl::Array\<T, N\>
 
-Defined in [lib/fidl/llcpp/array.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/array.h)
+Defined in [lib/fidl/cpp/wire/array.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/array.h)
 
 Owns a fixed-length array of elements.
 Similar to `std::array<T, N>` but intended purely for in-place use.
@@ -151,7 +151,7 @@ soon as the arena is deleted, all the objects it has allocated are
 deallocated and their destructors are called.
 
 The FIDL arena is defined in
-[lib/fidl/llcpp/arena.h](/sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/arena.h).
+[lib/fidl/cpp/wire/arena.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/arena.h).
 
 The objects are first allocated within a buffer which belongs to the arena
 (this is a field of the arena). The default size of the buffer is 512 bytes.
@@ -215,4 +215,4 @@ A `StringView` can also be created directly from string literals without using
 ```
 
 <!-- xrefs -->
-[fidl-wire-format]: reference/fidl/language/wire-format/README.md
+[fidl-wire-format]: /reference/fidl/language/wire-format/README.md

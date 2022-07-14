@@ -1,6 +1,6 @@
 # Zircon Kernel Command Line Options
 
-TODO(53594): [/gen/boot-options.md](gen/boot-options.md) is now the
+TODO(53594): [//gen/boot-options.md](/gen/boot-options.md) is now the
 source of truth. kernel_cmdlind.md is in the process of being replaced. Please
 do not update it without coordinating with the migration effort.
 
@@ -26,7 +26,7 @@ values from the kernel command line. Leading whitespace is ignored and lines
 starting with # are ignored. Whitespace is not allowed in names.
 
 In order to specify options in the build, see
-[this guide](development/kernel/build.md#options).
+[this guide](/development/kernel/build.md#options).
 
 ## aslr.disable
 
@@ -220,7 +220,7 @@ driver, see `driver.\<name>.enable_tests`. The default is disabled.
 
 Enable or disable support for tracing drivers. When enabled drivers may
 participate in
-[Fuchsia tracing](development/drivers/diagnostics/tracing.md).
+[Fuchsia tracing](/development/drivers/diagnostics/tracing.md).
 
 Implementation-wise, what this option does is tell each devhost whether to
 register as "trace provider".
@@ -461,7 +461,7 @@ It should not start with a `/` prefix.
 
 If this executable uses `PT_INTERP` (i.e. the dynamic linker), the userboot
 process provides a
-[loader service](concepts/process/program_loading.md#the-loader-service)
+[loader service](/concepts/process/program_loading.md#the-loader-service)
 to resolve the `PT_INTERP` (dynamic linker) name and any shared library names it
 may request. That service simply looks in the `lib/` directory (under
 `userboot.root`) in the BOOTFS.

@@ -46,14 +46,14 @@ driver requests it from its bound device.
 In DFv2, drivers speak [FIDL][fidl] to each other, like any other component in a
 Fuchsia system. A driver gets a FIDL channel from its incoming component namespace.
 
-[dfv1]: development/drivers/concepts/fdf.md
-[dfv2]: concepts/drivers/driver_framework.md
-[device]: development/drivers/concepts/device_driver_model/device-model.md
-[node]: concepts/drivers/drivers_and_nodes.md
-[node-topology]: concepts/drivers/drivers_and_nodes.md#node_topology
-[device-driver-lifecycle]: development/drivers/concepts/device_driver_model/device-lifecycle.md
-[devfs]: concepts/drivers/driver_communication.md
-[components]: concepts/components/v2/README.md
-[banjo]: development/drivers/concepts/device_driver_model/banjo.md
-[fidl]: concepts/fidl/overview.md
+[dfv1]: /development/drivers/concepts/fdf.md
+[dfv2]: /concepts/drivers/driver_framework.md
+[device]: /development/drivers/concepts/device_driver_model/device-model.md
+[node]: /concepts/drivers/drivers_and_nodes.md
+[node-topology]: /concepts/drivers/drivers_and_nodes.md#node_topology
+[device-driver-lifecycle]: /development/drivers/concepts/device_driver_model/device-lifecycle.md
+[devfs]: /concepts/drivers/driver_communication.md
+[components]: /concepts/components/v2/README.md
+[banjo]: /development/drivers/concepts/device_driver_model/banjo.md
+[fidl]: /concepts/fidl/overview.md
 

@@ -177,5 +177,5 @@ $ ffx log --since "5m ago" dump
 <!-- Reference links -->
 
 [ffx-log]: https://fuchsia.dev/reference/tools/sdk/ffx#log_2
-[proactive-logging]: development/tools/ffx/commands/log.md#proactive_logging
+[proactive-logging]: /development/tools/ffx/commands/log.md#proactive_logging
 [symbolize-logs]: ./symbolize-logs.md

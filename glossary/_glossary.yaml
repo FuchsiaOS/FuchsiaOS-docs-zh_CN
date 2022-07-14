@@ -4,7 +4,7 @@
 
 - term: "ABI"
   short_description: "The binary-level interface to the system."
-  full_description: "The <a href=\"concepts/system/abi/system.md\">Application Binary Interface</a>(ABI)
+  full_description: "The <a href=\"/concepts/system/abi/system.md\">Application Binary Interface</a>(ABI)
   for a system is the binary-level interface to the system. Typically you don't
   write software that uses the system ABI directly. Instead, you write software
   against the system API. When the software is compiled, the binary artifact
@@ -25,28 +25,28 @@
   of each partition on disk. By convention, the slots used for normal updates are denoted A and B,
   and the corresponding partitions are labeled with a suffix of \"_a\" or \"_b\".
   The slot used for recovery is denoted R which is chosen when neither A nor B is bootable.</p>"
-  see_also: ["<a href=\"development/packages/ota.md\">OTA updates</a>"]
+  see_also: ["<a href=\"/development/packages/ota.md\">OTA updates</a>"]
   related_guides: [""]
   area: ["System", "Zircon"]
 
 - term: "Agent"
   short_description: "An agent is a role a component can play to execute in the background in the
   context of a session."
-  full_description: "<p>A <a href=\"development/modular/overview.md#extension_points\">Modular</a> concept
+  full_description: "<p>A <a href=\"/development/modular/overview.md#extension_points\">Modular</a> concept
   that is being deprecated.</p>
-  <p>An agent is a role a <a href=\"glossary#component\">component</a> can play to execute
-  in the background in the context of a <a href=\"glossary#session\">session</a>.
+  <p>An agent is a role a <a href=\"/glossary#component\">component</a> can play to execute
+  in the background in the context of a <a href=\"/glossary#session\">session</a>.
   Agents are always a singleton within a session, and provide services to other components.</p>"
-  see_also: ["<a href=\"development/modular/overview.md#extension_points\">Agents</a>"]
+  see_also: ["<a href=\"/development/modular/overview.md#extension_points\">Agents</a>"]
   related_guides: [""]
   area: ["Session", "Component Framework"]
 
 - term: "Appmgr"
   short_description: "Launches v1 components and manages the namespaces in which those components run."
   full_description: "The Application Manager (AppMgr) is responsible for launching
-  <a href=\"glossary#components-v1\">v1 components</a> and managing the namespaces in
-  which those components run. It is run by <a href=\"glossary#component-manager\">component manager</a>
-  as a <a href=\"glossary#components-v2\">v2 component</a>."
+  <a href=\"/glossary#components-v1\">v1 components</a> and managing the namespaces in
+  which those components run. It is run by <a href=\"/glossary#component-manager\">component manager</a>
+  as a <a href=\"/glossary#components-v2\">v2 component</a>."
   see_also: [""]
   related_guides: [""]
   area: ["Component Framework"]
@@ -54,8 +54,8 @@
 - term: "Banjo"
   short_description: "Language for definition protocols that communicate between drivers."
   full_description: "Banjo is a language for defining protocols that are used to communicate between
-  <a href=\"glossary#driver\">drivers</a>. It is different from
-  <a href=\"glossary#fidl\">FIDL</a> in that it specifies an ABI for drivers to use to
+  <a href=\"/glossary#driver\">drivers</a>. It is different from
+  <a href=\"/glossary#fidl\">FIDL</a> in that it specifies an ABI for drivers to use to
   call into each other, rather than an IPC protocol."
   see_also: [""]
   related_guides: [""]
@@ -65,7 +65,7 @@
   short_description: "In v2 components, a component instance binds to component instances that provided
   capabilities."
   full_description: "In Components v2, a
-  <a href=\"glossary#component-instance\">component instance</a>
+  <a href=\"/glossary#component-instance\">component instance</a>
   binds to another component instance when it connects to a capability provided by the other
   component instance. This is the most common reason for a component to start."
   see_also: [""]
@@ -76,8 +76,8 @@
   short_description: "The boot filesystem that contains the files needed early in the boot process."
   full_description: "The bootfs RAM disk contains the files needed early in the boot process when no
   other filesystems are available. It is part of the
-  <a href=\"glossary#zircon-boot-image\">zircon boot image</a>,
-  and is decompressed and served by <a href=\"glossary#bootsvc\">bootsvc</a>. After
+  <a href=\"/glossary#zircon-boot-image\">zircon boot image</a>,
+  and is decompressed and served by <a href=\"/glossary#bootsvc\">bootsvc</a>. After
   the early boot process is complete, the bootfs is mounted at `/boot`."
   see_also: [""]
   related_guides: [""]
@@ -86,7 +86,7 @@
 - term: "bootsvc"
   short_description: "Provides a filesystem service for the bootfs and a loader service."
   full_description: "The second process started in Fuchsia. It provides a filesystem
-  service for the <a href=\"glossary#bootfs\">bootfs</a> and a loader service that
+  service for the <a href=\"/glossary#bootfs\">bootfs</a> and a loader service that
   loads programs from the same bootfs. After starting these services, it loads the third program,
   which defaults to `component_manager`."
   see_also: [""]
@@ -95,7 +95,7 @@
 
 - term: "Bus driver"
   short_description: "A driver for a device that has multiple children."
-  full_description: "A  <a href=\"glossary#driver\">driver</a> for a device that has
+  full_description: "A  <a href=\"/glossary#driver\">driver</a> for a device that has
   multiple children. For example, hardware interfaces like PCI specify a topology in which a single
   controller is used to interface with multiple devices connected to it. In that situation, the
   driver for the controller would be a bus driver."
@@ -108,10 +108,10 @@
   which a component instance may cache data local to the device."
   full_description: "A private directory, that may be cleared by thge system at any time, within
   which a component instance may cache data local to the device. Similar to a
-  <a href=\"glossary#data-directory\">data directory</a>,
+  <a href=\"/glossary#data-directory\">data directory</a>,
   except that the contents of a cache directory may be cleared by the system at any time, such as
   when the device is under storage pressure. Canonically mapped to <code>/cache</code> in the component
-  instance’s <a href=\"glossary#namespace\">namespace</a>."
+  instance’s <a href=\"/glossary#namespace\">namespace</a>."
   related_guides: [""]
   area: ["System", "Component Framework"]
 
@@ -119,23 +119,23 @@
   short_description: "A value that combines an object reference and a set of rights."
   full_description: "A capability is a value that combines an object reference and a set of
   rights. When a program has a capability it is conferred the privilege to perform certain actions
-  using that capability. A <a href=\"glossary#handle\">handle</a> is a common example
+  using that capability. A <a href=\"/glossary#handle\">handle</a> is a common example
   for a capability."
-  see_also: ["<a href=\"glossary#capability-routing\">Capability routing</a>"]
+  see_also: ["<a href=\"/glossary#capability-routing\">Capability routing</a>"]
   related_guides: [""]
   area: ["System", "Component Framework"]
 
 - term: "Capability routing"
   short_description: "A way for one component instance to give capabilities to another component
   instance."
-  full_description: "A way for one <a href=\"glossary#component-instance\">component instance</a>
-  to give <a href=\"glossary#capability\">capabilities</a> to another instance over the
-  <a href=\"glossary#component-instance-tree\">component instance tree</a>.
-  <a href=\"glossary#component-manifest\">Component manifests</a> define how routing
-  takes place, with syntax for <a href=\"glossary#service-capability\">service capabilities</a>,
-  <a href=\"glossary#directory-capability\">directory capabilities</a>, and
-  <a href=\"glossary#storage-capability\">storage capabilities</a>."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>"]
+  full_description: "A way for one <a href=\"/glossary#component-instance\">component instance</a>
+  to give <a href=\"/glossary#capability\">capabilities</a> to another instance over the
+  <a href=\"/glossary#component-instance-tree\">component instance tree</a>.
+  <a href=\"/glossary#component-manifest\">Component manifests</a> define how routing
+  takes place, with syntax for <a href=\"/glossary#service-capability\">service capabilities</a>,
+  <a href=\"/glossary#directory-capability\">directory capabilities</a>, and
+  <a href=\"/glossary#storage-capability\">storage capabilities</a>."
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>"]
   related_guides: [""]
   area: ["System", "Component Framework"]
 
@@ -143,20 +143,20 @@
   short_description: "An IPC primitive provided by Zircon."
   full_description: "A channel is an IPC primitive provided by Zircon. It is a bidirectional,
   datagram-like transport that can transfer small messages including
-  <a href=\"glossary#handle\">handles</a>.
-  <a href=\"glossary#fidl\">FIDL</a> protocols typically use channels as their
+  <a href=\"/glossary#handle\">handles</a>.
+  <a href=\"/glossary#fidl\">FIDL</a> protocols typically use channels as their
   underlying transport."
-  see_also: ["<a href=\"reference/kernel_objects/channel.md\">Channel overview</a>",
-             "<a href=\"contribute/governance/policy/update_channel_usage_policy.md)\">Update channel usage policy</a>"]
+  see_also: ["<a href=\"/reference/kernel_objects/channel.md\">Channel overview</a>",
+             "<a href=\"/contribute/governance/policy/update_channel_usage_policy.md)\">Update channel usage policy</a>"]
   related_guides: [""]
   area: ["FIDL", "Zircon"]
 
 - term: "Child component instance"
   short_description: "A child component instance is a component instance that is owned by another instance,
-  the <a href=\"glossary#parent-component-instance\">parent</a>."
+  the <a href=\"/glossary#parent-component-instance\">parent</a>."
   full_description: ""
-  see_also: ["<a href=\"glossary#component\">Component</a>",
-             "<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  see_also: ["<a href=\"/glossary#component\">Component</a>",
+             "<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -164,7 +164,7 @@
   short_description: "A cloud service for storing and distributing packages. Packages can be
   arbitrary collections of files, but most often contain prebuilt binaries."
   full_description: "The Fuchsia project uses CIPD to download, publish, and distribute compiled
-  software such as the Fuchsia SDK. <a href=\"glossary#jiri\">Jiri</a> has built-in support
+  software such as the Fuchsia SDK. <a href=\"/glossary#jiri\">Jiri</a> has built-in support
   for versioning and downloading CIPD packages."
   see_also: ["<a href=\"https://chromium.googlesource.com/infra/luci/luci-go/+/refs/heads/main/cipd\">CIPD source code</a>",
              "<a href=\"https://chrome-infra-packages.appspot.com/\">CIPD web UI</a>"]
@@ -177,7 +177,7 @@
   full_description: "Components are the common abstraction that defines how all software
   (regardless of source, programming language, or runtime) is described, sandboxed,
   and executed on a Fuchsia system."
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -185,83 +185,83 @@
   short_description: "A node in the component instance tree whose
   children are dynamically instantiated rather than statically defined in a component manifest."
   full_description: "A node in the
-  <a href=\"glossary#component-instance-tree\">component instance tree</a> whose
+  <a href=\"/glossary#component-instance-tree\">component instance tree</a> whose
   children are dynamically instantiated rather than statically defined in a
-  <a href=\"glossary#component-manifest\">component manifest</a>."
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  <a href=\"/glossary#component-manifest\">component manifest</a>."
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component declaration"
   short_description: "A FIDL table that includes information about a component."
-  full_description: "A component declaration is a <a href=\"glossary#fidl\">fidl</a>
+  full_description: "A component declaration is a <a href=\"/glossary#fidl\">fidl</a>
   table (<a href=\"/sdk/fidl/fuchsia.sys2/decls/component_decl.fidl\">fuchsia.sys2.ComponentDecl</a>)
-  that includes information about a <a href=\"glossary#component\">component</a>’s
-  runtime configuration, <a href=\"glossary#capability\">capabilities</a> it
-  <a href=\"glossary#expose\">exposes</a>, <a href=\"glossary#offer\">offers</a>,
-  and <a href=\"glossary#use\">uses</a>, and
-  <a href=\"glossary#component-manifest-facet\">facets</a>."
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  that includes information about a <a href=\"/glossary#component\">component</a>’s
+  runtime configuration, <a href=\"/glossary#capability\">capabilities</a> it
+  <a href=\"/glossary#expose\">exposes</a>, <a href=\"/glossary#offer\">offers</a>,
+  and <a href=\"/glossary#use\">uses</a>, and
+  <a href=\"/glossary#component-manifest-facet\">facets</a>."
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component framework"
   short_description: "An application framework for declaring and managing
-  <a href=\"glossary#component\">components</a>,
+  <a href=\"/glossary#component\">components</a>,
   consisting of build tools, APIs, conventions, and system services."
   full_description: ""
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component instance"
   short_description: "One of possibly many instances of a particular
-  <a href=\"glossary#component\">components</a> at runtime."
+  <a href=\"/glossary#component\">components</a> at runtime."
   full_description: ""
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component instance tree"
   short_description: "A tree structure that represents the runtime state of parent-child relationships
-  <a href=\"glossary#component-instance\">component instances</a>."
-  full_description: "Component instance tree is a <a href=\"concepts/components/v2/introduction.md\">components v2</a> concept. A tree
+  <a href=\"/glossary#component-instance\">component instances</a>."
+  full_description: "Component instance tree is a <a href=\"/concepts/components/v2/introduction.md\">components v2</a> concept. A tree
   structure that represents the runtime state of parent-child relationships
-  between <a href=\"glossary#component-instance\">component instances</a>. If instance
+  between <a href=\"/glossary#component-instance\">component instances</a>. If instance
   A launches instance B then in the tree A will be the parent of B. The component instance
-  tree is used to route capabilities such that parents can <a href=\"glossary#offer\">offer</a>
-  capabilities to their children to <a href=\"glossary#use\">use</a>, and children can
-  <a href=\"glossary#expose\">expose</a> capabilities for their parents to expose to
+  tree is used to route capabilities such that parents can <a href=\"/glossary#offer\">offer</a>
+  capabilities to their children to <a href=\"/glossary#use\">use</a>, and children can
+  <a href=\"/glossary#expose\">expose</a> capabilities for their parents to expose to
   their parents or offer to other children."
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component manager"
   short_description: "A system service that lets
-  <a href=\"glossary#component-instance\">component instances</a> manage
-  their children and <a href=\"glossary#capability-routing\">capability routing</a> between them,
-  thus implementing the <a href=\"glossary#component-instance-tree\">component instancetree</a>."
+  <a href=\"/glossary#component-instance\">component instances</a> manage
+  their children and <a href=\"/glossary#capability-routing\">capability routing</a> between them,
+  thus implementing the <a href=\"/glossary#component-instance-tree\">component instancetree</a>."
   full_description: "A system service that lets
-  <a href=\"glossary#component-instance\">component instances</a> manage
-  their children and <a href=\"glossary#capability-routing\">capability routing</a> between them,
-  thus implementing the <a href=\"glossary#component-instance-tree\">component instancetree</a>.
+  <a href=\"/glossary#component-instance\">component instances</a> manage
+  their children and <a href=\"/glossary#capability-routing\">capability routing</a> between them,
+  thus implementing the <a href=\"/glossary#component-instance-tree\">component instancetree</a>.
   Component manager is the system service that implements the
-  <a href=\"glossary#components-v2\">components v2</a> runtime."
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  <a href=\"/glossary#components-v2\">components v2</a> runtime."
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component manifest"
   short_description: "A binary file ending in <code>.cm</code> that encodes a
-  <a href=\"glossary#component-declaration\">component declaration</a>,
-  often distributed as part of a <a href=\"glossary#package\">package</a>."
+  <a href=\"/glossary#component-declaration\">component declaration</a>,
+  often distributed as part of a <a href=\"/glossary#package\">package</a>."
   full_description: "A binary file ending in <code>.cm</code> that encodes a
-  <a href=\"glossary#component-declaration\">component declaration</a>,
-  often distributed as part of a <a href=\"glossary#package\">package</a>.
+  <a href=\"/glossary#component-declaration\">component declaration</a>,
+  often distributed as part of a <a href=\"/glossary#package\">package</a>.
   The <code>cmc</code> tool generates a component manifest from a
-  <a href=\"glossary#component-manifest-source\">component manifest source</a> file."
-  see_also: ["<a href=\"concepts/components/v2/component_manifests.md\">Component manifests</a>"]
+  <a href=\"/glossary#component-manifest-source\">component manifest source</a> file."
+  see_also: ["<a href=\"/concepts/components/v2/component_manifests.md\">Component manifests</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -269,27 +269,27 @@
   short_description: "A JSON5 file ending with a <code>.cml</code> extension
   that describes a component and its capabilities. For legacy components,
   this is a <code>.cmx</code> file."
-  full_description: "In <a href=\"glossary#components-v2\">components v2</a>,
+  full_description: "In <a href=\"/glossary#components-v2\">components v2</a>,
   a component manifest is a file with a <code>.cml</code> extension, that encodes
-  a <a href=\"glossary#component-declaration\">component declaration</a>.
+  a <a href=\"/glossary#component-declaration\">component declaration</a>.
 
-  <p>For <a href=\"glossary#components-v1\">legacy components</a>, this is
+  <p>For <a href=\"/glossary#components-v1\">legacy components</a>, this is
   a JSON file with a <code>.cmx</code> extension that contains information about
-  a <a href=\"glossary#component\">component</a>’s runtime configuration,
-  services and directories it receives in its <a href=\"glossary#namespace\">namespace</a>,
-  and <a href=\"glossary#component-manifest-facet\">facets</a>.</p>"
-  see_also: ["<a href=\"concepts/components/v1/component_manifests.md\">Legacy component manifests</a>",
-             "<a href=\"concepts/components/v2/component_manifests.md\">Component manifests</a>"]
+  a <a href=\"/glossary#component\">component</a>’s runtime configuration,
+  services and directories it receives in its <a href=\"/glossary#namespace\">namespace</a>,
+  and <a href=\"/glossary#component-manifest-facet\">facets</a>.</p>"
+  see_also: ["<a href=\"/concepts/components/v1/component_manifests.md\">Legacy component manifests</a>",
+             "<a href=\"/concepts/components/v2/component_manifests.md\">Component manifests</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component manifest facet"
   short_description: "Additional component manifest metadata."
   full_description: "Additional metadata that is carried in a
-  <a href=\"glossary#component-manifest\">component manifest</a>. This is an extension
-  point to the <a href=\"glossary#component-framework\">framework</a>."
-  see_also: ["<a href=\"concepts/components/v1/component_manifests.md\">Legacy component manifests</a>",
-             "<a href=\"concepts/components/v2/component_manifests.md\">Component manifests</a>"]
+  <a href=\"/glossary#component-manifest\">component manifest</a>. This is an extension
+  point to the <a href=\"/glossary#component-framework\">framework</a>."
+  see_also: ["<a href=\"/concepts/components/v1/component_manifests.md\">Legacy component manifests</a>",
+             "<a href=\"/concepts/components/v2/component_manifests.md\">Component manifests</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -300,8 +300,8 @@
   to key a component's persistent resources, if it has any. While a component
   instance's moniker may change, its instance ID remains the same.
   <p>Instance IDs are assigned to component instances using a
-   <a href=\"development/components/component_id_index.md\">component ID index</a>.</p>"
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+   <a href=\"/development/components/component_id_index.md\">component ID index</a>.</p>"
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -309,129 +309,129 @@
   short_description: "Collective term for the component instance tree and the capability routes over that tree."
   full_description: "The component topology describes the set of relationships between component instances in a
   Fuchsia system. It consists of the parent-child relationships of the
-  <a href=\"glossary#component-instance-tree\">component instance tree</a> as well as the
-  <a href=\"glossary#capability-routing\">capability routes</a> over that tree."
-  see_also: ["<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  <a href=\"/glossary#component-instance-tree\">component instance tree</a> as well as the
+  <a href=\"/glossary#capability-routing\">capability routes</a> over that tree."
+  see_also: ["<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Component URL"
   short_description: "URL that identifies a component."
-  full_description: "<a href=\"concepts/components/component_urls.md\">URL</a>
+  full_description: "<a href=\"/concepts/components/component_urls.md\">URL</a>
   that identifies a component, most often used when instantiating a component, for example
   <code>fuchsia-pkg://fuchsia.com/stash#meta/stash_secure.cm</code>."
-  see_also: ["<a href=\"glossary#fuchsia-pkg-url\">fuchsia-pkg URL</a>"]
+  see_also: ["<a href=\"/glossary#fuchsia-pkg-url\">fuchsia-pkg URL</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Components v1"
   short_description: "The legacy component architecture of Fuchsia."
   full_description: "A shorthand for the legacy
-  <a href=\"glossary#component\">component</a> architecture.
-  Includes a runtime as implemented by <a href=\"glossary#appmgr\">appmgr</a>
-  and <a href=\"glossary#sysmgr\">sysmgr</a>, protocols and types as defined in
+  <a href=\"/glossary#component\">component</a> architecture.
+  Includes a runtime as implemented by <a href=\"/glossary#appmgr\">appmgr</a>
+  and <a href=\"/glossary#sysmgr\">sysmgr</a>, protocols and types as defined in
   <a href=\"/sdk/fidl/fuchsia.sys/\">fuchsia-sys</a>, build-time tools such as
   <a href=\"/tools/cmc\">cmc</a>, and IDK libraries such as
   <a href=\"/sdk/lib/sys\">libsys</a> and <a href=\"/sdk/lib/svc\">libsvc</a>."
-  see_also: ["<a href=\"glossary#components-v2\">Components v2</a>"]
+  see_also: ["<a href=\"/glossary#components-v2\">Components v2</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Components v2"
   short_description: "The modern component architecture of Fuchsia."
   full_description: "A shorthand for the
-  <a href=\"glossary#component\">component</a> architecture in its modern
+  <a href=\"/glossary#component\">component</a> architecture in its modern
   implementation. Includes a runtime as implemented by
-  <a href=\"glossary#component-manager\">component_manager</a>, protocols
+  <a href=\"/glossary#component-manager\">component_manager</a>, protocols
   and types as defined in <a href=\"/sdk/fidl/fuchsia.sys2/\">fuchsia.sys2</a>,
-  and build-time tools such as <a href=\"reference/tools/sdk/cmc\">cmc</a>."
-  see_also: ["<a href=\"glossary#components-v1\">Components v1</a>"]
+  and build-time tools such as <a href=\"/reference/tools/sdk/cmc\">cmc</a>."
+  see_also: ["<a href=\"/glossary#components-v1\">Components v1</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Concurrent device driver"
   short_description: "A
-  <a href=\"glossary#hardware-driver\">hardware driver</a> that supports multiple
+  <a href=\"/glossary#hardware-driver\">hardware driver</a> that supports multiple
   concurrent operations."
   full_description: "A
-  <a href=\"glossary#hardware-driver\">hardware driver</a> that supports multiple
+  <a href=\"/glossary#hardware-driver\">hardware driver</a> that supports multiple
   concurrent operations. This may be, for example, through a hardware command queue or multiple
-  device channels. From the perspective of the <a href=\"glossary#core-driver\">core driver</a>,
+  device channels. From the perspective of the <a href=\"/glossary#core-driver\">core driver</a>,
   the device has multiple pending operations, each of which completes or fails independently. If the
   driven device can internally parallelize an operation, but can only have one operation outstanding
   at a time, it may be better implemented with a
-  <a href=\"glossary#sequential-device-driver\">sequential device driver</a>."
+  <a href=\"/glossary#sequential-device-driver\">sequential device driver</a>."
   see_also: [""]
   related_guides: [""]
   area: ["Devices", "System"]
 
 - term: "Content"
   short_description: "Graphical content containing a bitmap that is attached to a
-  <a href=\"glossary#transform\">Transform</a> in <a href=\"glossary#flatland\">Flatland</a>.
-  <a href=\"glossary#image\">Image</a>, <a href=\"glossary#viewport\">Viewport</a> and
-  <a href=\"glossary#filledrect\">FilledRect</a> are types of Contents."
+  <a href=\"/glossary#transform\">Transform</a> in <a href=\"/glossary#flatland\">Flatland</a>.
+  <a href=\"/glossary#image\">Image</a>, <a href=\"/glossary#viewport\">Viewport</a> and
+  <a href=\"/glossary#filledrect\">FilledRect</a> are types of Contents."
   full_description: "Graphical content containing a bitmap that is attached to a
-  <a href=\"glossary#transform\">Transform</a> in <a href=\"glossary#flatland\">Flatland</a>.
-  <a href=\"glossary#image\">Image</a>, <a href=\"glossary#viewport\">Viewport</a> and
-  <a href=\"glossary#filledrect\">FilledRect</a> are types of Contents. Each
-  <a href=\"glossary#transform\">Transform</a> can have, at most, one attached Content. A
-  Content inherits all of the attributes from its attached <a href=\"glossary#transform\">Transform</a>."
+  <a href=\"/glossary#transform\">Transform</a> in <a href=\"/glossary#flatland\">Flatland</a>.
+  <a href=\"/glossary#image\">Image</a>, <a href=\"/glossary#viewport\">Viewport</a> and
+  <a href=\"/glossary#filledrect\">FilledRect</a> are types of Contents. Each
+  <a href=\"/glossary#transform\">Transform</a> can have, at most, one attached Content. A
+  Content inherits all of the attributes from its attached <a href=\"/glossary#transform\">Transform</a>."
   see_also: [""]
   related_guides: [""]
   area: ["FIDL", "UI"]
 
 - term: "Core driver"
   short_description: "A
-  <a href=\"glossary#driver\">driver</a> that implements the application-facing RPC
+  <a href=\"/glossary#driver\">driver</a> that implements the application-facing RPC
   interface for a class of drivers."
   full_description: "A
-  <a href=\"glossary#driver\">driver</a> that implements the application-facing RPC
+  <a href=\"/glossary#driver\">driver</a> that implements the application-facing RPC
   interface for a class of drivers (e.g. block drivers, ethernet drivers). It is
   hardware-agnostic. It communicates with a
-  <a href=\"glossary#hardware-driver\">hardware driver</a> through
-  <a href=\"glossary#banjo\">banjo</a> to service its requests."
+  <a href=\"/glossary#hardware-driver\">hardware driver</a> through
+  <a href=\"/glossary#banjo\">banjo</a> to service its requests."
   see_also: [""]
   related_guides: [""]
   area: ["Devices", "System"]
 
 - term: "Data directory"
   short_description: "A private directory within which a
-  <a href=\"glossary#component-instance\">component instance</a> may store data local
+  <a href=\"/glossary#component-instance\">component instance</a> may store data local
   to the device."
   full_description: "A private directory within which a
-  <a href=\"glossary#component-instance\">component instance</a> may store data local
+  <a href=\"/glossary#component-instance\">component instance</a> may store data local
   to the device, canonically mapped to <code>/data</code> in the component instance’s
-  <a href=\"glossary#namespace\">namespace</a>."
+  <a href=\"/glossary#namespace\">namespace</a>."
   see_also: [""]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Directory capability"
   short_description: "A
-  <a href=\"glossary#components-v2\">Components v2</a> concept. A
-  <a href=\"glossary#capability\">capability</a> that permits access to a filesystem
-  directory by adding it to the <a href=\"glossary#namespace\">namespace</a> of the
-  <a href=\"glossary#component-instance\">component instance</a>
-  that <a href=\"glossary#use\">uses</a> it."
+  <a href=\"/glossary#components-v2\">Components v2</a> concept. A
+  <a href=\"/glossary#capability\">capability</a> that permits access to a filesystem
+  directory by adding it to the <a href=\"/glossary#namespace\">namespace</a> of the
+  <a href=\"/glossary#component-instance\">component instance</a>
+  that <a href=\"/glossary#use\">uses</a> it."
   full_description: "A
-  <a href=\"glossary#components-v2\">Components v2</a>concept. A
-  <a href=\"glossary#capability\">capability</a> that permits access to a filesystem
-  directory by adding it to the <a href=\"glossary#namespace\">namespace</a> of the
-  <a href=\"glossary#component-instance\">component instance</a>
-  that <a href=\"glossary#use\">uses</a> it. If multiple
-  <a href=\"glossary#component-instance\">component instances</a> are offered the same
+  <a href=\"/glossary#components-v2\">Components v2</a>concept. A
+  <a href=\"/glossary#capability\">capability</a> that permits access to a filesystem
+  directory by adding it to the <a href=\"/glossary#namespace\">namespace</a> of the
+  <a href=\"/glossary#component-instance\">component instance</a>
+  that <a href=\"/glossary#use\">uses</a> it. If multiple
+  <a href=\"/glossary#component-instance\">component instances</a> are offered the same
   directory capability then they will have access to the same underlying filesystem directory."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>"]
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>"]
   related_guides: [""]
   area: ["System", "Component Framework"]
 
 - term: "Driver"
   short_description: "A driver is a dynamic shared library that
-  <a href=\"glossary#driver-manager\">driver manager</a> can
-  load into a <a href=\"glossary#driver-host\">driver-host</a> and that enables, and
+  <a href=\"/glossary#driver-manager\">driver manager</a> can
+  load into a <a href=\"/glossary#driver-host\">driver-host</a> and that enables, and
   controls one or more devices."
   full_description: ""
-  see_also: ["<a href=\"development/drivers/developer_guide/driver-development.md\">Fuchsia driver development</a>",
+  see_also: ["<a href=\"/development/drivers/developer_guide/driver-development.md\">Fuchsia driver development</a>",
              "<a href=\"/src/devices\">Driver source code</a>"]
   related_guides: [""]
   area: ["System", "Devices"]
@@ -453,58 +453,66 @@
   related_guides: [""]
   area: ["System", "Devices"]
 
+- term: "Domain object"
+  short_description: "The corresponding class or data type in a target language (such as C++) used
+  to represent a FIDL type. A domain object usually models an entity in a problem domain space."
+  full_description: ""
+  see_also: [""]
+  related_guides: [""]
+  area: ["FIDL"]
+
 - term: "Element"
   short_description: "A component added to a session dynamically through the FIDL
   <code>ElementManager</code> protocol."
-  full_description: "A <a href=\"glossary#component\">component</a> added to a
-  <a href=\"glossary#session\">session</a> dynamically through the
-  <a href=\"glossary#fidl\">fidl</a> protocol
-  <a href=\"glossary#element-manager\"><code>ElementManager</code></a>. In addition
+  full_description: "A <a href=\"/glossary#component\">component</a> added to a
+  <a href=\"/glossary#session\">session</a> dynamically through the
+  <a href=\"/glossary#fidl\">fidl</a> protocol
+  <a href=\"/glossary#element-manager\"><code>ElementManager</code></a>. In addition
   to the properties common to all components, elements are also annotated by element proposers.
   Those annotations are shared with other components within the session. It is the session's
   responsibility to manage the lifecycle of elements."
-  see_also: ["<a href=\"concepts/session/element.md\">Elements</a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/concepts/session/element.md\">Elements</a>",
+             "<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Component Framework"]
 
 - term: "Element annotation"
   short_description: "A collection of named attributes associated with an
-  <a href=\"glossary#element\">element</a>."
-  full_description: "A <a href=\"glossary#fidl\">fidl</a> struct. A collection of
-  named attributes associated with an <a href=\"glossary#element\">element</a>.
+  <a href=\"/glossary#element\">element</a>."
+  full_description: "A <a href=\"/glossary#fidl\">fidl</a> struct. A collection of
+  named attributes associated with an <a href=\"/glossary#element\">element</a>.
   Annotations are specified at element creation time by
-  <a href=\"glossary#element-proposer\">element proposers</a> and remain mutable for
+  <a href=\"/glossary#element-proposer\">element proposers</a> and remain mutable for
   the lifetime of the element."
-  see_also: ["<a href=\"concepts/session/element.md\">Elements</a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/concepts/session/element.md\">Elements</a>",
+             "<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Component Framework", "FIDL"]
 
 - term: "Element manager"
-  short_description: " A protocol used to grant <a href=\"glossary#session\">session</a>
+  short_description: " A protocol used to grant <a href=\"/glossary#session\">session</a>
   sub-components the capability to ask for
-  <a href=\"concepts/session/element.md\">elements</a> to be added to the product
+  <a href=\"/concepts/session/element.md\">elements</a> to be added to the product
   experience at runtime."
-  full_description: "A <a href=\"glossary#fidl\">fidl</a> protocol.
-  A protocol used to grant <a href=\"glossary#session\">session</a> sub-components
-  the capability to ask for <a href=\"concepts/session/element.md\">elements</a>
+  full_description: "A <a href=\"/glossary#fidl\">fidl</a> protocol.
+  A protocol used to grant <a href=\"/glossary#session\">session</a> sub-components
+  the capability to ask for <a href=\"/concepts/session/element.md\">elements</a>
   to be added to the product experience at runtime."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.element#Manager\">fuchsia.session.ElementManager</a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>",
-             "<a href=\"concepts/session/element.md\">Elements</a>"]
+             "<a href=\"/glossary#session-framework\">Session framework</a>",
+             "<a href=\"/concepts/session/element.md\">Elements</a>"]
   related_guides: [""]
   area: ["Session", "Component Framework", "FIDL"]
 
 - term: "Element proposer"
-  short_description: "A way to refer to any <a href=\"glossary#component\">component</a>
+  short_description: "A way to refer to any <a href=\"/glossary#component\">component</a>
   that invokes the ProposeElement() method on
-  <a href=\"glossary#element-manager\"><code>Element manager</code></a>
-  to launch a specific <a href=\"glossary#element\">element</a> in a
-  <a href=\"glossary#session\">session</a>."
+  <a href=\"/glossary#element-manager\"><code>Element manager</code></a>
+  to launch a specific <a href=\"/glossary#element\">element</a> in a
+  <a href=\"/glossary#session\">session</a>."
   full_description: ""
-  see_also: ["<a href=\"glossary#session-framework\">Session framework</a>",
-             "<a href=\"concepts/session/element.md\">Elements</a>"]
+  see_also: ["<a href=\"/glossary#session-framework\">Session framework</a>",
+             "<a href=\"/concepts/session/element.md\">Elements</a>"]
   related_guides: [""]
   area: ["Session", "Component Framework"]
 
@@ -530,25 +538,25 @@
 - term: "expose"
   short_description: "A keyword for a component instance to indicate that it is making a capability
   available to its parent to route."
-  full_description: "A <a href=\"glossary#component-instance\">component instance</a>
-  may use the <code>expose</code> <a href=\"glossary#component-manifest\">manifest</a>
+  full_description: "A <a href=\"/glossary#component-instance\">component instance</a>
+  may use the <code>expose</code> <a href=\"/glossary#component-manifest\">manifest</a>
   keyword to indicate that it is making a capability available to its parent to route. Parents may
-  <a href=\"glossary#offer\">offer</a> a capability exposed by any of their children to
-  their other children or to their parent, but they cannot <a href=\"glossary#use\">use</a>
+  <a href=\"/glossary#offer\">offer</a> a capability exposed by any of their children to
+  their other children or to their parent, but they cannot <a href=\"/glossary#use\">use</a>
   it themselves in order to avoid dependency cycles."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>"]
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>"]
   related_guides: [""]
   area: ["System", "Component Framework"]
 
 - term: "Exposed directory"
   short_description: "A file system directory that contains the set of
-  <a href=\"glossary#expose\">exposed</a> capabilities for a
-  <a href=\"glossary#component\">component</a>."
-  full_description: "A file system directory provided by <a href=\"glossary#component-manager\">component manager</a>
-  that contains the set of capabilities <a href=\"glossary#expose\">exposed</a>
-  by a <a href=\"glossary#component\">component</a> to its parent."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>",
-             "<a href=\"glossary#outgoing-directory\">Outgoing directory</a>"]
+  <a href=\"/glossary#expose\">exposed</a> capabilities for a
+  <a href=\"/glossary#component\">component</a>."
+  full_description: "A file system directory provided by <a href=\"/glossary#component-manager\">component manager</a>
+  that contains the set of capabilities <a href=\"/glossary#expose\">exposed</a>
+  by a <a href=\"/glossary#component\">component</a> to its parent."
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>",
+             "<a href=\"/glossary#outgoing-directory\">Outgoing directory</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -556,14 +564,14 @@
   short_description: "The Fuchsia Archive Format is a container for files to be used by Zircon and
   Fuchsia."
   full_description: ""
-  see_also: ["<a href=\"concepts/source_code/archive_format.md\">Fuchsia archive format (FAR)</a>"]
+  see_also: ["<a href=\"/concepts/source_code/archive_format.md\">Fuchsia archive format (FAR)</a>"]
   related_guides: [""]
   area: ["System", "Zircon"]
 
 - term: "FBL"
   short_description: "FBL is the Fuchsia Base Library, which is shared between kernel and userspace."
   full_description: ""
-  see_also: ["<a href=\"development/languages/c-cpp/cxx.md\">C++ in Zircon</a>"]
+  see_also: ["<a href=\"/development/languages/c-cpp/cxx.md\">C++ in Zircon</a>"]
   related_guides: [""]
   area: ["System", "Zircon"]
 
@@ -573,7 +581,7 @@
   full_description: "The Fuchsia driver framework is the documentation, APIs, and ABIs necessary to
   build Zircon device drivers. Device drivers are implemented as ELF shared libraries loaded by
   Zircon's driver manager."
-  see_also: ["<a href=\"concepts/drivers/fdf.md\">Fuchsia driver framework</a>",
+  see_also: ["<a href=\"/concepts/drivers/fdf.md\">Fuchsia driver framework</a>",
              "<a href=\"/src/lib/ddk/include/ddk/\">FDF includes</a>"]
   related_guides: [""]
   area: ["System", "Zircon"]
@@ -590,10 +598,10 @@
 
 - term: "FilledRect"
   short_description: "A solid color rectangle can be attached to a
-  <a href=\"glossary#transform\">Transform</a> in <a href=\"glossary#flatland\">Flatland</a>."
+  <a href=\"/glossary#transform\">Transform</a> in <a href=\"/glossary#flatland\">Flatland</a>."
   full_description: "A solid color rectangle can be attached to a
-  <a href=\"glossary#transform\">Transform</a> in <a href=\"glossary#flatland\">Flatland</a>.
-  FilledRect is type of a <a href=\"glossary#content\">Content</a>."
+  <a href=\"/glossary#transform\">Transform</a> in <a href=\"/glossary#flatland\">Flatland</a>.
+  FilledRect is type of a <a href=\"/glossary#content\">Content</a>."
   see_also: [""]
   related_guides: [""]
   area: ["UI"]
@@ -602,19 +610,19 @@
   short_description: "The Fuchsia Interface Definition Language (FIDL) is a language for defining
   protocols."
   full_description: "The Fuchsia Interface Definition Language (FIDL) is a language for defining
-  protocols that are typically used over <a href=\"glossary#channels\">channels</a>.
+  protocols that are typically used over <a href=\"/glossary#channels\">channels</a>.
   FIDL is programming language agnostic and has bindings for many popular languages, including C,
   C++, Dart, Go, and Rust. This approach lets system components written in a variety of
   languages interact seamlessly."
   see_also: [""]
-  related_guides: ["<a href=\"development/languages/fidl/\">FIDL</a>"]
+  related_guides: ["<a href=\"/development/languages/fidl/\">FIDL</a>"]
   area: ["General", "FIDL", "System"]
 
 - term: "Flatland"
-  short_description:  "A <a href=\"glossary#fidl\">FIDL</a> protocol that allows sending 2D
-  graphical content to <a href=\"glossary#scenic\">Scenic</a>."
+  short_description:  "A <a href=\"/glossary#fidl\">FIDL</a> protocol that allows sending 2D
+  graphical content to <a href=\"/glossary#scenic\">Scenic</a>."
   full_description: "The 2D composition API for Fuchsia graphics clients. Flatland clients can
-  construct their scene graph and send to <a href=\"glossary#scenic\">Scenic</a> to compose
+  construct their scene graph and send to <a href=\"/glossary#scenic\">Scenic</a> to compose
   into the shared scene graph that is submitted to the display."
   see_also: [""]
   related_guides: [""]
@@ -636,16 +644,16 @@
   to FIDL. "
   full_description: "An FTP is the way developers can suggest changes to FIDL. After being written,
   an FTP goes through a formal review process where it is either accepted or rejected."
-  see_also: ["<a href=\"glossary#fidl\">FIDL</a>",
-             "<a href=\"contribute/governance/deprecated-ftp-process.md\">Deprecated FTP process</a>"]
-  related_guides: ["<a href=\"contribute/governance/rfcs/create_rfc.md\">Creating an RFC</a>"]
+  see_also: ["<a href=\"/glossary#fidl\">FIDL</a>",
+             "<a href=\"/contribute/governance/deprecated-ftp-process.md\">Deprecated FTP process</a>"]
+  related_guides: ["<a href=\"/contribute/governance/rfcs/create_rfc.md\">Creating an RFC</a>"]
   area: ["FIDL", "General"]
 
 - term: "Fuchsia API surface"
   short_description: "The Fuchsia API Surface is the combination of the
-  <a href=\"glossary#fuchsia-system-interface\">Fuchsia system interface</a> and the
+  <a href=\"/glossary#fuchsia-system-interface\">Fuchsia system interface</a> and the
   client libraries included in the
-  <a href=\"glossary#fuchsia-idk\">Fuchsia IDK</a>."
+  <a href=\"/glossary#fuchsia-idk\">Fuchsia IDK</a>."
   full_description: ""
   see_also: [""]
   related_guides: [""]
@@ -657,7 +665,7 @@
   you to test Fuchsia components and applications without needing a Fuchsia device. FEMU is based
   on the <a href=\"https://developer.android.com/studio/run/emulator\">Android Emulator (AEMU)</a>,
   which is a fork of <a href=\"https://www.qemu.org/\">QEMU</a>."
-  see_also: ["<a href=\"concepts/emulator.md\">Fuchsia emulator (FEMU)</a>"]
+  see_also: ["<a href=\"/concepts/emulator.md\">Fuchsia emulator (FEMU)</a>"]
   related_guides: [""]
   area: ["System"]
 
@@ -668,7 +676,7 @@
   the component <code>echo_client_dart.cmx</code> published under the package <code>echo_dart</code>'s
   <code>meta</code> directory, from the <code>fuchsia.com</code> repository, its URL is
   <code>fuchsia-pkg://fuchsia.com/echo_dart#meta/echo_client_dart.cmx</code>."
-  see_also: ["<a href=\"concepts/packages/package_url.md\">Fuchsia package URLs</a>"]
+  see_also: ["<a href=\"/concepts/packages/package_url.md\">Fuchsia package URLs</a>"]
   related_guides: [""]
   area: ["Component Framework", "System"]
 
@@ -676,10 +684,10 @@
   short_description: "The Fuchsia IDK (integrator development kit) is a collection of libraries and
   tools that the Fuchsia project provides to Fuchsia developers."
   full_description: "Among other things, the Fuchsia IDK contains a
-  definition of the <a href=\"glossary#fuchsia-system-interface\">Fuchsia System Interface</a>
+  definition of the <a href=\"/glossary#fuchsia-system-interface\">Fuchsia System Interface</a>
   as well as a number of client libraries. The IDK is targeted at development environment integrators
   that add environment specific tooling specific to the build
-environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
+environment to form a full <a href=\"/glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   see_also: [""]
   related_guides: [""]
   area: ["General"]
@@ -687,7 +695,7 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
 - term: "Fuchsia SDK"
   short_description: "The Fuchsia SDK is the set of APIs, tools, build system integrations, and language
   integration artifacts produced by Fuchsia that enable the production of software and products for and with Fuchsia."
-  full_description: "The Fuchsia SDK is produced from the <a href=\"glossary#fuchsia-idk\">Fuchsia IDK</a>
+  full_description: "The Fuchsia SDK is produced from the <a href=\"/glossary#fuchsia-idk\">Fuchsia IDK</a>
   by adding integrations with build systems and language runtimes."
   see_also: [""]
   related_guides: [""]
@@ -699,7 +707,7 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   full_description: "The binary interface that the Fuchsia operating system presents to software it
   runs. For example, the entry points into the vDSO as well as all the FIDL protocols
   are part of the Fuchsia System Interface."
-  see_also: ["<a href=\"concepts/system/abi/system.md\">Fuchsia System Interface</a>"]
+  see_also: ["<a href=\"/concepts/system/abi/system.md\">Fuchsia System Interface</a>"]
   related_guides: [""]
   area: ["General", "System"]
 
@@ -710,59 +718,59 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   allocated groups of blocks known as slices into a virtual block address space.
   The FVM partitions provide a block interface enabling filesystems to interact
   with it in a manner largely consistent with a regular block device."
-  see_also: ["<a href=\"concepts/filesystems/filesystems.md#fvm\">Filesystems</a>"]
+  see_also: ["<a href=\"/concepts/filesystems/filesystems.md#fvm\">Filesystems</a>"]
   related_guides: [""]
   area: ["General", "Storage"]
 
 - term: "GN"
   short_description: "GN is a meta-build system that generates build files."
   full_description: "GN is a meta-build system that generates build files so that Fuchsia can be
-  built with <a href=\"glossary#ninja\">Ninja</a>. GN is fast and comes with solid
+  built with <a href=\"/glossary#ninja\">Ninja</a>. GN is fast and comes with solid
   tools to manage and explore dependencies. GN files, named `BUILD.gn`, are located all over the
   repository."
   see_also: ["<a href=\"https://gn.googlesource.com/gn/+/HEAD/docs/language.md\">Language and operation</a>",
              "<a href=\"https://gn.googlesource.com/gn/+/HEAD/docs/reference.md\">Reference</a>",
-             "<a href=\"development/build/build_system/fuchsia_build_system_overview.md\">Fuchsia build overview</a>"]
+             "<a href=\"/development/build/build_system/fuchsia_build_system_overview.md\">Fuchsia build overview</a>"]
   related_guides: [""]
   area: ["System", "General"]
 
 - term: "GraphicalPresenter"
-  short_description: "A <a href=\"glossary#fidl\">FIDL</a> protocol that organizes and
+  short_description: "A <a href=\"/glossary#fidl\">FIDL</a> protocol that organizes and
   presents graphical views."
-  full_description: "A  <a href=\"glossary#fidl\">FIDL</a> protocol that organizes and
+  full_description: "A  <a href=\"/glossary#fidl\">FIDL</a> protocol that organizes and
   presents graphical views. The presented views can be annotated with
-  <a href=\"glossary#element-annotation\">element annotations</a> to communicate
+  <a href=\"/glossary#element-annotation\">element annotations</a> to communicate
   presentation properties to the <code>GraphicalPresenter</code>. This protocol is used, for example,
-  when a <a href=\"glossary#session\">session component</a>
+  when a <a href=\"/glossary#session\">session component</a>
   written in Rust wants to delegate presentation logic to a child
-  <a href=\"glossary#component\">component</a> written in Flutter, or when a session
+  <a href=\"/glossary#component\">component</a> written in Flutter, or when a session
   component that manages the lifecycle of elements delegates the presentation of element views to a
   child component that implements <code>GraphicalPresenter</code>."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.element#GraphicalPresenter\"><code>fuchsia.element.GraphicalPresenter</code></a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>",
-             "<a href=\"concepts/session/graphical_presenter.md\">Graphical Presenter component role</a>"]
+             "<a href=\"/glossary#session-framework\">Session framework</a>",
+             "<a href=\"/concepts/session/graphical_presenter.md\">Graphical Presenter component role</a>"]
   related_guides: [""]
   area: ["General", "UI", "FIDL", "Component Framework", "Session", "Flutter"]
 
 - term: "Handle"
   short_description: "A Handle is how a userspace process refers to a
-  <a href=\"glossary#kernel-object\">kernel object</a>."
+  <a href=\"/glossary#kernel-object\">kernel object</a>."
   full_description: "A Handle is how a userspace process refers to a
-  <a href=\"glossary#kernel-object\">kernel object</a>.
-  They can be passed to other processes over <a href=\"glossary#channel\">channels</a>."
-  see_also: ["<a href=\"concepts/kernel/handles.md\">Zircon Handle</a>"]
+  <a href=\"/glossary#kernel-object\">kernel object</a>.
+  They can be passed to other processes over <a href=\"/glossary#channel\">channels</a>."
+  see_also: ["<a href=\"/concepts/kernel/handles.md\">Zircon Handle</a>"]
   related_guides: [""]
   area: ["General", "Zircon"]
 
 - term: "Hardware driver"
-  short_description: "A <a href=\"glossary#driver\">driver</a> that controls a device."
-  full_description: "A <a href=\"glossary#driver\">driver</a> that controls a device.
-  It receives requests from its <a href=\"glossary#core-driver\">core driver</a>
+  short_description: "A <a href=\"/glossary#driver\">driver</a> that controls a device."
+  full_description: "A <a href=\"/glossary#driver\">driver</a> that controls a device.
+  It receives requests from its <a href=\"/glossary#core-driver\">core driver</a>
   and translates them into hardware-specific operations. Hardware drivers strive to be as thin as
   possible. They do not support RPC interfaces, ideally have no local worker threads (though that is
   not a strict requirement), and some will have interrupt handling threads. They may be further
-  classified into <a href=\"glossary#sequential-device-driver\">sequential device drivers</a>
-  and <a href=\"glossary#concurrent-device-driver\">concurrent device drivers</a>."
+  classified into <a href=\"/glossary#sequential-device-driver\">sequential device drivers</a>
+  and <a href=\"/glossary#concurrent-device-driver\">concurrent device drivers</a>."
   see_also: [""]
   related_guides: [""]
   area: ["General", "System"]
@@ -772,16 +780,16 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   component instances at runtime, such as their names, job and process ids, and
   exposed capabilities."
   full_description: ""
-  see_also: ["<a href=\"concepts/components/v2/hub.md\">Hub</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/hub.md\">Hub</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Image"
   short_description: "A bitmap containing pixels that can be attached to a
-  <a href=\"glossary#transform\">Transform</a> in <a href=\"glossary#flatland\">Flatland</a>."
+  <a href=\"/glossary#transform\">Transform</a> in <a href=\"/glossary#flatland\">Flatland</a>."
   full_description: "A bitmap containing pixels that can be attached to a
-  <a href=\"glossary#transform\">Transform</a> in <a href=\"glossary#flatland\">Flatland</a>.
-  Image is type of a <a href=\"glossary#content\">Content</a>."
+  <a href=\"/glossary#transform\">Transform</a> in <a href=\"/glossary#flatland\">Flatland</a>.
+  Image is type of a <a href=\"/glossary#content\">Content</a>."
   see_also: [""]
   related_guides: [""]
   area: ["UI"]
@@ -791,33 +799,33 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   full_description: "For instance, checking out the Fuchsia source code is a prerequisite for
   performing any in-tree development. The `fx build` command is used to operate the in-tree build
   system."
-  related_guides: ['<a href="get-started/get_fuchsia_source.md">Get Fuchsia source code</a>',
-                   '<a href="get-started/build_fuchsia.md">Build Fuchsia</a>']
+  related_guides: ['<a href="/get-started/get_fuchsia_source.md">Get Fuchsia source code</a>',
+                   '<a href="/get-started/build_fuchsia.md">Build Fuchsia</a>']
   area: ["Developer"]
 
 - term: "Input pipeline client library"
-  short_description: "A client library available to <a href=\"glossary#session\">session</a>
+  short_description: "A client library available to <a href=\"/glossary#session\">session</a>
   authors to simplify the consumption and routing of input events from physical hardware."
   full_description: ""
-  see_also: ["<a href=\"concepts/session/input.md\">Input client library</a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/concepts/session/input.md\">Input client library</a>",
+             "<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
 
 - term: "InputDeviceBinding"
   short_description: "A Rust trait in the
-  <a href=\"glossary#input-pipeline-client-library\">input pipeline client library</a>."
+  <a href=\"/glossary#input-pipeline-client-library\">input pipeline client library</a>."
   full_description: "<p>Represents a connection to a physical input device (e.g. mouse, keyboard) in
   an input pipeline. An <code>InputDeviceBinding</code> does the following:</p>
   <ul>
-    <li>Connects to an <a href=\"glossary#inputreport\"><code>InputReport</code></a> file
+    <li>Connects to an <a href=\"/glossary#inputreport\"><code>InputReport</code></a> file
     located at <code>/dev/class/input-report/XXX</code>.</li>
-    <li>Generates <a href=\"glossary#inputevent\"><code>InputEvent</code></a>'s
-    from the <code>DeviceDescriptor</code> and incoming <a href=\"glossary#inputreport\"><code>inputReport</code></a>.</li>
+    <li>Generates <a href=\"/glossary#inputevent\"><code>InputEvent</code></a>'s
+    from the <code>DeviceDescriptor</code> and incoming <a href=\"/glossary#inputreport\"><code>inputReport</code></a>.</li>
   </ul>
   <p>The input pipeline creates and owns <code>InputDeviceBinding</code>`s as new input peripherals
   are connected to a device.</p>"
-  see_also: ["<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
 
@@ -825,13 +833,13 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   short_description: "Describes the ranges of values a particular
   input device can generate."
   full_description: "A property of the Rust struct
-  <a href=\"glossary#input-report\"><code>InputReport</code></a> of
-  type <code>enum InputDeviceDescriptor</code> and a <a href=\"glossary#fidl\">FIDL</a>
+  <a href=\"/glossary#input-report\"><code>InputReport</code></a> of
+  type <code>enum InputDeviceDescriptor</code> and a <a href=\"/glossary#fidl\">FIDL</a>
   table. For example, a <code>InputDeviceDescriptor</code> contains the keys available on the
   keyboard, and a <code>InputDeviceDescriptor::Touch</code> contains the maximum number of touch
   contacts and the range of <code>x-</code> and <code>y-</code> values each contact can take on."
   see_also: ["<a href=\"/src/ui/lib/input/src/input_device.rs\"><code>enum InputDeviceDescriptor</code></a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>",
+             "<a href=\"/glossary#session-framework\">Session framework</a>",
              "<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.input.report#DeviceDescriptor\"><code>fuchsia.input.report.DeviceDescriptor</code></a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
@@ -839,12 +847,12 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
 - term: "InputDeviceEvent"
   short_description: "Represents an input event from an input device."
   full_description: "A property of the Rust struct
-  <a href=\"glossary#inputevent\"><code>InputEvent</code></a>.
+  <a href=\"/glossary#inputevent\"><code>InputEvent</code></a>.
   <code>InputDeviceEvent</code>`s contain more context than the raw
-  <a href=\"glossary#inputreport\"><code>InputReport</code>`s they are parsed from.
+  <a href=\"/glossary#inputreport\"><code>InputReport</code>`s they are parsed from.
   For example, <code>InputDeviceEvent::Keyboard</code> contains all the pressed keys, as well as
   the key's phase (pressed, released, etc.)."
-  see_also: ["<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
 
@@ -853,33 +861,33 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   <code>InputDeviceDescriptor</code> and state (e.g. phase and location of a button press).
   The input pipeline generates <code>InputEvent</code>`s from hardware signals."
   full_description: "A Rust struct in the
-  <a href=\"glossary#input-pipeline-client-library\">input pipeline client library</a>."
-  see_also: ["<a href=\"glossary#session-framework\">Session framework</a>"]
+  <a href=\"/glossary#input-pipeline-client-library\">input pipeline client library</a>."
+  see_also: ["<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
 
 - term: "InputHandler"
-  short_description: "</p>Represents a client of <a href=\"glossary#inputevent\"><code>InputEvent</code></a>
-  in an input pipeline. When an <a href=\"glossary#inputhandler\"><code>InputHandler</code></a>
-  receives an <a href=\"glossary#inputevent\"><code>InputEvent</code></a>, it does at
+  short_description: "</p>Represents a client of <a href=\"/glossary#inputevent\"><code>InputEvent</code></a>
+  in an input pipeline. When an <a href=\"/glossary#inputhandler\"><code>InputHandler</code></a>
+  receives an <a href=\"/glossary#inputevent\"><code>InputEvent</code></a>, it does at
   least one of the following:</p>
   <ul>
-    <li>Forwards the <a href=\"glossary#inputevent\"><code>InputEvent</code></a>
+    <li>Forwards the <a href=\"/glossary#inputevent\"><code>InputEvent</code></a>
     to the relevant client component.</li>
-    <li> Outputs a vector of <a href=\"glossary#inputevent\"><code>InputEvent</code></a>'s
-    for the next <a href=\"glossary#inputhandler\"><code>InputHandler</code></a> to process.</li>
+    <li> Outputs a vector of <a href=\"/glossary#inputevent\"><code>InputEvent</code></a>'s
+    for the next <a href=\"/glossary#inputhandler\"><code>InputHandler</code></a> to process.</li>
   </ul>"
-  full_description: "A Rust trait in the <a href=\"glossary#input-pipeline-client-library\">input pipeline client library</a>."
-  see_also: ["<a href=\"glossary#session-framework\">Session framework</a>"]
+  full_description: "A Rust trait in the <a href=\"/glossary#input-pipeline-client-library\">input pipeline client library</a>."
+  see_also: ["<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
 
 - term: "InputReport"
   short_description: "A stateless representation of an event from a physical input device."
-  full_description: "A <a href=\"glossary#fidl\">FIDL</a> struct. Zircon
+  full_description: "A <a href=\"/glossary#fidl\">FIDL</a> struct. Zircon
   generates <code>InputReport</code>`s from HID Reports."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.ui.input#InputReport\"><code>fuchsia.ui.InputReport</code></a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>"]
+             "<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Devices"]
 
@@ -895,13 +903,13 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   area: ["General", "Developer"]
 
 - term: "Job"
-  short_description: "A <a href=\"glossary#kernel-object\">kernel object</a>
-  that groups a set of related <a href=\"glossary#process\">processes</a>, their
+  short_description: "A <a href=\"/glossary#kernel-object\">kernel object</a>
+  that groups a set of related <a href=\"/glossary#process\">processes</a>, their
   child processes, and their jobs (if any)."
   full_description: "Every process in the system belongs to a job and all
   jobs form a single rooted tree."
-  see_also: ["<a href=\"reference/kernel_objects/job.md\">Job</a>",
-             "<a href=\"concepts/process/jobs.md\">Jobs</a>"]
+  see_also: ["<a href=\"/reference/kernel_objects/job.md\">Job</a>",
+             "<a href=\"/concepts/process/jobs.md\">Jobs</a>"]
   related_guides: [""]
   area: ["Zircon", "System"]
 
@@ -909,15 +917,15 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   short_description: "A kernel object is a kernel data structure that is used to regulate access to
   system resources such as memory, I/O, processor time and access to other processes."
   full_description: "Userspace can only reference kernel objects through
-  <a href=\"glossary#handle\">handles</a>."
-  see_also: ["<a href=\"reference/kernel_objects/objects.md\">Kernel objects</a>"]
+  <a href=\"/glossary#handle\">handles</a>."
+  see_also: ["<a href=\"/reference/kernel_objects/objects.md\">Kernel objects</a>"]
   related_guides: [""]
   area: ["Zircon"]
 
 - term: "KOID"
   short_description: "A Kernel Object Identifier."
   full_description: ""
-  see_also: ["<a href=\"glossary#kernel-object\">Kernel object</a>"]
+  see_also: ["<a href=\"/glossary#kernel-object\">Kernel object</a>"]
   related_guides: [""]
   area: ["Zircon"]
 
@@ -931,11 +939,11 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   area: ["Zircon"]
 
 - term: "Module"
-  short_description: "A role a <a href=\"glossary#component\">component</a>
+  short_description: "A role a <a href=\"/glossary#component\">component</a>
   can play to contribute UI to a user experience container (story) within a Modular session."
   full_description: "A <a href=\"/concepts/modular/overview.md\">Modular</a> concept that is being
   deprecated. Any component that exports a Scenic <code>ViewProvider</code> can be be used as a module."
-  see_also: ["<a href=\"concepts/modular/module.md\">Module concepts</a>"]
+  see_also: ["<a href=\"/concepts/modular/module.md\">Module concepts</a>"]
   related_guides: [""]
   area: ["Modular"]
 
@@ -943,10 +951,10 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   short_description: "Identifies a specific component instance in the component
   tree using a topological path."
   full_description: "A v1 component's moniker is defined as a tuple of (path to the component's
-  <a href=\"glossary#realm\">realm</a>, component URL).
+  <a href=\"/glossary#realm\">realm</a>, component URL).
   <p>A v2 component's moniker is defined as a path to the component instance in the
-  <a href=\"glossary#component-instance-tree\">component instance tree</a>.</p>"
-  see_also: ["<a href=\"concepts/components/v2/monikers.md\">Monikers</a>"]
+  <a href=\"/glossary#component-instance-tree\">component instance tree</a>.</p>"
+  see_also: ["<a href=\"/concepts/components/v2/monikers.md\">Monikers</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -960,10 +968,10 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
 
 - term: "Namespace"
   short_description: "A namespace is the composite hierarchy of files, directories, sockets,
-  <a href=\"glossary#service\">services</a>, and other named objects offered to
-  <a href=\"glossary#component\">components</a> by their <a href=\"glossary#environment\">environment</a>."
+  <a href=\"/glossary#service\">services</a>, and other named objects offered to
+  <a href=\"/glossary#component\">components</a> by their <a href=\"/glossary#environment\">environment</a>."
   full_description: ""
-  see_also: ["<a href=\"concepts/process/namespaces.md\">Fuchsia Namespaces</a>"]
+  see_also: ["<a href=\"/concepts/process/namespaces.md\">Fuchsia Namespaces</a>"]
   related_guides: [""]
   area: ["System", "Storage"]
 
@@ -978,49 +986,41 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   short_description: "The build system executing Fuchsia builds."
   full_description: "It is a small build system with a strong emphasis on speed. Unlike other
   systems, Ninja files are not supposed to be manually written but should be generated by other
-  systems, such as <a href=\"glossary#gn\">GN</a> in Fuchsia."
+  systems, such as <a href=\"/glossary#gn\">GN</a> in Fuchsia."
   see_also: ["<a href=\"https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#ninja_rules\">Ninja rules in GN</a>",
-             "<a href=\"development/build/build_system/fuchsia_build_system_overview.md\">Fuchsia build overview/a>"]
+             "<a href=\"/development/build/build_system/fuchsia_build_system_overview.md\">Fuchsia build overview/a>"]
   related_guides: ["<a href=\"https://ninja-build.org/manual.html\">Ninja manual</a>"]
   area: ["System", "Developer"]
 
 - term: "offer"
   short_description: "A keyword for a component instance to route a capability that was exposed to it."
-  full_description: "A <a href=\"glossary#component-instance\">component instance</a>
-  may use the <code>offer</code> <a href=\"glossary#component-manifest\">manifest</a>
-  keyword to route a capability that was <a href=\"glossary#expose\">exposed</a>
+  full_description: "A <a href=\"/glossary#component-instance\">component instance</a>
+  may use the <code>offer</code> <a href=\"/glossary#component-manifest\">manifest</a>
+  keyword to route a capability that was <a href=\"/glossary#expose\">exposed</a>
   to it to one of its children (other than the child that exposed it)."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>"]
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>"]
   related_guides: [""]
   area: ["System", "Component Framework"]
-
-- term: "OpaqueTest"
-  short_description: "A Rust client-side library that sets up hermetic tests for a v2
-  component."
-  full_description: ""
-  see_also: [""]
-  related_guides: ["<a href=\"concepts/components/v2/opaque_test.md\">Hermetic testing using OpaqueTest</a>"]
-  area: ["Component Framework", "Testing"]
 
 - term: "Out-of-tree"
   short_description: "Relating to or describing an action that can be done outside of a Fuchsia checkout."
   full_description: "For instance, the IDK allows developing for Fuchsia outside the Fuchsia tree.
   The SDK tools are available as prebuilts so developers don't need to check out Fuchsia code and build
   the same tools from source code using Fuchsia's in-tree build system."
-  related_guides: ['<a href="development/idk/README.md">Integrator Development Kit (IDK)</a>',
+  related_guides: ['<a href="/development/idk/README.md">Integrator Development Kit (IDK)</a>',
                    '<a href="https://fuchsia.dev/fuchsia-src/reference/tools/sdk">SDK tools</a>']
   area: ["Developer"]
 
 - term: "Outgoing directory"
-  short_description: "A file system directory where a <a href=\"glossary#component\">component</a>
-  serves protocol <a href=\"glossary#handle\">handles</a> to capabilities it has
-  <a href=\"glossary#expose\">exposed</a>."
-  full_description: "A file system directory where a <a href=\"glossary#component\">component</a>
-  serves protocol <a href=\"glossary#handle\">handles</a> to capabilities it has
-  <a href=\"glossary#expose\">exposed</a>.
+  short_description: "A file system directory where a <a href=\"/glossary#component\">component</a>
+  serves protocol <a href=\"/glossary#handle\">handles</a> to capabilities it has
+  <a href=\"/glossary#expose\">exposed</a>."
+  full_description: "A file system directory where a <a href=\"/glossary#component\">component</a>
+  serves protocol <a href=\"/glossary#handle\">handles</a> to capabilities it has
+  <a href=\"/glossary#expose\">exposed</a>.
   Other components connect to these exposed capabilities using the handles in this directory."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>",
-             "<a href=\"glossary#exposed-directory\">Exposed directory</a>"]
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>",
+             "<a href=\"/glossary#exposed-directory\">Exposed directory</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -1030,16 +1030,16 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   system, but possibly smaller modules as well) without re-initializing the device's disk via a pave
   or flash."
   see_also: [""]
-  related_guides: ["<a href=concepts/packages/ota.md>System OTA documentation</a>"]
+  related_guides: ["<a href=/concepts/packages/ota.md>System OTA documentation</a>"]
   area: ["System"]
 
 - term: "Package"
   short_description: "A unit of software distribution in Fuchsia."
   full_description: "A unit of software distribution in Fuchsia. It is a collection of
   files, such as manifests, metadata, zero or more executables
-  (e.g. <a href=\"glossary#component\">components</a>), and assets. Individual Fuchsia
+  (e.g. <a href=\"/glossary#component\">components</a>), and assets. Individual Fuchsia
   packages can be identified using
-  <a href=\"glossary#fuchsia-pkg-url\">fuchsia-pkg URL</a>."
+  <a href=\"/glossary#fuchsia-pkg-url\">fuchsia-pkg URL</a>."
   see_also: [""]
   related_guides: [""]
   area: ["System", "Component Framework"]
@@ -1047,10 +1047,10 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
 - term: "Parent component instance"
   short_description: "A parent component instance is a component instance that
   owns other instances called
-  <a href=\"glossary#child-component-instance\">child component instances</a>"
+  <a href=\"/glossary#child-component-instance\">child component instances</a>"
   full_description: ""
-  see_also: ["<a href=\"glossary#component\">",
-             "<a href=\"concepts/components/v2/introduction.md\">Components</a>"]
+  see_also: ["<a href=\"/glossary#component\">",
+             "<a href=\"/concepts/components/v2/introduction.md\">Components</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -1059,13 +1059,13 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   device."
   full_description: ""
   see_also: [""]
-  related_guides: ["<a href=\"development/hardware/paving.md\">Guide for installing Fuchsia with paver</a>"]
+  related_guides: ["<a href=\"/development/hardware/paving.md\">Guide for installing Fuchsia with paver</a>"]
   area: ["System", "Devices"]
 
 - term: "PID"
   short_description: "A process KOID. A KOID that uniquely identifies a process object."
   full_description: ""
-  see_also: ["<a href=\"glossary#koid\">"]
+  see_also: ["<a href=\"/glossary#koid\">"]
   related_guides: [""]
   area: ["Zircon"]
 
@@ -1074,7 +1074,7 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   <a href=\"http://fuchsia.googlesource.com/\">fuchsia.googlesource.com</a>, which comprises the
   source code for Fuchsia."
   full_description: "A given Fuchsia system can include additional software from outside the
-  platform source tree by adding the appropriate <a href=\"glossary#package\">Fuchsia package</a>."
+  platform source tree by adding the appropriate <a href=\"/glossary#package\">Fuchsia package</a>."
   see_also: [""]
   related_guides: [""]
   area: ["System"]
@@ -1084,73 +1084,73 @@ environment to form a full <a href=\"glossary#fuchsia-sdk\">Fuchsia SDK</a>."
   full_description: "For instance, the Fuchsia platform defines products such as `bringup` and
   `core` in terms of build-time configuration values and a set of packages to assemble into a system
   image."
-  see_also: ["<a href=\"glossary#package\">Package</a>",
-             "<a href=\"glossary#product-owner\">Product owner</a>"]
-  related_guides: ["<a href=\"docs/development/build/build_system/bringup.md\">Bringup Product Definition</a>"]
+  see_also: ["<a href=\"/glossary#package\">Package</a>",
+             "<a href=\"/glossary#product-owner\">Product owner</a>"]
+  related_guides: ["<a href=\"/development/build/build_system/bringup.md\">Bringup Product Definition</a>"]
   area: ["System"]
 
 - term: "Product bundle"
   short_description: "The set of artifacts that are needed to run a product, excluding tools and APIs found in the SDK."
   full_description: "Artifacts include, but are not limited to, the product image and packages associated with it.  Metadata for the product bundle was originally specified in <a
 href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
-  see_also: ["<a href=\"glossary#product\">Product</a>",
-             "<a href=\"glossary#product-owner\">Product Owner</a>"]
+  see_also: ["<a href=\"/glossary#product\">Product</a>",
+             "<a href=\"/glossary#product-owner\">Product Owner</a>"]
   related_guides: [""]
   area: ["System"]
 
 - term: "Product owner"
   short_description: "Whoever defines a product, and is responsible for its provenance and releases."
   full_description: ""
-  see_also: ["<a href=\"glossary#product\">Package</a>"]
+  see_also: ["<a href=\"/glossary#product\">Package</a>"]
   related_guides: [""]
   area: ["System"]
 
 - term: "Process"
-  short_description: "A <a href=\"glossary#kernel-object\">kernel object</a> that
+  short_description: "A <a href=\"/glossary#kernel-object\">kernel object</a> that
   represents an instance of a program as a set of instructions that are executed by one or more
-  <a href=\"glossary#thread\">threads</a> together with a collection of
-  <a href=\"glossary#capability\">capabilities</a>."
-  full_description: "Every process is contained in a <a href=\"glossary#job\">job</a>."
-  see_also: ["<a href=\"reference/kernel_objects/process.md\">Process overview</a>"]
+  <a href=\"/glossary#thread\">threads</a> together with a collection of
+  <a href=\"/glossary#capability\">capabilities</a>."
+  full_description: "Every process is contained in a <a href=\"/glossary#job\">job</a>."
+  see_also: ["<a href=\"/reference/kernel_objects/process.md\">Process overview</a>"]
   related_guides: [""]
   area: ["General", "Zircon"]
 
 - term: "Protocol"
-  short_description: "In <a href=\"glossary#fidl\">FIDL</a>, a protocol groups methods
+  short_description: "In <a href=\"/glossary#fidl\">FIDL</a>, a protocol groups methods
   and events to describe how one process interacts with another."
-  full_description: "<p>In <a href=\"glossary#components-v1\">components v1</a>, a component may access a protocol (called a
-  service in v1) from its <a href=\"glossary#environment\">environment</a> through its
-  <a href=\"glossary#namespace\">namespace</a>by naming the protocol in its services
+  full_description: "<p>In <a href=\"/glossary#components-v1\">components v1</a>, a component may access a protocol (called a
+  service in v1) from its <a href=\"/glossary#environment\">environment</a> through its
+  <a href=\"/glossary#namespace\">namespace</a>by naming the protocol in its services
   allowlist.</p>
-  <p>In <a href=\"glossary#components-v2\">components v2</a>, a protocol is used and routed to other
-  components as a <a href=\"glossary#protocol-capability\">protocol capability</a>.</p>"
-  see_also: ["<a href=\"glossary#protocol-capability\">Protocol capability</a>"]
-  related_guides: ["<a href=\"concepts/fidl/protocols.md\">FIDL protocols</a>"]
+  <p>In <a href=\"/glossary#components-v2\">components v2</a>, a protocol is used and routed to other
+  components as a <a href=\"/glossary#protocol-capability\">protocol capability</a>.</p>"
+  see_also: ["<a href=\"/glossary#protocol-capability\">Protocol capability</a>"]
+  related_guides: ["<a href=\"/concepts/fidl/protocols.md\">FIDL protocols</a>"]
   area: ["Component Framework", "FIDL"]
 
 - term: "Protocol capability"
-  short_description: "A <a href=\"glossary#capability\">capability</a> that permits
-  communicating with a <a href=\"glossary#protocol\">protocol</a> over a
-  <a href=\"glossary#channel\">channel</a> using a specified
-  <a href=\"glossary#fidl\">FIDL</a> protocol."
+  short_description: "A <a href=\"/glossary#capability\">capability</a> that permits
+  communicating with a <a href=\"/glossary#protocol\">protocol</a> over a
+  <a href=\"/glossary#channel\">channel</a> using a specified
+  <a href=\"/glossary#fidl\">FIDL</a> protocol."
   full_description: "The server end of the channel is held by
-  the <a href=\"glossary#component-instance\">component instance</a> that provides the
+  the <a href=\"/glossary#component-instance\">component instance</a> that provides the
   capability. The client end of the channel is given to the
-  <a href=\"glossary#component-instance\">component instance</a> that
-  <a href=\"glossary#use\">uses</a> the capability."
-  see_also: ["<a href=\"glossary#capability-routing\">Capability routing</a>",
-             "<a href=\"glossary#components-v2\">Components v2</a>"]
-  related_guides: ["<a href=\"concepts/components/v2/capabilities/protocol.md\">Protocol capabilities</a>"]
+  <a href=\"/glossary#component-instance\">component instance</a> that
+  <a href=\"/glossary#use\">uses</a> the capability."
+  see_also: ["<a href=\"/glossary#capability-routing\">Capability routing</a>",
+             "<a href=\"/glossary#components-v2\">Components v2</a>"]
+  related_guides: ["<a href=\"/concepts/components/v2/capabilities/protocol.md\">Protocol capabilities</a>"]
   area: ["Component Framework"]
 
 - term: "Realm"
-  short_description: "In <a href=\"glossary#components-v1\">Components v1</a>, realm
-  is synonymous to <a href=\"glossary#environment\">environment</a>. In
-  <a href=\"glossary#components-v2\">Components v2</a>, a realm is a subtree of
-  component instances in the <a href=\"glossary#component-instance-tree\">component instance tree</a>.
+  short_description: "In <a href=\"/glossary#components-v1\">Components v1</a>, realm
+  is synonymous to <a href=\"/glossary#environment\">environment</a>. In
+  <a href=\"/glossary#components-v2\">Components v2</a>, a realm is a subtree of
+  component instances in the <a href=\"/glossary#component-instance-tree\">component instance tree</a>.
   It acts as a container for component instances and capabilities in the subtree."
   full_description: ""
-  see_also: ["<a href=\"concepts/components/v2/realms.md\">Realms</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/realms.md\">Realms</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
@@ -1167,18 +1167,18 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   area: ["General"]
 
 - term: "Runner"
-  short_description: "A <a href=\"glossary#component\">component</a> that provides a
+  short_description: "A <a href=\"/glossary#component\">component</a> that provides a
   runtime environment for other components, e.g. the ELF runner, the Dart AOT runner, the Chromium
   web runner."
   full_description: "Every component needs a runner in order to launch. Components express their
-  dependency on a runner in the component's <a href=\"glossary#component-declaration\">declaration</a>.
-  When the  <a href=\"glossary#component-framework\">component framework</a> starts a
+  dependency on a runner in the component's <a href=\"/glossary#component-declaration\">declaration</a>.
+  When the  <a href=\"/glossary#component-framework\">component framework</a> starts a
   component, it first determines the capabilities that the component should receive, then asks
   the component's runner to launch the component. The runner is responsible for creating any
   necessary processes, loading executable code, initializing language runtimes, handing control to
   the component's entry points, and terminating thecomponent when requested by the component framework."
-  see_also: ["<a href=\"concepts/components/v2/elf_runner.md\">ELF runner</a>",
-             "<a href=\"concepts/components/v2/capabilities/runners.md\">Component runner</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/elf_runner.md\">ELF runner</a>",
+             "<a href=\"/concepts/components/v2/capabilities/runners.md\">Component runner</a>"]
   related_guides: [""]
   area: ["Component Framework", "System"]
 
@@ -1191,9 +1191,9 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   area: ["UI"]
 
 - term: "Sequential device driver"
-  short_description: "A  <a href=\"glossary#hardware-driver\">hardware driver</a>
+  short_description: "A  <a href=\"/glossary#hardware-driver\">hardware driver</a>
   that will only service a single request at a time. The
-  <a href=\"glossary#core-driver\">core driver</a> synchronizes and serializes all
+  <a href=\"/glossary#core-driver\">core driver</a> synchronizes and serializes all
   requests."
   full_description: ""
   see_also: [""]
@@ -1201,41 +1201,41 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   area: ["Devices", "System"]
 
 - term: "Service"
-  short_description: "In <a href=\"glossary#fidl\">FIDL</a>, a service groups
-  <a href=\"glossary#protocol\">protocols</a> to describe how one process interacts
+  short_description: "In <a href=\"/glossary#fidl\">FIDL</a>, a service groups
+  <a href=\"/glossary#protocol\">protocols</a> to describe how one process interacts
   with another."
   full_description: "A service is used and routed to other components as a
-  <a href=\"glossary#service-capability\">service capability</a>."
-  see_also: ["<a href=\"glossary#service-capability\">Service capability</a>"]
-  related_guides: ["<a href=\"concepts/fidl/services.md\">FIDL services</a>"]
+  <a href=\"/glossary#service-capability\">service capability</a>."
+  see_also: ["<a href=\"/glossary#service-capability\">Service capability</a>"]
+  related_guides: ["<a href=\"/concepts/fidl/services.md\">FIDL services</a>"]
   area: ["Component Framework", "FIDL"]
 
 - term: "Service capability"
-  short_description: "A <a href=\"glossary#capability\">capability</a> that permits
-  communicating with a <a href=\"glossary#service\">service</a> over a
-  <a href=\"glossary#channel\">channel</a> using a specified
-  <a href=\"glossary#fidl\">FIDL</a> service."
+  short_description: "A <a href=\"/glossary#capability\">capability</a> that permits
+  communicating with a <a href=\"/glossary#service\">service</a> over a
+  <a href=\"/glossary#channel\">channel</a> using a specified
+  <a href=\"/glossary#fidl\">FIDL</a> service."
   full_description: "The server end of the channel is held
-  by the <a href=\"glossary#component-instance\">component instance</a> that provides
+  by the <a href=\"/glossary#component-instance\">component instance</a> that provides
   the capability. The client end of the channel is given to the
-  <a href=\"glossary#component-instance\">component instance</a> that
-  <a href=\"glossary#use\">uses</a> the capability."
-  see_also: ["<a href=\"glossary#capability-routing\">Capability routing</a>",
-             "<a href=\"glossary#components-v2\">Components v2</a>"]
-  related_guides: ["<a href=\"concepts/components/v2/capabilities/service.md\">Service capabilities</a>"]
+  <a href=\"/glossary#component-instance\">component instance</a> that
+  <a href=\"/glossary#use\">uses</a> the capability."
+  see_also: ["<a href=\"/glossary#capability-routing\">Capability routing</a>",
+             "<a href=\"/glossary#components-v2\">Components v2</a>"]
+  related_guides: ["<a href=\"/concepts/components/v2/capabilities/service.md\">Service capabilities</a>"]
   area: ["Component Framework"]
 
 - term: "Session"
   short_description: "A session is a component that encapsulates a product’s user
   experience."
   full_description: "A session is the first product-specific component started on boot after the
-  <a href=\"glossary#session-manager\">session manager</a>. Sessions typically utilize
-  aspects of the <a href=\"glossary#session-framework\">session framework</a> during
+  <a href=\"/glossary#session-manager\">session manager</a>. Sessions typically utilize
+  aspects of the <a href=\"/glossary#session-framework\">session framework</a> during
   their development, in automated testing, and at runtime. At runtime, there is only one session
   component, but it can be composed of many sub-components. For example, the session for a graphical
   product instantiates Scenic (graphics) as a child component."
-  see_also: ["<a href=\"glossary#component\">Component</a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/glossary#component\">Component</a>",
+             "<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session", "Component Framework"]
 
@@ -1243,108 +1243,108 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   short_description: "A framework for building products on Fuchsia."
   full_description: "The framework provides software libraries, FIDL protocols, developer tools,
   and standards that are composed to create a particular product’s user experience."
-  see_also: ["<a href=\"concepts/session/introduction.md\">Session framework</a>"]
+  see_also: ["<a href=\"/concepts/session/introduction.md\">Session framework</a>"]
   related_guides: [""]
   area: ["Session"]
 
 - term: "Session launcher"
-  short_description: "A <a href=\"glossary#fidl\">FIDL</a> protocol, exposed by the
-  <a href=\"glossary#session-manager\">session manager</a>, used to start or
-  restart <a href=\"glossary#session\">sessions</a>."
+  short_description: "A <a href=\"/glossary#fidl\">FIDL</a> protocol, exposed by the
+  <a href=\"/glossary#session-manager\">session manager</a>, used to start or
+  restart <a href=\"/glossary#session\">sessions</a>."
   full_description: "It is available
   to developer tools such as <code>session_control</code> to control session components at runtime."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.session#Launche\"><code>fuchsia.session.Launcher</code></a>",
-             "<a href=\"glossary#session-framework\">Session framework</a>"]
+             "<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["FIDL", "Session"]
 
 - term: "Session manager"
   short_description: "The platform component, that starts late in the Fuchsia boot sequence, that
-  manages the lifecycle of the <a href=\"glossary#session\">session</a>."
+  manages the lifecycle of the <a href=\"/glossary#session\">session</a>."
   full_description: "The session
   manager defines the set of system capabilities provided to sessions at runtime."
-  see_also: ["<a href=\"glossary#session-framework\">Session framework</a>"]
+  see_also: ["<a href=\"/glossary#session-framework\">Session framework</a>"]
   related_guides: [""]
   area: ["Session"]
 
 - term: "Storage capability"
   short_description: "A storage capability is a
-  <a href=glossary#capability>capability</a> that allocates per-component
+  <a href=/glossary#capability>capability</a> that allocates per-component
   isolated storage for a designated purpose within a filesystem directory."
-  full_description: "Multiple <a href=\"glossary#component-instance\">component instances</a> may be given
+  full_description: "Multiple <a href=\"/glossary#component-instance\">component instances</a> may be given
   the same storage capability, but underlying directories that are isolated from each other
   will be allocated for each individual use. This is different from
-  <a href=\"glossary#directory-capability\">directory capabilities</a>, where a specific
+  <a href=\"/glossary#directory-capability\">directory capabilities</a>, where a specific
   filesystem directory is routed to a specific component instance.
 
   Isolation is achieved because Fuchsia does not support
-  <a href=\"concepts/filesystems/dotdot.md\">dotdot</a>.
+  <a href=\"/concepts/filesystems/dotdot.md\">dotdot</a>.
 
   There are three types of storage capabilities:
 
   <ul>
-   <li><b>Data</b>: A directory is added to the <a href=\"glossary#namespace\">namespace</a> of the
-    <a href=\"glossary#component-instance\">component instance</a> that <a href=\"#use\">uses</a> the capability.
-    Acts as a <a href=\"glossary#component-directory\">data directory</a>.</li>
-   <li><b>Cache</b>: Same as data, but acts as a <a href=\"glossary#cache-directory\">cache directory</a>.
+   <li><b>Data</b>: A directory is added to the <a href=\"/glossary#namespace\">namespace</a> of the
+    <a href=\"/glossary#component-instance\">component instance</a> that <a href=\"#use\">uses</a> the capability.
+    Acts as a <a href=\"/glossary#component-directory\">data directory</a>.</li>
+   <li><b>Cache</b>: Same as data, but acts as a <a href=\"/glossary#cache-directory\">cache directory</a>.
    </li>
    <li><b>Meta</b>: A directory is allocated to be used by component manager, where it
     will store metadata to enable features like persistent
-    <a href=\"glossary#component-collection\">component collections</a>.</li>
+    <a href=\"/glossary#component-collection\">component collections</a>.</li>
   </ul>
 
-  Storage capability is a <a href=\"glossary#components-v2\">components v2</a> concept."
-  see_also: ["<a href=\"glossary#capability-routing\">Capability routing</a>", "<a href=\"concepts/components/v2/capabilities/storage.md\">Storage capabilities</a>"]
+  Storage capability is a <a href=\"/glossary#components-v2\">components v2</a> concept."
+  see_also: ["<a href=\"/glossary#capability-routing\">Capability routing</a>", "<a href=\"/concepts/components/v2/capabilities/storage.md\">Storage capabilities</a>"]
   related_guides: [""]
   area: ["General"]
 
 - term: "Sub-realm"
-  short_description: "A sub-realm is the <a href=\"glossary#realm\">realm</a>
+  short_description: "A sub-realm is the <a href=\"/glossary#realm\">realm</a>
   corresponding to a child component instance."
   full_description: ""
-  see_also: ["<a href=\"concepts/components/v2/realms.md\">Realms</a>"]
+  see_also: ["<a href=\"/concepts/components/v2/realms.md\">Realms</a>"]
   related_guides: [""]
   area: ["Component Framework"]
 
 - term: "Thread"
-  short_description: "A <a href=\"glossary#kernel-object\">kernel object</a> that
+  short_description: "A <a href=\"/glossary#kernel-object\">kernel object</a> that
   represents a time-shared CPU execution context. Each thread is contained in
-  <a href=\"glossary#process\">process</a>."
+  <a href=\"/glossary#process\">process</a>."
   full_description: ""
-  see_also: ["<a href=\"reference/kernel_objects/thread.md\">Thread overview</a>"]
+  see_also: ["<a href=\"/reference/kernel_objects/thread.md\">Thread overview</a>"]
   related_guides: [""]
   area: ["Zircon"]
 
 - term: "Transform"
-  short_description: "A hierarchical piece of a <a href=\"glossary#flatland\">Flatland</a>
+  short_description: "A hierarchical piece of a <a href=\"/glossary#flatland\">Flatland</a>
   graph."
-  full_description: "A hierarchical piece of a <a href=\"glossary#flatland\">Flatland</a>
+  full_description: "A hierarchical piece of a <a href=\"/glossary#flatland\">Flatland</a>
   graph. Transform is the fundamental object used to organize a
-  <a href=\"glossary#flatland\">Flatland</a> graph. Transforms can have children Transforms
-  and can attach a <a href=\"glossary#content\">Content</a>."
+  <a href=\"/glossary#flatland\">Flatland</a> graph. Transforms can have children Transforms
+  and can attach a <a href=\"/glossary#content\">Content</a>."
   see_also: [""]
   related_guides: [""]
   area: ["UI"]
 
 - term: "use"
   short_description: "A keyword for a component instance to consume a capability that was offered to it."
-  full_description: "A <a href=\"glossary#component-instance\">component instance</a>
-  may use the <code>use</code> <a href=\"glossary#component-manifest\">manifest</a>
-  keyword to to consume a capability that was <a href=\"glossary#offer\">offered</a>
+  full_description: "A <a href=\"/glossary#component-instance\">component instance</a>
+  may use the <code>use</code> <a href=\"/glossary#component-manifest\">manifest</a>
+  keyword to to consume a capability that was <a href=\"/glossary#offer\">offered</a>
   to it by its parent."
-  see_also: ["<a href=\"glossary#capability\">Capability</a>"]
+  see_also: ["<a href=\"/glossary#capability\">Capability</a>"]
   related_guides: [""]
   area: ["System", "Component Framework"]
 
 - term: "userboot"
   short_description: "The first process started by the Zircon kernel."
   full_description: "It is loaded from the kernel image in the same way as the
-  <a href=\"glossary#virtual-dynamic-shared-object\">vDSO</a>, instead of being loaded
+  <a href=\"/glossary#virtual-dynamic-shared-object\">vDSO</a>, instead of being loaded
   from a filesystem. Its primary purpose is to load the second process,
-  <a href=\"glossary#bootsvc\">bootsvc</a>, from the
-  <a href=\"glossary#bootfs\">bootfs</a>."
+  <a href=\"/glossary#bootsvc\">bootsvc</a>, from the
+  <a href=\"/glossary#bootfs\">bootfs</a>."
   see_also: [""]
-  related_guides: ["<a href=\"concepts/booting/userboot.md\">Zircon kernel to userspace bootstrapping (userboot)</a>"]
+  related_guides: ["<a href=\"/concepts/booting/userboot.md\">Zircon kernel to userspace bootstrapping (userboot)</a>"]
   area: ["Zircon"]
 
 - term: "View"
@@ -1352,26 +1352,26 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   client."
   full_description: "The region a Scenic client can draw in, and the coordinate system input events
   are delivered in. <code>Views</code> can be referred to cross-process by their associated <a href=\"docs/glossary#viewref\">ViewRef</a>."
-  see_also: ["<a href=\"development/graphics/scenic/concepts/view_bounds\">View bounds</a"]
+  see_also: ["<a href=\"/development/graphics/scenic/concepts/view_bounds\">View bounds</a"]
   related_guides: [""]
   area: ["UI", "HCI"]
 
 - term: "Viewport"
-  short_description: "The parent endpoint of two connected <a href=\"glossary#flatland\">Flatland</a>
+  short_description: "The parent endpoint of two connected <a href=\"/glossary#flatland\">Flatland</a>
   instances."
-  full_description: "The parent endpoint of two connected <a href=\"glossary#flatland\">Flatland</a>
-  instances. <a href=\"glossary#view\">View</a> is the child endpoint. Viewport is type of a
-  <a href=\"glossary#content\">Content</a>."
+  full_description: "The parent endpoint of two connected <a href=\"/glossary#flatland\">Flatland</a>
+  instances. <a href=\"/glossary#view\">View</a> is the child endpoint. Viewport is type of a
+  <a href=\"/glossary#content\">Content</a>."
   see_also: [""]
   related_guides: [""]
   area: ["UI"]
 
 - term: "ViewportCreationToken"
   short_description: "Uniquely identifies the parent connection point of a connection between two
-  <a href=\"glossary#flatland\">Flatland</a> instances."
+  <a href=\"/glossary#flatland\">Flatland</a> instances."
   full_description: "Uniquely identifies the parent connection point of a connection between two
-  <a href=\"glossary#flatland\">Flatland</a> instances. There is only one
-  <a href=\"glossary#viewcreationtoken\">ViewCreationToken</a> associated with a
+  <a href=\"/glossary#flatland\">Flatland</a> instances. There is only one
+  <a href=\"/glossary#viewcreationtoken\">ViewCreationToken</a> associated with a
   ViewportCreationToken."
   see_also: [""]
   related_guides: [""]
@@ -1379,8 +1379,8 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
 
 - term: "ViewController"
   short_description: "Represents a handle to a remote View that was launched by calling
-  <code>PresentView()</code> on a <a href=\"glossary#graphicalpresenter\"><code>GraphicalPresenter</code></a>."
-  full_description: "A <a href=\"glossary#fidl\">FIDL</a> protocol. With this handle,
+  <code>PresentView()</code> on a <a href=\"/glossary#graphicalpresenter\"><code>GraphicalPresenter</code></a>."
+  full_description: "A <a href=\"/glossary#fidl\">FIDL</a> protocol. With this handle,
   the caller (often, the session) can control the View's lifecycle. Closing the
   <code>ViewController</code> should close the presented view, and allow the system to reclaim its resources."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.element#ViewController\"><code>fuchsia.element.ViewController</code></a>"]
@@ -1389,10 +1389,10 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
 
 - term: "ViewCreationToken"
   short_description: "Uniquely identifies the child connection point of a connection between two
-  <a href=\"glossary#flatland\">Flatland</a> instances."
+  <a href=\"/glossary#flatland\">Flatland</a> instances."
   full_description: "Uniquely identifies the child connection point of a connection between two
-  <a href=\"glossary#flatland\">Flatland</a> instances. There is only one
-  <a href=\"glossary#viewportcreationtoken\">ViewportCreationToken</a> associated with a
+  <a href=\"/glossary#flatland\">Flatland</a> instances. There is only one
+  <a href=\"/glossary#viewportcreationtoken\">ViewportCreationToken</a> associated with a
   ViewCreationToken."
   see_also: [""]
   related_guides: [""]
@@ -1401,9 +1401,9 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
 - term: "ViewHolderToken"
   short_description: "Uniquely identifies an attachment point for a view in the
   global scene graph."
-  full_description: "A <a href=\"glossary#fidl\">FIDL</a> struct. Each
+  full_description: "A <a href=\"/glossary#fidl\">FIDL</a> struct. Each
   <code>ViewHolderToken</code> has exactly one corresponding
-  <a href=\"glossary#viewtoken\">ViewToken</a>."
+  <a href=\"/glossary#viewtoken\">ViewToken</a>."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.ui.views#ViewHolderToken\"><code>fuchsia.ui.views.ViewHolderToken</code></a>"]
   related_guides: [""]
   area: ["FIDL", "UI"]
@@ -1411,20 +1411,20 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
 - term: "ViewRef"
   short_description: "A handle to a kernel object that identifies a unique <a href=\"docs/glossary#view\">View</a> across
   the system."
-  full_description: "A <a href=\"glossary#fidl\">FIDL</a> struct. Two <code>ViewRef</code>`s
-  to the same view have the same <a href=\"glossary#koid\">KOID</a>. During cross-process
+  full_description: "A <a href=\"/glossary#fidl\">FIDL</a> struct. Two <code>ViewRef</code>`s
+  to the same view have the same <a href=\"/glossary#koid\">KOID</a>. During cross-process
   communications Scenic clients are referred to by ViewRef. This is common for Input, Accessibility
   and Focus."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.ui.views#ViewRef\"><code>fuchsia.ui.views.ViewRef</code></a>",
-             "<a href=\"development/graphics/scenic/concepts/view_ref\">Scenic Views, view tree, and ViewRefs</a",
-             "<a href=\"development/graphics/scenic/concepts/focus_chain\">View focus</a"]
+             "<a href=\"/development/graphics/scenic/concepts/view_ref\">Scenic Views, view tree, and ViewRefs</a",
+             "<a href=\"/development/graphics/scenic/concepts/focus_chain\">View focus</a"]
   related_guides: [""]
   area: ["FIDL", "UI","HCI"]
 
 - term: "ViewSpec"
   short_description: "A description of a view to be presented by a
-  <a href=\"glossary#graphicalpresenter\"><code>GraphicalPresenter</code></a>."
-  full_description: "A <a href=\"glossary#fidl\">FIDL</a> table."
+  <a href=\"/glossary#graphicalpresenter\"><code>GraphicalPresenter</code></a>."
+  full_description: "A <a href=\"/glossary#fidl\">FIDL</a> table."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.element#ViewSpec\"><code>fuchsia.element.ViewSpec</code></a>"]
   related_guides: [""]
   area: ["FIDL"]
@@ -1432,9 +1432,9 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
 - term: "ViewToken"
   short_description: "Uniquely identifies a View, which is the root point for a subgraph
   in the global scene graph."
-  full_description: "A <a href=\"glossary#fidl\">FIDL</a> struct. Each
+  full_description: "A <a href=\"/glossary#fidl\">FIDL</a> struct. Each
   <code>ViewToken</code> has exactly one corresponding
-  <a href=\"glossary#viewholdertoken\"><code>ViewHolderToken</code></a>."
+  <a href=\"/glossary#viewholdertoken\"><code>ViewHolderToken</code></a>."
   see_also: ["<a href=\"https://fuchsia.dev/reference/fidl/fuchsia.ui.views#ViewToken\"><code>fuchsia.ui.views.ViewToken</code></a>"]
   related_guides: [""]
   area: ["FIDL", "UI"]
@@ -1443,10 +1443,10 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   short_description: "The Virtual Dynamic Shared Object (vDSO) is a
   Virtual Shared Library."
   full_description: "It is provided by the
-  <a href=\"glossary#zircon\">Zircon</a> kernel and does not appear in the filesystem
+  <a href=\"/glossary#zircon\">Zircon</a> kernel and does not appear in the filesystem
   or a package. It provides the Zircon System Call API and ABI to userspace processes
   in the form of an ELF library that's always there. In the Fuchsia IDK and
-  <a href=\"glossary#fdf\">Fuchsia driver framework</a> it exists as
+  <a href=\"/glossary#fdf\">Fuchsia driver framework</a> it exists as
   <code>libzircon.so</code> for the purpose of having something to pass to the linker representing
   the vDSO."
   see_also: [""]
@@ -1455,23 +1455,23 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
 
 - term: "Virtual Memory Address Range"
   short_description: "A Virtual Memory Address Range (VMAR) is a Zircon
-  <a href=\"glossary#kernel-object\">kernel object</a> that controls where and how
-  <a href=\"glossary#virtual-memory-object\">virtual memory objects</a> may be mapped
+  <a href=\"/glossary#kernel-object\">kernel object</a> that controls where and how
+  <a href=\"/glossary#virtual-memory-object\">virtual memory objects</a> may be mapped
   into the address space of a process."
   full_description: ""
   see_also: [""]
-  related_guides: ["<a href=\"reference/kernel_objects/vm_address_region.md\">VMAR overview</a>"]
+  related_guides: ["<a href=\"/reference/kernel_objects/vm_address_region.md\">VMAR overview</a>"]
   area: ["Zircon"]
 
 - term: "Virtual Memory Object"
   short_description: "A Virtual Memory Object (VMO) is a Zircon
-  <a href=\"glossary#kernel-object\">kernel object</a> that represents a collection
+  <a href=\"/glossary#kernel-object\">kernel object</a> that represents a collection
   of pages (or the potential for pages) that may be read, written, mapped into the address space
   of a process, or shared with another process by passing a
-  <a href=\"glossary#handle\">handle</a> over a
-  <a href=\"glossary#channel\">channel</a>."
+  <a href=\"/glossary#handle\">handle</a> over a
+  <a href=\"/glossary#channel\">channel</a>."
   full_description: ""
-  see_also: ["<a href=\"reference/kernel_objects/vm_object.md\">VMO overview</a>"]
+  see_also: ["<a href=\"/reference/kernel_objects/vm_object.md\">VMO overview</a>"]
   related_guides: [""]
   area: ["Zircon"]
 
@@ -1479,7 +1479,7 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   short_description: " A Zircon Boot Image (ZBI) contains everything needed during the boot process
   before any drivers are working."
   full_description: "This includes the kernel image and a
-  <a href=\"glossary#bootfs\">RAM disk for the boot filesystem</a>."
+  <a href=\"/glossary#bootfs\">RAM disk for the boot filesystem</a>."
   see_also: ["<a href=\"/zircon/system/public/zircon/boot/image.h\">ZBI header file</a>"]
   related_guides: [""]
   area: ["Zircon"]
@@ -1491,7 +1491,7 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   of drivers and services running used to bootstrap a complete Fuchsia system on a
   target device. Upon startup, Zedboot listens on the network for instructions
   from a bootserver that may instruct Zedboot to
-  <a href=\"glossary#paver\">install</a> a new OS. Upon
+  <a href=\"/glossary#paver\">install</a> a new OS. Upon
   completing the installation Zedboot will reboot into the newly installed system."
   see_also: [""]
   related_guides: [""]
@@ -1505,7 +1505,7 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   full_description: "In a traditional monolithic kernel, many of
   the userspace components of Zircon would be part of the kernel itself."
   see_also: ["<a href=\"/zircon/README.md\">Zircon documentation</a>",
-             "<a href=\"concepts/kernel/concepts.md\">Zircon concepts</a>",
+             "<a href=\"/concepts/kernel/concepts.md\">Zircon concepts</a>",
              "<a href=\"/zircon/\">Source code</a>"]
   related_guides: [""]
   area: ["Zircon"]
@@ -1523,5 +1523,5 @@ href=\"docs/contribute/governance/rfcs/0100_product_metadata\">RFC-0100</a>."
   short_description: "The native low-level system debugger."
   full_description: ""
   see_also: [""]
-  related_guides: ["<a href=\"development/debugger/README.md\">zxdb: The Fuchsia debugger</a>"]
+  related_guides: ["<a href=\"/development/debugger/README.md\">zxdb: The Fuchsia debugger</a>"]
   area: ["Zircon"]

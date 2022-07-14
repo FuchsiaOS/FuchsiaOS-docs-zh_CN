@@ -10,7 +10,7 @@ foundation for developers to create long-lasting products and experiences across
 a broad range of devices.
 
 <a class="button button-primary"
-    href="get-started/sdk/learn/intro">Get Started</a>
+    href="/get-started/sdk/learn/intro">Get Started</a>
 
 ## Fuchsia Components
 
@@ -19,7 +19,7 @@ software execution on the platform. Explore the developer tools to build, run,
 and test components.
 
 <a class="button button-primary"
-    href="get-started/sdk/learn/components">Get Started</a>
+    href="/get-started/sdk/learn/components">Get Started</a>
 
 ## Fuchsia Interfaces
 
@@ -28,4 +28,4 @@ one another using the Fuchsia Interface Definition Language (FIDL). Explore the
 developer tools to debug and test component connections.
 
 <a class="button button-primary"
-    href="get-started/sdk/learn/fidl">Get Started</a>
+    href="/get-started/sdk/learn/fidl">Get Started</a>

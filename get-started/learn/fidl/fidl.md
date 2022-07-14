@@ -52,11 +52,11 @@ interface for components to implement.
 
 ![Diagram showing how FIDL bindings provide generated library code to translate
 function calls into FIDL messages for transport across process boundaries.]
-(get-started/images/fidl/fidl-bindings.png){: width="574"}
+(/get-started/images/fidl/fidl-bindings.png){: width="574"}
 
 
 Note: For more details on the bindings specification and supported programming
-languages, see the [Bindings Reference](reference/fidl/bindings/overview.md).
+languages, see the [Bindings Reference](/reference/fidl/bindings/overview.md).
 
 At build time, the `fidlgen` backend tools generate bindings for supported
 programming languages from the JSON IR library produced by `fidlc`. For example,
@@ -117,7 +117,7 @@ Add a `BUILD.gn` file with the following contents to declare the library target:
 Add the library target to the build configuration:
 
 ```posix-terminal
-fx set workstation.qemu-x64 --with //vendor/fuchsia-codelab/echo-fidl:echo
+fx set workstation_eng.qemu-x64 --with //vendor/fuchsia-codelab/echo-fidl:echo
 ```
 
 Run `fx build` to compile the FIDL interface:
@@ -272,5 +272,5 @@ method returns.</p>
 
 <p>Synchronous clients are not available in all supported languages. For more
 details, see the specifications for your chosen language in the
-<a href="reference/fidl/bindings/overview">Bindings Reference</a>.</d>
+<a href="/reference/fidl/bindings/overview">Bindings Reference</a>.</d>
 </aside>

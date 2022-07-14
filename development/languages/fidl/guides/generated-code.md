@@ -151,7 +151,7 @@ FIDL libraries, is hosted online at
 You can generate offline documentation with [`fx rustdoc`][rustdoc].
 
 <!-- xrefs -->
-[bindings-ref]: reference/fidl/bindings/overview.md
+[bindings-ref]: /reference/fidl/bindings/overview.md
 [fidl-gn]: /build/fidl/fidl.gni
-[rustdoc]: development/languages/rust/fidl_crates.md#documentation
-[dart-testing]: reference/fidl/bindings/dart-bindings.md#test-scaffolding
+[rustdoc]: /development/languages/rust/fidl_crates.md#documentation
+[dart-testing]: /reference/fidl/bindings/dart-bindings.md#test-scaffolding

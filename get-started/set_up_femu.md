@@ -22,14 +22,14 @@ Running FEMU requires that you've completed the following guides:
 
 To run FEMU, you first need to build a Fuchsia system image that supports
 the emulator environment. This guide uses `qemu-x64` for the board
-and `workstation` for the product as an example.
+and `workstation_eng` for the product as an example.
 
 To build a FEMU Fuchsia image, do the following:
 
 1. Set the Fuchsia build configuration:
 
    ```posix-terminal
-   fx set workstation.qemu-x64 --release
+   fx set workstation_eng.qemu-x64 --release
    ```
 
 2. Build Fuchsia:
@@ -192,7 +192,7 @@ This command prints output similar to the following:
 ```none {:.devsite-disable-click-to-copy}
 $ ffx target list
 NAME                      SERIAL       TYPE                    STATE      ADDRS/IP                            RCS
-fuchsia-emulator    <unknown>    workstation.qemu-x64    Product    [fe80::866a:a5ea:cd9e:69f6%qemu]    N
+fuchsia-emulator    <unknown>    workstation_eng.qemu-x64    Product    [fe80::866a:a5ea:cd9e:69f6%qemu]    N
 ```
 
 `fuchsia-emulator` is the default node name of the Fuchsia emulator.
@@ -322,11 +322,11 @@ for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
 
 <!-- Reference links -->
 
-[get-fuchsia-source]: get-started/get_fuchsia_source.md
-[build-fuchsia]: get-started/build_fuchsia.md
-[femu-overview]: development/build/emulator.md
+[get-fuchsia-source]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md
+[femu-overview]: /development/build/emulator.md
 [hypervisor-framework]: https://developer.apple.com/documentation/hypervisor
-[explore-fuchsia]: get-started/explore_fuchsia.md
+[explore-fuchsia]: /get-started/explore_fuchsia.md
 [swiftshader]: https://swiftshader.googlesource.com/SwiftShader/
 [tuntap]: https://en.wikipedia.org/wiki/TUN/TAP
 [tap-networking]: https://wiki.qemu.org/Documentation/Networking#Tap

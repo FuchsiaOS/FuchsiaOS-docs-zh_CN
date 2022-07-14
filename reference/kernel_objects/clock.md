@@ -7,7 +7,7 @@ clock - Kernel object used to track the progress of time.
 ## SYNOPSIS
 
 A clock is a one dimensional affine transformation of the
-[clock monotonic](reference/syscalls/clock_get_monotonic.md) reference
+[clock monotonic](/reference/syscalls/clock_get_monotonic.md) reference
 timeline, which may be atomically adjusted by a clock maintainer, and observed by
 clients.
 
@@ -226,8 +226,8 @@ when it comes to the confidence levels of its published error bound estimates.
 
 ## SYSCALLS
 
- - [clock transformations](concepts/kernel/clock_transformations.md)
- - [`zx_clock_create()`](reference/syscalls/clock_create.md) - create a clock
- - [`zx_clock_read()`](reference/syscalls/clock_read.md) - read the time of the clock
- - [`zx_clock_get_details()`](reference/syscalls/clock_get_details.md) - fetch the details of a clock's relationship to clock monotonic
- - [`zx_clock_update()`](reference/syscalls/clock_update.md) - adjust the current relationship of a clock to the clock monotonic reference.
+ - [clock transformations](/concepts/kernel/clock_transformations.md)
+ - [`zx_clock_create()`](/reference/syscalls/clock_create.md) - create a clock
+ - [`zx_clock_read()`](/reference/syscalls/clock_read.md) - read the time of the clock
+ - [`zx_clock_get_details()`](/reference/syscalls/clock_get_details.md) - fetch the details of a clock's relationship to clock monotonic
+ - [`zx_clock_update()`](/reference/syscalls/clock_update.md) - adjust the current relationship of a clock to the clock monotonic reference.

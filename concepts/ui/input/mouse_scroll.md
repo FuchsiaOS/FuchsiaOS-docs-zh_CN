@@ -3,7 +3,7 @@
 This guide describes the high-level event plumbing and policy knobs for
 conveying a mouse device's scroll wheel data to a User Interface (UI) client. A
 more general description of mouse is provided in the
-[Mouse guide](concepts/ui/input/mouse.md).
+[Mouse guide](/concepts/ui/input/mouse.md).
 
 ## Background
 

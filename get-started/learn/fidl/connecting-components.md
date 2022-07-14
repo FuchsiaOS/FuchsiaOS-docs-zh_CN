@@ -196,7 +196,7 @@ following code:
   <code>library</code>. For the <code>fidl.examples.routing.echo</code> library,
   the generated crate name is <code>fidl_fidl_examples_routing_echo</code>. For
   more details, see
-  <a href="reference/fidl/bindings/rust-bindings">Rust bindings</a>.
+  <a href="/reference/fidl/bindings/rust-bindings">Rust bindings</a>.
   </aside>
 
 * {C++}
@@ -488,7 +488,7 @@ fuchsia_package("echo-realm") {
 Update the build configuration to include the new components:
 
 ```posix-terminal
-fx set workstation.qemu-x64 \
+fx set workstation_eng.qemu-x64 \
     --with //vendor/fuchsia-codelab/echo-fidl:echo \
     --with //vendor/fuchsia-codelab/echo-server \
     --with //vendor/fuchsia-codelab/echo-client \
@@ -594,4 +594,12 @@ ffx component show echo_server
            Merkle root: 666c40477785f89b0ace22b30d65f1338f1d308ecceacb0f65f5140baa889e1b
  Outgoing Capabilities: diagnostics
                         fidl.examples.routing.echo.Echo
+```
+
+### Destroy the instance
+
+Clean up the `echo-realm` instance using the following command:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo-realm
 ```

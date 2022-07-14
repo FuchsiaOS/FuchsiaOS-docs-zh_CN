@@ -160,13 +160,13 @@ instance with `fx ota`), and metrics reporting (for instance with `fx snapshot`)
 
 Once core builds work, a full system can be integrated by defining a new product configuration. For
 instance for x64 we already define
-[workstation](https://fuchsia.googlesource.com/fuchsia/+/main/products/workstation.gni) which
+[workstation_eng](https://fuchsia.googlesource.com/fuchsia/+/main/products/workstation_eng.gni) which
 includes a web browser and many other features. Similarly new product configurations can be added
 for other architectures, for instance for ARM64 based systems.
 
 <!-- xrefs -->
-[glossary.bootfs]: glossary#bootfs
-[glossary.driver]: glossary#driver
-[fx]: development/build/fx.md
-[driver-development]: development/drivers/developer_guide/driver-development.md
-[rfc-0111]: contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
+[glossary.bootfs]: /glossary#bootfs
+[glossary.driver]: /glossary#driver
+[fx]: /development/build/fx.md
+[driver-development]: /development/drivers/developer_guide/driver-development.md
+[rfc-0111]: /contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md

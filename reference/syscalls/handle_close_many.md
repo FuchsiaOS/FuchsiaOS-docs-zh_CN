@@ -53,12 +53,12 @@ present multiple times.
 
 ## SEE ALSO
 
+<!-- Reference links -->
+[peered-objects]: /reference/kernel_objects/objects.md#peered-objects-and-the-peer-closed-state
+
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
-
-<!-- Reference links -->
-[peered-objects]: reference/kernel_objects/objects.md#peered-objects-and-the-peer-closed-state
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 

@@ -332,8 +332,8 @@ on early drafts of this document.
 <!-- Reference links -->
 
 [api-council-group]: https://groups.google.com/a/fuchsia.dev/forum/#!forum/api-council
-[rfc-template]: contribute/governance/rfcs/TEMPLATE.md
-[eng-council]: contribute/governance/eng_council.md
+[rfc-template]: /contribute/governance/rfcs/TEMPLATE.md
+[eng-council]: /contribute/governance/eng_council.md
 [review-labels]: https://gerrit-review.googlesource.com/Documentation/config-labels.html
-[rfc]: contribute/governance/rfcs/rfc_process.md
+[rfc]: /contribute/governance/rfcs/rfc_process.md
 [rough-consensus]: https://en.wikipedia.org/wiki/Rough_consensus

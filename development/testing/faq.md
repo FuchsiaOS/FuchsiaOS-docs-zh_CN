@@ -121,7 +121,7 @@ test.
 ### Tag the test as flaky
 
 You can do this by adding "flaky" to the `tags` field in the
-[test environment](contribute/testing/environments.md). This operates
+[test environment](/contribute/testing/environments.md). This operates
 on the entire test target (which corresponds to an executable). It will prevent this target
 from running on the builders in the commit queue, and enable the target on special flaky
 builders that continue to run the test in CI. Be sure to note the bug in a
@@ -221,4 +221,4 @@ you should probably add the rule that generates the artifact to the `data_deps`
 array of the `test_package` rule.  But I have not tried it yet.  Update this
 section when you will try it :)
 
-[run_fuchsia_tests]: development/testing/run_fuchsia_tests.md
+[run_fuchsia_tests]: /development/testing/run_fuchsia_tests.md

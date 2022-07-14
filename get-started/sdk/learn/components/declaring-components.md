@@ -10,7 +10,7 @@
 
 The Fuchsia SDK system provides Bazel rules to build and package software
 into Fuchsia components. The
-[Fuchsia SDK environment](get-started/sdk/index.md#clone-the-sdk-samples-repository)
+[Fuchsia SDK environment](/get-started/sdk/index.md#clone-the-sdk-samples-repository)
 makes these rules available within a
 [Bazel workspace](https://bazel.build/concepts/build-ref#workspace){:.external}
 directory.
@@ -170,7 +170,7 @@ on the length of the list.
   streams to a Fuchsia log buffer.</p>
 
   <p>For more details on logging from your code, see
-  <a href="development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
+  <a href="/development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
 </aside>
 
 ### Add to the build configuration
@@ -178,7 +178,7 @@ on the length of the list.
 Add the following to your `BUILD.bazel` file to include the new component in the
 build configuration:
 
-`BUILD.bazel`:
+`echo/BUILD.bazel`:
 
 ```bazel
 load(

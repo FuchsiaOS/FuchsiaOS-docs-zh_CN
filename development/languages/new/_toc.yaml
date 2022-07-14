@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/languages/new/README.md
+  path: /development/languages/new/README.md
 - title: "Recommended structure to support Fuchsia"
-  path: development/languages/new/structure.md
+  path: /development/languages/new/structure.md

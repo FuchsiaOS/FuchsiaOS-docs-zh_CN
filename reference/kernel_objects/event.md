@@ -23,5 +23,5 @@ TODO
 
  - [eventpair](eventpair.md) - linked pairs of signalable objects
 
-[`zx_event_create()`]: reference/syscalls/event_create.md
-[`zx_object_signal()`]: reference/syscalls/object_signal.md
+[`zx_event_create()`]: /reference/syscalls/event_create.md
+[`zx_object_signal()`]: /reference/syscalls/object_signal.md

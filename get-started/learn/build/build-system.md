@@ -13,9 +13,9 @@ your project source code. The Fuchsia build system provides templates as GN
 imports (`.gni`) for you to declare Fuchsia artifacts, such as:
 
 * `fuchsia_component()`: Defines an executable
-  [component](concepts/components/v2), containing the manifest, program
+  [component](/concepts/components/v2), containing the manifest, program
   binary, and resources.
-* `fuchsia_package()`: Defines a [package](concepts/packages/package.md)
+* `fuchsia_package()`: Defines a [package](/concepts/packages/package.md)
   containing one or more components for distribution in a package repository.
 * `fuchsia_test_package()`: Defines a package containing test components.
 
@@ -60,7 +60,7 @@ example, the `hello-world` target might have a label that looks like
 this: `//src/examples/basic:hello-world`.
 
 Note: For more details on the mechanics of building with GN, see
-[Introduction to GN](development/build/build_system/intro.md).
+[Introduction to GN](/development/build/build_system/intro.md).
 
 ## Build configuration
 
@@ -74,7 +74,7 @@ The build system invokes GN when you run the `fx set` command to configure
 the build.
 
 ```posix-terminal
-fx set workstation.qemu-x64
+fx set workstation_eng.qemu-x64
 ```
 
 <aside class="key-point">
@@ -95,7 +95,7 @@ the build configuration you provide to `fx set`.
 
 ![Data table showing build configurations separated into "product" and "board"
 layers. Each describes a different set of functional elements provided to the
-final build.](get-started/images/build/build-configuration.png){: width="570"}
+final build.](/get-started/images/build/build-configuration.png){: width="570"}
 
 Boards define the architecture that the build targets, which may affect what
 drivers are included and influence device specific kernel parameters.
@@ -112,7 +112,7 @@ A product defines the software configuration that a build produces. This
 configuration may include what services are available and the user-facing
 experience.
 
-This codelab targets the `workstation` product, which provides a general
+This codelab targets the `workstation_eng` product, which provides a general
 purpose computing distribution of Fuchsia with a graphical interface and some
 built-in user apps like a terminal and browser.
 
@@ -139,17 +139,17 @@ You can also invoke Ninja directly with <code>fx ninja</code> to customize or
 troubleshoot the build.
 </aside>
 
-## Exercise: Build workstation
+## Exercise: Build Workstation
 
-In this exercise, you'll build the `workstation` product configuration from
+In this exercise, you'll build the `workstation_eng` product configuration from
 source to run on the `qemu-x64` emulator board.
 
 ### Configure the build
 
-Set up the build environment for the `workstation` product and `qemu-x64` board:
+Set up the build environment for the `workstation_eng` product and `qemu-x64` board:
 
 ```posix-terminal
-fx set workstation.qemu-x64
+fx set workstation_eng.qemu-x64
 ```
 
 This command runs GN on the set of targets defined in the product's build
@@ -177,9 +177,9 @@ fx list-packages
 This is a useful tool to determine if a package you need was properly included
 in the build configuration.
 
-### Build Fuchsia workstation
+### Build Fuchsia Workstation
 
-Build the workstation target with `fx build`:
+Build the Workstation target with `fx build`:
 
 <aside class="caution">
 A full build on a fresh checkout of the source can take upwards of 60-90 minutes
@@ -206,7 +206,7 @@ Look for the build configuration of the target output:
 
 ```none {:.devsite-disable-click-to-copy}
 {{ '<strong>' }}Version: "2000-01-01T12:00:00+00:00"{{ '</strong>' }}
-Product: "workstation"
+Product: "workstation_eng"
 Board: "qemu-x64"
 {{ '<strong>' }}Commit: "2000-01-01T12:00:00+00:00"{{ '</strong>' }}
 ```

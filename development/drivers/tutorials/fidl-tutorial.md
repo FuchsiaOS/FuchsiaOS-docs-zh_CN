@@ -7,10 +7,10 @@ This guide explains how to go about adding exporting a FIDL protocol from a
 driver and utilize it in another driver. This guide assumes familiarity with the
 following concepts:
 
-*   [FIDL](development/languages/fidl/README.md)
-*   [Driver Binding](development/drivers/concepts/device_driver_model/driver-binding.md)
-*   [DDKTL](development/drivers/concepts/driver_development/using-ddktl.md)
-*   [LLCPP FIDL Bindings](development/languages/fidl/tutorials/llcpp/README.md)
+*   [FIDL](/development/languages/fidl/README.md)
+*   [Driver Binding](/development/drivers/concepts/device_driver_model/driver-binding.md)
+*   [DDKTL](/development/drivers/concepts/driver_development/using-ddktl.md)
+*   [LLCPP FIDL Bindings](/development/languages/fidl/tutorials/llcpp/README.md)
 
 ## FIDL Protocol Definition
 

@@ -116,7 +116,7 @@ Further, Dart's RegExp implementation is based on V8's Irregexp, which can
 suffer exponential blowup
 [even on patterns that do not contain backreferences](https://v8.dev/blog/non-backtracking-regexp).
 Since Dart
-[cannot be used for core system services](contribute/governance/policy/programming_languages.md),
+[cannot be used for core system services](/contribute/governance/policy/programming_languages.md),
 DoS is less of a concern.
 
 Exceptions to the above rules MAY be granted. The process for acquiring

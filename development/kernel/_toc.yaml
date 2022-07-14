@@ -7,20 +7,20 @@
 # team as reviewer.
 toc:
 - title: "Getting started"
-  path: development/kernel/getting_started.md
+  path: /development/kernel/getting_started.md
 - title: "Kernel in the build"
-  path: development/kernel/build.md
+  path: /development/kernel/build.md
 - title: "Manage memory"
   section:
-  - include: development/kernel/memory/_toc.yaml
+  - include: /development/kernel/memory/_toc.yaml
 - title: "Manage threads"
   section:
-  - include: development/kernel/threads/_toc.yaml
+  - include: /development/kernel/threads/_toc.yaml
 - title: "Object usage analysis tools"
-  path: development/kernel/handles.md
+  path: /development/kernel/handles.md
 - title: "Cross translation unit static analysis in Zircon"
-  path: development/kernel/ctu_analysis.md
+  path: /development/kernel/ctu_analysis.md
 - title: "Time units"
-  path: development/kernel/time.md
+  path: /development/kernel/time.md
 - title: "Notes on kernel development"
-  path: development/kernel/notes_on_kernel_development.md
+  path: /development/kernel/notes_on_kernel_development.md

@@ -7,68 +7,68 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: reference/kernel_objects/objects.md
+  path: /reference/kernel_objects/objects.md
 - title: "IPC"
   section:
   - title: "Channel"
-    path: reference/kernel_objects/channel.md
+    path: /reference/kernel_objects/channel.md
   - title: "Socket"
-    path: reference/kernel_objects/socket.md
+    path: /reference/kernel_objects/socket.md
   - title: "FIFO"
-    path: reference/kernel_objects/fifo.md
+    path: /reference/kernel_objects/fifo.md
 - title: "Tasks"
   section:
   - title: "Process"
-    path: reference/kernel_objects/process.md
+    path: /reference/kernel_objects/process.md
   - title: "Thread"
-    path: reference/kernel_objects/thread.md
+    path: /reference/kernel_objects/thread.md
   - title: "Job"
-    path: reference/kernel_objects/job.md
+    path: /reference/kernel_objects/job.md
   - title: "Task"
-    path: reference/kernel_objects/task.md
+    path: /reference/kernel_objects/task.md
 - title: "Scheduling"
   section:
   - title: "Profile"
-    path: reference/kernel_objects/profile.md
+    path: /reference/kernel_objects/profile.md
 - title: "Signaling"
   section:
   - title: "Event"
-    path: reference/kernel_objects/event.md
+    path: /reference/kernel_objects/event.md
   - title: "Event pair"
-    path: reference/kernel_objects/eventpair.md
+    path: /reference/kernel_objects/eventpair.md
   - title: "Futex"
-    path: reference/kernel_objects/futex.md
+    path: /reference/kernel_objects/futex.md
 - title: "Memory and address space"
   section:
   - title: "Virtual memory object"
-    path: reference/kernel_objects/vm_object.md
+    path: /reference/kernel_objects/vm_object.md
   - title: "Virtual memory address region"
-    path: reference/kernel_objects/vm_address_region.md
+    path: /reference/kernel_objects/vm_address_region.md
   - title: "Bus transaction initiator"
-    path: reference/kernel_objects/bus_transaction_initiator.md
+    path: /reference/kernel_objects/bus_transaction_initiator.md
   - title: "Pinned memory token"
-    path: reference/kernel_objects/pinned_memory_token.md
+    path: /reference/kernel_objects/pinned_memory_token.md
   - title: "Pager"
-    path: reference/kernel_objects/pager.md
+    path: /reference/kernel_objects/pager.md
   - title: "Stream"
-    path: reference/kernel_objects/stream.md
+    path: /reference/kernel_objects/stream.md
 - title: "Waiting"
   section:
   - title: "Port"
-    path: reference/kernel_objects/port.md
+    path: /reference/kernel_objects/port.md
   - title: "Timer"
-    path: reference/kernel_objects/timer.md
+    path: /reference/kernel_objects/timer.md
 - title: "Drivers"
   section:
   - title: "Interrupts"
-    path: reference/kernel_objects/interrupts.md
+    path: /reference/kernel_objects/interrupts.md
   - title: "Message Signaled Interrupt"
-    path: reference/kernel_objects/msi.md
+    path: /reference/kernel_objects/msi.md
   - title: "Resource"
-    path: reference/kernel_objects/resource.md
+    path: /reference/kernel_objects/resource.md
   - title: "Log"
-    path: reference/kernel_objects/debuglog.md
+    path: /reference/kernel_objects/debuglog.md
 - title: "Clock"
   section:
   - title: "Clock"
-    path: reference/kernel_objects/clock.md
+    path: /reference/kernel_objects/clock.md

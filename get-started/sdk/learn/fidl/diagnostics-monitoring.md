@@ -169,7 +169,7 @@ convenient way to report whether your component is running well or experiencing
 an issue. You'll find this status reported under
 <code>fuchsia.inspect.Health</code> in the Inspect tree.</p>
 <p>For more details on this metric, see
-<a href="concepts/diagnostics/inspect/health">Health check</a>.</p>
+<a href="/concepts/diagnostics/inspect/health">Health check</a>.</p>
 </aside>
 
 Finally, update the imports to include the new Inspect libraries:
@@ -264,4 +264,4 @@ You have completed all the modules in this course! Take your newfound
 understanding to the next level and dive deeper into the:
 
 <a class="button button-primary"
-    href="concepts">Fuchsia concepts</a>
+    href="/concepts">Fuchsia concepts</a>

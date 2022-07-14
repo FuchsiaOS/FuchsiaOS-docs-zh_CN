@@ -428,7 +428,7 @@ while executing `async::Loop::Shutdown`/`async_loop_shutdown`. (You should
 probably ensure that no locks are held around shutdown anyway since it joins all
 dispatcher threads, which may take locks in user code).
 
-[client-header]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/client.h
-[server-header]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/channel.h
-[wire-client]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/client.h?q=llcpp%2Fclient.h%20WireClient&ss=fuchsia%2Ffuchsia
-[wire-shared-client]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/client.h?q=llcpp%2Fclient.h%20WireSharedClient&sq=&ss=fuchsia%2Ffuchsia
+[client-header]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/client.h
+[server-header]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/channel.h
+[wire-client]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/client.h?q=llcpp%2Fclient.h%20WireClient&ss=fuchsia%2Ffuchsia
+[wire-shared-client]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/client.h?q=llcpp%2Fclient.h%20WireSharedClient&sq=&ss=fuchsia%2Ffuchsia

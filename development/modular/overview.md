@@ -1,7 +1,7 @@
 # Overview
 
 Note: The Modular framework is being deprecated in favor of
-the [Session Framework](concepts/session/introduction.md).
+the [Session Framework](/concepts/session/introduction.md).
 
 Modular manages user experiences by composing UI, data, and users from a
 diverse set of components into logical and visual containers called Stories.
@@ -43,5 +43,5 @@ provide session management, component lifecycle management and state management.
 
 ## Read More
 
-* [Configuring Modular](development/modular/config.md)
+* [Configuring Modular](/development/modular/config.md)
 

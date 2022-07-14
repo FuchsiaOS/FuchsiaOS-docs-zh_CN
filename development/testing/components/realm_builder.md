@@ -16,7 +16,7 @@ things, then Realm Builder is a good fit for assisting the test.
 The Realm Builder library is available in multiple languages, and the exact
 semantics and abilities available in each language may vary. For a comprehensive
 list of features and supported languages, see the
-[feature matrix at the end of this document](#language-feature-matrix).
+[Language feature matrix](#language-feature-matrix).
 
 ## Add Dependencies {#add-deps}
 
@@ -59,6 +59,12 @@ Afterwards, you should add the GN dependency for your test's language:
 After adding the necessary dependencies, initialize Realm Builder inside your
 test component.
 
+<span class="compare-better">Recommended</span>: Initialize a separate builder instance
+for each test case.
+
+<span class="compare-worse">Not recommended</span>: Use a shared builder instance between
+all test cases.
+
 * {Rust}
 
     This section assumes that you are writing an asynchronous test and that
@@ -95,7 +101,7 @@ test component.
 
     ```cpp
     #include <lib/async-loop/cpp/loop.h>
-    #include <lib/async-loop/cpp/default.h>
+    #include <lib/async-loop/default.h>
 
     TEST(SampleTest, CallEcho) {
         async::Loop loop(&kAsyncLoopConfigAttachToCurrentThread);
@@ -457,8 +463,11 @@ routed using `parent` are now accessible by the test.
     {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/rust/src/lib.rs" region_tag="call_echo_rust" adjust_indentation="auto" %}
     ```
 
-    When the realm object goes out of scope, Component Manager destroys the
-    realm and its children.
+    <span class="compare-better">Recommended</span>: Call `destroy()` on the realm instance
+    at the end of each test to ensure clean teardown before the next test case.
+
+    <span class="compare-worse">Not recommended</span>: Wait for the realm object to go out
+    of scope to signal Component Manager to destroy the realm and its children.
 
 * {C++}
 
@@ -475,12 +484,11 @@ routed using `parent` are now accessible by the test.
     {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/dart/test/sample.dart" region_tag="call_echo_dart" adjust_indentation="auto" %}
     ```
 
-    To ensure Component Manager destroys the realm and its children when the
-    realm object is no longer needed, call `close()` on the realm root.
+    <span class="compare-better">Recommended</span>: Call `close()` on the realm root
+    at the end of each test to ensure clean teardown before the next test case.
 
-    ```dart
-    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/dart/test/sample.dart" region_tag="finally_close_realm" adjust_indentation="auto" %}
-    ```
+    <span class="compare-worse">Not recommended</span>: Wait for the realm object to go out
+    of scope to signal Component Manager to destroy the realm and its children.
 
 ## Advanced Configuration {#advanced}
 
@@ -536,7 +544,7 @@ the **constructed realm** where you obtained the manifest instead of using the
 builder instance. This ensures the routes are properly validated against the
 modified component when the [realm is created](#create-realm).
 
-### Determining a moniker {#test-component-moniker}
+### Test component monikers {#test-component-moniker}
 
 The moniker for a Realm Builder child component looks like the following:
 
@@ -595,25 +603,51 @@ controller, see [offering test capabilities](#routing-from-test).
 
 ## Language feature matrix {#language-feature-matrix}
 
-|                             | Rust | C++  | Dart |
-| --------------------------- |:----:|:----:|:----:|
-| Legacy components           |    Y |    Y |    Y |
-| Mock components             |    Y |    Y |    Y |
-| Overriding config values    |    Y |    Y |    Y |
-| Manipulating component decl |    Y |    N |    Y |
+<table>
+  <tr>
+    <th></th>
+    <th>Rust</th>
+    <th>C++</th>
+    <th>Dart</th>
+  </tr>
+  <tr>
+    <td>Legacy components</td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-yes"></span></td>
+  </tr>
+  <tr>
+    <td>Mock components</td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-yes"></span></td>
+  </tr>
+  <tr>
+    <td>Override configuration values</td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-yes"></span></td>
+  </tr>
+  <tr>
+    <td>Manipulate component declaration</td>
+    <td><span class="compare-yes"></span></td>
+    <td><span class="compare-no"></span></td>
+    <td><span class="compare-yes"></span></td>
+  </tr>
+</table>
 
-[cap-routes]: concepts/components/v2/capabilities/README.md#routing
+[cap-routes]: /concepts/components/v2/capabilities/README.md#routing
 [children]: https://fuchsia.dev/reference/cml#children
 [collection]: https://fuchsia.dev/reference/cml#collections
-[component-urls]: reference/components/url.md
+[component-urls]: /reference/components/url.md
 [environment]: https://fuchsia.dev/reference/cml#environments
 [expose]: https://fuchsia.dev/reference/cml#expose
-[namespaces]: concepts/process/namespaces.md
+[namespaces]: /concepts/process/namespaces.md
 [offer]: https://fuchsia.dev/reference/cml#offer
 [realm-builder-shard]: /sdk/lib/sys/component/realm_builder_base.shard.cml
-[realms]: concepts/components/v2/realms.md
-[resolver]: concepts/components/v2/capabilities/resolvers.md
-[runner]: concepts/components/v2/capabilities/runners.md
+[realms]: /concepts/components/v2/realms.md
+[resolver]: /concepts/components/v2/capabilities/resolvers.md
+[runner]: /concepts/components/v2/capabilities/runners.md
 [shard-includes]: https://fuchsia.dev/reference/cml#include
-[test-runner]: development/testing/components/test_runner_framework.md#test-runners
+[test-runner]: /development/testing/components/test_runner_framework.md#test-runners
 [use]: https://fuchsia.dev/reference/cml#use

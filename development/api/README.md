@@ -29,6 +29,6 @@ below is not complete: as Fuchsia evolves, more rubrics will be added.
    * [Fuchsia Device Interface](device_interfaces.md)
 
 <!-- xrefs -->
-[api-council]: contribute/governance/api_council.md
-[fidl-style]: development/languages/fidl/guides/style.md
-[fidl-api]: development/api/fidl.md
+[api-council]: /contribute/governance/api_council.md
+[fidl-style]: /development/languages/fidl/guides/style.md
+[fidl-api]: /development/api/fidl.md

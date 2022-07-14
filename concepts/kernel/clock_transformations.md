@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Clock objects](reference/kernel_objects/clock.md) represent functions which map all of the
+[Clock objects](/reference/kernel_objects/clock.md) represent functions which map all of the
 points on a reference clock timeline to all of the points on the clock object's
 timeline. Over all time, this function is represented as a
 [piecewise linear function](https://en.wikipedia.org/wiki/Piecewise_linear_function).

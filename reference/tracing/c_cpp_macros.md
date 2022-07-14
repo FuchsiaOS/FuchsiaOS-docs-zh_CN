@@ -2,7 +2,7 @@
 
 You can use these C and C++ macros to record tracing data after
 you have set your component as a tracing provider. For more information,
-see [Adding tracing in your code](development/tracing/tutorial/adding-tracing-in-code.md).
+see [Adding tracing in your code](/development/tracing/tutorial/adding-tracing-in-code.md).
 
 These macros are defined in
 [//zircon/system/ulib/trace/include/lib/trace/internal/event_common.h](/zircon/system/ulib/trace/include/lib/trace/internal/event_common.h).
@@ -99,7 +99,7 @@ you must use an encoding macro.
     <td><code>TA_KOID</code></td>
     <td><p><b>Required for C++</b></p>
       <p>A kernel object ID. For more information,
-      see <a href="reference/kernel_objects/objects.md">Zircon kernel objects
+      see <a href="/reference/kernel_objects/objects.md">Zircon kernel objects
       </a>.</p>
     </td>
   <tr>

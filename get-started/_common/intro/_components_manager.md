@@ -19,11 +19,11 @@ and any it **consumes**.
   processes. However, component instances do not always correlate directly
   with a single process. Often the policy for how these processes are used
   is defined by the runner. For example, the
-  <a href="concepts/components/v2/elf_runner.md">ELF runner</a> launches
+  <a href="/concepts/components/v2/elf_runner.md">ELF runner</a> launches
   each component into a new job with a process running the executable code.</p>
 
   <p>For more examples, see
-  <a href="concepts/components/v2/components_vs_processes.md">components
+  <a href="/concepts/components/v2/components_vs_processes.md">components
   vs. processes</a>.</p>
 </aside>
 
@@ -44,5 +44,5 @@ program: {
 ```
 
 Notice the runtime declaration telling the component manager that this
-component requires the [ELF runner](concepts/components/v2/elf_runner.md).
+component requires the [ELF runner](/concepts/components/v2/elf_runner.md).
 **_This is an example of a capability!_**

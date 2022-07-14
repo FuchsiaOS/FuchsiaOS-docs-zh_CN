@@ -34,7 +34,15 @@ form](rfc_process.md). It is also summarized below.
 
 ## Summary of the process (deck)
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/9hgFMOmVfbDFsI" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 595px; height: 375px; border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+<!-- Wrap the iframe in a div to get fixed-aspect-ratio responsive behavior -->
+<!-- mdlint off(WHITESPACE_LINE_LENGTH) -->
+<div style="padding-top: 62%; position: relative; width: 100%">
+  <iframe
+    src="https://docs.google.com/presentation/d/e/2PACX-1vT8Sofn5v3d-PP7fcBw9YTH4vukwlvscjjqKsC4eItDVp79qYbENpAKer6ZoE_bQ3vD23dwHYrBn_aP/embed?start=false&loop=false&delayms=3000"
+    frameborder="0" width="480" height="299"
+    allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"></iframe>
+</div>
 
 ## Stay informed
 

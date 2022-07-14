@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/monitoring/fidlcat
+  path: /development/monitoring/fidlcat
 - title: "Guide"
-  path: development/monitoring/fidlcat/fidlcat_usage.md
+  path: /development/monitoring/fidlcat/fidlcat_usage.md

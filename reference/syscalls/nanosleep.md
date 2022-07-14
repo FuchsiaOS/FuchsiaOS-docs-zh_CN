@@ -54,7 +54,7 @@ None.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[timer slack]: concepts/kernel/timer_slack.md
+[timer slack]: /concepts/kernel/timer_slack.md
 [`zx_deadline_after()`]: deadline_after.md
 [`zx_timer_cancel()`]: timer_cancel.md
 [`zx_timer_create()`]: timer_create.md

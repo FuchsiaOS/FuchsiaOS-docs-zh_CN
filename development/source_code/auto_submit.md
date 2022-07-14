@@ -13,7 +13,7 @@ Queue or have their own auto-submit functionality.
 When adding reviewers in the Gerrit UI using the **REPLY** dialog, select the
 **+1** for the **Fuchsia-Auto-Submit** label.
 
-![demonstration of setting Fuchsia-Auto-Submit +1 in Gerrit](development/source_code/auto_submit_usage.gif)
+![demonstration of setting Fuchsia-Auto-Submit +1 in Gerrit](/development/source_code/auto_submit_usage.gif)
 
 After your change meets all the submit requirements (generally a **Code-Review
 +2** vote and owner approval of all affected files), the auto-submit bot will
@@ -40,7 +40,7 @@ If the author of a change has opted into auto-submit, a **Fuchsia-Auto-Submit
 +1** tile will appear under **Trigger Votes** in the left column of the Gerrit
 UI.
 
-![Fuchsia-Auto-Submit +1 tile](development/source_code/auto_submit_selected.png)
+![Fuchsia-Auto-Submit +1 tile](/development/source_code/auto_submit_selected.png)
 
 ### I'm a reviewer on a change with auto-submit enabled. Can I approve it without submitting? {#unresolved-comments}
 

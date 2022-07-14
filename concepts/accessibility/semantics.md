@@ -156,7 +156,7 @@ to a given metric.
 
 [flutter]: https://api.flutter.dev/flutter/widgets/Semantics-class.html
 [chromium]: https://source.chromium.org/chromium/chromium/src/+/master:ui/accessibility/ax_node_data.h
-[view]: development/graphics/scenic/concepts/view_ref.md
+[view]: /development/graphics/scenic/concepts/view_ref.md
 [a11yinput]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78638
 [viewref]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.ui.views/view_ref.fidl
 [node]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.accessibility.semantics/node.fidl

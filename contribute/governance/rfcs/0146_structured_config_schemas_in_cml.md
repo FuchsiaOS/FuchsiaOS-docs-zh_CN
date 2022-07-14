@@ -734,15 +734,15 @@ config: {
 
 ## Prior art & references
 
-[Component manifest syntax](concepts/components/v2/component_manifests.md#syntax)
+[Component manifest syntax](/concepts/components/v2/component_manifests.md#syntax)
 
-[FIDL language specification](reference/fidl/language/language.md#types_and_type_declarations)
+[FIDL language specification](/reference/fidl/language/language.md#types_and_type_declarations)
 
 [The JSON5 Data Interchange Format](https://spec.json5.org/)
 
-[rfc-0127]: contribute/governance/rfcs/0127_structured_configuration.md
-[rfc-0127-config-fidl]: contribute/governance/rfcs/0127_structured_configuration.md#define_configuration_keys_using_fidl
-[rfc-0098]: contribute/governance/rfcs/0098_component_framework_rfc_criteria.md#changes_that_require_an_rfc
+[rfc-0127]: /contribute/governance/rfcs/0127_structured_configuration.md
+[rfc-0127-config-fidl]: /contribute/governance/rfcs/0127_structured_configuration.md#define_configuration_keys_using_fidl
+[rfc-0098]: /contribute/governance/rfcs/0098_component_framework_rfc_criteria.md#changes_that_require_an_rfc
 [archivist-cli]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/diagnostics/archivist/src/main.rs;l=32;drc=2f81b79bd11f245e4fedd593b10e7e324d41c294
 [archivist-json]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/diagnostics/archivist/configs/archivist_config.json;drc=734f251e7c7d1673a874be8747aee3940d45e03a
 [detect-cli]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/diagnostics/detect/src/lib.rs;l=43;drc=d079db3c28c5c6851a99ec16f1395ddcaee55582

@@ -67,7 +67,7 @@ To add a glossary definition, you need to edit the
             </p>
             <p>For a link, use this format:</p>
             <aside class="note">
-            <b>Note:</b> Links to the glossary should use this link location format, <code>glossary/README.md#<var>term</var></code>.
+            <b>Note:</b> Links to the glossary should use this link location format, <code>/glossary/README.md#<var>term</var></code>.
             </aside>
                <pre class="prettyprint">
 {% htmlescape %}<a href="{% endhtmlescape %}<var>link_location</var>{% htmlescape %}">{% endhtmlescape %}<var>link_title</var>{% htmlescape %}</a>{% endhtmlescape %}
@@ -81,7 +81,7 @@ To add a glossary definition, you need to edit the
               to other terms or related documentation. You must use HTML syntax.
             </p>
             <aside class="note">
-            <b>Note:</b> Links to the glossary should use this link location format, <code>glossary/README.md#<var>term</var></code>.
+            <b>Note:</b> Links to the glossary should use this link location format, <code>/glossary/README.md#<var>term</var></code>.
             </aside>
             <ul>
               <li>For a single link, use this format:
@@ -102,7 +102,7 @@ To add a glossary definition, you need to edit the
           <td><code>related_guides</code></td><td><b>Optional</b>
             <p>
               Create a list of related guides for the term. This should
-              only be links to guides located in <code>/development/</code>. You must
+              only be links to guides located in <code>//development/</code>. You must
               use HTML syntax.
             </p>
             <ul>
@@ -125,7 +125,7 @@ To add a glossary definition, you need to edit the
             <p>
               Define a list of the areas that your glossary term pertains to.
               These areas make the glossary terms filterable on the
-              <a href="glossary">glossary page</a>.
+              <a href="/glossary">glossary page</a>.
               You must use HTML syntax.
             </p>
             <ul>
@@ -154,17 +154,17 @@ To add a glossary definition, you need to edit the
 <pre class="devsite-click-to-copy">
 - term: 'ABI'
   short_description: 'The binary-level interface to the system.'
-  full_description: '{% htmlescape %}The <a href="concepts/packages/system.md">Application Binary Interface</a> (ABI)
+  full_description: '{% htmlescape %}The <a href="/concepts/packages/system.md">Application Binary Interface</a> (ABI)
   for a system is the binary-level interface to the system. Typically you don''t
   write software that uses the system ABI directly. Instead, you write software
   against the system API. When the software is compiled, the binary artifact
   created by the compiler interfaces with the system through the ABI.
   Changes to the system ABI may require you to recompile your source code to
   account for the changes in the ABI.{% endhtmlescape %}'
-  see_also: ['{% htmlescape %}<a href="glossary#ABI">ABI</a>',
-             '<a href="glossary#storage-capability">Storage capability</a>{% endhtmlescape %}']
-  related_guides: ['{% htmlescape %}<a href="development/tracing/tutorial/registering-a-trace-provider.md">Registering a trace provider</a>',
-                   '<a href="development/hardware/paving.md">Installing Fuchsia on a device</a>{% endhtmlescape %}']
+  see_also: ['{% htmlescape %}<a href="/glossary#ABI">ABI</a>',
+             '<a href="/glossary#storage-capability">Storage capability</a>{% endhtmlescape %}']
+  related_guides: ['{% htmlescape %}<a href="/development/tracing/tutorial/registering-a-trace-provider.md">Registering a trace provider</a>',
+                   '<a href="/development/hardware/paving.md">Installing Fuchsia on a device</a>{% endhtmlescape %}']
   area: ['System', 'General']
 </pre>
   </section>
@@ -178,8 +178,8 @@ and usable as a [documentation widget][documentation-widgets].
 <!-- xrefs -->
 
 [glossary-yaml]: {{fuchsia_editor }}docs/glossary/_glossary.yaml
-[glossary-index]: glossary
-[documentation-widgets]: reference/documentation/widgets.md
+[glossary-index]: /glossary
+[documentation-widgets]: /reference/documentation/widgets.md
 
 
 

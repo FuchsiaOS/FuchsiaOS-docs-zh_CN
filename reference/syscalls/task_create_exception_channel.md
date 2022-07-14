@@ -90,6 +90,6 @@ In a future build this error will no longer occur.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[exceptions]: concepts/kernel/exceptions.md
+[exceptions]: /concepts/kernel/exceptions.md
 [`zx_channel_read()`]: channel_read.md
 [`zx_object_get_property()`]: object_get_property.md

@@ -30,7 +30,7 @@ Magma client drivers are third party codebases.  Open source client drivers typi
 * src/graphics/lib/magma/tests:l1
 
 ##### Product for L2 testing:
-* workstation
+* workstation_eng
 
 ##### Package for L2 testing:
 * src/experiences/examples/spinning_cube

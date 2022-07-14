@@ -23,11 +23,11 @@ or a hardware device. If it doesn't work as expected, please check the troublesh
 ### The build type is compatible
 
 Debuggers on Fuchsia depend on privileged syscalls, most notably
-[`zx_process_write_memory`](reference/syscalls/process_write_memory.md).
+[`zx_process_write_memory`](/reference/syscalls/process_write_memory.md).
 These syscalls are only enabled when the kernel flag
-[`kernel.enable-debugging-syscalls`](gen/boot-options.md#kernelenable-debugging-syscallsbool)
+[`kernel.enable-debugging-syscalls`](/gen/boot-options.md#kernelenable-debugging-syscallsbool)
 is set to `true`, which means debuggers are not available for `user` and `userdebug`
-[build types](contribute/governance/rfcs/0115_build_types.md).
+[build types](/contribute/governance/rfcs/0115_build_types.md).
 
 If you are building from source, most probably these syscalls are enabled.
 
@@ -76,7 +76,7 @@ fx serve
 ### Debug symbols are registered {#set-symbol-location}
 
 Zxdb will by default obtain the locations of the debug symbols from the
-[symbol index](development/sdk/ffx/register-debug-symbols.md).
+[symbol index](/development/sdk/ffx/register-debug-symbols.md).
 The registrations of debug symbols from in-tree and most out-of-tree environments are automated.
 In case these doesn't work out, there are three command-line flags in zxdb to provide additional
 symbol lookup locations for zxdb: `--build-id-dir`, `--ids-txt`, and a general `--symbol-path`.

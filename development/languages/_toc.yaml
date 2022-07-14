@@ -7,26 +7,26 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/languages
+  path: /development/languages
 - title: "Configure linters and formatter"
-  path: development/languages/lint_and_format.md
+  path: /development/languages/lint_and_format.md
 - title: "Fuchsia endian policy"
-  path: development/languages/endian.md
+  path: /development/languages/endian.md
 - title: "Support new languages"
   section:
-  - include: development/languages/new/_toc.yaml
+  - include: /development/languages/new/_toc.yaml
 - title: "C/C++"
   section:
-  - include: development/languages/c-cpp/_toc.yaml
+  - include: /development/languages/c-cpp/_toc.yaml
 - title: "Dart"
   section:
-  - include: development/languages/dart/_toc.yaml
+  - include: /development/languages/dart/_toc.yaml
 - title: "Go"
   section:
-  - include: development/languages/go/_toc.yaml
+  - include: /development/languages/go/_toc.yaml
 - title: "Python"
   section:
-  - include: development/languages/python/_toc.yaml
+  - include: /development/languages/python/_toc.yaml
 - title: "Rust"
   section:
-  - include: development/languages/rust/_toc.yaml
+  - include: /development/languages/rust/_toc.yaml

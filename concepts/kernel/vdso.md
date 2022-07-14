@@ -1,7 +1,7 @@
 # Zircon vDSO
 
 The Zircon vDSO is the sole means of access to [system
-calls](reference/syscalls/README.md)
+calls](/reference/syscalls/README.md)
 in Zircon. vDSO stands for *virtual Dynamic Shared Object*. (*Dynamic
 Shared Object* is a term used for a shared library in the ELF format.)
 It's *virtual* because it's not loaded from an ELF file that sits in a
@@ -30,15 +30,15 @@ makes it easier to use the system call ABI without implementing a
 general-purpose ELF loader and full ELF dynamic linking semantics.
 
 ELF symbol names are the same as C identifiers with external linkage.
-Each [system call](reference/syscalls/README.md) corresponds to an ELF symbol in the vDSO,
+Each [system call](/reference/syscalls/README.md) corresponds to an ELF symbol in the vDSO,
 and has the ABI of a C function. The vDSO functions use only the basic
 machine-specific C calling conventions governing the use of machine
 registers and the stack, which is common across many systems that use ELF,
 such as Linux and all the BSD variants. They do not rely on complex
 features such as ELF Thread-Local Storage, nor on Fuchsia-specific ABI
-elements such as the [SafeStack](concepts/kernel/safestack.md) unsafe stack pointer.
+elements such as the [SafeStack](/concepts/kernel/safestack.md) unsafe stack pointer.
 To see more information about the life of a syscall and its relationship to the vDSO, see
-[Life of a Fuchsia syscall](concepts/kernel/life_of_a_syscall.md).
+[Life of a Fuchsia syscall](/concepts/kernel/life_of_a_syscall.md).
 
 ### vDSO Unwind Information
 
@@ -85,7 +85,7 @@ names and thus make system calls.
 ### **PA_VMO_VDSO** handle
 
 The vDSO image is embedded in the kernel at compile time. The kernel
-exposes it to userspace as a read-only [VMO](reference/kernel_objects/vm_object.md).
+exposes it to userspace as a read-only [VMO](/reference/kernel_objects/vm_object.md).
 
 When a program loader sets up a new process, the only way to make it
 possible for that process to make system calls is for the program loader to
@@ -105,7 +105,7 @@ info entry* `PA_HND(PA_VMO_VDSO, 0)`.
 
 The [`kazoo` tool](/zircon/tools/kazoo/) generates both C/C++ function
 declarations that form the public [system
-call](reference/syscalls/README.md) API, and some C++ and assembly code
+call](/reference/syscalls/README.md) API, and some C++ and assembly code
 used in the implementation of the vDSO. Both the public API and the private
 interface between the kernel and the vDSO code are specified by the .fidl files
 in [//zircon/vdso](/zircon/vdso).
@@ -282,8 +282,8 @@ the full vDSO system call interface. For example, system calls intended
 only for use by device drivers might be elided from the vDSO variant
 used for normal application code.
 
-[`zx_process_start()`]: reference/syscalls/process_start.md
-[`zx_system_get_num_cpus()`]: reference/syscalls/system_get_num_cpus.md
-[`zx_system_get_version_string()`]: reference/syscalls/system_get_version_string.md
-[`zx_ticks_per_second()`]: reference/syscalls/ticks_per_second.md
-[`zx_vmar_map()`]: reference/syscalls/vmar_map.md
+[`zx_process_start()`]: /reference/syscalls/process_start.md
+[`zx_system_get_num_cpus()`]: /reference/syscalls/system_get_num_cpus.md
+[`zx_system_get_version_string()`]: /reference/syscalls/system_get_version_string.md
+[`zx_ticks_per_second()`]: /reference/syscalls/ticks_per_second.md
+[`zx_vmar_map()`]: /reference/syscalls/vmar_map.md

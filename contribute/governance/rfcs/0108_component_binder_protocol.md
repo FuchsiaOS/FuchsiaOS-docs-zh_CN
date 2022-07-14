@@ -259,9 +259,9 @@ overhead, i.e. a new thing for developers to learn and understand and for CF to
 support. A framework-provided protocol is more straightforward and easier to
 conceptualize.
 
-[doc-realm]: concepts/components/v2/realms.md
-[doc-event]: reference/syscalls/event_create.md
+[doc-realm]: /concepts/components/v2/realms.md
+[doc-event]: /reference/syscalls/event_create.md
 [fidl-realm]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#Realm
 [fidl-directory]: https://fuchsia.dev/reference/fidl/fuchsia.io#Directory
 [fxr-realm]: https://fuchsia-review.googlesource.com/c/fuchsia/+/531142
-[single-run-rfc]: contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md
+[single-run-rfc]: /contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md

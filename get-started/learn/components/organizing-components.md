@@ -136,3 +136,11 @@ collection from the `core` realm:
   <p>The required logging capabilities in the project are implicitly declared by
   the syslog manifest shard: <code>syslog/client.shard.cml</code>.
 </aside>
+
+### Destroy the instance
+
+Clean up the `echo-args` instance using the following command:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo-args
+```

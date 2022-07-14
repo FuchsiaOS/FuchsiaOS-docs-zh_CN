@@ -7,36 +7,36 @@
 # team as reviewer.
 toc:
 - title: "IDK"
-  path: development/idk
+  path: /development/idk
 - title: "Download the Fuchsia IDK"
-  path: development/idk/download.md
+  path: /development/idk/download.md
 - title: "IDK layout"
-  path: development/idk/layout.md
+  path: /development/idk/layout.md
 - title: "IDK standards"
-  path: development/idk/standards.md
+  path: /development/idk/standards.md
 - title: Using the Core IDK
   section:
     - title: "Integrating the IDK into your build environment"
-      path: development/idk/integrating.md
+      path: /development/idk/integrating.md
     - title: "Understanding IDK metadata"
-      path: development/idk/understanding_metadata.md
+      path: /development/idk/understanding_metadata.md
     - title: "\"Core\" IDK Documentation"
-      path: development/idk/documentation/README.md
+      path: /development/idk/documentation/README.md
     - title: "Bootserver"
-      path: development/idk/documentation/bootserver.md
+      path: /development/idk/documentation/bootserver.md
     - title: "Compilation"
-      path: development/idk/documentation/compilation.md
+      path: /development/idk/documentation/compilation.md
     - title: "Debugger"
-      path: development/idk/documentation/debugger.md
+      path: /development/idk/documentation/debugger.md
     - title: "Devices"
-      path: development/idk/documentation/devices.md
+      path: /development/idk/documentation/devices.md
     - title: "Logging"
-      path: development/idk/documentation/logging.md
+      path: /development/idk/documentation/logging.md
     - title: "Packages"
-      path: development/idk/documentation/packages.md
+      path: /development/idk/documentation/packages.md
     - title: "SSH"
-      path: development/idk/documentation/ssh.md
+      path: /development/idk/documentation/ssh.md
 - title: GN C++ Frontend SDK
   section:
   - title: "Getting started"
-    path: development/idk/gn
+    path: /development/idk/gn

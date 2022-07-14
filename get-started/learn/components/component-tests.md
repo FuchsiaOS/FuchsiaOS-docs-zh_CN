@@ -70,7 +70,7 @@ CML for declaring the capabilities from the previous example component tests.
 
 Note: For complete details on the Test Runner Framework and component testing,
 see the
-[testing documentation](development/testing/components/test_runner_framework.md).
+[testing documentation](/development/testing/components/test_runner_framework.md).
 
 ## Unit tests
 
@@ -165,7 +165,7 @@ In the previous exercise, your component project scaffold generated a
 
   `echo-args/BUILD.gn`:
 
-  ```gn
+  ```gn {:.devsite-disable-click-to-copy}
   fuchsia_unittest_package("echo-args-unittests") {
     deps = [ ":bin_test" ]
   }
@@ -175,7 +175,7 @@ In the previous exercise, your component project scaffold generated a
 
   `echo-args/BUILD.gn`:
 
-  ```gn
+  ```gn {:.devsite-disable-click-to-copy}
   fuchsia_unittest_package("echo-args-unittests") {
     deps = [ ":unittests" ]
   }

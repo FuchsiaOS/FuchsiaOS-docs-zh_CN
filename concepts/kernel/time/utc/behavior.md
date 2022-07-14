@@ -2,11 +2,11 @@
 
 This page outlines the behavior of the UTC clock on Fuchsia. See the
 [UTC overview](overview.md) for more information on UTC time, and the
-[time overview](concepts/kernel/time/overview.md) for information on the other
+[time overview](/concepts/kernel/time/overview.md) for information on the other
 clocks available on Fuchsia.
 
 UTC time is supplied by a
-[kernel clock object](reference/kernel_objects/clock.md) that is
+[kernel clock object](/reference/kernel_objects/clock.md) that is
 distributed to components. A process cannot read UTC time unless it is passed a
 handle to the clock when launched. All components started by Component Manager
 receive a handle to the clock.
@@ -122,16 +122,16 @@ A handle to the UTC clock provided to the runtime is retrievable using
 the `zx_utc_reference_get` method provided in
 [`zircon/utc.h`](/zircon/third_party/ulib/musl/include/zircon/utc.h).
 
-The [`ZX_CLOCK_STARTED`](reference/kernel_objects/clock.md#starting-a-clock)
+The [`ZX_CLOCK_STARTED`](/reference/kernel_objects/clock.md#starting-a-clock)
 signal is asserted when the clock is running (and therefore synchronized).
 You may check or wait for the signal using one of:
 
-* [`zx_object_wait_async`](reference/syscalls/object_wait_async.md)
-* [`zx_object_wait_many`](reference/syscalls/object_wait_many.md)
-* [`zx_object_wait_one`](reference/syscalls/object_wait_one.md)
+* [`zx_object_wait_async`](/reference/syscalls/object_wait_async.md)
+* [`zx_object_wait_many`](/reference/syscalls/object_wait_many.md)
+* [`zx_object_wait_one`](/reference/syscalls/object_wait_one.md)
 
 You may check details such as the clock's error bound using
-[`zx_clock_get_details`](reference/syscalls/clock_get_details.md).
+[`zx_clock_get_details`](/reference/syscalls/clock_get_details.md).
 For the UTC clock the error bound is defined as half of a 95% confidence
 interval. In other words, for a randomly selected time on a randomly selected
 Fuchsia device, there is a ≥95% probability that the true value of UTC is
@@ -143,11 +143,11 @@ outside the range defined by `error_bound`. See the
 [How can clock error be bounded?](algorithms.md#error_bound) section for
 details on how the error bound is calculated. If you require additional details
 about the UTC clock, see the
-[kernel clock reference](reference/kernel_objects/clock.md)
+[kernel clock reference](/reference/kernel_objects/clock.md)
 for a list of details provided through `zx_clock_get_details`.
 
 Note that components are provided a read-only handle and are unable to use the
 provided handle to modify the clock.
 
 For language specific bindings and examples, see
-[language support](concepts/kernel/time/language_support.md).
+[language support](/concepts/kernel/time/language_support.md).

@@ -140,7 +140,7 @@ Support for the following additional use cases is currently under development:
 
 *   Kernel code coverage.
 *   Coverage on product configurations other than `core`, for instance `bringup`
-    or `workstation`.
+    or `workstation_eng`.
 *   Coverage on hardware targets, that is collecting from tests that don't run
     on qemu.
 
@@ -336,15 +336,15 @@ Future work:
 *   [How Much Testing is Enough?][gtb-testing-enough]{:.external}
 
 [assert-no-deps]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#var_assert_no_deps
-[cfv2]: concepts/components/v2/
+[cfv2]: /concepts/components/v2/
 [core_bundle]: https://cs.opensource.google/fuchsia/fuchsia/+/main:bundles/buildbot/BUILD.gn;l=58;drc=9e1506dfbe789637c709fcc4ad43896f5044f947
 [core_no_e2e_bundle]: https://cs.opensource.google/fuchsia/fuchsia/+/main:bundles/buildbot/BUILD.gn;l=53;drc=9e1506dfbe789637c709fcc4ad43896f5044f947
 [covargs]: /tools/debug/covargs/
 [coverage-dashboard]: https://analysis.chromium.org/coverage/p/fuchsia
 [debugdata]: https://fuchsia.dev/reference/fidl/fuchsia.debugdata
-[flaky-policy]: development/testing/test_flake_policy.md
+[flaky-policy]: /development/testing/test_flake_policy.md
 [fuchsia-coverage-ci]: https://ci.chromium.org/p/fuchsia/builders/ci/fuchsia-coverage
-[fuzz-testing]: contribute/testing/fuzz_testing.md
+[fuzz-testing]: /contribute/testing/fuzz_testing.md
 [fx-smoke-test]: https://fuchsia.dev/reference/tools/fx/cmd/smoke-test
 [fxb77206]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=77206
 [fxb89446]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=89446
@@ -359,5 +359,5 @@ Future work:
 [llvm-coverage-mapping-format]: https://llvm.org/docs/CoverageMappingFormat.html
 [llvm-coverage]: https://clang.llvm.org/docs/SourceBasedCodeCoverage.html
 [llvm-profdata]: https://llvm.org/docs/CommandGuide/llvm-profdata.html
-[trf]: development/testing/components/test_runner_framework.md
-[vmo]: reference/kernel_objects/vm_object.md
+[trf]: /development/testing/components/test_runner_framework.md
+[vmo]: /reference/kernel_objects/vm_object.md
