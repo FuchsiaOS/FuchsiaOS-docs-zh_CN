@@ -223,7 +223,7 @@ from the ARMv8 Reference Manual. -->
 第0和第2行展示了创建用户空间只执行页的方法。见 ARMv8 参考手册的表 D5-34 Stage 1。
 
 <!-- | UXN | PXN | AP[2:1] | Access from a higher Exception level | Access from EL0  | -->
-| UXN | PXN | AP[2:1] | 从更高例外级别访问                      | 从 EL0 访问       |
+| UXN | PXN | AP[2:1] | 从更高例外级别访问                    | 从 EL0 访问       |
 |-----|-----|---------|--------------------------------------|------------------|
 | 0   | 1   | 00      | R, W                                 | X                |
 | 0   | 1   | 01      | R, W                                 | R, W, X          |
@@ -735,7 +735,7 @@ robust using proprietary hardware features. Their chips have hardware support
 for stripping individual permission bits from both kernel and user memory. It is
 not enabled for userspace in macOS. [apple-xom]
  -->
-Darwin 在最新的苹果芯片上支持了 XOM，但它们的实现使用了私有硬件特性来达到更高的鲁棒性。
+Darwin 在最新的苹果芯片上支持了 XOM，但它们的实现使用了专有硬件特性来达到更高的可靠性。
 对于从内核和用户内存中精确去掉某个权限位，他们的芯片有硬件支持。这在 macOS 的用户空间中
 没有启用。[apple-xom]
 
