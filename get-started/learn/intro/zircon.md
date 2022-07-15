@@ -67,7 +67,7 @@ j: 1027               507.8M  507.4M                 root
 
 
 <!-- Let's focus on two columns in the output for now: -->
-我们现在关注其中两列：
+我们暂时关注其中两列：
 
 <!-- 
 * **TASK**: This tells you whether each entry is a job (`j`) or process (`p`)
@@ -75,8 +75,8 @@ j: 1027               507.8M  507.4M                 root
 * **NAME**: This provides a little more detail about what piece of the system
   is running there.
  -->
-* **TASK**: 这一列告诉你每个条目是作业（`j`）还是进程（`p`），其后紧接着它的唯一 id。
-* **NAME**: 这一列提供了稍多的详细信息，告诉你这是系统的哪一部分。
+* **TASK**: 这一列告诉您每个条目是作业（`j`）还是进程（`p`），其后紧接着它的唯一 id。
+* **NAME**: 这一列提供了稍多的详细信息，告诉您这是系统的哪一部分。
 
 <!-- 
 Let's break down some interesting things here based on what we've discussed so
