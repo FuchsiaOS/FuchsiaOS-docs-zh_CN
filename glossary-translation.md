@@ -40,16 +40,19 @@
 | guide                          | 指南                   | G                                                     |
 | guideline                      | 方针                   |                                                       |
 | HTTP header                    | HTTP 标头              | G                                                     |
+| in-tree                        | 树内                   | G <br> 此处指源码树                                     |
 | infrastructure                 | 基础架构               | G                                                     |
 | inspect                        | 审视                   | Fuchsia 专有名词 <br> i                               |
 | just-in-time (JIT) compilation | 即时（JIT）编译        | G                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
+| out-of-tree                    | 树外                   | G <br> 此处指源码树                                     |
 | path                           | 路径                   | G                                                     |
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
 | proxy                          | 代理                   |                                                       |
 | remote                         | 远程                   |                                                       |
+| robust                         | 可靠的                 | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
 | service                        | 服务                   |                                                       |
 | service account                | 服务帐号               | G                                                     |
