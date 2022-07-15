@@ -159,7 +159,7 @@ working on the problem or might have some background or context about the
 problem that would be useful to you. The earlier you discover this information,
 the better.
 -->
-RFC 流程的第一步就是把你在项目中的想法分享出去。比如，你发现了一个很重要需要解决的问题。其他人注意到这个问题了吗？或许已经有人在着手解决这个问题了，在或者有一些其他的相关资料可以帮到你。总之越早发现你的想法，对项目越好。
+RFC 流程的第一步就是把您在项目中的想法分享出去。比如，您发现了一个很重要需要解决的问题。其他人注意到这个问题了吗？或许已经有人在着手解决这个问题了，在或者有一些其他的相关资料可以帮到您。总之越早发现您的想法，对项目越好。
 
 <!--
 Compared to the remaining steps in the process, this step is relatively
@@ -171,13 +171,13 @@ example, you might want to consult with people in the `OWNERS` files for the
 areas of the codebase will need to be modified to execute your idea.
 -->
 
-相比于接下来的步骤，这一步相对非正式。这份文档不会严格要求你如何分享你的想法。分享技术想法本身就是一项技能。不过，一个好的起点，是向你准备解决的问题所在领域的技术领导讨论时提出该主题。譬如，你可能会想要跟在你需要修改的相关代码库的 `OWNERS` 文件中的人咨询，来执行你的想法。
+相比于接下来的步骤，这一步相对非正式。这份文档不会严格要求您如何分享您的想法。分享技术想法本身就是一项技能。不过，一个好的起点，是向您准备解决的问题所在领域的技术领导讨论时提出该主题。譬如，您可能会想要跟在您需要修改的相关代码库的 `OWNERS` 文件中的人咨询，来执行您的想法。
 <!--
 If you are unsure how to socialize your idea, consider asking a technical leader
 for advice. They will often have more experience socializing ideas and might be
 able to point you in a good direction.
 -->
-如果你对如何分享你的想法有疑问，可以考虑向技术领导者寻求建议。通常他们在这方面更有经验，所以也能给你指明一条捷径。
+如果您对如何分享您的想法有疑问，可以考虑向技术领导者寻求建议。通常他们在这方面更有经验，所以也能给您指明一条捷径。
 
 <!--
 > *Example.* This RFC was socialized by having a discussion in the Eng Forum,
@@ -199,7 +199,7 @@ Once you have gathered all the background and context you can through
 socialization, you are ready to start the formal part of the RFC process. The
 next step is to write a first draft of the RFC document itself.
 -->
-当你准备好所有材料后，你已经准备好开始 RFC 流程的正式部分了。下一步就是编写 RFC 文档的初稿。
+当您准备好所有材料后，您已经准备好开始 RFC 流程的正式部分了。下一步就是编写 RFC 文档的初稿。
 <!--
 Mechanically, an RFC is a markdown file in the
 `//contribute/governance/rfcs` directory.
@@ -209,20 +209,20 @@ strictly required, the template is designed to guide you towards writing a
 high-quality RFC by prompting you to think through the problem you are trying to
 solve in a semi-structured way.
 -->
-正常情况下， 一份 RFC 是一个存放在 `/contribute/governance/rfcs` 路径下的 markdown 文件。创建一个 RFC，要先创建一个 CL 并放到这个目录下。建议从模版文件 [RFC template](TEMPLATE.md) 复制一份并在此基础上编写。模版并不是硬性要求，但是模版是设计来引导你写出一份高质量的 RFC 的。它帮助你以一种半结构化的方式认真思考你准备要解决的问题。
+正常情况下， 一份 RFC 是一个存放在 `/contribute/governance/rfcs` 路径下的 markdown 文件。创建一个 RFC，要先创建一个 CL 并放到这个目录下。建议从模版文件 [RFC template](TEMPLATE.md) 复制一份并在此基础上编写。模版并不是硬性要求，但是模版是设计来引导您写出一份高质量的 RFC 的。它帮助您以一种半结构化的方式认真思考您准备要解决的问题。
 
 <!--
 Do not worry about assigning a number to your RFC at this stage. Instead, use
 `NNNN` as a placeholder. For example, the file name should be something like
 `NNNN_my_idea.md`. The RFC will get a number shortly before landing.
 -->
-在这个阶段不必担心你的 RFC 的序号。反之，使用 `NNNN` 做为占位符。比如，一个文件的名字应该是 `NNNN_my_idea.md` 这种形式。RFC 文档会在合并之前不久获得一个序号。
+在这个阶段不必担心您的 RFC 的序号。反之，使用 `NNNN` 做为占位符。比如，一个文件的名字应该是 `NNNN_my_idea.md` 这种形式。RFC 文档会在合并之前不久获得一个序号。
 <!--
 > *Suggestion.* Consider marking the CL containing your RFC as a
 > "work-in-progress" until you are ready for feedback.
 -->
 
-> * 建议 * 可以在你准备好获得反馈之前，把包含 RFC 的 CL 标志为“进行中”。
+> * 建议 * 可以在您准备好获得反馈之前，把包含 RFC 的 CL 标志为“进行中”。
 
 <!--
 #### Step 3: Iterate {#iterate}
@@ -235,14 +235,14 @@ have already discovered most the appropriate stakeholders as part of socializing
 your idea, but you are very likely to discover additional stakeholders at this
 stage.
 -->
-当你创建好表示你 RFC 的 CL 后，你就可以把你的想法和相关人员进行交流了。 希望你已经找到了合适的利益相关群体，不过通常你在此过程中还会发现更多的利益相关者。
+当您创建好表示您 RFC 的 CL 后，您就可以把您的想法和相关人员进行交流了。 希望您已经找到了合适的利益相关群体，不过通常您在此过程中还会发现更多的利益相关者。
 <!--
 Mechanically, you should invite stakeholders to provide feedback on your RFC by
 adding them to the "Reviewers" or "CC" fields in the CL, as you would for a
 normal code review. The stakeholders should provide you feedback by leaving
 comments on your RFC in the code review tool.
 -->
-通常，你应该邀请利益相关人士对你的 RFC 提供反馈，你可以通过在 CL 的“Reviewers“或者“CC“字段加上他们。利益相关人员会通过代码审查工具在你的 RFC 中评论以提供反馈。
+通常，您应该邀请利益相关人士对您的 RFC 提供反馈，您可以通过在 CL 的“Reviewers“或者“CC“字段加上他们。利益相关人员会通过代码审查工具在您的 RFC 中评论以提供反馈。
 <!--
 If the discussion is too complex for the code review tool, consider scheduling a
 meeting with the relevant stakeholders to have a more efficient discussion.
@@ -250,7 +250,7 @@ After the meeting, you must post a summary of the meeting in a comment on the CL
 so that people who were not at the meeting can understand what was discussed
 during the meeting.
 -->
-如果讨论的内容对于代码审查工具来说过于复杂，可以考虑和利益相关人员安排会议来进行更有效的讨论。会议结束后，你必须在 CL 中发布一段会议总结的评论，这样可以使没有参与会议的人能理解在会议中讨论的东西。
+如果讨论的内容对于代码审查工具来说过于复杂，可以考虑和利益相关人员安排会议来进行更有效的讨论。会议结束后，您必须在 CL 中发布一段会议总结的评论，这样可以使没有参与会议的人能理解在会议中讨论的东西。
 
 <!--
 If the discussion becomes contentious, please escalate to one of the RFC
@@ -260,7 +260,7 @@ another forum. Regardless of how the discussion proceeds, the results of any
 off-CL discussion must be captured in the CL, often by posting a summary of the
 discussion as a CL comment.
 -->
-如果讨论中存在争议，请升级至 RFC 的编辑。工程委员会可以帮你推进讨论，比如，可以提供一些别的视角或者把讨论移动到其他论坛中。不论讨论如何推进，任何不在 CL 上的讨论都要记录在 CL 中，大多数情况下以评论的形式把讨论总结放上去。
+如果讨论中存在争议，请升级至 RFC 的编辑。工程委员会可以帮您推进讨论，比如，可以提供一些别的视角或者把讨论移动到其他论坛中。不论讨论如何推进，任何不在 CL 上的讨论都要记录在 CL 中，大多数情况下以评论的形式把讨论总结放上去。
 
 <!--
 If you wish to withdraw your RFC, you can mark the CL containing the RFC as
@@ -271,7 +271,7 @@ withdrawn RFC as a starting point rather than `TEMPLATE.md`. Please confer with
 the original authors to determine whether they wish to continue to have their
 names associated with the new incarnation of the RFC.
 -->
-当你需要撤回 RFC 的时候，可以标识包含你 RFC 的 CL 为废弃状态。之后如果情况有变化，你或者其他人都可以恢复这个 RFC。如果你需要恢复其他人创建的 RFC，你需要重头开始 RFC 流程，不过你不用从模版开始而是以这个撤回的 RFC 作为起点。请和原作者确认下他们是否想要参与到你恢复的新 RFC 中。
+当您需要撤回 RFC 的时候，可以标识包含您 RFC 的 CL 为废弃状态。之后如果情况有变化，您或者其他人都可以恢复这个 RFC。如果您需要恢复其他人创建的 RFC，您需要重头开始 RFC 流程，不过您不用从模版开始而是以这个撤回的 RFC 作为起点。请和原作者确认下他们是否想要参与到您恢复的新 RFC 中。
 
 <!--
 > *Suggestion.* If you are interested in RFCs, consider configuring the Gerrit
@@ -279,7 +279,7 @@ names associated with the new incarnation of the RFC.
 > when a CL modifies the `/contribute/governance/rfcs` directory.
 -->
 
-> **建议: **  如果你对 RFC 感兴趣，可以配置 Gerrit 代码审查工具，让它在有 CL 修改 `/contribute/governance/rfcs` 目录时 [给你发送邮件 > 通知](https://gerrit-review.googlesource.com/Documentation/user-notify.html)。
+> **建议: **  如果您对 RFC 感兴趣，可以配置 Gerrit 代码审查工具，让它在有 CL 修改 `/contribute/governance/rfcs` 目录时 [给您发送邮件 > 通知](https://gerrit-review.googlesource.com/Documentation/user-notify.html)。
 <!--
 #### Step 4: Approve {#approve}
 -->
@@ -294,7 +294,7 @@ sign-off with a +2 whereas stakeholders whose approval is not required should
 sign-off with a +1, but all stakeholders are welcome to sign-off with a +2 if
 they wish to express their enthusiasm for the RFC.
 -->
-当 RFC 逐步推进至稳定，你已经准备好进入审批阶段，这个阶段中利益相关者就会给 RFC 代码审查标志为 +1 或者 +2 来签署。通常，需要批准 CL 的利益相关者（即 RFC 需要其签署才能向前推进）应以 +2 的形式签署，另一些利益相关者的批准不是必须的，则可以 +1 签署。不过，所有的利益相关者都欢迎进行 +2 签署，如果他们希望表达对该 RFC 的热情。
+当 RFC 逐步推进至稳定，您已经准备好进入审批阶段，这个阶段中利益相关者就会给 RFC 代码审查标志为 +1 或者 +2 来签署。通常，需要批准 CL 的利益相关者（即 RFC 需要其签署才能向前推进）应以 +2 的形式签署，另一些利益相关者的批准不是必须的，则可以 +1 签署。不过，所有的利益相关者都欢迎进行 +2 签署，如果他们希望表达对该 RFC 的热情。
 <!--
 Stakeholders who wish to object to an RFC can set the Code-Review flag to -1 or
  -2, depending on how strongly they feel that the RFC should not move forward.
@@ -317,7 +317,7 @@ After all the stakeholders have weighed in with their Code-Review flags, send an
 email to eng-council@fuchsia.dev to prompt the Eng Council to decide whether to
 accept your RFC.
 -->
-当所有利益相关人员都给出了他们的代码审阅标识，发送一封邮件到 eng-council@fuchsia.dev，提醒工程委员会决定是否接受你的 RFC 。
+当所有利益相关人员都给出了他们的代码审阅标识，发送一封邮件到 eng-council@fuchsia.dev，提醒工程委员会决定是否接受您的 RFC 。
 <!--
 #### Step 5: Submit {#submit}
 -->
@@ -330,7 +330,7 @@ or -2 Code-Review flags, the Eng Council will explicitly clear each flag by
 summarizing the objection and by describing why the RFC is moving forward
 despite the objection.
 -->
-如果项目决定接受你的 RFC ，工程委员会就会有一个人通过在你的 CL 中评论的形式声明这条 RFC 被接受了，并且会给 RFC 分配一个序号，通常是在序列中可用的下一个序号。如果 RFC 中有 -1 或者 -2 的代码审阅标识，工程委员会会通过总结反对意见和叙述为什么这个 RFC 虽然有这些反对却还是继续推进，从而明确地清除掉这些标识。
+如果项目决定接受您的 RFC ，工程委员会就会有一个人通过在您的 CL 中评论的形式声明这条 RFC 被接受了，并且会给 RFC 分配一个序号，通常是在序列中可用的下一个序号。如果 RFC 中有 -1 或者 -2 的代码审阅标识，工程委员会会通过总结反对意见和叙述为什么这个 RFC 虽然有这些反对却还是继续推进，从而明确地清除掉这些标识。
 <!--
 If the project decides to reject your RFC, a member of the Eng Council will
 comment on your CL stating that the RFC is rejected and providing a rationale
@@ -338,23 +338,23 @@ for the rejection.  Rejected RFCs are valuable engineering artifacts. The Eng
 Council will work with the RFC Authors to land a version of the RFC that is
 marked as rejected and incorporates the rationale.
 -->
-如果项目拒绝了你的 RFC ，议员团中也会有一个人出来在你的 CL 中评论来声明该 RFC 被拒绝了，并且提供拒绝的依据。被拒绝的 RFC 也是宝贵的工程产物。 工程委员会也会和 RFC 的作者一起合并一个该 RFC 被标记为拒绝并包含理由的版本。
+如果项目拒绝了您的 RFC ，议员团中也会有一个人出来在您的 CL 中评论来声明该 RFC 被拒绝了，并且提供拒绝的依据。被拒绝的 RFC 也是宝贵的工程产物。 工程委员会也会和 RFC 的作者一起合并一个该 RFC 被标记为拒绝并包含理由的版本。
 <!--
 You should upload a new patchset of your RFC with the assigned number, both in
 the title of the RFC and in the filename. If your RFC is approved and requires
 implementation, please make sure you have an issue filed in the issue tracker
 and put a link to the issue in the header of your RFC.
 -->
-你应该在题目和文件名中使用分配的序号，并为你的 RFC 上传一份新的补丁集。如果你的 RFC 已经被通过且需具体实现，请确保在问题跟踪工具开一个问题，并且在 RFC 的头部里放上该问题的链接。
+您应该在题目和文件名中使用分配的序号，并为您的 RFC 上传一份新的补丁集。如果您的 RFC 已经被通过且需具体实现，请确保在问题跟踪工具开一个问题，并且在 RFC 的头部里放上该问题的链接。
 <!--
 The Eng Council will then mark your CL Code-Review +2 and you can land your RFC!
 -->
-工程委员会会把你的 CL 的代码审查标识为 +2，之后你就可以合并你的 RFC 了。
+工程委员会会把您的 CL 的代码审查标识为 +2，之后您就可以合并您的 RFC 了。
 <!--
 *Congratulations! You have contributed a valuable engineering artifact to the
 project!*
 -->
-* 恭喜！你已经为项目提交了一份宝贵的工程产物。*
+* 恭喜！您已经为项目提交了一份宝贵的工程产物。*
 <!--
 ### How decisions are made {#how-decisions-are-made}
 -->
