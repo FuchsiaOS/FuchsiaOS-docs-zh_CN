@@ -1,14 +1,17 @@
-# Configure and build Fuchsia {#configure-and-build-fuchsia}
+<!-- # Configure and build Fuchsia {#configure-and-build-fuchsia} -->
+# 配置和构建 Fuchsia 
 
-This guide provide instructions on how to configure and build Fuchsia
-on a host machine.
+<!-- This guide provide instructions on how to configure and build Fuchsia
+on a host machine. -->
+本指南提供如何在宿主机上配置和构建 Fuchsia 的指令。
 
-The steps are:
+<!-- The steps are: -->
+步骤如下：
 
-1. [Prerequisites](#prerequisites).
+<!-- 1. [Prerequisites](#prerequisites).
 1. [Set your build configuration](#set-your-build-configuration).
 1. [Speed up the build (Optional)](#speed-up-the-build).
-1. [Build Fuchsia](#build-fuchsia).
+1. [Build Fuchsia](#build-fuchsia). -->
 
 ## 1. Prerequisites {#prerequisites}
 
