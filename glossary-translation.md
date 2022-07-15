@@ -32,6 +32,7 @@
 | distributed tracing            | 分布式跟踪             | G                                                     |
 | emulator                       | 模拟器                 | G                                                     |
 | ergonomics                     | 工效学                 | i & G                                                 |
+| escalate                       | 上报                   | G                                                     |
 | execute-only memory            | 只执行内存             | G                                                     |
 | fault injection                | 故障注入               | G                                                     |
 | get stared                     | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
@@ -40,13 +41,13 @@
 | guide                          | 指南                   | G                                                     |
 | guideline                      | 方针                   |                                                       |
 | HTTP header                    | HTTP 标头              | G                                                     |
-| in-tree                        | 树内                   | G <br> 此处指源码树                                     |
+| in-tree                        | 树内                   | G <br> 此处指源码树                                   |
 | infrastructure                 | 基础架构               | G                                                     |
 | inspect                        | 审视                   | Fuchsia 专有名词 <br> i                               |
 | just-in-time (JIT) compilation | 即时（JIT）编译        | G                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
-| out-of-tree                    | 树外                   | G <br> 此处指源码树                                     |
+| out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
 | path                           | 路径                   | G                                                     |
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
