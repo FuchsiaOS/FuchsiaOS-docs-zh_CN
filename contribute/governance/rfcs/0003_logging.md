@@ -13,7 +13,7 @@ diminishes the value of information in the logs. Below we propose semantic
 meaning for different log severity levels, and implications for logging at
 certain severities in various environments.
  -->
-[日志](/concepts/components/diagnostics/logs/README.md) 被广泛地使用在 Fuchsia 的代码，但是消息记录的严重程度是不一致的。这会减少信息的在日志中。下面我们提出了不同日志严重程度的语义，以及在不同环境下以特定严重程度进行日志记录的意义。
+[日志](/concepts/components/diagnostics/logs/README.md) 被广泛地使用在 Fuchsia 的代码中，但是消息被记录的严重性是不一致的。这会降低日志中信息的价值。下面我们提出了不同日志严重性级别的语义含义，以及在各种环境中以某些严重性进行日志记录的含义。
 
 <!-- ## Motivation and problem statement -->
 ## 动机和问题陈述
@@ -45,7 +45,7 @@ frequency of ERROR log entries to be one of the proxies to system stability.
 通过提供如何使用日志严重性的通用指南，并通过创建与使用日志的特定方式相关的过程，我们希望创建一个良性循环，在提高信噪比的同时，从日志中产生更多的诊断价值。例如，我们希望 ERROR 日志条目的频率是系统稳定性的代理之一。
 
 <!-- ## Implementation -->
-## 执行
+## 实现
 
 <!-- ### Log severity levels -->
 ### 日志严重等级
