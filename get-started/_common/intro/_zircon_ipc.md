@@ -71,6 +71,6 @@ explore creating and consuming FIDL protocols in more detail later on.
  -->
 Zircon 通道是 [Fuchsia 接口定义语言（Fuchsia Interface Definition Language，FIDL)][glossary.FIDL]
 描述的服务层 IPC 协议的基础。FIDL 协议是 Fuchsia 程序使用的主要 IPC 方式。
-您将在稍后更详细地探索创建和消费 FIDL 协议。
+您将在稍后更详细地探索创建和使用 FIDL 协议。
 
 [glossary.FIDL]: /glossary/README.md#FIDL
