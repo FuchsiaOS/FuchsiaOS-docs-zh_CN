@@ -1,7 +1,6 @@
-# Device model
+<!---
 
-Caution: This page may contain information that is specific to the legacy
-version of the driver framework (DFv1).
+# Device model
 
 ## Introduction
 
@@ -19,14 +18,31 @@ the overall tree among Driver Hosts is based on system policy for isolating
 drivers for security or stability reasons and colocating drivers for performance
 reasons.
 
+--->
+
+# 设备模型
+
+## 简介
+
+在 Fuchsia 中，设备驱动实现成 ELF 共享库（DSOs），用于加载到驱动主机进程中。驱动管理进程包含设备协调程序，用来追踪驱动和设备状态，驱动管理进程管理驱动程序发现，创建和指导驱动程序主机进程，并维护设备文件系统（ devfs ），设备文件系统则是用户空间服务和应用程序（受其命名空间的限制）获得设备访问的机制。
+
+驱动管理器把设备看做单一统一树的部分。在驱动主机进程中的树的分支（次级分支）包含一些设备。关于如何在驱动主机间细分整个树的决定是基于系统策略，即出于安全或稳定的原因隔离驱动，以及出于性能原因搭配驱动。
+
+<!---
 
 ## Devices, Drivers, and Driver Hosts
 
 Here's a (slightly trimmed for clarity) dump of the tree of devices in
 Fuchsia running on Qemu x86-64:
 
+--->
+
+## 设备，驱动和驱动主机
+
+这里有一个（为清晰起见，略作修饰）在 Qemu x86-64 上运行的 Fuchsia 设备树的转储。
+
 ```sh
-$ driver dump
+$ dm dump
 [root]
    <root> pid=1509
       [null] pid=1509 /boot/driver/builtin.so
@@ -60,6 +76,8 @@ $ driver dump
             [00:1f:03] pid=1416 /boot/driver/bus-pci.so
 ```
 
+<!---
+
 The names in square brackets are devices. The names in angle brackets are
 proxy devices, which are instantiated in the "lower" driver host, when process
 isolation is being provided. The pid= field indicates the process object
@@ -73,112 +91,15 @@ A new driver host (pid 2052) is created, set up with a proxy device for PCI 00:0
 and the intel ethernet driver is loaded and bound to it.
 
 Proxy devices are invisible within the Device filesystem, so this ethernet device
-appears as `/dev/sys/platform/pci/00:02:00/e1000`.
+appears as `/dev/sys/pci/00:02:00/e1000`.
 
-### Driver Framework Version 2 (DFv2)
-In driver framework version 2, devices are referred to as nodes and the dump of
-the tree of nodes will look slightly different:
+--->
 
-```sh
-$ driver dump
-[root] pid=4766 fuchsia-boot:///#meta/platform-bus.cm
-   [sys] pid=4766
-      [platform] pid=4766
-         [platform-passthrough] pid=4766 fuchsia-boot:///#meta/platform-bus-x86.cm
-            [acpi] pid=4766
-               [acpi-pwrbtn] pid=4766 fuchsia-boot:///#meta/hid.cm
-               [acpi-_SB_] pid=4766
-               [acpi-PCI0] pid=4766
-               [acpi-ISA_] pid=4766
-               [acpi-RTC_] pid=7264 fuchsia-boot:///#meta/intel-rtc.cm
-                  [rtc] pid=7264
-               [acpi-KBD_] pid=7359 fuchsia-boot:///#meta/pc-ps2.cm
-                  [i8042] pid=7359
-                     [i8042-keyboard] pid=7359
-                     [i8042-mouse] pid=7359
-               [acpi-MOU_] pid=4766
-               [acpi-COM1] pid=4766
-               [acpi-PRES] pid=4766
-               [acpi-GPE0] pid=4766
-               [acpi-FWCF] pid=4766
-               [acpi-S00_] pid=4766
-               [acpi-S08_] pid=4766
-               [acpi-S10_] pid=4766
-               [acpi-S18_] pid=4766
-               [acpi-S20_] pid=4766
-               [acpi-S28_] pid=4766
-               [acpi-S30_] pid=4766
-               [acpi-S38_] pid=4766
-               [acpi-S58_] pid=4766
-               [acpi-HPET] pid=4766
-               [acpi-LNKE] pid=4766
-               [acpi-LNKF] pid=4766
-               [acpi-LNKG] pid=4766
-               [acpi-LNKH] pid=4766
-               [acpi-GSIE] pid=4766
-               [acpi-GSIF] pid=4766
-               [acpi-GSIG] pid=4766
-               [acpi-GSIH] pid=4766
-               [acpi-GFBY] pid=4766
-               [acpi-GFEV] pid=4766
-               [acpi-GFPP] pid=4766
-               [acpi-GFFB] pid=4766
-               [acpi-GFAU] pid=4766
-               [acpi-GFSK] pid=4766
-               [acpi-GFRT] pid=4766
-               [acpi-GFRO] pid=4766
-               [acpi-CPUS] pid=4766
-               [acpi-_TZ_] pid=4766
-            [PCI0] pid=4766 fuchsia-boot:///#meta/bus-pci.cm
-               [bus] pid=4766
-                  [00_00_0] pid=4766
-                  [00_00_0_] pid=4766
-                  [00_01_0] pid=4766
-                  [00_01_0_] pid=4766
-                  [00_02_0] pid=4766 fuchsia-boot:///#meta/virtio_block.cm
-                     [virtio-block] pid=4766 fuchsia-boot:///#meta/block.core.cm
-                        [block] pid=4766 fuchsia-boot:///#meta/fvm.cm
-                           [fvm] pid=4766
-                              [blobfs-p-1] pid=4766 fuchsia-boot:///#meta/block.core.cm
-                                 [block] pid=4766
-                              [data-p-2] pid=4766 fuchsia-boot:///#meta/block.core.cm
-                                 [block] pid=4766 fuchsia-boot:///#meta/zxcrypt.cm
-                                    [zxcrypt] pid=4766
-                                       [unsealed] pid=4766 fuchsia-boot:///#meta/block.core.cm
-                                          [block] pid=4766
-                  [00_02_0_] pid=4766
-                  [00_03_0] pid=4766
-                  [00_03_0_] pid=4766
-                  [00_04_0] pid=4766 fuchsia-boot:///#meta/virtio_ethernet.cm
-                     [virtio-net] pid=4766 fuchsia-boot:///#meta/netdevice-migration.cm
-                        [netdevice-migration] pid=4766 fuchsia-boot:///#meta/network-device.cm
-                           [network-device] pid=4766
-                  [00_04_0_] pid=4766
-                  [00_05_0] pid=4766
-                  [00_05_0_] pid=4766
-                  [00_06_0] pid=4766
-                  [00_06_0_] pid=4766
-                  [00_07_0] pid=4766
-                  [00_07_0_] pid=4766
-                  [00_0b_0] pid=4766
-                  [00_0b_0_] pid=4766
-                  [00_1f_0] pid=4766
-                  [00_1f_0_] pid=4766
-                  [00_1f_2] pid=4766
-                  [00_1f_2_] pid=4766
-                  [00_1f_3] pid=4766
-                  [00_1f_3_] pid=4766
-         [00_00_2d] pid=4766 fuchsia-boot:///#meta/ramdisk.cm
-            [ramctl] pid=4766
-         [00_00_2e] pid=4766
-         [00_00_2f] pid=4766 fuchsia-pkg://fuchsia.com/virtual_audio#meta/virtual_audio_driver.cm
-            [virtual_audio] pid=4766
-         [00_00_30] pid=4766
-         [00_00_1b] pid=4766 fuchsia-boot:///#meta/sysmem.cm
-            [sysmem] pid=4766
-```
+在方括号内的名称就是设备。在尖括号内的名称就是代理设备，当提供进程隔离时，代理设备通常在“低级”驱动主机内被实例化。pid= 字段表明了该设备所在的驱动主机进程的对象ID。path 表明了哪个驱动实现了该设备。
 
-The names in square brackets are nodes. The pid= field indicates the process
-object id of the driver host process that device is contained within. The URL is
-the component manifest of the driver that is bound to the node. Nodes that do
-not have a URL do not have a driver bound to them.
+在上述示例中，例如进程1416驱动主机包含了 pci 总线驱动，它对每一个系统内的 PCI 设备创建了设备。 PCI 设备在 00:02:00 时开始作为一个网络以太网接口，并且有一个驱动程序（e1000.so）。
+
+一个新的驱动主机（进程2052）被创建，在 00:02:00 时设置为 PCI 的代理设备，然后由以太网驱动加载并绑定。
+
+代理设备在设备文件系统内是不可见的，所以这个以太网设备以`/dev/sys/pci/00:02:00/e1000`形式出现。
+

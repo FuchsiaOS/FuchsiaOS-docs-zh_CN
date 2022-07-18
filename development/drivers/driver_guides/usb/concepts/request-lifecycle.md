@@ -6,9 +6,6 @@
 
 # Lifecycle of a USB request
 
-Caution: This page may contain information that is specific to the legacy
-version of the driver framework (DFv1).
-
 ## Glossary
 
 *   HCI -- Host Controller Interface: A host controller interface driver is
