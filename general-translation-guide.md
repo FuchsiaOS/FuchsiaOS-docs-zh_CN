@@ -4,7 +4,7 @@
 
 欢迎各位继续补充和提议。如有新的规范要求，请在 issue 中提出，由成员来一同评估。
 
-如需参考翻译术语，请查阅[翻译术语表](glossary_translation.md)。
+如需参考翻译术语，请查阅[翻译术语表](glossary-translation.md)。
 
 ## Google 公司帮助文档链接汇总
 

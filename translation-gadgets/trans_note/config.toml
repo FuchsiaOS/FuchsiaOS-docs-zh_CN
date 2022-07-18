@@ -1,0 +1,262 @@
+## standard part
+
+[[item]]
+author = "Ray"
+pattern = " application "
+sub_str = " application (应用)"
+
+[[item]]
+author = "Ray"
+pattern = " ArchiveAccessor "
+sub_str = " ArchiveAccessor (档案访问器)"
+
+[[item]]
+author = "Ray"
+pattern = " archivist "
+sub_str = " archivist (归档器)"
+
+[[item]]
+author = "Ray"
+pattern = " attach "
+sub_str = " attach (挂接)"
+
+[[item]]
+author = "Ray"
+pattern = " audience "
+sub_str = " audience (受众群体)"
+
+[[item]]
+author = "Ray"
+pattern = " authentication "
+sub_str = " authentication (认证)"
+
+[[item]]
+author = "Ray"
+pattern = " authorization "
+sub_str = " authorization (授权)"
+
+[[item]]
+author = "Ray"
+pattern = " automatic retry "
+sub_str = " automatic retry (自动重试)"
+
+[[item]]
+author = "Ray"
+pattern = " backoff "
+sub_str = " backoff (退避)"
+
+[[item]]
+author = "Ray"
+pattern = " best practice "
+sub_str = " best practice (最佳做法)"
+
+[[item]]
+author = "Ray"
+pattern = " caveats "
+sub_str = " caveats (注意事项)"
+
+[[item]]
+author = "Ray"
+pattern = " cleanup "
+sub_str = " cleanup (清理)"
+
+[[item]]
+author = "Ray"
+pattern = " control plane "
+sub_str = " control plane (控制层面)"
+
+[[item]]
+author = "Ray"
+pattern = " data plane "
+sub_str = " data plane (数据层面)"
+
+[[item]]
+author = "Ray"
+pattern = " deprecated "
+sub_str = " deprecated (已弃用(的))"
+
+[[item]]
+author = "Ray"
+pattern = " detach "
+sub_str = " detach (分离)"
+
+[[item]]
+author = "Ray"
+pattern = " directory "
+sub_str = " directory (目录)"
+
+[[item]]
+author = "Ray"
+pattern = " distributed tracing "
+sub_str = " distributed tracing (分布式跟踪)"
+
+[[item]]
+author = "Ray"
+pattern = " emulator "
+sub_str = " emulator (模拟器)"
+
+[[item]]
+author = "Ray"
+pattern = " ergonomics "
+sub_str = " ergonomics (工效学)"
+
+[[item]]
+author = "Ray"
+pattern = " execute-only memory "
+sub_str = " execute-only memory (只执行内存)"
+
+[[item]]
+author = "Ray"
+pattern = " fault injection "
+sub_str = " fault injection (故障注入)"
+
+[[item]]
+author = "Ray"
+pattern = " get stared "
+sub_str = " get stared (使用入门, 入门)"
+
+[[item]]
+author = "Ray"
+pattern = " guidance "
+sub_str = " guidance (指导)"
+
+[[item]]
+author = "Ray"
+pattern = " guide "
+sub_str = " guide (指南)"
+
+[[item]]
+author = "Ray"
+pattern = " guideline "
+sub_str = " guideline (方针)"
+
+[[item]]
+author = "Ray"
+pattern = " HTTP header "
+sub_str = " HTTP header (HTTP 标头)"
+
+[[item]]
+author = "Ray"
+pattern = " infrastructure "
+sub_str = " infrastructure (基础架构)"
+
+[[item]]
+author = "Ray"
+pattern = " inspect "
+sub_str = " inspect (审视)"
+
+[[item]]
+author = "Ray"
+pattern = " just-in-time (JIT) compilation "
+sub_str = " just-in-time (JIT) compilation (即时（JIT）编译)"
+
+[[item]]
+author = "Ray"
+pattern = " mount "
+sub_str = " mount (装载)"
+
+[[item]]
+author = "Ray"
+pattern = " namespace "
+sub_str = " namespace (命名空间)"
+
+[[item]]
+author = "Ray"
+pattern = " path "
+sub_str = " path (路径)"
+
+[[item]]
+author = "Ray"
+pattern = " pave "
+sub_str = " pave (铺设)"
+
+[[item]]
+author = "Ray"
+pattern = " policy "
+sub_str = " policy (政策)"
+
+[[item]]
+author = "Ray"
+pattern = " proxy "
+sub_str = " proxy (代理)"
+
+[[item]]
+author = "Ray"
+pattern = " remote "
+sub_str = " remote (远程)"
+
+[[item]]
+author = "Ray"
+pattern = " sanity check "
+sub_str = " sanity check (健全性检查)"
+
+[[item]]
+author = "Ray"
+pattern = " service "
+sub_str = " service (服务)"
+
+[[item]]
+author = "Ray"
+pattern = " service account "
+sub_str = " service account (服务帐号)"
+
+[[item]]
+author = "Ray"
+pattern = " service mesh "
+sub_str = " service mesh (服务网格)"
+
+[[item]]
+author = "Ray"
+pattern = " set up "
+sub_str = " set up (设置)"
+
+[[item]]
+author = "Ray"
+pattern = " setup "
+sub_str = " setup (设置)"
+
+[[item]]
+author = "Ray"
+pattern = " settings "
+sub_str = " settings (设置)"
+
+[[item]]
+author = "Ray"
+pattern = " sidecar "
+sub_str = " sidecar (Sidecar)"
+
+[[item]]
+author = "Ray"
+pattern = " span "
+sub_str = " span (Span, 跨)"
+
+[[item]]
+author = "Ray"
+pattern = " strategy "
+sub_str = " strategy (策略)"
+
+[[item]]
+author = "Ray"
+pattern = " suite "
+sub_str = " suite (套件)"
+
+[[item]]
+author = "Ray"
+pattern = " traffic "
+sub_str = " traffic (流量)"
+
+[[item]]
+author = "Ray"
+pattern = " unmount "
+sub_str = " unmount (卸载)"
+
+[[item]]
+author = "Ray"
+pattern = " validate "
+sub_str = " validate (验证)"
+
+## out of standard
+[[item]]
+author = "Ray"
+pattern = "# Summary"
+sub_str = "# Summary (总揽, 总结)"

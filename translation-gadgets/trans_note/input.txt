@@ -304,4 +304,3 @@ existing processes:
    language](/contribute/governance/deprecated-ftp-process.md). This
    proposal exists because of the success of that decision-making process.
 
-
