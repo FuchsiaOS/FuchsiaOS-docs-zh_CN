@@ -4,7 +4,7 @@
 <!-- SET the `rfcid` VAR ABOVE. DO NOT EDIT ANYTHING ELSE ABOVE THIS LINE. -->
 
 <!-- ## Summary -->
-## 概括
+## 概要
 
 <!-- 
 This document proposes the notion of an *API level* and an *ABI revision* to
@@ -103,7 +103,7 @@ Fuchsia *版本* 是用于部署到用户群体的 Fuchsia 操作系统和相关
 *Backwards compatibility* refers to the ability of a newer release of Fuchsia to
 run binaries intended to run on older release of Fuchsia.
  -->
-*向后兼容性* 是指较新版本的 Fuchsia 能够运行旨在在旧版本 Fuchsia 上运行的二进制文件。
+*向后兼容性* 是指较新版本的 Fuchsia 能够运行原本用于在旧版本 Fuchsia 上运行的二进制文件。
 
 <!-- 
 The *Fuchsia IDK* is an artifact used by development environment integrators to
@@ -116,8 +116,8 @@ development environment integrators' environments.
 *Fuchsia IDK* 是一个供开发环境集成器使用的构件，
 用于在开发人员构建 Fuchsia 应用程序时提供 Fuchsia 平台支持。
 *Fuchsia IDK* 由 Fuchsia 项目发布，
-并定义了 Fuchsia 平台与 Fuchsia 应用程序之间的合约。
-IDK 工具定义了 Fuchsia IDK 工具和开发环境集成器的环境之间的合约。
+并定义了 Fuchsia 平台与 Fuchsia 应用程序之间的协定。
+IDK 工具定义了 Fuchsia IDK 工具和开发环境集成器的环境之间的协定。
 
 <!-- 
 A *soft transition* is a technique for breaking down a backwards-incompatible
@@ -145,8 +145,8 @@ intentionally drops support for the application. This design does not address
 the converse problem of creating a new application that works on older releases
 of Fuchsia.
  -->
-具体来说，如果应用程序在给定的 Fuchsia 版本上运行，那么应用程序应继续在 Fuchsia 的未来版本上工作，
-除非 Fuchsia 故意放弃对应用程序的支持。
+具体来说，如果一个应用程序在给定的 Fuchsia 版本上运行，那么应用程序应继续在 Fuchsia 的未来版本上工作，
+除非 Fuchsia 故意放弃对该应用程序的支持。
 这个设计不解决创建适用于 Fuchsia 旧版本的新应用程序问题。
 
 <!-- ### Versioning -->
@@ -362,7 +362,7 @@ important components that target that older ABI revision.
  -->
 在某些时候，平台可能希望移除对给定 ABI 版本的支持。
 此类移除通常限制在在重要组件的尾部进行，这些组件仍然依赖旧的 ABI 版本。
-与其保持旧 ABI 版本暗指的完整语义，
+相比于保持旧 ABI 版本暗指的完整语义，
 平台选择了维护一个 *遗留组件* 列表以及运行这些组件必要的 *quirks* 表。
 quirk 是一种兼容性填充程序，它允许遗留组件使用另外的不支持的接口。
 使用这种机制，平台可以移除对旧 ABI 版本的一般性支持，
@@ -592,7 +592,7 @@ service immediately could break compatibility with older versions of that child
 component. Instead, the parent might want to offer the service only to children
 that target an older ABI revision.
  -->
-虽然不是立即需要，组件最终将希望根据 ABI 版本来调整能力路线。
+虽然不是立即需要，组件最终将希望根据 ABI 版本来调整路由功能。
 例如，一个组件可能希望停止为其子组件之一提供某种服务。
 立即移除服务可能会破坏与该子组件旧版本的兼容性。
 相反，父级组件可能希望仅为指向较旧 ABI 版本的子组件提供服务。
@@ -603,8 +603,8 @@ components to specialized destinations that provide compatibility shims. For
 example, we could define a routing *quirk* that gets applied for specific legacy
 components that have that quirk in the quirk table.
  -->
-类似地，平台可能希望将特定遗留组件的功能路由到提供兼容性填充程序的专用目的地。
-例如，我们可以定义一个路由 *quirk*，它适用于在 quirk 表中具有该 quirk 的特定遗留组件。
+类似地，平台可能希望将特定遗留组件的功能，路由到提供兼容性填充程序的专用目标。
+例如，我们可以定义一个路由 *quirk*，用于在 quirk 表中具有该 quirk 的特定遗留组件。
 
 ### SDK
 
@@ -668,7 +668,7 @@ that the project treats code that supports newer ABI revisions.
 可以在平台中选择不同的、可能较旧的代码路径，
 例如通过声称针对较旧的 ABI 修订版。 
 随着平台的发展，与项目处理支持较新 ABI 版本的代码相比，
-项目将需要以相同的安全努力来处理支持旧 ABI 版本的代码。
+项目将需要在安全方面付出相同的努力来处理支持旧 ABI 版本的代码。
 
 <!-- ## Privacy considerations -->
 ## 隐私注意事项
@@ -711,7 +711,7 @@ access to these API when targeting a specific API level. For example, the
 `fidldoc` tool should understand the API level annotations in the FIDL source
 files and generate the appropriate annotations in the generated documentation.
  -->
-应该更新平台的文档以注释每个 API 及其在生命周期中的当前阶段及其生命周期历史（例如，何时引入、弃用和/或删除 API）。
+应该更新平台的文档以注释每个 API 及其在生命周期中的当前阶段和生命周期历史（例如，何时引入、弃用和/或删除 API）。
 这些注释应该来自相同的事实来源，用于控制应用程序在针对特定 API 版本时是否可以访问这些 API。
 例如，`fidldoc` 工具应该了解 FIDL 源文件中的 API 版本注释，并在生成的文档中生成适当的注释。
 
@@ -780,8 +780,8 @@ applications.
 另一种方法可能是对系统的不同部分使用不同的版本标识符，
 而不是适用于整个系统的单个 API 版本。
 在一定程度上，Fuchsia 也使用了这种方法。
-例如，每个文件系统都有自己的版本标识符，用于文件系统的磁盘表示和内存代码之间的约定。 
-对整个系统使用单一的 API 版本意味着平台和应用程序之间的合同演变的协调程度。
+例如，每个文件系统都有自己的版本标识符，用于文件系统的磁盘表示和内存代码之间的协定。 
+对整个系统使用单一的 API 版本意味着平台和应用程序之间的协定演变的协调程度。
 
 <!-- ## Prior Art and References {#prior-art-and-references} -->
 ## 现有技术和参考文献 {#prior-art-and-references}
