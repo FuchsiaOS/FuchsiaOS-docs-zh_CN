@@ -431,7 +431,7 @@ scaling to a global open-source project. We could also have selected a different
 decision-making mechanism that balanced more towards consensus or more towards
 authority.
 -->
-也有很多可行的替代方法来解决这些潜在问题。譬如，我们可以采用以同步会议为中心的决策流程，但是这种流程很难扩展到一个全球化的开源项目之中。我们也可以选择一种决策机制来平衡更多偏向共识或者更多偏向权威。
+也有很多可行的替代方法来解决这些潜在问题。譬如，我们可以采用以同步会议为中心的决策流程，但是这种流程很难扩展到一个全球化的开源项目之中。我们也可以选择一种不同的决策机制，以更倾向于共识或更倾向于权威。
 
 <!--
 ## Prior art and references
@@ -442,7 +442,8 @@ There is a good deal of prior art about decision-making processes for
 open-source projects. This proposal is strongly influenced by the following
 existing processes:
 -->
-在开源项目中，已经有很多现有的决策流程。本提案极大地受影响于以下现存流程：
+在开源项目中，已经有很多现有的决策流程。本提案受到以下现存流程的极大影响：
+
 <!--
  * *IETF RFC process.* The IETF has run a successful, large-scale
    [decision-making process](https://ietf.org/standards/process/) for a long
