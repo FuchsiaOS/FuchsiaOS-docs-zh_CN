@@ -46,7 +46,7 @@ need to be read, but just be executed. -->
 ARM 的内存管理单元（memory management unit，MMU）在 ARMv7m 中加入了对只执行页的支持，允许内存页被映射为既不可读也不可写的只执行状态。
 虽然可写的代码页很早就被认为有安全威胁，但允许代码保持可读也将应用暴露于不必要的风险中。具体而言，对代码页
 的读取常常成为攻击链的第一步，防止对代码的读取能对攻击形成阻碍。详见[可读代码的安全性](#readable-code-security)。
-而且，支持只执行页不仅很好地符合了 Fuchsia 的权限模型，也更强地符合最小特权原则：代码通常并不需要被读，而只用执行。
+而且，支持只执行页不仅很好地符合了 Fuchsia 的权限模型，也更符合最小特权原则：代码通常并不需要被读，而只用执行。
 
 <!-- ## Stakeholders -->
 ## 相关方
@@ -153,11 +153,11 @@ flag and alias `-mpure-code` but these are only meaningful on arm32 because
 these flags are inherent when targeting aarch64. -->
 
 由于 ARM 的指令是定长的，对立即数大小有限制，所以 load 操作会以相对 PC 寻址的方式实现。具体来说，
-伪指令 `ldr Rd, =imm` 会在该代码附近的字面量池中放置 `imm`。这与 XOM 不兼容，因为它将数据放在了必须可读的
- text section 中。我们在代码库里搜索字面量池的使用以确保没有对可执行段的读操作时，
- 发现 Zircon 中有一些 `ldr Rd, =imm` 的使用，但现在都移除了。Clang 不会在 aarch64 中使用
+伪指令 `ldr Rd, =imm` 会在该代码附近的字面量池（literal pool）中放置 `imm`。这与 XOM 不兼容，因为它将数据放在了必须可读的
+ .text 段中。我们在代码库里搜索字面量池的使用以确保没有对可执行段的读操作时，
+发现 Zircon 中有一些 `ldr Rd, =imm` 的使用，但现在都移除了。Clang 不会在 aarch64 中使用
 字面量池，而会生成多条指令来创建一个大立即数。Clang 有一个 `-mexecute-only` 标志，其别名为 `-mpure-code`，
- 但这只在 arm32 上有意义，因为 aarch64 本就蕴涵这个标志。
+但这只在 arm32 上有意义，因为 aarch64 本就蕴涵这个标志。
 
 <!-- #### Example: Large Intermediates -->
 #### 示例：大立即数
@@ -239,10 +239,10 @@ make any future usage of PAN not useful against attacks trying to exploit the
 kernel touching user memory, however it would still be useful for detecting
 kernel bugs. -->
 
-遗憾的是，PAN 决定内存页是否不可特权模式访问的算法，会检查该页是否用户可读。在 PAN 看来，只能
-被用户执行的页与能被特权访问的页看起来一样。这使内核能在本不应该的地方访问用户内存，从而绕过了 
-PAN 的设计意图，使得 PAN 与 XOM 不兼容 [pan-issue]。这样一来，尽管 PAN 还能用来探测内核 bug，
-但它再也无法用来防止那些意图通过攻破内核来接触用户内存的攻击。
+遗憾的是，PAN 决定内存页是否不可特权模式访问的算法，会检查该页是否用户可读。
+在 PAN 眼中，用户只执行页看起来就是可被特权模式访问的页。
+这使得内核能在本不应该的地方访问用户内存，从而绕过了 PAN 的设计意图，使得 PAN 与 XOM 不兼容 [pan-issue]。
+这样一来，尽管 PAN 还能用来探测内核 bug，但它再也无法用来防止那些意图通过攻破内核来接触用户内存的攻击。
 <!-- 
 This problem caused both Linux and Android to drop support for XOM. This was
 particularly noticeable for Android who dropped support indefinitely in Android
@@ -330,7 +330,7 @@ by Fuchsia and many other OS to hinder attacks which rely on knowing where code
 or other data is in memory.  Making code unreadable further reduces the attack
 surface. -->
 
-许多攻击依赖于读取代码页来找出 gadget ——也就是感兴趣的可执行代码，来收集关于进程的信息。地址空间
+许多攻击依赖于读取代码页来找出“针对性指令序列”（gadget），即感兴趣的可执行代码，来收集关于进程的信息。地址空间
 布局随机化（address space layout randomization，ASLR）是一种将二进制段加载到进程地址空间中半随机的位置的操作系统技术。Fuchsia 和
 许多其他操作系统利用这种技术来防范依赖于知晓代码或数据在内存中的位置的攻击。让代码不再可读进一步
 减小了攻击面。
@@ -344,7 +344,7 @@ Turing-complete, giving an adversary the ability to execute arbitrary code. -->
 
 代码复用攻击，如“return-to-libc”[rtl-attack]，用于将函数控制流返回到已知地址。libc 常常
 成为返回或跳转的目的地，因为其包含对攻击者有用的丰富功能，并且进程极有可能会链接 libc。人们已经证明，
-典型程序中的可用 gadget 是图灵完全的。这赋予了攻击者执行任意代码的能力。
+典型程序中可用的 gadget 是图灵完备的（Turing-complete）。这赋予了攻击者执行任意代码的能力。
 <!-- 
 In many cases an adversary's objective is to obtain a shell. ASLR makes these
 kinds of attacks harder because the addresses of functions are different between
@@ -363,7 +363,7 @@ another way to find out information about the location of specific code pages. -
 ### 通用记号
 
 <!-- #### ‘rwx/r-x/–x’ -->
-#### ‘rwx/r-x/–x’
+#### “rwx/r-x/–x”
 <!-- 
 These represent permissions of ELF segments, which get mapped into the processes
 address space with the corresponding permissions. This notation is used commonly
@@ -373,8 +373,8 @@ the permission is not granted. An execute-only segment will have ‘--x’
 permissions. -->
 
 这些记号表示 ELF 段的权限。该段按照对应权限被映射到进程地址空间。这种记号在描述文件权限和 `readelf` 之类的
-工具描述 ELF 的段权限时是通用的。r, w 和 x 分别表示读、写和执行，‘-’ 表示对应权限未授予。
-只执行段的权限表示为 ‘--x’。
+工具描述 ELF 的段权限时是通用的。r、w 和 x 分别表示读、写和执行，“-”表示对应权限未授予。
+只执行段的权限表示为“--x”。
 
 <!-- #### R^X, W|X, etc… -->
 #### R^X, W|X 等等…
@@ -393,9 +393,9 @@ This is assembler syntax which marks a section as allocated and executable.
 Currently linkers will put “ax” sections into segments that are ‘r-x’. The
 `--execute-only` flag in lld will mark these segments as ‘--x’ instead.
  -->
-这是汇编器中的一种语法，其将一个 section 标记为已分配且可执行。链接器目前会
-将 “ax” 的 section 放进 ‘r-x’ 的段里，而 lld 中的 `--execute-only` 标志会将这些段
-标记为 ‘--x’。
+这是汇编器中的一种语法，其将一个节（section）标记为已分配且可执行。链接器目前会
+将“ax”节放进“r-x”段里，而 lld 中的 `--execute-only` 标志会将这些段
+标记为“--x”。
 
 <!-- ## Design -->
 ## 设计
@@ -409,7 +409,7 @@ loaders will also need to change the sanity checks that all requested
 permissions contain at least read, because this will no longer be true.
  -->
 为了支持 XOM，提高我们用户空间程序的安全性，我们的工具链和加载器都需要升级。clang 驱动需要
-给链接器传递 ‘--execute-only’ 标志来让 “ax” 的 section 映射到 ‘--x’ 段而不是 ‘r-x’ 段。
+给链接器传递“--execute-only”标志来让“ax”节映射到“--x”段而不是“r-x”段。
 加载器也需要修改那些要求至少有读权限的健全性检查，因为现在不一定有读权限了。
 
 <!-- 
@@ -427,9 +427,9 @@ available.
 ‘--x’ segments.
  -->
 1. 将 `vmar_*` 系列函数改成跟很多 `mmap` 实现一样的尽力而为。
-1. 创造一种查询内核是否支持只执行映射的方法，并在 XOM 不可用时让加载器将 ‘--x’ 段的权限提升
-到 ‘r-x’。
-1. 加入新的 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 标志来让加载器使用 ‘--x’ 段。
+1. 创造一种查询内核是否支持只执行映射的方法，并在 XOM 不可用时让加载器将“--x”段的权限提升
+到“r-x”。
+1. 加入新的 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 标志来让加载器使用“--x”段。
 
 <!-- 
 In all cases, there will be a potential silent escalation of permissions. The
@@ -456,7 +456,7 @@ a ‘--x’ segment into ‘r-x’ memory [elf-segment-perm].
 第一种选项会破坏 Fuchsia 目前与用户空间的严格约定，即要求必须明确系统调用能否满足。
 第二和第三种选项也会导致加载 ELF 文件时对内存权限的处理产生歧义。然而这是符合 
 ELF 规范的。段权限并不是说分配给这个段的内存只能有这些权限，而是说分配的内存必须至少有这些权限
-程序才能正常运行。ELF 加载器也有权把 ‘--x’ 的段映射进 ‘r-x’ 的内存 [elf-segment-perm]。
+程序才能正常运行。ELF 加载器也有权把“--x”的段映射进“r-x”的内存 [elf-segment-perm]。
 
 <!-- 
 The first option of breaking Fuchsia’s current contract of explicit syscall
@@ -501,8 +501,8 @@ is still important for userspace to be able to query for this functionality.
  -->
 将为 `zx_system_get_features` 添加新 `kind` 值 `ZX_FEATURE_KIND_VM`，其会返回
 与 `ZX_FEATURE_KIND_CPU` 类似的 bitset。也会有一个新特性 `ZX_VM_FEATURE_CAN_MAP_XOM`。
-目前的实现总会保持这个位为假，因为 XOM 目前暂不会启用。加载器不会使用这个，因为 ‘r-x’ 内存
-权限对于 ‘--x’ 段也是合法的，但让用户空间能够查询这一功能仍然很重要。
+目前的实现总会保持这个位为假，因为 XOM 目前暂不会启用。加载器不会使用这个，因为“r-x”内存
+权限对于“--x”段也是合法的，但让用户空间能够查询这一功能仍然很重要。
 
 <!-- ### System Loader ABI Changes -->
 ### 系统加载器 ABI 更改
@@ -512,7 +512,7 @@ Current and future loaders will ensure '--x' segments can be loaded into memory
 even if the target can't support XOM. The loaders will add
 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` when mapping execute-only segments.
  -->
-目前和以后的加载器会保证即使在硬件不支持 XOM 的情况下 '--x' 段也能加载进内存。
+目前和以后的加载器会保证即使在硬件不支持 XOM 的情况下“--x”段也能加载进内存。
 加载器在映射只执行段时会添加 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED`。
 
 <!-- ### Shipped Dynamic Linker ABI Changes -->
@@ -524,7 +524,7 @@ escalate permissions where necessary when allocating memory for  ‘--x’ segme
 with `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED`.
  -->
 相似地，Fuchsia 的 SDK 自带的 libc 中的动态链接器在为带有 
-`ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 的 ‘--x’ 段分配内存时，也会在必要的时候提权。
+`ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 的“--x”段分配内存时，也会在必要的时候提权。
 
 <!-- ### Compiler Toolchain Changes -->
 ### 编译器工具链更改
@@ -595,7 +595,7 @@ will become more secure. See sections [Permissions of Code
 Pages](#permissions-of-code-pages), [XOM and PAN](#xom-and-pan) and [Readable
 Code Security](#readable-code-security).
  -->
-在 XOM 在内核中实现之前，二进制文件使用 ‘--x’ 段只会跟使用 ‘r-x’ 段一样安全。
+在 XOM 在内核中实现之前，二进制文件使用“--x”段只会跟使用“r-x”段一样安全。
 一旦硬件和操作系统都支持了 XOM，决定使用只执行内存的程序将变得更安全。参见
 [代码页权限](#permissions-of-code-pages)，[XOM 与 PAN](#xom-and-pan)和
 [可读代码的安全性](#readable-code-security) 这几节。
@@ -634,7 +634,7 @@ have tests, and these will ensure it properly requests readable and executable
 memory when XOM is not available.
  -->
 类似地，elfload 库也没有什么真正的测试，只有并不测试预期功能的模糊测试。
-而它的功能其实是在对依赖它的其他组件的测试中测试的。这里应该加一些测试来保证 '--x' 段被正确映射。
+而它的功能其实是在对依赖它的其他组件的测试中测试的。这里应该加一些测试来保证“--x”段被正确映射。
 process_builder 库确实有测试，这些测试将确保它在 XOM 不可用时正确请求可读和可执行内存。
 
 <!-- 
@@ -643,7 +643,7 @@ dynamic linker is planned and it will have extensive testing, including testing
 of ‘--x’ segments.
  -->
 对当前动态链接器的改变不会被直接测试。有一个新的动态链接器在计划中，它将有广泛的测试，
-包括对 '--x' 段的测试。
+包括对“--x”段的测试。
 
 <!-- The changes to the clang driver will have testing in upstream LLVM. -->
 对 clang driver 的更改会在上游 LLVM 中得到测试。
@@ -687,11 +687,11 @@ to check at build time if a program relies on this behavior. However once it is
 identified that a program needs ‘r-x’ segments, opting out of the default ‘--x’
 will be simple.
  -->
-我们不知道现在和以后有多少外部代码会依赖于可执行代码的可读性。这可能来自于手写汇编中对 text 中
+我们不知道现在和以后有多少外部代码会依赖于可执行代码的可读性。这可能来自于手写汇编中对 .text 段中
 数据常量的使用，由其他工具链或程序自审编译的代码。无论如何，需要可读的内存页的程序仍会受益，
 因为他们依赖的共享库，包括 libc，会被标记为只执行。将我们 clang 工具链的默认改为只执行段
 会破坏依赖于可读代码的程序。在编译时没有简单的方法能判断程序是否依赖这一行为。但一旦能够认定程序
-需要 ‘r-x’ 段，不使用默认的 ‘--x’ 会很简单。
+需要“r-x”段，不使用默认的“--x”会很简单。
 
 <!-- 
 For programs which need to be able to read some of their code but not all,
@@ -701,7 +701,7 @@ mark a single section as needed to be read. Programs which want this behavior
 will need to opt out of execute-only completely.
  -->
 对于那些只需要读取部分代码的程序，目前的工具不能简单支持。`--execute-only linker` 
-标志会从所有可执行段中去掉读权限。没有办法按需把某一个 section 标记为可读。
+标志会从所有可执行段中去掉读权限。没有办法按需把某一个节标记为可读。
 需要这一行为的程序将需要完全禁用只执行。
 
 <!-- ## Risks -->
@@ -714,7 +714,7 @@ support for XOM lands. This creates potential forward compatibility problems for
 software that didn’t change. Testing will exist for in tree software, but most
 likely not for out of tree code.
  -->
-如果 clang 驱动默认使用 `--execute-only`，就可能有代码虽然读取的是 ‘--x’ 段，但要等到
+如果 clang 驱动默认使用 `--execute-only`，就可能有代码虽然读取的是“--x”段，但要等到
 支持 XOM 的硬件和内核落地后才会暴露问题。这给那些未做更改的软件造成了潜在的前向兼容问题。
 对树内软件固然会有测试，但不太可能去测试树外软件。
 
