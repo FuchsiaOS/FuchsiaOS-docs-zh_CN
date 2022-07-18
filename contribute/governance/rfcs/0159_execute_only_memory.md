@@ -44,7 +44,7 @@ more strongly aligns with the principle of least privilege: often code doesn’t
 need to be read, but just be executed. -->
 
 ARM 的内存管理单元（memory management unit，MMU）在 ARMv7m 中加入了对只执行页的支持，允许内存页被映射为既不可读也不可写的只执行状态。
-可写的代码页很早就被认为有安全威胁，但允许代码保持可读也将应用暴露于不必要的风险中。实际上，对代码页
+虽然可写的代码页很早就被认为有安全威胁，但允许代码保持可读也将应用暴露于不必要的风险中。具体而言，对代码页
 的读取常常成为攻击链的第一步，防止对代码的读取能对攻击形成阻碍。详见[可读代码的安全性](#readable-code-security)。
 而且，支持只执行页不仅很好地符合了 Fuchsia 的权限模型，也更强地符合最小特权原则：代码通常并不需要被读，而只用执行。
 
@@ -105,7 +105,7 @@ program's ability to misuse system resources through hardware enforced
 permission checks. -->
 
 最开始，计算机支持对物理内存的直接内存访问，没有任何检查或保护。MMU 的引入提供了关键的抽象，它以
-虚拟内存的形式将程序视角的内存和底层的物理资源解耦。这促使了一种更加灵活又安全的编程模型，
+虚拟内存的形式将程序视角的内存和底层的物理资源解耦。这促成了一种更加灵活又安全的编程模型，
 使得操作系统的作者可以通过进程的抽象，来提供程序间强大的隔离能力。如今的 MMU 提供了大量关键
 功能，如内存分页、快速地址翻译和权限检查，还使得用户对内存区域的访问和使用有了显著的控制。
 这种控制是通过内存页权限来实现的。内存页权限一般控制内存页是否可读可写或可执行。
@@ -134,7 +134,7 @@ SELinux 的 W^X 政策 [selinux-wxorx]。可写的内存对于即时编译 (JIT)
 运行时往内存里写入可执行指令的技术确实有用。由于对 W|X 页的获取可能被禁止，JIT 需要绕过它。一种简便的
 方法是先将代码写入不可执行页，再通过例如 `mprotect` 或者 `zx_vmar_protect` 来将页保护状态变为可执行
 但不可写 [example-fuchsia-test]。在几乎所有情况下 W|X 的页权限都过大了。与此类似，可执行
-页也几乎不怎么需要读 [参见例外](#readable-code)。允许对可执行页的读操作通常并无必要，也不应
+页也几乎不怎么需要读，[参见例外](#readable-code)。允许对可执行页的读操作通常并无必要，也不应
 成为默认配置。
 
 <!-- ### Readable Code -->
@@ -156,7 +156,7 @@ these flags are inherent when targeting aarch64. -->
 伪指令 `ldr Rd, =imm` 会在该代码附近的字面量池中放置 `imm`。这与 XOM 不兼容，因为它将数据放在了必须可读的
  text section 中。我们在代码库里搜索字面量池的使用以确保没有对可执行段的读操作时，
  发现 Zircon 中有一些 `ldr Rd, =imm` 的使用，但现在都移除了。Clang 不会在 aarch64 中使用
-字面量池，而会生成多条指令来创建一个大立即数。Clang有个 `-mexecute-only` 标志和其别名 `-mpure-code`，
+字面量池，而会生成多条指令来创建一个大立即数。Clang 有一个 `-mexecute-only` 标志，其别名为 `-mpure-code`，
  但这只在 arm32 上有意义，因为 aarch64 本就蕴涵这个标志。
 
 <!-- #### Example: Large Intermediates -->
@@ -200,8 +200,8 @@ off or use the `ldtr` and `sttr` instructions for accessing those pages. PAN is
 not currently enabled for Fuchsia, but there are already plans to support it in
 zircon [pan-fxb]. -->
 
-特权访问禁止（privileged access never，PAN）是 ARM 芯片中阻止内核态以正常方式访问用户页内存的安全特性。这种特性有助于防范
-潜在的内核漏洞，因为内核无法用正常的 load 和 store 指令接触用户内存。操作系统若要访问这些内存页，
+特权模式访问禁止（privileged access never，PAN）是 ARM 芯片中阻止内核态以正常方式访问用户页内存的安全特性。这种特性有助于防范
+潜在的内核漏洞，因为内核无法用正常的 `load` 和 `store` 指令接触用户内存。操作系统若要访问这些内存页，
 需要先关闭 PAN，或使用 `ldtr` 和 `sttr` 指令。PAN 现在在 Fuchsia 中并未启用，但已有在 Zircon 
 中提供相应支持的计划 [pan-fxb]。
 <!-- 
@@ -211,7 +211,7 @@ to describe read and write page permissions for both access levels. An
 execute-only mapping has both read and write access removed but allows user
 execution. -->
 
-aarch64 的页表项有四个控制页权限的位。其中两个用于用户和特权的执行禁止，另两个用来描述这两个访问级别
+aarch64 的页表项有四个控制页权限的位。其中两个用于用户和特权模式执行禁止（privileged execute-never，PXN），另两个用来描述这两个访问级别
 的读和写权限。只执行的映射既无写权限也无读权限，但允许用户执行。
 <!-- 
 This table from the ARMv8 Reference Manual shows the possible memory protections
@@ -219,8 +219,8 @@ using the only 4 available bits. EL0 is the exception level for userspace. Rows
 0 and 2 show how to create userspace execute-only pages. See Table D5-34 Stage 1
 from the ARMv8 Reference Manual. -->
 
-这张 ARMv8 参考手册中的表格展示了使用这四个二进制位能表示的内存保护状态。EL0 表示用户空间的例外级别。
-第0和第2行展示了创建用户空间只执行页的方法。见 ARMv8 参考手册的表 D5-34 Stage 1。
+这张来自 ARMv8 参考手册的表格展示了使用这四个二进制位能表示的内存保护状态。EL0 表示用户空间的例外级别。
+第0和第2行展示了创建用户空间只执行页的方法。请参阅 ARMv8 参考手册的表 D5-34 Stage 1。
 
 <!-- | UXN | PXN | AP[2:1] | Access from a higher Exception level | Access from EL0  | -->
 | UXN | PXN | AP[2:1] | 从更高例外级别访问                    | 从 EL0 访问       |
@@ -239,7 +239,7 @@ make any future usage of PAN not useful against attacks trying to exploit the
 kernel touching user memory, however it would still be useful for detecting
 kernel bugs. -->
 
-遗憾的是，PAN 决定一个内存页是否不应该被特权访问的算法检查了这个页是否用户可读。在 PAN 看来，只能
+遗憾的是，PAN 决定内存页是否不可特权模式访问的算法，会检查该页是否用户可读。在 PAN 看来，只能
 被用户执行的页与能被特权访问的页看起来一样。这使内核能在本不应该的地方访问用户内存，从而绕过了 
 PAN 的设计意图，使得 PAN 与 XOM 不兼容 [pan-issue]。这样一来，尽管 PAN 还能用来探测内核 bug，
 但它再也无法用来防止那些意图通过攻破内核来接触用户内存的攻击。
@@ -264,7 +264,7 @@ ePAN was made [linux-re-land]. Support for ePAN on devices is out of our control
 and the incompatibility with PAN and XOM should not block the kernel’s
 implementation of PAN [See more](#risks). -->
 
-ARM 随后提出了一种称为“加强” PAN，或 ePAN 的解决方法，将 PAN 改为不仅检查内存页是否用户可读，也
+ARM 随后提出了一种称为“增强”PAN（enhanced PAN，ePAN）的解决方案，将 PAN 改为不仅检查内存页是否用户可读，也
 检查其是否用户可执行。然而，带有此特性的硬件也许好多年都不会出现在 Fuchsia 的目标设备上。Linux 
 在 ePAN 出现后重新添加了他们的 XOM 实现 [linux-re-land]。设备对 ePAN 的支持情况不在我们的
 掌控中，PAN 与 XOM 的不兼容也不应阻碍内核对 PAN 的实现 [详见](#risks)。
@@ -276,7 +276,7 @@ it is not possible to create an execute-only mapping for the kernel, since the
 kernel cannot mark a page executable at EL1 but not readable. Thus, it is only
 possible to create an execute-only mapping for userspace processes. -->
 
-根据表二，并不存在一种配置能将读权限从内核中剥离。唯一的例外是 PAN，其能在内核试图访问用户可读
+根据表 2，并不存在一种配置能将读权限从内核中剥离。唯一的例外是 PAN，其能在内核试图访问用户可读
 的页时引发异常。因此，没有办法为内核创建一种只执行映射，因为内核没法将某页标记为 EL1 可执行的同时
 让它不可读。所以，只执行映射只能为用户空间进程创建。
 
@@ -311,8 +311,8 @@ transition to supporting binaries with execute-only segments and userspace
 programs which allocate execute-only memory will require a way to check if the
 OS can map execute-only pages prior to requesting them. -->
 
-POSIX 规定 `mmap` 可以允许对没有显式设置 `PROT_READ` 的页的读取操作 [posix-mmap]。Linux 和 macOS 在 x86上，
-以及 macOS 在 M1 芯片上，在遇到来自 mmap 的内存页请求时，对于只设置了 `PROT_EXEC` 的情况都不会
+POSIX 规定 `mmap` 可以允许对没有显式设置 `PROT_READ` 的页的读取操作 [posix-mmap]。x86 平台的 Linux 和 macOS，
+以及 M1 芯片上的 macOS，在遇到来自 mmap 的内存页请求时，对于只设置了 `PROT_EXEC` 的情况都不会
 失败，而是将被请求内存页设为 `PROT_READ | PROT_EXEC`。这些系统调用的实现是在能力范围内“尽力”满足
 用户的请求。与此相对，Fuchsia 的系统调用在能否满足用户请求的问题上从来很明确。`zx_vmar_*` 系统调用
 并不会像 POSIX 中的对应调用按照标准允许的一样静默提升内存页权限。请求内存页时不设置 `ZX_VM_PERM_READ` 
@@ -332,7 +332,7 @@ surface. -->
 
 许多攻击依赖于读取代码页来找出 gadget ——也就是感兴趣的可执行代码，来收集关于进程的信息。地址空间
 布局随机化（address space layout randomization，ASLR）是一种将二进制段加载到进程地址空间中半随机的位置的操作系统技术。Fuchsia 和
-许多其他操作系统利用这种技术来防范依赖于知晓代码或数据在内存中的位置的攻击。让代码不再可读更加
+许多其他操作系统利用这种技术来防范依赖于知晓代码或数据在内存中的位置的攻击。让代码不再可读进一步
 减小了攻击面。
 <!-- 
 Code reuse attacks, like “return-to-libc” [rtl-attack], are used to return
@@ -342,7 +342,7 @@ because it is extremely likely the process will link against libc. It has been
 demonstrated that the available gadgets in a typical program are
 Turing-complete, giving an adversary the ability to execute arbitrary code. -->
 
-代码复用攻击，如 return-to-libc [rtl-attack]，被用来将函数控制流返回到已知地址。libc 常常
+代码复用攻击，如“return-to-libc”[rtl-attack]，用于将函数控制流返回到已知地址。libc 常常
 成为返回或跳转的目的地，因为其包含对攻击者有用的丰富功能，并且进程极有可能会链接 libc。人们已经证明，
 典型程序中的可用 gadget 是图灵完全的。这赋予了攻击者执行任意代码的能力。
 <!-- 
@@ -372,7 +372,7 @@ both when describing permissions of files, as well as ELF segments by tools like
 the permission is not granted. An execute-only segment will have ‘--x’
 permissions. -->
 
-这些记号表示 ELF 段的权限。段按照对应权限被映射到进程地址空间。这种记号在描述文件权限和 `readelf` 之类的
+这些记号表示 ELF 段的权限。该段按照对应权限被映射到进程地址空间。这种记号在描述文件权限和 `readelf` 之类的
 工具描述 ELF 的段权限时是通用的。r, w 和 x 分别表示读、写和执行，‘-’ 表示对应权限未授予。
 只执行段的权限表示为 ‘--x’。
 
@@ -382,11 +382,11 @@ permissions. -->
 As above, R, W and X refer to read, write and execute. ‘^’ and ‘|’ are C-like
 operators for xor and or. R^X is read as “read xor execute”. -->
 
-如前所述，R，W 和 X 指的是读、写和执行。‘^’ 和 ‘|’ 是 C 风格的操作符，意为“异或”和“或”。
+如前所述，R、W 和 X 指的是读、写和执行。“^”和“|”是 C 风格的操作符，意为“异或”和“或”。
 R^X 读作 “读异或执行”。
 
 <!-- #### "ax" -->
-#### "ax"
+#### “ax”
 
 <!-- 
 This is assembler syntax which marks a section as allocated and executable.
@@ -408,7 +408,7 @@ otherwise be mapped to ‘r-x’ segments are instead mapped to ‘--x’ segmen
 loaders will also need to change the sanity checks that all requested
 permissions contain at least read, because this will no longer be true.
  -->
-为了支持 XOM，提高我们用户空间程序的安全性，我们的工具链和加载器都需要升级。clang driver 需要
+为了支持 XOM，提高我们用户空间程序的安全性，我们的工具链和加载器都需要升级。clang 驱动需要
 给链接器传递 ‘--execute-only’ 标志来让 “ax” 的 section 映射到 ‘--x’ 段而不是 ‘r-x’ 段。
 加载器也需要修改那些要求至少有读权限的健全性检查，因为现在不一定有读权限了。
 
@@ -453,7 +453,7 @@ segment will have, but rather which permissions the memory must at least have
 for the program to operate correctly. ELF loaders are within their rights to map
 a ‘--x’ segment into ‘r-x’ memory [elf-segment-perm].
  -->
-第一种选项会破坏 Fuchsia 目前与用户空间的严格约定，约定要求系统调用能不能被满足必须明确。
+第一种选项会破坏 Fuchsia 目前与用户空间的严格约定，即要求必须明确系统调用能否满足。
 第二和第三种选项也会导致加载 ELF 文件时对内存权限的处理产生歧义。然而这是符合 
 ELF 规范的。段权限并不是说分配给这个段的内存只能有这些权限，而是说分配的内存必须至少有这些权限
 程序才能正常运行。ELF 加载器也有权把 ‘--x’ 的段映射进 ‘r-x’ 的内存 [elf-segment-perm]。
@@ -535,7 +535,7 @@ linker when targeting `aarch64-*-fuchsia`. We will also need a way to opt out of
 this behavior, most likely by adding a new ‘--no-execute-only’ flag to the
 linker, so programs can easily opt out of the new default behavior.
  -->
-clang driver 也会改为在目标为 `aarch64-*-fuchsia` 时总是向链接器传递 
+clang 驱动也会改为在目标为 `aarch64-*-fuchsia` 时总是向链接器传递 
 `--execute-only`。我们也将需要一种退出这种行为的方法，最可能的是向链接器添加一个新的 
 ‘--no-execute-only’ 标志，这样程序可以轻易退出新的默认行为。
 
@@ -622,7 +622,7 @@ The `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` will be tested that it makes a page
 readable when it is reported by `zx_system_get_features` that the OS cannot
 create execute-only pages.
  -->
-会有针对 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 的测试，测试其能否在
+针对 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED`，会测试其能否在
 `zx_system_get_features` 报告操作系统无法创建只执行页时使内存页可读。
 
 <!-- 
@@ -633,7 +633,7 @@ ensure '--x' segments are correctly mapped. The process_builder library does
 have tests, and these will ensure it properly requests readable and executable
 memory when XOM is not available.
  -->
-类似地，elfload 库也没有什么真正的测试，只有模糊测试，但这并不测试预期功能。
+类似地，elfload 库也没有什么真正的测试，只有并不测试预期功能的模糊测试。
 而它的功能其实是在对依赖它的其他组件的测试中测试的。这里应该加一些测试来保证 '--x' 段被正确映射。
 process_builder 库确实有测试，这些测试将确保它在 XOM 不可用时正确请求可读和可执行内存。
 
@@ -669,11 +669,11 @@ the various loaders and the clang driver defaults will not be documented outside
 of this RFC.
  -->
 对 `zx_system_get_features` 的更改及用户空间需要查询 `ZX_VM_FEATURE_CAN_MAP_XOM` 
-的原因会被记录在文档中。新的 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 标志也会被记录。对各种加载器和 clang driver 的默认行为的更改
+的原因会被记录在文档中。新的 `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` 标志也会被记录。对各种加载器和 clang 驱动的默认行为的更改
 不会在此 RFC 外被记录。
 
 <!-- ## Drawbacks, Alternatives, Unknowns -->
-## 负面影响，后备方案，未知因素
+## 负面影响、后备方案和未知因素
 
 <!-- 
 It is unknown how much current and future out of tree code relies on executable
@@ -714,12 +714,12 @@ support for XOM lands. This creates potential forward compatibility problems for
 software that didn’t change. Testing will exist for in tree software, but most
 likely not for out of tree code.
  -->
-可能出现这种情况，clang driver 默认使用 `--execute-only`，但那些读取 ‘--x’ 段的代码要到
+如果 clang 驱动默认使用 `--execute-only`，就可能有代码虽然读取的是 ‘--x’ 段，但要等到
 支持 XOM 的硬件和内核落地后才会暴露问题。这给那些未做更改的软件造成了潜在的前向兼容问题。
 对树内软件固然会有测试，但不太可能去测试树外软件。
 
 <!-- ## Prior Art and References -->
-## 已有工作与参照
+## 已有工作与参考
 
 <!-- 
 Because of the ambiguous handling of `mmap` permission flags in many POSIX
@@ -735,8 +735,8 @@ robust using proprietary hardware features. Their chips have hardware support
 for stripping individual permission bits from both kernel and user memory. It is
 not enabled for userspace in macOS. [apple-xom]
  -->
-Darwin 在最新的苹果芯片上支持了 XOM，但它们的实现使用了专有硬件特性来达到更高的可靠性。
-对于从内核和用户内存中精确去掉某个权限位，他们的芯片有硬件支持。这在 macOS 的用户空间中
+在较新的苹果芯片上，Darwin 支持 XOM，但其实现使用了专有硬件特性，可靠性更高。
+这些芯片对于从内核和用户内存中去除单独权限位的功能具有硬件支持。这在 macOS 的用户空间中
 没有启用。[apple-xom]
 
 [example-fuchsia-test]: https://source.corp.google.com/fuchsia/zircon/system/utest/core/memory-mapping/memory-mapping.cc;l=126
