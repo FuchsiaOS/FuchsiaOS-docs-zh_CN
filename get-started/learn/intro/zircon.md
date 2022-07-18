@@ -10,14 +10,14 @@
 <<../../_common/intro/_zircon_ipc.md>>
 
 <!-- ## Exercise: Jobs and processes -->
-## 练习：作业 (job) 与进程 (process)
+## 练习：作业（job）与进程（process）
 
 <!-- 
 Let's explore some of these fundamental concepts on a running system. In
 this exercise, you'll see how jobs and processes interact to form a tree.
  -->
 让我们在运行中的系统上探索这些基础概念。
-在本练习中，您将看到作业与进程间如何交互以形成一棵树的。
+在本练习中，您将看到作业与进程间是如何交互以形成一棵树的。
 
 <<../_common/_start_femu.md>>
 
@@ -75,8 +75,8 @@ j: 1027               507.8M  507.4M                 root
 * **NAME**: This provides a little more detail about what piece of the system
   is running there.
  -->
-* **TASK**: 这一列告诉您每个条目是作业（`j`）还是进程（`p`），其后紧接着它的唯一 id。
-* **NAME**: 这一列提供了稍多的详细信息，告诉您正在运行的是系统的哪一部分。
+* **TASK**（任务）：这一列告诉您每个条目是作业（`j`）还是进程（`p`），其后紧接着它的唯一 id。
+* **NAME**（名称）：这一列提供了稍多的详细信息，告诉您正在运行的是系统的哪一部分。
 
 <!-- 
 Let's break down some interesting things here based on what we've discussed so
@@ -99,7 +99,7 @@ far:
 1. 每个进程都连接到一个父作业。有些作业有多个进程。
 1. 所有作业都能追溯到 `root` 这个终极作业，形成了一棵树。
 1. 在系统启动时，有一些进程直接在 `root` 作业中启动。大多数其他进程会在它们自己的父作业中启动。
-1. 在系统启动的初始阶段之后，有许多条目带有 `.cm` 的扩展名。它们指的是 **组件（component）**。
+1. 在系统启动的初始阶段之后，有许多条目带有 `.cm` 的扩展名。它们指的是 **组件**（component）。
    您将在稍后了解有关组件的更多知识。
 1. 有些组件是核心服务，它们独立于内核而存在于用户空间，如文件系统（`fshost.cm`）和驱动（`driver_manager.cm`）。
 
@@ -120,6 +120,6 @@ security model.
   <code>ps</code> output on the emulator.</p>
    -->
   <p>探索运行中的进程树也是了解 Fuchsia 设备启动过程的好方法。
-  请稍微花些时间回顾一下 <a href="concepts/process/everything_between_power_on_and_your_component.md">
+  请稍微花些时间回顾一下<a href="/concepts/process/everything_between_power_on_and_your_component.md">
   设备启动</a>，并比较初始启动过程与模拟器上 <code>ps</code> 的输出是否相符。</p>
 </aside>
