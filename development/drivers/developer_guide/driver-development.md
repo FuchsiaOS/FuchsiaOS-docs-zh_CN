@@ -8,7 +8,7 @@ this page may only be specific to the Fuchsia source checkout
 Fuchsia drivers are shared libraries that are dynamically loaded in driver host
 processes in user space. The process of loading a driver is controlled by the
 driver manager. See
-[Device Model](development/drivers/concepts/device_driver_model/device-model.md)
+[Device Model](/development/drivers/concepts/device_driver_model/device-model.md)
 for more information on driver hosts, driver manager and the driver and device
 lifecycles.
 
@@ -16,7 +16,7 @@ lifecycles.
 
 Drivers may be found throughout the source tree under `driver` subdirectories of
 areas as specified in the
-[source code layout](development/source_code/layout.md) document. Most
+[source code layout](/development/source_code/layout.md) document. Most
 Fuchsia drivers are found under [//src/devices/](/src/devices). They are grouped
 based on the protocols they implement. The driver protocols are defined in
 [ddk/include/lib/ddk/protodefs.h](/src/lib/ddk/include/lib/ddk/protodefs.h). For
@@ -92,7 +92,7 @@ These bind rules state that the driver binds to devices with a `BIND_PROTOCOL`
 property that matches `DEVICE` from the `pci` namespace and the given PCI
 class/subclass/interface. The `pci` namespace is imported from the `fucnsia.pci`
 library on the first line. For more details, refer to the [binding
-documentation](development/drivers/concepts/device_driver_model/driver-binding.md).
+documentation](/development/drivers/concepts/device_driver_model/driver-binding.md).
 
 To generate a driver declaration macro including these bind rules, there should
 be a corresponding `bind_rules` build target. This should declare dependencies
@@ -173,7 +173,7 @@ There are generally four outcomes from `bind()`:
 1.  The driver determines the device is supported and does not need to do any
     heavy lifting, so publishes a new device with `device_add()` in C or
     `ddk::Device::DdkAdd()` in the
-    [DDKTL](development/drivers/concepts/driver_development/using-ddktl.md)
+    [DDKTL](/development/drivers/concepts/driver_development/using-ddktl.md)
     C++ wrapper library and returns `ZX_OK.
 
 2.  The driver determines that even though the bind program matched, the device
@@ -187,7 +187,7 @@ There are generally four outcomes from `bind()`:
     That thread will eventually call
     [`device_init_reply()`](/src/lib/ddk/include/lib/ddk/driver.h) in C or
     `ddk::InitTxn::Reply()` in the
-    [DDKTL](development/drivers/concepts/driver_development/using-ddktl.md)
+    [DDKTL](/development/drivers/concepts/driver_development/using-ddktl.md)
     C++ wrapper library. The device is guaranteed not to be removed until the
     reply is received. The status indicates `ZX_OK` if it was able to
     successfully initialize the device and it should be made visible, or an
@@ -242,7 +242,7 @@ driver should spawn a thread to wait on the interrupt handle.
 The kernel will automatically handle masking and unmasking the interrupt as
 appropriate, depending on whether the interrupt is edge-triggered or
 level-triggered. For level-triggered hardware interrupts,
-[`zx_interrupt_wait()`](reference/syscalls/interrupt_wait.md) will mask
+[`zx_interrupt_wait()`](/reference/syscalls/interrupt_wait.md) will mask
 the interrupt before returning and unmask the interrupt when it is called again
 the next time. For edge-triggered interrupts, the interrupt remains unmasked.
 
@@ -250,7 +250,7 @@ The interrupt thread should not perform any long-running tasks. For drivers that
 perform lengthy tasks, use a worker thread.
 
 You can signal an interrupt handle with
-[`zx_interrupt_trigger()`](reference/syscalls/interrupt_trigger.md) on
+[`zx_interrupt_trigger()`](/reference/syscalls/interrupt_trigger.md) on
 slot `ZX_INTERRUPT_SLOT_USER` to return from `zx_interrupt_wait()`. This is
 necessary to shut down the interrupt thread during driver clean up.
 
@@ -259,7 +259,7 @@ necessary to shut down the interrupt thread during driver clean up.
 ## Non-driver processes
 
 Messages for each device class are defined in the
-[FIDL](development/languages/fidl/README.md) language. Each device
+[FIDL](/development/languages/fidl/README.md) language. Each device
 implements zero or more FIDL protocols, multiplexed over a single channel per
 client. The driver is given the opportunity to interpret FIDL messages through
 the `message()` hook. These are only accessible to non-driver components by
@@ -297,7 +297,7 @@ example, the virtual console is implemented by the
 [virtcon](/src/bringup/bin/virtcon) component.
 
 Privileged operations such as `zx_vmo_create_contiguous()` and
-[`zx_interrupt_create`](reference/syscalls/interrupt_create.md) require a
+[`zx_interrupt_create`](/reference/syscalls/interrupt_create.md) require a
 root resource handle. This handle is not available to drivers other than the
 system driver ([ACPI](/src/devices/board/drivers/x86) on x86 systems and
 [platform](/src/devices/bus/drivers/platform) on ARM systems). A device should
@@ -353,7 +353,7 @@ Flag                                    | Meaning
 `DEVICE_SUSPEND_FLAG_REBOOT_BOOTLOADER` | ?
 `DEVICE_SUSPEND_FLAG_REBOOT_RECOVERY`   | ?
 `DEVICE_SUSPEND_FLAG_POWEROFF`          | The driver should shut itself down in preparation for power off
-`DEVICE_SUSPEND_FLAG_MEXEC`             | The driver should shut itself down in preparation for a [soft reboot](reference/syscalls/system_mexec.md)
+`DEVICE_SUSPEND_FLAG_MEXEC`             | The driver should shut itself down in preparation for a [soft reboot](/reference/syscalls/system_mexec.md)
 `DEVICE_SUSPEND_FLAG_SUSPEND_RAM`       | The driver should arrange so that it can be restarted from RAM
 
 <!---

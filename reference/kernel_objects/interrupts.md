@@ -27,9 +27,9 @@ to userspace processes.
  - [`zx_interrupt_trigger()`] - Triggers a virtual interrupt on an interrupt handle
  - [`zx_interrupt_ack()`] - Acknowledge an interrupt and re-arm it
 
-[`zx_interrupt_ack()`]: reference/syscalls/interrupt_ack.md
-[`zx_interrupt_bind()`]: reference/syscalls/interrupt_bind.md
-[`zx_interrupt_create()`]: reference/syscalls/interrupt_create.md
-[`zx_interrupt_destroy()`]: reference/syscalls/interrupt_destroy.md
-[`zx_interrupt_trigger()`]: reference/syscalls/interrupt_trigger.md
-[`zx_interrupt_wait()`]: reference/syscalls/interrupt_wait.md
+[`zx_interrupt_ack()`]: /reference/syscalls/interrupt_ack.md
+[`zx_interrupt_bind()`]: /reference/syscalls/interrupt_bind.md
+[`zx_interrupt_create()`]: /reference/syscalls/interrupt_create.md
+[`zx_interrupt_destroy()`]: /reference/syscalls/interrupt_destroy.md
+[`zx_interrupt_trigger()`]: /reference/syscalls/interrupt_trigger.md
+[`zx_interrupt_wait()`]: /reference/syscalls/interrupt_wait.md

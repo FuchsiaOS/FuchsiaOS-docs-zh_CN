@@ -95,4 +95,4 @@ the Zircon kernel.
 [driver-runtime]: driver_framework.md#driver_runtime
 [node-topology]: drivers_and_nodes.md#node_topology
 [fuchsia-device-fs]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.device.fs/exporter.fidl;l=12
-[components]: concepts/components/v2/README.md
+[components]: /concepts/components/v2/README.md

@@ -7,8 +7,8 @@ and preprocessor macros must have names that start with `ZX_`.  Types defined as
 part of the interface must have names that begin with `zx_` and end with `_t`.
 
 Every function that is part of the interface must be documented with a markdown
-file in zircon/syscalls/ and
-linked from zircon/syscalls.md .
+file in /zircon/syscalls/ and
+linked from /zircon/syscalls.md .
 
 ## Function Names
 

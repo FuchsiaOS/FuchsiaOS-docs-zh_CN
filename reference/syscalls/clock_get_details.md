@@ -27,7 +27,7 @@ zx_status_t zx_clock_get_details(zx_handle_t handle,
 ## DESCRIPTION
 
 Fetches the fine grained details of the clock object. See
-[clocks](reference/kernel_objects/clock.md) for the specifics of the details
+[clocks](/reference/kernel_objects/clock.md) for the specifics of the details
 reported. Currently, there is only one details structure defined for clocks,
 `zx_clock_details_v1_t`. Users must specify the version of the structure using
 the options parameter as well as providing at least
@@ -72,8 +72,8 @@ out parameter.
 
 <!-- References updated by update-docs-from-fidl, do not edit. -->
 
-[clock transformations]: concepts/kernel/clock_transformations.md
-[clocks]: reference/kernel_objects/clock.md
+[clock transformations]: /concepts/kernel/clock_transformations.md
+[clocks]: /reference/kernel_objects/clock.md
 [`zx_clock_create()`]: clock_create.md
 [`zx_clock_read()`]: clock_read.md
 [`zx_clock_update()`]: clock_update.md

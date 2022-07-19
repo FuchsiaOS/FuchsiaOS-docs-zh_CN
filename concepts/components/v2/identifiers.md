@@ -115,7 +115,7 @@ There are three types of component monikers:
 Every component instance has a unique absolute moniker. Consider the following
 example component instance tree:
 
-<br>![Diagram of Absolute Monikers](reference/components/images/monikers_absolute.png)<br>
+<br>![Diagram of Absolute Monikers](/reference/components/images/monikers_absolute.png)<br>
 
 -   `/alice:0/carol:0/sandy:0`: Uniquely identifies the component instance
     "sandy" as the descendent of "alice" and "carol".
@@ -131,14 +131,14 @@ component instances on a target device.
 For more details on component moniker syntax, see the
 [component moniker reference][moniker-reference].
 
-[glossary.component-url]: glossary/README.md#component-url
-[glossary.moniker]: glossary/README.md#moniker
-[component-select]: development/tools/ffx/commands/component-select.md
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.moniker]: /glossary/README.md#moniker
+[component-select]: /development/tools/ffx/commands/component-select.md
 [doc-manifests-children]: https://fuchsia.dev/reference/cml#children
-[doc-manifests-declaration]: concepts/components/v2/component_manifests.md#component-declaration
-[doc-package]: concepts/packages/package.md
-[doc-resolvers]: concepts/components/v2/capabilities/resolvers.md
-[moniker-reference]: reference/components/moniker.md
-[url-reference]: reference/components/url.md
-[test-hermeticity]: development/testing/components/test_runner_framework.md#hermeticity
+[doc-manifests-declaration]: /concepts/components/v2/component_manifests.md#component-declaration
+[doc-package]: /concepts/packages/package.md
+[doc-resolvers]: /concepts/components/v2/capabilities/resolvers.md
+[moniker-reference]: /reference/components/moniker.md
+[url-reference]: /reference/components/url.md
+[test-hermeticity]: /development/testing/components/test_runner_framework.md#hermeticity
 [wiki-url]: https://en.wikipedia.org/wiki/URL

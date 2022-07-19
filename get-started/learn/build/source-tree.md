@@ -15,7 +15,7 @@ projects in the Fuchsia tree.
 
 <aside class="key-point">
 The bootstrap script performs the step described in this section for you when
-you <a href="get-started/get_fuchsia_source.md">download the source</a>.
+you <a href="/get-started/get_fuchsia_source.md">download the source</a>.
 </aside>
 
 You initialize a local jiri checkout using the `import` command with an XML
@@ -76,7 +76,7 @@ you can expect to find along the way:
     <td><code>boards</code></td>
     <td>
       Contains all the default <a
-      href="development/build/build_system/boards_and_products.md">board
+      href="/development/build/build_system/boards_and_products.md">board
       configurations</a> supported and maintained by the Fuchsia team.
     </td>
   </tr>
@@ -84,7 +84,7 @@ you can expect to find along the way:
     <td><code>build</code></td>
     <td>
       Shared configurations and default templates for the <a
-      href="development/build/build_system/index.md">Fuchsia
+      href="/development/build/build_system/index.md">Fuchsia
       build system</a>.
     </td>
   </tr>
@@ -93,7 +93,7 @@ you can expect to find along the way:
     <td>
       Top-level groupings of build target labels typically included together in
       a build configuration. See <a
-      href="development/build/build_system/bundles.md">Bundles</a>
+      href="/development/build/build_system/bundles.md">Bundles</a>
       for more details.
     </td>
   </tr>
@@ -115,7 +115,7 @@ you can expect to find along the way:
     <td><code>products</code></td>
     <td>
       Contains all the default <a
-      href="development/build/build_system/boards_and_products.md">product
+      href="/development/build/build_system/boards_and_products.md">product
       configurations</a> supported and maintained by the Fuchsia team.
     </td>
   </tr>
@@ -124,7 +124,7 @@ you can expect to find along the way:
     <td>
       Various developer tools to simplify working with the Fuchsia source tree,
       including the subcommands used in <a
-      href="development/build/fx.md">fx workflows</a>.
+      href="/development/build/fx.md">fx workflows</a>.
     </td>
   </tr>
   <tr>
@@ -162,7 +162,7 @@ you can expect to find along the way:
   <tr>
     <td><code>zircon</code></td>
     <td>
-      Source code for Fuchsia's <a href="concepts/kernel/README.md">Zircon
+      Source code for Fuchsia's <a href="/concepts/kernel/README.md">Zircon
       core</a>, including the kernel.
     </td>
   </tr>
@@ -199,7 +199,7 @@ but may provide some interesting places to begin exploring:
     <td><code>src/developer</code></td>
     <td>
       Developer tools running on the target, including <a
-      href="development/tools/ffx/overview.md">ffx</a>.
+      href="/development/tools/ffx/overview.md">ffx</a>.
     </td>
   </tr>
   <tr>
@@ -252,22 +252,22 @@ but may provide some interesting places to begin exploring:
   <tr>
     <td><code>src/session</code></td>
     <td>
-      <a href="concepts/session/introduction.md">Session framework</a>.
+      <a href="/concepts/session/introduction.md">Session framework</a>.
     </td>
   </tr>
   <tr>
     <td><code>src/storage</code></td>
     <td>
       Support for <a
-      href="concepts/filesystems/filesystems.md">filesystems</a> and
+      href="/concepts/filesystems/filesystems.md">filesystems</a> and
       volume management.
     </td>
   </tr>
   <tr>
     <td><code>src/sys</code></td>
     <td>
-      <a href="concepts/components/v2/README.md">Component framework</a>
-      and services for <a href="concepts/packages/package.md">package
+      <a href="/concepts/components/v2/README.md">Component framework</a>
+      and services for <a href="/concepts/packages/package.md">package
       management</a>.
     </td>
   </tr>
@@ -279,7 +279,7 @@ but may provide some interesting places to begin exploring:
     <td><code>src/ui</code></td>
     <td>
       Services to support graphical user interface (GUI), including <a
-      href="development/graphics/scenic/README.md">Scenic</a>.
+      href="/development/graphics/scenic/README.md">Scenic</a>.
     </td>
   </tr>
   <tr>
@@ -293,7 +293,7 @@ but may provide some interesting places to begin exploring:
 </table>
 
 Note: For more details on how projects are structured in the Fuchsia tree, see
-[Source code layout](development/source_code/layout.md).
+[Source code layout](/development/source_code/layout.md).
 
 
 ## Exercise: Navigate the source tree
@@ -314,26 +314,26 @@ the Fuchsia tree as well.
 If you're not sure where to start, you can use the `fd` utility to perform fuzzy
 searches for directories, then navigate to the location of a search result.
 
-Run the following command to run an `fd` search for `component_manager`:
+Run the following command to run an `fd` search for `session_manager`:
 
 
 ```posix-terminal
-fd component_manager
+fd session_manager
 ```
 
 <aside class="key-point">
 This tool is configured in your environment using <code>fx-env.sh</code>. If you
 are unable to access the <code>fd</code> command, ensure you have
-<a href="get-started/get_fuchsia_source.md#set-up-environment-variables">
+<a href="/get-started/get_fuchsia_source.md#set-up-environment-variables">
 set up your environment</a>.
 </aside>
 
 The utility prints a few possible options for you to choose from. Select option
-2 to navigate to `src/sys/component_manager`:
+2 to navigate to `src/session/bin/session_manager`:
 
 ```none {:.devsite-disable-click-to-copy}
-[1] src/session/bin/component_manager
-[2] src/sys/component_manager
+[1] src/session/bin/session_manager
+[2] src/session/tests/session_manager
 
 ```
 

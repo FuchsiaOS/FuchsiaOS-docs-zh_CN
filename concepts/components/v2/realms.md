@@ -8,19 +8,19 @@ word for any sub-tree of the
 [component instance tree][glossary.component-instance-tree].
 
 Component instances may contain [children](#child-component-instances). Each
-[child component instance](glossary#child-component-instance) in turn
-defines its own [sub-realm](glossary#sub-realm). The union of these
+[child component instance](/glossary#child-component-instance) in turn
+defines its own [sub-realm](/glossary#sub-realm). The union of these
 sub-realms, along with the
-[parent component instance](glossary#parent-component-instance), is
+[parent component instance](/glossary#parent-component-instance), is
 equivalent to a subtree. Therefore, it is common to conceive of a realm as a
 component instance along with its set of children.
 
 Realms play a special role in the component framework. A realm is an
 *encapsulation boundary* for component instances. This means:
 
--   Realms act as a [capability](glossary#capability) boundary. It's up to
+-   Realms act as a [capability](/glossary#capability) boundary. It's up to
     the realm to decide whether a capability originating in the realm can be
-    [routed](glossary#capability-routing) to component instances
+    [routed](/glossary#capability-routing) to component instances
     outside of the realm. This is accomplished through an [`expose`][expose]
     declaration in a [component manifest][component-manifests].
 -   The internal structure of a sub-realm is opaque to the parent component
@@ -128,14 +128,10 @@ A *collection* is a container for [dynamic children](#dynamic-children) that
 may be created and destroyed at runtime using the
 [Realm](#realm-framework-protocol) framework service.
 
-Collections support three modes of *durability*:
+Collections support two modes of *durability*:
 
 -   *Transient*: The instances in a *transient* collection are automatically
     destroyed when the instance containing the collection is stopped.
--   *Persistent*: The instances in a *persistent* collection exist until they
-    are explicitly destroyed or the entire collection is removed.
-    [storage capability][glossary.storage capability] must be offered to
-    the component for this option to be available.
 -   *Single Run*: The instances in a *single run* collection are started when
     they are created, and destroyed when they are stopped. This means that the
     instances in a single run collection can only be run once.
@@ -189,12 +185,12 @@ APIs for a component instance to manage the children in its realm, such as
 binding to children and creating dynamic children. See the linked FIDL
 definitions for full documentation.
 
-[glossary.storage capability]: glossary/README.md#storage-capability
+[glossary.storage capability]: /glossary/README.md#storage-capability
 [children]: https://fuchsia.dev/reference/cml#children
 [collections]: https://fuchsia.dev/reference/cml#collections
 [component-manifest-examples]: ./component_manifests.md#examples
 [component-manifests]: ./component_manifests.md
-[component-urls]: concepts/components/v2/identifiers.md#component-urls
+[component-urls]: /concepts/components/v2/identifiers.md#component-urls
 [environments]: ./environments.md
 [expose]: https://fuchsia.dev/reference/cml#expose
 [offer]: https://fuchsia.dev/reference/cml#offer
@@ -204,4 +200,4 @@ definitions for full documentation.
 [runners]: ./capabilities/runners.md
 [topology-instance-tree]: ./topology.md#component-instance-tree
 [use]: https://fuchsia.dev/reference/cml#use
-[lifecycle]: concepts/components/v2/lifecycle.md
+[lifecycle]: /concepts/components/v2/lifecycle.md

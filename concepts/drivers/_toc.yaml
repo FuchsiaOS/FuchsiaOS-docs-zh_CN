@@ -7,14 +7,14 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: concepts/drivers/README.md
+  path: /concepts/drivers/README.md
 - title: "Driver framework (DFv2)"
-  path: concepts/drivers/driver_framework.md
+  path: /concepts/drivers/driver_framework.md
 - title: "Comparison between DFv1 and DFv2"
-  path: concepts/drivers/comparison_between_dfv1_and_dfv2.md
+  path: /concepts/drivers/comparison_between_dfv1_and_dfv2.md
 - title: "Drivers and nodes"
-  path: concepts/drivers/drivers_and_nodes.md
+  path: /concepts/drivers/drivers_and_nodes.md
 - title: "Driver binding"
-  path: concepts/drivers/driver_binding.md
+  path: /concepts/drivers/driver_binding.md
 - title: "Driver communication"
-  path: concepts/drivers/driver_communication.md
+  path: /concepts/drivers/driver_communication.md

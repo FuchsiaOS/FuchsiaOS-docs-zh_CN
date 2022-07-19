@@ -1,7 +1,7 @@
 # Magma: Porting Guide
 
 For an overview of Magma including background, hardware requirements, and
-description of architecture, please see [Magma: Overview](development/graphics/magma/README.md).
+description of architecture, please see [Magma: Overview](/development/graphics/magma/README.md).
 
 This document gives a process a driver developer can follow to port a Vulkan
 driver to Fuchsia.
@@ -300,16 +300,16 @@ The MSD and ICD must be updated with new code drops from the hardware vendor.
 Ideally the code is upstreamed and the GPU vendor will supply and maintain
 the system driver using the Zircon DDK.
 
-[glossary.bootfs]: glossary/README.md#bootfs
-[paving]: development/build/fx.md#what-is-paving
-[boarddriver]: development/drivers/concepts/device_driver_model/platform-bus.md
-[icdabi]: concepts/packages/system.md#vulkan-icd
-[banjo]: development/drivers/concepts/device_driver_model/banjo.md
-[sysmem]: development/graphics/sysmem/concepts/sysmem.md
+[glossary.bootfs]: /glossary/README.md#bootfs
+[paving]: /development/build/fx.md#what-is-paving
+[boarddriver]: /development/drivers/concepts/device_driver_model/platform-bus.md
+[icdabi]: /concepts/packages/system.md#vulkan-icd
+[banjo]: /development/drivers/concepts/device_driver_model/banjo.md
+[sysmem]: /development/graphics/sysmem/concepts/sysmem.md
 [vkreadback]: /src/graphics/tests/vkreadback
 [hardwareunit]: /src/graphics/drivers/msd-arm-mali/tests/integration/run_unit_tests.cc
 [vulkanheader]: https://fuchsia.googlesource.com/third_party/Vulkan-Headers/+/refs/heads/master/include/vulkan/vulkan_fuchsia.h
-[scenic]: concepts/ui/scenic/index.md
+[scenic]: /concepts/ui/scenic/index.md
 [msd-arm-mali]: /src/graphics/drivers/msd-arm-mali
 [aml-gpu]: /src/graphics/drivers/aml-gpu
 [msd-intel-gen]: /src/graphics/drivers/msd-intel-gen
@@ -321,19 +321,19 @@ the system driver using the Zircon DDK.
 [intelgn]: /src/graphics/lib/magma/gnbuild/magma-intel-gen/BUILD.gn
 [fuchsia.hardware.clock.Clock]: /sdk/banjo/fuchsia.hardware.clock/clock.fidl
 [fuchsia.hardware.power.Power]: /sdk/banjo/fuchsia.hardware.power/power.fidl
-[dgsd]: development/drivers/concepts/getting_started.md
-[libc]: concepts/kernel/libc.md
-[fdio]: concepts/filesystems/life_of_an_open.md#fdio
+[dgsd]: /development/drivers/concepts/getting_started.md
+[libc]: /concepts/kernel/libc.md
+[fdio]: /concepts/filesystems/life_of_an_open.md#fdio
 [versionscript]: /src/graphics/lib/magma/scripts/libvulkan.version
 [allowlist]: /src/graphics/lib/magma/gnbuild/imported_symbols.allowlist
 [magma_pdev_entry]: /src/graphics/lib/magma/src/magma_util/platform/zircon/driver_entry.gni
-[vmo]: reference/kernel_objects/vm_object.md
+[vmo]: /reference/kernel_objects/vm_object.md
 [msdheader]: /src/graphics/lib/magma/include/msd/msd.h
 [magmaheader]: /src/graphics/lib/magma/include/magma/magma.h
-[l0]: development/graphics/magma/concepts/contributing.md#l0
-[l1]: development/graphics/magma/concepts/contributing.md#l1
-[teststrategy]: development/graphics/magma/concepts/test_strategy.md
+[l0]: /development/graphics/magma/concepts/contributing.md#l0
+[l1]: /development/graphics/magma/concepts/contributing.md#l1
+[teststrategy]: /development/graphics/magma/concepts/test_strategy.md
 [loader-readme]: /src/graphics/bin/vulkan_loader/README.md
 [extmemoryspec]: https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_FUCHSIA_external_memory.html
 [extsemaphorespec]: https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_FUCHSIA_external_semaphore.html
-[package-deployment]: development/build/fx.md#package_deployment_options
+[package-deployment]: /development/build/fx.md#package_deployment_options

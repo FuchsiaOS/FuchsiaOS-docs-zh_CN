@@ -116,14 +116,14 @@ support standard Fuchsia URL schemes:
 | `base_resolver`     | [`fuchsia-pkg`][url-pkg]   |
 | `universe_resolver` | [`fuchsia-pkg`][url-pkg]   |
 
-[glossary.component-url]: glossary/README.md#component-url
-[glossary.environment]: glossary/README.md#environment
-[glossary.outgoing-directory]: glossary/README.md#outgoing-directory
-[capability-routing]: concepts/components/v2/capabilities/README.md#routing
-[component-manifest]: concepts/components/v2/component_manifests.md
-[environment]: concepts/components/v2/environments.md
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.environment]: /glossary/README.md#environment
+[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
+[component-manifest]: /concepts/components/v2/component_manifests.md
+[environment]: /concepts/components/v2/environments.md
 [fidl-resolver]: /sdk/fidl/fuchsia.component.resolution/resolver.fidl
 [fidl-decl]: /sdk/fidl/fuchsia.component.decl/component.fidl
 [fidl-directory]: /sdk/fidl/fuchsia.io/directory.fidl
-[url-boot]: reference/components/url.md#fuchsia-boot
-[url-pkg]: reference/components/url.md#fuchsia-pkg
+[url-boot]: /reference/components/url.md#fuchsia-boot
+[url-pkg]: /reference/components/url.md#fuchsia-pkg

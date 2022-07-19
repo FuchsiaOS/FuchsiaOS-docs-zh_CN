@@ -418,7 +418,7 @@ inheritance, including multiple inheritance (in the style of mixins).
 
 
 ##### Footnote 1
-The introduction of [Ordinal Hashing](contribute/governance/rfcs/0020_interface_ordinal_hashing.md) for methods, combined with an
+The introduction of [Ordinal Hashing](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md) for methods, combined with an
 intended change to up method ordinals from 32 bits to 64 bits in a future proposal,
 will likely make this breakage at a distance inexistant (in practical terms), and
 will revisit the use of [FragileBase] then.
@@ -428,9 +428,9 @@ Property: A hypothetical FIDL extension to facilitate observation / data binding
 Loosely speaking, the bindings would produce methods for accessing, modifying, and/or observing a value exposed by the interface.
 
 <!-- xref table -->
-[fidl-api]: development/api/fidl.md
-[rfc0053]: contribute/governance/rfcs/0053_epitaphs.md
-[rfc0020]: contribute/governance/rfcs/0020_interface_ordinal_hashing.md
+[fidl-api]: /development/api/fidl.md
+[rfc0053]: /contribute/governance/rfcs/0053_epitaphs.md
+[rfc0020]: /contribute/governance/rfcs/0020_interface_ordinal_hashing.md
 [fuchsia.media]: /sdk/fidl/fuchsia.media/
 [AudioCapturer]: https://fuchsia.googlesource.com/fuchsia/+/81597afce01451c2c9d1af6f03453f036b63adff/sdk/fidl/fuchsia.media/audio_capturer.fidl#255
 [StreamBufferSet]: https://fuchsia.googlesource.com/fuchsia/+/985ff2f0c4374dddafb8ecf2f0e9a83c772de623/public/fidl/fuchsia.media/stream.fidl#9

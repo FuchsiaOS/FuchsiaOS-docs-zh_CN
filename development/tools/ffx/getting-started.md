@@ -1,7 +1,7 @@
 # Getting started with ffx
 
 This doc will guide you through some of the features of `ffx`. For an overview
-of the design and components of `ffx`, see [the ffx overview](development/tools/ffx/overview.md).
+of the design and components of `ffx`, see [the ffx overview](/development/tools/ffx/overview.md).
 
 ## Contacting the ffx team
 
@@ -19,11 +19,11 @@ interface support,
 run `ffx emu start --net tap --headless`.
 
 For more information on configuring the emulator
-see, [Start the Fuchsia emulator](get-started/set_up_femu.md).
+see, [Start the Fuchsia emulator](/get-started/set_up_femu.md).
 
 Your device must be running a `core`
-[product configuration](development/build/build_system/boards_and_products.md)
-or a product configuration that extends `core` (such as `workstation`).
+[product configuration](/development/build/build_system/boards_and_products.md)
+or a product configuration that extends `core` (such as `workstation_eng`).
 
 Optionally, you can run `ffx log`, which will provide some additional information
 about the interactions between `ffx` and your Fuchsia target device.
@@ -158,24 +158,24 @@ reboot a device, respectively.
 
 ## Configuration
 
-See documentation for the [config command](development/tools/ffx/commands/config.md).
+See documentation for the [config command](/development/tools/ffx/commands/config.md).
 
 ## Interacting with Components
 
 ### Selectors
 
 Many `ffx` commands that use components take selectors as a parameter. You can read more about selectors and their syntax
-in [component selector documentation](development/tools/ffx/commands/component-select.md).
+in [component selector documentation](/development/tools/ffx/commands/component-select.md).
 
 ### Inspecting the component topology
 
 You can use the `component select` command to
 * inspect services in the
-  [component topology](concepts/components/v2/topology.md)
+  [component topology](/concepts/components/v2/topology.md)
 * search for components that expose a service.
 
 For example, the following command will display all services offered by
-[legacy components](glossary/README.md#components-v1):
+[legacy components](/glossary/README.md#components-v1):
 
 ```none
 $ fx ffx component select moniker 'core/appmgr:out:*'
@@ -257,16 +257,16 @@ realm provides the following capabilities:
 * `fuchsia.process.Launcher` protocol
 * `tmp` storage
 * `data` storage
-* [`dev` directory](concepts/process/namespaces.md#typical_directory_structure): the root
+* [`dev` directory](/concepts/process/namespaces.md#typical_directory_structure): the root
 device tree of the system
-* [`boot` directory](concepts/process/namespaces.md#typical_directory_structure): the full
+* [`boot` directory](/concepts/process/namespaces.md#typical_directory_structure): the full
 bootfs filesystem used by the system during bootup
 
 CML components are run with the `ffx component run` subcommand. These components are automatically
 destroyed when they stop.
 
 Note: `fx serve` must be running in order to run a package that is not
-[in base or cached](development/build/build_system/boards_and_products.md#dependency_sets).
+[in base or cached](/development/build/build_system/boards_and_products.md#dependency_sets).
 
 Here's an example of running the Rust hello-world component. First, you'll need
 the hello-world package in your universe:
@@ -297,7 +297,7 @@ CMX components are run with the `ffx component run-legacy` subcommand. `stdout` 
 be streamed to the corresponding descriptor on the host terminal.
 
 Note: `fx serve` must be running in order to run a package that is not
-[in base or cached](development/build/build_system/boards_and_products.md#dependency_sets).
+[in base or cached](/development/build/build_system/boards_and_products.md#dependency_sets).
 
 ## Resolving connectivity issues
 
@@ -363,4 +363,4 @@ above and 2) device syslog if available.Bug link: ...
 ## Next steps
 
 - Please provide feedback on this doc by [reaching out to the ffx team](#contacting_the_ffx_team)!
-- Learn how to [extend `ffx`](development/tools/ffx/development/plugins.md).
+- Learn how to [extend `ffx`](/development/tools/ffx/development/plugins.md).

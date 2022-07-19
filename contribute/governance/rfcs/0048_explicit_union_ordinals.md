@@ -29,7 +29,7 @@ Aside from unions, names have no ABI impact when it comes to types: enums, bits,
 struct, and tables can all be renamed, or have their members renamed without any
 worries to binary compatibility. Unions are different since we chose to use a
 hash based technique to assign variant ordinals (see [RFC-0061: Extensible
-Unions](contribute/governance/rfcs/0061_extensible_unions.md)).
+Unions](/contribute/governance/rfcs/0061_extensible_unions.md)).
 
 We have recognized this shortcoming, and have proposed ways to address it: see
 [Intent to implement: xunion ordinals change](#footnote3), which suggests
@@ -52,8 +52,8 @@ motivated by two key use cases:
 
 * **Protocols can be composed**, and we therefore need a global ordinal
   assignment scheme to avoid breakage at a distance issues. See [RFC-0063:
-  [OrdinalRange]](contribute/governance/rfcs/0063_OrdinalRange.md), [RFC-0020: Interface Ordinal Hashing](contribute/governance/rfcs/0020_interface_ordinal_hashing.md),
-  and [RFC-0029: Increasing Method Ordinals](contribute/governance/rfcs/0029_increasing_method_ordinals.md).
+  [OrdinalRange]](/contribute/governance/rfcs/0063_OrdinalRange.md), [RFC-0020: Interface Ordinal Hashing](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md),
+  and [RFC-0029: Increasing Method Ordinals](/contribute/governance/rfcs/0029_increasing_method_ordinals.md).
 * Practically **globally unique identifiers** greatly simplify and bolster
   monitoring and tracing like needs, e.g. fidlcat hinges on the ability to
   uniquely identify method invocations.
@@ -61,7 +61,7 @@ motivated by two key use cases:
 These use cases do not translate to types.
 
 The effect of this proposal is that hashing is used only for protocols. There is
-only one hashing scheme, i.e. the one described in [RFC-0029](contribute/governance/rfcs/0029_increasing_method_ordinals.md).
+only one hashing scheme, i.e. the one described in [RFC-0029](/contribute/governance/rfcs/0029_increasing_method_ordinals.md).
 
 ### 64 bit ordinals is the standard
 
@@ -181,7 +181,7 @@ None that is particularly relevant.
 
 ##### Footnote1
 
-"Union" in this document refers to [extensible unions](contribute/governance/rfcs/0061_extensible_unions.md), not "static"
+"Union" in this document refers to [extensible unions](/contribute/governance/rfcs/0061_extensible_unions.md), not "static"
 unions nearing their end-of-life.
 
 ##### Footnote2
@@ -237,8 +237,8 @@ soft-transition, and Jeremy's successfully done it for method ordinals. Please
 chime in with comments, otherwise we'll get started on this work soon.
 
 <!-- xrefs -->
-[wire-format-structs]: reference/fidl/language/wire-format#structures
-[wire-format-tables]: reference/fidl/language/wire-format#tables
-[wire-format-envelopes]: reference/fidl/language/wire-format#envelopes
-[language-spec]: reference/fidl/language/language.md
-[grammar]: reference/fidl/language/grammar.md
+[wire-format-structs]: /reference/fidl/language/wire-format#structures
+[wire-format-tables]: /reference/fidl/language/wire-format#tables
+[wire-format-envelopes]: /reference/fidl/language/wire-format#envelopes
+[language-spec]: /reference/fidl/language/language.md
+[grammar]: /reference/fidl/language/grammar.md

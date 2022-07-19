@@ -20,7 +20,7 @@ zx_status_t zx_job_create(zx_handle_t parent_job,
 
 ## DESCRIPTION
 
-`zx_job_create()` creates a new child [job object](reference/kernel_objects/job.md) given a
+`zx_job_create()` creates a new child [job object](/reference/kernel_objects/job.md) given a
 parent job.
 
 Upon success a handle for the new job is returned.

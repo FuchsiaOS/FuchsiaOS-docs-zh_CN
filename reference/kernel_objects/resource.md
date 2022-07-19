@@ -65,7 +65,7 @@ out more fine-grained resources to other drivers.
  - [`zx_resource_create()`]
  - [`zx_vmo_create_physical()`]
 
-[`zx_interrupt_create()`]: reference/syscalls/interrupt_create.md
-[`zx_ioports_request()`]: reference/syscalls/ioports_request.md
-[`zx_resource_create()`]: reference/syscalls/resource_create.md
-[`zx_vmo_create_physical()`]: reference/syscalls/vmo_create_physical.md
+[`zx_interrupt_create()`]: /reference/syscalls/interrupt_create.md
+[`zx_ioports_request()`]: /reference/syscalls/ioports_request.md
+[`zx_resource_create()`]: /reference/syscalls/resource_create.md
+[`zx_vmo_create_physical()`]: /reference/syscalls/vmo_create_physical.md

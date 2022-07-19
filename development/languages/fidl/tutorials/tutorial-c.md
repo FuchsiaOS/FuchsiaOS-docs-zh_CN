@@ -12,7 +12,7 @@ using the FIDL InterProcess Communication (**IPC**) system in Fuchsia.
 
 Refer to the [main FIDL page](../README.md) for details on the
 design and implementation of FIDL, as well as the
-[instructions for getting and building Fuchsia](get-started/README.md).
+[instructions for getting and building Fuchsia](/get-started/README.md).
 
 The [reference](#reference) section documents the bindings.
 
@@ -298,9 +298,9 @@ zx_status_t fidl_encode_msg(const fidl_type_t* type, fidl_outging_msg_t* msg,
 ```
 
 Declared in
-[lib/fidl/coding.h](/zircon/system/ulib/fidl/include/lib/fidl/coding.h),
+[lib/fidl/coding.h](///sdk/lib/fidl_base/include/lib/fidl/coding.h),
 defined in
-[encoding.cc](/zircon/system/ulib/fidl/encoding.cc).
+[encoding.cc](///sdk/lib/fidl_base/encoding.cc).
 
 Encodes and validates exactly **num_bytes** of the object in **bytes** in-place
 by performing a depth-first traversal of the encoding data from **type**
@@ -369,9 +369,9 @@ zx_status_t fidl_decode_msg(const fidl_type_t* type, fidl_incoming_msg_t* msg,
 ```
 
 Declared in
-[lib/fidl/coding.h](/zircon/system/ulib/fidl/include/lib/fidl/coding.h),
+[lib/fidl/coding.h](///sdk/lib/fidl_base/include/lib/fidl/coding.h),
 defined in
-[decoding_and_validating.cc](/zircon/system/ulib/fidl/decoding_and_validating.cc).
+[decoding_and_validating.cc](///sdk/lib/fidl_base/decoding_and_validating.cc).
 
 Decodes and validates the object in **bytes** in-place by performing a
 depth-first traversal of the encoding data from **type** to fix up internal
@@ -435,9 +435,9 @@ zx_status_t fidl_epitaph_write(zx_handle_t channel, zx_status_t error);
 ```
 
 Declared in
-[lib/fidl/epitaph.h](/zircon/system/ulib/fidl/include/lib/fidl/epitaph.h),
+[lib/fidl/epitaph.h](/sdk/lib/fidl/include/lib/fidl/epitaph.h),
 defined in
-[epitaph.c](/zircon/system/ulib/fidl/epitaph.c).
+[epitaph.c](/sdk/lib/fidl/epitaph.c).
 
 This function sends an epitaph with the given error number down the given
 channel.  An epitaph is a special message, with ordinal 0xFFFFFFFF, which
@@ -646,9 +646,9 @@ the channel and calls through the given dispatcher (and ops table) when they
 arrive.
 
 <!-- xrefs -->
-[c-family-comparison]: development/languages/fidl/guides/c-family-comparison.md
+[c-family-comparison]: /development/languages/fidl/guides/c-family-comparison.md
 [echo-fidl]: /examples/fidl/fuchsia.examples/echo.test.fidl
 [echo-server]: /examples/fidl/c/server/echo_server.c
-[fidl-intro]: development/languages/fidl/tutorials/fidl.md
-[llcpp-tutorial]: development/languages/fidl/tutorials/llcpp
-[wire-format]: reference/fidl/language/wire-format
+[fidl-intro]: /development/languages/fidl/tutorials/fidl.md
+[llcpp-tutorial]: /development/languages/fidl/tutorials/llcpp
+[wire-format]: /reference/fidl/language/wire-format

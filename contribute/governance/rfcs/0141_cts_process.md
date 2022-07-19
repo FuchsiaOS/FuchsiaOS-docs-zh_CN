@@ -333,6 +333,6 @@ APIs.
 Many programming languages have similar testing requirements for new APIs, as
 well.
 
-[cts]: contribute/governance/rfcs/0015_cts.md
-[fsi]: concepts/packages/system.md
-[doc-rubric]: development/api/documentation.md
+[cts]: /contribute/governance/rfcs/0015_cts.md
+[fsi]: /concepts/packages/system.md
+[doc-rubric]: /development/api/documentation.md

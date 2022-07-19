@@ -145,8 +145,8 @@ fx test -vo fidl-example-llcpp-test
 ```
 
 <!-- xrefs -->
-[generated-code]: development/languages/fidl/guides/generated-code.md#rust
-[bindings-ref]: reference/fidl/bindings/llcpp-bindings.md
-[fidl-intro]: development/languages/fidl/tutorials/fidl.md
-[overview]: development/languages/fidl/tutorials/overview.md
-[server-tut]: development/languages/fidl/tutorials/llcpp/basics/server.md
+[generated-code]: /development/languages/fidl/guides/generated-code.md#rust
+[bindings-ref]: /reference/fidl/bindings/llcpp-bindings.md
+[fidl-intro]: /development/languages/fidl/tutorials/fidl.md
+[overview]: /development/languages/fidl/tutorials/overview.md
+[server-tut]: /development/languages/fidl/tutorials/llcpp/basics/server.md

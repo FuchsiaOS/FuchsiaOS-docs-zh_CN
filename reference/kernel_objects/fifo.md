@@ -21,6 +21,6 @@ TODO
  - [`zx_fifo_read()`] - read data from a fifo
  - [`zx_fifo_write()`] - write data to a fifo
 
-[`zx_fifo_create()`]: reference/syscalls/fifo_create.md
-[`zx_fifo_read()`]: reference/syscalls/fifo_read.md
-[`zx_fifo_write()`]: reference/syscalls/fifo_write.md
+[`zx_fifo_create()`]: /reference/syscalls/fifo_create.md
+[`zx_fifo_read()`]: /reference/syscalls/fifo_read.md
+[`zx_fifo_write()`]: /reference/syscalls/fifo_write.md

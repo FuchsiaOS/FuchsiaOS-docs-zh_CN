@@ -24,5 +24,5 @@ written in component manifest language (CML). The legacy framework based on
 <code>appmgr</code> and declared using CMX manifests is not covered here.
 
 <p>For more details on the legacy component framework, see
-<a href="concepts/components/v1">legacy components</a>.
+<a href="/concepts/components/v1">legacy components</a>.
 </aside>

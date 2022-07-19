@@ -59,10 +59,10 @@ their implementation details can vary.
 The developer guide includes an
 [example implementation of an `InputHandler`][example-input-handler].
 
-[glossary.InputDeviceBinding]: glossary/README.md#InputDeviceBinding
-[glossary.InputHandler]: glossary/README.md#InputHandler
-[glossary.InputEvent]: glossary/README.md#InputEvent
-[glossary.InputReport]: glossary/README.md#InputReport
-[glossary.InputDeviceDescriptor]: glossary/README.md#InputDeviceDescriptor
+[glossary.InputDeviceBinding]: /glossary/README.md#InputDeviceBinding
+[glossary.InputHandler]: /glossary/README.md#InputHandler
+[glossary.InputEvent]: /glossary/README.md#InputEvent
+[glossary.InputReport]: /glossary/README.md#InputReport
+[glossary.InputDeviceDescriptor]: /glossary/README.md#InputDeviceDescriptor
 [input_pipeline.rs]: /src/ui/lib/input_pipeline/src/input_pipeline.rs
-[example-input-handler]: development/sessions/roles-and-responsibilities.md#handling-input
+[example-input-handler]: /development/sessions/roles-and-responsibilities.md#handling-input

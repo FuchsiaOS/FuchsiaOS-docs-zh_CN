@@ -171,13 +171,13 @@ Destroying component instance...
 
 <!-- Reference links -->
 
-[dynamic-children]: concepts/components/v2/realms.md#dynamic-children
-[component-manifests]: concepts/components/v2/component_manifests.md
-[component-collection]: concepts/components/v2/realms.md#collections
+[dynamic-children]: /concepts/components/v2/realms.md#dynamic-children
+[component-manifests]: /concepts/components/v2/component_manifests.md
+[component-collection]: /concepts/components/v2/realms.md#collections
 [ffx-component-run]: https://fuchsia.dev/reference/tools/sdk/ffx#run
-[ffx-laboratory]: development/components/run.md#ffx-laboratory
+[ffx-laboratory]: /development/components/run.md#ffx-laboratory
 [ffx-component]: https://fuchsia.dev/reference/tools/sdk/ffx#component
-[component-lifecycle]: concepts/components/v2/lifecycle.md
+[component-lifecycle]: /concepts/components/v2/lifecycle.md
 [ffx-component-create]: https://fuchsia.dev/reference/tools/sdk/ffx#create_2
 [ffx-component-start]: https://fuchsia.dev/reference/tools/sdk/ffx#start
 [ffx-component-stop]: https://fuchsia.dev/reference/tools/sdk/ffx#stop

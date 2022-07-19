@@ -7,7 +7,7 @@ component on the target device and monitors running processes.
 
 ![Diagram showing how "fidlcat" interacts with the debug_agent service running
 on a Fuchsia device to monitor and debug FIDL calls for a given process.]
-(get-started/images/fidl/fidlcat.png){: width="592"}
+(/get-started/images/fidl/fidlcat.png){: width="592"}
 
 Setting up the monitoring session requires the following high-level steps:
 
@@ -35,4 +35,4 @@ echo-client.cm 256109:256122 zx_channel_read(handle:handle: e4c7c57f, options:ui
     }
 ```
 Note: For complete details on `fidlcat` usage and options, see
-[Monitor and debug your FIDL calls](development/monitoring/fidlcat).
+[Monitor and debug your FIDL calls](/development/monitoring/fidlcat).

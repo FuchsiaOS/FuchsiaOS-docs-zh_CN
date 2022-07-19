@@ -7,26 +7,26 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: concepts/process/overview.md
+  path: /concepts/process/overview.md
   status: experimental
 - title: "Core libraries"
-  path: concepts/process/core_libraries.md
+  path: /concepts/process/core_libraries.md
 - title: "Namespaces"
-  path: concepts/process/namespaces.md
+  path: /concepts/process/namespaces.md
 - title: "Sandboxing"
-  path: concepts/process/sandboxing.md
+  path: /concepts/process/sandboxing.md
 - title: "Jobs"
-  path: concepts/process/jobs.md
+  path: /concepts/process/jobs.md
   status: experimental
 - title: "Booting"
   section:
   - title: "Everything between power on and your component"
-    path: concepts/process/everything_between_power_on_and_your_component.md
+    path: /concepts/process/everything_between_power_on_and_your_component.md
   - title: "Process creation"
-    path: concepts/process/process_creation.md
+    path: /concepts/process/process_creation.md
   - title: "Program loading"
-    path: concepts/process/program_loading.md
+    path: /concepts/process/program_loading.md
   - title: "Userspace bootstrapping"
-    path: concepts/process/userboot.md
+    path: /concepts/process/userboot.md
   - title: "Why Fuchsia devices reboot"
-    path: concepts/process/why_fuchsia_devices_reboot.md
+    path: /concepts/process/why_fuchsia_devices_reboot.md

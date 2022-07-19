@@ -5,7 +5,7 @@
 
 ## Summary
 
-[Logging](concepts/components/diagnostics/logs/README.md) is used extensively throughout
+[Logging](/concepts/components/diagnostics/logs/README.md) is used extensively throughout
 Fuchsia's code, but messages are logged with inconsistent severities. This
 diminishes the value of information in the logs. Below we propose semantic
 meaning for different log severity levels, and implications for logging at
@@ -86,7 +86,7 @@ entry). As with higher log levels, these logs will be consumed by
 other teams for diagnosis and so context is critical.
 
 Long-lasting states should be reported using
-[Component Inspection](development/diagnostics/inspect).
+[Component Inspection](/development/diagnostics/inspect).
 Such conditions should not be logged if they have not changed. For example,
 instead of logging "[INFO] no configs found" at a fixed interval, the Inspect
 data could contain a flag "configs_found = false," or even "config_count = 0."
@@ -141,7 +141,7 @@ the test runtime that will cause tests to fail if unexpected ERROR logs are
 observed within the test realm.
 
 The test runtime behavior described above has been implemented, tested, and
-[documented](concepts/testing/v1_test_component.md#restricting_log_severity).
+[documented](/concepts/testing/v1_test_component.md#restricting_log_severity).
 
 ## Security Consideration
 
@@ -163,7 +163,7 @@ that might contain any PII.
 ## Documentation
 
 We intend to publish these logging guidelines as a [Fuchsia Development
-Guide](development) as well.
+Guide](/development) as well.
 
 ## Drawbacks, alternatives, and unknowns
 

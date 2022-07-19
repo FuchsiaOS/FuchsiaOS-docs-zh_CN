@@ -423,7 +423,7 @@ See [Life of a handle] for a detailed example.
 Bindings may optionally use the vectorized `zx_channel_write_etc` and
 `zx_channel_call_etc` syscalls. When these are used, the first iovec entry MUST
 be present and large enough to hold the FIDL
-[transactional message header](reference/fidl/language/wire-format#transactional-messages)
+[transactional message header](/reference/fidl/language/wire-format#transactional-messages)
 (16 bytes).
 
 ### Attributes
@@ -604,15 +604,15 @@ ensuring their rights are the same.
 * [RFC-0024: Mandatory Source Compatibility][rfc0024]
 
 <!-- xrefs -->
-[jsonir]: reference/fidl/language/json-ir.md
-[rfc0024]: contribute/governance/rfcs/0024_mandatory_source_compatibility.md
-[rfc0040]: contribute/governance/rfcs/0040_identifier_uniqueness.md
-[rfc0057]: contribute/governance/rfcs/0057_default_no_handles.md
+[jsonir]: /reference/fidl/language/json-ir.md
+[rfc0024]: /contribute/governance/rfcs/0024_mandatory_source_compatibility.md
+[rfc0040]: /contribute/governance/rfcs/0040_identifier_uniqueness.md
+[rfc0057]: /contribute/governance/rfcs/0057_default_no_handles.md
 [RFC2119]: https://tools.ietf.org/html/rfc2119
 [go-generated-code-comment]: https://github.com/golang/go/issues/13560#issuecomment-288457920
-[attributes]: reference/fidl/language/attributes.md
-[Life of a handle]: concepts/fidl/life-of-a-handle.md
-[llcpp]: reference/fidl/bindings/llcpp-bindings.md
-[source-compatible]: development/languages/fidl/guides/compatibility/README.md#strict-flexible
-[soft-transitions]: contribute/governance/rfcs/0002_platform_versioning.md#terminology
-[strict-event]: contribute/governance/rfcs/0138_handling_unknown_interactions.md#changes-to-bindings
+[attributes]: /reference/fidl/language/attributes.md
+[Life of a handle]: /concepts/fidl/life-of-a-handle.md
+[llcpp]: /reference/fidl/bindings/llcpp-bindings.md
+[source-compatible]: /development/languages/fidl/guides/compatibility/README.md#strict-flexible
+[soft-transitions]: /contribute/governance/rfcs/0002_platform_versioning.md#terminology
+[strict-event]: /contribute/governance/rfcs/0138_handling_unknown_interactions.md#changes-to-bindings

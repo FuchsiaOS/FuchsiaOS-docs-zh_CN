@@ -223,12 +223,12 @@ ffx setui privacy -u true
 
 <!-- link labels -->
 [sdk]: /sdk/fidl/fuchsia.settings/
-[fidl]: concepts/fidl/overview.md
-[build]: development/build/build_system/fuchsia_build_system_overview.md
+[fidl]: /concepts/fidl/overview.md
+[build]: /development/build/build_system/fuchsia_build_system_overview.md
 [sysmgr]: /src/sys/sysmgr/README.md
 [accessibility]: /sdk/fidl/fuchsia.settings/accessibility.fidl
-[manifest]: concepts/components/v2/component_manifests.md
-[hanging-get]: development/api/fidl.md#hanging-get
-[fidl_table]: reference/fidl/language/language.md#tables
-[epitaph]: contribute/governance/rfcs/0053_epitaphs.md
+[manifest]: /concepts/components/v2/component_manifests.md
+[hanging-get]: /development/api/fidl.md#hanging-get
+[fidl_table]: /reference/fidl/language/language.md#tables
+[epitaph]: /contribute/governance/rfcs/0053_epitaphs.md
 [ffx-setui]: https://fuchsia.dev/reference/tools/sdk/ffx#setui

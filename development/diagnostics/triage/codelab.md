@@ -27,7 +27,7 @@ usefulness of Triage for everyone.
 
 Before you start on this codelab, make sure you have completed the following:
 
-*   [Getting started](get-started/README.md).
+*   [Getting started](/get-started/README.md).
 *   Made a Fuchsia build with `fx build`.
 
 ## Running Triage from the command line

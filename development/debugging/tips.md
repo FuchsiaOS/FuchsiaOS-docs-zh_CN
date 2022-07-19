@@ -49,10 +49,10 @@ is passed.
 
 ## Debugging the kernel with QEMU+GDB.
 
-See "Debugging the kernel with GDB" in [QEMU](development/debugging/qemu.md) for
+See "Debugging the kernel with GDB" in [QEMU](/development/debugging/qemu.md) for
 documentation on debugging zircon with QEMU+GDB.
 
-[fuchsia-debugging-doc]: development/debugging/debugging.md
+[fuchsia-debugging-doc]: /development/debugging/debugging.md
 
 ## Symbolizing the backtraces
 

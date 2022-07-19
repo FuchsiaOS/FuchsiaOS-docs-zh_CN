@@ -387,11 +387,11 @@ ordinals.
 
 <!-- xrefs -->
 
-[RFC-0050]: contribute/governance/rfcs/0050_syntax_revamp.md
-[traits]: /sdk/lib/fidl/llcpp/include/lib/fidl/llcpp/traits.h
+[RFC-0050]: /contribute/governance/rfcs/0050_syntax_revamp.md
+[traits]: /sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/traits.h
 [fxbug.dev/7704]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=7704
-[extensible-method-args]: contribute/governance/rfcs/0050_syntax_revamp.md#extensible-method-args
-[flattened-name]: contribute/governance/rfcs/0050_syntax_revamp.md#flattened-name
-[grammar]: contribute/governance/rfcs/0050_syntax_revamp.md#grammar
-[abi-first]: contribute/governance/rfcs/0050_syntax_revamp.md#abi-first
+[extensible-method-args]: /contribute/governance/rfcs/0050_syntax_revamp.md#extensible-method-args
+[flattened-name]: /contribute/governance/rfcs/0050_syntax_revamp.md#flattened-name
+[grammar]: /contribute/governance/rfcs/0050_syntax_revamp.md#grammar
+[abi-first]: /contribute/governance/rfcs/0050_syntax_revamp.md#abi-first
 [dart-named-params]: https://dart.dev/guides/language/language-tour#named-parameters

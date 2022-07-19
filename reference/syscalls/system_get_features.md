@@ -42,7 +42,7 @@ TODO(fxbug.dev/32253)
 platform.
 
 ## NOTES
-Refer to [Install Fuchsia on a device](development/hardware/README.md)
+Refer to [Install Fuchsia on a device](/development/hardware/README.md)
 for supported processor architectures.
 
 Refer to [zircon/features.h](/zircon/system/public/zircon/features.h) for kinds

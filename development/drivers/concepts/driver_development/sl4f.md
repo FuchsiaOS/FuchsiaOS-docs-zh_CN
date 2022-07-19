@@ -17,12 +17,12 @@ served to a Fuchsia device and run on the device. To trigger actions on a
 Fuchsia device (for example, "swipe right on the screen") from a remote test
 host, end-to-end tests send JSON-RPC requests to SL4F running on the device.
 SL4F then translates these requests into Fuchsia-equivalent
-[FIDL](development/languages/fidl) commands for various driver services on
+[FIDL](/development/languages/fidl) commands for various driver services on
 the device.
 
 <a name="figure-1"></a>
 <figure>
-  <img src="images/testing/fuchsia-e2e-test-support-system.png"
+  <img src="/images/testing/fuchsia-e2e-test-support-system.png"
        alt="Fuchsia's end-to-end test support system">
   <figcaption><b>Figure 1</b>. A diagram of Fuchsia's end-to-end test support service.</figcaption>
 </figure>

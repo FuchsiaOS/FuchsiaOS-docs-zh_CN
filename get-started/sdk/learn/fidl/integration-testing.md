@@ -82,7 +82,7 @@ fuchsia_component(
 fuchsia_cc_test(
     name = "client_integration_test",
     srcs = [ ... ],
-    depc = [ ... ],
+    deps = [ ... ],
 )
 fuchsia_component_manifest(
     name = "integration_test_manifest",

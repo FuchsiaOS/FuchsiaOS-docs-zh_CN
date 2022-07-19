@@ -353,7 +353,7 @@ The key points to take away are:
 [`Thread::Kill`]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/kernel/kernel/thread.cc;drc=4d61c1c41f71b5a0f13f67cb154c5fd3ef7fb23f;l=616
 [`arch_iframe_process_pending_signals()`]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/kernel/arch/arm64/exceptions_c.cc;drc=4d61c1c41f71b5a0f13f67cb154c5fd3ef7fb23f;l=506
 [`x86_syscall_process_pending_signals()`]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/kernel/arch/x86/faults.cc;drc=4d61c1c41f71b5a0f13f67cb154c5fd3ef7fb23f;l=526
-[`zx_task_suspend()`]: reference/syscalls/task_suspend.md
-[`zx_task_kill()`]: reference/syscalls/task_kill.md
-[`zx_port_wait()`]: reference/syscalls/port_wait.md
-[`zx_vcpu_enter()`]: reference/syscalls/vcpu_enter.md
+[`zx_task_suspend()`]: /reference/syscalls/task_suspend.md
+[`zx_task_kill()`]: /reference/syscalls/task_kill.md
+[`zx_port_wait()`]: /reference/syscalls/port_wait.md
+[`zx_vcpu_enter()`]: /reference/syscalls/vcpu_enter.md

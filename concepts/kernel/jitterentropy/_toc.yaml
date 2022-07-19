@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Jitterentropy library"
-  path: concepts/kernel/jitterentropy/README.md
+  path: /concepts/kernel/jitterentropy/README.md
 - title: "Basic configuration"
-  path: concepts/kernel/jitterentropy/config-basic.md
+  path: /concepts/kernel/jitterentropy/config-basic.md
 - title: "Tuning the configuration"
-  path: concepts/kernel/jitterentropy/config-tuning.md
+  path: /concepts/kernel/jitterentropy/config-tuning.md
 - title: "Entropy collection TODOs"
-  path: concepts/kernel/jitterentropy/entropy_collection_todos.md
+  path: /concepts/kernel/jitterentropy/entropy_collection_todos.md

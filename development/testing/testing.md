@@ -32,7 +32,7 @@ To run in-kernel tests, use the Zircon shell to run:
 k ut all
 ```
 
-Fuchsia's [Get Started](get-started/README.md) page has more details about how to
+Fuchsia's [Get Started](/get-started/README.md) page has more details about how to
 use the Zircon shell and how to automatically build all supported architectures.
 
 ## Userspace Tests

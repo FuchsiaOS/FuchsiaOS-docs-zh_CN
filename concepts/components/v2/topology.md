@@ -120,17 +120,17 @@ information.
 
 <br>![Diagram of capability routing](images/topology_capability_routing.png)<br>
 
-[glossary.component]: glossary/README.md#component
-[glossary.component instance tree]: glossary/README.md#component-instance-tree
-[glossary.component topology]: glossary#component-topology
-[doc-collections]: concepts/components/v2/realms.md#collections
-[doc-environments]: concepts/components/v2/environments.md
+[glossary.component]: /glossary/README.md#component
+[glossary.component instance tree]: /glossary/README.md#component-instance-tree
+[glossary.component topology]: /glossary#component-topology
+[doc-collections]: /concepts/components/v2/realms.md#collections
+[doc-environments]: /concepts/components/v2/environments.md
 [doc-expose]: https://fuchsia.dev/reference/cml#expose
-[doc-realms]: concepts/components/v2/realms.md
-[doc-realm-framework-protocol]: concepts/components/v2/realms.md#realm-framework-protocol
-[doc-monikers]: concepts/components/v2/identifiers.md#monikers
-[doc-component-urls]: concepts/components/v2/identifiers.md#component-urls
-[doc-capability-routing]: concepts/components/v2/capabilities/README.md#routing
-[doc-component-declaration]: concepts/components/v2/component_manifests.md#component-declaration
+[doc-realms]: /concepts/components/v2/realms.md
+[doc-realm-framework-protocol]: /concepts/components/v2/realms.md#realm-framework-protocol
+[doc-monikers]: /concepts/components/v2/identifiers.md#monikers
+[doc-component-urls]: /concepts/components/v2/identifiers.md#component-urls
+[doc-capability-routing]: /concepts/components/v2/capabilities/README.md#routing
+[doc-component-declaration]: /concepts/components/v2/component_manifests.md#component-declaration
 [wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege
 [wiki-object-composition]: https://en.wikipedia.org/wiki/Object_composition

@@ -7,14 +7,14 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: development/drivers/concepts/driver_architectures/audio_drivers/audio_overview.md
+  path: /development/drivers/concepts/driver_architectures/audio_drivers/audio_overview.md
 - title: "Architecture"
-  path: development/drivers/concepts/driver_architectures/audio_drivers/audio_architecture.md
+  path: /development/drivers/concepts/driver_architectures/audio_drivers/audio_architecture.md
 - title: "Audio driver streaming interface"
-  path: development/drivers/concepts/driver_architectures/audio_drivers/audio_streaming.md
+  path: /development/drivers/concepts/driver_architectures/audio_drivers/audio_streaming.md
 - title: "Audio Signal Processing"
-  path: development/drivers/concepts/driver_architectures/audio_drivers/audio_signal_processing.md
+  path: /development/drivers/concepts/driver_architectures/audio_drivers/audio_signal_processing.md
 - title: "Digital Audio Interface (DAI)"
-  path: development/drivers/concepts/driver_architectures/audio_drivers/audio_dai.md
+  path: /development/drivers/concepts/driver_architectures/audio_drivers/audio_dai.md
 - title: "Audio codec"
-  path: development/drivers/concepts/driver_architectures/audio_drivers/audio_codec.md
+  path: /development/drivers/concepts/driver_architectures/audio_drivers/audio_codec.md

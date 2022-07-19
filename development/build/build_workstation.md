@@ -1,6 +1,6 @@
 # Build Workstation
 
-Workstation (`workstation`) is an open source reference design for Fuchsia.
+Workstation (`workstation_eng`) is an open source reference design for Fuchsia.
 Workstation is not a consumer-oriented product. Workstation is a tool for
 developers and enthusiasts to explore Fuchsia and experiment with evolving
 concepts and features.
@@ -29,7 +29,7 @@ Workstation is designed to be used with an Intel NUC or the Fuchsia emulator
         configuration to use the following Workstation product:
 
         ```posix-terminal
-        fx set workstation.x64 --release
+        fx set workstation_eng.x64 --release
         ```
 
     3.  Complete the [Install Fuchsia on a NUC][intel-nuc] guide.
@@ -44,16 +44,16 @@ Workstation is designed to be used with an Intel NUC or the Fuchsia emulator
         configuration to use the following Workstation product:
 
         ```posix-terminal
-        fx set workstation.qemu-x64 --release
+        fx set workstation_eng.qemu-x64 --release
         ```
 
     3.  Complete the [Start the Fuchsia emulator][start-femu] guide.
 
 <!-- Reference links -->
 
-[report-issue]: contribute/report-issue.md
-[get-started-with-fuchsia]: get-started
-[get-fuchsia-source]: get-started/get_fuchsia_source.md
-[build-fuchsia]: get-started/build_fuchsia.md
-[intel-nuc]: development/hardware/intel_nuc.md
-[start-femu]: get-started/set_up_femu.md
+[report-issue]: /contribute/report-issue.md
+[get-started-with-fuchsia]: /get-started
+[get-fuchsia-source]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md
+[intel-nuc]: /development/hardware/intel_nuc.md
+[start-femu]: /get-started/set_up_femu.md

@@ -217,10 +217,10 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: glossary/README.md#realm
-[bindings-ref]: reference/fidl/bindings/rust-bindings.md
-[events]: reference/fidl/bindings/rust-bindings.md#protocol-events-client
+[glossary.realm]: /glossary/README.md#realm
+[bindings-ref]: /reference/fidl/bindings/rust-bindings.md
+[events]: /reference/fidl/bindings/rust-bindings.md#protocol-events-client
 [rustdoc]: https://fuchsia-docs.firebaseapp.com/rust/
-[server-tut]: development/languages/fidl/tutorials/rust/basics/server.md
-[sync-client]: development/languages/fidl/tutorials/rust/basics/sync-client.md
-[overview]: development/languages/fidl/tutorials/overview.md
+[server-tut]: /development/languages/fidl/tutorials/rust/basics/server.md
+[sync-client]: /development/languages/fidl/tutorials/rust/basics/sync-client.md
+[overview]: /development/languages/fidl/tutorials/overview.md
