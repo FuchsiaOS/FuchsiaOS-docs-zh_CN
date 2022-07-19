@@ -22,13 +22,13 @@ this exercise, you'll see how jobs and processes interact to form a tree.
 <<../_common/_start_femu.md>>
 
 <!-- ### Dump the process list -->
-### 打印进程列表
+### 导出进程列表
 
 <!-- 
 Connect to a device shell prompt and use the `ps` command to dump the list of
 running jobs and processes.
  -->
-连接到设备命令行，并使用 `ps` 命令打印运行中的作业和进程的列表。
+连接到设备命令行，并使用 `ps` 命令导出运行中的作业和进程的列表。
 
 ```posix-terminal
 fx shell ps
