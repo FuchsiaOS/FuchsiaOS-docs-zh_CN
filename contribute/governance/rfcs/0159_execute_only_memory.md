@@ -614,8 +614,8 @@ Code Security](#readable-code-security).
 support in the kernel where we can know at build time what we expect the
 syscall to return.
  -->
-当我们在内核中强制 XOM 支持时，对 `zx_system_get_features` 会有一些平凡的测试，
-针对那些在构建时就能知道系统调用应该返回什么的情况。
+当我们在内核中强制 XOM 支持时，
+会在构建时能知道应该返回什么的地方，对 `zx_system_get_features` 进行普通（trivial）的测试。
 
 <!-- 
 The `ZX_VM_PERM_READ_IF_XOM_UNSUPPORTED` will be tested that it makes a page
