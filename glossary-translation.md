@@ -24,6 +24,7 @@
 | best practice                  | 最佳做法               | G & i                                                 |
 | caveats                        | 注意事项               | G                                                     |
 | cleanup                        | 清理                   | G                                                     |
+| consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                              |
 | control plane                  | 控制层面 <br> 控制平面 | G                                                     |
 | data plane                     | 数据平面 <br> 数据层面 | G                                                     |
 | deprecated                     | 已弃用（的）           | G                                                     |
@@ -32,6 +33,7 @@
 | distributed tracing            | 分布式跟踪             | G                                                     |
 | emulator                       | 模拟器                 | G                                                     |
 | ergonomics                     | 工效学                 | i & G                                                 |
+| escalate                       | 上报                   | G                                                     |
 | execute-only memory            | 只执行内存             | G                                                     |
 | fault injection                | 故障注入               | G                                                     |
 | get stared                     | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
@@ -39,17 +41,21 @@
 | guidance                       | 指导                   |                                                       |
 | guide                          | 指南                   | G                                                     |
 | guideline                      | 方针                   |                                                       |
+| heap dump                      | 堆转储                 | G                                                     |
 | HTTP header                    | HTTP 标头              | G                                                     |
+| in-tree                        | 树内                   | G <br> 此处指源码树                                   |
 | infrastructure                 | 基础架构               | G                                                     |
 | inspect                        | 审视                   | Fuchsia 专有名词 <br> i                               |
 | just-in-time (JIT) compilation | 即时（JIT）编译        | G                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
+| out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
 | path                           | 路径                   | G                                                     |
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
 | proxy                          | 代理                   |                                                       |
 | remote                         | 远程                   |                                                       |
+| robust                         | 可靠的                 | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
 | service                        | 服务                   |                                                       |
 | service account                | 服务帐号               | G                                                     |
