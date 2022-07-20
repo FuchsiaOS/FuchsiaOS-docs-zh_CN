@@ -6,7 +6,7 @@ User space code interacts with the objects in kernel space using
 **system calls**. Zircon has system calls to perform low-level operations such
 as:
  -->
-用户空间代码使用**系统调用**与内核空间对象交互。Zircon 的系统调用用来执行低层操作，如：
+用户空间代码使用**系统调用**与内核空间对象交互。Zircon 有执行低层操作的系统调用，如：
 
 <!-- 
 *   Memory management
