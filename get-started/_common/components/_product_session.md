@@ -1,5 +1,5 @@
 <!-- ## Session framework -->
-## Session 框架
+## 会话框架
 
 <!-- Sessions are components that encapsulate a product’s user experience. The
 session framework serves as a boundary between the Fuchsia platform and the
