@@ -155,7 +155,7 @@ include the following:
 All documentation for Fuchsia is written in Markdown (`.md`), and Fuchsia.dev
 uses the [Hoedown Markdown Parser](https://github.com/hoedown/hoedown).
  -->
-Fuchsia 的所有文档均使用 Markdown（`.md`）撰写，Fuchsia.dev 使用 [Hoedown Markdown Parser](https://github.com/hoedown/hoedown)。
+Fuchsia 的所有文档均使用 Markdown（`.md`）撰写，Fuchsia.dev 使用 [Hoedown Markdown Parser](https://github.com/hoedown/hoedown) 作为 Markdown 文档语法分析器。
 
 <!-- 
 The site's navigation is configured by `_toc.yaml` files, which are included in every documentation
