@@ -11,7 +11,7 @@ This document outlines standards, structure, tone, and best practices for Fuchsi
 <!-- 
 ## Document locations
  -->
-## 文档位置
+## 文档定位
 
   <!-- 
   * **Documentation specific to developing a specific Fuchsia feature:**
