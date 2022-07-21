@@ -62,7 +62,7 @@ This document outlines standards, structure, tone, and best practices for Fuchsi
         The `/contribute/` directory contains code and documentation contribution processes and
         best practices, including documentation code and style guides, code polcies, and governance.
         -->
-        `/contribute/` 目录包含代码和文档贡献进度以及最佳做法，包含文档准则和风格指南、代码策略以及管理体系。
+        `/contribute/` 目录包含代码和文档的贡献进度以及最佳做法，包含文档准则和风格指南、代码策略以及管理体系。
     *  `images`
         <!--
         The `/images/` directory contains images used in the documentation. You should
