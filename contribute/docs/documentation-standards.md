@@ -180,7 +180,7 @@ contains a command with an underscore, then you can include the underscore.
 - **Write in plain U.S. English.** Write in clear, direct U.S. English that makes content
   easy to understand. Use simple words, be concise, and use contractions like _it's_ or _don't_.
  -->
-- **使用简单的美国英语撰写。** 使用清晰、直白的美国英语撰写，以使内容易于理解。请使用简单的词汇，保持简洁，并使用（常见）缩写，如 _it's_ 或 _don't_。
+- **使用通俗易懂的美国英语撰写。** 使用清晰、直白的美国英语撰写，以使内容易于理解。请使用简单的词汇，保持简洁，并使用（常见）缩写，如 _it's_ 或 _don't_。
 <!-- 
 - **Be respectful.** Follow the guidelines set forth in [Respectful Code](/contribute/respectful_code.md).
  -->
