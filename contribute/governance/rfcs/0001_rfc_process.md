@@ -150,7 +150,7 @@ This section describes each step involved in the RFC process.
 <!--
 #### Step 1: Socialize {#socialize}
 -->
-#### 第一步：分享 {#socialize}
+#### 第一步：交流 {#socialize}
 <!--
 The first step in the RFC process is to socialize your idea with the project.
 For example, you might have noticed a problem that you think is important to
