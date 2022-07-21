@@ -56,7 +56,7 @@ This document outlines standards, structure, tone, and best practices for Fuchsi
         The `/reference/` directory contains generated reference docs on Fuchsia tools and APIs,
         including FIDL and kernel reference.
         -->
-        `/reference/` 目录包含生成的关于 Fuchsia 工具和 API 的参考文档，包括 FIDL 和内核的参考文档。
+        `/reference/` 目录包含自动生成的关于 Fuchsia 工具和 API 的参考文档，包括 FIDL 和内核的参考文档。
     *  <code>contribute</code>:
         <!--
         The `/contribute/` directory contains code and documentation contribution processes and
