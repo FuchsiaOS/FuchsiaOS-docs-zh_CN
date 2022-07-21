@@ -169,7 +169,7 @@ File and directory names should be lowercase, and separate words with hyphens, n
 Use only standard ASCII alphanumeric characters in file and directory names. If the file name
 contains a command with an underscore, then you can include the underscore.
  -->
-文件和目录名应当为小写，并使用短横线（hyphen）而非下划线（underscore）来分隔单词。在文件或目录名中请仅使用标准 ASCII 字母数字字符。如果文件名包含带有下划线的命令，那么您可以加入下划线。
+文件和目录名应当为小写，并使用短横线（hyphen）而非下划线（underscore）来分隔单词。在文件或目录名中请仅使用标准 ASCII 字母数字字符。如果文件名包含带有下划线的命令，那么您可以包含下划线。
 
 <!-- 
 ## General guidance on style and tone
