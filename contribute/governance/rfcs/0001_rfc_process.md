@@ -47,7 +47,7 @@ process](/development/source_code/contribute_changes.md). However,
 technical decisions that have broad impact across the project require broader
 agreement and must be socialized with the project using the RFC process.
 -->
-绝大多数的 Fuchsia 更改并不会使用到 RFC。与之对应，这些更改可以使用： [代码审阅流程](development/source_code/contribute_changes.md) 。但是，对整个项目有广泛影响的技术决策需要有更广范围的共识，则必须使用 RFC 流程使决策在项目范围内和大家交流。
+绝大多数的 Fuchsia 更改并不会使用到 RFC。与之对应，这些更改可以使用：[代码审阅流程](development/source_code/contribute_changes.md)。但是，对整个项目有广泛影响的技术决策需要有更广范围的共识，则必须使用 RFC 流程使决策在项目范围内和大家交流。
 
 <!--
 The following kinds of changes must use the RFC process:
@@ -133,12 +133,12 @@ People interact with the RFC process in several roles:
    often *represented* by someone, often a technical lead or other person
    responsible for a group of stakeholders.
 -->
-  * ** 利益相关者。** 利益相关者是项目是否接受给定 RFC 有利益关系的人。利益相关者一般来说是 Fuchsia 的贡献者，但是也有一些 RFC 的利益相关者在 Fuchsia 项目之外。例如，利益相关者可能参与在其他使用  Fuchsia 的项目中，或者受到 Fuchsia 更改的影响。利益相关者也不一定都直接参与到 RFC 的讨论中。相反，利益相关者通常被别人“代表”，一般是技术领导或者其他一些代表利益相关群体的人。
+  * **利益相关者。** 利益相关者是项目是否接受给定 RFC 有利益关系的人。利益相关者一般来说是 Fuchsia 的贡献者，但是也有一些 RFC 的利益相关者在 Fuchsia 项目之外。例如，利益相关者可能参与在其他使用  Fuchsia 的项目中，或者受到 Fuchsia 更改的影响。利益相关者也不一定都直接参与到 RFC 的讨论中。相反，利益相关者通常被别人“代表”，一般是技术领导或者其他一些代表利益相关群体的人。
 <!--
  * *Eng Council.* The [Eng Council](../eng_council.md) facilitate discussion
    and make the final decision as to whether the project accepts an RFC.
 -->
- * * 工程委员会 *  [工程委员会](../eng_council.md) 促进讨论以及对是否接受一个 RFC 做最终的决定。
+ * **工程委员会。** [工程委员会](../eng_council.md)促进讨论以及对是否接受一个 RFC 做最终的决定。
 <!--
 ### How the process works
 -->
@@ -186,7 +186,7 @@ able to point you in a good direction.
 > FTP and CTP process, who have good background and context about these
 > processes.
 -->
-> * 例子 * 这条 RFC 是经过议员论坛的交流后分发的， 
+> **例：** 这条 RFC 是经过议员论坛的交流后分发的， 
 > 工程论坛是 Google 内部的由多个参与项目的工程领导参加的常规会议。
 > 本条 RFC 也邀请了 FTP 和 CTP 流程的创建者交流，因为他们对这类流程有着丰富的经验。
 
@@ -209,7 +209,7 @@ strictly required, the template is designed to guide you towards writing a
 high-quality RFC by prompting you to think through the problem you are trying to
 solve in a semi-structured way.
 -->
-正常情况下， 一份 RFC 是一个存放在 `/contribute/governance/rfcs` 路径下的 markdown 文件。创建一个 RFC，要先创建一个 CL 并放到这个目录下。建议从模版文件 [RFC template](TEMPLATE.md) 复制一份并在此基础上编写。模版并不是硬性要求，但是模版是设计来引导您写出一份高质量的 RFC 的。它帮助您以一种半结构化的方式认真思考您准备要解决的问题。
+正常情况下，一份 RFC 是一个存放在 `/contribute/governance/rfcs` 路径下的 markdown 文件。创建一个 RFC，要先创建一个 CL 并放到这个目录下。建议从模版文件 [RFC template](TEMPLATE.md) 复制一份并在此基础上编写。模版并不是硬性要求，但是模版是设计来引导您写出一份高质量的 RFC 的。它帮助您以一种半结构化的方式认真思考您准备要解决的问题。
 
 <!--
 Do not worry about assigning a number to your RFC at this stage. Instead, use
@@ -235,7 +235,7 @@ have already discovered most the appropriate stakeholders as part of socializing
 your idea, but you are very likely to discover additional stakeholders at this
 stage.
 -->
-当您创建好包含您第一份 RFC 草稿的 CL 后，您就可以把您的想法和相关人员进行交流了。 您有望发现大多数合适的利益相关者已经参与了您想法的交流，不过通常这一阶段您要发现更多的利益相关者。
+当您创建好包含您第一份 RFC 草稿的 CL 后，您就可以把您的想法和相关人员进行交流了。您有望发现大多数合适的利益相关者已经参与了您想法的交流，不过通常这一阶段您要发现更多的利益相关者。
 <!--
 Mechanically, you should invite stakeholders to provide feedback on your RFC by
 adding them to the "Reviewers" or "CC" fields in the CL, as you would for a
@@ -279,7 +279,7 @@ names associated with the new incarnation of the RFC.
 > when a CL modifies the `/contribute/governance/rfcs` directory.
 -->
 
-> **建议：**  如果您对 RFC 感兴趣，可以配置 Gerrit 代码审查工具，让它在有 CL 修改 `/contribute/governance/rfcs` 目录时[给您发送邮件 > 通知](https://gerrit-review.googlesource.com/Documentation/user-notify.html)。
+> **建议：** 如果您对 RFC 感兴趣，可以配置 Gerrit 代码审查工具，让它在有 CL 修改 `/contribute/governance/rfcs` 目录时[给您发送邮件 > 通知](https://gerrit-review.googlesource.com/Documentation/user-notify.html)。
 <!--
 #### Step 4: Approve {#approve}
 -->
@@ -311,13 +311,13 @@ prevent the project from accepting the RFC. See the ["How decisions are made"
 section](#how-decisions-are-made) below for more details about how the project
 decides whether to accept an RFC.
 -->
-利益相关者将代码审查标志设为 -1 或者 -2 并不一定会阻止项目接收该 RFC 。要获取关于 RFC 接受决定流程的更多细节，请参阅下面的[“决定如何做出”章节](#how-decisions-are-made) 。
+利益相关者将代码审查标志设为 -1 或者 -2 并不一定会阻止项目接收该 RFC。要获取关于 RFC 接受决定流程的更多细节，请参阅下面的[“决定如何做出”章节](#how-decisions-are-made) 。
 <!--
 After all the stakeholders have weighed in with their Code-Review flags, send an
 email to eng-council@fuchsia.dev to prompt the Eng Council to decide whether to
 accept your RFC.
 -->
-在所有利益相关者都给出了他们的代码审阅标志之后，请发送一封邮件到 eng-council@fuchsia.dev，提醒工程委员会决定是否接受您的 RFC 。
+在所有利益相关者都给出了他们的代码审阅标志之后，请发送一封邮件到 eng-council@fuchsia.dev，提醒工程委员会决定是否接受您的 RFC。
 <!--
 #### Step 5: Submit {#submit}
 -->
@@ -330,7 +330,7 @@ or -2 Code-Review flags, the Eng Council will explicitly clear each flag by
 summarizing the objection and by describing why the RFC is moving forward
 despite the objection.
 -->
-如果项目决定接受您的 RFC ，工程委员会就会有一个人通过在您的 CL 中评论的形式声明这条 RFC 被接受了，并且会给 RFC 分配一个序号，通常是在序列中可用的下一个序号。如果 RFC 中有 -1 或者 -2 的代码审阅标志，工程委员会会为每个标志总结反对意见和叙述为什么这个 RFC 虽然有这些反对意见却还是继续推进，从而明确地将其清除。
+如果项目决定接受您的 RFC，工程委员会就会有一个人通过在您的 CL 中评论的形式声明这条 RFC 被接受了，并且会给 RFC 分配一个序号，通常是在序列中可用的下一个序号。如果 RFC 中有 -1 或者 -2 的代码审阅标志，工程委员会会为每个标志总结反对意见和叙述为什么这个 RFC 虽然有这些反对意见却还是继续推进，从而明确地将其清除。
 <!--
 If the project decides to reject your RFC, a member of the Eng Council will
 comment on your CL stating that the RFC is rejected and providing a rationale
@@ -338,7 +338,7 @@ for the rejection.  Rejected RFCs are valuable engineering artifacts. The Eng
 Council will work with the RFC Authors to land a version of the RFC that is
 marked as rejected and incorporates the rationale.
 -->
-如果项目决定拒绝您的 RFC ，工程委员会的委员会在您的 CL 中评论，声明该 RFC 被拒绝了，并且提供拒绝的依据。被拒绝的 RFC 也是宝贵的工程产物。 工程委员会也会和 RFC 的作者一起生成一个将该 RFC 被标记为拒绝并包含理由的版本。
+如果项目决定拒绝您的 RFC，工程委员会的委员会在您的 CL 中评论，声明该 RFC 被拒绝了，并且提供拒绝的依据。被拒绝的 RFC 也是宝贵的工程产物。工程委员会也会和 RFC 的作者一起生成一个将该 RFC 被标记为拒绝并包含理由的版本。
 <!--
 You should upload a new patchset of your RFC with the assigned number, both in
 the title of the RFC and in the filename. If your RFC is approved and requires
@@ -354,7 +354,7 @@ The Eng Council will then mark your CL Code-Review +2 and you can land your RFC!
 *Congratulations! You have contributed a valuable engineering artifact to the
 project!*
 -->
-* 恭喜！您已经为项目提交了一份宝贵的工程产物。*
+** 恭喜！您已经为项目提交了一份宝贵的工程产物。**
 <!--
 ### How decisions are made {#how-decisions-are-made}
 -->
@@ -366,7 +366,7 @@ The decision whether to accept an RFC is made by the Eng Council, acting in
 other. If the decision involves an RFC that has Eng Council members as authors,
 those members must recuse themselves from the decision.
 -->
-RFC 接受与否的决定是由工程委员会做出的，会内彼此达成[粗略共识](https://en.wikipedia.org/wiki/Rough_consensus) 。如果要决定的 RFC 的作者中有工程委员会的成员，那这些成员需要在做决定时回避。
+RFC 接受与否的决定是由工程委员会做出的，会内彼此达成[粗略共识](https://en.wikipedia.org/wiki/Rough_consensus)。如果要决定的 RFC 的作者中有工程委员会的成员，那这些成员需要在做决定时回避。
 
 <!--
 If the Eng Council cannot reach rough consensus, the RFC is not accepted.
@@ -450,7 +450,7 @@ existing processes:
    period of time. The process described in this document draws a number of
    ideas from the IETF process, including some of the terminology.
 -->
- * **IETF RFC 流程。** IETF 项目长期使用了一个成功的大规模[ 决策流程 ](https://ietf.org/standards/process/)。本文档中描述的流程吸收了很多来自于 IETF 流程的想法，包括一些术语。
+ * **IETF RFC 流程。** IETF 项目长期使用了一个成功的大规模[决策流程](https://ietf.org/standards/process/)。本文档中描述的流程吸收了很多来自于 IETF 流程的想法，包括一些术语。
 
 <!--
  * *Rust RFC process.* The Rust community runs an [RFC
@@ -459,7 +459,7 @@ existing processes:
    engineering project. The process described in this document is fairly
    directly modelled after the Rust RFC process.
 -->
- * **Rust RFC 流程。** Rust 社区运营了 [ RFC 流程 ](https://github.com/rust-lang/rfcs/blob/HEAD/text/0002-rfc-process.md)，有效地帮助了一些相似的软件工程项目做出了决策。本文档中描述的流程相当直接地模仿了 Rust RFC 流程。
+ * **Rust RFC 流程。** Rust 社区运营了 [RFC 流程](https://github.com/rust-lang/rfcs/blob/HEAD/text/0002-rfc-process.md)，有效地帮助了一些相似的软件工程项目做出了决策。本文档中描述的流程相当直接地模仿了 Rust RFC 流程。
 <!--
  * *Blink Intent-to-implement process.* The Chromium project runs a
    [decision-making process](https://www.chromium.org/blink/launching-features)
@@ -475,5 +475,4 @@ existing processes:
    proposal exists because of the success of that decision-making process.
 -->
 
- * **FIDL 完善建议。** Fuchsia 项目在 [FIDL 语言决策](contribute/governance/deprecated-ftp-process.md)流程中直接使用过一个相似的流程。该决策流程很成功，从而使得这个提案依旧存在。 
-
+ * **FIDL 完善建议。** Fuchsia 项目在 [FIDL 语言决策](contribute/governance/deprecated-ftp-process.md)流程中直接使用过一个相似的流程。该决策流程很成功，从而使得这个提案依旧存在。
