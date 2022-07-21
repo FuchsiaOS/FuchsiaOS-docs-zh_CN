@@ -159,7 +159,7 @@ working on the problem or might have some background or context about the
 problem that would be useful to you. The earlier you discover this information,
 the better.
 -->
-RFC 流程的第一步就是把您在项目中的想法和大家交流。比如，您发现了一个很重要需要解决的问题。其他人注意到这个问题了吗？或许已经有人在着手解决这个问题了，在或者有一些其他的相关资料可以帮到您。总之越早发现您的想法，对项目越好。
+RFC 流程的第一步就是把您在项目中的想法和大家交流。比如，您可能发现了一个需要解决的重要问题。其他人注意到这个问题了吗？或许已经有人在着手解决这个问题了，再或者有一些其他的相关资料可以帮到您。总之越早发现这些情况，对项目越好。
 
 <!--
 Compared to the remaining steps in the process, this step is relatively
@@ -171,7 +171,7 @@ example, you might want to consult with people in the `OWNERS` files for the
 areas of the codebase will need to be modified to execute your idea.
 -->
 
-相比于接下来的步骤，这一步相对非正式。这份文档不会严格要求您如何和其他人交流您的想法。分享技术想法本身就是一项技能。不过，一个好的起点，是向您准备解决的问题所在领域的技术领导讨论时提出该主题。譬如，您可能会想要跟在您需要修改的相关代码库的 `OWNERS` 文件中的人咨询，来执行您的想法。
+相比于接下来的步骤，这一步相对非正式。这份文档不会严格要求您如何和其他人交流您的想法。交流技术想法本身就是一项技能。不过，一个好的起点，是向您准备解决的问题所在领域的技术领导讨论时提出该主题。譬如，您可能会想要跟在您需要修改的相关代码库的 `OWNERS` 文件中的人咨询，来执行您的想法。
 <!--
 If you are unsure how to socialize your idea, consider asking a technical leader
 for advice. They will often have more experience socializing ideas and might be
@@ -467,7 +467,7 @@ existing processes:
    is informed by my (abarth) experience helping to design and run that process
    for a period of time.
 -->
-  * **Blink 意图实施(Intent-to-implement)流程。** Chromium 项目在影响到网页的行为上使用了一个[决策流程](https://www.chromium.org/blink/launching-features)。在本文档中描述的流程是根据我（abarth）帮助设计和运行 Blink 的流程一段时间的经验而成的。
+  * **Blink 意图实施（Intent-to-implement）流程。** Chromium 项目在影响到网页的行为上使用了一个[决策流程](https://www.chromium.org/blink/launching-features)。在本文档中描述的流程是根据我（abarth）帮助设计和运行 Blink 的流程一段时间的经验而成的。
 <!--
  * *FIDL Tuning Proposal.* The Fuchsia project has had direct experience using a
    similar process [to make decisions about the FIDL
