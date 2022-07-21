@@ -47,7 +47,7 @@ process](/development/source_code/contribute_changes.md). However,
 technical decisions that have broad impact across the project require broader
 agreement and must be socialized with the project using the RFC process.
 -->
-绝大多数的 Fuchsia 更改并不会使用到 RFC。与之对应，这些更改可以使用： [代码审阅流程](development/source_code/contribute_changes.md) 。但是，对整个项目有广泛影响的技术决策需要有更广范围的共识，则必须使用 RFC 流程使决策在项目范围内为大家所熟知。
+绝大多数的 Fuchsia 更改并不会使用到 RFC。与之对应，这些更改可以使用： [代码审阅流程](development/source_code/contribute_changes.md) 。但是，对整个项目有广泛影响的技术决策需要有更广范围的共识，则必须使用 RFC 流程使决策在项目范围内和大家交流。
 
 <!--
 The following kinds of changes must use the RFC process:
@@ -159,7 +159,7 @@ working on the problem or might have some background or context about the
 problem that would be useful to you. The earlier you discover this information,
 the better.
 -->
-RFC 流程的第一步就是把您在项目中的想法分享出去。比如，您发现了一个很重要需要解决的问题。其他人注意到这个问题了吗？或许已经有人在着手解决这个问题了，在或者有一些其他的相关资料可以帮到您。总之越早发现您的想法，对项目越好。
+RFC 流程的第一步就是把您在项目中的想法和大家交流。比如，您发现了一个很重要需要解决的问题。其他人注意到这个问题了吗？或许已经有人在着手解决这个问题了，在或者有一些其他的相关资料可以帮到您。总之越早发现您的想法，对项目越好。
 
 <!--
 Compared to the remaining steps in the process, this step is relatively
@@ -171,13 +171,13 @@ example, you might want to consult with people in the `OWNERS` files for the
 areas of the codebase will need to be modified to execute your idea.
 -->
 
-相比于接下来的步骤，这一步相对非正式。这份文档不会严格要求您如何分享您的想法。分享技术想法本身就是一项技能。不过，一个好的起点，是向您准备解决的问题所在领域的技术领导讨论时提出该主题。譬如，您可能会想要跟在您需要修改的相关代码库的 `OWNERS` 文件中的人咨询，来执行您的想法。
+相比于接下来的步骤，这一步相对非正式。这份文档不会严格要求您如何和其他人交流您的想法。分享技术想法本身就是一项技能。不过，一个好的起点，是向您准备解决的问题所在领域的技术领导讨论时提出该主题。譬如，您可能会想要跟在您需要修改的相关代码库的 `OWNERS` 文件中的人咨询，来执行您的想法。
 <!--
 If you are unsure how to socialize your idea, consider asking a technical leader
 for advice. They will often have more experience socializing ideas and might be
 able to point you in a good direction.
 -->
-如果您对如何分享您的想法有疑问，可以考虑向技术领导者寻求建议。通常他们在这方面更有经验，所以也能给您指明一条捷径。
+如果您对如何和其他人交流您的想法有疑问，可以考虑向技术领导者寻求建议。通常他们在这方面更有经验，所以也能给您指明一条捷径。
 
 <!--
 > *Example.* This RFC was socialized by having a discussion in the Eng Forum,
@@ -186,7 +186,7 @@ able to point you in a good direction.
 > FTP and CTP process, who have good background and context about these
 > processes.
 -->
-> * 例子 * 这条 RFC 是经过议员论坛的讨论后分发的， 
+> * 例子 * 这条 RFC 是经过议员论坛的交流后分发的， 
 > 工程论坛是 Google 内部的由多个参与项目的工程领导参加的常规会议。
 > 本条 RFC 也邀请了 FTP 和 CTP 流程的创建者交流，因为他们对这类流程有着丰富的经验。
 
@@ -235,7 +235,7 @@ have already discovered most the appropriate stakeholders as part of socializing
 your idea, but you are very likely to discover additional stakeholders at this
 stage.
 -->
-当您创建好包含您第一份 RFC 草稿的 CL 后，您就可以把您的想法和相关人员进行交流了。 您有望发现大多数合适的利益相关者已经参与了您想法的交流（socialize），不过通常这一阶段您要发现更多的利益相关者。
+当您创建好包含您第一份 RFC 草稿的 CL 后，您就可以把您的想法和相关人员进行交流了。 您有望发现大多数合适的利益相关者已经参与了您想法的交流，不过通常这一阶段您要发现更多的利益相关者。
 <!--
 Mechanically, you should invite stakeholders to provide feedback on your RFC by
 adding them to the "Reviewers" or "CC" fields in the CL, as you would for a
