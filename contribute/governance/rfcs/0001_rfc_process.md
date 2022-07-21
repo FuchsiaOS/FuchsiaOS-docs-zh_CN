@@ -354,7 +354,7 @@ The Eng Council will then mark your CL Code-Review +2 and you can land your RFC!
 *Congratulations! You have contributed a valuable engineering artifact to the
 project!*
 -->
-** 恭喜！您已经为项目提交了一份宝贵的工程产物。**
+**恭喜！您已经为项目提交了一份宝贵的工程产物。**
 <!--
 ### How decisions are made {#how-decisions-are-made}
 -->
