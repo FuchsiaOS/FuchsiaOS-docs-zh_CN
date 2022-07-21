@@ -73,6 +73,7 @@ This document outlines standards, structure, tone, and best practices for Fuchsi
 <!-- 
 ## Document types
  -->
+## 文档类型
 
 <!-- 
 Most documentation can be divided into the following categories:
