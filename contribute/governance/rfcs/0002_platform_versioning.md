@@ -63,7 +63,7 @@ growing number of older applications over a longer period of time?
 > 在较长的一段时间内，Fuchsia 平台如何在支持越来越多的旧应用程序运行的同时, 保持平台的持续发展？
 
 <!-- ## Why now? -->
-## 为什么现在？
+## 为什么现在进行版本控制？
 
 <!-- 
 Several of our customers are requesting more stability from the platform. If we
