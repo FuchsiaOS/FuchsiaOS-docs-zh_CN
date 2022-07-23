@@ -50,7 +50,7 @@ capabilities to access those objects.
   means Fuchsia does not have a concept of chroot environments, since every
   process effectively has its own private "root".
  -->
-<p>命名空间是为每个进程定义的。不像其他操作系统，Fuchsia 不存在“全局文件系统”。
+<p>命名空间是为每个进程定义的。不像其他操作系统，Fuchsia 不存在“全局文件系统（root filesystem）”。
 而路径地址“/”则指代进程私有命名空间的根。
 这也意味着 Fuchsia 不存在 chroot 环境的概念，因为每个进程都有自己的私有“root”。</p>
 <!-- 
@@ -59,5 +59,5 @@ capabilities to access those objects.
   <a href="/concepts/filesystems/dotdot">dot-dot considered harmful</a>.<p>
  -->
   <p>这也影响到目录遍历，以及文件系统服务器如何解析包含 <code>../.</code> 的路径。
-  要获取更多详情，请参阅<a href="/concepts/filesystems/dotdot">我们认为双点有害</a>。</p>
+  要获取更多详情，请参阅<a href="/concepts/filesystems/dotdot">我们认为双点（dot-dot）有害</a>。</p>
 </aside>
