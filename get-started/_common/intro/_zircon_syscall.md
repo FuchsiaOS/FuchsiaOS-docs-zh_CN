@@ -19,7 +19,7 @@ as:
 *   任务和进程管理
 *   进程间通信（IPC）与同步
 *   异常处理
-*   硬件支持服务（时钟，熵，设备 I/O）
+*   硬件支持服务（时钟、熵、设备 I/O）
 
 <!-- 
 <aside class="key-point">
@@ -42,7 +42,7 @@ address space of each new process. This library is considered "virtual" because
 it is exposed directly by the kernel image rather than being loaded from a file.
  -->
 用户空间进程通过 `libzircon.so` 访问系统调用，这是一个
-[虚拟动态共享对象（virtual Dynamic Shared Object，vDSO）][glossary.virtual-dynamic-shared-object]。
+[虚拟动态共享对象][glossary.virtual-dynamic-shared-object]（virtual Dynamic Shared Object，vDSO）。
 Zircon vDSO 是 ELF 格式的共享库，它被内核映射到每个新进程的地址空间。
 这个库被称为“虚拟”，是因为它是直接由内核映像暴露，而非从文件加载的。
 
@@ -59,7 +59,7 @@ referenced object.
 
 <aside class="key-point">
  <!-- <b>Handles vs. file descriptors</b> -->
- <b>句柄对比文件描述符</b>
+ <b>句柄与文件描述符之间的比较</b>
  <!-- 
  <p>Similar to POSIX file descriptors, handles are references to a specific
  kernel object and they play a role in granting capabilities. However, Zircon
