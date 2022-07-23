@@ -27,7 +27,7 @@ detail later on.
 
 <aside class="key-point">
   <!-- <b>Handles have rights</b> -->
-  <b>句柄具有权利</b>
+  <b>句柄具有的权利</b>
   <!-- 
   <p>Previously you saw that handles are unique references to objects in the
   kernel. Each handle also contains the rights the handle has to perform
