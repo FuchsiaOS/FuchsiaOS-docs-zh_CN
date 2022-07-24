@@ -1,5 +1,5 @@
 <!-- ## Sandboxing -->
-## 沙箱化（sandboxing）
+## 沙盒
 
 <!-- 
 When a new process is created, it has no capabilities. The process relies
@@ -27,7 +27,7 @@ detail later on.
 
 <aside class="key-point">
   <!-- <b>Handles have rights</b> -->
-  <b>句柄具有的权利</b>
+  <b>句柄具有权利</b>
   <!-- 
   <p>Previously you saw that handles are unique references to objects in the
   kernel. Each handle also contains the rights the handle has to perform
@@ -49,7 +49,7 @@ detail later on.
   <p>The creating process can then write the new handles across the IPC channel
   to set the initial capabilities of the new process.</p>
  -->
-  <p>创建者进程就可以将新句柄写进IPC通道来设置新进程的初始能力。</p>
+  <p>创建者进程就可以将新句柄写进 IPC 通道来设置新进程的初始能力。</p>
 </aside>
 
 <!-- 
