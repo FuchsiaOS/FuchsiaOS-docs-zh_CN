@@ -1,5 +1,5 @@
 <!-- ## Component manifests -->
-## 组件清单（component manifest）文件
+## 组件清单
 
 <!-- 
 CML files are [JSON5](https://json5.org/){: .external} files that end with a
@@ -62,7 +62,7 @@ This file declares two main sections of information about the component:
 Note: For more details on component manifests, see
 [component manifests](/concepts/components/v2/component_manifests.md).
  -->
-注意：要获取组件清单的更多详细信息，请参阅[组件清单](/concepts/components/v2/component_manifests.md)。
+注意：要获取组件清单（component manifest）的更多详细信息，请参阅[组件清单](/concepts/components/v2/component_manifests.md)。
 
 <!-- 
 * `program`: Describes the executable information such as the binary file,
@@ -76,4 +76,4 @@ Note: For more details on component manifests, see
   example, the `fuchsia.logger.LogSink` protocol enables the component to write
   messages to the system log (`syslog`).
  -->
-* `use`：声明此组件运行所需的能力。在此示例中，`fuchsia.logger.LogSink` 协议使该组件能够向系统日志（syslog）写入消息。
+* `use`：声明此组件运行所需的功能。在此示例中，`fuchsia.logger.LogSink` 协议使该组件能够向系统日志（syslog）写入消息。
