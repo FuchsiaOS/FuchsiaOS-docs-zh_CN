@@ -6,7 +6,7 @@ on a host machine.
 -->
 # 配置和编译 Fuchsia {#configure-and-build-fuchsia}
 
-这篇文档将引导你在主机上如何配置并编译 Fuchsia。
+这篇文档将引导您在主机上如何配置并编译 Fuchsia。
 <!--
 The steps are:
 -->
@@ -45,7 +45,7 @@ Complete the
 guide to download the Fuchsia source code and set up the Fuchsia development
 environment on your machine.
 -->
-根据文档 [下载 Fuchsia 源码](/get-started/get_fuchsia_source.md) 指示下载 Fuchsia 的源码，然后在你的机器上设置开发环境。
+根据文档 [下载 Fuchsia 源码](/get-started/get_fuchsia_source.md) 指示下载 Fuchsia 的源码，然后在您的机器上设置开发环境。
 <!--
 ### Hardware requirements {#hardware-requirements}
 -->
@@ -78,7 +78,7 @@ Fuchsia 的编译设置项告诉编译系统如何编译，以及编译什么架
 To set your Fuchsia build configuration, run the following
 [`fx set`][fx-set-reference] command:
 -->
-设置你的 Fuchsia 编译选项，可以运行 [`fx set`][fx-set-reference] 命令：
+设置您的 Fuchsia 编译选项，可以运行 [`fx set`][fx-set-reference] 命令：
 ```posix-terminal
 fx set {{ '<var>' }}PRODUCT{{ '</var>' }}.{{ '<var>' }}BOARD{{ '</var>' }}
 ```
@@ -161,7 +161,7 @@ and Fuchsia.
 <!--
 If you have access to Goma, enable a Goma client on your machine:
 -->
-如果你能访问 Goma， 使用下面的命令来开启 Goma 客户端：
+如果您能访问 Goma， 使用下面的命令来开启 Goma 客户端：
 
 ```posix-terminal
 fx goma
@@ -175,7 +175,7 @@ If you do not have access to Goma, but want to accelerate the Fuchsia build
 locally, use <code>[ccache](https://ccache.dev/){:.external}</code> to cache
 artifacts from previous builds.
 -->
-如果不能访问 Goma，但是想加速本地编译时间，那就使用 <code>[ccache](https://ccache.dev/){:.external}</code> 来缓存来进行增量编译。
+如果不能访问 Goma，但是想加速本地编译时间，则可以使用 <code>[ccache](https://ccache.dev/){:.external}</code> 来缓存来进行增量编译。
 
 * {Linux}
 <!--
@@ -191,12 +191,12 @@ artifacts from previous builds.
   [Using CCache on Mac](https://chromium.googlesource.com/chromium/src.git/+/HEAD/docs/ccache_mac.md){:.external}
   for installation instructions.
 -->
-  至于 macOS ，参考 [在 Mac 上使用 CCache](https://chromium.googlesource.com/chromium/src.git/+/HEAD/docs/ccache_mac.md){:.external} 中的安装步骤。
+  对于 macOS ，参考 [在 Mac 上使用 CCache](https://chromium.googlesource.com/chromium/src.git/+/HEAD/docs/ccache_mac.md){:.external} 中的安装步骤。
 <!--
 `ccache` is enabled automatically if your `CCACHE_DIR` environment variable
 refers to an existing directory.
 -->
-如果你的 `CCACHE_DIR` 环境变量指向一个存在的路径，`ccache` 就会自动开启。
+如果您的 `CCACHE_DIR` 环境变量指向一个存在的路径，`ccache` 就会自动开启。
 <!--
 To override this default behavior, specify the following flags to `fx set`:
 -->
@@ -242,7 +242,7 @@ When you modify source code, run the `fx build` command again to perform an
 incremental build, or run the `fx -i build` command to start a watcher, which
 automatically builds whenever you update the source code.
 -->
-当你修改源代码后，要运行命令 `fx build` 来增量编译，或则运行 `fx -i build` 命令来开启一个监视进程，这个监视进程一旦发现源码有更新就会自动编译。
+当您修改源代码后，要运行命令 `fx build` 来增量编译，或则运行 `fx -i build` 命令来开启一个监视进程，这个监视进程一旦发现源码有更新就会自动编译。
 <!--
 For more information on building Fuchsia,
 see [Execute a build](/development/build/fx.md#execute-a-build).
@@ -256,12 +256,12 @@ see [Execute a build](/development/build/fx.md#execute-a-build).
 To launch the Fuchsia emulator (FEMU) on your machine, see
 [Start the Fuchsia emulator](/get-started/set_up_femu.md).
 -->
-关于如何在你的主机上打开 Fuchsia 模拟器 （FEMU），参考 [开启 Fuchsia 模拟器](/get-started/set_up_femu.md)。
+关于如何在您的主机上打开 Fuchsia 模拟器 （FEMU），参考 [开启 Fuchsia 模拟器](/get-started/set_up_femu.md)。
 <!--
 However, if you want to run Fuchsia on a hardware device, see
 [Install Fuchsia on a device](/development/hardware/README.md) instead.
 -->
-如果你无论如何都想要在硬件平台上运行 Fuchsia， 可以参考 [在硬件设备中安装 Fuchsia](/development/hardware/README.md)。
+如果您无论如何都想要在硬件平台上运行 Fuchsia， 可以参考 [在硬件设备中安装 Fuchsia](/development/hardware/README.md)。
 
 
 <!-- Reference links -->
