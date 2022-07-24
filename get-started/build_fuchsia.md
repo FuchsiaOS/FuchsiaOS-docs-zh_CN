@@ -28,7 +28,7 @@ The steps are:
 <!--
 Before you start, check out the following requirements:
 -->
-在开始之前，先检查是否满足如下要求：
+在开始之前，请先检查是否满足如下要求：
 <!--
 * [Source code setup](#source-code-setup)
 * [Hardware requirements](#hardware-requirements)
@@ -59,7 +59,7 @@ Fuchsia 的编译支持如下架构的机器：
 - x86-64 Linux (Debian-based distributions only)
 - x86-64 macOS
 -->
-- x86-64 Linux (只支持 Debian 系列的)
+- x86-64 Linux (只支持基于 Debian 系列的发行版)
 - x86-64 macOS
 <!--
 Note: Windows and ARM64 are not supported.
@@ -161,7 +161,7 @@ and Fuchsia.
 <!--
 If you have access to Goma, enable a Goma client on your machine:
 -->
-如果您能访问 Goma， 使用下面的命令来开启 Goma 客户端：
+如果您能访问 Goma， 那么请使用下面的命令来开启 Goma 客户端：
 
 ```posix-terminal
 fx goma
@@ -242,12 +242,12 @@ When you modify source code, run the `fx build` command again to perform an
 incremental build, or run the `fx -i build` command to start a watcher, which
 automatically builds whenever you update the source code.
 -->
-当您修改源代码后，要运行命令 `fx build` 来增量编译，或则运行 `fx -i build` 命令来开启一个监视进程，这个监视进程一旦发现源码有更新就会自动编译。
+当您修改源代码后，要运行命令 `fx build` 来增量编译，或者运行 `fx -i build` 命令来开启一个监视进程，这个监视进程一旦发现源码有更新就会自动编译。
 <!--
 For more information on building Fuchsia,
 see [Execute a build](/development/build/fx.md#execute-a-build).
 -->
-想要更多编译 Fuchsia 的相信信息，参考 [开始编译](/development/build/fx.md#execute-a-build)。
+要获取关于编译 Fuchsia 的更多信息，请参考参阅[开始编译](/development/build/fx.md#execute-a-build)。
 <!--
 ## Next steps
 -->
