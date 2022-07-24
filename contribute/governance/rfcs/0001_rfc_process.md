@@ -193,7 +193,7 @@ able to point you in a good direction.
 <!--
 #### Step 2: Draft {#draft}
 -->
-### 步骤二：起草 {#draft}
+### 第二步：起草 {#draft}
 <!--
 Once you have gathered all the background and context you can through
 socialization, you are ready to start the formal part of the RFC process. The
