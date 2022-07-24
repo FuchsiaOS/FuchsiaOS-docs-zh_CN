@@ -28,4 +28,4 @@ instance tree as an absolute or relative path. For example, the moniker path
 `/core/system-updater` refers to the instance of `system-updater` that exists
 in the `core` realm.
  -->
-组件实例由称为 **moniker** 的拓扑路径引用来标识。组件的 moniker 将其在组件实例树中的位置指示为绝对或相对路径。 例如，moniker 路径 `/core/system-updater` 指的是存在于 `core` 领域中的 `system-updater` 的实例。
+组件实例由称为 **moniker** 的拓扑路径引用来标识。组件的 moniker 将其在组件实例树中的位置指示为绝对或相对路径。例如，moniker 路径 `/core/system-updater` 指的是存在于 `core` 领域中的 `system-updater` 的实例。
