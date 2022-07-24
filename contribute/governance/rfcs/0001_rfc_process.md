@@ -222,7 +222,7 @@ Do not worry about assigning a number to your RFC at this stage. Instead, use
 > "work-in-progress" until you are ready for feedback.
 -->
 
-> **建议。** 您可以在准备好接收反馈之前，先把包含 RFC 的 CL 标记为“进行中”。
+> **建议：** 您可以在准备好接收反馈之前，先把包含 RFC 的 CL 标记为“进行中”。
 
 <!--
 #### Step 3: Iterate {#iterate}
