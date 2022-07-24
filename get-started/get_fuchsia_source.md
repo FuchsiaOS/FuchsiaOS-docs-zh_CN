@@ -109,7 +109,7 @@ another 80 to 90 GB of space later when you build Fuchsia. Additionally,
 the download process uses a substantial amount of memory. It is advisible
 to close non-crucial processes during this time.
 -->
-下载 Fuchsia 源码要求你机器上有 2 GB 的存储空间。之后在编译 Fuchsia 过程中需要另外 80 到 90 GB 的存储空间，这取决于你的编译选项配置。另外，下载过程中也会使用一部分的内存空间。建议您在此过程中关闭其他非必要的程序进程。
+下载 Fuchsia 源码要求您机器上有 2 GB 的存储空间。之后在编译 Fuchsia 过程中需要另外 80 到 90 GB 的存储空间，这取决于您的编译选项配置。另外，下载过程中也会使用一部分的内存空间。建议您在此过程中关闭其他非必要的程序进程。
 <!--
 To download the Fuchsia source, do the following:
 -->
@@ -122,7 +122,7 @@ To download the Fuchsia source, do the following:
 -->
 1.  选择一个 Fuchsia 源码存储目录，例如：
     
-    注意：你可以把 Fuchsia 下载到任何路径。本篇教程选择 `$HOME` 作为示例。
+    注意：您可以把 Fuchsia 下载到任何路径。本篇教程选择 `$HOME` 作为示例。
 
     ```posix-terminal
     cd $HOME
@@ -148,7 +148,7 @@ To download the Fuchsia source, do the following:
 -->
     这个脚本会先创建 `fuchsia` 路径，然后下载源码到该路径下。
 
-    如果你在脚本运行期间看到了 `Invalid authentication credentials` 错误信息，参考[认证失败](#authentication-error)章节寻求帮助。
+    如果您在脚本运行期间看到了 `Invalid authentication credentials` 错误信息，参考[认证失败](#authentication-error)章节寻求帮助。
 
 
 <!--
@@ -171,9 +171,9 @@ Fuchsia 建议您在 shell 的配置文件中添加如下几个配置：
     debug Fuchsia. The Fuchsia toolchain requires that `jiri` is available in
     your `PATH`.
 -->
-*  添加 `.jiri_root/bin` 路径到你的 `PATH` 环境变量
+*  添加 `.jiri_root/bin` 路径到您的 `PATH` 环境变量
     
-   `.jiri_root/bin` 路径在 Fuchsia 源码中包含了 [`jiri`](https://fuchsia.googlesource.com/jiri) 和 [`fx`](/development/build/fx.md) 工具，这些工具对 Fuchsia 的后续操作起着至关重要的作用。Fuchsia 使用 `jiri` 工具在 Fuchsia 的项目中管理仓库，使用 `fx` 工具帮助配置、编译、运行以及调试 Fuchsia。Fuchsia 的工具链需要可以在你 `PATH` 环境变量中找得到 `jiri` 工具。
+   `.jiri_root/bin` 路径在 Fuchsia 源码中包含了 [`jiri`](https://fuchsia.googlesource.com/jiri) 和 [`fx`](/development/build/fx.md) 工具，这些工具对 Fuchsia 的后续操作起着至关重要的作用。Fuchsia 使用 `jiri` 工具在 Fuchsia 的项目中管理仓库，使用 `fx` 工具帮助配置、编译、运行以及调试 Fuchsia。Fuchsia 的工具链需要可以在您 `PATH` 环境变量中找得到 `jiri` 工具。
 <!--
 *   Source the `scripts/fx-env.sh` file.
 
@@ -186,19 +186,19 @@ Fuchsia 建议您在 shell 的配置文件中添加如下几个配置：
 -->
 *   导入 `scripts/fx-env.sh` 文件
     
-    虽然这并不是必须的，导入 [`fx-env.sh`](/scripts/fx-env.sh) 文件可以在你的终端中建立一系列的非常有用的 shell 函数。比如，它会创建给 `fd` 工具用来切换路径时提供自动补全的 `FUCHSIA_DIR` 环境变量（如果想获取更多信息，请参考 `fx-env.sh` 文件）。
+    虽然这并不是必须的，导入 [`fx-env.sh`](/scripts/fx-env.sh) 文件可以在您的终端中建立一系列的非常有用的 shell 函数。比如，它会创建给 `fd` 工具用来切换路径时提供自动补全的 `FUCHSIA_DIR` 环境变量（如果想获取更多信息，请参考 `fx-env.sh` 文件）。
 
 <!--
 Note: If you don't wish to update your shell profile, see
 [Work on Fuchsia without updating your PATH](#work-on-fuchsia-without-updating-your-path)
 in Appendices instead.
 -->
-注意：如果你不想更新你的 shell 配置，在附录中参考[不更新 PATH 变量编译 Fuchsia](#work-on-fuchsia-without-updating-your-path)。
+注意：如果您不想更新您的 shell 配置，在附录中参考[不更新 PATH 变量编译 Fuchsia](#work-on-fuchsia-without-updating-your-path)。
 <!--
 To update your shell profile to configure Fuchsia's environment variables,
 do the following:
 -->
-为了更新你的 shell 配置文件来设置 Fuchsia 的环境变量，请按如下步骤：
+为了更新您的 shell 配置文件来设置 Fuchsia 的环境变量，请按如下步骤：
 <!--
 1.  Use a text editor to open your `~/.bash_profile` file (in the example below,
     we use the [Nano][nano]{:.external} text editor):
@@ -207,9 +207,9 @@ do the following:
     using `zsh`, replace `~/.bash_profile` with `~/.zprofile` in the
     following steps:
 -->
-1.  请用文本编辑器打开你的 `~/.bash_profile` 文件（参考如下示例，我们使用 [Nano][nano]{:.external} ）
+1.  请用文本编辑器打开您的 `~/.bash_profile` 文件（参考如下示例，我们使用 [Nano][nano]{:.external} ）
 
-    注意：这篇文章使用 `bash` 终端作为示例，如果你使用 `zsh` 的话，在如下步骤中请替换文件 `~/.bash_profile` 为 `~/.zprofile`：
+    注意：这篇文章使用 `bash` 终端作为示例，如果您使用 `zsh` 的话，在如下步骤中请替换文件 `~/.bash_profile` 为 `~/.zprofile`：
 
     ```posix-terminal
     nano ~/.bash_profile
@@ -220,9 +220,9 @@ do the following:
     Note: If your Fuchsia source code is not located in the `~/fuchsia`
     directory, replace `~/fuchsia` with your Fuchsia directory.
 -->
-1.  在你的 `~/.bash_profile` 文件中添加如下配置：
+1.  在您的 `~/.bash_profile` 文件中添加如下配置：
 
-    注意：如果你的 Fuchsia 源码不在 `~/fuchsia` 路径下，替换 `~/fuchsia` 路径为你的 Fuchsia 路径。
+    注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 路径下，替换 `~/fuchsia` 路径为您的 Fuchsia 路径。
 
     ```sh
     export PATH=~/fuchsia/.jiri_root/bin:$PATH
@@ -244,7 +244,7 @@ do the following:
 1.  Verify that you can run the following commands inside your
     `fuchsia` directory without error:
 -->
-1.  验证你是否可以运行如下命令且没有报错：
+1.  验证您是否可以运行如下命令且没有报错：
 
     ```posix-terminal
     jiri help
@@ -264,9 +264,9 @@ recommended to ensure that Fuchsia's emulator instances run smoothly on Linux.
 (**Linux only**) If you're planning on running Fuchsia on Linux, it is advised to
 run the following command to allow Fuchsia-specific traffic on the host machine:
 -->
-注意：这一步在你的编译或者运行 Fuchsia 步骤中并不是必须的。但是是被建议的，因为可以用来确保你能在 Linux 中流畅的运行 Fuchsia 虚拟机。
+注意：这一步在您的编译或者运行 Fuchsia 步骤中并不是必须的。但是是被建议的，因为可以用来确保您能在 Linux 中流畅的运行 Fuchsia 虚拟机。
 
-(**Linux**) 如果你计划在 Linux 中运行 Fuchsia，建议您运行如下命令来允许 Fuchsia 使用一些特殊的特性：
+(**Linux**) 如果您计划在 Linux 中运行 Fuchsia，建议您运行如下命令来允许 Fuchsia 使用一些特殊的特性：
 
 ```posix-terminal
 fx setup-ufw
@@ -275,7 +275,7 @@ fx setup-ufw
 This script requires `sudo` (which asks for your password) to set the appropriate
 firewall rules. (For more information on this script, see [`setup-ufw`][setup-ufw].)
 -->
-这个脚本需要 `sudo` （会提示你输入密码）权限来设置防火墙规则。（更多关于脚本的的信息，参考 [`setup-ufw`][setup-ufw] 文件）。
+这个脚本需要 `sudo` （会提示您输入密码）权限来设置防火墙规则。（更多关于脚本的的信息，参考 [`setup-ufw`][setup-ufw] 文件）。
 <!--
 ## Next steps
 -->
@@ -285,7 +285,7 @@ firewall rules. (For more information on this script, see [`setup-ufw`][setup-uf
 To build your first Fuchsia system image, see
 [Configure and build Fuchsia](/get-started/build_fuchsia.md).
 -->
-编译你第一个 Fuchsia 系统镜像，参考[配置和编译 Fuchsia](/get-started/build_fuchsia.md) 文件。
+编译您第一个 Fuchsia 系统镜像，参考[配置和编译 Fuchsia](/get-started/build_fuchsia.md) 文件。
 <!--
 ## Appendices
 -->
@@ -299,7 +299,7 @@ If you see the `Invalid authentication credentials` error during the bootstrap
 process, your `~/.gitcookies` file may contain cookies from some repositories in
 `googlesource.com` that the bootstrap script wants to check out anonymously.
 -->
-如果你在脚本运行期间看到了 `Invalid authentication credentials` 报错信息，你的 `~/.gitcookies` 文件中可能包含了一些引导脚本想要自动检测的来自 `googlesource.com` 的 cookie 信息。
+如果您在脚本运行期间看到了 `Invalid authentication credentials` 报错信息，您的 `~/.gitcookies` 文件中可能包含了一些引导脚本想要自动检测的来自 `googlesource.com` 的 cookie 信息。
 <!--
 To resolve this error, do one of the following:
 -->
@@ -342,9 +342,9 @@ example:
 Note: If your Fuchsia source code is not located in the `~/fuchsia` directory,
 replace `~/fuchsia` with your Fuchsia directory.
 -->
-如果你不想更新你的环境变量，但是你想在任何目录中使用 `jiri` 工具，把 `jiri` 工具复制到 `~/bin` 目录中，比如：
+如果您不想更新您的环境变量，但是您想在任何目录中使用 `jiri` 工具，把 `jiri` 工具复制到 `~/bin` 目录中，比如：
 
-注意：如果你的 Fuchsia 源码不在 `~/fuchsia` 目录中，把 `~/fuchsia` 替换为你的 Fuchsia 目录。
+注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录中，把 `~/fuchsia` 替换为您的 Fuchsia 目录。
 
 ```posix-terminal
 cp ~/fuchsia/.jiri_root/bin/jiri ~/bin
@@ -354,7 +354,7 @@ cp ~/fuchsia/.jiri_root/bin/jiri ~/bin
 However, you must have write access to the `~/bin` directory without `sudo`. If
 you don't, `jiri` cannot keep itself up-to-date.
 -->
-无论如何，你首先需要有不用 `sudo` 命令就可以访问 `~/bin` 路径的权限。如果没有，`jiri` 就不能使它自己保持在最新版本。
+无论如何，您首先需要有不用 `sudo` 命令就可以访问 `~/bin` 路径的权限。如果没有，`jiri` 就不能使它自己保持在最新版本。
 <!--
 #### Add a symlink to your binary directory {#add-a-symlink-to-your-binary-directory}
 -->
@@ -367,9 +367,9 @@ example:
 Note: If your Fuchsia source code is not located in the `~/fuchsia` directory,
 replace `~/fuchsia` with your Fuchsia directory.
 -->
-同样的，如果你想不更新环境变量使用 `fx` 工具，在 `~/bin` 路径中提供你的 `fx` 工具的链接文件，比如：
+同样的，如果您想不更新环境变量使用 `fx` 工具，在 `~/bin` 路径中提供您的 `fx` 工具的链接文件，比如：
 
-注意：如果你的 Fuchsia 源码不在 `~/fuchsia` 目录中，把 `~/fuchsia` 替换为你的 Fuchsia 目录。
+注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录中，把 `~/fuchsia` 替换为您的 Fuchsia 目录。
 
 ```posix-terminal
 ln -s ~/fuchsia/scripts/fx ~/bin
@@ -377,7 +377,7 @@ ln -s ~/fuchsia/scripts/fx ~/bin
 <!--
 Alternatively, run the `fx` tool directly using its path, for example:
 -->
-相应地，你也可以使用 `fx` 工具的完整路径，比如：
+相应地，您也可以使用 `fx` 工具的完整路径，比如：
 
 ```posix-terminal
 ./scripts/fx help
@@ -385,7 +385,7 @@ Alternatively, run the `fx` tool directly using its path, for example:
 <!--
 In either case, you need `jiri` in your `PATH`.
 -->
-另一方面，您需要在 `PATH` 环境变零中设置你的 `jiri` 工具。
+另一方面，您需要在 `PATH` 环境变零中设置您的 `jiri` 工具。
 <!-- Reference links -->
 
 [ffx-platform-preflight]: https://fuchsia.dev/reference/tools/sdk/ffx#preflight
