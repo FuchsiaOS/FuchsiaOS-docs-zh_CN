@@ -9,13 +9,13 @@
 <<../../_common/intro/_sandboxing_namespaces.md>>
 
 <!-- ## Exercise: Namespaces -->
-## 练习：命名空间（namespace）
+## 练习：命名空间
 
 <!-- 
 In this exercise, you'll explore the contents of a component's namespace in
 more detail using the shell.
  -->
-在本练习中，您将使用命令行来更详细地探索组件的命名空间的内容。
+在本练习中，您将使用命令行来更详细地探索组件的命名空间（namespace）的内容。
 
 <<../_common/_start_femu.md>>
 
