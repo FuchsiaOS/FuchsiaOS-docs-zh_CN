@@ -24,6 +24,7 @@
 | best practice                  | 最佳做法               | G & i                                                 |
 | caveats                        | 注意事项               | G                                                     |
 | cleanup                        | 清理                   | G                                                     |
+| consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                              |
 | control plane                  | 控制层面 <br> 控制平面 | G                                                     |
 | data plane                     | 数据平面 <br> 数据层面 | G                                                     |
 | deprecated                     | 已弃用（的）           | G                                                     |
@@ -40,6 +41,7 @@
 | guidance                       | 指导                   |                                                       |
 | guide                          | 指南                   | G                                                     |
 | guideline                      | 方针                   |                                                       |
+| heap dump                      | 堆转储                 | G                                                     |
 | HTTP header                    | HTTP 标头              | G                                                     |
 | in-tree                        | 树内                   | G <br> 此处指源码树                                   |
 | infrastructure                 | 基础架构               | G                                                     |
@@ -54,6 +56,8 @@
 | proxy                          | 代理                   |                                                       |
 | remote                         | 远程                   |                                                       |
 | robust                         | 可靠的                 | G                                                     |
+| sandbox                        | 沙盒                   | G                                                     |
+| sandboxing                     | 沙盒                   | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
 | service                        | 服务                   |                                                       |
 | service account                | 服务帐号               | G                                                     |
