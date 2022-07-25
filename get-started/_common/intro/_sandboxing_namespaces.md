@@ -59,5 +59,5 @@ capabilities to access those objects.
   <a href="/concepts/filesystems/dotdot">dot-dot considered harmful</a>.<p>
  -->
   <p>这也影响到目录遍历，以及文件系统服务器如何解析包含 <code>../.</code> 的路径。
-  要获取更多详情，请参阅<a href="/concepts/filesystems/dotdot">我们认为双点（dot-dot）有害</a>。</p>
+  要获取更多详情，请参阅<a href="/concepts/filesystems/dotdot">点点（dot-dot）被认为是有害的</a>。</p>
 </aside>
