@@ -16,10 +16,10 @@ from the platform. A given release of the Fuchsia platform typically supports
 multiple ABI revisions, which lets the platform run older applications while
 still providing a path for evolving the platform.
  -->
-本文档为 Fuchsia 平台提出了 *API 版本* 和 *ABI 版本* 的概念。
-终端开发人员根据 *目标 API 版本* 构建应用程序，该版本确定哪些声明对应用程序可见。
-*目标 API 版本* 也被嵌入到已编译的应用程序中，作为一个 *目标 ABI 版本*，
-表示应用程序期望从平台获得哪些语义支持。一个给定的 Fuchsia 平台版本通常支持多个 *ABI 版本*，
+本文档为 Fuchsia 平台提出了 API 版本和 ABI 版本的概念。
+终端开发人员根据目标 API 版本构建应用程序，该版本确定哪些声明对应用程序可见。
+目标 API 版本也被嵌入到已编译的应用程序中，作为一个目标 ABI 版本，
+表示应用程序期望从平台获得哪些语义支持。一个给定的 Fuchsia 平台版本通常支持多个 ABI 版本，
 这样既支持了平台运行较旧的应用程序，同时又为平台的发展提供了途径。
 
 <!-- ## Motivation -->
@@ -32,7 +32,7 @@ the new interface. Applications then migrate to the new interface. After all the
 applications have migrated to the new interface, the platform then removes the
 old interface.
  -->
-目前，Fuchsia 平台通过一系列 *软过渡* 的方式逐步发展。
+目前，Fuchsia 平台通过一系列软过渡的方式逐步发展。
 要改变一部分 [Fuchsia 系统接口]，平台首先会引入新接口。
 然后应用程序可以逐步迁移到新接口。在所有应用程序都迁移到新接口之后，
 平台会移除旧接口。
@@ -96,14 +96,14 @@ A *release* of Fuchsia is a build of the Fuchsia operating system and associated
 packages that is deployed to a user population. A release has a version number
 that identifies the set of software artifacts contained in the release.
  -->
-Fuchsia *版本* 是用于部署到用户群体的 Fuchsia 操作系统和相关的软件包的一个构建。
+Fuchsia 版本是用于部署到用户群体的 Fuchsia 操作系统和相关的软件包的一个构建。
 每个版本有一个版本号用来标识该版本中包含了哪些软件构件。
 
 <!-- 
 *Backwards compatibility* refers to the ability of a newer release of Fuchsia to
 run binaries intended to run on older release of Fuchsia.
  -->
-*向后兼容性* 是指较新版本的 Fuchsia 能够运行原本用于在旧版本 Fuchsia 上运行的二进制文件。
+向后兼容性是指较新版本的 Fuchsia 能够运行原本用于在旧版本 Fuchsia 上运行的二进制文件。
 
 <!-- 
 The *Fuchsia IDK* is an artifact used by development environment integrators to
@@ -113,9 +113,9 @@ the contract between the Fuchsia platform and applications that run on Fuchsia.
 The IDK tools define the contract between the Fuchsia IDK tools and the
 development environment integrators' environments.
  -->
-*Fuchsia IDK* 是一个供开发环境集成器使用的构件，
+Fuchsia IDK 是一个供开发环境集成器使用的构件，
 用于在开发人员构建 Fuchsia 应用程序时提供 Fuchsia 平台支持。
-*Fuchsia IDK* 由 Fuchsia 项目发布，
+Fuchsia IDK 由 Fuchsia 项目发布，
 并定义了 Fuchsia 平台与 Fuchsia 应用程序之间的协定。
 IDK 工具定义了 Fuchsia IDK 工具和开发环境集成器的环境之间的协定。
 
@@ -124,7 +124,7 @@ A *soft transition* is a technique for breaking down a backwards-incompatible
 change into a sequence of smaller changes to the platform and a set of known
 binaries such that compatibility is maintained locally at each step.
  -->
-*软过渡* 是一种技术，可以将向后不兼容的改动分解为一系列对平台较小的改动和一组已知的二进制文件，
+软过渡是一种技术，可以将向后不兼容的改动分解为一系列对平台较小的改动和一组已知的二进制文件，
 这样使得兼容性在每一步都得到维护。
 
 <!-- ## Design -->
@@ -160,9 +160,9 @@ use a different versioning scheme, which identifies the specific implementation
 in that release.
  -->
 Fuchsia 平台使用两个版本标识符，
-一个 *API 版本* 和一个 *ABI 版本*。
-这两个版本都标识了由平台提供的接口而不是该接口的 *实现*。
-Fuchsia *版本* 使用了不同的版本控制方案，它在版本中标识了具体的实现。
+一个 API 版本和一个 ABI 版本。
+这两个版本都标识了由平台提供的接口而不是该接口的实现。
+Fuchsia 版本使用了不同的版本控制方案，它在版本中标识了具体的实现。
 
 <!-- 
 A given API level implicates a specific ABI revision, but multiple API levels
@@ -179,7 +179,7 @@ application. A given release of the [Fuchsia IDK] typically supports multiple
 API levels. The APIs available at a given supported API level should be
 consistent across IDK releases.
  -->
-Fuchsia *API 版本* 表示在构建应用程序时哪些 API 可用。
+Fuchsia API 版本表示在构建应用程序时哪些 API 可用。
 一个给定的 [Fuchsia IDK] 版本通常支持多个 API 版本。
 一个给定的 API 版本中可用的 API，应该在多个 IDK 版本中保持一致。
 
@@ -190,7 +190,7 @@ library. The API defines that set of functions, which means two IDK releases
 should expose the same set of functions in the `fit` library at the same API
 level.
  -->
-> *示例。* 例如 `pkg/fit`，它是 SDK 中的 C++ 库。
+> 示例。例如 `pkg/fit`，它是 SDK 中的 C++ 库。
 `fit` 库声明了许多函数，每一个函数都是由该库提供的一个 API。
 API 版本定义了这组函数，这意味着两个 IDK 版本应该在同一个 API 版本中的 `fit` 库中提供相同的函数集。
 
@@ -199,8 +199,8 @@ Syntactically, a Fuchsia *API level* is an unsigned, 64-bit integer[^1].
 As the platform evolves (see *Evolution* below), API levels are assigned in
 increasing order and are intended to be understood by human beings, including end-developers.
  -->
-从语法上讲，Fuchsia 的 *API 版本* 是一个无符号的 64 位整数 [^1]。
-随着平台的发展（参见下面的 *发展*），API 版本按序递增，旨在为人类（包括终端开发人员）所理解。
+从语法上讲，Fuchsia 的 API 版本是一个无符号的 64 位整数 [^1]。
+随着平台的发展（参见下面的发展），API 版本按序递增，旨在为人类（包括终端开发人员）所理解。
 
 <!-- #### ABI revision -->
 #### ABI 版本
@@ -212,8 +212,8 @@ typically supports multiple ABI revisions, but semantics for a given supported
 ABI revision should be consistent (see *Evolution* below) across Fuchsia
 releases.
  -->
-Fuchsia *ABI 版本* 表示应用程序期望平台提供的 [Fuchsia 系统接口] 语义信息。一个给定的 Fuchsia 版本
-通常支持多个 ABI 版本，但一个给定的 ABI 版本的语义应该在多个 Fuchsia 版本中保持一致（参见下面的 *发展*）。
+Fuchsia ABI 版本表示应用程序期望平台提供的 [Fuchsia 系统接口] 语义信息。一个给定的 Fuchsia 版本
+通常支持多个 ABI 版本，但一个给定的 ABI 版本的语义应该在多个 Fuchsia 版本中保持一致（参见下面的发展）。
 
 <!-- 
 > *Example.* Consider `zx_clock_get_monotonic`, which is a function exposed by
@@ -222,7 +222,7 @@ both whether this function exists and what happens when this function is called,
 which means the semantics of `zx_clock_get_monotonic` should be consistent
 across Fuchsia releases at the same ABI revision.
  -->
-> *示例。* 例如 `zx_clock_get_monotonic`，这是一个由
+> 示例。 例如 `zx_clock_get_monotonic`，这是一个由
 vDSO 提供的 [Fuchsia 系统接口]。ABI 版本指定该函数是否存在以及调用该函数时会发生什么，
 这意味着 `zx_clock_get_monotonic` 在跨 Fuchsia 版本时，同一个 ABI 版本中的语义应该是一致的。 
 
@@ -233,7 +233,7 @@ identifer for a new ABI revision, select a unsigned, 64-bit integer at random
 among values that have never been used to identify a Fuchsia ABI revision
 before.
  -->
-在语法上，Fuchsia *ABI 版本* 是一个无符号的 64 位整数。
+在语法上，Fuchsia ABI 版本是一个无符号的 64 位整数。
 ABI 版本是一个没有内部结构的不透明标识符。
 要创建一个新 ABI 版本的标识符，随机选择一个从未用于标识 Fuchsia ABI 版本的无符号 64 位整数。
 
@@ -266,7 +266,7 @@ The platform changes the ABI revision whenever the platform makes a
 backwards-incompatible changes by changing the ABI revision on some defined
 cadence (e.g., every six weeks or every six months).
  -->
-每当平台对 [Fuchsia 系统接口] 的语义做出 *向后不兼容* 的改动时， 平台都会更改 ABI 版本。
+每当平台对 [Fuchsia 系统接口] 的语义做出向后不兼容的改动时， 平台都会更改 ABI 版本。
 在实践中，通过一些设定的节奏（例如，每六周或每六个月）来更改 ABI 版本，可能会导致项目批量向后不兼容地更改。
 
 <!-- 
@@ -286,7 +286,7 @@ will likely need to refine that document over time as the project gains
 implementation experience about what changes commonly do and do not break
 applications in practice.
  -->
-> *重要事项。* 创建一个文档，详细说明平台认为哪些对 [Fuchsia 系统接口] 的改动是向后兼容的。
+> 重要事项。创建一个文档，详细说明平台认为哪些对 [Fuchsia 系统接口] 的改动是向后兼容的。
 随着时间的推移，当项目在实践中获得更多关于哪些改动会或者不会破坏应用程序的经验之后，
 项目可能需要完善该文档。
 
@@ -301,7 +301,7 @@ introduced in API level 7 is not available when building a component that
 targets API level 6 but is available when building a component that targets API
 level 7 or 8 (assuming the message was not deprecated in API level 8).
  -->
-终端开发人员在构建组件时选择一个 *目标 API 版本*。
+终端开发人员在构建组件时选择一个目标 API 版本。
 目标 API 版本控制 [Fuchsia IDK] 中的哪些声明在构建组件时可用。
 例如，FIDL 消息 API 版本 7 中引入的组件，在构建以 API 版本 6 为目标的组件时不可用，
 但在构建以 API 版本 7 或 8（假设 API 级别 8 中未弃用该消息）为目标的组件时可用。
@@ -314,7 +314,7 @@ developer expected the platform to provide when they built their component. A
 given package can contain many components, each of which can select whichever
 target ABI revision they prefer.
  -->
-作为构建组件的一部分，SDK 中的工具包含了与组件清单中的目标 API 版本关联的 *目标 ABI 版本*。
+作为构建组件的一部分，SDK 中的工具包含了与组件清单中的目标 API 版本关联的目标 ABI 版本。
 这样，每个组件都声明了开发人员在构建组件时希望平台提供的语义。
 一个给定的包可以包含许多组件，每个组件都可以选择他们喜欢的任何一个目标 ABI 版本。
 
@@ -327,7 +327,7 @@ provides binary compatibility for components that target a supported ABI
 revision, which means the platform will attempt to provide those components the
 platform semantics indicated by their target ABI revision.
  -->
-平台维护了 *支持的 ABI 版本* 列表。
+平台维护了支持的 ABI 版本列表。
 当组件将任意一个支持的 ABI 版本作为目标，平台将为其提供二进制兼容性，
 这意味着平台将尝试为这些组件提供由其目标 ABI 版本所指示的平台语义。
 
@@ -342,7 +342,7 @@ components with a target ABI revision after the transition to
 `fuchsia.foo.Bar` to an implementation because components targeting that ABI
 revision should be using `fuchsia.foo.Bar2` instead.
  -->
-> *示例。* 考虑从 `fuchsia.foo.Bar` 协议过渡到 `fuchsia.foo.Bar2` 协议。
+> 示例。考虑从 `fuchsia.foo.Bar` 协议过渡到 `fuchsia.foo.Bar2` 协议。
 假设一个组件，`baz.cm`，有一个目标 ABI 版本指示着当前组件期望平台提供 `Fuchsia.foo.Bar`。
 运行 `baz.cm` 时，平台将对 `fuchsia.foo.Bar` 的请求分发到适当的实现。
 但是，将组件的 ABI 版本过渡到 `fuchsia.foo.Bar2` 之后， 组件在运行时，
@@ -363,7 +363,7 @@ important components that target that older ABI revision.
 在某些时候，平台可能希望移除对给定 ABI 版本的支持。
 此类移除通常限制在在重要组件的尾部进行，这些组件仍然依赖旧的 ABI 版本。
 相比于保持旧 ABI 版本暗指的完整语义，
-平台选择了维护一个 *遗留组件* 列表以及运行这些组件必要的 *quirks* 表。
+平台选择了维护一个遗留组件列表以及运行这些组件必要的 quirks 表。
 quirk 是一种兼容性填充程序，它允许遗留组件使用另外的不支持的接口。
 使用这种机制，平台可以移除对旧 ABI 版本的一般性支持，
 同时仍然能够运行某些指定旧 ABI 版本的重要组件。
@@ -380,7 +380,7 @@ not need to support the full semantics implied by `fuchsia.foo.Bar`. Instead,
 the compatibility shim need only work well enough to keep `baz.cm` (and the
 other specific components with the `needs-fuchsia-foo-bar` quirk) working.
  -->
-> *示例。*假设平台不再支持任何包括 `fuchsia.foo.Bar` 的 ABI 版本，
+> 示例。假设平台不再支持任何包括 `fuchsia.foo.Bar` 的 ABI 版本，
 但 `baz.cm` 是一个未迁移到 `fuchsia.foo.Bar2` 的重要组件。
 项目可以将 `baz.cm` 视为具有 `needs-fuchsia-foo-bar` quirk 的遗产组件。
 虽然平台不再支持 `baz.cm` 的目标 ABI 版本，
@@ -416,7 +416,7 @@ Every element of the [Fuchsia System Interface][Fuchsia System Interface]
     be hidden from components that target older ABI revisions to avoid breaking
     them.
  -->
- 1. 元素被 *引入* 到平台中。终端开发者不能使用 API，除非 Fuchsia 发布了包括该元素的新 API 版本的 SDK。
+ 1. 元素被引入到平台中。终端开发者不能使用 API，除非 Fuchsia 发布了包括该元素的新 API 版本的 SDK。
     如果可以在不破坏 ABI 的情况下引入元素（例如，添加系统调用）， 
     则现有 ABI 版本的语义可以被更新，以包括新引入的元素。
     否则，该元素必须对指定旧 ABI 版本的组件隐藏，以避免破坏他们。
@@ -429,7 +429,7 @@ Every element of the [Fuchsia System Interface][Fuchsia System Interface]
     for that element visible to end-developers. An element can be extended only
     if adding child elements does not break the existing API or ABI.
  -->
-2. 如果可能，可以通过引入子元素来 *扩展* 元素。
+2. 如果可能，可以通过引入子元素来扩展元素。
    例如，可以通过引入新字段来扩展 FIDL 表。
    引入子元素会为该子元素启动元素生命周期的另一个实例，
    包括需要新的 API 版本来使该元素的 API 对终端开发人员可见。 
@@ -441,7 +441,7 @@ Every element of the [Fuchsia System Interface][Fuchsia System Interface]
     However, end-developers that target a newer API
     level can no longer use the element.
  -->
-3. 该元素可能 *已弃用*。指定旧 ABI 版本的组件在较新的平台版本上运行时，仍然可以使用该元素。
+3. 该元素可能已弃用。指定旧 ABI 版本的组件在较新的平台版本上运行时，仍然可以使用该元素。
    但是，针对较新 API 版本进行开发的终端开发人员不能再使用该元素。
 
 <!-- 
@@ -450,15 +450,15 @@ Every element of the [Fuchsia System Interface][Fuchsia System Interface]
     this point, the platform need only support the element insofar as the
     element is actually used by a specific legacy component by way of a quirk.
  -->
-4. 当平台不再支持元素的 *引入* 和 *弃用* 之间的任何 ABI 版本，
-   该元素就是一个 *遗留*。 
+4. 当平台不再支持元素的引入和弃用之间的任何 ABI 版本，
+   该元素就是一个遗留。 
    此时，只有在该元素实际上被某个遗留组件通过 quirk 的方式使用时，平台才需要支持元素。
 
 <!-- 
  5. Once none of the legacy components use the element, the element can be
     *removed* from the platform entirely.
  -->
-5. 一旦没有任何遗留组件使用该元素，该元素可以完全从平台上 *移除*。
+5. 一旦没有任何遗留组件使用该元素，该元素可以完全从平台上移除。
 
 <!-- ### Dynamics {#dynamics} -->
 ### 动态{#dynamics}
@@ -570,7 +570,7 @@ manifest. Another possibility is to add the ABI revision to the
 `fuchsia.ldsvc.Loader` protocol, which is typically routed to the source of the
 executable.
  -->
-> *未解决的问题。* 创建没有组件清单的进程时，我们应该使用什么 ABI 版本？
+> 未解决的问题。创建没有组件清单的进程时，我们应该使用什么 ABI 版本？
 一种可能性是将 ABI 版本放入可执行文件的 ELF 数据，而不是（或是额外附加？）组件清单内。
 另一种可能性是将 ABI 版本添加到 `fuchsia.ldsvc.Loader` 协议，这通常被路由到可执行文件的源。
 
@@ -604,7 +604,7 @@ example, we could define a routing *quirk* that gets applied for specific legacy
 components that have that quirk in the quirk table.
  -->
 类似地，平台可能希望将特定遗留组件的功能，路由到提供兼容性填充程序的专用目标。
-例如，我们可以定义一个路由 *quirk*，用于在 quirk 表中具有该 quirk 的特定遗留组件。
+例如，我们可以定义一个路由 quirk，用于在 quirk 表中具有该 quirk 的特定遗留组件。
 
 ### SDK
 
