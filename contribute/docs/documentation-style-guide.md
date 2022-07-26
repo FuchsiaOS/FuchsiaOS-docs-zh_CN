@@ -296,7 +296,7 @@ fx ota
 <span class="compare-worse">Not recommended</span>: Don't hardcode a `$`
 character in the command.
  -->
-<span class="compare-worse">不推荐</span>：请勿在命令前硬编码一个 `$` 符号。
+<span class="compare-worse">不推荐</span>：请勿在命令里硬编码 `$` 字符。
 
 ```sh
 $ fx ota
