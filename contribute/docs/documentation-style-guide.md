@@ -286,7 +286,7 @@ fx ota
 <!-- 
 This code block is rendered with `$` in the front of the command:
  -->
-该代码块在渲染时，命令前会添加 `$`：
+该代码块在渲染时，命令前会出现 `$`：
 
 ```posix-terminal
 fx ota
