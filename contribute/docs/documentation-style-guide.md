@@ -207,12 +207,12 @@ fx format-code
 <!-- 
 ## Headers
  -->
-## 标头（header）
+## 标题
 
 <!-- 
 ### Use sentence case for page and section titles
  -->
-### 为页面和章节标题使用句首字母大写格式（sentence case）
+### 为页面和章节标题使用句首字母大写格式
 
 <!-- 
 <span class="compare-better">Recommended</span>: Using sentence case.
@@ -235,7 +235,7 @@ fx format-code
 <!-- 
 ### Use dashes, not underscores, for anchors
  -->
-### 为锚点使用连接号（dash），不要使用下划线
+### 为锚点使用连接号，不要使用下划线
 
 <!-- 
 By default, `fuchsia.dev` creates anchors using underscores (`_`) in place of
