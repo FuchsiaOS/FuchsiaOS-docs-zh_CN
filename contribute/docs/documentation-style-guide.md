@@ -46,7 +46,7 @@ while the maximum line length for documentation is 80 characters. A notable
 exception to this rule is URLs (i.e. links) which are written on one line,
 without wrapping.
  -->
-在 Fuchsia 项目中，代码的行最大长度为 100 字符，而文档的行最大长度为 80 字符。该规则一个值得注意的例外情况是 URL（即链接），写在一行中，不换行。
+在 Fuchsia 项目中，代码的行最大长度为 100 字符，而文档的行最大长度为 80 字符。该规则一个值得注意的例外情况是网址（即链接），写在一行中，不换行。
 
 <!-- 
 Code tends to be indented (blank space on the left of the page), while English
