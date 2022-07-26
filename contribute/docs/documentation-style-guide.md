@@ -180,7 +180,7 @@ In the Fuchsia documentation you can link to three types of contents:
 * `/docs/` - 链接至位于 Fuchsia 源树中 `/docs/` 目录内的文档。这些链接必须关联到具有 `.md` 扩展名的文件。例如，`/concepts/README.md`。
 * 源代码 - 链接至位于 Fuchsia 源树中的源代码文件。这些链接可以关联到任何文件扩展名，但这些文件必须存在于源树中。例如，`/src/sys/sysmgr/main.cc`。
 * 参考文档 - 链接至自动生成的 Fuchsia 参考文档。
-  * 大多数 Fuchsia 参考文档不存在于源树内，但在 [fuchsia.dev][fuchsia-dev] 上发布了。这些链接必须使用完整形式的 URL。例如，`https://fuchsia.dev/reference/fidl/fuchsia.io`。
+  * 大多数 Fuchsia 参考文档不存在于源树内，但在 [fuchsia.dev][fuchsia-dev] 上发布了。这些链接必须使用完全限定的网址。例如，`https://fuchsia.dev/reference/fidl/fuchsia.io`。
   * 不过，一些 Fuchsia 参考文档存在于源树内。这些文档位于 `/reference/`，并在 `https://fuchsia.dev/fuchsia-src/reference/` 中发布。这些链接必须关联到具有 `.md` 扩展名的文件。例如，`/reference/syscalls/bti_create.md`。
 
 
