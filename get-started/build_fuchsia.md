@@ -1,12 +1,11 @@
-
 <!--
 # Configure and build Fuchsia {#configure-and-build-fuchsia}
 This guide provide instructions on how to configure and build Fuchsia
 on a host machine.
 -->
-# 配置和编译 Fuchsia {#configure-and-build-fuchsia}
+# 配置和构建 Fuchsia {#configure-and-build-fuchsia}
 
-这篇文档将引导您在主机上如何配置并编译 Fuchsia。
+这篇文档将引导您在主机上如何配置并构建 Fuchsia。
 <!--
 The steps are:
 -->
@@ -19,8 +18,8 @@ The steps are:
 -->
 1. [准备](#prerequisites)
 1. [配置设置项](#set-your-build-configuration)
-1. [编译调优（可选）](#speed-up-the-build)
-1. [编译](#build-fuchsia)
+1. [构建调优（可选）](#speed-up-the-build)
+1. [构建](#build-fuchsia)
 <!--
 ## 1. Prerequisites {#prerequisites}
 -->
@@ -54,7 +53,7 @@ environment on your machine.
 You can build Fuchsia only on a machine with one of the following
 host architectures:
 -->
-Fuchsia 的编译支持如下架构的机器：
+Fuchsia 的构建支持如下架构的机器：
 <!--
 - x86-64 Linux (Debian-based distributions only)
 - x86-64 macOS
@@ -73,12 +72,12 @@ Note: Windows and ARM64 are not supported.
 Fuchsia's build configuration informs the build system which product to
 build and which architecture to build for.
 -->
-Fuchsia 的编译设置项告诉编译系统如何编译，以及编译什么架构的文件。
+Fuchsia 的构建设置项告诉构建系统如何构建，以及构建什么架构的文件。
 <!--
 To set your Fuchsia build configuration, run the following
 [`fx set`][fx-set-reference] command:
 -->
-设置您的 Fuchsia 编译选项，可以运行 [`fx set`][fx-set-reference] 命令：
+设置您的 Fuchsia 构建选项，可以运行 [`fx set`][fx-set-reference] 命令：
 ```posix-terminal
 fx set {{ '<var>' }}PRODUCT{{ '</var>' }}.{{ '<var>' }}BOARD{{ '</var>' }}
 ```
@@ -91,12 +90,12 @@ Replace the following:
   `workstation_eng`.
 * `BOARD`: The architecture of the product; for example, `x64` and `qemu-x64`
 -->
-* `PRODUCT`: 编译的目标文件类型, 比如可以设置为： `core` 和 `workstation_eng`.
-* `BOARD`: 编译的可执行文件架构，比如：`x64` 和 `qemu-x64`
+* `PRODUCT`: 构建的目标文件类型, 比如可以设置为： `core` 和 `workstation_eng`.
+* `BOARD`: 构建的可执行文件架构，比如：`x64` 和 `qemu-x64`
 <!--
 The example command below sets a build configuration to `core.qemu-x64`:
 -->
-下面的示例设置了编译选项为 `core.qemu-x64`:
+下面的示例设置了构建选项为 `core.qemu-x64`:
 
 ```posix-terminal
 fx set core.qemu-x64
@@ -113,13 +112,13 @@ In this example:
     [QEMU][qemu]{:.external}.
 -->
   * `core` 就是选择了特性最小化的 Fuchsia， 当然包括了常见的网络相关。
-  * `qemu-x64` 这个选项设置了编译架构为在开源的虚拟机 （FEMU）中的 x64 架构 [QEMU][qemu]{:.external}.
+  * `qemu-x64` 这个选项设置了构建架构为在开源的虚拟机 （FEMU）中的 x64 架构 [QEMU][qemu]{:.external}.
 <!--
 On the other hand, the example below sets the build configuration to
 `workstation_eng.x64`, which is commonly used to
 [install Fuchsia's Workstation product on a device][build-workstation]:
 -->
-在看另一个编译选项示例，下面这个命令配置了 [在设备中安装 Fuchsia 工作站][build-workstation] 中常用的一个架构, `workstation_eng.x64`:
+在看另一个构建选项示例，下面这个命令配置了 [在设备中安装 Fuchsia 工作站][build-workstation] 中常用的一个架构, `workstation_eng.x64`:
 
 ```posix-terminal
 fx set workstation_eng.x64
@@ -128,20 +127,20 @@ fx set workstation_eng.x64
 For more information on the build configuration,
 see [Configure a build](/development/build/fx.md#configure-a-build).
 -->
-如果想查看更详细的编译选项介绍，参考 [配置编译选项](/development/build/fx.md#configure-a-build)
+如果想查看更详细的构建选项介绍，参考 [配置构建选项](/development/build/fx.md#configure-a-build)
 <!--
 ## 3. Speed up the build (Optional) {#speed-up-the-build}
 -->
-## 3. 编译调优（可选） {#speed-up-the-build}
+## 3. 构建调优（可选） {#speed-up-the-build}
 <!--
 Note: This step is not required to build Fuchsia, but it's recommended
 since it can save you a lot of time when you build Fuchsia.
 -->
-注意：这一步不是必选项，但是建议您设置，因为设置了这一步能节省很多的编译时间。
+注意：这一步不是必选项，但是建议您设置，因为设置了这一步能节省很多的构建时间。
 <!--
 To speed up the Fuchsia build, you can use one of the following services:
 -->
-编译调优的话，需要下面的服务：
+构建调优的话，需要下面的服务：
 <!--
 *   [Enable Goma](#enable-goma)
 *   [Install ccache](#install-ccache)
@@ -157,7 +156,7 @@ To speed up the Fuchsia build, you can use one of the following services:
 distributed compiler service for open source projects such as Chrome, Android
 and Fuchsia.
 -->
-[Goma](https://chromium.googlesource.com/infra/goma/server/){:.external} 是一个分布式编译服务，常用在一些开源项目中，如 Chrome，Android 以及 Fuchsia。
+[Goma](https://chromium.googlesource.com/infra/goma/server/){:.external} 是一个分布式构建服务，常用在一些开源项目中，如 Chrome，Android 以及 Fuchsia。
 <!--
 If you have access to Goma, enable a Goma client on your machine:
 -->
@@ -175,7 +174,7 @@ If you do not have access to Goma, but want to accelerate the Fuchsia build
 locally, use <code>[ccache](https://ccache.dev/){:.external}</code> to cache
 artifacts from previous builds.
 -->
-如果不能访问 Goma，但是想加速本地编译时间，则可以使用 <code>[ccache](https://ccache.dev/){:.external}</code> 来缓存来进行增量编译。
+如果不能访问 Goma，但是想加速本地构建时间，则可以使用 <code>[ccache](https://ccache.dev/){:.external}</code> 来缓存来进行增量构建。
 
 * {Linux}
 <!--
@@ -219,20 +218,20 @@ To override this default behavior, specify the following flags to `fx set`:
 <!--
 ## 4. Build Fuchsia {#build-fuchsia}
 -->
-## 4. 编译 {#build-fuchsia}
+## 4. 构建 {#build-fuchsia}
 <!--
 The [`fx build`][fx-build-reference] command executes the build to transform
 source code into packages and other build artifacts.
 -->
-[`fx build`][fx-build-reference] 命令可以把源代码编译打包，或者编译成其他的类型。
+[`fx build`][fx-build-reference] 命令可以把源代码构建打包，或者构建成其他的类型。
 <!--
 To build Fuchsia, run the following command:
 -->
-使用如下命令编译 Fuchsia：
+使用如下命令构建 Fuchsia：
 <!--
 Note: Building Fuchsia can take up to 90 minutes.
 -->
-注意：编译时间一般为 90 分钟。
+注意：构建时间一般为 90 分钟。
 
 ```posix-terminal
 fx build
@@ -242,12 +241,12 @@ When you modify source code, run the `fx build` command again to perform an
 incremental build, or run the `fx -i build` command to start a watcher, which
 automatically builds whenever you update the source code.
 -->
-当您修改源代码后，要运行命令 `fx build` 来增量编译，或者运行 `fx -i build` 命令来开启一个监视进程，这个监视进程一旦发现源码有更新就会自动编译。
+当您修改源代码后，要运行命令 `fx build` 来增量构建，或者运行 `fx -i build` 命令来开启一个监视进程，这个监视进程一旦发现源码有更新就会自动构建。
 <!--
 For more information on building Fuchsia,
 see [Execute a build](/development/build/fx.md#execute-a-build).
 -->
-要获取关于编译 Fuchsia 的更多信息，请参考参阅[开始编译](/development/build/fx.md#execute-a-build)。
+要获取关于构建 Fuchsia 的更多信息，请参考参阅[开始构建](/development/build/fx.md#execute-a-build)。
 <!--
 ## Next steps
 -->
