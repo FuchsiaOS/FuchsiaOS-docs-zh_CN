@@ -393,7 +393,7 @@ $ my_command
 code should be referred to by path only. You will get a static error check
 otherwise.
  -->
-<span class="compare-better">推荐</span>：任何引用源代码的链接应当仅使用路径指代。否则您将收到静态错误检查（static error check）。
+<span class="compare-better">推荐</span>：任何引用源代码的链接应当仅使用路径引用。否则您将收到静态错误检查（static error check）。
 
 <!-- 
 <pre>
