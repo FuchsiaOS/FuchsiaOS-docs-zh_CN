@@ -242,7 +242,7 @@ By default, `fuchsia.dev` creates anchors using underscores (`_`) in place of
 spaces. When referencing a section in a page, create a custom anchor using
 dashes (`-`) instead, using `{#section-title}`. Also, use dashes for file names.
  -->
-默认情况下，`fuchsia.dev` 创建锚点时会在在空格处使用下划线（`_`）。不过，当引用一个页面中的章节时，请使用连接号（`-`，dash），使用 `{#section-title}`。同样地，请在文件名中使用连接号。
+默认情况下，`fuchsia.dev` 创建锚点时会在在空格处使用下划线（`_`）。不过，当引用一个页面中的章节时，请使用连接号（`-`，dash），使用 `{#section-title}` 创建自定义锚点。同样地，请在文件名中使用连接号。
 
 <!-- 
 <span class="compare-better">Recommended</span>: Using dashes for anchors
