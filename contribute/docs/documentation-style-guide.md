@@ -150,7 +150,7 @@ You can read more about reference style links in the external
 <!-- 
 ### Use correct links to different Fuchsia content
  -->
-### 对不同的 Fuchsia 内容使用正确链接
+### 为不同的 Fuchsia 内容使用正确链接
 
 <!-- 
 In the Fuchsia documentation you can link to three types of contents:
