@@ -28,6 +28,7 @@ in the resources in the following documents:
  -->
 * 要获取关于通用文档标准的信息，包括文件类型、位置和整体语言风格，请参阅 [Fuchsia 文档标准][doc-standard]。
 * 要获取关于措辞、风格和结构的具体指导，请参阅 [Fuchsia 文档风格指南][style-guide]。
+* 要获取完整的 Markdown 参考指南，请参阅 [Markdown 参考指南][markdown-guide]。
 
 <!-- 
 ## Text and links
@@ -45,7 +46,7 @@ while the maximum line length for documentation is 80 characters. A notable
 exception to this rule is URLs (i.e. links) which are written on one line,
 without wrapping.
  -->
-在 Fuchsia 项目中，代码的行最大长度为 100 字符，而文档的行最大长度为 80 字符。该规则一个值得注意的例外情况是 URL（即链接），写在一行中，不换行。
+在 Fuchsia 项目中，代码的行最大长度为 100 字符，而文档的行最大长度为 80 字符。该规则一个值得注意的例外情况是网址（即链接），写在一行中，不换行。
 
 <!-- 
 Code tends to be indented (blank space on the left of the page), while English
@@ -179,7 +180,7 @@ In the Fuchsia documentation you can link to three types of contents:
 * `/docs/` - 链接至位于 Fuchsia 源树中 `/docs/` 目录内的文档。这些链接必须关联到具有 `.md` 扩展名的文件。例如，`/concepts/README.md`。
 * 源代码 - 链接至位于 Fuchsia 源树中的源代码文件。这些链接可以关联到任何文件扩展名，但这些文件必须存在于源树中。例如，`/src/sys/sysmgr/main.cc`。
 * 参考文档 - 链接至自动生成的 Fuchsia 参考文档。
-  * 大多数 Fuchsia 参考文档不存在于源树内，但在 [fuchsia.dev][fuchsia-dev] 上发布了。这些链接必须使用完整形式的 URL。例如，`https://fuchsia.dev/reference/fidl/fuchsia.io`。
+  * 大多数 Fuchsia 参考文档不存在于源树内，但在 [fuchsia.dev][fuchsia-dev] 上发布了。这些链接必须使用完全限定的网址。例如，`https://fuchsia.dev/reference/fidl/fuchsia.io`。
   * 不过，一些 Fuchsia 参考文档存在于源树内。这些文档位于 `/reference/`，并在 `https://fuchsia.dev/fuchsia-src/reference/` 中发布。这些链接必须关联到具有 `.md` 扩展名的文件。例如，`/reference/syscalls/bti_create.md`。
 
 
@@ -285,7 +286,7 @@ fx ota
 <!-- 
 This code block is rendered with `$` in the front of the command:
  -->
-该代码块在渲染时，命令前会添加 `$`：
+该代码块在渲染时，命令前会出现 `$`：
 
 ```posix-terminal
 fx ota
@@ -295,7 +296,7 @@ fx ota
 <span class="compare-worse">Not recommended</span>: Don't hardcode a `$`
 character in the command.
  -->
-<span class="compare-worse">不推荐</span>：请勿在命令前硬编码一个 `$` 符号。
+<span class="compare-worse">不推荐</span>：请勿在命令里硬编码 `$` 字符。
 
 ```sh
 $ fx ota
@@ -385,14 +386,14 @@ $ my_command
 <!-- 
 ### Use paths instead of URLs when referring to source code
  -->
-### 引用源代码时使用路径，不要使用 URL
+### 引用源代码时使用路径，不要使用网址
 
 <!-- 
 <span class="compare-better">Recommended</span>: Any links that refer to source
 code should be referred to by path only. You will get a static error check
 otherwise.
  -->
-<span class="compare-better">推荐</span>：任何引用源代码的链接应当仅使用路径指代。否则您将收到静态错误检查（static error check）。
+<span class="compare-better">推荐</span>：任何引用源代码的链接应当仅使用路径引用。否则您将收到静态错误检查（static error check）。
 
 <!-- 
 <pre>
