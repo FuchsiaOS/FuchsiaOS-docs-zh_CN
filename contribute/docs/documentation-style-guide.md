@@ -28,6 +28,7 @@ in the resources in the following documents:
  -->
 * 要获取关于通用文档标准的信息，包括文件类型、位置和整体语言风格，请参阅 [Fuchsia 文档标准][doc-standard]。
 * 要获取关于措辞、风格和结构的具体指导，请参阅 [Fuchsia 文档风格指南][style-guide]。
+* 要获取完整的 Markdown 参考指南，请参阅 [Markdown 参考指南][markdown-guide]。
 
 <!-- 
 ## Text and links
