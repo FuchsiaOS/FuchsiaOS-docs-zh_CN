@@ -386,7 +386,7 @@ $ my_command
 <!-- 
 ### Use paths instead of URLs when referring to source code
  -->
-### 引用源代码时使用路径，不要使用 URL
+### 引用源代码时使用路径，不要使用网址
 
 <!-- 
 <span class="compare-better">Recommended</span>: Any links that refer to source
