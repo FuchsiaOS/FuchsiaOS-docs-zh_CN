@@ -68,6 +68,7 @@
 | set up / setup                 | 设置                   |                                                       |
 | settings                       | 设置                   |                                                       |
 | sidecar                        | Sidecar                | 首字母大写，不译 <br> G                               |
+| source code                    | 源代码                 | G                                                     |
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
 | strategy                       | 策略                   | G                                                     |
 | suite                          | 套件                   | G                                                     |
