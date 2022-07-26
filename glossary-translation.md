@@ -22,9 +22,11 @@
 | automatic retry                | 自动重试               | G                                                     |
 | backoff                        | 退避                   | G                                                     |
 | best practice                  | 最佳做法               | G & i                                                 |
+| build                          | 构建                   | G                                                     |
 | caveats                        | 注意事项               | G                                                     |
 | cleanup                        | 清理                   | G                                                     |
-| consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                              |
+| compile                        | 编译                   | G                                                     |
+| consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                           |
 | control plane                  | 控制层面 <br> 控制平面 | G                                                     |
 | data plane                     | 数据平面 <br> 数据层面 | G                                                     |
 | deprecated                     | 已弃用（的）           | G                                                     |
@@ -53,9 +55,12 @@
 | path                           | 路径                   | G                                                     |
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
+| prerequisites                  | 前提条件               | G                                                     |
 | proxy                          | 代理                   |                                                       |
 | remote                         | 远程                   |                                                       |
 | robust                         | 可靠的                 | G                                                     |
+| sandbox                        | 沙盒                   | G                                                     |
+| sandboxing                     | 沙盒                   | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
 | service                        | 服务                   |                                                       |
 | service account                | 服务帐号               | G                                                     |
@@ -63,6 +68,7 @@
 | set up / setup                 | 设置                   |                                                       |
 | settings                       | 设置                   |                                                       |
 | sidecar                        | Sidecar                | 首字母大写，不译 <br> G                               |
+| source code                    | 源代码                 | G                                                     |
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
 | strategy                       | 策略                   | G                                                     |
 | suite                          | 套件                   | G                                                     |
