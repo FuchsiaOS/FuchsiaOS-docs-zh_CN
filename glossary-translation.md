@@ -22,6 +22,7 @@
 | automatic retry                | 自动重试               | G                                                     |
 | backoff                        | 退避                   | G                                                     |
 | best practice                  | 最佳做法               | G & i                                                 |
+| board                          | 板型                   | i                                                     |
 | build                          | 构建                   | G                                                     |
 | caveats                        | 注意事项               | G                                                     |
 | cleanup                        | 清理                   | G                                                     |
@@ -56,6 +57,7 @@
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
 | prerequisites                  | 前提条件               | G                                                     |
+| product                        | 产品                   | i & G                                                 |
 | proxy                          | 代理                   |                                                       |
 | remote                         | 远程                   |                                                       |
 | robust                         | 可靠的                 | G                                                     |
