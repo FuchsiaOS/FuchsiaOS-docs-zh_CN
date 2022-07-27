@@ -6,7 +6,7 @@ provides a simplified declaration syntax for providers to define interfaces as a
 and [handles][glossary.handle]. These can be organized into more complex arrays,
 vectors, structs, tables, and unions.
  -->
-Fuchsia 接口定义语言（FIDL）是用来描述 Fuchsia 程序使用的进程间通信（IPC）协议的语言。FIDL 提供了一种简化的声明语法，供供应商将接口定义为一种**协议**。支持的数据类型包括整数、浮点数、布尔运算、字符串和[句柄][glossary.handle]。这些可以被组织成更复杂的数组、向量、结构体、表格和联合体。
+Fuchsia 接口定义语言（FIDL）是用来描述 Fuchsia 程序使用的进程间通信（IPC）协议的语言。FIDL 为供应商提供了一种简化的声明语法，以便将接口定义为一种**协议**。支持的数据类型包括整数、浮点数、布尔运算、字符串和[句柄][glossary.handle]。这些可以被组织成更复杂的数组、向量、结构体、表格和联合体。
 
 <!-- 
 Consider the following example FIDL protocol for an `Echo` interface:
@@ -33,7 +33,7 @@ FIDL 协议描述了一组**方法**，在通过通道发送消息时被调用�
 <!-- 
 FIDL supports the following method types:
  -->
-FIDL支持以下方法类型：
+FIDL 支持以下方法类型：
 
 <!-- 
 * **Two-way methods:** A typical method call that accepts optional parameters
@@ -54,7 +54,7 @@ FIDL支持以下方法类型：
   client, called events. Events declare their method name on the return side of
   the `->` operator. In the `Echo` example, the `OnString()` method is an event.
  -->
-* **事件**：必要时，服务器端可以向客户端发送非请求信息，称之为事件。事件在 `->` 操作符的返回端声明其方法名称。在 `Echo` 的例子中，`OnString()` 方法是一个事件。
+* **事件**：必要时，服务器端可以向客户端发送非请求信息，这种消息称为事件。事件在 `->` 操作符的返回端声明其方法名称。在 `Echo` 的例子中，`OnString()` 方法是一个事件。
 
 <!-- 
 Note: For more details on FIDL language syntax and supported types, see the
