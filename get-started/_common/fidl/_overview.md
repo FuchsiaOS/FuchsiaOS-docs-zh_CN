@@ -5,7 +5,7 @@ define specific mechanisms that processes use to exchange data. Within this
 framework, **Zircon channels** provide an asynchronous message-based transport
 capable of passing both data and a set of handles to grant access rights.
  -->
-在 **Fuchsia 简介**中了解到，Zircon 提供了内核对象类型来支持 Fuchsia 的进程间通信（IPC）。这些对象类型定义了进程用来交换数据的特定机制。在这个框架内，Zircon 通道提供了一个基于消息的异步传输能力，即支持同时传递数据和一组句柄来授予访问权。
+您已经在 **Fuchsia 简介**中了解到，Zircon 提供了内核对象类型来支持 Fuchsia 的进程间通信（IPC）。这些对象类型定义了进程用来交换数据的特定机制。在这个框架内，Zircon 通道提供了一个基于消息的异步传输能力，即支持同时传递数据和一组句柄来授予访问权。
 
 <!-- 
 Zircon channels are the basis for higher-level interactions described by the
@@ -24,7 +24,7 @@ idioms such as structured types and synchronous execution. The compiler generate
 bindings for each supported language so providers do not need to maintain client
 libraries.
  -->
-程序通过 **FIDL 编译器**生成的特定语言的 binding 和库与 FIDL 协议进行交互，该编译器是用于隐藏 Zircon IPC 复杂性的一个抽象层。这使得我们可以引入熟悉的编程习惯，如结构化类型和同步执行。编译器为每种支持的语言都生成了 bingding，因此供应商不需要维护客户端库。
+程序通过 **FIDL 编译器**生成的特定语言的绑定（binding）和库与 FIDL 协议进行交互，该编译器是用于隐藏 Zircon IPC 复杂性的一个抽象层。这使得我们可以引入熟悉的编程习惯，如结构化类型和同步执行。编译器为每种支持的语言都生成了绑定，因此供应商不需要维护客户端库。
 
 <!-- 
 ![Diagram showing how Fuchsia Interface Definition Language (FIDL) facilitates
