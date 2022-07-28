@@ -299,7 +299,7 @@ If you see the `Invalid authentication credentials` error during the bootstrap
 process, your `~/.gitcookies` file may contain cookies from some repositories in
 `googlesource.com` that the bootstrap script wants to check out anonymously.
 -->
-如果您在脚本运行期间看到了 `Invalid authentication credentials` 报错信息，您的 `~/.gitcookies` 文件中可能包含了一些引导脚本想要自动检测的来自 `googlesource.com` 的 cookie 信息。
+如果您在引导脚本运行过程中看到了 `Invalid authentication credentials` 报错信息，您的 `~/.gitcookies` 文件中可能包含了来自 `googlesource.com` 中的一些仓库的 cookie，引导脚本想要匿名检出。
 <!--
 To resolve this error, do one of the following:
 -->
@@ -386,7 +386,7 @@ Alternatively, run the `fx` tool directly using its path, for example:
 <!--
 In either case, you need `jiri` in your `PATH`.
 -->
-无论哪种情况，您都需要`jiri` 工具在您的 `PATH` 环境变量中。
+无论哪种情况，您都需要 `jiri` 工具在您的 `PATH` 环境变量中。
 <!-- Reference links -->
 
 [ffx-platform-preflight]: https://fuchsia.dev/reference/tools/sdk/ffx#preflight
