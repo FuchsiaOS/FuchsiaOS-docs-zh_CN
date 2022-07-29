@@ -77,6 +77,7 @@
 | traffic                        | 流量                   | G                                                     |
 | unmount                        | 卸载                   | G                                                     |
 | validate                       | 验证                   | G                                                     |
+| Next steps                     | 后续步骤                   | G                                                     |
 
 ## 文档中未出现术语的翻译参考表
 
