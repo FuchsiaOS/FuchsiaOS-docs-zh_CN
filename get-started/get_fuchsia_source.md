@@ -264,9 +264,9 @@ recommended to ensure that Fuchsia's emulator instances run smoothly on Linux.
 (**Linux only**) If you're planning on running Fuchsia on Linux, it is advised to
 run the following command to allow Fuchsia-specific traffic on the host machine:
 -->
-注意：这一步对构建或者运行 Fuchsia 并不是必须的。但是为了确保 Fuchsia 模拟器实例能在 Linux 上顺利运行是推荐的。
+注意：这一步对构建或者运行 Fuchsia 并不是必需的。但是为了确保 Fuchsia 模拟器实例能在 Linux 上顺利运行是推荐的。
 
-(**仅Linux**) 如果您计划在 Linux 中运行 Fuchsia，建议您运行如下命令在宿主机上允许 Fuchsia 相关的流量：
+(**仅限 Linux**) 如果您计划在 Linux 中运行 Fuchsia，建议您运行如下命令在宿主机上允许 Fuchsia 相关的流量：
 
 ```posix-terminal
 fx setup-ufw
@@ -279,13 +279,13 @@ firewall rules. (For more information on this script, see [`setup-ufw`][setup-uf
 <!--
 ## Next steps
 -->
-## 下一步
+## 后续步骤
 
 <!--
 To build your first Fuchsia system image, see
 [Configure and build Fuchsia](/get-started/build_fuchsia.md).
 -->
-构建您第一个 Fuchsia 系统镜像，参考[配置和构建 Fuchsia](/get-started/build_fuchsia.md)。
+要构建您第一个 Fuchsia 系统镜像，请参考[配置和构建 Fuchsia](/get-started/build_fuchsia.md)。
 <!--
 ## Appendices
 -->
@@ -299,11 +299,11 @@ If you see the `Invalid authentication credentials` error during the bootstrap
 process, your `~/.gitcookies` file may contain cookies from some repositories in
 `googlesource.com` that the bootstrap script wants to check out anonymously.
 -->
-如果您在引导脚本运行过程中看到了 `Invalid authentication credentials` 报错信息，您的 `~/.gitcookies` 文件中可能包含了来自 `googlesource.com` 中的一些仓库的 cookie，引导脚本想要匿名检出。
+如果您在引导脚本运行过程中看到了 `Invalid authentication credentials` 报错信息，那么您的 `~/.gitcookies` 文件中可能包含了来自 `googlesource.com` 中一些仓库的 cookie，引导脚本想要匿名检出。
 <!--
 To resolve this error, do one of the following:
 -->
-为了解决这个问题，使用以下任何一个方式：
+要解决该错误，请使用以下方式之一：
 
 <!--
 *   Follow the onscreen directions to get passwords for the specified
@@ -311,7 +311,7 @@ To resolve this error, do one of the following:
 *   Delete the offending cookies from the `.gitcookies` file.
 -->
 
-*  按照屏幕上的指示为特定的仓库获取密码
+*  按照屏幕上的指示为特定的仓库获取密码。
 *  删除 `.gitcookies` 文件中有问题的 cookie。
 
 <!--
