@@ -17,13 +17,13 @@ The steps are:
 1. [Build Fuchsia](#build-fuchsia).
 -->
 1. [前提条件](#prerequisites)
-1. [配置设置项](#set-your-build-configuration)
+1. [设置构建配置](#set-your-build-configuration)
 1. [提升构建速度（可选）](#speed-up-the-build)
-1. [构建](#build-fuchsia)
+1. [构建 Fuchsia](#build-fuchsia)
 <!--
 ## 1. Prerequisites {#prerequisites}
 -->
-## 1. 准备 {#prerequisites}
+## 1. 前提条件 {#prerequisites}
 <!--
 Before you start, check out the following requirements:
 -->
@@ -91,7 +91,7 @@ Replace the following:
 * `BOARD`: The architecture of the product; for example, `x64` and `qemu-x64`
 -->
 * `PRODUCT`（产品）：您想要构建的 Fuchsia 产品，比如：`core` 和 `workstation_eng`。
-* `BOARD`（板型）：编译的可执行文件架构，比如：`x64` 和 `qemu-x64`。
+* `BOARD`（板型）：产品的可执行文件架构，比如：`x64` 和 `qemu-x64`。
 <!--
 The example command below sets a build configuration to `core.qemu-x64`:
 -->
@@ -118,7 +118,7 @@ On the other hand, the example below sets the build configuration to
 `workstation_eng.x64`, which is commonly used to
 [install Fuchsia's Workstation product on a device][build-workstation]:
 -->
-另外，下面的例子将一项编译配置设置为 `workstation_eng.x64`，这常用于[在设备上安装 Fuchsia 工作站][build-workstation]：
+另外，下面的例子将一项构建配置设置为 `workstation_eng.x64`，这常用于[在设备上安装 Fuchsia 工作站][build-workstation]：
 
 ```posix-terminal
 fx set workstation_eng.x64
@@ -218,7 +218,7 @@ To override this default behavior, specify the following flags to `fx set`:
 <!--
 ## 4. Build Fuchsia {#build-fuchsia}
 -->
-## 4. 构建 {#build-fuchsia}
+## 4. 构建 Fuchsia {#build-fuchsia}
 <!--
 The [`fx build`][fx-build-reference] command executes the build to transform
 source code into packages and other build artifacts.
