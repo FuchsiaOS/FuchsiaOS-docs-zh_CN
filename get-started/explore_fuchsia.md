@@ -98,7 +98,7 @@ see [Contribute changes][contribute-changes]. -->
 
 <!-- For more information on Fuchsia's development workflows,
 check out the following resources: -->
-更多有关 Fuchsia 的开发流程信息，请参考如下资源：
+要获取关于 Fuchsia 开发流程的更多信息，请参阅下列资源：
 
 <!-- *   [fx workflows](/development/build/fx.md)
 *   [Workflow tips and questions](/development/source_code/workflow_tips_and_faq.md)
