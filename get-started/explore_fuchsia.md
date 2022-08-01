@@ -91,7 +91,7 @@ Fuchsia 中最小可运行软件单元是[组件](/concepts/components/v2)，这
 
 <!-- When you're ready to contribute to the Fuchsia project,
 see [Contribute changes][contribute-changes]. -->
-当您准备好为 Fuchsia 项目做出贡献，请参阅[贡献修订][contribute-changes]。
+当您准备好为 Fuchsia 项目做出贡献时，请参阅[贡献修订][contribute-changes]。
 
 <!-- ## See also -->
 ## 其它参考资料
