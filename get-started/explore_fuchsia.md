@@ -64,7 +64,7 @@ and host platforms. -->
 *   [Run an end-to-end test](/development/testing/run_an_end_to_end_test.md) -->
 *   [运行一个样例组件](/development/run/run-examples.md)
 *   [运行一个测试组件](/development/run/run-test-component.md)
-*   [运行一个端到端测试](/development/testing/run_an_end_to_end_test.md)
+*   [运行端到端测试](/development/testing/run_an_end_to_end_test.md)
 
 <!-- ## Create Fuchsia components {#create-fuchsia-components} -->
 ## 创建 Fuchsia 组件 {#create-fuchsia-components}
