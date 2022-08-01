@@ -36,5 +36,5 @@ written in component manifest language (CML). The legacy framework based on
 <!-- <p>For more details on the legacy component framework, see
 <a href="/concepts/components/v1">legacy components</a>. -->
 <p>有关旧版组件的更多详细信息，请参看
-<a href="/concepts/components/v1">旧版组件</a>.
+<a href="/concepts/components/v1">旧版组件</a>。
 </aside>
