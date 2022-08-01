@@ -94,7 +94,7 @@ see [Contribute changes][contribute-changes]. -->
 当您准备好为 Fuchsia 项目做出贡献时，请参阅[贡献修订][contribute-changes]。
 
 <!-- ## See also -->
-## 其它参考资料
+## 参阅
 
 <!-- For more information on Fuchsia's development workflows,
 check out the following resources: -->
