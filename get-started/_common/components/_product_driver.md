@@ -5,7 +5,7 @@
 implement product-specific device drivers as components. Some driver components
 represent hardware interface controllers, such as PCI or USB, while others
 interact with end devices, such as an ethernet controller or keyboard. -->
-与 session 类似，Fuchsia 驱动框架使开发人员能够将产品特定的设备驱动程序实现为组件。
+与会话类似，Fuchsia 驱动框架使开发人员能够将产品特定的设备驱动程序实现为组件。
 一些驱动程序组件代表硬件接口控制器，例如 PCI 或 USB，而其他驱动程序组件则与终端设备交互，
 例如以太网控制器或键盘。
 
