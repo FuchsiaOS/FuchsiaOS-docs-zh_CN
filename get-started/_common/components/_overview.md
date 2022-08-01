@@ -3,7 +3,7 @@ Each component is a composable module that interacts with other components
 through their capabilities. All software on Fuchsia is defined as a component
 except for the kernel image, bootstrapping processes, and the Component Manager. -->
 一个组件是一个运行在 Fuchsia 沙盒中的程序。每个组件都是一个可组合的模块，依据各自功能与其它组件交互。
-Fuchsia 中的所有软件都被定义为一个个组件，除了内核、引导进程以及组件管理器。
+Fuchsia 中的所有软件都被定义为一个个组件，除了内核、引导进程以及组件管理器（Component Manager）。
 
 <!-- Fuchsia's component framework is responsible for running nearly all user space
 software in the system. The Component Manager is a system process that coordinates
