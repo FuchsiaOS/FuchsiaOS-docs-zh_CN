@@ -15,7 +15,7 @@ out of its sub-tree of components, creating a capability boundary. This
 encapsulation allows the realm to be reorganized internally without affecting
 external components dependent on its exposed capabilities.
  -->
-任何父组件及其所有子组件在树中形成一个称为**领域**的组。领域使父级能够控制哪些功能流入和流出其组件的子树，从而创建功能边界。这种封装允许领域在内部进行重组，而不会影响依赖于其公开功能的外部组件。
+任何父组件及其所有子组件在树中形成一个称为**领域**的组。领域使父级能够控制那些功能流入和流出其组件的子树，从而创建功能边界。这种封装允许领域在内部进行重组，而不会影响依赖于其公开功能的外部组件。
 
 <!-- 
 ![Diagram showing how component instances are organized into a tree and parent
