@@ -108,7 +108,7 @@ check out the following resources: -->
 *   [fx 工作流程](/development/build/fx.md)
 *   [工作流程技巧和问题](/development/source_code/workflow_tips_and_faq.md)
 *   [配置编辑器](/development/editors/)
-*   [源码规划](/development/source_code/layout.md)
+*   [源代码布局](/development/source_code/layout.md)
 *   [构建系统](/development/build/build_system/index.md)
 
 <!-- Reference links -->
