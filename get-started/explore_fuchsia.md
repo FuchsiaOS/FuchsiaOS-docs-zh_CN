@@ -113,7 +113,7 @@ check out the following resources: -->
 
 <!-- Reference links -->
 
-<!-- [components]: /concepts/components/v2
+[components]: /concepts/components/v2
 [run-examples]: /development/run/run-examples.md
 [ffx-overview]: /development/tools/ffx/overview.md
 [fidl]: /development/languages/fidl
