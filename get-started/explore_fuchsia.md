@@ -77,7 +77,7 @@ Fuchsia 中软件的最小可执行单元是[组件](/concepts/components/v2)，
 [FIDL](/concepts/fidl/overview.md)（Fuchsia 接口定义语言）协议彼此交互。
 
 <!-- To learn more about Fuchsia components and FIDL, check out the guides below: -->
-要想了解更多有关 Fuchsia 组件和 FIDL 的信息，参考如下指南：
+要想了解更多有关 Fuchsia 组件和 FIDL 的信息，请参考如下指南：
 
 <!-- *   [Build components](/development/components/build.md)
 *   [FIDL overview](/development/languages/fidl/README.md)
