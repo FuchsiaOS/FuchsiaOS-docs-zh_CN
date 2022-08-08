@@ -121,13 +121,4 @@ check out the following resources: -->
 [fidl-concepts]: /concepts/fidl/overview.md
 [run-fuchsia-tests]: /development/testing/run_fuchsia_tests.md
 [scenic]: /concepts/ui/scenic/index.md
-[contribute-changes]: /development/source_code/contribute_changes.md -->
-[组件]: /concepts/components/v2
-[运行示例程序]: /development/run/run-examples.md
-[ffx 命令概览]: /development/tools/ffx/overview.md
-[fidl]: /development/languages/fidl
-[fidl 指南]: /development/languages/fidl/tutorials/overview.md
-[fidl 概念]: /concepts/fidl/overview.md
-[运行 fuchsia 测试]: /development/testing/run_fuchsia_tests.md
-[scenic]: /concepts/ui/scenic/index.md
-[贡献更改]: /development/source_code/contribute_changes.md
+[contribute-changes]: /development/source_code/contribute_changes.md
