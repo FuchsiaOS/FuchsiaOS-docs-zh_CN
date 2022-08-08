@@ -12,7 +12,7 @@ check out the following resources: -->
 *  [运行 ffx 命令](#run-ffx-commands).
 *  [运行示例](#run-examples).
 *  [创建 Fuchsia 组件](#create-fuchsia-components).
-*  [贡献修订](#contribute-changes).
+*  [贡献更改](#contribute-changes).
 
 <!-- ## Run ffx commands {#run-ffx-commands} -->
 ## 运行 ffx 命令 {#run-ffx-commands}
