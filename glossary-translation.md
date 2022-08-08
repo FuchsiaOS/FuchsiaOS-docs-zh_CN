@@ -12,6 +12,7 @@
 
 | 英文原文                       | 中文翻译对应词         | 备注                                                  |
 | ------------------------------ | ---------------------- | ----------------------------------------------------- |
+| accessibility                  | 无障碍功能             | G                                                     |
 | application                    | 应用 <br> 应用程序     |                                                       |
 | ArchiveAccessor                | 档案访问器             | i                                                     |
 | archivist                      | 归档器                 | i                                                     |
@@ -24,6 +25,7 @@
 | best practice                  | 最佳做法               | G & i                                                 |
 | board                          | 板型                   | i                                                     |
 | build                          | 构建                   | G                                                     |
+| capability                     | 能力                   | i                                                     |
 | caveats                        | 注意事项               | G                                                     |
 | cleanup                        | 清理                   | G                                                     |
 | compile                        | 编译                   | G                                                     |
@@ -39,6 +41,7 @@
 | escalate                       | 上报                   | G                                                     |
 | execute-only memory            | 只执行内存             | G                                                     |
 | fault injection                | 故障注入               | G                                                     |
+| fully qualified URL            | 完全限定的网址         | G                                                     |
 | get stared                     | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
 | get started with               | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
 | guidance                       | 指导                   |                                                       |
@@ -50,6 +53,7 @@
 | infrastructure                 | 基础架构               | G                                                     |
 | inspect                        | 审视                   | Fuchsia 专有名词 <br> i                               |
 | just-in-time (JIT) compilation | 即时（JIT）编译        | G                                                     |
+| moniker                        | 代称                   | i                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
 | out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
@@ -76,8 +80,9 @@
 | suite                          | 套件                   | G                                                     |
 | traffic                        | 流量                   | G                                                     |
 | unmount                        | 卸载                   | G                                                     |
+| URL                            | 网址                   | G                                                     |
 | validate                       | 验证                   | G                                                     |
-| Next steps                     | 后续步骤                   | G                                                     |
+| Next steps                     | 后续步骤               | G                                                     |
 
 ## 文档中未出现术语的翻译参考表
 
