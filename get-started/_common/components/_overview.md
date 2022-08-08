@@ -26,7 +26,7 @@ has been properly granted. -->
 <!-- <p>This section focuses on modern components whose manifest declarations are
 written in component manifest language (CML). The legacy framework based on
 <code>appmgr</code> and declared using CMX manifests is not covered here. -->
-<p>本节重点介绍使用组件清单语言 (CML) 编写清单声明的现代组件。此处未介绍基于 <code>appmgr</code> 并使用 CMX 清单声明的旧框架。
+<p>本节重点介绍使用组件清单语言 (component manifest language，CML) 编写清单声明的现代组件。此处未介绍基于 <code>appmgr</code> 并使用 CMX 清单声明的旧框架。
 
 <!-- <p>For more details on the legacy component framework, see
 <a href="/concepts/components/v1">legacy components</a>. -->
