@@ -12,7 +12,7 @@ in the component topology. This can happen in one of two ways:
   of another component in the tree. Static components are only created and
   destroyed when an update changes the component topology.
  -->
-* **静态地**：该实例在组件清单中被声明为树中另一个组件的子组件。静态组件仅当一个更新更改组件拓扑时才会创建和销毁。
+* **静态地**：该实例在组件清单中被声明为树中另一个组件的子组件。静态组件仅当一个更新改变了组件拓扑时才会创建和销毁。
 <!-- 
 * **Dynamically**: The instance is added or removed in a component `collection`
   at runtime using the `fuchsia.component.Realm` protocol. Dynamic components are
@@ -32,7 +32,7 @@ open a channel to it — known as **binding**. Binding happens **implicitly** wh
 connecting to a capability exposed by the component. Binding to a component that
 is already started connects to the currently running instance.
  -->
-框架会启动一个组件实例当另一个组件尝试打开一个通道到该组件实例时——这称为**绑定**。当连接到一个由组件公开的能力时，绑定会**隐式**发生。绑定到已经启动的组件会连接到当前运行的实例。
+当一个组件尝试打开到另一组件的通道时（这称为**绑定**（binding）），框架会启动后者的一个组件实例。当连接到由组件所暴露的能力时，绑定会**隐式**发生。对已经启动的组件进行绑定，会连接到其当前运行的实例。
 
 <!-- 
 <aside class="key-point">
@@ -49,7 +49,7 @@ component's `runner`), or the framework may stop the component as part of
 system shutdown. Before being destroyed, the framework moves components to a
 **shutdown** state to indicate that it cannot be started again.
  -->
-组件可能会通过退出程序（由组件的 `runner` 定义）自行停止，或者框架可能会在系统关闭时停止组件。在被销毁之前，框架将组件移动到**关闭**状态以指示它不能再次启动。
+组件可能会通过退出程序（由组件的 `runner` 定义）自行停止，或者可能由框架在系统关闭时停止。在被销毁之前，框架将组件移动到**关闭**状态以表示它不能再次启动。
 
 <!-- 
 ![Diagram showing how components have two distinct states: instance and
