@@ -73,7 +73,7 @@ and host platforms. -->
 [components](/concepts/components/v2), and these components interact
 with each other using [FIDL](/concepts/fidl/overview.md)
 (Fuchsia Interface Definition Language) protocols. -->
-Fuchsia 中最小可运行软件单元是[组件](/concepts/components/v2)，这些组件通过
+Fuchsia 中软件的最小可执行单元是[组件](/concepts/components/v2)，这些组件通过
 [FIDL](/concepts/fidl/overview.md)（Fuchsia 接口定义语言）协议彼此交互。
 
 <!-- To learn more about Fuchsia components and FIDL, check out the guides below: -->
