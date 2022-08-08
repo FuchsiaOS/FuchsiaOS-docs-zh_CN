@@ -10,7 +10,7 @@ check out the following resources: -->
 *  [Create Fuchsia components](#create-fuchsia-components).
 *  [Contribute changes](#contribute-changes). -->
 *  [运行 ffx 命令](#run-ffx-commands).
-*  [运行示例程序](#run-examples).
+*  [运行示例](#run-examples).
 *  [创建 Fuchsia 组件](#create-fuchsia-components).
 *  [贡献修订](#contribute-changes).
 
