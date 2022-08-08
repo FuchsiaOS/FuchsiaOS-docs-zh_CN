@@ -62,7 +62,7 @@ and host platforms. -->
 <!-- *   [Run an example component](/development/run/run-examples.md)
 *   [Run a test component](/development/run/run-test-component.md)
 *   [Run an end-to-end test](/development/testing/run_an_end_to_end_test.md) -->
-*   [运行样例组件](/development/run/run-examples.md)
+*   [运行示例组件](/development/run/run-examples.md)
 *   [运行测试组件](/development/run/run-test-component.md)
 *   [运行端到端测试](/development/testing/run_an_end_to_end_test.md)
 
