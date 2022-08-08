@@ -13,7 +13,7 @@ additional child components. -->
 and offers it a fixed set of capabilities necessary to support the session
 framework APIs for elements such as window management, input event handling, or
 accessibility. -->
-`session_manager` 平台组件在启动时打开会话组件，并为其提供一组固定的功能，以支持诸如窗口管理、输入事件处理或可访问元素的会话框架 API。
+`session_manager` 平台组件在启动时打开会话组件，并为其提供一组固定的功能，以支持诸如窗口管理、输入事件处理或无障碍功能等元素的会话框架 API。
 
 <!-- Note: For more details on the session framework, see
 [Introduction to the session framework](/concepts/session/introduction.md). -->
