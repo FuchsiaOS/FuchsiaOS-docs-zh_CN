@@ -184,4 +184,4 @@ the requests from each client.
 Note: For more details on component organization, see
 [Component topology](/concepts/components/v2/topology.md).
  -->
-注意：要获取关于组件组织的更多详细信息，请参阅[组件拓扑](/concepts/components/v2/topology.md).
+注意：要获取关于组件组织的更多详细信息，请参阅[组件拓扑](/concepts/components/v2/topology.md)。
