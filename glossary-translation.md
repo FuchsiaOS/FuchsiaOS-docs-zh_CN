@@ -40,6 +40,7 @@
 | ergonomics                     | 工效学                 | i & G                                                 |
 | escalate                       | 上报                   | G                                                     |
 | execute-only memory            | 只执行内存             | G                                                     |
+| expose                         | 公开 <br> 显示         | G <br> 具体选择取决于语境，亦有“公开显示”译法         |
 | fault injection                | 故障注入               | G                                                     |
 | fully qualified URL            | 完全限定的网址         | G                                                     |
 | get stared                     | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
