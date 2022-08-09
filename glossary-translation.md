@@ -58,6 +58,8 @@
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
 | out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
+| parse                          | 解析                   | G                                                     |
+| parser                         | 解析器                 | G                                                     |
 | path                           | 路径                   | G                                                     |
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
