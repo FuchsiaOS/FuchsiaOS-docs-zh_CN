@@ -66,6 +66,7 @@
 | prerequisites                  | 前提条件               | G                                                     |
 | product                        | 产品                   | i & G                                                 |
 | proxy                          | 代理                   |                                                       |
+| realm                          | 领域                   | i                                                     |
 | remote                         | 远程                   |                                                       |
 | robust                         | 可靠的                 | G                                                     |
 | sandbox                        | 沙盒                   | G                                                     |
