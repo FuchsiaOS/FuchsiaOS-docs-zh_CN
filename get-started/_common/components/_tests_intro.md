@@ -14,7 +14,7 @@ them as child components. This means that `test_manager` is also responsible for
 providing capabilities to each test suite, creating what is commonly called the
 **test realm**.
 -->
-`test_manager` 组件负责在 Fuchsia 设备上运行测试。它检查实现测试套件协议的组件,并将它们作为子组件启动。这意味着 `test_manager` 也负责为每个测试套件提供能力，即创建通常称为**测试领域**的东西。
+`test_manager` 组件负责在 Fuchsia 设备上运行测试。它检查实现测试套件协议的组件，并将它们作为子组件启动。这意味着 `test_manager` 也负责为每个测试套件提供能力，即创建通常所谓的**测试领域**。
 
 <!-- 
 ![Diagram showing how the Test Runner Framework provides interfaces for
@@ -28,4 +28,4 @@ the Fuchsia device.]
 Developer tools such as `ffx test` communicate with the `test_manager` on the
 device to execute test suites and retrieve the results.
 -->
-`ffx test` 等开发者工具与设备上的 `test_manager` 进行通信，以执行测试套件并检索结果。
+`ffx test` 等开发者工具与设备上的 `test_manager` 进行通信，以执行测试套件并取回结果。
