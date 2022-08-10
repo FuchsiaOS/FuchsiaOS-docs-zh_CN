@@ -1,13 +1,13 @@
 <!--
 # Download the Fuchsia source code
 -->
-# 下载 Fuchsia 源码
+# 下载 Fuchsia 源代码
 <!--
 This guide provides instructions on how to download the
 Fuchsia source code and set up the Fuchsia development
 environment on your machine.
 -->
-本指南说明了如何下载 Fuchsia 源码以及在您的机器上部署开发环境。
+本指南说明了如何下载 Fuchsia 源代码以及在您的机器上部署开发环境。
 <!--
 The steps are:
 -->
@@ -21,7 +21,7 @@ The steps are:
 -->
 1. [执行预检查](#perform-a-preflight-check).
 2. [安装必备软件包](#install-prerequisite-packages).
-3. [下载 Fuchsia 源码](#download-the-fuchsia-source-code).
+3. [下载 Fuchsia 源代码](#download-the-fuchsia-source-code).
 4. [设置环境变量](#set-up-environment-variables).
 5. [配置防火墙规则（可选）](#configure-firewall-rules).
 
@@ -35,13 +35,13 @@ Fuchsia provides a preflight check tool
 that examines your machine and informs you of any issues that may
 affect building Fuchsia from source on the machine.
 -->
-Fuchsia 提供了一个预检工具（[`ffx platform preflight`][ffx-platform-preflight]），这个工具可以测试您的机器，并会通知您任何在该机器上构建 Fuchsia 源码时会受影响的问题。
+Fuchsia 提供了一个预检查工具（[`ffx platform preflight`][ffx-platform-preflight]），这个工具可以测试您的机器，并会通知您在该机器上可能会影响从源代码构建 Fuchsia 的任何问题。
 <!--
 Note: The preflight tool only works for the x64 architecture. Fuchsia
 is currently not guaranteed to build successfully on other host
 architectures, such as Windows and ARM64.
 -->
-注意：这个预检测工具只支持 x64 架构。目前 Fuchsia 不保证在其他宿主架构上能构建成功，比如 Windows 和 ARM64。
+注意：这个预检查工具只支持 x64 架构。目前 Fuchsia 不保证在其他宿主架构上能构建成功，比如 Windows 和 ARM64。
 
 <!--
 Run the following command:
@@ -59,6 +59,7 @@ Run the following command:
   ```posix-terminal
   curl -sO https://storage.googleapis.com/fuchsia-ffx/ffx-macos-x64 && chmod +x ffx-macos-x64 && ./ffx-macos-x64 platform preflight
   ```
+
 <!--
 ## 2. Install prerequisite packages {#install-prerequisite-packages}
 -->
@@ -67,19 +68,21 @@ Run the following command:
 Fuchsia requires `curl`, `file`, `unzip`, and `git` to be up to date. The version
 of `git` needs to be 2.28 or higher.
 -->
-Fuchsia 要求 `curl`、 `file`、 `unzip` 以及 `git` 等工具是最新版。 `git` 版本要求 2.28 或以上。
+Fuchsia 要求 `curl`、 `file`、 `unzip` 以及 `git` 等工具是最新版。 `git` 版本需为 2.28 或以上。
 
 * {Linux}
+
 <!--
   Install (or update) the following packages:
 -->
-  安装（或更新）下面的软件包：
+  安装（或更新）以下软件包：
 
   ```posix-terminal
   sudo apt install curl file git unzip
   ```
 
 * {macOS}
+
 <!--
   Install the Xcode command line tools:
 
@@ -88,21 +91,22 @@ Fuchsia 要求 `curl`、 `file`、 `unzip` 以及 `git` 等工具是最新版。
 -->
   安装 Xcode 命令行工具：
 
-  注意：如果 `ffx platform preflight` 检测到 Xcode 工具已经安装，就可以跳过这一步。
+  注意：如果 `ffx platform preflight` 显示 Xcode 工具已经安装，则请跳过这一步。
 
   ```posix-terminal
   xcode-select --install
   ```
+
 <!--
 ## 3. Download the Fuchsia source code {#download-the-fuchsia-source-code}
 -->
-## 3. 下载 Fuchsia 源码 {#download-the-fuchsia-source-code}
+## 3. 下载 Fuchsia 源代码 {#download-the-fuchsia-source-code}
 <!--
 Fuchsia provides a [bootstrap script](/scripts/bootstrap) that creates a
 directory named `fuchsia` and downloads the Fuchsia source code in that
 directory.
 -->
-Fuchsia 提供了一个[引导脚本](/scripts/bootstrap)，这个脚本会创建一个 `fuchsia` 的文件夹并把 Fuchsia 源码下载到这里。
+Fuchsia 提供了一个[引导脚本](/scripts/bootstrap)，这个脚本会创建一个名为 `fuchsia` 的文件夹，并把 Fuchsia 源码下载到这里。
 <!--
 Downloading the Fuchsia source code requires about 2 GB of space
 on your machine. Depending on your build configuration, you need
@@ -110,24 +114,25 @@ another 80 to 90 GB of space later when you build Fuchsia. Additionally,
 the download process uses a substantial amount of memory. It is advisible
 to close non-crucial processes during this time.
 -->
-下载 Fuchsia 源码要求您机器上有 2 GB 的存储空间。取决于您的构建配置，之后的构建 Fuchsia 过程则需要额外 80 到 90 GB 的存储空间。另外，下载过程中也会使用大量的内存。建议您在此过程中关闭其他非必要的程序进程。
+下载 Fuchsia 源码要求您机器上有大约 2 GB 的存储空间。根据您的构建配置，之后在构建 Fuchsia 时，您还额外需要 80 到 90 GB 的存储空间。另外，下载过程中也会使用大量的内存。建议您在此过程中关闭其他非必要的进程。
 <!--
 To download the Fuchsia source, do the following:
 -->
-下载 Fuchsia 源码，请按如下步骤：
+要下载 Fuchsia 源代码，请执行如下步骤：
 <!--
 1.  Select a directory for downloading the Fuchsia source code, for example:
 
     Note: You can set up Fuchsia in any directory. This guide selects
     the `$HOME` directory as an example.
 -->
-1. 选择一个 Fuchsia 源码下载目录，例如：
+1. 选择一个 Fuchsia 源代码下载目录，例如：
     
-    注意：您可以把 Fuchsia 下载到任何路径。本篇教程选择 `$HOME` 作为示例。
+    注意：您可以在任何目录下设置 Fuchsia。本指南选择 `$HOME` 作为示例。
 
     ```posix-terminal
     cd $HOME
     ```
+
 <!--
 1.  Run the bootstrap script:
 
@@ -135,7 +140,7 @@ To download the Fuchsia source, do the following:
 -->
 1.  运行引导脚本：
     
-    注意：下载 Fuchsia 源码可能需要 60 分钟。
+    注意：下载 Fuchsia 源代码可能需要 60 分钟。
 
     ```posix-terminal
     curl -s "https://fuchsia.googlesource.com/fuchsia/+/HEAD/scripts/bootstrap?format=TEXT" | base64 --decode | bash
@@ -147,9 +152,9 @@ To download the Fuchsia source, do the following:
     bootstrapping process, see [Authentication error](#authentication-error) for
     help.
 -->
-    这个脚本会创建 `fuchsia` 目录，并且下载源码。
+    这个脚本会创建 `fuchsia` 目录，并且下载源代码。
 
-    如果您在脚本运行期间看到了 `Invalid authentication credentials` 错误信息，参考[认证错误](#authentication-error)章节寻求帮助。
+    如果您在脚本运行期间看到了 `Invalid authentication credentials` 错误信息，请参考[认证错误](#authentication-error)章节寻求帮助。
 
 <!--
 ## 4. Set up environment variables {#set-up-environment-variables}
@@ -159,7 +164,7 @@ To download the Fuchsia source, do the following:
 Fuchsia recommends that you update your shell profile to include the following
 actions:
 -->
-Fuchsia 建议您在 shell 的配置文件中添加如下几个配置：
+Fuchsia 建议您按照如下操作更新 shell 配置文件：
 <!--
 *   Add the `.jiri_root/bin` directory to your `PATH`.
 
@@ -173,7 +178,7 @@ Fuchsia 建议您在 shell 的配置文件中添加如下几个配置：
 -->
 *  添加 `.jiri_root/bin` 目录到您的 `PATH` 环境变量
     
-   Fuchsia 源码中的 `.jiri_root/bin` 目录包含了 [`jiri`](https://fuchsia.googlesource.com/jiri) 和 [`fx`](/development/build/fx.md) 工具，这些是 Fuchsia 工作流中的必备工具。Fuchsia 使用 `jiri` 工具在 Fuchsia 的项目中管理仓库，使用 `fx` 工具帮助配置、构建、运行以及调试 Fuchsia。Fuchsia 的工具链需要可以在您的 `PATH` 环境变量中找到 `jiri` 工具。
+   Fuchsia 源码中的 `.jiri_root/bin` 目录包含了 [`jiri`](https://fuchsia.googlesource.com/jiri) 和 [`fx`](/development/build/fx.md) 工具，这些是 Fuchsia 工作流中的必备工具。Fuchsia 使用 `jiri` 工具在 Fuchsia 的项目中管理仓库，而 `fx` 工具能够帮助配置、构建、运行以及调试 Fuchsia。Fuchsia 的工具链需要可以在您的 `PATH` 环境变量中找到 `jiri` 工具。
 <!--
 *   Source the `scripts/fx-env.sh` file.
 
@@ -193,12 +198,12 @@ Note: If you don't wish to update your shell profile, see
 [Work on Fuchsia without updating your PATH](#work-on-fuchsia-without-updating-your-path)
 in Appendices instead.
 -->
-注意：如果您不想更新您的 shell 配置，参考附录[不更新 PATH 变量的情况下在 Fuchsia 上工作](#work-on-fuchsia-without-updating-your-path)。
+注意：如果您不想更新您的 shell 配置，则请参阅[在不更新 PATH 变量的情况下处理 Fuchsia](#work-on-fuchsia-without-updating-your-path)。
 <!--
 To update your shell profile to configure Fuchsia's environment variables,
 do the following:
 -->
-为了更新您的 shell 配置文件来设置 Fuchsia 的环境变量，请按如下步骤：
+要更新您的 shell 配置文件来设置 Fuchsia 的环境变量，请执行如下步骤：
 <!--
 1.  Use a text editor to open your `~/.bash_profile` file (in the example below,
     we use the [Nano][nano]{:.external} text editor):
@@ -207,13 +212,14 @@ do the following:
     using `zsh`, replace `~/.bash_profile` with `~/.zprofile` in the
     following steps:
 -->
-1.  请用文本编辑器打开您的 `~/.bash_profile` 文件（参考如下示例，我们使用 [Nano][nano]{:.external} 文本编辑器）
+1.  使用文本编辑器打开您的 `~/.bash_profile` 文件（在以下示例中，我们使用 [Nano][nano]{:.external} 文本编辑器）：
 
-    注意：本指南使用 `bash` 终端作为示例，如果您使用 `zsh` 的话，在如下步骤中请替换 `~/.bash_profile` 为 `~/.zprofile`：
+    注意：本指南使用 `bash` 终端作为示例，如果您使用 `zsh`，请在后续步骤中请替换 `~/.bash_profile` 为 `~/.zprofile`：
 
     ```posix-terminal
     nano ~/.bash_profile
     ```
+
 <!--
 1.  Add the following lines to your `~/.bash_profile` file:
 
@@ -222,12 +228,14 @@ do the following:
 -->
 1.  在您的 `~/.bash_profile` 文件中添加如下配置：
 
-    注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录下，替换 `~/fuchsia` 为您的 Fuchsia 目录。
+    注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录下，则请替换 `~/fuchsia` 为您的 Fuchsia 目录。
+
 
     ```sh
     export PATH=~/fuchsia/.jiri_root/bin:$PATH
     source ~/fuchsia/scripts/fx-env.sh
     ```
+
 <!--
 1.  Save the file and exit the text editor.
 -->
@@ -235,16 +243,17 @@ do the following:
 <!--
 1.  To update your environment variables, run the following command:
 -->
-1.  更新环境变量，请运行如下命令：
+1.  要更新环境变量，请运行如下命令：
 
     ```posix-terminal
     source ~/.bash_profile
     ```
+
 <!--
 1.  Verify that you can run the following commands inside your
     `fuchsia` directory without error:
 -->
-1.  验证您是否可以运行如下命令且没有报错：
+1.  验证您可以在您的 `fuchsia` 目录内运行如下命令且没有报错：
 
     ```posix-terminal
     jiri help
@@ -264,9 +273,9 @@ recommended to ensure that Fuchsia's emulator instances run smoothly on Linux.
 (**Linux only**) If you're planning on running Fuchsia on Linux, it is advised to
 run the following command to allow Fuchsia-specific traffic on the host machine:
 -->
-注意：这一步对构建或者运行 Fuchsia 并不是必需的。但是为了确保 Fuchsia 模拟器实例能在 Linux 上顺利运行是推荐的。
+注意：这一步对构建或者运行 Fuchsia 并不是必需的。但是推荐您进行该步骤，以确保 Fuchsia 模拟器实例能在 Linux 上流畅运行。
 
-(**仅限 Linux**) 如果您计划在 Linux 中运行 Fuchsia，建议您运行如下命令在宿主机上允许 Fuchsia 相关的流量：
+(**仅限 Linux**) 如果您计划在 Linux 中运行 Fuchsia，那么建议您运行如下命令，在宿主机上允许 Fuchsia 特定流量：
 
 ```posix-terminal
 fx setup-ufw
@@ -275,7 +284,7 @@ fx setup-ufw
 This script requires `sudo` (which asks for your password) to set the appropriate
 firewall rules. (For more information on this script, see [`setup-ufw`][setup-ufw].)
 -->
-这个脚本需要 `sudo` （会提示您输入密码）权限来设置防火墙规则。（更多关于脚本的的信息，参考 [`setup-ufw`][setup-ufw] 文件）。
+该脚本需要 `sudo` 权限（会要求您输入密码）来设置适当的防火墙规则。（要获取关于该脚本的更多信息，请参考 [`setup-ufw`][setup-ufw]）。
 <!--
 ## Next steps
 -->
@@ -285,7 +294,7 @@ firewall rules. (For more information on this script, see [`setup-ufw`][setup-uf
 To build your first Fuchsia system image, see
 [Configure and build Fuchsia](/get-started/build_fuchsia.md).
 -->
-要构建您第一个 Fuchsia 系统镜像，请参考[配置和构建 Fuchsia](/get-started/build_fuchsia.md)。
+要构建您第一个 Fuchsia 系统镜像，请参阅[配置和构建 Fuchsia](/get-started/build_fuchsia.md)。
 <!--
 ## Appendices
 -->
@@ -299,7 +308,7 @@ If you see the `Invalid authentication credentials` error during the bootstrap
 process, your `~/.gitcookies` file may contain cookies from some repositories in
 `googlesource.com` that the bootstrap script wants to check out anonymously.
 -->
-如果您在引导脚本运行过程中看到了 `Invalid authentication credentials` 报错信息，那么您的 `~/.gitcookies` 文件中可能包含了来自 `googlesource.com` 中一些仓库的 cookie，引导脚本想要匿名检出。
+如果您在引导脚本运行过程中看到了 `Invalid authentication credentials`（无效的认证凭据）错误信息，那么您的 `~/.gitcookies` 文件中可能含有来自 `googlesource.com` 中一些仓库的 cookie，引导脚本想要匿名检查。
 <!--
 To resolve this error, do one of the following:
 -->
@@ -311,7 +320,7 @@ To resolve this error, do one of the following:
 *   Delete the offending cookies from the `.gitcookies` file.
 -->
 
-*  按照屏幕上的指示为特定的仓库获取密码。
+*  按照屏幕上的指示为指定仓库获取密码。
 *  删除 `.gitcookies` 文件中有问题的 cookie。
 
 <!--
@@ -322,7 +331,7 @@ To resolve this error, do one of the following:
 The following sections provide alternative approaches to the
 [Set up environment variables](#set-up-environment-variables) section:
 -->
-下面的章节为[设置环境变量](#set-up-environment-variables)章节提供了替代选项：
+下面的章节为[设置环境变量](#set-up-environment-variables)章节提供了替代方法：
 <!--
 *   [Copy the tool to your binary directory](#copy-the-tool-to-your-binary-directory)
 *   [Add a symlink to your binary directory](#add-a-symlink-to-your-binary-directory)
@@ -342,9 +351,9 @@ example:
 Note: If your Fuchsia source code is not located in the `~/fuchsia` directory,
 replace `~/fuchsia` with your Fuchsia directory.
 -->
-如果您不想更新您的环境变量，但是您想在任何目录中使用 `jiri` 工具，把 `jiri` 工具复制到 `~/bin` 目录中，比如：
+如果您不想更新您的环境变量，但是想在任何目录中使用 `jiri` 工具，那么请把 `jiri` 工具复制到 `~/bin` 目录中，比如：
 
-注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录中，把 `~/fuchsia` 替换为您的 Fuchsia 目录。
+注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录中，则请把 `~/fuchsia` 替换为您的 Fuchsia 目录。
 
 ```posix-terminal
 cp ~/fuchsia/.jiri_root/bin/jiri ~/bin
@@ -354,7 +363,7 @@ cp ~/fuchsia/.jiri_root/bin/jiri ~/bin
 However, you must have write access to the `~/bin` directory without `sudo`. If
 you don't, `jiri` cannot keep itself up-to-date.
 -->
-但是，您需要在没有 `sudo` 的情况下对 `~/bin` 有写访问权限。如果没有，`jiri` 就不能保持在最新版本。
+但是，您必须在没有 `sudo` 的情况下对 `~/bin` 有写访问权限。否则，`jiri` 无法自动保持最新版本。
 <!--
 #### Add a symlink to your binary directory {#add-a-symlink-to-your-binary-directory}
 -->
@@ -367,10 +376,9 @@ example:
 Note: If your Fuchsia source code is not located in the `~/fuchsia` directory,
 replace `~/fuchsia` with your Fuchsia directory.
 -->
-同样的，如果您想不更新环境变量使用 `fx` 工具，在 `~/bin` 路径中提供您的 `fx` 工具的链接文件，比如：
-同样的，如果您想不更新环境变量而使用 `fx` 工具，在 `~/bin` 目录中提供 `fx` 工具的符号链接，比如：
+同样地，如果您想在不更新环境变量的情况下使用 `fx` 工具，则请在 `~/bin` 路径中添加您 `fx` 工具的链接文件，比如：
 
-注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录中，把 `~/fuchsia` 替换为您的 Fuchsia 目录。
+注意：如果您的 Fuchsia 源码不在 `~/fuchsia` 目录中，则请把 `~/fuchsia` 替换为您的 Fuchsia 目录。
 
 ```posix-terminal
 ln -s ~/fuchsia/scripts/fx ~/bin
@@ -378,7 +386,7 @@ ln -s ~/fuchsia/scripts/fx ~/bin
 <!--
 Alternatively, run the `fx` tool directly using its path, for example:
 -->
-或者，直接用其路径运行 `fx` 工具，比如：
+或者，请直接使用 `fx` 工具的路径来运行，比如：
 
 ```posix-terminal
 ./scripts/fx help
