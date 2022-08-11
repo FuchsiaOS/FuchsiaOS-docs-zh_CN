@@ -29,7 +29,7 @@ Fuchsia has an SDK with tools to help you get started developing
 software that will run on Fuchsia. Before you begin building your software, it
 is recommended you learn about the fundamentals of using the Fuchsia SDK.
 -->
-Fuchsia 的 SDK 配套有一些工具可以帮助你为 Fuchsia 开发软件。在您开始开发软件之前，建议您学习一些 Fuchsia 的 SDK 的基础。
+Fuchsia 的 SDK 配套有一些工具可以帮助您为 Fuchsia 开发软件。在您开始开发软件之前，建议您学习一些 Fuchsia 的 SDK 的基础。
 
 <a class="button button-primary"
     href="/get-started/sdk/learn">SDK 基础</a>
@@ -42,6 +42,6 @@ As Fuchsia is an open source project, you can contribute to the Fuchsia source t
 begin contributing, it’s recommended that you learn about the fundamentals about
 the Fuchsia platform to understand how Fuchsia works.
 -->
-Fuchsia 作为一个开源项目，你当然可以为它的源代码做贡献。在你开始编写源码之前，建议您学习一些 Fuchsia 的基础以更好的理解它的运行原理。
+Fuchsia 作为一个开源项目，您当然可以为它的源代码做贡献。在您开始编写源码之前，建议您学习一些 Fuchsia 的基础以更好的理解它的运行原理。
 <a class="button button-primary"
     href="/get-started/learn">贡献人员基础知识</a>
