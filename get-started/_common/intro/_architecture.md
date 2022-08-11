@@ -14,7 +14,7 @@ architecture, highlighting core components and subsystems.]
   Fuchsia makes it easy to create, maintain, and integrate software and hardware across a wide range of devices.
  -->
 
-* [**简单：**][simple]Fuchsia 让创建、维护和集成软件与硬件在广范的设备中都变得容易。
+* [**简单：**][simple]Fuchsia 让创建、维护和集成软件与硬件在各种设备中都变得容易。
 <!-- 
 * [**Secure:**][secure]
   Fuchsia has a kernel and software model designed for modern computing.
