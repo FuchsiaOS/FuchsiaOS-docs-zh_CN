@@ -30,6 +30,7 @@
 | cleanup                        | 清理                   | G                                                     |
 | compile                        | 编译                   | G                                                     |
 | consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                           |
+| contribute changes             | 贡献更改               | i                                                     |
 | control plane                  | 控制层面 <br> 控制平面 | G                                                     |
 | data plane                     | 数据平面 <br> 数据层面 | G                                                     |
 | deprecated                     | 已弃用（的）           | G                                                     |
