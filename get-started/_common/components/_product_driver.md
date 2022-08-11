@@ -22,4 +22,4 @@ hardware interfaces, and manages their lifecycle.
 Note: For more details on the driver framework, see
 [Fuchsia Driver Framework](/development/drivers/concepts/fdf.md).
 -->
-注：要获取关于驱动框架的更多细节，请参阅[Fuchsia 驱动框架](/development/drivers/concepts/fdf.md)。
+注：要获取关于驱动框架的更多细节，请参阅 [Fuchsia 驱动框架](/development/drivers/concepts/fdf.md)。
