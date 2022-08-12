@@ -189,16 +189,16 @@ Fuchsia 建议您按照如下操作更新 shell 配置文件：
     navigating directories with auto-completion. (For more information, see
     comments in `fx-env.sh`.)
 -->
-*   导入 `scripts/fx-env.sh` 文件
+*   使用“source”命令导入 `scripts/fx-env.sh` 文件
     
-    虽然这并不是必须的，导入 [`fx-env.sh`](/scripts/fx-env.sh) 文件可以在您的终端中启用一系列有用的 shell 函数。比如，它会创建 `FUCHSIA_DIR` 环境变量，以及提供 `fd` 命令用来在目录中导航时提供自动补全 （如果想获取更多信息，请参考 `fx-env.sh` 文件）。
+    虽然这并不是必须的，但是使用“source”命令导入 [`fx-env.sh`](/scripts/fx-env.sh) 文件可以在您的终端中启用一系列有用的 shell 函数。比如，它会创建 `FUCHSIA_DIR` 环境变量，以及提供 `fd` 命令用来在目录中导航时提供自动补全 （要获取更多信息，请参阅 `fx-env.sh` 中的注释）。
 
 <!--
 Note: If you don't wish to update your shell profile, see
 [Work on Fuchsia without updating your PATH](#work-on-fuchsia-without-updating-your-path)
 in Appendices instead.
 -->
-注意：如果您不想更新您的 shell 配置，则请参阅[在不更新 PATH 变量的情况下处理 Fuchsia](#work-on-fuchsia-without-updating-your-path)。
+注意：如果您不想更新您的 shell 配置，则请参阅[在不更新 PATH 变量的情况下准备 Fuchsia](#work-on-fuchsia-without-updating-your-path)。
 <!--
 To update your shell profile to configure Fuchsia's environment variables,
 do the following:
@@ -326,7 +326,7 @@ To resolve this error, do one of the following:
 <!--
 ### Work on Fuchsia without updating your PATH {#work-on-fuchsia-without-updating-your-path}
 -->
-###  不更新 PATH 变量编译 Fuchsia {#work-on-fuchsia-without-updating-your-path}
+###  在不更新 PATH 变量的情况下准备 Fuchsia {#work-on-fuchsia-without-updating-your-path}
 <!--
 The following sections provide alternative approaches to the
 [Set up environment variables](#set-up-environment-variables) section:
