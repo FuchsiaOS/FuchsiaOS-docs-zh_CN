@@ -14,7 +14,7 @@ component's namespace.
 <!--
 Consider the following example for a `fuchsia.example.Foo` protocol:
  -->
-请看以下 `fuchsia.example.Foo` 协议的示例：
+请参考以下 `fuchsia.example.Foo` 协议的示例：
 
 <!--
 ![Diagram showing how connecting components is a combination of capability
