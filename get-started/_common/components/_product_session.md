@@ -17,4 +17,4 @@ accessibility. -->
 
 <!-- Note: For more details on the session framework, see
 [Introduction to the session framework](/concepts/session/introduction.md). -->
-注: 要获取关于会话框架的更多细节，请参阅[会话框架介绍](/concepts/session/introduction.md).
+注: 要获取关于会话框架的更多细节，请参阅[会话框架介绍](/concepts/session/introduction.md)。
