@@ -19,11 +19,11 @@ The steps are:
 4. [Set up environment variables](#set-up-environment-variables).
 5. [Configure firewall rules (Optional)](#configure-firewall-rules).
 -->
-1. [执行预检查](#perform-a-preflight-check).
-2. [安装必备软件包](#install-prerequisite-packages).
-3. [下载 Fuchsia 源代码](#download-the-fuchsia-source-code).
-4. [设置环境变量](#set-up-environment-variables).
-5. [配置防火墙规则（可选）](#configure-firewall-rules).
+1. [执行预检查](#perform-a-preflight-check)。
+2. [安装必备软件包](#install-prerequisite-packages)。
+3. [下载 Fuchsia 源代码](#download-the-fuchsia-source-code)。
+4. [设置环境变量](#set-up-environment-variables)。
+5. [配置防火墙规则（可选）](#configure-firewall-rules)。
 
 <!--
 ## 1. Perform a preflight check {#perform-a-preflight-check}
@@ -145,6 +145,7 @@ To download the Fuchsia source, do the following:
     ```posix-terminal
     curl -s "https://fuchsia.googlesource.com/fuchsia/+/HEAD/scripts/bootstrap?format=TEXT" | base64 --decode | bash
     ```
+
 <!--
     This script creates the `fuchsia` directory and downloads the source code.
 
