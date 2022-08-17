@@ -9,10 +9,10 @@ check out the following resources: -->
 *  [Run examples](#run-examples).
 *  [Create Fuchsia components](#create-fuchsia-components).
 *  [Contribute changes](#contribute-changes). -->
-*  [运行 ffx 命令](#run-ffx-commands).
-*  [运行示例](#run-examples).
-*  [创建 Fuchsia 组件](#create-fuchsia-components).
-*  [贡献更改](#contribute-changes).
+*  [运行 ffx 命令](#run-ffx-commands)。
+*  [运行示例](#run-examples)。
+*  [创建 Fuchsia 组件](#create-fuchsia-components)。
+*  [贡献更改](#contribute-changes)。
 
 <!-- ## Run ffx commands {#run-ffx-commands} -->
 ## 运行 ffx 命令 {#run-ffx-commands}
