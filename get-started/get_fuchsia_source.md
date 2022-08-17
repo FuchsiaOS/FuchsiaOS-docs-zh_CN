@@ -283,7 +283,7 @@ run the following command to allow Fuchsia-specific traffic on the host machine:
 -->
 注意：这一步对构建或者运行 Fuchsia 并不是必需的。但是推荐您进行该步骤，以确保 Fuchsia 模拟器实例能在 Linux 上流畅运行。
 
-(**仅限 Linux**) 如果您计划在 Linux 中运行 Fuchsia，那么建议您运行如下命令，在宿主机上允许 Fuchsia 特定流量：
+（**仅限 Linux**）如果您计划在 Linux 中运行 Fuchsia，那么建议您运行如下命令，在宿主机上允许 Fuchsia 特定流量：
 
 ```posix-terminal
 fx setup-ufw
