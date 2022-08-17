@@ -82,6 +82,13 @@ Fuchsia 对于 CPU 的支持：
 - [在 Chromebook 上安装 Fuchsia][install-fuchsia-on-chromebook]
 - [在 NUC 迷你电脑上安装 Fuchsia][install-fuchsia-on-nuc]
 - [在 NUC 迷你电脑上使用 Zedboot（旧版）安装 Fuchsia][install-fuchsia-on-nuc-legacy]
+- [在 Khadas VIM3 开发板上安装 Fuchsia][install-fuchsia-on-vim3]
+- 创建 Fuchsia 可引导镜像：
+  - [从 USB 闪存驱动器安装 Fuchsia][prepare-usb]
+  - [使用 Fuchsia 安装程序（旧版）][use-the-installer-legacy]
+- 设置实验性硬件：
+  - [在 Acer Switch Alpha 12 上安装 Fuchsia][install-fuchsia-on-acer12]
+  - [在 Toulouse 上安装 Fuchsia][install-fuchsia-on-toulouse]
 
 <!-- Reference links -->
 
