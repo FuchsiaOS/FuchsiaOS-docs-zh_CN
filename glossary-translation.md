@@ -54,8 +54,10 @@
 | in-tree                        | 树内                   | G <br> 此处指源码树                                   |
 | infrastructure                 | 基础架构               | G                                                     |
 | inspect                        | 审视                   | Fuchsia 专有名词 <br> i                               |
+| installer                      | 安装程序               | G                                                     |
 | job                            | 作业                   | G                                                     |
 | just-in-time (JIT) compilation | 即时（JIT）编译        | G                                                     |
+| legacy                         | 旧版                   | G                                                     |
 | moniker                        | 代称                   | i                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
