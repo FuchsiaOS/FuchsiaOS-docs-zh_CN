@@ -255,8 +255,10 @@ To start the emulator on your Linux machine, do the following:
           ffx emu start --net tap
           ```
 
+<!-- 
           * `--net` specifies the networking mode for the emulator. `--net tap`
           attaches to a Tun/Tap interface.
+ -->
           * `--net` 指定模拟器的网络模式。`--net tap` 附加到 Tun/Tap 接口。
 
 <!-- 
