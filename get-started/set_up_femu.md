@@ -101,14 +101,14 @@ KVM, which greatly improves the performance and usability of the emulator.
 If KVM is available on your machine, update your group permission to
 enable KVM.
  -->
-如果您的设备可以使用 KVM，更新您的组权限来启用 KVM。
+如果您的设备可以使用 KVM，请更新您的组权限来启用 KVM。
 
 * {Linux}
 
 <!-- 
   To enable KVM on your machine, do the following:
  -->
-  要在您的设备上启用 KVM，执行以下操作：
+  要在您的设备上启用 KVM，请执行以下操作：
 
 <!-- 
   Note: You only need to do this once per machine.
@@ -193,7 +193,7 @@ To start the the package server, run the following command:
 <!-- 
 Note: Alternatively you can background the `fx serve` process.
  -->
-注意：或者，您可以后台处理 `fx serve` 进程。
+注意：或者，您可以将 `fx serve` 进程置为后台。
 
 <!-- 
 ### Start the emulator
@@ -299,7 +299,7 @@ To start the emulator on your Linux machine, do the following:
      a window pops up asking if you want to allow the process `aemu` to run on your
      machine. Click **Allow**.
  -->
-     如果在您的 maxOS 上第一次启动 FEMU（包括重启之后），则会弹出一个窗口询问您是否要允许 `aemu` 进程在您的设备上运行。点击 **Allow**。
+     如果在您的 maxOS 上第一次启动 FEMU（包括重启之后），则会弹出一个窗口询问您是否要允许 `aemu` 进程在您的设备上运行。请点击 **Allow**。
 
 <!-- 
      This command opens a new window with the title **Fuchsia Emulator**.
@@ -588,12 +588,12 @@ for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
 
 <!-- Reference links -->
 
-[get-fuchsia-source]: /docs/get-started/get_fuchsia_source.md
-[build-fuchsia]: /docs/get-started/build_fuchsia.md
-[femu-overview]: /docs/development/build/emulator.md
+[get-fuchsia-source]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md
+[femu-overview]: /development/build/emulator.md
 [ffx-emu-reference]: https://fuchsia.dev/reference/tools/sdk/ffx#emu
 [hypervisor-framework]: https://developer.apple.com/documentation/hypervisor
-[explore-fuchsia]: /docs/get-started/explore_fuchsia.md
+[explore-fuchsia]: /get-started/explore_fuchsia.md
 [swiftshader]: https://swiftshader.googlesource.com/SwiftShader/
 [tuntap]: https://en.wikipedia.org/wiki/TUN/TAP
 [tap-networking]: https://wiki.qemu.org/Documentation/Networking#Tap
