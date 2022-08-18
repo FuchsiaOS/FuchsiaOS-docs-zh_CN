@@ -54,13 +54,13 @@ Fuchsia 对于 CPU 的支持：
   have new features added for them.  Additionally, we will accept patches to keep
   Nehalem and later booting.
  -->
-* Intel——对于 Intel CPU，只有 Broadwell 及更高版本是受到活跃支持的，并且会添加新的功能。另外，我们将接受补丁，以保持 Nehalem 及更高版本正常引导。
+* Intel——对于 Intel CPU，只有 Broadwell 及更高版本是受到主动支持的，并且会添加新的功能。另外，我们将接受补丁，以保持 Nehalem 及更高版本正常引导。
 
 <!-- 
 * AMD - AMD CPUs are **not** actively supported (in particular, we have no active testing
   on them), but we will accept patches to ensure correct booting on them.
  -->
-* AMD——AMD CPU 是**不**受活跃支持的（具体地，我们对其没有进行活跃测试），但是我们将接受补丁，以确保其正确引导。
+* AMD——AMD CPU 是**不**受主动支持的（具体地，我们对其没有进行主动测试），但是我们将接受补丁，以确保其正确引导。
 
 <!-- 
 ## Table of contents
