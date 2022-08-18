@@ -217,7 +217,8 @@ This section provides additional FEMU options.
 
 ### See all available flags
 
-To see a full list of the emulator's supported flags:
+To see a [full list][ffx-emu-reference] of the emulator's supported flags, run the
+following command:
 
 ```posix-terminal
 ffx emu start --help
@@ -234,12 +235,9 @@ ffx emu start --headless
 
 ### Specify GPU used by FEMU
 
-By default, the FEMU launcher uses software rendering using
-[SwiftShader][swiftshader]{: .external}. To force FEMU to use a specific
-graphics emulation method, use the parameters `--gpu host` or
-`--gpu guest` with the `ffx emu start` command.
-
-These are the valid commands and options:
+By default, the FEMU launcher attempts to detect if the host has a GPU that can be used for
+graphics rendering. If you need to explicitly set the rendering type, you can use
+the `--gpu` flag with the following options:
 
 <table><tbody>
   <tr>
@@ -316,17 +314,18 @@ for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
   No additional IPv6 network setup is required for macOS.
 
   [User Networking (SLIRP)][slirp]{: .external} is the default network setup
-  for FEMU on macOS – while this setup does not support Fuchsia device
+  for FEMU on macOS – while this setup does not support Fuchsia device
   discovery, you can still use `fx` tools (for example,`fx ssh`) to
   interact with your FEMU instance.
 
 <!-- Reference links -->
 
-[get-fuchsia-source]: /get-started/get_fuchsia_source.md
-[build-fuchsia]: /get-started/build_fuchsia.md
-[femu-overview]: /development/build/emulator.md
+[get-fuchsia-source]: /docs/get-started/get_fuchsia_source.md
+[build-fuchsia]: /docs/get-started/build_fuchsia.md
+[femu-overview]: /docs/development/build/emulator.md
+[ffx-emu-reference]: https://fuchsia.dev/reference/tools/sdk/ffx#emu
 [hypervisor-framework]: https://developer.apple.com/documentation/hypervisor
-[explore-fuchsia]: /get-started/explore_fuchsia.md
+[explore-fuchsia]: /docs/get-started/explore_fuchsia.md
 [swiftshader]: https://swiftshader.googlesource.com/SwiftShader/
 [tuntap]: https://en.wikipedia.org/wiki/TUN/TAP
 [tap-networking]: https://wiki.qemu.org/Documentation/Networking#Tap
