@@ -68,6 +68,7 @@
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
 | prerequisites                  | 前提条件               | G                                                     |
+| print                          | 输出 <br> 打印         | G <br> 后者**只**用于有“印刷”含义的具体情况           |
 | product                        | 产品                   | i & G                                                 |
 | proxy                          | 代理                   |                                                       |
 | realm                          | 领域                   | i                                                     |
