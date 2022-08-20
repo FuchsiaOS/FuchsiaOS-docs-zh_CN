@@ -27,7 +27,7 @@ establishing a consistent and transparent path for making project-wide,
 technical decisions, all the stakeholders can be confident about the technical
 direction of the project.
 -->
-现在，Fuchsia 项目在项目级别的技术决定上并没有一个正式的工作流程。以我们目前的规模来说，这样的非正式性导致了不同的人在项目方向和如何组合系统上有着不同的看法。 通过建立这样一个一致且透明的项目标准， 所有的利益相关者都能够在项目的技术方向充满信息。
+现在，Fuchsia 项目在项目级别的技术决定上并没有一个正式的工作流程。以我们目前的规模来说，这样的非正式性导致了不同的人在项目方向和如何组合系统上有着不同的看法。 通过建立这样一个一致且透明的项目标准， 所有的利益相关者都能够在项目的技术方向充满信心。
 <!--
 ## Design
 -->
@@ -72,7 +72,7 @@ The following kinds of changes must use the RFC process:
    changing the set of supported languages impacts everyone who needs to debug
    and understand the system, even if not everyone uses the new language.
 -->
- * **制订项目政策。** 项目政策对系统有着广泛的影响，常常影响着项目贡献者。比如，修改支持的（编程）语言集，会影响需要调试和理解系统的人员，即使并不是所有的人都使用新语言。
+ * **制定项目政策。** 项目政策对系统有着广泛的影响，常常影响着项目贡献者。比如，修改支持的（编程）语言集，会影响需要调试和理解系统的人员，即使并不是所有的人都使用新语言。
 <!--
  * *Changing the system architecture.* The system architecture describes how the
    system fits together as a whole. Changing the system architecture, by
@@ -193,7 +193,7 @@ able to point you in a good direction.
 <!--
 #### Step 2: Draft {#draft}
 -->
-### 步骤二：起草 {#draft}
+#### 第二步：起草 {#draft}
 <!--
 Once you have gathered all the background and context you can through
 socialization, you are ready to start the formal part of the RFC process. The
@@ -216,13 +216,13 @@ Do not worry about assigning a number to your RFC at this stage. Instead, use
 `NNNN` as a placeholder. For example, the file name should be something like
 `NNNN_my_idea.md`. The RFC will get a number shortly before landing.
 -->
-在这个阶段不必担心您的 RFC 的序号。反之，请使用 `NNNN` 做为占位符。比如，一个文件的名字应该是 `NNNN_my_idea.md` 这种形式。RFC 文档会在合并之前不久获得一个序号。
+在这个阶段不必担心您的 RFC 的序号。反之，请使用 `NNNN` 作为占位符。比如，一个文件的名字应该是 `NNNN_my_idea.md` 这种形式。RFC 文档会在合并之前不久获得一个序号。
 <!--
 > *Suggestion.* Consider marking the CL containing your RFC as a
 > "work-in-progress" until you are ready for feedback.
 -->
 
-> **建议。** 您可以在准备好接收反馈之前，先把包含 RFC 的 CL 标记为“进行中”。
+> **建议：** 您可以在准备好接收反馈之前，先把包含 RFC 的 CL 标记为“进行中”。
 
 <!--
 #### Step 3: Iterate {#iterate}
@@ -311,7 +311,7 @@ prevent the project from accepting the RFC. See the ["How decisions are made"
 section](#how-decisions-are-made) below for more details about how the project
 decides whether to accept an RFC.
 -->
-利益相关者将代码审查标志设为 -1 或者 -2 并不一定会阻止项目接收该 RFC。要获取关于 RFC 接受决定流程的更多细节，请参阅下面的[“决定如何做出”章节](#how-decisions-are-made) 。
+利益相关者将代码审查标志设为 -1 或者 -2 并不一定会阻止项目接受该 RFC。要获取关于 RFC 接受决定流程的更多细节，请参阅下面的[“决定如何做出”章节](#how-decisions-are-made) 。
 <!--
 After all the stakeholders have weighed in with their Code-Review flags, send an
 email to eng-council@fuchsia.dev to prompt the Eng Council to decide whether to
