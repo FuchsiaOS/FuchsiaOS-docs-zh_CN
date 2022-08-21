@@ -7,7 +7,7 @@
 This guide provides instructions on how to set up and launch the
 Fuchsia emulator (FEMU) on your machine.
  -->
-本指南提供关于如何安装和启动 Fuchsia 模拟器（FEMU）在您的设备上的说明。
+本指南提供关于在您的设备上安装和启动 Fuchsia 模拟器（FEMU）的方法说明。
 
 <!-- 
 The steps are:
@@ -35,7 +35,7 @@ The steps are:
 <!-- 
 Running FEMU requires that you've completed the following guides:
  -->
-运行 FEMU 需要您完成以下向导：
+运行 FEMU 需要您完成以下指南：
 
 <!-- 
  * [Download the Fuchsia source code][get-fuchsia-source]
@@ -54,13 +54,12 @@ To run FEMU, you first need to build a Fuchsia system image that supports
 the emulator environment. This guide uses `qemu-x64` for the board
 and `workstation_eng` for the product as an example.
  -->
-要运行 FEMU，您首先要构建一个支持模拟器环境的 Fuchsia 系统镜像。本指南使用 `qemu-x64` 
-板型和 `workstation_eng` 产品作为一个例子。
+要运行 FEMU，您首先要构建一个支持模拟器环境的 Fuchsia 系统镜像。本指南使用 `qemu-x64` 板型和 `workstation_eng` 产品作为示例。
 
 <!-- 
 To build a FEMU Fuchsia image, do the following:
  -->
-要构建一个 FEMU 的 Fuchsia 镜像，请执行以下操作：
+要构建 FEMU 的 Fuchsia 镜像，请执行以下操作：
 
 <!-- 
 1. Set the Fuchsia build configuration:
@@ -84,7 +83,7 @@ To build a FEMU Fuchsia image, do the following:
 For more information on supported boards and products, see the
 [Fuchsia emulator (FEMU)][femu-overview] overview page.
  -->
-要获取关于支持的板型和产品的更多信息，请参阅 [Fuchsia 模拟器（FEMU）][femu-overview] 概述页面。
+要获取关于支持的板型和产品的更多信息，请参阅 [Fuchsia 模拟器（FEMU）][femu-overview]概述页面。
 
 <!-- 
 ## 3. Enable VM acceleration (Optional) {#enable-vm-acceleration}
@@ -95,7 +94,7 @@ For more information on supported boards and products, see the
 (**Linux only**) Most Linux machines support VM acceleration through
 KVM, which greatly improves the performance and usability of the emulator.
  -->
-（**仅限Linux**）大部分 Linux 设备支持通过 KVM 进行 VM 加速，大大提高了模拟器的性能和可用性。
+（**仅限Linux**）大部分 Linux 设备支持通过 KVM 进行 VM 加速，这大大提高了模拟器的性能和可用性。
 
 <!-- 
 If KVM is available on your machine, update your group permission to
@@ -132,7 +131,7 @@ enable KVM.
 <!-- 
   1.  To verify that KVM is configured correctly, run the following command:
  -->
-  1.  要验证 KVM 是否配置正确，请运行以下命令：
+  1.  要验证 KVM 配置正确，请运行以下命令：
 
       ```posix-terminal
       if [[ -r /dev/kvm ]] && grep '^flags' /proc/cpuinfo | grep -qE 'vmx|svm'; then echo 'KVM is working'; else echo 'KVM not working'; fi
@@ -141,7 +140,7 @@ enable KVM.
 <!-- 
       Verify that this command prints the following line:
  -->
-      验证此命令是否打印以下行：
+      验证此命令输出以下行：
 
       ```none {:.devsite-disable-click-to-copy}
       KVM is working
@@ -151,7 +150,7 @@ enable KVM.
       If you see `KVM not working`, you may need to reboot your machine for
       the permission change to take effect.
  -->
-      如果您看到 `KVM not working`，您可能要重启您的设备使权限修改生效。
+      如果您看到 `KVM not working`，那么您可能需要重启您的设备，以使权限修改生效。
 
 * {macOS}
 
@@ -175,17 +174,17 @@ enable KVM.
 <!-- 
 ### Start the package server
  -->
-### 启动包服务
+### 启动包服务器
 
 <!-- 
 Prior to starting the emulator, start the package server.
  -->
-在启动模拟器之前，启动包服务。
+在启动模拟器之前，请启动包服务器。
 
 <!-- 
 To start the the package server, run the following command:
  -->
-要启动包服务，请运行以下命令：
+要启动包服务器，请运行以下命令：
 
   ```posix-terminal
   fx serve
@@ -193,7 +192,7 @@ To start the the package server, run the following command:
 <!-- 
 Note: Alternatively you can background the `fx serve` process.
  -->
-注意：或者，您可以将 `fx serve` 进程置为后台。
+注意：或者，您可以将 `fx serve` 进程置于后台。
 
 <!-- 
 ### Start the emulator
@@ -227,7 +226,7 @@ To start the emulator on your Linux machine, do the following:
       at <code>{{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh</code>
       should work for the majority of non-corporate users.
  -->
-      如果您没有使用防火墙，仍然需要一些配置来启用 tun/tap 网络。upscript 示例 <code>{{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh</code> 应该适用于大多数非企业网络。
+      如果您没有使用防火墙，那么还需要进行一些配置才能启用 tun/tap 网络。位于 <code>{{ '<var>' }}FUCHSIA_ROOT{{ '</var>' }}/scripts/start-unsecure-internet.sh</code> 的 upscript 示例应该适用于大多数非企业网络。
 
 
       ```posix-terminal
@@ -238,7 +237,7 @@ To start the emulator on your Linux machine, do the following:
       * `FUCHSIA_ROOT` is the path to your Fuchsia directory.
  -->
       * `start-unsecure-internet.sh` 是一个 upscript 示例。
-      * `FUCHSIA_ROOT` 是您的 Fuchsia 目录的路径。
+      * `FUCHSIA_ROOT` 是您 Fuchsia 目录的路径。
 
 <!-- 
   1. Start FEMU
@@ -265,7 +264,7 @@ To start the emulator on your Linux machine, do the following:
       1. To start the emulator without access to external networks, run
          the following command:
  -->
-      1. 要启动不需要访问外部网络的模拟器，请运行以下命令：
+      1. 要启动不可访问外部网络的模拟器，请运行以下命令：
 
           ```posix-terminal
           ffx emu start --net none
@@ -276,7 +275,7 @@ To start the emulator on your Linux machine, do the following:
     title **Fuchsia Emulator**. When the emulator is finished booting, you are
     returned to the command prompt, and the emulator runs in the background.
  -->
-    启动模拟器会打开一个标题为 **Fuchsia Emulator** 的新窗口，当模拟器完成启动后，您会返回到命令提示符，然后模拟器在后台运行。
+    启动模拟器会打开一个标题为 **Fuchsia Emulator** 的新窗口，当模拟器完成启动后，您会返回到命令提示符，模拟器会在后台运行。
 
 * {macOS}
 
@@ -299,20 +298,20 @@ To start the emulator on your Linux machine, do the following:
      a window pops up asking if you want to allow the process `aemu` to run on your
      machine. Click **Allow**.
  -->
-     如果在您的 maxOS 上第一次启动 FEMU（包括重启之后），则会弹出一个窗口询问您是否要允许 `aemu` 进程在您的设备上运行。请点击 **Allow**。
+     如果您在 macOS 上第一次（包括在重启后的第一次）启动 FEMU，则会有窗口弹出，询问您是否要允许 `aemu` 进程在您的设备上运行。请点击 **允许**（Allow）。
 
 <!-- 
      This command opens a new window with the title **Fuchsia Emulator**.
      When the emulator is finished booting, you are returned to the command
      prompt, and the emulator runs in the background.
  -->
-     该命令打开一个标题为 **Fuchsia Emulator** 的新窗口。当模拟器启动完成后，您会返回到命令提示符，然后模拟器在后台运行。
+     该命令打开一个标题为 **Fuchsia Emulator** 的新窗口。当模拟器启动完成后，您会返回到命令提示符，模拟器会在后台运行。
 
 <!-- 
   2. (Optional) If you need to specify the launched Fuchsia emulator, you can
      run the `fx set-device` command in the same terminal:
  -->
-  2. （可选的）如果您需要明确指定已启动的 Fuchsia 模拟器，您可以运行 `fx set-device` 命令在同一终端。
+  2. （可选）如果您需要指定已启动的 Fuchsia 模拟器，您可以在同一终端运行 `fx set-device` 命令。
 
      ```posix-terminal
      fx set-device {{ '<var>' }}NAME{{ '</var>' }}
@@ -321,13 +320,13 @@ To start the emulator on your Linux machine, do the following:
 <!-- 
      Replace the following:
  -->
-     替换以下内容：
+     请替换以下内容：
 
 <!-- 
      * `NAME`: Use the desired value from the `ffx emu list` or `ffx target list`
        command's output. `fuchsia-emulator` is the default value.
  -->
-     * `NAME`：使用 `ffx emu list` 或 `ffx target list` 命令输出的期望值。`fuchsia-emulator` 是默认值。
+     * `NAME`：请从 `ffx emu list` 或 `ffx target list` 命令的输出中选择希望使用的值。`fuchsia-emulator` 为默认值。
 
 
 <!-- 
@@ -339,7 +338,7 @@ To start the emulator on your Linux machine, do the following:
 To discover the Fuchsia emulator as a running Fuchsia device, run the
 following command:
  -->
-要发现 Fuchsia 模拟器作为正在运行的 Fuchsia 设备，请运行以下命令：
+要将 Fuchsia 模拟器发现为正在运行的 Fuchsia 设备，请运行以下命令：
 
 ```posix-terminal
 ffx target list
@@ -348,7 +347,7 @@ ffx target list
 <!-- 
 This command prints output similar to the following:
  -->
-该命令的打印输出类似于以下内容：
+该命令的输出类似于以下内容：
 
 ```none {:.devsite-disable-click-to-copy}
 $ ffx target list
@@ -365,7 +364,7 @@ fuchsia-emulator    <unknown>    workstation_eng.qemu-x64    Product    [fe80::8
 The output of `ffx target list` is influenced by the `--net` option in the
 following ways:
  -->
-`ffx target list` 的输出受到以下 `--net` 选项的影响：
+`ffx target list` 的输出受 `--net` 选项影响，具体如下：
 
 <!-- 
    * `--net none` disables networking, which causes the device to not be
@@ -382,13 +381,13 @@ following ways:
 <!-- 
 ## Next steps
  -->
-## 下一步
+## 后续步骤
 
 <!-- 
 To learn more about Fuchsia device commands and Fuchsia workflows, see
 [Explore Fuchsia][explore-fuchsia].
  -->
-要学习更多关于 Fuchsia 设备命令和 Fuchsia 工作流，请参阅[探索 Fuchsia][explore-fuchsia]。
+要了解关于 Fuchsia 设备命令和 Fuchsia 工作流的更多内容，请参阅[探索 Fuchsia][explore-fuchsia]。
 
 <!-- 
 ## Appendices
@@ -409,7 +408,7 @@ This section provides additional FEMU options.
 To see a [full list][ffx-emu-reference] of the emulator's supported flags, run the
 following command:
  -->
-要查看模拟器所支持标记的完整列表，请运行以下命令：
+要查看模拟器所支持标记的[完整列表][ffx-emu-reference]，请运行以下命令：
 
 ```posix-terminal
 ffx emu start --help
@@ -418,7 +417,7 @@ ffx emu start --help
 <!-- 
 ### Run FEMU without GUI support
  -->
-### 在没有 GUI 支持下运行 FEMU
+### 在没有 GUI 支持的情况下运行 FEMU
 
 <!-- 
 If you don't need graphics or working under the remote workflow,
@@ -440,7 +439,7 @@ By default, the FEMU launcher attempts to detect if the host has a GPU that can 
 graphics rendering. If you need to explicitly set the rendering type, you can use
 the `--gpu` flag with the following options:
  -->
-默认情况下，FEMU 启动器尝试检测主机是否有可用于图形渲染的 GPU。如果您需要明确设置渲染类型，您可以使用带有以下选项的 `--gpu` 标记:
+默认情况下，FEMU 启动器尝试检测主机是否有可用于图形渲染的 GPU。如果需要显式设置渲染类型，那么您可以使用带有以下选项的 `--gpu` 标记：
 
 <!-- 
 <table><tbody>
@@ -538,7 +537,7 @@ ffx emu stop
 This section provides instructions on how to configure an IPv6 network
 for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
  -->
-本节提供有关如何在 Linux 设备上使用 [TUN/TAP][tuntap]{: .external} 给 FEMU 配置 IPv6 网络的说明。
+本节提供关于在 Linux 设备上使用 [TUN/TAP][tuntap]{: .external} 为 FEMU 配置 IPv6 网络的方法说明。
 
 * {Linux}
 
@@ -551,7 +550,7 @@ for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
   To enable networking in FEMU using
   [tap networking][tap-networking]{: .external}, do the following:
  -->
-  要在 FEMU 中使用 [网络分流][tap-networking]{: .external} 启用网络，请执行以下操作：
+  要使用 [TAP 网络][tap-networking]{: .external} 在 FEMU 中启用网络，请执行以下操作：
 
 <!-- 
   1. Set up `tuntap`:
