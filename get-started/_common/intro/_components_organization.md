@@ -43,7 +43,7 @@ expose: [
 
 <!-- Once a capability is exposed to the realm, the parent can share it with other
 components within the same realm. This is done using the `offer` keyword: -->
-一旦功能暴露到领地之中，父组件可以将其分享给领地内的其它组件。这可以通过使用 `offer` 关键字达成：
+一旦将能力公开至领域，父组件就可以将其分享给领域内的其它组件。这可以通过使用 `offer` 关键字达成：
 
 ```json5
 offer: [
