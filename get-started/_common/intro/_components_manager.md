@@ -24,7 +24,7 @@ and any it **consumes**. -->
   is defined by the runner. For example, the
   <a href="/concepts/components/v2/elf_runner.md">ELF runner</a> launches
   each component into a new job with a process running the executable code.</p> -->
-  <p>Zircon 给可执行代码定义了通用内核对象，例如，进程。然而，组件实例并不总是与单一进程直接相关。通常，如何使用进程的策略是由运行器定义的。例如，<a href="/concepts/components/v2/elf_runner.md">ELF 运行器</a>会在一个全新的任务中启动各个组件，该任务包含一个进程以运行可执行代码。</p>
+  <p>Zircon 给可执行代码定义了常见内核对象，例如进程。然而，组件实例并不总是与单一进程直接相关。通常，如何使用进程的策略是由运行器定义的。例如，<a href="/concepts/components/v2/elf_runner.md">ELF 运行器</a>会在一个全新的作业中启动各个组件，该任务包含一个进程以运行可执行代码。</p>
 
   <!-- <p>For more examples, see -->
   <p>更多实例请参看
