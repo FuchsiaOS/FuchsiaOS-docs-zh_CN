@@ -23,7 +23,7 @@ to the parent. Child components can be created one of two ways: -->
 * **Dynamically**: The parent adds the child to a component collection at
   runtime using the `fuchsia.component.Realm` protocol. -->
 * **静态创建**：父组件在自身组件声明中声明子组件的存在。
-* **动态创建** 父组件在运行时通过 `fuchsia.component.Realm` 协议将子组件添加到组件集中。
+* **动态创建**：父组件在运行时通过 `fuchsia.component.Realm` 协议将子组件添加到组件集中。
 
 <!-- Any parent component and all its children form a group within the tree called
 a **realm**. Realms enable a parent to control which capabilities flow into
