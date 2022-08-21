@@ -71,7 +71,7 @@ a particular realm.] -->
 <!-- You will explore more about capabilities and building components later on.
 You can also find more of the technical details in the
 <a href="/concepts/components/v2/introduction.md">component documentation</a>. -->
-稍后您可能想探索更多有关功能和如何构建组件的信息。您也可以在<a href="/concepts/components/v2/introduction.md">组件文档</a>中找到更多技术细节。
+您将在之后探索更多有关能力和构建组件的内容。您也可以在<a href="/concepts/components/v2/introduction.md">组件文档</a>中找到更多技术细节。
 </aside>
 
 [glossary.component-manager]: /glossary/README.md#component-manager
