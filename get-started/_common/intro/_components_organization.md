@@ -1,5 +1,5 @@
 <!-- ## Component organization -->
-## 组件架构
+## 组件组织
 
 <!-- All components in the system are composed into a single rooted
 **component instance tree**. This tree structure governs several important
