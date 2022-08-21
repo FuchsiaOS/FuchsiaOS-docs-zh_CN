@@ -1,5 +1,5 @@
 <!-- ## Component capabilities -->
-## 组件功能
+## 组件能力
 
 <!-- Components obtain privileges to access various parts of the wider system
 through **capabilities**. Each component can declare new capabilities that
