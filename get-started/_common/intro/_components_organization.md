@@ -30,8 +30,7 @@ a **realm**. Realms enable a parent to control which capabilities flow into
 and out of its sub-tree of components, creating a capability boundary.
 Components decide whether to export capabilities outside their realm using the
 `expose` keyword: -->
-任何一个父组件和它所有子组件在树中形成一个称之为**领地**的组，领地使父组件可以控制哪个功能流可以进出组件子树，
-以此建立一个功能边界。组件自行决定是否通过 `expose` 关键字暴露其功能给领地外部：
+任何一个父组件及其所有子组件在树中形成一个称为**领域**（realm）的组，领域使父组件可以控制哪些能力可以流入和流出组件子树，从而建立一个能力边界。组件使用 `expose` 关键字来决定是否将能力导出到领域外：
 
 ```json5
 expose: [
