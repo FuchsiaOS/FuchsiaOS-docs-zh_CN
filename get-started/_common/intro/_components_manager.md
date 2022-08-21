@@ -30,7 +30,7 @@ and any it **consumes**. -->
   <p>要获取更多示例，请参阅
   <!-- <a href="/concepts/components/v2/components_vs_processes.md">components
   vs. processes</a>.</p> -->
-  <a href="/concepts/components/v2/components_vs_processes.md">组件与进程</a>。</p>
+  <a href="/concepts/components/v2/components_vs_processes.md">组件与进程之间的比较</a>。</p>
 </aside>
 
 <!-- Component manager parses each component's **declaration** to determine how to
