@@ -13,7 +13,7 @@ necessary resolution to determine whether to launch a new component or route
 the request to an existing instance. For this routing to take place, every
 component must declare any capabilities that it **provides** to the system
 and any it **consumes**. -->
-组件可以显示地启动（例如，通过 URL调用）或者隐式地通过响应特定功能的请求而启动。组件管理器采取必要的步骤以决定是启动一个新组件还是将请求路由到现有实例。为实现这种路由功能，组件必须先声明它能**提供**给系统和它需要**使用**的功能。
+组件可以显式地启动（例如，通过网址调用）或者隐式地通过响应特定功能的请求而启动。组件管理器采取必要的步骤以决定是启动一个新组件还是将请求路由到现有实例。为实现这种路由功能，每个组件必须先声明它能**提供**给系统和它需要**使用**的功能。
 
 <aside class="key-point">
   <!-- <b>Does each component run in its own process?</b> -->
