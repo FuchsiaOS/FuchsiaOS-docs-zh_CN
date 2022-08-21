@@ -64,7 +64,7 @@ Component Manager can only resolve capabilities that are **exposed** and
 <!-- ![Diagram showing how components share capabilities through
 "capability routing," which describes how resources are made available within
 a particular realm.] -->
-![组件如何通过“功能路由”共享功能的图示，“功能路由”描述了资源如何在特定领地内变得可用。]
+![组件如何通过“能力路由”共享能力的图示，描述了资源如何在特定领域内变得可用。]
 (/get-started/images/intro/capability-routing.png){: width="614"}
 
 <aside class="key-point">
