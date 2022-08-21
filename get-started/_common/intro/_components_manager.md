@@ -55,4 +55,4 @@ program: {
 component requires the [ELF runner](/concepts/components/v2/elf_runner.md).
 **_This is an example of a capability!_** -->
 请注意这个运行时声明，它告诉组件管理器这个组件需要[ELF 运行器](/concepts/components/v2/elf_runner.md)。
-**_这是一个功能示例！_**
+**这是一个功能示例！**
