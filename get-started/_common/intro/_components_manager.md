@@ -27,7 +27,7 @@ and any it **consumes**. -->
   <p>Zircon 给可执行代码定义了常见内核对象，例如进程。然而，组件实例并不总是与单一进程直接相关。通常，如何使用进程的策略是由运行器定义的。例如，<a href="/concepts/components/v2/elf_runner.md">ELF 运行器</a>会在一个全新的作业中启动各个组件，该任务包含一个进程以运行可执行代码。</p>
 
   <!-- <p>For more examples, see -->
-  <p>更多实例请参看
+  <p>要获取更多示例，请参阅
   <!-- <a href="/concepts/components/v2/components_vs_processes.md">components
   vs. processes</a>.</p> -->
   <a href="/concepts/components/v2/components_vs_processes.md">组件与进程</a>。</p>
