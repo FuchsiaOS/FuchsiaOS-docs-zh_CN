@@ -11,7 +11,7 @@ they offer to the system and capabilities provided by other components
 used by the component. Other examples of common capability types are
 `directory` to access filesystem resources and `protocol` for communicating
 with other components. -->
-如您所见，`runner` 是一个声明组件运行时所需功能的例子。其它通用功能类型的例子是访问文件系统资源的 `directory` 和与其它组件通信的 `protocol`（协议）。
+如您所见，`runner` 是一个声明组件运行时所需能力的例子。其它常见能力类型的例子是访问文件系统资源的 `directory` 和与其它组件通信的 `protocol`。
 
 <!-- Developers declare the capability types required by the component using the
 component manifest. Below is an example of a component manifest requesting
