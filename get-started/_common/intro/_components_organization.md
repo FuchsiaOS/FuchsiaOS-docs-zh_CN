@@ -9,7 +9,7 @@ aspects of component behavior. -->
 <!-- ![Tree diagram illustrating how component instances are organized. These parent
 and child relationships govern several aspects of component behavior.]
 (/get-started/images/intro/component-organization.png){: width="712"} -->
-![树图展示了组件实例是如何组织的。这种父子结构控制组件行为的几个方面。]
+![树图展示了组件实例是如何组织的。这种父子关系控制组件行为的几个方面。]
 (/get-started/images/intro/component-organization.png){: width="712"}
 
 <!-- Parent components in the tree are responsible for creating instances of
