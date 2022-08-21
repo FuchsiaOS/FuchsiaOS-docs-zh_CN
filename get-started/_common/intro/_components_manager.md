@@ -54,5 +54,5 @@ program: {
 <!-- Notice the runtime declaration telling the component manager that this
 component requires the [ELF runner](/concepts/components/v2/elf_runner.md).
 **_This is an example of a capability!_** -->
-留意这个运行时声明，它告诉组件管理器这个组件需要[ELF 运行器](/concepts/components/v2/elf_runner.md)。
+请注意这个运行时声明，它告诉组件管理器这个组件需要[ELF 运行器](/concepts/components/v2/elf_runner.md)。
 **_这是一个功能示例！_**
