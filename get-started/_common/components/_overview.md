@@ -9,7 +9,7 @@ software in the system. The Component Manager is a system process that coordinat
 the execution and lifecycle of all component instances, maintains the component
 topology, provides components with their capabilities, and keeps them isolated
 from one another. -->
-Fuchsia 的组件框架致力于让系统可以运行几乎所有的用户空间软件。组件管理器是一个系统进程，负责协调各个组件实例的执行和生命周期、维护组件拓扑、给组件提供相应功能，并使它们彼此隔离。
+Fuchsia 的组件框架负责运行系统内几乎所有的用户空间软件。组件管理器是一个系统进程，它协调各个组件实例的执行和生命周期，维护组件拓扑，给组件提供相应功能，并使它们彼此隔离。
 
 <!-- Components obtain privileges to access various parts of the wider system through
 capabilities. Each component can declare new capabilities that they offer to the
