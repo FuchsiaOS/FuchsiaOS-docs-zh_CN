@@ -17,7 +17,7 @@ system and capabilities provided by other components (or the framework) that
 they require to function. Component Manager resolves and validates all capability
 requests between components to ensure they match capabilities that the component
 has been properly granted. -->
-组件通过能力来获得访问更广泛系统的各个部分的权限。每个组件都可以声明它们提供给系统的新能力，以及它们运行所需的其他组件（或框架）提供的能力。组件管理器解析并验证组件间的所有能力请求，以确保它们与组件已被正确授予的能力相匹配。
+组件通过能力来获得访问更广泛系统的各个部分的权限。每个组件都可以声明其提供给系统的新能力，以及其运行所需的由其他组件（或框架）提供的能力。组件管理器解析并验证组件间的所有能力请求，以确保它们与组件已被正确授予的能力相匹配。
 
 <aside class="key-point">
 <!-- <b>Legacy components</b> -->
