@@ -17,7 +17,7 @@ with other components. -->
 component manifest. Below is an example of a component manifest requesting
 two capabilities: read access to an `example-data` directory and a service
 described by the `fuchsia.example.Foo` FIDL protocol. -->
-开发者在组件清单声明组件所需要的功能类型。以下是一个需要两个功能的组件清单示例：对 `example-data` 目录的读权限和以 FIDL 协议描述的名为 `fuchsia.example.Foo` 的服务。
+开发者在组件清单声明组件所需要的能力类型。以下是请求两个能力的组件清单示例：对 `example-data` 目录的读权限和以 FIDL 协议 `fuchsia.example.Foo` 描述的服务。
 
 ```json5
 use: [
