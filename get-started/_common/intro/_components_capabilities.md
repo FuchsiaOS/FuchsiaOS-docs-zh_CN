@@ -5,7 +5,7 @@
 through **capabilities**. Each component can declare new capabilities that
 they offer to the system and capabilities provided by other components
 (or the framework) that they require to function. -->
-组件通过**功能**获得访问更大系统的各个部分的权限。每个组件都可以声明它能提供给系统的新功能以及所需的由其他组件（或框架）提供的功能。
+组件通过**能力**（capability）获得访问更广泛系统的各个部分的权限。每个组件都可以声明其提供给系统的新能力，以及其运行所需的由其他组件（或框架）提供的能力。
 
 <!-- As you just saw, `runner` is an example of a capability declaring the runtime
 used by the component. Other examples of common capability types are
