@@ -35,4 +35,4 @@ use: [
 <!-- Component manager uses the capability declarations to populate each component's
 namespace with the necessary directory handles. For this example, the component
 would receive `/example/data` and `/svc/fuchsia.example.Foo` in their namespace. -->
-组件管理器依据功能声明将各个组件所需的目录处理句柄填入各自的命名空间。对于本例子而言，组件将在其命名空间中接收 `/example/data` 和 `/svc/fuchsia.example.Foo`。
+组件管理器依据能力声明将必需的目录句柄填入各个组件的命名空间。对于本例而言，组件将在其命名空间中接收到 `/example/data` 和 `/svc/fuchsia.example.Foo`。
