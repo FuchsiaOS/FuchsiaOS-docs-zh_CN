@@ -16,7 +16,7 @@ and child relationships govern several aspects of component behavior.]
 other components as their children and providing them with the necessary
 capabilities. At the same time, child components can expose capabilities back
 to the parent. Child components can be created one of two ways: -->
-树中的父组件负责其子组件的创建并提供必要功能。与此同时，子组件向父组件公开功能。子组件可通过如下方式之一创建：
+树中的父组件负责将其他组件的实例创建为其子组件，并向其提供必要能力。与此同时，子组件向父组件公开能力。子组件可通过如下方式之一创建：
 
 <!-- * **Statically**: The parent declares the existence of the child in its own
   component declaration.
