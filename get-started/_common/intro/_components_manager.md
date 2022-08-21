@@ -37,8 +37,7 @@ and any it **consumes**. -->
 run the component and supply the necessary capabilities. Components are
 typically declared to the system through a **component manifest** file within
 the component's package. -->
-组件管理器解析每个组件的**声明**以决定如何运行组件并提供必要的功能。组件通常通过组件包中包含的**组件清单**
-文件向系统声明自己。
+组件管理器解析每个组件的**声明**以确定如何运行组件并提供必要的能力。组件通常通过组件的包中所包含的**组件清单**文件向系统进行声明。
 
 <!-- Below is a simple example of a component manifest that describes an ELF
 executable with some additional command arguments: -->
