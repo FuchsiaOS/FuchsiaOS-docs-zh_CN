@@ -59,8 +59,7 @@ requests to access a capability (such as a directory or protocol) with the
 component providing that capability. This is known as **capability routing**.
 Component Manager can only resolve capabilities that are **exposed** and
 **offered** within the same realm. -->
-[组件管理器][glossary.component-manager]负责解析与功能提供者之间的访问请求（如目录或协议）。
-这就是**功能路由**。组件管理器只能解析那些在领地内**公开**和**提供**的功能。
+[组件管理器][glossary.component-manager]负责解析通过提供对应能力（如目录或协议）的组件访问该能力的请求。这就是**能力路由**。组件管理器只能解析在同一领域内**公开**和**提供**的能力。
 
 <!-- ![Diagram showing how components share capabilities through
 "capability routing," which describes how resources are made available within
