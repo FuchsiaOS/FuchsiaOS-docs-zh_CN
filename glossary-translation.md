@@ -88,6 +88,7 @@
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
 | strategy                       | 策略                   | G                                                     |
 | suite                          | 套件                   | G                                                     |
+| tap                            | 点按                   | G                                                     |
 | traffic                        | 流量                   | G                                                     |
 | unmount                        | 卸载                   | G                                                     |
 | URL                            | 网址                   | G                                                     |
