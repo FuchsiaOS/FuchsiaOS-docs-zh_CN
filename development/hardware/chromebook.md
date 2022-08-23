@@ -67,6 +67,7 @@ Ensure that you have a `chromebook-x64` build for Fuchsia.
     fx set workstation_eng.chromebook-x64 --release
     ```
 
+
 <!-- 
 ## Update ChromeOS
  -->
