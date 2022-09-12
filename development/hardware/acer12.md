@@ -33,7 +33,7 @@ If you boot into Windows 10 or something hangs or crashes and you need to power 
 <!--
 With the machine off, Press and hold Volume Up, then continue to hold while pressing and holding the Power button.  Let go of the Power button when the display backlight turns on.  Alternatively, hold F2 on an attached keyboard while powering the machine on.
  -->
-在机器关闭的情况下，按住音量增加键并保持住，同时按住电源按钮并保持住。当显示屏背光打开时松开电源按钮。另一种方法是，在打开机器电源时按住外接键盘上的 F2 键。
+在机器关闭的情况下，按住音量加键，然后保持不松手并按住电源键。当显示屏背光亮起时松开电源键。另一种方法是，在打开机器电源时按住外接键盘上的 F2 键。
 
 <!--
 ## Enabling Zircon Boot
@@ -131,7 +131,7 @@ If you don’t enter the BIOS and haven’t installed another OS, You’ll end u
 <!--
 It’s possible to end up in a situation where the machine *really* wants to help you recover your failed boots into Windows 10 and dumps you into a recovery screen -- blue background, “Recovery” in the upper left, and some text saying “It looks like Windows didn’t load correctly”.
  -->
-有可能最终出现这样的情况：机器真的想帮助您恢复失败的启动进入到Windows 10，并将您跳入一个恢复屏幕--蓝色背景，"Recovery"显示在屏幕左上方，还有一些文字说 "It looks like Windows didn’t load correctly"。
+有可能最终出现这样的情况：机器真的想帮助您恢复失败的启动并进入 Windows 10，将您丢进了一个恢复屏幕——蓝色背景，屏幕左上方显示“Recovery（恢复模式）”，还有一段文字说 “It looks like Windows didn’t load correctly（Windows 似乎未正确加载）”。
 
 <!--
 1. Select “See advanced repair options”
@@ -148,7 +148,7 @@ It’s possible to end up in a situation where the machine *really* wants to hel
 <!--
 4. Select “UEFI Firmware Settings” (integrated circuit and gear icon)
  -->
-4. 选择“UEFI Firmware Settings（UEFI固件设置）”（集成电路和齿轮图标）
+4. 选择“UEFI Firmware Settings（UEFI 固件设置）”（电路板和齿轮图标）
 <!--
 5. When prompted “Restart to change UEFI firmware settings”, select “Restart”
  -->
@@ -169,7 +169,7 @@ It’s possible to end up in a situation where the machine *really* wants to hel
 <!--
 It has been observed that USB initialization is racy on a cold boot.  So if you're starting from a cold boot and trying to boot to USB, you may find that you boot to disk instead.
  -->
-据观察，USB 初始化在冷启动时很竞争。因此，如果您从冷启动开始并尝试启动到 USB，您可能会发现您启动的是磁盘。
+据观察，USB 初始化在冷启动时有竞争问题。因此，如果您从冷启动开始并尝试启动到 USB，您可能会发现自己启动到的是磁盘。
 
 <!--
 Mitigations:
