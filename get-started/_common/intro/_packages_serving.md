@@ -30,7 +30,7 @@ fuchsia-pkg://{{ '<var>' }}repo-hostname{{ '</var>' }}/{{ '<var>' }}pkg-name{{ '
   manifest. -->
 * `repo-hostname`：受信任的软件包仓库的主机名，比如，`fuchsia.com`。
 * `pkg-name`：本仓库中包的唯一标识。
-* `resource-path`：包中包含的资源，比如，组件清单。
+* `resource-path`：包中包含的资源，比如一个组件。
 
 <!-- ![Diagram showing how packages are resolved from a TUF repository and cached
 locally on the device.] -->
