@@ -44,6 +44,7 @@
 | guidance                       | 指导                   |                                                       |
 | guide                          | 指南                   | G                                                     |
 | guideline                      | 方针                   |                                                       |
+| hash                           | 哈希                   | i                                                     |
 | heap dump                      | 堆转储                 | G                                                     |
 | HTTP header                    | HTTP 标头              | G                                                     |
 | in-tree                        | 树内                   | G <br> 此处指源码树                                   |
