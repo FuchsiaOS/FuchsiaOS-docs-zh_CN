@@ -62,6 +62,7 @@
 | moniker                        | 代称                   | i                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
+| Next steps                     | 后续步骤               | G                                                     |
 | node                           | 节点                   | G & i                                                 |
 | out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
 | parse                          | 解析                   | G                                                     |
@@ -94,7 +95,6 @@
 | unmount                        | 卸载                   | G                                                     |
 | URL                            | 网址                   | G                                                     |
 | validate                       | 验证                   | G                                                     |
-| Next steps                     | 后续步骤               | G                                                     |
 
 ## 文档中未出现术语的翻译参考表
 
