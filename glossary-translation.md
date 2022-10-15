@@ -49,6 +49,7 @@
 | guidance                       | 指导                   |                                                       |
 | guide                          | 指南                   | G                                                     |
 | guideline                      | 方针                   |                                                       |
+| hash                           | 哈希                   | i                                                     |
 | heap dump                      | 堆转储                 | G                                                     |
 | HTTP header                    | HTTP 标头              | G                                                     |
 | in-tree                        | 树内                   | G <br> 此处指源码树                                   |
@@ -61,6 +62,7 @@
 | moniker                        | 代称                   | i                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
+| Next steps                     | 后续步骤               | G                                                     |
 | node                           | 节点                   | G & i                                                 |
 | out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
 | parse                          | 解析                   | G                                                     |
@@ -93,7 +95,6 @@
 | unmount                        | 卸载                   | G                                                     |
 | URL                            | 网址                   | G                                                     |
 | validate                       | 验证                   | G                                                     |
-| Next steps                     | 后续步骤               | G                                                     |
 
 ## 文档中未出现术语的翻译参考表
 
