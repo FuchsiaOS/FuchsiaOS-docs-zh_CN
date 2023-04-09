@@ -77,7 +77,7 @@
 | realm                          | 领域                   | i                                                     |
 | remote                         | 远程                   |                                                       |
 | robust                         | 可靠的                 | G                                                     |
-| rubric                         | 评分标准               | G                                                     |
+| rubric                         | 评分准则               | G                                                     |
 | sandbox                        | 沙盒                   | G                                                     |
 | sandboxing                     | 沙盒                   | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
