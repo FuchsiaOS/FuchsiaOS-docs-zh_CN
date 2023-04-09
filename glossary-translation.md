@@ -77,6 +77,7 @@
 | realm                          | 领域                   | i                                                     |
 | remote                         | 远程                   |                                                       |
 | robust                         | 可靠的                 | G                                                     |
+| rubric                         | 评分准则               | G                                                     |
 | sandbox                        | 沙盒                   | G                                                     |
 | sandboxing                     | 沙盒                   | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
@@ -110,7 +111,7 @@
 | egress                            | 出口                                  |
 | ingress                           | 入口                                  |
 | microservice                      | 微服务                                |
-| mutual TLS                        | 双向TLS                               |
+| mutual TLS                        | 双向 TLS                              |
 | rule evaluation                   | 告警规则（Prometheus 术语）           |
 | retry quota/budget                | 重试配额/预算                         |
 | target scrape                     | 采样目标                              |
