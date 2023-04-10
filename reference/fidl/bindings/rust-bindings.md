@@ -5,9 +5,9 @@
 A FIDL Rust crate can be generated from a FIDL library in two ways:
 
 1. Manually, using the
-   [standard FIDL toolchain](/docs/development/languages/fidl/guides/cli.md).
+   [standard FIDL toolchain](/development/languages/fidl/guides/cli.md).
 2. Automatically,
-   [using the Fuchsia build system](/docs/development/languages/rust/fidl_crates.md)
+   [using the Fuchsia build system](/development/languages/rust/fidl_crates.md)
    (which under the hood uses the standard FIDL toolchain). This option is only
    available within the Fuchsia source tree.
 
@@ -803,18 +803,18 @@ The calculation of traits derivation rules is visible in
 [`standalone_decode`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.standalone_decode.html
 [`standalone_encode`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.standalone_encode.html
 [`unpersist`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.unpersist.html
-[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
-[lang-bits]: /docs/reference/fidl/language/language.md#bits
-[lang-constants]: /docs/reference/fidl/language/language.md#constants
-[lang-enums]: /docs/reference/fidl/language/language.md#enums
-[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
-[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
-[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
-[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
-[lang-structs]: /docs/reference/fidl/language/language.md#structs
-[lang-tables]: /docs/reference/fidl/language/language.md#tables
-[lang-unions]: /docs/reference/fidl/language/language.md#unions
-[rfc-0120]: /docs/contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
-[rfc-0137]: /docs/contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md
-[tutorial]: /docs/development/languages/fidl/tutorials/rust
-[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
+[anon-names]: /reference/fidl/language/language.md#inline-layouts
+[lang-bits]: /reference/fidl/language/language.md#bits
+[lang-constants]: /reference/fidl/language/language.md#constants
+[lang-enums]: /reference/fidl/language/language.md#enums
+[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
+[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
+[lang-protocols]: /reference/fidl/language/language.md#protocols
+[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
+[lang-structs]: /reference/fidl/language/language.md#structs
+[lang-tables]: /reference/fidl/language/language.md#tables
+[lang-unions]: /reference/fidl/language/language.md#unions
+[rfc-0120]: /contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
+[rfc-0137]: /contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md
+[tutorial]: /development/languages/fidl/tutorials/rust
+[unknown-attr]: /reference/fidl/language/attributes.md#unknown

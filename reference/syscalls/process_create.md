@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -43,7 +43,7 @@ When the last handle to a process is closed, the process is destroyed.
 Process handles may be waited on and will assert the signal
 **ZX_PROCESS_TERMINATED** when the process exits.
 
-*job* is the controlling [job object](/docs/reference/kernel_objects/job.md) for the new
+*job* is the controlling [job object](/reference/kernel_objects/job.md) for the new
 process, which will become a child of that job.
 
 *options* can contain zero or the following flag:

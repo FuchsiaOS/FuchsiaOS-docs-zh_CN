@@ -69,7 +69,7 @@ See [Helpful Vim tools for Fuchsia development](/scripts/vim/README.md).
 ## Visual Studio Code (VS Code) {#visual-studio-code}
 
 See more
-[Editors for developing Fuchsia](/docs/reference/tools/editors/README.md).
+[Editors for developing Fuchsia](/reference/tools/editors/README.md).
 
 ### clangd
 

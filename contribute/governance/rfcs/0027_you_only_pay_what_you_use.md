@@ -21,7 +21,7 @@ functionality that imposes costs on people who do not use the functionality.
 
 One of the most important aspects of FIDL is that Fuchsia uses FIDL pervasively
 for interprocess communication and therefore for defining the [system
-ABI](/docs/concepts/packages/system.md).
+ABI](/concepts/packages/system.md).
 
 Many use cases for interprocess communication are performance-critical.  When
 people are evaluating technologies for these performance-critical use cases,
@@ -74,7 +74,7 @@ require flexibility.
 
 ### Structs and tables
 
-A positive example for "you only pay for what you use" is [RFC-0047](/docs/contribute/governance/rfcs/0047_tables.md),
+A positive example for "you only pay for what you use" is [RFC-0047](/contribute/governance/rfcs/0047_tables.md),
 which introduced tables.  Rather than replace structs (which have a fixed size
 and layout, supporting performance-critical use cases), tables are a separate
 data type that support flexibility-critical use cases.  Protocol designers are
@@ -82,7 +82,7 @@ able to choose whether to pay for this flexibility.
 
 ### Extensible unions
 
-Another important example is [RFC-0061](/docs/contribute/governance/rfcs/0061_extensible_unions.md), which
+Another important example is [RFC-0061](/contribute/governance/rfcs/0061_extensible_unions.md), which
 introduces extensible unions.  This example illustrates that we should not
 blindly apply the principle.  In that design, there is a choice of whether to
 introduce extensible unions as a separate concept or whether to replace all

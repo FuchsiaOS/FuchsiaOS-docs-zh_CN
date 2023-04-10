@@ -15,7 +15,7 @@ manager will assume that the driver is invalid and never attempt to bind it.
 
 Since these tests must run at system initialization (in order to not interfere
 with the usual operation of the driver) they are activated with a
-[kernel command line flag](/docs/reference/kernel/kernel_cmdline.md). To enable
+[kernel command line flag](/reference/kernel/kernel_cmdline.md). To enable
 the hook for a specific driver, use `driver.<name>.tests.enable`. Or for all
 drivers: `driver.tests.enable`. If a driver doesn't implement `run_unit_tests()`
 then these flags will have no effect.
@@ -33,7 +33,7 @@ Driver authors should use the [driver_test_realm](/sdk/lib/driver_test_realm)
 for integration tests.
 
 ## Unit tests
-Drivers authors should use the [mock-ddk](/docs/development/drivers/testing/mock_ddk.md)
+Drivers authors should use the [mock-ddk](/development/drivers/testing/mock_ddk.md)
 library for unit tests.
 
 There are a number of helpful mock libraries:

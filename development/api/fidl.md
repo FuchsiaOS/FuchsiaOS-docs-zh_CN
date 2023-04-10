@@ -6,9 +6,9 @@
 
 This section presents techniques, best practices, and general advice about
 defining protocols in the [Fuchsia Interface Definition
-Language](/docs/development/languages/fidl/README.md).
+Language](/development/languages/fidl/README.md).
 
-See also the [FIDL Style Guide](/docs/development/languages/fidl/guides/style.md).
+See also the [FIDL Style Guide](/development/languages/fidl/guides/style.md).
 
 ### Protocols not objects
 
@@ -270,7 +270,7 @@ reduces the cost of using structs to name important concepts.
 
 The [`zx.time`](/zircon/vdso/zx_common.fidl) type monotonically measures the
 number of nanoseconds from a
-[device-specific timebase](/docs/concepts/kernel/time/monotonic.md).
+[device-specific timebase](/concepts/kernel/time/monotonic.md).
 Uses of `zx.time` can assume this timebase, and it does not need to be spelled
 out.
 
@@ -811,7 +811,7 @@ is always possible to [soft transition][flexible-transition] between `strict`
 and `flexible` for an existing type.
 
 It is
-[stylish](/docs/development/languages/fidl/guides/style.md#explicit-strict-flexible)
+[stylish](/development/languages/fidl/guides/style.md#explicit-strict-flexible)
 to always specify this modifier, when the type permits. The Fuchsia project
 enforces this style with a linter check.
 
@@ -822,11 +822,11 @@ Using `strict` or `flexible` does not have any significant performance impact.
 This section describes best practices for assigning rights constraints on
 handles in FIDL.
 
-See the FIDL [bindings spec](/docs/reference/fidl/language/bindings-spec.md)
-or [RFC-0028](/docs/contribute/governance/rfcs/0028_handle_rights.md) for more
+See the FIDL [bindings spec](/reference/fidl/language/bindings-spec.md)
+or [RFC-0028](/contribute/governance/rfcs/0028_handle_rights.md) for more
 details on how rights are used in bindings.
 
-For the zircon rights definitions, see [kernel rights](/docs/concepts/kernel/rights.md).
+For the zircon rights definitions, see [kernel rights](/concepts/kernel/rights.md).
 FIDL uses [rights.fidl](/zircon/vdso/rights.fidl) to resolve rights constraints.
 
 #### Always specify rights on handles
@@ -932,7 +932,7 @@ version 3 takes the client's word for it because it doesn't recognize the method
 at all.
 
 It is
-[stylish](/docs/development/languages/fidl/guides/style.md#explicit-strict-flexible-method)
+[stylish](/development/languages/fidl/guides/style.md#explicit-strict-flexible-method)
 to always specify this modifier. The Fuchsia project enforces this style with a
 linter check.
 
@@ -1761,16 +1761,16 @@ a more idiomatic interface:
 
 
 <!-- xrefs -->
-[api-council]: /docs/contribute/governance/api_council.md
-[api-council-membership]: /docs/contribute/governance/api_council.md#membership
-[bindings-spec-unknown-enums]: /docs/reference/fidl/language/bindings-spec.md#unknown-enums
-[inspect]: /docs/development/diagnostics/inspect/quickstart.md
-[rfc-0025]: /docs/contribute/governance/rfcs/0025_bit_flags.md
-[rfc-0114]: /docs/contribute/governance/rfcs/0114_fidl_envelope_inlining.md
+[api-council]: /contribute/governance/api_council.md
+[api-council-membership]: /contribute/governance/api_council.md#membership
+[bindings-spec-unknown-enums]: /reference/fidl/language/bindings-spec.md#unknown-enums
+[inspect]: /development/diagnostics/inspect/quickstart.md
+[rfc-0025]: /contribute/governance/rfcs/0025_bit_flags.md
+[rfc-0114]: /contribute/governance/rfcs/0114_fidl_envelope_inlining.md
 [locale-passing-example]: /examples/intl/wisdom/
-[rust-hanging-get]: /docs/development/languages/fidl/guides/rust-hanging-get.md
-[resource-lang]: /docs/reference/fidl/language/language.md#value-vs-resource
-[flexible-lang]: /docs/reference/fidl/language/language.md#strict-vs-flexible
-[flexible-transition]: /docs/development/languages/fidl/guides/compatibility/README.md#strict-flexible
-[unknown-interactions-lang]: /docs/reference/fidl/language/language.md#unknown-interactions
-[fuchsia-components]: /docs/concepts/components/v2/introduction.md
+[rust-hanging-get]: /development/languages/fidl/guides/rust-hanging-get.md
+[resource-lang]: /reference/fidl/language/language.md#value-vs-resource
+[flexible-lang]: /reference/fidl/language/language.md#strict-vs-flexible
+[flexible-transition]: /development/languages/fidl/guides/compatibility/README.md#strict-flexible
+[unknown-interactions-lang]: /reference/fidl/language/language.md#unknown-interactions
+[fuchsia-components]: /concepts/components/v2/introduction.md

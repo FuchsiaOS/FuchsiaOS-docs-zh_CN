@@ -7,16 +7,16 @@
 # team as reviewer.
 toc:
 - title: "Localization"
-  path: /docs/development/internationalization/localization/README.md
+  path: /development/internationalization/localization/README.md
 - title: "Message translation"
-  path: /docs/development/internationalization/localization/message_translation.md
+  path: /development/internationalization/localization/message_translation.md
 - title: "Lookup API"
-  path: /docs/development/internationalization/localization/lookup_api.md
+  path: /development/internationalization/localization/lookup_api.md
 - title: "Locale fallback"
-  path: /docs/development/internationalization/localization/locale_fallback.md
+  path: /development/internationalization/localization/locale_fallback.md
 - title: "Localization workflow"
-  path: /docs/development/internationalization/localization/workflow.md
+  path: /development/internationalization/localization/workflow.md
 - title: "Packaging"
-  path: /docs/development/internationalization/localization/packaging.md
+  path: /development/internationalization/localization/packaging.md
 - title: "Future work"
-  path: /docs/development/internationalization/localization/future_work.md
+  path: /development/internationalization/localization/future_work.md

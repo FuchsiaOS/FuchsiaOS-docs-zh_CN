@@ -20,8 +20,8 @@ the session's URL. Identify the component URL for your session:
    extension.
 
    For more information, see
-   [`fuchsia-pkg`](/docs/reference/components/url.md#fuchsia-pkg) and
-   [Package name](/docs/concepts/packages/package_url.md#package-name).
+   [`fuchsia-pkg`](/reference/components/url.md#fuchsia-pkg) and
+   [Package name](/concepts/packages/package_url.md#package-name).
 
 1. Run the following command to include `session_manager` and `your_session`
    in your base image, configuring `session_manager` to start your session:
@@ -40,7 +40,7 @@ the session's URL. Identify the component URL for your session:
 
    `fx list-products` and `fx list-boards` will show lists of the products and
    boards available to be used in the `fx set` command. For more information on
-   `fx` commands see the [fx documentation](/docs/development/build/fx.md).
+   `fx` commands see the [fx documentation](/development/build/fx.md).
 
 1. Rebuild and re-pave the device.
 
@@ -52,7 +52,7 @@ the session's URL. Identify the component URL for your session:
    This causes `session_manager` to start and launch your session.
 
 For a full explanation of building a session component, see [Writing a Hello
-World Session](/docs/development/sessions/writing-a-hello-world-session.md).
+World Session](/development/sessions/writing-a-hello-world-session.md).
 
 ## Launch a session from the command line {#launch-a-session-from-the-command-line}
 
@@ -70,7 +70,7 @@ addition to the session target.
 
    `fx list-products` and `fx list-boards` will show lists of the products and
    boards available to be used in the `fx set` command. For more information on
-   `fx` commands see the [fx documentation](/docs/development/build/fx.md).
+   `fx` commands see the [fx documentation](/development/build/fx.md).
 
 1. Run the following command to rebuild and repave the device:
 
@@ -89,4 +89,4 @@ addition to the session target.
 
    For more information about the `ffx session` command, run
    `ffx session --help`. For more information about `ffx`, see the
-   [`ffx documentation`](/docs/development/tools/ffx/overview.md).
+   [`ffx documentation`](/development/tools/ffx/overview.md).

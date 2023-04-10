@@ -133,8 +133,8 @@ component will find a file under `/pkg/data/greetings.txt`. However the
 contents of this file will vary between the production version and the testing
 version, depending on the package association.
 
-[additional-packaged-resources]: /docs/development/components/build.md#additional-packaged-resources
-[build-components]: /docs/development/components/build.md
+[additional-packaged-resources]: /development/components/build.md#additional-packaged-resources
+[build-components]: /development/components/build.md
 [gn-placeholders]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#placeholders
-[metafar]: /docs/concepts/packages/package.md#metafar
+[metafar]: /concepts/packages/package.md#metafar
 [resource-gni]: /build/dist/resource.gni

@@ -224,6 +224,6 @@ Congratulations! You've successfully exposed FIDL services from a Fuchsia driver
 
 <!-- Reference links -->
 
-[concepts-capabilities]: /docs/concepts/components/v2/capabilities/README.md
-[concepts-devfs]: /docs/concepts/drivers/driver_communication.md#service_discovery_using_devfs
-[fidl-cpp-bindings]: /docs/development/languages/fidl/guides/c-family-comparison.md
+[concepts-capabilities]: /concepts/components/v2/capabilities/README.md
+[concepts-devfs]: /concepts/drivers/driver_communication.md#service_discovery_using_devfs
+[fidl-cpp-bindings]: /development/languages/fidl/guides/c-family-comparison.md

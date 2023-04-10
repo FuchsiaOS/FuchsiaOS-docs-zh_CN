@@ -629,19 +629,19 @@ controller, see [offering test capabilities](#routing-from-test).
   </tr>
 </table>
 
-[cap-routes]: /docs/concepts/components/v2/capabilities/README.md#routing
+[cap-routes]: /concepts/components/v2/capabilities/README.md#routing
 [children]: https://fuchsia.dev/reference/cml#children
 [collection]: https://fuchsia.dev/reference/cml#collections
-[component-urls]: /docs/reference/components/url.md
+[component-urls]: /reference/components/url.md
 [environment]: https://fuchsia.dev/reference/cml#environments
 [expose]: https://fuchsia.dev/reference/cml#expose
-[fragment-only-url]: /docs/reference/components/url.md#relative-fragment-only
-[namespaces]: /docs/concepts/process/namespaces.md
+[fragment-only-url]: /reference/components/url.md#relative-fragment-only
+[namespaces]: /concepts/process/namespaces.md
 [offer]: https://fuchsia.dev/reference/cml#offer
 [realm-builder-shard]: /sdk/lib/sys/component/realm_builder_base.shard.cml
-[realms]: /docs/concepts/components/v2/realms.md
-[resolver]: /docs/concepts/components/v2/capabilities/resolvers.md
-[runner]: /docs/concepts/components/v2/capabilities/runners.md
+[realms]: /concepts/components/v2/realms.md
+[resolver]: /concepts/components/v2/capabilities/resolvers.md
+[runner]: /concepts/components/v2/capabilities/runners.md
 [shard-includes]: https://fuchsia.dev/reference/cml#include
-[test-runner]: /docs/development/testing/components/test_runner_framework.md#test-runners
+[test-runner]: /development/testing/components/test_runner_framework.md#test-runners
 [use]: https://fuchsia.dev/reference/cml#use

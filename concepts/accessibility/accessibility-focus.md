@@ -28,7 +28,7 @@ Other strategies exist and are expected to be implemented as the platform mature
 
 Other assistive technologies may bennefit from the a11y focus, such as a switch access. This feature is not implemented yet.
 
-[semantics]: /docs/concepts/accessibility/semantics.md
-[focus-chain]: /docs/development/graphics/scenic/concepts/focus_chain.md
+[semantics]: /concepts/accessibility/semantics.md
+[focus-chain]: /development/graphics/scenic/concepts/focus_chain.md
 [input-focus]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=95672
 [describable-nodes]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=96257

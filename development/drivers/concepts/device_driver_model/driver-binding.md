@@ -3,7 +3,7 @@
 Caution: This page may contain information that is specific to the legacy
 version of the driver framework (DFv1).
 
-For writing bind rules, refer to the [Bind Rules Tutorial](/docs/development/drivers/tutorials/bind-rules-tutorial.md).
+For writing bind rules, refer to the [Bind Rules Tutorial](/development/drivers/tutorials/bind-rules-tutorial.md).
 
 In Fuchsia, the driver framework maintains a tree of drivers and devices in the system. In this
 tree, a device represents access to some hardware available to the OS. A driver both publishes and
@@ -53,7 +53,7 @@ ZIRCON_DRIVER(Driver, Ops, VendorName, Version);
  - `Version` is a string representing the version of the driver.
 
 For more details, see [the driver development documentation]
-(/docs/concepts/drivers/driver-development).
+(/concepts/drivers/driver-development).
 
 ## Bind rules {#bind-rules}
 
@@ -237,7 +237,7 @@ The JSON specification must be a list of test case objects, where each object co
  - `name` A string for the name of the test case.
  - `expected` The expected result. Must be `“match”` or `“abort”`.
  - `device` A list of string key value pairs describing the properties of a device. This is
-   similar to the debugger's [device specifications](/docs/development/drivers/diagnostics/bind-debugger.md#device-specification).
+   similar to the debugger's [device specifications](/development/drivers/diagnostics/bind-debugger.md#device-specification).
 
 If the test is for a composite device, then each node in the device can have a
 list of test case objects. The JSON specification for the unit tests will be a

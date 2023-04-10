@@ -195,9 +195,9 @@ type NodeAddArgs = table {
 <!-- Reference links -->
 
 [i2c-temperature-sample-driver]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/i2c_temperature/
-[drivers-and-nodes]: /docs/concepts/drivers/drivers_and_nodes.md
-[driver-binding]: /docs/concepts/drivers/driver_binding.md
+[drivers-and-nodes]: /concepts/drivers/drivers_and_nodes.md
+[driver-binding]: /concepts/drivers/driver_binding.md
 [binding-prev-h]: /src/lib/ddk/include/lib/ddk/binding_priv.h
 [protodefs-h]: /src/lib/ddk/include/lib/ddk/protodefs.h
 [fuchsia-i2c-bind-library]: /src/devices/bind/fuchsia.i2c/fuchsia.i2c.bind
-[bind-library-tutorial]: /docs/development/sdk/create-new-bind-library-for-driver.md
+[bind-library-tutorial]: /development/sdk/create-new-bind-library-for-driver.md

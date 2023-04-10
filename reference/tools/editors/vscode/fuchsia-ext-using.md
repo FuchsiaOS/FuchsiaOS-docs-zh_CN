@@ -432,21 +432,21 @@ Once you have started the debugger:
   breakpoints, logpoints, etc... For more information, see
   [Debug actions][vscode-debug-actions]{: .external}.
 
-[fuchsia-dev-ext]: /docs/reference/tools/editors/vscode/fuchsia-ext-install.md
-[get-started-sdk]: /docs/get-started/sdk/index.md
-[sdk-start-emulator]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
-[zx_clock_get_monotonic]: /docs/reference/syscalls/clock_get_monotonic.md
-[add-tags-logging]: /docs/development/languages/rust/logging.md#add_tags
-[log-severity]: /docs/development/diagnostics/logs/severity.md
-[monitor-device-logs]: /docs/development/sdk/ffx/view-device-logs.md#monitor-device-logs
-[zxdb-docs]: /docs/development/debugging/debugging.md
+[fuchsia-dev-ext]: /reference/tools/editors/vscode/fuchsia-ext-install.md
+[get-started-sdk]: /get-started/sdk/index.md
+[sdk-start-emulator]: /development/sdk/ffx/start-the-fuchsia-emulator.md
+[zx_clock_get_monotonic]: /reference/syscalls/clock_get_monotonic.md
+[add-tags-logging]: /development/languages/rust/logging.md#add_tags
+[log-severity]: /development/diagnostics/logs/severity.md
+[monitor-device-logs]: /development/sdk/ffx/view-device-logs.md#monitor-device-logs
+[zxdb-docs]: /development/debugging/debugging.md
 [ffx-run-ref]: https://fuchsia.dev/reference/tools/sdk/ffx#run
-[zxdb-commands-docs]: /docs/development/debugger/commands.md
+[zxdb-commands-docs]: /development/debugger/commands.md
 [vscode-debug-actions]: https://code.visualstudio.com/docs/editor/debugging#_debug-actions
-[fidl-docs]: /docs/concepts/fidl/overview.md
+[fidl-docs]: /concepts/fidl/overview.md
 [cml-docs]: https://fuchsia.dev/reference/cml
 [vscode-errors]: https://code.visualstudio.com/Docs/editor/editingevolved#_errors-warnings
-[diagnostics-schema]: /docs/reference/platform-spec/diagnostics/schema.md#payload
-[docs-schema-logs]: /docs/reference/platform-spec/diagnostics/schema.md#logs
+[diagnostics-schema]: /reference/platform-spec/diagnostics/schema.md#payload
+[docs-schema-logs]: /reference/platform-spec/diagnostics/schema.md#logs
 [docs-debuggging-vscode]: https://code.visualstudio.com/docs/editor/debugging
-[component-moniker]: /docs/reference/components/moniker.md
+[component-moniker]: /reference/components/moniker.md

@@ -209,9 +209,9 @@ This RFC is an evolution of the syntax defined in [RFC-0050: Syntax
 Revamp][rfc-0050].
 
 [algol-wiki]: https://en.wikipedia.org/wiki/ALGOL
-[fidl-versioning]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
-[rfc-0038]: /docs/contribute/governance/rfcs/0038_seperating_layout_from_constraints.md
-[rfc-0039]: /docs/contribute/governance/rfcs/0039_types_come_second.md
-[rfc-0050]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md
-[rfc-0086]: /docs/contribute/governance/rfcs/0086_rfc_0050_attributes.md
+[fidl-versioning]: /contribute/governance/rfcs/0083_fidl_versioning.md
+[rfc-0038]: /contribute/governance/rfcs/0038_seperating_layout_from_constraints.md
+[rfc-0039]: /contribute/governance/rfcs/0039_types_come_second.md
+[rfc-0050]: /contribute/governance/rfcs/0050_syntax_revamp.md
+[rfc-0086]: /contribute/governance/rfcs/0086_rfc_0050_attributes.md
 

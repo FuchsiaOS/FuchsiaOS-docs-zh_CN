@@ -47,7 +47,7 @@ Markdown linter checks markdown:
 ## respectful-code
 
 Encourge respectful language in the documentation. See
- [Modifying non-inclusive words in mdlint](/docs/contribute/docs/modify-mdlint-inclusive-language.md).
+ [Modifying non-inclusive words in mdlint](/contribute/docs/modify-mdlint-inclusive-language.md).
 
 ## simple-utf8-chars
 

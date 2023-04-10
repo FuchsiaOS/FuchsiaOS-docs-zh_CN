@@ -148,7 +148,7 @@ bootloader verification may be product-specific, but usually a version of
 Android Verified Boot
 ([AVB](https://android.googlesource.com/platform/external/avb/+/master/README.md)))
 is used to verify the Zircon Boot Image
-([ZBI](/docs/glossary/README.md#zircon-boot-image)).
+([ZBI](/glossary/README.md#zircon-boot-image)).
 
 #### Delegation from the Main Bootloader
 
@@ -211,13 +211,13 @@ for verification and kernel rollback protection.
 
 ### BlobFS
 
-[BlobFS](/docs/concepts/filesystems/blobfs.md) is a cryptographic,
+[BlobFS](/concepts/filesystems/blobfs.md) is a cryptographic,
 content-addressed filesystem purpose-built to support verified execution. BlobFS
 is the sole storage system for executable code and associated read-only data
 (with exceptions for pre-kernel code, the kernel, and its
-[bootfs](/docs/concepts/process/userboot.md#bootfs)) ramdisk, all of which are
+[bootfs](/concepts/process/userboot.md#bootfs)) ramdisk, all of which are
 stored in the ZBI). Each blob in BlobFS is uniquely represented and accessed by
-a hash ([Merkle root](/docs/concepts/packages/merkleroot.md)), and a Merkle tree
+a hash ([Merkle root](/concepts/packages/merkleroot.md)), and a Merkle tree
 structure allows for random blob access. It is computationally infeasible for an
 attacker to change a blob without changing the hash.
 
@@ -232,14 +232,14 @@ system.
 The package management system, also known as the software delivery (SWD) stack,
 adds a layer over BlobFS to make handling blobs friendlier to programmers. The
 SWD stack translates Merkle roots describing packages (specifically, the
-[Merkle root of the package’s meta.far](/docs/concepts/packages/package.md#structure-of-a-package))
+[Merkle root of the package’s meta.far](/concepts/packages/package.md#structure-of-a-package))
 into human-readable package names. If any package content changes, the Merkle
 root of the meta.far will change. For brevity, this document will use “package
 hash” to refer to the package’s meta.far Merkle root.
 
 The SWD stack manages a special package called the system image, which includes
 a list of hashes for all
-[base packages](/docs/concepts/packages/package.md#base-packages). The system
+[base packages](/concepts/packages/package.md#base-packages). The system
 image package is verified by the ZBI when the package management system is
 loaded in Phase Two, so all base packages are directly verified; that is, no
 signature checks are required after boot. For some purpose-built devices, the
@@ -248,7 +248,7 @@ memory with execute rights, which means the device will only execute directly
 verified code.
 
 For indirectly verified code
-(“[universe packages](/docs/concepts/packages/package.md#universe-packages)”),
+(“[universe packages](/concepts/packages/package.md#universe-packages)”),
 trusted public keys and other metadata about the delegated authority that
 provided them are included in a location covered by the verified boot signature
 (for example, the ZBI or a base package). Any packages downloaded from such an
@@ -259,7 +259,7 @@ ensure that both directly and indirectly verified packages are covered by
 hardware anti-rollback protection.
 
 The SWD stack is also responsible for downloading
-[system updates](/docs/concepts/packages/ota.md). It has a number of controls
+[system updates](/concepts/packages/ota.md). It has a number of controls
 that prevent any blobs from an in-progress update from being available to the
 running system before the device has rebooted into (and thus verified) the
 update.
@@ -271,10 +271,10 @@ Fuchsia’s standard unit of software *execution*. One consequence of this
 distinction is that most Fuchsia components do not interact directly with the
 SWD stack. Instead, the main customer of the SWD package resolver is the
 component framework, which contains a number of
-[component resolvers](/docs/concepts/components/v2/capabilities/resolvers.md)
+[component resolvers](/concepts/components/v2/capabilities/resolvers.md)
 that delegate to the SWD stack to load code and data. Some component resolvers
 are limited to base packages, and others may allow access to universe packages.
 Like other Fuchsia capabilities, these resolvers are routed in component
 manifests, which provides additional control over and auditability of their use.
 For example, indirectly verified code can be limited to only specific
-[environments](/docs/concepts/components/v2/environments.md).
+[environments](/concepts/components/v2/environments.md).

@@ -1,7 +1,7 @@
 # [FTP](deprecated-ftp-process.md)-NNN: Your Boring Title
 
-Note: This process was deprecated in [RFC-0017](/docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md).
-FTP proposals should now use the [Fuchsia RFC process](/docs/contribute/governance/rfcs/rfc_process.md).
+Note: This process was deprecated in [RFC-0017](/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md).
+FTP proposals should now use the [Fuchsia RFC process](/contribute/governance/rfcs/rfc_process.md).
 
 _(optional) Your Witty Title_
 
@@ -133,4 +133,4 @@ problem this proposal addresses?
 [ietf-rfc2119]: https://tools.ietf.org/html/rfc2119
 [conformance-suite]: /src/tests/fidl/conformance_suite/
 [source-compatibility-suite]: /src/tests/fidl/source_compatibility/
-[fidl-tutorials]: /docs/development/languages/fidl/tutorials/overview.md
+[fidl-tutorials]: /development/languages/fidl/tutorials/overview.md

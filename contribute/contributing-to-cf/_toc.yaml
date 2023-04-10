@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/contribute/contributing-to-cf
+  path: /contribute/contributing-to-cf
 - title: "Original principles"
-  path: /docs/contribute/contributing-to-cf/original_principles.md
+  path: /contribute/contributing-to-cf/original_principles.md
 - title: "Error style guide"
-  path: /docs/contribute/contributing-to-cf/error_style_guide.md
+  path: /contribute/contributing-to-cf/error_style_guide.md

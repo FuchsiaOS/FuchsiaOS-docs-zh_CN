@@ -19,17 +19,17 @@ effort which spanned Q3 and Q4. The migration completed on Dec 1<sup>st</sup>,
 
 The stabilization effort spanned multiple changes:
 
-* **Major** [RFC-0061: Extensible Unions](/docs/contribute/governance/rfcs/0061_extensible_unions.md)
-* [RFC-0032: Efficient Envelopes](/docs/contribute/governance/rfcs/0032_efficient_envelopes.md), i.e. this FTP
-* [RFC-0037: Transactional Message Header v3](/docs/contribute/governance/rfcs/0037_transactional_message_header_v3.md)
-* [RFC-0048: Explicit Union Ordinals](/docs/contribute/governance/rfcs/0048_explicit_union_ordinals.md)
+* **Major** [RFC-0061: Extensible Unions](/contribute/governance/rfcs/0061_extensible_unions.md)
+* [RFC-0032: Efficient Envelopes](/contribute/governance/rfcs/0032_efficient_envelopes.md), i.e. this FTP
+* [RFC-0037: Transactional Message Header v3](/contribute/governance/rfcs/0037_transactional_message_header_v3.md)
+* [RFC-0048: Explicit Union Ordinals](/contribute/governance/rfcs/0048_explicit_union_ordinals.md)
 
 However, as the work unfolded, and the Dec 1<sup>st</sup> deadline loomed, the
 FIDL team decided to punt on implementing the efficient envelopes change,
 preferring to push this work to 2020. Unlike the other changes which were part
 of the stabilization effort, efficient envelopes was simply an in-memory size
 saving, which was very small, especially when compared to other aspects of the
-FIDL wire format (e.g. [tables' dense format](/docs/contribute/governance/rfcs/0047_tables.md#dense-vs-sparse)).
+FIDL wire format (e.g. [tables' dense format](/contribute/governance/rfcs/0047_tables.md#dense-vs-sparse)).
 Deferring was a project risk reduction calculation, by reducing the scope, the
 odds of completing all the work on time were improved. So was the FIDL team's
 work schedule.
@@ -316,10 +316,10 @@ out-of-line, have all been removed.
 [^2]: Note that today, empty (zero-field) structs occupy one byte on-the-wire.
 
 <!-- xrefs -->
-[envelopes]: /docs/contribute/governance/rfcs/0047_tables.md#envelopes
-[rfc-0061]: /docs/contribute/governance/rfcs/0061_extensible_unions.md
-[rfc-0026]: /docs/contribute/governance/rfcs/0026_envelopes_everywhere.md
-[rfc-0045]: /docs/contribute/governance/rfcs/0045_zero_size_empty_structs.md
+[envelopes]: /contribute/governance/rfcs/0047_tables.md#envelopes
+[rfc-0061]: /contribute/governance/rfcs/0061_extensible_unions.md
+[rfc-0026]: /contribute/governance/rfcs/0026_envelopes_everywhere.md
+[rfc-0045]: /contribute/governance/rfcs/0045_zero_size_empty_structs.md
 [FIDL_ALLOC_ABSENT]: /zircon/system/public/zircon/fidl.h
-[messageheader]: /docs/reference/fidl/language/wire-format/README.md#transactional-messages
+[messageheader]: /reference/fidl/language/wire-format/README.md#transactional-messages
 [cognitivechunking]: https://en.wikipedia.org/wiki/Chunking_(psychology)

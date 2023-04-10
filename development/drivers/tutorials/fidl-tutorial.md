@@ -7,10 +7,10 @@ This guide explains how to go about adding exporting a FIDL protocol from a
 driver and utilize it in another driver. This guide assumes familiarity with the
 following concepts:
 
-*   [FIDL](/docs/development/languages/fidl/README.md)
-*   [Driver Binding](/docs/development/drivers/concepts/device_driver_model/driver-binding.md)
-*   [DDKTL](/docs/development/drivers/concepts/driver_development/using-ddktl.md)
-*   [New C++ FIDL Bindings](/docs/development/languages/fidl/tutorials/cpp/README.md)
+*   [FIDL](/development/languages/fidl/README.md)
+*   [Driver Binding](/development/drivers/concepts/device_driver_model/driver-binding.md)
+*   [DDKTL](/development/drivers/concepts/driver_development/using-ddktl.md)
+*   [New C++ FIDL Bindings](/development/languages/fidl/tutorials/cpp/README.md)
 
 ## FIDL Protocol Definition
 
@@ -236,7 +236,7 @@ is usually the library name as well. So for example, if the FIDL library is
 
 These generated bind libraries work exactly the same as if they were user-written
 bind libraries. Code generation for user-written bind libraries is described in detail at
-[Bind library code generation tutorial](/docs/development/drivers/tutorials/bind-libraries-codegen.md).
+[Bind library code generation tutorial](/development/drivers/tutorials/bind-libraries-codegen.md).
 
 ### Example
 

@@ -82,16 +82,16 @@ lack a way to express the severity of a message.
 [writing thread will drop logs]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/zircon/system/ulib/syslog/fx_logger.cc#130
 [prints a warning]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/garnet/bin/log_listener/src/main.rs#708
 [internal buffers]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/src/diagnostics/archivist/src/logs.rs#47
-[C++ logging]: /docs/development/languages/c-cpp/logging.md
-[Dart logging]: /docs/development/languages/dart/logging.md
-[Go logging]: /docs/development/languages/go/logging.md
-[Rust logging]: /docs/development/languages/rust/logging.md
+[C++ logging]: /development/languages/c-cpp/logging.md
+[Dart logging]: /development/languages/dart/logging.md
+[Go logging]: /development/languages/go/logging.md
+[Rust logging]: /development/languages/rust/logging.md
 [kernel's shared ring buffer]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/zircon/kernel/lib/debuglog/debuglog.cc#37
 [bindable to file descriptors]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/sdk/lib/fdio/include/lib/fdio/fdio.h#36
-[`debuglog_write`]: /docs/reference/syscalls/debuglog_write.md
-[`debuglog_read`]: /docs/reference/syscalls/debuglog_read.md
+[`debuglog_write`]: /reference/syscalls/debuglog_write.md
+[`debuglog_read`]: /reference/syscalls/debuglog_read.md
 [`zxlogf`]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/src/lib/ddk/include/ddk/debug.h#103
-[kernel params]: /docs/reference/kernel/kernel_cmdline.md#drivernamelogflags
+[kernel params]: /reference/kernel/kernel_cmdline.md#drivernamelogflags
 [populated in procargs]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/src/sys/appmgr/realm.cc#140
 [`fuchsia.sys/LaunchInfo`]: https://fuchsia.dev/reference/fidl/fuchsia.sys#LaunchInfo
 [cloned]: https://fuchsia.googlesource.com/fuchsia/+/1bdbf8a4e6f758c3b1782dee352071cc592ca3ab/src/sys/appmgr/realm.cc#69
@@ -99,6 +99,6 @@ lack a way to express the severity of a message.
 [`fuchsia.boot.WriteOnlyLog`]: https://fuchsia.dev/reference/fidl/fuchsia.boot#WriteOnlyLog
 [appmgr]: /src/sys/appmgr/README.md
 [`ddk/debug.h`]: /src/lib/ddk/include/ddk/debug.h
-[components]: /docs/concepts/components/v2/introduction.md
-[ELF]: /docs/concepts/components/v2/elf_runner.md
-[forwarding stdout and stderr streams]: /docs/concepts/components/v2/elf_runner.md#forwarding_stdout_and_stderr_streams
+[components]: /concepts/components/v2/introduction.md
+[ELF]: /concepts/components/v2/elf_runner.md
+[forwarding stdout and stderr streams]: /concepts/components/v2/elf_runner.md#forwarding_stdout_and_stderr_streams

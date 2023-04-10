@@ -73,21 +73,21 @@ the problems and solutions that are also encountered when developing Fuchsia.
 * [Testing scope][test-scope]
 * [Testing best practices][best-practices]
 
-[fsi]: /docs/concepts/packages/system.md
-[netstack3-roadmap]: /docs/contribute/roadmap/2021/netstack3.md
-[test-scope]: /docs/contribute/testing/scope.md
-[best-practices]: /docs/contribute/testing/best-practices.md
+[fsi]: /concepts/packages/system.md
+[netstack3-roadmap]: /contribute/roadmap/2021/netstack3.md
+[test-scope]: /contribute/testing/scope.md
+[best-practices]: /contribute/testing/best-practices.md
 [continuous-integration]: https://martinfowler.com/articles/continuousIntegration.html
-[principles]: /docs/concepts/index.md
-[principles-simple]: /docs/concepts/principles/simple.md
-[principles-secure]: /docs/concepts/principles/secure.md
-[principles-updatable]: /docs/concepts/principles/updatable.md
-[principles-performant]: /docs/concepts/principles/performant.md
-[glossary.component]: /docs/glossary/README.md#component
-[glossary.zircon]: /docs/glossary/README.md#zircon
-[cf]: /docs/concepts/components/v2/README.md
-[cf-capabilities]: /docs/concepts/components/v2/capabilities/README.md
-[cf-manifests]: /docs/concepts/components/v2/component_manifests.md
+[principles]: /concepts/index.md
+[principles-simple]: /concepts/principles/simple.md
+[principles-secure]: /concepts/principles/secure.md
+[principles-updatable]: /concepts/principles/updatable.md
+[principles-performant]: /concepts/principles/performant.md
+[glossary.component]: /glossary/README.md#component
+[glossary.zircon]: /glossary/README.md#zircon
+[cf]: /concepts/components/v2/README.md
+[cf-capabilities]: /concepts/components/v2/capabilities/README.md
+[cf-manifests]: /concepts/components/v2/component_manifests.md
 [wikipedia-dependency-injection]: https://en.m.wikipedia.org/wiki/Dependency_injection
 [contract-test]: https://martinfowler.com/bliki/ContractTest.html
 [multi-repo-dev]: https://testing.googleblog.com/2015/05/multi-repository-development.html

@@ -7,22 +7,22 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/tools/ffx/development/README.md
+  path: /development/tools/ffx/development/README.md
 - title: "Integration testing"
-  path: /docs/development/tools/ffx/development/integration_testing.md
+  path: /development/tools/ffx/development/integration_testing.md
 - title: "Developing an FFX subtool"
-  path: /docs/development/tools/ffx/development/subtools/getting-started.md
+  path: /development/tools/ffx/development/subtools/getting-started.md
 - title: "Experimental subtools"
-  path: /docs/development/tools/ffx/development/subtools/experimental.md
+  path: /development/tools/ffx/development/subtools/experimental.md
 - title: "Subtool writers"
-  path: /docs/development/tools/ffx/development/subtools/writers.md
+  path: /development/tools/ffx/development/subtools/writers.md
 - title: "Migrating plugins to Subtools"
-  path: /docs/development/tools/ffx/development/subtools/migrating.md
+  path: /development/tools/ffx/development/subtools/migrating.md
 - title: "Handling errors in subtools"
-  path: /docs/development/tools/ffx/development/subtools/errors.md
+  path: /development/tools/ffx/development/subtools/errors.md
 - title: "Developing legacy plugins (deprecated)"
-  path: /docs/development/tools/ffx/development/plugins.md
+  path: /development/tools/ffx/development/plugins.md
 - title: "Legacy plugin internals (deprecated)"
-  path: /docs/development/tools/ffx/development/plugin-internals.md
+  path: /development/tools/ffx/development/plugin-internals.md
 - title: "Legacy experimental plugins (deprecated)"
-  path: /docs/development/tools/ffx/development/plugin-experimental.md
+  path: /development/tools/ffx/development/plugin-experimental.md

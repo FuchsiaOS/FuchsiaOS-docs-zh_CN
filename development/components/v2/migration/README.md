@@ -46,8 +46,8 @@ specific features your components may support:
 -   [Other common situations](common.md)
 
 [cf-dev-list]: https://groups.google.com/a/fuchsia.dev/g/component-framework-dev
-[components-intro]: /docs/concepts/components/v2/introduction.md
-[components-migration-status]: /docs/contribute/open_projects/components/migration.md
-[glossary.components-v2]: /docs/glossary/README.md#components-v2
-[sysmgr-config]: /docs/development/components/v2/migration/sysmgr.md
-[trf-intro]: /docs/development/testing/components/test_runner_framework.md
+[components-intro]: /concepts/components/v2/introduction.md
+[components-migration-status]: /contribute/open_projects/components/migration.md
+[glossary.components-v2]: /glossary/README.md#components-v2
+[sysmgr-config]: /development/components/v2/migration/sysmgr.md
+[trf-intro]: /development/testing/components/test_runner_framework.md

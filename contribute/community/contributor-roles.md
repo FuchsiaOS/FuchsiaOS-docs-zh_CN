@@ -70,7 +70,7 @@ of the affected files or receive approval from an Owner of the affected files.
 Committers are responsible for the following:
 
 *   Ensuring that the code submitted to Fuchsia by Committers is tested
-according to the [Testability Rubrics](/docs/development/testing/testability_rubric.md).
+according to the [Testability Rubrics](/development/testing/testability_rubric.md).
 *   Ensuring that the code submitted to Fuchsia by Committers follows testing
 best practices.
 
@@ -148,7 +148,7 @@ To become an Owner you must do the following:
 *   Provide high-quality reviews and code design feedback.
 *   Provide code reviews in a timely manner.
 *   Self-nominate or be nominated by another Committer.
-    *   To self-nominate, [submit a Gerrit change](/docs/development/source_code/contribute_changes.md)
+    *   To self-nominate, [submit a Gerrit change](/development/source_code/contribute_changes.md)
     that adds yourself to the `OWNERS` file of your desired repository.
     Current Owners will evaluate your change and either accept or reject your
     request.
@@ -184,7 +184,7 @@ To become a Global Approver you must do the following:
     the entire Fuchsia codebase.
 *   Self-nominate or get nominated by another Committer.
     *  To self-nominate, do the following:
-        * [Submit a Gerrit change](/docs/development/source_code/contribute_changes.md)
+        * [Submit a Gerrit change](/development/source_code/contribute_changes.md)
           that adds yourself to the [root `OWNERS` file](/OWNERS){:.external}.
           Current Owners will evaluate your change and either accept or reject your
           request.
@@ -333,7 +333,7 @@ perform.
 The following diagram depicts the high-level stages of what happens to a change
 after its pushed to Gerrit.
 
-![alt_text](/docs/contribute/community/images/change-resolution.png "Change approval process")
+![alt_text](/contribute/community/images/change-resolution.png "Change approval process")
 
 ## Specialized roles {#specialized-roles}
 
@@ -344,7 +344,7 @@ detailed above.
 ### API Reviewer {#api-reviewer}
 
 An API Reviewer is accountable for the quality and long-term
-health of the [Fuchsia API surface](/docs/glossary/README.md#Fuchsia API Surface).
+health of the [Fuchsia API surface](/glossary/README.md#Fuchsia API Surface).
 API Reviewers collectively form the API
 Council.
 
@@ -352,7 +352,7 @@ Any change that modifies the Fuchsia API Surface must receive an **API-Review+1*
 from a member of API Council in addition to the usual **Code-Review+2**.
 
 For more details about the responsibilities of an API Reviewer and how the API
-Council operates, see the [API Council Charter](/docs/contribute/governance/api_council.md).
+Council operates, see the [API Council Charter](/contribute/governance/api_council.md).
 
 #### API Reviewer membership {#api-reviewer-membership}
 
@@ -360,7 +360,7 @@ To become an API Reviewer you must do the following:
 
 *   Be a [Committer](#committer).
 *   Demonstrate good judgement about the quality and long-term health of APIs.
-*   Be appointed by the functional area of the Fuchsia project, as per the [API Council Charter](/docs/contribute/governance/api_council.md#membership).
+*   Be appointed by the functional area of the Fuchsia project, as per the [API Council Charter](/contribute/governance/api_council.md#membership).
 
 ### Eng Council member {#eng-council-member}
 
@@ -375,7 +375,7 @@ concrete engineering proposals from project contributors.
 There is no predetermined number of people on the Eng Council. However, in order
 to provide a coherent technical vision, the council has a small number of
 members. Eng Council members are appointed by the governing authority for the
-project. For more information, see [Membership](/docs/contribute/governance/eng_council.md#membership)
+project. For more information, see [Membership](/contribute/governance/eng_council.md#membership)
 in the Fuchsia Eng Council Charter.
 
 ## Revoking Privileges {#revoking-privileges}
@@ -422,7 +422,7 @@ code review:
     review label definitions see, [Gerrit Code Review - Review Labels](https://gerrit-review.googlesource.com/Documentation/config-labels.html){:.external}.
 *   Can specific portions of the Fuchsia source code have different requirements?
     * Yes. For example, API changes have special requirements as described in
-     the [Fuchsia API Council Charter](/docs/contribute/governance/api_council.md#api_review).
+     the [Fuchsia API Council Charter](/contribute/governance/api_council.md#api_review).
 *   Do I need **API-Review +1**?
     * Changes affecting the Fuchsia API surface require **API-Review +1**, and the
     code review tool will only show the API-Review flag when it is needed.

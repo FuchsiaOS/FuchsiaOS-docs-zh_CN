@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -55,7 +55,7 @@ scales (scalar values representing relative operating points) of each logical CP
 values reflect the most recent call to `zx_system_set_performance_info`, even if the values have not
 yet taken effect.
 
-See [RFC 0123](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+See [RFC 0123](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 for further details on values and update protocols.
 
 ### ZX_CPU_DEFAULT_PERF_SCALE
@@ -67,7 +67,7 @@ for further details on values and update protocols.
 Returns an array of `zx_cpu_performance_scale_t` with entries indicating the default performance
 scales used during boot of each logical CPU in the system.
 
-See [RFC 0123](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+See [RFC 0123](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 for further details.
 
 ## Rights
@@ -95,7 +95,7 @@ negative error value is returned.
 
 ## See also
 
-- [RFC 0123: CPU performance info syscalls](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+- [RFC 0123: CPU performance info syscalls](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 
  - [`zx_system_set_performance_info()`]
 

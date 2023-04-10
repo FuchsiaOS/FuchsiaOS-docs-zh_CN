@@ -38,10 +38,10 @@ TODO(stevensd): Writeback is not currently implemented. Update the documentation
 
 ## SYSCALLS
 
-+ [pager_create](/docs/reference/syscalls/pager_create.md) - create a new pager object
-+ [pager_create_vmo](/docs/reference/syscalls/pager_create_vmo.md) - create a vmo owned by a pager
-+ [pager_detach_vmo](/docs/reference/syscalls/pager_detach_vmo.md) - detaches a pager from a vmo
-+ [pager_supply_pages](/docs/reference/syscalls/pager_supply_pages.md) - supply pages into a pager owned vmo
-+ [pager_op_range](/docs/reference/syscalls/pager_op_range.md) - performs a pager operation on the specified range
++ [pager_create](/reference/syscalls/pager_create.md) - create a new pager object
++ [pager_create_vmo](/reference/syscalls/pager_create_vmo.md) - create a vmo owned by a pager
++ [pager_detach_vmo](/reference/syscalls/pager_detach_vmo.md) - detaches a pager from a vmo
++ [pager_supply_pages](/reference/syscalls/pager_supply_pages.md) - supply pages into a pager owned vmo
++ [pager_op_range](/reference/syscalls/pager_op_range.md) - performs a pager operation on the specified range
 
-[`zx_object_get_info()`]: /docs/reference/syscalls/object_get_info.md
+[`zx_object_get_info()`]: /reference/syscalls/object_get_info.md

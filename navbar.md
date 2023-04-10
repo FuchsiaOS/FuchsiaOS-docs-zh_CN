@@ -6,4 +6,4 @@
 * [Reference](https://fuchsia.dev/reference/fidl)
 
 [home]: https://fuchsia.dev/fuchsia-src
-[logo]: /docs/images/fuchsia-logo-32x32.png
+[logo]: /images/fuchsia-logo-32x32.png

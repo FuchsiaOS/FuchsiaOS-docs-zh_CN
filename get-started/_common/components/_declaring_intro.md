@@ -5,11 +5,11 @@ is expressed using a **component manifest file** and loaded with the help of a
 
 ![Diagram showing how components are declared using a "component manifest." The
 manifest is compiled by the developer tools and resolved onto the device at
-runtime.](/docs/get-started/images/components/component-manifest.png){: width="836"}
+runtime.](/get-started/images/components/component-manifest.png){: width="836"}
 
 You declare components using component manifest language (CML) files. At build
 time, the Component Manifest Compiler (`cmc`) tool validates and compiles the
 manifest source into a binary format (`.cm`) and stores it in the component's
 package. At runtime, component resolvers load the binary manifest into a
 [ComponentDecl](https://fuchsia.dev/reference/fidl/fuchsia.component.decl#Component)
-FIDL structure for [Component Manager](/docs/glossary/README.md#Component-Manager).
+FIDL structure for [Component Manager](/glossary/README.md#Component-Manager).

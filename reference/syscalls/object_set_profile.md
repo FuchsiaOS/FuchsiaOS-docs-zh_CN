@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -36,8 +36,8 @@ The parameter *profile* is a handle to a [profile] object created with [`zx_prof
 Currently, the the only supported *target* object type is [thread]. Other object types may be
 supported in the future.
 
-[profile]: /docs/reference/kernel_objects/profile.md
-[thread]: /docs/reference/kernel_objects/thread.md
+[profile]: /reference/kernel_objects/profile.md
+[thread]: /reference/kernel_objects/thread.md
 
 ## Rights
 

@@ -7,7 +7,7 @@ intended for developers writing tests within fuchsia.git.
 
 Set up your development environment.
 
-This codelab assumes you have completed [Getting Started](/docs/get-started/README.md) and have:
+This codelab assumes you have completed [Getting Started](/get-started/README.md) and have:
 
 1. A checked out and built Fuchsia tree.
 2. A device or emulator (`ffx emu`) that runs Fuchsia.
@@ -420,11 +420,11 @@ Once the test runs, you are ready to modify the boilerplate to write useful test
 
 [example-integration-test]: /examples/diagnostics/workshop/example-integration
 [example-unittests]: /examples/diagnostics/workshop/profile_unittest_example.cc
-[inspect-codelab]: /docs/development/diagnostics/inspect/codelab/codelab.md
-[inspect-quickstart]: /docs/development/diagnostics/inspect/quickstart.md
+[inspect-codelab]: /development/diagnostics/inspect/codelab/codelab.md
+[inspect-quickstart]: /development/diagnostics/inspect/quickstart.md
 [gtest]: https://github.com/google/googletest
 [profile-store]: /examples/diagnostics/workshop/fidl/profile_store.test.fidl
 [profile-store-build]: /examples/diagnostics/workshop/BUILD.gn
-[realm-builder]: /docs/development/testing/components/realm_builder.md
-[triage-codelab]: /docs/development/diagnostics/triage/codelab.md
-[triage-config-guide]: /docs/development/diagnostics/triage/config.md
+[realm-builder]: /development/testing/components/realm_builder.md
+[triage-codelab]: /development/diagnostics/triage/codelab.md
+[triage-config-guide]: /development/diagnostics/triage/config.md

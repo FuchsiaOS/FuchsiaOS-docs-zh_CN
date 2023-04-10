@@ -290,7 +290,7 @@ Sufficiently old classfiles may not work.
 
 <!-- xrefs -->
 
-[RFC-0002]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
-[RFC-0015]: /docs/contribute/governance/rfcs/0015_cts.md
-[RFC-0100]: /docs/contribute/governance/rfcs/0100_product_metadata.md
+[RFC-0002]: /contribute/governance/rfcs/0002_platform_versioning.md
+[RFC-0015]: /contribute/governance/rfcs/0015_cts.md
+[RFC-0100]: /contribute/governance/rfcs/0100_product_metadata.md
 

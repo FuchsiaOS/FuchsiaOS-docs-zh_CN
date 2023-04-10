@@ -20,7 +20,7 @@ The trace provider requires an asynchronous dispatcher to operate.
 
   Note: This example uses `fdio` to set up the FIDL channel with the trace
   manager. For more information, see
-  [`fdio`](/docs/concepts/filesystems/life_of_an_open.md#fdio).
+  [`fdio`](/concepts/filesystems/life_of_an_open.md#fdio).
 
   ```c++
   #include <lib/async-loop/cpp/loop.h>

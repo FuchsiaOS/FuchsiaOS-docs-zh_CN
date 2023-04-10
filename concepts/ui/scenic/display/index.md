@@ -2,7 +2,7 @@
 
 Scenic mediates access to the physical displays that are attached to a Fuchsia
 system. To let UI clients present content to a display, Scenic provides APIs
-(e.g. [Flatland](/docs/concepts/ui/scenic/flatland/index.md)) which allow
+(e.g. [Flatland](/concepts/ui/scenic/flatland/index.md)) which allow
 multiple client applications to show their content on-screen.
 
 ## Device pixel ratio and Screen orientation

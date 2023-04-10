@@ -40,7 +40,7 @@ Type the name of your benchmark suite in the first box to begin searching.  For
 example, if there is a benchmark suite named "zircon_benchmarks", it will get
 displayed with autocomplete if you type "zircon".
 
-![test_suite_example](/docs/images/benchmarking/test_suite_example.png "test_suite_example")
+![test_suite_example](/images/benchmarking/test_suite_example.png "test_suite_example")
 
 Select a builder and a subtest.  Note that if your subtest is named "foo", there will be
 multiple "foo_<metric_name>" subtests to choose from.  Each of these represents a metric
@@ -51,7 +51,7 @@ averages of these N samples.
 When you're finished filling out each field, click **Add** to add your graph to the UI.
 You should see something like this:
 
-![graph_example](/docs/images/benchmarking/graph_example.png "graph_example")
+![graph_example](/images/benchmarking/graph_example.png "graph_example")
 
 
 ## Viewing sample metadata
@@ -60,7 +60,7 @@ If you hover over a point in a graph, you can see some extra information such as
 point's value, the date it was recorded, and a link to the log page of the build that
 generated it.
 
-![tooltip_example](/docs/images/benchmarking/tooltip_example.png "tooltip_example")
+![tooltip_example](/images/benchmarking/tooltip_example.png "tooltip_example")
 
 
 ## Saving the view

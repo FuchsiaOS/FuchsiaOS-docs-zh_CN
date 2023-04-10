@@ -186,7 +186,7 @@ interface Science {
 ```
 
 We will update the
-[FIDL API rubric](/docs/development/api/fidl.md)
+[FIDL API rubric](/development/api/fidl.md)
 to recommend appending "_" to the method name for the `Selector` to resolve clashes.
 `fidlc` will also suggest this fix.
 
@@ -274,7 +274,7 @@ We intend to implement this in distinct phases:
 6. Remove support for manually-specified ordinals.
 
 The above is a
-[soft transition](/docs/development/source_code/working_across_petals.md#soft-transitions-preferred);
+[soft transition](/development/source_code/working_across_petals.md#soft-transitions-preferred);
 changing `fidlc` to use the hashed ordinals (step 4b) should not break the rollers,
 since rollers build from a single version of the entire tree.
 
@@ -510,4 +510,4 @@ It then defines an unsolicited message from the server.
 jln@google.com writes, "Yes it's ok to truncate SHA-2 and no, it doesn't matter where you truncate."
 
 <!-- xrefs -->
-[transactional-messages]: /docs/reference/fidl/language/wire-format/README.md#transactional-messages
+[transactional-messages]: /reference/fidl/language/wire-format/README.md#transactional-messages

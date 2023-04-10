@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -77,7 +77,7 @@ is used for detached threads.
  - [`zx_thread_exit()`]
  - [`zx_vmar_unmap_handle_close_thread_exit()`]
 
-[futex objects]: /docs/reference/kernel_objects/futex.md
+[futex objects]: /reference/kernel_objects/futex.md
 [`zx_futex_wake()`]: futex_wake.md
 [`zx_handle_close()`]: handle_close.md
 [`zx_thread_exit()`]: thread_exit.md

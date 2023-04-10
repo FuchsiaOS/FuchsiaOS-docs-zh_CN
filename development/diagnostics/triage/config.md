@@ -74,7 +74,7 @@ component name from the `inspect.json` file. The `.`-separated middle section
 specifies Inspect Node names forming a path to the Property named after the
 second `:`.
 
-[Selector]: /docs/reference/diagnostics/selectors.md
+[Selector]: /reference/diagnostics/selectors.md
 
 ### Calculation {#triage-calculation}
 

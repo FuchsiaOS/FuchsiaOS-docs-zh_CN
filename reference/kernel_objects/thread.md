@@ -60,7 +60,7 @@ the thread is resumed `ZX_THREAD_SUSPENDED` is deasserted and
 `ZX_THREAD_TERMINATED` is asserted.
 
 Note that signals are OR'd into the state maintained by the
-[`zx_object_wait_*()`](/docs/reference/syscalls/object_wait_one.md) family of functions thus
+[`zx_object_wait_*()`](/reference/syscalls/object_wait_one.md) family of functions thus
 you may see any combination of requested signals when they return.
 
 ## SYSCALLS
@@ -76,14 +76,14 @@ you may see any combination of requested signals when they return.
  - [`zx_task_create_exception_channel()`] - listen for task exceptions
  - [`zx_task_kill()`] - cause a task to stop running
 
-[`zx_futex_wake_handle_close_thread_exit()`]: /docs/reference/syscalls/futex_wake_handle_close_thread_exit.md
-[`zx_object_get_child()`]: /docs/reference/syscalls/object_get_child.md
-[`zx_process_start()`]: /docs/reference/syscalls/process_start.md
-[`zx_task_create_exception_channel()`]: /docs/reference/syscalls/task_create_exception_channel.md
-[`zx_task_kill()`]: /docs/reference/syscalls/task_kill.md
-[`zx_thread_create()`]: /docs/reference/syscalls/thread_create.md
-[`zx_thread_exit()`]: /docs/reference/syscalls/thread_exit.md
-[`zx_thread_read_state()`]: /docs/reference/syscalls/thread_read_state.md
-[`zx_thread_write_state()`]: /docs/reference/syscalls/thread_write_state.md
-[`zx_thread_start()`]: /docs/reference/syscalls/thread_start.md
-[`zx_vmar_unmap_handle_close_thread_exit()`]: /docs/reference/syscalls/vmar_unmap_handle_close_thread_exit.md
+[`zx_futex_wake_handle_close_thread_exit()`]: /reference/syscalls/futex_wake_handle_close_thread_exit.md
+[`zx_object_get_child()`]: /reference/syscalls/object_get_child.md
+[`zx_process_start()`]: /reference/syscalls/process_start.md
+[`zx_task_create_exception_channel()`]: /reference/syscalls/task_create_exception_channel.md
+[`zx_task_kill()`]: /reference/syscalls/task_kill.md
+[`zx_thread_create()`]: /reference/syscalls/thread_create.md
+[`zx_thread_exit()`]: /reference/syscalls/thread_exit.md
+[`zx_thread_read_state()`]: /reference/syscalls/thread_read_state.md
+[`zx_thread_write_state()`]: /reference/syscalls/thread_write_state.md
+[`zx_thread_start()`]: /reference/syscalls/thread_start.md
+[`zx_vmar_unmap_handle_close_thread_exit()`]: /reference/syscalls/vmar_unmap_handle_close_thread_exit.md

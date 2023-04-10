@@ -67,7 +67,7 @@ In VS Code, do the following:
 
 1. Click the text box (which already has the filter `qemu-edu`) and press **Enter**.
 
-   ![More logs](/docs/get-started/sdk/images/get-started-vscode-qemu-edu-more-device-logs.png "More messages in the Fuchsia logs panel of VS Code"){: .screenshot}
+   ![More logs](/get-started/sdk/images/get-started-vscode-qemu-edu-more-device-logs.png "More messages in the Fuchsia logs panel of VS Code"){: .screenshot}
 
    Notice that more messages are now logged from the `qemu_edu` driver.
 

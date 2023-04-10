@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -30,7 +30,7 @@ zx_status_t zx_vmo_create_child(zx_handle_t handle,
 ## Description
 
 `zx_vmo_create_child()` creates a new [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO) a child of an existing vmo. The behavior
+object](/reference/kernel_objects/vm_object.md) (VMO) a child of an existing vmo. The behavior
 of the semantics depends on the type of the child.
 
 One handle is returned on success, representing an object with the requested

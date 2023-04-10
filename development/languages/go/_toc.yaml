@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/go
+  path: /development/languages/go
 - title: "Logging"
-  path: /docs/development/languages/go/logging.md
+  path: /development/languages/go/logging.md
 - title: "Readability reviews"
-  path: /docs/development/languages/go/readability_reviews.md
+  path: /development/languages/go/readability_reviews.md

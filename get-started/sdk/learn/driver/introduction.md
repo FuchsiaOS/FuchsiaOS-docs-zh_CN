@@ -71,14 +71,14 @@ alias bazel=tools/bazel
 <!-- Reference links -->
 
 [bazel-concepts]: https://bazel.build/concepts/build-ref
-[concepts-capabilities]: /docs/concepts/components/v2/capabilities/README.md
-[concepts-component-topology]: /docs/concepts/components/v2/topology.md
-[concepts-components]: /docs/concepts/components/v2/introduction.md
-[concepts-driver-framework]: /docs/concepts/drivers/driver_framework.md
-[concepts-drivers]: /docs/concepts/drivers/README.md
-[driver-get-started]: /docs/get-started/sdk/get-started-with-driver.md
-[driver-product-bundle]: /docs/get-started/sdk/get-started-with-driver.md#start-the-emulator
-[guide-fuchsia-emulator]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
-[guide-fundamentals]: /docs/get-started/sdk/learn/README.md
+[concepts-capabilities]: /concepts/components/v2/capabilities/README.md
+[concepts-component-topology]: /concepts/components/v2/topology.md
+[concepts-components]: /concepts/components/v2/introduction.md
+[concepts-driver-framework]: /concepts/drivers/driver_framework.md
+[concepts-drivers]: /concepts/drivers/README.md
+[driver-get-started]: /get-started/sdk/get-started-with-driver.md
+[driver-product-bundle]: /get-started/sdk/get-started-with-driver.md#start-the-emulator
+[guide-fuchsia-emulator]: /development/sdk/ffx/start-the-fuchsia-emulator.md
+[guide-fundamentals]: /get-started/sdk/learn/README.md
 [qemu]: https://www.qemu.org/
 [sdk-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Bazel

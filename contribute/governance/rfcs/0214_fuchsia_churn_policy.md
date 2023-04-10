@@ -161,10 +161,10 @@ Is there any background material that might be helpful when reading this
 proposal? For instance, do other operating systems address the same problem this
 proposal addresses?
 
-[build-products]: /docs/development/build/build_system/boards_and_products.md#products
+[build-products]: /development/build/build_system/boards_and_products.md#products
 [contributor-guide]: /CONTRIBUTING.md
-[fec]: /docs/contribute/governance/eng_council.md
-[fuchsia-abi]: /docs/concepts/packages/system.md
-[fuchsia-sdk]: /docs/development/sdk/index.md
-[governance-policies]: /docs/contribute/governance/governance.md
-[soft-transitions]: /docs/development/source_code/working_across_petals.md#soft-transitions
+[fec]: /contribute/governance/eng_council.md
+[fuchsia-abi]: /concepts/packages/system.md
+[fuchsia-sdk]: /development/sdk/index.md
+[governance-policies]: /contribute/governance/governance.md
+[soft-transitions]: /development/source_code/working_across_petals.md#soft-transitions

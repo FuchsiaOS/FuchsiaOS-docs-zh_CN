@@ -777,9 +777,9 @@ design.
 *   [ACPI vs DT](https://elinux.org/images/f/f8/ACPI_vs_DT.pdf) - a talk about
     unifying ACPI and devicetree interfaces in Linux.
 
-[acpi-rfc]: /docs/contribute/governance/rfcs/0112_acpi_support_on_x86.md
+[acpi-rfc]: /contribute/governance/rfcs/0112_acpi_support_on_x86.md
 [dt-parser]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/kernel/lib/devicetree/include/lib/devicetree/devicetree.h;drc=4d5a960a88ecfa5b1763111cc88b47838f799e2f
 [dt-schema]: https://github.com/devicetree-org/dt-schema
 [dt-specification]: https://github.com/devicetree-org/devicetree-specification/releases/tag/v0.3
-[product-assembly]: /docs/contribute/roadmap/2021/product_assembly.md
+[product-assembly]: /contribute/roadmap/2021/product_assembly.md
 [vim3-usb]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/devices/board/drivers/vim3/vim3-usb.cc;drc=937a626e8295964db6903e6b5a10c34ef5e10484

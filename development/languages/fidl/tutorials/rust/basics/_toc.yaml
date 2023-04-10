@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "FIDL Rust Crates"
-  path: /docs/development/languages/fidl/tutorials/rust/basics/using-fidl.md
+  path: /development/languages/fidl/tutorials/rust/basics/using-fidl.md
 - title: "Server"
-  path: /docs/development/languages/fidl/tutorials/rust/basics/server.md
+  path: /development/languages/fidl/tutorials/rust/basics/server.md
 - title: "Async client"
-  path: /docs/development/languages/fidl/tutorials/rust/basics/client.md
+  path: /development/languages/fidl/tutorials/rust/basics/client.md
 - title: "Sync client"
-  path: /docs/development/languages/fidl/tutorials/rust/basics/sync-client.md
+  path: /development/languages/fidl/tutorials/rust/basics/sync-client.md

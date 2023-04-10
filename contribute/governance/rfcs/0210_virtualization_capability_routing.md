@@ -41,8 +41,8 @@ to the product session that allows products to utilize the mechanism of
 virtualization without needing to route all the low-level privileged
 capabilities that virtualizations needs into the session itself. This is, in
 part, based  the guidance in [RFC-0092 -
-Sessions](/docs/contribute/governance/rfcs/0092_sessions.md) and [RFC-0194 -
-Addendum: Sessions](/docs/contribute/governance/rfcs/0194_addendum_sessions.md).
+Sessions](/contribute/governance/rfcs/0092_sessions.md) and [RFC-0194 -
+Addendum: Sessions](/contribute/governance/rfcs/0194_addendum_sessions.md).
 For more details on this see [Security
 Considerations](#security_considerations).
 

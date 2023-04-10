@@ -16,4 +16,4 @@ In the next module, you'll learn more about how Fuchsia components interact with
 each other using:
 
 <a class="button button-primary"
-    href="/docs/get-started/learn/fidl">Fuchsia interfaces</a>
+    href="/get-started/learn/fidl">Fuchsia interfaces</a>

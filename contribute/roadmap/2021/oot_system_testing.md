@@ -468,22 +468,22 @@ compatibility or sharing tests with a partner project, that would require
 additional justification or otherwise be discouraged by the platform team.
 
 [acts]: https://android.googlesource.com/platform/tools/test/connectivity/+/HEAD/acts
-[cf]: /docs/concepts/components/v2/README.md
+[cf]: /concepts/components/v2/README.md
 [dash]: /zircon/third_party/uapp/dash/
-[ffx-components]: /docs/development/tools/ffx/getting-started.md#interacting_with_components
-[ffx-plugins]: /docs/development/tools/ffx/development/plugins.md
-[ffx-proxy-plugin]: /docs/development/tools/ffx/development/plugins.md#fidl-proxy
-[fidl-abi-compatibility]: /docs/development/languages/fidl/guides/compatibility/README.md
-[fsi]: /docs/concepts/packages/system.md
-[fuchsia-updatable]: /docs/concepts/principles/updatable.md
-[glossary.product-owner]: /docs/glossary/README.md#product-owner
-[inspect]: /docs/development/diagnostics/inspect/README.md
-[oot-component-testing]: /docs/contribute/roadmap/2021/oot_component_testing.md
+[ffx-components]: /development/tools/ffx/getting-started.md#interacting_with_components
+[ffx-plugins]: /development/tools/ffx/development/plugins.md
+[ffx-proxy-plugin]: /development/tools/ffx/development/plugins.md#fidl-proxy
+[fidl-abi-compatibility]: /development/languages/fidl/guides/compatibility/README.md
+[fsi]: /concepts/packages/system.md
+[fuchsia-updatable]: /concepts/principles/updatable.md
+[glossary.product-owner]: /glossary/README.md#product-owner
+[inspect]: /development/diagnostics/inspect/README.md
+[oot-component-testing]: /contribute/roadmap/2021/oot_component_testing.md
 [practical-test-pyramid]: https://martinfowler.com/articles/practical-test-pyramid.html
 [scp]: https://fuchsia.dev/reference/tools/fx/cmd/scp
 [sl4a]: https://android.googlesource.com/platform/external/sl4a/
-[sl4f]: /docs/development/drivers/concepts/driver_development/sl4f.md
+[sl4f]: /development/drivers/concepts/driver_development/sl4f.md
 [snapshot]: https://fuchsia.dev/reference/tools/fx/cmd/snapshot
-[ssh]: /docs/development/idk/documentation/ssh.md
-[v2-migration]: /docs/contribute/open_projects/components/migration.md
-[v2-testing]: /docs/development/testing/components/README.md
+[ssh]: /development/idk/documentation/ssh.md
+[v2-migration]: /contribute/open_projects/components/migration.md
+[v2-testing]: /development/testing/components/README.md

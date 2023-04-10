@@ -157,12 +157,12 @@ In VS Code, do the following:
 1. To fit the messages on the panel, click the **Wrap logs** icon
    at the top right corner of the **FUCHSIA LOGS** panel.
 
-   ![Fuchsia logs](/docs/get-started/sdk/images/get-started-vscode-wrap-logs-icon.png "The Wrap logs icon in VS Code"){: .screenshot width="200"}
+   ![Fuchsia logs](/get-started/sdk/images/get-started-vscode-wrap-logs-icon.png "The Wrap logs icon in VS Code"){: .screenshot width="200"}
 
 1. In the **Filter logs** text box, type `qemu-edu` and
    press **Enter**.
 
-   ![Fuchsia logs](/docs/get-started/sdk/images/get-started-vscode-qemu-edu-device-logs.png "The Fuchsia logs panel in VS Code"){: .screenshot}
+   ![Fuchsia logs](/get-started/sdk/images/get-started-vscode-qemu-edu-device-logs.png "The Fuchsia logs panel in VS Code"){: .screenshot}
 
    The **FUCHSIA LOGS** panel now filters logs for the `qemu_edu` driver
    only.
@@ -173,5 +173,5 @@ In VS Code, do the following:
 <!-- Reference links -->
 
 [edu-device]: https://fuchsia.googlesource.com/third_party/qemu/+/refs/heads/main/docs/specs/edu.txt
-[filter-vscode-logs]: /docs/reference/tools/editors/vscode/fuchsia-ext-using.md#filter_fuchsia_logs
+[filter-vscode-logs]: /reference/tools/editors/vscode/fuchsia-ext-using.md#filter_fuchsia_logs
 [qemu-edu]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/qemu_edu

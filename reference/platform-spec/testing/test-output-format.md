@@ -93,4 +93,4 @@ available in [examples/testing][example-output-dir].
 [ffx-test]: https://fuchsia.dev/reference/tools/sdk/ffx#run_3
 [schema-in-source]: /sdk/schema/ffx_test
 [schema-in-fuchsia-dev]: https://fuchsia.dev/schema/ffx_test/run_summary-8d1dd964.json
-[output-rfc]: /docs/contribute/governance/rfcs/0163_test_output_format.md
+[output-rfc]: /contribute/governance/rfcs/0163_test_output_format.md

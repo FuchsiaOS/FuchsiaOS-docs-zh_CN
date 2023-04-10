@@ -10,7 +10,7 @@
 {%- set drivers_metadata_file = "all_drivers_doc.yaml" %}
 {%- set areas_yaml_file = "_drivers_areas.yaml" %}
 {%- set info_icon = '<span class="material-icons" style="font-size: 1.1em;color:#007b83;vertical-align: top;">info</span>' %}
-{%- set sys_config_page = "/docs/reference/hardware/support-system-config#" %}
+{%- set sys_config_page = "/reference/hardware/support-system-config#" %}
 
 {%- set drivers | yamlloads %}
 {% include "reference/drivers/all_drivers_doc.yaml" %}

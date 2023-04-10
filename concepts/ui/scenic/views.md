@@ -1,15 +1,15 @@
 # View System
 
 One of Scenic's primary responsibilities is being the arbiter of all
-[Views](/docs/glossary#view) used to compose UI in a running Fuchsia system.
+[Views](/glossary#view) used to compose UI in a running Fuchsia system.
 
-The set of Scenic APIs which [UI Clients](/docs/concepts/ui/ui-client.md) use
+The set of Scenic APIs which [UI Clients](/concepts/ui/ui-client.md) use
 to create, destroy, and modify Views are together called the
-[View System](/docs/contribute/governance/rfcs/0147_view_system.md).
+[View System](/contribute/governance/rfcs/0147_view_system.md).
 
 ## View
 
-A [View](/docs/glossary#view) is the fundamental unit of UI organization on Fuchsia.
+A [View](/glossary#view) is the fundamental unit of UI organization on Fuchsia.
 
 UI clients manage Views by interacting with Scenic, which maintains all Views on their behalf
 and assembles the Views into a coherent View Tree.

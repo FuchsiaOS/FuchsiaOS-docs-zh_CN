@@ -8,6 +8,6 @@
 *   [Emulator product bundle][start-femu] for `workstation_eng.qemu-x64`
 
 
-[get-started]: /docs/get-started/sdk/index.md
-[start-femu]: /docs/get-started/sdk/index.md#start-the-emulator
+[get-started]: /get-started/sdk/index.md
+[start-femu]: /get-started/sdk/index.md#start-the-emulator
 [sdk-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Bazel

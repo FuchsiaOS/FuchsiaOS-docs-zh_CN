@@ -1,7 +1,7 @@
 # Getting started with ffx
 
 This doc will guide you through some of the features of `ffx`. For an overview
-of the design and components of `ffx`, see [the ffx overview](/docs/development/tools/ffx/overview.md).
+of the design and components of `ffx`, see [the ffx overview](/development/tools/ffx/overview.md).
 
 ## Contacting the ffx team
 
@@ -17,10 +17,10 @@ To start an emulator with networking enabled but without graphical user
 interface support, run `ffx emu start --headless`.
 
 For more information on configuring the emulator
-see, [Start the Fuchsia emulator](/docs/get-started/set_up_femu.md).
+see, [Start the Fuchsia emulator](/get-started/set_up_femu.md).
 
 Your device must be running a `core`
-[product configuration](/docs/development/build/build_system/boards_and_products.md)
+[product configuration](/development/build/build_system/boards_and_products.md)
 or a product configuration that extends `core` (such as `workstation_eng`).
 
 Optionally, you can run `ffx log`, which will provide some additional information
@@ -157,14 +157,14 @@ reboot a device, respectively.
 
 ## Configuration
 
-See documentation for the [config command](/docs/development/tools/ffx/commands/config.md).
+See documentation for the [config command](/development/tools/ffx/commands/config.md).
 
 ## Interacting with Components
 
 ### Monikers
 
 Many `ffx` commands that use components take monikers as a parameter. You can read more about
-monikers and their syntax in [component moniker documentation](/docs/reference/components/moniker.md).
+monikers and their syntax in [component moniker documentation](/reference/components/moniker.md).
 
 ### Finding components
 
@@ -314,7 +314,7 @@ Instance ID: eb345fb7dcaa4260ee0c65bb73ef0ec5341b15a4f603f358d6631c4be6bf7080
 The `component run` command can create and launch components in a given isolated collection.
 
 Note: `fx serve` must be running in order to run a package that is not
-[in base or cached](/docs/development/build/build_system/boards_and_products.md#dependency_sets).
+[in base or cached](/development/build/build_system/boards_and_products.md#dependency_sets).
 
 Here's an example of running the Rust `hello-world` component in the `/core/ffx-laboratory`
 collection. First, you'll need the hello-world package in your universe:
@@ -421,7 +421,7 @@ when running tests which use `ffx`.
 ## Next steps
 
 - Please provide feedback on this doc by [reaching out to the ffx team](#contacting_the_ffx_team)!
-- Learn how to [extend `ffx`](/docs/development/tools/ffx/development/plugins.md).
+- Learn how to [extend `ffx`](/development/tools/ffx/development/plugins.md).
 
 
 <!-- Reference links -->

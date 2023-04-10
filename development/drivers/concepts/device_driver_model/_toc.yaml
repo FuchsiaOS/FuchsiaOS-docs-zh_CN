@@ -7,28 +7,28 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/drivers/concepts/device_driver_model/README.md
+  path: /development/drivers/concepts/device_driver_model/README.md
 - title: "Introduction"
-  path: /docs/development/drivers/concepts/device_driver_model/introduction.md
+  path: /development/drivers/concepts/device_driver_model/introduction.md
 - title: "Device model"
-  path: /docs/development/drivers/concepts/device_driver_model/device-model.md
+  path: /development/drivers/concepts/device_driver_model/device-model.md
 - title: "Driver binding"
-  path: /docs/development/drivers/concepts/device_driver_model/driver-binding.md
+  path: /development/drivers/concepts/device_driver_model/driver-binding.md
 - title: "Device ops"
-  path: /docs/development/drivers/concepts/device_driver_model/device-ops.md
+  path: /development/drivers/concepts/device_driver_model/device-ops.md
 - title: "Device lifecycle"
-  path: /docs/development/drivers/concepts/device_driver_model/device-lifecycle.md
+  path: /development/drivers/concepts/device_driver_model/device-lifecycle.md
 - title: "Power management"
-  path: /docs/development/drivers/concepts/device_driver_model/device-power.md
+  path: /development/drivers/concepts/device_driver_model/device-power.md
 - title: "Device protocol"
-  path: /docs/development/drivers/concepts/device_driver_model/protocol.md
+  path: /development/drivers/concepts/device_driver_model/protocol.md
 - title: "Platform bus"
-  path: /docs/development/drivers/concepts/device_driver_model/platform-bus.md
+  path: /development/drivers/concepts/device_driver_model/platform-bus.md
 - title: "FIDL"
-  path: /docs/development/drivers/concepts/device_driver_model/fidl.md
+  path: /development/drivers/concepts/device_driver_model/fidl.md
 - title: "Banjo"
-  path: /docs/development/drivers/concepts/device_driver_model/banjo.md
+  path: /development/drivers/concepts/device_driver_model/banjo.md
 - title: "Composite devices"
-  path: /docs/development/drivers/concepts/device_driver_model/composite.md
+  path: /development/drivers/concepts/device_driver_model/composite.md
 - title: "Device firmware"
-  path: /docs/development/drivers/concepts/device_driver_model/firmware.md
+  path: /development/drivers/concepts/device_driver_model/firmware.md

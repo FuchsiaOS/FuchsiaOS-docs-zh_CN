@@ -176,7 +176,7 @@ For questions and clarification on this document, please reach out to this
 directory's owners or file a bug in the [CTF bug component].
 
 [CTF bug component]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Fuchsia+Compatibility+Test+Suite+%28CTS%29
-[CTF overview]: /docs/development/testing/ctf/overview.md
-[Run Fuchsia Tests]: /docs/development/testing/run_fuchsia_tests.md
+[CTF overview]: /development/testing/ctf/overview.md
+[Run Fuchsia Tests]: /development/testing/run_fuchsia_tests.md
 [//sdk/ctf/examples]: /sdk/ctf/tests/examples/
 [//sdk/ctf/tests]: /sdk/ctf/tests/

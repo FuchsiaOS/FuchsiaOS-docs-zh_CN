@@ -258,8 +258,8 @@ Components that call [`LogSink.Connect`] are expected to pass a socket in "datag
 opposed to "streaming") and to write the ["legacy" wire format] into it. This uses little endian
 integers and a mix of length-prefixed and null-terminated UTF-8 strings.
 
-[bitfield-diagram]: /docs/reference/platform-spec/diagnostics/bitfield-diagram.md
-[`zx_clock_get_monotonic`]: /docs/reference/syscalls/clock_get_monotonic.md
+[bitfield-diagram]: /reference/platform-spec/diagnostics/bitfield-diagram.md
+[`zx_clock_get_monotonic`]: /reference/syscalls/clock_get_monotonic.md
 [`LogSink.Connect`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#Connect
 ["legacy" wire format]: /zircon/system/ulib/syslog/include/lib/syslog/wire_format.h
-[trace format]: /docs/reference/tracing/trace-format.md
+[trace format]: /reference/tracing/trace-format.md

@@ -88,6 +88,6 @@ component, you can run the command with the `--debug-json` option.
 
 <!-- Reference links -->
 
-[vmo]: /docs/reference/kernel_objects/vm_object.md
-[child-vmos]: /docs/reference/syscalls/vmo_create_child.md
+[vmo]: /reference/kernel_objects/vm_object.md
+[child-vmos]: /reference/syscalls/vmo_create_child.md
 [scudo]: https://llvm.org/docs/ScudoHardenedAllocator.html

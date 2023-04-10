@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -30,7 +30,7 @@ is, its **ZX_USER_SIGNAL_n** (where *n* is 0 through 7) signals can be
 manipulated using [`zx_object_signal()`].
 
 The newly-created handle will have the [basic
-rights](/docs/concepts/kernel/rights.md#zx_rights_basic) plus **ZX_RIGHT_SIGNAL**.
+rights](/concepts/kernel/rights.md#zx_rights_basic) plus **ZX_RIGHT_SIGNAL**.
 
 ## Rights
 

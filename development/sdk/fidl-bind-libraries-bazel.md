@@ -3,8 +3,8 @@
 This tutorial is for driver authors using the SDK who want to use FIDL-based
 auto-generated bind libraries. The tutorial assumes familiarity with the following:
 
- * [FIDL Tutorial - Generated Bind Libraries](/docs/development/drivers/tutorials/fidl-tutorial.md#generated-bind-libraries)
- * [Create a new bind library for a driver](/docs/development/sdk/create-new-bind-library-for-driver.md)
+ * [FIDL Tutorial - Generated Bind Libraries](/development/drivers/tutorials/fidl-tutorial.md#generated-bind-libraries)
+ * [Create a new bind library for a driver](/development/sdk/create-new-bind-library-for-driver.md)
 
 ## What is the same and what is different?
 

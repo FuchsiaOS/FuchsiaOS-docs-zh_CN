@@ -281,25 +281,25 @@ compiler configuration changes. If building fails, try [`fx clean-build`][fx-bui
 After running `fx set`, you can view the currently configured fuzzers with `ffx fuzz list`.
 Additional `ffx fuzz` commands can be used to [run a fuzzer](run-a-fuzzer.md).
 
-[glossary.package]: /docs/glossary/README.md#package
-[glossary.manifest]: /docs/glossary/README.md#component-manifest-source
+[glossary.package]: /glossary/README.md#package
+[glossary.manifest]: /glossary/README.md#component-manifest-source
 [asan]: https://clang.llvm.org/docs/AddressSanitizer.html
 [asan-hbo]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleHeapOutOfBounds
 [asan-sbo]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleStackOutOfBounds
 [asan-uaf]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleUseAfterFree
 [asan-uar]: https://github.com/google/sanitizers/wiki/AddressSanitizerExampleUseAfterReturn
 [cpp_fuzzer.gni]: /build/cpp/cpp_fuzzer.gni
-[fuchsia-gn]: /docs/development/build/build_system/intro.md
+[fuchsia-gn]: /development/build/build_system/intro.md
 [fuzz-target]: https://llvm.org/docs/LibFuzzer.html#fuzz-target
 [fuzzer.gni]: /build/fuzzing/fuzzer.gni
 [fuzzer_package.gni]: /build/fuzzing/fuzzer_package.gni
-[fx-build]: /docs/development/build/fx.md#execute-a-build
-[fx-set]: /docs/development/build/fx.md#configure-a-build
+[fx-build]: /development/build/fx.md#execute-a-build
+[fx-set]: /development/build/fx.md#configure-a-build
 [gn-deps]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#var_deps
-[gn-package]: /docs/development/components/build.md
+[gn-package]: /development/components/build.md
 [gn-targets]: https://gn.googlesource.com/gn/+/HEAD/docs/language.md#Targets
 [gn-templates]: https://gn.googlesource.com/gn/+/HEAD/docs/language.md#Templates
-[known_variants]: /docs/gen/build_arguments.md#known_variants
+[known_variants]: /gen/build_arguments.md#known_variants
 [options]: https://llvm.org/docs/LibFuzzer.html#options
 [rustc_fuzzer.gni]: /build/rust/rustc_fuzzer.gni
 [sanitizers]: https://github.com/google/sanitizers/wiki
@@ -307,4 +307,4 @@ Additional `ffx fuzz` commands can be used to [run a fuzzer](run-a-fuzzer.md).
 [ubsan]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
 [ubsan-sio]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#usage
 [ubsan-all]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#available-checks
-[variants]: /docs/development/build/build_system/variants.md
+[variants]: /development/build/build_system/variants.md

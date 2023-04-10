@@ -1,14 +1,14 @@
 # Sysmgr configuration
 
 sysmgr is one of the two major pieces of Components v1 (appmgr being the other).
-It is responsible for hosting the `sys` [realm](/docs/glossary/README.md#realm)
+It is responsible for hosting the `sys` [realm](/glossary/README.md#realm)
 that contains `global` system services.
 
 At runtime, sysmgr loads all files present under /config/data in its namespace
 and parses them using the format described below. This directory is provided to
 sysmgr because it uses the 'config-data' feature in its component manifest,
 sysmgr.cmx. For more details, see the docs on
-[the config-data feature](/docs/development/components/data.md).
+[the config-data feature](/development/components/data.md).
 
 sysmgr services are registered with a GN `config_data` target that is defined
 and included in [product configurations](/products/README.md) to include an

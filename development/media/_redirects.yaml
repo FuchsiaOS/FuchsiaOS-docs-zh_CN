@@ -1,4 +1,4 @@
 redirects:
 
-- from: /docs/development/media/loudness.md
-  to: /docs/development/audio/loudness.md
+- from: /development/media/loudness.md
+  to: /development/audio/loudness.md

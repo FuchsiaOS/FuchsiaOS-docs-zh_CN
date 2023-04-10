@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -58,7 +58,7 @@ or `output-only` on the kernel command line.
  - [`zx_debuglog_read()`]
  - [`zx_debuglog_write()`]
 
-[kernel command line]: /docs/reference/kernel/kernel_cmdline.md
+[kernel command line]: /reference/kernel/kernel_cmdline.md
 [`zx_debug_read()`]: debug_read.md
 [`zx_debuglog_read()`]: debuglog_read.md
 [`zx_debuglog_write()`]: debuglog_write.md

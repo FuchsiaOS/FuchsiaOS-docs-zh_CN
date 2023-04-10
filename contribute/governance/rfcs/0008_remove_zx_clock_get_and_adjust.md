@@ -198,5 +198,5 @@ in the long term.
 
 ## Prior art and references
 
-[kernel_objects/clock](/docs/reference/kernel_objects/clock.md) provides a clear
+[kernel_objects/clock](/reference/kernel_objects/clock.md) provides a clear
 overview of the operation of userspace clocks and is recommended reading.

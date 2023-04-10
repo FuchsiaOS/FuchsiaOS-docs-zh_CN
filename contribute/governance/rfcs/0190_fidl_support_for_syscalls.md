@@ -668,10 +668,10 @@ Alternatives:
 
 - [Banjo](#prior-lessons-from-separate-idls) was a non-FIDL platform IDL.
 
-[bring-your-own-runtime]: /docs/concepts/principles/simple.md#bring_your_own_runtime
+[bring-your-own-runtime]: /concepts/principles/simple.md#bring_your_own_runtime
 [core-tests]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/utest/core/README.md;l=1;drc=9b242b75aa15d5cdc261fb912192877cc4023564
 [darwin-defs]: https://github.com/apple/darwin-xnu/tree/2ff845c2e033bd0ff64b5b6aa6063a1f8f65aa32/libsyscall/mach
-[fidl-wire-format]: /docs/reference/fidl/language/wire-format/README.md#primary_and_secondary_objects
+[fidl-wire-format]: /reference/fidl/language/wire-format/README.md#primary_and_secondary_objects
 [fidlcat-syscall-dependency]: https://cs.opensource.google/fuchsia/fuchsia/+/main:tools/fidlcat/lib/syscall_definition.cc;l=1;drc=934bcf504d3dc6ed23441bacf1d000bd3bdc019f
 [go-syscall-data-types]: https://fuchsia.googlesource.com/third_party/go/+/c3e244fb8efd0f82f57f49a90394bdaa6a937680/src/syscall/zx/types.go
 [go-syscall-wrappers]: https://fuchsia.googlesource.com/third_party/go/+/c3e244fb8efd0f82f57f49a90394bdaa6a937680/src/syscall/zx

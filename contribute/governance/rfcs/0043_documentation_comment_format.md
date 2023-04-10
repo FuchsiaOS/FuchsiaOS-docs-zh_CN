@@ -126,10 +126,10 @@ Fully qualified names are of the form:
 This will uniquely identify any member because there is no overloading.
 
 Currently, ordinal hashing is based on names of the form `<library>.<top
-level declaration>/<member>` (see [RFC-0020](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md)), and `fidlc`
+level declaration>/<member>` (see [RFC-0020](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md)), and `fidlc`
 reports errors using the form `<library>.<top level declaration>/<member>`.
 It's our intent to align these on the unambiguous format described above.
-We will amend [RFC-0029: Increasing Method Ordinals](/docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md) to use
+We will amend [RFC-0029: Increasing Method Ordinals](/contribute/governance/rfcs/0029_increasing_method_ordinals.md) to use
 `<library>/<top level declaration>.<member>` as the name hashed, and modify
 `fidlc` to report errors consistently.
 
@@ -292,4 +292,4 @@ This proposal is heavily influenced by the documentation styles for Rust
 and Kotlin.
 
 <!-- xrefs -->
-[API documentation rubric]: /docs/development/api/documentation.md
+[API documentation rubric]: /development/api/documentation.md

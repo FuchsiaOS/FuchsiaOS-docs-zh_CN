@@ -276,13 +276,13 @@ saved to the specified directory.
 
 <!-- Reference links -->
 
-[compoennt-selectors]: /docs/reference/diagnostics/selectors.md#component-selector
-[custom-artifacts]: /docs/development/testing/components/test_runner_framework.md#custom-artifacts
-[tests-as-components]: /docs/development/testing/components/README.md
-[scripting-layer-for-fuchsia]: /docs/development/drivers/concepts/driver_development/sl4f.md
-[component-uri]: /docs/reference/components/url.md
-[fuchsia-package-name]: /docs/concepts/packages/package_url.md#package-name
-[resource-path]: /docs/concepts/packages/package_url.md#resource-paths
-[test-manager]: /docs/get-started/learn/components/component-tests.md
+[compoennt-selectors]: /reference/diagnostics/selectors.md#component-selector
+[custom-artifacts]: /development/testing/components/test_runner_framework.md#custom-artifacts
+[tests-as-components]: /development/testing/components/README.md
+[scripting-layer-for-fuchsia]: /development/drivers/concepts/driver_development/sl4f.md
+[component-uri]: /reference/components/url.md
+[fuchsia-package-name]: /concepts/packages/package_url.md#package-name
+[resource-path]: /concepts/packages/package_url.md#resource-paths
+[test-manager]: /get-started/learn/components/component-tests.md
 [fx-test-flags]: https://fuchsia.dev/reference/tools/fx/cmd/test
-[ffx-test]: /docs/development/sdk/ffx/run-device-tests.md
+[ffx-test]: /development/sdk/ffx/run-device-tests.md

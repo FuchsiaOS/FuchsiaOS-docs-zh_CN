@@ -166,38 +166,38 @@ At this point, the system is ready to launch additional components through FIDL
 protocols and services, or by directly launching them with services provided by
 appmgr.
 
-[glossary.bootfs]: /docs/glossary#README.md#bootfs
-[glossary.virtual memory object]: /docs/glossary#README.md#virtual-memory-object
-[glossary.zircon boot image]: /docs/glossary#README.md#zircon-boot-image
-[glossary.component]: /docs/glossary#README.md#component
-[glossary.driver manager]: /docs/glossary#README.md#driver-manager
-[glossary.driver host]: /docs/glossary#README.md#driver-host
-[glossary.fvm]: /docs/glossary#README.md#fuchsia-volume-manager
-[glossary.realm]: /docs/glossary#README.md#realm
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
+[glossary.bootfs]: /glossary#README.md#bootfs
+[glossary.virtual memory object]: /glossary#README.md#virtual-memory-object
+[glossary.zircon boot image]: /glossary#README.md#zircon-boot-image
+[glossary.component]: /glossary#README.md#component
+[glossary.driver manager]: /glossary#README.md#driver-manager
+[glossary.driver host]: /glossary#README.md#driver-host
+[glossary.fvm]: /glossary#README.md#fuchsia-volume-manager
+[glossary.realm]: /glossary#README.md#realm
+[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
 [appmgr-exposes]: https://fuchsia.googlesource.com/fuchsia/+/7cf46e0c7a8e5e4c78dba846f867ab96bcce5c5b/src/sys/appmgr/meta/appmgr.cml#168
 [appmgr-is-eager]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/root/meta/root.cml#14
 [appmgr-pkg]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/appmgr/BUILD.gn#159
 [appmgr-uses]: https://fuchsia.googlesource.com/fuchsia/+/7cf46e0c7a8e5e4c78dba846f867ab96bcce5c5b/src/sys/appmgr/meta/appmgr.cml#40
-[blobfs]: /docs/concepts/filesystems/blobfs.md
-[bootloader-and-kernel]: /docs/concepts/process/userboot.md#boot_loader_and_kernel_startup
-[component-manager]: /docs/concepts/components/v2/introduction.md#component-manager
-[critical-processes]: /docs/reference/syscalls/job_set_critical.md
-[devfs]: /docs/development/drivers/concepts/device_driver_model/device-model.md
+[blobfs]: /concepts/filesystems/blobfs.md
+[bootloader-and-kernel]: /concepts/process/userboot.md#boot_loader_and_kernel_startup
+[component-manager]: /concepts/components/v2/introduction.md#component-manager
+[critical-processes]: /reference/syscalls/job_set_critical.md
+[devfs]: /development/drivers/concepts/device_driver_model/device-model.md
 [driver-manager-exposes]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/root/meta/driver_manager.cml#91
 [dynamic-linking]: https://en.wikipedia.org/wiki/Dynamic_linker
-[fs-mount]: /docs/concepts/filesystems/filesystems.md#mounting
+[fs-mount]: /concepts/filesystems/filesystems.md#mounting
 [fshost-exposes]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/root/meta/fshost.cml#17
 [fshost-magic-headers]: https://fuchsia.googlesource.com/fuchsia/+/514f9474502cf6cafcd1d5edadfc7164566d4453/zircon/system/ulib/fs-management/mount.cc#155
 [fuchsia-io]: https://fuchsia.dev/reference/fidl/fuchsia.io
-[job]: /docs/reference/kernel_objects/job.md
-[kernel-command-line]: /docs/reference/kernel/kernel_cmdline.md
-[memfs]: /docs/concepts/filesystems/filesystems.md#memfs_an_in-memory_filesystem
+[job]: /reference/kernel_objects/job.md
+[kernel-command-line]: /reference/kernel/kernel_cmdline.md
+[memfs]: /concepts/filesystems/filesystems.md#memfs_an_in-memory_filesystem
 [micro-kernel]: https://en.wikipedia.org/wiki/Microkernel
-[minfs]: /docs/concepts/filesystems/minfs.md
-[process-bootstrap]: /docs/concepts/process/program_loading.md
-[userboot-loading]: /docs/concepts/process/userboot.md#kernel_loads_userboot
-[userboot]: /docs/concepts/process/userboot.md
+[minfs]: /concepts/filesystems/minfs.md
+[process-bootstrap]: /concepts/process/program_loading.md
+[userboot-loading]: /concepts/process/userboot.md#kernel_loads_userboot
+[userboot]: /concepts/process/userboot.md
 [userspace]: https://en.wikipedia.org/wiki/User_space
 [wait-for-system]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/devices/bin/driver_manager/driver_loader.cc;l=123;drc=62174108e02c85feb7a18df5cc03dcf8ec7d8625
-[zxcrypt]: /docs/concepts/filesystems/zxcrypt.md
+[zxcrypt]: /concepts/filesystems/zxcrypt.md

@@ -26,8 +26,8 @@ fx set ... --args='dev_kernel_cmdline=["ktrace.grpmask=0xFFF"]'
 You'll then need to rebuild and redeploy.
 
 For more information on Zircon command line options see:
-- [kernel_cmdline](/docs/reference/kernel/kernel_cmdline.md)
-- [kernel_build](/docs/development/kernel/build.md)
+- [kernel_cmdline](/reference/kernel/kernel_cmdline.md)
+- [kernel_build](/development/kernel/build.md)
 
 ## Including kernel boot trace data in trace results
 

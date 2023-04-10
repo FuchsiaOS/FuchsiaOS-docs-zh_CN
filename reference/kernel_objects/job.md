@@ -25,7 +25,7 @@ A job is an object consisting of the following:
 Jobs allow "applications" that are composed of more than one process to be
 controlled as a single entity.
 
-For more information, see [Jobs](/docs/concepts/process/jobs.md).
+For more information, see [Jobs](/concepts/process/jobs.md).
 
 
 ## SYSCALLS
@@ -37,9 +37,9 @@ For more information, see [Jobs](/docs/concepts/process/jobs.md).
  - [`zx_task_create_exception_channel()`] - listen for task exceptions
  - [`zx_task_kill()`] - cause a task to stop running.
 
-[`zx_job_create()`]: /docs/reference/syscalls/job_create.md
-[`zx_job_set_critical()`]: /docs/reference/syscalls/job_set_critical.md
-[`zx_job_set_policy()`]: /docs/reference/syscalls/job_set_policy.md
-[`zx_process_create()`]: /docs/reference/syscalls/process_create.md
-[`zx_task_create_exception_channel()`]: /docs/reference/syscalls/task_create_exception_channel.md
-[`zx_task_kill()`]: /docs/reference/syscalls/task_kill.md
+[`zx_job_create()`]: /reference/syscalls/job_create.md
+[`zx_job_set_critical()`]: /reference/syscalls/job_set_critical.md
+[`zx_job_set_policy()`]: /reference/syscalls/job_set_policy.md
+[`zx_process_create()`]: /reference/syscalls/process_create.md
+[`zx_task_create_exception_channel()`]: /reference/syscalls/task_create_exception_channel.md
+[`zx_task_kill()`]: /reference/syscalls/task_kill.md

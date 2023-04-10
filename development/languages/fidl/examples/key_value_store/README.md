@@ -9,7 +9,7 @@ store — defining interface definitions and a test harness as well as client/se
 
 ## What's next?
 
-[Key-value store: Improving the design](/docs/development/languages/fidl/examples/key_value_store/improving-key-value-store.md) details how to add to this baseline key-value
+[Key-value store: Improving the design](/development/languages/fidl/examples/key_value_store/improving-key-value-store.md) details how to add to this baseline key-value
 store. Specifically, this details how to complete the following:
 
 +   Adding support for reading from the store

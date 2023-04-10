@@ -83,7 +83,7 @@ represented as a header ("the transactional header"), optionally followed by a
 
 [^transactional-message]: Confusingly, a message (as opposed to a transactional
     message) refers to the [encoded form of a FIDL
-    value](/docs/reference/fidl/language/wire-format/README.md#message).
+    value](/reference/fidl/language/wire-format/README.md#message).
 
 An interaction is directed, and we name the two peers **client** and **server**
 respectively. A **client to server interaction** starts by a request from the
@@ -115,7 +115,7 @@ writing to a channel that was closed), or an error occurring in FIDL.
 ## Motivation
 
 A core principle of Fuchsia is to be
-[updatable](/docs/concepts/principles/updatable.md): packages are designed to be
+[updatable](/concepts/principles/updatable.md): packages are designed to be
 updated independently of each other. Even drivers are meant to be binary-stable,
 so that devices can update to a newer version of Fuchsia seamlessly while
 keeping their existing drivers. FIDL [plays a central
@@ -610,10 +610,10 @@ a handler which will go unused.
 As detailed in the [evolution section of
 RFC-0002](0002_platform_versioning.md#evolution), we "change the ABI revision
 whenever the platform makes a _backwards-incompatible_ change to the semantics
-of the [Fuchsia System Interface](/docs/concepts/packages/system.md)".
+of the [Fuchsia System Interface](/concepts/packages/system.md)".
 
 One metric of how well we achieve our
-[updatable](/docs/concepts/principles/updatable.md) goal is the pace at which we
+[updatable](/concepts/principles/updatable.md) goal is the pace at which we
 mint new ABI revisions. Since adding or removing flexible interactions can be
 made in a backwards compatible way, this feature will help with improving
 Fuchsia's updatability.
@@ -733,11 +733,11 @@ a end-result and may instead prefer fluently expressed tests written by hand.
 There will be extensive documentation for this feature. On the specification
 side:
 
-* [FIDL Language Specification](/docs/reference/fidl/language/language.md)
-* [FIDL Wire Format Specification](/docs/reference/fidl/language/wire-format/README.md)
-* [FIDL Bindings Specification](/docs/reference/fidl/language/bindings-spec.md)
+* [FIDL Language Specification](/reference/fidl/language/language.md)
+* [FIDL Wire Format Specification](/reference/fidl/language/wire-format/README.md)
+* [FIDL Bindings Specification](/reference/fidl/language/bindings-spec.md)
 
-Additional entries in the [FIDL API Rubric](/docs/development/api/fidl.md) will be
+Additional entries in the [FIDL API Rubric](/development/api/fidl.md) will be
 added covering protocol evolution.
 
 On the concrete use of this feature in a given target language, we expect every
@@ -774,7 +774,7 @@ Some ideas for future direction might be:
 
 ### Alternative: comparison to the command pattern
 
-The [command pattern](/docs/development/api/fidl.md#command-union) is useful to
+The [command pattern](/development/api/fidl.md#command-union) is useful to
 allow clients to batch many requests to be processed by a server. It is also
 possible to use the command pattern to achieve the kind of evolvability
 described in this RFC.
@@ -992,8 +992,8 @@ can receive both one way and two way interactions:
 
 <!-- link labels -->
 
-[`zx_channel_call`]: /docs/reference/syscalls/channel_call.md
-[`zx_channel_write`]: /docs/reference/syscalls/channel_write.md
+[`zx_channel_call`]: /reference/syscalls/channel_call.md
+[`zx_channel_write`]: /reference/syscalls/channel_write.md
 [RFC-0024]: 0024_mandatory_source_compatibility.md
 [RFC-0033]: 0033_handling_unknown_fields_strictness.md
 [RFC-0037-transactional-message-header-v3]: 0037_transactional_message_header_v3.md#transactional-message-header-v3

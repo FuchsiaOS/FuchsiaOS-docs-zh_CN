@@ -314,15 +314,15 @@ such as when declaring children through [Realm Builder] APIs. For example:
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/subpackages/src/lib.rs" region_tag="declare_children_dynamically" adjust_indentation="auto" %}
 ```
 
-[Packages]: /docs/concepts/packages/package.md
-[Realm Builder]: /docs/development/testing/components/realm_builder.md
-[Components]: /docs/concepts/components/v2/introduction.md
-[ambient-pkg-directory]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md#offered-vs-ambient-capabilities
-[component-parent-child-relationship]: /docs/concepts/components/v2/topology.md
-[capability routing]: /docs/concepts/components/v2/topology.md#capability-routing
-[directory capabilities]: /docs/concepts/components/v2/capabilities/directory.md
-[hierarchy-of-nested-components]: /docs/concepts/components/v2/components_as_classes.md#component-manifests-as-classes
-[principle of least privilege]: /docs/get-started/sdk/learn/intro/sandboxing.md
-[relative component URL]: /docs/reference/components/url.md#relative-path-urls-to-subpackaged-components
-[glossary.abi]: /docs/glossary/README.md#abi
-[glossary.subpackage]: /docs/glossary/README.md#subpackage
+[Packages]: /concepts/packages/package.md
+[Realm Builder]: /development/testing/components/realm_builder.md
+[Components]: /concepts/components/v2/introduction.md
+[ambient-pkg-directory]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md#offered-vs-ambient-capabilities
+[component-parent-child-relationship]: /concepts/components/v2/topology.md
+[capability routing]: /concepts/components/v2/topology.md#capability-routing
+[directory capabilities]: /concepts/components/v2/capabilities/directory.md
+[hierarchy-of-nested-components]: /concepts/components/v2/components_as_classes.md#component-manifests-as-classes
+[principle of least privilege]: /get-started/sdk/learn/intro/sandboxing.md
+[relative component URL]: /reference/components/url.md#relative-path-urls-to-subpackaged-components
+[glossary.abi]: /glossary/README.md#abi
+[glossary.subpackage]: /glossary/README.md#subpackage

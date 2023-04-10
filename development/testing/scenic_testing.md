@@ -4,8 +4,8 @@
 
 Information about testability:
 
-* All changes within Fuchsia need to adhere to the [Testability rubric](/docs/development/testing/testability_rubric.md).
-* See also: [Test environments](/docs/contribute/testing/environments.md)
+* All changes within Fuchsia need to adhere to the [Testability rubric](/development/testing/testability_rubric.md).
+* See also: [Test environments](/contribute/testing/environments.md)
 
 ## Scenic test packages
 
@@ -49,7 +49,7 @@ To add a test package to CQ, you need to:
 
 To add a new test package to CQ, you need to create a test component including source files,
 metadata and BUILD.gn file. See
-[Test component](/docs/development/testing/components/test_component.md).
+[Test component](/development/testing/components/test_component.md).
 You can include multiple test executables in one single test package, and all of them will be
 executed if you run `fx test <test_package>` on host.
 
@@ -66,18 +66,18 @@ going through the all target of `//bundles/packages/tests:all`.
 
 You need to make sure that there is a dependency chain from `//bundles/packages/tests:all` to
 your test package. For more information, see
-[Testing FAQ documentation](/docs/development/testing/faq.md#q_what-ensures-it-is-run).
+[Testing FAQ documentation](/development/testing/faq.md#q_what-ensures-it-is-run).
 
 #### Specify test environments {#specify-test-environments}
 
 To ensure that the test is run on CQ, you also need to specify a
-[test environment](/docs/contribute/testing/environments.md)
+[test environment](/contribute/testing/environments.md)
 for each test executable in the package inside the test's `BUILD.gn` file.
 
 Generally the environment is set to `environments = basic_envs`.
 This specifies the test should be run on both QEMU (for arm64), FEMU and NUC (for x64), and using
 both debug and release builds. For running on other environments, refer to
-[Test environments](/docs/contribute/testing/environments.md).
+[Test environments](/contribute/testing/environments.md).
 
 Reference the test package transitively. For example, the packages above are
 referenced by `//bundles/packages/tests:all` through `//bundles/packages/tests:scenic`.
@@ -191,7 +191,7 @@ Run `fx shell killall scenic.cmx` to kill an active instance of Scenic.
 
   * `fx test --host` runs all host tests, but you probably only want to run Escher tests.
   *  Escher: To run `escher_unittests` locally on Linux: follow instructions in
-     [Escher documentation](/docs/development/graphics/escher/concepts/building.md).
+     [Escher documentation](/development/graphics/escher/concepts/building.md).
 
 ## Manual UI tests
 
@@ -235,4 +235,4 @@ You can launch the stories (modules) in any shell you are in:
 
 <!-- Reference links -->
 
-[run_fuchsia_tests]: /docs/development/testing/run_fuchsia_tests.md
+[run_fuchsia_tests]: /development/testing/run_fuchsia_tests.md

@@ -23,4 +23,4 @@ The Tools team is still working on specific guidance for how and when to move
 something out of experimental status, but some good guidelines would include
 doing all the things listed in [the main documentation for subtools](../README.md)
 and following any additional guidelines from
-[RFC-0169](/docs/contribute/governance/rfcs/0169_sdk_tool_compatibility.md).
+[RFC-0169](/contribute/governance/rfcs/0169_sdk_tool_compatibility.md).

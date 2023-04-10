@@ -31,7 +31,7 @@ These are the situations that are reported by doc-checker:
 ### Links to nonexistent files
 
 ```markdown
-[missing doc](/docs/does_not_exist.md)
+[missing doc](/does_not_exist.md)
 ```
 
 ### Links to files in //docs represented as full URLs
@@ -48,7 +48,7 @@ access a file in //docs. These links should be converted to file paths.
 #### Correct
 
 ```markdown
-[correct link](/docs/get-started/learn-fuchsia.md)
+[correct link](/get-started/learn-fuchsia.md)
 ```
 
 ### Links to inactive Fuchsia projects
@@ -84,7 +84,7 @@ converted to `fuchsia` relative paths.
 Images must have meaningful `alt` text.
 
 ```markdown
-![Diagram of the state transitions](/docs/state-machine.png "State machine")
+![Diagram of the state transitions](/state-machine.png "State machine")
 ```
 
 ### Including markdown fragment files
@@ -114,7 +114,7 @@ be viewed as a plain YAML file.
 fuchsia.dev.
 
 These checks enforce the table of contents structure described in
- [_toc.yaml reference](/docs/contribute/docs/documentation-navigation-toc.md#toc-reference).
+ [_toc.yaml reference](/contribute/docs/documentation-navigation-toc.md#toc-reference).
 
 * top level key `toc`
 * entries are one of:
@@ -149,7 +149,7 @@ These checks enforce the table of contents structure described in
   * `title: string` - _(optional)_ The link title.
 
 * `path` properties are valid paths:
-  * File paths such as `/docs/somewhere/file.md`
+  * File paths such as `/somewhere/file.md`
   * `http://` or `https://` URLs.
   * `/reference` to generated reference documentation. These links are validated
    using external links to `fuchsia.dev/reference`.
@@ -159,7 +159,7 @@ These checks enforce the table of contents structure described in
 
 Markdown pages in //docs must appear in a `_toc.yaml` that is included in the
  graph of table of contents created from the root _toc.yaml in
- `//docs/_toc.yaml`.
+ `//_toc.yaml`.
 
 ### Structure of _areas.yaml
 
@@ -177,7 +177,7 @@ TBD: _What is the use of ___metadata.yaml___?_
 
 This file defines the metadata for RFC documents.
 
-See [RFC metadata](/docs/contribute/governance/rfcs/create_rfc.md#create-metadata).
+See [RFC metadata](/contribute/governance/rfcs/create_rfc.md#create-metadata).
 
 ### Structure of_roadmap.yaml
 
@@ -207,7 +207,7 @@ TBD: _What is the use of ___supported_cpu_architecture.yaml___?_
 
 List of supported systems configurations.
 
-See [Supported system config list](/docs/contribute/governance/rfcs/0130_supported_hardware.md#initial_supported_sys_configyaml_list)
+See [Supported system config list](/contribute/governance/rfcs/0130_supported_hardware.md#initial_supported_sys_configyaml_list)
 
 ### Structure of_tools.yaml
 
@@ -219,13 +219,13 @@ See: [source code](https://source.corp.google.com/fuchsia/tools/doc_checker/src/
 
 This file defines the redirection rules for deprecated documents.
 
-See: [Redirect the pages to the deprecation notice](/docs/contribute/docs/deprecating-docs.md#redirect_the_pages_to_the_deprecation_notice).
+See: [Redirect the pages to the deprecation notice](/contribute/docs/deprecating-docs.md#redirect_the_pages_to_the_deprecation_notice).
 
 ### Structure of glossary.yaml
 
 This file defines the glossary of Fuchsia terminology.
 
-See: [Adding a glossary term](/docs/contribute/docs/glossary-entries.md#add_a_glossary_entry)
+See: [Adding a glossary term](/contribute/docs/glossary-entries.md#add_a_glossary_entry)
 
 ## External link checks
 

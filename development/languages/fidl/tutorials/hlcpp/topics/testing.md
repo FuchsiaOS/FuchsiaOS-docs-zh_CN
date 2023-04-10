@@ -119,6 +119,6 @@ You should see the test output indicating a success.
   to only implement the methods under test.
 
 <!-- xrefs -->
-[test-base]: /docs/reference/fidl/bindings/hlcpp-bindings.md#test-scaffolding
-[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
-[overview]: /docs/development/languages/fidl/tutorials/hlcpp/README.md
+[test-base]: /reference/fidl/bindings/hlcpp-bindings.md#test-scaffolding
+[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
+[overview]: /development/languages/fidl/tutorials/hlcpp/README.md

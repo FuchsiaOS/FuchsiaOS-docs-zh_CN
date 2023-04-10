@@ -1,6 +1,6 @@
 # Timer Slack
 
-[Timer objects](/docs/reference/kernel_objects/timer.md) have a concept of slack. Slack
+[Timer objects](/reference/kernel_objects/timer.md) have a concept of slack. Slack
 defines how the system may alter the timer's deadline. Slack allows
 the system to internally coalesce timers and timer-like events to
 improve performance or efficiency.
@@ -32,5 +32,5 @@ timers. For other syscalls that take a deadline, but no slack
 parameters, the slack type and amount are specified by the job's
 policy. See [`zx_job_set_policy()`].
 
-[`zx_job_set_policy()`]: /docs/reference/syscalls/job_set_policy.md
-[`zx_nanosleep()`]: /docs/reference/syscalls/nanosleep.md
+[`zx_job_set_policy()`]: /reference/syscalls/job_set_policy.md
+[`zx_nanosleep()`]: /reference/syscalls/nanosleep.md

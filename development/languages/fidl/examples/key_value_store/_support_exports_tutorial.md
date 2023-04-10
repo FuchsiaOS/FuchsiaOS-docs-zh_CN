@@ -24,7 +24,7 @@ this approach is that it forces the client to do some work when asking the
 server for an expensive operation, minimizing the work imbalance between the two
 parties.
 
-[docs-zx-concepts-vmos]: /docs/concepts/kernel/concepts.md#shared_memory_virtual_memory_objects_vmos
+[docs-zx-concepts-vmos]: /concepts/kernel/concepts.md#shared_memory_virtual_memory_objects_vmos
 [wiki-bucket-brigade]: https://en.wikipedia.org/wiki/Bucket_brigade
 
 FIDL value types can be *persisted* to any byte-oriented storage medium, using
@@ -44,7 +44,7 @@ resized, and written to. When the VMO is returned, we remove right to resize and
 write, ensuring that no process, not even malicious actors in some far away
 component, can modify this data as it moves through the system.
 
-[fidl-persistence]: /docs/contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md#convention_for_data_persistence
+[fidl-persistence]: /contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md#convention_for_data_persistence
 [wiki-polp]: https://en.wikipedia.org/wiki/Principle_of_least_privilege
 
 ### Implementation

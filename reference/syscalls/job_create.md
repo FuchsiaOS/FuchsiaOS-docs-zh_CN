@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -27,7 +27,7 @@ zx_status_t zx_job_create(zx_handle_t parent_job,
 
 ## Description
 
-`zx_job_create()` creates a new child [job object](/docs/reference/kernel_objects/job.md) given a
+`zx_job_create()` creates a new child [job object](/reference/kernel_objects/job.md) given a
 parent job.
 
 Upon success a handle for the new job is returned.

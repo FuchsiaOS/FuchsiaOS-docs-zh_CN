@@ -394,5 +394,5 @@ N/A
 [cmc-docs]: https://fuchsia.dev/reference/tools/sdk/cmc.md
 [cml-docs]: https://fuchsia.dev/reference/cml#capabilities
 [cmc-prototype]: https://fuchsia-review.googlesource.com/c/fuchsia/+/678293
-[rfc-inspectsink]: /docs/contribute/governance/rfcs/0168_exposing_inspect_through_inspectsink.md
-[rfc-155]: /docs/contribute/governance/rfcs/0155_optional_capability_routes.md
+[rfc-inspectsink]: /contribute/governance/rfcs/0168_exposing_inspect_through_inspectsink.md
+[rfc-155]: /contribute/governance/rfcs/0155_optional_capability_routes.md

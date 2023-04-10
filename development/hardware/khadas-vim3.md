@@ -10,7 +10,7 @@ See [Appendix: Feature support](#features) for details on which VIM3 features
 Fuchsia supports.
 
 If you just want to explore Fuchsia with the lowest friction possible, check out
-[Get started with the Fuchsia SDK](/docs/get-started/sdk/index.md) instead.
+[Get started with the Fuchsia SDK](/get-started/sdk/index.md) instead.
 
 See [Appendix: Support](#support) if you have any trouble completing
 this guide.
@@ -83,9 +83,9 @@ If you don't already have an [in-tree][glossary.in-tree] environment
 set up, you should start the process now because it can take a while to
 complete:
 
-1. [Download the Fuchsia source code](/docs/get-started/get_fuchsia_source.md).
+1. [Download the Fuchsia source code](/get-started/get_fuchsia_source.md).
 
-1. [Configure and build Fuchsia](/docs/get-started/build_fuchsia.md).
+1. [Configure and build Fuchsia](/get-started/build_fuchsia.md).
 
    * When building Fuchsia, use `fx set core.vim3` instead.
 
@@ -333,7 +333,7 @@ your VIM3 and need to "factory reset" it:
   [VIM3 official docs](https://docs.khadas.com/linux/vim3/index.html) and
   [Khadas VIM3 official forum](https://forum.khadas.com/c/khadas-vim3/30).
 * For issues that seem related to Fuchsia, try the
-  [Fuchsia mailing lists and chat rooms](/docs/contribute/community/mailing-lists.md).
+  [Fuchsia mailing lists and chat rooms](/contribute/community/mailing-lists.md).
 
 ## Appendix: Feature support {#features}
 

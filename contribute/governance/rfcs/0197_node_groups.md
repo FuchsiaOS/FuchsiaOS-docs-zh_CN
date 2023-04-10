@@ -20,14 +20,14 @@ the Driver Framework v2 (DFv2).
 ### Background
 
 In Driver Framework v1 (DFv1), drivers can create
-[composite nodes](/docs/concepts/drivers/drivers_and_nodes.md#composite_nodes)
+[composite nodes](/concepts/drivers/drivers_and_nodes.md#composite_nodes)
 at runtime through the `AddComposite()` function. The driver defines the bind
 rules for the composite's parents and bind properties and the driver manager
 creates the composite node as the driver's child. A separate driver binds to the
 composite node.
 
 In DFv2, composite drivers define the composite node through
-[bind rules](/docs/development/drivers/concepts/device_driver_model/driver-binding.md),
+[bind rules](/development/drivers/concepts/device_driver_model/driver-binding.md),
 which are static files written in the driver bind language. When drivers are
 loaded at runtime, the Driver Runner gathers the parent nodes that match the
 composite bind rules, and then creates the composite node. The composite driver
@@ -557,8 +557,8 @@ drivers at once.
 
 ## Prior art and references
 
-[Driver Framework](/docs/concepts/drivers/driver_framework.md)
+[Driver Framework](/concepts/drivers/driver_framework.md)
 
-[Composite nodes](/docs/concepts/drivers/drivers_and_nodes.md#composite_nodes)
+[Composite nodes](/concepts/drivers/drivers_and_nodes.md#composite_nodes)
 
-[Driver Binding](/docs/development/drivers/concepts/device_driver_model/driver-binding.md)
+[Driver Binding](/development/drivers/concepts/device_driver_model/driver-binding.md)

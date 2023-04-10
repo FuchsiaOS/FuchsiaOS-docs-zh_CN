@@ -284,8 +284,8 @@ To set all of a component's values in code without using packaged values:
   ```
 
 <!-- TODO(fxbug.dev/104819): Link to fxbug.dev page when better documentation is available.  -->
-[build-types]: /docs/contribute/governance/rfcs/0115_build_types.md
+[build-types]: /contribute/governance/rfcs/0115_build_types.md
 [cml-ref-doc]: https://fuchsia.dev/reference/cml#config
 [sa-sc-docs]: assembling_structured_config.md
-[rb-feature-matrix]: /docs/development/testing/components/realm_builder.md#language-feature-matrix
-[sc-verification]: /docs/development/verification/build_integration.md#verifying-structured-configuration-files
+[rb-feature-matrix]: /development/testing/components/realm_builder.md#language-feature-matrix
+[sc-verification]: /development/verification/build_integration.md#verifying-structured-configuration-files

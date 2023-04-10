@@ -7,26 +7,26 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/testing/ctf/overview.md
+  path: /development/testing/ctf/overview.md
 - title: "Introduction"
-  path:  /docs/development/testing/ctf/compatibility_testing.md
+  path:  /development/testing/ctf/compatibility_testing.md
 - title: "Contributing"
   section:
   - title: "Contributing Tests"
-    path: /docs/development/testing/ctf/contributing_tests.md
+    path: /development/testing/ctf/contributing_tests.md
   - title: "CTF Test Realm"
-    path: /docs/development/testing/ctf/test_collection.md
+    path: /development/testing/ctf/test_collection.md
   - title: "Testing Guidelines"
-    path: /docs/development/testing/ctf/testing_guidelines.md
+    path: /development/testing/ctf/testing_guidelines.md
   - title: "Diagnosing Test Failures"
-    path: /docs/development/testing/ctf/diagnosing_test_failures.md
+    path: /development/testing/ctf/diagnosing_test_failures.md
 - title: "Platform Surface Area (Plasa)"
-  path: /docs/development/testing/ctf/plasa_overview.md
+  path: /development/testing/ctf/plasa_overview.md
   section:
   - title: "Plasa manifest"
-    path: /docs/development/testing/ctf/plasa_manifest.md
+    path: /development/testing/ctf/plasa_manifest.md
 - title: "FIDL API Compatibility Testing"
-  path: /docs/development/testing/ctf/fidl_api_compatibility_testing.md
+  path: /development/testing/ctf/fidl_api_compatibility_testing.md
 - title: "Frequently Asked Questions"
-  path: /docs/development/testing/ctf/faq.md
+  path: /development/testing/ctf/faq.md
 

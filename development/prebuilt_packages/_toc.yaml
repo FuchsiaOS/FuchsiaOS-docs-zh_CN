@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md
+  path: /development/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md
 - title: "Publish prebuilt packages to CIPD"
-  path: /docs/development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md
+  path: /development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md
 - title: "Publish a CIPD symbols package for ELF binaries"
-  path: /docs/development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md
+  path: /development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md
 - title: "Make your CIPD package visible to Fuchsia developers"
-  path: /docs/development/prebuilt_packages/make_your_cipd_package_visible_to_fuchsia_developers.md
+  path: /development/prebuilt_packages/make_your_cipd_package_visible_to_fuchsia_developers.md

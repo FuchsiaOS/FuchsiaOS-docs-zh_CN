@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -42,7 +42,7 @@ When a process or job is killed via this syscall, the `return_code` is
 the **ZX_INFO_PROCESS** or **ZX_INFO_JOB** topic.
 
 Processes and Jobs can also be killed by other agents such as the Job policy with
-**ZX_POL_ACTION_KILL** or when the system is running low on memory [OOM](/docs/development/kernel/memory/oom.md).
+**ZX_POL_ACTION_KILL** or when the system is running low on memory [OOM](/development/kernel/memory/oom.md).
 
 ## Rights
 

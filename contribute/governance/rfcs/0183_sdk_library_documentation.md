@@ -126,4 +126,4 @@ libraries](https://fuchsia-docs.firebaseapp.com/rust/). These are hosted on a
 separate web site until Rust is supported in the SDK.
 
 There are general [Fuchsia documentation
-standards](/docs/contribute/docs/documentation-standards.md).
+standards](/contribute/docs/documentation-standards.md).

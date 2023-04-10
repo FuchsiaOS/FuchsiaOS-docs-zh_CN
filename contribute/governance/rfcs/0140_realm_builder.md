@@ -1127,11 +1127,11 @@ easier exploration in the future of [deep realm support](#deep-realm-support),
 this approach will allow us to gather more data on the utility of a combined
 offer/expose API, and this approach results in a slightly simpler API.
 
-[realm-builder-docs]: /docs/development/testing/components/realm_builder.md
-[realm-docs]: /docs/concepts/components/v2/realms.md
-[resolver-docs]: /docs/concepts/components/v2/capabilities/resolvers.md
-[runner-docs]: /docs/concepts/components/v2/capabilities/runners.md
+[realm-builder-docs]: /development/testing/components/realm_builder.md
+[realm-docs]: /concepts/components/v2/realms.md
+[resolver-docs]: /concepts/components/v2/capabilities/resolvers.md
+[runner-docs]: /concepts/components/v2/capabilities/runners.md
 [test-manager-lib-rs]: /src/sys/test_manager/src/lib.rs
 [lifecycle-controller]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#LifecycleController
-[collection]: /docs/concepts/components/v2/realms.md#collections
-[manifest-shards]: /docs/development/components/build.md#component-manifest-shards
+[collection]: /concepts/components/v2/realms.md#collections
+[manifest-shards]: /development/components/build.md#component-manifest-shards

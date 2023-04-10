@@ -51,9 +51,9 @@ Workstation is designed to be used with an Intel NUC or the Fuchsia emulator
 
 <!-- Reference links -->
 
-[report-issue]: /docs/contribute/report-issue.md
-[get-started-with-fuchsia]: /docs/get-started
-[get-fuchsia-source]: /docs/get-started/get_fuchsia_source.md
-[build-fuchsia]: /docs/get-started/build_fuchsia.md
-[intel-nuc]: /docs/development/hardware/intel_nuc.md
-[start-femu]: /docs/get-started/set_up_femu.md
+[report-issue]: /contribute/report-issue.md
+[get-started-with-fuchsia]: /get-started
+[get-fuchsia-source]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md
+[intel-nuc]: /development/hardware/intel_nuc.md
+[start-femu]: /get-started/set_up_femu.md

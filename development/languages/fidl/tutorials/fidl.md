@@ -110,9 +110,9 @@ Now that you've finished this tutorial, you're ready to explore the full
 
 <!-- xrefs -->
 [fidl-template]: /build/fidl/fidl.gni
-[getting-started]: /docs/get-started/README.md
-[run-examples]: /docs/development/run/run-examples.md
-[example series]: /docs/development/languages/fidl/examples.md
-[key-value store example series]: /docs/development/languages/fidl/examples/key_value_store/README.md
+[getting-started]: /get-started/README.md
+[run-examples]: /development/run/run-examples.md
+[example series]: /development/languages/fidl/examples.md
+[key-value store example series]: /development/languages/fidl/examples/key_value_store/README.md
 [baseline]: https://cs.opensource.google/fuchsia/fuchsia/+/main:examples/fidl/new/key_value_store/baseline/fidl/
-[generated code]: /docs/development/languages/fidl/guides/generated-code.md
+[generated code]: /development/languages/fidl/guides/generated-code.md

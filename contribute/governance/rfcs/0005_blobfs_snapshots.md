@@ -394,7 +394,7 @@ corrupt the snapshot partition.
 ## Documentation
 
 The new architecture and features of FVM will be described under
-[Fuchsia > Concepts > Filesystem Architecture](/docs/concepts/filesystems/filesystems.md).
+[Fuchsia > Concepts > Filesystem Architecture](/concepts/filesystems/filesystems.md).
 
 ## Drawbacks, alternatives, and unknowns
 

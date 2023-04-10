@@ -684,16 +684,16 @@ set.
 
 
 
-[glossary.package]: /docs/glossary/README.md#package
-[glossary.product]: /docs/glossary/README.md#product
+[glossary.package]: /glossary/README.md#package
+[glossary.product]: /glossary/README.md#product
 
-[rfc_0145]: /docs/contribute/governance/rfcs/0145_eager_package_updates.md
-[rfc_0154]: /docs/contribute/governance/rfcs/0154_subpackages.md
-[rfc_0167]: /docs/contribute/governance/rfcs/0167_early_boot_packages.md
+[rfc_0145]: /contribute/governance/rfcs/0145_eager_package_updates.md
+[rfc_0154]: /contribute/governance/rfcs/0154_subpackages.md
+[rfc_0167]: /contribute/governance/rfcs/0167_early_boot_packages.md
 
-[docs_ota]: /docs/concepts/packages/ota.md
-[docs_idk_packages]: /docs/development/idk/documentation/packages.md
-[docs_concepts_packages]: /docs/concepts/packages/package.md
-[docs_get_started_packages]: /docs/get-started/learn/build/product-packages.md
+[docs_ota]: /concepts/packages/ota.md
+[docs_idk_packages]: /development/idk/documentation/packages.md
+[docs_concepts_packages]: /concepts/packages/package.md
+[docs_get_started_packages]: /get-started/learn/build/product-packages.md
 
 [src_timekeeper_package]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/time/timekeeper/BUILD.gn;drc=5583d95ed86d1f7e126b41220d9c8f44dcb1735b;l=105

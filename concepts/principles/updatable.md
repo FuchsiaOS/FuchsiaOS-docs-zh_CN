@@ -15,7 +15,7 @@ to update to newer versions of Fuchsia seamlessly while keeping their existing d
 
 ## Almost all software on Fuchsia is a component
 
-**[The component framework](/docs/concepts/components/v2/introduction.md)
+**[The component framework](/concepts/components/v2/introduction.md)
 makes it easier to update the system as new software is created**
 
 The kernel has a minimal set of responsibilities,
@@ -27,14 +27,14 @@ Hermetic packaging of components leads to more portable software.
 
 ## Software is interchangeable and reusable
 
-**[Fuchsia Interface Definition Language (FIDL)](/docs/concepts/fidl/overview.md)
+**[Fuchsia Interface Definition Language (FIDL)](/concepts/fidl/overview.md)
 enables loose coupling between components**
 
 Components exchange capabilities as defined by FIDL protocols.
 Software is composed at runtime through protocols
 rather than through static composition of libraries.
 Fuchsia has no system libraries.
-Even the C standard library [(libc)](/docs/concepts/kernel/libc.md)
+Even the C standard library [(libc)](/concepts/kernel/libc.md)
 is expressed as a dependency,
 delivered only when software needs it.
 Components can be swapped with another implementation
@@ -42,7 +42,7 @@ as long they express the same FIDL protocol.
 
 ## Push updates and security patches to all products on demand
 
-**[Fuchsia packages](/docs/concepts/packages/package.md)
+**[Fuchsia packages](/concepts/packages/package.md)
 are the units of software distribution**
 
 All software is delivered in packages that
@@ -53,11 +53,11 @@ without the need for individual product coordination.
 ## On the roadmap
 
 This section covers features on
-[Fuchsia's roadmap](/docs/contribute/roadmap/index.md).
+[Fuchsia's roadmap](/contribute/roadmap/index.md).
 
 ### Update the system without modifying the driver
 
-**[Drivers](/docs/development/drivers/concepts/getting_started.md)
+**[Drivers](/development/drivers/concepts/getting_started.md)
 and system services are designed as user space components that
 can be updated independently of the core OS**
 

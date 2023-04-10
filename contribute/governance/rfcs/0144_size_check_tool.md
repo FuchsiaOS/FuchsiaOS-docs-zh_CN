@@ -347,13 +347,13 @@ the current `size_checker.go` and more accurate.
 
 See the [Background](#background) section.
 
-[filesystems]: /docs/concepts/filesystems/filesystems.md
-[packages]: /docs/development/idk/documentation/packages.md
-[blobfs]: /docs/concepts/filesystems/blobfs.md
-[otas]: /docs/concepts/packages/ota.md
-[update-package]: /docs/concepts/packages/update_pkg.md
-[cli-rubric]: /docs/development/api/cli.md
-[rfc-0072]: /docs/contribute/governance/rfcs/0072_standalone_image_assembly_tool.md
+[filesystems]: /concepts/filesystems/filesystems.md
+[packages]: /development/idk/documentation/packages.md
+[blobfs]: /concepts/filesystems/blobfs.md
+[otas]: /concepts/packages/ota.md
+[update-package]: /concepts/packages/update_pkg.md
+[cli-rubric]: /development/api/cli.md
+[rfc-0072]: /contribute/governance/rfcs/0072_standalone_image_assembly_tool.md
 [size-checker-source]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/tools/size_checker
 [blobfs-compression-source]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/storage/tools/blobfs-compression
 [product-config]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/developer/ffx/plugins/assembly/#product-config

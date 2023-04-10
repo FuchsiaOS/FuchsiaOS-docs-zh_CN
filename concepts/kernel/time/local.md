@@ -26,7 +26,7 @@ functions in the Fuchsia musl implementation always return a UTC time. If you
 need to use local time from these languages you should use
 [`fuchsia.intl.PropertyProvider.GetProfile`](https://fuchsia.dev/reference/fidl/fuchsia.intl#PropertyProvider.GetProfile)
 to read the preferred timezone, use the
-[ICU timezone data](/docs/development/internationalization/icu_data.md) to
+[ICU timezone data](/development/internationalization/icu_data.md) to
 determine the timezone offset, and then apply this offset to the current UTC
 time.
 

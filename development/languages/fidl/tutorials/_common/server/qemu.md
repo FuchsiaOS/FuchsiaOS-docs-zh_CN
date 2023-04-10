@@ -4,4 +4,4 @@ it is also possible to pick a different [product configuration][products] and
 run on actual hardware if you are familiar with running components on
 other product configurations.
 
-[products]: /docs/development/build/build_system/boards_and_products.md
+[products]: /development/build/build_system/boards_and_products.md

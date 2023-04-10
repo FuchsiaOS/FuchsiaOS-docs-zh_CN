@@ -89,5 +89,5 @@ provided by the environment:
 
 
 Note: For more details on individual capabilities, see
-[component capabilities](/docs/concepts/components/v2/capabilities/README.md)
-and [environments](/docs/concepts/components/v2/environments.md).
+[component capabilities](/concepts/components/v2/capabilities/README.md)
+and [environments](/concepts/components/v2/environments.md).

@@ -6,4 +6,4 @@ the endopints).
 <<../examples/calculator/_callout.md>>
 <<../examples/calculator/_baseline_tutorial.md>>
 
-[channel-doc-link]: /docs/reference/kernel_objects/channel.md
+[channel-doc-link]: /reference/kernel_objects/channel.md

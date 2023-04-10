@@ -242,13 +242,13 @@ You may `expose` or `offer` a directory capability by a different name:
 }
 ```
 
-[glossary.directory-capability]: /docs/glossary/README.md#directory-capability
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[glossary.directory-capability]: /glossary/README.md#directory-capability
+[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
 [fidl-io-rights]: /sdk/fidl/fuchsia.io/rights-abilities.fidl
 [manifest-capabilities]: https://fuchsia.dev/reference/cml#capabilities
 [manifest-expose]: https://fuchsia.dev/reference/cml#expose
 [manifest-offer]: https://fuchsia.dev/reference/cml#offer
 [manifest-use]: https://fuchsia.dev/reference/cml#use
-[consuming-optional-capabilities]: /docs/development/components/connect.md#consuming-optional-capabilities
-[storage-capabilities]: /docs/concepts/components/v2/capabilities/storage.md
+[consuming-optional-capabilities]: /development/components/connect.md#consuming-optional-capabilities
+[storage-capabilities]: /concepts/components/v2/capabilities/storage.md

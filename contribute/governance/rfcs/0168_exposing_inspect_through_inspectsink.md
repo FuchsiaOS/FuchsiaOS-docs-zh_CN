@@ -96,7 +96,7 @@ protocol InspectSink {
     /// The server can read Inspect using the Inspect reader algorithm [1]. A component using this
     /// method to publish Inspect won't be able to expose lazy nodes.
     ///
-    /// [1]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md#reader_algorithm
+    /// [1]: /reference/platform-spec/diagnostics/inspect-vmo-format.md#reader_algorithm
     PublishVmo(struct {
         name string;
         root zx.handle:<VMO, zx.rights.BASIC | zx.rights.READ | zx.rights.MAP>;
@@ -232,7 +232,7 @@ things, so it makes sense to route them separately.
 
 N/A
 
-[cts]: /docs/development/testing/ctf/overview.md
-[inspect-discovery]: /docs/reference/diagnostics/inspect/tree.md
-[migration-diagnostics]: /docs/development/components/v2/migration/diagnostics.md
+[cts]: /development/testing/ctf/overview.md
+[inspect-discovery]: /reference/diagnostics/inspect/tree.md
+[migration-diagnostics]: /development/components/v2/migration/diagnostics.md
 [tree-llcpp-bug]: https://fxbug.dev/95806

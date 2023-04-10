@@ -2,10 +2,10 @@
 
 FFX is divided into some areas of responsibility, with core functionality
 related to finding and running fuchsia-interacting programs being in the core
-program (the [ffx cli](/docs/development/tools/ffx/architecture/cli.md)) and
+program (the [ffx cli](/development/tools/ffx/architecture/cli.md)) and
 the actual programs being built as 'subtools' (formerly plugins) that may either
 be compiled in with the `ffx` cli, or run as external tools (using the
-[FHO subtool interface](/docs/development/tools/ffx/architecture/fho.md)).
+[FHO subtool interface](/development/tools/ffx/architecture/fho.md)).
 
 In order to add functionality to be accessible through `ffx`, you can write your
 own subtools and integrate them into the build.
@@ -35,7 +35,7 @@ If inclusion in the SDK is expected at some point, make sure that you use a
 when `--machine json` is passed to `ffx`.
 * Properly delineate between user-actionable errors and bugs at the subtool
 boundary using the
-[`fho::Error` type](/docs/development/tools/ffx/development/subtools/errors.md).
+[`fho::Error` type](/development/tools/ffx/development/subtools/errors.md).
 * If the subtool lives in the `ffx` tree, it should have a clear `OWNERS` file
 describing both the team that owns it and individuals who can check CLs against
 that tool.

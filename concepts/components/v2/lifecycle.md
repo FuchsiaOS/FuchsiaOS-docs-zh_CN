@@ -124,7 +124,7 @@ Note: For more details on running components during development, see
 [doc-resolvers]: capabilities/resolvers.md
 [doc-runners]: capabilities/runners.md
 [doc-storage]: capabilities/storage.md
-[doc-run]: /docs/development/components/run.md
+[doc-run]: /development/components/run.md
 [handler-example]: /examples/components/lifecycle
 [ref-ffx-resolve]: https://fuchsia.dev/reference/tools/sdk/ffx#resolve
 [ref-ffx-start]: https://fuchsia.dev/reference/tools/sdk/ffx#start

@@ -315,16 +315,16 @@ wire domain object, mutating the bytes in the process.
 <<../../../widgets/_persistence.md>>
 
 <!-- xrefs -->
-[build-components]: /docs/development/components/build.md#unit-tests
-[generated-code]: /docs/development/languages/fidl/guides/generated-code.md#c-family
-[bindings-ref]: /docs/reference/fidl/bindings/cpp-bindings.md
-[fidl-intro]: /docs/development/languages/fidl/tutorials/fidl.md
+[build-components]: /development/components/build.md#unit-tests
+[generated-code]: /development/languages/fidl/guides/generated-code.md#c-family
+[bindings-ref]: /reference/fidl/bindings/cpp-bindings.md
+[fidl-intro]: /development/languages/fidl/tutorials/fidl.md
 [fidl-file]: /examples/fidl/fuchsia.examples/types.test.fidl
-[fidl-wire-format]: /docs/reference/fidl/language/wire-format/README.md
-[glossary.domain-object]: /docs/glossary#domain-object
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
-[resource]: /docs/reference/fidl/language/language.md#value-vs-resource
-[server-tut]: /docs/development/languages/fidl/tutorials/cpp/basics/server.md
-[table]: /docs/reference/fidl/language/language.md#tables
-[vector]: /docs/reference/fidl/language/language.md#vectors
-[wire-memory-ownership]: /docs/development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
+[fidl-wire-format]: /reference/fidl/language/wire-format/README.md
+[glossary.domain-object]: /glossary#domain-object
+[overview]: /development/languages/fidl/tutorials/overview.md
+[resource]: /reference/fidl/language/language.md#value-vs-resource
+[server-tut]: /development/languages/fidl/tutorials/cpp/basics/server.md
+[table]: /reference/fidl/language/language.md#tables
+[vector]: /reference/fidl/language/language.md#vectors
+[wire-memory-ownership]: /development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md

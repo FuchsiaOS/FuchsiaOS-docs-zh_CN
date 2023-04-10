@@ -39,7 +39,7 @@ shorter than intended rather than longer than intended, which is safer.
 ### Wire Format
 
 The new
-[definition](/docs/reference/fidl/language/wire-format/README.md#Strings) of
+[definition](/reference/fidl/language/wire-format/README.md#Strings) of
 strings for wire encoding would be (changes highlighted):
 
 

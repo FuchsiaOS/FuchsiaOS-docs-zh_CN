@@ -14,7 +14,7 @@ The `fidlcat` tool is included with the SDK.  In `fuchsia.git`, an invocation of
 To run `fidlcat`, networking must be enabled on your Fuchsia target. To boot an
 emulator with networking enabled. Follow the instructions to [start the emulator
 with access to external networks on the FEMU
-page](/docs/get-started/set_up_femu.md).
+page](/get-started/set_up_femu.md).
 
 ## Running it
 
@@ -164,7 +164,7 @@ You have the following output options:
 ## Troubleshooting
 
 If you have problems running `ffx debug fidl`, see the [troubleshooting guide
-for zxdb](/docs/development/debugger/running.md),
+for zxdb](/development/debugger/running.md),
 
 The `fidlcat` tool needs two sources of information to work.  If either are
 missing, you will not be able to decode fidl messages:

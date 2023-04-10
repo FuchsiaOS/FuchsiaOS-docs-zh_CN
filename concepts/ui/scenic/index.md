@@ -21,7 +21,7 @@ way as it links to its child components.
 
 (Note: "parent" and "child" here refer to relative positions within the scene graph
 topology, which may not correspond to the
-[component topology](/docs/glossary#component-topology))
+[component topology](/glossary#component-topology))
 
 ### Rendering/Display {#responsibility-rendering-display}
 
@@ -82,7 +82,7 @@ touch events, are routed to it. For example:
 ### Accessibility {#responsibility-accessibility}
 
 Scenic provides functionality which is used by the Accessibility Manager to implement
-[various features](/docs/concepts/accessibility/accessibility_framework.md).
+[various features](/concepts/accessibility/accessibility_framework.md).
 For example, Scenic exposes a global view of the scene graph which supports
 "screen reader" functionality. It also supports magnification for visually
 challenged users.
@@ -125,7 +125,7 @@ visual effect API to apply a blur effect a sub-tree of the Flatland scene graph.
 
 ### Scenic and Fuchsia
 
-![Diagram of Scenic within Fuchsia](/docs/concepts/ui/scenic/images/scenic_within_fuchsia_diagram.png)
+![Diagram of Scenic within Fuchsia](/concepts/ui/scenic/images/scenic_within_fuchsia_diagram.png)
 
 Scenic's API allows any client to insert its UI into the global scene graph.
 Processes using the [*Flutter*](https://flutter.io/) UI framework are one
@@ -154,7 +154,7 @@ pages for details which pertain to one or the other.
 
 In both cases, a "session" refers to a FIDL channel that a client uses to
 achieve the following goals:
-- Participate in the [View Tree](/docs/contribute/governance/rfcs/0147_view_system.md) by
+- Participate in the [View Tree](/contribute/governance/rfcs/0147_view_system.md) by
 forming links with other sessions (by mutual agreement).
   - provide a view which can be embedded by a parent component
   - conversely, embed child views provided by other components via their own sessions

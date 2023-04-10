@@ -40,11 +40,11 @@ To contribute to the [Fuchsia API Surface][fuchsia-api-surface], do the followin
 
 <!-- Reference links -->
 
-[fuchsia-api-surface]: /docs/glossary/README.md#fuchsia-api-surface
-[IDK]: /docs/development/idk/
-[create-a-change-in-gerrit]: /docs/development/source_code/contribute_changes.md#create-a-change-in-gerrit
-[request-a-code-review]: /docs/development/source_code/contribute_changes.md#request-a-code-review
-[rfc]: /docs/contribute/governance/rfcs/TEMPLATE.md
-[rfc-process]: /docs/contribute/governance/rfcs/rfc_process.md
-[api-council]: /docs/contribute/governance/api_council.md#area
-[membership]: /docs/contribute/governance/api_council.md#membership
+[fuchsia-api-surface]: /glossary/README.md#fuchsia-api-surface
+[IDK]: /development/idk/
+[create-a-change-in-gerrit]: /development/source_code/contribute_changes.md#create-a-change-in-gerrit
+[request-a-code-review]: /development/source_code/contribute_changes.md#request-a-code-review
+[rfc]: /contribute/governance/rfcs/TEMPLATE.md
+[rfc-process]: /contribute/governance/rfcs/rfc_process.md
+[api-council]: /contribute/governance/api_council.md#area
+[membership]: /contribute/governance/api_council.md#membership

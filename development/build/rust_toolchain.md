@@ -4,7 +4,7 @@ This guide explains how to build a Rust compiler for use with the Fuchsia. This
 is useful if you need to build Fuchsia with a patched compiler, or a compiler
 built with custom options. Building a custom Rust toolchain is not always
 necessary for building Fuchsia with a different version of Rust; see
-[Build Fuchsia with a custom Rust toolchain](/docs/development/build/fuchsia_custom_rust.md)
+[Build Fuchsia with a custom Rust toolchain](/development/build/fuchsia_custom_rust.md)
 for details.
 
 ## Prerequisites
@@ -150,4 +150,4 @@ Then re-run the command to build Rust.
 With a newly compiled custom Rust toolchain, you're ready to use it to build
 Fuchsia. Directions on how to do so are available in a [dedicated guide].
 
-[dedicated guide]: /docs/development/build/fuchsia_custom_rust.md
+[dedicated guide]: /development/build/fuchsia_custom_rust.md

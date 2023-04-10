@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -30,7 +30,7 @@ Fetch the koid of the current owner of the futex identified by *value_ptr*, or
 a futex typically serves no purpose when building synchronization primitives
 from futexes.  This syscall is used primarily for testing.
 
-See *Ownership and Priority Inheritance* in [futex](/docs/reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](/reference/kernel_objects/futex.md) for
 details.
 
 ## Rights
@@ -53,4 +53,4 @@ owner.
 
 ## See also
 
-[futex objects](/docs/reference/kernel_objects/futex.md)
+[futex objects](/reference/kernel_objects/futex.md)

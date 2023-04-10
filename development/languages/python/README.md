@@ -18,4 +18,4 @@ See [Python testing](testing.md).
 
 See under [Build system policies][python-build-action]
 
-[python-build-action]: /docs/development/build/build_system/policies.md#python_scripts_as_build_actions
+[python-build-action]: /development/build/build_system/policies.md#python_scripts_as_build_actions

@@ -58,7 +58,7 @@ list before submitting your contribution, to ensure code sample clarity:
       might be a paved Fuchsia target device.
       Rather than restating how to pave one’s device, link to an existing
       “Pave” topic that already exists on [fuchsia.dev](https://fuchsia.dev/),
-      such as [Build and pave quickstart](/docs/development/build/build_and_pave_quickstart.md).
+      such as [Build and pave quickstart](/development/build/build_and_pave_quickstart.md).
 *   **Avoid using `foo`, `bar`, or other vague placeholder names** if you are
     including placeholders in your code sample.
     Instead, use a name that expresses what that placeholder's function
@@ -236,6 +236,6 @@ following steps:
   </article>
 </section>
 
-[doc-standard]: /docs/contribute/docs/documentation-standards.md
-[style-guide]: /docs/contribute/docs/documentation-style-guide.md
+[doc-standard]: /contribute/docs/documentation-standards.md
+[style-guide]: /contribute/docs/documentation-style-guide.md
 [fuchsia]: https://fuchsia.dev/

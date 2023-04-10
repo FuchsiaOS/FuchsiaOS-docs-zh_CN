@@ -8,7 +8,7 @@ If your component is instrumented with Inspect, you can use Cobalt telemetry
 low-barrier entry into fleet monitoring (no new FIDL integrations, no new data
 models, no flow control complexity in your component), Sampler is for you!
 
-[Inspect]: /docs/development/diagnostics/inspect/quickstart.md
+[Inspect]: /development/diagnostics/inspect/quickstart.md
 [Cobalt]: https://fuchsia.dev/reference/fidl/fuchsia.metrics
 
 ## What do I get? {#why-sampler}
@@ -53,9 +53,9 @@ instrumentation in your component. Please see the
 1.  Create a Sampler configuration defining the transformation from Inspect to
     Cobalt. [See existing config files].
 
-[Inspect Codelab]: /docs/development/diagnostics/inspect/codelab/README.md
+[Inspect Codelab]: /development/diagnostics/inspect/codelab/README.md
 [Cobalt metric]: https://fuchsia.dev/reference/fidl/fuchsia.metrics
-[Diagnostics platform]: /docs/reference/diagnostics/inspect/tree.md#archivist
+[Diagnostics platform]: /reference/diagnostics/inspect/tree.md#archivist
 [See existing config files]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/diagnostics/config/sampler/
 
 ## Sampler Configuration {#configuration}

@@ -49,7 +49,7 @@ the binaries.
     ```
 
 *   The symbols package must use the same
-    [version identifiers](/docs/development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md#set-cipd-package-versioning)
+    [version identifiers](/development/prebuilt_packages/publish_prebuilt_packages_to_cipd.md#set-cipd-package-versioning)
     (tags) as the original CIPD package they refer to. This allows them to
     be rolled together.
 

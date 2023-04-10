@@ -119,4 +119,4 @@ In VS Code, do the following:
 
 <!-- Reference links -->
 
-[inspect-overview]: /docs/development/diagnostics/inspect/README.md
+[inspect-overview]: /development/diagnostics/inspect/README.md

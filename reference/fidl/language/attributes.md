@@ -208,7 +208,7 @@ The compiler will issue an error if the number of handles exceeds this limit.
 **MEANING**:
 This attribute is used to mark libraries that should be skipped by documentation
 generation tools. As an example, this attribute is used by generated FIDL
-libraries, such as by the [driver bind compiler](/docs/development/drivers/concepts/device_driver_model/driver-binding.md).
+libraries, such as by the [driver bind compiler](/development/drivers/concepts/device_driver_model/driver-binding.md).
 
 ## `@selector` {#selector}
 
@@ -278,9 +278,9 @@ known member. Once usages of the `@unknown` member are removed, the member is
 no longer necessary.
 
 <!-- xrefs -->
-[channel]: /docs/reference/kernel_objects/channel.md
-[RFC-0020]: /docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md
-[RFC-0021]: /docs/contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
-[RFC-0058]: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
-[versioning-formalism]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md#formalism
-[fully qualified name]: /docs/contribute/governance/rfcs/0043_documentation_comment_format.md#fully-qualified-names
+[channel]: /reference/kernel_objects/channel.md
+[RFC-0020]: /contribute/governance/rfcs/0020_interface_ordinal_hashing.md
+[RFC-0021]: /contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
+[RFC-0058]: /contribute/governance/rfcs/0058_deprecated_attribute.md
+[versioning-formalism]: /contribute/governance/rfcs/0083_fidl_versioning.md#formalism
+[fully qualified name]: /contribute/governance/rfcs/0043_documentation_comment_format.md#fully-qualified-names

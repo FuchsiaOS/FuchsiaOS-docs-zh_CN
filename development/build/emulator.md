@@ -23,7 +23,7 @@ documentation.
 ### Debugging Zircon Kernel {#debugging-zircon-kernel}
 
 If you want to debug the Zircon kernel, you should use `fx qemu` instead. Read
-[Debugging the Kernel using QEMU](/docs/development/debugging/qemu.md) to learn
+[Debugging the Kernel using QEMU](/development/debugging/qemu.md) to learn
 more. This is for kernel developers. Most Fuchsia developers do not need to use
 this workflow.
 
@@ -37,7 +37,7 @@ The features of FEMU include:
 *   **GUI Support:** You can run Fuchsia with the GUI (by default) or without
     the GUI (using the `--headless` argument).
 *   **GPU Support:** You can run with the host's GPU (by default) with full
-    [Vulkan](/docs/development/graphics/magma/concepts/vulkan.md){:.exyernal} support, or
+    [Vulkan](/development/graphics/magma/concepts/vulkan.md){:.exyernal} support, or
     you can choose software rendering using
     [SwiftShader](https://swiftshader.googlesource.com/SwiftShader/){:.external}.
 *   **Remote Development:** You can use a remote desktop with FEMU over Chrome
@@ -88,7 +88,7 @@ provides networking through an emulated NIC.
 
 Note: Instructions for setting up
 networking for FEMU is in the
-[Start the Fuchsia Emulator](/docs/get-started/set_up_femu.md) guide.
+[Start the Fuchsia Emulator](/get-started/set_up_femu.md) guide.
 
 `--net tap` and `--net user` allow the emulator to be discoverable
 when running `ffx target list`. `--net none` disables networking, which causes
@@ -170,10 +170,10 @@ for unsupported GPUs.
 
 ## Common usage {#common-usage}
 
-To launch FEMU, complete the [Get started with Fuchsia](/docs/get-started/README.md) guide.
+To launch FEMU, complete the [Get started with Fuchsia](/get-started/README.md) guide.
 
 Alternatively, you can use the Fuchsia SDK and use pre-built system images.
 
 Once you're able to launch FEMU, you can perform the following task:
 
-*   [Test components](/docs/development/run/run-test-component.md)
+*   [Test components](/development/run/run-test-component.md)

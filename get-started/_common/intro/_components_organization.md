@@ -6,7 +6,7 @@ aspects of component behavior.
 
 ![Tree diagram illustrating how component instances are organized. These parent
   and child relationships govern several aspects of component behavior.](
-  /docs/get-started/images/intro/component-organization.png){: width="712"}
+  /get-started/images/intro/component-organization.png){: width="712"}
 
 Parent components in the tree are responsible for creating instances of
 other components as their children and providing them with the necessary
@@ -54,12 +54,12 @@ Component Manager can only resolve capabilities that are **exposed** and
 ![Diagram showing how components share capabilities through
   "capability routing," which describes how resources are made available within
   a particular realm.](
-  /docs/get-started/images/intro/capability-routing.png){: width="614"}
+  /get-started/images/intro/capability-routing.png){: width="614"}
 
 <aside class="key-point">
 You will explore more about capabilities and building components later on.
 You can also find more of the technical details in the
-<a href="/docs/concepts/components/v2/introduction.md">component documentation</a>.
+<a href="/concepts/components/v2/introduction.md">component documentation</a>.
 </aside>
 
-[glossary.component-manager]: /docs/glossary/README.md#component-manager
+[glossary.component-manager]: /glossary/README.md#component-manager

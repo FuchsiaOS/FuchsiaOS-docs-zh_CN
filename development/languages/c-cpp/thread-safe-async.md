@@ -261,12 +261,12 @@ tasks in Chrome][chrome].
 [concurrency]: https://slikts.github.io/concurrency-glossary/?id=concurrent-order-independent-vs-sequential
 [dispatcher-bound]: /sdk/lib/async_patterns/cpp/dispatcher_bound.h
 [receiver]: /sdk/lib/async_patterns/cpp/receiver.h
-[driver-threading-model]: /docs/concepts/drivers/driver-dispatcher-and-threads.md#threading-model
+[driver-threading-model]: /concepts/drivers/driver-dispatcher-and-threads.md#threading-model
 [fdf-dispatcher]: /sdk/lib/driver/runtime/include/lib/fdf/cpp/dispatcher.h
 [thread-safety]: https://en.wikipedia.org/wiki/Thread_safety
 [data-race]: http://eel.is/c++draft/intro.races#21
 [abseil-thread-safety]: https://abseil.io/blog/20180531-regular-types#data-races-and-thread-safety-properties
-[cpp-threading-guide]: /docs/development/languages/fidl/tutorials/cpp/topics/threading.md
+[cpp-threading-guide]: /development/languages/fidl/tutorials/cpp/topics/threading.md
 [closure-queue]: /zircon/system/ulib/closure-queue/include/lib/closure-queue/closure_queue.h
 [chrome]: https://chromium.googlesource.com/chromium/src/+/master/docs/threading_and_tasks.md
 [java]: https://openjdk.org/jeps/425

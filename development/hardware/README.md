@@ -38,8 +38,8 @@ Fuchsia's support for CPUs:
 
 <!-- Reference links -->
 
-[install-fuchsia-on-nuc]: /docs/development/hardware/intel_nuc.md
-[install-fuchsia-on-nuc-legacy]: /docs/development/hardware/intel_nuc_with_zedboot.md
-[install-fuchsia-on-vim3]: /docs/development/hardware/khadas-vim3.md
-[prepare-usb]: /docs/development/hardware/usb_setup.md
-[install-fuchsia-on-acer12]: /docs/development/hardware/acer12.md
+[install-fuchsia-on-nuc]: /development/hardware/intel_nuc.md
+[install-fuchsia-on-nuc-legacy]: /development/hardware/intel_nuc_with_zedboot.md
+[install-fuchsia-on-vim3]: /development/hardware/khadas-vim3.md
+[prepare-usb]: /development/hardware/usb_setup.md
+[install-fuchsia-on-acer12]: /development/hardware/acer12.md

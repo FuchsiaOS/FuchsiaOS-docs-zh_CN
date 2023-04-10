@@ -96,7 +96,7 @@ loader configuration is set to use those directories.
 #### ICD loading
 
 ![Vulkan loader startup
-flow](/docs/contribute/governance/rfcs/resources/vulkan_loader/vulkan_loader_startup_flow.png)
+flow](/contribute/governance/rfcs/resources/vulkan_loader/vulkan_loader_startup_flow.png)
 
 On startup, `libvulkan.so` connects to the
 [fuchsia.vulkan.loader.Loader][loader-protocol] protocol. This channel must
@@ -112,7 +112,7 @@ don't take any type of _context_ argument; as such, the implementation will have
 some implicit global state.
 
 ![Vulkan loader
-flow](/docs/contribute/governance/rfcs/resources/vulkan_loader/vulkan_loader_flow.png)
+flow](/contribute/governance/rfcs/resources/vulkan_loader/vulkan_loader_flow.png)
 
 ICDs are loaded using the `fuchsia.vulkan.loader.Loader` protocol. The loader
 uses the `fuchsia.vulkan.loader/Loader.ConnectToManifestFs` method to access a
@@ -457,22 +457,22 @@ The [Linux/Windows/MacOS loader][loaderinterface].
 [loader-protocol]: /sdk/fidl/fuchsia.vulkan.loader/loader.fidl
 [create-instance]: https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkCreateInstance.html
 [GetIcdList]: https://fuchsia.dev/reference/fidl/fuchsia.gpu.magma#Device.GetIcdList
-[ICD-abi]: /docs/concepts/packages/system.md#vulkan-icd
-[runner]: /docs/concepts/components/v2/capabilities/runners.md
+[ICD-abi]: /concepts/packages/system.md#vulkan-icd
+[runner]: /concepts/components/v2/capabilities/runners.md
 [loader-source]: /third_party/Vulkan-Loader
-[component]: /docs/glossary/README.md#component
-[package]: /docs/concepts/packages/package.md
-[component-manifest]: /docs/concepts/components/v2/component_manifests.md
+[component]: /glossary/README.md#component
+[package]: /concepts/packages/package.md
+[component-manifest]: /concepts/components/v2/component_manifests.md
 [loaderinterface]: https://github.com/KhronosGroup/Vulkan-Loader/blob/master/loader/LoaderAndLayerInterface.md
-[meta-far]: /docs/concepts/packages/package.md#meta-far
+[meta-far]: /concepts/packages/package.md#meta-far
 [zxio]: https://fuchsia.googlesource.com/fuchsia/+/db7a76c861cce21b30d6199442c813a1327e020a/sdk/lib/zxio/README.md
 [override-layer]: https://vulkan.lunarg.com/doc/view/1.3.211.0/linux/LoaderLayerInterface.html#user-content-override-meta-layer
-[magma]: /docs/development/graphics/magma
-[magmavulkan]: /docs/development/graphics/magma/concepts/vulkan.md
-[verified-execution]: /docs/concepts/security/verified_execution.md
+[magma]: /development/graphics/magma
+[magmavulkan]: /development/graphics/magma/concepts/vulkan.md
+[verified-execution]: /concepts/security/verified_execution.md
 [README]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/src/graphics/bin/vulkan_loader/README.md
 [manifest-json]: https://github.com/KhronosGroup/Vulkan-Loader/blob/master/loader/LoaderAndLayerInterface.md#icd-manifest-file-format
 [SwiftShader]: https://github.com/google/swiftshader
-[MSD]: /docs/development/graphics/magma/concepts/design.md#architecture
-[environ]: /docs/concepts/components/v2/elf_runner.md#environment-variables
+[MSD]: /development/graphics/magma/concepts/design.md#architecture
+[environ]: /concepts/components/v2/elf_runner.md#environment-variables
 [early-version]: https://docs.google.com/document/d/1qXmCrxB_YxajvSRMum6qOn5yD4Trj1lhWJ7C28gJ-w8/edit

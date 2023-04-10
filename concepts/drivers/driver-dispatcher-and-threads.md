@@ -168,12 +168,12 @@ driver’s additional dispatchers before the driver’s `Stop()` hook is called.
 
 <!-- Reference links -->
 
-[driver-host]: /docs/concepts/drivers/driver_framework.md#driver_host
-[driver-framework]: /docs/concepts/drivers/driver_framework.md
+[driver-host]: /concepts/drivers/driver_framework.md#driver_host
+[driver-framework]: /concepts/drivers/driver_framework.md
 [fdf-dispatcher]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/driver/runtime/include/lib/fdf/cpp/dispatcher.h
-[driver-transport]: /docs/development/languages/fidl/tutorials/cpp/topics/driver-transport.md
+[driver-transport]: /development/languages/fidl/tutorials/cpp/topics/driver-transport.md
 [async-lib]: https://cs.opensource.google/fuchsia/fuchsia/+/main:/zircon/system/ulib/async/README.md
-[driver-runtime]: /docs/concepts/drivers/driver_framework.md#driver_runtime
+[driver-runtime]: /concepts/drivers/driver_framework.md#driver_runtime
 [driver-test-loop-fixture]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/driver/runtime/testing/loop_fixture/test_loop_fixture.h
 [async-cpp-task]: http://cs/fuchsia/zircon/system/ulib/async/include/lib/async/cpp/task.h
 [async-cpp-wait]: http://cs/fuchsia/zircon/system/ulib/async/include/lib/async/cpp/wait.h

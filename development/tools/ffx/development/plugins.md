@@ -2,7 +2,7 @@
 
 Note: This document describes the legacy plugin macro system and is here only
 as a reference while we still have some plugins using it around. See
-[the top level ffx development docs](/docs/development/tools/ffx/development/README.md)
+[the top level ffx development docs](/development/tools/ffx/development/README.md)
 for documentation on writing subtools.
 
 This page describes the basic steps for creating a plugin for `ffx`.
@@ -278,8 +278,8 @@ This example enables RCS to override references to
 `some/new/moniker:expose:fuchsia.MyOtherService` in any build which contains
 the mapping.
 
-[component-select]: /docs/development/tools/ffx/commands/component-select.md
+[component-select]: /development/tools/ffx/commands/component-select.md
 [ffx-build]: /src/developer/ffx/BUILD.gn
 [overnet]: /src/connectivity/overnet/
-[rust-testing]: /docs/development/languages/rust/testing.md
+[rust-testing]: /development/languages/rust/testing.md
 [selector-maps]: /src/developer/remote-control/data/selector-maps.json

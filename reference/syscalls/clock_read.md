@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -49,7 +49,7 @@ On success, returns **ZX_OK** along with the clock's current time in the *now* o
  - [`zx_clock_get_details()`]
  - [`zx_clock_update()`]
 
-[clocks]: /docs/reference/kernel_objects/clock.md
+[clocks]: /reference/kernel_objects/clock.md
 [`zx_clock_create()`]: clock_create.md
 [`zx_clock_get_details()`]: clock_get_details.md
 [`zx_clock_update()`]: clock_update.md

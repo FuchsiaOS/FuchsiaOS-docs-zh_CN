@@ -58,7 +58,7 @@ to optimize performance.
 * Fuchsia meets performance goals in commercial devices currently in production.
 
 
-[performant]: /docs/concepts/principles/performant.md
-[simple]: /docs/concepts/principles/simple.md
-[secure]: /docs/concepts/principles/secure.md
-[updatable]: /docs/concepts/principles/updatable.md
+[performant]: /concepts/principles/performant.md
+[simple]: /concepts/principles/simple.md
+[secure]: /concepts/principles/secure.md
+[updatable]: /concepts/principles/updatable.md

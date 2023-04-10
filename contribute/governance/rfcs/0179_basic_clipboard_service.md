@@ -318,20 +318,20 @@ to reduce the information revealed about clipboard access.
 ### `ViewRef` and focus validation
 
 The clipboard service relies on Scenic's
-[focus chain](/docs/development/graphics/scenic/concepts/focus_chain.md) system
+[focus chain](/development/graphics/scenic/concepts/focus_chain.md) system
 to determine which view is currently focused and therefore has the right to
 access the clipboard. Therefore, the clipboard's determination of clipboard
 focus is *only as reliable as Scenic's determination of input focus*, which has
 some flaws:
 
-*   [`ViewRef`s](/docs/development/graphics/scenic/concepts/view_ref.md), which
+*   [`ViewRef`s](/development/graphics/scenic/concepts/view_ref.md), which
     make up a focus chain, can easily be cloned and sent from one component to
     another. By this mechanism, malicious components can collaborate to
     impersonate each other for the purposes of input focus. (Though this
     requires that at a minimum, the original owner of a `ViewRef` trust the
     recipient of the cloned `ViewRef`.)
 *   Focus changes are subject to
-    [race conditions](/docs/development/graphics/scenic/concepts/focus_chain.md#race_between_view_focus_event_and_focus_chain).
+    [race conditions](/development/graphics/scenic/concepts/focus_chain.md#race_between_view_focus_event_and_focus_chain).
 
 ### Security review outcome
 
@@ -375,7 +375,7 @@ At this stage, with support only for copying short strings, clipboard contents
 will be stored in memory, not on disk.
 
 Clipboard contents will not be logged or exposed via
-[Inspect](/docs/development/diagnostics/inspect).
+[Inspect](/development/diagnostics/inspect).
 
 ### Access across security contexts
 

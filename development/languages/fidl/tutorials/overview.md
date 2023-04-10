@@ -31,13 +31,13 @@ at the [C++ bindings comparison][c-family].
   * [Dart][dart]
 
 <!-- xrefs -->
-[getting-started]: /docs/get-started/README.md
-[fidl-concepts]: /docs/concepts/fidl/overview.md
-[compiling-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
+[getting-started]: /get-started/README.md
+[fidl-concepts]: /concepts/fidl/overview.md
+[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
 [cpp]: cpp/README.md
 [hlcpp]: hlcpp/README.md
 [rust]: rust/README.md
 [dart]: dart/README.md
-[c]: /docs/development/languages/fidl/tutorials/tutorial-c.md
-[c-family]: /docs/development/languages/fidl/guides/c-family-comparison.md
+[c]: /development/languages/fidl/tutorials/tutorial-c.md
+[c-family]: /development/languages/fidl/guides/c-family-comparison.md
 [examples]: /examples/fidl

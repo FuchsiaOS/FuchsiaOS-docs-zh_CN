@@ -389,9 +389,9 @@ enable KVM hardware virtualization:
 
 <!-- Reference links -->
 
-[fundamentals]: /docs/get-started/sdk/learn/README.md
+[fundamentals]: /get-started/sdk/learn/README.md
 [git-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [qemu]: https://www.qemu.org/
 [sdk-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Bazel
-[using-the-sdk]: /docs/development/sdk/index.md
+[using-the-sdk]: /development/sdk/index.md
 [vscode-install]: https://code.visualstudio.com/Download

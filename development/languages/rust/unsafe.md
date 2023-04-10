@@ -28,7 +28,7 @@ Example:
 ```rust
 impl Channel {
     /// Write a message to a channel. Wraps the
-    /// [zx_channel_write](//docs/zircon/syscalls/channel_write.md)
+    /// [zx_channel_write](//zircon/syscalls/channel_write.md)
     /// syscall.
     pub fn write(&self, bytes: &[u8], handles: &mut Vec<Handle>)
             -> Result<(), Status>

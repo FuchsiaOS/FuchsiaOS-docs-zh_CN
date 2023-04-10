@@ -76,7 +76,7 @@ the write threshold.
  - [`zx_socket_set_disposition()`] - set disposition of a socket
  - [`zx_socket_write()`] - write data to a socket
 
-[`zx_socket_create()`]: /docs/reference/syscalls/socket_create.md
-[`zx_socket_read()`]: /docs/reference/syscalls/socket_read.md
-[`zx_socket_set_disposition()`]: /docs/reference/syscalls/socket_set_disposition.md
-[`zx_socket_write()`]: /docs/reference/syscalls/socket_write.md
+[`zx_socket_create()`]: /reference/syscalls/socket_create.md
+[`zx_socket_read()`]: /reference/syscalls/socket_read.md
+[`zx_socket_set_disposition()`]: /reference/syscalls/socket_set_disposition.md
+[`zx_socket_write()`]: /reference/syscalls/socket_write.md

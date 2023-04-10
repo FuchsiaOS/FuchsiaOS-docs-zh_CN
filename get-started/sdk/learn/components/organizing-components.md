@@ -20,7 +20,7 @@ created and destroyed at runtime.
 
 ### Publish the package
 
-Recall from [Software delivery](/docs/get-started/sdk/learn/intro/packages.md)
+Recall from [Software delivery](/get-started/sdk/learn/intro/packages.md)
 that Fuchsia devices resolve software packages on demand from a package repository.
 
 Use the `bazel run` command to build and publish the `echo` component package:

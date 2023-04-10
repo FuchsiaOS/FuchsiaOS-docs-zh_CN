@@ -438,4 +438,4 @@ dispatcher threads, which may take locks in user code).
 [server-header]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/channel.h
 [client]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/lib/fidl/cpp/include/lib/fidl/cpp/client.h?q=Client&ss=fuchsia%2Ffuchsia
 [shared-client]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/lib/fidl/cpp/include/lib/fidl/cpp/client.h?q=SharedClient&sq=&ss=fuchsia%2Ffuchsia
-[glossary.synchronized-dispatcher]: /docs/glossary/README.md#synchronized-dispatcher
+[glossary.synchronized-dispatcher]: /glossary/README.md#synchronized-dispatcher

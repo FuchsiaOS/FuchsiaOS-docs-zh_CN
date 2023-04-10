@@ -158,4 +158,4 @@ from a separate client.
 
 <!-- Reference links -->
 
-[concepts-devfs]: /docs/concepts/drivers/driver_communication.md#service_discovery_using_devfs
+[concepts-devfs]: /concepts/drivers/driver_communication.md#service_discovery_using_devfs

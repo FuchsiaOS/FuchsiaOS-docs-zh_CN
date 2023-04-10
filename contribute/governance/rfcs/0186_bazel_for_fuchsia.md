@@ -464,9 +464,9 @@ What we learned from this migration:
 
 
 
-[when-to-use-rfcs]: /docs/contribute/governance/rfcs/rfc_process.md#when-to-use-the-process
+[when-to-use-rfcs]: /contribute/governance/rfcs/rfc_process.md#when-to-use-the-process
 [wlan-repo]: https://fuchsia.googlesource.com/drivers/wlan/intel/iwlwifi/+/refs/heads/main/third_party/iwlwifi
-[idk]: /docs/development/idk/README.md
+[idk]: /development/idk/README.md
 [bazel-sdk-rfc]: 0139_bazel_sdk.md
 [rfc-153]: 0153_ninja_customization.md
 [fint]: https://cs.opensource.google/fuchsia/fuchsia/+/main:tools/integration/fint/README.md

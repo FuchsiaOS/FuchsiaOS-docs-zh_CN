@@ -25,10 +25,10 @@ The initial prototype of structured configuration is available in fuchsia.git.
 The Component Framework team is waiting to make the feature generally available
 out-of-tree until the APIs and behaviors in this RFC are ratified.
 
-[RFC-0127]: /docs/contribute/governance/rfcs/0127_structured_configuration.md
-[cf-criteria]: /docs/contribute/governance/rfcs/0098_component_framework_rfc_criteria.md
-[RFC-0146]: /docs/contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md
-[RFC-0158]: /docs/contribute/governance/rfcs/0158_structured_config_accessors.md
+[RFC-0127]: /contribute/governance/rfcs/0127_structured_configuration.md
+[cf-criteria]: /contribute/governance/rfcs/0098_component_framework_rfc_criteria.md
+[RFC-0146]: /contribute/governance/rfcs/0146_structured_config_schemas_in_cml.md
+[RFC-0158]: /contribute/governance/rfcs/0158_structured_config_accessors.md
 
 ## Stakeholders
 
@@ -53,8 +53,8 @@ parts of "Phase 2" from RFC-0127's [implementation plan][127-impl], covering
 only the "static values" functionality and a limited version of "values from
 parents" in test environments using [RealmBuilder].
 
-[127-impl]: /docs/contribute/governance/rfcs/0127_structured_configuration.md#implementation
-[RealmBuilder]: /docs/development/testing/components/realm_builder.md
+[127-impl]: /contribute/governance/rfcs/0127_structured_configuration.md#implementation
+[RealmBuilder]: /development/testing/components/realm_builder.md
 
 ## Design
 
@@ -66,7 +66,7 @@ Component Framework has a number of new responsibilities:
 * Component runners deliver the encoded configuration to components
 * RealmBuilder allows setting configuration values of launched children in tests
 
-[persistent FIDL message]: /docs/contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
+[persistent FIDL message]: /contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
 
 ### Configuration Values
 
@@ -300,7 +300,7 @@ Each runner is responsible for establishing a contract with components it runs
 to provide them access to the encoded configuration. This contract is exercised
 by [accessor libraries][accessors].
 
-[accessors]: /docs/contribute/governance/rfcs/0158_structured_config_accessors.md
+[accessors]: /contribute/governance/rfcs/0158_structured_config_accessors.md
 
 #### ELF runner
 
@@ -398,7 +398,7 @@ schema, and authors of components used in others' tests will need to exercise
 caution when changing the types of a configuration field or when removing a
 configuration field.
 
-[RFC-0002]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
+[RFC-0002]: /contribute/governance/rfcs/0002_platform_versioning.md
 
 ## Security considerations
 
@@ -428,7 +428,7 @@ it produces identically laid-out messages as the statically-typed FIDL bindings.
 [Documentation][sc-docs] for the prototype is currently available for in-tree
 developers.
 
-[sc-docs]: /docs/development/components/configuration/structured_config.md
+[sc-docs]: /development/components/configuration/structured_config.md
 
 ## Drawbacks, alternatives, and unknowns
 

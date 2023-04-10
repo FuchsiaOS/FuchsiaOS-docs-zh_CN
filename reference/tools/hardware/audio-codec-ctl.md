@@ -8,7 +8,7 @@
 
 Audio hardware codec driver control. Used to control and get information from an audio hardware
 codec driver via the FIDL codec interface.
-See [`audio-driver-ctl`](/docs/reference/tools/hardware/audio-driver-ctl.md)
+See [`audio-driver-ctl`](/reference/tools/hardware/audio-driver-ctl.md)
 to play, record, and configure audio streams.
 
 ## Usage {#usage}

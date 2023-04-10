@@ -17,19 +17,19 @@ amount of free memory larger than a certain threshold. Fuchsia uses several
 memory reclamation techniques, both within the kernel and in userspace. This
 guide describes how these memory reclamation techniques work. Fuchsia also
 provides a set of tools to analyze and dump memory usage (see
-[Memory usage analysis tools](/docs/development/kernel/memory/memory.md#userspace_memory)).
+[Memory usage analysis tools](/development/kernel/memory/memory.md#userspace_memory)).
 
 ## Pager-backed memory eviction
 
 Userspace filesystems use
-[pagers](/docs/reference/kernel_objects/pager.md)
+[pagers](/reference/kernel_objects/pager.md)
 to [page](https://en.wikipedia.org/wiki/Memory_paging) in files on demand from
 an external source, like a disk. Filesystems represent files in memory using
 VMOs, whose pages are populated by the pager service as and when they are
 accessed.
 
 On Fuchsia,
-[blobfs](/docs/concepts/filesystems/blobfs.md) is
+[blobfs](/concepts/filesystems/blobfs.md) is
 an immutable filesystem that hosts all executable files using a pager to
 populate pages on demand. When the system comes under memory pressure, i.e. the
 amount of available free memory starts running low, the kernel evicts pages
@@ -54,7 +54,7 @@ if the user is cycling through several activities, constantly switching the
 working set, the kernel tries to keep up by aging pages more aggressively.
 
 Userspace processes can also use
-[eviction hints](/docs/contribute/governance/rfcs/0068_eviction_hints.md)
+[eviction hints](/contribute/governance/rfcs/0068_eviction_hints.md)
 to influence the kernel eviction strategy. Processes can use the `DONT_NEED`
 hint to indicate pages are no longer in use and would be good candidates for
 eviction. They can also use `ALWAYS_NEED` to indicate pages are important and
@@ -62,9 +62,9 @@ should not be considered for eviction, thereby avoiding the cost of fetching
 them back in when they're accessed again.
 
 Learn more about eviction hints in the reference docs:
-[`zx_vmo_op_range`](/docs/reference/syscalls/vmo_op_range.md)
+[`zx_vmo_op_range`](/reference/syscalls/vmo_op_range.md)
 and
-[`zx_vmar_op_range`](/docs/reference/syscalls/vmar_op_range.md).
+[`zx_vmar_op_range`](/reference/syscalls/vmar_op_range.md).
 
 ## Zero page deduplication
 
@@ -77,7 +77,7 @@ for opportunities to deduplicate zero pages.
 
 ## Page table reclamation
 
-As explained in [Address spaces](/docs/concepts/memory/address_spaces.md),
+As explained in [Address spaces](/concepts/memory/address_spaces.md),
 the VMAR hierarchy helps the kernel track virtual to physical memory mappings.
 When a virtual address is accessed for the first time,
 the address space's VMAR tree is used to look up the underlying physical page.
@@ -91,9 +91,9 @@ they can be reconstructed from the VMAR tree.
 ## Discardable VMOs
 
 Userspace processes can create a special flavor of
-[VMOs that are discardable](/docs/contribute/governance/rfcs/0012_zircon_discardable_memory.md).
+[VMOs that are discardable](/contribute/governance/rfcs/0012_zircon_discardable_memory.md).
 Clients can
-[lock and unlock ](/docs/reference/syscalls/vmo_op_range.md)discardable
+[lock and unlock ](/reference/syscalls/vmo_op_range.md)discardable
 VMOs depending on whether or not they are being used. When the system is under
 memory pressure, the kernel finds discardable VMOs that are unlocked and frees
 them.
@@ -314,7 +314,7 @@ signals](#memory_pressure_signals).
     at a small delta from the OOM level. Its sole purpose is to provide a means
     to collect OOM diagnostic information safely, as it might be too late to
     gather diagnostics at the OOM level. Learn more about this level in
-    [RFC-0091](/docs/contribute/governance/rfcs/0091_getevent_imminent_oom.md).
+    [RFC-0091](/contribute/governance/rfcs/0091_getevent_imminent_oom.md).
 -   `Critical` is state 2. This is the level that triggers the CRITICAL
     memory pressure signal.
 -   `Warning` is state 3. This is the level that triggers the WARNING memory

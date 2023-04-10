@@ -3,12 +3,12 @@
 # found in the LICENSE file.
 toc:
 - title: "audio-codec-ctl"
-  path: /docs/reference/tools/hardware/audio-codec-ctl.md
+  path: /reference/tools/hardware/audio-codec-ctl.md
 - title: "audio-driver-ctl"
-  path: /docs/reference/tools/hardware/audio-driver-ctl.md
+  path: /reference/tools/hardware/audio-driver-ctl.md
 - title: "gpioutil"
-  path: /docs/reference/tools/hardware/gpioutil.md
+  path: /reference/tools/hardware/gpioutil.md
 - title: "i2cutil"
-  path: /docs/reference/tools/hardware/i2cutil.md
+  path: /reference/tools/hardware/i2cutil.md
 - title: "lights-cli"
-  path: /docs/reference/tools/hardware/lights-cli.md
+  path: /reference/tools/hardware/lights-cli.md

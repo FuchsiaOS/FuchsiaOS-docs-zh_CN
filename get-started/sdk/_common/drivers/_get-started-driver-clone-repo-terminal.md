@@ -81,5 +81,5 @@ Do the following:
 <!-- Reference links -->
 
 [clang]: https://clang.llvm.org/
-[fuchsia-idk]: /docs/development/idk/README.md
+[fuchsia-idk]: /development/idk/README.md
 [sdk-driver-sample-repo]: https://fuchsia.googlesource.com/sdk-samples/drivers

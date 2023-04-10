@@ -7,28 +7,28 @@
 # team as reviewer.
 toc:
 - title: "zxdb: The Fuchsia debugger"
-  path: /docs/development/debugger/README.md
+  path: /development/debugger/README.md
 - title: "Set up and run the debugger"
-  path: /docs/development/debugger/running.md
+  path: /development/debugger/running.md
 - title: "Commands and interaction model"
-  path: /docs/development/debugger/commands.md
+  path: /development/debugger/commands.md
 - title: "Debugging a process, component, or crash dump"
-  path: /docs/development/debugger/attaching.md
+  path: /development/debugger/attaching.md
 - title: "Controlling thread execution"
-  path: /docs/development/debugger/execution.md
+  path: /development/debugger/execution.md
 - title: "Using breakpoints"
-  path: /docs/development/debugger/breakpoints.md
+  path: /development/debugger/breakpoints.md
 - title: "Evaluating and printing expressions"
-  path: /docs/development/debugger/printing.md
+  path: /development/debugger/printing.md
 - title: "Inspecting memory"
-  path: /docs/development/debugger/memory.md
+  path: /development/debugger/memory.md
 - title: "Working with assembly language"
-  path: /docs/development/debugger/assembly.md
+  path: /development/debugger/assembly.md
 - title: "Looking at handles"
-  path: /docs/development/debugger/kernel_objects.md
+  path: /development/debugger/kernel_objects.md
 - title: "Diagnosing symbol problems"
-  path: /docs/development/debugger/symbols.md
+  path: /development/debugger/symbols.md
 - title: "Working with exceptions"
-  path: /docs/development/debugger/exceptions.md
+  path: /development/debugger/exceptions.md
 - title: "Developing and debugging the debugger"
-  path: /docs/development/debugger/developing.md
+  path: /development/debugger/developing.md

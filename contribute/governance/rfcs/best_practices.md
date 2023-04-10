@@ -126,7 +126,7 @@ Some suggestions for where to put this kind of documentation:
 * Create a `//src/my_subsystem/docs/` subdirectory in `fuchsia.git`.
   Documentation hosted in `fuchsia.git` can be rendered by [Gitiles][fx-gitiles]
   and is great for providing conceptual guides to your subsystem.
-* [Add your documentation to fuchsia.dev](/docs/contribute/docs/README.md) if it
+* [Add your documentation to fuchsia.dev](/contribute/docs/README.md) if it
   will be useful to the wider Fuchsia community.
 
 On the other hand, RFCs _may_ link to documentation. In fact, if your RFC

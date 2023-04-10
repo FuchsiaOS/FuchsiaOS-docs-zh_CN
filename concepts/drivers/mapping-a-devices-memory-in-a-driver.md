@@ -161,24 +161,24 @@ coherency of those registers are permitted in Fuchsia. However, only advanced
 developers who experience performance issues while using uncached mappings
 should consider this approach.
 
-[address-spaces]: /docs/concepts/memory/address_spaces.md
-[driver-host]: /docs/concepts/drivers/driver_framework.md#driver_host
-[vmo]: /docs/reference/kernel_objects/vm_object.md
+[address-spaces]: /concepts/memory/address_spaces.md
+[driver-host]: /concepts/drivers/driver_framework.md#driver_host
+[vmo]: /reference/kernel_objects/vm_object.md
 [mmu]: https://en.wikipedia.org/wiki/Memory_management_unit
 [mmio]: https://en.wikipedia.org/wiki/Memory-mapped_I/O
-[driver-manager]: /docs/concepts/drivers/driver_framework.md#driver_manager
-[driver-binding]: /docs/concepts/drivers/driver_binding.md
-[vmar]: /docs/reference/kernel_objects/vm_address_region.md
+[driver-manager]: /concepts/drivers/driver_framework.md#driver_manager
+[driver-binding]: /concepts/drivers/driver_binding.md
+[vmar]: /reference/kernel_objects/vm_address_region.md
 [pci-getbar]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.hardware.pci/pci.fidl;l=339
 [bar]: https://wiki.osdev.org/PCI#Base_Address_Registers
 [acpi-getmmio]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.hardware.acpi/device.fidl;l=324
 [banjo-getmmio]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/banjo/fuchsia.hardware.platform.device/platform-device.fidl;l=44
-[banjo]: /docs/development/drivers/concepts/device_driver_model/banjo.md
-[zx-vmo-create-physical]: /docs/reference/syscalls/vmo_create_physical.md
-[acpi]: /docs/contribute/governance/rfcs/0112_acpi_support_on_x86.md
-[device-trees]: /docs/contribute/governance/rfcs/0192_device_trees_on_fuchsia.md
-[driver-framework]: /docs/concepts/drivers/driver_framework.md
-[zx-vmo-read]: /docs/reference/syscalls/vmo_read.md
-[zx-vmo-write]: /docs/reference/syscalls/vmo_write.md
-[root-vmar]: /docs/concepts/memory/address_spaces.md#vmars_mappings_and_vmos
+[banjo]: /development/drivers/concepts/device_driver_model/banjo.md
+[zx-vmo-create-physical]: /reference/syscalls/vmo_create_physical.md
+[acpi]: /contribute/governance/rfcs/0112_acpi_support_on_x86.md
+[device-trees]: /contribute/governance/rfcs/0192_device_trees_on_fuchsia.md
+[driver-framework]: /concepts/drivers/driver_framework.md
+[zx-vmo-read]: /reference/syscalls/vmo_read.md
+[zx-vmo-write]: /reference/syscalls/vmo_write.md
+[root-vmar]: /concepts/memory/address_spaces.md#vmars_mappings_and_vmos
 [lib-mmio]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/devices/lib/mmio/include/lib/mmio/mmio.h

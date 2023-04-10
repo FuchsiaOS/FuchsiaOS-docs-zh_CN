@@ -72,11 +72,11 @@ the last remaining handle is stripped of the **ZX_RIGHT_DUPLICATE** right.
 
 ## SEE ALSO
 
-+ [Zircon concepts](/docs/concepts/kernel/concepts.md)
-+ [Handles](/docs/concepts/kernel/handles.md)
++ [Zircon concepts](/concepts/kernel/concepts.md)
++ [Handles](/concepts/kernel/handles.md)
 
-[`zx_channel_call()`]: /docs/reference/syscalls/channel_call.md
-[`zx_channel_create()`]: /docs/reference/syscalls/channel_create.md
-[`zx_channel_read()`]: /docs/reference/syscalls/channel_read.md
-[`zx_channel_write()`]: /docs/reference/syscalls/channel_write.md
-[`zx_object_wait_one()`]: /docs/reference/syscalls/object_wait_one.md
+[`zx_channel_call()`]: /reference/syscalls/channel_call.md
+[`zx_channel_create()`]: /reference/syscalls/channel_create.md
+[`zx_channel_read()`]: /reference/syscalls/channel_read.md
+[`zx_channel_write()`]: /reference/syscalls/channel_write.md
+[`zx_object_wait_one()`]: /reference/syscalls/object_wait_one.md

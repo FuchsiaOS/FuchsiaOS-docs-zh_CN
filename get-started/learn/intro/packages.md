@@ -167,4 +167,4 @@ In the next module, you'll learn more about the Fuchsia open source project and
 the tools used to build and customize the system:
 
 <a class="button button-primary"
-    href="/docs/get-started/learn/build">Building Fuchsia</a>
+    href="/get-started/learn/build">Building Fuchsia</a>

@@ -44,21 +44,21 @@ The following are some of `ffx` command examples:
 
 To try out Fuchsia's sample software, check out the guides below:
 
-*   [Run an example component](/docs/development/run/run-examples.md)
-*   [Run a test component](/docs/development/run/run-test-component.md)
+*   [Run an example component](/development/run/run-examples.md)
+*   [Run a test component](/development/run/run-test-component.md)
 
 ## Create Fuchsia components {#create-fuchsia-components}
 
 The basic executable units of software in Fuchsia are
-[components](/docs/concepts/components/v2), and these components interact
-with each other using [FIDL](/docs/concepts/fidl/overview.md)
+[components](/concepts/components/v2), and these components interact
+with each other using [FIDL](/concepts/fidl/overview.md)
 (Fuchsia Interface Definition Language) protocols.
 
 To learn more about Fuchsia components and FIDL, check out the guides below:
 
-*   [Build components](/docs/development/components/build.md)
-*   [FIDL overview](/docs/development/languages/fidl/README.md)
-*   [FIDL tutorials](/docs/development/languages/fidl/tutorials/overview.md)
+*   [Build components](/development/components/build.md)
+*   [FIDL overview](/development/languages/fidl/README.md)
+*   [FIDL tutorials](/development/languages/fidl/tutorials/overview.md)
 
 ## Contribute changes {#contribute-changes}
 
@@ -70,20 +70,20 @@ see [Contribute changes][contribute-changes].
 For more information on Fuchsia's development workflows,
 check out the following resources:
 
-*   [fx workflows](/docs/development/build/fx.md)
-*   [Workflow tips and questions](/docs/development/source_code/workflow_tips_and_faq.md)
-*   [Configure editors](/docs/reference/tools/editors/README.md)
-*   [Source code layout](/docs/development/source_code/layout.md)
-*   [Build system](/docs/development/build/build_system/index.md)
+*   [fx workflows](/development/build/fx.md)
+*   [Workflow tips and questions](/development/source_code/workflow_tips_and_faq.md)
+*   [Configure editors](/reference/tools/editors/README.md)
+*   [Source code layout](/development/source_code/layout.md)
+*   [Build system](/development/build/build_system/index.md)
 
 <!-- Reference links -->
 
-[components]: /docs/concepts/components/v2
-[run-examples]: /docs/development/run/run-examples.md
-[ffx-overview]: /docs/development/tools/ffx/overview.md
-[fidl]: /docs/development/languages/fidl
-[fidl-tutorials]: /docs/development/languages/fidl/tutorials/overview.md
-[fidl-concepts]: /docs/concepts/fidl/overview.md
-[run-fuchsia-tests]: /docs/development/testing/run_fuchsia_tests.md
-[scenic]: /docs/concepts/ui/scenic/index.md
-[contribute-changes]: /docs/development/source_code/contribute_changes.md
+[components]: /concepts/components/v2
+[run-examples]: /development/run/run-examples.md
+[ffx-overview]: /development/tools/ffx/overview.md
+[fidl]: /development/languages/fidl
+[fidl-tutorials]: /development/languages/fidl/tutorials/overview.md
+[fidl-concepts]: /concepts/fidl/overview.md
+[run-fuchsia-tests]: /development/testing/run_fuchsia_tests.md
+[scenic]: /concepts/ui/scenic/index.md
+[contribute-changes]: /development/source_code/contribute_changes.md

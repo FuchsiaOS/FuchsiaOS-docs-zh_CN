@@ -6,7 +6,7 @@ unit of distribution, though unlike many other package systems, that unit is com
 parts and is not a single binary `BLOB`.
 
 Note: For more information on components, see
-[Introduction to the Fuchsia component framework](/docs/concepts/components/v2/introduction.md).
+[Introduction to the Fuchsia component framework](/concepts/components/v2/introduction.md).
 
 Some packages are present on a Fuchsia system at startup, and
 additional packages can be downloaded from a Fuchsia package server in `BLOB`s.
@@ -43,7 +43,7 @@ For more information on packaging components with their dependencies using
 Subpackages, see [Subpackaging components].
 
 Note: To understand how components and packages work together in Fuchsia,
-see [Fuchsia's software model](/docs/concepts/software_model.md).
+see [Fuchsia's software model](/concepts/software_model.md).
 
 ## Types of packages
 
@@ -51,7 +51,7 @@ The packages that comprise the Fuchsia operating system are categorized into
 three groups, which affect how they are managed:
 
 Note: To understand how these packages work in a Fuchsia build, see
-[Dependency sets](/docs/development/build/build_system/boards_and_products.md#dependency_sets)
+[Dependency sets](/development/build/build_system/boards_and_products.md#dependency_sets)
 
 * [Base packages](#base-packages)
 * [Cached packages](#cached-packages)
@@ -67,7 +67,7 @@ operating system and are considered critical for security and the system.
 Resolving a package which is in base on a running Fuchsia system always
 returns the version that is on the device, and not a new version which
 may exist on a package server. However, base packages can be updated as part of
-the [OTA process](/docs/concepts/packages/ota.md).
+the [OTA process](/concepts/packages/ota.md).
 
 Since these packages are immutable for the runtime of a
 system, these packages must be updated with
@@ -96,7 +96,7 @@ In most cases, a package in Fuchsia is a collection of `BLOB`s, which at a
 minimum contains one content-addressed `BLOB` named [`meta.far`](#meta-far).
 
 Note: For more information on the Fuchsia archive format (FAR), see
-[Fuchsia archive format (FAR)](/docs/development/source_code/archive_format.md).
+[Fuchsia archive format (FAR)](/development/source_code/archive_format.md).
 
 In Fuchsia, you build a package with the `ffx package build` command or the
 legacy `pm` tool, which both exist in the `//tools/` directory of the
@@ -111,7 +111,7 @@ A package contains the following:
 ### `meta.far` {#meta-far}
 
 Note: For more information on the Fuchsia archive format (FAR), see
-[Fuchsia archive format (FAR)](/docs/development/source_code/archive_format.md).
+[Fuchsia archive format (FAR)](/development/source_code/archive_format.md).
 
 The package metadata archive, `meta.far`, contains metadata about
 a package, presented as the `meta/` directory. `meta.far` has a
@@ -147,7 +147,7 @@ If the package declares subpackages, the `meta/` directory also contains:
 
 Additionally, the `meta/` directory can contain files such as a component manifest.
 For more information on component manifests, see
-[Component manifests](/docs/concepts/components/v2/component_manifests.md).
+[Component manifests](/concepts/components/v2/component_manifests.md).
 
 ### `BLOB`s outside of `meta/` {#outside-blobs}
 
@@ -163,7 +163,7 @@ For example, these files can be like the following:
 
 Every package in Fuchsia is identified by a `package-url`.
 
-Note: For more information about [Fuchsia package URLs](/docs/concepts/packages/package_url.md).
+Note: For more information about [Fuchsia package URLs](/concepts/packages/package_url.md).
 
 ### Absolute package URLs
 
@@ -204,5 +204,5 @@ cannot be overridden). A relative package URL looks like the following:
 
 As with absolute package URLs, the resource path may or may not be included.
 
-[Subpackaging components]: /docs/concepts/components/v2/subpackaging.md
-[glossary.subpackage]: /docs/glossary/README.md#subpackage
+[Subpackaging components]: /concepts/components/v2/subpackaging.md
+[glossary.subpackage]: /glossary/README.md#subpackage

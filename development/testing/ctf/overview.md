@@ -26,10 +26,10 @@ to know about contributing to the Fuchsia CTF. Start here!
 
 Note: TODO: Dashboards are currently internal-only
 
-[overview]: /docs/development/testing/ctf/compatibility_testing.md
-[rfc15]: /docs/contribute/governance/rfcs/0015_cts.md
-[faq]: /docs/development/testing/ctf/faq.md
-[contributing]: /docs/development/testing/ctf/contributing_tests.md
+[overview]: /development/testing/ctf/compatibility_testing.md
+[rfc15]: /contribute/governance/rfcs/0015_cts.md
+[faq]: /development/testing/ctf/faq.md
+[contributing]: /development/testing/ctf/contributing_tests.md
 [cpp_echo_test]: /sdk/ctf/tests/examples/fidl/fuchsia.examples/cc/
 [rust_echo_test]: /sdk/ctf/tests/examples/fidl/fuchsia.examples/rust/
 [existing_tests]: /sdk/ctf/tests/fidl/

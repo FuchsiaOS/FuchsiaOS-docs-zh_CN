@@ -52,10 +52,10 @@ For more information, see [Life of a protocol open] and the [events documentatio
 [Archivist]: /src/diagnostics/archivist/README.md
 [Archivist's manifest]: /src/diagnostics/archivist/meta/archivist.cml
 [CapabilityRequested]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#CapabilityRequestedPayload
-[capability routing]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md#the-open-triggers-capability-routing
-[cm-events]: /docs/concepts/components/v2/capabilities/event.md
+[capability routing]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md#the-open-triggers-capability-routing
+[cm-events]: /concepts/components/v2/capabilities/event.md
 [ComponentDescriptor]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#ComponentDescriptor
 [Event]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#Event
 [event-stream]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventStream
 [logsink-protocol]: /sdk/fidl/fuchsia.logger/logger.fidl
-[Life of a protocol open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md
+[Life of a protocol open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md

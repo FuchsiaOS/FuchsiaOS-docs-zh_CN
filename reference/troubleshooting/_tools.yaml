@@ -2,7 +2,7 @@
  name: Inspect
  team: Diagnostics
  links:
-  Home: /docs/development/diagnostics/inspect
+  Home: /development/diagnostics/inspect
  description: |
    Expose structured state about a component. Monitor the state of a component at an
    instant in time.
@@ -27,8 +27,8 @@
  name: Logs
  team: Diagnostics
  links:
-  Writing Logs: /docs/development/diagnostics/logs/recording
-  Viewing Logs: /docs/development/diagnostics/logs/viewing
+  Writing Logs: /development/diagnostics/logs/recording
+  Viewing Logs: /development/diagnostics/logs/viewing
  description: |
    Print string logs during the execution of a component.
 
@@ -43,7 +43,7 @@
   name: Structured Logs
   team: Diagnostics
   links:
-   Structured log encoding reference: /docs/reference/platform-spec/diagnostics/logs-encoding
+   Structured log encoding reference: /reference/platform-spec/diagnostics/logs-encoding
   description: |
    Store structured key/value pairs in log messages.
 
@@ -57,7 +57,7 @@
   name: Persistence
   team: Diagnostics
   links:
-   Persistence documentation: /docs/reference/diagnostics/persistence
+   Persistence documentation: /reference/diagnostics/persistence
   description: |
     Persistence stores Inspect data and publishes it on the subsequent boot.
 
@@ -72,7 +72,7 @@
   name: Sampler
   team: Diagnostics
   links:
-   Sampler documentation: /docs/reference/diagnostics/sampler
+   Sampler documentation: /reference/diagnostics/sampler
   description: |
     Sampler reads data from Inspect and forwards it to Cobalt.
 
@@ -87,7 +87,7 @@
   name: Triage
   team: Diagnostics
   links:
-   Triage documentation: /docs/reference/diagnostics/triage
+   Triage documentation: /reference/diagnostics/triage
   description: |
     Triage selects and processes values from Diagnostics data, producing
     useful actions and insights on-device and off-device.
@@ -103,7 +103,7 @@
   name: Detect
   team: Diagnostics
   links:
-   Detect documentation: /docs/reference/diagnostics/consumers/detect
+   Detect documentation: /reference/diagnostics/consumers/detect
   description: |
     Detect scans Inspect data on-device to decide when to file crash reports.
 

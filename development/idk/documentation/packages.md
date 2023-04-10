@@ -363,4 +363,4 @@ run a component from the installed package.
 
 <!-- Reference links -->
 
-[build-manifest-file]: /docs/development/build/build_system/internals/manifest_formats.md
+[build-manifest-file]: /development/build/build_system/internals/manifest_formats.md

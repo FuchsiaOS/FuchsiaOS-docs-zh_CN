@@ -51,12 +51,12 @@ from the previous boot. These messages appear when running [`fx snapshot`].
 [LogMessage]: https://fuchsia.dev/reference/fidl/fuchsia.logger#LogMessage
 [`LogSink`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#LogSink
 [SourceIdentity]: https://fuchsia.dev/reference/fidl/fuchsia.sys.internal#SourceIdentity
-[debuglog]: /docs/reference/kernel_objects/debuglog.md
+[debuglog]: /reference/kernel_objects/debuglog.md
 [128kb buffer in the kernel]: /zircon/kernel/lib/debuglog/debuglog.cc
 [4MB buffer in the archivist]: /src/diagnostics/archivist/src/logs/mod.rs
-[Recording]: /docs/development/diagnostics/logs/recording.md
-[Viewing]: /docs/development/diagnostics/logs/viewing.md
+[Recording]: /development/diagnostics/logs/recording.md
+[Viewing]: /development/diagnostics/logs/viewing.md
 [feedback data]: /src/developer/forensics/feedback_data
 [persistent disk store]: /src/developer/forensics/feedback_data/system_log_recorder/system_log_recorder.h
 [`fx snapshot`]: /src/developer/forensics/snapshot/README.md
-[Attributing LogSink connections]: /docs/concepts/components/diagnostics/logs/attribution.md
+[Attributing LogSink connections]: /concepts/components/diagnostics/logs/attribution.md

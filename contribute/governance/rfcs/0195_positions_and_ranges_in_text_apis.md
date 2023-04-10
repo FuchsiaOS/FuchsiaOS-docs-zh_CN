@@ -136,8 +136,8 @@ runtimes that use UTF‑16 encoding feature an additional division option:
     whether it is a single-code-unit scalar value, or part of a two-code-unit
     [*surrogate pair*][unicode-surrogate-pair]{:.external}.
 
-[fidl-string-encoding]: /docs/development/api/fidl.md#string_encoding_string_contents_and_length_bounds
-[fidl-string]: /docs/reference/fidl/language/language.md#strings
+[fidl-string-encoding]: /development/api/fidl.md#string_encoding_string_contents_and_length_bounds
+[fidl-string]: /reference/fidl/language/language.md#strings
 [unicode-surrogate-code-point]: https://unicode.org/glossary/#surrogate_code_point
 [unicode-code-point]: https://unicode.org/glossary/#code_point
 [unicode-surrogate-pair]: https://unicode.org/glossary/#surrogate_pair
@@ -293,7 +293,7 @@ including:
     -   emoji with skin tone and/or gender modifiers
     -   flag emoji
 
-[ctf]: /docs/development/testing/ctf/compatibility_testing.md
+[ctf]: /development/testing/ctf/compatibility_testing.md
 [wikipedia-unicode-plane]: https://en.wikipedia.org/wiki/Plane_\(Unicode\)
 
 ## Documentation

@@ -296,7 +296,7 @@ quarters.
 
 [fidl_stash]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.stash/stash.fidl
 
-[docs_data]: /docs/concepts/components/v2/capabilities/storage.md#data
+[docs_data]: /concepts/components/v2/capabilities/storage.md#data
 
 [src_stash_dir]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/stash/
 [src_stash_src]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/stash/src/

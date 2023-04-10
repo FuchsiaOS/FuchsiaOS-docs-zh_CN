@@ -207,18 +207,18 @@ steps:
 - [Source code layout][source-layout]
 
 [build-secondary]: /build/secondary/
-[dart-third-party]: /docs/development/languages/dart/third_party.md
+[dart-third-party]: /development/languages/dart/third_party.md
 [fuchsia-git]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main
 [gitignore]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/.gitignore
 [golibs]: /third_party/golibs/
 [googletest]: https://github.com/google/googletest
 [license]: /LICENSE
-[osrb-process]: /docs/contribute/governance/policy/osrb-process.md
-[oss-licensing]: /docs/contribute/governance/policy/open-source-licensing-policies.md
-[owners]: /docs/development/source_code/owners.md
-[owners-best-practices]: /docs/development/source_code/owners.md#best_practices
-[readme-fuchsia]: /docs/development/source_code/third-party-metadata.md
-[rust-third-party]: /docs/development/languages/rust/external_crates.md
-[source-layout]: /docs/development/source_code/layout.md
+[osrb-process]: /contribute/governance/policy/osrb-process.md
+[oss-licensing]: /contribute/governance/policy/open-source-licensing-policies.md
+[owners]: /development/source_code/owners.md
+[owners-best-practices]: /development/source_code/owners.md#best_practices
+[readme-fuchsia]: /development/source_code/third-party-metadata.md
+[rust-third-party]: /development/languages/rust/external_crates.md
+[source-layout]: /development/source_code/layout.md
 [third-party-googletest]: https://fuchsia.googlesource.com/third_party/github.com/google/googletest/
 [pyrightconfig]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/pyrightconfig.json

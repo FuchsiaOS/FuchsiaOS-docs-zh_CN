@@ -7,18 +7,18 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/dart
+  path: /development/languages/dart
 - title: "Analysis"
-  path: /docs/development/languages/dart/analysis.md
+  path: /development/languages/dart/analysis.md
 - title: "FIDL"
-  path: /docs/development/languages/dart/fidl.md
+  path: /development/languages/dart/fidl.md
 - title: "IDEs"
-  path: /docs/development/languages/dart/ides.md
+  path: /development/languages/dart/ides.md
 - title: "Logging"
-  path: /docs/development/languages/dart/logging.md
+  path: /development/languages/dart/logging.md
 - title: "Dart style guide"
-  path: /docs/development/languages/dart/style.md
+  path: /development/languages/dart/style.md
 - title: "Testing"
-  path: /docs/development/languages/dart/testing.md
+  path: /development/languages/dart/testing.md
 - title: "Third-party Dart packages"
-  path: /docs/development/languages/dart/third_party.md
+  path: /development/languages/dart/third_party.md

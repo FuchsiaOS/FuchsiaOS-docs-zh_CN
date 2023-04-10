@@ -258,10 +258,10 @@ An example of setting a field that is stored out-of-line from the frame:
 <!-- xrefs -->
 [arena-src]: /sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/arena.h
 [array-src]: /sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/array.h
-[envelope-header]: /docs/reference/fidl/language/wire-format/README.md#envelopes
+[envelope-header]: /reference/fidl/language/wire-format/README.md#envelopes
 [string-view-src]: /sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/string_view.h
 [vector-view-src]: /sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/vector_view.h
-[fidl-wire-format]: /docs/reference/fidl/language/wire-format/README.md
-[wire-domain-object-tutorial]: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-wire
+[fidl-wire-format]: /reference/fidl/language/wire-format/README.md
+[wire-domain-object-tutorial]: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-wire
 [string-literals]: https://en.cppreference.com/w/cpp/language/string_literal
 [static-storage-duration]: https://en.cppreference.com/w/c/language/static_storage_duration

@@ -568,12 +568,12 @@ If your test doesn't run correctly or doesn't start at all, try following the
 advice in [Troubleshooting test components][troubleshooting-tests].
 
 [cml-children]: https://fuchsia.dev/reference/cml#children
-[hermetic-resolution]: /docs/development/testing/components/test_runner_framework.md#hermetic_component_resolution
-[integration-test]: /docs/development/testing/components/integration_testing.md
-[migrate-component-manifest]: /docs/development/components/v2/migration/components.md#create-component-manifest
+[hermetic-resolution]: /development/testing/components/test_runner_framework.md#hermetic_component_resolution
+[integration-test]: /development/testing/components/integration_testing.md
+[migrate-component-manifest]: /development/components/v2/migration/components.md#create-component-manifest
 [trf-provided-test-runners]: /src/sys/test_runners
-[trf-test-manager]: /docs/development/testing/components/test_runner_framework.md#the_test_manager
-[trf-test-runners]: /docs/development/testing/components/test_runner_framework.md#test-runners
-[troubleshooting-tests]: /docs/development/testing/components/test_runner_framework.md#troubleshooting
-[unit-test-manifests]: /docs/development/components/build.md#unit-tests
-[realm-builder]: /docs/development/testing/components/realm_builder.md
+[trf-test-manager]: /development/testing/components/test_runner_framework.md#the_test_manager
+[trf-test-runners]: /development/testing/components/test_runner_framework.md#test-runners
+[troubleshooting-tests]: /development/testing/components/test_runner_framework.md#troubleshooting
+[unit-test-manifests]: /development/components/build.md#unit-tests
+[realm-builder]: /development/testing/components/realm_builder.md

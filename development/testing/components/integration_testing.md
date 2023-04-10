@@ -251,7 +251,7 @@ The child moniker format depends on your [test realm topology](#test-topology):
 
 [dynamic-example]: /examples/components/realm_builder/
 [static-example]: /examples/components/routing/integration_tests/
-[realm-builder]: /docs/development/testing/components/realm_builder.md
-[realm-builder-monikers]: /docs/development/testing/components/realm_builder.md#test-component-moniker
+[realm-builder]: /development/testing/components/realm_builder.md
+[realm-builder-monikers]: /development/testing/components/realm_builder.md#test-component-moniker
 [trf]: test_runner_framework.md
-[test-packages]: /docs/development/components/build.md#test-packages
+[test-packages]: /development/components/build.md#test-packages

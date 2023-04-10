@@ -195,9 +195,9 @@ Further reading:
 - [Avoiding Flakey Tests](https://testing.googleblog.com/2008/04/tott-avoiding-flakey-tests.html){:.external}
 - [Where do our flaky tests come from?](https://testing.googleblog.com/2017/04/where-do-our-flaky-tests-come-from.html){:.external}
 
-[test-scope]: /docs/contribute/testing/scope.md
-[testing-principles]: /docs/contribute/testing/principles.md
-[realm-builder]: /docs/development/testing/components/realm_builder.md
+[test-scope]: /contribute/testing/scope.md
+[testing-principles]: /contribute/testing/principles.md
+[realm-builder]: /development/testing/components/realm_builder.md
 [`fuchsia_async::Executor::new_with_fake_time`]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fuchsia-async/src/executor.rs#345
 [fake-clock]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fake-clock
 [go_test_flags]: https://golang.org/cmd/go/#hdr-Testing_flags

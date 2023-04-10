@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Natural and wire domain objects"
-  path: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md
+  path: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md
 - title: "Server"
-  path: /docs/development/languages/fidl/tutorials/cpp/basics/server.md
+  path: /development/languages/fidl/tutorials/cpp/basics/server.md
 - title: "Async client"
-  path: /docs/development/languages/fidl/tutorials/cpp/basics/client.md
+  path: /development/languages/fidl/tutorials/cpp/basics/client.md
 - title: "Sync client"
-  path: /docs/development/languages/fidl/tutorials/cpp/basics/sync-client.md
+  path: /development/languages/fidl/tutorials/cpp/basics/sync-client.md

@@ -66,7 +66,7 @@ API SHOULD link in the `fdio` compatibility library to translate libc system
 calls into FIDL service calls.
 
 Fuchsia's [`fdio`][fdio] library acts as a translation layer for a [limited
-subset](/docs/contribute/governance/rfcs/0082_starnix.md#motivation) of POSIX to
+subset](/contribute/governance/rfcs/0082_starnix.md#motivation) of POSIX to
 the appropriate FIDL services. For networking functionality, `fdio` provides
 implementations of a number of POSIX calls, including [`socket`][socket],
 [`setsockopt`][setsockopt] and [`getsockopt`][getsockopt], [`read`][read],
@@ -74,7 +74,7 @@ implementations of a number of POSIX calls, including [`socket`][socket],
 implementation of the FIDL services layered with `fdio` provide complete
 implementations of these, and other, calls.
 
-[fdio]: /docs/glossary#fdio
+[fdio]: /glossary#fdio
 [socket]: https://pubs.opengroup.org/onlinepubs/9699919799/functions/socket.html
 [setsockopt]: https://pubs.opengroup.org/onlinepubs/9699919799/functions/setsockopt.html
 [getsockopt]: https://pubs.opengroup.org/onlinepubs/9699919799/functions/getsockopt.html
@@ -259,7 +259,7 @@ instances arise or are discovered.
   Fuchsia system netstack.
 
 [POSIX specification]: https://pubs.opengroup.org/onlinepubs/9699919799/
-[RFC-0082]: /docs/contribute/governance/rfcs/0082_starnix.md
+[RFC-0082]: /contribute/governance/rfcs/0082_starnix.md
 [gvisor]: https://github.com/google/gvisor
 
 ## Appendix: Implementation decision case study

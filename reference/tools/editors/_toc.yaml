@@ -3,24 +3,24 @@
 # found in the LICENSE file.
 toc:
 - title: "Editors for developing Fuchsia"
-  path: /docs/reference/tools/editors/README.md
+  path: /reference/tools/editors/README.md
 - title: "Visual Studio Code"
   section:
   - heading: "Extensions"
   - title: "Installing the Fuchsia extension"
-    path: /docs/reference/tools/editors/vscode/fuchsia-ext-install.md
+    path: /reference/tools/editors/vscode/fuchsia-ext-install.md
   - title: "Using the Fuchsia extension"
-    path: /docs/reference/tools/editors/vscode/fuchsia-ext-using.md
+    path: /reference/tools/editors/vscode/fuchsia-ext-using.md
   - title: "Additional VS Code extensions for Fuchsia"
-    path: /docs/reference/tools/editors/vscode/extensions.md
+    path: /reference/tools/editors/vscode/extensions.md
   - heading: "Additional VS Code configuration"
   - title: "Configuring remote workspaces"
-    path: /docs/reference/tools/editors/vscode/remote-workspaces.md
+    path: /reference/tools/editors/vscode/remote-workspaces.md
   - title: "Configuring file reloading"
-    path: /docs/reference/tools/editors/vscode/file-reloading.md
+    path: /reference/tools/editors/vscode/file-reloading.md
 - title: "YouCompleteMe integration"
-  path: /docs/reference/tools/editors/youcompleteme.md
+  path: /reference/tools/editors/youcompleteme.md
 - title: "Vim tools for Fuchsia development"
-  path: /docs/reference/tools/editors/vim.md
+  path: /reference/tools/editors/vim.md
 - title: "Kakoune for Fuchsia development"
-  path: /docs/reference/tools/editors/kak.md
+  path: /reference/tools/editors/kak.md

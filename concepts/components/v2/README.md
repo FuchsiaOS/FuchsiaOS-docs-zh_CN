@@ -40,4 +40,4 @@ Components are the basic unit of executable software on Fuchsia.
 -   [Components vs. processes](components_vs_processes.md): how the concepts
     differ.
 
-[rfc0093]: /docs/contribute/governance/rfcs/0093_component_manifest_design_principles.md
+[rfc0093]: /contribute/governance/rfcs/0093_component_manifest_design_principles.md

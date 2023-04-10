@@ -40,13 +40,13 @@ END BIG NOTICE
 To manually add a new error:
 
 1. Create a new markdown file `_fi-{ERROR_NUMBER}.md` in
-  `//docs/reference/fidl/language/error-catalog/`. Replace `{ERROR_NUMBER}` with
+  `//reference/fidl/language/error-catalog/`. Replace `{ERROR_NUMBER}` with
   the error code. Pad the number with leading 0's. Copy the contents of an
   existing error so the content is consistent.
 
     > Error numbers must be monotonically increasing, dense, and never re-used.
 
-1. Add the new error to the end of `//docs/reference/fidl/language/errcat.md` by
+1. Add the new error to the end of `//reference/fidl/language/errcat.md` by
   adding the following:
 
     ```
@@ -61,7 +61,7 @@ To manually add a new error:
         + `fi-{ERROR_NUMBER}-b.test.fidl`
         + and so on...
 
-1. Add a new entry to the end of `//docs/error/_redirects.yaml` in the following format:
+1. Add a new entry to the end of `//error/_redirects.yaml` in the following format:
 
     ```
     - from: /fuchsia-src/error/fi-{ERROR_NUMBER}
@@ -97,7 +97,7 @@ To retire an error:
 
         Don't forget that sometimes there are `-a`, `-b`, etc FIDL files as
         well.  Check for these.
-  1. Update `//docs/reference/fidl/language/error-catalog/_fi-{ERROR_NUMBER}.md`
+  1. Update `//reference/fidl/language/error-catalog/_fi-{ERROR_NUMBER}.md`
   to the following:
 
         ```

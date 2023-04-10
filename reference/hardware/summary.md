@@ -25,7 +25,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_for_x86-64_the_x86-64-v2_instruction_set_architecture">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_for_x86-64_the_x86-64-v2_instruction_set_architecture">
         Instruction set architecture (ISA)
       </a>
     </td>
@@ -54,7 +54,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_architecture_must_be_supported_by_qemu">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_architecture_must_be_supported_by_qemu">
         QEMU support
       </a>
     </td>
@@ -66,7 +66,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_little-endian_mode">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_little-endian_mode">
         Little endian byte-ordering mode
       </a>
     </td>
@@ -83,7 +83,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_llvm_toolchain_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_llvm_toolchain_support">
         LLVM toolchain support
       </a>
     </td>
@@ -104,7 +104,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_tier_2_rust_language_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_tier_2_rust_language_support">
         Tier 2 Rust language support
       </a>
     </td>
@@ -123,7 +123,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_dart_language_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_dart_language_support">
         Dart language support
       </a>
     </td>
@@ -141,7 +141,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_go_language_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_go_language_support">
         Go language support
       </a>
     </td>
@@ -160,7 +160,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_full_featured_memory_management_unit_mmu">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_full_featured_memory_management_unit_mmu">
         Full-featured modern memory management unit (MMU)
       </a>
     </td>
@@ -189,7 +189,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_64-bit_cpu_and_platform">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_64-bit_cpu_and_platform">
         64-bit platform
       </a>
     </td>
@@ -216,7 +216,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_clock_and_timers">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_clock_and_timers">
         Clocks and timers
       </a>
     </td>
@@ -237,7 +237,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_bootloader_openness">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_bootloader_openness">
         Bootloader openness
       </a>
     </td>
@@ -264,7 +264,7 @@ Fuchsia will not build or run correctly.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_serial_console_access">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_serial_console_access">
         Serial console access
       </a>
     </td>
@@ -303,7 +303,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_virtualization_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_virtualization_support">
         Virtualization support
       </a>
     </td>
@@ -331,7 +331,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_clock_and_timers">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_clock_and_timers">
         Clocks and timers
       </a>
     </td>
@@ -351,7 +351,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_io_memory_management_unit_iommu">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_io_memory_management_unit_iommu">
         I/O memory management unit (IOMMU)
       </a>
     </td>
@@ -381,7 +381,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_hardware_cryptographic_acceleration_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_hardware_cryptographic_acceleration_support">
         Hardware cryptographic acceleration support
       </a>
     </td>
@@ -408,7 +408,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_hardware_assisted_tracing">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_hardware_assisted_tracing">
         Hardware-assisted tracing
       </a>
     </td>
@@ -430,7 +430,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_gcc_toolchain_support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_gcc_toolchain_support">
         GCC toolchain support
       </a>
     </td>
@@ -446,7 +446,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#tier-1-rust-language-support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#tier-1-rust-language-support">
         Tier 1 Rust language support
       </a>
     </td>
@@ -462,7 +462,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended-documentation-and-support">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended-documentation-and-support">
         Documentation and support
       </a>
     </td>
@@ -488,7 +488,7 @@ highly desirable because they improve Fuchsia's base functionality.
   </tr>
   <tr>
     <td>
-      <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_bootloader_support_for_fastboot">
+      <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#recommended_bootloader_support_for_fastboot">
         Fastboot support
       </a>
     </td>
@@ -497,7 +497,7 @@ highly desirable because they improve Fuchsia's base functionality.
       <ul>
         <li>
           The bootloader should support fastboot over non-proprietary transports. See
-          <a href="/docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_fastboot_commands">Required fastboot commands</a>
+          <a href="/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#required_fastboot_commands">Required fastboot commands</a>
           for the full list of fastboot protocol commands that should be supported.
         </li>
       </ul>
@@ -532,5 +532,5 @@ chipset.
 A complete computer hardware system with a CPU, memory, peripherals
 and so on. Also called a *board*.
 
-[RFC]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
-[terms]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#document-definitions
+[RFC]: /contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
+[terms]: /contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#document-definitions

@@ -55,7 +55,7 @@ component framemwork.
 The format of redirects would be in the following format:
 
 ```
-- from: /docs/go/<keyword>
+- from: /go/<keyword>
   to: <path in source tree>
 ```
 
@@ -65,8 +65,8 @@ Note: This syntax can also point to source files outside of the `docs/`
 directory.
 
 ```
-- from: /docs/go/drivers
-  to: /docs/reference/hardware/drivers.md
+- from: /go/drivers
+  to: /reference/hardware/drivers.md
 ```
 
 This redirect results in <docs/go/drivers> and points to
@@ -107,7 +107,7 @@ of a `_redirects.yaml` file is limited to the directory in which the file
 lives; there should not be an issue where other parts of fuchsia.dev get
 redirected.
 
-This proposal creates a `/docs/go/_redirects.yaml` file which limits the
+This proposal creates a `/go/_redirects.yaml` file which limits the
 redirect scope to only fuchsia.dev/go/. In the background, a higher-level
 redirect takes care of redirecting fuchsia.dev/fuchsia-src/go to
 fuchsia.dev/go. Keep in mind that once the git repo is moved into fuchsia.dev,
@@ -122,9 +122,9 @@ N/A.
 [`doc_checker`](https://cs.opensource.google/fuchsia/fuchsia/+/main:tools/doc_checker/)
 can be expanded to verify that:
 
-* The `- from:` fields only have `/docs/go` paths to avoid issues.
+* The `- from:` fields only have `/go` paths to avoid issues.
 * The `to:` links exist.
-* The other .md files in `/docs/` are not referencing broken `/docs/go/` links.
+* The other .md files in `/docs/` are not referencing broken `/go/` links.
 * Problematic words or phrases are not used in the names of links.
 * No duplicate `go` keywords exist.
 
@@ -187,21 +187,21 @@ link requests:
     <fuchsia.dev/go/get-started> is probably redundant.
 
 * Is the link name meaningful, and does it comply with the
-  [Respectful Code policy](/docs/contribute/respectful_code.md)?
+  [Respectful Code policy](/contribute/respectful_code.md)?
   Short links should be, of course, short, but not at the expense of being
   understood.
 
   * <span class="compare-better">Positive example</span>:
     Both of these examples are short and descriptive:
 
-      * `/docs/go/faq` (renders as fuchsia.dev/go/faq).
-      * `/docs/go/hardware-specs` (renders as fuchsia.dev/go/hardware-specs).
+      * `/go/faq` (renders as fuchsia.dev/go/faq).
+      * `/go/hardware-specs` (renders as fuchsia.dev/go/hardware-specs).
 
 * Does the `to` link point to a document inside of the `/docs/` directory?
 
   * <span class="compare-better">Positive example</span>:
 
-      * `to: /docs/concepts/software_model.md`.
+      * `to: /concepts/software_model.md`.
 
   * <span class="compare-worse">Negative example</span>:
 

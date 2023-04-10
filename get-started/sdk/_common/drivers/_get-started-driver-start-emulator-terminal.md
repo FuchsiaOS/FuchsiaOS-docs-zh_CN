@@ -122,5 +122,5 @@ Do the following:
 
 <!-- Reference links -->
 
-[driver-framework]: /docs/concepts/drivers/driver_framework.md
-[femu]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
+[driver-framework]: /concepts/drivers/driver_framework.md
+[femu]: /development/sdk/ffx/start-the-fuchsia-emulator.md

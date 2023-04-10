@@ -266,14 +266,14 @@ include the following text:
 > "If you are introducing a new data type or language feature, consider what
 > changes you would expect users to make to FIDL definitions without
 > breaking users of the generated code.
-> If your feature places any new [source compatibility](/docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md)
+> If your feature places any new [source compatibility](/contribute/governance/rfcs/0024_mandatory_source_compatibility.md)
 > restrictions on the generated language bindings, list those here."
 
 Note that you should include the **source compatibility** text as an actual
 link to this FTP, that is:
 
 ```md
-[source compatibility](/docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md)
+[source compatibility](/contribute/governance/rfcs/0024_mandatory_source_compatibility.md)
 ```
 
 ## Performance

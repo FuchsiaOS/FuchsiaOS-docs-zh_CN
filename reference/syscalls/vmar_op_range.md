@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -43,14 +43,14 @@ The supported operations are:
 **ZX_VMAR_OP_COMMIT** - Requires that *handle*, and the VMO handles used to create any affected
 mappings, have the **ZX_RIGHT_WRITE** right and that the address range must not have any child VMARs.
 The operation's semantics are otherwise as described by
-[`zx_vmo_op_range()`](/docs/reference/syscalls/vmo_op_range.md) **ZX_VMO_OP_COMMIT**.
+[`zx_vmo_op_range()`](/reference/syscalls/vmo_op_range.md) **ZX_VMO_OP_COMMIT**.
 
 **ZX_VMO_OP_DECOMMIT** - Deprecated. Use **ZX_VMAR_OP_DECOMMIT** instead.
 
 **ZX_VMAR_OP_DECOMMIT** - Requires that *handle*, and the VMO handles used to create any affected
 mappings, have the **ZX_RIGHT_WRITE** right and that the address range must not have any child VMARs.
 The operation's semantics are otherwise as described by
-[`zx_vmo_op_range()`](/docs/reference/syscalls/vmo_op_range.md) **ZX_VMO_OP_DECOMMIT**.
+[`zx_vmo_op_range()`](/reference/syscalls/vmo_op_range.md) **ZX_VMO_OP_DECOMMIT**.
 
 **ZX_VMAR_OP_MAP_RANGE** - Populates entries in the CPU page tables (or architectural equivalent)
 for committed pages in the given range. Entries for uncommitted pages in the range are not
@@ -58,18 +58,18 @@ populated. Skips entries that already exist for any page in the range.
 
 **ZX_VMAR_OP_DONT_NEED** - Hints that pages in the specified range are not needed anymore and should
 be considered for memory reclamation. Intended to be used on mappings for VMOs created with
-[`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially succeeds for
+[`zx_pager_create_vmo()`](/reference/syscalls/pager_create_vmo.md); trivially succeeds for
 mappings for other VMO types.
 
-Please refer to [`zx_vmo_op_range()`](/docs/reference/syscalls/vmo_op_range.md)
+Please refer to [`zx_vmo_op_range()`](/reference/syscalls/vmo_op_range.md)
 **ZX_VMO_OP_DONT_NEED** for more details.
 
 **ZX_VMAR_OP_ALWAYS_NEED** - Hints that pages in the specified range are important and should be
 protected from memory reclamation. Intended to be used on mappings for VMOs created with
-[`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially succeeds for
+[`zx_pager_create_vmo()`](/reference/syscalls/pager_create_vmo.md); trivially succeeds for
 mappings for other VMO types.
 
-Please refer to [`zx_vmo_op_range()`](/docs/reference/syscalls/vmo_op_range.md)
+Please refer to [`zx_vmo_op_range()`](/reference/syscalls/vmo_op_range.md)
 **ZX_VMO_OP_ALWAYS_NEED** for more details.
 
 ## Rights

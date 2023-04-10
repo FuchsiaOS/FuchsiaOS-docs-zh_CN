@@ -66,12 +66,12 @@ Delivery, Product Assembly, and Component Framework.
 
 *   **Integrator Development Kit (IDK)** is the build-system-agnostic
 set of code, binaries, and data files used to build programs targeting
-Fuchsia, described [here](/docs/development/idk/README.md).
+Fuchsia, described [here](/development/idk/README.md).
 *   **Fuchsia Software Development Kit (SDK)** is the IDK (APIs,
 tools, and language integration artifacts) [with build-system-aware
-integrations](/docs/glossary/README.md#fuchsia-sdk).
+integrations](/glossary/README.md#fuchsia-sdk).
 One of the most notable is the [Fuchsia SDK with
-Bazel](/docs/glossary/README.md#fuchsia-sdk-with-bazel).
+Bazel](/glossary/README.md#fuchsia-sdk-with-bazel).
 *   **In-tree** refers to code and build rules present in the
 repository at https://fuchsia.googlesource.com/fuchsia/. This
 repository produces the IDK as an output.
@@ -556,11 +556,11 @@ documents:
 - [Software Delivery Overview][fuchsia-swd]
 - [Software Delivery Goals][rfc-0139]
 
-[fuchsia-component]: /docs/concepts/components/v2/README.md
-[fuchsia-packages]: /docs/concepts/packages/package.md
-[fuchsia-swd]: /docs/get-started/learn/intro/packages.md
-[rfc-0002]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
-[rfc-0015]: /docs/contribute/governance/rfcs/0015_cts.md
-[rfc-0154]: /docs/contribute/governance/rfcs/0154_subpackages.md
-[rfc-0186]: /docs/contribute/governance/rfcs/0186_bazel_for_fuchsia.md
-[rfc-0139]: /docs/contribute/governance/rfcs/0133_swd_goals.md
+[fuchsia-component]: /concepts/components/v2/README.md
+[fuchsia-packages]: /concepts/packages/package.md
+[fuchsia-swd]: /get-started/learn/intro/packages.md
+[rfc-0002]: /contribute/governance/rfcs/0002_platform_versioning.md
+[rfc-0015]: /contribute/governance/rfcs/0015_cts.md
+[rfc-0154]: /contribute/governance/rfcs/0154_subpackages.md
+[rfc-0186]: /contribute/governance/rfcs/0186_bazel_for_fuchsia.md
+[rfc-0139]: /contribute/governance/rfcs/0133_swd_goals.md

@@ -7,12 +7,12 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: /docs/development/components/configuration/mechanisms.md
+    path: /development/components/configuration/mechanisms.md
   - title: "Config-data package"
     status: deprecated
-    path: /docs/development/components/configuration/config_data.md
+    path: /development/components/configuration/config_data.md
   - title: "Structured Configuration"
-    path: /docs/development/components/configuration/structured_config.md
+    path: /development/components/configuration/structured_config.md
   - title: "Assembling Structured Configuration"
-    path: /docs/development/components/configuration/assembling_structured_config.md
+    path: /development/components/configuration/assembling_structured_config.md
     status: experimental

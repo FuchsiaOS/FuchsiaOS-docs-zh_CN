@@ -18,5 +18,5 @@ Scenic must decide which View should receive pointer events. Typically,
 [hit-testing][hit-testing] is used to find the geometrically top most View,
 which Scenic then uses as the target of event dispatch.
 
-[view-glossary]: /docs/glossary#view
-[hit-testing]: /docs/concepts/ui/scenic/hit_testing.md
+[view-glossary]: /glossary#view
+[hit-testing]: /concepts/ui/scenic/hit_testing.md

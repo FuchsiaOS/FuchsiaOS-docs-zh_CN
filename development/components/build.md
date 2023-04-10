@@ -2,7 +2,7 @@
   <aside class="caution">
     <b>Caution:</b> Caution: This format is used with legacy components.
     If you are still using legacy components, consider
-    <a href="/docs/contribute/open_projects/components/migration.md">migrating</a>
+    <a href="/contribute/open_projects/components/migration.md">migrating</a>
     to the modern component framework.
   </aside>
 {% endset %}
@@ -1430,32 +1430,32 @@ For more details on building capability routes, see [Connect components][doc-con
 [cml-expose]: https://fuchsia.dev/reference/cml#expose
 [cml-offer]: https://fuchsia.dev/reference/cml#offer
 [cml-program]: https://fuchsia.dev/reference/cml#program
-[components-migration]: /docs/contribute/open_projects/components/migration.md
-[cpp-syslog]: /docs/development/languages/c-cpp/logging.md#component_manifest_dependency
-[doc-connect]: /docs/development/components/connect.md
-[doc-inspect]: /docs/development/diagnostics/inspect/README.md
+[components-migration]: /contribute/open_projects/components/migration.md
+[cpp-syslog]: /development/languages/c-cpp/logging.md#component_manifest_dependency
+[doc-connect]: /development/components/connect.md
+[doc-inspect]: /development/diagnostics/inspect/README.md
 [executable]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#func_executable
 [ffx-scrutiny]: https://fuchsia.dev/reference/tools/sdk/ffx#scrutiny
 [fx-test]: https://fuchsia.dev/reference/tools/fx/cmd/test.md
 [fxb-55739]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=55739
-[glossary.capability-routing]: /docs/glossary/README.md#capability-routing
-[glossary.component]: /docs/glossary/README.md#component
-[glossary.component-instance]: /docs/glossary/README.md#component-instance
-[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
-[glossary.component-topology]: /docs/glossary/README.md#component-topology
-[glossary.component-url]: /docs/glossary/README.md#component-url
-[glossary.fuchsia-pkg-url]: /docs/glossary/README.md#fuchsia-pkg-url
-[glossary.gn]: /docs/glossary/README.md#gn
-[glossary.package]: /docs/glossary/README.md#fuchsia-package
+[glossary.capability-routing]: /glossary/README.md#capability-routing
+[glossary.component]: /glossary/README.md#component
+[glossary.component-instance]: /glossary/README.md#component-instance
+[glossary.component-manifest]: /glossary/README.md#component-manifest
+[glossary.component-topology]: /glossary/README.md#component-topology
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: /glossary/README.md#fuchsia-pkg-url
+[glossary.gn]: /glossary/README.md#gn
+[glossary.package]: /glossary/README.md#fuchsia-package
 [gn-get-target-outputs]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#func_get_target_outputs
-[provide-data]: /docs/development/components/data.md
+[provide-data]: /development/components/data.md
 [rustc-binary]: /build/rust/rustc_binary.gni
 [rustc-test]: /build/rust/rustc_test.gni
-[source-code-layout]: /docs/development/source_code/layout.md
+[source-code-layout]: /development/source_code/layout.md
 [source-expansion-placeholders]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#placeholders
 [src-inspect-cpp]: /sdk/lib/sys/inspect/cpp/BUILD.gn
 [src-inspect-include]: /sdk/lib/inspect/BUILD.gn
 [src-inspect-rust]: /src/lib/diagnostics/inspect/runtime/rust/BUILD.gn
-[test-environments]: /docs/contribute/testing/environments.md
-[v2-test-component]: /docs/development/testing/components/test_component.md
-[working-with-packages]: /docs/development/idk/documentation/packages.md
+[test-environments]: /contribute/testing/environments.md
+[v2-test-component]: /development/testing/components/test_component.md
+[working-with-packages]: /development/idk/documentation/packages.md

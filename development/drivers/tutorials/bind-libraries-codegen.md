@@ -6,8 +6,8 @@ This tutorial will go into detail on using these auto-generated code targets.
 
 This guide assumes familiarity with the following concepts:
 
- * [Driver Bind Rules](/docs/development/drivers/tutorials/bind-rules-tutorial.md)
- * [Driver Binding](/docs/development/drivers/concepts/device_driver_model/driver-binding.md)
+ * [Driver Bind Rules](/development/drivers/tutorials/bind-rules-tutorial.md)
+ * [Driver Binding](/development/drivers/concepts/device_driver_model/driver-binding.md)
 
 ## An example bind library
 
@@ -204,4 +204,4 @@ all separated by `.`s.
 
 To learn how to auto-generate bind library artifacts in the Fuchsia SDK
 development environment, see
-[Create a new bind library for a driver](/docs/development/sdk/create-new-bind-library-for-driver.md).
+[Create a new bind library for a driver](/development/sdk/create-new-bind-library-for-driver.md).

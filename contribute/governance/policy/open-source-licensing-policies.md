@@ -242,7 +242,7 @@ purposes you must do the following:
 *   Verify the exact source of all dependencies are hosted on
     [https://fuchsia.googlesource.com/](https://fuchsia.googlesource.com/).
     *   If some components are hosted elsewhere, contact the
-        [Open Source Review Board (OSRB)](/docs/contribute/governance/policy/osrb-process.md)
+        [Open Source Review Board (OSRB)](/contribute/governance/policy/osrb-process.md)
         to check that the hosting arrangement satisfies the requirements of the
         Fuchsia project.
 *   Produce a file containing the license text of the license of the binary and
@@ -261,7 +261,7 @@ existing copyright notice or license file when changing external code.
 ### Add new external code
 
 For information on adding new external code, see
-[Open Source Review Board (OSRB) Process](/docs/contribute/governance/policy/osrb-process.md).
+[Open Source Review Board (OSRB) Process](/contribute/governance/policy/osrb-process.md).
 
 ### Questions
 

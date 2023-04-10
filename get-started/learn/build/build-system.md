@@ -13,9 +13,9 @@ your project source code. The Fuchsia build system provides templates as GN
 imports (`.gni`) for you to declare Fuchsia artifacts, such as:
 
 * `fuchsia_component()`: Defines an executable
-  [component](/docs/concepts/components/v2), containing the manifest, program
+  [component](/concepts/components/v2), containing the manifest, program
   binary, and resources.
-* `fuchsia_package()`: Defines a [package](/docs/concepts/packages/package.md)
+* `fuchsia_package()`: Defines a [package](/concepts/packages/package.md)
   containing one or more components for distribution in a package repository.
 * `fuchsia_test_package()`: Defines a package containing test components.
 
@@ -60,7 +60,7 @@ example, the `hello-world` target might have a label that looks like
 this: `//src/examples/basic:hello-world`.
 
 Note: For more details on the mechanics of building with GN, see
-[Introduction to GN](/docs/development/build/build_system/intro.md).
+[Introduction to GN](/development/build/build_system/intro.md).
 
 ## Build configuration
 
@@ -95,7 +95,7 @@ the build configuration you provide to `fx set`.
 
 ![Data table showing build configurations separated into "product" and "board"
 layers. Each describes a different set of functional elements provided to the
-final build.](/docs/get-started/images/build/build-configuration.png){: width="570"}
+final build.](/get-started/images/build/build-configuration.png){: width="570"}
 
 Boards define the architecture that the build targets, which may affect what
 drivers are included and influence device specific kernel parameters.

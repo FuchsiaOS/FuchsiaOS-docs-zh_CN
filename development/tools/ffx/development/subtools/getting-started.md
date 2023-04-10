@@ -1,9 +1,9 @@
 # Getting started with `ffx` subtools
 
-FFX Subtools are the top-level commands that the [ffx cli](/docs/development/tools/ffx/architecture/cli.md)
+FFX Subtools are the top-level commands that the [ffx cli](/development/tools/ffx/architecture/cli.md)
 can run. These can be either compiled directly into `ffx` and/or build as separate
 commands that can be found in the build output directory or the SDK, and they
-will then be invoked using the [FHO tool interface](/docs/development/tools/ffx/architecture/fho.md).
+will then be invoked using the [FHO tool interface](/development/tools/ffx/architecture/fho.md).
 
 This document describes how to get started writing a new subtool for `ffx`.
 If you already have a plugin that was written before the new interface and want

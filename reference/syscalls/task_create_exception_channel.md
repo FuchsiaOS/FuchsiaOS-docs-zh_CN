@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -103,6 +103,6 @@ In a future build this error will no longer occur.
  - [exceptions]
  - [`zx_channel_read()`]
 
-[exceptions]: /docs/concepts/kernel/exceptions.md
+[exceptions]: /concepts/kernel/exceptions.md
 [`zx_channel_read()`]: channel_read.md
 [`zx_object_get_property()`]: object_get_property.md

@@ -152,6 +152,6 @@ using these properties.
 
 <!-- Reference links -->
 
-[drivers-banjo]: /docs/development/drivers/concepts/device_driver_model/banjo.md
-[drivers-fidl]: /docs/development/drivers/concepts/device_driver_model/fidl.md
+[drivers-banjo]: /development/drivers/concepts/device_driver_model/banjo.md
+[drivers-fidl]: /development/drivers/concepts/device_driver_model/fidl.md
 [edu-device-spec]: https://fuchsia.googlesource.com/third_party/qemu/+/refs/heads/main/docs/specs/edu.txt

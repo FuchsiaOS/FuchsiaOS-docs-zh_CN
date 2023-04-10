@@ -231,16 +231,16 @@ the test package:
 
 The FAQ sections about [retiring tests] and [disabling tests].
 
-[Component Manifests]: /docs/concepts/components/v2/component_manifests.md
-[Components]: /docs/concepts/components/v2
-[Fuchsia language policy]: /docs/contribute/governance/policy/programming_languages.md
-[Packages]: /docs/concepts/packages/package.md
-[Start the Fuchsia Emulator]: /docs/get-started/set_up_femu.md
-[Test Components]: /docs/development/testing/components/test_component.md
+[Component Manifests]: /concepts/components/v2/component_manifests.md
+[Components]: /concepts/components/v2
+[Fuchsia language policy]: /contribute/governance/policy/programming_languages.md
+[Packages]: /concepts/packages/package.md
+[Start the Fuchsia Emulator]: /get-started/set_up_femu.md
+[Test Components]: /development/testing/components/test_component.md
 [file a bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=component%3ADeveloperExperience%3ECTS
-[relative component URL]: /docs/reference/components/url.md#relative
+[relative component URL]: /reference/components/url.md#relative
 [CTF bug component]: https://bugs.fuchsia.dev/p/fuchsia/templates/detail?saved=1&template=Fuchsia%20Compatibility%20Test%20Suite%20%28CTS%29&ts=1627669234
-[disabling tests]: /docs/development/testing/ctf/faq.md#disable-a-test
-[retiring tests]: /docs/development/testing/ctf/faq.md#retire-a-test
+[disabling tests]: /development/testing/ctf/faq.md#disable-a-test
+[retiring tests]: /development/testing/ctf/faq.md#retire-a-test
 [allow list]: /sdk/ctf/build/internal/allowed_ctf_deps.gni
-[Subpackages]: /docs/concepts/components/v2/subpackaging.md
+[Subpackages]: /concepts/components/v2/subpackaging.md

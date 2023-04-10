@@ -9,12 +9,12 @@ Note: Formerly known as [FTP](../deprecated-ftp-process.md)-038.
 
 When this proposal was drafted, and socialized, there was a strong consensus to
 consider syntax changes all at once, rather than one at a time (see also
-[RFC-0039](/docs/contribute/governance/rfcs/0039_types_come_second.md)). We also
+[RFC-0039](/contribute/governance/rfcs/0039_types_come_second.md)). We also
 wanted one person to be the syntax arbiter, rather than risk designing by
 committee.
 
 Eventually, this proposal was obsoleted by
-[RFC-0050](/docs/contribute/governance/rfcs/0050_syntax_revamp.md) which met
+[RFC-0050](/contribute/governance/rfcs/0050_syntax_revamp.md) which met
 both conditions sought.
 
 ## Summary
@@ -90,8 +90,8 @@ through syntax.
 
 At least:
 
-* [Language Specification](/docs/reference/fidl/language/language.md)
-* [Grammar](/docs/reference/fidl/language/grammar.md)
+* [Language Specification](/reference/fidl/language/language.md)
+* [Grammar](/reference/fidl/language/grammar.md)
 * Examples using structs
 
 ## Backwards Compatibility

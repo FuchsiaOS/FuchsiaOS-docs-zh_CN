@@ -9,7 +9,7 @@ frequently in code, and a quick explainer on how to make the right choices.
 
 At a high level, the C++ bindings is made up of:
 
-* **Data**: the [domain objects](/docs/glossary/README.md#domain-object) (the
+* **Data**: the [domain objects](/glossary/README.md#domain-object) (the
   generated FIDL structures e.g. struct, table, ...)
 * **Behavior**: the client/server APIs to send those domain objects over a
   protocol, receive events, ...

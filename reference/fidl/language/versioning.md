@@ -218,9 +218,9 @@ We can decompose it by swapping the protocol at every version:
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/versioning_decomposed.test.fidl" region_tag="decomposed" %}
 ```
 
-[rfc-0083]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
-[rfc-0083-legacy]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md#legacy
-[element]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md#terminology
-[overview]: /docs/development/languages/fidl/guides/style.md#library-overview
+[rfc-0083]: /contribute/governance/rfcs/0083_fidl_versioning.md
+[rfc-0083-legacy]: /contribute/governance/rfcs/0083_fidl_versioning.md#legacy
+[element]: /contribute/governance/rfcs/0083_fidl_versioning.md#terminology
+[overview]: /development/languages/fidl/guides/style.md#library-overview
 [deprecation-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=7692
-[api-evolution]: /docs/development/api/evolution.md
+[api-evolution]: /development/api/evolution.md

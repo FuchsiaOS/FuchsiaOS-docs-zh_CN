@@ -13,5 +13,5 @@ There's a [codelab] to get started.
 
 [configured]: config.md
 [command line]: fx_triage.md
-[Detect]: /docs/development/diagnostics/analytics/detect.md
+[Detect]: /development/diagnostics/analytics/detect.md
 [codelab]: codelab.md

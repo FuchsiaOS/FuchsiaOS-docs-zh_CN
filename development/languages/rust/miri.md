@@ -98,4 +98,4 @@ $ cargo +nightly miri test
 [miri]: https://github.com/rust-lang/miri
 [miri-monorail]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=88691
 [rustup]: https://rustup.rs/
-[cargo-toml-gen]: /docs/development/languages/rust/cargo.md#cargo-toml-gen
+[cargo-toml-gen]: /development/languages/rust/cargo.md#cargo-toml-gen

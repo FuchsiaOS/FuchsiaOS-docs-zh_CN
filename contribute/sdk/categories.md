@@ -5,7 +5,7 @@ Each [SDK Atom] has a category that defines which kinds of SDK consumers can see
 the Atom. As SDK Atoms mature, we can increase their visibility, which implies
 increasing their stability guarantees.
 
-[SDK Atom]: /docs/glossary#sdk-atom
+[SDK Atom]: /glossary#sdk-atom
 
 ## Motivation
 
@@ -98,7 +98,7 @@ when and how FIDL APIs change. The SDK category mechanism determines the
 [^1]: Currently, the set of partners is not public. As the project scales, we
       will likely need to revisit our approach to partnerships.
       
-[fidl-versioning]: /docs/reference/fidl/language/versioning.md
+[fidl-versioning]: /reference/fidl/language/versioning.md
 
 ## Categories
 
@@ -147,4 +147,4 @@ changes to that value carefully.
 
 - First documented in [RFC-0165: SDK categories][rfc-0165].
 
-[rfc-0165]: /docs/contribute/governance/rfcs/0165_sdk_categories.md
+[rfc-0165]: /contribute/governance/rfcs/0165_sdk_categories.md

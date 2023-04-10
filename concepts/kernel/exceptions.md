@@ -17,7 +17,7 @@ intercept crashes, [signals](signals.md) may be a better choice.
 Exceptions are handled from userspace by creating an exception channel on a
 task (thread, process, or job) with the [`zx_task_create_exception_channel()`]
 system call. The created handle is a standard Zircon
-[channel](/docs/reference/kernel_objects/channel.md), but is created read-only so can only be used
+[channel](/reference/kernel_objects/channel.md), but is created read-only so can only be used
 for receiving exception messages.
 
 When an exception occurs, the thread is paused and a message containing a
@@ -107,7 +107,7 @@ At a high level there are two types of exceptions: architectural and synthetic.
 Architectural exceptions are things like a segfault (e.g., dereferencing the
 NULL pointer) or executing an undefined instruction. Synthetic exceptions are
 things like thread start/stop notifications or
-[policy violations](/docs/reference/syscalls/job_set_policy.md).
+[policy violations](/reference/syscalls/job_set_policy.md).
 
 Architectural and policy exceptions are considered fatal, and will cause the
 process to be killed if they are unhandled. Debugger-only exceptions - thread
@@ -331,11 +331,11 @@ Zircon code that uses exceptions can be viewed for further examples, including:
 - [`zx_object_set_property()`]
 - [`zx_port_wait()`]
 
-[`zx_exception_get_process()`]: /docs/reference/syscalls/exception_get_process.md
-[`zx_exception_get_thread()`]: /docs/reference/syscalls/exception_get_thread.md
-[`zx_object_get_info()`]: /docs/reference/syscalls/object_get_info.md
-[`zx_object_set_property()`]: /docs/reference/syscalls/object_set_property.md
-[`zx_object_wait_async()`]: /docs/reference/syscalls/object_wait_async.md
-[`zx_port_wait()`]: /docs/reference/syscalls/port_wait.md
-[`zx_task_create_exception_channel()`]: /docs/reference/syscalls/task_create_exception_channel.md
-[`zx_task_kill()`]: /docs/reference/syscalls/task_kill.md
+[`zx_exception_get_process()`]: /reference/syscalls/exception_get_process.md
+[`zx_exception_get_thread()`]: /reference/syscalls/exception_get_thread.md
+[`zx_object_get_info()`]: /reference/syscalls/object_get_info.md
+[`zx_object_set_property()`]: /reference/syscalls/object_set_property.md
+[`zx_object_wait_async()`]: /reference/syscalls/object_wait_async.md
+[`zx_port_wait()`]: /reference/syscalls/port_wait.md
+[`zx_task_create_exception_channel()`]: /reference/syscalls/task_create_exception_channel.md
+[`zx_task_kill()`]: /reference/syscalls/task_kill.md

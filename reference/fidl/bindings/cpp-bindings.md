@@ -1166,7 +1166,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional
 
 For protocol methods annotated with the
-[`@transitional`](/docs/reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/reference/fidl/language/attributes.md#transitional)
 attribute, the `virtual` methods on the protocol class come with a default
 `Close(ZX_NOT_SUPPORTED)` implementation. This allows implementations of the
 protocol class with missing method overrides to compile successfully.
@@ -1174,7 +1174,7 @@ protocol class with missing method overrides to compile successfully.
 #### Discoverable
 
 A protocol annotated with the
-[`@discoverable`](/docs/reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/reference/fidl/language/attributes.md#discoverable)
 attribute causes the FIDL toolchain to generate an additional `static const char
 Name[]` field on the protocol class, containing the full protocol name.
 
@@ -1237,27 +1237,27 @@ The test base provides an implementation for the virtual protocol events
 
 
 <!-- xrefs -->
-[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
+[anon-names]: /reference/fidl/language/language.md#inline-layouts
 [cpp-style]: https://google.github.io/styleguide/cppguide.html#Naming
-[generated-name-attr]: /docs/reference/fidl/language/attributes.md#generated-name
-[llcpp-allocation]: /docs/development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
-[llcpp-async-example]: /docs/development/languages/fidl/tutorials/cpp/topics/async-completer.md
-[llcpp-threading-guide]: /docs/development/languages/fidl/tutorials/cpp/topics/threading.md
-[llcpp-tutorial]: /docs/development/languages/fidl/tutorials/cpp
+[generated-name-attr]: /reference/fidl/language/attributes.md#generated-name
+[llcpp-allocation]: /development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
+[llcpp-async-example]: /development/languages/fidl/tutorials/cpp/topics/async-completer.md
+[llcpp-threading-guide]: /development/languages/fidl/tutorials/cpp/topics/threading.md
+[llcpp-tutorial]: /development/languages/fidl/tutorials/cpp
 [llcpp-server-example]: /examples/fidl/cpp/server/wire
-[lang-constants]: /docs/reference/fidl/language/language.md#constants
-[lang-bits]: /docs/reference/fidl/language/language.md#bits
-[lang-enums]: /docs/reference/fidl/language/language.md#enums
-[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: /docs/reference/fidl/language/language.md#structs
-[lang-tables]: /docs/reference/fidl/language/language.md#tables
-[lang-unions]: /docs/reference/fidl/language/language.md#unions
-[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
-[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
-[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
-[result-callback-use-after-free]: /docs/development/languages/fidl/tutorials/cpp/topics/threading.md#additional_use-after-free_risks_with_thenexactlyonce
+[lang-constants]: /reference/fidl/language/language.md#constants
+[lang-bits]: /reference/fidl/language/language.md#bits
+[lang-enums]: /reference/fidl/language/language.md#enums
+[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /reference/fidl/language/language.md#structs
+[lang-tables]: /reference/fidl/language/language.md#tables
+[lang-unions]: /reference/fidl/language/language.md#unions
+[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
+[lang-protocols]: /reference/fidl/language/language.md#protocols
+[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
+[result-callback-use-after-free]: /development/languages/fidl/tutorials/cpp/topics/threading.md#additional_use-after-free_risks_with_thenexactlyonce
 [specifying-asynchronous-continuation]: #specifying-asynchronous-continuation
-[union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
-[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
+[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
+[unknown-attr]: /reference/fidl/language/attributes.md#unknown
 [wire-thenable-impl]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/internal/thenable.h;l=34?q=wirethenable&ss=fuchsia%2Ffuchsia
-[zircon-channel]: /docs/reference/kernel_objects/channel.md
+[zircon-channel]: /reference/kernel_objects/channel.md

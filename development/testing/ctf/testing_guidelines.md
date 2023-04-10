@@ -87,8 +87,8 @@ For example, a test that makes a system-wide change to set the background color
 of text should reset the color to its original value at the end of the test.
 This prevents tests from affecting one another.
 
-[CTF Contributing Guide]: /docs/development/testing/ctf/contributing_tests.md
+[CTF Contributing Guide]: /development/testing/ctf/contributing_tests.md
 [CTF bug component]: https://bugs.fuchsia.dev/p/fuchsia/templates/detail?saved=1&template=Fuchsia%20Compatibility%20Test%20Suite%20%28CTS%29&ts=1627669234
-[Documentation Guide]: /docs/contribute/docs/documentation-standards.md
-[Languages]: /docs/development/languages/README.md
-[Testing Best Practices]: /docs/contribute/testing/best-practices.md
+[Documentation Guide]: /contribute/docs/documentation-standards.md
+[Languages]: /development/languages/README.md
+[Testing Best Practices]: /contribute/testing/best-practices.md

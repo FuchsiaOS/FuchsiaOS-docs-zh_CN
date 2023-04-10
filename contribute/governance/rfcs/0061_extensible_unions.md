@@ -54,15 +54,15 @@ union MyExtensibleUnion {
 ```
 
 Behind the scenes, each field is assigned an ordinal: this is comparable
-to how [tables](/docs/contribute/governance/rfcs/0047_tables.md) have
+to how [tables](/contribute/governance/rfcs/0047_tables.md) have
 ordinals for each field, and how
-[methods' ordinals](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md)
+[methods' ordinals](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md)
 get automatically assigned.
 
 Specifically:
 
 - Ordinals are **calculated using the same algorithm as method ordinals**
-  ([details](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md#hash)),
+  ([details](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md#hash)),
   we concatenate the library name,
   "`.`", the extensible union name, "`/`", and finally the member name,
   then take the SHA256, and mask with `0x7fffffff`.
@@ -284,8 +284,8 @@ null value and an empty value.
 <!-- xrefs -->
 [triggercondition]: https://fuchsia.googlesource.com/fuchsia/+/0d83b07e19d055d609715b77750a8a4009b593f7/public/fidl/fuchsia.modular/agent/agent_context.fidl#54
 [interaction]: https://fuchsia.googlesource.com/fuchsia/+/4d82bce3c69970f305a0583ebe96a2a821cba8a8/public/fidl/fuchsia.modular/suggestion/suggestion_provider.fidl#123
-[fidl-language]: /docs/reference/fidl/language/language.md
-[fidl-wire-format]: /docs/reference/fidl/language/wire-format/README.md
+[fidl-language]: /reference/fidl/language/language.md
+[fidl-wire-format]: /reference/fidl/language/wire-format/README.md
 [interface1]: https://fuchsia.googlesource.com/fuchsia/+/17bec424c1c24d1a9a41410108c4e018be8ac5e7/system/fidl/fuchsia-net-stack/stack.fidl#114
 [interface2]: https://fuchsia.googlesource.com/fuchsia/+/17bec424c1c24d1a9a41410108c4e018be8ac5e7/system/fidl/fuchsia-net-stack/stack.fidl#119
 [oneof]: https://developers.google.com/protocol-buffers/docs/proto#oneof

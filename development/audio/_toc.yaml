@@ -3,19 +3,19 @@
 # that can be found in the LICENSE file.
 toc:
 - title: "Loudness"
-  path: /docs/development/audio/loudness.md
+  path: /development/audio/loudness.md
 - title: "Drivers"
   section:
   - title: "Overview"
-    path: /docs/development/audio/drivers/overview.md
+    path: /development/audio/drivers/overview.md
   - title: "Architecture"
-    path: /docs/development/audio/drivers/architecture.md
+    path: /development/audio/drivers/architecture.md
   - title: "Audio driver streaming interface"
-    path: /docs/development/audio/drivers/streaming.md
+    path: /development/audio/drivers/streaming.md
   - title: "Audio Signal Processing"
-    path: /docs/development/audio/drivers/signal-processing.md
+    path: /development/audio/drivers/signal-processing.md
   - title: "Digital Audio Interface (DAI)"
-    path: /docs/development/audio/drivers/dai.md
+    path: /development/audio/drivers/dai.md
   - title: "Audio codec"
-    path: /docs/development/audio/drivers/codec.md
+    path: /development/audio/drivers/codec.md
 

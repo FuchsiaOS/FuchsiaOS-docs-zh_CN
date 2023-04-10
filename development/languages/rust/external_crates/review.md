@@ -69,12 +69,12 @@ When you're adding or updating an external crate and need your changes reviewed
 by someone else:
 
 1.  Follow the
-    [external Rust crates](/docs/development/languages/rust/external_crates.md)
+    [external Rust crates](/development/languages/rust/external_crates.md)
     documentation to add the crate to your tree. **Do not upload a change
     to Gerrit yet.**
 2.  If there are any new crates, including dependencies or changes to licenses
     in new versions of existing crates, request
-    [OSRB approval](/docs/contribute/governance/policy/osrb-process.md) for
+    [OSRB approval](/contribute/governance/policy/osrb-process.md) for
     them.
 3.  After receiving OSRB approval for any new crates, upload a change to Gerrit.
     Make sure to:
@@ -87,7 +87,7 @@ by someone else:
         to batch the transitive updates into one or more batches to reduce the
         CL size. To reduce review overhead, dependencies that aren't used on our
         supported platforms can be
-        [replaced](/docs/development/languages/rust/external_crates.md#importing_a_subset_of_files_in_a_crate)
+        [replaced](/development/languages/rust/external_crates.md#importing_a_subset_of_files_in_a_crate)
         with an empty crate using cargo's manifest patching feature.
 4.  Add reviewers to the CL. Anyone (including you!) can review as long as they
     understand this section and the guidelines below.
@@ -126,7 +126,7 @@ When someone else has requested a review from you, make sure to:
     *   Closing the CL and looking for alternatives.
     *   If the offending code is in a dependency that isn't used on
         Fuchsia's supported platforms, we can
-        [replace the crate](/docs/development/languages/rust/external_crates.md#importing_a_subset_of_files_in_a_crate)
+        [replace the crate](/development/languages/rust/external_crates.md#importing_a_subset_of_files_in_a_crate)
         with an empty one using cargo's manifest patching feature.
 
 ### Approving an external addition or update (OWNERS)
@@ -171,7 +171,7 @@ Updated version                                     | ❌                       
 [Architecture]: #architecture
 [Quality]: #quality
 [Code]: #code-review
-[OSRB]: /docs/contribute/governance/policy/osrb-process.md
+[OSRB]: /contribute/governance/policy/osrb-process.md
 
 *\* When updating an external crate, OSRB approval is only required if licenses
 change (including per-file license changes).*
@@ -212,7 +212,7 @@ In addition to the review guidelines below, reviewers should give extra
 consideration to new crates, whether they are being used directly by us or as a
 dependency of another crate.
 
-#### Make sure the crate is [OSRB approved](/docs/contribute/governance/policy/osrb-process.md).
+#### Make sure the crate is [OSRB approved](/contribute/governance/policy/osrb-process.md).
 
 Warning: You must receive approval from the OSRB before pushing a commit to
 Gerrit that adds external code.
@@ -382,7 +382,7 @@ comment explaining your situation.
     for reviews which will allow crate upgrades to be managed by a broader set
     of people.
 [^3]: Also see our
-    [guidelines for unsafe](/docs/development/languages/rust/unsafe.md)
+    [guidelines for unsafe](/development/languages/rust/unsafe.md)
     in first-party code.
 [^4]: We support Fuchsia, Linux, and Mac, and should expect to support Windows
     at some point. Some of our Rust code is also compiled for wasm targets.

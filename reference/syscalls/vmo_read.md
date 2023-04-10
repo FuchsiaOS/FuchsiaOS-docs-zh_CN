@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -29,7 +29,7 @@ zx_status_t zx_vmo_read(zx_handle_t handle,
 ## Description
 
 `zx_vmo_read()` attempts to read exactly *buffer_size* bytes from a [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
+object](/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
 
 *buffer* pointer to a user buffer to read bytes into.
 

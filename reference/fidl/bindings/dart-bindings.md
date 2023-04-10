@@ -568,7 +568,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional {#transitional}
 
 For protocol methods annotated with the
-[`@transitional`](/docs/reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/reference/fidl/language/attributes.md#transitional)
 attribute, the FIDL toolchain generates a default implementation on the abstract
 class so that server implementations will continue to compile without having to
 override the new method.
@@ -576,7 +576,7 @@ override the new method.
 #### Discoverable {#discoverable}
 
 The generated class for a protocol annotated with the
-[`@discoverable`](/docs/reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/reference/fidl/language/attributes.md#discoverable)
 attribute has a non-null `$serviceName` field.
 
 ### Test scaffolding {#test-scaffolding}
@@ -594,18 +594,18 @@ and all events are implemented by returning a Stream with a single
 `UnimplementedError` event.
 
 <!-- xrefs -->
-[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
-[dart-tutorial]: /docs/development/languages/fidl/tutorials/dart
-[lang-constants]: /docs/reference/fidl/language/language.md#constants
-[lang-bits]: /docs/reference/fidl/language/language.md#bits
-[lang-enums]: /docs/reference/fidl/language/language.md#enums
-[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: /docs/reference/fidl/language/language.md#structs
-[lang-tables]: /docs/reference/fidl/language/language.md#tables
-[lang-unions]: /docs/reference/fidl/language/language.md#unions
-[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
-[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
-[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
-[union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
-[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
-[traversal]: /docs/reference/fidl/language/wire-format/README.md#traversal-order
+[anon-names]: /reference/fidl/language/language.md#inline-layouts
+[dart-tutorial]: /development/languages/fidl/tutorials/dart
+[lang-constants]: /reference/fidl/language/language.md#constants
+[lang-bits]: /reference/fidl/language/language.md#bits
+[lang-enums]: /reference/fidl/language/language.md#enums
+[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /reference/fidl/language/language.md#structs
+[lang-tables]: /reference/fidl/language/language.md#tables
+[lang-unions]: /reference/fidl/language/language.md#unions
+[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
+[lang-protocols]: /reference/fidl/language/language.md#protocols
+[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
+[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
+[unknown-attr]: /reference/fidl/language/attributes.md#unknown
+[traversal]: /reference/fidl/language/wire-format/README.md#traversal-order

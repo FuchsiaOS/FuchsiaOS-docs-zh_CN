@@ -147,9 +147,9 @@ You can also see graphs of this information using the Fuchsia fuzzing bug [dashb
 
 [clusterfuzz]: https://google.github.io/clusterfuzz/
 [dashboard]: https://goto.google.com/fuchsia-fuzzing-bugs
-[exception-channel]: /docs/concepts/kernel/exceptions.md
+[exception-channel]: /concepts/kernel/exceptions.md
 [fuzzing-bug-template]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Fuzzing+Bug
 [monorail]: https://goto.google.com/fuchsia-found-by-fuzzing
 [security-fuzzing]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=component%3ASecurity%3EFuzzing&can=2
 [toy-example]: /examples/fuzzers/rust/src/lib.rs
-[zxdb]: /docs/development/debugger
+[zxdb]: /development/debugger

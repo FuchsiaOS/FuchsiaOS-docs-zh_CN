@@ -119,7 +119,7 @@ We introduce a new internal FIDL protocol,
 be implemented and exposed by a new `Activity` class within the [Input
 Pipeline][4] component.
 
-[4]: /docs/contribute/governance/rfcs/0096_user_input_arch.md#input-pipeline
+[4]: /contribute/governance/rfcs/0096_user_input_arch.md#input-pipeline
 
 #### `fuchsia.input.interaction.observation.Aggregator`
 
@@ -246,7 +246,7 @@ the system to become idle. This can be set using [structured configuration][10]
 in the Input Pipeline or Scene Manager component at the product level and will
 be set to 15 minutes for the current products.
 
-[10]: /docs/contribute/governance/rfcs/0127_structured_configuration.md
+[10]: /contribute/governance/rfcs/0127_structured_configuration.md
 
 ## Implementation
 
@@ -269,7 +269,7 @@ The service will be implemented as follows:
 - TouchInjectorHandler
 - KeypressHandler (new)
 
-[11]: /docs/contribute/governance/rfcs/0096_user_input_arch.md#input-pipeline
+[11]: /contribute/governance/rfcs/0096_user_input_arch.md#input-pipeline
 
 4. Add integration tests for the following cases:
 

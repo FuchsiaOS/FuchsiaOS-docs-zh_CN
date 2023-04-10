@@ -14,7 +14,7 @@ threads, along with a collection of resources.
 
 The process object is a container of the following resources:
 
-+ [Handles](/docs/concepts/kernel/handles.md)
++ [Handles](/concepts/kernel/handles.md)
 + [Virtual Memory Address Regions](vm_address_region.md)
 + [Threads](thread.md)
 
@@ -25,7 +25,7 @@ Processes are owned by [jobs](job.md) and allow an application that is
 composed by more than one process to be treated as a single entity, from the
 perspective of resource and permission limits, as well as lifetime control.
 
-For more information, see [Processes Overview](/docs/concepts/process/overview.md).
+For more information, see [Processes Overview](/concepts/process/overview.md).
 
 ### Lifetime
 A process is created via [`zx_process_create()`] and its execution begins with
@@ -63,13 +63,13 @@ be added to a process that was started and then its last thread has exited.
  - [`zx_vmar_protect()`] - Change permissions on an address space range
  - [`zx_vmar_unmap()`] - Unmap memory from an address space range
 
-[`zx_job_create()`]: /docs/reference/syscalls/job_create.md
-[`zx_process_create()`]: /docs/reference/syscalls/process_create.md
-[`zx_process_exit()`]: /docs/reference/syscalls/process_exit.md
-[`zx_process_read_memory()`]: /docs/reference/syscalls/process_read_memory.md
-[`zx_process_start()`]: /docs/reference/syscalls/process_start.md
-[`zx_process_write_memory()`]: /docs/reference/syscalls/process_write_memory.md
-[`zx_task_create_exception_channel()`]: /docs/reference/syscalls/task_create_exception_channel.md
-[`zx_vmar_map()`]: /docs/reference/syscalls/vmar_map.md
-[`zx_vmar_protect()`]: /docs/reference/syscalls/vmar_protect.md
-[`zx_vmar_unmap()`]: /docs/reference/syscalls/vmar_unmap.md
+[`zx_job_create()`]: /reference/syscalls/job_create.md
+[`zx_process_create()`]: /reference/syscalls/process_create.md
+[`zx_process_exit()`]: /reference/syscalls/process_exit.md
+[`zx_process_read_memory()`]: /reference/syscalls/process_read_memory.md
+[`zx_process_start()`]: /reference/syscalls/process_start.md
+[`zx_process_write_memory()`]: /reference/syscalls/process_write_memory.md
+[`zx_task_create_exception_channel()`]: /reference/syscalls/task_create_exception_channel.md
+[`zx_vmar_map()`]: /reference/syscalls/vmar_map.md
+[`zx_vmar_protect()`]: /reference/syscalls/vmar_protect.md
+[`zx_vmar_unmap()`]: /reference/syscalls/vmar_unmap.md

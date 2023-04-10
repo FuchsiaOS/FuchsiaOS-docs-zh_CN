@@ -320,9 +320,9 @@ For more information on how to launch and use virtualization on Fuchsia, see
     https://en.wikipedia.org/wiki/Hypervisor#Classification
 [define.termina]:
     https://chromium.googlesource.com/chromiumos/overlays/board-overlays/+/master/project-termina/
-[define.product]: /docs/development/build/build_system/boards_and_products.md
-[define.vmar]: /docs/reference/kernel_objects/vm_address_region.md
-[define.vmo]: /docs/reference/kernel_objects/vm_object.md
+[define.product]: /development/build/build_system/boards_and_products.md
+[define.vmar]: /reference/kernel_objects/vm_address_region.md
+[define.vmo]: /reference/kernel_objects/vm_object.md
 [define.mmio]: https://en.wikipedia.org/wiki/Memory-mapped_I/O
 [define.pio]: https://wiki.osdev.org/Port_IO
 [define.slat]: https://en.wikipedia.org/wiki/Second_Level_Address_Translation

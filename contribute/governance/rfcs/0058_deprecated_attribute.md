@@ -215,16 +215,16 @@ for this field anymore, code should stop using this data."
 
 <!-- XREFS -->
 
-[rfc-0083]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
-[attributes]: /docs/reference/fidl/language/attributes.md
+[rfc-0083]: /contribute/governance/rfcs/0083_fidl_versioning.md
+[attributes]: /reference/fidl/language/attributes.md
 [donotuse1]: https://fuchsia.googlesource.com/fuchsia/+/caa3f20aa7b64240f4265ede5e6deddf0f2d0cf7/garnet/public/fidl/fuchsia.media/audio_renderer.fidl#7
 [donotuse2]: https://fuchsia.googlesource.com/fuchsia/+/ce931e090d0c54030a80397bd24f217132983794/peridot/public/fidl/fuchsia.modular/module/module_context.fidl#79
 [three-recommended-forms]: https://github.com/golang/go/issues/10909#issuecomment-136492606
-[fidl-api]: /docs/development/api/fidl.md#Good-Design-Patterns
+[fidl-api]: /development/api/fidl.md#Good-Design-Patterns
 [rust-deprecated]: https://doc.rust-lang.org/reference/attributes.html#deprecation
 [rust-deny-warnings]: https://doc.rust-lang.org/reference/attributes.html#lint-check-attributes
 [rust-allow-deprecated]: https://doc.rust-lang.org/reference/attributes.html#lint-check-attributes
-[go-doc-comments]: /docs/contribute/governance/rfcs/0055_documentation_comments.md
+[go-doc-comments]: /contribute/governance/rfcs/0055_documentation_comments.md
 [go-staticcheck]: https://staticcheck.io/docs/checks#checks
 [protobufs-only-on-fields]: https://developers.google.com/protocol-buffers/docs/proto3
 [flatbuffers-only-on-fields]: https://google.github.io/flatbuffers/md__schemas.html

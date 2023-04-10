@@ -175,10 +175,10 @@ Notice the following key aspects of this example:
     }
     ```
 
-[RFC-121]: /docs/contribute/governance/rfcs/0121_component_events.md
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
-[doc-lifecycle]: /docs/concepts/components/v2/lifecycle.md
-[doc-realms]: /docs/concepts/components/v2/realms.md
+[RFC-121]: /contribute/governance/rfcs/0121_component_events.md
+[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
+[doc-lifecycle]: /concepts/components/v2/lifecycle.md
+[doc-realms]: /concepts/components/v2/realms.md
 [event-source]: https://fuchsia.googlesource.com/fuchsia/+/refs/changes/44/656544/21/sdk/fidl/fuchsia.sys2/events.fidl#283
 [event-type]: https://fuchsia.googlesource.com/fuchsia/+/refs/changes/44/656544/21/sdk/fidl/fuchsia.sys2/events.fidl#21
 [example-img]: ../images/example_topology.svg

@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -56,7 +56,7 @@ None.
  - [`zx_timer_create()`]
  - [`zx_timer_set()`]
 
-[timer slack]: /docs/concepts/kernel/timer_slack.md
+[timer slack]: /concepts/kernel/timer_slack.md
 [`zx_deadline_after()`]: deadline_after.md
 [`zx_timer_cancel()`]: timer_cancel.md
 [`zx_timer_create()`]: timer_create.md
