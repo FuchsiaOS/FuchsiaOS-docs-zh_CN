@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -31,7 +31,7 @@ None.
 
 ## Description
 
-Creates a new zircon clock object. See [clocks](/docs/reference/kernel_objects/clock.md) for an
+Creates a new zircon clock object. See [clocks](/reference/kernel_objects/clock.md) for an
 overview of clock objects.
 
 ### Options
@@ -60,7 +60,7 @@ The following options are defined for clock objects:
 ### Arguments
 
 One additional creation-time argument may be specified when configuring the clock, the backstop
-time. See [clocks](/docs/reference/kernel_objects/clock.md) for more details about backstop times.
+time. See [clocks](/reference/kernel_objects/clock.md) for more details about backstop times.
 
 In order to configure a backstop time, a user must pass a `zx_clock_create_args_v1_t` structure to
 the `zx_clock_create` call via the `args` parameter. Additionally, the `options` bits must have
@@ -114,7 +114,7 @@ and **ZX_RIGHT_WRITE** rights assigned to them.
  - [`zx_clock_read()`]
  - [`zx_clock_update()`]
 
-[clocks]: /docs/reference/kernel_objects/clock.md
+[clocks]: /reference/kernel_objects/clock.md
 [`zx_clock_get_details()`]: clock_get_details.md
 [`zx_clock_read()`]: clock_read.md
 [`zx_clock_update()`]: clock_update.md

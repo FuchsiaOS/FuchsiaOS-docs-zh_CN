@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -141,7 +141,7 @@ See [signals] for more information about signals and their terminology.
  - [`zx_port_queue()`]
  - [`zx_port_wait()`]
 
-[signals]: /docs/concepts/kernel/signals.md
+[signals]: /concepts/kernel/signals.md
 [`zx_object_wait_many()`]: object_wait_many.md
 [`zx_object_wait_one()`]: object_wait_one.md
 [`zx_port_cancel()`]: port_cancel.md

@@ -170,8 +170,8 @@ internal CTP process.
 * [Zircon RFC criteria][zircon-criteria]
 * [FIDL RFC criteria and process][fidl-criteria]
 
-[cf-intro]: /docs/concepts/components/v2/introduction.md
-[glossary.component]: /docs/glossary/README.md#component
-[rfc-process]: /docs/contribute/governance/rfcs/0001_rfc_process.md
+[cf-intro]: /concepts/components/v2/introduction.md
+[glossary.component]: /glossary/README.md#component
+[rfc-process]: /contribute/governance/rfcs/0001_rfc_process.md
 [fidl-criteria]: 0049_fidl_tuning_process_evolution.md#criteria
 [zircon-criteria]: 0006_addendum_to_rfc_process_for_zircon.md

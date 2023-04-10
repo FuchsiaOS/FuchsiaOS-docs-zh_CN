@@ -260,19 +260,19 @@ recommended way for users to install Bazel (using [bazelisk]).
 - [GN C++ SDK][3]
 - [Unofficial Dart rules][12]
 
-[1]: /docs/contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
-[2]: /docs/development/idk
+[1]: /contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
+[2]: /development/idk
 [3]: https://cs.opensource.google/fuchsia/fuchsia/+/main:docs/development/idk/gn/README.md;drc=552aeea3b169aacb0dea4dcd4ee88109fd3886ef
-[4]: /docs/development/idk#strategy
+[4]: /development/idk#strategy
 [10]: https://github.com/bazelbuild/stardoc
 [11]: https://fuchsia.googlesource.com/fuchsia/+/d9201b0b2049cd08fbb15b764910edc22dba4837/scripts/sdk/bazel
 [12]: https://github.com/cbracken/rules_dart
 [14]: https://gn.googlesource.com/gn/#versioning-and-distribution
-[16]: /docs/contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md#phase_3
-[Distributed Product Integration]: /docs/contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md
+[16]: /contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md#phase_3
+[Distributed Product Integration]: /contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md
 [Bazel offline builds]: https://docs.bazel.build/versions/main/external.html#offline-builds
 [bazelisk]: https://github.com/bazelbuild/bazelisk
 [rules_go]: https://github.com/bazelbuild/rules_go
 [Workstation.git]: https://fuchsia.googlesource.com/workstation/+/refs/heads/main/
 [Bazel toolchain]: https://docs.bazel.build/versions/main/toolchains.html
-[OOT System Testing]: /docs/contribute/roadmap/2021/oot_system_testing.md
+[OOT System Testing]: /contribute/roadmap/2021/oot_system_testing.md

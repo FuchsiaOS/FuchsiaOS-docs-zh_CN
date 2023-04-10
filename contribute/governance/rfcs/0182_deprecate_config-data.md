@@ -366,12 +366,12 @@ plan of record to build support for
 [modulating capability routes on ABI revisions][rfc-0002-cf], but this mechanism
 has not been designed yet.
 
-[directory-capability]: /docs/concepts/components/v2/capabilities/directory.md
-[hermetic-data]: /docs/development/components/data.md#hermetic_data_files_with_resource
+[directory-capability]: /concepts/components/v2/capabilities/directory.md
+[hermetic-data]: /development/components/data.md#hermetic_data_files_with_resource
 [hwinfo]: /sdk/fidl/fuchsia.hwinfo/hwinfo.fidl
-[realm-builder]: /docs/development/testing/components/realm_builder.md
-[rfc-0002-cf]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#component_framework
-[rfc-0173]: /docs/contribute/governance/rfcs/0173_structured_config_cf_apis.md
-[structured-configuration]: /docs/development/components/configuration/structured_config.md
-[structured-configuration-testing]: /docs/development/components/configuration/structured_config.md#testing_with_realm_builder
-[config-data]: /docs/development/components/data.md#product-specific_configuration_with_config_data
+[realm-builder]: /development/testing/components/realm_builder.md
+[rfc-0002-cf]: /contribute/governance/rfcs/0002_platform_versioning.md#component_framework
+[rfc-0173]: /contribute/governance/rfcs/0173_structured_config_cf_apis.md
+[structured-configuration]: /development/components/configuration/structured_config.md
+[structured-configuration-testing]: /development/components/configuration/structured_config.md#testing_with_realm_builder
+[config-data]: /development/components/data.md#product-specific_configuration_with_config_data

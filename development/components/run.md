@@ -380,25 +380,25 @@ Creating component instance...
 Starting component instance...
 ```
 
-[capability-directory]: /docs/concepts/components/v2/capabilities/directory.md
-[capability-protocol]: /docs/concepts/components/v2/capabilities/protocol.md
-[capability-storage]: /docs/concepts/components/v2/capabilities/storage.md
-[component-select]: /docs/development/tools/ffx/commands/component-select.md
-[component-url]: /docs/reference/components/url.md
+[capability-directory]: /concepts/components/v2/capabilities/directory.md
+[capability-protocol]: /concepts/components/v2/capabilities/protocol.md
+[capability-storage]: /concepts/components/v2/capabilities/storage.md
+[component-select]: /development/tools/ffx/commands/component-select.md
+[component-url]: /reference/components/url.md
 [fidl-launcher]: https://fuchsia.dev/reference/fidl/fuchsia.process#Launcher
 [fidl-logger]: https://fuchsia.dev/reference/fidl/fuchsia.logger#LogSink
 [ffx-reference]: https://fuchsia.dev/reference/tools/sdk/ffx.md#component
-[glossary.capability]: /docs/glossary/README.md#capability
-[glossary.component-framework]: /docs/glossary/README.md#component-framework
-[glossary.component-instance]: /docs/glossary/README.md#component-instance
-[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
-[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
-[glossary.component-url]: /docs/glossary/README.md#component-url
-[glossary.moniker]: /docs/glossary/README.md#moniker
-[lifecycle-doc]: /docs/concepts/components/v2/lifecycle.md
+[glossary.capability]: /glossary/README.md#capability
+[glossary.component-framework]: /glossary/README.md#component-framework
+[glossary.component-instance]: /glossary/README.md#component-instance
+[glossary.component-instance-tree]: /glossary/README.md#component-instance-tree
+[glossary.component-manifest]: /glossary/README.md#component-manifest
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.moniker]: /glossary/README.md#moniker
+[lifecycle-doc]: /concepts/components/v2/lifecycle.md
 [manifest-children]: https://fuchsia.dev/reference/cml#children
 [manifest-collections]: https://fuchsia.dev/reference/cml#collections
-[package-server]: /docs/concepts/packages/package_update.md#connecting_host_and_target
-[package-updates]: /docs/concepts/packages/package_update.md#triggering_package_updates
-[run-session]: /docs/development/sessions/building-and-running-a-session.md
-[run-test]: /docs/development/testing/run_fuchsia_tests.md
+[package-server]: /concepts/packages/package_update.md#connecting_host_and_target
+[package-updates]: /concepts/packages/package_update.md#triggering_package_updates
+[run-session]: /development/sessions/building-and-running-a-session.md
+[run-test]: /development/testing/run_fuchsia_tests.md

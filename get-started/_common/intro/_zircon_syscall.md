@@ -14,7 +14,7 @@ as:
   <p>Zircon has fewer system calls than POSIX-oriented operating systems due to
   services like filesystems and drivers being hosted outside the kernel. See the
   full list of available Zircon system calls in the
-  <a href="/docs/reference/syscalls.md"> reference documentation.</a></p>
+  <a href="/reference/syscalls.md"> reference documentation.</a></p>
 </aside>
 
 User space processes access system calls through `libzircon.so` — a
@@ -40,10 +40,10 @@ referenced object.
  <p>In addition, handles cannot be referenced by name and Zircon does not
  reserve any identifiers for common streams like stdin and stdout.</p>
 
- <p>For more details, see <a href="/docs/concepts/kernel/handles.md">
+ <p>For more details, see <a href="/concepts/kernel/handles.md">
  Zircon handles</a>.</p>
 </aside>
 
 
-[glossary.virtual-dynamic-shared-object]: /docs/glossary/README.md#virtual-dynamic-shared-object
-[glossary.handle]: /docs/glossary/README.md#handle
+[glossary.virtual-dynamic-shared-object]: /glossary/README.md#virtual-dynamic-shared-object
+[glossary.handle]: /glossary/README.md#handle

@@ -266,12 +266,12 @@ killall pm
 
 <!-- Reference links -->
 
-[using-the-sdk]: /docs/development/sdk/index.md
-[get-started-sdk]: /docs/get-started/sdk/index.md
+[using-the-sdk]: /development/sdk/index.md
+[get-started-sdk]: /get-started/sdk/index.md
 [sdk-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Bazel
 [kvm]: https://www.linux-kvm.org/page/Main_Page
 [qemu]: https://www.qemu.org/
 [git-install]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-[driver-concepts]: /docs/concepts/drivers/README.md
-[codelab-qemu-edu-driver]: /docs/get-started/sdk/learn/driver/introduction.md
+[driver-concepts]: /concepts/drivers/README.md
+[codelab-qemu-edu-driver]: /get-started/sdk/learn/driver/introduction.md
 [vscode-install]: https://code.visualstudio.com/Download

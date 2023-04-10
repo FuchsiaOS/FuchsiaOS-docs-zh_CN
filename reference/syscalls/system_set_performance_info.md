@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -54,7 +54,7 @@ Logical CPU numbers must be stored in increasing order in the array. The scale v
 fixed point Q32.32 format. The scale values should indicate the relative performance of the CPUs,
 with 1.0 corresponding to the highest operating point of the fastest CPU in the system.
 
-See [RFC 0123](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+See [RFC 0123](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 for further details on values and update protocols.
 
 ## Rights
@@ -82,7 +82,7 @@ negative error value is returned.
 
 ## See also
 
-- [RFC 0123: CPU performance info syscalls](/docs/contribute/governance/rfcs/0123_cpu_performance_info.md)
+- [RFC 0123: CPU performance info syscalls](/contribute/governance/rfcs/0123_cpu_performance_info.md)
 
  - [`zx_system_get_performance_info()`]
 

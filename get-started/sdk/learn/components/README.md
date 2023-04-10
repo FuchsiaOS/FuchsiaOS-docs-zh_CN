@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-*   [Introduction to Fuchsia](/docs/get-started/sdk/learn/intro/README.md)
+*   [Introduction to Fuchsia](/get-started/sdk/learn/intro/README.md)
 
 ## What you'll learn
 

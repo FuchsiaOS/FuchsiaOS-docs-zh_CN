@@ -105,7 +105,7 @@ augroup END
 ```
 
 For highlighting Rust, see its [language-specific
-guide](/docs/development/languages/rust/editors.md#vim).
+guide](/development/languages/rust/editors.md#vim).
 
 
-[youcompleteme-editor]: /docs/reference/tools/editors/youcompleteme.md
+[youcompleteme-editor]: /reference/tools/editors/youcompleteme.md

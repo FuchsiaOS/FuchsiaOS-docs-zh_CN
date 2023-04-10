@@ -674,8 +674,8 @@ the most out of the component framework. Here are some ways of doing this:
 #### What's implemented today
 
 We have reference documentation under
-[//docs/concepts/components][docs-concepts] and
-[//docs/development/components][docs-development]. There is a
+[//concepts/components][docs-concepts] and
+[//development/components][docs-development]. There is a
 [Components getting started guide][docs-get-started].
 
 We have some basic examples under [//examples][examples].
@@ -748,26 +748,26 @@ There is a limit to how much of the topology can be statically validated. When
 the exploration reaches a collection, in general it has to stop because the
 contents of a collection are runtime determined.
 
-[docs-concepts]: /docs/concepts/components/v2
-[docs-development]: /docs/development/components/build.md
-[docs-eager]: /docs/development/components/connect.md#eager
-[docs-environments]: /docs/concepts/components/v2/environments.md
-[docs-eventpair]: /docs/reference/kernel_objects/eventpair.md
-[docs-get-started]: /docs/get-started/learn/components
-[docs-hub]: /docs/concepts/components/v2/hub.md
-[docs-intro-components]: /docs/concepts/components/v2/introduction.md#components
-[docs-manifests]: /docs/concepts/components/v2/component_manifests.md
-[docs-monikers]: /docs/concepts/components/v2/identifiers.md#monikers
-[docs-principles-secure]: /docs/concepts/principles/secure.md
-[docs-socket]: /docs/reference/kernel_objects/socket.md
-[docs-storage-index]: /docs/development/components/component_id_index.md
-[docs-storage]: /docs/concepts/components/v2/capabilities/storage.md
-[docs-url]: /docs/concepts/components/v2/identifiers.md#component-urls
-[docs-vmo]: /docs/reference/kernel_objects/vm_object.md
+[docs-concepts]: /concepts/components/v2
+[docs-development]: /development/components/build.md
+[docs-eager]: /development/components/connect.md#eager
+[docs-environments]: /concepts/components/v2/environments.md
+[docs-eventpair]: /reference/kernel_objects/eventpair.md
+[docs-get-started]: /get-started/learn/components
+[docs-hub]: /concepts/components/v2/hub.md
+[docs-intro-components]: /concepts/components/v2/introduction.md#components
+[docs-manifests]: /concepts/components/v2/component_manifests.md
+[docs-monikers]: /concepts/components/v2/identifiers.md#monikers
+[docs-principles-secure]: /concepts/principles/secure.md
+[docs-socket]: /reference/kernel_objects/socket.md
+[docs-storage-index]: /development/components/component_id_index.md
+[docs-storage]: /concepts/components/v2/capabilities/storage.md
+[docs-url]: /concepts/components/v2/identifiers.md#component-urls
+[docs-vmo]: /reference/kernel_objects/vm_object.md
 [examples]: /examples
 [fidl-realm]: /sdk/fidl/fuchsia.component/realm.fidl
-[rfc-eager-updates]: /docs/contribute/governance/rfcs/0145_eager_package_updates.md
-[rfc-versions]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
+[rfc-eager-updates]: /contribute/governance/rfcs/0145_eager_package_updates.md
+[rfc-versions]: /contribute/governance/rfcs/0002_platform_versioning.md
 [src-builtin]: /src/sys/component_manager/configs/bootfs_config.json5
 [src-route-exceptions]: /src/security/policy/build/verify_routes_exceptions_allowlist.json5
 [src-security-policy]: /src/security/policy/component_manager_policy.json5

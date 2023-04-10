@@ -21,4 +21,4 @@ so they run in this collection:
 The system capabilities offered to CTF tests can be found in
 //sdk/ctf/test_realm/meta/test-collection.shard.cml.
 
-[CTF]: /docs/development/testing/ctf/overview.md
+[CTF]: /development/testing/ctf/overview.md

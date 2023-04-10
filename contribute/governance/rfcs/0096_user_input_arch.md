@@ -733,22 +733,22 @@ for each new product type. This approach might be a valuable optimization in the
 future but was deemed too heavyweight for the current use-cases.
 
 [HID]: http://www.freebsddiary.org/APC/usb_hid_usages.php
-[views]: /docs/development/graphics/scenic/concepts/view_ref.md
-[scenic]: /docs/concepts/ui/scenic/index.md
-[scenegraph]: /docs/concepts/ui/scenic/index.md#scenes
-[viewref]: /docs/development/graphics/scenic/concepts/view_ref.md
-[focuschain]: /docs/development/graphics/scenic/concepts/focus_chain.md
+[views]: /development/graphics/scenic/concepts/view_ref.md
+[scenic]: /concepts/ui/scenic/index.md
+[scenegraph]: /concepts/ui/scenic/index.md#scenes
+[viewref]: /development/graphics/scenic/concepts/view_ref.md
+[focuschain]: /development/graphics/scenic/concepts/focus_chain.md
 [latencyreference]: https://www-user.tu-chemnitz.de/~attig/Attig-Rauh-Franke-Krems_2017_LatencyGuidelines.pdf
 [inputmethod]: https://en.wikipedia.org/wiki/Input_method
-[i18n]: /docs/development/internationalization/README.md
+[i18n]: /development/internationalization/README.md
 [root-presenter]: /src/ui/bin/root_presenter/presentation.cc
 [input-pipeline]: /src/ui/bin/input-pipeline/
-[drivers]: /docs/development/drivers/concepts/driver_architectures/input_drivers/input.md
+[drivers]: /development/drivers/concepts/driver_architectures/input_drivers/input.md
 [input-report]: https://fuchsia.dev/reference/fidl/fuchsia.input.report
-[glossary.InputEvent]: /docs/glossary/README.md#inputevent
-[glossary.InputHandler]: /docs/glossary/README.md#inputhandler
-[glossary.session-component]: /docs/glossary#session-component
+[glossary.InputEvent]: /glossary/README.md#inputevent
+[glossary.InputHandler]: /glossary/README.md#inputhandler
+[glossary.session-component]: /glossary#session-component
 [output-report]: https://fuchsia.dev/reference/fidl/fuchsia.input.report#fuchsia.input.report/InputDevice.SendOutputReport
-[input-roadmap]: /docs/contribute/roadmap/2020/overview.md#implementing_accessibility_and_input_improvements
-[config-roadmap]: /docs/contribute/roadmap/2021/structured_configuration.md
-[event-pair]: /docs/reference/kernel_objects/eventpair.md
+[input-roadmap]: /contribute/roadmap/2020/overview.md#implementing_accessibility_and_input_improvements
+[config-roadmap]: /contribute/roadmap/2021/structured_configuration.md
+[event-pair]: /reference/kernel_objects/eventpair.md

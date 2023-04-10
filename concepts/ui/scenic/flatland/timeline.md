@@ -42,7 +42,7 @@ important arguments for deciding when the present appears on the display are the
 `requested_presentation_time` and `server_wait_fences`.
 
 For more information on how `Present()` calls are handled, see
-[frame scheduling](/docs/concepts/ui/scenic/frame_scheduling.md).
+[frame scheduling](/concepts/ui/scenic/frame_scheduling.md).
 
 ## ->OnNextFrameBegin() {#on-next-frame-begin}
 
@@ -62,7 +62,7 @@ main pieces of information:
 *   Timing feedback to the client so they can evaluate how their frame
     scheduling strategy is working (latency, dropped frames, etc).
 *   It is signal for *when the effects of a present has updated the state of the
-    [ViewTree](/docs/concepts/ui/scenic/views.md#view-tree))*. After
+    [ViewTree](/concepts/ui/scenic/views.md#view-tree))*. After
     `->OnFramePresented()` Scenic guarantees that any subsequent calls to APIs
     that interact with the `ViewTree` (such as those in
     `Flatland::ViewBoundProtocols`) will act as if the previous present has been

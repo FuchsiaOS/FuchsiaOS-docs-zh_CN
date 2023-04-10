@@ -257,11 +257,11 @@ Trace providers:
 <!-- Reference links -->
 
 [ffx-trace]: https://fuchsia.dev/reference/tools/sdk/ffx#trace
-[fuchsia-tracing-system]: /docs/concepts/kernel/tracing-system.md
-[register-a-trace-provider]: /docs/development/tracing/tutorial/registering-a-trace-provider.md
-[fxt]: /docs/reference/tracing/trace-format.md
+[fuchsia-tracing-system]: /concepts/kernel/tracing-system.md
+[register-a-trace-provider]: /development/tracing/tutorial/registering-a-trace-provider.md
+[fxt]: /reference/tracing/trace-format.md
 [perfetto-viewer]: https://ui.perfetto.dev/#!/
 [perfetto-docs]: https://perfetto.dev/docs/
-[record-a-boot-trace]: /docs/development/tracing/advanced/recording-a-boot-trace.md
-[record-a-cpu-trace]: /docs/development/tracing/advanced/recording-a-cpu-performance-trace.md
-[trace-providers]: /docs/concepts/kernel/tracing-system.md#trace-providers
+[record-a-boot-trace]: /development/tracing/advanced/recording-a-boot-trace.md
+[record-a-cpu-trace]: /development/tracing/advanced/recording-a-cpu-performance-trace.md
+[trace-providers]: /concepts/kernel/tracing-system.md#trace-providers

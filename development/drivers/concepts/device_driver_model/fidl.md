@@ -5,7 +5,7 @@ version of the driver framework (DFv1).
 
 A device may implement the `ddk::Messagable` mixin in order to be messaged by devfs
 when a client tries to connect to the driver. A driver has to implement `ddk::Messagable`
-with the specific [FIDL](/docs/development/languages/fidl/README.md) interface it would like
+with the specific [FIDL](/development/languages/fidl/README.md) interface it would like
 to speak.
 
 For example a driver implementing the

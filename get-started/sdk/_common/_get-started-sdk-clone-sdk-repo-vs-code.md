@@ -86,7 +86,7 @@ In VS Code, do the following:
 
 [clang]: https://clang.llvm.org
 [ffx]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fuchsia-idk]: /docs/development/idk/README.md
-[remote-vs-code-setup]: /docs/reference/tools/editors/vscode/remote-workspaces.md
+[fuchsia-idk]: /development/idk/README.md
+[remote-vs-code-setup]: /reference/tools/editors/vscode/remote-workspaces.md
 [sdk-samples-repo]: https://fuchsia.googlesource.com/sdk-samples/getting-started
 

@@ -10,7 +10,7 @@ intended for both users and infrastructure integrators alike.
 
 ## Getting started for users
 
-Review the user guide for [using the ffx command line tool.](/docs/development/tools/ffx/getting-started.md)
+Review the user guide for [using the ffx command line tool.](/development/tools/ffx/getting-started.md)
 
 ## Getting started for developers
 
@@ -20,7 +20,7 @@ consider the following:
  - `ffx` is developed in Rust and makes heavy use of rust crates. However,
     crates must be hosted in the [Fuchsia Platform Source Tree](https://fuchsia.googlesource.com).
     This process is detailed in Open Source Review Board (OSRB)
-    [process](/docs/contribute/governance/policy/osrb-process.md) document.
+    [process](/contribute/governance/policy/osrb-process.md) document.
     Review existing crates in [`third_party/rust_crates`](/third_party/rust_crates).
  - When extending `ffx`, review the existing command surface by running
    `ffx help` to understand where the new command or tool may fit.
@@ -38,9 +38,9 @@ consider the following:
    settings within `ffx` or define new ones for the specific command or
    workflow. Existing configurations can be accessed via `ffx config get`.
 
-A detailed guide with examples is available in [developing for ffx.](/docs/development/tools/ffx/development/plugins.md)
+A detailed guide with examples is available in [developing for ffx.](/development/tools/ffx/development/plugins.md)
 
-## [CLI](/docs/development/tools/ffx/architecture/cli.md)
+## [CLI](/development/tools/ffx/architecture/cli.md)
 
 The Command Line Interface (CLI) provides the UX for ffx. It is responsible
 for:

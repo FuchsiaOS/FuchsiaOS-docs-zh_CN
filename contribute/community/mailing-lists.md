@@ -74,7 +74,7 @@ Fuchsia:
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/component-framework-dev">component-framework-dev</a>
    </td>
-   <td>For conversation about <a href="/docs/glossary.md#component-framework">Component Framework</a>.
+   <td>For conversation about <a href="/glossary.md#component-framework">Component Framework</a>.
    </td>
   </tr>
   <tr>
@@ -88,8 +88,8 @@ Fuchsia:
    </td>
    <td>
     Discussions about the development of diagnostics features and services, such as
-    <a href="/docs/development/diagnostics/inspect/README.md">Inspect</a>,
-    <a href="/docs/concepts/components/diagnostics/logs/README.md">Logs</a>, and the Archivist.
+    <a href="/development/diagnostics/inspect/README.md">Inspect</a>,
+    <a href="/concepts/components/diagnostics/logs/README.md">Logs</a>, and the Archivist.
    </td>
   </tr>
   <tr>
@@ -199,7 +199,7 @@ Fuchsia’s leadership:
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/api-council">api-council</a>
    </td>
-   <td>Discussion list for communicating with the <a href="/docs/contribute/governance/api_council.md">Fuchsia API Council</a>.
+   <td>Discussion list for communicating with the <a href="/contribute/governance/api_council.md">Fuchsia API Council</a>.
    </td>
   </tr>
   <tr>
@@ -211,13 +211,13 @@ Fuchsia’s leadership:
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/eng-council">eng-council</a>
    </td>
-   <td>Discussion list for communicating with the Fuchsia <a href="/docs/contribute/governance/eng_council.md">Eng Council</a> about review requests, <a href="/docs/contribute/governance/rfcs.md">RFC</a> feedback, or RFC escalations.
+   <td>Discussion list for communicating with the Fuchsia <a href="/contribute/governance/eng_council.md">Eng Council</a> about review requests, <a href="/contribute/governance/rfcs.md">RFC</a> feedback, or RFC escalations.
    </td>
   </tr>
   <tr>
    <td><a href="https://groups.google.com/a/fuchsia.dev/g/eng-council-discuss">eng-council-discuss</a>
    </td>
-   <td>Discussion list for communicating with the Fuchsia <a href="/docs/contribute/governance/eng_council.md">Eng Council</a>.
+   <td>Discussion list for communicating with the Fuchsia <a href="/contribute/governance/eng_council.md">Eng Council</a>.
    </td>
   </tr>
 </table>

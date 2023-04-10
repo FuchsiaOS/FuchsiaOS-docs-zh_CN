@@ -2,7 +2,7 @@
 
 Note: This document describes the legacy plugin macro system and is here only
 as a reference while we still have some plugins using it around. See
-[the top level ffx development docs](/docs/development/tools/ffx/development/README.md)
+[the top level ffx development docs](/development/tools/ffx/development/README.md)
 for documentation on writing subtools.
 
 This page is intended for developers who want to understand FFX's plugin system

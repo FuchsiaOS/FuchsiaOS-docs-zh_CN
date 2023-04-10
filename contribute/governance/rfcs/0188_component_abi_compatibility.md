@@ -473,13 +473,13 @@ should be removed. This tech debt would be limited to the
 
 None considered in this design.
 
-[boot-components]: /docs/concepts/process/everything_between_power_on_and_your_component.md#v2-components
-[boot-resolver-changes]: /docs/contribute/governance/rfcs/0167_early_boot_packages.md#bootresolver_changes
-[fuchsia-system-interface]: /docs/concepts/packages/system.md
-[package-abi-revisions]: /docs/contribute/governance/rfcs/0135_package_abi_revision.md
-[packaging-boot-components]: /docs/contribute/governance/rfcs/0167_early_boot_packages.md
-[platform-versioning]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
-[platform-versioning-evolution]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#evolution
-[subpackages]: /docs/contribute/governance/rfcs/0154_subpackages.md
-[ffx-component]: /docs/development/sdk/ffx/view-component-information.md
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[boot-components]: /concepts/process/everything_between_power_on_and_your_component.md#v2-components
+[boot-resolver-changes]: /contribute/governance/rfcs/0167_early_boot_packages.md#bootresolver_changes
+[fuchsia-system-interface]: /concepts/packages/system.md
+[package-abi-revisions]: /contribute/governance/rfcs/0135_package_abi_revision.md
+[packaging-boot-components]: /contribute/governance/rfcs/0167_early_boot_packages.md
+[platform-versioning]: /contribute/governance/rfcs/0002_platform_versioning.md
+[platform-versioning-evolution]: /contribute/governance/rfcs/0002_platform_versioning.md#evolution
+[subpackages]: /contribute/governance/rfcs/0154_subpackages.md
+[ffx-component]: /development/sdk/ffx/view-component-information.md
+[capability-routing]: /concepts/components/v2/capabilities/README.md#routing

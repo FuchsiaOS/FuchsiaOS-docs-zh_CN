@@ -5,7 +5,7 @@
 This document contains guidance on writing API documentation for Fuchsia. It
 applies both to public-facing APIs (those surfaced via an SDK) and
 Fuchsia-internal ones. Public facing API documentation will be reviewed by the
-[API Council](/docs/contribute/governance/api_council.md) for adherence to this
+[API Council](/contribute/governance/api_council.md) for adherence to this
 rubric.
 
 ## Overall commenting rules
@@ -18,8 +18,8 @@ below.
 
 Here are the links to language-specific guidelines for languages likely to be
 used in the Fuchsia repository: [C and
-C++](/docs/development/languages/c-cpp/cpp-style.md),
-[Dart](/docs/development/languages/dart/style.md)
+C++](/development/languages/c-cpp/cpp-style.md),
+[Dart](/development/languages/dart/style.md)
 [Rust](https://github.com/rust-lang-nursery/fmt-rfcs/blob/HEAD/guide/guide.md),
 [Java](https://google.github.io/styleguide/javaguide.html),
 [Kotlin](https://kotlinlang.org/docs/reference/coding-conventions.html#documentation-comments).
@@ -42,8 +42,8 @@ good judgment!
 ## General style
 
  * Fuchsia uses U.S. English, and follows the
-   [Fuchsia document standards](/docs/contribute/docs/documentation-standards.md) and
-   [style guide](/docs/contribute/docs/documentation-style-guide.md)
+   [Fuchsia document standards](/contribute/docs/documentation-standards.md) and
+   [style guide](/contribute/docs/documentation-style-guide.md)
  * Do not list authors explicitly. Author information goes out of date quickly,
    as developers move to different projects. Consider providing a maintainers
    file, although be wary that this goes out of date, too.
@@ -229,7 +229,7 @@ above.
   on Fuchsia.dev.
 * Avoid jargon that may not be obvious to the reader (think: "if I am
   interested in this API, will I definitely know what this word means?"). If
-  jargon is Fuchsia-specific and not defined, add it to the [glossary](/docs/glossary/README.md).
+  jargon is Fuchsia-specific and not defined, add it to the [glossary](/glossary/README.md).
 * Avoid abbreviations and acronyms. When you need to use them, explain them.
   If the abbreviation is widely used in the industry (e.g., "Transmission
   Control Protocol / Internet Protocol" (TCP/IP)), you do not need to explain

@@ -129,13 +129,13 @@ See [Fuchsia tracing guides][fuchsia-tracing-guides] for more information.
 
 <!-- Reference links -->
 
-[fuchsia-tracing-system]: /docs/concepts/kernel/tracing-system.md
-[trace-provider]: /docs/concepts/kernel/tracing-system.md#trace-providers
-[adding-tracing-in-your-code]: /docs/development/tracing/tutorial/adding-tracing-in-code.md
-[trace-c-cpp-macros]: /docs/reference/tracing/c_cpp_macros.md
-[fx-workflows]: /docs/development/build/fx.md
-[ffx-trace]: /docs/development/sdk/ffx/record-traces.md
+[fuchsia-tracing-system]: /concepts/kernel/tracing-system.md
+[trace-provider]: /concepts/kernel/tracing-system.md#trace-providers
+[adding-tracing-in-your-code]: /development/tracing/tutorial/adding-tracing-in-code.md
+[trace-c-cpp-macros]: /reference/tracing/c_cpp_macros.md
+[fx-workflows]: /development/build/fx.md
+[ffx-trace]: /development/sdk/ffx/record-traces.md
 [perfetto-viewer]: https://ui.perfetto.dev/#!/
-[recording-a-fuchsia-trace]: /docs/development/tracing/tutorial/recording-a-fuchsia-trace.md
-[fuchsia-tracing-guides]: /docs/development/tracing/README.md
+[recording-a-fuchsia-trace]: /development/tracing/tutorial/recording-a-fuchsia-trace.md
+[fuchsia-tracing-guides]: /development/tracing/README.md
 

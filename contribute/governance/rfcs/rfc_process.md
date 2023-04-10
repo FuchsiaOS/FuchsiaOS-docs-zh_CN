@@ -43,7 +43,7 @@ decision.
 
 The vast majority of changes do not _require_ an RFC. Instead, these changes can
 be made using the [code review
-process](/docs/development/source_code/contribute_changes.md). However,
+process](/development/source_code/contribute_changes.md). However,
 technical decisions that have broad impact across the project require broader
 agreement and must be socialized with the project using the RFC process.
 
@@ -186,7 +186,7 @@ socialization, you are ready to start the formal part of the RFC process. The
 next step is to write a first draft of the RFC document itself.
 
 Mechanically, an RFC is a markdown file in the
-`//docs/contribute/governance/rfcs` directory. To create an RFC, you create a
+`//contribute/governance/rfcs` directory. To create an RFC, you create a
 CL that adds a file to that directory. You must start by making a copy of the
 [RFC template](TEMPLATE.md). The template is designed to guide you towards
 writing a high-quality RFC by prompting you to think through the problem you are
@@ -194,14 +194,14 @@ trying to solve in a semi-structured way.
 
 Any other files that are part of the RFC, diagrams for example, can be added to
 the `resources` directory under a subfolder with the same name as the RFC itself.
-Example:`//docs/contribute/governance/rfcs/resources/<RFC_name>/diagram.png`.
+Example:`//contribute/governance/rfcs/resources/<RFC_name>/diagram.png`.
 
 Do not worry about assigning a number to your RFC at this stage. Instead, use
 `NNNN` as a placeholder. For example, the file name should be something like
 `NNNN_my_idea.md`. The RFC will get a number shortly before landing.
 
 The RFC author should propose an initial set of stakeholders in consultation
-with the experts in their RFC [area](/docs/contribute/governance/areas). The set
+with the experts in their RFC [area](/contribute/governance/areas). The set
 of stakeholders may initially be left empty or incomplete. If there is any
 ambiguity, they should consult FEC for assistance identifying stakeholders.
 
@@ -263,7 +263,7 @@ disagreement about who is a stakeholder, FEC can help resolve this.
 
 At FEC's discretion, RFCs that would benefit from more socialization should be
 scheduled for an [engineering
-review](/docs/contribute/governance/eng_council.md#eng-review) meeting. Some
+review](/contribute/governance/eng_council.md#eng-review) meeting. Some
 triggers leading to scheduling an engineering review are:
 
  * Difficulty to identify relevant stakeholders(s). It might be the case than an
@@ -289,7 +289,7 @@ effectively in the CL.
 
 > *Suggestion.* If you are interested in RFCs, consider configuring the Gerrit
 > Code Review tool to [send you an email > notification](https://gerrit-review.googlesource.com/Documentation/user-notify.html)
-> when a CL modifies the `//docs/contribute/governance/rfcs` directory.
+> when a CL modifies the `//contribute/governance/rfcs` directory.
 
 *Exit criteria:* All stakeholders identified and approved by Eng Council; feedback
 solicited and incorporated.
@@ -454,8 +454,8 @@ existing processes:
 
  * *FIDL Tuning Proposal.* The Fuchsia project has had direct experience using a
    similar process [to make decisions about the FIDL
-   language](/docs/contribute/governance/deprecated-ftp-process.md). This
+   language](/contribute/governance/deprecated-ftp-process.md). This
    proposal exists because of the success of that decision-making process.
 
-[swd]: /docs/contribute/governance/rfcs/0103_software_delivery_rfc_criteria.md
-[create]: /docs/contribute/governance/rfcs/create_rfc.md
+[swd]: /contribute/governance/rfcs/0103_software_delivery_rfc_criteria.md
+[create]: /contribute/governance/rfcs/create_rfc.md

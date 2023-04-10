@@ -12,7 +12,7 @@
 
 ## Summary
 
-Use the [profile object](/docs/reference/kernel_objects/profile.md) to instruct
+Use the [profile object](/reference/kernel_objects/profile.md) to instruct
 the kernel to minimize page faults and other operations that may increase the
 latency of memory accesses by allowing profiles to be applied to VMARs.
 

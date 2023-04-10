@@ -186,4 +186,4 @@ signed types, is based on eternal confusion with those concepts in C and C++,
 whose bindings must support this concept.
 
 <!-- xrefs -->
-[primitives]: /docs/reference/fidl/language/language.md#primitives
+[primitives]: /reference/fidl/language/language.md#primitives

@@ -187,11 +187,11 @@ bootfs, then add the following to your `fx set`:
 fx set core.x64 --args='product_bootfs_labels+=["//bundles:diagnostics-eng"]'
 ```
 
-[inspect_overview]: /docs/development/diagnostics/inspect/README.md
-[Inspect codelab]: /docs/development/diagnostics/inspect/codelab.md
-[roadmap-drivers-components]: /docs/contribute/roadmap/2020/overview.md#implementing_drivers_as_components
+[inspect_overview]: /development/diagnostics/inspect/README.md
+[Inspect codelab]: /development/diagnostics/inspect/codelab.md
+[roadmap-drivers-components]: /contribute/roadmap/2020/overview.md#implementing_drivers_as_components
 [example_test_driver]: /src/devices/tests/driver-inspect-test/test-driver.cc
-[property_types]: /docs/development/diagnostics/inspect/README.md#property
-[inspect_codelab]: /docs/development/diagnostics/inspect/codelab/README.md
+[property_types]: /development/diagnostics/inspect/README.md#property
+[inspect_codelab]: /development/diagnostics/inspect/codelab/README.md
 [driver_host_inspect_test]: /src/devices/bin/driver_host/tests/inspect_test.cc
-[selectors]: /docs/reference/diagnostics/selectors.md
+[selectors]: /reference/diagnostics/selectors.md

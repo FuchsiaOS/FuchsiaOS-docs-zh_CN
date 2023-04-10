@@ -16,7 +16,7 @@ are defined below.
 
 ## Boards
 
-A [board](/docs/glossary/README.md#board) defines the architecture that the
+A [board](/glossary/README.md#board) defines the architecture that the
 build produces for, as well as key features of the device upon which the
 build is intended to run. This configuration affects what drivers are
 included, and may also influence device-specific kernel parameters.
@@ -76,11 +76,11 @@ important configurations to be familiar with:
 The `bringup` product is the most minimal viable target for development.
 Because it lacks most network capabilities, the `bringup` product
 cannot use the `fx` commands, such as
-<code>[fx serve](/docs/development/build/fx.md#serve-a-build)</code> and
-<code>[fx shell](/docs/development/build/fx.md#connect-to-a-target-shell)</code>,
+<code>[fx serve](/development/build/fx.md#serve-a-build)</code> and
+<code>[fx shell](/development/build/fx.md#connect-to-a-target-shell)</code>,
 that require network connectivity.
 
-For more see [Bringup Product Definition](/docs/development/build/build_system/bringup.md)
+For more see [Bringup Product Definition](/development/build/build_system/bringup.md)
 
 ### Core {#core-product}
 `core` is a minimal feature set that can install additional software (such as
@@ -96,8 +96,8 @@ the best environment for enthusiasts to play with and explore.
 
 [products-source]: /products/
 [boards-source]: /boards/
-[fx]: /docs/development/build/fx.md
-[fx-netboot]: /docs/development/build/fx.md#what-is-netbooting
-[fx-paving]: /docs/development/build/fx.md#what-is-paving
-[fx-serve]: /docs/development/build/fx.md#serve-a-build
-[fx-shell]: /docs/development/build/fx.md#connect-to-a-target-shell
+[fx]: /development/build/fx.md
+[fx-netboot]: /development/build/fx.md#what-is-netbooting
+[fx-paving]: /development/build/fx.md#what-is-paving
+[fx-serve]: /development/build/fx.md#serve-a-build
+[fx-shell]: /development/build/fx.md#connect-to-a-target-shell

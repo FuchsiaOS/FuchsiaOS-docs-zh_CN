@@ -4,7 +4,7 @@ This section contains guidelines for Fuchsia contributors making changes to
 Fuchsia Platform APIs. Before you begin, you should be familiarized with the
 following concepts:
 
-- [FIDL Versioning RFC](/docs/contribute/governance/rfcs/0083_fidl_versioning.md)
+- [FIDL Versioning RFC](/contribute/governance/rfcs/0083_fidl_versioning.md)
 
 ## The lifecycle of a platform API {#lifecycle}
 
@@ -21,7 +21,7 @@ The following sections explain how to manage this lifecycle as an API developer.
 ### Adding FIDL APIs {#adding}
 
 Always annotate new FIDL APIs with an
-[@available](/docs/reference/fidl/language/versioning.md)
+[@available](/reference/fidl/language/versioning.md)
 attribute. Unstable APIs should be added at the HEAD API level. For example:
 
 ```fidl
@@ -42,10 +42,10 @@ library fuchsia.examples.docs;
 When a FIDL library has more than one `.fidl` file, the library should include a
 separate `overview.fidl` file and the `@available` attribute should be written in
 that file along with a documentation comment describing the library. See
-[the FIDL style guide](/docs/development/languages/fidl/guides/style.md#library-overview)
+[the FIDL style guide](/development/languages/fidl/guides/style.md#library-overview)
 for more information.
 
-Every API in the partner [SDK category](/docs/contribute/sdk/categories.md)
+Every API in the partner [SDK category](/contribute/sdk/categories.md)
 is opted into static compatibility testing in CI/CQ. These tests fail when
 an API changes in backward incompatible ways. If your API is unstable, consider
 adding it to the internal or experimental SDK categories to prevent partners from
@@ -129,7 +129,7 @@ end developers from targeting the API - while preserving the platform's
 implementation of the API (The ABI). This feature allows existing applications
 to run on newer versions of the platform. When an API has been removed from SDKs
 and the platform still supports its ABI, we say the platform has legacy
-[support](/docs/reference/fidl/language/versioning.md#legacy)
+[support](/reference/fidl/language/versioning.md#legacy)
 for that API.
 
 To maintain legacy support for an API, set legacy=true when removing the API.

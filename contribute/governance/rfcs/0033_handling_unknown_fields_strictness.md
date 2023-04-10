@@ -362,4 +362,4 @@ added or removed after the message is defined.
 
 <!-- xrefs -->
 
-[transitional]: /docs/reference/fidl/language/attributes.md#transitional
+[transitional]: /reference/fidl/language/attributes.md#transitional

@@ -4,10 +4,10 @@
 
 toc:
 - heading: "Editors"
-- include: /docs/reference/tools/editors/_toc.yaml
+- include: /reference/tools/editors/_toc.yaml
 - heading: "SDK"
-- include: /docs/reference/tools/sdk/_toc.yaml
+- include: /reference/tools/sdk/_toc.yaml
 - heading: "Tool troubleshooting"
-- include: /docs/reference/troubleshooting/_toc.yaml
+- include: /reference/troubleshooting/_toc.yaml
 - heading: "Hardware"
-- include: /docs/reference/tools/hardware/_toc.yaml
+- include: /reference/tools/hardware/_toc.yaml

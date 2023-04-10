@@ -55,10 +55,10 @@ was written previously for the driver framework version 1 (DFv1).
 ## Board driver and USB devices
 
 While drivers are often bound to devices, some drivers are bound to
-[boards](/docs/glossary/README.md#board) (such as PCI and ACPI) that may
+[boards](/glossary/README.md#board) (such as PCI and ACPI) that may
 have multiple devices connected to them, both statically and dynamically.
 
-Upon the initial binding to a node, a [board driver](/docs/glossary/README.md#board-driver)
+Upon the initial binding to a node, a [board driver](/glossary/README.md#board-driver)
 (such as `acpi`) parses a binary blob passed from the system (which can be
 ACPI bytecode or a compiled device tree) and informs the driver manager of the
 static set of devices connected on the board. These devices get bound to drivers
@@ -71,7 +71,7 @@ topology.
 
 <!-- Reference links -->
 
-[components]: /docs/concepts/components/v2/README.md
+[components]: /concepts/components/v2/README.md
 [driver-framework]: driver_framework.md
 [driver-manager]: driver_framework.md#driver_manager
 [driver-host]: driver_framework.md#driver_host
@@ -81,4 +81,4 @@ topology.
 [nodes]: drivers_and_nodes.md
 [node-properties]: drivers_and_nodes.md#node_attributes
 [node-capabilities]: drivers_and_nodes.md#node_capabilities
-[driver-binding-dfv1]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md
+[driver-binding-dfv1]: /development/drivers/concepts/device_driver_model/driver-binding.md

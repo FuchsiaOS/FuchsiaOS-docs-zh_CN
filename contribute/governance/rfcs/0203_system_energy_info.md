@@ -189,7 +189,7 @@ value is unspecified.
 
 `ZX_ERR_NOT_SUPPORTED`
 
-- The processor is not a [supported x86-64 processor](/docs/contribute/governance/rfcs/0073_x86_64_platform_requirement.md).
+- The processor is not a [supported x86-64 processor](/contribute/governance/rfcs/0073_x86_64_platform_requirement.md).
 
 - The processor is a supported x86-64 processor, but the `Energy Status` MSR of
   the specified domain is not available on this processor.

@@ -586,7 +586,7 @@ uncompressed files in APKs, when Android moved to A/B updates, imgdiff is
 replaced by [puffin].
 
 [delivery blobs]: #delivery_blob
-[zx stream]: /docs/reference/kernel_objects/stream.md
+[zx stream]: /reference/kernel_objects/stream.md
 [tANS encoding]: https://en.wikipedia.org/wiki/Asymmetric_numeral_systems#Tabled_variant_(tANS)
 [puffin]: https://android.googlesource.com/platform/external/puffin/+/refs/heads/master/README.md
-[OTA updates]: /docs/concepts/packages/ota.md
+[OTA updates]: /concepts/packages/ota.md

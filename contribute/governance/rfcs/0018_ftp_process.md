@@ -191,9 +191,9 @@ or RFC mechanisms.
 In particular, I looked a lot at the [Python PEP] process and the
 [Rust RFC] process while drafting this document.
 
-[FIDL]: /docs/development/languages/fidl/README.md
+[FIDL]: /development/languages/fidl/README.md
 [Python PEP]: https://www.python.org/dev/peps/
 [Rust RFC]: https://github.com/rust-lang/rfcs
-[tutorial]: /docs/development/languages/fidl/tutorials/overview.md
+[tutorial]: /development/languages/fidl/tutorials/overview.md
 [Wadler's Law]: https://wiki.haskell.org/Wadler's_Law
-[template]: /docs/contribute/governance/deprecated-ftp-template.md
+[template]: /contribute/governance/deprecated-ftp-template.md

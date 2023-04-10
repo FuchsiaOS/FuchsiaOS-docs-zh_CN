@@ -215,4 +215,4 @@ Do the following:
 
 <!-- Reference links -->
 
-[zxdb-user-guide]: /docs/development/debugger/README.md
+[zxdb-user-guide]: /development/debugger/README.md

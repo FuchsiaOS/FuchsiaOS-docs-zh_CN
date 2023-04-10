@@ -11,7 +11,7 @@ usually created with some initial resources and capabilities.
 Most commonly, a process starts executing some code with an initial stack, some
 command line arguments, some environment variables, and a set of initial
 handles.
-[Zircon program loading and dynamic linking](/docs/concepts/process/program_loading.md)
+[Zircon program loading and dynamic linking](/concepts/process/program_loading.md)
 describes the resources provided to programs when starting.
 
 ## Namespaces are the gateway to the world
@@ -19,7 +19,7 @@ describes the resources provided to programs when starting.
 Some of the initial handles given to a process are directories that the process
 mounts into its _namespace_. These handles let the process discover and
 communicate with other processes running on the system, including file systems
-and other servers. See [Namespaces](/docs/concepts/process/namespaces.md) for
+and other servers. See [Namespaces](/concepts/process/namespaces.md) for
 more details.
 
 The namespace given to a process strongly influences how much of the system the
@@ -38,8 +38,8 @@ example, the `root_presenter` can access `cursor32.png` using the absolute path
 
 Processes that are [components][glossary.component] receive an `/svc`
 directory in their [namespace][glossary.namespace] containing
-[protocols](/docs/concepts/components/v2/capabilities/protocol.md) and
-[services](/docs/concepts/components/v2/capabilities/service.md).
+[protocols](/concepts/components/v2/capabilities/protocol.md) and
+[services](/concepts/components/v2/capabilities/service.md).
 
 A typical component will interact with a number of services from `/svc` in order
 to play some useful role in the system. For example, the service
@@ -48,6 +48,6 @@ to play some useful role in the system. For example, the service
 Processes that are not components may or may not have `/svc`. These processes
 receive whatever `/svc` their creator provided to them.
 
-[glossary.component]: /docs/glossary/README.md#component
-[glossary.environment]: /docs/glossary/README.md#environment
-[glossary.namespace]: /docs/glossary/README.md#namespace
+[glossary.component]: /glossary/README.md#component
+[glossary.environment]: /glossary/README.md#environment
+[glossary.namespace]: /glossary/README.md#namespace

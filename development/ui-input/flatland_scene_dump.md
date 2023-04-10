@@ -9,7 +9,7 @@ about Flatland, see [Flatland][flatland-concepts].
 ## Inspect your Flatland scene
 
 You can use
-[Component Inspection](/docs/development/diagnostics/inspect/README.md) to dump
+[Component Inspection](/development/diagnostics/inspect/README.md) to dump
 information about the Flatland scene:
 
 ```posix-terminal
@@ -166,6 +166,6 @@ The third line lists the properties of the Image Rectangle. This includes:
     in the range [0.0, 1.0]. The clockwise UVs therefore contain information
     about the sample region, clipping region and rotation.
 
-[flatland-concepts]: /docs/concepts/ui/scenic/flatland/index.md
-[glossary.flatland]: /docs/glossary/README.md#flatland
-[glossary.transform]: /docs/glossary/README.md#transform
+[flatland-concepts]: /concepts/ui/scenic/flatland/index.md
+[glossary.flatland]: /glossary/README.md#flatland
+[glossary.transform]: /glossary/README.md#transform

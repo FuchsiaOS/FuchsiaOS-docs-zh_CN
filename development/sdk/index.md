@@ -37,8 +37,8 @@ to learn about the basic workflows of driver development using the Fuchsia SDK.
 <!-- Reference links -->
 
 [host-tools]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fuchsia-components]: /docs/concepts/components/v2
-[fuchsia-platform]: /docs/development
+[fuchsia-components]: /concepts/components/v2
+[fuchsia-platform]: /development
 [bazel]: https://bazel.build/docs
-[get-started-sdk]: /docs/get-started/sdk/index.md
-[get-started-drivers]: /docs/get-started/sdk/get-started-with-driver.md
+[get-started-sdk]: /get-started/sdk/index.md
+[get-started-drivers]: /get-started/sdk/get-started-with-driver.md

@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -26,7 +26,7 @@ zx_status_t zx_vmo_set_size(zx_handle_t handle, uint64_t size);
 ## Description
 
 `zx_vmo_set_size()` sets the new size of a [virtual memory
-object](/docs/reference/kernel_objects/vm_object.md) (VMO).
+object](/reference/kernel_objects/vm_object.md) (VMO).
 
 The size will be rounded up to the next page size boundary.
 Subsequent calls to [`zx_vmo_get_size()`] will return the rounded up size.

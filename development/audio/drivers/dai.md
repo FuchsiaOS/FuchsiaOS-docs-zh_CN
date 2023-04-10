@@ -44,7 +44,7 @@ DAI interface (from here on the DAI driver) advertises supported formats and
 allows the creation of a Ring Buffer for audio sample transferring.
 
 Note that the DAI drivers are expected to perform their own shutdown, just like
-any other driver (see [FDF](/docs/development/drivers/concepts/getting_started.md)).
+any other driver (see [FDF](/development/drivers/concepts/getting_started.md)).
 
 ## Protocol definition
 
@@ -54,7 +54,7 @@ The DAI protocol is defined in FIDL at
 
 Because the FDF does not currently provide a way to directly get a FIDL channel
 for communication, we define a way to get a channel through
-[Banjo](/docs/development/drivers/tutorials/banjo-tutorial.md) at
+[Banjo](/development/drivers/tutorials/banjo-tutorial.md) at
 [fuchsia.hardware.audio](/sdk/banjo/fuchsia.hardware.audio/audio.fidl).
 
 Direct connection to a DAI protocol server is provided by

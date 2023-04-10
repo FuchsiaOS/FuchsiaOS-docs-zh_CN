@@ -118,5 +118,5 @@ ffx setui intl --help
 ```
 
 <!-- xrefs -->
-[product-config]: /docs/development/components/configuration/config_data.md
-[directory-capability]: /docs/concepts/components/v2/capabilities/directory.md
+[product-config]: /development/components/configuration/config_data.md
+[directory-capability]: /concepts/components/v2/capabilities/directory.md

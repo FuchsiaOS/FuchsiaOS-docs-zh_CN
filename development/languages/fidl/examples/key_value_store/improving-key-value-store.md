@@ -14,7 +14,7 @@ presents an independent way in which the base case presented
 in the base case may be modified or improved.
 
 This page builds on the
-[Key-value store baseline example](/docs/development/languages/fidl/examples/key_value_store/README.md).
+[Key-value store baseline example](/development/languages/fidl/examples/key_value_store/README.md).
 
 <!-- DO_NOT_REMOVE_COMMENT (Why? See: /tools/fidl/scripts/canonical_example/README.md) -->
 

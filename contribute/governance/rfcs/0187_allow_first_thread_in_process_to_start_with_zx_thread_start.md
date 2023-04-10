@@ -103,7 +103,7 @@ result in an error.
 The documentation for `zx_process_start` and `zx_thread_start` will be updated
 to reflect the new semantics.
 
-[process-start]: /docs/reference/syscalls/process_start.md
+[process-start]: /reference/syscalls/process_start.md
 [prototype]: https://fuchsia-review.googlesource.com/c/fuchsia/+/707482
-[starnix]: /docs/contribute/governance/rfcs/0082_starnix.md
-[thread-start]: /docs/reference/syscalls/thread_start.md
+[starnix]: /contribute/governance/rfcs/0082_starnix.md
+[thread-start]: /reference/syscalls/thread_start.md

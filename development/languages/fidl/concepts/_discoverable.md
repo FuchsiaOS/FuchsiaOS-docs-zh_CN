@@ -6,4 +6,4 @@ side.
 <<../examples/calculator/_callout.md>>
 <<../examples/calculator/_baseline_tutorial.md>>
 
-[fidl-attributes-doc]: /docs/reference/fidl/language/attributes.md#discoverable
+[fidl-attributes-doc]: /reference/fidl/language/attributes.md#discoverable

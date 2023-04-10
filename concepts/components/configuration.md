@@ -162,11 +162,11 @@ types but runtime modifiable in others.
   parameters for a large ML model.
 
 
-[glossary.component-instance]: /docs/glossary/README.md#component-instance
+[glossary.component-instance]: /glossary/README.md#component-instance
 <!-- TODO(fxbug.dev/104819): Update link once better documentation exists -->
-[rfc0115]: /docs/contribute/governance/rfcs/0115_build_types.md
+[rfc0115]: /contribute/governance/rfcs/0115_build_types.md
 
-[board]: /docs/development/build/build_system/boards_and_products.md#boards
-[channel]: /docs/concepts/packages/ota.md#update-omaha
-[config_mechanisms]: /docs/development/components/configuration/mechanisms.md
-[product]: /docs/development/build/build_system/boards_and_products.md#products
+[board]: /development/build/build_system/boards_and_products.md#boards
+[channel]: /concepts/packages/ota.md#update-omaha
+[config_mechanisms]: /development/components/configuration/mechanisms.md
+[product]: /development/build/build_system/boards_and_products.md#products

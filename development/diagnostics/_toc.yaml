@@ -9,65 +9,65 @@ toc:
 - title: "Inspect"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/inspect
+    path: /development/diagnostics/inspect
   - title: "Quickstart"
-    path: /docs/development/diagnostics/inspect/quickstart.md
+    path: /development/diagnostics/inspect/quickstart.md
   # TODO(fxbug.dev/60767)
   # - title: "Overview"
-  #   path: /docs/development/diagnostics/inspect/README.md
+  #   path: /development/diagnostics/inspect/README.md
 
   # TODO(fxbug.dev/60764)
   # - title: "Principles"
-  #   path: /docs/development/diagnostics/inspect/principles.md
+  #   path: /development/diagnostics/inspect/principles.md
   - title: "Health"
-    path: /docs/development/diagnostics/inspect/health.md
+    path: /development/diagnostics/inspect/health.md
   - title: "Rust libraries"
-    path: /docs/development/diagnostics/inspect/rust.md
+    path: /development/diagnostics/inspect/rust.md
   - title: "Inspect codelab"
     section:
     - title: "Overview"
-      path: /docs/development/diagnostics/inspect/codelab/README.md
+      path: /development/diagnostics/inspect/codelab/README.md
     - title: "Codelab"
-      path: /docs/development/diagnostics/inspect/codelab/codelab.md
+      path: /development/diagnostics/inspect/codelab/codelab.md
   - title: "Using Inspect for drivers"
-    path: /docs/development/drivers/diagnostics/inspect.md
+    path: /development/drivers/diagnostics/inspect.md
 - title: "Log"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/logs/README.md
+    path: /development/diagnostics/logs/README.md
   - title: "Record"
-    path: /docs/development/diagnostics/logs/recording.md
+    path: /development/diagnostics/logs/recording.md
   - title: "Choose severity"
-    path: /docs/development/diagnostics/logs/severity.md
+    path: /development/diagnostics/logs/severity.md
   - title: "View"
-    path: /docs/development/diagnostics/logs/viewing.md
+    path: /development/diagnostics/logs/viewing.md
   - title: "Logging and tests"
-    path: /docs/development/diagnostics/test_and_logs.md
+    path: /development/diagnostics/test_and_logs.md
 - title: "Analytics Platform"
   section:
   - title: "Detect snapshot filing"
-    path: /docs/development/diagnostics/analytics/detect.md
+    path: /development/diagnostics/analytics/detect.md
   - title: "Diagnostics Persistence Service"
-    path: /docs/development/diagnostics/analytics/persistence.md
+    path: /development/diagnostics/analytics/persistence.md
   - title: "Sampler - Diagnostics Data Forwarder"
-    path: /docs/development/diagnostics/analytics/sampler.md
+    path: /development/diagnostics/analytics/sampler.md
 
 
 - title: "Analyze with Triage"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/triage/README.md
+    path: /development/diagnostics/triage/README.md
   - title: "Configuring Triage"
-    path: /docs/development/diagnostics/triage/config.md
+    path: /development/diagnostics/triage/config.md
   - title: "Codelab"
-    path: /docs/development/diagnostics/triage/codelab.md
+    path: /development/diagnostics/triage/codelab.md
   - title: "Triage (fx triage)"
-    path: /docs/development/diagnostics/triage/fx_triage.md
+    path: /development/diagnostics/triage/fx_triage.md
 - title: "Diagnostics and Testing Workshop"
   section:
   - title: "Overview"
-    path: /docs/development/diagnostics/workshop/README.md
+    path: /development/diagnostics/workshop/README.md
   - title: "Codelab"
-    path: /docs/development/diagnostics/workshop/codelab.md
+    path: /development/diagnostics/workshop/codelab.md
 
 

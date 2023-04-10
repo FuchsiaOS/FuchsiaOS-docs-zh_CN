@@ -1,7 +1,7 @@
 # Recording a Fuchsia trace
 
 This document describes how to record a trace with Fuchsia's
-[tracing system](/docs/concepts/kernel/tracing-system.md).
+[tracing system](/concepts/kernel/tracing-system.md).
 
 ## Prerequisites
 
@@ -16,9 +16,9 @@ to the next step.
 However, if you are adding additional trace points, ensure that you have:
 
 * Registered your component as a trace provider. See
-  [Registering a trace provider](/docs/development/tracing/tutorial/registering-a-trace-provider.md).
+  [Registering a trace provider](/development/tracing/tutorial/registering-a-trace-provider.md).
 * Added tracing in your code. See
-  [Adding tracing in your code](/docs/development/tracing/tutorial/adding-tracing-in-code.md).
+  [Adding tracing in your code](/development/tracing/tutorial/adding-tracing-in-code.md).
 
 ## Use the utilities
 
@@ -53,7 +53,7 @@ changed by specifying the flag `ffx trace start --output <file_path>`.
 Then, you can upload your trace file to
 [ui.perfetto.dev](https://ui.perfetto.dev) to view it. Alternatively, see
 [Converting and Visualizing a
-Trace](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md)
+Trace](/development/tracing/tutorial/converting-visualizing-a-trace.md)
 for additional options.
 
 #### Categories and category groups
@@ -88,7 +88,7 @@ ffx config set trace.category_groups.audiovisual '["audio", "gfx"]'
 For a complete list of the `ffx trace start` options, run `ffx trace start --help`.
 
 Once you have the trace output file, you can
-[convert and analyze that trace file](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md).
+[convert and analyze that trace file](/development/tracing/tutorial/converting-visualizing-a-trace.md).
 
 #### Tracing Chrome and WebEngine events
 
@@ -131,7 +131,7 @@ This saves your trace in `/data/trace.json` on your Fuchsia target by default.
 For more information on the `trace` utility, run `trace --help` at a Fuchsia shell.
 
 Once you have the trace output file, you can
-[convert and analyze that trace file](/docs/development/tracing/tutorial/converting-visualizing-a-trace.md).
+[convert and analyze that trace file](/development/tracing/tutorial/converting-visualizing-a-trace.md).
 
 <!-- Reference links -->
 

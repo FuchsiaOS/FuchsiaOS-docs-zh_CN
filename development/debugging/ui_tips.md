@@ -1,7 +1,7 @@
 # UI debugging tips
 
 For general debugging info see the
-[Fuchsia Debugging Workflow](/docs/development/debugging/debugging.md).
+[Fuchsia Debugging Workflow](/development/debugging/debugging.md).
 
 ## Capture the Screen
 
@@ -39,7 +39,7 @@ You can upload `filename.gltf` to any gltf viewer, such as this
 
 ### Dump the SceneGraph as Text
 
-The [SceneGraph](/docs/concepts/ui/scenic/index.md#scenic-resource-graph)
+The [SceneGraph](/concepts/ui/scenic/index.md#scenic-resource-graph)
 as text is useful when you want to see all the resources, including non-visible
 elements such as transform matrices.
 

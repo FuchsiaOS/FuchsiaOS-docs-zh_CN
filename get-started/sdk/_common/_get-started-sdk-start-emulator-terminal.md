@@ -208,5 +208,5 @@ Do the following:
 
 <!-- Reference links -->
 
-[femu]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
-[fuchsia-package-server]: /docs/development/sdk/ffx/create-a-package-repository.md
+[femu]: /development/sdk/ffx/start-the-fuchsia-emulator.md
+[fuchsia-package-server]: /development/sdk/ffx/create-a-package-repository.md

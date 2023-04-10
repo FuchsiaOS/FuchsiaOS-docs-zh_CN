@@ -176,18 +176,18 @@ specific features your components may support:
 -   [Diagnostics capabilities](diagnostics.md)
 
 [cf-dev-list]: https://groups.google.com/a/fuchsia.dev/g/component-framework-dev
-[component-select]: /docs/development/tools/ffx/commands/component-select.md
+[component-select]: /development/tools/ffx/commands/component-select.md
 [cs-appmgr-allowlist]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/appmgr/main.cc;l=125;drc=ddf6d10ce8cf63268e21620638ea02e9b2b7cd20
-[eager-lifecycle]: /docs/development/components/connect.md#eager
+[eager-lifecycle]: /development/components/connect.md#eager
 [eager-manifest]: https://fuchsia.dev/reference/cml#children
-[elf-runner-docs]: /docs/concepts/components/v2/elf_runner.md#lifecycle
-[ffx-overview]: /docs/development/tools/ffx/overview.md
-[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
-[glossary.environment]: /docs/glossary/README.md#environment
-[migrate-add-core]: /docs/development/components/v2/migration/components.md#add-core-direct
-[migrate-add-shard]: /docs/development/components/v2/migration/components.md#add-core-shard
-[migrate-components]: /docs/development/components/v2/migration/components.md
-[migrate-components-add]: /docs/development/components/v2/migration/components.md#add-component-to-topology
+[elf-runner-docs]: /concepts/components/v2/elf_runner.md#lifecycle
+[ffx-overview]: /development/tools/ffx/overview.md
+[glossary.component-instance-tree]: /glossary/README.md#component-instance-tree
+[glossary.environment]: /glossary/README.md#environment
+[migrate-add-core]: /development/components/v2/migration/components.md#add-core-direct
+[migrate-add-shard]: /development/components/v2/migration/components.md#add-core-shard
+[migrate-components]: /development/components/v2/migration/components.md
+[migrate-components-add]: /development/components/v2/migration/components.md#add-component-to-topology
 [rust-lifecycle]: /examples/components/lifecycle
 [src-security-policy]: /src/security/policy/component_manager_policy.json5
-[rcs-selector-maps]: /docs/development/tools/ffx/development/plugins.md#selector-maps
+[rcs-selector-maps]: /development/tools/ffx/development/plugins.md#selector-maps

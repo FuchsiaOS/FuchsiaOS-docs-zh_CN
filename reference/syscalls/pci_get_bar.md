@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -30,7 +30,7 @@ zx_status_t zx_pci_get_bar(zx_handle_t handle,
 
 This function is obsolete and should not be used. Drivers should instead get the PCI Base Address
 Register information from the [PCI driver
-interface](/docs/development/drivers/concepts/driver_development/bar.md);
+interface](/development/drivers/concepts/driver_development/bar.md);
 
 ## Rights
 

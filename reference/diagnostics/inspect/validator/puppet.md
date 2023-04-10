@@ -21,7 +21,7 @@ This doc focuses on the Inspect Validator Rust Puppet located at
 The FIDL protocol for Inspect Validator is defined in
 [//src/diagnostics/validator/inspect/fidl/validate.test.fidl](/src/diagnostics/validator/inspect/fidl/validate.test.fidl).
 The FIDL protocol corresponds closely to the functions in the
-[Inspect library API](/docs/development/diagnostics/inspect/README.md)
+[Inspect library API](/development/diagnostics/inspect/README.md)
 which defines actions to be applied to any Inspect API implementation. The FIDL
 API is written to correspond to the
 [Rust API](https://fuchsia-docs.firebaseapp.com/rust/fuchsia_inspect/index.html).

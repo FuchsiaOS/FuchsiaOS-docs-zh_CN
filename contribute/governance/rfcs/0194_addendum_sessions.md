@@ -174,7 +174,7 @@ will not be available at runtime.
 Product configuration, and thus the set of capabilites actually available to
 a given session component on a given product, is accomplished today through
 adding or removing build-time package dependencies on a set of 
-[product package labels](/docs/get-started/learn/build/product-packages.md).
+[product package labels](/get-started/learn/build/product-packages.md).
 
 #### System lifecycle control
 
@@ -189,16 +189,16 @@ The session component can:
 For products that have a graphical user interface:
 
 The session component is offered the necessary capabilites to specify a single
-[View](/docs/concepts/ui/scenic/views.md#view) to act as the root View of
+[View](/concepts/ui/scenic/views.md#view) to act as the root View of
 the user experience. The choice of View can change over a session's lifecycle.
 For example, when interaction with a session is locked due to inactivity, the
 root view may swap to a lock screen.
 
 Additionally, the session can
-[embed sub-views](/docs/concepts/ui/scenic/views.md#viewport) in its root
+[embed sub-views](/concepts/ui/scenic/views.md#viewport) in its root
 View for the purposes of delegating to additional software. The ability to
 embed sub-views is not unique to sessions: it is a property of Fuchsia's
-[system compositor](/docs/concepts/ui/scenic/index.md).
+[system compositor](/concepts/ui/scenic/index.md).
 
 Sessions are not _required_ to specify a View. For example: headless sessions
 running on headless devices would not specify a View.
@@ -322,4 +322,4 @@ ambiguity or solve technical issues.
 
 ## Prior art and references
 
-* [RFC-0092 - Sessions](/docs/contribute/governance/rfcs/0092_sessions.md)
+* [RFC-0092 - Sessions](/contribute/governance/rfcs/0092_sessions.md)

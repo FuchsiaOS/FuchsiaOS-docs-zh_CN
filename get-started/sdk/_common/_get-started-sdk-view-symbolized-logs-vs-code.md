@@ -62,7 +62,7 @@ In VS Code, do the following:
 1. Verify that the sample component's crash stack is symbolized in the kernel
    logs.
 
-   ![Symbolized logs](/docs/get-started/sdk/images/get-started-vscode-symbolized-logs.png "Symbolized Fuchsia logs shown in VS Code"){: .screenshot}
+   ![Symbolized logs](/get-started/sdk/images/get-started-vscode-symbolized-logs.png "Symbolized Fuchsia logs shown in VS Code"){: .screenshot}
 
    The symbolized logs above show the exact filenames and line numbers
    (for example, `main() src/hello_world/hello_world.cc:9`) that might have
@@ -70,5 +70,5 @@ In VS Code, do the following:
 
 <!-- Reference links -->
 
-[symbolize-logs]: /docs/development/sdk/ffx/symbolize-logs.md
+[symbolize-logs]: /development/sdk/ffx/symbolize-logs.md
 [ticket-94614]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=94614

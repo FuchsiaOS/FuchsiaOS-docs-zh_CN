@@ -7,32 +7,32 @@
 # team as reviewer.
 toc:
 - title: "IDK"
-  path: /docs/development/idk
+  path: /development/idk
 - title: "Download the Fuchsia IDK"
-  path: /docs/development/idk/download.md
+  path: /development/idk/download.md
 - title: "IDK layout"
-  path: /docs/development/idk/layout.md
+  path: /development/idk/layout.md
 - title: "IDK standards"
-  path: /docs/development/idk/standards.md
+  path: /development/idk/standards.md
 - title: Using the Core IDK
   section:
     - title: "Integrating the IDK into your build environment"
-      path: /docs/development/idk/integrating.md
+      path: /development/idk/integrating.md
     - title: "Understanding IDK metadata"
-      path: /docs/development/idk/understanding_metadata.md
+      path: /development/idk/understanding_metadata.md
     - title: "\"Core\" IDK Documentation"
-      path: /docs/development/idk/documentation/README.md
+      path: /development/idk/documentation/README.md
     - title: "Bootserver"
-      path: /docs/development/idk/documentation/bootserver.md
+      path: /development/idk/documentation/bootserver.md
     - title: "Compilation"
-      path: /docs/development/idk/documentation/compilation.md
+      path: /development/idk/documentation/compilation.md
     - title: "Debugger"
-      path: /docs/development/idk/documentation/debugger.md
+      path: /development/idk/documentation/debugger.md
     - title: "Devices"
-      path: /docs/development/idk/documentation/devices.md
+      path: /development/idk/documentation/devices.md
     - title: "Logging"
-      path: /docs/development/idk/documentation/logging.md
+      path: /development/idk/documentation/logging.md
     - title: "Packages"
-      path: /docs/development/idk/documentation/packages.md
+      path: /development/idk/documentation/packages.md
     - title: "SSH"
-      path: /docs/development/idk/documentation/ssh.md
+      path: /development/idk/documentation/ssh.md

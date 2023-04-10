@@ -5,22 +5,22 @@
 This guide explains how to add composite nodes to the Driver Framework using
 composite node specifications. It assumes familiarity with the following:
 
-*   [Driver binding](/docs/development/drivers/concepts/device_driver_model/driver-binding.md)
-*   [Composite nodes](/docs/concepts/drivers/drivers_and_nodes.md#composite-nodes)
+*   [Driver binding](/development/drivers/concepts/device_driver_model/driver-binding.md)
+*   [Composite nodes](/concepts/drivers/drivers_and_nodes.md#composite-nodes)
 
 ## Creating composite nodes
 
-[Composite nodes](/docs/concepts/drivers/drivers_and_nodes.md#composite-nodes)
-are [nodes](/docs/glossary/README.md#node) with multiple parents. To create a
+[Composite nodes](/concepts/drivers/drivers_and_nodes.md#composite-nodes)
+are [nodes](/glossary/README.md#node) with multiple parents. To create a
 composite node, you need to:
 
 *   Define a composite node specification in a driver
 *   Create a composite driver with bind rules that match the specification
 
-When a [driver](/docs/glossary/README.md#driver) defines a specification, the
+When a [driver](/glossary/README.md#driver) defines a specification, the
 process is as follows:
 
-1.  The [driver manager](/docs/glossary/README.md#driver-manager) asks the
+1.  The [driver manager](/glossary/README.md#driver-manager) asks the
     driver index to find a composite driver that matches the specification
 2.  Once a matching composite driver is found, the driver manager finds a node
     in the topology that matches each parent specification. Each matching node
@@ -29,7 +29,7 @@ process is as follows:
     composite node with the nodes as parents, and binds the composite driver to
     it. The primary node and node names are provided by the composite driver.
 
-![composite-node-spec-bind-diagram](/docs/development/drivers/developer_guide/images/composite-node-spec.png)
+![composite-node-spec-bind-diagram](/development/drivers/developer_guide/images/composite-node-spec.png)
 
 ## Defining a composite node specification
 
@@ -37,7 +37,7 @@ A composite node specification is a set of parent specifications that define the
 nodes that will parent the composite node. Each parent specification contains
 the following:
 
-*   **Bind rules** - The [bind rules](/docs/glossary/README.md#bind-rules) for
+*   **Bind rules** - The [bind rules](/glossary/README.md#bind-rules) for
     matching the parent specification to a node.
 *   **Properties** - The properties in the parent specification for matching
     against a composite driver's bind rules. They follow the same format as node
@@ -66,7 +66,7 @@ Then a device binds to the node if it contains a value of 15 or 17 for the
 #### Determining the bind rules
 
 The process for figuring out what the bind rules should be is the same as the
-[bind rules in the bind language](/docs/development/drivers/tutorials/bind-rules-tutorial.md).
+[bind rules in the bind language](/development/drivers/tutorials/bind-rules-tutorial.md).
 To determine the bind rules, you first need to find the properties of the node
 that you want to bind to.
 
@@ -130,7 +130,7 @@ This lets us remap the node properties to:
 
 The bind library values can be accessed in the driver source code through its
 generated libraries. See the
-[bind libraries codegen tutorial](/docs/development/drivers/tutorials/bind-libraries-codegen.md)
+[bind libraries codegen tutorial](/development/drivers/tutorials/bind-libraries-codegen.md)
 for more information.
 
 We can define the following bind rules to match to these properties:
@@ -232,8 +232,8 @@ parent specifications to the driver manager.
 ### Platform bus composite
 
 If the composite node needs a parent from a node on the
-[platform bus](/docs/glossary/README.md#platform-bus) then the
-[board driver](/docs/glossary/README.md#board-driver) can add the composite node
+[platform bus](/glossary/README.md#platform-bus) then the
+[board driver](/glossary/README.md#board-driver) can add the composite node
 specification through the
 [`platform_bus.fidl`](/sdk/fidl/fuchsia.hardware.platform.bus/platform-bus.fidl)
 API. This applies to both DFv1 and DFv2.
@@ -518,7 +518,7 @@ composite_node_manager->AddSpec(std::move(spec))
 
 A composite driver is a driver that only binds to a composite node. Drivers are
 defined as such through their bind rules. See
-[composite bind rules](/docs/development/drivers/tutorials/bind-rules-tutorial.md#composite-bind-rules)
+[composite bind rules](/development/drivers/tutorials/bind-rules-tutorial.md#composite-bind-rules)
 for more information.
 
 ### Matching process
@@ -540,7 +540,7 @@ Matching cannot be ambiguous:
 *   Nodes do not need to be matched in order
 *   If an ambiguous case occurs, a warning message will be printed out.
 
-![composite-node-spec-bind-diagram](/docs/development/drivers/developer_guide/images/composite-node-spec-bind.png)
+![composite-node-spec-bind-diagram](/development/drivers/developer_guide/images/composite-node-spec-bind.png)
 
 ### Writing the bind rules
 

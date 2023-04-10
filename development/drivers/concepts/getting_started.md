@@ -33,8 +33,8 @@ read them in order of interest or applicability.
 
 <!-- Reference links -->
 
-[fdf]: /docs/development/drivers/concepts/fdf.md
-[driver-rubric]: /docs/development/drivers/developer_guide/rubric.md
-[device-driver-model]: /docs/development/drivers/concepts/device_driver_model/README.md
-[driver-development]: /docs/development/drivers/concepts/driver_development/README.md
-[driver-architectures]: /docs/development/drivers/concepts/driver_architectures/README.md
+[fdf]: /development/drivers/concepts/fdf.md
+[driver-rubric]: /development/drivers/developer_guide/rubric.md
+[device-driver-model]: /development/drivers/concepts/device_driver_model/README.md
+[driver-development]: /development/drivers/concepts/driver_development/README.md
+[driver-architectures]: /development/drivers/concepts/driver_architectures/README.md

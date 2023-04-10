@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -55,7 +55,7 @@ The maximum number of bytes that may be sent in a message is
 Messages are drained by [`zx_channel_read()`] or [`zx_channel_read_etc()`].
 Failure to drain the messages in a timely fashion can cause excessive kernel
 memory to be used, which might generate an exception. See
-[ipc limits](/docs/concepts/kernel/ipc_limits.md) for details.
+[ipc limits](/concepts/kernel/ipc_limits.md) for details.
 
 ### ZX_CHANNEL_WRITE_USE_IOVEC option
 

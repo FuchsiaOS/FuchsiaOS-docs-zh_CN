@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -40,10 +40,10 @@ Thread handles may be waited on and will assert the signal
 **ZX_THREAD_TERMINATED** when the thread stops executing (due to
 [`zx_thread_exit()`] being called).
 
-*process* is the controlling [process object](/docs/reference/kernel_objects/process.md) for the
+*process* is the controlling [process object](/reference/kernel_objects/process.md) for the
 new thread, which will become a child of that process.
 
-For thread lifecycle details see [thread object](/docs/reference/kernel_objects/thread.md).
+For thread lifecycle details see [thread object](/reference/kernel_objects/thread.md).
 
 ## Rights
 

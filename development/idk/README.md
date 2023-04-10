@@ -14,7 +14,7 @@ the Fuchsia IDK. The APIs in the IDK are subject to change at any time without n
 Fuchsia is taking a modular approach to exposing the Fuchsia platform to developers.
 
 At the center of this strategy is the Integrator Development Kit (IDK), distilled out
-of the Git repository mentioned in [Contributing changes](/docs/development/source_code/contribute_changes.md).
+of the Git repository mentioned in [Contributing changes](/development/source_code/contribute_changes.md).
 This IDK contains a small set of libraries and tools required to start building
 and running programs that target Fuchsia.
 The contents of that IDK represent the most basic contract that the Fuchsia
@@ -171,5 +171,5 @@ for more details.
 [backend]: /build/sdk/README.md
 [frontends]: /scripts/sdk/README.md
 [bazel]: https://bazel.build/
-[fx-config]: /docs/development/build/fx.md#configure-a-build
-[fx-build-target]: /docs/development/build/fx.md#building-a-specific-target
+[fx-config]: /development/build/fx.md#configure-a-build
+[fx-build-target]: /development/build/fx.md#building-a-specific-target

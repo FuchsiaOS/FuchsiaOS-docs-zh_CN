@@ -8,4 +8,4 @@
 toc:
 - title: "fidlcat"
   section:
-  - include: /docs/development/monitoring/fidlcat/_toc.yaml
+  - include: /development/monitoring/fidlcat/_toc.yaml

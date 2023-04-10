@@ -487,10 +487,10 @@ revisions for the events API.
 [fidl-destroy]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#fuchsia.sys2/Realm.DestroyChild
 [fidl-reboot]: https://fuchsia.dev/reference/fidl/fuchsia.hardware.power.statecontrol#fuchsia.hardware.power.statecontrol/Admin.Reboot
 [fidl-shutdown]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#fuchsia.sys2/SystemController.Shutdown
-[doc-graceful-reboot]: /docs/concepts/process/why_fuchsia_devices_reboot.md#graceful_reboot
-[doc-main-process-critical]: /docs/concepts/components/v2/elf_runner.md#using_the_elf_runner
-[doc-manifests]: /docs/concepts/components/v2/component_manifests.md
-[doc-migration-guide]: /docs/development/components/v2/migration/README.md
+[doc-graceful-reboot]: /concepts/process/why_fuchsia_devices_reboot.md#graceful_reboot
+[doc-main-process-critical]: /concepts/components/v2/elf_runner.md#using_the_elf_runner
+[doc-manifests]: /concepts/components/v2/component_manifests.md
+[doc-migration-guide]: /development/components/v2/migration/README.md
 [gerrit-rfc-component-events]: https://fuchsia-review.googlesource.com/c/fuchsia/+/535692
 [gerrit-system-critical-prototype]: https://fuchsia-review.googlesource.com/c/fuchsia/+/539915
 [git-restricted-features]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/tools/cmc/build/restricted_features

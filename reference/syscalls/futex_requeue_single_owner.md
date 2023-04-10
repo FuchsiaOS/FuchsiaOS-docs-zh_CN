@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -71,7 +71,7 @@ None.
  - [`zx_futex_wait()`]
  - [`zx_futex_wake()`]
 
-[futex objects]: /docs/reference/kernel_objects/futex.md
+[futex objects]: /reference/kernel_objects/futex.md
 [`zx_futex_requeue()`]: futex_requeue.md
 [`zx_futex_wait()`]: futex_wait.md
 [`zx_futex_wake()`]: futex_wake.md

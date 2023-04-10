@@ -349,23 +349,23 @@ The full example code for using a wire client is located in your Fuchsia
 checkout at [`//examples/fidl/cpp/client/wire`][cpp-wire-client-src].
 
 <!-- xrefs -->
-[glossary.realm]: /docs/glossary/README.md#realm
-[glossary.namespace]: /docs/glossary/README.md#namespace
-[bindings-ref]: /docs/reference/fidl/bindings/cpp-bindings.md
-[build-components]: /docs/development/components/build.md
+[glossary.realm]: /glossary/README.md#realm
+[glossary.namespace]: /glossary/README.md#namespace
+[bindings-ref]: /reference/fidl/bindings/cpp-bindings.md
+[build-components]: /development/components/build.md
 [cpp-client-src]: /examples/fidl/cpp/client
 [cpp-wire-client-src]: /examples/fidl/cpp/client/wire
-[resultof]: /docs/reference/fidl/bindings/cpp-bindings.md#resultof
-[server-handler]: /docs/development/languages/fidl/tutorials/cpp/basics/server.md#server-handler
-[server-tut]: /docs/development/languages/fidl/tutorials/cpp/basics/server.md
-[sync-client]: /docs/development/languages/fidl/tutorials/cpp/basics/sync-client.md
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
-[environment]: /docs/concepts/components/v2/environments.md
+[resultof]: /reference/fidl/bindings/cpp-bindings.md#resultof
+[server-handler]: /development/languages/fidl/tutorials/cpp/basics/server.md#server-handler
+[server-tut]: /development/languages/fidl/tutorials/cpp/basics/server.md
+[sync-client]: /development/languages/fidl/tutorials/cpp/basics/sync-client.md
+[overview]: /development/languages/fidl/tutorials/overview.md
+[environment]: /concepts/components/v2/environments.md
 [open]: https://fuchsia.dev/reference/fidl/fuchsia.io#Directory.Open
-[pipelining]: /docs/development/api/fidl.md#request-pipelining
-[pipelining-tut]: /docs/development/languages/fidl/tutorials/cpp/topics/request-pipelining.md
-[products]: /docs/development/build/build_system/boards_and_products.md
-[natural-types]: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-natural
-[natural-structs]: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md#natural_structs
-[natural-tables]: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md#natural_tables
-[wire-types]: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-wire
+[pipelining]: /development/api/fidl.md#request-pipelining
+[pipelining-tut]: /development/languages/fidl/tutorials/cpp/topics/request-pipelining.md
+[products]: /development/build/build_system/boards_and_products.md
+[natural-types]: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-natural
+[natural-structs]: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md#natural_structs
+[natural-tables]: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md#natural_tables
+[wire-types]: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-wire

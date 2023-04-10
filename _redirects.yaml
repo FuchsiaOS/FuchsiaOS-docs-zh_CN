@@ -1,8 +1,8 @@
 # DO NOT USE THIS FILE. It will get overwritten during the publishing 
 # process. Create a _redirects.yaml in the "old" directory.
-# For example if you want to redirect `//docs/xyz/v1/api/qwerty.md`
+# For example if you want to redirect `//xyz/v1/api/qwerty.md`
 # to somewhere else you should create your redirects file
-# at `//docs/xyz/v1/api/_redirects.yaml`.
+# at `//xyz/v1/api/_redirects.yaml`.
 redirects:
  - from: empty
    to: empty

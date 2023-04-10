@@ -12,6 +12,6 @@ synchronous clients.
 
 If you want to write the code yourself, delete the following directories:
 
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
-[server-tut]: /docs/development/languages/fidl/tutorials/cpp/basics/server.md
-[sync-client]: /docs/development/languages/fidl/tutorials/cpp/basics/sync-client.md
+[overview]: /development/languages/fidl/tutorials/overview.md
+[server-tut]: /development/languages/fidl/tutorials/cpp/basics/server.md
+[sync-client]: /development/languages/fidl/tutorials/cpp/basics/sync-client.md

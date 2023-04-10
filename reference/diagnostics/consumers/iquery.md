@@ -171,4 +171,4 @@ their out/diagnostics directory.
 Prints usage information about `show`.
 
 
-[Inspect API]: /docs/development/diagnostics/inspect/README.md
+[Inspect API]: /development/diagnostics/inspect/README.md

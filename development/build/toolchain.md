@@ -49,7 +49,7 @@ git checkout ${REVISON_NUMBER}
 ### Fuchsia IDK
 
 Before building the runtime libraries that are built along with the
-toolchain, you need a Fuchsia [IDK](/docs/development/idk)
+toolchain, you need a Fuchsia [IDK](/development/idk)
 (formerly known as the SDK).
 The IDK must be located in the directory pointed to by the `${IDK_DIR}`
 variable:

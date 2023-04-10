@@ -33,7 +33,7 @@ capabilities to access those objects.
 
   <p>This also affects directory traversal, and how filesystem servers resolve
   paths containing <code>../.</code> For more details, see
-  <a href="/docs/concepts/filesystems/dotdot">dot-dot considered harmful</a>.<p>
+  <a href="/concepts/filesystems/dotdot">dot-dot considered harmful</a>.<p>
 </aside>
 
-[glossary.namespace]: /docs/glossary/README.md#namespace
+[glossary.namespace]: /glossary/README.md#namespace

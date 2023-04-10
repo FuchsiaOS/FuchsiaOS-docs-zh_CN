@@ -2,7 +2,7 @@
 
 This guide explains how to write bind rules for a driver so that it binds to the devices it wants. It explains how to find the node properties and then write bind rules for it using the bind language.
 
-This guide assumes familiarity with [Driver Binding](/docs/development/drivers/concepts/device_driver_model/driver-binding.md).
+This guide assumes familiarity with [Driver Binding](/development/drivers/concepts/device_driver_model/driver-binding.md).
 
 ## Current state of node properties
 Currently, node properties are defined in bind libraries and C++ header files. In the past, node properties were integer-based key-value pairs described as a C++ struct. All properties were defined in C++ header files and the bind rules were part of the driver source code.

@@ -16,7 +16,7 @@ flows with flows based on `fastboot boot`.
 Without netsvc RAM loading we can avoid the duplication of this
 functionality between Zedboot and bootloaders. This RFC is inline with
 RFC [Deprecate Zedboot-based paving for provisioning
-devices](/docs/contribute/governance/rfcs/0075_deprecate_zedboot_paving.md),
+devices](/contribute/governance/rfcs/0075_deprecate_zedboot_paving.md),
 converging around the use of fastboot instead of Zedboot, allowing for
 the eventual deprecation and removal of Zedboot.
 
@@ -53,7 +53,7 @@ protocol](https://android.googlesource.com/platform/system/core/+/refs/heads/mas
   [fxbug.dev/47531](https://fxbug.dev/47531).
 * Zedboot deprecation as described in RFC [Deprecate Zedboot-based
   paving for provisioning
-  devices](/docs/contribute/governance/rfcs/0075_deprecate_zedboot_paving.md).
+  devices](/contribute/governance/rfcs/0075_deprecate_zedboot_paving.md).
 
 ## Backwards Compatibility
 

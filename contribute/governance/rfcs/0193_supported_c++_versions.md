@@ -141,6 +141,6 @@ versions_ in the future.
 
 ## Prior art and references
 
-[sdk-cxx-docs]: /docs/development/idk/documentation/compilation.md
-[zircon-cxx-docs]: /docs/development/languages/c-cpp/cxx.md
+[sdk-cxx-docs]: /development/idk/documentation/compilation.md
+[zircon-cxx-docs]: /development/languages/c-cpp/cxx.md
 [iso-cpp]: https://isocpp.org/std/the-standard

@@ -5,4 +5,4 @@ which FIDL data may be exchanged between a client and a server.
 <<../examples/calculator/_callout.md>>
 <<../examples/calculator/_baseline_tutorial.md>>
 
-[protocol-doc-link]: /docs/reference/fidl/language/language.md#protocols
+[protocol-doc-link]: /reference/fidl/language/language.md#protocols

@@ -2,8 +2,8 @@
 
 ## Terminology
 
-[Moniker](/docs/glossary?style=box#moniker)
-[Component instance identifier](/docs/glossary?style=box#component-instance-identifier)
+[Moniker](/glossary?style=box#moniker)
+[Component instance identifier](/glossary?style=box#component-instance-identifier)
 
 ## Scope
 

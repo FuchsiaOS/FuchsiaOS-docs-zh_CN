@@ -105,7 +105,7 @@ Additional unit tests have been added.
 ## Documentation
 
 Documentation has been added to `zx_object_wait_async` in the implementing CL.
-[zx_object_wait_async](/docs/reference/syscalls/object_wait_async.md)
+[zx_object_wait_async](/reference/syscalls/object_wait_async.md)
 
 ## Drawbacks, alternatives, and unknowns
 

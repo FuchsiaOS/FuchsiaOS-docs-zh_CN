@@ -240,7 +240,7 @@ following code:
   <code>library</code>. For the <code>fidl.examples.routing.echo</code> library,
   the generated crate name is <code>fidl_fidl_examples_routing_echo</code>. For
   more details, see
-  <a href="/docs/reference/fidl/bindings/rust-bindings">Rust bindings</a>.
+  <a href="/reference/fidl/bindings/rust-bindings">Rust bindings</a>.
   </aside>
 
 * {C++}

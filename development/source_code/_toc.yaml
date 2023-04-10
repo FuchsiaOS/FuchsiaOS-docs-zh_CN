@@ -7,24 +7,24 @@
 # team as reviewer.
 toc:
 - title: "Contribute source changes"
-  path: /docs/development/source_code/contribute_changes.md
+  path: /development/source_code/contribute_changes.md
 - title: "Workflow tips and FAQ"
-  path: /docs/development/source_code/workflow_tips_and_faq.md
+  path: /development/source_code/workflow_tips_and_faq.md
 - title: "Upload changes from multiple repositories"
-  path: /docs/development/source_code/upload_changes_from_multiple_repositories.md
+  path: /development/source_code/upload_changes_from_multiple_repositories.md
 - title: "Make changes across different petals"
-  path: /docs/development/source_code/working_across_petals.md
+  path: /development/source_code/working_across_petals.md
 - title: "Source code layout"
-  path: /docs/development/source_code/layout.md
+  path: /development/source_code/layout.md
 - title: "Owners"
-  path: /docs/development/source_code/owners.md
+  path: /development/source_code/owners.md
 - title: "Presubmit checks"
-  path: /docs/development/source_code/presubmit_checks.md
+  path: /development/source_code/presubmit_checks.md
 - title: "Gerrit auto-submit"
-  path: /docs/development/source_code/auto_submit.md
+  path: /development/source_code/auto_submit.md
 - title: "Fuchsia package information using metadata files"
-  path: /docs/development/source_code/metadata.md
+  path: /development/source_code/metadata.md
 - title: "README.fuchsia file syntax"
-  path: /docs/development/source_code/third-party-metadata.md
+  path: /development/source_code/third-party-metadata.md
 - title: "Fuchsia archive format (FAR)"
-  path: /docs/development/source_code/archive_format.md
+  path: /development/source_code/archive_format.md

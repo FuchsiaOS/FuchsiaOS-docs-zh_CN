@@ -26,7 +26,7 @@ fuchsia-pkg://{{ '<var>' }}repo-hostname{{ '</var>' }}/{{ '<var>' }}pkg-name{{ '
   manifest.
 
 ![Diagram showing how packages are resolved from a TUF repository and cached
- locally on the device.](/docs/get-started/images/intro/package-resolver.png){: width="751"}
+ locally on the device.](/get-started/images/intro/package-resolver.png){: width="751"}
 
 Requests for software on a Fuchsia device are handled by the
 **package resolver**. The package resolver determines if the system already has

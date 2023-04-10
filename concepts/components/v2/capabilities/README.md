@@ -86,7 +86,7 @@ The following capabilities can be routed:
 Consider the following example that describes capability routing through the
 component instance tree:
 
-<br>![Capability routing example](/docs/concepts/components/v2/images/capability_routing_example.png)<br>
+<br>![Capability routing example](/concepts/components/v2/images/capability_routing_example.png)<br>
 
 In this example:
 
@@ -112,27 +112,27 @@ because a valid route is found to a component providing that protocol capability
 For more information on how components connect to capabilities at runtime, see
 [Life of a protocol open][doc-protocol-open].
 
-[capability-protocol]: /docs/concepts/components/v2/capabilities/protocol.md
-[capability-service]: /docs/concepts/components/v2/capabilities/service.md
-[capability-directory]: /docs/concepts/components/v2/capabilities/directory.md
-[capability-storage]: /docs/concepts/components/v2/capabilities/storage.md
-[capability-resolver]: /docs/concepts/components/v2/capabilities/resolvers.md
-[capability-runner]: /docs/concepts/components/v2/capabilities/runners.md
-[doc-children]: /docs/concepts/components/v2/realms.md##child-component-instances
-[doc-collections]: /docs/concepts/components/v2/realms.md#collections
-[doc-component-manifest]: /docs/concepts/components/v2/component_manifests.md
-[doc-environments]: /docs/concepts/components/v2/environments.md
-[doc-outgoing-directory]: /docs/concepts/packages/system.md#outgoing_directory
-[doc-protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md
-[doc-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
-[glossary.capability]: /docs/glossary#capability
-[glossary.capability-routing]: /docs/glossary#capability-routing
-[glossary.child]: /docs/glossary#child-component-instance
-[glossary.component]: /docs/glossary#component
-[glossary.environment]: /docs/glossary#environment
-[glossary.handle]: /docs/glossary#handle
-[glossary.kernel-object]: /docs/glossary#kernel-object
-[glossary.namespace]: /docs/glossary#namespace
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
-[glossary.parent]: /docs/glossary#parent-component-instance
+[capability-protocol]: /concepts/components/v2/capabilities/protocol.md
+[capability-service]: /concepts/components/v2/capabilities/service.md
+[capability-directory]: /concepts/components/v2/capabilities/directory.md
+[capability-storage]: /concepts/components/v2/capabilities/storage.md
+[capability-resolver]: /concepts/components/v2/capabilities/resolvers.md
+[capability-runner]: /concepts/components/v2/capabilities/runners.md
+[doc-children]: /concepts/components/v2/realms.md##child-component-instances
+[doc-collections]: /concepts/components/v2/realms.md#collections
+[doc-component-manifest]: /concepts/components/v2/component_manifests.md
+[doc-environments]: /concepts/components/v2/environments.md
+[doc-outgoing-directory]: /concepts/packages/system.md#outgoing_directory
+[doc-protocol-open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md
+[doc-resolvers]: /concepts/components/v2/capabilities/resolvers.md
+[glossary.capability]: /glossary#capability
+[glossary.capability-routing]: /glossary#capability-routing
+[glossary.child]: /glossary#child-component-instance
+[glossary.component]: /glossary#component
+[glossary.environment]: /glossary#environment
+[glossary.handle]: /glossary#handle
+[glossary.kernel-object]: /glossary#kernel-object
+[glossary.namespace]: /glossary#namespace
+[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[glossary.parent]: /glossary#parent-component-instance
 [src-processargs]: /zircon/system/public/zircon/processargs.h

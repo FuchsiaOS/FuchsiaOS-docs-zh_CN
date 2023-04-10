@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Address spaces"
-  path: /docs/concepts/memory/address_spaces.md
+  path: /concepts/memory/address_spaces.md
 - title: "Memory reclamation"
-  path: /docs/concepts/memory/memory_reclamation.md
+  path: /concepts/memory/memory_reclamation.md

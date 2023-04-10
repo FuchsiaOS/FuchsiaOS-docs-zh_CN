@@ -44,8 +44,8 @@ interact with Fuchsia systems, devices, and software.
 <!-- Reference links -->
 
 [ffx-reference]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fuchsia-components]: /docs/concepts/components/v2/README.md
-[fuchsia-packages]: /docs/concepts/packages/package.md
+[fuchsia-components]: /concepts/components/v2/README.md
+[fuchsia-packages]: /concepts/packages/package.md
 [start-femu]: start-the-fuchsia-emulator.md
 [view-device-info]: view-device-information.md
 [flash-device]: flash-a-device.md

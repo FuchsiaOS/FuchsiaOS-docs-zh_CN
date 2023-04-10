@@ -913,8 +913,8 @@ and size in the fuchsia.git repository.*
 [cl-boundedness]: https://fuchsia-review.googlesource.com/c/fuchsia/+/710645
 [cl-microbenchmarks]: https://fuchsia-review.googlesource.com/c/fuchsia/+/684174
 [cl-unsafe-memcpy]: https://fuchsia-review.googlesource.com/c/fuchsia/+/695625/comment/1d19269a_c5e67a58/
-[docs-fidl-header]: /docs/reference/fidl/language/wire-format#flags
-[docs-fidl-wire-format]: /docs/reference/fidl/language/wire-format
+[docs-fidl-header]: /reference/fidl/language/wire-format#flags
+[docs-fidl-wire-format]: /reference/fidl/language/wire-format
 [ietf-2119]: https://tools.ietf.org/html/rfc2119
 [ocs-fuchsia-mem]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.mem/buffer.fidl;drc=d59ed6d644cb0fbf30983c8e3cd8dcf9732aca56
 [ocs-provider-info]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.metricbroker/broker.fidl;l=29;drc=e3b39f2b57e720770773b857feca4f770ee0619e

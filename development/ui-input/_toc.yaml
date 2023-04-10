@@ -8,8 +8,8 @@
 
 toc:
 - title: "Flatland scene dump"
-  path: /docs/development/ui-input/flatland_scene_dump.md
+  path: /development/ui-input/flatland_scene_dump.md
 - title: "Tracing input events"
-  path: /docs/development/ui-input/tracing.md
+  path: /development/ui-input/tracing.md
 - title: "Magnification"
-  path: /docs/development/ui-input/magnification.md
+  path: /development/ui-input/magnification.md

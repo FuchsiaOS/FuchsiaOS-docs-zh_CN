@@ -17,7 +17,7 @@ Fuchsia.
 
 ## 2022
 
-* [Fuchsia 2022 roadmap overview](/docs/contribute/roadmap/2022/README.md)
+* [Fuchsia 2022 roadmap overview](/contribute/roadmap/2022/README.md)
 
 ## 2021
 
@@ -31,4 +31,4 @@ Fuchsia.
 
 ## 2020
 
-* [Fuchsia 2020 roadmap overview](/docs/contribute/roadmap/2020/overview.md)
+* [Fuchsia 2020 roadmap overview](/contribute/roadmap/2020/overview.md)

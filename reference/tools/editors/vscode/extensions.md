@@ -210,14 +210,14 @@ directly from VS Code.
 
 <!-- Reference links -->
 
-[set-up-env]: /docs/get-started/get_fuchsia_source.md#set-up-environment-variables
-[fidl]: /docs/development/languages/fidl/README.md
+[set-up-env]: /get-started/get_fuchsia_source.md#set-up-environment-variables
+[fidl]: /development/languages/fidl/README.md
 [vscode-update]:  https://vscode-docs.readthedocs.io/en/stable/supporting/howtoupdate/
 [vscode-disable-telemetry]: https://code.visualstudio.com/docs/getstarted/telemetry#_disable-telemetry-reporting
 [lsp-definition]: https://microsoft.github.io/language-server-protocol/
-[vscode-remote-workspaces]: /docs/reference/tools/editors/vscode/remote-workspaces.md
-[extension-install]: /docs/reference/tools/editors/vscode/fuchsia-ext-install.md
+[vscode-remote-workspaces]: /reference/tools/editors/vscode/remote-workspaces.md
+[extension-install]: /reference/tools/editors/vscode/fuchsia-ext-install.md
 [extension-link]: https://marketplace.visualstudio.com/items?itemName=fuchsia-authors.vscode-fuchsia
-[structured-config-json5]: /docs/development/components/configuration/structured_config.md
+[structured-config-json5]: /development/components/configuration/structured_config.md
 [bazel-vscode-ext]: https://marketplace.visualstudio.com/items?itemName=BazelBuild.vscode-bazel
-[sdk-get-started]: /docs/get-started/sdk/index.md?ide=vscode
+[sdk-get-started]: /get-started/sdk/index.md?ide=vscode

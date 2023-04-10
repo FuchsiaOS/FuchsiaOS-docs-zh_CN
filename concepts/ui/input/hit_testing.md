@@ -24,7 +24,7 @@ There are two types of hit regions Flatland clients may attach to transforms:
 semantically visible and semantically invisible hit regions. The property of
 semantic visibility can be ignored by most clients, as its only used in rare
 accessibility-specific use cases. See the
-[semantic visibility](/docs/concepts/ui/input/semantic_visibility.md#semantic-visibility)
+[semantic visibility](/concepts/ui/input/semantic_visibility.md#semantic-visibility)
 page for more information.
 
 ## High level overview of algorithm
@@ -45,7 +45,7 @@ AddChild() is topologically after its sibling.
 
 Semantic hit tests do not interact with semantically invisible hit regions.
 
-See the [semantic visibility](/docs/concepts/ui/input/semantic_visibility.md)
+See the [semantic visibility](/concepts/ui/input/semantic_visibility.md)
 page for more information.
 
 #### Overlap

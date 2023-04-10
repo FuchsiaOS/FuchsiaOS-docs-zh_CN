@@ -40,5 +40,5 @@ The CLI is designed as an extensible architecture. In this architecture,
 plugins provide the code execution. Plugins are defined by a mixture of GN
 build rules and Rust attributes. Plugins are designed to be as decoupled from
 the internal workings of FFX as possible. If you are interested in developing a
-plugin for FFX, please visit the [Integrating With FFX](/docs/development/tools/ffx/development/plugins.md) page.
+plugin for FFX, please visit the [Integrating With FFX](/development/tools/ffx/development/plugins.md) page.
 

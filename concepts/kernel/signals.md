@@ -69,9 +69,9 @@ the object signal syscalls.
 
 
 
-[`zx_object_get_info()`]: /docs/reference/syscalls/object_get_info.md
-[`zx_object_signal()`]: /docs/reference/syscalls/object_signal.md
-[`zx_object_signal_peer()`]: /docs/reference/syscalls/object_signal.md
-[`zx_object_wait_async()`]: /docs/reference/syscalls/object_wait_async.md
-[`zx_object_wait_many()`]: /docs/reference/syscalls/object_wait_many.md
-[`zx_object_wait_one()`]: /docs/reference/syscalls/object_wait_one.md
+[`zx_object_get_info()`]: /reference/syscalls/object_get_info.md
+[`zx_object_signal()`]: /reference/syscalls/object_signal.md
+[`zx_object_signal_peer()`]: /reference/syscalls/object_signal.md
+[`zx_object_wait_async()`]: /reference/syscalls/object_wait_async.md
+[`zx_object_wait_many()`]: /reference/syscalls/object_wait_many.md
+[`zx_object_wait_one()`]: /reference/syscalls/object_wait_one.md

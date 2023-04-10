@@ -121,7 +121,7 @@ To add an external crate, do the following:
       change.
 
       For more information about the associated actions for each contributor
-      role, see [Role matrix](/docs/contribute/community/contributor-roles.md).
+      role, see [Role matrix](/contribute/community/contributor-roles.md).
 
 ## Updating an external crate
 
@@ -402,6 +402,6 @@ This issue is being tracked [upstream](https://github.com/rust-lang/cargo/issues
 [external-cargo-toml]: /third_party/rust_crates/Cargo.toml
 [external-vendor]: /third_party/rust_crates/vendor
 [cargo-gnaw-readme]: /tools/cargo-gnaw/README.md
-[osrb-process]: /docs/contribute/governance/policy/osrb-process.md#process_for_adding_external_code_to_new_repositories
+[osrb-process]: /contribute/governance/policy/osrb-process.md#process_for_adding_external_code_to_new_repositories
 [jiri-manifest]: https://fuchsia.googlesource.com/manifest/+/main/runtimes/rust "Jiri manifest"
 [owners-file]: /third_party/rust_crates/OWNERS

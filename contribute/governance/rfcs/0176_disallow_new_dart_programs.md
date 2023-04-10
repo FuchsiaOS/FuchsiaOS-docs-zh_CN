@@ -215,6 +215,6 @@ The existing Fuchsia language policy for Dart: [Language Policy][2]
 This RFC proposes a similar allowlist-based enforcement mechanism as the drviers
 shared library allowlist: [Drivers Shared Library Allowlist RFC][3]
 
-[1]: /docs/glossary/README.md#platform-source-tree
-[2]: /docs/contribute/governance/policy/programming_languages.md#dart
-[3]: /docs/contribute/governance/rfcs/0090_drivers_shared_library_allowlist.md
+[1]: /glossary/README.md#platform-source-tree
+[2]: /contribute/governance/policy/programming_languages.md#dart
+[3]: /contribute/governance/rfcs/0090_drivers_shared_library_allowlist.md

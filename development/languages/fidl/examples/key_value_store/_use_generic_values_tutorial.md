@@ -1,7 +1,7 @@
 ### Reasoning
 
 The [key-value store baseline
-example's](/docs/development/languages/fidl/examples/key_value_store#baseline)
+example's](/development/languages/fidl/examples/key_value_store#baseline)
 implementation was a good starting point, but one major drawback is that data is
 stored as raw bytes. FIDL is a richly typed language. Forcing data that is for
 instance a UTF-8 string to be stored as an untyped byte array erases this
@@ -13,7 +13,7 @@ programmers using bindings generated from it.
 The main goal of this change is to replace the baseline case's `vector<byte>`
 typed `value` member with a `union` that stores many possible types. In fact, as
 of this change a good survey of FIDL's
-[value](/docs/reference/fidl/language/language.md#value-vs-resource) types is on
+[value](/reference/fidl/language/language.md#value-vs-resource) types is on
 offer:
 
 - All of FIDL's builtin *scalar types* are used as variants in the `Value`

@@ -108,7 +108,7 @@ good idea for the following reasons:
 * The core driver needs to be informed whether to perform pinning or mapping
   operations by the device-specific driver.
 * Pinning requires access to the [bus transaction initiator
-  (BTI)](/docs/reference/kernel_objects/bus_transaction_initiator.md) handle
+  (BTI)](/reference/kernel_objects/bus_transaction_initiator.md) handle
   provided by the platform-bus or pci drivers. Passing a BTI handle up the
   driver stack is an anti-pattern.
 * In the case mapping is necessary, this means that raw buffers are passed over

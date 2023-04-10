@@ -130,10 +130,10 @@ For more detailed explanation of how drivers are bound, see
 
 <!-- Reference links -->
 
-[glossary.component]: /docs/glossary/README.md#component
-[driver-host]: /docs/concepts/drivers/driver_framework.md#driver_host
-[driver-manager]: /docs/concepts/drivers/driver_framework.md#driver_manager
-[driver-dispatcher]: /docs/concepts/drivers/driver-dispatcher-and-threads.md
+[glossary.component]: /glossary/README.md#component
+[driver-host]: /concepts/drivers/driver_framework.md#driver_host
+[driver-manager]: /concepts/drivers/driver_framework.md#driver_manager
+[driver-dispatcher]: /concepts/drivers/driver-dispatcher-and-threads.md
 [dispatcher-flags]: /sdk/lib/driver/runtime/include/lib/fdf/types.h
 [fhcp-schema]: /build/drivers/FHCP.json
-[driver-binding]: /docs/concepts/drivers/driver_binding.md
+[driver-binding]: /concepts/drivers/driver_binding.md

@@ -175,7 +175,7 @@ There are also additional important reasons **not** to allow the
    This use case is rare, or even nonexistent since FIDL layout is always
    8 bytes aligned.
 3. Implementation-wise, we've clarified and explained in [RFC-0066:
-   Programmer Advisory Explicit Defaults](/docs/contribute/governance/rfcs/0066_programmer_advisory_explicit.md) that guaranteeing
+   Programmer Advisory Explicit Defaults](/contribute/governance/rfcs/0066_programmer_advisory_explicit.md) that guaranteeing
    certain values be initialized is too strong of a requirement for certain
    bindings (e.g. C, LLCPP).
    As a result, should we introduce 'reserved' slots in structs,
@@ -271,6 +271,6 @@ largest ordinal(s) would be silent.
 TBD
 
 <!-- xrefs -->
-[language]: /docs/reference/fidl/language/language.md
-[grammar]: /docs/reference/fidl/language/grammar.md
+[language]: /reference/fidl/language/language.md
+[grammar]: /reference/fidl/language/grammar.md
 

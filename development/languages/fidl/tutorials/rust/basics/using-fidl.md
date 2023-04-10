@@ -177,8 +177,8 @@ fx test -vo fidl_crates_bin_test
 ```
 
 <!-- xrefs -->
-[generated-code]: /docs/development/languages/fidl/guides/generated-code.md#rust
-[bindings-ref]: /docs/reference/fidl/bindings/rust-bindings.md
-[fidl-intro]: /docs/development/languages/fidl/tutorials/fidl.md
-[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[generated-code]: /development/languages/fidl/guides/generated-code.md#rust
+[bindings-ref]: /reference/fidl/bindings/rust-bindings.md
+[fidl-intro]: /development/languages/fidl/tutorials/fidl.md
+[overview]: /development/languages/fidl/tutorials/overview.md
 [example-lib]: /examples/fidl/fuchsia.examples/echo.test.fidl

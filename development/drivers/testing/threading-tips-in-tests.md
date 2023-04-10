@@ -233,8 +233,8 @@ dispatcher are synchronized, preventing potential crashes or data races.
 * [Thread safe asynchronous code][thread-safe-async], which has guidance for
   general production code not just tests.
 
-[check]: /docs/development/languages/c-cpp/thread-safe-async.md#check-synchronized
-[thread-safe-async]: /docs/development/languages/c-cpp/thread-safe-async.md
+[check]: /development/languages/c-cpp/thread-safe-async.md#check-synchronized
+[thread-safe-async]: /development/languages/c-cpp/thread-safe-async.md
 [dispatcher-bound]: /sdk/lib/async_patterns/cpp/dispatcher_bound.h
 [test-dispatcher-bound]: /sdk/lib/async_patterns/testing/cpp/dispatcher_bound.h
 [fastboot]: https://cs.opensource.google/fuchsia/fuchsia/+/973929b93c3a5e7609ed9e7443756b32c08140e5:src/firmware/lib/fastboot/test/fastboot-test.cc;l=891-936

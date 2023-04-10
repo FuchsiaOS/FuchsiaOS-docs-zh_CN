@@ -126,15 +126,15 @@ The relative URL resolves to:
 fuchsia-pkg://fuchsia.com/package#meta/child.cm
 ```
 
-[glossary.component-url]: /docs/glossary/README.md#component-url
-[glossary.subpackage]: /docs/glossary/README.md#subpackage
-[doc-manifests]: /docs/concepts/components/v2/component_manifests.md
-[doc-package]: /docs/concepts/packages/package.md
-[doc-package-url]: /docs/concepts/packages/package_url.md
-[doc-package-url-resource-path]: /docs/concepts/packages/package_url.md#resource-paths
-[doc-relative-package-url]: /docs/concepts/packages/package.md#relative-package-urls
-[doc-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
-[doc-runners]: /docs/concepts/components/v2/capabilities/runners.md
-[doc-subpackages]: /docs/concepts/components/v2/subpackaging.md
+[glossary.component-url]: /glossary/README.md#component-url
+[glossary.subpackage]: /glossary/README.md#subpackage
+[doc-manifests]: /concepts/components/v2/component_manifests.md
+[doc-package]: /concepts/packages/package.md
+[doc-package-url]: /concepts/packages/package_url.md
+[doc-package-url-resource-path]: /concepts/packages/package_url.md#resource-paths
+[doc-relative-package-url]: /concepts/packages/package.md#relative-package-urls
+[doc-resolvers]: /concepts/components/v2/capabilities/resolvers.md
+[doc-runners]: /concepts/components/v2/capabilities/runners.md
+[doc-subpackages]: /concepts/components/v2/subpackaging.md
 [rfc-uri-scheme]: https://tools.ietf.org/html/rfc3986#section-3.1
 [url-rfc-3986]: https://datatracker.ietf.org/doc/html/rfc3986#section-4.2

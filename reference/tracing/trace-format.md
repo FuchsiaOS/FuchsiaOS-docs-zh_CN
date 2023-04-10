@@ -6,7 +6,7 @@ You can use this document to search for detailed information
 about each field in the Fuchsia trace format.
 
 Note: For information about the Fuchsia tracing system,
-see [Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
+see [Fuchsia tracing system](/concepts/kernel/tracing-system.md).
 
 ## Overview
 
@@ -751,7 +751,7 @@ The following blob types are defined:
 - `TRACE_BLOB_TYPE_LAST_BRANCH` = `0x02`: Last Branch Record of Intel Performance Monitor.
   The format is defined by the
 [CPU performance
-monitor](/docs/development/tracing/advanced/recording-a-cpu-performance-trace.md).
+monitor](/development/tracing/advanced/recording-a-cpu-performance-trace.md).
 - `TRACE_BLOB_TYPE_PERFETTO = `0x03`: The blob contains data recorded from a
   Perfetto speaking component. The data is encoded in [Perfetto's Proto
   Format](https://perfetto.dev/docs/reference/trace-packet-proto).
@@ -918,7 +918,7 @@ By convention, the trace writer may also optionally include the following named
 arguments when writing this record to provide additional information to trace
 consumers.
 
-- `"incoming_weight"`: `Int32` describing the relative [weight](/docs/concepts/kernel/fair_scheduler.md) of the incoming
+- `"incoming_weight"`: `Int32` describing the relative [weight](/concepts/kernel/fair_scheduler.md) of the incoming
   thread
 - `"outgoing_weight"`: `Int32` describing the relative weight of the outgoing
   thread
@@ -968,7 +968,7 @@ By convention, the trace writer may also optionally include the following named
 argument when writing this record to provide additional information to trace
 consumers.
 
-- `"weight"`: `Int32` describing the relative [weight](/docs/concepts/kernel/fair_scheduler.md) of the waking thread
+- `"weight"`: `Int32` describing the relative [weight](/concepts/kernel/fair_scheduler.md) of the waking thread
 
 #### Legacy Context Switch Record (context switch record type = 0)
 

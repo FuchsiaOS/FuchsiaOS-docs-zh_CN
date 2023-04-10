@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -64,7 +64,7 @@ In a future build this error will no longer occur.
  - [`zx_handle_close_many()`]
  - [`zx_handle_replace()`]
 
-[rights]: /docs/concepts/kernel/rights.md
+[rights]: /concepts/kernel/rights.md
 [`zx_channel_write_etc()`]: channel_write_etc.md
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_close_many()`]: handle_close_many.md

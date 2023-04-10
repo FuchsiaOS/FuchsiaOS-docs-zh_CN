@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -180,7 +180,7 @@ communications on a channel that is timing out.
  - [`zx_object_wait_many()`]
  - [`zx_object_wait_one()`]
 
-[timer slack]: /docs/concepts/kernel/timer_slack.md
+[timer slack]: /concepts/kernel/timer_slack.md
 [`zx_channel_create()`]: channel_create.md
 [`zx_channel_read()`]: channel_read.md
 [`zx_channel_write()`]: channel_write.md

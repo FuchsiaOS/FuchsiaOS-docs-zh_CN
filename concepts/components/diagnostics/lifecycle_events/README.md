@@ -31,9 +31,9 @@ The archivist consumes the following lifecycle events under component manager th
 - [Inspect discovery and hosting - Archivist section][inspect_discovery_hosting]
 
 
-[archivist]: /docs/reference/diagnostics/inspect/tree.md#archivist
+[archivist]: /reference/diagnostics/inspect/tree.md#archivist
 [event_source]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventSource
 [component_event_provider]: https://fuchsia.dev/reference/fidl/fuchsia.sys.internal#ComponentEventProvider
-[event_capabilities]: /docs/concepts/components/v2/capabilities/event.md
-[inspect_discovery_hosting]: /docs/reference/diagnostics/inspect/tree.md#archivist
-[runner]: /docs/glossary#runner
+[event_capabilities]: /concepts/components/v2/capabilities/event.md
+[inspect_discovery_hosting]: /reference/diagnostics/inspect/tree.md#archivist
+[runner]: /glossary#runner

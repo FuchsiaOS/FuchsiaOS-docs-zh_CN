@@ -12,7 +12,7 @@ practices for defining packages, components, and drivers.
 
 Drivers are a type of component, so before going much further it is important
 to understand how to
-[build components](/docs/development/components/build.md).
+[build components](/development/components/build.md).
 
 ## Driver package GN templates {#driver-package}
 

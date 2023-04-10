@@ -173,7 +173,7 @@ important configurations to be familiar with:
 ### Key additional build targets {#key-bundles}
 
 The `--with` flag for `fx set` takes in arbitrary
-[build targets](/docs/development/build/build_system/fuchsia_build_system_overview.md#build_targets).
+[build targets](/development/build/build_system/fuchsia_build_system_overview.md#build_targets).
 For convenience, a number of bundles are defined, which include a variety of
 commonly used build targets. It is important to be familiarized with the
 following bundles:
@@ -481,7 +481,7 @@ also always available in "bringup" product configurations, as such, `fx klog`
 is most useful when working on low-level software, such as the Zircon kernel,
 or drivers.
 
-See [Viewing Logs](/docs/development/diagnostics/logs/viewing.md) for more information.
+See [Viewing Logs](/development/diagnostics/logs/viewing.md) for more information.
 
 ### Copying files {#copying-files}
 
@@ -635,8 +635,8 @@ To suppress the inclusion of `local/args.gn`, run `fx set ... --skip-local-args`
 
 <!-- Reference links -->
 
-[build-overview]: /docs/development/build/build_system/fuchsia_build_system_overview.md
-[executing-tests]: /docs/development/testing/run_fuchsia_tests.md
+[build-overview]: /development/build/build_system/fuchsia_build_system_overview.md
+[executing-tests]: /development/testing/run_fuchsia_tests.md
 [ffx-target-flash]: https://fuchsia.dev/reference/tools/sdk/ffx#flash
 [fxb94507]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=94507
 [fuchsia-gi-repo]: https://fuchsia.googlesource.com/integration/

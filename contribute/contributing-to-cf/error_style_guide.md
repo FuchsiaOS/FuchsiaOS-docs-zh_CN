@@ -241,5 +241,5 @@ we might do more in the future. Consider what error types you'd use if the
 particular section of code you're working on were part of its own crate. What
 would reasonable error types be for the logical collection of code in the crate?
 
-[rfc-0003]: /docs/contribute/governance/rfcs/0003_logging.md
-[fidl-string-error]: /docs/development/api/fidl.md#avoid-messages-and-descriptions-in-errors
+[rfc-0003]: /contribute/governance/rfcs/0003_logging.md
+[fidl-string-error]: /development/api/fidl.md#avoid-messages-and-descriptions-in-errors

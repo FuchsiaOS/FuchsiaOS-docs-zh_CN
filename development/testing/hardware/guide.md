@@ -25,7 +25,7 @@ your test host and Fuchsia device. The second part of the command,
 `gpioutil list`, is the **testing tool** that actually exercises or queries
 a hardware subsystem on your Fuchsia device.
 
-[sequence]: /docs/development/testing/hardware/sequence.png
+[sequence]: /development/testing/hardware/sequence.png
 
 ![A sequence diagram of the `adb shell gpioutil list` workflow.][sequence]
 
@@ -100,8 +100,8 @@ Fuchsia image with the tools you need then you can skip this section.
 If you've never built Fuchsia from source and need help with the
 basic workflows, see the following tutorials:
 
-1. [Download the source code](/docs/get-started/get_fuchsia_source.md)
-1. [Configure and build Fuchsia](/docs/get-started/build_fuchsia.md)
+1. [Download the source code](/get-started/get_fuchsia_source.md)
+1. [Configure and build Fuchsia](/get-started/build_fuchsia.md)
 
 ### Including hardware testing tools in your build {: #include }
 
@@ -123,15 +123,15 @@ call:
 fx set {{"<var>"}}PRODUCT{{"</var>"}}.{{"<var>"}}BOARD{{"</var>"}} --with-base '//bundles/tools'
 ```
 
-[base packages]: /docs/concepts/packages/package.md#base-packages
+[base packages]: /concepts/packages/package.md#base-packages
 [`//bundles/tools/BUILD.gn`]: /bundles/tools/BUILD.gn
 
 The `--with-base` option adds all of the dependencies listed in
 [`//bundles/tools/BUILD.gn`] as [base packages] in your Fuchsia image.
 Most of Fuchsia's hardware testing tools are in this bundle.
 
-[product]: /docs/development/build/build_system/boards_and_products.md#products
-[board]: /docs/development/build/build_system/boards_and_products.md#boards
+[product]: /development/build/build_system/boards_and_products.md#products
+[board]: /development/build/build_system/boards_and_products.md#boards
 
 Caution: {{"<var>"}}PRODUCT{{"</var>"}} and {{"<var>"}}BOARD{{"</var>"}}
 are placeholder values. You need to replace them with real [product]
@@ -204,7 +204,7 @@ which is the underlying component that powers those shells.
 
 ### ffx {: #ffx }
 
-[`ffx`](/docs/development/tools/ffx/overview.md) is Fuchsia's main tool
+[`ffx`](/development/tools/ffx/overview.md) is Fuchsia's main tool
 for host-target interactions.
 
 To start an interactive shell:
@@ -250,7 +250,7 @@ To run single commands (`gpioutil list` for example):
 adb shell 'gpioutil list'
 ```
 
-[RFC-0200]: /docs/contribute/governance/rfcs/0200_support_adb_protocol_and_interface_for_hardware_testing.md
+[RFC-0200]: /contribute/governance/rfcs/0200_support_adb_protocol_and_interface_for_hardware_testing.md
 
 Fuchsia only has partial support for `adb` by design. See [RFC-0200] for
 details on what's supported and what's not. See
@@ -278,7 +278,7 @@ Fuchsia device.
       <td>Audio</td>
       <td>
         <ul>
-          <li><a href="/docs/reference/tools/hardware/audio-driver-ctl.md"><code>audio-driver-ctl</code></a></li>
+          <li><a href="/reference/tools/hardware/audio-driver-ctl.md"><code>audio-driver-ctl</code></a></li>
         </ul>
       </td>
     </tr>
@@ -286,7 +286,7 @@ Fuchsia device.
       <td>GPIO</td>
       <td>
         <ul>
-          <li><a href="/docs/reference/tools/hardware/gpioutil.md"><code>gpioutil</code></a></li>
+          <li><a href="/reference/tools/hardware/gpioutil.md"><code>gpioutil</code></a></li>
         </ul>
       </td>
     </tr>
@@ -294,7 +294,7 @@ Fuchsia device.
       <td>I2C</td>
       <td>
         <ul>
-          <li><a href="/docs/reference/tools/hardware/i2cutil.md"><code>i2cutil</code></a></li>
+          <li><a href="/reference/tools/hardware/i2cutil.md"><code>i2cutil</code></a></li>
         </ul>
       </td>
     </tr>
@@ -302,7 +302,7 @@ Fuchsia device.
       <td>Lights</td>
       <td>
         <ul>
-          <li><a href="/docs/reference/tools/hardware/lights-cli.md"><code>lights-cli</code></a></li>
+          <li><a href="/reference/tools/hardware/lights-cli.md"><code>lights-cli</code></a></li>
         </ul>
       </td>
     </tr>

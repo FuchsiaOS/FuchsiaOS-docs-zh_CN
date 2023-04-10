@@ -15,7 +15,7 @@ do, and prevents drivers from using the standard FIDL wire server objects and
 patterns.
 
 This implicit multiplexing also goes against
-[FIDL design principles for composition](/docs/contribute/governance/rfcs/0023_compositional_model_protocols.md).
+[FIDL design principles for composition](/contribute/governance/rfcs/0023_compositional_model_protocols.md).
 FIDL design principles state that a protocol can be `composed` of multiple
 protocols at compile time. However, the Driver Framework is doing this
 composition at run time and is unaware of the FIDL protocol being spoken by the

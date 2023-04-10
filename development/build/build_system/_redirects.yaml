@@ -3,5 +3,5 @@
 # found in the LICENSE file.
 
 redirects:
-- from: /docs/development/build/build_system/best_practices.md
-  to: /docs/development/build/build_system/best_practices_templates.md
+- from: /development/build/build_system/best_practices.md
+  to: /development/build/build_system/best_practices_templates.md

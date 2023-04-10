@@ -47,7 +47,7 @@
   api_secondary: 'crjohns@google.com'
   description: |
     Developer tool interfaces, such as the <a
-    href='/docs/development/api/cli.md'>Command-line Tools Rubric</a>. APIs that
+    href='/development/api/cli.md'>Command-line Tools Rubric</a>. APIs that
     affect the developer experience in the host environment such as debugging,
     forensics, or the development kit.
 
@@ -57,10 +57,10 @@
   description: |
     The set of APIs that are used to publish and query diagnostics data from
     components on the system. This includes the ability to <a
-    href="/docs/reference/diagnostics/logs/access.md">stream logs</a>, view and
-    publish <a href="/docs/development/diagnostics/inspect/README.md">Inspect
+    href="/reference/diagnostics/logs/access.md">stream logs</a>, view and
+    publish <a href="/development/diagnostics/inspect/README.md">Inspect
     data</a>, and <a
-    href="/docs/concepts/components/diagnostics/lifecycle_events/README.md">observe
+    href="/concepts/components/diagnostics/lifecycle_events/README.md">observe
     lifecycle events</a>.
   examples:
     - fidl: 'fuchsia.diagnostics'

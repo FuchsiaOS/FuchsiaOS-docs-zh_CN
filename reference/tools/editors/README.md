@@ -77,15 +77,15 @@ For installation and usage information see
 [Kakoune for Fuchsia development][#kakoune].
 
 [vs-code-download]: https://code.visualstudio.com/docs/setup/setup-overview
-[remote-workspaces]: /docs/reference/tools/editors/vscode/remote-workspaces.md
-[file-reloading]: /docs/reference/tools/editors/vscode/file-reloading.md
-[sdk-fundamentals]: /docs/get-started/sdk/learn/README.md
-[source-fundamentals]: /docs/get-started/learn/README.md
-[fuchsia-dev-ext]: /docs/reference/tools/editors/vscode/fuchsia-ext-install.md
+[remote-workspaces]: /reference/tools/editors/vscode/remote-workspaces.md
+[file-reloading]: /reference/tools/editors/vscode/file-reloading.md
+[sdk-fundamentals]: /get-started/sdk/learn/README.md
+[source-fundamentals]: /get-started/learn/README.md
+[fuchsia-dev-ext]: /reference/tools/editors/vscode/fuchsia-ext-install.md
 [ffx-ref]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fuchsia-source-ext]: /docs/reference/tools/editors/vscode/extensions.md
-[rust-sublime]: /docs/development/languages/rust/editors.md#sublime-text
-[FIDL-sublime]: /docs/development/languages/fidl/guides/editors.md#sublime
-[vim-editor]: /docs/reference/tools/editors/vim.md 
-[youcompleteme-editor]: /docs/reference/tools/editors/youcompleteme.md
-[kakoune]: /docs/reference/tools/editors/kak.md
+[fuchsia-source-ext]: /reference/tools/editors/vscode/extensions.md
+[rust-sublime]: /development/languages/rust/editors.md#sublime-text
+[FIDL-sublime]: /development/languages/fidl/guides/editors.md#sublime
+[vim-editor]: /reference/tools/editors/vim.md 
+[youcompleteme-editor]: /reference/tools/editors/youcompleteme.md
+[kakoune]: /reference/tools/editors/kak.md

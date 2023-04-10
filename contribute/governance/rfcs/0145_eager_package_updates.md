@@ -1196,7 +1196,7 @@ to SWD and Storage codebases.
 [android-app]: https://developer.android.com/reference/android/app/package-summary
 [android-app-bundles]: https://developer.android.com/guide/app-bundle
 [android-versioning]: https://developer.android.com/studio/publish/versioning#appversioning
-[base-packages]: /docs/get-started/learn/build/product-packages.md
+[base-packages]: /get-started/learn/build/product-packages.md
 [blob-corruption-fidl]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.blobfs/blobfs.fidl;l=34;drc=e3b39f2b57e720770773b857feca4f770ee0619e
 [debian-packaging]: https://wiki.debian.org/Packaging/BinaryPackage
 [fuchsia.pkg.PackageCache.Open]: https://fuchsia.dev/reference/fidl/fuchsia.pkg#PackageCache.Open
@@ -1204,9 +1204,9 @@ to SWD and Storage codebases.
 [fuchsia.pkg.PackageResolver.Resolve]: https://fuchsia.dev/reference/fidl/fuchsia.pkg#PackageResolver.Resolve
 [fuchsia.update.channelcontrol]: https://fuchsia.dev/reference/fidl/fuchsia.update.channelcontrol
 [fuchsia-supported-arch]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.hwinfo/hwinfo.fidl;l=9;drc=e3b39f2b57e720770773b857feca4f770ee0619e
-[fvx]: /docs/concepts/security/verified_execution.md
-[garbage-collection]: /docs/concepts/packages/garbage_collection.md
-[indirect-verification]: /docs/concepts/security/verified_execution.md#direct_vs_indirect_verification
+[fvx]: /concepts/security/verified_execution.md
+[garbage-collection]: /concepts/packages/garbage_collection.md
+[indirect-verification]: /concepts/security/verified_execution.md#direct_vs_indirect_verification
 [omaha-cohort]: https://github.com/google/omaha/blob/ebc25b2b3d77eed3d9a122bcfd89a66f6f192e4b/doc/ServerProtocolV3.md#app-response
 [omaha-cup]: https://github.com/google/omaha/blob/ebc25b2b3d77eed3d9a122bcfd89a66f6f192e4b/doc/ClientUpdateProtocol.md
 [omaha-e2e-vbmeta]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/testing/host-target-testing/updater/updater.go;drc=bf2c499132832e547ff658f9626dee9245c507df;l=212
@@ -1214,9 +1214,9 @@ to SWD and Storage codebases.
 [omaha-version-numbers]: https://github.com/google/omaha/blob/1a675d48658b99404702f99b2edbf8556332e6bb/doc/ServerProtocolV3.md#version-numbers
 [pkgfs-executable-allowlist]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/bin/pkgfs/pkgfs/package_directory.go;l=205;drc=c1465e2b83b7a24d2d9d4a991236fb41e68ca833
 [retained-packages-api]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.pkg/cache.fidl;l=201;drc=896f3220d71b442b44da13bc04a5634993488330
-[rfc-2]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
+[rfc-2]: /contribute/governance/rfcs/0002_platform_versioning.md
 [rfc-component-scoped-executability]: https://fuchsia-review.googlesource.com/c/fuchsia/+/543282
-[structured-config]: /docs/contribute/governance/rfcs/0127_structured_configuration.md
+[structured-config]: /contribute/governance/rfcs/0127_structured_configuration.md
 [tuf-spec]: https://theupdateframework.github.io/specification/latest/
 [urgent-updates]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/bin/omaha-client/src/install_plan.rs;l=22;drc=c3dfd63bde9855d52c32541a4ae9d30c1fe05b59
 [vbmeta]: https://android.googlesource.com/platform/external/avb/+/b3947a2fc1751f2f3afbb372412c3b4028e715a5/README.md#The-VBMeta-Digest

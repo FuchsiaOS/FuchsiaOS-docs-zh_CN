@@ -4,7 +4,7 @@ The Compatibility Tests for Fuchsia (CTF) are a set of tests designed to provide
 coverage for Application Programming Interface (API) and Application Binary
 Interface (ABI) elements (e.g., headers, FIDL files) made available to
 developers via a Fuchsia SDK. It was originally proposed as [RFC
-0015](/docs/contribute/governance/rfcs/0015_cts.md), and
+0015](/contribute/governance/rfcs/0015_cts.md), and
 the project code is located at
 [//sdk/ctf](https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/sdk/ctf/).
 

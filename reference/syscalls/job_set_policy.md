@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -164,7 +164,7 @@ parent job's *default_mode*. The possible values for *default_mode* are:
 + **ZX_TIMER_SLACK_EARLY**
 + **ZX_TIMER_SLACK_LATE**
 
-See [timer slack](/docs/concepts/kernel/timer_slack.md) for more information.
+See [timer slack](/concepts/kernel/timer_slack.md) for more information.
 
 When setting timer slack policy, *options* must be **ZX_JOB_POL_RELATIVE** and
 **count** must be 1.

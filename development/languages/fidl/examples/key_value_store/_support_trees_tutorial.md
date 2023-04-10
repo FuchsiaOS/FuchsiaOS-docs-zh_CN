@@ -10,9 +10,9 @@ Here, we see several uses of *optionality*, whereby we can declare a type that
 may or may not exist. There are three flavors of optionality in FIDL:
 
 - Types that have are always stored
-  [out-of-line](/docs/reference/fidl/language/wire-format#primary_and_secondary_objects)
+  [out-of-line](/reference/fidl/language/wire-format#primary_and_secondary_objects)
   on the wire, and thus have a builtin way to describe "absentness" via the
-  [null envelope](/docs/reference/fidl/language/wire-format#envelopes). Enabling
+  [null envelope](/reference/fidl/language/wire-format#envelopes). Enabling
   optionality for these types doesn't affect the wire shape of messages they are
   included in - it simply changes which values are valid for that particular
   type. The `union`, `vector<T>`, `client_end`, `server_end`, and `zx.handle`

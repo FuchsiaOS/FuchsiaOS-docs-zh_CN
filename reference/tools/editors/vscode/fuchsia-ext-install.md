@@ -75,9 +75,9 @@ information on how to use the Fuchsia extension, see
 [Using the Fuchsia extension for VS Code][using-fuchsia-ext].
 
 <!-- Reference links -->
-[sdk-fundamentals]: /docs/get-started/sdk/learn
-[sourcetree-fundamentals]: /docs/get-started/learn
-[vscode-fuchsia]: /docs/reference/tools/editors/README.md#vs-code
+[sdk-fundamentals]: /get-started/sdk/learn
+[sourcetree-fundamentals]: /get-started/learn
+[vscode-fuchsia]: /reference/tools/editors/README.md#vs-code
 [vscode]: https://code.visualstudio.com/
 [extension-link]: https://marketplace.visualstudio.com/items?itemName=fuchsia-authors.vscode-fuchsia
-[using-fuchsia-ext]: /docs/reference/tools/editors/vscode/fuchsia-ext-using.md
+[using-fuchsia-ext]: /reference/tools/editors/vscode/fuchsia-ext-using.md

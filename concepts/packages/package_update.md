@@ -132,5 +132,5 @@ root hash and put in a directory at the root of the TUF file tree called 'blobs'
 
 [pkg-struct]: /src/sys/pkg/bin/pm/README.md#structure-of-a-fuchsia-package "Package structure"
 [TUF-home]: https://theupdateframework.github.io "TUF Homepage"
-[pkg-doc]: /docs/development/build/build_system/fuchsia_build_system_overview.md "Build overview"
-[paver]: /docs/development/build/fx.md#what-is-paving "Fuchsia paving"
+[pkg-doc]: /development/build/build_system/fuchsia_build_system_overview.md "Build overview"
+[paver]: /development/build/fx.md#what-is-paving "Fuchsia paving"

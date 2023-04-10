@@ -917,7 +917,7 @@ generalization of a build system to operate asynchronously and distributed.
 ![Legend of Global Integration Figure][fig4]
 
 <!-- xrefs -->
-[roadmap]: /docs/contribute/roadmap/2021/decentralized_product_integration.md
+[roadmap]: /contribute/roadmap/2021/decentralized_product_integration.md
 [rfc0002]: 0002_platform_versioning.md
 [rfc0072]: 0072_standalone_image_assembly_tool.md
 [rfc0095]: 0095_build_and_assemble_workstation_out_of_tree.md
@@ -928,10 +928,10 @@ generalization of a build system to operate asynchronously and distributed.
 [fig2]: resources/0124_decentralized_product_integration_artifact_description_and_propagation/fig_2.png
 [fig3]: resources/0124_decentralized_product_integration_artifact_description_and_propagation/fig_3.png
 [fig4]: resources/0124_decentralized_product_integration_artifact_description_and_propagation/fig_4.png
-[fuchsia-swd]: /docs/concepts/packages/software_update_system.md
-[fuchsia-package]: /docs/concepts/packages/package.md
-[fuchsia-package-hermetic]: /docs/concepts/software_model.md#distributing-components-through-packages
-[fuchsia-merkleroot]: /docs/concepts/packages/merkleroot.md
+[fuchsia-swd]: /concepts/packages/software_update_system.md
+[fuchsia-package]: /concepts/packages/package.md
+[fuchsia-package-hermetic]: /concepts/software_model.md#distributing-components-through-packages
+[fuchsia-merkleroot]: /concepts/packages/merkleroot.md
 [cipd]: https://chromium.googlesource.com/infra/luci/luci-go/+/HEAD/cipd/README.md
-[glossary.product]: /docs/glossary/README.md#product
-[glossary.product-owner]: /docs/glossary/README.md#product-owner
+[glossary.product]: /glossary/README.md#product
+[glossary.product-owner]: /glossary/README.md#product-owner

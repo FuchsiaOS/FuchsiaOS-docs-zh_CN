@@ -784,29 +784,29 @@ Additionally, there have been a few projects that combine AFL with qemu:
 [115]: #afl_with_qemu
 
 [2xx]: # "2xx links refer to other Fuchsia documentation."
-[201]: /docs/development/build/build_system/variants.md
-[202]: /docs/concepts/components/v2/component_manifests.md#include
-[203]: /docs/concepts/components/v2/realms.md
-[204]: /docs/concepts/components/v2/topology.md
-[205]: /docs/concepts/kernel/concepts.md#events_event_pairs
-[206]: /docs/concepts/kernel/concepts.md#message_passing_sockets_and_channels
-[207]: /docs/concepts/kernel/concepts.md#shared_memory_virtual_memory_objects_vmos
-[208]: /docs/concepts/kernel/exceptions.md
-[209]: /docs/contribute/testing/fuzz_testing.md#coverage-guided-fuzzing
-[210]: /docs/development/testing/components/test_runner_framework.md
-[211]: /docs/development/testing/components/test_runner_framework.md#elf-test-runner
-[212]: /docs/development/testing/components/test_runner_framework.md#test-runners
-[213]: /docs/development/testing/components/test_runner_framework.md#the_test_manager
-[214]: /docs/development/testing/components/integration_testing.md
-[215]: /docs/development/build/toolchain.md
-[216]: /docs/development/languages
-[217]: /docs/development/testing/fuzzing/overview.md
-[218]: /docs/development/testing/fuzzing/build-a-fuzzer.md
-[219]: /docs/development/testing/fuzzing/fidl-fuzzing.md
-[220]: /docs/development/testing/fuzzing/run-a-fuzzer.md
-[221]: /docs/development/testing/fuzzing/write-a-fuzzer.md
-[222]: /docs/development/tools/ffx/development/plugins.md
-[223]: /docs/development/tools/ffx/overview.md
+[201]: /development/build/build_system/variants.md
+[202]: /concepts/components/v2/component_manifests.md#include
+[203]: /concepts/components/v2/realms.md
+[204]: /concepts/components/v2/topology.md
+[205]: /concepts/kernel/concepts.md#events_event_pairs
+[206]: /concepts/kernel/concepts.md#message_passing_sockets_and_channels
+[207]: /concepts/kernel/concepts.md#shared_memory_virtual_memory_objects_vmos
+[208]: /concepts/kernel/exceptions.md
+[209]: /contribute/testing/fuzz_testing.md#coverage-guided-fuzzing
+[210]: /development/testing/components/test_runner_framework.md
+[211]: /development/testing/components/test_runner_framework.md#elf-test-runner
+[212]: /development/testing/components/test_runner_framework.md#test-runners
+[213]: /development/testing/components/test_runner_framework.md#the_test_manager
+[214]: /development/testing/components/integration_testing.md
+[215]: /development/build/toolchain.md
+[216]: /development/languages
+[217]: /development/testing/fuzzing/overview.md
+[218]: /development/testing/fuzzing/build-a-fuzzer.md
+[219]: /development/testing/fuzzing/fidl-fuzzing.md
+[220]: /development/testing/fuzzing/run-a-fuzzer.md
+[221]: /development/testing/fuzzing/write-a-fuzzer.md
+[222]: /development/tools/ffx/development/plugins.md
+[223]: /development/tools/ffx/overview.md
 
 [3xx]: # "3xx links refer to external documentation."
 [301]: https://clang.llvm.org/docs/SanitizerCoverage.html

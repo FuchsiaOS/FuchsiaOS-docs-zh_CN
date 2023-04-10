@@ -323,9 +323,9 @@ There were a couple alternatives considered for this design.
 
 ## Prior art and references
 
-* [RFC-0162:Flatland](/docs/contribute/governance/rfcs/0162_flatland.md)
-* [RFC-0147:View system](/docs/contribute/governance/rfcs/0147_view_system.md)
-* [RFC-0166:One UI stack](/docs/contribute/governance/rfcs/0166_ui_stack.md)
+* [RFC-0162:Flatland](/contribute/governance/rfcs/0162_flatland.md)
+* [RFC-0147:View system](/contribute/governance/rfcs/0147_view_system.md)
+* [RFC-0166:One UI stack](/contribute/governance/rfcs/0166_ui_stack.md)
 * Flatland share some architectural similarities with the Wayland protocol,
 which handles
 [High density surfaces](https://wayland-book.com/surfaces-in-depth/hidpi.html){: .external}
@@ -333,4 +333,4 @@ in a similar way to the proposed design.
 
 [flatland]: /sdk/fidl/fuchsia.ui.composition/flatland.fidl
 [gfx]: /sdk/fidl/fuchsia.ui.scenic/session.fidl
-[view]: /docs/contribute/governance/rfcs/0147_view_system.md
+[view]: /contribute/governance/rfcs/0147_view_system.md

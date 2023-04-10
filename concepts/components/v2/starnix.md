@@ -23,7 +23,7 @@ Patches that improve Linux compatibility are welcome. If you want
 to report a bug or file a feature request, create an issue in the
 [Starnix][starnix-monorail-component] component in Monorail.
 
-[glossary.runner]: /docs/glossary/README.md#runner
-[starnix-rfc]: /docs/contribute/governance/rfcs/0082_starnix.md
+[glossary.runner]: /glossary/README.md#runner
+[starnix-rfc]: /contribute/governance/rfcs/0082_starnix.md
 [starnix-readme]: /src/starnix/kernel/README.md
 [starnix-monorail-component]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=component:Starnix

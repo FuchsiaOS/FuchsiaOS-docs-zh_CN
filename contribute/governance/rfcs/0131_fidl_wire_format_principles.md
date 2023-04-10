@@ -120,7 +120,7 @@ reduction of surprises coming from data divergences. A canonical form makes it
 possible to check for equality of two values without the need to understand the
 schema, i.e. a `memcmp` suffices for value types (things are a little [more
 complicated for resource
-types](/docs/reference/fidl/language/bindings-spec.md#equality-comparison)).
+types](/reference/fidl/language/bindings-spec.md#equality-comparison)).
 
 See also the [drawbacks of a canonical form](#drawback-canonical-representation).
 
@@ -141,7 +141,7 @@ defeat address space layout randomization (ASLR). Another example is considering
 
 ### Validation everywhere
 
-> As part of our [defense in depth](/docs/concepts/principles/secure.md), we
+> As part of our [defense in depth](/concepts/principles/secure.md), we
 > want the FIDL wire format to enforce strict validation (e.g. bound checks,
 > strings are well-formed UTF-8 code unit sequences, handles are of the correct
 > type and rights) everywhere it is used.
@@ -220,8 +220,8 @@ No change to testing.
 
 Amend as needed:
 
-* [FIDL Overview](/docs/concepts/fidl/overview.md)
-* [FIDL design principles](/docs/contribute/contributing-to-fidl/design-principles.md)
+* [FIDL Overview](/concepts/fidl/overview.md)
+* [FIDL design principles](/contribute/contributing-to-fidl/design-principles.md)
 * [FIDL wire format][wire-format]
 
 ## Drawbacks, alternatives, and unknowns
@@ -250,4 +250,4 @@ As described in the text.
 [RFC-0030]: 0030_fidl_is_little_endian.md
 [RFC-0047]: 0047_tables.md
 [RFC-0116]: 0116_fidl_sparser_tables.md
-[wire-format]: /docs/reference/fidl/language/wire-format/README.md
+[wire-format]: /reference/fidl/language/wire-format/README.md

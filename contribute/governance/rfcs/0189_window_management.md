@@ -344,7 +344,7 @@ platform. These tests may vary depending on which extensions to the window
 management APIs are supported by a given application or product session.
 
 System shell and Application developers may use the
-[Test UI Stack](/docs/contribute/governance/rfcs/0180_test_ui_stack.md)
+[Test UI Stack](/contribute/governance/rfcs/0180_test_ui_stack.md)
 to write integration tests for the interaction of their code with the Fuchsia
 platform UI stack.
 
@@ -371,12 +371,12 @@ Element Manager.
 *   [RFC-0096: User Input Architecture][input_arch]
 *   [RFC-0147: View System][view_system]
 
-[session]: /docs/contribute/governance/rfcs/0092_sessions.md
+[session]: /contribute/governance/rfcs/0092_sessions.md
 [wayland]: https://wayland.freedesktop.org
-[view_system]: /docs/contribute/governance/rfcs/0147_view_system.md
+[view_system]: /contribute/governance/rfcs/0147_view_system.md
 [scenic]: /docs//concepts/ui/scenic/index.md
-[view_tree]: /docs/concepts/ui/scenic/views.md
-[ui_stack]: /docs/contribute/governance/rfcs/0166_ui_stack.md
+[view_tree]: /concepts/ui/scenic/views.md
+[ui_stack]: /contribute/governance/rfcs/0166_ui_stack.md
 [graphical_presenter]: /sdk/fidl/fuchsia.element/graphical_presenter.fidl
-[input_arch]: /docs/contribute/governance/rfcs/0096_user_input_arch.md
+[input_arch]: /contribute/governance/rfcs/0096_user_input_arch.md
 [element_manager]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/session/bin/element_manager/meta/element_manager.cml

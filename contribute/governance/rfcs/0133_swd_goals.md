@@ -147,7 +147,7 @@ exist. Here is a selection of prior art:
 * [Omaha protocol](https://github.com/google/omaha/blob/ebc25b2b3d77eed3d9a122bcfd89a66f6f192e4b/doc/ServerProtocolV3.md)
 * [The Update Framework specification](https://theupdateframework.github.io/specification/latest/)
 
-[glossary.ota]: /docs/glossary/README.md#ota
-[glossary.product]: /docs/glossary/README.md#product
-[glossary.product-owner]: /docs/glossary/README.md#product-owner
+[glossary.ota]: /glossary/README.md#ota
+[glossary.product]: /glossary/README.md#product
+[glossary.product-owner]: /glossary/README.md#product-owner
 [swd-readme]: /src/sys/pkg/README.md

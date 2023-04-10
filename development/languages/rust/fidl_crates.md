@@ -5,7 +5,7 @@ FIDL is the primary mechanism for structured IPC within Fuchsia. The easiest
 way to use FIDL from Rust is by generating a "FIDL crate" from a FIDL library
 and then importing it from your Rust library or binary.
 
-See [the FIDL Rust bindings](/docs/reference/fidl/bindings/rust-bindings.md) to
+See [the FIDL Rust bindings](/reference/fidl/bindings/rust-bindings.md) to
 understand how different FIDL constructs map into their Rust equivalents, and
 [the FIDL Rust tutorials][tutorials] for examples on using the Rust
 bindings.
@@ -27,7 +27,7 @@ fidl("games.tictactoe") { ... }
 The FIDL crate target is
 `//src/tictactoe:games.tictactoe_rust`. To use the FIDL crate,
 add the target to the `deps` field of the
-[`rustc_*` build rule](/docs/development/languages/rust/README.md#build)
+[`rustc_*` build rule](/development/languages/rust/README.md#build)
 for your Rust crate. For example:
 
 ```gn
@@ -72,5 +72,5 @@ source files are available under the `BUILD_DIR/fidling/gen` (refer to the
 the FIDL crate must first have been built (e.g. using `fx build`).
 
 <!-- xrefs -->
-[generated-code]: /docs/development/languages/fidl/guides/generated-code.md#rust
-[tutorials]: /docs/development/languages/fidl/tutorials/rust
+[generated-code]: /development/languages/fidl/guides/generated-code.md#rust
+[tutorials]: /development/languages/fidl/tutorials/rust

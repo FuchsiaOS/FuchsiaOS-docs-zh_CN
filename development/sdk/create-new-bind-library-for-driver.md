@@ -254,16 +254,16 @@ However, the differences are as follows:
 
 [bazel]: https://bazel.build/
 [sdk-driver-sample-repo]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/
-[bind-rules]: /docs/concepts/drivers/driver_binding.md
-[node-properties]: /docs/concepts/drivers/drivers_and_nodes.md#node_properties
-[nodes]: /docs/concepts/drivers/drivers_and_nodes.md
-[bind-library]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries
+[bind-rules]: /concepts/drivers/driver_binding.md
+[node-properties]: /concepts/drivers/drivers_and_nodes.md#node_properties
+[nodes]: /concepts/drivers/drivers_and_nodes.md
+[bind-library]: /development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries
 [test-library-bind]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/lib/testlibrary.bind
 [bind-library-sample]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/
-[bind-library-code-generation-tutorial]: /docs/development/drivers/tutorials/bind-libraries-codegen.md
+[bind-library-code-generation-tutorial]: /development/drivers/tutorials/bind-libraries-codegen.md
 [build-bazel-bind-library]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/lib/BUILD.bazel
 [build-bazel-parent-driver]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/parent/BUILD.bazel
 [parent-driver-cc]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/parent/parent-driver.cc
 [build-bazel-child-driver]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/child/BUILD.bazel
 [child-driver-bind]: https://fuchsia.googlesource.com/sdk-samples/drivers/+/refs/heads/main/src/bind_library/child/child-driver.bind
-[write-bind-rules]: /docs/development/sdk/write-bind-rules-for-driver.md
+[write-bind-rules]: /development/sdk/write-bind-rules-for-driver.md

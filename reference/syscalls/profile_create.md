@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -28,7 +28,7 @@ zx_status_t zx_profile_create(zx_handle_t root_job,
 
 ## Description
 
-`zx_profile_create()` creates a new [profile](/docs/reference/kernel_objects/profile.md) object.
+`zx_profile_create()` creates a new [profile](/reference/kernel_objects/profile.md) object.
 
 The parameter *profile* specifies the settings in the profile, which in turn
 will be applied to threads when [`zx_object_set_profile()`] is called. The

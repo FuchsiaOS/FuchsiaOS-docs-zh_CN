@@ -339,9 +339,9 @@ dispatch using the `EnableNextDispatch()` API defined in
 [lib/fidl/cpp/wire/async_transaction.h](/sdk/lib/fidl/cpp/wire/include/lib/fidl/cpp/wire/async_transaction.h).
 
 <!-- xrefs -->
-[layout-attribute]: /docs/reference/fidl/language/attributes.md#layout
-[cpp-tutorial]: /docs/development/languages/fidl/tutorials/cpp
-[cpp-prefer-natural]: /docs/development/languages/fidl/tutorials/cpp/README.md#natural_and_wire_domain_objects
-[hlcpp-tutorial]: /docs/development/languages/fidl/tutorials/hlcpp
-[kvstore]: /docs/development/languages/fidl/examples/key_value_store
-[canvas]: /docs/development/languages/fidl/examples/canvas
+[layout-attribute]: /reference/fidl/language/attributes.md#layout
+[cpp-tutorial]: /development/languages/fidl/tutorials/cpp
+[cpp-prefer-natural]: /development/languages/fidl/tutorials/cpp/README.md#natural_and_wire_domain_objects
+[hlcpp-tutorial]: /development/languages/fidl/tutorials/hlcpp
+[kvstore]: /development/languages/fidl/examples/key_value_store
+[canvas]: /development/languages/fidl/examples/canvas

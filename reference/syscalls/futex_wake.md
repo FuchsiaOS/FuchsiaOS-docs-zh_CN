@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -41,7 +41,7 @@ futex wait queue.  If there is at least one thread to wake, the owner of the
 futex will be set to the thread that was woken.  Otherwise, the futex will have
 no owner.
 
-See *Ownership and Priority Inheritance* in [futex](/docs/reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](/reference/kernel_objects/futex.md) for
 details.
 
 ## Rights
@@ -63,7 +63,7 @@ None.
  - [`zx_futex_wait()`]
  - [`zx_futex_wake_single_owner()`]
 
-[futex objects]: /docs/reference/kernel_objects/futex.md
+[futex objects]: /reference/kernel_objects/futex.md
 [`zx_futex_requeue()`]: futex_requeue.md
 [`zx_futex_wait()`]: futex_wait.md
 [`zx_futex_wake_single_owner()`]: futex_wake_single_owner.md

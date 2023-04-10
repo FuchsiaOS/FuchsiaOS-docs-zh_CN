@@ -11,8 +11,8 @@
 ## Summary
 
 This RFC amends the [RFC
-process](/docs/contribute/governance/rfcs/rfc_process.md) and [RFC
-template](/docs/contribute/governance/rfcs/TEMPLATE.md) to add clarity around
+process](/contribute/governance/rfcs/rfc_process.md) and [RFC
+template](/contribute/governance/rfcs/TEMPLATE.md) to add clarity around
 identifying and managing stakeholders for an RFC. It adds a "Stakeholders"
 section to the RFC template and clarifies possible stakeholder roles.
 
@@ -22,7 +22,7 @@ Today, the Fuchsia Eng Council (FEC) is responsible for ensuring that each RFC
 has been reviewed by appropriate stakeholders. This centralization of
 responsibility has some downsides. While this relies on FEC council members'
 knowledge of the Fuchsia organization (an [expected
-qualification](/docs/contribute/governance/eng_council.md#qualifications)), it
+qualification](/contribute/governance/eng_council.md#qualifications)), it
 lacks an externally visible artifact allowing this knowledge to be organically
 recorded such that others can learn this aspect of the Fuchsia project.
 
@@ -89,7 +89,7 @@ this RFC.
 Add the following text:
 
 > The RFC author should propose an initial set of stakeholders in consultation
-> with the experts in their RFC [area](/docs/contribute/governance/areas). The
+> with the experts in their RFC [area](/contribute/governance/areas). The
 > set of stakeholders may initially be left empty or incomplete. If there is any
 > ambiguity, they should consult FEC for assistance identifying stakeholders.
 
@@ -133,7 +133,7 @@ Edit the second paragraph:
 > express their enthusiasm for the RFC, although this is not required.
 
 ### Changes to metadata
-Additions to [Creating an RFC](/docs/contribute/governance/rfcs/create_rfc.md):
+Additions to [Creating an RFC](/contribute/governance/rfcs/create_rfc.md):
 
 > Consulted - Required once approved or rejected. Stakeholders who were consulted
 > about this RFC, but whose +1 is not required.
@@ -141,7 +141,7 @@ Additions to [Creating an RFC](/docs/contribute/governance/rfcs/create_rfc.md):
 ### Changes to the RFC template
 
 Add the following optional section to the [RFC-0000: RFC
-template](/docs/contribute/governance/rfcs/TEMPLATE.md) (after "Motivation",
+template](/contribute/governance/rfcs/TEMPLATE.md) (after "Motivation",
 before "Design"):
 
 

@@ -315,12 +315,12 @@ for FEMU on Linux machine using [TUN/TAP][tuntap]{: .external}.
 
 <!-- Reference links -->
 
-[get-fuchsia-source]: /docs/get-started/get_fuchsia_source.md
-[build-fuchsia]: /docs/get-started/build_fuchsia.md
-[femu-overview]: /docs/development/build/emulator.md
+[get-fuchsia-source]: /get-started/get_fuchsia_source.md
+[build-fuchsia]: /get-started/build_fuchsia.md
+[femu-overview]: /development/build/emulator.md
 [ffx-emu-reference]: https://fuchsia.dev/reference/tools/sdk/ffx#emu
 [hypervisor-framework]: https://developer.apple.com/documentation/hypervisor
-[explore-fuchsia]: /docs/get-started/explore_fuchsia.md
+[explore-fuchsia]: /get-started/explore_fuchsia.md
 [swiftshader]: https://swiftshader.googlesource.com/SwiftShader/
 [tuntap]: https://en.wikipedia.org/wiki/TUN/TAP
 [tap-networking]: https://wiki.qemu.org/Documentation/Networking#Tap

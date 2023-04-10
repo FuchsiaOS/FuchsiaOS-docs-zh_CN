@@ -7,17 +7,17 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: /docs/get-started/learn/fidl/README.md
+    path: /get-started/learn/fidl/README.md
     step_group: fuchsiainterfaces
   - title: Fuchsia Interface Definition Language
-    path: /docs/get-started/learn/fidl/fidl.md
+    path: /get-started/learn/fidl/fidl.md
     step_group: fuchsiainterfaces
   - title: Connecting components
-    path: /docs/get-started/learn/fidl/connecting-components.md
+    path: /get-started/learn/fidl/connecting-components.md
     step_group: fuchsiainterfaces
   - title: Integration testing
-    path: /docs/get-started/learn/fidl/integration-testing.md
+    path: /get-started/learn/fidl/integration-testing.md
     step_group: fuchsiainterfaces
   - title: Diagnostics and monitoring
-    path: /docs/get-started/learn/fidl/diagnostics-monitoring.md
+    path: /get-started/learn/fidl/diagnostics-monitoring.md
     step_group: fuchsiainterfaces

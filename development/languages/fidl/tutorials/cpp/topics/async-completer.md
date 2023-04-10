@@ -147,7 +147,7 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 
 <!-- xrefs -->
 [src]: /examples/fidl/cpp/server_async_completer
-[server-tut]: /docs/development/languages/fidl/tutorials/cpp/basics/server.md
-[overview]: /docs/development/languages/fidl/tutorials/cpp/README.md
-[memory-ownership]: /docs/development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
-[wire-types]: /docs/development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-wire
+[server-tut]: /development/languages/fidl/tutorials/cpp/basics/server.md
+[overview]: /development/languages/fidl/tutorials/cpp/README.md
+[memory-ownership]: /development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
+[wire-types]: /development/languages/fidl/tutorials/cpp/basics/domain-objects.md#using-wire

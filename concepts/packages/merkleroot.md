@@ -82,6 +82,6 @@ the SHA-256 of 12 0 bytes, the block identity of a single 0 length block.
 
 [merkletree]: https://en.wikipedia.org/wiki/Merkle_tree "Merkle Tree"
 [dmverity]: https://www.chromium.org/chromium-os/chromiumos-design-docs/verified-boot "Chrome OS Verified Boot"
-[far]: /docs/development/source_code/archive_format.md "Archive Format"
+[far]: /development/source_code/archive_format.md "Archive Format"
 [pm]: /src/sys/pkg/bin/pm/README.md "Package Manager"
 [zircon]: /zircon/README.md "Zircon"

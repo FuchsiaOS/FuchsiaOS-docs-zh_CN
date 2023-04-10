@@ -7,7 +7,7 @@
 # team as reviewer.
 toc:
 - title: "Run an example component"
-  path: /docs/development/run/run-examples.md
+  path: /development/run/run-examples.md
 - title: "Run a test component"
-  path: /docs/development/run/run-test-component.md
+  path: /development/run/run-test-component.md
 

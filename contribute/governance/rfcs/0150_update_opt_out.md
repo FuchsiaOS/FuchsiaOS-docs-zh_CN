@@ -307,7 +307,7 @@ enterprise policy. This may be a use case for potential Fuchsia devices, but we
 have no enterprise policy requirements at the moment.
 
 [chrome-disable-updates]: https://support.google.com/chrome/a/answer/9838774
-[glossary.product]: /docs/glossary/README.md#product
-[glossary.product-owner]: /docs/glossary/README.md#product-owner
+[glossary.product]: /glossary/README.md#product
+[glossary.product-owner]: /glossary/README.md#product-owner
 [omaha-updatedisabled]: https://github.com/google/omaha/blob/ebc25b2b3d77eed3d9a122bcfd89a66f6f192e4b/doc/ServerProtocolV3.md#updatecheck-request
-[ota-flow]: /docs/concepts/packages/ota.md
+[ota-flow]: /concepts/packages/ota.md

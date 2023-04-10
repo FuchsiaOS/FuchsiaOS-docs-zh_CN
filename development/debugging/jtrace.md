@@ -23,7 +23,7 @@ which led up to a crash. Useful properties of JTRACE include:
 + Optional persistence across reboot: Platform permitting, JTRACE may be
   configured to use some of the persistent RAM typically used for crashlog
   storage to assist in debugging issues involving spontaneous reboots, typically
-  caused by triggering a [hardware watchdog timer](/docs/concepts/kernel/watchdog.md).
+  caused by triggering a [hardware watchdog timer](/concepts/kernel/watchdog.md).
 
 ### What it is not
 
@@ -266,8 +266,8 @@ this behavior and force either small or large records in either situation.
 Small trace entries record the following fields.
 
 + Timestamp: A timestamp which records when the trace entry was added to the buffer. Recorded in
-units of [ticks](/docs/reference/syscalls/ticks_get.md), but translated to the
-[clock monotonic](/docs/reference/syscalls/clock_get_monotonic.md) timeline when the buffer is
+units of [ticks](/reference/syscalls/ticks_get.md), but translated to the
+[clock monotonic](/reference/syscalls/clock_get_monotonic.md) timeline when the buffer is
 dumped.
 + CPU Id: The ID of the CPU which created the trace entry.
 + Tag: A pointer to a C-string literal supplied by the developer to assist in debugging.
@@ -295,7 +295,7 @@ store the last events recorded by each CPU.  When enabled, these records will be
 dumped separately, after the main trace buffer dump is complete.
 
 This feature can be useful when attempting to debug hangs of individual CPUs,
-especially if they lead to the triggering of a [HW WDT](/docs/concepts/kernel/watchdog.md).
+especially if they lead to the triggering of a [HW WDT](/concepts/kernel/watchdog.md).
 If a CPU gets stuck for any significant amount of time, it is likely that trace
 events from other CPUs will rapidly flush the events from the stuck CPU out of
 the trace buffer, especially if the buffer is small because it is located in
@@ -331,7 +331,7 @@ system.
 
 In order to enable persistent tracing, set the `jtrace_enabled` to the value
 `"persistent`". After a hang occurs, reboot the system (either via a
-[HW WDT](/docs/concepts/kernel/watchdog.md), or a manual reset line in the
+[HW WDT](/concepts/kernel/watchdog.md), or a manual reset line in the
 target). Once the system has rebooted, if the recovered trace buffer was
 successfully recovered, it may be dumped by executing `k jtrace -r` from a
 serial shell. Note that persistent RAM is typically just a section of DRAM which

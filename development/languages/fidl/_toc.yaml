@@ -7,88 +7,88 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/fidl
+  path: /development/languages/fidl
 - title: "Developer guide"
   section:
-  - include: /docs/development/languages/fidl/guides/_toc.yaml
+  - include: /development/languages/fidl/guides/_toc.yaml
 - title: "Compatibility guide"
   section:
-  - include: /docs/development/languages/fidl/guides/compatibility/_toc.yaml
+  - include: /development/languages/fidl/guides/compatibility/_toc.yaml
 - title: "Tutorials"
   section:
   - title: "Overview"
-    path: /docs/development/languages/fidl/tutorials/overview.md
+    path: /development/languages/fidl/tutorials/overview.md
   - title: "Compiling FIDL"
-    path: /docs/development/languages/fidl/tutorials/fidl.md
+    path: /development/languages/fidl/tutorials/fidl.md
   - title: "New C++ bindings"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/cpp/README.md
+      path: /development/languages/fidl/tutorials/cpp/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/cpp/basics/_toc.yaml
+      - include: /development/languages/fidl/tutorials/cpp/basics/_toc.yaml
     - title: "Memory ownership of wire domain objects"
-      path: /docs/development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
+      path: /development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership.md
     - title: "Responding asynchronously"
-      path: /docs/development/languages/fidl/tutorials/cpp/topics/async-completer.md
+      path: /development/languages/fidl/tutorials/cpp/topics/async-completer.md
     - title: "Thread safety and memory safety"
-      path: /docs/development/languages/fidl/tutorials/cpp/topics/threading.md
+      path: /development/languages/fidl/tutorials/cpp/topics/threading.md
     - title: "Communicating over the driver transport"
-      path: /docs/development/languages/fidl/tutorials/cpp/topics/driver-transport.md
+      path: /development/languages/fidl/tutorials/cpp/topics/driver-transport.md
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/cpp/topics/request-pipelining.md
+      path: /development/languages/fidl/tutorials/cpp/topics/request-pipelining.md
     - title: "Services"
-      path: /docs/development/languages/fidl/tutorials/cpp/topics/services.md
+      path: /development/languages/fidl/tutorials/cpp/topics/services.md
   - title: "HLCPP (Old)"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/README.md
+      path: /development/languages/fidl/tutorials/hlcpp/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/hlcpp/basics/_toc.yaml
+      - include: /development/languages/fidl/tutorials/hlcpp/basics/_toc.yaml
     - title: "Debug output"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/fostr.md
+      path: /development/languages/fidl/tutorials/hlcpp/topics/fostr.md
     - title: "Serving multiple clients"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/multiple-clients.md
+      path: /development/languages/fidl/tutorials/hlcpp/topics/multiple-clients.md
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
+      path: /development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
     - title: "Services"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/services.md
+      path: /development/languages/fidl/tutorials/hlcpp/topics/services.md
     - title: "Testing protocols"
-      path: /docs/development/languages/fidl/tutorials/hlcpp/topics/testing.md
+      path: /development/languages/fidl/tutorials/hlcpp/topics/testing.md
   - title: "Rust"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/rust/README.md
+      path: /development/languages/fidl/tutorials/rust/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/rust/basics/_toc.yaml
+      - include: /development/languages/fidl/tutorials/rust/basics/_toc.yaml
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/rust/topics/request-pipelining.md
+      path: /development/languages/fidl/tutorials/rust/topics/request-pipelining.md
     - title: "Services"
-      path: /docs/development/languages/fidl/tutorials/rust/topics/services.md
+      path: /development/languages/fidl/tutorials/rust/topics/services.md
   - title: "Dart"
     section:
     - title: "Overview"
-      path: /docs/development/languages/fidl/tutorials/dart/README.md
+      path: /development/languages/fidl/tutorials/dart/README.md
     - title: "Getting started"
       section:
-      - include: /docs/development/languages/fidl/tutorials/dart/basics/_toc.yaml
+      - include: /development/languages/fidl/tutorials/dart/basics/_toc.yaml
     - title: "Request pipelining"
-      path: /docs/development/languages/fidl/tutorials/dart/topics/request-pipelining.md
+      path: /development/languages/fidl/tutorials/dart/topics/request-pipelining.md
 - title: "Examples"
   section:
   - title: "Overview"
-    path: /docs/development/languages/fidl/examples/README.md
+    path: /development/languages/fidl/examples/README.md
   # DO_NOT_REMOVE_COMMENT (Why? See: /tools/fidl/scripts/canonical_example/README.md)
   - title: "Canvas"
-    path: /docs/development/languages/fidl/examples/canvas/README.md
+    path: /development/languages/fidl/examples/canvas/README.md
   - title: "Key value store: Baseline example"
-    path: /docs/development/languages/fidl/examples/key_value_store/README.md
+    path: /development/languages/fidl/examples/key_value_store/README.md
     step_group: fidlkeyvaluestore
   - title: "Key value store: Improving the design"
-    path: /docs/development/languages/fidl/examples/key_value_store/improving-key-value-store.md
+    path: /development/languages/fidl/examples/key_value_store/improving-key-value-store.md
     step_group: fidlkeyvaluestore
   - title: "Calculator"
-    path: /docs/development/languages/fidl/examples/calculator/README.md
+    path: /development/languages/fidl/examples/calculator/README.md
   # /DO_NOT_REMOVE_COMMENT (Why? See: /tools/fidl/scripts/canonical_example/README.md)

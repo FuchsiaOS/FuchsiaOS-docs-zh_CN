@@ -87,11 +87,11 @@ actually the original request, but instead a "shadow" request that encapsulates 
 request.
 
 As shadow requests are needed, they are allocated backed sequentially by pages in the
-[VMO](/docs/concepts/kernel/concepts.md#shared-memory-virtual-memory-objects-vmos-).  When the
+[VMO](/concepts/kernel/concepts.md#shared-memory-virtual-memory-objects-vmos-).  When the
 worker needs to transform the data it either encrypts data from the original, encapsulated write
 request into the shadow request, or decrypts data from the shadow request into the original,
 encapsulated read request.  As soon as the original request can be handed back to the original
-requester, the shadow request is deallocated and its page [decommitted](/docs/reference/syscalls/vmo_op_range.md).
+requester, the shadow request is deallocated and its page [decommitted](/reference/syscalls/vmo_op_range.md).
 This ensures no more memory is used than is needed for outstanding I/O requests.
 
 ### Superblock Format

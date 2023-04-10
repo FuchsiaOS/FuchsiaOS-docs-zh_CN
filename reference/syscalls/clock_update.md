@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -120,7 +120,7 @@ reference time does _not_ affect when the actual transformation is updated, it
 will always take effect during the call to `zx_clock_update`.
 
 Diagrams provided in
-[RFC-0077](/docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
+[RFC-0077](/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
 may help to understand the effects of the operations described below.
 
 #### Synthetic value updates with an explicitly provided reference time.
@@ -204,7 +204,7 @@ zx_status_t SetRateAtRef(zx_handle_t the_clock, zx_time_t ref, int32_t ppm_adj) 
    synthetic value update and a rate adjustment simultaneously.
 
 Details provided in
-[RFC-0077](/docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
+[RFC-0077](/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
 may help to understand the reasoning behind some of these rules and limitations.
 
 ## Return value
@@ -223,7 +223,7 @@ On success, returns **ZX_OK**.
 
 ## See also
 
- - [RFC-0077](/docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
+ - [RFC-0077](/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
 
  - [clock transformations]
  - [clocks]
@@ -231,8 +231,8 @@ On success, returns **ZX_OK**.
  - [`zx_clock_get_details()`]
  - [`zx_clock_read()`]
 
-[clock transformations]: /docs/concepts/kernel/clock_transformations.md
-[clocks]: /docs/reference/kernel_objects/clock.md
+[clock transformations]: /concepts/kernel/clock_transformations.md
+[clocks]: /reference/kernel_objects/clock.md
 [`zx_clock_create()`]: clock_create.md
 [`zx_clock_get_details()`]: clock_get_details.md
 [`zx_clock_read()`]: clock_read.md

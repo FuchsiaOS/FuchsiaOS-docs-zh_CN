@@ -9,7 +9,7 @@
 ## Exercise: Namespaces
 
 Most processes in Fuchsia represent executable programs associated with a
-[component](/docs/glossary/README.md#component), where the component declaration
+[component](/glossary/README.md#component), where the component declaration
 is responsible for constructing the namespace that process can see.
 
 In this exercise, you'll explore the contents of a component's namespace.
@@ -47,7 +47,7 @@ For this exercise, you'll use `http-client.cm` as your target to explore.
 
 In order to explore a component's namespace, you need to determine the unique
 identifier for that component within the system. This is known as the component
-[moniker](/docs/glossary/README.md#moniker).
+[moniker](/glossary/README.md#moniker).
 
 <aside class="key-point">
 The moniker relates to the hierarchy of components within the system.
@@ -148,7 +148,7 @@ development machine:
 <aside class="key-point">
   <b>Extra Credit</b>
   <p>Read through the
-  <a href="/docs/development/sdk/ffx/explore-components.md">Explore components</a>
+  <a href="/development/sdk/ffx/explore-components.md">Explore components</a>
   guide to learn about other directory entries in this component's environment.
   Then connect to a different target component. How are the contents different
   between two components?</p>

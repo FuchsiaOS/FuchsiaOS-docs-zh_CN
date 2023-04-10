@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -32,7 +32,7 @@ zx_status_t zx_clock_get_details(zx_handle_t handle,
 ## Description
 
 Fetches the fine grained details of the clock object. See
-[clocks](/docs/reference/kernel_objects/clock.md) for the specifics of the details
+[clocks](/reference/kernel_objects/clock.md) for the specifics of the details
 reported. Currently, there is only one details structure defined for clocks,
 `zx_clock_details_v1_t`. Users must specify the version of the structure using
 the options parameter as well as providing at least
@@ -75,8 +75,8 @@ out parameter.
  - [`zx_clock_read()`]
  - [`zx_clock_update()`]
 
-[clock transformations]: /docs/concepts/kernel/clock_transformations.md
-[clocks]: /docs/reference/kernel_objects/clock.md
+[clock transformations]: /concepts/kernel/clock_transformations.md
+[clocks]: /reference/kernel_objects/clock.md
 [`zx_clock_create()`]: clock_create.md
 [`zx_clock_read()`]: clock_read.md
 [`zx_clock_update()`]: clock_update.md

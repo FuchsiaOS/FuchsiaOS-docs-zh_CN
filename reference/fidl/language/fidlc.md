@@ -417,11 +417,11 @@ anonymous [`Name`](#name)s.
 
 <!-- xrefs -->
 [internal]: ///sdk/lib/fidl_base/include/lib/fidl/internal.h
-[layout-attr]: /docs/reference/fidl/language/attributes.md#layout_layout
+[layout-attr]: /reference/fidl/language/attributes.md#layout_layout
 [fidlgen_dart]: /tools/fidl/fidlgen_dart
 [fidlgen_go]: /tools/fidl/fidlgen_go
 [fidlgen_hlcpp]: /tools/fidl/fidlgen_hlcpp
 [fidlgen_cpp]: /tools/fidl/fidlgen_cpp
 [fidlgen_rust]: /tools/fidl/fidlgen_rust
-[schema]: /docs/reference/fidl/language/json-ir.md
+[schema]: /reference/fidl/language/json-ir.md
 [coding-readme]: /src/lib/fidl/c/walker_tests/README.md

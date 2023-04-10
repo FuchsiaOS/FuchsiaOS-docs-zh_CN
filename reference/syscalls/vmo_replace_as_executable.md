@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -28,7 +28,7 @@ zx_status_t zx_vmo_replace_as_executable(zx_handle_t handle,
 ## Description
 
 `zx_vmo_replace_as_executable()` creates a replacement for *handle*, referring
-to the same underlying [virtual memory object](/docs/reference/kernel_objects/vm_object.md) (VMO),
+to the same underlying [virtual memory object](/reference/kernel_objects/vm_object.md) (VMO),
 adding the right **ZX_RIGHT_EXECUTE**.
 
 *handle* is always invalidated.

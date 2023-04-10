@@ -230,7 +230,7 @@ Implementation can be divided into three parts.
 * Adding support in different boards and builds.
 * adb daemon
   * Parts of it will be imported from the Android codebase following the approval of
-    [OSRB](/docs/contribute/governance/policy/osrb-process.md).
+    [OSRB](/contribute/governance/policy/osrb-process.md).
 * adb service
   * Current plan is to support `adb-shell` and `adb-ffx`.
   * This phase might extend if other commands have to be supported.
@@ -298,7 +298,7 @@ and the adb services will be added. Since the contracts between the adb subsyste
 (except for the USB adb driver), the tests can be hermetic. Device enumeration test will be added
 for the USB adb interface. If required, host side E2E test for adb will be added. For E2E tests, we
 might need adb installed on the test host machines. The E2E tests / integration tests can be used
-for [performance](/docs/development/performance/fuchsiaperf_format.md)
+for [performance](/development/performance/fuchsiaperf_format.md)
 testing and command latency testing. Periodic stress testing of the adb connectivity by frequent
 plug/unplug of USB will be considered for reliability testing. Fuzzing of the adb daemon
 implementation will also be considered.

@@ -1,6 +1,6 @@
 # Component configuration mechanisms
 
-The [component configuration](/docs/concepts/components/configuration.md) page
+The [component configuration](/concepts/components/configuration.md) page
 introduces how components can be configured on Fuchsia, and describes different
 situations that require
 [component configuration][glossary.component-configuration].
@@ -189,21 +189,21 @@ Service-based configuration does not work well for the following problems:
   solution when working with large configuration.
 
 
-[glossary.component-configuration]: /docs/glossary/README.md#component-configuration
-[glossary.package]: /docs/glossary/README.md#package
+[glossary.component-configuration]: /glossary/README.md#component-configuration
+[glossary.package]: /glossary/README.md#package
 
 [bug.96260]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=96260
 [bug.96261]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=96261
 [bug.96254]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=96254
 [bug.104596]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=104596
 
-[rfc0127]: /docs/contribute/governance/rfcs/0127_structured_configuration.md
+[rfc0127]: /contribute/governance/rfcs/0127_structured_configuration.md
 
-[blobfs]: /docs/concepts/filesystems/blobfs.md
+[blobfs]: /concepts/filesystems/blobfs.md
 [config_data]: config_data.md
 [ffx]: https://fuchsia.dev/reference/tools/sdk/ffx
-[inspect]: /docs/development/diagnostics/inspect/README.md
-[realm_builder]: /docs/development/testing/components/realm_builder.md
+[inspect]: /development/diagnostics/inspect/README.md
+[realm_builder]: /development/testing/components/realm_builder.md
 [settings_service]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/settings/service/
 [structured_config]: structured_config.md
-[providing_data_files]: /docs/development/components/data.md
+[providing_data_files]: /development/components/data.md

@@ -258,5 +258,5 @@ set of APIs those consumers who use the stripped headers. This mechanism is
 similar to SDK categories but operates at a finer granularity, and often has
 fewer audience gradations.
 
-[sdk-categories]: /docs/contribute/sdk/categories.md
+[sdk-categories]: /contribute/sdk/categories.md
 [IDK]: ../../../development/idk

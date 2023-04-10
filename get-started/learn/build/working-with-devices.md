@@ -1,10 +1,10 @@
 # Working with devices
 
 This codelab series focuses on the
-[Fuchsia emulator](/docs/development/build/emulator.md) (FEMU) as the target
+[Fuchsia emulator](/development/build/emulator.md) (FEMU) as the target
 device, which is built and distributed with the source tree and runs on your
 development machine. However, you can also build Fuchsia for supported hardware
-platforms, such as an [Intel NUC](/docs/development/hardware/intel_nuc.md).
+platforms, such as an [Intel NUC](/development/hardware/intel_nuc.md).
 
 This section describes some specifics related to working with Fuchsia on
 physical devices.
@@ -24,7 +24,7 @@ In this example, `qemu-x64` is the board name for FEMU. To build the same
 `x64` board.
 
 Note: To determine the Fuchsia board name for your supported hardware, see the
-[device documentation](/docs/development/hardware/README.md).
+[device documentation](/development/hardware/README.md).
 
 ```posix-terminal
 fx set workstation_eng.x64
@@ -39,12 +39,12 @@ Fuchsia-compatible bootloader installed. This process is known as
 **bootstrapping** the device. Many devices have a compatible bootloader
 installed from the factory, others may require manufacturer-specific tools to
 update the bootloader to a compatible version.
-See the [device documentation](/docs/development/hardware/README.md) for more
+See the [device documentation](/development/hardware/README.md) for more
 details regarding your specific device.
 
 <aside class="key-point">
 Most Fuchsia-compatible devices use a bootloader that supports the
-<a href="/docs/contribute/governance/rfcs/0081_fastboot_boot">Fastboot protocol</a>.
+<a href="/contribute/governance/rfcs/0081_fastboot_boot">Fastboot protocol</a>.
 </aside>
 
 ## Flash
@@ -100,7 +100,7 @@ Control Service (RCS) on the target to enable you to send additional commands.
 
 ![Diagram showing how "ffx" is a developer tool that communicates with the
  Remote Control Service (RCS) on the Fuchsia Device.](
-    /docs/get-started/images/build/ffx-rcs.png){: width="591"}
+    /get-started/images/build/ffx-rcs.png){: width="591"}
 
 Note: For a complete list of the developer commands supported by `ffx`, see
 the [`ffx` reference](https://fuchsia.dev/reference/tools/sdk/ffx.md).
@@ -115,4 +115,4 @@ In the next module, you'll learn more about building Fuchsia's fundamental unit
 of software:
 
 <a class="button button-primary"
-    href="/docs/get-started/learn/components">Fuchsia components</a>
+    href="/get-started/learn/components">Fuchsia components</a>

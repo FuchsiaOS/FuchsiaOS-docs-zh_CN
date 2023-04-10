@@ -54,5 +54,5 @@ a lockscreen cannot "leak" keyboard events to any UI window behind the lock
 dialog. If a UI window's view is disconnected from the view tree, it cannot
 receive focus, and thus cannot interact with the keyboard.
 
-[view-glossary]: /docs/glossary#view
+[view-glossary]: /glossary#view
 [focuser-api]: https://fuchsia.dev/reference/fidl/fuchsia.ui.views#Focuser

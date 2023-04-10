@@ -259,8 +259,8 @@ component.
 
 [dash]: https://manpages.debian.org/testing/dash/dash.1.html
 [fx-shell]: https://fuchsia.dev/reference/tools/fx/cmd/shell
-[component-moniker]: /docs/concepts/components/v2/identifiers.md#monikers
-[component-url]: /docs/concepts/components/v2/identifiers.md#component-urls
-[instance-id]: /docs/development/components/component_id_index.md
-[ffx-component-run]: /docs/development/sdk/ffx/start-a-component-during-development.md
+[component-moniker]: /concepts/components/v2/identifiers.md#monikers
+[component-url]: /concepts/components/v2/identifiers.md#component-urls
+[instance-id]: /development/components/component_id_index.md
+[ffx-component-run]: /development/sdk/ffx/start-a-component-during-development.md
 [cf-tools-monorail]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=ComponentFramework&components=ComponentFramework%3ETools

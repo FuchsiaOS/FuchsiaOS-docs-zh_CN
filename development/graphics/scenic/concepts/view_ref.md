@@ -3,15 +3,15 @@
 ### Scenic View
 
 A UI client that wishes to vend user-visible content must place it in a Scenic
-View, which is a [Session](/docs/concepts/ui/scenic/index.md#sessions)-based
-[resource](/docs/concepts/ui/scenic/index.md#resources), local to that client. No resource can be
+View, which is a [Session](/concepts/ui/scenic/index.md#sessions)-based
+[resource](/concepts/ui/scenic/index.md#resources), local to that client. No resource can be
 directly referenced outside the scope of their owning Scenic Session.
 
 ### ViewRef refers to a Scenic View
 
 For a view resource in particular, it is very useful to have a stable and
 consistent view reference, that can be used across
-[component](/docs/concepts/components/v2/introduction.md#components_and_the_component_framework)
+[component](/concepts/components/v2/introduction.md#components_and_the_component_framework)
 boundaries.
 
 We define a [fuchsia.ui.views.ViewRef](/sdk/fidl/fuchsia.ui.views/view_ref.fidl)
@@ -19,17 +19,17 @@ FIDL datatype that has some desirable properties:
 
 *   A ViewRef is globally unique across the operating system, it cannot be
     forged. This property arises from the ViewRef's underlying kernel object, an
-    [eventpair](/docs/concepts/kernel/concepts.md#events_event_pairs).
+    [eventpair](/concepts/kernel/concepts.md#events_event_pairs).
 *   A ViewRef is globally unique over the lifetime of the operating system, it
     is never reused. This property arises from Zircon's guarantee of
-    [KOID uniqueness](/docs/concepts/kernel/concepts.md#kernel_object_ids) for
+    [KOID uniqueness](/concepts/kernel/concepts.md#kernel_object_ids) for
     kernel objects.
 *   A ViewRef can be used in a
-    [feed-forward](/docs/development/api/fidl.md#feed_forward-dataflow) pattern for
+    [feed-forward](/development/api/fidl.md#feed_forward-dataflow) pattern for
     Scenic View creation. Protocols and components that participate in View
     creation do not have to "tunnel back" the corresponding ViewRef.
 *   ViewRef holders can implement lifecycle management by listening for a
-    [`ZX_EVENTPAIR_PEER_CLOSED`](/docs/reference/syscalls/eventpair_create.md)
+    [`ZX_EVENTPAIR_PEER_CLOSED`](/reference/syscalls/eventpair_create.md)
     zircon signal on the underlying eventpair object.
 
 Each Scenic View has an associated ViewRef.
@@ -78,7 +78,7 @@ to refer to a View.
 A ViewRef can easily be propagated across protocol boundaries. Hence, it is
 important to *not* use a ViewRef as an authentication mechanism: merely holding
 a ViewRef should not grant the holder powers. Instead, use
-[capability routing](/docs/concepts/components/v2/capabilities/protocol.md) to
+[capability routing](/concepts/components/v2/capabilities/protocol.md) to
 distribute a ViewRef-consuming protocol securely to trusted components.
 
 One example of this is the

@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -83,4 +83,4 @@ is non-zero.
 [`zx_restricted_bind_state()`]: restricted_bind_state.md
 [`zx_restricted_unbind_state()`]: restricted_unbind_state.md
 [`zx_process_create_shared()`]: process_create_shared.md
-[address spaces]: /docs/concepts/memory/address_spaces.md
+[address spaces]: /concepts/memory/address_spaces.md

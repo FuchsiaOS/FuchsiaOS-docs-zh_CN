@@ -39,7 +39,7 @@ The structure of the update package, `fuchsia-pkg://fuchsia.com/update`, contain
 
 *   `/epoch.json`
     Epoch that the system cannot downgrade across via OTA. See
-    [RFC-0071](/docs/contribute/governance/rfcs/0071_ota_backstop.md) for more context. For example:
+    [RFC-0071](/contribute/governance/rfcs/0071_ota_backstop.md) for more context. For example:
 
     ```json
     {
@@ -74,7 +74,7 @@ The structure of the update package, `fuchsia-pkg://fuchsia.com/update`, contain
     ```
 
 *   `/version`
-    Same format as the [`/config/build-info/version`](/docs/development/build/build_information.md) file.
+    Same format as the [`/config/build-info/version`](/development/build/build_information.md) file.
 *   `/zbi[.signed]`
     Kernel image. Must not be present if the `update-mode` is `force-recovery`. `zbi` or `zbi.signed`
     is required to be present if the `update-mode` is `normal`.

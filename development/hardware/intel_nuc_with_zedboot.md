@@ -393,7 +393,7 @@ The list below shows some example models:
 Some NUC devices do not come with RAM or an SSD. In which case,
 you need to install them manually.
 
-<img width="40%" src="/docs/images/developing_on_nuc/parts.jpg"/>
+<img width="40%" src="/images/developing_on_nuc/parts.jpg"/>
 
 **Figure 1**. A NUC device and RAM and SSD sticks.
 
@@ -410,8 +410,8 @@ To install the RAM and SSD on your NUC, do the following:
 
 1. Remove the Phillips screws on the bottom feet of the NUC.
 
-   <img width="40%" src="/docs/images/developing_on_nuc/nuc_bottom.jpg"/>
-   <img width="40%" src="/docs/images/developing_on_nuc/nuc_inside.jpg"/>
+   <img width="40%" src="/images/developing_on_nuc/nuc_bottom.jpg"/>
+   <img width="40%" src="/images/developing_on_nuc/nuc_inside.jpg"/>
 
 1. Install the RAM.
 1. Remove the Phillips screws that would hold the SSD in place
@@ -420,7 +420,7 @@ To install the RAM and SSD on your NUC, do the following:
 1. Install the SSD.
 1. Mount the SSD in place using the screws from Step 3.
 
-   <img width="40%" src="/docs/images/developing_on_nuc/parts_installed.jpg"/>
+   <img width="40%" src="/images/developing_on_nuc/parts_installed.jpg"/>
 1. Put the bottom feet and screws back in.
 1. Plug the power, monitor (using HDMI), and keyboard into the NUC.
 
@@ -539,12 +539,12 @@ You can also turn on, turn off or reboot the NUC with the following terminal com
 <!-- Reference links -->
 
 [nuc-wiki]: https://en.wikipedia.org/wiki/Next_Unit_of_Computing
-[get-started-with-fuchsia]: /docs/get-started/README.md
+[get-started-with-fuchsia]: /get-started/README.md
 [gigaboot]: /src/firmware/gigaboot
-[glossary.zedboot]: /docs/glossary/README.md#zedboot
-[netbooting]: /docs/development/kernel/getting_started.md#network-booting
-[usb-setup]: /docs/development/hardware/usb_setup.md
-[supported-sys-config]: /docs/reference/hardware/support-system-config.md
+[glossary.zedboot]: /glossary/README.md#zedboot
+[netbooting]: /development/kernel/getting_started.md#network-booting
+[usb-setup]: /development/hardware/usb_setup.md
+[supported-sys-config]: /reference/hardware/support-system-config.md
 [NUC7i5DNKE]: https://ark.intel.com/content/www/us/en/ark/products/122486/intel-nuc-kit-nuc7i5dnke.html
 [NUC7i5DNHE]: https://ark.intel.com/content/www/us/en/ark/products/122488/intel-nuc-kit-nuc7i5dnhe.html
 [NUC7i3DNKE]: https://ark.intel.com/content/www/us/en/ark/products/122495/intel-nuc-kit-nuc7i3dnke.html
@@ -562,4 +562,4 @@ You can also turn on, turn off or reboot the NUC with the following terminal com
 [install-fuchsia]: intel_nuc.md
 [amt]: https://www.intel.com/content/www/us/en/architecture-and-technology/intel-active-management-technology.html
 [amtctrl]: https://github.com/sdague/amt
-[experimental-hardware]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#experimental-hardware
+[experimental-hardware]: /contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#experimental-hardware

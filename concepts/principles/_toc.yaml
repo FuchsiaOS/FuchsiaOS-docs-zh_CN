@@ -7,10 +7,10 @@
 # team as reviewer.
 toc:
 - title: "Simple"
-  path: /docs/concepts/principles/simple.md
+  path: /concepts/principles/simple.md
 - title: "Secure"
-  path: /docs/concepts/principles/secure.md
+  path: /concepts/principles/secure.md
 - title: "Updatable"
-  path: /docs/concepts/principles/updatable.md
+  path: /concepts/principles/updatable.md
 - title: "Performant"
-  path: /docs/concepts/principles/performant.md
+  path: /concepts/principles/performant.md

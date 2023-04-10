@@ -293,9 +293,9 @@ on Fuchsia.
 
 <!-- Reference links -->
 
-[concepts-bind-libraries]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries
-[concepts-component-manifest]: /docs/concepts/components/v2/component_manifests.md
-[concepts-driver-binding]: /docs/concepts/drivers/driver_binding.md
-[concepts-driver-manager]: /docs/concepts/drivers/driver_framework.md#driver_manager
-[concepts-node-properties]: /docs/concepts/drivers/drivers_and_nodes.md#node_properties
-[concepts-packages]: /docs/concepts/packages/package.md
+[concepts-bind-libraries]: /development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries
+[concepts-component-manifest]: /concepts/components/v2/component_manifests.md
+[concepts-driver-binding]: /concepts/drivers/driver_binding.md
+[concepts-driver-manager]: /concepts/drivers/driver_framework.md#driver_manager
+[concepts-node-properties]: /concepts/drivers/drivers_and_nodes.md#node_properties
+[concepts-packages]: /concepts/packages/package.md

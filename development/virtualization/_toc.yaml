@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Concepts"
-  path: /docs/development/virtualization/overview.md
+  path: /development/virtualization/overview.md
 - title: "Get Started"
-  path: /docs/development/virtualization/get_started.md
+  path: /development/virtualization/get_started.md

@@ -7,20 +7,20 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/hardware/README.md
+  path: /development/hardware/README.md
 - title: "Device setup guides index"
-  path: /docs/development/hardware/setup/index.md
+  path: /development/hardware/setup/index.md
 - title: "Install Fuchsia on a NUC"
-  path: /docs/development/hardware/intel_nuc.md
+  path: /development/hardware/intel_nuc.md
 - title: "Install Fuchsia on a NUC using Zedboot (Legacy)"
-  path: /docs/development/hardware/intel_nuc_with_zedboot.md
+  path: /development/hardware/intel_nuc_with_zedboot.md
 - title: "Install Fuchsia on a Khadas VIM3 board"
-  path: /docs/development/hardware/khadas-vim3.md
+  path: /development/hardware/khadas-vim3.md
 - title: "Create a bootable Fuchsia image"
   section:
   - title: "Install Fuchsia from a USB flash drive"
-    path: /docs/development/hardware/usb_setup.md
+    path: /development/hardware/usb_setup.md
 - title: "Set up experimental hardware"
   section:
   - title: "Install Fuchsia on Acer Switch Alpha 12"
-    path: /docs/development/hardware/acer12.md
+    path: /development/hardware/acer12.md

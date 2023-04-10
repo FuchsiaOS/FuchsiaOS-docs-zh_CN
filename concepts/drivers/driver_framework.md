@@ -148,9 +148,9 @@ developer.
 [service-discovery]: driver_communication.md#service_discovery
 [node-properties]: drivers_and_nodes.md#node_attributes
 [node-topology]: drivers_and_nodes.md#node_topology
-[rfc-driver-runtime]: /docs/contribute/governance/rfcs/0126_driver_runtime.md
+[rfc-driver-runtime]: /contribute/governance/rfcs/0126_driver_runtime.md
 [fidl-node]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=107
 [fidl-nodecontroller]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=73
 [fidl-matchdriver]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/driver_index.fidl;l=96
-[base-packages]: /docs/concepts/packages/package.md#base-packages
-[universe-packages]: /docs/concepts/packages/package.md#universe-packages
+[base-packages]: /concepts/packages/package.md#base-packages
+[universe-packages]: /concepts/packages/package.md#universe-packages

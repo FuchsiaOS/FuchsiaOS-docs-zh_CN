@@ -52,14 +52,14 @@ In VS Code, do the following:
 
 1. Click the **Run and Debug** icon on the left side of VS Code.
 
-   ![Run and Debug](/docs/get-started/sdk/images/get-started-vscode-run-and-debug-icon.png "The Run and Debug icon in VS Code"){: .screenshot width="350"}
+   ![Run and Debug](/get-started/sdk/images/get-started-vscode-run-and-debug-icon.png "The Run and Debug icon in VS Code"){: .screenshot width="350"}
 
 1. Click the **Show all automatic debug configurations** link.
 
    This opens the Command Palette and displays a list of
    launch configurations:
 
-   ![Run and Debug](/docs/get-started/sdk/images/get-started-vscode-add-config-fuchsia-drivers.png "The Add Config options in VS Code"){: .screenshot width="500"}
+   ![Run and Debug](/get-started/sdk/images/get-started-vscode-add-config-fuchsia-drivers.png "The Add Config options in VS Code"){: .screenshot width="500"}
 
 1. In the Command Palette, click **Add Config (fuchsia-drivers)...**.
 
@@ -95,14 +95,14 @@ In VS Code, do the following:
 
 1. Click the **Explorer** icon on the left side of VS Code.
 
-   ![Explorer](/docs/get-started/sdk/images/get-started-vscode-explorer-icon.png "The Explorer icon in VS Code"){: .screenshot width="50"}
+   ![Explorer](/get-started/sdk/images/get-started-vscode-explorer-icon.png "The Explorer icon in VS Code"){: .screenshot width="50"}
 
 1. Open the `src/qemu_edu/drivers/edu_device.cc` file.
 
 1. To set a breakpoint at the `QemuEduDevice::HandleIrq()` method,
    click the space to the left of the line number.
 
-   ![Breakpoint](/docs/get-started/sdk/images/get-started-vscode-qemu-edu-breakpoint.png "A breakpoint in VS Code"){: .screenshot}
+   ![Breakpoint](/get-started/sdk/images/get-started-vscode-qemu-edu-breakpoint.png "A breakpoint in VS Code"){: .screenshot}
 
    When a breakpoint is set, a red dot appears.
 
@@ -114,7 +114,7 @@ In VS Code, do the following:
 1. At the top of the **Run and Debug** panel, click
    the **Play** icon to launch the debugger.
 
-   ![Play](/docs/get-started/sdk/images/get-started-vscode-qemu-edu-play-icon.png "The Play icon on the Run and Debug panel of VS Code"){: .screenshot width="350"}
+   ![Play](/get-started/sdk/images/get-started-vscode-qemu-edu-play-icon.png "The Play icon on the Run and Debug panel of VS Code"){: .screenshot width="350"}
 
    This builds and runs `eductl_tools`, which causes
    the debugger to pause at the line where the breakpoint is set
@@ -122,7 +122,7 @@ In VS Code, do the following:
 
 1. Click the **DEBUG CONSOLE** tab on the VS Code panel.
 
-   ![Debug console](/docs/get-started/sdk/images/get-started-vscode-qemu-edu-debug-console.png "The Debug console panel in VS Code"){: .screenshot}
+   ![Debug console](/get-started/sdk/images/get-started-vscode-qemu-edu-debug-console.png "The Debug console panel in VS Code"){: .screenshot}
 
    This shows the console output of the Fuchsia debugger (`zxdb`).
 
@@ -144,7 +144,7 @@ In VS Code, do the following:
 1. In the debug toolbar at the top of VS Code, click the **Step Over**
    icon.
 
-   ![Step over](/docs/get-started/sdk/images/get-started-vscode-step-over-icon.png "The Step Over icon in VS Code"){: .screenshot width="250"}
+   ![Step over](/get-started/sdk/images/get-started-vscode-step-over-icon.png "The Step Over icon in VS Code"){: .screenshot width="250"}
 
 1. Continue to click the **Step Over** icon to step through the
    `HandleIrq()` function until the line 126 is reached.
@@ -169,8 +169,8 @@ In VS Code, do the following:
 
 1. To exit the debugger, click the **Stop** icon in the debug toolbar.
 
-   ![Debug stop](/docs/get-started/sdk/images/get-started-vscode-debug-stop-icon.png "The Stop icon in VS Code"){: .screenshot width="250"}
+   ![Debug stop](/get-started/sdk/images/get-started-vscode-debug-stop-icon.png "The Stop icon in VS Code"){: .screenshot width="250"}
 
 <!-- Reference links -->
 
-[zxdb-user-guide]: /docs/development/debugger/README.md
+[zxdb-user-guide]: /development/debugger/README.md

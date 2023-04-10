@@ -9,8 +9,8 @@ The documentation for each language includes (where available):
   * Generated API documentation for FIDL libraries that are provided in each language
 
 <!-- xrefs -->
-[hlcpp-bindings]: /docs/reference/fidl/bindings/hlcpp-bindings.md
-[rust-bindings]: /docs/reference/fidl/bindings/rust-bindings.md
-[cpp-bindings]: /docs/reference/fidl/bindings/cpp-bindings.md
-[go-bindings]: /docs/reference/fidl/bindings/go-bindings.md
-[dart-bindings]: /docs/reference/fidl/bindings/dart-bindings.md
+[hlcpp-bindings]: /reference/fidl/bindings/hlcpp-bindings.md
+[rust-bindings]: /reference/fidl/bindings/rust-bindings.md
+[cpp-bindings]: /reference/fidl/bindings/cpp-bindings.md
+[go-bindings]: /reference/fidl/bindings/go-bindings.md
+[dart-bindings]: /reference/fidl/bindings/dart-bindings.md

@@ -11,7 +11,7 @@ The [`HitTestInteraction`](https://fuchsia.dev/reference/fidl/fuchsia.ui.composi
 enum designates if a semantic (accessibility) hit test should interact with them or not.
 
 Semantically visible hit regions interact with both regular hit testing and
-[`accessibility hit testing`](/docs/concepts/accessibility/semantics.md#hit_testing),
+[`accessibility hit testing`](/concepts/accessibility/semantics.md#hit_testing),
 whereas semantically invisible hit regions interact only with regular hit testing, such as from a
 mouse or touch event.
 

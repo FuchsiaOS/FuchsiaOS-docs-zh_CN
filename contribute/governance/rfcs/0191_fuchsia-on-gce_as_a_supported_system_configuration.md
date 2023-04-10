@@ -36,7 +36,7 @@ following configurations:
 
 Now that we are performing a significant amount of work on GCE, we want to
 formalize this as supported hardware by the Fuchsia project by adding it to the
-supported hardware YAML file in `/docs/reference/hardware`.
+supported hardware YAML file in `/reference/hardware`.
 [RFC-0130: Supported Hardware](0130_supported_hardware.md) states that "The
 process for adding new entries to this YAML file, and hence to add new hardware
 in the Supported category, is to create a new RFC."
@@ -70,7 +70,7 @@ all of Fuchsia.
 ## Implementation
 
 Adding GCE to the list of supported system configurations simply requires
-editing the `/docs/reference/hardware/_supported.yaml` file. We will add two
+editing the `/reference/hardware/_supported.yaml` file. We will add two
 entries to the file, one for x86 and one for ARM.
 
 ### x86 entry

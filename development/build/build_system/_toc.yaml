@@ -7,28 +7,28 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/build/build_system/index.md
+  path: /development/build/build_system/index.md
 - title: "Fuchsia build system"
-  path: /docs/development/build/build_system/fuchsia_build_system_overview.md
+  path: /development/build/build_system/fuchsia_build_system_overview.md
 - title: "Boards and products"
-  path: /docs/development/build/build_system/boards_and_products.md
+  path: /development/build/build_system/boards_and_products.md
   section:
   - title: "Bringup Product Definition"
-    path: /docs/development/build/build_system/bringup.md
+    path: /development/build/build_system/bringup.md
 - title: "Build system policies"
-  path: /docs/development/build/build_system/policies.md
+  path: /development/build/build_system/policies.md
 - title: "GN"
   section:
   - title: "Introduction to GN"
-    path: /docs/development/build/build_system/intro.md
+    path: /development/build/build_system/intro.md
   - title: "Bundles"
-    path: /docs/development/build/build_system/bundles.md
+    path: /development/build/build_system/bundles.md
   - title: "Variants"
-    path: /docs/development/build/build_system/variants.md
+    path: /development/build/build_system/variants.md
   - title: "GN template best practices"
-    path: /docs/development/build/build_system/best_practices_templates.md
+    path: /development/build/build_system/best_practices_templates.md
   - title: "GN toolchain best practices"
-    path: /docs/development/build/build_system/best_practices_toolchains.md
+    path: /development/build/build_system/best_practices_toolchains.md
 - title: "Build system internals"
   section:
-  - include: /docs/development/build/build_system/internals/_toc.yaml
+  - include: /development/build/build_system/internals/_toc.yaml

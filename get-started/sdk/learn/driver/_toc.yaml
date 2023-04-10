@@ -7,23 +7,23 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: /docs/get-started/sdk/learn/driver/introduction.md
+    path: /get-started/sdk/learn/driver/introduction.md
     step_group: sdkdrivercodelab
   - title: Explore the edu device
-    path: /docs/get-started/sdk/learn/driver/explore-device.md
+    path: /get-started/sdk/learn/driver/explore-device.md
     step_group: sdkdrivercodelab
   - title: Bind to the device node
-    path: /docs/get-started/sdk/learn/driver/driver-binding.md
+    path: /get-started/sdk/learn/driver/driver-binding.md
     step_group: sdkdrivercodelab
   - title: Configure hardware resources
-    path: /docs/get-started/sdk/learn/driver/hardware-resources.md
+    path: /get-started/sdk/learn/driver/hardware-resources.md
     step_group: sdkdrivercodelab
   - title: Expose the driver capabilities
-    path: /docs/get-started/sdk/learn/driver/driver-service.md
+    path: /get-started/sdk/learn/driver/driver-service.md
     step_group: sdkdrivercodelab
   - title: Interact with the driver
-    path: /docs/get-started/sdk/learn/driver/driver-tools.md
+    path: /get-started/sdk/learn/driver/driver-tools.md
     step_group: sdkdrivercodelab
   - title: Test and debug the driver
-    path: /docs/get-started/sdk/learn/driver/test-debug.md
+    path: /get-started/sdk/learn/driver/test-debug.md
     step_group: sdkdrivercodelab

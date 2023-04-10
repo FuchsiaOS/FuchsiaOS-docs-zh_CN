@@ -86,4 +86,4 @@ After rebooting, the device boots into Fastboot mode.
 [fastboot-src]: https://android.googlesource.com/platform/system/core/+/master/fastboot/
 [android-flash]: https://source.android.com/setup/build/running
 [ffx-target-flash]: https://fuchsia.dev/reference/tools/sdk/ffx#flash
-[generate-a-build]: /docs/development/build/fx.md#generating-a-build-archive
+[generate-a-build]: /development/build/fx.md#generating-a-build-archive

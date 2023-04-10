@@ -19,7 +19,7 @@ To contribute a change to Fuchsia, the steps are:
 
 Before you begin, you need to:
 
-*   [Download the Fuchsia source code](/docs/get-started/get_fuchsia_source.md).
+*   [Download the Fuchsia source code](/get-started/get_fuchsia_source.md).
 
     Note: You can complete the next prerequisite items while downloading the
     Fuchsia source code.
@@ -207,17 +207,17 @@ git branch -d <branch_name>
 ### Write a change message {#write-a-change-message}
 
 When writing a change message, follow the [Commit message style
-guide](/docs/contribute/commit-message-style-guide.md).
+guide](/contribute/commit-message-style-guide.md).
 
 ### Manage changes that span multiple repositories {#manage-changes-that-span-multiple-repos}
 
 To understand how to manage changes that span different repositories (petals),
 see the following pages:
 
-*   [Working across different petals](/docs/development/source_code/working_across_petals.md)
-*   [Upload changes from multiple repositories](/docs/development/source_code/upload_changes_from_multiple_repositories.md)
+*   [Working across different petals](/development/source_code/working_across_petals.md)
+*   [Upload changes from multiple repositories](/development/source_code/upload_changes_from_multiple_repositories.md)
 
-See [Source code layout](/docs/development/source_code/layout.md) for more
+See [Source code layout](/development/source_code/layout.md) for more
 information on the structure of the Fuchsia repository.
 
 
@@ -225,8 +225,8 @@ information on the structure of the Fuchsia repository.
 
 [gerrit]: https://fuchsia-review.googlesource.com
 [gerrit-changes]: https://gerrit-review.googlesource.com/Documentation/concept-changes.html
-[commit-message-style-guide]: /docs/contribute/commit-message-style-guide.md
+[commit-message-style-guide]: /contribute/commit-message-style-guide.md
 [gerrit-doc-upload-change]: https://gerrit-documentation.storage.googleapis.com/Documentation/2.12.3/intro-user.html#upload-change
 [user-review-ui]: https://gerrit-review.googlesource.com/Documentation/user-review-ui.html
 [config-labels]: https://gerrit-review.googlesource.com/Documentation/config-labels.html
-[committer]: /docs/contribute/community/contributor-roles.md#committer
+[committer]: /contribute/community/contributor-roles.md#committer

@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -54,7 +54,7 @@ A successful call to `zx_futex_wait()` results in the owner of the futex being
 set to the thread referenced by the *new_futex_owner* handle, or to nothing if
 *new_futex_owner* is **ZX_HANDLE_INVALID**.
 
-See *Ownership and Priority Inheritance* in [futex](/docs/reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](/reference/kernel_objects/futex.md) for
 details.
 
 ## Rights
@@ -90,7 +90,7 @@ None.
  - [`zx_futex_requeue()`]
  - [`zx_futex_wake()`]
 
-[futex objects]: /docs/reference/kernel_objects/futex.md
-[timer slack]: /docs/concepts/kernel/timer_slack.md
+[futex objects]: /reference/kernel_objects/futex.md
+[timer slack]: /concepts/kernel/timer_slack.md
 [`zx_futex_requeue()`]: futex_requeue.md
 [`zx_futex_wake()`]: futex_wake.md

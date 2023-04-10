@@ -303,5 +303,5 @@ a given right is present (in this case `zx.rights.WRITE`). Because of this, we
 aren't prescribing that rights changes can't break source compatibility.
 
 <!-- xrefs -->
-[FIDL language specification]: /docs/reference/fidl/language/language.md
-[Kernel rights documentation]: /docs/concepts/kernel/rights.md
+[FIDL language specification]: /reference/fidl/language/language.md
+[Kernel rights documentation]: /concepts/kernel/rights.md

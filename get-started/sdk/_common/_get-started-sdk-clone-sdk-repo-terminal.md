@@ -82,5 +82,5 @@ Do the following:
 
 [clang]: https://clang.llvm.org
 [ffx]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fuchsia-idk]: /docs/development/idk/README.md
+[fuchsia-idk]: /development/idk/README.md
 [sdk-samples-repo]: https://fuchsia.googlesource.com/sdk-samples/getting-started

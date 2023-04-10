@@ -7,34 +7,34 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /docs/development/languages/rust
+  path: /development/languages/rust
 - title: "Learn Rust"
-  path: /docs/development/languages/rust/learn_rust.md
+  path: /development/languages/rust/learn_rust.md
 - title: "Fuchsia Rust crates"
-  path: /docs/development/languages/rust/crates.md
+  path: /development/languages/rust/crates.md
 - title: "FIDL Rust crates"
-  path: /docs/development/languages/rust/fidl_crates.md
+  path: /development/languages/rust/fidl_crates.md
 - title: "Rust editor configurations"
-  path: /docs/development/languages/rust/editors.md
+  path: /development/languages/rust/editors.md
 - title: "Using cargo on Fuchsia"
-  path: /docs/development/languages/rust/cargo.md
+  path: /development/languages/rust/cargo.md
 - title: "Logging"
-  path: /docs/development/languages/rust/logging.md
+  path: /development/languages/rust/logging.md
 - title: "Ergonomic Inspect"
-  path: /docs/development/languages/rust/ergonomic_inspect.md
+  path: /development/languages/rust/ergonomic_inspect.md
 - title: "Testing Rust Code"
-  path: /docs/development/languages/rust/testing.md
+  path: /development/languages/rust/testing.md
 - title: "Measuring Rust Binary Bloat"
-  path: /docs/development/languages/rust/bloat.md
+  path: /development/languages/rust/bloat.md
 - title: "External Rust crates"
-  path: /docs/development/languages/rust/external_crates.md
+  path: /development/languages/rust/external_crates.md
 - title: "External Rust crate Reviews"
-  path: /docs/development/languages/rust/external_crates/review.md
+  path: /development/languages/rust/external_crates/review.md
 - title: "Unsafe code in Rust"
-  path: /docs/development/languages/rust/unsafe.md
+  path: /development/languages/rust/unsafe.md
 - title: "Running tests in miri"
-  path: /docs/development/languages/rust/miri.md
+  path: /development/languages/rust/miri.md
 - title: "Unstable Rust features"
-  path: /docs/development/languages/rust/unstable.md
+  path: /development/languages/rust/unstable.md
 - title: "Integrating C/C++ using bindgen"
-  path: /docs/development/languages/rust/bindgen.md
+  path: /development/languages/rust/bindgen.md

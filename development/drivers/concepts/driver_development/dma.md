@@ -154,17 +154,17 @@ Zircon provides a set of functions that allow you to cleanly deal with all of th
 above.
 The following work together:
 
-*   a Bus Transaction Initiator ([BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md)), and
-*   a Virtual Memory Object ([VMO](/docs/reference/kernel_objects/vm_object.md)).
+*   a Bus Transaction Initiator ([BTI](/reference/kernel_objects/bus_transaction_initiator.md)), and
+*   a Virtual Memory Object ([VMO](/reference/kernel_objects/vm_object.md)).
 
-The [BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md)
+The [BTI](/reference/kernel_objects/bus_transaction_initiator.md)
 kernel object provides an abstraction of the model, and an API to deal with
 physical (or device-physical) addresses associated with
-[VMO](/docs/reference/kernel_objects/vm_object.md)s.
+[VMO](/reference/kernel_objects/vm_object.md)s.
 
 In your driver's initialization, call
 **Pci::GetBti()**
-to obtain a [BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md) handle:
+to obtain a [BTI](/reference/kernel_objects/bus_transaction_initiator.md) handle:
 
 ```cpp
 #include <lib/device-protocol/pci.h>
@@ -176,11 +176,11 @@ zx_status_t Pci::GetBti(uint32_t index,
 The **GetBti()**
 function lives on the `ddk::Pci` class (just like all the other PCI functions
 discussed above) and takes an `index` parameter (reserved for future use, use `0`).
-It returns a [BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md)
+It returns a [BTI](/reference/kernel_objects/bus_transaction_initiator.md)
 object through the `out_bti` pointer argument.
 
-Next, you need a [VMO](/docs/reference/kernel_objects/vm_object.md).
-Simplistically, you can think of the [VMO](/docs/reference/kernel_objects/vm_object.md)
+Next, you need a [VMO](/reference/kernel_objects/vm_object.md).
+Simplistically, you can think of the [VMO](/reference/kernel_objects/vm_object.md)
 as a pointer to a chunk of memory,
 but it's more than that &mdash; it's a kernel object that represents a set
 of virtual pages (that may or may not have physical pages committed to them),
@@ -190,10 +190,10 @@ which can be mapped into the virtual address space of the driver process.
 Ultimately, these pages serve as the source or destination of the DMA transfer.
 
 There are two functions,
-[**zx_vmo_create()**](/docs/reference/syscalls/vmo_create.md)
+[**zx_vmo_create()**](/reference/syscalls/vmo_create.md)
 and
-[**zx_vmo_create_contiguous()**](/docs/reference/syscalls/vmo_create_contiguous.md)
-that allocate memory and bind it to a [VMO](/docs/reference/kernel_objects/vm_object.md):
+[**zx_vmo_create_contiguous()**](/reference/syscalls/vmo_create_contiguous.md)
+that allocate memory and bind it to a [VMO](/reference/kernel_objects/vm_object.md):
 
 ```c
 zx_status_t zx_vmo_create(uint64_t size,
@@ -207,23 +207,23 @@ zx_status_t zx_vmo_create_contiguous(zx_handle_t bti,
 ```
 
 As you can see, they both take a `size` parameter indicating the number of bytes required,
-and they both return a [VMO](/docs/reference/kernel_objects/vm_object.md) (through `out`).
+and they both return a [VMO](/reference/kernel_objects/vm_object.md) (through `out`).
 They both allocate virtually contiguous pages, for a given size.
 
 > Note that this differs from the standard C library memory allocation functions,
 > (e.g., **malloc()**), which allocate virtually contiguous memory, but without
 > regard to page boundaries. Two small **malloc()** calls in a row might allocate
 > two memory regions from the *same* page, for instance, whereas
-> the [VMO](/docs/reference/kernel_objects/vm_object.md)
+> the [VMO](/reference/kernel_objects/vm_object.md)
 > creation functions will always allocate memory starting with a *new* page.
 
 The
-[**zx_vmo_create_contiguous()**](/docs/reference/syscalls/vmo_create_contiguous.md)
+[**zx_vmo_create_contiguous()**](/reference/syscalls/vmo_create_contiguous.md)
 function does what
-[**zx_vmo_create()**](/docs/reference/syscalls/vmo_create.md)
+[**zx_vmo_create()**](/reference/syscalls/vmo_create.md)
 does, *and* ensures that the pages are suitably
-organized for use with the specified [BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md)
-(which is why it needs the [BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md) handle).
+organized for use with the specified [BTI](/reference/kernel_objects/bus_transaction_initiator.md)
+(which is why it needs the [BTI](/reference/kernel_objects/bus_transaction_initiator.md) handle).
 It also features an `alignment_log2` parameter that can be used to specify a minimum
 alignment requirement.
 As the name suggests, it must be an integer power of 2 (with the value `0` indicating
@@ -243,7 +243,7 @@ You will also need the addresses of the pages (from the point of view of the dev
 so that you can program the DMA controller on your device to access them.
 
 The
-[**zx_bti_pin()**](/docs/reference/syscalls/bti_pin.md)
+[**zx_bti_pin()**](/reference/syscalls/bti_pin.md)
 function is used to do all that:
 
 ```c
@@ -259,27 +259,27 @@ There are 8 parameters to this function:
 
 Parameter       | Purpose
 ----------------|------------------------------------
-`bti`           | the [BTI](/docs/reference/kernel_objects/bus_transaction_initiator.md) for this peripheral
+`bti`           | the [BTI](/reference/kernel_objects/bus_transaction_initiator.md) for this peripheral
 `options`       | options (see below)
-`vmo`           | the [VMO](/docs/reference/kernel_objects/vm_object.md) for this memory region
-`offset`        | offset from the start of the [VMO](/docs/reference/kernel_objects/vm_object.md)
-`size`          | total number of bytes in [VMO](/docs/reference/kernel_objects/vm_object.md)
+`vmo`           | the [VMO](/reference/kernel_objects/vm_object.md) for this memory region
+`offset`        | offset from the start of the [VMO](/reference/kernel_objects/vm_object.md)
+`size`          | total number of bytes in [VMO](/reference/kernel_objects/vm_object.md)
 `addrs`         | list of return addresses
 `addrs_count`   | number of elements in `addrs`
-`pmt`           | returned [PMT](/docs/reference/kernel_objects/pinned_memory_token.md) (see below)
+`pmt`           | returned [PMT](/reference/kernel_objects/pinned_memory_token.md) (see below)
 
 The `addrs` parameter is a pointer to an array of `zx_paddr_t` that you supply.
 This is where the peripheral addresses for each page are returned into.
 The array is `addrs_count` elements long, and must match the count of
 elements expected from
-[**zx_bti_pin()**](/docs/reference/syscalls/bti_pin.md).
+[**zx_bti_pin()**](/reference/syscalls/bti_pin.md).
 
 > The values written into `addrs` are suitable for programming the peripheral's
 > DMA controller &mdash; that is, they take into account any translations that
 > may be performed by an IOMMU, if present.
 
 On a technical note, the other effect of
-[**zx_bti_pin()**](/docs/reference/syscalls/bti_pin.md)
+[**zx_bti_pin()**](/reference/syscalls/bti_pin.md)
 is that the kernel will ensure those pages are not decommitted
 (i.e., moved or reused) while pinned.
 
@@ -311,23 +311,23 @@ Larger chunks may be requested by setting the `ZX_BTI_COMPRESS` option
 in the `options` argument.
 In that case, the length of each entry returned corresponds to the "minimum contiguity" property.
 While you can't set this property, you can read it with
-[**zx_object_get_info()**](/docs/reference/syscalls/object_get_info.md).
+[**zx_object_get_info()**](/reference/syscalls/object_get_info.md).
 Effectively, the minimum contiguity property is a guarantee that
-[**zx_bti_pin()**](/docs/reference/syscalls/bti_pin.md)
+[**zx_bti_pin()**](/reference/syscalls/bti_pin.md)
 will always be able to return addresses that are contiguous for at least that many bytes.
 
 For example, if the property had the value 1MB, then a call to
-[**zx_bti_pin()**](/docs/reference/syscalls/bti_pin.md)
+[**zx_bti_pin()**](/reference/syscalls/bti_pin.md)
 with a requested size of 2MB would return at most two physically-contiguous runs.
 If the requested size was 2.5MB, it would return at most three physically-contiguous runs,
 and so on.
 
 ### Pinned Memory Token (PMT)
 
-[`zx_bti_pin()`](/docs/reference/syscalls/bti_pin.md) returns a Pinned Memory Token
-([PMT](/docs/reference/kernel_objects/pinned_memory_token.md))
+[`zx_bti_pin()`](/reference/syscalls/bti_pin.md) returns a Pinned Memory Token
+([PMT](/reference/kernel_objects/pinned_memory_token.md))
 upon success in the *pmt* argument.
-The driver must call [`zx_pmt_unpin()`](/docs/reference/syscalls/pmt_unpin.md) when the device is
+The driver must call [`zx_pmt_unpin()`](/reference/syscalls/pmt_unpin.md) when the device is
 done with the memory transaction to unpin and revoke access to the memory pages by the device.
 
 ## Advanced topics
@@ -341,8 +341,8 @@ invoking appropriate cache operations on the memory range before performing DMA 
 so that no stale data will be accessed.
 
 To invoke cache operations on the memory represented by
-[VMO](/docs/reference/kernel_objects/vm_object.md)s, use the
-[`zx_vmo_op_range()`](/docs/reference/syscalls/vmo_op_range.md) syscall. Prior to a peripheral-read
+[VMO](/reference/kernel_objects/vm_object.md)s, use the
+[`zx_vmo_op_range()`](/reference/syscalls/vmo_op_range.md) syscall. Prior to a peripheral-read
 (driver-write) operation, clean the cache using `ZX_VMO_OP_CACHE_CLEAN` to write out dirty data to
 main memory. Prior to a peripheral-write (driver-read), use `ZX_VMO_OP_CACHE_CLEAN_INVALIDATE` to
 clean the cache lines and mark them as invalid ensuring data is fetched from main memory on the next

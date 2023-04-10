@@ -286,9 +286,9 @@ Now that you have experienced the basics of developing drivers on Fuchsia, take
 your knowledge to the next level and dive deeper with the:
 
 <a class="button button-primary"
-    href="/docs/concepts/drivers">Driver concepts</a>
+    href="/concepts/drivers">Driver concepts</a>
 
 <!-- Reference links -->
 
-[component-testing]: /docs/development/testing/components/README.md
-[fuchsia-debugger]: /docs/development/debugger/README.md
+[component-testing]: /development/testing/components/README.md
+[fuchsia-debugger]: /development/debugger/README.md

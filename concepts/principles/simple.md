@@ -32,5 +32,5 @@ product software to remain compatible over longer time horizons. This makes it
 easy to scale an open ecosystem of hardware—without forking the operating
 system.
 
-[glossary.FIDL]: /docs/glossary/README.md#FIDL
-[fuchsia-driver-framework]: /docs/development/drivers/concepts/fdf.md
+[glossary.FIDL]: /glossary/README.md#FIDL
+[fuchsia-driver-framework]: /development/drivers/concepts/fdf.md

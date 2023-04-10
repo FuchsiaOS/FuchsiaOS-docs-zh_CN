@@ -17,4 +17,4 @@ You can find more information below:
 *   [Realm Builder](realm_builder.md): library that facilitates integration
     testing of components.
 
-[cfv2]: /docs/concepts/components/v2/introduction.md
+[cfv2]: /concepts/components/v2/introduction.md

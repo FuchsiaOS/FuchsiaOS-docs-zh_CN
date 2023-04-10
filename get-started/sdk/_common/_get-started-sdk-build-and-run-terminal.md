@@ -122,5 +122,5 @@ Do the following:
 
 <!-- Reference links -->
 
-[fuchsia-component]: /docs/concepts/components/v2/README.md
+[fuchsia-component]: /concepts/components/v2/README.md
 [hello-world-component]: https://fuchsia.googlesource.com/sdk-samples/getting-started/+/refs/heads/main/src/hello_world/

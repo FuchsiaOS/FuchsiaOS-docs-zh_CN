@@ -66,7 +66,7 @@ In VS Code, do the following:
 
 1. Click the **Not connected** icon at the bottom of VS Code.
 
-   ![Not connected](/docs/get-started/sdk/images/get-started-vscode-not-connected.png "The Not connect icon at the bottom of VS Code"){: .screenshot}
+   ![Not connected](/get-started/sdk/images/get-started-vscode-not-connected.png "The Not connect icon at the bottom of VS Code"){: .screenshot}
 
    This opens the Command Palette at the top of VS Code.
 
@@ -74,7 +74,7 @@ In VS Code, do the following:
 
    This sets `fuchsia-emulator` as the default target at the bottom of VS Code:
 
-   ![Connected](/docs/get-started/sdk/images/get-started-vscode-connected-to-fuchsia-emulator.png "The fuchsia-emulator icon at the bottom of VS Code"){: .screenshot}
+   ![Connected](/get-started/sdk/images/get-started-vscode-connected-to-fuchsia-emulator.png "The fuchsia-emulator icon at the bottom of VS Code"){: .screenshot}
 
 1. In the terminal, to verify that you can establish an SSH connection
    to the emulator instance, run the following command:
@@ -154,5 +154,5 @@ In VS Code, do the following:
 
 <!-- Reference links -->
 
-[femu]: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
-[fuchsia-package-server]: /docs/development/sdk/ffx/create-a-package-repository.md
+[femu]: /development/sdk/ffx/start-the-fuchsia-emulator.md
+[fuchsia-package-server]: /development/sdk/ffx/create-a-package-repository.md

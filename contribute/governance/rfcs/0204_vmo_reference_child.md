@@ -337,8 +337,8 @@ writable VMO handle is also resizable (if the VMO was created resizable).
 
 ## Prior art and references
 
-[`zx_vmo_create_child()`](/docs/reference/syscalls/vmo_create_child.md)
+[`zx_vmo_create_child()`](/reference/syscalls/vmo_create_child.md)
 
-[`zx_vmar_map()`](/docs/reference/syscalls/vmar_map.md)
+[`zx_vmar_map()`](/reference/syscalls/vmar_map.md)
 
-[`zx_stream_create()`](/docs/reference/syscalls/stream_create.md)
+[`zx_stream_create()`](/reference/syscalls/stream_create.md)

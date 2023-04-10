@@ -3,4 +3,4 @@
 This section includes documentation for contributing to the
 [Component Framework].
 
-[Component Framework]: /docs/concepts/components/v2/README.md
+[Component Framework]: /concepts/components/v2/README.md

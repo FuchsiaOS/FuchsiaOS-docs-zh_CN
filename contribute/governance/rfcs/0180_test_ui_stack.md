@@ -88,7 +88,7 @@ Input teams. We also consulted OOT UI client teams.
   realm](https://cs.opensource.google/fuchsia/fuchsia/+/main:src/ui/meta/ui.cml).
 - **Helper services**: Test-only services that proxy low-level UI capabilities
   to clients via higher-level APIs.
-- **Scene**: The hierarchy of [views](/docs/development/graphics/scenic/concepts/view_ref.md),
+- **Scene**: The hierarchy of [views](/development/graphics/scenic/concepts/view_ref.md),
   which enable owners to present renderable content to a display, consume input,
   and interact with accessibility.
 
@@ -148,7 +148,7 @@ Local mocks -> test ui client (mocked services)
 
 Note that this design is agnostic to how the UI stack and test component
 configure their respective realms. They could do so statically or via
-[RealmBuilder](/docs/development/testing/components/realm_builder.md).
+[RealmBuilder](/development/testing/components/realm_builder.md).
 
 ## Base UI topology
 
@@ -179,7 +179,7 @@ services to the test:
 
 Note that the Test UI Stack can and will evolve to mirror the production one.
 
-Depending on the progress of the [One UI Stack migration](/docs/contribute/governance/rfcs/0166_ui_stack.md),
+Depending on the progress of the [One UI Stack migration](/contribute/governance/rfcs/0166_ui_stack.md),
 we may also add a "legacy" variant of the Test UI Stack component that uses
 root presenter and input pipeline in place of scene manager.
 
@@ -220,7 +220,7 @@ The helper component abstraction offers several important benefits:
 Some clients may need to configure parameters like display rotation, pixel
 density, etc. The Test UI Stack can accommodate these use cases with [structured
 component
-configuration](/docs/development/components/configuration/structured_config.md).
+configuration](/development/components/configuration/structured_config.md).
 Clients can override parameters they wish to control,
 which the Test UI Stack component can then propagate to the appropriate base UI
 components.

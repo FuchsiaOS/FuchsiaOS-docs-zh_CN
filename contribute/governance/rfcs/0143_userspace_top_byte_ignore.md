@@ -262,4 +262,4 @@ also controlled by the same build option.
 [linuxtbi]: https://www.kernel.org/doc/html/latest/arm64/tagged-address-abi.html
 [contextswitch]: https://lore.kernel.org/linux-arm-kernel/20201124184742.GC42276@C02TF0J2HF1T.local/
 [memtag]: https://arxiv.org/pdf/1802.09517.pdf
-[features]: /docs/reference/syscalls/system_get_features.md
+[features]: /reference/syscalls/system_get_features.md

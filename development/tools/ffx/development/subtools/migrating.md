@@ -2,7 +2,7 @@
 
 ## Why migrate
 
-The new [FHO](/docs/development/tools/ffx/architecture/fho.md) subtool library
+The new [FHO](/development/tools/ffx/architecture/fho.md) subtool library
 provides some helpful macros for migrating an existing plugin over to the new
 subtool interface. By migrating your plugin to a subtool, you have these benefits:
 

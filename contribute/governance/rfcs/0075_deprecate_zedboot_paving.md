@@ -213,7 +213,7 @@ device.
    certain product specific commands to be implemented. Exporting FTL information
    via fastboot oem can be an option here.
 
-[`mexec`](/docs/reference/syscalls/system_mexec.md) is a
+[`mexec`](/reference/syscalls/system_mexec.md) is a
 flow that allows to soft reboot a system with a new kernel and bootimage. Moving
 to a fastboot based provisioning flow does not impact this feature.
 

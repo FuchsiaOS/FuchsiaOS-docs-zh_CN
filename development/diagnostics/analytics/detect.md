@@ -61,7 +61,7 @@ The .triage files are standard [Triage] format. Detect adds a new `act` type:
       per-signature not per-action, using the value from the action that
       triggered.
 
-[Triage]: /docs/development/diagnostics/triage/config.md
+[Triage]: /development/diagnostics/triage/config.md
 
 ## Conditional file inclusion
 

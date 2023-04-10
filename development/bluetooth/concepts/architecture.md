@@ -40,7 +40,7 @@ Fuchsia provides drivers that implement the HCI transport over
 [USB](/src/connectivity/bluetooth/hci/transport/usb/)
 and [UART](/src/connectivity/bluetooth/hci/transport/uart/).
 The transport protocol abstracts the HCI control, ACL, and SCO
-channels (currently as Zircon [channels](/docs/reference/kernel_objects/channel.md)).
+channels (currently as Zircon [channels](/reference/kernel_objects/channel.md)).
 
 A transport driver publishes a bt-transport device (e.g. `/dev/class/bt-transport/000`).
 Each of these devices only represents the transport and not an initialized

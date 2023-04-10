@@ -264,14 +264,14 @@ the Driver codelab.
 
 <!-- Reference links -->
 
-[drivers-and-nodes]: /docs/concepts/drivers/drivers_and_nodes.md
-[write-bind-rules]: /docs/development/sdk/write-bind-rules-for-driver.md
-[component-manifests]: /docs/concepts/components/v2/component_manifests.md
-[driver-framework]: /docs/concepts/drivers/driver_framework.md
-[driver-binding]: /docs/concepts/drivers/driver_binding.md
-[fuchsia-package-server]: /docs/development/sdk/ffx/create-a-package-repository.md
-[bazel-run]: /docs/get-started/sdk/get-started-with-driver.md#build-and-load-the-sample-driver
+[drivers-and-nodes]: /concepts/drivers/drivers_and_nodes.md
+[write-bind-rules]: /development/sdk/write-bind-rules-for-driver.md
+[component-manifests]: /concepts/components/v2/component_manifests.md
+[driver-framework]: /concepts/drivers/driver_framework.md
+[driver-binding]: /concepts/drivers/driver_binding.md
+[fuchsia-package-server]: /development/sdk/ffx/create-a-package-repository.md
+[bazel-run]: /get-started/sdk/get-started-with-driver.md#build-and-load-the-sample-driver
 [fuchsia-pci-bind]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/devices/bind/fuchsia.pci/fuchsia.pci.bind
-[ffx-component-show]: /docs/development/sdk/ffx/view-component-information.md
-[ffx-log]: /docs/development/sdk/ffx/view-device-logs.md
-[implement-driver-hooks]: /docs/get-started/sdk/learn/driver/driver-binding.md#implement_driver_hooks
+[ffx-component-show]: /development/sdk/ffx/view-component-information.md
+[ffx-log]: /development/sdk/ffx/view-device-logs.md
+[implement-driver-hooks]: /get-started/sdk/learn/driver/driver-binding.md#implement_driver_hooks

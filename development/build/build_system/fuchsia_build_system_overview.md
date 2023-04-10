@@ -54,13 +54,13 @@ declaration types) are defined in the [GN reference][gn-reference]. There are
 also a handful of custom templates in `.gni` files in the
 [`//build` project][build-project].
 
-Fuchsia defines many [custom templates](/docs/development/components/build.md#gn_templates)
+Fuchsia defines many [custom templates](/development/components/build.md#gn_templates)
 to support defining and building Fuchsia specific artifacts.
 
 ## Executing a build
 
 The simplest way to this is through the `fx` tool, as described in
-[fx workflows](/docs/development/build/fx.md). Read on to see
+[fx workflows](/development/build/fx.md). Read on to see
 what `fx` does under the hood.
 
 The rest of this document assumes that `gn` and `ninja` commands are
@@ -223,4 +223,4 @@ You likely forgot to run both commands of **Build step**.
 [ninja-main]: https://ninja-build.org/
 [gn-reference]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md
 [build-project]: /build/
-[zircon-getting-started]: /docs/zircon/getting_started.md
+[zircon-getting-started]: /zircon/getting_started.md

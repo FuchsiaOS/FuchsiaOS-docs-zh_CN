@@ -1,15 +1,15 @@
 > ***ATTENTION:*** This document describes the behavior of Scenic's GFX API
 > which is currently being replaced by the
-> [Flatland API](/docs/concepts/ui/scenic/flatland/index.md). Workstation
+> [Flatland API](/concepts/ui/scenic/flatland/index.md). Workstation
 > currently uses Flatland only, and Smart Display
 > [will be converted](https://fxbug.dev/93979) to use Flatland as well.
 > If working with Flatland, please refer to the
-> [Flatland documentation](/docs/concepts/ui/scenic/flatland/index.md).
+> [Flatland documentation](/concepts/ui/scenic/flatland/index.md).
 
 # Gfx - Legacy Scenic 3D API
 
-Gfx is [Scenic's](/docs/concepts/ui/scenic/index.md) legacy 3D API. Like other
-APIs such as [Flatland](/docs/concepts/ui/scenic/flatland/index.md), it provides
+Gfx is [Scenic's](/concepts/ui/scenic/index.md) legacy 3D API. Like other
+APIs such as [Flatland](/concepts/ui/scenic/flatland/index.md), it provides
 a retained-mode scene graph consisting of content that is independently
 generated and linked together by its clients. Like Flatland, it supports
 Scenic's core responsibilities of Composition, Rendering, Scheduling, and
@@ -117,7 +117,7 @@ points at a `Scene` to be rendered (as described above).
 
 ### Scenic Resource Graph
 
-![Scenic Resource Graph](/docs/concepts/ui/scenic/images/scenic_resource_graph.png)
+![Scenic Resource Graph](/concepts/ui/scenic/images/scenic_resource_graph.png)
 
 ### Coordinate Frames and Units
 
@@ -125,7 +125,7 @@ Scenic manages a global scene graph in a three dimensional space. Some of the
 characteristics of this space are defined by Scenic itself, whereas some are
 defined by the root presenter or even other clients.
 
-![Scenic Axes](/docs/concepts/ui/scenic/images/scenic_axes.png)
+![Scenic Axes](/concepts/ui/scenic/images/scenic_axes.png)
 
 ### Units
 
@@ -152,17 +152,17 @@ handedness will match.
 
 The bounds of the root view are defined by a min and a max point as follows:
 
-![Scenic Root View Bounds](/docs/concepts/ui/scenic/images/scenic_root_view_bounds.png)
+![Scenic Root View Bounds](/concepts/ui/scenic/images/scenic_root_view_bounds.png)
 
 ## Views and Bounds
 
-[View Bounds](/docs/development/graphics/scenic/concepts/view_bounds.md) shows
+[View Bounds](/development/graphics/scenic/concepts/view_bounds.md) shows
 how to set up your view bounds, how to debug them with wireframe rendering, and
 explains how view bounds interact with hit testing.
 
 ## Frame Scheduling
 
-[Frame scheduling](/docs/concepts/ui/scenic/frame_scheduling.md) explains how
+[Frame scheduling](/concepts/ui/scenic/frame_scheduling.md) explains how
 the frame scheduling API work and contains examples of how to use it.
 
 {# ## Fences {#fences} #}

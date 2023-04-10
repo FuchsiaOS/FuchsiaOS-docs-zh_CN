@@ -168,12 +168,12 @@ Component framework provides the following built-in component runners:
 }
 ```
 
-[glossary.environment]: /docs/glossary/README.md#environment
-[glossary.namespace]: /docs/glossary/README.md#namespace
-[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
-[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
-[elf-runner]: /docs/concepts/components/v2/elf_runner.md
-[environment]: /docs/concepts/components/v2/environments.md
+[glossary.environment]: /glossary/README.md#environment
+[glossary.namespace]: /glossary/README.md#namespace
+[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
+[elf-runner]: /concepts/components/v2/elf_runner.md
+[environment]: /concepts/components/v2/environments.md
 [fidl-directory]: /sdk/fidl/fuchsia.io/directory.fidl
 [fidl-runner]: https://fuchsia.dev/reference/fidl/fuchsia.component.runner#ComponentRunner
 [fidl-controller]: https://fuchsia.dev/reference/fidl/fuchsia.component.runner#ComponentController

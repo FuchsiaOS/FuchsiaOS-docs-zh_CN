@@ -5,7 +5,7 @@ found in the LICENSE file.
 
 DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
 
-See //docs/reference/syscalls/README.md#documentation-generation for
+See //reference/syscalls/README.md#documentation-generation for
 regeneration instructions.
 -->
 
@@ -56,7 +56,7 @@ Upon return, the *pending* field of *items* is filled with bitmaps indicating
 which signals are pending for each item.
 
 The maximum number of items that may be waited upon is **ZX_WAIT_MANY_MAX_ITEMS**,
-which is 64.  To wait on more objects at once use [Ports](/docs/reference/kernel_objects/port.md).
+which is 64.  To wait on more objects at once use [Ports](/reference/kernel_objects/port.md).
 
 ## Rights
 
@@ -117,7 +117,7 @@ See [signals] for more information about signals and their terminology.
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_one()`]
 
-[signals]: /docs/concepts/kernel/signals.md
-[timer slack]: /docs/concepts/kernel/timer_slack.md
+[signals]: /concepts/kernel/signals.md
+[timer slack]: /concepts/kernel/timer_slack.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_one()`]: object_wait_one.md

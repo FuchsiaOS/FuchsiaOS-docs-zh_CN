@@ -5,4 +5,4 @@ how C structs work.
 <<../examples/calculator/_callout.md>>
 <<../examples/calculator/_baseline_tutorial.md>>
 
-[struct-doc-link]: /docs/reference/fidl/language/language.md#structs
+[struct-doc-link]: /reference/fidl/language/language.md#structs

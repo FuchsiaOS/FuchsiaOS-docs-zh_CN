@@ -489,11 +489,11 @@ Every image has the following properties:
 The following are valid inline image syntax:
 
 ```none {:.devsite-disable-click-to-copy}
-![Alt text](/docs/images/benchmarking/test_suite_example.png)
+![Alt text](/images/benchmarking/test_suite_example.png)
 
-![Alt text](/docs/images/benchmarking/test_suite_example.png "Optional title")
+![Alt text](/images/benchmarking/test_suite_example.png "Optional title")
 
-![Alt text](/docs/images/benchmarking/test_suite_example.png "Optional title"){: .my-custom-css-class}
+![Alt text](/images/benchmarking/test_suite_example.png "Optional title"){: .my-custom-css-class}
 ```
 
 ### Reference syntax
@@ -514,7 +514,7 @@ Image references are defined using syntax identical to link references:
 You can specify the width of a Markdown image using the following syntax:
 
 ```none {:.devsite-disable-click-to-copy}
-![Alt text](/docs/images/benchmarking/test_suite_example.png){: width="123"}
+![Alt text](/images/benchmarking/test_suite_example.png){: width="123"}
 ```
 
 ## Include code {#include-code}
@@ -832,7 +832,7 @@ title for the link, surrounded in quotes. For example:
     title attribute.</p>
 
 If you're referring to a local resource such as a file in the source tree, you can
-use relative paths. See the [docs README](/docs/README.md) for examples.
+use relative paths. See the [docs README](/README.md) for examples.
 
 ### Reference links
 
@@ -875,12 +875,12 @@ types of content from Fuchsia.dev:
 * Content that is created by contributors that exists in the [`//docs` directory][cs-docs] of the Fuchsia source tree.
  
   Example: This is a link to
-  [`//docs/get-started/learn-fuchsia.md`](https://cs.opensource.google/fuchsia/fuchsia/+/main:docs/get-started/learn-fuchsia.md):
+  [`//get-started/learn-fuchsia.md`](https://cs.opensource.google/fuchsia/fuchsia/+/main:docs/get-started/learn-fuchsia.md):
 
   Note: You should always use a full filename including the file extension.
   
   ```
-  [Learn Fuchsia](/docs/get-started/learn-fuchsia.md)
+  [Learn Fuchsia](/get-started/learn-fuchsia.md)
   ```
 
 * Content that is automatically generated such as [fuchsia.dev/reference](https://fuchsia.dev/reference) which does not
@@ -897,7 +897,7 @@ types of content from Fuchsia.dev:
   ```
   
   Fuchsia also has non-generated reference content that exists in the
-  [`//docs/reference/` directory][cs-ref-docs].
+  [`//reference/` directory][cs-ref-docs].
   This type of content can be linked using the Fuchsia source tree content syntax.
 
 * Links to a URL. These types of links must be marked as [External](#external-links).

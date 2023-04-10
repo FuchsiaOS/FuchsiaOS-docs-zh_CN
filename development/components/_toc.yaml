@@ -7,18 +7,18 @@
 # team as reviewer.
 toc:
 - title: "Build components"
-  path: /docs/development/components/build.md
+  path: /development/components/build.md
 - title: "Connect components"
-  path: /docs/development/components/connect.md
+  path: /development/components/connect.md
 - title: "Run components"
-  path: /docs/development/components/run.md
+  path: /development/components/run.md
 - title: "Provide data files to components"
-  path: /docs/development/components/data.md
+  path: /development/components/data.md
 - title: "Configure components"
   section:
-  - include: /docs/development/components/configuration/_toc.yaml
+  - include: /development/components/configuration/_toc.yaml
 - title: "Component ID index"
-  path: /docs/development/components/component_id_index.md
+  path: /development/components/component_id_index.md
 - title: "Migrating legacy components"
   section:
-  - include: /docs/development/components/v2/migration/_toc.yaml
+  - include: /development/components/v2/migration/_toc.yaml

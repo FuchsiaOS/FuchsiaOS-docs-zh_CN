@@ -36,6 +36,6 @@ To avoid this problem:
 *   We disallow setting non-userspace addresses in
     [`zx_thread_start()`][thread_start] and [`zx_process_start()`][process_start].
 
-[thread_write_state]: /docs/reference/syscalls/thread_write_state.md
-[thread_start]: /docs/reference/syscalls/thread_start.md
-[process_start]: /docs/reference/syscalls/process_start.md
+[thread_write_state]: /reference/syscalls/thread_write_state.md
+[thread_start]: /reference/syscalls/thread_start.md
+[process_start]: /reference/syscalls/process_start.md

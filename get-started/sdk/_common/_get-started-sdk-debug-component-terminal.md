@@ -149,5 +149,5 @@ Do the following:
 
 <!-- Reference links -->
 
-[fuchsia-debugger]: /docs/development/debugger/README.md
-[zxdb-user-guide]: /docs/development/debugger/README.md
+[fuchsia-debugger]: /development/debugger/README.md
+[zxdb-user-guide]: /development/debugger/README.md

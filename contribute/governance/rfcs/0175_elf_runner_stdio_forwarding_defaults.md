@@ -144,7 +144,7 @@ ensure a unified developer experience.
 
 This RFC proposes an extension to a feature described in [RFC-0069].
 
-[ELF runner]: /docs/concepts/components/v2/elf_runner.md
-[RFC-0069]: /docs/contribute/governance/rfcs/0069_stdio_in_elf_runner.md
-[logsink]: /docs/concepts/components/diagnostics/logs/README.md
-[test runners]: /docs/development/testing/components/test_runner_framework.md
+[ELF runner]: /concepts/components/v2/elf_runner.md
+[RFC-0069]: /contribute/governance/rfcs/0069_stdio_in_elf_runner.md
+[logsink]: /concepts/components/diagnostics/logs/README.md
+[test runners]: /development/testing/components/test_runner_framework.md
