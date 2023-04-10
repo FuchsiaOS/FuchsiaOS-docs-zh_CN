@@ -1,7 +1,7 @@
 # FIDL language tuning proposals (FTP)
 
-Note: This process was deprecated in [RFC-0017](/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md).
-FTP proposals should now use the [Fuchsia RFC process](/contribute/governance/rfcs/rfc_process.md).
+Note: This process was deprecated in [RFC-0017](/docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md).
+FTP proposals should now use the [Fuchsia RFC process](/docs/contribute/governance/rfcs/rfc_process.md).
 
 ## Process
 
@@ -9,8 +9,8 @@ The FIDL Tuning Proposal (FTP) process is designed to provide a
 uniform and recorded path for making changes to the [FIDL] language,
 bindings, and tools.
 
-* See [RFC-0018: FTP process](/contribute/governance/rfcs/0018_ftp_process.md)
-* See [RFC-0049: FIDL Tuning Process Evolution](/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md)
+* See [RFC-0018: FTP process](/docs/contribute/governance/rfcs/0018_ftp_process.md)
+* See [RFC-0049: FIDL Tuning Process Evolution](/docs/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md)
 
 ### Criteria for requiring an FTP
 
@@ -38,7 +38,7 @@ For instance, changes to the following areas will likely require an FTP:
 * Bindings specification
 
 Additional details are provided in
-[RFC-0049: FIDL Tuning Process Evolution](/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md).
+[RFC-0049: FIDL Tuning Process Evolution](/docs/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md).
 
 ### Design
 
@@ -179,6 +179,6 @@ but rejected proposal is a substantial part of the value of this
 process.
 
 <!-- xref -->
-[FIDL]: /development/languages/fidl/README.md
-[tutorial]: /development/languages/fidl/tutorials/overview.md
-[template]: /contribute/governance/deprecated-ftp-template.md
+[FIDL]: /docs/development/languages/fidl/README.md
+[tutorial]: /docs/development/languages/fidl/tutorials/overview.md
+[template]: /docs/contribute/governance/deprecated-ftp-template.md

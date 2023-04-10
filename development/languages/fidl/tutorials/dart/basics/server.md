@@ -1,4 +1,4 @@
-# Implement a Dart FIDL server
+# Implement a FIDL server in Dart
 
 ## Prerequisites
 
@@ -54,59 +54,40 @@ To create a component:
    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/BUILD.gn" %}
    ```
 
-   The `dart_app` template defines multiple parts:
+   The `dart_library` template specifies sources and dependencies for a Dart package. Since this example will build an executable component, the Dart package includes a `main.dart` source and `main()` method.
 
-     * A Dart binary based on the specified sources and dependencies.
-     * A component that is set up to simply run the binary, which is described using
-       the specified manifest file. `path` refers to the location of the file in the
-       tree, and `dest` refers to the target location of the manifest within the
-       component.
-     * A package containing the component. Packages are the unit of software distribution on
-       Fuchsia.
+   The `dart_component` template depends on the `dart_library` target and a
+   component `manifest` file.
 
-    For more details on packages, components, and how to build them, refer to
-    [Building components][components].
+   Finally, the `fuchsia_package` declares a package containing the component.
+   Packages are the unit of software distribution on Fuchsia.
 
-    The dependencies will used later when implementing the FIDL server, and are not needed yet
-    at this step.
+   For more details on packages, components, and how to build them, refer to
+   the [Building components][building-components] page.
 
-1. Add a component manifest in `examples/fidl/dart/server/server.cmx`:
+1. Add a component manifest in `examples/fidl/dart/server/meta/server.cml`:
 
-   Note: The binary name in the manifest must match the name of the `dart_app`, which is used
-   to define the Dart executable.
-
-   ```cmx
-   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/meta/server.cmx" %}
+   ```json5
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/meta/server.cml" region_tag="example_snippet" %}
    ```
 
-### Run the component
+   <!-- TODO(fxbug.dev/58758) <<../../common/server/qemu.md>> -->
 
-<!-- TODO(fxbug.dev/58758) <<../../common/server/qemu.md>> -->
+1. Add the server to your build configuration:
 
-Note: The instructions in this section are geared towards running the component
-on QEMU, as this is the simplest way to get started with running Fuchsia, but
-it is also possible to pick a different [product configuration][products] and
-run on actual hardware if you are familiar with running components on
-other product configurations.
-
-1. Add the server to your configuration and build:
-
-   ```
-   fx set core.x64 --with //examples/fidl/dart/server && fx build
+   ```posix-terminal
+   fx set core.x64 --with //examples/fidl/dart/server:echo-dart-server --with-base //src/dart \
+     --args='core_realm_shards += [ "//src/dart:dart_runner_core_shard" ]'
    ```
 
-1. Ensure `fx serve` is running in a separate tab and connected to an instance of
-   Fuchsia (e.g. running in QEMU using `fx qemu`), then run the server:
+   Note: This build configuration assumes your device target is the emulator.
+   To run the example on a physical device, select the appropriate
+   [product configuration][products] for your hardware.
 
-   Note: The component should be referenced by its
-   [URL][glossary.component url], which
-   is determined with the `[fuchsia-pkg://][glossary.fuchsia-pkg URL]` scheme. The
-   package name in the URL matches the `package_name` field in the `fuchsia_package`
-   declaration, and the manifest path in `meta/` matches the target name of the
-   `fuchsia_component`.
+1. Build the Fuchsia image:
 
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo-server.cmx
+   ```posix-terminal
+   fx build
    ```
 
 ## Implement the server
@@ -172,7 +153,7 @@ This complete process is described in further detail in the
 
 First, the code initializes the `EchoBinding` as mentioned above:
 
-```cpp
+```dart
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="main" highlight="4,5,6,7" %}
 ```
 
@@ -188,7 +169,7 @@ connect to an `Echo` server.
 
 Then, the code calls the component manager to expose the `Echo` FIDL protocol to other components:
 
-```cpp
+```dart
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/server/lib/main.dart" region_tag="main" highlight="10,11,12,13,14,15,16,17" %}
 ```
 
@@ -230,33 +211,49 @@ Build:
 fx build
 ```
 
-Then run the server:
+Then run the server component:
 
-```
-fx shell run fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo-server.cmx
+```posix-terminal
+ffx component run /core/ffx-laboratory:echo_server fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo_server.cm
 ```
 
-You should see server hanging and the startup log using `ffx log`.
-This is expected because an
-[event loop](https://dart.dev/tutorials/language/futures) to handle incoming
-requests is running. The next step will be to write a client for the server.
+Note: Components are resolved using their [component URL][glossary.component-url],
+which is determined with the [`fuchsia-pkg://`][glossary.fuchsia-pkg-url] scheme.
+
+You should see output similar to the following in the device logs (`ffx log`):
+
+```none {:.devsite-disable-click-to-copy}
+[echo-server, main.dart(64)] INFO: Running Echo server
+```
+
+The server is now running and waiting for incoming requests.
+The next step will be to write a client that sends `Echo` protocol requests.
+For now, you can simply terminate the server component:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_server
+```
+
+Note: Component instances are referenced by their
+[component moniker][glossary.moniker], which is determined by their location in
+the [component instance tree][glossary.component-instance-tree]
 
 <!-- xrefs -->
-[glossary-url]: /glossary/README.md#component-url
-[glossary-scheme]: /glossary/README.md#fuchsia-pkg-url
-[fidl-packages]: /development/languages/fidl/tutorials/dart/basics/using-fidl.md
-[building-components]: /development/components/build.md
-[products]: /development/build/build_system/boards_and_products.md
-[getting-started]: /get-started/index.md
-[declaring-fidl]: /development/languages/fidl/tutorials/fidl.md
-[depending-fidl]: /development/languages/fidl/tutorials/dart/basics/using-fidl.md
-[component-manager]: /concepts/components/v2/component_manager.md
-[protocol-open]: /concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
-[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
-[overview]: /development/languages/fidl/tutorials/overview.md
-[components]: /development/components/build.md
-[bindings-iface]: /reference/fidl/bindings/dart-bindings.md#protocols
-[events]: /reference/fidl/bindings/dart-bindings.md#events
-[service-name]: /reference/fidl/bindings/dart-bindings.md#discoverable
-[logging]: /development/languages/dart/logging.md
-[concepts]: /concepts/fidl/overview.md
+[glossary-url]: /docs/glossary/README.md#component-url
+[glossary-scheme]: /docs/glossary/README.md#fuchsia-pkg-url
+[fidl-packages]: /docs/development/languages/fidl/tutorials/dart/basics/using-fidl.md
+[building-components]: /docs/development/components/build.md
+[products]: /docs/development/build/build_system/boards_and_products.md
+[getting-started]: /docs/get-started/index.md
+[declaring-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
+[depending-fidl]: /docs/development/languages/fidl/tutorials/dart/basics/using-fidl.md
+[component-manager]: /docs/concepts/components/v2/component_manager.md
+[protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md#binding_to_a_component_and_sending_a_protocol_channel
+[compiling-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
+[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[building-components]: /docs/development/components/build.md
+[bindings-iface]: /docs/reference/fidl/bindings/dart-bindings.md#protocols
+[events]: /docs/reference/fidl/bindings/dart-bindings.md#events
+[service-name]: /docs/reference/fidl/bindings/dart-bindings.md#discoverable
+[logging]: /docs/development/languages/dart/logging.md
+[concepts]: /docs/concepts/fidl/overview.md

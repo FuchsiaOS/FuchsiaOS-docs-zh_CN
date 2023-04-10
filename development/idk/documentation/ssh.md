@@ -9,9 +9,10 @@ devices.
 
 On the host side, a proper SSH distribution is required.
 
-A public/private keypair is also needed.
-It may be generated via the `ssh-keygen` command, or extracted from the running
-SSH agent via `ssh-add -L`.
+A public/private key pair is also needed to secure access to the
+device or emulator running Fuchsia. `ffx` will generate the key if not present.
+You can add your own key, if desired, to the path displayed from
+ `ffx config get ssh.priv` and `ffx config get ssh.pub`.
 
 ## Provisioning a device
 

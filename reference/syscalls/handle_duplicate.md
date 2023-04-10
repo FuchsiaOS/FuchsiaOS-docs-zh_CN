@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_handle_duplicate
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Duplicate a handle.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_handle_duplicate(zx_handle_t handle,
                                 zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_handle_duplicate()` creates a duplicate of *handle*, referring
 to the same underlying object, with new access rights *rights*.
@@ -28,17 +35,15 @@ rights are desired they must be strictly lesser than of the source handle. It is
 to specify no rights by using **ZX_RIGHT_NONE**. To remove **ZX_RIGHT_DUPLICATE** right when
 transferring through a channel, use [`zx_channel_write_etc()`].
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must have **ZX_RIGHT_DUPLICATE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_handle_duplicate()` returns **ZX_OK** and the duplicate handle via *out* on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* isn't a valid handle.
 
@@ -51,7 +56,7 @@ transferring through a channel, use [`zx_channel_write_etc()`].
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [rights]
  - [`zx_channel_write_etc()`]
@@ -59,9 +64,7 @@ In a future build this error will no longer occur.
  - [`zx_handle_close_many()`]
  - [`zx_handle_replace()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[rights]: /concepts/kernel/rights.md
+[rights]: /docs/concepts/kernel/rights.md
 [`zx_channel_write_etc()`]: channel_write_etc.md
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_close_many()`]: handle_close_many.md

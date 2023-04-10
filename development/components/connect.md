@@ -54,7 +54,7 @@ See the following example that declares a FIDL [protocol capability][doc-protoco
 providing component's manifest:
 
 ```json5
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" highlight="4,5,6,7" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" highlight="16,17,18,19" %}
 ```
 
 At runtime, the provider component provides an implementation of the capability by serving
@@ -87,7 +87,7 @@ See the following example of a client component's manifest that uses the FIDL pr
 by the previous component:
 
 ```json5
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" highlight="4,5,6,7" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" highlight="19,20,21,22" %}
 ```
 
 At runtime, the client component connects to the capability handles populated in its namespace
@@ -107,6 +107,49 @@ for communicating over the channel:
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/main.cc" region_tag="main_body" adjust_indentation="auto" highlight="2,3,4,5,7,8,10" %}
   ```
 
+#### Mark some used capabilities as optional {#optional-use}
+
+Not all capabilities used by a component are required for it to operate
+successfully. Sometimes a component can still execute without issue if a
+capability is missing, and its presence will merely enable some additional or
+alternative behavior.
+
+To enable the component framework to understand which capabilities a component
+requires and which capabilities are optional for a component, use the
+`availability` field.
+
+```
+use: [
+    {
+        // It is ok if this protocol is unavailable
+        protocol: "fuchsia.examples.Echo1",
+        availability: "optional",
+    },
+    {
+        // This protocol MUST be provided for the component to function correctly.
+        protocol: "fuchsia.examples.Echo2",
+        availability: "required",
+    },
+]
+```
+
+If a component has a `required` use declaration for a capability but its parent
+offers the capability as `optional`, then the [static capability
+analyzer][static-analyzer] will generate an error and connection attempts at
+runtime will always fail.
+
+##### Consuming optional capabilities {#consuming-optional-capabilities}
+
+In the case that a component's parent has `offer`ed a capabilitity
+with `availability: "optional"`, the capability may not be usable at runtime.
+
+An entry in the component's [namespace][glossary.namespace] will be present
+whether the capability is available or not. Any attempt to open the path for
+that capability will result in the handle provided to the `Directory.Open()`
+call being closed with a `ZX_ERR_UNAVAILABLE` epitaph.
+
+Usage of `libc` methods like `open()` or `stat()` will return `ENOENT`.
+
 ### Route capabilities {#route-capability}
 
 Components may only access capabilities routed to them. Capabilities can originate
@@ -123,7 +166,7 @@ do the following:
 1.  Add an `offer` or `expose` declaration to the capability provider component:
 
     ```json5
-    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" highlight="8,9,10,11,12,13" %}
+    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" highlight="20,21,22,23,24,25" %}
     ```
 
 1.  For each intermediate component in the component instance tree, include additional
@@ -133,6 +176,78 @@ do the following:
     ```json5
     {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/meta/echo_realm.cml" region_tag="example_snippet" highlight="13,14,15,16,17,18,19,21,22,23,24,25,26,27,28,29,30" %}
     ```
+
+#### Optional dependencies {#optional-offer}
+
+When a component has an optional dependency on a capability, it is then up to
+that component's parent to decide if the component will receive that capability
+or not. When offering a capability, a component may set the `availability` field
+to either `optional`, `required`, or `same_as_target`. Each value has the
+following semantics:
+
+- `optional`: The target of the offer must declare it's ability to handle the
+  absence of this capability by marking it's `use` declaration as `optional`. If
+  the target cannot do this, (i.e. the target has an availability of `required`
+  for this capability), then routing the capability will cause an error.
+- `required`: The target must receive this capability. If the offer source is
+  `parent` and the component's parent (the target's grandparent) offered this as
+  an optional capability, then routing the capability will cause an error
+  because the parent cannot guarantee the capability's availability.
+- `same_as_target`: The availability of this capability is determined by the
+  target's expectations. If the target has an optional dependency on this
+  capability, then this offer will also be optional. If the target has a
+  required dependency on this capability, then this offer will also be required.
+
+```
+offer: [
+    {
+        // child-1 MUST receive the protocol 'fuchsia.logger.LogSink'.
+        protocol: "fuchsia.logger.LogSink",
+        to: "#child-1",
+        from: "#child-2",
+        availability: "required",
+    },
+    {
+        // child-1 MUST be able to handle the absence of the protocol
+        // 'fuchsia.tracing.provider.Registry'.
+        protocol: "fuchsia.tracing.provider.Registry",
+        to: "#child-1",
+        from: "parent",
+        availability: "optional",
+    },
+    {
+        // child-1 decides if it must receive the protocol
+        // 'fuchsia.posix.socket.Provider', or if it must be able to support its
+        // absence.
+        protocol: "fuchsia.posix.socket.Provider",
+        to: "#child-1",
+        from: "parent",
+        availability: "same_as_target",
+    },
+]
+```
+
+Like with use declarations, the `availability` field may be omitted, in which
+case it defaults to `required`.
+
+#### Transitionally dependencies {#transitional-offer}
+
+The component framework allows components to soft-transition into using and offering
+both optional and required capabilities. With the transitional availability marker, a
+component using a capability, will not cause Scrutiny validation errors whether or
+not the parent is required, optional, or same as target. Note, though this field exists
+to enable soft-transitions, components should ultimately settle on either optional or required.
+
+To use this feature, the child component will mark its availability as "transitional":
+
+```
+use: [
+    {
+        // It is ok if this protocol is offered as "required" or "optional"
+        protocol: "fuchsia.examples.Echo",
+        availability: "transitional",
+    },
+```
 
 ## Managing child components {#children}
 
@@ -334,7 +449,8 @@ component manager exhibits the following behavior:
     error message like:
 
     ```none {:.devsite-disable-click-to-copy}
-    [component_manager] ERROR: Failed to route protocol `fuchsia.appmgr.Startup` with target component `/startup`:
+    [component_manager] ERROR: Required protocol `fuchsia.appmgr.Startup` was not
+    available for target component `/startup`:
     failed to resolve "fuchsia-pkg://fuchsia.com/your_component#meta/your_component.cm":
     package not found: remote resolver responded with PackageNotFound
     ```
@@ -510,8 +626,9 @@ Do the following to check if a routing failure was the cause of channel closure:
     that explains where the routing chain failed. For example:
 
     ```none {:.devsite-disable-click-to-copy}
-    [echo_client][][W] Failed to route protocol
-    `fidl.examples.routing.echo.Echo` with target component `/core/ffx-laboratory:echo_realm/echo_client`:
+    [echo_client][][W] Required protocol
+    `fidl.examples.routing.echo.Echo` was not available for target component
+    `/core/ffx-laboratory:echo_realm/echo_client`:
     A `use from parent` declaration was found at `/core/ffx-laboratory:echo_realm/echo_client`
     for `fidl.examples.routing.echo.Echo`, but no matching `offer` declaration was found in the parent
     ```
@@ -593,18 +710,18 @@ the cause:
 [cml-offer]: https://fuchsia.dev/reference/cml#offer
 [cml-program]: https://fuchsia.dev/reference/cml#program
 [cml-use]: https://fuchsia.dev/reference/cml#use
-[doc-capabilities]: /concepts/components/v2/capabilities/README.md
-[doc-epitaphs]: /reference/fidl/language/wire-format/README.md#epitaph_control_message_ordinal_0xffffffff
-[doc-fidlcat]: /development/monitoring/fidlcat/README.md
-[doc-lifecycle]: /concepts/components/v2/lifecycle.md
-[doc-logs]: /concepts/components/diagnostics/logs/README.md
-[doc-manifests]: /concepts/components/v2/component_manifests.md
-[doc-packages]: /concepts/packages/package.md
-[doc-package-set]: /concepts/packages/package.md#types_of_packages
-[doc-protocol]: /concepts/components/v2/capabilities/protocol.md
-[doc-realms]: /concepts/components/v2/realms.md
-[doc-runners]: /concepts/components/v2/capabilities/runners.md
-[elf-lifecycle]: /concepts/components/v2/elf_runner.md#lifecycle
+[doc-capabilities]: /docs/concepts/components/v2/capabilities/README.md
+[doc-epitaphs]: /docs/reference/fidl/language/wire-format/README.md#epitaph_control_message_ordinal_0xffffffff
+[doc-fidlcat]: /docs/development/monitoring/fidlcat/README.md
+[doc-lifecycle]: /docs/concepts/components/v2/lifecycle.md
+[doc-logs]: /docs/concepts/components/diagnostics/logs/README.md
+[doc-manifests]: /docs/concepts/components/v2/component_manifests.md
+[doc-packages]: /docs/concepts/packages/package.md
+[doc-package-set]: /docs/concepts/packages/package.md#types_of_packages
+[doc-protocol]: /docs/concepts/components/v2/capabilities/protocol.md
+[doc-realms]: /docs/concepts/components/v2/realms.md
+[doc-runners]: /docs/concepts/components/v2/capabilities/runners.md
+[elf-lifecycle]: /docs/concepts/components/v2/elf_runner.md#lifecycle
 [example-lifecycle]: /examples/components/lifecycle/
 [example-routing]: /examples/components/routing/
 [example-routing-failed]: /examples/components/routing_failed/
@@ -619,14 +736,15 @@ the cause:
 [fidl-Realm.CreateChild]: https://fuchsia.dev/reference/fidl/fuchsia.component#Realm.CreateChild
 [fidl-Realm.DestroyChild]: https://fuchsia.dev/reference/fidl/fuchsia.component#Realm.DestroyChild
 [fidl-Realm.OpenExposedDir]: https://fuchsia.dev/reference/fidl/fuchsia.component#Realm.OpenExposedDir
-[glossary.capability]: /glossary/README.md#capability
-[glossary.component-collection]: /glossary/README.md#component-collection
-[glossary.component-declaration]: /glossary/README.md#component-declaration
-[glossary.component-instance]: /glossary/README.md#component-instance
-[glossary.component-instance-tree]: /glossary/README.md#component-instance-tree
-[glossary.component-manifest]: /glossary/README.md#component-manifest
-[glossary.component-topology]: /glossary/README.md#component-topology
-[glossary.exposed-directory]: /glossary/README.md#exposed-directory
-[glossary.namespace]: /glossary/README.md#namespace
-[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[glossary.capability]: /docs/glossary/README.md#capability
+[glossary.component-collection]: /docs/glossary/README.md#component-collection
+[glossary.component-declaration]: /docs/glossary/README.md#component-declaration
+[glossary.component-instance]: /docs/glossary/README.md#component-instance
+[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
+[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
+[glossary.component-topology]: /docs/glossary/README.md#component-topology
+[glossary.exposed-directory]: /docs/glossary/README.md#exposed-directory
+[glossary.namespace]: /docs/glossary/README.md#namespace
+[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
 [src-security-policy]: /src/security/policy/component_manager_policy.json5
+[static-analyzer]: /docs/development/components/build.md#troubleshoot-build-analyzer

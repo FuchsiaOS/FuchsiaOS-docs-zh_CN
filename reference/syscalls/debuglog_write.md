@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_debuglog_write
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write a message to the kernel debuglog.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_debuglog_write(zx_handle_t handle,
                               size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_debuglog_write()` attempts to write *buffer* of size *buffer_size* bytes
 to the kernel debuglog. The log entry is written at severity `ZX_LOG_INFO`.
@@ -33,18 +40,16 @@ ZX_LOG_RECORD_MAX so that it may fit in the `data` field of `zx_log_record_t`.
 
 *options* must be set to `0`.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_LOG** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_debuglog_read()` returns **ZX_OK** on success. In the event of failure,
 a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have **ZX_RIGHT_WRITE**.
 
@@ -55,15 +60,13 @@ was an invalid pointer.
 
 **ZX_ERR_WRONG_TYPE**  *handle* is not a debuglog handle.
 
-## SEE ALSO
+## See also
 
  - [`fuchsia.boot.WriteOnlyLog`](https://fuchsia.dev/reference/fidl/fuchsia.boot#WriteOnlyLog)
 
  - [`zx_debug_write()`]
  - [`zx_debuglog_create()`]
  - [`zx_debuglog_read()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_debug_write()`]: debug_write.md
 [`zx_debuglog_create()`]: debuglog_create.md

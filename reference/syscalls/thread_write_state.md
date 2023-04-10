@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_thread_write_state
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write one aspect of thread state.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_thread_write_state(zx_handle_t handle,
                                   size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_thread_write_state()` writes one aspect of state of the thread. The thread
 state may only be written when the thread is halted for an exception or the
@@ -66,18 +73,16 @@ bit, which is used to determine whether that particular breakpoint is activated
 or not. Said in another way, in order to activate a HW breakpoint, all that is
 needed is to set the correct address in DBGBVR and write 1 to DBGBCR.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_thread_write_state()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -88,7 +93,6 @@ In the event of failure, a negative error value is returned.
 **ZX_ERR_INVALID_ARGS**  *kind* is not valid, *buffer* is an invalid pointer,
 *buffer_size* doesn't match the size of the structure expected for *kind* or
 the given values to set are not valid.
-
 
 **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 There is no good way for userspace to handle this (unlikely) error.
@@ -111,10 +115,8 @@ valid (ie. not addressable from userspace). Also if any value is set for a HW
 breakpoint beyond the number provided by the platform (see above for
 information about retrieving that number).
 
-## SEE ALSO
+## See also
 
  - [`zx_thread_read_state()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_thread_read_state()`]: thread_read_state.md

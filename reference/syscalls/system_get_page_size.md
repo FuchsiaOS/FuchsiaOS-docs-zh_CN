@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_system_get_page_size
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Get the page size for the system.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Get the page size for the system.
 uint32_t zx_system_get_page_size(void);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_system_get_page_size()` returns the base memory page size of the system in
 bytes. This number cannot change during a run of the system, only at boot time,
@@ -33,28 +40,24 @@ For every architecture there are well defined minimum and maximum values,
 | ARM          | 4KiB               | 64KiB              |
 | X86-64       | 4KiB               | 2MiB               |
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_system_get_page_size()` returns the page size in bytes.
 
-## ERRORS
+## Errors
 
 `zx_system_get_page_size()` cannot fail.
 
-## NOTES
+## Notes
 
-## SEE ALSO
+## See also
 
  - [`zx_vmar_map()`]
  - [`zx_vmo_create()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_vmar_map()`]: vmar_map.md
 [`zx_vmo_create()`]: vmo_create.md

@@ -1,0 +1,61 @@
+-
+ key: Runtime Observation
+ use_case: |
+   I want to understand what my component is doing at runtime.
+ tools:
+   - Inspect
+   - Logs
+   - Structured Logs
+ description: |
+   It is often useful to be able to look at what your component is
+   actually doing when it runs on a system. Fuchsia, like most
+   systems, supports [Logging][Logs] so components may provide
+   human-readable output on their state. Logs may be augmented with
+   [Structured Data][Structured Logs] that is typed and can be
+   aggregated by other tools.
+
+   Fuchsia components have the unique ability to publish their
+   ongoing state for inspection using the [Inspect feature][Inspect].
+   Generally, Inspect tells you what your component is doing <i>right
+   now</i> while Logs tell you how you got there. Both are useful
+   to have a comprehensive view of component status.
+ related-problems: []
+
+-
+ key: Trigger Snapshot
+ use_case: |
+   I want to automatically trigger taking a snapshot on a specific condition
+ tools:
+   - Detect
+   - Triage
+ description: |
+   When things go wrong on devices, it is useful to understand what
+   was happening at that moment in time. [Detect][Detect] is basically
+   a version of [Triage][Triage] that works on device. Like Triage,
+   it supports producing warnings based on the state of the device.
+   Unlike off-device Triage, Detect supports a new action type that
+   files a crash report containing a snapshot when the condition
+   is detected.
+ related-problems: []
+
+-
+ key: Snapshot Triage
+ use_case: |
+  I want to automatically post-process snapshots to identify notable
+  values or error conditions
+ tools:
+   - Triage
+ description: |
+   Fuchsia Forensics Snapshots contain a lot of data about what was
+   happening on a Fuchsia device, and often the volume of data makes
+   it difficult to really see what is happening on the device at a
+   high level.
+
+   The [Automatic Triage Tool][Triage] is a system for applying a
+   series of rules to a snapshot to extract useful data. This
+   includes top-level gauges (which display values from the system,
+   such as memory usage) and alerts (which describe some condition
+   identified on the system). The system is fully configurable on
+   a per-product or per-component basis and is available for local
+   use as well.
+ related-problems: []

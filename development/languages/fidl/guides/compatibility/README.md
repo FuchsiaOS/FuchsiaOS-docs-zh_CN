@@ -447,6 +447,27 @@ Example: changing a union declaration from [`strict` to
 `flexible`][example-union-strict-flexible], or [`flexible` to
 `strict`][example-union-flexible-strict].
 
+#### One-way methods and events
+
+Changing a one-way method or event from `strict` to `flexible` or `flexible` to
+`strict` is source compatible and binary compatible. Changing this modifier only
+affects how the receiving end reacts if it receives this one-way method call or
+event and does not recognize the ordinal.
+
+#### Two-way methods
+
+Whether changing a two-way method from `strict` to `flexible` or `flexible` to
+`strict` is binary compatible depends on whether it uses `error` syntax. Whether
+it is source compatible depends on the language.
+
+Changing between `strict` and `flexible` is binary compatible if the method also
+uses `error` syntax. If the method does not use `error` syntax, changing between
+`strict` and `flexible` is binary-incompatible.
+
+Changing a two-way method between `strict` and `flexible` is source compatible
+in LLCPP, Rust, and Dart. In HLCPP, it is not source compatible. Go does not
+support `open` or `ajar` protocols, so this is not applicable to Go.
+
 ### Value vs resource {#value-vs-resource}
 
 Adding or removing the `resource` modifier on a struct, table, or union is
@@ -460,6 +481,20 @@ Adding or removing the `resource` modifier is not source-compatible.
 Furthermore, bindings are encouraged to diverge APIs if they can leverage the
 value type versus resource type distinction for specific benefits in the target
 language (see [RFC-0057][rfc-0057-motivation] for context).
+
+### Open, ajar, and closed {#open-ajar-closed}
+
+Changing between `open`, `ajar`, and `closed` is binary compatible. Going from a
+more closed protocol to a more open one, e.g. `closed` to `ajar` or `ajar` to
+`open` is always possible, however going from a more open protocol to a more
+closed one, e.g. `open` to `ajar` or `ajar` to `closed` may require changing
+methods from `flexible` to `strict`, which is subject to the binary
+compatibility restrictions covered in the [strict vs flexible](#strict-flexible)
+section.
+
+Changing between `open`, `ajar`, and `closed` is not source compatible.
+Soft-transitioning for this change is not currently supported so the source
+changes have to be done atomically with the FIDL change.
 
 ## General advice
 
@@ -560,34 +595,40 @@ Note: A union tag is the discriminator indicating which variant is currently
 held by the union (see [lexicon][lexicon-tag]). This is often an enum in
 languages that do not support ADTs like C++.
 
+## Testing
+
+We have automated tests that prevent most breaking API changes. For more
+information, see [FIDL API Compatibility Testing][fidl-api-compatibility-testing].
+
 <!-- xrefs -->
-[bindings-ref]: /reference/fidl/bindings/overview.md
-[example-bits-flexible-strict]: /development/languages/fidl/guides/compatibility/bits_flexible_strict.md
-[example-bits-member-add]: /development/languages/fidl/guides/compatibility/bits_member_add.md
-[example-bits-member-remove]: /development/languages/fidl/guides/compatibility/bits_member_remove.md
-[example-bits-strict-flexible]: /development/languages/fidl/guides/compatibility/bits_strict_flexible.md
-[example-enum-flexible-strict]: /development/languages/fidl/guides/compatibility/enum_flexible_strict.md
-[example-enum-member-add]: /development/languages/fidl/guides/compatibility/enum_member_add.md
-[example-enum-member-remove]: /development/languages/fidl/guides/compatibility/enum_member_remove.md
-[example-enum-strict-flexible]: /development/languages/fidl/guides/compatibility/enum_strict_flexible.md
-[example-protocol-event-add]: /development/languages/fidl/guides/compatibility/protocol_event_add.md
-[example-protocol-event-remove]: /development/languages/fidl/guides/compatibility/protocol_event_remove.md
-[example-protocol-method-add]: /development/languages/fidl/guides/compatibility/protocol_method_add.md
-[example-protocol-method-remove]: /development/languages/fidl/guides/compatibility/protocol_method_remove.md
-[example-table-member-add]: /development/languages/fidl/guides/compatibility/table_member_add.md
-[example-table-member-remove]: /development/languages/fidl/guides/compatibility/table_member_remove.md
-[example-union-flexible-strict]: /development/languages/fidl/guides/compatibility/union_flexible_strict.md
-[example-union-member-add]: /development/languages/fidl/guides/compatibility/union_member_add.md
-[example-union-member-remove]: /development/languages/fidl/guides/compatibility/union_member_remove.md
-[example-union-strict-flexible]: /development/languages/fidl/guides/compatibility/union_strict_flexible.md
-[rfc-0057-motivation]: /contribute/governance/rfcs/0057_default_no_handles.md#motivation
-[lexicon-tag]: /reference/fidl/language/lexicon.md#union-terms
-[lexicon-type]: /reference/fidl/language/lexicon.md#type-terms
-[Platform Versioning]: /contribute/governance/rfcs/0002_platform_versioning.md
-[rust-bindings-tables]: /reference/fidl/bindings/rust-bindings.md#types-tables
-[rust-enum-macro]: /reference/fidl/bindings/rust-bindings.md#types-enums
-[selector]: /reference/fidl/language/attributes.md#selector
-[soft transitions]: /contribute/governance/rfcs/0002_platform_versioning.md#terminology
-[transitional-rust]: /reference/fidl/bindings/rust-bindings.md#transitional
-[transitional]: /reference/fidl/language/attributes.md#transitional
-[unknown-attr]: /reference/fidl/language/attributes.md#unknown
+[bindings-ref]: /docs/reference/fidl/bindings/overview.md
+[example-bits-flexible-strict]: /docs/development/languages/fidl/guides/compatibility/bits_flexible_strict.md
+[example-bits-member-add]: /docs/development/languages/fidl/guides/compatibility/bits_member_add.md
+[example-bits-member-remove]: /docs/development/languages/fidl/guides/compatibility/bits_member_remove.md
+[example-bits-strict-flexible]: /docs/development/languages/fidl/guides/compatibility/bits_strict_flexible.md
+[example-enum-flexible-strict]: /docs/development/languages/fidl/guides/compatibility/enum_flexible_strict.md
+[example-enum-member-add]: /docs/development/languages/fidl/guides/compatibility/enum_member_add.md
+[example-enum-member-remove]: /docs/development/languages/fidl/guides/compatibility/enum_member_remove.md
+[example-enum-strict-flexible]: /docs/development/languages/fidl/guides/compatibility/enum_strict_flexible.md
+[example-protocol-event-add]: /docs/development/languages/fidl/guides/compatibility/protocol_event_add.md
+[example-protocol-event-remove]: /docs/development/languages/fidl/guides/compatibility/protocol_event_remove.md
+[example-protocol-method-add]: /docs/development/languages/fidl/guides/compatibility/protocol_method_add.md
+[example-protocol-method-remove]: /docs/development/languages/fidl/guides/compatibility/protocol_method_remove.md
+[example-table-member-add]: /docs/development/languages/fidl/guides/compatibility/table_member_add.md
+[example-table-member-remove]: /docs/development/languages/fidl/guides/compatibility/table_member_remove.md
+[example-union-flexible-strict]: /docs/development/languages/fidl/guides/compatibility/union_flexible_strict.md
+[example-union-member-add]: /docs/development/languages/fidl/guides/compatibility/union_member_add.md
+[example-union-member-remove]: /docs/development/languages/fidl/guides/compatibility/union_member_remove.md
+[example-union-strict-flexible]: /docs/development/languages/fidl/guides/compatibility/union_strict_flexible.md
+[fidl-api-compatibility-testing]: /docs/development/testing/ctf/fidl_api_compatibility_testing.md
+[rfc-0057-motivation]: /docs/contribute/governance/rfcs/0057_default_no_handles.md#motivation
+[lexicon-tag]: /docs/reference/fidl/language/lexicon.md#union-terms
+[lexicon-type]: /docs/reference/fidl/language/lexicon.md#type-terms
+[Platform Versioning]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
+[rust-bindings-tables]: /docs/reference/fidl/bindings/rust-bindings.md#types-tables
+[rust-enum-macro]: /docs/reference/fidl/bindings/rust-bindings.md#types-enums
+[selector]: /docs/reference/fidl/language/attributes.md#selector
+[soft transitions]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#terminology
+[transitional-rust]: /docs/reference/fidl/bindings/rust-bindings.md#transitional
+[transitional]: /docs/reference/fidl/language/attributes.md#transitional
+[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown

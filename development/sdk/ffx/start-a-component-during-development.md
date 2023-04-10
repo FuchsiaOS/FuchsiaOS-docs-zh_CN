@@ -90,25 +90,21 @@ sequence of the `ffx component create` and `ffx component start` commands
 the [`ffx component run`][ffx-component-run] command can start a dynamic
 component instance in a single command line.
 
-Of course, there is a catch to this convenience: the `ffx component run` command
-can only start its component instance under the
-[`ffx-laboratory`][ffx-laboratory] collection. Keep in mind that the
-`ffx-laboratory` collection might not offer all the capabilities required by
-your component.
-
 To quick start a component under the `ffx-laboratory` collection,
 run the following command:
 
 ```posix-terminal
-ffx component run <COMPONENT_URL>
+ffx component run /core/ffx-laboratory:<NAME> <COMPONENT_URL>
 ```
 
-Replace `COMPONENT_URL` with the resource location of a component.
+Replace `COMPONENT_URL` with the resource location of a component, and replace
+`NAME` with the name for the component instance within the `ffx-laboratory`
+collection.
 
 The example below starts the `hello-world-cpp.cm` component on the device:
 
 ```none {:.devsite-disable-click-to-copy}
-$ ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
+$ ffx component run /core/ffx-laboratory:hello-world-cpp fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
 URL: fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
 Moniker: /core/ffx-laboratory:hello-world-cpp
 Creating component instance...
@@ -117,11 +113,11 @@ Starting component instance...
 
 In essence, the `ffx component run` command performs the following steps:
 
-1. Run `ffx component create` to create a new component instance under the `ffx-laboratory` collection
-   using the component name as the target moniker.
+1. Run `ffx component create` to create a new component instance under the
+   `ffx-laboratory` collection using the component name as the target moniker.
 2. Run `ffx component start` to start the component instance on the device.
 
-For instance, running `ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm`
+For instance, running `ffx component run /core/ffx-laboratory:hello-world-cpp fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm`
 in the example above is equivalent to running the following commands:
 
 ```none {:.devsite-disable-click-to-copy}
@@ -171,15 +167,12 @@ Destroying component instance...
 
 <!-- Reference links -->
 
-[dynamic-children]: /concepts/components/v2/realms.md#dynamic-children
-[component-manifests]: /concepts/components/v2/component_manifests.md
-[component-collection]: /concepts/components/v2/realms.md#collections
+[dynamic-children]: /docs/concepts/components/v2/realms.md#dynamic-children
+[component-manifests]: /docs/concepts/components/v2/component_manifests.md
+[component-collection]: /docs/concepts/components/v2/realms.md#collections
 [ffx-component-run]: https://fuchsia.dev/reference/tools/sdk/ffx#run
-[ffx-laboratory]: /development/components/run.md#ffx-laboratory
+[ffx-laboratory]: /docs/development/components/run.md#ffx-laboratory
 [ffx-component]: https://fuchsia.dev/reference/tools/sdk/ffx#component
-[component-lifecycle]: /concepts/components/v2/lifecycle.md
+[component-lifecycle]: /docs/concepts/components/v2/lifecycle.md
 [ffx-component-create]: https://fuchsia.dev/reference/tools/sdk/ffx#create_2
 [ffx-component-start]: https://fuchsia.dev/reference/tools/sdk/ffx#start
-[ffx-component-stop]: https://fuchsia.dev/reference/tools/sdk/ffx#stop
-[ffx-component-destory]: https://fuchsia.dev/reference/tools/sdk/ffx#destroy
-[get-the-list-of-components]: ./view-component-information.md#get-the-list-of-components

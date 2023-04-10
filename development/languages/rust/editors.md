@@ -22,7 +22,8 @@ Currently, use [the **latest version** of `rust-analyzer`][rust-analyzer-latest]
 
 ## Visual Studio Code {#visual-studio-code}
 
-To setup `rust-analyzer` on VS Code, see the VS Code guide [Installing extensions][vscode-extension-guide].
+To setup `rust-analyzer` on VS Code, see the VS Code guide
+[Additional Vs Code extensions for Fuchsia][vscode-extension-guide].
 
 ## Vim
 
@@ -169,11 +170,11 @@ Finally, follow [these steps][cargo-toml-gen] to generate a `Cargo.toml` file fo
 Note that cargo-based workflows are more likely to break than rust-analyzer based ones.
 
 [rust-analyzer-latest]: https://github.com/rust-analyzer/rust-analyzer/releases
-[vscode-extension-guide]: /development/editors/vscode/extensions.md#rust-analyzer
+[vscode-extension-guide]: /docs/reference/tools/editors/vscode/extensions.md#rust-analyzer
 [vscode-download]: https://code.visualstudio.com/Download
 [vscode-update]:  https://vscode-docs.readthedocs.io/en/stable/supporting/howtoupdate/
 [vscode-disable-telemetry]: https://code.visualstudio.com/docs/getstarted/telemetry#_disable-telemetry-reporting
 [vscode-rust-analyzer]: https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer
 [vscode-downgrade]: https://code.visualstudio.com/updates/v1_30#_install-previous-versions
-[cargo-setup]: /development/languages/rust/cargo.md
-[cargo-toml-gen]: /development/languages/rust/cargo.md#cargo-toml-gen
+[cargo-setup]: /docs/development/languages/rust/cargo.md
+[cargo-toml-gen]: /docs/development/languages/rust/cargo.md#cargo-toml-gen

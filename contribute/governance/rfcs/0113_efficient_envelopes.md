@@ -240,10 +240,10 @@ there wasn't enough consensus around the whole RFC.
     out-of-line, have all been removed.
 
 <!-- xrefs -->
-[envelopes]: /contribute/governance/rfcs/0047_tables.md#envelopes
-[rfc-0061]: /contribute/governance/rfcs/0061_extensible_unions.md
-[rfc-0026]: /contribute/governance/rfcs/0026_envelopes_everywhere.md
-[rfc-0045]: /contribute/governance/rfcs/0045_zero_size_empty_structs.md
+[envelopes]: /docs/contribute/governance/rfcs/0047_tables.md#envelopes
+[rfc-0061]: /docs/contribute/governance/rfcs/0061_extensible_unions.md
+[rfc-0026]: /docs/contribute/governance/rfcs/0026_envelopes_everywhere.md
+[rfc-0045]: /docs/contribute/governance/rfcs/0045_zero_size_empty_structs.md
 [FIDL_ALLOC_ABSENT]: /zircon/system/public/zircon/fidl.h
-[messageheader]: /reference/fidl/language/wire-format/README.md#transactional-messages
+[messageheader]: /docs/reference/fidl/language/wire-format/README.md#transactional-messages
 [cognitivechunking]: https://en.wikipedia.org/wiki/Chunking_(psychology)

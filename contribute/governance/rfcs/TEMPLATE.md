@@ -1,3 +1,6 @@
+<!--
+// LINT.IfChange
+-->
 <!-- mdformat off(templates not supported) -->
 {% set rfcid = "RFC-0000" %}
 {% include "docs/contribute/governance/rfcs/_common/_rfc_header.md" %}
@@ -51,14 +54,18 @@ This section may be used to describe how the design was socialized before
 advancing to the "Iterate" stage of the RFC process. For example: "This RFC went
 through a design review with the Component Framework team."
 
-## Design
+## Requirements
 
-This is the technically detailed version of your proposal.
+For the problem(s) solved by this RFC, what constrains the possible solutions?
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
 interpreted as described in
 [IETF RFC 2119](https://tools.ietf.org/html/rfc2119).
+
+## Design
+
+This is the technically detailed version of your proposal.
 
 _Prompt for Area: FIDL, replace with the relevant area(s)_
 
@@ -198,3 +205,6 @@ this proposal? Your answer to this is likely to evolve as the proposal evolves.
 Is there any background material that might be helpful when reading this
 proposal? For instance, do other operating systems address the same problem this
 proposal addresses?
+<!--
+// LINT.ThenChange(//tools/rfc/test_data/rfc.golden.md)
+-->

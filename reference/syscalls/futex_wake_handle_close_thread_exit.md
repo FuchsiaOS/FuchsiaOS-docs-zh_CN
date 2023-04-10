@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_futex_wake_handle_close_thread_exit
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write to futex, wake futex, close handle, exit.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ Write to futex, wake futex, close handle, exit.
     zx_handle_t close_handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_futex_wake_handle_close_thread_exit()` does a sequence of four operations:
 
@@ -36,21 +43,19 @@ invalid for plain [`zx_futex_wake()`] or any other call.
 
 If any of the operations fail, then the thread takes a trap (as if by `__builtin_trap();`).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_futex_wake_handle_close_thread_exit()` does not return.
 
-## ERRORS
+## Errors
 
 None.
 
-## NOTES
+## Notes
 
 The intended use for this is for a dying thread to alert another thread
 waiting for its completion, close its own thread handle, and exit.
@@ -64,7 +69,7 @@ This call is used for joinable threads, while
 [`zx_vmar_unmap_handle_close_thread_exit()`]
 is used for detached threads.
 
-## SEE ALSO
+## See also
 
  - [futex objects]
  - [`zx_futex_wake()`]
@@ -72,9 +77,7 @@ is used for detached threads.
  - [`zx_thread_exit()`]
  - [`zx_vmar_unmap_handle_close_thread_exit()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[futex objects]: /reference/kernel_objects/futex.md
+[futex objects]: /docs/reference/kernel_objects/futex.md
 [`zx_futex_wake()`]: futex_wake.md
 [`zx_handle_close()`]: handle_close.md
 [`zx_thread_exit()`]: thread_exit.md

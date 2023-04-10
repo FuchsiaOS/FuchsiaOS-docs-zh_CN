@@ -20,7 +20,7 @@ Create a new instance of the `echo-realm` containing the server and client
 components:
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsiasamples.com/echo-realm#meta/echo_realm.cm --name echo-realm
+ffx component run /core/ffx-laboratory:echo-realm fuchsia-pkg://fuchsiasamples.com/echo-realm#meta/echo_realm.cm
 ```
 
 You can use `fidlcat` to monitor and debug the FIDL connections in your
@@ -28,7 +28,7 @@ components. Launch `ffx debug fidl` and configure it to monitor the echo server
 component:
 
 ```posix-terminal
-ffx debug fidl --remote-name echo_server.cm --fidl-ir-path bazel-bin/
+ffx debug fidl --remote-name echo_server.cm --fidl-ir-path bazel-out/
 ```
 
 ```none {:.devsite-disable-click-to-copy}
@@ -60,27 +60,27 @@ Monitoring echo_server.cm
 
 echo_server.cm 58694:58696 zx_channel_read_etc(handle: handle = fb9b5273, options: uint32 = 0, num_bytes: uint32 = 512, num_handles: uint32 = 4)
   -> ZX_OK
-    received request fuchsia.io/Directory.Open = { flags: uint32 = 3, mode: uint32 = 493, path: string = "svc/fidl.examples.routing.echo.Echo", object: handle = Channel:f93b597b(ZX_RIGHT_TRANSFER | ZX_RIGHT_READ | ZX_RIGHT_WRITE | ZX_RIGHT_SIGNAL | ZX_RIGHT_SIGNAL_PEER | ZX_RIGHT_WAIT | ZX_RIGHT_INSPECT)(channel:0:svc/fidl.examples.routing.echo.Echo) }
+    received request fuchsia.io/Directory.Open = { flags: uint32 = 3, mode: uint32 = 493, path: string = "svc/examples.routing.echo.Echo", object: handle = Channel:f93b597b(ZX_RIGHT_TRANSFER | ZX_RIGHT_READ | ZX_RIGHT_WRITE | ZX_RIGHT_SIGNAL | ZX_RIGHT_SIGNAL_PEER | ZX_RIGHT_WAIT | ZX_RIGHT_INSPECT)(channel:0:svc/examples.routing.echo.Echo) }
 
-echo_server.cm 58694:58696 zx_channel_read_etc(handle: handle = Channel:f93b597b(channel:0:svc/fidl.examples.routing.echo.Echo), options: uint32 = 0, num_bytes: uint32 = 512, num_handles: uint32 = 4)
+echo_server.cm 58694:58696 zx_channel_read_etc(handle: handle = Channel:f93b597b(channel:0:svc/examples.routing.echo.Echo), options: uint32 = 0, num_bytes: uint32 = 512, num_handles: uint32 = 4)
   -> ZX_OK
-    received request fidl.examples.routing.echo/Echo.EchoString = { value: string = "Hello, Fuchsia" }
+    received request examples.routing.echo/Echo.EchoString = { value: string = "Hello, Fuchsia" }
 
-echo_server.cm 58694:58696 zx_channel_write_etc(handle: handle = Channel:f93b597b(channel:0:svc/fidl.examples.routing.echo.Echo), options: uint32 = 0)
-  sent response fidl.examples.routing.echo/Echo.EchoString = { response: string = "Hello, Fuchsia" }
+echo_server.cm 58694:58696 zx_channel_write_etc(handle: handle = Channel:f93b597b(channel:0:svc/examples.routing.echo.Echo), options: uint32 = 0)
+  sent response examples.routing.echo/Echo.EchoString = { response: string = "Hello, Fuchsia" }
   -> ZX_OK
 
-echo_server.cm 58694:58696 zx_channel_read_etc(handle: handle = Channel:f93b597b(channel:0:svc/fidl.examples.routing.echo.Echo), options: uint32 = 0, num_bytes: uint32 = 512, num_handles: uint32 = 4)
+echo_server.cm 58694:58696 zx_channel_read_etc(handle: handle = Channel:f93b597b(channel:0:svc/examples.routing.echo.Echo), options: uint32 = 0, num_bytes: uint32 = 512, num_handles: uint32 = 4)
   -> ZX_ERR_PEER_CLOSED
 
-echo_server.cm 58694:58696 zx_handle_close(handle: handle = Channel:f93b597b(channel:0:svc/fidl.examples.routing.echo.Echo))
+echo_server.cm 58694:58696 zx_handle_close(handle: handle = Channel:f93b597b(channel:0:svc/examples.routing.echo.Echo))
   -> ZX_OK
 ```
 
 Notice the sequence of events:
 
 1.  A channel to the protocol implementation opens at
-    `svc/fidl.examples.routing.echo.Echo`.
+    `svc/examples.routing.echo.Echo`.
 1.  The server receives an `Echo.EchoString` request over the open channel,
     containing the string payload sent by the client.
 1.  The server sends a corresponding response with the same string payload.
@@ -110,22 +110,7 @@ The handler increments these properties on each incoming request:
 `echo-server/main.cc`:
 
 ```cpp
-struct EchoConnectionStats {
-  inspect::UintProperty bytes_processed;
-  inspect::UintProperty total_requests;
-};
-
-// Handler for incoming service requests
-class EchoImplementation : public fidl::examples::routing::echo::Echo {
-public:
-  void EchoString(fidl::StringPtr value, EchoStringCallback callback) override {
-    stats_->total_requests.Add(1);
-    stats_->bytes_processed.Add(value->size());
-    callback(std::move(value));
-  }
-  fidl::examples::routing::echo::Echo_EventSender* event_sender_;
-  std::unique_ptr<EchoConnectionStats> stats_;
-};
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/inspect_server/main.cc" region_tag="handler" adjust_indentation="auto" %}
 ```
 
 Add the following code to `main()` to initialize the Inspect propertes and pass
@@ -137,25 +122,9 @@ them to the updated handler:
 int main(int argc, const char** argv) {
   // ...
 
-  // Serve the Echo protocol
-  EchoImplementation echo_instance;
-  fidl::Binding<fidl::examples::routing::echo::Echo> binding(&echo_instance);
-  echo_instance.event_sender_ = &binding.events();
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/inspect_server/main.cc" region_tag="echo_instance" %}
 
-  {{ '<strong>' }}// Create request tracking properties {{ '</strong>' }}
-  {{ '<strong>' }}inspect::Node& root_node = inspector.root(); {{ '</strong>' }}
-  {{ '<strong>' }}auto total_requests = root_node.CreateUint("total_requests", 0); {{ '</strong>' }}
-  {{ '<strong>' }}auto bytes_processed = root_node.CreateUint("bytes_processed", 0); {{ '</strong>' }}
-  {{ '<strong>' }}echo_instance.stats_ = std::make_unique<EchoConnectionStats>(EchoConnectionStats{ {{ '</strong>' }}
-    {{ '<strong>' }}std::move(bytes_processed), {{ '</strong>' }}
-    {{ '<strong>' }}std::move(total_requests), {{ '</strong>' }}
-  {{ '<strong>' }}}); {{ '</strong>' }}
-
-  fidl::InterfaceRequestHandler<fidl::examples::routing::echo::Echo> handler =
-      [&](fidl::InterfaceRequest<fidl::examples::routing::echo::Echo> request) {
-        binding.Bind(std::move(request));
-      };
-  context->outgoing()->AddPublicService(std::move(handler));
+{{ '<strong>' }}{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/inspect_server/main.cc" region_tag="add_properties" %} {{ '</strong>' }}
 
   // ...
 }
@@ -169,7 +138,7 @@ convenient way to report whether your component is running well or experiencing
 an issue. You'll find this status reported under
 <code>fuchsia.inspect.Health</code> in the Inspect tree.</p>
 <p>For more details on this metric, see
-<a href="/concepts/diagnostics/inspect/health">Health check</a>.</p>
+<a href="/docs/concepts/diagnostics/inspect/health">Health check</a>.</p>
 </aside>
 
 Finally, update the imports to include the new Inspect libraries:
@@ -177,20 +146,14 @@ Finally, update the imports to include the new Inspect libraries:
 `echo-server/main.cc`:
 
 ```cpp
-#include <fidl/examples/routing/echo/cpp/fidl.h>
-#include <lib/async-loop/cpp/loop.h>
-#include <lib/async-loop/default.h>
-#include <lib/fidl/cpp/binding.h>
-#include <lib/inspect/cpp/inspect.h>
-#include <lib/sys/cpp/component_context.h>
-#include <lib/sys/inspect/cpp/component.h>
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/inspect_server/main.cc" region_tag="imports" adjust_indentation="auto" %}
 ```
 
-Run `bazel build` and verify that the build completes successfully:
+Build and publish the updated package to the `fuchsiasamples.com` repository:
 
 ```posix-terminal
-bazel build --config=fuchsia_x64 //fuchsia-codelab/echo-realm:pkg \
-     --publish_to=$HOME/.package_repos/sdk-samples
+bazel run //fuchsia-codelab/echo-realm:pkg.publish -- \
+    --repo_name fuchsiasamples.com
 ```
 
 ### Verify the Inspect data
@@ -198,8 +161,8 @@ bazel build --config=fuchsia_x64 //fuchsia-codelab/echo-realm:pkg \
 Create a new `echo-realm` component containing the updated `echo-server`:
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsiasamples.com/echo-realm#meta/echo_realm.cm \
-    --name echo-realm --recreate
+ffx component run /core/ffx-laboratory:echo-realm fuchsia-pkg://fuchsiasamples.com/echo-realm#meta/echo_realm.cm \
+    --recreate
 ```
 
 Run the echo client component multiple times. This causes the request count in
@@ -264,4 +227,4 @@ You have completed all the modules in this course! Take your newfound
 understanding to the next level and dive deeper into the:
 
 <a class="button button-primary"
-    href="/concepts">Fuchsia concepts</a>
+    href="/docs/concepts">Fuchsia concepts</a>

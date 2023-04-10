@@ -36,8 +36,8 @@ implicitly granting stdout and/or stderr to all components, we propose adding
 a new flag to the [ELF runner][doc-elf-runner] to favor an explicit opt in.
 
 The Component Framework team is in the midst of a
-[long-running migration][doc-cf-migration] from [appmgr][doc-appmgr]
-(Components v1) to [Component Framework][doc-cf-intro] (Components v2). One 
+[long-running migration][doc-cf-migration] from appmgr
+(Components v1) to [Component Framework][doc-cf-intro] (Components v2). One
 of the major projects of this effort is migrating all of
 the components owned by the Netstack team. stdout/stderr support is a
 prerequisite for migrating all of these components. The reason for this
@@ -235,16 +235,15 @@ implemented using a LogSink forwarder in fdio. Also, an fdio-based implementatio
 would yield more uncertainties, and duplicate effort. Alternatively, if we use
 a socket, as proposed above, it'll be POSIX compliant "out of the box".
 
-[LogSink]: /development/diagnostics/logs/recording.md
-[component manager]: /concepts/components/v2/component_manager.md
-[debuglog]: /reference/kernel_objects/debuglog.md
-[doc-appmgr]: /concepts/components/v1/component_manifests.md
-[doc-cf-intro]: /concepts/components/v2/introduction.md
-[doc-cf-migration]: /contribute/open_projects/components/migration.md
-[doc-elf-runner]: /concepts/components/v2/elf_runner.md
-[doc-logs-recording]: /development/diagnostics/logs/recording.md
-[doc-principles-inclusive]: /concepts/principles/inclusive.md
-[doc-principles-pragmatism]: /concepts/principles/pragmatic.md
+[LogSink]: /docs/development/diagnostics/logs/recording.md
+[component manager]: /docs/concepts/components/v2/component_manager.md
+[debuglog]: /docs/reference/kernel_objects/debuglog.md
+[doc-cf-intro]: /docs/concepts/components/v2/introduction.md
+[doc-cf-migration]: /docs/contribute/open_projects/components/migration.md
+[doc-elf-runner]: /docs/concepts/components/v2/elf_runner.md
+[doc-logs-recording]: /docs/development/diagnostics/logs/recording.md
+[doc-principles-inclusive]: /docs/concepts/principles/inclusive.md
+[doc-principles-pragmatism]: /docs/concepts/principles/pragmatic.md
 [fxr-370683]: https://fuchsia-review.googlesource.com/c/fuchsia/+/370683/
 [rust-doc-lossy]: https://doc.rust-lang.org/std/string/struct.String.html#method.from_utf8_lossy
 [wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege

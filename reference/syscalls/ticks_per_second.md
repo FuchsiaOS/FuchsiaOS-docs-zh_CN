@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_ticks_per_second
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Read the number of high-precision timer ticks in a second.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Read the number of high-precision timer ticks in a second.
 zx_ticks_t zx_ticks_per_second(void);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_ticks_per_second()` returns the number of high-precision timer ticks in a
 second.
@@ -27,18 +34,16 @@ time elapsed between two subsequent calls to [`zx_ticks_get()`].
 This value can vary from boot to boot of a given system. Once booted,
 this value is guaranteed not to change.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_ticks_per_second()` returns the number of high-precision timer ticks in a
 second.
 
-## ERRORS
+## Errors
 
 `zx_ticks_per_second()` does not report any error conditions.
 
@@ -55,10 +60,8 @@ double elapsed_seconds = (ticks_end - ticks_start) / (double)ticks_per_second;
 
 ```
 
-## SEE ALSO
+## See also
 
  - [`zx_ticks_get()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_ticks_get()`]: ticks_get.md

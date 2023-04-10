@@ -170,7 +170,7 @@ Test: Manually tested that [...]. Automated testing needs US-XXXX.
 Developers are responsible for high-quality automated testing of their code.
 Reviewers are responsible for pushing back on changes that do not include
 sufficient tests. See
-[Fuchsia testability rubrics](/development/testing/testability_rubric.md) for
+[Fuchsia testability rubrics](/docs/development/testing/testability_rubric.md) for
 more information on how to introduce testable and tested code in the Fuchsia
 project.
 
@@ -205,7 +205,7 @@ There are also rare occurrences where change numbers may be lost,
 for example, due to re-indexing issues.
 
 For instance, to refer to the change that added
-[RFC-0042](/contribute/governance/rfcs/0042_non_nullable_types.md),
+[RFC-0042](/docs/contribute/governance/rfcs/0042_non_nullable_types.md),
 use `I32b966810d21a249647887fa45b61720ad01714c`,
 and not the git SHA `5d40ee8c42d1b0e4d8b690786da12a0a947c1aaa`
 or the link to the change,

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_event_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create an event.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,27 +23,25 @@ Create an event.
 zx_status_t zx_event_create(uint32_t options, zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_event_create()` creates an event, which is an object that is signalable. That
 is, its **ZX_USER_SIGNAL_n** (where *n* is 0 through 7) signals can be
 manipulated using [`zx_object_signal()`].
 
 The newly-created handle will have the [basic
-rights](/concepts/kernel/rights.md#zx_rights_basic) plus **ZX_RIGHT_SIGNAL**.
+rights](/docs/concepts/kernel/rights.md#zx_rights_basic) plus **ZX_RIGHT_SIGNAL**.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 Caller job policy must allow **ZX_POL_NEW_EVENT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_event_create()` returns **ZX_OK** and a valid event handle (via *out*) on success.
 On failure, an error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *out* is an invalid pointer, or *options* is nonzero.
 
@@ -44,7 +49,7 @@ On failure, an error value is returned.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_eventpair_create()`]
  - [`zx_handle_close()`]
@@ -54,8 +59,6 @@ In a future build this error will no longer occur.
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_many()`]
  - [`zx_object_wait_one()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_eventpair_create()`]: eventpair_create.md
 [`zx_handle_close()`]: handle_close.md

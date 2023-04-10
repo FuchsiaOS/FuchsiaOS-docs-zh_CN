@@ -27,12 +27,10 @@ There are 3 files generated for dart from FIDL.  These are found in
 * fidl_async.dart - the asynchronous bindings
 * fidl_test.dart - the stubbed out implementation of the service.
 
-
 ```dart
 import "package:fidl_foo_bar/fidl.dart";
 import "package:fidl_foo_bar_blah/fidl_async.dart";
 ```
-
 
 ## Known issues
 
@@ -60,14 +58,11 @@ If two FIDL targets coexist in a single BUILD file:
 
 The generated bindings for Dart require the importing of fuchsia_services.
 
-
 ```dart
 import 'package:fuchsia_services/services.dart';
 ```
 
-
 In order to use the Launcher service to start services that implement a FIDL interface,
-you need to have the `fuchsia.sys.Launcher` service declared in the .cmx
-
+you need to have the `fuchsia.sys.Launcher` service declared in the .cml.
 
 [fidl]: /build/fidl/fidl.gni "FIDL"

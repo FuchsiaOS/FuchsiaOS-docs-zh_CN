@@ -15,6 +15,10 @@ While these lists of projects are not exhaustive, they provide high-level overvi
 of active projects that inform the way that we're currently thinking about
 Fuchsia.
 
+## 2022
+
+* [Fuchsia 2022 roadmap overview](/docs/contribute/roadmap/2022/README.md)
+
 ## 2021
 
 <ul>
@@ -27,4 +31,4 @@ Fuchsia.
 
 ## 2020
 
-* [Fuchsia 2020 roadmap overview](/contribute/roadmap/2020/overview.md)
+* [Fuchsia 2020 roadmap overview](/docs/contribute/roadmap/2020/overview.md)

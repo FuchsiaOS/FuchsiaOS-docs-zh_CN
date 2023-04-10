@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_port_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create an IO port.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Create an IO port.
 zx_status_t zx_port_create(uint32_t options, zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_port_create()` creates a port: a waitable object that can be used to read
 packets queued by kernel or by user-mode.
@@ -34,18 +41,16 @@ The returned handle will have:
   * `ZX_RIGHT_READ`: allowing packets to be *read*.
   * `ZX_RIGHT_DUPLICATE`: allowing them to be *duplicated*.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 Caller job policy must allow **ZX_POL_NEW_PORT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_port_create()` returns **ZX_OK** and a valid IO port handle via *out* on
 success. In the event of failure, an error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS** *options* has an invalid value, or *out* is an
 invalid pointer or NULL.
@@ -54,7 +59,7 @@ invalid pointer or NULL.
 There is no good way for userspace to handle this (unlikely) error.
 In a future builds this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
@@ -62,8 +67,6 @@ In a future builds this error will no longer occur.
  - [`zx_object_wait_async()`]
  - [`zx_port_queue()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_write()`]: channel_write.md
 [`zx_handle_close()`]: handle_close.md

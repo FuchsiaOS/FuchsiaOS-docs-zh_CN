@@ -48,15 +48,15 @@ This use case typically applies to device drivers.
  - [`zx_vmar_map()`] - map a VMO into a process
  - [`zx_vmar_unmap()`] - unmap memory from a process
 
-[`zx_vmar_map()`]: /reference/syscalls/vmar_map.md
-[`zx_vmar_unmap()`]: /reference/syscalls/vmar_unmap.md
-[`zx_vmo_create()`]: /reference/syscalls/vmo_create.md
-[`zx_vmo_create_child()`]: /reference/syscalls/vmo_create_child.md
-[`zx_vmo_create_physical()`]: /reference/syscalls/vmo_create_physical.md
-[`zx_vmo_get_size()`]: /reference/syscalls/vmo_get_size.md
-[`zx_vmo_op_range()`]: /reference/syscalls/vmo_op_range.md
-[`zx_vmo_read()`]: /reference/syscalls/vmo_read.md
-[`zx_vmo_replace_as_executable()`]: /reference/syscalls/vmo_replace_as_executable.md
-[`zx_vmo_set_cache_policy()`]: /reference/syscalls/vmo_set_cache_policy.md
-[`zx_vmo_set_size()`]: /reference/syscalls/vmo_set_size.md
-[`zx_vmo_write()`]: /reference/syscalls/vmo_write.md
+[`zx_vmar_map()`]: /docs/reference/syscalls/vmar_map.md
+[`zx_vmar_unmap()`]: /docs/reference/syscalls/vmar_unmap.md
+[`zx_vmo_create()`]: /docs/reference/syscalls/vmo_create.md
+[`zx_vmo_create_child()`]: /docs/reference/syscalls/vmo_create_child.md
+[`zx_vmo_create_physical()`]: /docs/reference/syscalls/vmo_create_physical.md
+[`zx_vmo_get_size()`]: /docs/reference/syscalls/vmo_get_size.md
+[`zx_vmo_op_range()`]: /docs/reference/syscalls/vmo_op_range.md
+[`zx_vmo_read()`]: /docs/reference/syscalls/vmo_read.md
+[`zx_vmo_replace_as_executable()`]: /docs/reference/syscalls/vmo_replace_as_executable.md
+[`zx_vmo_set_cache_policy()`]: /docs/reference/syscalls/vmo_set_cache_policy.md
+[`zx_vmo_set_size()`]: /docs/reference/syscalls/vmo_set_size.md
+[`zx_vmo_write()`]: /docs/reference/syscalls/vmo_write.md

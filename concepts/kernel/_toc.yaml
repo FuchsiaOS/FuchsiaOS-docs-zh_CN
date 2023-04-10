@@ -7,84 +7,84 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /concepts/kernel
+  path: /docs/concepts/kernel
 - title: "Zircon concepts"
-  path: /concepts/kernel/concepts.md
+  path: /docs/concepts/kernel/concepts.md
 - title: "Zircon and LK"
-  path: /concepts/kernel/zx_and_lk.md
+  path: /docs/concepts/kernel/zx_and_lk.md
 - title: "C library (libc)"
-  path: /concepts/kernel/libc.md
+  path: /docs/concepts/kernel/libc.md
 - title: "Kernel objects"
   section:
   - title: "Handles"
-    path: /concepts/kernel/handles.md
+    path: /docs/concepts/kernel/handles.md
   - title: "Rights"
-    path: /concepts/kernel/rights.md
+    path: /docs/concepts/kernel/rights.md
   - title: "Signals"
-    path: /concepts/kernel/signals.md
+    path: /docs/concepts/kernel/signals.md
 - title: "System calls"
   section:
   - title: "Life of a Fuchsia syscall"
-    path: /concepts/kernel/life_of_a_syscall.md
+    path: /docs/concepts/kernel/life_of_a_syscall.md
   - title: "vDSO (libzircon)"
-    path: /concepts/kernel/vdso.md
+    path: /docs/concepts/kernel/vdso.md
 - title: "Scheduling"
   section:
   - title: "Zircon scheduling"
-    path: /concepts/kernel/kernel_scheduling.md
+    path: /docs/concepts/kernel/kernel_scheduling.md
   - title: "Fair scheduler"
-    path: /concepts/kernel/fair_scheduler.md
+    path: /docs/concepts/kernel/fair_scheduler.md
 - title: "Runtime lock"
   section:
   - title: "Runtime lock validation"
-    path: /concepts/kernel/lockdep.md
+    path: /docs/concepts/kernel/lockdep.md
   - title: "Lock validation design"
-    path: /concepts/kernel/lockdep-design.md
+    path: /docs/concepts/kernel/lockdep-design.md
 - title: "Security"
   section:
   - title: "Safe stack"
-    path: /concepts/kernel/safestack.md
+    path: /docs/concepts/kernel/safestack.md
   - title: "Shadow call stack"
-    path: /concepts/kernel/shadow_call_stack.md
+    path: /docs/concepts/kernel/shadow_call_stack.md
   - title: "Random number generator"
-    path: /concepts/kernel/cprng.md
+    path: /docs/concepts/kernel/cprng.md
 - title: "Errors and exceptions"
   section:
   - title: "Errors"
-    path: /concepts/kernel/errors.md
+    path: /docs/concepts/kernel/errors.md
   - title: "Exceptions"
-    path: /concepts/kernel/exceptions.md
+    path: /docs/concepts/kernel/exceptions.md
   - title: "Kernel internal errors"
-    path: /concepts/kernel/kernel_internal_errors.md
+    path: /docs/concepts/kernel/kernel_internal_errors.md
   - title: "IPC Limits"
-    path: /concepts/kernel/ipc_limits.md
+    path: /docs/concepts/kernel/ipc_limits.md
 - title: "Waiting"
   section:
   - title: "Timer slack"
-    path: /concepts/kernel/timer_slack.md
+    path: /docs/concepts/kernel/timer_slack.md
   - title: "Clock transformations"
-    path: /concepts/kernel/clock_transformations.md
+    path: /docs/concepts/kernel/clock_transformations.md
 - title: "Time"
   section:
-  - include: /concepts/kernel/time/_toc.yaml
+  - include: /docs/concepts/kernel/time/_toc.yaml
 - title: "Tracing"
   section:
   - title: "Fuchsia tracing system"
-    path: /concepts/kernel/tracing-system.md
+    path: /docs/concepts/kernel/tracing-system.md
   - title: "Tracing provider buffering modes"
-    path: /concepts/kernel/tracing-provider-buffering-modes.md
+    path: /docs/concepts/kernel/tracing-provider-buffering-modes.md
 - title: "Advanced"
   section:
   - title: "Kernel invariants"
-    path: /concepts/kernel/kernel_invariants.md
+    path: /docs/concepts/kernel/kernel_invariants.md
   - title: "Avoiding a problem with the SYSRET"
-    path: /concepts/kernel/sysret_problem.md
+    path: /docs/concepts/kernel/sysret_problem.md
   - title: "Hardware watchdog timers"
-    path: /concepts/kernel/watchdog.md
+    path: /docs/concepts/kernel/watchdog.md
   - title: "Kernel Thread Signaling"
-    path: /concepts/kernel/kernel_thread_signaling.md
+    path: /docs/concepts/kernel/kernel_thread_signaling.md
 - title: "Entropy quality tests"
-  path:  /concepts/kernel/entropy_quality_tests.md
+  path:  /docs/concepts/kernel/entropy_quality_tests.md
 - title: "Jitterentropy"
   section:
-  - include: /concepts/kernel/jitterentropy/_toc.yaml
+  - include: /docs/concepts/kernel/jitterentropy/_toc.yaml

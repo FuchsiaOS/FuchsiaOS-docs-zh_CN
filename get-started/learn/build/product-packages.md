@@ -29,7 +29,7 @@ Packages in a build configuration are assigned to one of three dependency sets:
 
 ![Diagram showing how packages live in the base, cache, or universe dependency
 sets of the build configuration. This set determines how new versions of the
-package get resolved.](/get-started/images/build/packages.png){: width="645"}
+package get resolved.](/docs/get-started/images/build/packages.png){: width="645"}
 
 <aside class="key-point">
 Fuchsia devices revert to the packages built into the system image on reboot.
@@ -64,7 +64,7 @@ services into the disk image for the target device. The examples would only be
 available on demand from a package server.
 
 Note: For more details on product configurations and dependencies, see
-[Products and Boards](/development/build/build_system/boards_and_products.md).
+[Products and Boards](/docs/development/build/build_system/boards_and_products.md).
 
 ## Manual build customization
 
@@ -82,7 +82,7 @@ following command adds all the packages in the Fuchsia `tests` bundle to a
 standard `workstation_eng` build.
 
 ```posix-terminal
-fx set workstation_eng.qemu-x64 --with //bundles:tests
+fx set workstation_eng.qemu-x64 --with //bundles/tests
 ```
 
 <aside class="key-point">
@@ -95,7 +95,7 @@ the build output directory. For more advanced use cases, you can use the
 <code>fx args</code> command to interactively edit <code>args.gn</code> before
 generating the build configuration.</p>
 <p>For a complete list of support build arguments, see
-<a href="/gen/build_arguments.md">GN Build Arguments</a>.
+<a href="/docs/gen/build_arguments.md">GN Build Arguments</a>.
 </aside>
 
 ### Developing with packages
@@ -111,7 +111,7 @@ following steps:
 
 ![Diagram showing how during development, the developer tools publish packages
 to the TUF repository, which notifies the Fuchsia device to resolve the latest
-version.](/get-started/images/build/package-resolution.png){: width="644"}
+version.](/docs/get-started/images/build/package-resolution.png){: width="644"}
 
 Developer tools such as `fx build` publish package updates to a local package
 repository as part of the build process. The **dependency set** where your
@@ -120,7 +120,7 @@ device:
 
 
 Note: For more details on the package development workflow, see
-[Developing with Fuchsia packages](/concepts/packages/package_update.md).
+[Developing with Fuchsia packages](/docs/concepts/packages/package_update.md).
 
 * Base packages can only be updated by performing a whole system update (OTA).
   Trigger a system update using `fx ota` or flash a new system image on the
@@ -230,7 +230,7 @@ fx build
 Use the `ffx component` command to run a Hello World component example:
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
+ffx component run /core/ffx-laboratory:hello-world-cpp fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
 ```
 
 Open a new terminal window and filter the device logs for messages from the

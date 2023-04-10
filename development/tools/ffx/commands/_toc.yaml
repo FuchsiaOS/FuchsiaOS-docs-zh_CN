@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Config"
-  path: /development/tools/ffx/commands/config.md
+  path: /docs/development/tools/ffx/commands/config.md
 - title: "Log"
-  path: /development/tools/ffx/commands/log.md
+  path: /docs/development/tools/ffx/commands/log.md
 - title: "Selecting components"
-  path: /development/tools/ffx/commands/component-select.md
+  path: /docs/development/tools/ffx/commands/component-select.md

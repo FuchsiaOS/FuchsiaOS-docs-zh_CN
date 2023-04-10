@@ -194,7 +194,8 @@ The user-facing surface of this change consists of:
 2. A per-collection opt-in setting to allow dynamic offers to target the
    components in that collection. (See the discussion in [Security
    considerations](#security).)
-3. An allowlist for parent components that may opt-in.
+3. An allowlist for parent components that may opt-in. (Note: see [Update:
+   allowlist removal](#allowlist))
 
 Implementation of (1) will be entirely local to Component Manager.
 Implementation of (2) and (3) may involve changes to tools which parse CML
@@ -241,7 +242,8 @@ play, and that sources outside the component manifest need to be consulted in
 order to understand the scope of potential capability routes.
 
 Furthermore, the ability to opt-in will be allowlisted by Component Framework
-team, so they can ensure all usage is appropriate.
+team, so they can ensure all usage is appropriate. (Note: see [Update: allowlist
+removal](#allowlist))
 
 ### Future work
 
@@ -374,9 +376,34 @@ components that depend on them, even when the dependency is strong. Components
 can observe the fact that their dependencies are unavailable and quit if they so
 choose.
 
-[collections]: /concepts/components/v2/realms.md#collections
-[offer]: /concepts/components/v2/capabilities/README.md#routing-terminology
-[driver-framework]: /development/drivers/concepts/fdf.md
+## Update: allowlist removal {#allowlist}
+
+This feature has proven successful at enforcing least privilege in dynamic
+components.
+
+This feature may have utility in the Chromium codebase with the migration of the
+`web_instance` component to the modern component framework. Today this component
+launches dynamic children using the functionality of the legacy component
+framework. The feature set of these children can be varied at runtime, and when
+certain features are enabled the children are provided with extra protocol
+capabilities through the `additional_services` field during legacy component
+creation. Dynamic offers would provide a clear and easy migration path for this
+behavior to the modern component framework, by allowing `web_instance` to decide
+at runtime which dynamic children will receive additional capabilities.
+
+The allowlist is thus being removed, and clients may use the feature without
+receiving approval from the Component Framework team.
+
+In order to remove the allowlist, the following changes will occur:
+
+- Write documentation on how to use dynamic offers.
+- Remove the `dynamic_offers` restricted feature key from CMC.
+- Delete the `dynamic_offers` allowlist in
+  `//tools/cmc/build/restricted_features`.
+
+[collections]: /docs/concepts/components/v2/realms.md#collections
+[offer]: /docs/concepts/components/v2/capabilities/README.md#routing-terminology
+[driver-framework]: /docs/development/drivers/concepts/fdf.md
 [CreateChild]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.sys2/realm.fidl;l=58;drc=599c35934155b755453a2d9c228a434436e62db5
 [OfferDecl]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.sys2/decls/offer_decl.fidl;l=14;drc=1969824ecf7b1e2096ca1b6c1587545699706da8
-[RFC-0101]: /contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md
+[RFC-0101]: /docs/contribute/governance/rfcs/0101_dynamic_components_with_numbered_handles.md

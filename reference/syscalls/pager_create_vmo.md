@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_pager_create_vmo
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a pager owned vmo.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_pager_create_vmo(zx_handle_t pager,
                                 zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 Creates a VMO owned by a pager object. *size* will be rounded up to the next page size
 boundary, and *options* must be zero or any combination of the following flags:
@@ -73,19 +80,17 @@ If *pager* is closed, then no more packets will be delivered to *port* (includin
 **ZX_PAGER_VMO_COMPLETE** message). Furthermore, all future accesses will behave as if
 [`zx_pager_detach_vmo()`] had been called.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *pager* must be of type **ZX_OBJ_TYPE_PAGER**.
 
 *port* must be of type **ZX_OBJ_TYPE_PORT** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_pager_create_vmo()` returns ZX_OK on success, or one of the following error codes on failure.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS** *out* is an invalid pointer or NULL, or *options* is any value other than
 0 or **ZX_VMO_RESIZABLE**.
@@ -100,14 +105,12 @@ If *pager* is closed, then no more packets will be delivered to *port* (includin
 
 **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 
-## SEE ALSO
+## See also
 
  - [`zx_pager_detach_vmo()`]
  - [`zx_pager_op_range()`]
  - [`zx_pager_supply_pages()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_detach_vmo()`]: pager_detach_vmo.md
 [`zx_pager_op_range()`]: pager_op_range.md

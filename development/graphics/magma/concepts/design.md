@@ -1,7 +1,7 @@
 # Magma: Design
 
 For an overview of Magma including background, hardware requirements, and
-description of architecture, please see [Magma: Overview](/development/graphics/magma/README.md).
+description of architecture, please see [Magma: Overview](/docs/development/graphics/magma/README.md).
 
 ## Goals
 
@@ -35,7 +35,7 @@ representation, for example SPIR-V) into machine code, and format command
 buffers correctly for consumption by the hardware.  These are fed to the Magma
 system driver, which performs that actual programming of the hardware.
 
-![Block diagram of Magma architecture](/development/graphics/magma/block_diagram.png)
+![Block diagram of Magma architecture](/docs/development/graphics/magma/block_diagram.png)
 
 Magma defines two interfaces to gpu-specific code:
 
@@ -56,23 +56,30 @@ steps:
 2. Implement the msd interface to produce a magma system driver.
 
 For details on the process of building these two components, see the
-[porting](/development/graphics/magma/concepts/porting.md) guide.
+[porting](/docs/development/graphics/magma/concepts/porting.md) guide.
 
 ## The Magma interface
 
 The Magma interface is a service interface provided by the Magma system driver.
 The interface is designed to be useful for implementing an accelerated graphics
 api.  It consists of
-[magma.h](/src/graphics/lib/magma/include/magma/magma.h) plus gpu specific
+[magma.h](/sdk/lib/magma_client/include/lib/magma/magma.h) plus gpu specific
 headers (example:
 [intel](/src/graphics/drivers/msd-intel-gen/include/magma_intel_gen_defs.h)).
+
+On Fuchsia, Magma includes a
+[magma_sysmem.h](/sdk/lib/magma_client/include/lib/magma/magma_sysmem.h) header
+that clients may use to interact with
+[sysmem](/docs/development/graphics/sysmem/concepts/sysmem.md).  The Magma
+headers and a static library that implement them are available in the Fuchsia
+SDK at [@fuchsia_pkg//pkg/magma_client][libmagma].
 
 ### Physical devices
 During the Fuchsia boot sequence, a Magma system driver is instantiated for each
 physical device capable of accelerated graphics.  The instantiation creates a
 device binding in the class gpu; for example, in a single gpu system the device
-is bound to /dev/class/gpu/000.  With appropriate application privilege, client
-drivers may scan for the presence of one or more gpu class devices, and open
+is bound to a node under /dev/class/gpu.  With appropriate application privilege,
+client drivers may scan for the presence of one or more gpu class devices, and open
 them.  Synchronous queries may be performed on the device file descriptor to
 return various parameters, some of which may be useful for helping the
 application decide which physical devices, under which configuration, to work
@@ -107,7 +114,7 @@ context takes a shared reference on the address space.
 Currently Magma requires a unified memory architecture, as is the case with most
 mobile hardware, where cpu and gpu access the same physical memory.   Magma
 buffers are just zircon virtual memory objects
-([VMOs](/reference/kernel_objects/vm_object.md)). Client drivers allocate
+([VMOs](/docs/reference/kernel_objects/vm_object.md)). Client drivers allocate
 buffers and register those buffers with the system driver.
 
 Gpu address space management may be performed by the client or by the system
@@ -149,7 +156,7 @@ by hardware, can be used to implement context prioritization.
 
 Magma provides semaphores as a general signalling mechanism that can be used to
 implement Vulkan fences and semaphores.  Magma semaphores are built on zircon
-[events](/reference/kernel_objects/event.md).
+[events](/docs/reference/kernel_objects/event.md).
 
 ### Summary of object ownership
 * Client: owns connections; shared ownership of buffers, mappings, contexts
@@ -165,7 +172,7 @@ implement Vulkan fences and semaphores.  Magma semaphores are built on zircon
 The thread model used for each installed GPU device and driver is as follows:
 
 The msd is typically loaded by the [platform bus
-driver](/development/drivers/concepts/device_driver_model/platform-bus.md)
+driver](/docs/development/drivers/concepts/device_driver_model/platform-bus.md)
 and a msd main devhost thread is created.  The msd main thread in turn creates
 a device thread to talk to the GPU and a driver-dependent number of interrupt
 threads to service GPU interrupts.
@@ -185,7 +192,7 @@ of a notification the vcd may be interested in is the completion of a command
 buffer.  The exact messages sent over the device and notification channels along
 with how those messages are handled varies by GPU driver.
 
-![Vulkan driver thread model](/development/graphics/magma/vulkan_driver_thread_model.png)
+![Vulkan driver thread model](/docs/development/graphics/magma/vulkan_driver_thread_model.png)
 
 Note that the process boundary enclosing the msd is the Fuchsia devhost process
 boundary for the msd.  This devhost process may include threads from other
@@ -206,3 +213,5 @@ management will be detailed in further documentation.
 ## Testing Strategy
 
 See [test_strategy](test_strategy.md).
+
+[libmagma]: /src/graphics/lib/magma/src/libmagma

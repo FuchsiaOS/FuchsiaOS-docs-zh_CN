@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_pager_detach_vmo
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Detaches a vmo from a pager.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Detaches a vmo from a pager.
 zx_status_t zx_pager_detach_vmo(zx_handle_t pager, zx_handle_t vmo);
 ```
 
-## DESCRIPTION
+## Description
 
 Detaching *vmo* from *pager* causes the kernel to stop queuing page requests for the vmo. Subsequent
 accesses that would have generated page requests will instead fail.
@@ -32,19 +39,17 @@ with [`zx_pager_query_dirty_ranges()`] and write them back with [`zx_pager_op_ra
 **ZX_PAGER_OP_WRITEBACK_BEGIN** and **ZX_PAGER_OP_WRITEBACK_END**. Once they have been written back,
 these pages will become clean again, so the kernel is free to evict them.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *pager* must be of type **ZX_OBJ_TYPE_PAGER**.
 
 *vmo* must be of type **ZX_OBJ_TYPE_VMO**.
 
-## RETURN VALUE
+## Return value
 
 `zx_pager_detach_vmo()` returns ZX_OK on success, or one of the following error codes on failure.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *pager* or *vmo* is not a valid handle.
 
@@ -52,13 +57,11 @@ these pages will become clean again, so the kernel is free to evict them.
 
 **ZX_ERR_INVALID_ARGS**  *vmo* is not a vmo created from *pager*.
 
-## SEE ALSO
+## See also
 
  - [`zx_pager_create_vmo()`]
  - [`zx_pager_op_range()`]
  - [`zx_pager_query_dirty_ranges()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_pager_op_range()`]: pager_op_range.md

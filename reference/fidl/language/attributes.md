@@ -47,7 +47,7 @@ Illustrates both aspects:
 ## `@available` {#available}
 
 **USAGE**: `@available(platform="`_string_`", added=`_version_`,
-deprecated=`_version_`, removed=`_version_`, note="`_string_`")`
+deprecated=`_version_`, removed=`_version_`, note="`_string_`", legacy=`_legacy_`)`
 
 **MEANING**:
 All arguments are optional, but at least one must be provided.
@@ -57,10 +57,13 @@ All arguments are optional, but at least one must be provided.
   defaults to the first component of the library name.
 * `added`, `deprecated`, `removed`: Must be a valid [version
   identifier][versioning-formalism], i.e. an integer from 1 to 2^63-1 or the
-  special constant `HEAD`. Must respect `added <= deprecated < removed`.
+  special constant `HEAD`. Cannot be `LEGACY`. Must respect `added <= deprecated
+  < removed`.
 * `note`: Only allowed if `deprecated` is provided. Should contain a brief
   explanation indicating what to use instead, suitable to be included in
   compiler error messages.
+* `legacy`: Only allowed if `removed` is provided or inherited. False by
+  default. If true, the element is included in the `LEGACY` version.
 
 See [FIDL versioning](versioning.md) for more details.
 
@@ -137,7 +140,7 @@ deprecated C bindings. There should be no new uses of this attribute.
 
 **MEANING**: This attribute is used to override the name that `fidlc` reserves
 for any inline layout. This can be useful when a different name is preferred
-(for example, to avoid a name conflict with a another type).
+(for example, to avoid a name conflict with another type).
 
 As an example, the following code leads to a name conflict, because both inline
 layouts reserve the same name of `Options`:
@@ -205,7 +208,7 @@ The compiler will issue an error if the number of handles exceeds this limit.
 **MEANING**:
 This attribute is used to mark libraries that should be skipped by documentation
 generation tools. As an example, this attribute is used by generated FIDL
-libraries, such as by the [driver bind compiler](/development/drivers/concepts/device_driver_model/driver-binding.md).
+libraries, such as by the [driver bind compiler](/docs/development/drivers/concepts/device_driver_model/driver-binding.md).
 
 ## `@selector` {#selector}
 
@@ -255,7 +258,7 @@ Provide a comma-separated list of values, selected from:
 * `Syscall` &mdash; transport used to specify that the protocol is used to
   define Zircon syscalls, rather than typical IPC.
 
-The default is `Channel` if none specified.
+The default is `Channel` if none is specified.
 If you do specify a value or values, then only those values are used (e.g.,
 specifying `@transport("Foo")` disables `Channel` and uses only
 `Foo`).
@@ -275,9 +278,9 @@ known member. Once usages of the `@unknown` member are removed, the member is
 no longer necessary.
 
 <!-- xrefs -->
-[channel]: /reference/kernel_objects/channel.md
-[RFC-0020]: /contribute/governance/rfcs/0020_interface_ordinal_hashing.md
-[RFC-0021]: /contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
-[RFC-0058]: /contribute/governance/rfcs/0058_deprecated_attribute.md
-[versioning-formalism]: /contribute/governance/rfcs/0083_fidl_versioning.md#formalism
-[fully qualified name]: /contribute/governance/rfcs/0043_documentation_comment_format.md#fully-qualified-names
+[channel]: /docs/reference/kernel_objects/channel.md
+[RFC-0020]: /docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md
+[RFC-0021]: /docs/contribute/governance/rfcs/0021_soft_transitions_methods_add_remove.md
+[RFC-0058]: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
+[versioning-formalism]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md#formalism
+[fully qualified name]: /docs/contribute/governance/rfcs/0043_documentation_comment_format.md#fully-qualified-names

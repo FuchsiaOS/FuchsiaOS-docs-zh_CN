@@ -7,21 +7,21 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /concepts/components/v2/capabilities
+  path: /docs/concepts/components/v2/capabilities
 - title: "Directory capabilities"
-  path: /concepts/components/v2/capabilities/directory.md
+  path: /docs/concepts/components/v2/capabilities/directory.md
 - title: "Event capabilities"
-  path: /concepts/components/v2/capabilities/event.md
+  path: /docs/concepts/components/v2/capabilities/event.md
 - title: "Protocol capabilities"
-  path: /concepts/components/v2/capabilities/protocol.md
+  path: /docs/concepts/components/v2/capabilities/protocol.md
 - title: "Resolver capabilities"
-  path: /concepts/components/v2/capabilities/resolvers.md
+  path: /docs/concepts/components/v2/capabilities/resolvers.md
 - title: "Runner capabilities"
-  path: /concepts/components/v2/capabilities/runners.md
+  path: /docs/concepts/components/v2/capabilities/runners.md
 - title: "Service capabilities"
-  path: /concepts/components/v2/capabilities/service.md
+  path: /docs/concepts/components/v2/capabilities/service.md
   status: experimental
 - title: "Storage capabilities"
-  path: /concepts/components/v2/capabilities/storage.md
+  path: /docs/concepts/components/v2/capabilities/storage.md
 - title: "Life of a protocol open"
-  path: /concepts/components/v2/capabilities/life_of_a_protocol_open.md
+  path: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md

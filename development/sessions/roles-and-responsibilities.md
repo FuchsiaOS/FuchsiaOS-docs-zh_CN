@@ -12,13 +12,13 @@ these responsibilities.
 
 ## Presenting an element's view {#presenting-an-elements-view}
 
-In the following example, a session forwards an `[Elements](/glossary/README.md#element)` view to a
-`[GraphicalPresenter](/glossary/README.md#graphicalpresenter)`,
+In the following example, a session forwards an `[Elements](/docs/glossary/README.md#element)` view to a
+`[GraphicalPresenter](/docs/glossary/README.md#graphicalpresenter)`,
 by calling `PresentView()` with a
-`[ViewSpec](/glossary/README.md#viewspec)`. The
-`ViewSpec` includes the duplicated `[ViewRef](/glossary/README.md#ViewRef)` \(a sharable handle to the
+`[ViewSpec](/docs/glossary/README.md#viewspec)`. The
+`ViewSpec` includes the duplicated `[ViewRef](/docs/glossary/README.md#ViewRef)` \(a sharable handle to the
 `Element`'s View), and an optional set of initial, product-specific
-`[Annotations](/glossary/README.md#element-annotation)`.
+`[Annotations](/docs/glossary/README.md#element-annotation)`.
 
 The component that implements the Graphical Presenter role knows how to open
 the view on a connected display.
@@ -63,8 +63,8 @@ the view on a connected display.
 In the following example, if the `MouseHandler` detects a mouse-typed input
 event, the handler sends the event to Scenic and returns an empty vector. On all
 other types of input events, the `MouseHandler` returns a vector containing the
-`[InputEvent](/glossary/README.md#InputEvent)` for the next
-`[InputHandler](/glossary/README.md#InputHandler)` to process.
+`[InputEvent](/docs/glossary/README.md#InputEvent)` for the next
+`[InputHandler](/docs/glossary/README.md#InputHandler)` to process.
 
 ```rust
 #[async_trait]

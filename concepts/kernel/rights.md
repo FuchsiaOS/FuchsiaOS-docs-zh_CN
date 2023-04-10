@@ -36,6 +36,8 @@ default rights for each object type, which can be reduced via
 | **ZX_RIGHT_MANAGE_THREAD**  | **NOT YET IMPLEMENTED** Allows suspending/resuming threads, etc. |
 | **ZX_RIGHT_APPLY_PROFILE**  | Allows a scheduling profile to be applied to a thread via [`zx_object_set_profile()`] |
 | **ZX_RIGHT_MANAGE_SOCKET**  | Allows changing socket disposition via [`zx_socket_set_disposition()`] |
+| **ZX_RIGHT_OP_CHILDREN**    | Allows for operations on a parent object to also modify children |
+| **ZX_RIGHT_RESIZE**         | Allows resizing a VM object if **ZX_RIGHT_WRITE** is also present |
 
 ## ZX_RIGHTS_BASIC
 
@@ -46,21 +48,21 @@ majority of handle types by default. These are **ZX_RIGHT_DUPLICATE**,
 These four rights are referred to as **ZX_RIGHTS_BASIC** when used together.
 
 ## See also
-[Objects](/reference/kernel_objects/objects.md),
-[Handles](/concepts/kernel/handles.md)
+[Objects](/docs/reference/kernel_objects/objects.md),
+[Handles](/docs/concepts/kernel/handles.md)
 
-[`zx_channel_write()`]: /reference/syscalls/channel_write.md
-[`zx_handle_duplicate()`]: /reference/syscalls/handle_duplicate.md
-[`zx_job_get_policy()`]: /reference/syscalls/job_get_policy.md
-[`zx_job_set_policy()`]: /reference/syscalls/job_set_policy.md
-[`zx_object_get_child()`]: /reference/syscalls/object_get_child.md
-[`zx_object_get_info()`]: /reference/syscalls/object_get_info.md
-[`zx_object_get_property()`]: /reference/syscalls/object_get_property.md
-[`zx_object_set_profile()`]: /reference/syscalls/object_set_profile.md
-[`zx_object_set_property()`]: /reference/syscalls/object_set_property.md
-[`zx_object_signal()`]: /reference/syscalls/object_signal.md
-[`zx_object_signal_peer()`]: /reference/syscalls/object_signal_peer.md
-[`zx_object_wait_many()`]: /reference/syscalls/object_wait_many.md
-[`zx_object_wait_one()`]: /reference/syscalls/object_wait_one.md
-[`zx_socket_set_disposition()`]: /reference/syscalls/socket_set_disposition.md
-[`zx_task_kill()`]: /reference/syscalls/task_kill.md
+[`zx_channel_write()`]: /docs/reference/syscalls/channel_write.md
+[`zx_handle_duplicate()`]: /docs/reference/syscalls/handle_duplicate.md
+[`zx_job_get_policy()`]: /docs/reference/syscalls/job_get_policy.md
+[`zx_job_set_policy()`]: /docs/reference/syscalls/job_set_policy.md
+[`zx_object_get_child()`]: /docs/reference/syscalls/object_get_child.md
+[`zx_object_get_info()`]: /docs/reference/syscalls/object_get_info.md
+[`zx_object_get_property()`]: /docs/reference/syscalls/object_get_property.md
+[`zx_object_set_profile()`]: /docs/reference/syscalls/object_set_profile.md
+[`zx_object_set_property()`]: /docs/reference/syscalls/object_set_property.md
+[`zx_object_signal()`]: /docs/reference/syscalls/object_signal.md
+[`zx_object_signal_peer()`]: /docs/reference/syscalls/object_signal_peer.md
+[`zx_object_wait_many()`]: /docs/reference/syscalls/object_wait_many.md
+[`zx_object_wait_one()`]: /docs/reference/syscalls/object_wait_one.md
+[`zx_socket_set_disposition()`]: /docs/reference/syscalls/socket_set_disposition.md
+[`zx_task_kill()`]: /docs/reference/syscalls/task_kill.md

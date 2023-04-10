@@ -1,7 +1,5 @@
 # Environments
 
-<<../_v2_banner.md>>
-
 *Environments* provide a way to configure certain choices the framework makes
 for components in a [realm][doc-realms].
 [Component manifests][doc-component-manifests] may define environments and
@@ -111,8 +109,8 @@ capabilities are registered in an environment, which makes them available to any
 component in the realm to which that environment was assigned (unless some
 sub-realm decides to set a new environment with the runner absent).
 
-[glossary.component-url]: /glossary/README.md#component-url
-[glossary.component-declaration]: /glossary/README.md#component-declaration
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.component-declaration]: /docs/glossary/README.md#component-declaration
 [doc-capability-routing]: ./capabilities/README.md#routing
 [doc-children]: https://fuchsia.dev/reference/cml#children
 [doc-collections]: https://fuchsia.dev/reference/cml#collections
@@ -126,7 +124,7 @@ sub-realm decides to set a new environment with the runner absent).
 [doc-realms]: ./realms.md
 [doc-runners]: ./capabilities/runners.md
 [doc-use]: https://fuchsia.dev/reference/cml#use
-[elf-runner]: /concepts/components/v2/elf_runner.md
+[elf-runner]: /docs/concepts/components/v2/elf_runner.md
 [fidl-directory]: /sdk/fidl/fuchsia.io/directory.fidl
 [fidl-extends]: /sdk/fidl/fuchsia.component.decl/environment.fidl
 [wiki-least-privilege]: https://en.wikipedia.org/wiki/Principle_of_least_privilege

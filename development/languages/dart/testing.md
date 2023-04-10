@@ -33,7 +33,7 @@ https://github.com/flutter/flutter/wiki/Test-coverage-for-package:flutter).
 
 The basic logic is:
 
-```
+```none
 for test in host_tests:
   covered_lines += lines in test's package that were covered by test
   total_lines += all lines in test's package
@@ -43,6 +43,6 @@ So if there are packages that have no tests at all, they won't be considered in
 the denominator of the report, which can give you a misleadingly high coverage
 number.
 
-[dart_fuchsia_test]: https://fuchsia.googlesource.com/topaz/+/HEAD/runtime/dart/dart_fuchsia_test.gni
+[dart_fuchsia_test]: https://fuchsia.googlesource.com/fuchsia/+/HEAD/build/dart/dart_test_component.gni
 [dart_test]: /build/dart/test.gni
-[flutter_test]: https://fuchsia.googlesource.com/topaz/+/HEAD/runtime/dart/flutter_test.gni
+[flutter_test]: https://fuchsia.googlesource.com/fuchsia/+/HEAD/build/flutter/flutter_test_component.gni

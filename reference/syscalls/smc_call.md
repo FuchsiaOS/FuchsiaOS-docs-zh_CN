@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_smc_call
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Make Secure Monitor Call (SMC) from user space.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_smc_call(zx_handle_t handle,
                         zx_smc_result_t* out_smc_result);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_smc_call()` makes a Secure Monitor Call (SMC) from user space. It supports the ARM SMC Calling
 Convention using the `zx_smc_parameters_t` input parameter and `zx_smc_result_t` output parameter.
@@ -35,20 +42,17 @@ secure OS.
 More information is available in the [ARM SMC Calling Convention documentation](
 http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.den0028b/index.html).
 
-
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_smc_call()` returns **ZX_OK** if *handle* has sufficient privilege. The
 return value of the smc call is returned via **out_smc_result** on success. In the event of
 failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 

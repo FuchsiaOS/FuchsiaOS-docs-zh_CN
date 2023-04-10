@@ -67,14 +67,14 @@ First let's configure the build. To do this you need to make a few choices:
   (unsure: try `workstation_eng`)
 * What board are you building for? (unsure: try `x64`)
 * What extra [test targets](#key-bundles) do you want? (unsure: try
-  `//bundles:tools`, and if you're working on features, you probably want
-  `//bundles:tests`)
+  `//bundles/tools`, and if you're working on features, you probably want
+  `//bundles/tests`)
 
 Armed with our above choices (if you didn't read above, do so now), you are
 ready to configure your build:
 
 ```posix-terminal
-fx set workstation_eng.x64 --with //bundles:tests
+fx set workstation_eng.x64 --with //bundles/tests
 ```
 
 Once you ran `fx set` in your checkout, there is no need to run it again unless
@@ -82,7 +82,7 @@ you need to modify the arguments that follow.
 
 `fx set` stores its configuration in an `args.gn` file in the output directory.
 The output directly is `out/default`. You can specify a different directory
-using `fx set --dir <out_dir>`.
+using `fx --dir <out_dir> set <set_args>`.
 
 You can edit the generated `args.gn` file using the `fx args` command to create
 more elaborate configurations. `fx args` will open `args.gn` in an editor, let
@@ -96,7 +96,7 @@ graph.
 * You selected the product `workstation_eng` (run `fx list-products` for a list of
   other product configurations).
 * You selected the board `x64`, which supports many typical boards based on the
-  `x64` architecture. (Note that `arm64` boards are less interchangable, and you
+  `x64` architecture. (Note that `arm64` boards are less interchangeable, and you
   will most likely need to give `fx set` the specific board, when building to an
   `arm64` architecture. Run `fx list-boards` for a list of known board
   configurations.)
@@ -173,20 +173,20 @@ important configurations to be familiar with:
 ### Key additional build targets {#key-bundles}
 
 The `--with` flag for `fx set` takes in arbitrary
-[build targets](/development/build/build_system/fuchsia_build_system_overview.md#build_targets).
+[build targets](/docs/development/build/build_system/fuchsia_build_system_overview.md#build_targets).
 For convenience, a number of bundles are defined, which include a variety of
 commonly used build targets. It is important to be familiarized with the
 following bundles:
 
-* `//bundles:tools` contains a broad array of the most common developer tools.
+* `//bundles/tools` contains a broad array of the most common developer tools.
   This includes tools for spawning components from command-line shells, tools
   for reconfiguring and testing networks, making http requests, debugging
   programs, changing audio volume, and so on. The core product includes
-  `bundles:tools` in the universe package set by default.
-* `//bundles:tests` causes all test programs to be built. Most test programs
-  can be invoked using `run-test-component` on the device, or via
-  `fx run-test`.
-* `//bundles:kitchen_sink` is a target that causes all other build targets to be
+  `//bundles/tools` in the universe package set by default.
+* `//bundles/tests` causes all test programs to be built. Most test programs
+  can be invoked using `run-test-suite` on the device, or via
+  `fx test`.
+* `//bundles/kitchen_sink` is a target that causes all other build targets to be
   included. It is useful when testing the impact of core changes, or when
   making large scale changes in the code base. It also may be a fun
   configuration for enthusiasts to play with, as it includes all software
@@ -315,8 +315,7 @@ To enter Zedboot on an x64 target, first produce a Zedboot USB key using
 `fx mkzedboot <path-to-usb-device>` (to list suitable USB devices on your
 system, execute `fx list-usb-disks`). Remove the USB key after completion,
 insert it to the target device, and reboot the target device, selecting "Boot
-from USB" from the boot options, or in the device BIOS. There are additional
-instructions for preparing a [Chromebook](/development/hardware/chromebook.md).
+from USB" from the boot options, or in the device BIOS.
 
 ### What is Paving? {#what-is-paving}
 
@@ -419,9 +418,8 @@ software stack.
 The Fuchsia codebase contains many tests. Most of these tests are themselves
 components and can be launched on the target device in the same way as other
 components. On the target device, some programs also assist with test-specific
-concerns for component launching, such as `runtests` and
-`/bin/run-test-component`. The process can also conveniently be controlled
-from the development host by way of `fx test`. See
+concerns for component launching, such as `run-test-suite`. The process can also
+conveniently be controlled from the development host by way of `fx test`. See
 [Run Fuchsia tests][executing-tests] for more details.
 
 Some users find that an effective high focus workflow is to have the system
@@ -483,7 +481,7 @@ also always available in "bringup" product configurations, as such, `fx klog`
 is most useful when working on low-level software, such as the Zircon kernel,
 or drivers.
 
-See [Viewing Logs](/development/diagnostics/logs/viewing.md) for more information.
+See [Viewing Logs](/docs/development/diagnostics/logs/viewing.md) for more information.
 
 ### Copying files {#copying-files}
 
@@ -627,10 +625,18 @@ fx sync-to reset
 
 For more options, see the [`fx sync-to` reference][fx-sync-to-ref] page.
 
+### Defining persistent local build arguments
+
+If you want to define build arguments that will be included whenever running
+`fx set`, add them to `$FUCHSIA_DIR/local/args.gn`. They will be appended to
+`$FUCHSIA_BUILD_DIR/args.gn` whenever regenerating the build arguments.
+
+To suppress the inclusion of `local/args.gn`, run `fx set ... --skip-local-args`.
+
 <!-- Reference links -->
 
-[build-overview]: /development/build/build_system/fuchsia_build_system_overview.md
-[executing-tests]: /development/testing/run_fuchsia_tests.md
+[build-overview]: /docs/development/build/build_system/fuchsia_build_system_overview.md
+[executing-tests]: /docs/development/testing/run_fuchsia_tests.md
 [ffx-target-flash]: https://fuchsia.dev/reference/tools/sdk/ffx#flash
 [fxb94507]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=94507
 [fuchsia-gi-repo]: https://fuchsia.googlesource.com/integration/

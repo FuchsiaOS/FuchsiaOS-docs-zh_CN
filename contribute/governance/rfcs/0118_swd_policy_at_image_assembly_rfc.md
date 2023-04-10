@@ -227,4 +227,4 @@ Unfortunately, this was deemed to be infeasible as the SWD stack is implemented
 in multiple components across multiple packages and the zbi, with configuration
 spread across all of them.
 
-[glossary.product-owner]: /glossary/README.md#product-owner
+[glossary.product-owner]: /docs/glossary/README.md#product-owner

@@ -144,7 +144,7 @@ significant VA bit before setting debug registers.
 ## Implementation
 
 A boot-option will control whether user address spaces have ARM TBI enabled.
-ARM TBI can be enabled by adding setting the `TBI0` and `TBI1` bits in the
+ARM TBI can be enabled by setting the `TBI0` and `TBI1` bits in the
 translation control register (EL1).
 
 In addition to enabling/disabling TBI, we'll need to make sure existing
@@ -262,4 +262,4 @@ also controlled by the same build option.
 [linuxtbi]: https://www.kernel.org/doc/html/latest/arm64/tagged-address-abi.html
 [contextswitch]: https://lore.kernel.org/linux-arm-kernel/20201124184742.GC42276@C02TF0J2HF1T.local/
 [memtag]: https://arxiv.org/pdf/1802.09517.pdf
-[features]: /reference/syscalls/system_get_features.md
+[features]: /docs/reference/syscalls/system_get_features.md

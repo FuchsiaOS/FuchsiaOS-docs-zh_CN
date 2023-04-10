@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmo_op_range
 
 ## SUMMARY
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
-
 Perform an operation on a range of a VMO.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,10 +28,10 @@ zx_status_t zx_vmo_op_range(zx_handle_t handle,
                             size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmo_op_range()` performs cache and memory operations against pages held by the [virtual memory
-object](/reference/kernel_objects/vm_object.md) (VMO).
+object](/docs/reference/kernel_objects/vm_object.md) (VMO).
 
 *offset* byte offset specifying the starting location for *op* in the VMO's held memory.
 
@@ -32,10 +39,10 @@ object](/reference/kernel_objects/vm_object.md) (VMO).
 
 *op* the operation to perform:
 
-*buffer* and *buffer_size* are currently unused.
+*buffer* and *buffer_size* may be required or unused depending on the *op* as described below.
 
 **ZX_VMO_OP_COMMIT** - Commit *size* bytes worth of pages starting at byte *offset* for the VMO.
-More information can be found in the [vm object documentation](/reference/kernel_objects/vm_object.md).
+More information can be found in the [vm object documentation](/docs/reference/kernel_objects/vm_object.md).
 Requires the **ZX_RIGHT_WRITE** right.
 
 **ZX_VMO_OP_DECOMMIT** - Release a range of pages previously committed to the VMO from *offset*
@@ -45,7 +52,7 @@ children, and for slice children of such vmos. Provided range must be page align
 
 **ZX_VMO_OP_ZERO** - Resets the range of bytes in the VMO from *offset* to *offset*+*size* to
 0. This is semantically equivalent to writing 0's with
-[`zx_vmo_write()`](/reference/syscalls/vmo_write.md), except that it is able to be done more
+[`zx_vmo_write()`](/docs/reference/syscalls/vmo_write.md), except that it is able to be done more
 efficiently and save memory by de-duping to shared zero pages. Requires the **ZX_RIGHT_WRITE** right.
 
 **ZX_VMO_OP_LOCK** - Locks a range of pages in a discardable VMO, preventing them from being
@@ -55,9 +62,9 @@ should accommodate the struct. Returns information about the locked and previous
 in *buffer*, so that clients can reinitialize discarded contents if needed.
 
 The entire VMO should be locked at once, so *offset* should be 0 and *size* should be the current
-size of the VMO.  Requires the **ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right. Note that locking
-itself does not commit any pages in the VMO; it just marks the state of the VMO as “undiscardable”
-by the kernel.
+size of the VMO (the page-aligned size as would be returned by [`zx_vmo_get_size()`]). Requires the
+**ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right. Note that locking itself does not commit any pages in
+the VMO; it just marks the state of the VMO as “undiscardable” by the kernel.
 
 *buffer* should be a pointer of type `zx_info_lock_state_t`.
 
@@ -85,16 +92,17 @@ the *buffer* argument. It also affords clients the choice to not take any action
 to lock the VMO; clients must use **ZX_VMO_OP_LOCK** if they wish to lock the VMO again.
 
 The entire VMO should be locked at once, so *offset* should be 0 and *size* should be the current
-size of the VMO.  Requires the **ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right. Note that locking
-itself does not commit any pages in the VMO; it just marks the state of the VMO as “undiscardable”
-by the kernel.
+size of the VMO (the page-aligned size as would be returned by [`zx_vmo_get_size()`]). Requires the
+**ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right. Note that locking itself does not commit any pages in
+the VMO; it just marks the state of the VMO as “undiscardable” by the kernel.
 
 **ZX_VMO_OP_UNLOCK** - Unlocks a range of pages in a discardable VMO, indicating that the kernel is
 free to discard them under memory pressure. Unlocked pages that have not been discarded yet will be
 counted as committed pages.
 
 The entire VMO should be unlocked at once, so *offset* should be 0 and *size* should be the current
-size of the VMO. Requires the **ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right.
+size of the VMO (the page-aligned size as would be returned by [`zx_vmo_get_size()`]). Requires the
+**ZX_RIGHT_READ** or **ZX_RIGHT_WRITE** right.
 
 **ZX_VMO_OP_CACHE_SYNC** - Synchronize instruction caches with data caches, so previous writes are
 visible to instruction fetches.
@@ -115,7 +123,7 @@ Requires the **ZX_RIGHT_READ** right.
 
 **ZX_VMO_OP_DONT_NEED** - Hints that pages in the specified range are not needed anymore and should
 be considered for memory reclamation. Intended to be used with VMOs created with
-[`zx_pager_create_vmo()`](/reference/syscalls/pager_create_vmo.md); trivially succeeds for
+[`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially succeeds for
 other VMOs.
 
 This only applies to pages in the given range that are already committed, i.e. no new pages will be
@@ -126,7 +134,7 @@ boundary and *offset*+*size* will be rounded up to the next page boundary.
 protected from memory reclamation. The kernel may decide to override this hint when the system is
 under extreme memory pressure. This hint also does not prevent pages from being freed by means other
 than memory reclamation (e.g. a decommit, VMO resize, or VMO destruction). Intended to be used with
-VMOs created with [`zx_pager_create_vmo()`](/reference/syscalls/pager_create_vmo.md); trivially
+VMOs created with [`zx_pager_create_vmo()`](/docs/reference/syscalls/pager_create_vmo.md); trivially
 succeeds for other VMOs.
 
 This may commit pages in the given range where applicable, e.g. if the VMO is directly backed by a
@@ -134,10 +142,7 @@ pager, its pages will be committed, or in the case of a clone, pages in the pare
 to the clone will be committed. If required, *offset* will be rounded down to the previous page
 boundary and *offset*+*size* will be rounded up to the next page boundary.
 
-
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 If *op* is **ZX_VMO_OP_COMMIT**, *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_WRITE**.
 
@@ -151,12 +156,12 @@ If *op* is **ZX_VMO_OP_CACHE_CLEAN**, *handle* must be of type **ZX_OBJ_TYPE_VMO
 
 If *op* is **ZX_VMO_OP_CACHE_CLEAN_INVALIDATE**, *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmo_op_range()` returns **ZX_OK** on success. In the event of failure, a negative error
 value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -191,7 +196,7 @@ an I/O error while committing the requested pages.
 **ZX_ERR_IO_DATA_INTEGRITY** *op* was **ZX_VMO_OP_COMMIT**, the VMO is backed by a pager and the
 contents that were read in by the pager for the pages being committed are corrupted.
 
-## SEE ALSO
+## See also
 
  - [`zx_vmo_create()`]
  - [`zx_vmo_create_child()`]
@@ -199,8 +204,6 @@ contents that were read in by the pager for the pages being committed are corrup
  - [`zx_vmo_read()`]
  - [`zx_vmo_set_size()`]
  - [`zx_vmo_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_vmo_create()`]: vmo_create.md

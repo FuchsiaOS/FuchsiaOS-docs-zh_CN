@@ -1,14 +1,71 @@
 # Storage capabilities
 
-<<../../_v2_banner.md>>
-
 [Storage capabilities][glossary.storage-capability] allocate per-component
 *isolated* storage within a filesystem directory. This prevents component
 instances from accessing files belonging to other components, including their
 own children.
 
+Different storage capabilities may be backed by different filesystems. A
+component should not assume atomic IO operations are possible across storage
+capabilities.
+
 For information on directories that can be shared between components, see
 [directory capabilities][directory-capabilities].
+
+## Standard storage capability names {#standard-names}
+
+Standard names are commonly used for storage capabilities. Each of these
+standard names implies the storage capability should be used for a particular
+purpose and provides a particular behavior. Any component that receives a
+storage capability with one of these standard names may assume it provides the
+behavior described below.
+
+Note that a storage capability name does **not** necessarily globally identify a
+storage capability. For example, on some products several different storage
+capabilities named `data` exist at different locations in the component instance
+topology. These storage capabilities are backed by different directories on
+different storage volumes, but they all serve the same purpose for the component
+instances using them.
+
+Not all storage capabilities use one of these standard names. In these cases any
+expectations about the behavior of the storage capability should be documented
+where the storage capability is defined and at every place in the component
+instance topology that the capability is renamed.
+
+Note that during tests storage capabilities may be created that do not match
+these behaviors. For example, an integration test may provide a `data`
+capability that is wiped between test cases.
+
+### `data`
+
+Storage capabilities named "data" are intended to store general purpose
+persistent data.
+
+A component may assume that files in these storage capabilities
+will not be deleted by the system. Components must be conservative in their use
+of `data` because the contract does not let system delete files when the
+limited disk space is exhausted. In many cases using `cache` is preferable.
+
+### `cache`
+
+Storage capabilities named "cache" are intended to store data that could be
+discarded or regenerated if necessary. For example, a downloaded picture that
+could be re-fetched.
+
+Files stored in `cache` are usually persisted between different runs of same
+component instance but this is not guaranteed. Files may be deleted by the
+system at any time, even while the component is running.
+
+### `tmp`
+
+Storage capabilities named "tmp" are intended to store temporary or intermediate
+data.
+
+Files stored in `tmp` may be deleted by the system between runs of a component.
+Files will not be deleted by the system while the component is running. `tmp`
+will often be empty when a component is started but this is not guaranteed.
+Components must not assume `tmp` will be empty on start but also should not use
+any files that are present on start.
 
 ## Backing directories {#backing-dir}
 
@@ -25,9 +82,9 @@ isolated storage directories it contains.
 The framework allocates storage subdirectories based on either the component
 instance's [moniker][glossary.moniker] or a static
 [instance ID][glossary.component-instance-identifier]. Each instance ID is a
-256-bit globally unique identifier listed in a component storage index file.
+256-bit globally unique identifier listed in a component ID index file.
 
-The following is an example entry in a component storage index file containing a
+The following is an example entry in a component ID index file containing a
 stable instance ID:
 
 ```json5
@@ -43,10 +100,10 @@ stable instance ID:
 
 Instance IDs allow a component's storage to persist across changes to the
 component's moniker, such as moving the component instance to a different realm.
-Storage IDs based on moniker are a good secondary option for tests or other use
+Using a moniker is a good secondary option for tests or other use
 cases where storage does not need to be durable.
 
-For more details on instance IDs, see [Component storage index][storage-index].
+For more details on instance IDs, see [Component ID index][component-id-index].
 
 ## Providing storage capabilities {#provide}
 
@@ -121,6 +178,10 @@ To request the capability, add a `use` declaration for it:
 This populates the component's namespace with a directory at the provided `path`
 containing the isolated storage contents.
 
+### Consuming optional storage capabilities
+
+See [Connect Components: Consuming optional capabilities][consuming-optional-capabilities].
+
 ## Storage example {#example}
 
 Consider the following example where component `A` requests isolated storage
@@ -170,13 +231,13 @@ provided by the `memfs` component in the same realm:
 For more details on implementing directories, see
 [directory capabilities][directory-capabilities].
 
-[glossary.directory-capability]: /glossary/README.md#directory-capability
-[glossary.component-instance-identifier]: /glossary/README.md#component-instance-identifier
-[glossary.moniker]: /glossary/README.md#moniker
-[glossary.namespace]: /glossary/README.md#namespace
-[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
-[glossary.storage-capability]: /glossary/README.md#storage-capability
-[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
+[glossary.directory-capability]: /docs/glossary/README.md#directory-capability
+[glossary.component-instance-identifier]: /docs/glossary/README.md#component-instance-identifier
+[glossary.moniker]: /docs/glossary/README.md#moniker
+[glossary.namespace]: /docs/glossary/README.md#namespace
+[glossary.storage-capability]: /docs/glossary/README.md#storage-capability
+[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[consuming-optional-capabilities]: /docs/development/components/connect.md#consuming-optional-capabilities
 [component-reference]: https://fuchsia.dev/reference/cml#references
-[directory-capabilities]: /concepts/components/v2/capabilities/directory.md
-[storage-index]: /development/components/component_id_index.md
+[directory-capabilities]: /docs/concepts/components/v2/capabilities/directory.md
+[component-id-index]: /docs/development/components/component_id_index.md

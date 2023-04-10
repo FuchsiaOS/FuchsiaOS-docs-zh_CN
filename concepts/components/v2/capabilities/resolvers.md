@@ -1,7 +1,5 @@
 # Component resolvers
 
-<<../../_v2_banner.md>>
-
 Component resolvers extend the component framework through an
 [environment][glossary.environment] to resolve a
 [component URL][glossary.component-url] into a component.
@@ -114,16 +112,16 @@ support standard Fuchsia URL schemes:
 | ------------------- | -------------------------- |
 | `boot_resolver`     | [`fuchsia-boot`][url-boot] |
 | `base_resolver`     | [`fuchsia-pkg`][url-pkg]   |
-| `universe_resolver` | [`fuchsia-pkg`][url-pkg]   |
+| `full-resolver`     | [`fuchsia-pkg`][url-pkg]   |
 
-[glossary.component-url]: /glossary/README.md#component-url
-[glossary.environment]: /glossary/README.md#environment
-[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
-[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
-[component-manifest]: /concepts/components/v2/component_manifests.md
-[environment]: /concepts/components/v2/environments.md
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.environment]: /docs/glossary/README.md#environment
+[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
+[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[component-manifest]: /docs/concepts/components/v2/component_manifests.md
+[environment]: /docs/concepts/components/v2/environments.md
 [fidl-resolver]: /sdk/fidl/fuchsia.component.resolution/resolver.fidl
 [fidl-decl]: /sdk/fidl/fuchsia.component.decl/component.fidl
 [fidl-directory]: /sdk/fidl/fuchsia.io/directory.fidl
-[url-boot]: /reference/components/url.md#fuchsia-boot
-[url-pkg]: /reference/components/url.md#fuchsia-pkg
+[url-boot]: /docs/reference/components/url.md#fuchsia-boot
+[url-pkg]: /docs/reference/components/url.md#fuchsia-pkg

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_thread_start
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Start execution on a thread.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_thread_start(zx_handle_t handle,
                             uintptr_t arg2);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_thread_start()` causes a thread to begin execution at the program counter
 specified by *thread_entry* and with the stack pointer set to *stack*. The
@@ -41,27 +48,25 @@ Below is an example:
 
 ```
 void thread_entry(uintptr_t arg1, uintptr_t arg2) __attribute__((noreturn)) {
-	// do work here.
+  // do work here.
 
-	zx_thread_exit();
+  zx_thread_exit();
 }
 ```
 
 Failing to call one of the exit functions before reaching the end of
 the function will cause an architecture / toolchain specific exception.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_MANAGE_THREAD**.
 
-## RETURN VALUE
+## Return value
 
 `zx_thread_start()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *thread* is not a valid handle.
 
@@ -75,7 +80,7 @@ is part of is no longer alive.
 **ZX_ERR_INVALID_ARGS** *thread_entry* is not a userspace address, is not a
 [canonical address], or is not `0`.
 
-## SEE ALSO
+## See also
 
  - [`zx_futex_wake_handle_close_thread_exit()`]
  - [`zx_handle_close()`]
@@ -86,8 +91,6 @@ is part of is no longer alive.
  - [`zx_thread_create()`]
  - [`zx_thread_exit()`]
  - [`zx_vmar_unmap_handle_close_thread_exit()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_futex_wake_handle_close_thread_exit()`]: futex_wake_handle_close_thread_exit.md
 [`zx_handle_close()`]: handle_close.md

@@ -51,12 +51,12 @@ bindings process incoming request messages and deliver them through an abstract
 interface for components to implement.
 
 ![Diagram showing how FIDL bindings provide generated library code to translate
-function calls into FIDL messages for transport across process boundaries.]
-(/get-started/images/fidl/fidl-bindings.png){: width="574"}
+ function calls into FIDL messages for transport across process
+  boundaries.](/docs/get-started/images/fidl/fidl-bindings.png){: width="574"}
 
 
 Note: For more details on the bindings specification and supported programming
-languages, see the [Bindings Reference](/reference/fidl/bindings/overview.md).
+languages, see the [Bindings Reference](/docs/reference/fidl/bindings/overview.md).
 
 At build time, the `fidlgen` backend tools generate bindings for supported
 programming languages from the JSON IR library produced by `fidlc`. For example,
@@ -73,7 +73,7 @@ bindings target for the `fuchsia.examples` library:
 
   ```gn
   deps = [
-    "fidl/fuchsia.examples:fuchsia.examples-rustc",
+    "fidl/fuchsia.examples:fuchsia.examples_rust",
     ...
   ]
   ```
@@ -99,6 +99,14 @@ Start by creating a new directory for the FIDL library target:
 mkdir -p vendor/fuchsia-codelab/echo-fidl
 ```
 
+Create the following file and directory structure in the new project directory:
+
+```none {:.devsite-disable-click-to-copy}
+//vendor/fuchsia-codelab/echo-fidl
+                        |- BUILD.gn
+                        |- echo.fidl
+```
+
 Add a new FIDL interface file called `echo.fidl` with the following contents:
 
 ```fidl
@@ -116,15 +124,19 @@ Add a `BUILD.gn` file with the following contents to declare the library target:
 
 Add the library target to the build configuration:
 
-```posix-terminal
-fx set workstation_eng.qemu-x64 --with //vendor/fuchsia-codelab/echo-fidl:echo
-```
+<!-- TODO(fxbug.dev/108355): Update this when fidl_toolchain is removed. -->
 
-Run `fx build` to compile the FIDL interface:
+* {Rust}
 
-```posix-terminal
-fx build vendor/fuchsia-codelab/echo-fidl:echo
-```
+  ```posix-terminal
+  fx set workstation_eng.qemu-x64 --with vendor/fuchsia-codelab/echo-fidl:echo_rust
+  ```
+
+* {C++}
+
+  ```posix-terminal
+  fx set workstation_eng.qemu-x64 --with vendor/fuchsia-codelab/echo-fidl:echo_hlcpp
+  ```
 
 ### Examine the FIDL bindings
 
@@ -137,13 +149,13 @@ Compile the `fidl.examples.routing.echo` bindings:
 * {Rust}
 
   ```posix-terminal
-  fx build vendor/fuchsia-codelab/echo-fidl:echo-rustc
+  fx build vendor/fuchsia-codelab/echo-fidl:echo_rust
   ```
 
 * {C++}
 
   ```posix-terminal
-  fx build vendor/fuchsia-codelab/echo-fidl:echo
+  fx build vendor/fuchsia-codelab/echo-fidl:echo_hlcpp
   ```
 
 Use GN to locate the generated source files for the target and open them in an
@@ -152,7 +164,7 @@ editor:
 * {Rust}
 
   ```posix-terminal
-  fx gn desc out/default/ vendor/fuchsia-codelab/echo-fidl:echo-rustc sources
+  fx gn desc out/default/ vendor/fuchsia-codelab/echo-fidl:echo_rust.actual sources
   ```
 
 * {C++}
@@ -272,5 +284,5 @@ method returns.</p>
 
 <p>Synchronous clients are not available in all supported languages. For more
 details, see the specifications for your chosen language in the
-<a href="/reference/fidl/bindings/overview">Bindings Reference</a>.</d>
+<a href="/docs/reference/fidl/bindings/overview">Bindings Reference</a>.</d>
 </aside>

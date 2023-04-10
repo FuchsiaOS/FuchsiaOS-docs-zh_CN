@@ -6,9 +6,9 @@ capabilities or features.
 ## Resolvers
 
 If your component is not part of the `base` package set for your product, you
-must route the `universe` resolver to it. Resolvers are routed to components
+must route the `full-resolver` resolver to it. Resolvers are routed to components
 using environments, and `core.cml` has a shared environment named
-`full-resolver-env` for components outside of `base`.
+`core-env` for components outside of `base`.
 
 Use the `list-packages` command to report the package sets where your component
 package is included.
@@ -21,7 +21,7 @@ If the package is not listed with the `base` tag, follow the remaining
 instructions in this section.
 
 When [adding your component][migrate-components-add], assign the shared
-`full-resolver-env` as your component's `environment`.
+`core-env` as your component's `environment`.
 
 ```json5
 // core.cml / component.core_shard.cml
@@ -31,7 +31,7 @@ When [adding your component][migrate-components-add], assign the shared
     {
       name: "my_component",
       url: "fuchsia-pkg://fuchsia.com/my-pkg#meta/my_component.cm",
-      {{ '<strong>' }}environment: "#full-resolver-env",{{ '</strong>' }}
+      {{ '<strong>' }}environment: "#core-env",{{ '</strong>' }}
     },
   ],
 }
@@ -71,58 +71,6 @@ incompatible with being outside the base package set.
 
 For more details on how `eager` impacts component startup see,
 [lifecycle][eager-lifecycle] and [component manifests][eager-manifest].
-
-## Critical components {#critical-components}
-
-[`critical_components`][sysmgr-critical-components] is a sysmgr feature that
-allows a component to mark itself as critical to system operation:
-
-```json
-{
-  ...
-  "critical_components": [
-    "fuchsia-pkg://fuchsia.com/system-update-checker#meta/system-update-checker.cmx"
-  ]
-}
-```
-
-The equivalent feature in Components v2 is called "reboot-on-terminate". If your
-component appears in `critical_components` you should mark it as `on_terminate:
-reboot` in the parent component's manifest:
-
-```
-// core.cml / component.core_shard.cml
-{
-    children: [
-        ...
-        {
-            name: "system-update-checker",
-            url: "fuchsia-pkg://fuchsia.com/system-update-checker#meta/system-update-checker.cm",
-            startup: "eager",
-            on_terminate: "reboot",
-        },
-    ],
-}
-```
-
-Also, you'll need to add the component's moniker to component manager's security
-policy allowlist at
-[`//src/security/policy/component_manager_policy.json5`][src-security-policy]:
-
-```
-// //src/security/policy/component_manager_policy.json5
-{
-    security_policy: {
-        ...
-        child_policy: {
-            reboot_on_terminate: [
-                ...
-                "/core/system-update-checker",
-            ],
-        },
-    },
-}
-```
 
 ## Lifecycle
 
@@ -228,19 +176,18 @@ specific features your components may support:
 -   [Diagnostics capabilities](diagnostics.md)
 
 [cf-dev-list]: https://groups.google.com/a/fuchsia.dev/g/component-framework-dev
-[component-select]: /development/tools/ffx/commands/component-select.md
+[component-select]: /docs/development/tools/ffx/commands/component-select.md
 [cs-appmgr-allowlist]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/appmgr/main.cc;l=125;drc=ddf6d10ce8cf63268e21620638ea02e9b2b7cd20
-[eager-lifecycle]: /development/components/connect.md#eager
+[eager-lifecycle]: /docs/development/components/connect.md#eager
 [eager-manifest]: https://fuchsia.dev/reference/cml#children
-[elf-runner-docs]: /concepts/components/v2/elf_runner.md#lifecycle
-[ffx-overview]: /development/tools/ffx/overview.md
-[glossary.component-instance-tree]: /glossary/README.md#component-instance-tree
-[glossary.environment]: /glossary/README.md#environment
-[migrate-add-core]: /development/components/v2/migration/components.md#add-core-direct
-[migrate-add-shard]: /development/components/v2/migration/components.md#add-core-shard
-[migrate-components]: /development/components/v2/migration/components.md
-[migrate-components-add]: /development/components/v2/migration/components.md#add-component-to-topology
+[elf-runner-docs]: /docs/concepts/components/v2/elf_runner.md#lifecycle
+[ffx-overview]: /docs/development/tools/ffx/overview.md
+[glossary.component-instance-tree]: /docs/glossary/README.md#component-instance-tree
+[glossary.environment]: /docs/glossary/README.md#environment
+[migrate-add-core]: /docs/development/components/v2/migration/components.md#add-core-direct
+[migrate-add-shard]: /docs/development/components/v2/migration/components.md#add-core-shard
+[migrate-components]: /docs/development/components/v2/migration/components.md
+[migrate-components-add]: /docs/development/components/v2/migration/components.md#add-component-to-topology
 [rust-lifecycle]: /examples/components/lifecycle
 [src-security-policy]: /src/security/policy/component_manager_policy.json5
-[sysmgr-critical-components]: /concepts/components/v1/sysmgr.md#critical_components
-[rcs-selector-maps]: /development/tools/ffx/development/plugins.md#selector-maps
+[rcs-selector-maps]: /docs/development/tools/ffx/development/plugins.md#selector-maps

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_object_wait_many
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Wait for signals on multiple objects.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_object_wait_many(zx_wait_item_t* items,
                                 zx_time_t deadline);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_object_wait_many()` is a blocking syscall that causes the caller to wait
 until either the *deadline* passes or at least one object referred to in
@@ -49,15 +56,13 @@ Upon return, the *pending* field of *items* is filled with bitmaps indicating
 which signals are pending for each item.
 
 The maximum number of items that may be waited upon is **ZX_WAIT_MANY_MAX_ITEMS**,
-which is 64.  To wait on more objects at once use [Ports](/reference/kernel_objects/port.md).
+which is 64.  To wait on more objects at once use [Ports](/docs/reference/kernel_objects/port.md).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 Every entry of *items* must have a *handle* field with **ZX_RIGHT_WAIT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_object_wait_many()` returns **ZX_OK** if any of *waitfor* signals were
 active when the call was made, or observed on their respective object before
@@ -72,7 +77,7 @@ will have the **ZX_SIGNAL_HANDLE_CLOSED** bit set.
 
 For any other return value, the *pending* fields of *items* are undefined.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *items* isn't a valid pointer.
 
@@ -101,20 +106,18 @@ In a future build this error will no longer occur.
 
 *pending* more properly should be called *observed*.
 
-## NOTES
+## Notes
 
 See [signals] for more information about signals and their terminology.
 
-## SEE ALSO
+## See also
 
  - [signals]
  - [timer slack]
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_one()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[signals]: /concepts/kernel/signals.md
-[timer slack]: /concepts/kernel/timer_slack.md
+[signals]: /docs/concepts/kernel/signals.md
+[timer slack]: /docs/concepts/kernel/timer_slack.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_one()`]: object_wait_one.md

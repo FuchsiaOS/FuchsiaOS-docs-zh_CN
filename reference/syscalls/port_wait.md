@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_port_wait
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Wait for a packet arrival in a port.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_port_wait(zx_handle_t handle,
                          zx_port_packet_t* packet);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_port_wait()` is a blocking syscall, which causes the caller to wait until at least
 one packet is available.
@@ -90,17 +97,15 @@ All kernel queued packets will have *status* set to **ZX_OK** and *key* set to t
 value provided to the registration syscall. For details on how to interpret the union, see
 the corresponding registration syscall.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_PORT** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_port_wait()` returns **ZX_OK** on successful packet dequeuing.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is not a valid handle.
 
@@ -111,16 +116,14 @@ not be waited upon.
 
 **ZX_ERR_TIMED_OUT** *deadline* passed and no packet was available.
 
-## SEE ALSO
+## See also
 
  - [timer slack]
  - [`zx_object_wait_async()`]
  - [`zx_port_create()`]
  - [`zx_port_queue()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[timer slack]: /concepts/kernel/timer_slack.md
+[timer slack]: /docs/concepts/kernel/timer_slack.md
 [`zx_guest_set_trap()`]: guest_set_trap.md
 [`zx_interrupt_bind()`]: interrupt_bind.md
 [`zx_object_wait_async()`]: object_wait_async.md

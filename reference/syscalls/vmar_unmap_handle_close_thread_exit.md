@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmar_unmap_handle_close_thread_exit
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Unmap memory, close handle, exit.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_vmar_unmap_handle_close_thread_exit(zx_handle_t vmar_handle,
                                                    zx_handle_t close_handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmar_unmap_handle_close_thread_exit()` does a sequence of three operations:
 
@@ -36,21 +43,19 @@ If the [`zx_vmar_unmap()`] operation is successful, then this call never returns
 If *close_handle* is an invalid handle so that the [`zx_handle_close()`] operation
 fails, then the thread takes a trap (as if by `__builtin_trap();`).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_vmar_unmap_handle_close_thread_exit()` does not return on success.
 
-## ERRORS
+## Errors
 
 Same as [`zx_vmar_unmap()`].
 
-## NOTES
+## Notes
 
 The intended use for this is for a dying thread to unmap its own stack,
 close its own thread handle, and exit.  The thread handle cannot be closed
@@ -62,14 +67,12 @@ This call is used for detached threads, while
 [`zx_futex_wake_handle_close_thread_exit()`]
 is used for joinable threads.
 
-## SEE ALSO
+## See also
 
  - [`zx_futex_wake_handle_close_thread_exit()`]
  - [`zx_handle_close()`]
  - [`zx_thread_exit()`]
  - [`zx_vmar_unmap()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_futex_wake_handle_close_thread_exit()`]: futex_wake_handle_close_thread_exit.md
 [`zx_handle_close()`]: handle_close.md

@@ -12,11 +12,11 @@ providing services for the device that the node represents. For example, a USB
 keyboard driver may bind to a node representing a keyboard device.
 
 To identify which drivers can bind to which nodes, each driver has
-bind rules and each node has a set of [binding properties][node-properties].
+bind rules and each node has a set of [node properties][node-properties].
 A driver’s bind rules describe the qualification of a node that the driver can
 serve effectively. When the driver framework attempts to match a driver to
-a node, each unbound node’s binding properties are compared to the driver’s
-bind rules. If a node’s binding properties satisfy the driver’s bind rules,
+a node, each unbound node’s properties are compared to the driver’s
+bind rules. If the node properties satisfy the driver’s bind rules,
 the driver framework allows the driver to bind to the node.
 
 ## Binding sequence
@@ -31,9 +31,9 @@ The following events take place during the initial booting of a Fuchsia system:
 1. (Starting with the root node and its driver) A driver requests that the
    driver manager creates a new child node.
 2. The driver manager asks the driver index to find out which driver
-   best matches this node's binding properties:
+   best matches this node's properties:
     1. The driver index compares each known driver's bind rules against the
-       node's binding properties.
+       node's properties.
     2. The driver index returns the matched driver’s URL to the driver manager.
 3. The driver manager binds the driver to the node:
     1. The driver manager creates (or assigns) a driver host for the driver.
@@ -54,16 +54,16 @@ was written previously for the driver framework version 1 (DFv1).
 
 ## Board driver and USB devices
 
-While drivers are often bound to devices, some drivers are bound to boards
-(such as PCI and ACPI) that may have multiple devices connected to them,
-both statically and dynamically.
+While drivers are often bound to devices, some drivers are bound to
+[boards](/docs/glossary/README.md#board) (such as PCI and ACPI) that may
+have multiple devices connected to them, both statically and dynamically.
 
-Upon the initial binding to a node, a board driver (such as `acpi`) parses
-a binary blob passed from the system (which can be ACPI bytecode or a compiled
-device tree) and informs the driver manager of the static set of devices
-connected on the board. These devices get bound to drivers through the normal
-binding process orchestrated by the driver index.  From this point, these
-drivers (that are bound to the child nodes of the board driver) dynamically
+Upon the initial binding to a node, a [board driver](/docs/glossary/README.md#board-driver)
+(such as `acpi`) parses a binary blob passed from the system (which can be
+ACPI bytecode or a compiled device tree) and informs the driver manager of the
+static set of devices connected on the board. These devices get bound to drivers
+through the normal binding process orchestrated by the driver index.  From this point,
+these drivers (that are bound to the child nodes of the board driver) dynamically
 query the hardware for additional information. From this information, the
 drivers may discover new devices to be added to the topology. This process
 occurs recursively as more devices are discovered and introduced to the
@@ -71,7 +71,7 @@ topology.
 
 <!-- Reference links -->
 
-[components]: /concepts/components/v2/README.md
+[components]: /docs/concepts/components/v2/README.md
 [driver-framework]: driver_framework.md
 [driver-manager]: driver_framework.md#driver_manager
 [driver-host]: driver_framework.md#driver_host
@@ -79,6 +79,6 @@ topology.
 [driver-runtime]: driver_framework.md#driver_runtime
 [fidl-interface]: driver_framework.md#fidl_interface
 [nodes]: drivers_and_nodes.md
-[node-properties]: drivers_and_nodes.md#node_properties
+[node-properties]: drivers_and_nodes.md#node_attributes
 [node-capabilities]: drivers_and_nodes.md#node_capabilities
-[driver-binding-dfv1]: /development/drivers/concepts/device_driver_model/driver-binding.md
+[driver-binding-dfv1]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md

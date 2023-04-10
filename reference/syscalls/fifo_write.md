@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_fifo_write
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write data to a fifo.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_fifo_write(zx_handle_t handle,
                           size_t* actual_count);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_fifo_write()` attempts to write up to *count* elements
 (`count * elem_size` bytes) from *data* to the fifo specified by *handle*.
@@ -38,18 +45,16 @@ a single element: if *count* is 1 and `zx_fifo_write()` returns **ZX_OK**,
 
 It is not legal to write zero elements.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_FIFO** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_fifo_write()` returns **ZX_OK** on success, and returns
 the number of elements written (at least one) via *actual_count*.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -67,13 +72,10 @@ to the element size of the fifo.
 
 **ZX_ERR_SHOULD_WAIT**  The fifo is full.
 
-
-## SEE ALSO
+## See also
 
  - [`zx_fifo_create()`]
  - [`zx_fifo_read()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_fifo_create()`]: fifo_create.md
 [`zx_fifo_read()`]: fifo_read.md

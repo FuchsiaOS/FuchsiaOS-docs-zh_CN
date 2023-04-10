@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_object_get_child
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Given a kernel object with children objects, obtain a handle to the child specified by the provided kernel object id.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_object_get_child(zx_handle_t handle,
                                 zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_object_get_child()` attempts to find a child of the object referred to
 by *handle* which has the kernel object id specified by *koid*.  If such an
@@ -36,18 +43,15 @@ this call.
 If the object is a *Job*, its (immediate) child *Jobs* and the *Processes*
 it contains may be obtained by this call.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must have **ZX_RIGHT_ENUMERATE**.
 
-## RETURN VALUE
+## Return value
 
 On success, **ZX_OK** is returned and a handle to the desired child object is returned via *out*.
 
-
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -64,15 +68,12 @@ In a future build this error will no longer occur.
 
 **ZX_ERR_INVALID_ARGS**  *out* is an invalid pointer.
 
-
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
  - [`zx_object_get_info()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_duplicate()`]: handle_duplicate.md

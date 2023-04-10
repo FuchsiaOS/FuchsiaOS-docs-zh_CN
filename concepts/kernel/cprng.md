@@ -8,14 +8,14 @@ and entropy sources.
 
 Zircon's built-in CPRNG provides cryptographically secure pseudorandom data in a
 non-blocking fashion. User space programs can access them through the
-[`zx_cprng_draw()`](/reference/syscalls/cprng_draw.md) syscall.
+[`zx_cprng_draw()`](/docs/reference/syscalls/cprng_draw.md) syscall.
 
 Zircon's CPRNG only trusts entropy sources directly accessible from within the
 kernel because anything outside the kernel such as the drivers, which are
 considered userspace programs, cannot be trusted. For the CPRNG to function
 properly and securely, at least one of these sources is required. However,
 userspace programs may inject additional entropy to CPRNG through the
-[`zx_cprng_add_entropy()`](/reference/syscalls/cprng_add_entropy.md)
+[`zx_cprng_add_entropy()`](/docs/reference/syscalls/cprng_add_entropy.md)
 syscall.
 
 
@@ -73,19 +73,19 @@ There are several entropy sources Zircon's CPRNG can utilize for seeding and
 reseeding:
 
 * Entropy from kernel cmdline option `kernel.entropy-mixin`, documented in
-[kernel\_cmdline.md](/reference/kernel/kernel_cmdline.md).
+[kernel\_cmdline.md](/docs/reference/kernel/kernel_cmdline.md).
 
 * Entropy from hardware RNG such as the `RDSEED` instruction on x86 devices and
 other hardware specific RNGs.
 
-* [Jitter Entropy](/concepts/kernel/jitterentropy/README.md)
+* [Jitter Entropy](/docs/concepts/kernel/jitterentropy/README.md)
 
 The kernel cmdline is only used at initial seeding because it is a constant
 passed in at boot for one-time use only. The entropy from hardware and jitter
 entropy can be used for both initial seeding and reseeding. To ensure the CPRNG
 is sufficiently (re)seeded from the selected entropy sources, you can use the
 kernel cmdline `kernel.cprng-(re)seed-require.*` options. For more information,
-see [kernel_cmdline.md](/reference/kernel/kernel_cmdline.md).
+see [kernel_cmdline.md](/docs/reference/kernel/kernel_cmdline.md).
 
 There may be other available entropy sources such as a trusted platform module
 (TPM), but we do not currently have a strong framework in place for userspace

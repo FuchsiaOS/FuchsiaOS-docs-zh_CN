@@ -1,7 +1,7 @@
 # Testing Rust code
 
 This document describes best practices for writing tests for Rust code.
-Please also refer to the [components testing guide][component_tests] for
+Please also refer to the [components testing guide][component-tests] for
 instructions on defining test packages and components and running them.
 
 This document is targeted towards developers working inside of `fuchsia.git`,
@@ -126,9 +126,10 @@ For information on packaging and running tests, see
 
 The following in-tree third-party crates can help you write tests:
 
-* [`matches`]: provides the macro `assert_matches!`, making pattern assertions ergonomic.
-* [`pretty_assertions`]: provides an alternative `assert_eq!` macro that displays a colored diff
-  when the assertion fails.
+* [`assert_matches`]: provides the macro `assert_matches!`, making pattern
+  assertions ergonomic.
+* [`pretty_assertions`]: provides an alternative `assert_eq!` macro that
+  displays a colored diff when the assertion fails.
 
 These can be included in your `BUILD.gn` under `test_deps`.
 
@@ -136,7 +137,7 @@ These can be included in your `BUILD.gn` under `test_deps`.
 rustc_binary("bin") {
   name = "my_test"
   with_unit_tests = true
-  edition = "2018"
+  edition = "2021"
 
   test_deps = [
     "//third_party/rust_crates:matches",
@@ -144,9 +145,10 @@ rustc_binary("bin") {
   ]
 }
 ```
-[build-tests]:/development/components/build.md#test-packages
-[component-tests]:/development/testing/components/test_component.md
+
+[build-tests]:/docs/development/components/build.md#test-packages
+[component-tests]:/docs/development/testing/components/test_component.md
 [example-src]: /examples/hello_world/rust
-[glossary.component-manifest]: /glossary/README.md#component-manifest
-[`matches`]: https://fuchsia-docs.firebaseapp.com/rust/matches/index.html
+[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
+[`assert_matches`]: https://fuchsia-docs.firebaseapp.com/rust/assert_matches/index.html
 [`pretty_assertions`]: https://fuchsia-docs.firebaseapp.com/rust/pretty_assertions/index.html

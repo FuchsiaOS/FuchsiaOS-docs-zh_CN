@@ -2,18 +2,18 @@
 
 ## FIDL
 
-The [Fuchsia Interface Definition Language (FIDL)](/glossary/README.md#fidl) is a
+The [Fuchsia Interface Definition Language (FIDL)](/docs/glossary/README.md#fidl) is a
 language for defining protocols that are typically used over
-[channels](/glossary/README.md#channel).
+[channels](/docs/glossary/README.md#channel).
 
 The FIDL team is actively exploring the following projects:
 
 ### Unifying FIDL C++ bindings {#unifying-fidl-cpp-bindings}
 
 Currently, there are two FIDL binding implementations,
-[high-level C++ bindings (HLCPP)](/reference/fidl/bindings/hlcpp-bindings.md)
+[high-level C++ bindings (HLCPP)](/docs/reference/fidl/bindings/hlcpp-bindings.md)
 and
-[low-level C++ bindings (LLCPP)](/reference/fidl/bindings/llcpp-bindings.md).
+[low-level C++ bindings (LLCPP)](/docs/reference/fidl/bindings/cpp-bindings.md).
 The FIDL team is exploring a solution that augments the LLCPP API surface to
 allow the use of high-level domain objects wherever low-level domain objects are
 currently used.
@@ -33,20 +33,20 @@ developers understand when changes to a FIDL definition break downstream code.
 
 The Connectivity team is actively exploring how to migrate existing Fuchsia
 drivers and clients from
-[fuchsia.hardware.ethernet](/sdk/fidl/fuchsia.hardware.ethernet/) to
-[fuchsia.hardware.network](/sdk/fidl/fuchsia.hardware.network/) in order to
-improve network performance.
+[`fuchsia.hardware.ethernet`](/sdk/banjo/fuchsia.hardware.ethernet) to
+[fuchsia.hardware.network](/sdk/fidl/fuchsia.hardware.network.driver) in order
+to improve network performance.
 
 ## Components v2
 
-[Components v2](/glossary/README.md#components-v2) is Fuchsia's component
-architecture that replaces [Components v1](/glossary/README.md#components-v1).
+[Components v2](/docs/glossary/README.md#components-v2) is Fuchsia's component
+architecture that replaces Components v1.
 
 The following projects are currently underway:
 
 ### Continuing migration to Components v2
 
-The goal of the [Component Framework](/glossary/README.md#component-framework) is
+The goal of the [Component Framework](/docs/glossary/README.md#component-framework) is
 to define Fuchsia's units of software execution as components, which are
 singular abstractions throughout the Fuchsia system.
 
@@ -57,11 +57,10 @@ following areas:
     the package cache and package resolver.
 -   The Netstack2 components, including migration of Netemul and associated
     tests to Test Runner Framework.
--   A subset of components under `[sysmgr](/glossary/README.md#sysmgr)` that are
-    straightforward to migrate.
+-   A subset of components under `sysmgr` that are straightforward to migrate.
 
 For more information, see
-[Components v2 migration](/contribute/open_projects/components/migration.md).
+[Components v2 migration](/docs/contribute/open_projects/components/migration.md).
 
 ### Implementing drivers as components
 
@@ -77,8 +76,8 @@ teams:
 ### Implementing storage enhancements
 
 Teams are evaluating potential improvements that could be made to
-[MinFS](/concepts/filesystems/minfs.md) and
-[VFS](/concepts/filesystems/life_of_an_open.md#vfs_layer), including generating
+[MinFS](/docs/concepts/filesystems/minfs.md) and
+[VFS](/docs/concepts/filesystems/life_of_an_open.md#vfs_layer), including generating
 a system for benchmarking and implementing paging within the VFS layer.
 
 ### Implementing accessibility and input improvements

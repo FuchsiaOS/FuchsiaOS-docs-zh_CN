@@ -158,15 +158,19 @@ is no actual benefit in providing both variants as a vdsocall.
 
 ## Prior art and references
 
-Unix derivatives report page size via `sysconf(_SC_PAGE_SIZE)`.
-[`sysconf()`]: https://man7.org/linux/man-pages/man3/sysconf.3.html
+Unix derivatives report page size via [`sysconf(_SC_PAGE_SIZE)`].
+
+[`sysconf(_SC_PAGE_SIZE)`]: https://man7.org/linux/man-pages/man3/sysconf.3.html
+
 A `PAGE_SIZE` compile time constant is provided as a constant inside kernel code
 and by some distributions as part of `<sys/user.h>`, but it is not standard or
 portable.
 
-Windows reports page size through the `GetSystemInfo()` syscall.
+Windows reports page size through the [`GetSystemInfo()`] syscall.
+
 [`GetSystemInfo()`]: https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getsysteminfo?redirectedfrom=MSDN
 
-MacOS reports page size via [`sysctl()`] call or the `vm_page_size` variable.
+MacOS reports page size via [`sysctl()`] call or the [`vm_page_size`] variable.
+
 [`sysctl()`]: https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/sysctl.3.html
-[`vm_page_size reference`]: https://developer.apple.com/documentation/apple_silicon/addressing_architectural_differences_in_your_macos_code
+[`vm_page_size`]: https://developer.apple.com/documentation/apple_silicon/addressing_architectural_differences_in_your_macos_code

@@ -7,4 +7,4 @@
 # team as reviewer.
 toc:
 - title: "Adding support for new boards"
-  path: /development/boards/bringup.md
+  path: /docs/development/boards/bringup.md

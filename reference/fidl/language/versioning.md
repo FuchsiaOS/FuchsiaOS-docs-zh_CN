@@ -1,7 +1,8 @@
 # FIDL versioning
 
-This document describes how to use FIDL's API versioning features. For a more
-technical specification, see [RFC-0083: FIDL versioning][rfc-0083].
+This document describes FIDL's API versioning features. For a more technical
+specification, see [RFC-0083: FIDL versioning][rfc-0083]. For guidance on how to
+evolve Fuchsia APIs, see [Fuchsia API evolution guidelines][api-evolution].
 
 ## Motivation
 
@@ -41,8 +42,9 @@ convention, libraries are named starting with the platform name. For example,
 the libraries `fuchsia.mem` and `fuchsia.web` belong to the `fuchsia` platform.
 
 Each platform has a linear **version** history. A version is an integer from 1
-to 2^63-1 (inclusive), or the special version `HEAD`. By convention, the `HEAD`
-version is used for the latest unstable changes.
+to 2^63-1 (inclusive), or one of the special versions `HEAD` and `LEGACY`. The
+`HEAD` version is used for the latest unstable changes. The `LEGACY` version is
+like `HEAD`, but it also includes [legacy elements](#legacy).
 
 All FIDL libraries are versioned. There is no need to support "unversioned
 libraries" because they would behave identically to libraries added at `HEAD`.
@@ -74,19 +76,20 @@ version chosen for `B`.
 The `@available` attribute is allowed on any [FIDL element][element]. It takes
 the following arguments:
 
-Argument     | Type     | Note
------------- | -------- | -------------------------
-`platform`   | `string` | Only allowed on `library`
-`added`      | `uint64` | Integer or `HEAD`
-`deprecated` | `uint64` | Integer or `HEAD`
-`removed`    | `uint64` | Integer or `HEAD`
-`note`       | `string` | Goes with `deprecated`
+Argument     | Type      | Note
+------------ | --------- | -------------------------
+`platform`   | `string`  | Only allowed on `library`
+`added`      | `uint64`  | Integer or `HEAD`
+`deprecated` | `uint64`  | Integer or `HEAD`
+`removed`    | `uint64`  | Integer or `HEAD`
+`note`       | `string`  | Goes with `deprecated`
+`legacy`     | `boolean` | Goes with `removed`
 
 All arguments are optional, but at least one must be provided. Argument values
 must be literals, not references to `const` declarations. The `added`,
-`deprecated`, and `removed` arguments [inherit](#inheritance) from the parent
-element by default, and they must respect `added <= deprecated < removed`. For
-example:
+`deprecated`, `removed`, and `legacy` arguments [inherit](#inheritance) from the
+parent element by default. They must respect `added <= deprecated < removed`.
+For example:
 
 ```fidl
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/versioning.test.fidl" region_tag="arguments" %}
@@ -135,6 +138,23 @@ As of May 2022 deprecation has no impact in bindings. However, the FIDL team
 [plans][deprecation-bug] to make it emit deprecation annotations in target
 languages. For instance, the example above could produce `#[deprecated = "use
 Replacement"]` in the Rust bindings.
+
+## Legacy {#legacy}
+
+When removing an element, you can use `legacy=true` to keep it in the `LEGACY`
+version. This lets you preserve ABI for clients targeting API levels before its
+removal, since the Fuchsia system image is built against `LEGACY` FIDL bindings.
+For example:
+
+```fidl
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/versioning.test.fidl" region_tag="legacy" %}
+```
+
+Here, `LegacyMethod` does not appear in bindings at version 6 or higher nor at
+`HEAD`, but it gets added back in the `LEGACY` version.
+
+For more information on legacy support, see [RFC-0083: FIDL
+versioning][rfc-0083-legacy].
 
 ## References
 
@@ -198,7 +218,9 @@ We can decompose it by swapping the protocol at every version:
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/versioning_decomposed.test.fidl" region_tag="decomposed" %}
 ```
 
-[rfc-0083]: /contribute/governance/rfcs/0083_fidl_versioning.md
-[element]: /contribute/governance/rfcs/0083_fidl_versioning.md#terminology
-[overview]: /development/languages/fidl/guides/style.md#library-overview
+[rfc-0083]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md
+[rfc-0083-legacy]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md#legacy
+[element]: /docs/contribute/governance/rfcs/0083_fidl_versioning.md#terminology
+[overview]: /docs/development/languages/fidl/guides/style.md#library-overview
 [deprecation-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=7692
+[api-evolution]: /docs/development/api/evolution.md

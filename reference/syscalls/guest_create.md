@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_guest_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a guest.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,13 +26,14 @@ zx_status_t zx_guest_create(zx_handle_t resource,
                             zx_handle_t* vmar_handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_guest_create()` creates a guest, which is a virtual machine that can be run
 within the hypervisor, with *vmar_handle* used to represent the physical address
 space of the guest.
 
-To create a guest, a *resource* of **ZX_RSRC_KIND_HYPERVISOR** must be supplied.
+To create a guest, a *resource* of **ZX_RSRC_KIND_SYSTEM** with
+**ZX_RSRC_SYSTEM_HYPERVISOR_BASE** must be supplied.
 
 In order to begin execution within the guest, a VMO should be mapped into
 *vmar_handle* using [`zx_vmar_map()`], and a VCPU must be created using
@@ -42,26 +50,26 @@ The following rights will be set on the handle *guest_handle* by default:
 
 **ZX_RIGHT_WRITE** &mdash; A trap to be may be set using [`zx_guest_set_trap()`].
 
-**ZX_RIGHT_MANAGE_PROCESS** &mdash; A VCPU may be created using [`zx_vcpu_create()`].
+**ZX_RIGHT_MANAGE_THREAD** &mdash; A VCPU may be created using [`zx_vcpu_create()`].
 
 See [`zx_vmo_create()`] for the set of rights applied to *vmar_handle*.
 
-## RIGHTS
+## Rights
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+*resource* must have resource kind **ZX_RSRC_KIND_SYSTEM** with base
+**ZX_RSRC_SYSTEM_HYPERVISOR_BASE**.
 
-*resource* must have resource kind **ZX_RSRC_KIND_HYPERVISOR**.
-
-## RETURN VALUE
+## Return value
 
 `zx_guest_create()` returns **ZX_OK** on success. On failure, an error value is
 returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_NOT_SUPPORTED** The hypervisor is not supported by the device.
 
-**ZX_ERR_ACCESS_DENIED** *resource* is not of **ZX_RSRC_KIND_HYPERVISOR**.
+**ZX_ERR_ACCESS_DENIED** *resource* is not of kind **ZX_RSRC_KIND_SYSTEM** with
+base **ZX_RSRC_SYSTEM_HYPERVISOR_BASE**.
 
 **ZX_ERR_INVALID_ARGS** *guest_handle* or *vmar_handle* is an invalid pointer,
 or *options* is nonzero.
@@ -72,7 +80,7 @@ In a future build this error will no longer occur.
 
 **ZX_ERR_WRONG_TYPE** *resource* is not a handle to a resource.
 
-## SEE ALSO
+## See also
 
  - [`zx_guest_set_trap()`]
  - [`zx_vcpu_create()`]
@@ -83,8 +91,6 @@ In a future build this error will no longer occur.
  - [`zx_vcpu_write_state()`]
  - [`zx_vmar_map()`]
  - [`zx_vmo_create()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_guest_set_trap()`]: guest_set_trap.md
 [`zx_vcpu_create()`]: vcpu_create.md

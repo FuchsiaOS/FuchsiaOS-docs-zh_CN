@@ -167,7 +167,7 @@ Note: You can explore the full source for the realm component at
    instances and routes the capabilities:
 
     ```posix-terminal
-    ffx component run fuchsia-pkg://fuchsia.com/echo-hlcpp-client-sync#meta/echo_realm.cm
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-hlcpp-client-sync#meta/echo_realm.cm
     ```
 
 1. Start the `echo_client` instance:
@@ -193,14 +193,14 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /glossary/README.md#realm
-[client-tut-main]: /development/languages/fidl/tutorials/hlcpp/client.md#proxy
-[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
-[server-tut-component]: /development/languages/fidl/tutorials/hlcpp/basics/server.md#component
-[server-tut-impl]: /development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
-[server-tut-deps]: /development/languages/fidl/tutorials/hlcpp/basics/server.md#dependencies
-[server-tut-handler]: /development/languages/fidl/tutorials/hlcpp/basics/server.md#handler
-[async-client]: /development/languages/fidl/tutorials/hlcpp/basics/client.md
-[proxy]: /reference/fidl/bindings/hlcpp-bindings.md#protocols-client
-[overview]: /development/languages/fidl/tutorials/overview.md
-[environment]: /concepts/components/v2/environments.md
+[glossary.realm]: /docs/glossary/README.md#realm
+[client-tut-main]: /docs/development/languages/fidl/tutorials/hlcpp/client.md#proxy
+[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
+[server-tut-component]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#component
+[server-tut-impl]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
+[server-tut-deps]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#dependencies
+[server-tut-handler]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#handler
+[async-client]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
+[proxy]: /docs/reference/fidl/bindings/hlcpp-bindings.md#protocols-client
+[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[environment]: /docs/concepts/components/v2/environments.md

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_bti_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a new bus transaction initiator.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,9 +26,9 @@ zx_status_t zx_bti_create(zx_handle_t iommu,
                           zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
-`zx_bti_create()` creates a new [bus transaction initiator](/reference/kernel_objects/bus_transaction_initiator.md)
+`zx_bti_create()` creates a new [bus transaction initiator](/docs/reference/kernel_objects/bus_transaction_initiator.md)
 given a handle to an IOMMU and a hardware transaction identifier for a device
 downstream of that IOMMU.
 
@@ -31,19 +38,17 @@ Upon success a handle for the new BTI is returned.  This handle will have rights
 **ZX_RIGHT_READ**, **ZX_RIGHT_WRITE**, **ZX_RIGHT_MAP**, **ZX_RIGHT_INSPECT**,
 **ZX_RIGHT_DUPLICATE**, and **ZX_RIGHT_TRANSFER**.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *iommu* must be of type **ZX_OBJ_TYPE_IOMMU** and have **ZX_RIGHT_NONE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_bti_create()` returns **ZX_OK** and a handle to the new BTI
 (via *out*) on success.  In the event of failure, a negative error value
 is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *iommu* is not a valid handle.
 
@@ -58,13 +63,11 @@ is returned.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_bti_pin()`]
  - [`zx_bti_release_quarantine()`]
  - [`zx_pmt_unpin()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_bti_pin()`]: bti_pin.md
 [`zx_bti_release_quarantine()`]: bti_release_quarantine.md

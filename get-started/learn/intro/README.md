@@ -11,6 +11,6 @@
 ## What you'll need
 
 *   A development machine running Linux or macOS
-*   [Fuchsia emulator](/get-started/set_up_femu.md) (FEMU)
-*   A successful [Fuchsia build](/get-started/get_fuchsia_source.md)
+*   [Fuchsia emulator](/docs/get-started/set_up_femu.md) (FEMU)
+*   A successful [Fuchsia build](/docs/get-started/get_fuchsia_source.md)
     configured with `fx set workstation_eng.qemu-x64`

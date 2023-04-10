@@ -40,7 +40,7 @@ Create a new component project at `examples/fidl/rust/client_sync`:
    # Declare an executable for the client.
    rustc_binary("bin") {
      name = "fidl_echo_rust_client_sync"
-     edition = "2018"
+     edition = "2021"
 
      sources = [ "src/main.rs" ]
    }
@@ -130,7 +130,7 @@ In the background, the request to the component framework gets routed to the ser
 * `IncomingService::Echo` is called with a `RequestStream`
   (typed-channel) of the `Echo` FIDL protocol that is registered with `add_fidl_service`. The
   incoming request channel is stored in `IncomingService::Echo` and is added to the stream of
-  incoming requests. `for_each_concurrent` consumes the `ServiceFs` into a [`Stream`] of type
+  incoming requests. `for_each_concurrent` consumes the `ServiceFs` into a `Stream` of type
   `IncomingService`. A handler is run for each entry in the stream, which matches over the incoming
   requests and dispatches to the `run_echo_server`. The resulting futures from each call to
   `run_echo_server` are run concurrently when the `ServiceFs` stream is `await`ed.
@@ -190,7 +190,7 @@ Note: You can explore the full source for the realm component at
    instances and routes the capabilities:
 
     ```posix-terminal
-    ffx component run fuchsia-pkg://fuchsia.com/echo-rust-client-sync#meta/echo_realm.cm
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-rust-client-sync#meta/echo_realm.cm
     ```
 
 1. Start the `echo_client` instance:
@@ -221,9 +221,11 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /glossary/README.md#realm
-[server-tut]: /development/languages/fidl/tutorials/rust/basics/server.md
-[async-client]: /development/languages/fidl/tutorials/rust/basics/client.md
-[overview]: /development/languages/fidl/tutorials/overview.md
-[environment]: /concepts/components/v2/environments.md
-[request-pipelining]: /development/languages/fidl/tutorials/rust/topics/request-pipelining.md
+[bindings-ref]: /docs/reference/fidl/bindings/rust-bindings.md
+[glossary.realm]: /docs/glossary/README.md#realm
+[server-tut]: /docs/development/languages/fidl/tutorials/rust/basics/server.md
+[async-client]: /docs/development/languages/fidl/tutorials/rust/basics/client.md
+[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[environment]: /docs/concepts/components/v2/environments.md
+[request-pipelining]: /docs/development/languages/fidl/tutorials/rust/topics/request-pipelining.md
+[rustdoc]: https://fuchsia-docs.firebaseapp.com/rust/fuchsia_component/index.html

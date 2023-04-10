@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_debuglog_read
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Read a single log record from the kernel debuglog.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_debuglog_read(zx_handle_t handle,
                              size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_debuglog_read()` attempts to read a single record from the kernel debug
 log into the given *buffer* of size *buffer_size* bytes.
@@ -73,19 +80,17 @@ If *buffer_size* is smaller than the size of the log record, the first
 discarded. Callers should ensure that their input buffer is at least
 **ZX_LOG_RECORD_MAX** bytes to avoid log records from being truncated.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_LOG** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_debuglog_read()` returns a non-negative value on success, indicating
 the number of bytes written into *buffer*. On failure, a negative error value
 is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have **ZX_RIGHT_READ**.
 
@@ -98,14 +103,12 @@ was an invalid pointer.
 
 **ZX_ERR_WRONG_TYPE**  *handle* is not a debuglog handle.
 
-## SEE ALSO
+## See also
 
  - [`fuchsia.boot.ReadOnlyLog`](https://fuchsia.dev/reference/fidl/fuchsia.boot#ReadOnlyLog)
 
  - [`zx_debuglog_create()`]
  - [`zx_debuglog_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_debuglog_create()`]: debuglog_create.md
 [`zx_debuglog_write()`]: debuglog_write.md

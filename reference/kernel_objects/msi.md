@@ -24,6 +24,6 @@ in downstream device drivers.
  - [`zx_msi_allocate()`] - allocate a range of message-signaled interrupts
  - [`zx_msi_create()`] - create a message-signaled interrupt object
 
-[`interrupt`]: /reference/kernel_objects/interrupts.md
-[`zx_msi_allocate()`]: /reference/syscalls/msi_allocate.md
-[`zx_msi_create()`]: /reference/syscalls/msi_create.md
+[`interrupt`]: /docs/reference/kernel_objects/interrupts.md
+[`zx_msi_allocate()`]: /docs/reference/syscalls/msi_allocate.md
+[`zx_msi_create()`]: /docs/reference/syscalls/msi_create.md

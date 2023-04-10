@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_bti_pin
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Pin pages and grant devices access to them.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -23,7 +30,7 @@ zx_status_t zx_bti_pin(zx_handle_t handle,
                        zx_handle_t* pmt);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_bti_pin()` pins pages of a VMO (i.e. prevents them from being decommitted
 with [`zx_vmo_op_range()`]) and grants the hardware
@@ -71,7 +78,7 @@ destroyed until the PMT is unpinned.
 Resizable VMOs can be pinned. If a call to [`zx_vmo_set_size()`] would discard
 pinned pages, that call will fail.
 
-## OPTIONS
+## Options
 
 - **ZX_BTI_PERM_READ**, **ZX_BTI_PERM_WRITE**, and **ZX_BTI_PERM_EXECUTE** define
   the access types that the hardware bus transaction initiator will be allowed
@@ -79,9 +86,7 @@ pinned pages, that call will fail.
 - **ZX_BTI_COMPRESS** causes the returned address list to contain one entry per
   block of *minimum-contiguity* bytes, rather than one per *PAGE_SIZE*.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_BTI** and have **ZX_RIGHT_MAP**.
 
@@ -93,7 +98,7 @@ If *options* & **ZX_BTI_PERM_WRITE**, *vmo* must be of type **ZX_OBJ_TYPE_VMO** 
 
 If *options* & **ZX_BTI_PERM_EXECUTE**, *vmo* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 On success, `zx_bti_pin()` returns **ZX_OK**.  The device-physical addresses of the
 requested VMO pages will be written in *addrs*.  A handle to the created Pinned
@@ -102,7 +107,7 @@ Memory Token is returned via *pmt*.  When the PMT is no longer needed,
 
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* or *vmo* is not a valid handle.
 
@@ -127,13 +132,11 @@ could not be pinned at this time.
 userspace to handle this (unlikely) error. In a future build this error will no
 longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_bti_create()`]
  - [`zx_object_get_info()`]
  - [`zx_pmt_unpin()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_bti_create()`]: bti_create.md
 [`zx_object_get_info()`]: object_get_info.md

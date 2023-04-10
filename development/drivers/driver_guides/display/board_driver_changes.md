@@ -8,8 +8,8 @@ this page may only be specific to the Fuchsia source checkout
 Most system on chip (SoC) board rely on explicitly enumerated hardware
 resources, rather than discovery mechanisms like ACPI that are common on
 workstations, servers, or laptops. To add support for an SoC's display
-controller, you will need to modify the board driver to expose hardware
-resources that your display driver can use. See
+controller, you will need to modify the [board driver](/docs/glossary/README.md#board-driver)
+to expose hardware resources that your display driver can use. See
 [amlogic-display.cc][amlogic-display] for an example. Most devices need some
 combination of the following:
 
@@ -35,7 +35,7 @@ bind to this composite device and load the appropriate display driver.
 [This change][vim3-cl] is a complete example of board driver modifications for the VIM3.
 
 <!-- xrefs -->
-[bti]: /reference/kernel_objects/bus_transaction_initiator.md
+[bti]: /docs/reference/kernel_objects/bus_transaction_initiator.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
 [cda]: https://fuchsia.googlesource.com/fuchsia/+/7a5659579e2340a50cbd5063ee7925b46d4fcf6f/src/devices/board/drivers/astro/astro-display.cc#125
 [amlogic-display]: /src/graphics/display/drivers/amlogic-display/amlogic-display.cc

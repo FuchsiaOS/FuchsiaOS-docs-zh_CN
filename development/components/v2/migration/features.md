@@ -1,7 +1,7 @@
 # Component sandbox features
 
 This section provides guidance on migrating additional CMX
-[`sandbox`][cmx-services] features.
+`sandbox` features.
 
 Note: If there's a feature in your CMX file that's not in this list,
 please reach out to [component-framework-dev][cf-dev-list].
@@ -77,7 +77,7 @@ Note: If the appropriate storage capability is not currently provided by your
 component's parent realm, reach out to [component-framework-dev][cf-dev-list]
 for assistance.
 
-### Update component storage index
+### Update component ID index
 
 Components that use storage use a [component ID index][component-id-index] to
 preserve access to persistent storage contents across the migration, such as
@@ -430,11 +430,11 @@ the appropriate device path to your component from its parent realm.
     offer: [
         ...
         {{ '<strong>' }}{
-            directory: "dev",
+            directory: "dev-dev",
             from: "parent",
             as: "{{ '<var label="device">dev-input-report</var>' }}",
             to: [ "#my_component" ],
-            subdir: "{{ '<var label="device subpath">class/input-report</var>' }}",
+            subdir: "{{ '<var label="device subpath">input-report</var>' }}",
         },{{ '</strong>' }}
     ],
 }
@@ -460,15 +460,15 @@ require directory access.
 Test Runner Framework only allows the following device directories to be used by
 non-hermetic tests:
 
-Capability                   | Description
----------------------------- | -----------------------------
-`dev-input`                  | Input
-`dev-input-report`           | Input method events
-`dev-display-controller`     | Graphical display controller
-`dev-goldfish-address-space` | Goldfish address space device
-`dev-goldfish-control`       | Goldfish control device
-`dev-goldfish-pipe`          | Goldfish pipe device
-`dev-gpu`                    | GPU device
+Capability                     | Description
+------------------------------ | -----------------------------
+`dev-input`                    | Input
+`dev-input-report`             | Input method events
+`dev-display-controller`       | Graphical display controller
+`dev-goldfish-address-space`   | Goldfish address space device
+`dev-goldfish-control`         | Goldfish control device
+`dev-goldfish-pipe`            | Goldfish pipe device
+`dev-gpu`                      | GPU device
 `dev-gpu-performance-counters` | GPU performance counters device
 
 Following the example in [Test uses injected services][migrate-tests-inject],
@@ -565,23 +565,22 @@ specific features your components may support:
 
 [build-info-fidl]: https://fuchsia.dev/reference/fidl/fuchsia.buildinfo#Provider
 [cf-dev-list]: https://groups.google.com/a/fuchsia.dev/g/component-framework-dev
-[cmx-services]: /concepts/components/v1/component_manifests.md#sandbox
 [collection-persistent-storage]: https://fuchsia.dev/reference/fidl/fuchsia.component.decl#Collection.persistent_storage
-[component-id-index]: /development/components/component_id_index.md
-[config-data]: /development/components/data.md#product-specific_configuration_with_config_data
-[device-model]: /development/drivers/concepts/device_driver_model/device-model.md
-[directory-capabilities]: /concepts/components/v2/capabilities/directory.md
-[dynamic-children]: /concepts/components/v2/realms.md#dynamic-children
-[event-capabilities]: /concepts/components/v2/capabilities/event.md
-[example-component-id-index]: /src/sys/appmgr/config/core_component_id_index.json5
+[component-id-index]: /docs/development/components/component_id_index.md
+[config-data]: /docs/development/components/configuration/config_data.md
+[device-model]: /docs/development/drivers/concepts/device_driver_model/device-model.md
+[directory-capabilities]: /docs/concepts/components/v2/capabilities/directory.md
+[dynamic-children]: /docs/concepts/components/v2/realms.md#dynamic-children
+[event-capabilities]: /docs/concepts/components/v2/capabilities/event.md
+[example-component-id-index]: /src/sys/core/core_component_id_index.json5
 [fdio_fd_null_create]: /sdk/lib/fdio/include/lib/fdio/fdio.h#48
-[manifests-shard]: /development/components/build.md#component-manifest-shards
-[migrate-components]: /development/components/v2/migration/components.md
-[migrate-components-add]: /development/components/v2/migration/components.md#add-component-to-topology
-[migrate-components-services]: /development/components/v2/migration/components.md#required-services
-[migrate-tests]: /development/components/v2/migration/tests.md
-[migrate-tests-inject]: /development/components/v2/migration/tests.md#injected-services
-[resource-data]: /development/components/data.md#hermetic_data_files_with_resource
+[manifests-shard]: /docs/development/components/build.md#component-manifest-shards
+[migrate-components]: /docs/development/components/v2/migration/components.md
+[migrate-components-add]: /docs/development/components/v2/migration/components.md#add-component-to-topology
+[migrate-components-services]: /docs/development/components/v2/migration/components.md#required-services
+[migrate-tests]: /docs/development/components/v2/migration/tests.md
+[migrate-tests-inject]: /docs/development/components/v2/migration/tests.md#injected-services
+[resource-data]: /docs/development/components/data.md#hermetic_data_files_with_resource
 [scoped-dev-zero-fuchsia]: https://source.chromium.org/chromium/chromium/src/+/main:base/test/scoped_dev_zero_fuchsia.cc
-[storage-capabilities]: /concepts/components/v2/capabilities/storage.md
-[vulkan]: /development/graphics/magma/concepts/vulkan.md#components_v2
+[storage-capabilities]: /docs/concepts/components/v2/capabilities/storage.md
+[vulkan]: /docs/development/graphics/magma/concepts/vulkan.md#components_v2

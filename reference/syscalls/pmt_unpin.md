@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_pmt_unpin
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Unpin pages and revoke device access to them.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Unpin pages and revoke device access to them.
 zx_status_t zx_pmt_unpin(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_pmt_unpin()` unpins pages that were previously pinned by [`zx_bti_pin()`],
 and revokes the access that was granted by the pin call.
@@ -24,30 +31,26 @@ and revokes the access that was granted by the pin call.
 Always consumes *handle*. It is invalid to use *handle* afterwards, including
 to call [`zx_handle_close()`] on it.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 On success, `zx_pmt_unpin()` returns **ZX_OK**.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
 **ZX_ERR_WRONG_TYPE**  *handle* is not a PMT handle.
 
-## SEE ALSO
+## See also
 
  - [`zx_bti_create()`]
  - [`zx_bti_pin()`]
  - [`zx_bti_release_quarantine()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_bti_create()`]: bti_create.md
 [`zx_bti_pin()`]: bti_pin.md

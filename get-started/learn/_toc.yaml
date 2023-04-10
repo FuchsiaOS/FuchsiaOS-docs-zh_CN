@@ -8,16 +8,16 @@
 toc:
 - heading: "Platform fundamentals"
 - title: "Overview"
-  path: /get-started/learn/README.md
+  path: /docs/get-started/learn/README.md
 - title: "Introduction to Fuchsia"
   section:
-  - include: /get-started/learn/intro/_toc.yaml
+  - include: /docs/get-started/learn/intro/_toc.yaml
 - title: "Building Fuchsia"
   section:
-  - include: /get-started/learn/build/_toc.yaml
+  - include: /docs/get-started/learn/build/_toc.yaml
 - title: "Fuchsia components"
   section:
-  - include: /get-started/learn/components/_toc.yaml
+  - include: /docs/get-started/learn/components/_toc.yaml
 - title: "Fuchsia interfaces"
   section:
-  - include: /get-started/learn/fidl/_toc.yaml
+  - include: /docs/get-started/learn/fidl/_toc.yaml

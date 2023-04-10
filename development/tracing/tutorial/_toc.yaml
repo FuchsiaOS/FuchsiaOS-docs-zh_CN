@@ -7,14 +7,14 @@
 # team as reviewer.
 toc:
 - title: "Registering a trace provider"
-  path: /development/tracing/tutorial/registering-a-trace-provider.md
+  path: /docs/development/tracing/tutorial/registering-a-trace-provider.md
   step_group: tracing_tutorial
 - title: "Adding tracing in your code"
-  path: /development/tracing/tutorial/adding-tracing-in-code.md
+  path: /docs/development/tracing/tutorial/adding-tracing-in-code.md
   step_group: tracing_tutorial
 - title: "Recording a Fuchsia trace"
-  path: /development/tracing/tutorial/recording-a-fuchsia-trace.md
+  path: /docs/development/tracing/tutorial/recording-a-fuchsia-trace.md
   step_group: tracing_tutorial
 - title: "Converting and visualizing a trace"
-  path: /development/tracing/tutorial/converting-visualizing-a-trace.md
+  path: /docs/development/tracing/tutorial/converting-visualizing-a-trace.md
   step_group: tracing_tutorial

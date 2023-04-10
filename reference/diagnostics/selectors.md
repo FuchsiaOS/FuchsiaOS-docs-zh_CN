@@ -120,6 +120,17 @@ and which names end in `_runner`. These include the following monikers:
 - `core/some_comp`
 - `core/other_comp`
 
+Component selectors may end in the recursive wildcard `**`, which matches all components
+under the given realm:
+
+```
+core/**
+```
+
+This matches all components on the system running under `core` or any subrealm of `core`.
+
+The component selector `**` alone matches all components on the system.
+
 ## Hierarchy path selector {#hierarchy-path-selector}
 
 ### Syntax {#syntax}
@@ -258,7 +269,7 @@ root/realm1/echo.cmx:a/b/c/d:*
 
 [datatype-fidl]: https://fuchsia.dev/reference/fidl/fuchsia.diagnostics#DataType
 [detect]: /src/diagnostics/config/triage/detect
-[instance_and_collection_names]: /reference/components/moniker.md#identifiers
-[moniker]: /reference/components/moniker.md
+[instance_and_collection_names]: /docs/reference/components/moniker.md#identifiers
+[moniker]: /docs/reference/components/moniker.md
 [topology-example-img]: selectors-example.png
 [triage]: /src/diagnostics/config/triage

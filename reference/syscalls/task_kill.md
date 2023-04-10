@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_task_kill
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Kill the provided task (job, process, or thread).
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Kill the provided task (job, process, or thread).
 zx_status_t zx_task_kill(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 This asynchronously kills the given process or job and its children recursively,
 until the entire task tree rooted at *handle* is dead.
@@ -35,20 +42,18 @@ When a process or job is killed via this syscall, the `return_code` is
 the **ZX_INFO_PROCESS** or **ZX_INFO_JOB** topic.
 
 Processes and Jobs can also be killed by other agents such as the Job policy with
-**ZX_POL_ACTION_KILL** or when the system is running low on memory [OOM](/development/kernel/memory/oom.md).
+**ZX_POL_ACTION_KILL** or when the system is running low on memory [OOM](/docs/development/kernel/memory/oom.md).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must have **ZX_RIGHT_DESTROY**.
 
-## RETURN VALUE
+## Return value
 
 On success, `zx_task_kill()` returns **ZX_OK**. If a process uses
 this syscall to kill itself, this syscall does not return.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -57,12 +62,10 @@ this syscall to kill itself, this syscall does not return.
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have the **ZX_RIGHT_DESTROY**
 right.
 
-## SEE ALSO
+## See also
 
  - [`zx_job_create()`]
  - [`zx_process_create()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_job_create()`]: job_create.md
 [`zx_object_get_info()`]: object_get_info.md

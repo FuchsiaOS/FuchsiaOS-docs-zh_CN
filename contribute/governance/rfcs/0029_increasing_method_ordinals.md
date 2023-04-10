@@ -92,10 +92,10 @@ individual bytes composing doubles.
 #### Hash Calculation
 
 The hash calculation introduced in [RFC-0020: Interface Ordinal
-Hashing](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md) is slightly altered.
+Hashing](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md) is slightly altered.
 It should both produce a 64 bit number, and the string over which the hash is
 calculated is `<library>/<top level declaration>.<member>` (per
-[RFC-0043: Documentation Comment Format](/contribute/governance/rfcs/0043_documentation_comment_format.md)).
+[RFC-0043: Documentation Comment Format](/docs/contribute/governance/rfcs/0043_documentation_comment_format.md)).
 
 The hashed ordinal is derived by a SHA-256 hash of:
 
@@ -212,7 +212,7 @@ motivated use case whose performance could be improved with another scheme.
 ## Testing
 
 Unit testing for ordinal calculation.
-Follows similar pattern to [RFC-0020: Interface Ordinal Hashing](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md).
+Follows similar pattern to [RFC-0020: Interface Ordinal Hashing](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md).
 
 ## Alternative: Identifying Protocol and Method
 
@@ -366,5 +366,5 @@ for size in [31, 39, 47, 52, 63]:
 ```
 
 <!-- xrefs -->
-[channel_call]: /reference/syscalls/channel_call.md
+[channel_call]: /docs/reference/syscalls/channel_call.md
 [birthday]: https://en.wikipedia.org/wiki/Birthday_problem#Generalizations1

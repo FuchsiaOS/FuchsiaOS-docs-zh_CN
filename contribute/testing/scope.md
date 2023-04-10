@@ -161,12 +161,10 @@ such tests is not strictly defined in terms of components or packages, and may
 span up to and including the entire system as built in a given configuration.
 
 System tests are sometimes referred to as Critical User Journey (CUJ) tests or
-End-To-End (E2E) tests. For instance,
-[`screen_is_not_black`][screen-is-not-black] is a CUJ test that tests that
-booting the system does not result in a completely black screen. Some might say
-that such tests are E2E if the scope is even greater than a single Fuchsia
-device, for instance when testing against a remote server or when testing in the
-presence of specific wifi access points or other connected hardware.
+End-To-End (E2E) tests. Some might say that such tests are E2E if the scope is
+even greater than a single Fuchsia device, for instance when testing against a
+remote server or when testing in the presence of specific wifi access points or
+other connected hardware.
 
 In a healthy [testing pyramid](#scope-of-tests), system tests are the narrow
 tip of the pyramid, indicating that there are fewer system tests than there are
@@ -182,11 +180,6 @@ that’s exercised by system tests is undefined,
 [E2E configurations are not supported by sanitizers][sanitizers-supported-configs]
 for similar reasons. For this reason you should write system tests when their
 marginal benefits cannot be gained by unit tests or integration tests.
-
-See also:
-
-- [Run an end-to-end test][run-e2e-test]
-- [Create a new end-to-end test][create-e2e-test]
 
 ## Additional testing {#specialized-testing}
 
@@ -240,10 +233,10 @@ of implementations are compatible.
 
 For example:
 
-- Fuchsia’s [Compatibility Test Suite (CTS)][cts] builds tests that validate
-  Fuchsia’s system interface. CTS tests can run against different versions of
+- The [Compatibility Tests for Fuchsia (CTF)][ctf] are tests that validate
+  Fuchsia’s system interface. CTF tests can run against different versions of
   Fuchsia, to ensure that they remain in compatibility or to detect breaking
-  changes. In the fullness of time, CTS tests will cover the entirety of the
+  changes. In the fullness of time, CTF tests will cover the entirety of the
   surface of the Fuchsia SDK.
 - [FIDL] uses a specific binary format (or [wire format][fidl-wire-format]) to
   encode FIDL messages that are exchanged between components over channels. FIDL
@@ -332,70 +325,67 @@ See also:
 
 - [Fuzzing in Fuchsia][fuzzing]
 
-[best-practices]: /contribute/testing/best-practices.md
-[testing-principles]: /contribute/testing/principles.md
+[best-practices]: /docs/contribute/testing/best-practices.md
+[testing-principles]: /docs/contribute/testing/principles.md
 [audio-effects-example-tests]: /src/media/audio/examples/effects/test/audio_effects_example_tests.cc
-[build-bringup]: /development/build/build_system/bringup.md
-[capabilities-protocol]: /concepts/components/v2/capabilities/protocol.md
-[cf]: /concepts/components/v2/README.md
-[cf-capabilities]: /concepts/components/v2/capabilities/README.md
-[cf-manifests]: /concepts/components/v2/component_manifests.md
-[channel]: /reference/kernel_objects/channel.md
+[build-bringup]: /docs/development/build/build_system/bringup.md
+[capabilities-protocol]: /docs/concepts/components/v2/capabilities/protocol.md
+[cf]: /docs/concepts/components/v2/README.md
+[cf-capabilities]: /docs/concepts/components/v2/capabilities/README.md
+[cf-manifests]: /docs/concepts/components/v2/component_manifests.md
+[channel]: /docs/reference/kernel_objects/channel.md
 [continuous-integration]: https://martinfowler.com/articles/continuousIntegration.html
 [contract-test]: https://martinfowler.com/bliki/ContractTest.html
-[coverage-no-e2e]: /contribute/testing/coverage.md#end-to-end_e2e_tests_exclusion
+[coverage-no-e2e]: /docs/contribute/testing/coverage.md#end-to-end_e2e_tests_exclusion
 [cpuperf]: /src/performance/cpuperf/README.md
-[create-e2e-test]: /development/testing/create_a_new_end_to_end_test.md
-[cts]: /sdk/cts/README.md
+[ctf]: /sdk/ctf/README.md
 [dependency-injection]: https://en.m.wikipedia.org/wiki/Dependency_injection
 [e2e-perf]: /src/tests/end_to_end/perf/README.md
-[fidl]: /concepts/fidl/overview.md
+[fidl]: /docs/concepts/fidl/overview.md
 [fidl-benchmarks]: /src/tests/benchmarks/fidl/benchmark_suite/
 [fidl-compatibility-tests]: /src/tests/fidl/compatibility/README.md
-[fidl-wire-format]: /reference/fidl/language/wire-format
+[fidl-wire-format]: /docs/reference/fidl/language/wire-format
 [fonts-tests-integration]: /src/fonts/tests/integration/README.md
-[fsi]: /concepts/packages/system.md
+[fsi]: /docs/concepts/packages/system.md
 [fuchsia.pkg.fontresolver]: https://fuchsia.dev/reference/fidl/fuchsia.pkg#FontResolver
-[fuzzing]: /development/testing/fuzzing/overview.md
+[fuzzing]: /docs/development/testing/fuzzing/overview.md
 [gidl]: /tools/fidl/gidl/README.md
-[glossary.capability-routing]: /glossary/README.md#capability-routing
-[glossary.realm]: /glossary/README.md#realm
-[glossary.zbi]: /glossary/README.md#zircon-boot-image
-[inspect]: /development/diagnostics/inspect/README.md
-[inspect-codelab]: /development/diagnostics/inspect/codelab/codelab.md
-[inspect-validator]: /reference/diagnostics/inspect/validator/README.md
-[inspect-vmo-format]: /reference/platform-spec/diagnostics/inspect-vmo-format.md
-[inspect-vmo-format-update]: /reference/diagnostics/inspect/updating-vmo-format.md
-[minfs]: /concepts/filesystems/minfs.md
+[glossary.capability-routing]: /docs/glossary/README.md#capability-routing
+[glossary.realm]: /docs/glossary/README.md#realm
+[glossary.zbi]: /docs/glossary/README.md#zircon-boot-image
+[inspect]: /docs/development/diagnostics/inspect/README.md
+[inspect-codelab]: /docs/development/diagnostics/inspect/codelab/codelab.md
+[inspect-validator]: /docs/reference/diagnostics/inspect/validator/README.md
+[inspect-vmo-format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
+[inspect-vmo-format-update]: /docs/reference/diagnostics/inspect/updating-vmo-format.md
+[minfs]: /docs/concepts/filesystems/minfs.md
 [minfs-stress]: /src/storage/stress-tests/minfs/
 [multi-repo-dev]: https://testing.googleblog.com/2015/05/multi-repository-development.html
 [netstack-benchmarks]: /src/connectivity/network/tests/benchmarks/README.md
-[netstack3-roadmap]: /contribute/roadmap/2021/netstack3.md
+[netstack3-roadmap]: /docs/contribute/roadmap/2021/netstack3.md
 [perfcompare]: /src/testing/perfcompare/README.md
 [practical-test-pyramid]: https://martinfowler.com/articles/practical-test-pyramid.html
-[principles]: /concepts/index.md
-[principles-inclusive]: /concepts/principles/inclusive.md
-[principles-pragmatic]: /concepts/principles/pragmatic.md
-[principles-secure]: /concepts/principles/secure.md
-[principles-updatable]: /concepts/principles/updatable.md
+[principles]: /docs/concepts/index.md
+[principles-inclusive]: /docs/concepts/principles/inclusive.md
+[principles-pragmatic]: /docs/concepts/principles/pragmatic.md
+[principles-secure]: /docs/concepts/principles/secure.md
+[principles-updatable]: /docs/concepts/principles/updatable.md
 [reader-fuzzer]: /zircon/system/ulib/inspect/tests/reader_fuzzer.cc
-[realm-builder]: /development/testing/components/realm_builder.md
-[run-e2e-test]: /development/testing/run_an_end_to_end_test.md
-[run-test-component]: /development/run/run-test-component.md
-[rust-stress-test-lib]: /development/testing/rust_stress_test_library.md
-[sanitizers]: /contribute/testing/sanitizers.md
-[sanitizers-supported-configs]: /contribute/testing/sanitizers.md#supported_configurations
-[screen-is-not-black]: /src/tests/end_to_end/screen_is_not_black/README.md
-[stress-tests]: /development/testing/stress_tests.md
-[syscalls]: /reference/syscalls/README.md
-[test-coverage]: /contribute/testing/coverage.md
-[test-package-gn]: /development/components/build.md#test-packages
-[testing-integration]: /development/testing/components/integration_testing.md
-[testing-v2]: /development/testing/components/README.md
-[timer-slack]: /concepts/kernel/timer_slack.md
+[realm-builder]: /docs/development/testing/components/realm_builder.md
+[run-test-component]: /docs/development/run/run-test-component.md
+[rust-stress-test-lib]: /docs/development/testing/rust_stress_test_library.md
+[sanitizers]: /docs/contribute/testing/sanitizers.md
+[sanitizers-supported-configs]: /docs/contribute/testing/sanitizers.md#supported_configurations
+[stress-tests]: /docs/development/testing/stress_tests.md
+[syscalls]: /docs/reference/syscalls/README.md
+[test-coverage]: /docs/contribute/testing/coverage.md
+[test-package-gn]: /docs/development/components/build.md#test-packages
+[testing-integration]: /docs/development/testing/components/integration_testing.md
+[testing-v2]: /docs/development/testing/components/README.md
+[timer-slack]: /docs/concepts/kernel/timer_slack.md
 [timer-tests]: /zircon/kernel/tests/timer_tests.cc
 [timers-test]: https://fuchsia.googlesource.com/fuchsia/+/main/src/zircon/tests/timers/timers.cc
-[userboot]: /concepts/process/userboot.md
+[userboot]: /docs/concepts/process/userboot.md
 [utest-core]: /zircon/system/utest/core/README.md
-[vdso]: /concepts/kernel/vdso.md
+[vdso]: /docs/concepts/kernel/vdso.md
 [wikipedia-dependency-injection]: https://en.m.wikipedia.org/wiki/Dependency_injection

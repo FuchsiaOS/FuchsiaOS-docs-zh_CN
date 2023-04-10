@@ -134,18 +134,16 @@ Framework and run those tests in a FEMU environment.
 
 ### Add an integration test component
 
-To begin, create a new integration test scaffold under the `echo-integration`
-directory:
+To begin, create a project scaffold for a new integration test component called
+`echo-integration` in the `//vendor/fuchsia-codelab` directory:
+
+```posix-terminal
+mkdir -p vendor/fuchsia-codelab/echo-integration
+```
+
+Create the following file and directory structure in the new project directory:
 
 * {Rust}
-
-  ```posix-terminal
-  fx create component test \
-    --path vendor/fuchsia-codelab/echo-integration --lang rust
-  ```
-
-  This creates a project directory structure with an integration test component
-  template:
 
   ```none {:.devsite-disable-click-to-copy}
   echo-integration
@@ -164,27 +162,19 @@ directory:
 
 * {C++}
 
-  ```posix-terminal
-  fx create component test \
-    --path vendor/fuchsia-codelab/echo-integration --lang cpp
-  ```
-
-  This creates a project directory structure with an integration test component
-  template:
-
   ```none {:.devsite-disable-click-to-copy}
   echo-integration
     |- BUILD.gn
     |- meta
     |   |- echo_integration.cml
     |
-    |- echo_integration.cc
+    |- echo_integration_test.cc
   ```
 
   * `BUILD.gn`: GN build targets for the test binaries, component, and package.
   * `meta/echo_integration.cml`: Manifest declaring the components under test
     and their capabilities.
-  * `echo_integration.cc`: Source code for the C++ integration tests.
+  * `echo_integration_test.cc`: Source code for the C++ integration tests.
 
 ### Update the test component manifest
 
@@ -193,12 +183,20 @@ dependencies, such as the Rust test runner. Update the `echo_integration.cml`
 file to declare the `echo-server` component as a child and route the `Echo`
 protocol capability to the test component.
 
+{% set cml_rust %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/rust/meta/echo_integration_test.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+{% endset %}
+
+{% set cml_cpp %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/cpp/meta/echo_integration_test.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+{% endset %}
+
 * {Rust}
 
   `echo-integration/meta/echo_integration.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/rust/meta/echo_integration_test.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+  {{ cml_rust|replace("echo_integration_test_rust","echo_integration_test")|trim() }}
   ```
 
 * {C++}
@@ -206,25 +204,12 @@ protocol capability to the test component.
   `echo-integration/meta/echo_integration.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/cpp/meta/echo_integration_test.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+  {{ cml_cpp|replace("echo_integration_test_cpp","echo_integration_test")|trim() }}
   ```
 
 Notice that the `echo-server` instance comes from the same package as the
 integration test. This practice promotes test packages that are **hermetic** by
 avoiding dependencies on components from other packages.
-
-Update the `fuchsia_test_package()` rule to include the `echo-server` component
-as a dependency:
-
-`echo-integration/BUILD.gn`:
-
-```gn
-fuchsia_test_package("package") {
-  package_name = "echo-integration-tests"
-  test_components = [ ":component" ]
-  {{ '<strong>' }}deps = [ "//vendor/fuchsia-codelab/echo-server:component" ]{{ '</strong>' }}
-}
-```
 
 ### Implement the integration test
 
@@ -249,29 +234,47 @@ Add the following code to implement an integration test:
 
 * {C++}
 
-  `echo-integration/echo_integration.cc`:
+  `echo-integration/echo_integration_test.cc`:
 
   ```cpp
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/cpp/echo_integration_test.cc" region_tag="example_snippet" adjust_indentation="auto" %}
   ```
 
-Include the FIDL bindings for the `Echo` protocol to the `BUILD.gn` file as a
-dependency:
+Add the following build rules to your `BUILD.gn` file to build and package the integration test
+component along with the echo server dependencies:
+
+{% set gn_rust_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/rust/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_rust_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/rust/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/cpp/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/cpp/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
 
 * {Rust}
 
   `echo-integration/BUILD.gn`:
 
   ```gn
-  rustc_test("bin") {
-    name = "echo-integration"
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/rust/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
 
-    deps = [
-      {{ '<strong>' }}"//vendor/fuchsia-codelab/echo-fidl:echo-rustc",{{ '</strong>' }}
-      ...
-    ]
+  {{ gn_rust_binary|replace("echo_integration_test_rust","echo-integration-test")|replace("//examples/components/routing/fidl","//vendor/fuchsia-codelab/echo-fidl")|trim() }}
 
-    sources = [ "src/lib.rs" ]
+  {{ gn_rust_component|replace("echo_integration_test_component","component")|replace("echo_integration_test","echo_integration")|trim() }}
+
+  fuchsia_test_package("tests") {
+    package_name = "echo-integration-tests"
+    test_components = [ ":component" ]
+    deps =
+        [ "//vendor/fuchsia-codelab/echo-server:component" ]
   }
   ```
 
@@ -280,15 +283,17 @@ dependency:
   `echo-integration/BUILD.gn`:
 
   ```gn
-  executable("bin") {
-    name = "echo-integration"
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/integration_tests/cpp/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
 
-    deps = [
-      {{ '<strong>' }}"//vendor/fuchsia-codelab/echo-fidl:echo",{{ '</strong>' }}
-      ...
-    ]
+  {{ gn_cpp_binary|replace("echo_integration_test_cpp","echo-integration-test")|replace("//examples/components/routing/fidl","//vendor/fuchsia-codelab/echo-fidl")|trim() }}
 
-    sources = [ "echo_integration.cc" ]
+  {{ gn_cpp_component|replace("echo_integration_test_component","component")|replace("echo_integration_test","echo_integration")|trim() }}
+
+  fuchsia_test_package("tests") {
+    package_name = "echo-integration-tests"
+    test_components = [ ":component" ]
+    deps =
+        [ "//vendor/fuchsia-codelab/echo-server:component" ]
   }
   ```
 
@@ -298,7 +303,6 @@ Add the integration test package to the build configuration:
 
 ```posix-terminal
 fx set workstation_eng.qemu-x64 \
-    --with //vendor/fuchsia-codelab/echo-fidl:echo \
     --with //vendor/fuchsia-codelab/echo-server \
     --with //vendor/fuchsia-codelab/echo-client \
     --with //vendor/fuchsia-codelab/echo-realm \

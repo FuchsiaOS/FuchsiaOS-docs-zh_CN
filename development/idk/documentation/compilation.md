@@ -24,7 +24,7 @@ a [standard convention][build-id].
 
 ## Compilation parameters
 
-- C++ sources can be compatible with either C++14 or C++17.
+- C++ sources must be compatible with C++17.
 
 ### Warning flags
 

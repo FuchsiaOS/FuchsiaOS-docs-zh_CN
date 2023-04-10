@@ -1,0 +1,14 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+toc:
+- title: "audio-codec-ctl"
+  path: /docs/reference/tools/hardware/audio-codec-ctl.md
+- title: "audio-driver-ctl"
+  path: /docs/reference/tools/hardware/audio-driver-ctl.md
+- title: "gpioutil"
+  path: /docs/reference/tools/hardware/gpioutil.md
+- title: "i2cutil"
+  path: /docs/reference/tools/hardware/i2cutil.md
+- title: "lights-cli"
+  path: /docs/reference/tools/hardware/lights-cli.md

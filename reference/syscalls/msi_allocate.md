@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_msi_allocate
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Allocate Message-Signaled Interrupts (MSIs).
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_msi_allocate(zx_handle_t handle,
                             zx_handle_t* out_allocation);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_msi_allocate()` allocates a contiguous block of *count* MSIs and returns an
 MSI allocation object in *out_allocation* for use with [`zx_msi_create()`].
@@ -32,18 +39,16 @@ handles to Interrupt objects created by [`zx_msi_create()`] exist.
 *handle* must be a handle to the Root Resource, as such this syscall is
 intended for use only by the platform bus and Zircon coretests.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must have resource kind **ZX_RSRC_KIND_ROOT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_msi_allocate()` returns **ZX_OK** on success. In the event of failure, a
 negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS** *count* is not a valid value.
 
@@ -51,10 +56,8 @@ negative error value is returned.
 
 **ZX_ERR_NOT_SUPPORTED** MSIs are not supported by the platform.
 
-## SEE ALSO
+## See also
 
  - [`zx_msi_create()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_msi_create()`]: msi_create.md

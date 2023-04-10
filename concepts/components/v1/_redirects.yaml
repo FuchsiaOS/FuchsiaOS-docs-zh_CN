@@ -1,0 +1,5 @@
+redirects:
+
+# v1 component concepts are removed from fuchsia.dev
+- from: /docs/concepts/components/v1/...
+  to: /docs/concepts/components/v2

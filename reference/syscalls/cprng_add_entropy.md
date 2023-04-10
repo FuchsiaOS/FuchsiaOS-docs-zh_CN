@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_cprng_add_entropy
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Add entropy to the kernel CPRNG.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,23 +23,21 @@ Add entropy to the kernel CPRNG.
 zx_status_t zx_cprng_add_entropy(const void* buffer, size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_cprng_add_entropy()` mixes the given entropy into the kernel CPRNG.
 a privileged operation.  It will accept at most **ZX_CPRNG_ADD_ENTROPY_MAX_LEN**
 bytes of entropy at a time.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## RETURN VALUE
+## Return value
 
 `zx_cprng_add_entropy()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS** *buffer_size* is too large, or *buffer* is not a valid
 userspace pointer.
@@ -41,10 +46,8 @@ userspace pointer.
 
 This syscall should be very privileged.
 
-## SEE ALSO
+## See also
 
  - [`zx_cprng_draw()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_cprng_draw()`]: cprng_draw.md

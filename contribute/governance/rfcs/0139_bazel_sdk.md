@@ -82,7 +82,6 @@ responsibility.
 
 ## Stakeholders
 
-
 _Facilitator:_ hjfreyer@google.com
 
 _Reviewers:_ hjfreyer, mangini, chaselatta, amathes, sethladd, maruel, shayba,
@@ -91,7 +90,6 @@ crjohns, ejia, chandarren, lijiaming, dworsham
 _Consulted:_ Driver team, SDK team, Infra team, Workstation Team.
 
 _Socialization:_ Sent to eng-council-discuss@fuchsia.dev
-
 
 ## Design
 
@@ -262,29 +260,19 @@ recommended way for users to install Bazel (using [bazelisk]).
 - [GN C++ SDK][3]
 - [Unofficial Dart rules][12]
 
-[1]: /contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
-[2]: /development/idk
-[3]: /development/idk/gn
-[4]: /development/idk#strategy
-[5]: https://docs.bazel.build/versions/main/skylark/repository_rules.html
-[6]: https://docs.bazel.build/versions/main/skylark/rules.html
-[7]: https://docs.bazel.build/versions/main/skylark/lib/Provider.html
-[8]: /concepts/testing/sl4f
-[9]: https://docs.bazel.build/versions/main/skylark/deploying.html
+[1]: /docs/contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md
+[2]: /docs/development/idk
+[3]: https://cs.opensource.google/fuchsia/fuchsia/+/main:docs/development/idk/gn/README.md;drc=552aeea3b169aacb0dea4dcd4ee88109fd3886ef
+[4]: /docs/development/idk#strategy
 [10]: https://github.com/bazelbuild/stardoc
-[11]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/scripts/sdk/bazel
+[11]: https://fuchsia.googlesource.com/fuchsia/+/d9201b0b2049cd08fbb15b764910edc22dba4837/scripts/sdk/bazel
 [12]: https://github.com/cbracken/rules_dart
-[13]: https://docs.bazel.build/versions/main/skylark/testing.html
 [14]: https://gn.googlesource.com/gn/#versioning-and-distribution
-[15]: https://fuchsia-review.googlesource.com/c/fuchsia/+/559197
-[16]: /contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md#phase_3
-[17]: https://docs.bazel.build/versions/main/toolchains.html
-[Distributed Product Integration]: /contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md
-[Bazel's CI]: https://github.com/bazelbuild/continuous-integration/blob/master/buildkite/README.md
-[Bazel's style for distribution]: https://docs.bazel.build/versions/main/skylark/deploying.html
+[16]: /docs/contribute/governance/rfcs/0095_build_and_assemble_workstation_out_of_tree.md#phase_3
+[Distributed Product Integration]: /docs/contribute/governance/rfcs/0124_decentralized_product_integration_artifact_description_and_propagation.md
 [Bazel offline builds]: https://docs.bazel.build/versions/main/external.html#offline-builds
 [bazelisk]: https://github.com/bazelbuild/bazelisk
 [rules_go]: https://github.com/bazelbuild/rules_go
 [Workstation.git]: https://fuchsia.googlesource.com/workstation/+/refs/heads/main/
 [Bazel toolchain]: https://docs.bazel.build/versions/main/toolchains.html
-[OOT System Testing]: /contribute/roadmap/2021/oot_system_testing.md
+[OOT System Testing]: /docs/contribute/roadmap/2021/oot_system_testing.md

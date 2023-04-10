@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "USB system overview"
-  path: /development/drivers/driver_guides/usb/concepts/overview.md
+  path: /docs/development/drivers/driver_guides/usb/concepts/overview.md
 - title: "Lifecycle of a USB request"
-  path: /development/drivers/driver_guides/usb/concepts/request-lifecycle.md
+  path: /docs/development/drivers/driver_guides/usb/concepts/request-lifecycle.md
 - title: "USB mass storage driver"
-  path: /development/drivers/driver_guides/usb/concepts/usb-mass-storage.md
+  path: /docs/development/drivers/driver_guides/usb/concepts/usb-mass-storage.md

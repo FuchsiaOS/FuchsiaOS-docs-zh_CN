@@ -16,7 +16,7 @@ files:
 
 * One or more firmware files
 * A license file
-* [README.fuchsia](/development/source_code/third-party-metadata.md)
+* [README.fuchsia](/docs/development/source_code/third-party-metadata.md)
 
 README.fuchsia must contain at least the following directives:
 
@@ -54,37 +54,5 @@ for packages under `fuchsia/firmware`.
 
 ## Adding the Firmware Package to the Build
 
-Add the following entry in `prebuilt/zircon.ensure`:
-
-```
-@Subdir firmware/<name>
-<package-name> git_revision:<source-git-revision>
-```
-
-Where `<name>`, `<package-name>` and `<source-git-revision>` matches the
-values passed to `cipd create` above. The package will be downloaded to
-the path specified by `@Subdir` under `prebuilt`, i.e.
-`prebuilt/firmware/<name>`.
-
-Next, update `prebuilt/zircon.versions` with the following command:
-
-```
-scripts/download-prebuilt --resolve
-```
-
-Upload this change to Gerrit and send it to the CQ. The firmware package will
-be downloaded by `scripts/download-prebuilt` along with the toolchain and QEMU.
-
-## Using the Firmware Package in the Driver
-
-Add the following line to the driver's `rules.mk`:
-
-```
-MODULE_FIRMWARE := <name>/<path-to-binary-blob>
-```
-
-This will install the firmware to bootfs under
-`/boot/lib/firmware/$(basename $(MODULE_FIRMWARE))`.
-
-The `load_firmware()` API, defined in [`driver.h`](/src/lib/ddk/include/lib/ddk/driver.h)
-loads the firmware pointed to by the path in a VMO.
+This must be done in the `integration.git` repository.  See the `firmware` file
+in the open-source repository for examples.

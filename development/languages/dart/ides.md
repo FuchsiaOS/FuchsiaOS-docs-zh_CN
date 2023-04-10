@@ -104,8 +104,8 @@ issues with really large source trees.
 
 ### Remove pub output
 
-1.  Delete the `.packages` and `pubspec.lock` files in your project (if
-    present).
+1.  Delete the `.dart_tool/package_config.json` and `pubspec.lock` files in
+    your project (if present).
 1.  Ensure that `"dart.runPubGetOnPubspecChanges": false,` is present in your
     VS Code preferences to prevent the files from reappearing whenever a
     `pubspec.yaml` file is edited.

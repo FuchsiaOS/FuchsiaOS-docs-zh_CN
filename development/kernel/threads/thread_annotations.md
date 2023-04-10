@@ -3,7 +3,7 @@
 Zircon code takes advantage of clang's thread safety analysis feature to
 document and machine-verify some of our synchronization invariants. These
 annotations are checked when building for clang (see
-[getting started](/development/kernel/getting_started.md) for instructions on building with
+[getting started](/docs/development/kernel/getting_started.md) for instructions on building with
 clang).
 
 ## How to use

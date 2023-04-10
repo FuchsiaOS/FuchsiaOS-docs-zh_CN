@@ -35,7 +35,7 @@ Before launching the component, configure `zxdb` to attach to an instance of
 `echo-args`. This enables the debugger to attach as soon as the process starts:
 
 <pre class="devsite-click-to-copy">
-<span class="no-select">[zxdb] </span>attach echo_args
+<span class="no-select">[zxdb] </span>attach echo-args
 </pre>
 
 Set a breakpoint on the `greeting()` function:
@@ -48,7 +48,7 @@ With the debugger ready, start a new `echo-args` component instance:
 
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsia.com/echo-args#meta/echo_args.cm
+ffx component run /core/ffx-laboratory:echo-args fuchsia-pkg://fuchsia.com/echo-args#meta/echo-args.cm
 ```
 
 ### Explore the debug session
@@ -189,13 +189,13 @@ ffx debug connect
 Configure the debugger to attach to the `echo-args` component:
 
 <pre class="devsite-click-to-copy">
-<span class="no-select">[zxdb] </span>attach echo_args
+<span class="no-select">[zxdb] </span>attach echo-args
 </pre>
 
 Start a new instance of the component:
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsia.com/echo-args#meta/echo_args.cm
+ffx component run /core/ffx-laboratory:echo-args fuchsia-pkg://fuchsia.com/echo-args#meta/echo-args.cm
 ```
 
 This time, the debugger detects that an exception was thrown. Use the `frame`

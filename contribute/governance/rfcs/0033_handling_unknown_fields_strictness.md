@@ -84,25 +84,25 @@ ordinal/tag/value/specific bit, for brevity.
         fulfilled, since implementation strategies can differ between languages.
     *   Example:
 
-```c
-// Bindings SHOULD NOT offer this API:
-switch(union.Which()) {
-  case Tag1: ...
-  case Tag2: ...
-  case Tag3: ...
-  default: ...
-  // no unknown tag in bindings forces handling using default case
-}
+        ```c {:.devsite-disable-click-to-copy}
+        // Bindings SHOULD NOT offer this API:
+        switch(union.Which()) {
+          case Tag1: ...
+          case Tag2: ...
+          case Tag3: ...
+          default: ...
+          // no unknown tag in bindings forces handling using default case
+        }
 
-// Bindings SHOULD offer this API:
-switch(union.Which()) {
-  case Tag1: ...
-  case Tag2: ...
-  case Tag3: ...
-  case Tag_Unknown: ...
-  // no default case: new tags cause a non-exhaustiveness warning
-}
-```
+        // Bindings SHOULD offer this API:
+        switch(union.Which()) {
+          case Tag1: ...
+          case Tag2: ...
+          case Tag3: ...
+          case Tag_Unknown: ...
+          // no default case: new tags cause a non-exhaustiveness warning
+        }
+        ```
 
 ### Strict Handling of Messages
 
@@ -120,22 +120,22 @@ switch(union.Which()) {
     If a message is marked as strict, only that message is strict.
     Sub-messages contained within that message are not strict.
 
-Example syntax:
+*   Example syntax:
 
-```fidl
-// One simply doesn't walk into Mordor and add a new file mode, so this is
-// reasonable to be strict.
-strict bits UnixFilePermission : uint16 {
-    ...
-};
+    ```fidl {:.devsite-disable-click-to-copy}
+    // One simply doesn't walk into Mordor and add a new file mode, so this is
+    // reasonable to be strict.
+    strict bits UnixFilePermission : uint16 {
+        ...
+    };
 
-// It's too dangerous for clients to ignore data in this table if we
-// extend it later, but we wish to keep the wire format compatible if we
-// do change it, so it's not a struct.
-strict table SecurityPolicy {
-    ...
-};
-```
+    // It's too dangerous for clients to ignore data in this table if we
+    // extend it later, but we wish to keep the wire format compatible if we
+    // do change it, so it's not a struct.
+    strict table SecurityPolicy {
+        ...
+    };
+    ```
 
 ## Implementation strategy
 
@@ -157,7 +157,7 @@ declaration site placement.
 
 Example syntax could be:
 
-```fidl
+```fidl {:.devsite-disable-click-to-copy}
 protocol Important {
     SomeMethod(...) -> (strict other.library.Message response);
 }
@@ -362,4 +362,4 @@ added or removed after the message is defined.
 
 <!-- xrefs -->
 
-[transitional]: /reference/fidl/language/attributes.md#transitional
+[transitional]: /docs/reference/fidl/language/attributes.md#transitional

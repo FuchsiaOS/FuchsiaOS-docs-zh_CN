@@ -193,11 +193,11 @@ assign ownership of the futex to the released thread.
  - [`zx_futex_requeue()`]
  - [`zx_futex_get_owner()`]
 
-[`zx_futex_get_owner()`]: /reference/syscalls/futex_get_owner.md
-[`zx_futex_requeue()`]: /reference/syscalls/futex_requeue.md
-[`zx_futex_requeue_single_owner()`]: /reference/syscalls/futex_requeue_single_owner.md
-[`zx_futex_wait()`]: /reference/syscalls/futex_wait.md
-[`zx_futex_wake()`]: /reference/syscalls/futex_wake.md
-[`zx_futex_wake_single_owner()`]: /reference/syscalls/futex_wake_single_owner.md
-[address_tagging]: /contribute/governance/rfcs/0143_userspace_top_byte_ignore.md
+[`zx_futex_get_owner()`]: /docs/reference/syscalls/futex_get_owner.md
+[`zx_futex_requeue()`]: /docs/reference/syscalls/futex_requeue.md
+[`zx_futex_requeue_single_owner()`]: /docs/reference/syscalls/futex_requeue_single_owner.md
+[`zx_futex_wait()`]: /docs/reference/syscalls/futex_wait.md
+[`zx_futex_wake()`]: /docs/reference/syscalls/futex_wake.md
+[`zx_futex_wake_single_owner()`]: /docs/reference/syscalls/futex_wake_single_owner.md
+[address_tagging]: /docs/contribute/governance/rfcs/0143_userspace_top_byte_ignore.md
 [tbi]: https://developer.arm.com/documentation/den0024/a/ch12s05s01

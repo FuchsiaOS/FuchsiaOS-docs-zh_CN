@@ -1,7 +1,7 @@
 # Publish prebuilt packages to CIPD
 
 This page explains how to integrate your software into the Fuchsia project as a
-[prebuilt CIPD package](/development/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md).
+[prebuilt CIPD package](/docs/development/prebuilt_packages/prebuilt_cipd_packages_in_fuchsia.md).
 
 To publish your prebuilt package to
 [CIPD](https://github.com/luci/luci-go/tree/HEAD/cipd){:.external},
@@ -13,16 +13,16 @@ see the following guidelines:
 *   [Upload a CIPD package](#upload-a-cipd-package)
 
 After publishing your prebuilt package to CIDP,
-[update the Fuchsia Jiri manifests](/development/prebuilt_packages/make_your_cipd_package_visible_to_fuchsia_developers.md)
+[update the Fuchsia Jiri manifests](/docs/development/prebuilt_packages/make_your_cipd_package_visible_to_fuchsia_developers.md)
 to ensure that the content of the package is available to Fuchsia's
 continuous integration (CI) and Fuchsia developers.
 
 ## Prerequisites
 
 If you plan on using a Fuchsia archive
-([FAR](/development/source_code/archive_format.md)) to publish your prebuilt
+([FAR](/docs/development/source_code/archive_format.md)) to publish your prebuilt
 package, see
-[Build a package](/development/idk/documentation/packages.md#build-package)
+[Build a package](/docs/development/idk/documentation/packages.md#build-package)
 (using FAR).
 
 Note: Provide only one Fuchsia archive (FAR) file per prebuilt package (for example,
@@ -32,7 +32,7 @@ If your prebuilt package contains
 [ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format){:.external}
 binaries (whether inside a FAR or not), they need to be stripped. Additionally,
 for Fuchsia ELF binaries, you need to generate and upload a
-[companion symbols package](/development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md)
+[companion symbols package](/docs/development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md)
 to support symbolization and debugging.
 
 ## Choose a CIPD package path {#choose-a-cipd-package-path}
@@ -183,6 +183,6 @@ data:
 ```
 
 Don't forget to also upload a
-[companion symbols package](/development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md)
+[companion symbols package](/docs/development/prebuilt_packages/publish_a_cipd_symbols_package_for_elf_binaries.md)
 if your package contains Fuchsia ELF binaries.
 

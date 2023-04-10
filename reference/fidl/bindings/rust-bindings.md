@@ -5,9 +5,9 @@
 A FIDL Rust crate can be generated from a FIDL library in two ways:
 
 1. Manually, using the
-   [standard FIDL toolchain](/development/languages/fidl/guides/cli.md).
+   [standard FIDL toolchain](/docs/development/languages/fidl/guides/cli.md).
 2. Automatically,
-   [using the Fuchsia build system](/development/languages/rust/fidl_crates.md)
+   [using the Fuchsia build system](/docs/development/languages/rust/fidl_crates.md)
    (which under the hood uses the standard FIDL toolchain). This option is only
    available within the Fuchsia source tree.
 
@@ -188,10 +188,6 @@ With the following methods:
 * `from_primitive(prim: u32) -> Option<Self>`: Returns `Some` of the enum
   variant corresponding to the discriminant value if any, and `None` otherwise.
 * `into_primitive(&self) -> u32`: Returns the underlying discriminant value.
-* `validate(self) -> Result<Self, u32>`: Returns `Ok` of the value if it
-  corresponds to a known member, or an `Err` of the underlying primitive value
-  otherwise. For [strict][lang-flexible] types, it is marked `#[deprecated]` and
-  always returns `Ok`.
 * `is_unknown(&self) -> bool`: Returns whether this enum is unknown. For
   [strict][lang-flexible] types, it is marked `#[deprecated]` and always returns
   `false`.
@@ -274,11 +270,8 @@ pub enum JsonValue {
 
 With the following methods:
 
-* `validate(self) -> Result<Self, (u64, Vec<u8>)>`: Returns `Ok` of the value if
-  it corresponds to a known variant, or an `Err` containing the ordinal and raw
-  bytes otherwise. For [resource][lang-resource] types, the `Vec<u8>` changes to
-  `fidl::UnknownData`. For [strict][lang-flexible] types, it is marked
-  `#[deprecated]` and always returns `Ok`.
+* `ordinal(&self) -> u64`: Returns the ordinal of the active variant, as
+  specified in the FIDL type.
 * `is_unknown(&self) -> bool`: Returns whether this union is unknown. Always
   returns `false` for non-flexible union types. For [strict][lang-flexible]
   types, it is marked `#[deprecated]` and always returns `false`.
@@ -286,9 +279,8 @@ With the following methods:
 If `JsonValue` is [flexible][lang-flexible], it will have the following
 additional methods:
 
-* `unknown(ordinal: u64, data: Vec<u8>) -> Self`: Create an unknown union value.
-  This should only be used in tests. For [`resource`][lang-resource] types, the
-  `Vec<u8>` changes to `fidl::UnknownData`.)
+* `unknown_variant_for_testing() -> Self`: Create an unknown union value. This
+  should only be used in tests.
 
 The generated `JsonValue` `enum` follows the [`#[derive]` rules](#derives).
 
@@ -316,15 +308,15 @@ The unknown macro acts the same as a `_` pattern, but it can be configured to
 expand to an exhaustive match. This is useful for discovering missing cases.
 
 When a FIDL message containing a union with an unknown variant is decoded into
-`JsonValue`, `JsonValue::validate` returns `Err(ordinal, data)` where `ordinal`
-is the unknown ordinal and `data` contains the raws bytes and handles.
+`JsonValue`, `JsonValue::is_unknown()` returns true.
 
-Encoding a union with an unknown variant writes the unknown data and the
-original ordinal back onto the wire.
+Flexible unions have a custom `PartialEq` to make unknown variants behave like
+NaN: they do not compare equal to anything, including themselves. See [RFC-0137:
+Discard unknown data in FIDL][rfc-0137] for background on this decision.
 
 [Strict][lang-flexible] unions fail when decoding an unknown variant.
-[Flexible][lang-flexible] unions that are [value][lang-resource] types fail when
-decoding an unknown variant with handles.
+[Flexible][lang-flexible] unions succeed when decoding an unknown variant, but
+fail when re-encoding it.
 
 ### Tables {#types-tables}
 
@@ -342,7 +334,7 @@ pub struct User {
   pub age: Option<u8>,
   pub name: Option<String>,
   pub unknown_data: Option<BTreeMap<u64, Vec<u8>>>,
-  #[deprecated = "Use `..Foo::empty()` to construct and `..` to match."]
+  #[deprecated = "Use `..Foo::EMPTY` to construct and `..` to match."]
   #[doc(hidden)]
   pub __non_exhaustive: (),
 }
@@ -352,17 +344,12 @@ And the following associated constants:
 
 * `const EMPTY: User`: A `User` with each member initialized to `None`.
 
-The `unknown_data` member stores a mapping from ordinal to the raw bytes of any
-unknown field that was encountered during decoding. If the table is declared
-as a `resource`, the map will also contain the raw handles in addition to the
-bytes (i.e. the `unknown_data` member will have type
-`Option<BTreeMap<u64, fidl::UnknownData>>`). If no unknown members were
-encountered during decoding, the `unknown_data` field is guaranteed to be
-`None` rather than `Some` of an empty map.
+If any unknown fields are encountered during decoding, they are discarded. There
+is no way to access them or determine if they occurred.
 
 The `__non_exhaustive` member prevents intializing the table exhaustively, which
 causes API breakage when new fields are added. Instead, you should use the
-struct update syntax to fill in unspecified fields with `empty()`. For example:
+struct update syntax to fill in unspecified fields with `EMPTY`. For example:
 
 ```rust
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/fidl_crates/src/main.rs" region_tag="tables_init" adjust_indentation="auto" %}
@@ -445,9 +432,6 @@ Associated types:
 * `TicTacToeProxy::MakeMoveResponseFut`: The `Future` type for the response of a
   two way method. This type implements `std::future::Future<Output =
   Result<(bool, Option<Box<GameState>>), fidl::Error>> + Send`.
-* `TicTacToeProxy::OnOpponentMoveResponseFut`: The `Future` type for an incoming
-  event. This type implements `std::future::Future<Output = Result<GameState,
-  fidl::Error>> + Send`
 
 Methods:
 
@@ -495,7 +479,9 @@ struct FakeTicTacToeProxy {
 }
 
 impl TicTacToeProxyInterface for FakeTicTacToeProxy {
-    fn start_game(&self, mut start_first: bool) -> Result<(), fidl::Error> {}
+    fn start_game(&self, mut start_first: bool) -> Result<(), fidl::Error> {
+      Ok(())
+    }
 
     type MakeMoveResponseFut = Ready<fidl::Result<(bool, Option<Box<GameState>>)>>;
     fn make_move(&self, mut row: u8, mut col: u8) -> Self::MakeMoveResponseFut {
@@ -643,6 +629,59 @@ this method is generated as if it has a single response parameter `result` of
 type `TicTacToeMakeMoveResult`. The type used for a successful result follows
 the [parameter type conversion rules](#request-response-event-parameters).
 
+### Unknown interaction handling {#unknown-interaction-handling}
+
+#### Server-side
+
+When a protocol is declared as `open` or `ajar`, the generated [request
+enum](#request-enum) will will have an additional variant called
+`_UnknownMethod` which has these fields:
+
+```rust
+#[non_exhausitve]
+_UnknownMethod {
+    /// Ordinal of the method that was called.
+    ordinal: u64,
+    /// Control handle for the protocol.
+    control_handle: TicTacToeControlHandle,
+    /// Enum indicating whether the method is a one-way method or a two way
+    /// method. This field only exists if the protocol is open.
+    unknown_method_type: fidl::endpoints::UnknownMethodType,
+}
+```
+
+`UnknownMethodType` is an enum with two unit variants, `OneWay` and `TwoWay`,
+which tells which kind of method was called.
+
+Whenever the server receives a flexible unknown event, the request stream will
+emit this variant of the request enum.
+
+#### Client-side
+
+There is no way for the client to tell if a `flexible` one-way method was known
+to the server or not. For `flexible` two-way methods, if the method is not known
+to the server, the client will receive an `Err` result with a value of
+`fidl::Error::UnsupportedMethod`. The `UnsupportedMethod` error is only possible
+for a flexible two-way method.
+
+Aside from the possibility of getting an `UnsupportedMethod` error, there are no
+API differences between `strict` and `flexible` methods on the client.
+
+For `open` and `ajar` protocols, the generated [event
+enum](#protocols-events-client) will have an additional variant called
+`_UnknownEvent` which has these fields:
+
+```rust
+#[non_exhaustive]
+_UnknownEvent {
+    /// Ordinal of the event that was sent.
+    ordinal: u64,
+}
+```
+
+Whenever the client receives an unknown event, the client event stream will emit
+this variant of the event enum.
+
 ### Protocol composition {#protocol-composition}
 
 FIDL does not have a concept of inheritance, and generates full code as
@@ -700,42 +739,46 @@ This provides the `PROTOCOL_NAME` associated constant.
 
 FIDL messages are automatically encoded when they are sent and decoded when they
 are received. You can also encode and decode explicitly, for example to persist
-FIDL data to a file. This works for [non-resource][lang-resource] structs,
-tables, and unions.
+FIDL data to a file. Following [RFC-0120: Standalone use of the FIDL wire
+format][rfc-0120], the bindings offer a [persistence API](#persistence) and a
+[standalone API](#standalone).
 
-### Simple method {#encoding-decoding-simple-method}
+### Persistence {#persistence}
 
-The easiest way to to explicitly encode and decode is to use
-[`encode_persistent`] and [`decode_persistent`].
+The recommended way to to explicitly encode and decode is to use [`persist`] and
+[`unpersist`]. This works for [non-resource][lang-resource] structs, tables, and
+unions.
 
-For example, you can encode a [`Color` struct](#types-structs):
+For example, you can persist a [`Color` struct](#types-structs):
 
 ```rust
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="simple_method_encode" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="persist" adjust_indentation="auto" %}
 ```
 
-And then decode it later:
+And then unpersist it later:
 
 ```rust
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="simple_method_decode" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="unpersist" adjust_indentation="auto" %}
 ```
 
-### Separating the header
+### Standalone {#standalone}
 
-The [simple method](#encoding-decoding-simple-method) automatically places a
-small header at the beginning that stores FIDL metadata. For advanced use cases,
-you can manage the header manually. For example, you can encode both a
-[`JsonValue` union](#types-unions) and a [`User` table](#types-tables) using
-only one header instead of two:
+For advanced use cases where the [persistence API](#persistence) is not
+sufficient, you can use the [`standalone_encode`] and [`standalone_decode`].
+This works for structs, tables, and unions, even if they contain handles.
+
+For example, you can encode a [`JsonValue` union](#types-unions):
 
 ```rust
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="separate_header_encode" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="standalone_encode" adjust_indentation="auto" %}
 ```
 
-Then, you must first decode the header and use it to decode the other values:
+This returns a vector of bytes, a vector of [`HandleDisposition`]s, and an
+opaque object that stores wire format metadata. To decode, you need to provide
+all three values, with handle dispositions converted to [`HandleInfo`]s:
 
 ```rust
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="separate_header_decode" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/rust/persistence/src/lib.rs" region_tag="standalone_decode" adjust_indentation="auto" %}
 ```
 
 ## Appendix A: Derived traits {#derived-traits}
@@ -754,18 +797,24 @@ The calculation of traits derivation rules is visible in
 ```
 
 <!-- link labels -->
-[anon-names]: /reference/fidl/language/language.md#inline-layouts
-[`decode_persistent`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.decode_persistent.html
-[`encode_persistent`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.encode_persistent.html
-[lang-bits]: /reference/fidl/language/language.md#bits
-[lang-constants]: /reference/fidl/language/language.md#constants
-[lang-enums]: /reference/fidl/language/language.md#enums
-[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
-[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
-[lang-protocols]: /reference/fidl/language/language.md#protocols
-[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
-[lang-structs]: /reference/fidl/language/language.md#structs
-[lang-tables]: /reference/fidl/language/language.md#tables
-[lang-unions]: /reference/fidl/language/language.md#unions
-[tutorial]: /development/languages/fidl/tutorials/rust
-[unknown-attr]: /reference/fidl/language/attributes.md#unknown
+[`HandleDisposition`]: https://fuchsia-docs.firebaseapp.com/rust/fuchsia_zircon/struct.HandleDisposition.html
+[`HandleInfo`]: https://fuchsia-docs.firebaseapp.com/rust/fuchsia_zircon/struct.HandleInfo.html
+[`persist`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.persist.html
+[`standalone_decode`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.standalone_decode.html
+[`standalone_encode`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.standalone_encode.html
+[`unpersist`]: https://fuchsia-docs.firebaseapp.com/rust/fidl/encoding/fn.unpersist.html
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
+[lang-bits]: /docs/reference/fidl/language/language.md#bits
+[lang-constants]: /docs/reference/fidl/language/language.md#constants
+[lang-enums]: /docs/reference/fidl/language/language.md#enums
+[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
+[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
+[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
+[lang-structs]: /docs/reference/fidl/language/language.md#structs
+[lang-tables]: /docs/reference/fidl/language/language.md#tables
+[lang-unions]: /docs/reference/fidl/language/language.md#unions
+[rfc-0120]: /docs/contribute/governance/rfcs/0120_standalone_use_of_fidl_wire_format.md
+[rfc-0137]: /docs/contribute/governance/rfcs/0137_discard_unknown_data_in_fidl.md
+[tutorial]: /docs/development/languages/fidl/tutorials/rust
+[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown

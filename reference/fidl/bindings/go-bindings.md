@@ -92,7 +92,7 @@ Given the [bits][lang-bits] definition:
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
 ```
 
-FIDL generates a type alias for the underyling type (or `uint32` if not
+FIDL generates a type alias for the underlying type (or `uint32` if not
 specified) and constants for each bits member:
 
 ```golang
@@ -139,7 +139,7 @@ Given the [enum][lang-enums] definition:
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
 ```
 
-FIDL generates a type alias for the underyling type (or `uint32` if not
+FIDL generates a type alias for the underlying type (or `uint32` if not
 specified) and constants for each enum member:
 
 ```golang
@@ -508,18 +508,18 @@ In addition, FIDL generates a `TicTacToeName` constant that contains the
 protocol name.
 
 <!-- xrefs -->
-[anon-names]: /reference/fidl/language/language.md#inline-layouts
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
 [example-client]: /examples/fidl/go/client
 [example-server]: /examples/fidl/go/server
-[lang-constants]: /reference/fidl/language/language.md#constants
-[lang-bits]: /reference/fidl/language/language.md#bits
-[lang-enums]: /reference/fidl/language/language.md#enums
-[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: /reference/fidl/language/language.md#structs
-[lang-tables]: /reference/fidl/language/language.md#tables
-[lang-protocols]: /reference/fidl/language/language.md#protocols
-[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
-[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
-[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
-[traversal]: /reference/fidl/language/wire-format/README.md#traversal-order
-[unknown-attr]: /reference/fidl/language/attributes.md#unknown
+[lang-constants]: /docs/reference/fidl/language/language.md#constants
+[lang-bits]: /docs/reference/fidl/language/language.md#bits
+[lang-enums]: /docs/reference/fidl/language/language.md#enums
+[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /docs/reference/fidl/language/language.md#structs
+[lang-tables]: /docs/reference/fidl/language/language.md#tables
+[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
+[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
+[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
+[union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
+[traversal]: /docs/reference/fidl/language/wire-format/README.md#traversal-order
+[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown

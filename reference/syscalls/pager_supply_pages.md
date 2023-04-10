@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_pager_supply_pages
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Supply pages into a pager owned vmo.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_pager_supply_pages(zx_handle_t pager,
                                   uint64_t aux_offset);
 ```
 
-## DESCRIPTION
+## Description
 
 Moves the pages of *aux_vmo* in the range [*aux_offset*, *aux_offset* + *length*) to *pager_vmo* in
 the range [*offset*, *offset* + *length*). Any pages in *pager_vmo* in the specified range will not
@@ -31,9 +38,7 @@ specified range. Any uncommitted pages in *aux_vmo* will cause zero pages, or eq
 inserted into *pager_vmo*. After this operation, the specified region of *aux_vmo* will be fully
 decommitted.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *pager* must be of type **ZX_OBJ_TYPE_PAGER**.
 
@@ -41,14 +46,14 @@ decommitted.
 
 *aux_vmo* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_READ** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_pager_supply_pages()` returns ZX_OK on success, or one of the following error codes on failure.
 On failure the specified range of *aux_vmo* may be either untouched or fully decommitted. If
 *aux_vmo* is decommitted, then an unspecified number of pages in *pager_vmo* will have been
 populated.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *pager*, *pager_vmo*, or *aux_vmo* is not a valid handle.
 
@@ -68,13 +73,11 @@ or *aux_offset* is not page aligned.
 
 **ZX_ERR_NO_MEMORY** Failure due to lack of memory.
 
-## SEE ALSO
+## See also
 
  - [`zx_pager_create_vmo()`]
  - [`zx_pager_detach_vmo()`]
  - [`zx_pager_op_range()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_pager_detach_vmo()`]: pager_detach_vmo.md

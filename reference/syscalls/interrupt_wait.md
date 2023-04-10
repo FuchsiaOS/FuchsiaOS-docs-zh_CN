@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_interrupt_wait
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Wait for an interrupt.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Wait for an interrupt.
 zx_status_t zx_interrupt_wait(zx_handle_t handle, zx_time_t* out_timestamp);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_interrupt_wait()` is a blocking syscall that causes the caller to
 wait until an interrupt is triggered.  It can only be used on interrupt
@@ -27,19 +34,17 @@ as if [`zx_interrupt_ack()`] were called on it.
 
 The wait may be aborted with [`zx_interrupt_destroy()`] or by closing the handle.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_INTERRUPT** and have **ZX_RIGHT_WAIT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_interrupt_wait()` returns **ZX_OK** on success, and *out_timestamp*, if
 non-NULL, returns the timestamp of when the interrupt was triggered (relative
 to **ZX_CLOCK_MONOTONIC**)
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is an invalid handle.
 
@@ -54,7 +59,7 @@ on it.
 
 **ZX_ERR_INVALID_ARGS** the *out_timestamp* parameter is an invalid pointer.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_interrupt_ack()`]
@@ -63,8 +68,6 @@ on it.
  - [`zx_interrupt_destroy()`]
  - [`zx_interrupt_trigger()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_interrupt_ack()`]: interrupt_ack.md

@@ -7,430 +7,416 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /reference/syscalls/README.md
+  path: /docs/reference/syscalls/README.md
 - title: "Handles"
   section:
   - title: "zx_handle_close_many"
-    path: /reference/syscalls/handle_close_many.md
+    path: /docs/reference/syscalls/handle_close_many.md
   - title: "zx_handle_close"
-    path: /reference/syscalls/handle_close.md
+    path: /docs/reference/syscalls/handle_close.md
   - title: "zx_handle_duplicate"
-    path: /reference/syscalls/handle_duplicate.md
+    path: /docs/reference/syscalls/handle_duplicate.md
   - title: "zx_handle_replace"
-    path: /reference/syscalls/handle_replace.md
+    path: /docs/reference/syscalls/handle_replace.md
 - title: "Objects"
   section:
   - title: "zx_object_get_child"
-    path: /reference/syscalls/object_get_child.md
+    path: /docs/reference/syscalls/object_get_child.md
   - title: "zx_object_get_info"
-    path: /reference/syscalls/object_get_info.md
+    path: /docs/reference/syscalls/object_get_info.md
   - title: "zx_object_get_property"
-    path: /reference/syscalls/object_get_property.md
+    path: /docs/reference/syscalls/object_get_property.md
   - title: "zx_object_set_profile"
-    path: /reference/syscalls/object_set_profile.md
+    path: /docs/reference/syscalls/object_set_profile.md
   - title: "zx_object_set_property"
-    path: /reference/syscalls/object_set_property.md
+    path: /docs/reference/syscalls/object_set_property.md
   - title: "zx_object_signal"
-    path: /reference/syscalls/object_signal.md
+    path: /docs/reference/syscalls/object_signal.md
   - title: "zx_object_signal_peer"
-    path: /reference/syscalls/object_signal_peer.md
+    path: /docs/reference/syscalls/object_signal_peer.md
   - title: "zx_object_wait_async"
-    path: /reference/syscalls/object_wait_async.md
+    path: /docs/reference/syscalls/object_wait_async.md
   - title: "zx_object_wait_many"
-    path: /reference/syscalls/object_wait_many.md
+    path: /docs/reference/syscalls/object_wait_many.md
   - title: "zx_object_wait_one"
-    path: /reference/syscalls/object_wait_one.md
+    path: /docs/reference/syscalls/object_wait_one.md
 - title: "Threads"
   section:
   - title: "zx_thread_create"
-    path: /reference/syscalls/thread_create.md
+    path: /docs/reference/syscalls/thread_create.md
   - title: "zx_thread_exit"
-    path: /reference/syscalls/thread_exit.md
+    path: /docs/reference/syscalls/thread_exit.md
   - title: "zx_thread_read_state"
-    path: /reference/syscalls/thread_read_state.md
+    path: /docs/reference/syscalls/thread_read_state.md
   - title: "zx_thread_start"
-    path: /reference/syscalls/thread_start.md
+    path: /docs/reference/syscalls/thread_start.md
   - title: "zx_thread_write_state"
-    path: /reference/syscalls/thread_write_state.md
+    path: /docs/reference/syscalls/thread_write_state.md
   - title: "zx_thread_legacy_yield"
-    path: /reference/syscalls/thread_legacy_yield.md
+    path: /docs/reference/syscalls/thread_legacy_yield.md
 - title: "Processes"
   section:
   - title: "zx_process_create"
-    path: /reference/syscalls/process_create.md
+    path: /docs/reference/syscalls/process_create.md
+  - title: "zx_process_create_shared"
+    path: /docs/reference/syscalls/process_create_shared.md
   - title: "zx_process_exit"
-    path: /reference/syscalls/process_exit.md
+    path: /docs/reference/syscalls/process_exit.md
   - title: "zx_process_read_memory"
-    path: /reference/syscalls/process_read_memory.md
+    path: /docs/reference/syscalls/process_read_memory.md
   - title: "zx_process_start"
-    path: /reference/syscalls/process_start.md
+    path: /docs/reference/syscalls/process_start.md
   - title: "zx_process_write_memory"
-    path: /reference/syscalls/process_write_memory.md
+    path: /docs/reference/syscalls/process_write_memory.md
 - title: "Jobs"
   section:
   - title: "zx_job_create"
-    path: /reference/syscalls/job_create.md
+    path: /docs/reference/syscalls/job_create.md
   - title: "zx_job_set_critical"
-    path: /reference/syscalls/job_set_critical.md
+    path: /docs/reference/syscalls/job_set_critical.md
   - title: "zx_job_set_policy"
-    path: /reference/syscalls/job_set_policy.md
+    path: /docs/reference/syscalls/job_set_policy.md
 - title: "Tasks"
   section:
   - title: "zx_task_create_exception_channel"
-    path: /reference/syscalls/task_create_exception_channel.md
+    path: /docs/reference/syscalls/task_create_exception_channel.md
   - title: "zx_task_kill"
-    path: /reference/syscalls/task_kill.md
+    path: /docs/reference/syscalls/task_kill.md
   - title: "zx_task_suspend"
-    path: /reference/syscalls/task_suspend.md
+    path: /docs/reference/syscalls/task_suspend.md
   - title: "zx_task_suspend_token"
-    path: /reference/syscalls/task_suspend_token.md
+    path: /docs/reference/syscalls/task_suspend_token.md
 - title: "Profiles"
   section:
   - title: "zx_profile_create"
-    path: /reference/syscalls/profile_create.md
+    path: /docs/reference/syscalls/profile_create.md
 - title: "Exceptions"
   section:
   - title: "zx_exception_get_process"
-    path: /reference/syscalls/exception_get_process.md
+    path: /docs/reference/syscalls/exception_get_process.md
   - title: "zx_exception_get_thread"
-    path: /reference/syscalls/exception_get_thread.md
+    path: /docs/reference/syscalls/exception_get_thread.md
 - title: "Channels"
   section:
   - title: "zx_channel_call"
-    path: /reference/syscalls/channel_call.md
+    path: /docs/reference/syscalls/channel_call.md
   - title: "zx_channel_call_etc"
-    path: /reference/syscalls/channel_call_etc.md
+    path: /docs/reference/syscalls/channel_call_etc.md
   - title: "zx_channel_create"
-    path: /reference/syscalls/channel_create.md
+    path: /docs/reference/syscalls/channel_create.md
   - title: "zx_channel_read_etc"
-    path: /reference/syscalls/channel_read_etc.md
+    path: /docs/reference/syscalls/channel_read_etc.md
   - title: "zx_channel_read"
-    path: /reference/syscalls/channel_read.md
+    path: /docs/reference/syscalls/channel_read.md
   - title: "zx_channel_write_etc"
-    path: /reference/syscalls/channel_write_etc.md
+    path: /docs/reference/syscalls/channel_write_etc.md
   - title: "zx_channel_write"
-    path: /reference/syscalls/channel_write.md
+    path: /docs/reference/syscalls/channel_write.md
 - title: "Sockets"
   section:
   - title: "zx_socket_create"
-    path: /reference/syscalls/socket_create.md
+    path: /docs/reference/syscalls/socket_create.md
   - title: "zx_socket_read"
-    path: /reference/syscalls/socket_read.md
+    path: /docs/reference/syscalls/socket_read.md
   - title: "zx_socket_set_disposition"
-    path: /reference/syscalls/socket_set_disposition.md
+    path: /docs/reference/syscalls/socket_set_disposition.md
   - title: "zx_socket_write"
-    path: /reference/syscalls/socket_write.md
+    path: /docs/reference/syscalls/socket_write.md
 - title: "Stream"
   section:
   - title: "zx_stream_create"
-    path: /reference/syscalls/stream_create.md
+    path: /docs/reference/syscalls/stream_create.md
   - title: "zx_stream_readv"
-    path: /reference/syscalls/stream_readv.md
+    path: /docs/reference/syscalls/stream_readv.md
   - title: "zx_stream_readv_at"
-    path: /reference/syscalls/stream_readv_at.md
+    path: /docs/reference/syscalls/stream_readv_at.md
   - title: "zx_stream_seek"
-    path: /reference/syscalls/stream_seek.md
+    path: /docs/reference/syscalls/stream_seek.md
   - title: "zx_stream_writev"
-    path: /reference/syscalls/stream_writev.md
+    path: /docs/reference/syscalls/stream_writev.md
   - title: "zx_stream_writev_at"
-    path: /reference/syscalls/stream_writev_at.md
+    path: /docs/reference/syscalls/stream_writev_at.md
 - title: "Fifos"
   section:
   - title: "zx_fifo_create"
-    path: /reference/syscalls/fifo_create.md
+    path: /docs/reference/syscalls/fifo_create.md
   - title: "zx_fifo_read"
-    path: /reference/syscalls/fifo_read.md
+    path: /docs/reference/syscalls/fifo_read.md
   - title: "zx_fifo_write"
-    path: /reference/syscalls/fifo_write.md
+    path: /docs/reference/syscalls/fifo_write.md
 - title: "Events and event pairs"
   section:
   - title: "zx_event_create"
-    path: /reference/syscalls/event_create.md
+    path: /docs/reference/syscalls/event_create.md
   - title: "zx_eventpair_create"
-    path: /reference/syscalls/eventpair_create.md
+    path: /docs/reference/syscalls/eventpair_create.md
   - title: "zx_system_get_event"
-    path: /reference/syscalls/system_get_event.md
+    path: /docs/reference/syscalls/system_get_event.md
 - title: "Ports"
   section:
   - title: "zx_port_cancel"
-    path: /reference/syscalls/port_cancel.md
+    path: /docs/reference/syscalls/port_cancel.md
   - title: "zx_port_create"
-    path: /reference/syscalls/port_create.md
+    path: /docs/reference/syscalls/port_create.md
   - title: "zx_port_queue"
-    path: /reference/syscalls/port_queue.md
+    path: /docs/reference/syscalls/port_queue.md
   - title: "zx_port_wait"
-    path: /reference/syscalls/port_wait.md
+    path: /docs/reference/syscalls/port_wait.md
 - title: "Futexes"
   section:
   - title: "zx_futex_get_owner"
-    path: /reference/syscalls/futex_get_owner.md
+    path: /docs/reference/syscalls/futex_get_owner.md
   - title: "zx_futex_requeue"
-    path: /reference/syscalls/futex_requeue.md
+    path: /docs/reference/syscalls/futex_requeue.md
   - title: "zx_futex_requeue_single_owner"
-    path: /reference/syscalls/futex_requeue_single_owner.md
+    path: /docs/reference/syscalls/futex_requeue_single_owner.md
   - title: "zx_futex_wait"
-    path: /reference/syscalls/futex_wait.md
+    path: /docs/reference/syscalls/futex_wait.md
   - title: "zx_futex_wake"
-    path: /reference/syscalls/futex_wake.md
+    path: /docs/reference/syscalls/futex_wake.md
   - title: "zx_futex_wake_single_owner"
-    path: /reference/syscalls/futex_wake_single_owner.md
+    path: /docs/reference/syscalls/futex_wake_single_owner.md
 - title: "Virtual memory objects"
   section:
   - title: "zx_vmo_create_contiguous"
-    path: /reference/syscalls/vmo_create_contiguous.md
+    path: /docs/reference/syscalls/vmo_create_contiguous.md
   - title: "zx_vmo_create"
-    path: /reference/syscalls/vmo_create.md
+    path: /docs/reference/syscalls/vmo_create.md
   - title: "zx_vmo_create_child"
-    path: /reference/syscalls/vmo_create_child.md
+    path: /docs/reference/syscalls/vmo_create_child.md
   - title: "zx_vmo_create_physical"
-    path: /reference/syscalls/vmo_create_physical.md
+    path: /docs/reference/syscalls/vmo_create_physical.md
   - title: "zx_vmo_get_size"
-    path: /reference/syscalls/vmo_get_size.md
+    path: /docs/reference/syscalls/vmo_get_size.md
   - title: "zx_vmo_op_range"
-    path: /reference/syscalls/vmo_op_range.md
+    path: /docs/reference/syscalls/vmo_op_range.md
   - title: "zx_vmo_read"
-    path: /reference/syscalls/vmo_read.md
+    path: /docs/reference/syscalls/vmo_read.md
   - title: "zx_vmo_replace_as_executable"
-    path: /reference/syscalls/vmo_replace_as_executable.md
+    path: /docs/reference/syscalls/vmo_replace_as_executable.md
   - title: "zx_vmo_set_cache_policy"
-    path: /reference/syscalls/vmo_set_cache_policy.md
+    path: /docs/reference/syscalls/vmo_set_cache_policy.md
   - title: "zx_vmo_set_size"
-    path: /reference/syscalls/vmo_set_size.md
+    path: /docs/reference/syscalls/vmo_set_size.md
   - title: "zx_vmo_write"
-    path: /reference/syscalls/vmo_write.md
+    path: /docs/reference/syscalls/vmo_write.md
 - title: "Virtual memory address regions"
   section:
   - title: "zx_vmar_allocate"
-    path: /reference/syscalls/vmar_allocate.md
+    path: /docs/reference/syscalls/vmar_allocate.md
   - title: "zx_vmar_destroy"
-    path: /reference/syscalls/vmar_destroy.md
+    path: /docs/reference/syscalls/vmar_destroy.md
   - title: "zx_vmar_map"
-    path: /reference/syscalls/vmar_map.md
+    path: /docs/reference/syscalls/vmar_map.md
   - title: "zx_vmar_op_range"
-    path: /reference/syscalls/vmar_op_range.md
+    path: /docs/reference/syscalls/vmar_op_range.md
   - title: "zx_vmar_protect"
-    path: /reference/syscalls/vmar_protect.md
+    path: /docs/reference/syscalls/vmar_protect.md
   - title: "zx_vmar_unmap"
-    path: /reference/syscalls/vmar_unmap.md
+    path: /docs/reference/syscalls/vmar_unmap.md
 - title: "Userspace pagers"
   section:
   - title: "zx_pager_create"
-    path: /reference/syscalls/pager_create.md
+    path: /docs/reference/syscalls/pager_create.md
   - title: "zx_pager_create_vmo"
-    path: /reference/syscalls/pager_create_vmo.md
+    path: /docs/reference/syscalls/pager_create_vmo.md
   - title: "zx_pager_detach_vmo"
-    path: /reference/syscalls/pager_detach_vmo.md
+    path: /docs/reference/syscalls/pager_detach_vmo.md
   - title: "zx_pager_supply_pages"
-    path: /reference/syscalls/pager_supply_pages.md
+    path: /docs/reference/syscalls/pager_supply_pages.md
   - title: "zx_pager_op_range"
-    path: /reference/syscalls/pager_op_range.md
+    path: /docs/reference/syscalls/pager_op_range.md
   - title: "zx_pager_query_dirty_ranges"
-    path: /reference/syscalls/pager_query_dirty_ranges.md
+    path: /docs/reference/syscalls/pager_query_dirty_ranges.md
   - title: "zx_pager_query_vmo_stats"
-    path: /reference/syscalls/pager_query_vmo_stats.md
+    path: /docs/reference/syscalls/pager_query_vmo_stats.md
 - title: "Cryptographically secure RNG"
   section:
   - title: "zx_cprng_add_entropy"
-    path: /reference/syscalls/cprng_add_entropy.md
+    path: /docs/reference/syscalls/cprng_add_entropy.md
   - title: "zx_cprng_draw"
-    path: /reference/syscalls/cprng_draw.md
+    path: /docs/reference/syscalls/cprng_draw.md
 - title: "Time"
   section:
   - title: "zx_nanosleep"
-    path: /reference/syscalls/nanosleep.md
+    path: /docs/reference/syscalls/nanosleep.md
   - title: "zx_clock_create"
-    path: /reference/syscalls/clock_create.md
+    path: /docs/reference/syscalls/clock_create.md
   - title: "zx_clock_get_details"
-    path: /reference/syscalls/clock_get_details.md
+    path: /docs/reference/syscalls/clock_get_details.md
   - title: "zx_clock_get_monotonic"
-    path: /reference/syscalls/clock_get_monotonic.md
+    path: /docs/reference/syscalls/clock_get_monotonic.md
   - title: "zx_clock_read"
-    path: /reference/syscalls/clock_read.md
+    path: /docs/reference/syscalls/clock_read.md
   - title: "zx_clock_update"
-    path: /reference/syscalls/clock_update.md
+    path: /docs/reference/syscalls/clock_update.md
   - title: "zx_ticks_get"
-    path: /reference/syscalls/ticks_get.md
+    path: /docs/reference/syscalls/ticks_get.md
   - title: "zx_ticks_per_second"
-    path: /reference/syscalls/ticks_per_second.md
+    path: /docs/reference/syscalls/ticks_per_second.md
   - title: "zx_deadline_after"
-    path: /reference/syscalls/deadline_after.md
+    path: /docs/reference/syscalls/deadline_after.md
 - title: "Timer"
   section:
   - title: "zx_timer_cancel"
-    path: /reference/syscalls/timer_cancel.md
+    path: /docs/reference/syscalls/timer_cancel.md
   - title: "zx_timer_create"
-    path: /reference/syscalls/timer_create.md
+    path: /docs/reference/syscalls/timer_create.md
   - title: "zx_timer_set"
-    path: /reference/syscalls/timer_set.md
+    path: /docs/reference/syscalls/timer_set.md
 - title: "Hypervisor guests"
   section:
   - title: "zx_guest_create"
-    path: /reference/syscalls/guest_create.md
+    path: /docs/reference/syscalls/guest_create.md
   - title: "zx_guest_set_trap"
-    path: /reference/syscalls/guest_set_trap.md
+    path: /docs/reference/syscalls/guest_set_trap.md
 - title: "Virtual CPUs"
   section:
   - title: "zx_vcpu_create"
-    path: /reference/syscalls/vcpu_create.md
+    path: /docs/reference/syscalls/vcpu_create.md
   - title: "zx_vcpu_enter"
-    path: /reference/syscalls/vcpu_enter.md
+    path: /docs/reference/syscalls/vcpu_enter.md
   - title: "zx_vcpu_kick"
-    path: /reference/syscalls/vcpu_kick.md
+    path: /docs/reference/syscalls/vcpu_kick.md
   - title: "zx_vcpu_interrupt"
-    path: /reference/syscalls/vcpu_interrupt.md
+    path: /docs/reference/syscalls/vcpu_interrupt.md
   - title: "zx_vcpu_read_state"
-    path: /reference/syscalls/vcpu_read_state.md
+    path: /docs/reference/syscalls/vcpu_read_state.md
   - title: "zx_vcpu_write_state"
-    path: /reference/syscalls/vcpu_write_state.md
+    path: /docs/reference/syscalls/vcpu_write_state.md
 - title: "Global system information"
   section:
   - title: "zx_system_get_dcache_line_size"
-    path: /reference/syscalls/system_get_dcache_line_size.md
+    path: /docs/reference/syscalls/system_get_dcache_line_size.md
   - title: "zx_system_get_features"
-    path: /reference/syscalls/system_get_features.md
+    path: /docs/reference/syscalls/system_get_features.md
   - title: "zx_system_get_num_cpus"
-    path: /reference/syscalls/system_get_num_cpus.md
+    path: /docs/reference/syscalls/system_get_num_cpus.md
   - title: "zx_system_get_page_size"
-    path: /reference/syscalls/system_get_page_size.md
+    path: /docs/reference/syscalls/system_get_page_size.md
   - title: "zx_system_get_physmem"
-    path: /reference/syscalls/system_get_physmem.md
+    path: /docs/reference/syscalls/system_get_physmem.md
   - title: "zx_system_get_version_string"
-    path: /reference/syscalls/system_get_version_string.md
+    path: /docs/reference/syscalls/system_get_version_string.md
 - title: "Debug logging"
   section:
   - title: "zx_debuglog_create"
-    path: /reference/syscalls/debuglog_create.md
+    path: /docs/reference/syscalls/debuglog_create.md
   - title: "zx_debuglog_read"
-    path: /reference/syscalls/debuglog_read.md
+    path: /docs/reference/syscalls/debuglog_read.md
   - title: "zx_debuglog_write"
-    path: /reference/syscalls/debuglog_write.md
+    path: /docs/reference/syscalls/debuglog_write.md
   - title: "zx_debug_read"
-    path: /reference/syscalls/debug_read.md
+    path: /docs/reference/syscalls/debug_read.md
   - title: "zx_debug_send_command"
-    path: /reference/syscalls/debug_send_command.md
+    path: /docs/reference/syscalls/debug_send_command.md
   - title: "zx_debug_write"
-    path: /reference/syscalls/debug_write.md
+    path: /docs/reference/syscalls/debug_write.md
 - title: "Multi-function"
   section:
   - title: "zx_vmar_unmap_handle_close_thread_exit"
-    path: /reference/syscalls/vmar_unmap_handle_close_thread_exit.md
+    path: /docs/reference/syscalls/vmar_unmap_handle_close_thread_exit.md
   - title: "zx_futex_wake_handle_close_thread_exit"
-    path: /reference/syscalls/futex_wake_handle_close_thread_exit.md
+    path: /docs/reference/syscalls/futex_wake_handle_close_thread_exit.md
 - title: "System"
   section:
   - title: "zx_system_mexec"
-    path: /reference/syscalls/system_mexec.md
+    path: /docs/reference/syscalls/system_mexec.md
   - title: "zx_system_mexec_payload_get"
-    path: /reference/syscalls/system_mexec_payload_get.md
+    path: /docs/reference/syscalls/system_mexec_payload_get.md
   - title: "zx_system_powerctl"
-    path: /reference/syscalls/system_powerctl.md
+    path: /docs/reference/syscalls/system_powerctl.md
   - title: "zx_system_get_performance_info"
-    path: /reference/syscalls/system_get_performance_info.md
+    path: /docs/reference/syscalls/system_get_performance_info.md
   - title: "zx_system_set_performance_info"
-    path: /reference/syscalls/system_set_performance_info.md
+    path: /docs/reference/syscalls/system_set_performance_info.md
 - title: "DDK"
   section:
   - title: "zx_bti_create"
-    path: /reference/syscalls/bti_create.md
+    path: /docs/reference/syscalls/bti_create.md
   - title: "zx_bti_pin"
-    path: /reference/syscalls/bti_pin.md
+    path: /docs/reference/syscalls/bti_pin.md
   - title: "zx_bti_release_quarantine"
-    path: /reference/syscalls/bti_release_quarantine.md
+    path: /docs/reference/syscalls/bti_release_quarantine.md
   - title: "zx_cache_flush"
-    path: /reference/syscalls/cache_flush.md
+    path: /docs/reference/syscalls/cache_flush.md
   - title: "zx_interrupt_ack"
-    path: /reference/syscalls/interrupt_ack.md
+    path: /docs/reference/syscalls/interrupt_ack.md
   - title: "zx_interrupt_bind"
-    path: /reference/syscalls/interrupt_bind.md
-  - title: "zx_interrupt_bind_vcpu"
-    path: /reference/syscalls/interrupt_bind_vcpu.md
+    path: /docs/reference/syscalls/interrupt_bind.md
   - title: "zx_interrupt_create"
-    path: /reference/syscalls/interrupt_create.md
+    path: /docs/reference/syscalls/interrupt_create.md
   - title: "zx_interrupt_destroy"
-    path: /reference/syscalls/interrupt_destroy.md
+    path: /docs/reference/syscalls/interrupt_destroy.md
   - title: "zx_interrupt_trigger"
-    path: /reference/syscalls/interrupt_trigger.md
+    path: /docs/reference/syscalls/interrupt_trigger.md
   - title: "zx_interrupt_wait"
-    path: /reference/syscalls/interrupt_wait.md
+    path: /docs/reference/syscalls/interrupt_wait.md
   - title: "zx_msi_allocate"
-    path: /reference/syscalls/msi_allocate.md
+    path: /docs/reference/syscalls/msi_allocate.md
   - title: "zx_msi_create"
-    path: /reference/syscalls/msi_create.md
+    path: /docs/reference/syscalls/msi_create.md
   - title: "zx_iommu_create"
-    path: /reference/syscalls/iommu_create.md
+    path: /docs/reference/syscalls/iommu_create.md
   - title: "zx_pmt_unpin"
-    path: /reference/syscalls/pmt_unpin.md
+    path: /docs/reference/syscalls/pmt_unpin.md
   - title: "zx_resource_create"
-    path: /reference/syscalls/resource_create.md
+    path: /docs/reference/syscalls/resource_create.md
   - title: "zx_smc_call"
-    path: /reference/syscalls/smc_call.md
+    path: /docs/reference/syscalls/smc_call.md
 - title: "Display drivers"
   section:
   - title: "zx_framebuffer_get_info"
-    path: /reference/syscalls/framebuffer_get_info.md
+    path: /docs/reference/syscalls/framebuffer_get_info.md
   - title: "zx_framebuffer_set_range"
-    path: /reference/syscalls/framebuffer_set_range.md
+    path: /docs/reference/syscalls/framebuffer_set_range.md
 - title: "Tracing"
   section:
   - title: "zx_ktrace_control"
-    path: /reference/syscalls/ktrace_control.md
+    path: /docs/reference/syscalls/ktrace_control.md
   - title: "zx_ktrace_read"
-    path: /reference/syscalls/ktrace_read.md
+    path: /docs/reference/syscalls/ktrace_read.md
   - title: "zx_ktrace_write"
-    path: /reference/syscalls/ktrace_write.md
+    path: /docs/reference/syscalls/ktrace_write.md
   - title: "zx_mtrace_control"
-    path: /reference/syscalls/mtrace_control.md
+    path: /docs/reference/syscalls/mtrace_control.md
+- title: "Restricted Mode"
+  section:
+  - title: "zx_restricted_bind_state"
+    path: /docs/reference/syscalls/restricted_bind_state.md
+  - title: "zx_restricted_enter"
+    path: /docs/reference/syscalls/restricted_enter.md
+  - title: "zx_restricted_unbind_state"
+    path: /docs/reference/syscalls/restricted_unbind_state.md
 - title: "Others"
   section:
   - title: "zx_ioports_release"
-    path: /reference/syscalls/ioports_release.md
+    path: /docs/reference/syscalls/ioports_release.md
   - title: "zx_ioports_request"
-    path: /reference/syscalls/ioports_request.md
+    path: /docs/reference/syscalls/ioports_request.md
   - title: "zx_pc_firmware_tables"
-    path: /reference/syscalls/pc_firmware_tables.md
+    path: /docs/reference/syscalls/pc_firmware_tables.md
   - title: "zx_pci_add_subtract_io_range"
-    path: /reference/syscalls/pci_add_subtract_io_range.md
+    path: /docs/reference/syscalls/pci_add_subtract_io_range.md
   - title: "zx_pci_cfg_pio_rw"
-    path: /reference/syscalls/pci_cfg_pio_rw.md
+    path: /docs/reference/syscalls/pci_cfg_pio_rw.md
   - title: "zx_pci_config_read"
-    path: /reference/syscalls/pci_config_read.md
+    path: /docs/reference/syscalls/pci_config_read.md
   - title: "zx_pci_config_write"
-    path: /reference/syscalls/pci_config_write.md
+    path: /docs/reference/syscalls/pci_config_write.md
   - title: "zx_pci_enable_bus_master"
-    path: /reference/syscalls/pci_enable_bus_master.md
+    path: /docs/reference/syscalls/pci_enable_bus_master.md
   - title: "zx_pci_get_bar"
-    path: /reference/syscalls/pci_get_bar.md
+    path: /docs/reference/syscalls/pci_get_bar.md
   - title: "zx_pci_get_nth_device"
-    path: /reference/syscalls/pci_get_nth_device.md
+    path: /docs/reference/syscalls/pci_get_nth_device.md
   - title: "zx_pci_init"
-    path: /reference/syscalls/pci_init.md
+    path: /docs/reference/syscalls/pci_init.md
   - title: "zx_pci_map_interrupt"
-    path: /reference/syscalls/pci_map_interrupt.md
+    path: /docs/reference/syscalls/pci_map_interrupt.md
   - title: "zx_pci_query_irq_mode"
-    path: /reference/syscalls/pci_query_irq_mode.md
+    path: /docs/reference/syscalls/pci_query_irq_mode.md
   - title: "zx_pci_reset_device"
-    path: /reference/syscalls/pci_reset_device.md
+    path: /docs/reference/syscalls/pci_reset_device.md
   - title: "zx_pci_set_irq_mode"
-    path: /reference/syscalls/pci_set_irq_mode.md
-  - title: "zx_syscall_test_0"
-    path: /reference/syscalls/syscall_test_0.md
-  - title: "zx_syscall_test_1"
-    path: /reference/syscalls/syscall_test_1.md
-  - title: "zx_syscall_test_2"
-    path: /reference/syscalls/syscall_test_2.md
-  - title: "zx_syscall_test_3"
-    path: /reference/syscalls/syscall_test_3.md
-  - title: "zx_syscall_test_4"
-    path: /reference/syscalls/syscall_test_4.md
-  - title: "zx_syscall_test_5"
-    path: /reference/syscalls/syscall_test_5.md
-  - title: "zx_syscall_test_6"
-    path: /reference/syscalls/syscall_test_6.md
-  - title: "zx_syscall_test_7"
-    path: /reference/syscalls/syscall_test_7.md
-  - title: "zx_syscall_test_8"
-    path: /reference/syscalls/syscall_test_8.md
-  - title: "zx_syscall_test_wrapper"
-    path: /reference/syscalls/syscall_test_wrapper.md
-  - title: "zx_syscall_test_handle_create"
-    path: /reference/syscalls/syscall_test_handle_create.md
+    path: /docs/reference/syscalls/pci_set_irq_mode.md

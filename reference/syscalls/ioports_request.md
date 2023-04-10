@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_ioports_request
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 TODO(fxbug.dev/32938)
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,25 +25,22 @@ zx_status_t zx_ioports_request(zx_handle_t resource,
                                uint32_t len);
 ```
 
-## DESCRIPTION
+## Description
 
 TODO(fxbug.dev/32938)
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *resource* must have resource kind **ZX_RSRC_KIND_IOPORT**.
 
-## RETURN VALUE
+## Return value
 
 TODO(fxbug.dev/32938)
 
-## ERRORS
+## Errors
 
 TODO(fxbug.dev/32938)
 
-## SEE ALSO
-
+## See also
 
 TODO(fxbug.dev/32938)

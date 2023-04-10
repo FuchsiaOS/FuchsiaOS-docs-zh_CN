@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /development/graphics/sysmem/concepts/sysmem.md
+  path: /docs/development/graphics/sysmem/concepts/sysmem.md
 - title: "VMO hierarchy"
-  path: /development/graphics/sysmem/concepts/vmos.md
+  path: /docs/development/graphics/sysmem/concepts/vmos.md

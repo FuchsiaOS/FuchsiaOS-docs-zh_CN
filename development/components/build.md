@@ -1,9 +1,8 @@
 {% set v1_banner %}
   <aside class="caution">
-    <b>Caution:</b> Caution: This format is used with
-    <a href="/concepts/components/v1/README.md">legacy components</a>.
+    <b>Caution:</b> Caution: This format is used with legacy components.
     If you are still using legacy components, consider
-    <a href="/contribute/open_projects/components/migration.md">migrating</a>
+    <a href="/docs/contribute/open_projects/components/migration.md">migrating</a>
     to the modern component framework.
   </aside>
 {% endset %}
@@ -58,47 +57,27 @@ the component's program binary and required capabilities.
 
 Below is an example manifest file for a simple "Hello, World" component:
 
-  * {.cml}
-
-    ```json5
-    {
-        // Information about the program to run.
-        program: {
-            // Use the built-in ELF runner to run native binaries.
-            runner: "elf",
-            // The binary to run for this component.
-            binary: "bin/hello",
-            // Program arguments
-            args: [
-                "Hello",
-                "World!",
-            ],
-        },
-
-        // Capabilities used by this component.
-        use: [
-            { protocol: "fuchsia.logger.LogSink" },
+```json5
+{
+    // Information about the program to run.
+    program: {
+        // Use the built-in ELF runner to run platform-specific binaries.
+        runner: "elf",
+        // The binary to run for this component.
+        binary: "bin/hello",
+        // Program arguments
+        args: [
+            "Hello",
+            "World!",
         ],
-    }
-    ```
+    },
 
-  * {.cmx}
-
-    {{ v1_banner }}
-
-    ```json
-    {
-        "program": {
-            "binary": "bin/hello-world",
-            "args": [ "Hello", "World!" ]
-        },
-        "sandbox": {
-            "services": [
-                "fuchsia.logger.LogSink"
-            ]
-        }
-    }
-    ```
+    // Capabilities used by this component.
+    use: [
+        { protocol: "fuchsia.logger.LogSink" },
+    ],
+}
+```
 
 ### Manifest shards {#component-manifest-shards}
 
@@ -115,49 +94,106 @@ the file suffix.
 Below is an equivalent manifest to the previous example, with the logging
 capability replaced by a manifest shard `include`:
 
-  * {.cml}
+```json5
+{
+    // Include capabilities for the syslog library
+    include: [ "syslog/client.shard.cml" ],
 
-    ```json5
-    {
-        // Include capabilities for the syslog library
-        include: [ "syslog/client.shard.cml" ],
-
-        // Information about the program to run.
-        program: {
-            // Use the built-in ELF runner to run native binaries.
-            runner: "elf",
-            // The binary to run for this component.
-            binary: "bin/hello-world",
-            // Program arguments
-            args: [
-                "Hello",
-                "World!",
-            ],
-        },
-    }
-    ```
-
-  * {.cmx}
-
-    {{ v1_banner }}
-
-    ```json
-    {
-        "include": [
-            "syslog/client.shard.cmx"
+    // Information about the program to run.
+    program: {
+        // Use the built-in ELF runner to run platform-specific binaries.
+        runner: "elf",
+        // The binary to run for this component.
+        binary: "bin/hello-world",
+        // Program arguments
+        args: [
+            "Hello",
+            "World!",
         ],
-        "program": {
-            "binary": "bin/hello-world",
-            "args": [ "Hello", "World!" ]
-        }
-    }
-    ```
+    },
+}
+```
 
 #### Relative paths
 
 Include paths that begin with `"//"` are relative to the root of the source tree
 that you are working in. For include paths that don't begin with `"//"`, the
 build system will attempt to resolve them from the Fuchsia SDK.
+
+#### Inter-shard dependencies
+
+If one manifest shard adds a child to the manifest and a second manifest shard
+adds a second child which depends on the first, then the offer declaration from
+the first child to the second child will cause a manifest validation error if
+the second shard is ever included in a manifest without the first shard, since
+the offer will reference a non-existent child.
+
+```json
+// echo_server.shard.cml
+{
+    children: [ {
+        name: "echo_server",
+        url: "fuchsia-pkg://fuchsia.com/echo_server#meta/echo_server.cm",
+    } ],
+}
+```
+
+```json
+// echo_client.shard.cml
+{
+    children: [
+        {
+            name: "echo_client",
+            url: "fuchsia-pkg://fuchsia.com/echo_client#meta/echo_client.cm",
+        }
+    ],
+    offer: [ {
+        // This offer will cause manifest validation to fail if
+        // `echo_client.shard.cml` is included in a manifest without
+        // `echo_server.shard.cml`.
+        protocol: "fuchsia.examples.Echo",
+        from: "echo_server",
+        to: "echo_client",
+    } ],
+}
+```
+
+To address this, the `source_availability` field on an offer can be set to
+inform manifest compilation that it's acceptable for an offer source to be
+missing. When set to `unknown`, then the following will happen to the offer
+declaration:
+
+- If the `from` source exists: the availability is set to `required`.
+- If the `from` source does not exist: the availability is set to `optional` and
+  the source of the offer is rewritten to `void`.
+
+```json
+// echo_client.shard.cml
+{
+    children: [
+        {
+            name: "echo_client",
+            url: "fuchsia-pkg://fuchsia.com/echo_client#meta/echo_client.cm",
+        }
+    ],
+    offer: [
+        {
+            // If `echo_server.shard.cml` is included in this manifest, then
+            // `echo_client` can access the `fuchsia.examples.Echo` protocol from
+            // it.
+            //
+            // If `echo_server.shard.cml` is not included in this manifest, then
+            // `echo_client` will be offered the protocol with a source of
+            // `void` and `availability == optional`. `echo_client` must consume
+            // the capability optionally to not fail route validation.
+            protocol: "fuchsia.examples.Echo",
+            from: "echo_server",
+            to: "echo_client",
+            source_availability: "unknown",
+        }
+    ],
+}
+```
 
 ### Client library includes {#component-manifest-includes}
 
@@ -188,41 +224,22 @@ source_set("font_provider_client") {
 
 expect_includes("font_provider_client_includes") {
   includes = [
-    "client.shard.cmx",
     "client.shard.cml",
   ]
 }
 ```
 
-Note: It recommended to provide both `.cml` and `.cmx` includes until the
-[components migration][components-migration] is complete.
-
 This sets a build time requirement for dependent manifests to include the
 expected manifest shards:
 
-  * {.cml}
-
-    ```json5
-    {
-        include: [
-            "//sdk/lib/fonts/client.shard.cml",
-        ]
-        ...
-    }
-    ```
-
-  * {.cmx}
-
-    {{ v1_banner }}
-
-    ```json
-    {
-        "include": [
-            "//sdk/lib/fonts/client.shard.cmx"
-        ]
-        ...
-    }
-    ```
+```json5
+{
+    include: [
+        "//sdk/lib/fonts/client.shard.cml",
+    ]
+    ...
+}
+```
 
 Include paths are resolved relative to the source root.
 Transitive includes (includes of includes) are allowed.
@@ -760,20 +777,16 @@ for us.
    }
    ```
 
-Note: By default these templates generate Components V2 (.cml) manifests.
-You may pass `v2 = false` to either `fuchsia_unittest_component` or
-`fuchsia_unittest_package` to generate a V1 (.cmx) manifest instead.
-
 The generated component manifest file can be found with the following command:
 
 ```posix-terminal
-fx gn outputs $(fx get-build-dir) {{ '<var>unittest target</var>' }}_generated_manifest
+fx gn outputs $(fx get-build-dir) {{ '<var>//some/path/to/build/file:unittest target</var>' }}_component_generated_manifest
 ```
 
 To print it directly:
 
 ```posix-terminal
-fx build && cat $(fx get-build-dir)/$(fx gn outputs $(fx get-build-dir) {{ '<var>unittest target</var>' }}_generated_manifest)
+fx build && cat $(fx get-build-dir)/$(fx gn outputs $(fx get-build-dir) {{ '<var>//some/path/to/build/file:unittest target</var>' }}_component_generated_manifest)
 ```
 
 Note: `fx gn outputs` prints an output path, but the file at the path
@@ -917,7 +930,7 @@ the package.
 
 Sometimes there is the need to include additional files. Below we demonstrate
 the use of two [`resource.gni`](/build/dist/resource.gni) templates,
-`resource()` and `resource_group()`.
+`resource()`, `resource_group()`, and `resource_tree()`.
 
 ### Example: fonts
 
@@ -1053,8 +1066,39 @@ directories, some even under different names. To express this same relationship
 we might need as many `resource()` targets as we have files. Situations like
 this call for the use of `resource_group()` instead, as shown above.
 
-The underlying behavior of `resource()` and `resource_group()` is identical.
-You are free to choose whichever one you prefer.
+### Example: using `resource_tree()`
+
+Mapping each source file to a destination file path using `resource_group()` can
+be cumbersome for larger file sets. `resource_tree()` offers a way to map a
+directory tree of source files to an identical hierarchy under a destation
+directory in the package. The following example copies the subdirectory
+`default_repo_files/` to the package directory `repo/` (using the `sources` list
+to ensure only the explicitly listed files are included).
+
+```gn
+import("//build/components.gni")
+
+resource_tree("default-repo") {
+  sources_root = "default_repo_files"
+  sources = [
+    "keys/root.json",
+    "keys/snapshot.json",
+    "keys/targets.json",
+    "keys/timestamp.json",
+    "repository/1.root.json",
+    "repository/1.snapshot.json",
+    "repository/1.targets.json",
+    "repository/root.json",
+    "repository/snapshot.json",
+    "repository/targets.json",
+    "repository/timestamp.json",
+  ]
+  dest_dir = "repo"
+}
+```
+
+The underlying behavior of `resource()`, `resource_group()`, and
+`resource_tree()` is identical. You are free to choose whichever one you prefer.
 
 Note: see more information in [provide data files to components][provide-data].
 
@@ -1131,9 +1175,9 @@ using [Inspect][doc-inspect]:
 
       ```gn
       rustc_binary("echo_server") {
-        edition = "2018"
+        edition = "2021"
         deps = [
-          "//examples/components/routing/fidl:echo-rustc",
+          "//examples/components/routing/fidl:echo_rust",
           {{ '<strong>' }}# This library requires "inspect/client.shard.cml" {{ '</strong>' }}
           {{ '<strong>' }}"//src/lib/diagnostics/inspect/runtime/rust", {{ '</strong>' }}
           "//src/lib/diagnostics/inspect/rust",
@@ -1159,8 +1203,8 @@ To address the issue, add the missing `include` in your component manifest. For 
         {{ '<strong>' }}// Add this required include {{ '</strong>' }}
         {{ '<strong>' }}"inspect/client.shard.cml", {{ '</strong>' }}
 
-        // Enable logging on stdout
-        "syslog/elf_stdio.shard.cml",
+        // Enable logging
+        "syslog/client.shard.cml",
     ],
 
     // ...
@@ -1193,8 +1237,8 @@ required the include:
 
   ```none {:.devsite-disable-click-to-copy}
   $ fx gn path $(fx get-build-dir) //examples/components/routing/rust/echo_server //sdk/lib/inspect:client_includes --with-data
-  //examples/components/routing/rust/echo_server:echo_server --[public]-->
-  //examples/components/routing/rust/echo_server:echo_server.actual --[private]-->
+  //examples/components/routing/rust/echo_server:bin --[public]-->
+  //examples/components/routing/rust/echo_server:bin.actual --[private]-->
   //src/lib/diagnostics/inspect/runtime/rust:rust --[public]-->
   //src/lib/diagnostics/inspect/runtime/rust:lib --[public]-->
   //src/lib/diagnostics/inspect/runtime/rust:lib.actual --[private]-->
@@ -1269,7 +1313,7 @@ To address the issue, verify the following:
 
       ```gn
       rustc_binary("echo_example") {
-        edition = "2018"
+        edition = "2021"
         sources = [ "src/main.rs" ]
 
         deps = [ ... ]
@@ -1366,7 +1410,7 @@ In the previous example error, an `offer` should be added in the parent componen
         // ...
         {
             name: "echo",
-            url: "#meta/echo.cm",
+            url: "echo#meta/default.cm",
         },
     ],
     offer: [
@@ -1386,32 +1430,32 @@ For more details on building capability routes, see [Connect components][doc-con
 [cml-expose]: https://fuchsia.dev/reference/cml#expose
 [cml-offer]: https://fuchsia.dev/reference/cml#offer
 [cml-program]: https://fuchsia.dev/reference/cml#program
-[components-migration]: /contribute/open_projects/components/migration.md
-[cpp-syslog]: /development/languages/c-cpp/logging.md#component_manifest_dependency
-[doc-connect]: /development/components/connect.md
-[doc-inspect]: /development/diagnostics/inspect/README.md
+[components-migration]: /docs/contribute/open_projects/components/migration.md
+[cpp-syslog]: /docs/development/languages/c-cpp/logging.md#component_manifest_dependency
+[doc-connect]: /docs/development/components/connect.md
+[doc-inspect]: /docs/development/diagnostics/inspect/README.md
 [executable]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#func_executable
 [ffx-scrutiny]: https://fuchsia.dev/reference/tools/sdk/ffx#scrutiny
 [fx-test]: https://fuchsia.dev/reference/tools/fx/cmd/test.md
 [fxb-55739]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=55739
-[glossary.capability-routing]: /glossary/README.md#capability-routing
-[glossary.component]: /glossary/README.md#component
-[glossary.component-instance]: /glossary/README.md#component-instance
-[glossary.component-manifest]: /glossary/README.md#component-manifest
-[glossary.component-topology]: /glossary/README.md#component-topology
-[glossary.component-url]: /glossary/README.md#component-url
-[glossary.fuchsia-pkg-url]: /glossary/README.md#fuchsia-pkg-url
-[glossary.gn]: /glossary/README.md#gn
-[glossary.package]: /glossary/README.md#fuchsia-package
+[glossary.capability-routing]: /docs/glossary/README.md#capability-routing
+[glossary.component]: /docs/glossary/README.md#component
+[glossary.component-instance]: /docs/glossary/README.md#component-instance
+[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
+[glossary.component-topology]: /docs/glossary/README.md#component-topology
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.fuchsia-pkg-url]: /docs/glossary/README.md#fuchsia-pkg-url
+[glossary.gn]: /docs/glossary/README.md#gn
+[glossary.package]: /docs/glossary/README.md#fuchsia-package
 [gn-get-target-outputs]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#func_get_target_outputs
-[provide-data]: /development/components/data.md
+[provide-data]: /docs/development/components/data.md
 [rustc-binary]: /build/rust/rustc_binary.gni
 [rustc-test]: /build/rust/rustc_test.gni
-[source-code-layout]: /development/source_code/layout.md
+[source-code-layout]: /docs/development/source_code/layout.md
 [source-expansion-placeholders]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#placeholders
 [src-inspect-cpp]: /sdk/lib/sys/inspect/cpp/BUILD.gn
 [src-inspect-include]: /sdk/lib/inspect/BUILD.gn
 [src-inspect-rust]: /src/lib/diagnostics/inspect/runtime/rust/BUILD.gn
-[test-environments]: /contribute/testing/environments.md
-[v2-test-component]: /development/testing/components/test_component.md
-[working-with-packages]: /development/idk/documentation/packages.md
+[test-environments]: /docs/contribute/testing/environments.md
+[v2-test-component]: /docs/development/testing/components/test_component.md
+[working-with-packages]: /docs/development/idk/documentation/packages.md

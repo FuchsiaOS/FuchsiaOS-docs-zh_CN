@@ -23,11 +23,14 @@ resource("greetings") {
 }{% endverbatim %}
 ```
 
-See the [resource][resource] template for more usage instructions.
 For information about `{% verbatim %}{{source_file_part}}{% endverbatim %}`
 and similar syntax see [GN placeholders][gn-placeholders]{:.external}.
 
-Using `resource()` is also demonstrated in [additional packaged resources][additional-packaged-resources].
+See [resource.gni][resource-gni] for more usage instructions on the `resource()`
+template, and related templates `resource_group()` and `resource_tree()`.
+
+More examples using `resource()`, `resource_group()`, and `resource_tree()` can
+be found in [additional packaged resources][additional-packaged-resources].
 
 ### Including resources with a component
 
@@ -130,125 +133,8 @@ component will find a file under `/pkg/data/greetings.txt`. However the
 contents of this file will vary between the production version and the testing
 version, depending on the package association.
 
-## Product-specific configuration with `config_data()`
-
-Sometimes a component is defined in one repository but its data is defined in
-another repository. For instance `fuchsia.git` defines a font provider service,
-but the `workstation_eng` product configuration (defined in a different repository)
-defines which fonts are available to the font provider.
-
-The `config_data()` template allows developers to make files available to
-components in a different package without having to directly change the contents
-of that package.
-
-{# note: the verbatim tags below are to avoid issues with the fuchsia.dev template engine #}
-```gn
-import("//build/config.gni")
-{% verbatim %}
-config_data("workstation_fonts") {
-  for_pkg = "fonts"
-  sources = [
-    "RobotoMono-Light.ttf",
-    "RobotoMono-Medium.ttf",
-    "RobotoMono-Regular.ttf",
-  ]
-  outputs = [ "fonts/{{source_file_part}}" ]
-}{% endverbatim %}
-```
-
-### Using `config_data()` in your component
-
-Note: If you are using [legacy components][legacy-components],
-see [configuration data][config-migration] in the components migration guide.
-
-Include the following in your component manifest (`.cml`) file:
-
-```json5
-{
-    use: [
-        {
-            directory: "config-data",
-            rights: [ "r*" ],
-            path: "/config/data",
-        },
-    ],
-}
-```
-
-At runtime your component will be able to read the config files at the path
-`/config/data`.
-
-For the above to work, `"config-data"` must be offered to your component.
-For instance your parent may have a declaration that looks like this:
-
-```json5
-{
-    children: [
-        {
-            name: "font-provider",
-            url: "fuchsia-pkg://fuchsia.com/fonts#meta/font-provider.cm",
-        },
-    ],
-    offer: [
-        {
-            directory: "config-data",
-            from: "parent",
-            to: [ "#font-provider" ],
-            subdir: "fonts",
-        },
-    ],
-}
-```
-
-Note that both `for_pkg = ...` and `subdir: ...` above are coordinated in that
-they set the same value `"fonts"`.
-
-### Testing `config_data()`
-
-A component under test in a test realm can have a `"config-data"` directory
-routed to it in much the same way as a production component would.
-
-If you would like to offer a component under test different configuration data,
-simply use the appropriate value for `for_pkg` and `subdir` that would route
-your test data to your test component.
-
-### How `config_data()` works
-
-All `config_data()` targets that are defined in your build configuration collect
-their files into a single package called `config-data`. This package is defined
-in the system assembly as part of the base package set. The contents of this
-package replicate the parameters in `config_data()` definitions, so that they
-can be routed as subdirectories to components that expect them.
-
-### Known issues
-
-*   The `config-data` package that collects all files from `config_data()`
-    definitions is part of the base set of packages. As a result its contents do
-    not update in the `fx serve` developer workflow. To update data files you
-    must repave or OTA your device, or if using an emulator rebuild the system
-    image and restart the emulator.
-
-*   Defining `config_data()` also requires making changes to component manifest
-    files as shown above. Some of the strings used are repeated in multiple
-    places, which is error-prone. When mistakes are made they can be difficult
-    to troubleshoot.
-
-*   `config_data()` target definitions know about the name of the package(s)
-    of components that are expected to use this data. This promotes brittle
-    contracts that are difficult and perilous to evolve. For instance in order
-    for the platform to offer [ICU data][icu-data] to out-of-tree components and
-    their tests, there exists a
-    [hard-coded list of out-of-tree package names][icu-data-configs] in the
-    Fuchsia source tree.
-
-Due to the above, always prefer using `resource()` if possible.
-
-[additional-packaged-resources]: /development/components/build.md#additional-packaged-resources
-[build-components]: /development/components/build.md
-[config-migration]: /development/components/v2/migration/features.md#config-data
+[additional-packaged-resources]: /docs/development/components/build.md#additional-packaged-resources
+[build-components]: /docs/development/components/build.md
 [gn-placeholders]: https://gn.googlesource.com/gn/+/HEAD/docs/reference.md#placeholders
-[icu-data]: /development/internationalization/icu_data.md
-[icu-data-configs]: /src/lib/icu/tzdata/BUILD.gn
-[legacy-components]: /concepts/components/v1/README.md
-[metafar]: /concepts/packages/package.md#metafar
-[resource]: /build/dist/resource.gni
+[metafar]: /docs/concepts/packages/package.md#metafar
+[resource-gni]: /build/dist/resource.gni

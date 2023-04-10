@@ -59,103 +59,82 @@ Therefore, in order to use interrupts on PCI:
 4.  start IHT background thread,
 5.  arrange for IHT thread to wait for interrupts (on handle(s) from step 3).
 
-Steps `1` and `2` are usually done closely together, for example:
+Steps `1` and `2` are handled by the `Pci::ConfigureInterruptMode helper function:
 
-```c
-// Query whether we have MSI or Legacy interrupts.
-uint32_t irq_cnt = 0;
-if ((pci_query_irq_mode(&edev->pci, ZX_PCIE_IRQ_MODE_MSI, &irq_cnt) == ZX_OK) &&
-    (pci_set_interrupt_mode(&edev->pci, ZX_PCIE_IRQ_MODE_MSI, 1) == ZX_OK)) {
-    // using MSI interrupts
-} else if ((pci_query_irq_mode(&edev->pci, ZX_PCIE_IRQ_MODE_LEGACY, &irq_cnt) == ZX_OK) &&
-           (pci_set_interrupt_mode(&edev->pci, ZX_PCIE_IRQ_MODE_LEGACY, 1) == ZX_OK)) {
-    // using legacy interrupts
-} else {
-    // an error
+```cpp
+// Configure interrupt mode.
+uint32_t irq_cnt = 1;
+fuchsia_hardware_pci::InterruptMode mode;
+zx_status_t status = pci.ConfigureInterruptMode(irq_cnt, &mode);
+if (status != ZX_OK) {
+  // handle error
 }
 ```
 
-The **pci_query_irq_mode()**
-function takes three arguments:
+**Pci::ConfigureInterruptMode()**
+takes two arguments:
 
-```c
-zx_status_t pci_query_irq_mode(const pci_protocol_t* pci,
-                               zx_pci_irq_mode_t mode,
-                               uint32_t* out_max_irqs);
+```cpp
+#include <lib/device-protocol/pci.h>
+
+zx_status_t Pci::ConfigureInterruptMode(uint32_t requested_irq_count,
+                                        fpci::InterruptMode* out_mode);
 ```
 
-The first argument, `pci`, is a pointer to the PCI protocol stack bound to your device
-just like we saw above, in the BAR documentation.
+The first argument, `requested_irq_count`, is number of interrupts you would like.
 
-The second argument, `mode`, is the kind of interrupt that you are interested in;
-it's one of the two constants shown in the example.
+The second argument is an out parameter for the interrupt mode that the device supports.
 
-<!--- there's also a `ZX_PCIE_IRQ_MODE_MSI_X` in the syscalls/pci.h file; should I say anything
-about that? How would we use it in the above case, just make a third condition? -->
-
-The third argument is a pointer to integer that returns how many
-interrupts of the specified type your device supports.
-
-Having determined the kind of interrupt supported, you then call
-**pci_set_interrupt_mode()**
-to indicate that this is indeed the kind of interrupt that you wish to use.
-
-Finally, you call **pci_map_interrupt()**
+Having configured interrupt support, you call **Pci::MapInterrupt()**
 to create a handle to the selected interrupt. Note that
-**pci_map_interrupt()** has the following prototype:
+**Pci::MapInterrupt()** has the following prototype:
 
-```c
-zx_status_t pci_map_interrupt(const pci_protocol_t* pci,
-                              int which_irq,
-                              zx_handle_t* out_handle);
+```cpp
+#include <lib/device-protocol/pci.h>
+
+zx_status_t Pci::MapInterrupt(uint32_t which_irq, zx::interrupt* out_interrupt);
 ```
 
-The first argument is the same as in the previous call, the second argument, `which_irq`
-indicates the device-relative interrupt number you'd like, and the third argument
-is a pointer to the created interrupt handle.
+The first argument, `which_irq`
+indicates the device-relative interrupt number you'd like, and the second argument
+is a pointer to the created interrupt object.
 
 You now have an interrupt handle.
 
 > Note that the vast majority of devices have just one interrupt, so simply passing
 > `0` for `which_irq` is normal.
 > If your device does have more than one interrupt, the common practice is to run the
-> **pci_map_interrupt()** function in a `for` loop
+> **pci::MapInterrupt()** function in a `for` loop
 > and bind handles to each interrupt.
 
 ## Waiting for the interrupt
 
-In your IHT, you call [**zx_interrupt_wait()**](/reference/syscalls/interrupt_wait.md)
+In your IHT, you call [**zx::interrupt::wait()**](/docs/reference/syscalls/interrupt_wait.md)
 to wait for the interrupt.
 The following prototype applies:
 
-```c
-zx_status_t zx_interrupt_wait(zx_handle_t handle,
-                              zx_time_t* out_timestamp);
+```cpp
+zx_status_t zx::interrupt::wait(zx::time* out_timestamp);
 ```
 
-The first argument is the handle you obtained from the call to
-**pci_map_interrupt()**,
-and the second parameter can be `NULL` (typical), or it can be a pointer to a time
+The first parameter can be `nullptr` (typical), or it can be a pointer to a time
 stamp that indicates when the interrupt was triggered (in nanoseconds,
 relative to the monotonic clock source fetched with
-[`zx_clock_get_monotonic()`](/reference/syscalls/clock_get_monotonic.md)).
+[`zx_clock_get_monotonic()`](/docs/reference/syscalls/clock_get_monotonic.md)).
 
 Therefore, a typical IHT would have the following shape:
 
-```c
-static int irq_thread(void* arg) {
-    my_device_t* dev = arg;
+```cpp
+int MyDevice::IrqThread() {
     for (;;) {
-        zx_status_t rc;
-        rc = zx_interrupt_wait(dev->irq_handle, NULL);
+        zx_status_t status = dev->irq_.wait(nullptr);
         // do stuff
     }
 }
 ```
 
-The convention is that the argument passed to the IHT is your device context block.
-The context block has a member (here `irq_handle`) that is the handle you obtained from
-**pci_map_interrupt()**.
+The device class has a member (here `irq_`) that is the object you obtained from
+**Pci::MapInterrupt()**.
 
 ## Edge vs level interrupt mode
 
@@ -174,7 +153,7 @@ interrupt to remain active until *all* devices have de-asserted their request li
 
 The Zircon kernel automatically masks and unmasks the interrupt as appropriate.
 For level-triggered hardware interrupts,
-[**zx_interrupt_wait()**](/reference/syscalls/interrupt_wait.md)
+[**zx::interrupt::wait()**](/docs/reference/syscalls/interrupt_wait.md)
 masks the interrupt before returning, and unmasks it when called the next time.
 For edge-triggered interrupts, the interrupt remains unmasked.
 
@@ -184,36 +163,30 @@ For edge-triggered interrupts, the interrupt remains unmasked.
 ## Shutting down a driver that uses interrupts
 
 In order to cleanly shut down a driver that uses interrupts, you can use
-[**zx_interrupt_destroy()**](/reference/syscalls/interrupt_destroy.md)
+[**zx::interrupt::destroy()**](/docs/reference/syscalls/interrupt_destroy.md)
 to abort the
-[**zx_interrupt_wait()**](/reference/syscalls/interrupt_wait.md)
+[**zx::interrupt::wait()**](/docs/reference/syscalls/interrupt_wait.md)
 call.
 
 The idea is that when the foreground thread determines that the driver should be
 shut down, it simply destroys the interrupt handle, causing the IHT to shut down:
 
-```c
-static void main_thread() {
-    ...
-    if (shutdown_requested) {
-        // destroy the handle, this will cause zx_interrupt_wait() to pop
-        zx_interrupt_destroy(dev->irq_handle);
-
-        // wait for the IHT to finish
-        thrd_join(dev->iht, NULL);
-    }
-    ...
+```cpp
+void MyDevice::DdkRelease() {
+  // destroy the handle, this will cause zx_interrupt_wait() to pop
+  irq_.destroy();
+  irq_thread_.join();
+  ...
 }
 
-static int irq_thread(void* arg) {
+int MyDevice::IrqThread() {
     ...
     for(;;) {
-        zx_status_t rc;
-        rc = zx_interrupt_wait(dev->irq_handle, NULL);
-        if (rc == ZX_ERR_CANCELED) {
+        zx_status_t status = irq_.wait(nullptr);
+        if (status == ZX_ERR_CANCELED) {
             // we are being shut down, do any cleanups required
             ...
-            return;
+            break;
         }
         ...
     }
@@ -222,19 +195,19 @@ static int irq_thread(void* arg) {
 
 The main thread, when requested to shut down, destroys the interrupt handle.
 This causes the IHT's
-[**zx_interrupt_wait()**](/reference/syscalls/interrupt_wait.md)
+[**zx::interrupt::wait()**](/docs/reference/syscalls/interrupt_wait.md)
 call to wake up with an error code.
 The IHT looks at the error code (in this case, `ZX_ERR_CANCELED`) and makes
 the decision to end.
 Meanwhile, the main thread is waiting to join the IHT with the call
-to **thrd_join()**.
-Once the IHT exits, **thrd_join()** returns, and the main
+to **thread::join()**.
+Once the IHT exits, **thread::join()** returns, and the main
 thread can finish its processing.
 
 The advanced reader is invited to look at some of the other interrupt related
 functions available:
 
-*   [**zx_interrupt_ack()**](/reference/syscalls/interrupt_ack.md)
-*   [**zx_interrupt_bind()**](/reference/syscalls/interrupt_bind.md)
-*   [**zx_interrupt_create()**](/reference/syscalls/interrupt_create.md)
-*   [**zx_interrupt_trigger()**](/reference/syscalls/interrupt_trigger.md)
+*   [**zx_interrupt_ack()**](/docs/reference/syscalls/interrupt_ack.md)
+*   [**zx_interrupt_bind()**](/docs/reference/syscalls/interrupt_bind.md)
+*   [**zx_interrupt_create()**](/docs/reference/syscalls/interrupt_create.md)
+*   [**zx_interrupt_trigger()**](/docs/reference/syscalls/interrupt_trigger.md)

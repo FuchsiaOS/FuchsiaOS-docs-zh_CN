@@ -16,6 +16,12 @@ syntax of FIDL. There is active and ongoing work to
 (before it is used to automatically detect backwards-incompatible changes
 via API hashing). See: [fxbug.dev/72411][bug72411].
 
+> *Amendment (Aug 2022).* This RFC describes a human-readable text format with
+> each API element on a single line. During implementation, a JSON format
+> containing the same information was added (https://fxrev.dev/480357). Unlike
+> the text format, the JSON format can be parsed back into Go data structures,
+> which is particularly useful for [fidl_api_diff]. Since only the JSON format
+> is used today, we have removed the text format to ease maintenance.
 
 ## Motivation
 
@@ -322,14 +328,15 @@ The go language API regularly produces [API surface summaries][gapi].
 [bnf]: https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form
 [bug72411]: http://fxbug.dev/72411
 [fas]: /tools/fidl/fidl_api_summarize/README.md
-[fbs]: /reference/fidl/language/bindings-spec.md
-[fidl]: /development/languages/fidl
-[fidlir]: /reference/fidl/language/json-ir.md
-[rfc-0050]: /contribute/governance/rfcs/0050_syntax_revamp.md
-[fqn]: /contribute/governance/rfcs/0043_documentation_comment_format.md#fully-qualified-names
-[rfc24c]: /contribute/governance/rfcs/0024_mandatory_source_compatibility.md#compat
+[fbs]: /docs/reference/fidl/language/bindings-spec.md
+[fidl]: /docs/development/languages/fidl
+[fidlir]: /docs/reference/fidl/language/json-ir.md
+[rfc-0050]: /docs/contribute/governance/rfcs/0050_syntax_revamp.md
+[fqn]: /docs/contribute/governance/rfcs/0043_documentation_comment_format.md#fully-qualified-names
+[rfc24c]: /docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md#compat
 [gapi]: https://golang.org/api
 [gesture]: /sdk/fidl/fuchsia.accessibility.gesture/gesture_listener.fidl
-[rfc15]: /contribute/governance/rfcs/0015_cts.md
-[rules]: /development/languages/fidl/guides/compatibility/README.md
+[rfc15]: /docs/contribute/governance/rfcs/0015_cts.md
+[rules]: /docs/development/languages/fidl/guides/compatibility/README.md
 [summarize]: /tools/fidl/fidl_api_summarize
+[fidl_api_diff]: /tools/fidl/fidl_api_diff

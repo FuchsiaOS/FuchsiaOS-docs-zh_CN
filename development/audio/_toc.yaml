@@ -1,0 +1,21 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license
+# that can be found in the LICENSE file.
+toc:
+- title: "Loudness"
+  path: /docs/development/audio/loudness.md
+- title: "Drivers"
+  section:
+  - title: "Overview"
+    path: /docs/development/audio/drivers/overview.md
+  - title: "Architecture"
+    path: /docs/development/audio/drivers/architecture.md
+  - title: "Audio driver streaming interface"
+    path: /docs/development/audio/drivers/streaming.md
+  - title: "Audio Signal Processing"
+    path: /docs/development/audio/drivers/signal-processing.md
+  - title: "Digital Audio Interface (DAI)"
+    path: /docs/development/audio/drivers/dai.md
+  - title: "Audio codec"
+    path: /docs/development/audio/drivers/codec.md
+

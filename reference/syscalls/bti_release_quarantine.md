@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_bti_release_quarantine
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Releases all quarantined PMTs.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,25 +23,23 @@ Releases all quarantined PMTs.
 zx_status_t zx_bti_release_quarantine(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_bti_release_quarantine()` releases all quarantined PMTs for the given BTI.
 This will release the PMTs' underlying references to VMOs and physical page
 pins.  The underlying physical pages may be eligible to be reallocated
 afterwards.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_BTI** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_bti_release_quarantine()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -42,12 +47,10 @@ In the event of failure, a negative error value is returned.
 
 **ZX_ERR_ACCESS_DENIED** *handle* does not have the **ZX_RIGHT_WRITE** right.
 
-## SEE ALSO
+## See also
 
  - [`zx_bti_pin()`]
  - [`zx_pmt_unpin()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_bti_pin()`]: bti_pin.md
 [`zx_pmt_unpin()`]: pmt_unpin.md

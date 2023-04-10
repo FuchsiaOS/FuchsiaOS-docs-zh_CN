@@ -1,0 +1,11 @@
+digraph {
+    rankdir=LR;
+    node [shape=box];
+    root -> core [label="offers started, scope: none"];
+    core -> archivist [label="offers started, scope: none"];
+    core -> test_manager [label="offers started, scope: test_manager"];
+    test_manager -> "archivist" [label="offers started, scope: none"];
+    test_manager -> "tests:test-12345" [label="offers started, scope: test-12345"];
+    test_manager -> "tests:test-67890" [label="offers started, scope: test-67890"];
+    test_manager -> "tests:test-abcde" [label="offers started, scope: test-abcde"];
+}

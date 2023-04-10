@@ -50,7 +50,7 @@ per-file main.c = validuser3@example.com
     of Fuchsia with a single owner leads to single points of failure. Having multiple
     owners ensures that knowledge and ownership is shared over areas of Fuchsia.
 *   When applicable, `include` owners from another file rather than listing individuals.
-    This creates fewer "soruces of truth" and makes OWNERS maintenance easier.
+    This creates fewer "sources of truth" and makes OWNERS maintenance easier.
 
 [find-owners]: https://gerrit.googlesource.com/plugins/find-owners/+/HEAD/src/main/resources/Documentation/about.md
 [owners-syntax]: https://gerrit.googlesource.com/plugins/find-owners/+/HEAD/src/main/resources/Documentation/syntax.md

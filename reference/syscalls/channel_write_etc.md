@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_channel_write_etc
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write a message to a channel.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_channel_write_etc(zx_handle_t handle,
                                  uint32_t num_handles);
 ```
 
-## DESCRIPTION
+## Description
 
 Like [`zx_channel_write()`] it attempts to write a message of *num_bytes*
 bytes and *num_handles* handles to the channel specified by *handle*, but in
@@ -40,7 +47,7 @@ typedef struct zx_handle_disposition {
 In zx_handle_disposition_t, *handle* is the source handle to be operated on,
 *rights* is the desired final rights (not a mask) and *result* must be set
 to **ZX_OK**. All source handles must have **ZX_RIGHT_TRANSFER**, but
-it it can  be removed in *rights* so that it is not available to the message
+it can be removed in *rights* so that it is not available to the message
 receiver.
 
 *type* is used to perform validation of the object type that the caller
@@ -79,7 +86,7 @@ which is 65536.
 
 Messages are drained by [`zx_channel_read()`] or [`zx_channel_read_etc()`]. Failure to drain the
 messages in a timely fashion can cause excessive kernel memory to be used, which might generate an
-exception. See [ipc limits](/concepts/kernel/ipc_limits.md) for details.
+exception. See [ipc limits](/docs/concepts/kernel/ipc_limits.md) for details.
 
 ### ZX_CHANNEL_WRITE_USE_IOVEC option
 
@@ -105,19 +112,17 @@ across all `zx_channel_iovec_t` not exceeding **ZX_CHANNEL_MAX_MSG_BYTES** or
 Either all `zx_channel_iovec_t` are copied and the message is sent, or none
 are copied and the message is not sent. Usage for sending handles is unchanged.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_WRITE**.
 
 Every entry of *handles* must have **ZX_RIGHT_TRANSFER**.
 
-## RETURN VALUE
+## Return value
 
 `zx_channel_write_etc()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle, any source handle in
 *handles* is not a valid handle, or there are repeated handles
@@ -155,22 +160,20 @@ If the **ZX_CHANNEL_WRITE_USE_IOVEC** option is specified,
 **ZX_CHANNEL_MAX_MSG_IOVEC** or the sum of the iovec capacities exceeds
 **ZX_CHANNEL_MAX_MSG_BYTES**.
 
-## NOTES
+## Notes
 
 If the caller removes the **ZX_RIGHT_TRANSFER** to a handle attached
 to a message, the reader of the message will receive a handle that cannot
 be written to any other channel, but still can be using according to its
 rights and can be closed if not needed.
 
-## SEE ALSO
+## See also
 
  - [`zx_channel_call()`]
  - [`zx_channel_create()`]
  - [`zx_channel_read()`]
  - [`zx_channel_read_etc()`]
  - [`zx_channel_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_call()`]: channel_call.md
 [`zx_channel_create()`]: channel_create.md

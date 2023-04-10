@@ -23,7 +23,7 @@ which led up to a crash. Useful properties of JTRACE include:
 + Optional persistence across reboot: Platform permitting, JTRACE may be
   configured to use some of the persistent RAM typically used for crashlog
   storage to assist in debugging issues involving spontaneous reboots, typically
-  caused by triggering a [hardware watchdog timer](/concepts/kernel/watchdog.md).
+  caused by triggering a [hardware watchdog timer](/docs/concepts/kernel/watchdog.md).
 
 ### What it is not
 
@@ -130,16 +130,16 @@ Here is an example of using tracing, when configured for large entries.
 #include <lib/jtrace/jtrace.h>
 
 struct MyStruct {
-  void* ptr1, ptr2;
+  void *ptr1, *ptr2;
   uint32_t foo, bar;
-}
+};
 
 void MyFunction(const MyStruct* args, uint32_t num_args) {
   JTRACE("(num_args, args)", num_args, 0, 0, 0, args);
 
   for (uint32_t i = 0; i < num_args; ++i) {
     const auto& a = args[i];
-    JTRACE("Before (i, foo, bar, ptr1, ptr2)", i, a.foo, a.bar, 0, a.ptr1, a.ptr2);
+    JTRACE("Before (i, foo, bar, 0, ptr1, ptr2)", i, a.foo, a.bar, 0, a.ptr1, a.ptr2);
     zx_status_t status = DoAThingWithMyStruct(a);
     JTRACE("After (status)", status);
   }
@@ -147,6 +147,30 @@ void MyFunction(const MyStruct* args, uint32_t num_args) {
   JTRACE("Finished");
 }
 ```
+
+And here is what one of the "Before" tagged trace statements would look like
+when the trace buffer is eventually displayed.
+
+```
+[   7.718998976][cpu 2 tid     3702] : 00000002 00000006 00000001 00000000 ffffffff0024c720 ffffff9519077e60 : (       0.308 uSec) : jtrace_example.cc:MyFunction:12 (Before (i, foo, bar, 0, ptr1, ptr2))
+```
+
+Breaking this down by field, we have:
+
+| Field                                   | Description                                                                     |
+|-----------------------------------------|---------------------------------------------------------------------------------|
+| `[   7.718998976]`                      | The clock monotonic timestamp of the trace entry                                |
+| `[cpu 2 tid     3702]`                  | The ID of the CPU and thread which was active when the trace entry was recorded |
+| `00000002`                              | The value of the 1st 32-bit argument (`i`)                                      |
+| `00000006`                              | The value of the 2nd 32-bit argument (`foo`)                                    |
+| `00000001`                              | The value of the 3rd 32-bit argument (`bar`)                                    |
+| `00000000`                              | The value of the 4th 32-bit argument (0)                                        |
+| `ffffffff0024c720`                      | The value of the 1st 64-bit argument (`ptr1`)                                   |
+| `ffffff9519077e60`                      | The value of the 2nd 64-bit argument (`ptr2`)                                   |
+| `(       0.308 uSec)`                   | The time since the last displayed trace entry                                   |
+| `jtrace_example.cc:MyFunction:12`       | The filename, function name, and line number of the trace entry                 |
+| `(Before (i, foo, bar, 0, ptr1, ptr2))` | The user's string literal tag                                                   |
+
 
 ## Displaying the contents of a trace buffer
 
@@ -242,8 +266,8 @@ this behavior and force either small or large records in either situation.
 Small trace entries record the following fields.
 
 + Timestamp: A timestamp which records when the trace entry was added to the buffer. Recorded in
-units of [ticks](/reference/syscalls/ticks_get.md), but translated to the
-[clock monotonic](/reference/syscalls/clock_get_monotonic.md) timeline when the buffer is
+units of [ticks](/docs/reference/syscalls/ticks_get.md), but translated to the
+[clock monotonic](/docs/reference/syscalls/clock_get_monotonic.md) timeline when the buffer is
 dumped.
 + CPU Id: The ID of the CPU which created the trace entry.
 + Tag: A pointer to a C-string literal supplied by the developer to assist in debugging.
@@ -271,7 +295,7 @@ store the last events recorded by each CPU.  When enabled, these records will be
 dumped separately, after the main trace buffer dump is complete.
 
 This feature can be useful when attempting to debug hangs of individual CPUs,
-especially if they lead to the triggering of a [HW WDT](/concepts/kernel/watchdog.md).
+especially if they lead to the triggering of a [HW WDT](/docs/concepts/kernel/watchdog.md).
 If a CPU gets stuck for any significant amount of time, it is likely that trace
 events from other CPUs will rapidly flush the events from the stuck CPU out of
 the trace buffer, especially if the buffer is small because it is located in
@@ -307,7 +331,7 @@ system.
 
 In order to enable persistent tracing, set the `jtrace_enabled` to the value
 `"persistent`". After a hang occurs, reboot the system (either via a
-[HW WDT](/concepts/kernel/watchdog.md), or a manual reset line in the
+[HW WDT](/docs/concepts/kernel/watchdog.md), or a manual reset line in the
 target). Once the system has rebooted, if the recovered trace buffer was
 successfully recovered, it may be dumped by executing `k jtrace -r` from a
 serial shell. Note that persistent RAM is typically just a section of DRAM which

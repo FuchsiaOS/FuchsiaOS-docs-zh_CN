@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_interrupt_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create an interrupt object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_interrupt_create(zx_handle_t src_obj,
                                 zx_handle_t* out_handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_interrupt_create()` creates an interrupt object that represents a physical
 or virtual interrupt.
@@ -48,18 +55,16 @@ If not bound to a port, an interrupt object may be waited on with [`zx_interrupt
 
 Interrupts cannot be waited on with the `zx_object_wait_` family of calls.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *src_obj* must have resource kind **ZX_RSRC_KIND_IRQ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_interrupt_create()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** the *src_obj* handle is invalid (if this is not a virtual interrupt)
 
@@ -74,7 +79,7 @@ parameter is an invalid pointer.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_interrupt_ack()`]
@@ -82,8 +87,6 @@ In a future build this error will no longer occur.
  - [`zx_interrupt_destroy()`]
  - [`zx_interrupt_wait()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_write()`]: channel_write.md
 [`zx_handle_close()`]: handle_close.md

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmar_protect
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Set protection of virtual memory pages.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_vmar_protect(zx_handle_t handle,
                             size_t len);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmar_protect()` alters the access protections for the memory mappings
 in the range of *len* bytes starting from *addr*. The *options* argument should
@@ -41,11 +48,12 @@ be a bitwise-or of one or more of the following:
   not support mapping execute-only pages. If the system can map execute-only
   this flag is ignored.
 
+For any mappings in sub-regions in the requested range, their access permissions must either
+be reduced, or left unchanged, by the requested change.
+
 *len* must be page-aligned.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 If *options* & **ZX_VM_PERM_READ**, *handle* must be of type **ZX_OBJ_TYPE_VMAR** and have **ZX_RIGHT_READ**.
 
@@ -53,11 +61,11 @@ If *options* & **ZX_VM_PERM_WRITE**, *handle* must be of type **ZX_OBJ_TYPE_VMAR
 
 If *options* & **ZX_VM_PERM_EXECUTE**, *handle* must be of type **ZX_OBJ_TYPE_VMAR** and have **ZX_RIGHT_EXECUTE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmar_protect()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -66,25 +74,31 @@ If *options* & **ZX_VM_PERM_EXECUTE**, *handle* must be of type **ZX_OBJ_TYPE_VM
 **ZX_ERR_INVALID_ARGS**  *prot_flags* is an unsupported combination of flags
 (e.g., **ZX_VM_PERM_WRITE** but not **ZX_VM_PERM_READ**), *addr* is
 not page-aligned, *len* is 0, or some subrange of the requested range is
-occupied by a subregion.
+occupied by a subregion and *handle* did not have **ZX_RIGHT_OP_CHILDREN**.
 
 **ZX_ERR_NOT_FOUND**  Some subrange of the requested range is not mapped.
 
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have the proper rights for the
 requested change, the original VMO handle used to create the mapping did not
 have the rights for the requested change, or the VMAR itself does not allow
-the requested change.
+the requested change, or there is a mapping in a sub-region that would have
+its mapping permissions increased.
 
-## NOTES
+**ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
+There is no good way for userspace to handle this (unlikely) error.
+In a future build this error will no longer occur.
 
-## SEE ALSO
+## Notes
+
+For failures other than **ZX_ERR_NO_MEMORY**, all access permissions in the range
+will have been left unchanged.
+
+## See also
 
  - [`zx_vmar_allocate()`]
  - [`zx_vmar_destroy()`]
  - [`zx_vmar_map()`]
  - [`zx_vmar_unmap()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_vmar_allocate()`]: vmar_allocate.md
 [`zx_vmar_destroy()`]: vmar_destroy.md

@@ -10,6 +10,9 @@
 
 <!-- This should begin with an H2 element (for example, ## Summary).-->
 
+Note: This RFC describes SDK Categories as they were first documented. See [SDK
+Categories][sdk-categories] for the current state of the world.
+
 ## Summary
 
 Each SDK Atom has a category that defines which kinds of SDK consumers can see
@@ -255,4 +258,5 @@ set of APIs those consumers who use the stripped headers. This mechanism is
 similar to SDK categories but operates at a finer granularity, and often has
 fewer audience gradations.
 
+[sdk-categories]: /docs/contribute/sdk/categories.md
 [IDK]: ../../../development/idk

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_interrupt_bind
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Bind an interrupt object to a port.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_interrupt_bind(zx_handle_t handle,
                               uint32_t options);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_interrupt_bind()` binds or unbinds an interrupt object to a port.
 
@@ -52,20 +59,18 @@ a packet will immediately be delivered to a waiting thread.
 Interrupt packets are delivered via a dedicated queue on ports and are higher priority
 than non-interrupt packets.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_INTERRUPT** and have **ZX_RIGHT_READ**.
 
 *port_handle* must be of type **ZX_OBJ_TYPE_PORT** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_interrupt_bind()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* or *port_handle* is not a valid handle.
 
@@ -84,7 +89,7 @@ lacks **ZX_RIGHT_WRITE**
 
 **ZX_ERR_NOT_FOUND** the *port* does not match the bound port.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_interrupt_ack()`]
@@ -93,8 +98,6 @@ lacks **ZX_RIGHT_WRITE**
  - [`zx_interrupt_trigger()`]
  - [`zx_interrupt_wait()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_interrupt_ack()`]: interrupt_ack.md

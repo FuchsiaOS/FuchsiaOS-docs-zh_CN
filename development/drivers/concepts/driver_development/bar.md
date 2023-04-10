@@ -31,22 +31,21 @@ It's where the BIOS stores information about the device, such as the assigned in
 and addresses of control registers.
 Other, device specific information, is stored there as well.
 
-Call **pci_map_bar()**
+Call **Pci::MapMmio()**
 to cause the BAR register to be mapped into the driver host's address space:
 
-```c
-zx_status_t pci_map_bar(const pci_protocol_t* pci, uint32_t bar_id,
-                        uint32_t cache_policy, void** vaddr, size_t* size,
-                        zx_handle_t* out_handle);
+```cpp
+#include <lib/device-protocol/pci.h>
+
+zx_status_t Pci::MapMmio(uint32_t bar_id, uint32_t cache_policy,
+                         std::optional<fdf::MmioBuffer>* mmio);
 ```
 
-The first parameter, `pci`, is a pointer to the PCI protocol.
-Typically, you obtain this in your **bind()** function through
-**device_get_protocol()**.
+The `ddk::Pci` class is the interface drivers use to talk to the PCI bus.
 
-The second parameter, `bar_id`, is the BAR register number, starting with `0`.
+The first parameter, `bar_id`, is the BAR register number, starting with `0`.
 
-The third parameter, `cache_policy`, determines the caching policy for access,
+The second parameter, `cache_policy`, determines the caching policy for access,
 and can take on the following values:
 
 `cache_policy` value                | Meaning
@@ -59,39 +58,20 @@ and can take on the following values:
 Note that `ZX_CACHE_POLICY_UNCACHED_DEVICE` is architecture dependent
 and may in fact be equivalent to `ZX_CACHE_POLICY_UNCACHED` on some architectures.
 
-The next three arguments are return values.
-The `vaddr` and `size` return a pointer (and length) of the register region, while
-`out_handle` stores the created handle to the
-[VMO](/reference/kernel_objects/vm_object.md).
+The last argument is an output parameter for the created buffer.
 
 ## Reading and writing memory
 
-Once the **pci_map_bar()**
-function returns with a valid result, you can access the BAR with simple pointer
-operations, for example:
+Once the **Pci::MapMmio()**
+function returns with a valid result, you can access the BAR with through the `MmioBuffer` interface, for example:
 
-```c
-volatile uint32_t* base;
-...
-zx_status_t rc;
-rc = pci_map_bar(dev->pci, 0, ZX_CACHE_POLICY_UNCACHED_DEVICE, &base, &size, &handle);
-if (rc == ZX_OK) {
-    base[REGISTER_X] = 0x1234;  // configure register X for deep sleep mode
+```cpp
+#include <lib/device-protocol/pci.h>
+#include <lib/mmio/mmio-buffer.h>
+
+std::optional<fdf::MmioBuffer> mmio;
+zx_status_t status = pci.MapMmio(0, ZX_CACHE_POLICY_UNCACHED_DEVICE, &mmio);
+if (status == ZX_OK) {
+  mmio.Write32(0x1234, REGISTER_X);  // configure register X for deep sleep mode
 }
 ```
-
-It's important to declare `base` as `volatile` &mdash; this tells the compiler not to
-make any assumptions about the contents of the data that `base` points to.
-For example:
-
-```c
-int timeout = 1000;
-while (timeout-- > 0 && !(base[REGISTER_READY] & READY_BIT)) ;
-```
-
-is a typical (bounded) polling loop, intended for short polling sequences.
-Without the `volatile` keyword in the declaration, the compiler would have no reason
-to believe that the value at `base[REGISTER_READY]` would ever change, so it would
-cause it to be read only once.
-
-

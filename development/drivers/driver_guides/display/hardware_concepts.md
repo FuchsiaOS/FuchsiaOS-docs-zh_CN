@@ -92,7 +92,7 @@ convert back ("regamma") to sRGB and a pixel format supported by the monitor.
 Extended Display Identification Data (EDID) is a VESA metadata format for
 display devices to describe their capabilities to a video source. Many displays
 expose their color format & output capabilities via [EDID][edid]{:.external}.
-The [//zircon/system/ulib/edid][edid-lib]{:.external} can be used to parse this
+The [//src/graphics/display/lib/edid][edid-lib]{:.external} can be used to parse this
 information and adjust gamma & color-correction programming for higher fidelity
 color.
 
@@ -137,7 +137,7 @@ explains the details of timing.
 [display-timing]: https://en.wikipedia.org/wiki/Raster_scan#video_timing
 [dvi]: https://en.wikipedia.org/wiki/Digital_Visual_Interface#Connector
 [edid]: https://en.wikipedia.org/wiki/Extended_Display_Identification_Data
-[edid-lib]: https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/ulib/edid
+[edid-lib]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/graphics/display/lib/edid
 [hdmi]: https://en.wikipedia.org/wiki/HDMI#Connectors
 [novak-gamma]: https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/
 [tmds]: https://en.wikipedia.org/wiki/Transition-minimized_differential_signaling

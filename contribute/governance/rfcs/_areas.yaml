@@ -2,7 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# TODO(pascallouis): Align with docs/contribute/governance/areas/_areas.yaml
+# NOTE: This should be a superset of the areas listed in
+# docs/contribute/governance/areas/_areas.yaml.
 
 - Bluetooth
 - Build
@@ -12,6 +13,7 @@
 - Diagnostics
 - Driver SDK
 - Drivers
+- EngProd/Infra
 - Experiences
 - FIDL
 - Firmware
@@ -22,13 +24,17 @@
 - HCI
 - Identity
 - Kernel
+- Languages and Libraries
 - Media
+- Memory
 - Metrics
 - Netstack
+- Performance
 - Power
 - Recovery
 - Security
 - Sessions
+- Software Assembly
 - Software Delivery
 - Storage
 - System

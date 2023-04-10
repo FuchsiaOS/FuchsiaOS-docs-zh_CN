@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_msi_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create an Interrupt object from a Messaged-Signaled Interrupt (MSI) allocation.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_msi_create(zx_handle_t handle,
                           zx_handle_t* out_interrupt);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_msi_create()` creates an Interrupt object corresponding to a given MSI
 within an MSI allocation *handle* created by [`zx_msi_allocate()`]. This
@@ -47,10 +54,7 @@ Specification v3.0, section 6.8.
 
 *options* should be 0.
 
-
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_MSI**.
 
@@ -58,12 +62,12 @@ Specification v3.0, section 6.8.
 
 *vmo* must have **ZX_RIGHT_MAP**.
 
-## RETURN VALUE
+## Return value
 
 `zx_msi_create()` returns **ZX_OK** on success. In the event of failure, a
 negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** the *handle* is invalid.
 
@@ -80,15 +84,13 @@ invalid for the type of capability structure found, *options* is not 0, or
 **ZX_ERR_ALREADY_BOUND** An Interrupt object corresponding to *msi_id* already
 *exists.
 
-## SEE ALSO
+## See also
 
  - [`zx_interrupt_wait()`]
  - [`zx_msi_allocate()`]
  - [`zx_vmo_create_contiguous()`]
  - [`zx_vmo_create_physical()`]
  - [`zx_vmo_set_cache_policy()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_interrupt_create()`]: interrupt_create.md
 [`zx_interrupt_wait()`]: interrupt_wait.md

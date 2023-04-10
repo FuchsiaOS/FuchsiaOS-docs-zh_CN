@@ -99,9 +99,11 @@ driver host and then executed.
 
 The drivers stored in packages aren't available when driver manager starts, as
 those are stored on disk and drivers must be running before block devices for
-filesystems can appear. driver manager starts a thread that [waits on a
-synchronous open to the /system handle][wait-for-system], and once this open
-call succeeds it loads the drivers in the system package.
+filesystems can appear. Before the filesystems are loaded, only drivers in the
+Zircon Boot Image (ZBI) can be loaded and run. The Driver Index is a component
+that knows where all of the drivers live in the system. The Driver Index will
+let Driver Manager know when base packages have finished loading and it has
+found base drivers.
 
 #### fshost
 
@@ -125,7 +127,7 @@ find the appropriate block devices and start the [minfs][minfs] and
 
 #### appmgr
 
-[Appmgr][glossary.appmgr] runs the legacy component framework. Appmgr is [stored
+Appmgr runs the legacy component framework. Appmgr is [stored
 in a package][appmgr-pkg], unlike fshost and driver manager, which are stored in
 bootfs, so component manager uses the `/pkgfs` handle from fshost to load
 appmgr.
@@ -133,7 +135,7 @@ appmgr.
 Appmgr coordinates with component manager to share capabilities between legacy
 components and the rest of the system. Component manager forwards external
 capabilities [to the `sys` realm][appmgr-uses] in appmgr, and services managed by
-[sysmgr][sysmgr] can be [exposed outside the `sys` realm][appmgr-exposes].
+sysmgr can be [exposed outside the `sys` realm][appmgr-exposes].
 
 ### Startup sequence
 
@@ -158,67 +160,44 @@ component, fshost starting due to the /pkgfs handle, driver manager starting due
 to the /dev handle, block devices appearing, filesystems appearing, and then
 appmgr successfully starting.](images/boot-sequence-diagram.png)
 
-## Legacy component framework {#v1-components}
-
-When appmgr starts it creates a top-level realm called the "app"
-[realm][glossary.realm], where it launches [sysmgr][sysmgr].
-Sysmgr’s job is to manage the "sys" realm, which is created under the "app"
-realm.
-
-The sys realm holds a large number of FIDL services, the exact set of which is
-determined by [sysmgr configuration files][sysmgr-config]. Components running in
-the sys realm are allowed to connect to these sysmgr-managed services. Service
-connections for the sys realm are handled by sysmgr, which will lazily start
-components as services they provide are needed.
-
-There is also a set of components that sysmgr will start eagerly, each of which
-may or may not also provide FIDL services for the sys realm.
-
-![A diagram showing the app realm holding the sysmgr component and the sys
-realm, and the sys realm holding other
-components.](images/appmgr-realm-layout.png)
-
 ## Boot complete
 
 At this point, the system is ready to launch additional components through FIDL
 protocols and services, or by directly launching them with services provided by
 appmgr.
 
-[glossary.bootfs]: /glossary#README.md#bootfs
-[glossary.virtual memory object]: /glossary#README.md#virtual-memory-object
-[glossary.zircon boot image]: /glossary#README.md#zircon-boot-image
-[glossary.component]: /glossary#README.md#component
-[glossary.driver manager]: /glossary#README.md#driver-manager
-[glossary.driver host]: /glossary#README.md#driver-host
-[glossary.fvm]: /glossary#README.md#fuchsia-volume-manager
-[glossary.appmgr]: /glossary#README.md#appmgr
-[glossary.realm]: /glossary#README.md#realm
-[glossary.outgoing-directory]: /glossary/README.md#outgoing-directory
+[glossary.bootfs]: /docs/glossary#README.md#bootfs
+[glossary.virtual memory object]: /docs/glossary#README.md#virtual-memory-object
+[glossary.zircon boot image]: /docs/glossary#README.md#zircon-boot-image
+[glossary.component]: /docs/glossary#README.md#component
+[glossary.driver manager]: /docs/glossary#README.md#driver-manager
+[glossary.driver host]: /docs/glossary#README.md#driver-host
+[glossary.fvm]: /docs/glossary#README.md#fuchsia-volume-manager
+[glossary.realm]: /docs/glossary#README.md#realm
+[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
 [appmgr-exposes]: https://fuchsia.googlesource.com/fuchsia/+/7cf46e0c7a8e5e4c78dba846f867ab96bcce5c5b/src/sys/appmgr/meta/appmgr.cml#168
 [appmgr-is-eager]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/root/meta/root.cml#14
 [appmgr-pkg]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/appmgr/BUILD.gn#159
 [appmgr-uses]: https://fuchsia.googlesource.com/fuchsia/+/7cf46e0c7a8e5e4c78dba846f867ab96bcce5c5b/src/sys/appmgr/meta/appmgr.cml#40
-[blobfs]: /concepts/filesystems/blobfs.md
-[bootloader-and-kernel]: /concepts/process/userboot.md#boot_loader_and_kernel_startup
-[component-manager]: /concepts/components/v2/introduction.md#component-manager
-[critical-processes]: /reference/syscalls/job_set_critical.md
-[devfs]: /development/drivers/concepts/device_driver_model/device-model.md
+[blobfs]: /docs/concepts/filesystems/blobfs.md
+[bootloader-and-kernel]: /docs/concepts/process/userboot.md#boot_loader_and_kernel_startup
+[component-manager]: /docs/concepts/components/v2/introduction.md#component-manager
+[critical-processes]: /docs/reference/syscalls/job_set_critical.md
+[devfs]: /docs/development/drivers/concepts/device_driver_model/device-model.md
 [driver-manager-exposes]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/root/meta/driver_manager.cml#91
 [dynamic-linking]: https://en.wikipedia.org/wiki/Dynamic_linker
-[fs-mount]: /concepts/filesystems/filesystems.md#mounting
+[fs-mount]: /docs/concepts/filesystems/filesystems.md#mounting
 [fshost-exposes]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/root/meta/fshost.cml#17
 [fshost-magic-headers]: https://fuchsia.googlesource.com/fuchsia/+/514f9474502cf6cafcd1d5edadfc7164566d4453/zircon/system/ulib/fs-management/mount.cc#155
 [fuchsia-io]: https://fuchsia.dev/reference/fidl/fuchsia.io
-[job]: /reference/kernel_objects/job.md
-[kernel-command-line]: /reference/kernel/kernel_cmdline.md
-[memfs]: /concepts/filesystems/filesystems.md#memfs_an_in-memory_filesystem
+[job]: /docs/reference/kernel_objects/job.md
+[kernel-command-line]: /docs/reference/kernel/kernel_cmdline.md
+[memfs]: /docs/concepts/filesystems/filesystems.md#memfs_an_in-memory_filesystem
 [micro-kernel]: https://en.wikipedia.org/wiki/Microkernel
-[minfs]: /concepts/filesystems/minfs.md
-[process-bootstrap]: /concepts/process/program_loading.md
-[sysmgr-config]: https://fuchsia.googlesource.com/fuchsia/+/5a6fe7db58d2869ccfbb22caf53343d40e57c6ba/src/sys/sysmgr/sysmgr-configuration.md
-[sysmgr]: https://fuchsia.googlesource.com/fuchsia/+/7cf46e0c7a8e5e4c78dba846f867ab96bcce5c5b/src/sys/sysmgr/README.md
-[userboot-loading]: /concepts/process/userboot.md#kernel_loads_userboot
-[userboot]: /concepts/process/userboot.md
+[minfs]: /docs/concepts/filesystems/minfs.md
+[process-bootstrap]: /docs/concepts/process/program_loading.md
+[userboot-loading]: /docs/concepts/process/userboot.md#kernel_loads_userboot
+[userboot]: /docs/concepts/process/userboot.md
 [userspace]: https://en.wikipedia.org/wiki/User_space
 [wait-for-system]: https://cs.opensource.google/fuchsia/fuchsia/+/main:src/devices/bin/driver_manager/driver_loader.cc;l=123;drc=62174108e02c85feb7a18df5cc03dcf8ec7d8625
-[zxcrypt]: /concepts/filesystems/zxcrypt.md
+[zxcrypt]: /docs/concepts/filesystems/zxcrypt.md

@@ -128,7 +128,7 @@ Use the `component select` command determine how many components interact with
 this capability:
 
 ```posix-terminal
-ffx component select capability fuchsia.net.http.Loader
+ffx component capability fuchsia.net.http.Loader
 ```
 
 The command lists all the matching components:

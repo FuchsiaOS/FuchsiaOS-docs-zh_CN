@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmar_allocate
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Allocate a new subregion.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_vmar_allocate(zx_handle_t parent_vmar,
                              zx_vaddr_t* child_addr);
 ```
 
-## DESCRIPTION
+## Description
 
 Creates a new VMAR within the one specified by *parent_vmar*.
 
@@ -67,9 +74,7 @@ Using **ZX_VM_ALIGN** flags with **ZX_VM_SPECIFIC** will fail if the
 *parent_vmar* base address + *offset* are not aligned to the requested
 value.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 If *options* & **ZX_VM_CAN_MAP_READ**, *parent_vmar* must be of type **ZX_OBJ_TYPE_VMAR** and have **ZX_RIGHT_READ**.
 
@@ -77,14 +82,14 @@ If *options* & **ZX_VM_CAN_MAP_WRITE**, *parent_vmar* must be of type **ZX_OBJ_T
 
 If *options* & **ZX_VM_CAN_MAP_EXECUTE**, *parent_vmar* must be of type **ZX_OBJ_TYPE_VMAR** and have **ZX_RIGHT_EXECUTE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmar_allocate()` returns **ZX_OK**, the absolute base address of the
 subregion (via *child_addr*), and a handle to the new subregion (via
 *child_vmar*) on success.  The base address will be page-aligned and non-zero.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *parent_vmar* is not a valid handle.
 
@@ -107,7 +112,7 @@ In the event of failure, a negative error value is returned.
 
 **ZX_ERR_ACCESS_DENIED**  Insufficient privileges to make the requested allocation.
 
-## NOTES
+## Notes
 
 ### Deallocation
 
@@ -126,14 +131,12 @@ This is a trade-off that the developer can make to increase locality of
 allocations and reduce the number of page tables necessary, if they are willing
 to have certain addresses be more correlated.
 
-## SEE ALSO
+## See also
 
  - [`zx_vmar_destroy()`]
  - [`zx_vmar_map()`]
  - [`zx_vmar_protect()`]
  - [`zx_vmar_unmap()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_vmar_destroy()`]: vmar_destroy.md
 [`zx_vmar_map()`]: vmar_map.md

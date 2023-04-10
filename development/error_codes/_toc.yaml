@@ -7,4 +7,4 @@
 # team as reviewer.
 toc:
 - title: "Troubleshoot zx_err_peer_closed"
-  path:  /development/error_codes/troubleshoot_zx_err_peer_closed.md
+  path:  /docs/development/error_codes/troubleshoot_zx_err_peer_closed.md

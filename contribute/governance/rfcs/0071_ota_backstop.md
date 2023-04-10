@@ -96,7 +96,7 @@ When proposing a CL to bump the backstop, authors should:
 
 ## Design
 
-Let's introduce an `epoch.json` file to be present both in the [update package](/concepts/
+Let's introduce an `epoch.json` file to be present both in the [update package](/docs/concepts/
 packages/update_pkg.md) and on the system. It should be a JSON file with two string keys:
 
 * "version", which should have a single string value for the `epoch.json` schema version. In
@@ -141,23 +141,25 @@ In order to land the change, we need to:
 
 * Add `epoch_history` to //src/sys/pkg/bin/system-updater.
   * Also, make a script that converts `epoch_history` to `epoch.json`.
-  * Have the build system use this script to add `epoch.json` to the system-updater's out directory.
-* Modify the [BUILD](https://cs.opensource.google/fuchsia/fuchsia/+/main:build/resources/BUILD.gn;l=2
-  074;drc=2f584c4a62374f37361ac04875e60b5459fcc3b5) so that `epoch.json` also gets put into
-  the update package.
+  * Have the build system use this script to add `epoch.json` to the
+    system-updater's out directory.
+* Modify the [BUILD](https://cs.opensource.google/fuchsia/fuchsia/+/main:build/resources/BUILD.gn;l=2074;drc=2f584c4a62374f37361ac04875e60b5459fcc3b5)
+  so that `epoch.json` also gets put into the update package.
 * The system-updater should examine `epoch.json` at the end of the [Prepare](https://cs.opensource.g
   oogle/fuchsia/fuchsia/+/main:src/sys/pkg/bin/system-updater/src/update.rs;l=373;drc=91f4bd84db87
   4b5693f4f8040e4f5a39facc701b) phase.
   * If there is no `epoch.json` in the update package or there is a problem with deserializing it,
     assume epoch is 0. We deliberately ignore errors so that we can still OTA if the `epoch.json`
     schema changes.
-  * If there is no `epoch.json` in system-updater's out directory or if there is a problem with
-    deserializing it, fail because this is unexpected. Consider using the [`include_str`]
-    (https://doc.rust-lang.org/std/macro.include_str.html) macro to read from the out directory.
-  * If epoch in update package < epoch in system-updater, fail prepare with reason
-    `UNSUPPORTED_DOWNGRADE`. We'll need to create a new [PrepareFailureReason](https://cs.opensource
-    .google/fuchsia/fuchsia/+/main:src/sys/pkg/fidl/fuchsia.update.installer/progress.fidl;l=221;d
-    rc=02b3415cbc6b0bc446bbd03571e17b823941faed) for `UNSUPPORTED_DOWNGRADE`.
+  * If there is no `epoch.json` in system-updater's out directory or if there
+    is a problem with deserializing it, fail because this is unexpected.
+    Consider using the
+    [`include_str`](https://doc.rust-lang.org/std/macro.include_str.html) macro
+    to read from the out directory.
+  * If epoch in update package < epoch in system-updater, fail prepare with
+    reason `UNSUPPORTED_DOWNGRADE`. We'll need to create a new
+    [PrepareFailureReason](https://cs.opensource.google/fuchsia/fuchsia/+/main:src/sys/pkg/fidl/fuchsia.update.installer/progress.fidl;l=221;drc=02b3415cbc6b0bc446bbd03571e17b823941faed)
+    for `UNSUPPORTED_DOWNGRADE`.
 
 ## Security
 
@@ -191,7 +193,7 @@ We'll need to create a document to describe the policy for updating `epoch_histo
 
 Also, we'll need to modify:
 
-* [Update package documentation](/concepts/packages/update_pkg.md).
+* [Update package documentation](/docs/concepts/packages/update_pkg.md).
 * OTA documentation (not yet posted on fuchsia.dev).
 
 ## Drawbacks, alternatives, and unknowns
@@ -212,7 +214,7 @@ to do this because in practice, some developers _do_ rely on these backwards OTA
 not break these developers.
 
 Another approach might be to directly integrate with Fuchsia platform versioning (see
-[RFC-0002](/contribute/governance/rfcs/0002_platform_versioning.md)). However, there are
+[RFC-0002](/docs/contribute/governance/rfcs/0002_platform_versioning.md)). However, there are
 several ambiguous questions with this. For example, should all backwards OTAs across an API level be
 prevented, or should we pick specific levels? Who would we break? Since there is precedent on
 Fuchsia for using different version identifiers for different parts of the system (e.g. file

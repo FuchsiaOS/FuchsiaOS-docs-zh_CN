@@ -26,4 +26,4 @@ The Inspect Validator implementation includes:
     * [Reporting](/src/diagnostics/validator/inspect/src/results.rs)
 * [Rust Puppet](/src/diagnostics/validator/inspect/lib/rust/src/main.rs).
 See also [Inspect Validator Puppet Architecture](puppet.md)
-* [Dart Puppet](https://fuchsia.googlesource.com/topaz/+/HEAD/public/dart/fuchsia_inspect/test/validator_puppet/lib/main.dart)
+* [Dart Puppet](/sdk/dart/fuchsia_inspect/test/validator_puppet/lib/main.dart)

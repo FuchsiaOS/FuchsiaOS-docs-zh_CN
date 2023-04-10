@@ -6,46 +6,54 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- heading: ffx workflows
+- heading: SDK workflows
 - title: Overview
-  path: /development/sdk/ffx/index.md
+  path: /docs/development/sdk/ffx/index.md
 - title: Devices
   section:
   - title: Start the Fuchsia emulator
-    path: /development/sdk/ffx/start-the-fuchsia-emulator.md
+    path: /docs/development/sdk/ffx/start-the-fuchsia-emulator.md
   - title: Flash a Fuchsia image on a device
-    path: /development/sdk/ffx/flash-a-device.md
+    path: /docs/development/sdk/ffx/flash-a-device.md
   - title: Create SSH keys for Fuchsia devices
-    path: /development/sdk/ffx/create-ssh-keys-for-devices.md
+    path: /docs/development/sdk/ffx/create-ssh-keys-for-devices.md
   - title: View device information
-    path: /development/sdk/ffx/view-device-information.md
+    path: /docs/development/sdk/ffx/view-device-information.md
   - title: View device logs
-    path: /development/sdk/ffx/view-device-logs.md
+    path: /docs/development/sdk/ffx/view-device-logs.md
 - title: Components
   section:
+  - title: Explore components
+    path: /docs/development/sdk/ffx/explore-components.md
   - title: View component information
-    path: /development/sdk/ffx/view-component-information.md
+    path: /docs/development/sdk/ffx/view-component-information.md
   - title: Start a component during development
-    path: /development/sdk/ffx/start-a-component-during-development.md
+    path: /docs/development/sdk/ffx/start-a-component-during-development.md
   - title: Copy files to and from a component
-    path: /development/sdk/ffx/copy-files-to-and-from-a-component.md
+    path: /docs/development/sdk/ffx/copy-files-to-and-from-a-component.md
 - title: Packages
   section:
   - title: Create a Fuchsia package repository
-    path: /development/sdk/ffx/create-a-package-repository.md
+    path: /docs/development/sdk/ffx/create-a-package-repository.md
   - title: Update Fuchsia packages on a device
-    path: /development/sdk/ffx/update-packages-on-a-device.md
+    path: /docs/development/sdk/ffx/update-packages-on-a-device.md
 - title: Debugging
   section:
   - title: Register debug symbols
-    path: /development/sdk/ffx/register-debug-symbols.md
+    path: /docs/development/sdk/ffx/register-debug-symbols.md
   - title: Symbolize logs
-    path: /development/sdk/ffx/symbolize-logs.md
+    path: /docs/development/sdk/ffx/symbolize-logs.md
   - title: Start the Fuchsia debugger
-    path: /development/sdk/ffx/start-the-fuchsia-debugger.md
+    path: /docs/development/sdk/ffx/start-the-fuchsia-debugger.md
   - title: Monitor FIDL messages on a device
-    path: /development/sdk/ffx/monitor-fidl-messages-on-a-device.md
+    path: /docs/development/sdk/ffx/monitor-fidl-messages-on-a-device.md
 - title: Performance
   section:
   - title: Record traces for performance analysis
-    path: /development/sdk/ffx/record-traces.md
+    path: /docs/development/sdk/ffx/record-traces.md
+  - title: Measure the memory usage on a device
+    path: /docs/development/sdk/ffx/explore-memory-usage.md
+- title: Testing
+  section:
+  - title: Run tests on a device
+    path: /docs/development/sdk/ffx/run-device-tests.md

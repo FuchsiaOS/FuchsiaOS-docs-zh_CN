@@ -96,10 +96,10 @@ Args can also be set using the `fx set` command, which invokes `gn gen`. For
 example to set `foxtrot` to ' `true` via `fx set`:
 
 ```sh
-$ fx set <your configuration> --args 'foxtrot = true'
+$ fx set <your configuration> --args 'foxtrot=true'
 ```
 
-See [GN Build Arguments](/gen/build_arguments.md), for details.
+See [GN Build Arguments](/docs/gen/build_arguments.md), for details.
 
 ## GN syntax and formatting
 
@@ -279,7 +279,7 @@ ways. In Fuchsia there will be several toolchains:
  - Multiboot for x86 (compiled with `-m32`)
  - UEFI for Gigaboot
  - Toolchains are also used in the ["variants"
-   scheme](/gen/build_arguments.md#known_variants) that is how we allow selectively
+   scheme](/docs/gen/build_arguments.md#known_variants) that is how we allow selectively
    enabling ASan or the like for parts of userland.
 
 Each toolchain is identified by a GN label.  The full syntax for target labels

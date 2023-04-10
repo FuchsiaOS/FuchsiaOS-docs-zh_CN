@@ -50,7 +50,7 @@ protocol VolumePolicyController {
 
     RemovePolicy(struct {
         policy_id PolicyId;
-    }) -> (struct {}) error Error;
+    }) -> () error Error;
 };
 
 type Property = table {
@@ -155,4 +155,4 @@ The following is a recap of policy API concepts:
 
 <!-- link labels -->
 [volume_policy_fidl]: /sdk/fidl/fuchsia.settings.policy/volume_policy.fidl
-[hanging-get]: /development/api/fidl.md#hanging-get
+[hanging-get]: /docs/development/api/fidl.md#hanging-get

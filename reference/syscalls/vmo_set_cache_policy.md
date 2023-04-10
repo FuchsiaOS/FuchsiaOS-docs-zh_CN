@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmo_set_cache_policy
 
 ## SUMMARY
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
-
 Set the caching policy for pages held by a VMO.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,10 +23,10 @@ Set the caching policy for pages held by a VMO.
 zx_status_t zx_vmo_set_cache_policy(zx_handle_t handle, uint32_t cache_policy);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmo_set_cache_policy()` sets caching policy for a [virtual memory
-object](/reference/kernel_objects/vm_object.md) (VMO). Generally used on VMOs
+object](/docs/reference/kernel_objects/vm_object.md) (VMO). Generally used on VMOs
 that point directly at physical memory. Such VMOs are generally only handed to
 userspace via bus protocol interfaces, so this syscall will typically only be
 used by drivers dealing with device memory. This call can also be used on a
@@ -48,18 +55,16 @@ cleaned and invalidated.
     to the Normal memory, uncached memory attributes.
 
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_MAP**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmo_set_cache_policy()` returns **ZX_OK** on success. In the event of
 failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED** Cache policy has been configured for this VMO already and
 may not be changed, or *handle* lacks the **ZX_RIGHT_MAP** right.
@@ -76,7 +81,7 @@ physical memory.
 mapped, has children, is a child itself, has pinned pages, or has committed pages
 and the VMO is currently not cached.
 
-## SEE ALSO
+## See also
 
  - [`zx_vmo_create()`]
  - [`zx_vmo_get_size()`]
@@ -84,8 +89,6 @@ and the VMO is currently not cached.
  - [`zx_vmo_read()`]
  - [`zx_vmo_set_size()`]
  - [`zx_vmo_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_vmo_create()`]: vmo_create.md
 [`zx_vmo_get_size()`]: vmo_get_size.md

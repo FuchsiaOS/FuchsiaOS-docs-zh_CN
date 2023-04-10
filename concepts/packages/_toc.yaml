@@ -7,20 +7,20 @@
 # team as reviewer.
 toc:
 - title: "Fuchsia packages"
-  path: /concepts/packages/package.md
+  path: /docs/concepts/packages/package.md
 - title: "Fuchsia package URLs"
-  path: /concepts/packages/package_url.md
+  path: /docs/concepts/packages/package_url.md
 - title: "Developing with Fuchsia packages"
-  path: /concepts/packages/package_update.md
+  path: /docs/concepts/packages/package_update.md
 - title: "Merkle roots"
-  path:  /concepts/packages/merkleroot.md
+  path:  /docs/concepts/packages/merkleroot.md
 - title: "Garbage collection"
-  path: /concepts/packages/garbage_collection.md
+  path: /docs/concepts/packages/garbage_collection.md
 - title: "Update package"
-  path: /concepts/packages/update_pkg.md
+  path: /docs/concepts/packages/update_pkg.md
 - title: "System updates"
-  path: /concepts/packages/ota.md
+  path: /docs/concepts/packages/ota.md
 - title: "Fuchsia system interface"
-  path: /concepts/packages/system.md
+  path: /docs/concepts/packages/system.md
 - title: "Software Update System"
-  path: /concepts/packages/software_update_system.md
+  path: /docs/concepts/packages/software_update_system.md

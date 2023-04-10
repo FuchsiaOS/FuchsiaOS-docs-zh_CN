@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_thread_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a thread.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_thread_create(zx_handle_t process,
                              zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_thread_create()` creates a thread within the specified process.
 
@@ -33,24 +40,22 @@ Thread handles may be waited on and will assert the signal
 **ZX_THREAD_TERMINATED** when the thread stops executing (due to
 [`zx_thread_exit()`] being called).
 
-*process* is the controlling [process object](/reference/kernel_objects/process.md) for the
+*process* is the controlling [process object](/docs/reference/kernel_objects/process.md) for the
 new thread, which will become a child of that process.
 
-For thread lifecycle details see [thread object](/reference/kernel_objects/thread.md).
+For thread lifecycle details see [thread object](/docs/reference/kernel_objects/thread.md).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *process* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_MANAGE_THREAD**.
 
-## RETURN VALUE
+## Return value
 
 On success, `zx_thread_create()` returns **ZX_OK** and a handle (via *out*)
 to the new thread.  In the event of failure, a negative error value is
 returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *process* is not a valid handle.
 
@@ -65,7 +70,7 @@ non-zero.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
@@ -74,8 +79,6 @@ In a future build this error will no longer occur.
  - [`zx_object_wait_one()`]
  - [`zx_thread_exit()`]
  - [`zx_thread_start()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_duplicate()`]: handle_duplicate.md

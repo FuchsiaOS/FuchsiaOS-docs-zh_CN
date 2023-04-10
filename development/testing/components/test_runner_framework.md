@@ -430,6 +430,41 @@ fuchsia_unittest_package("foo-tests") {
 }
 ```
 
+## Exporting custom files {#custom-artifacts}
+
+To export custom files from your test, use the *custom_artifacts* storage
+capability. The contents of *custom_artifacts* are copied out at the conclusion
+of a test.
+
+To use *custom_artifacts* in your test, add the following to your component
+manifest:
+
+```json5
+{
+    use: [
+        {
+            storage: "custom_artifacts",
+            rights: [ "rw*" ],
+            path: "/custom_artifacts",
+        },
+    ],
+}
+```
+
+At runtime, your test will have read/write access to `/custom_artifacts`.
+The contents of this directory will be empty when the test starts, and will be
+deleted after the test finishes.
+
+See the [custom artifact test example][custom-artifact-example]. To run it, add
+`//examples/tests/rust:tests` to your build, then run:
+
+```posix-terminal
+fx test --ffx-output-directory <output-dir> custom_artifact_user
+```
+
+After the test concludes, `<output-dir>` will contain the `artifact.txt` file
+produced by the test.
+
 ## Hermeticity
 
 A test is *hermetic* if it:
@@ -439,7 +474,6 @@ capabilities from the [test root's](#tests-as-components) parent.
 1. Does not [resolve][resolvers] any components outside of the test package.
 
 The tests are by default hermetic unless explicitly stated otherwise.
-
 
 ### Hermetic capabilities for tests
 
@@ -451,6 +485,7 @@ hermeticity:
 | `fuchsia.boot.WriteOnlyLog` | Write to kernel log |
 | `fuchsia.logger.LogSink` | Write to syslog |
 | `fuchsia.process.Launcher` | Launch a child process from the test package |
+| `fuchsia.diagnostics.ArchiveAccessor` | Read diagnostics output by components in the test |
 | `fuchsia.sys2.EventSource` | Access to event protocol |
 
 The hermeticity is retained because these capabilities are carefully curated
@@ -501,7 +536,6 @@ Add a use declaration in test's manifest file to use these capabilities.
 The framework also provides some [capabilities][framework-capabilities] to all
 the components and can be used by test components if required.
 
-
 ### Hermetic component resolution {#hermetic-resolver}
 
 Hermetic test components are launched in a realm that utilizes the hermetic
@@ -519,46 +553,53 @@ failed to resolve component fuchsia-pkg://fuchsia.com/[package_name]#meta/[compo
 
 You can avoid this error by including any components your test relies on
 to the test package - see [this CL](https://fxrev.dev/608222) for an example of
-how to do this.
+how to do this, or by using [subpackages]:
 
-### Tier 2 Hermetic tests
+```gn
+# BUILD.gn
+import("//build/components.gni")
 
-These kind of tests are hermetic with respect to capabilities (i.e they don't
-have access to capabilities which can affect system state outside of the test),
-but they are *allowed* to resolve URLs from outside the test package.
 
-These kind of tests are useful when it is not trivial to package all dependent
-components inside test's own package, for example when the component under test
-has a deep hierarchy and it is not possible to package all dependent
-components hermetically without re-writing corresponding manifest files.
+fuchsia_test_package("simple_test") {
+  test_components = [ ":simple_test_component" ]
+  subpackages = [ "//path/to/subpackage:subpackage" ]
+}
+```
 
-*Whenever possible it is preferred to hermetically packages the test and its
-dependencies. See [Hermetic component resolution](#hermetic-resolver).*
+```json5
+ // test.cml
+ {
+...
+    children: [
+        {
+            name: "child",
+            url: "subpackage#meta/subpackaged_component.cm",
+        },
+    ],
+...
+}
+```
 
-A test must explicitly mark itself to run as a **tier-2 hermetic** test.
+See [this CL](https://fxrev.dev/784304) as an example of using subpackages.
+
+Note: Subpackages are not available in the sdk yet. If you are not able to
+include a dependent component in your test package you can add below option
+to your test manifest file to selectively allow resolution of some packages:
 
 ```json5
 // my_component_test.cml
 
 {
-    include: [
-        // Select the appropriate test runner shard here:
-        // rust, gtest, go, etc.
-        "//src/sys/test_runners/rust/default.shard.cml",
+...
 
-        // This includes the facet which marks the test type as "hermetic-tier-2".
-        {{ '<strong>' }}"sys/testing/hermetic-tier-2-test.shard.cml",{{ '</strong>' }}
-    ],
-    program: {
-        binary: "bin/my_component_test",
+    facets: {
+        "fuchsia.test": {
+            "deprecated-allowed-packages": [ "non_hermetic_package" ],
+        },
     },
+...
 }
-```
 
-The shard includes following facet in the manifest file:
-
-```json5
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="sdk/lib/sys/testing/hermetic-tier-2-test.shard.cml" %}
 ```
 
 ### Legacy non-hermetic tests
@@ -598,7 +639,7 @@ non-hermetic "system" realm as shown below.
 The shard includes following facet in the manifest file:
 
 ```json5
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="src/sys/test_manager/system-test.shard.cml" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="sdk/lib/sys/testing/system-test.shard.cml" %}
 ```
 
 Possible values of `fuchsia.test.type`:
@@ -606,9 +647,8 @@ Possible values of `fuchsia.test.type`:
 | Value | Description |
 | ----- | ----------- |
 | `hermetic` | Hermetic realm |
-| `hermetic-tier-2` | Hermetic realm with non-hermetic resolver |
 | `system` | Legacy non hermetic realm with access to some system capabilities. |
-| `cts` | [CTS test realm] |
+| `cts` | [CTF test realm] |
 
 Below is the list of system capabilities provided to legacy non-hermetic tests:
 
@@ -638,6 +678,7 @@ fuchsia.kernel.RootJobForInspect
 fuchsia.kernel.SmcResource
 fuchsia.kernel.Stats
 fuchsia.kernel.VmexResource
+fuchsia.media.ProfileProvider
 fuchsia.net.http.Loader
 fuchsia.scheduler.ProfileProvider
 fuchsia.sysinfo.SysInfo
@@ -682,15 +723,15 @@ extra overhead per process launched.
 
 Components in the test realm may play various roles in the test, as follows:
 
--   Test driver: The component that actually runs the test, and implements
+- Test driver: The component that actually runs the test, and implements
     (either directly or through a [test runner](#test-runners)) the
     [`fuchsia.test.Suite`][test-suite-protocol] protocol. This role may be, but
     is not necessarily, owned by the [test root](#tests-as-components).
--   Capability provider: A component that provides a capability that the test
+- Capability provider: A component that provides a capability that the test
     will exercise somehow. The component may either provide a "fake"
     implementation of the capability for test, or a "real" implementation that
     is equivalent to what production uses.
--   Component under test: A component that exercises some behavior to be tested.
+- Component under test: A component that exercises some behavior to be tested.
     This may be identical to a component from production, or a component written
     specifically for the test intended to model production behavior.
 
@@ -708,9 +749,22 @@ Caused by:
 
 To address the issue, explore the following options:
 
+- [The test is using wrong test runner](#troubleshoot-wrong-test-runner)
 - [The test failed to expose `fuchsia.test.Suite` to test manager](#troubleshoot-test-root)
 - [The test driver failed to expose `fuchsia.test.Suite` to the root](#troubleshoot-test-routing)
 - [The test driver does not use a test runner](#troubleshoot-test-runner)
+
+### The test is using wrong test runner {#troubleshoot-wrong-test-runner}
+
+If you encountered this error during test enumeration then probably you are
+using the wrong test runner.
+
+For example: your Rust test file might be running the
+test without using Rust test framework (i.e it is a simple Rust binary with its
+own main function). In this case change your test manifest file to use
+[elf_test_runner](#elf-test-runner).
+
+Read more about in-built [test runners](#test-runners).
 
 ### The test failed to expose `fuchsia.test.Suite` to test manager {#troubleshoot-test-root}
 
@@ -786,23 +840,25 @@ offer: [
   interactions between multiple components in isolation from the rest of the
   system.
 
-[cf]: /concepts/components/v2/
-[component-manifest]: /concepts/components/v2/component_manifests.md
-[component-unit-tests]: /development/components/build.md#unit-tests
-[CTS test realm]: /development/testing/cts/test_realm.md
+[cf]: /docs/concepts/components/v2/
+[component-manifest]: /docs/concepts/components/v2/component_manifests.md
+[component-unit-tests]: /docs/development/components/build.md#unit-tests
+[CTF test realm]: /docs/development/testing/ctf/test_collection.md
+[custom-artifact-example]: /examples/tests/rust/custom_artifact_test.rs
 [fidl-test-manager]: /sdk/fidl/fuchsia.test.manager/test_manager.fidl
 [fidl-test-suite]: /sdk/fidl/fuchsia.test/suite.fidl
-[ffx]: /development/tools/ffx/overview.md
+[ffx]: /docs/development/tools/ffx/overview.md
 [fx-test]: https://fuchsia.dev/reference/tools/fx/cmd/test
-[integration-testing]: /development/testing/components/integration_testing.md
+[integration-testing]: /docs/development/testing/components/integration_testing.md
 [manifests-offer]: https://fuchsia.dev/reference/cml#offer
 [manifests-use]: https://fuchsia.dev/reference/cml#use
-[resolvers]:  /concepts/components/v2/capabilities/resolvers.md
-[restricted-logs]: /development/diagnostics/test_and_logs.md#restricting_log_severity
-[runners]: /concepts/components/v2/capabilities/runners.md
-[test-suite-protocol]: /concepts/components/v2/realms.md
-[unit-tests]: /development/components/build.md#unit_tests_with_generated_manifests
-[loader-service]: /concepts/process/program_loading.md#the_loader_service
+[resolvers]:  /docs/concepts/components/v2/capabilities/resolvers.md
+[restricted-logs]: /docs/development/diagnostics/test_and_logs.md#restricting_log_severity
+[runners]: /docs/concepts/components/v2/capabilities/runners.md
+[test-suite-protocol]: /docs/concepts/components/v2/realms.md
+[unit-tests]: /docs/development/components/build.md#unit_tests_with_generated_manifests
+[loader-service]: /docs/concepts/process/program_loading.md#the_loader_service
 [caching-loader-service]: /src/sys/test_runners/src/elf/elf_component.rs
-[framework-capabilities]: /concepts/components/v2/capabilities/protocol.md#framework
-[sys-migration-guide]: /development/components/v2/migration/tests.md
+[framework-capabilities]: /docs/concepts/components/v2/capabilities/protocol.md#framework
+[sys-migration-guide]: /docs/development/components/v2/migration/tests.md
+[subpackages]: /docs/concepts/components/v2/subpackaging.md

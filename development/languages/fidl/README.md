@@ -22,7 +22,7 @@ including some of its design goals, requirements, and workflow.
 * [Maxing Out Pagination][pagination] &mdash; help on determining how much data
    can fit into a single message
 * [C Family Binding Comparison][c-family] &mdash; how to decide, which binding
-  (HLCPP, LLCPP, or C) to use
+  (new C++, HLCPP, or C) to use
 
 ## References
 
@@ -36,17 +36,17 @@ The [language reference][language-ref] is for everything else, like the
 Please read the [contributing doc][contributing] for more information.
 
 <!-- xrefs -->
-[cli]: /development/languages/fidl/guides/cli.md
-[style]: /development/languages/fidl/guides/style.md
-[designing-apis]: /development/languages/fidl/guides/api-design.md
-[abi-api-compat]: /development/languages/fidl/guides/compatibility/README.md
-[pagination]: /development/languages/fidl/guides/max-out-pagination.md
-[c-family]: /development/languages/fidl/guides/c-family-comparison.md
+[cli]: /docs/development/languages/fidl/guides/cli.md
+[style]: /docs/development/languages/fidl/guides/style.md
+[designing-apis]: /docs/development/languages/fidl/guides/api-design.md
+[abi-api-compat]: /docs/development/languages/fidl/guides/compatibility/README.md
+[pagination]: /docs/development/languages/fidl/guides/max-out-pagination.md
+[c-family]: /docs/development/languages/fidl/guides/c-family-comparison.md
 
-[tutorials]: /development/languages/fidl/tutorials/overview.md
-[concepts]: /concepts/fidl/overview.md
-[contributing]: /contribute/contributing-to-fidl
-[bindings-ref]: /reference/fidl/bindings/overview.md
-[language-ref]: /reference/fidl/language/language.md
-[wire-format]: /reference/fidl/language/wire-format
-[rfc]: /contribute/governance/rfcs/README.md
+[tutorials]: /docs/development/languages/fidl/tutorials/overview.md
+[concepts]: /docs/concepts/fidl/overview.md
+[contributing]: /docs/contribute/contributing-to-fidl
+[bindings-ref]: /docs/reference/fidl/bindings/overview.md
+[language-ref]: /docs/reference/fidl/language/language.md
+[wire-format]: /docs/reference/fidl/language/wire-format
+[rfc]: /docs/contribute/governance/rfcs/README.md

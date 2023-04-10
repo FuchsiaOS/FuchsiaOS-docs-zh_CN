@@ -38,7 +38,7 @@ instance of the server to be fuzzed.
     * Anything else needed for a [`fuzzer`](build-a-fuzzer.md#fuzzer) GN target that fuzzes your
       server.
 1. Add `fidl_protocol_fuzzer()` target to `fuzzers = [ ... ]` in a new or existing
-   [`fuzzers_package`](build-a-fuzzer.md#fuzzers_package) GN target.
+   [`fuzzer_package`](build-a-fuzzer.md#fuzzer_package) GN target.
 
 ### Implementation details
 

@@ -122,6 +122,9 @@ A _version identifier_ is an unsigned 64-bit integer between 1 and 2^63-1
 (inclusive) or equal to 2^64-1. The latter version identifier is known as `HEAD`
 and is treated specially.
 
+> *Amendment (Oct 2022).* To support [legacy methods](#legacy), we instead use
+> 2^64-2 for `HEAD` and 2^64-1 for `LEGACY`.
+
 Version identifiers are totally ordered by an "is newer than" relationship.
 Version _X_ is newer than version _Y_ when _X_ > _Y_.
 
@@ -323,6 +326,84 @@ CL, looking up the current version is tedious and race-prone, especially if it
 changes during code review. Instead, contributors can simply use `HEAD`, and
 project owners can replace it with a specific version later.
 
+### Legacy support {#legacy}
+
+> *Amendment (Oct 2022).* This section was added after the RFC was accepted.
+
+When an API is removed using `@available(removed=<N>)`, it no longer appears in
+the generated bindings for versions _N_ and above. This makes it hard to build a
+Fuchsia system image that supports multiple API levels. If the system image is
+built against _N_-1 bindings, it cannot provide implementations for methods
+added at _N_. If it is built against _N_ bindings, it cannot provide
+implementations for methods removed at _N_.
+
+To solve this problem, we introduce a new version called `LEGACY` that acts the
+same as `HEAD` but also includes legacy methods. A _legacy method_ is a method
+marked `@available(removed=<N>, legacy=true)`. This uses a new boolean argument
+called `legacy` which is false by default, and only allowed when `removed` is
+present. For example:
+
+    @available(added=1)
+    library example;
+
+    protocol Foo {
+        @available(removed=2)  // implies legacy=false
+        NotLegacy();
+
+        @available(removed=2, legacy=true)
+        Legacy();
+    };
+
+Here are the methods included in that example's bindings when targeting
+different versions:
+
+| Target version | Methods included      |
+|:--------------:|:---------------------:|
+| 1              | `NotLegacy`, `Legacy` |
+| 2              |                       |
+| `HEAD`         |                       |
+| `LEGACY`       | `Legacy`              |
+
+As a matter of policy, all methods in the Fuchsia platform should retain legacy
+support when they are removed. Once the Fuchsia platform drops support for all
+API levels before the method's removal, it is safe to remove `legacy=true` and
+the method's implementation.
+
+When the Fuchsia platform acts as a client instead of a server, legacy methods
+allow the platform to continue calling the method for those targeting old API
+levels. For those targeting newer API levels that do not expect it, the method
+must be marked `flexible` so that the calls can be ignored. See [RFC-0138:
+Handling unknown interactions][rfc-0138] for more details.
+
+The `legacy` argument can be used on any FIDL element, not just on methods. For
+example, if you are removing a type along with the method that uses it, that
+type must be marked `legacy=true` as well. This is just a consequence of [use
+validation](#use-validation), not a new rule.
+
+As another example, consider a table used in a request. When removing one of
+its fields, you might wish to use `legacy=true` so that the server can continue
+supporting clients that set the field. On the other hand, if ignoring the field
+is sufficient to preserve ABI, there is no need for legacy support. Similarly,
+for a table used in a response, it is only necessary to use `legacy=true` when
+removing a field if setting that field is required to preserve ABI for old
+clients.
+
+Legacy support should never be used when [swapping](#versioning-properties) an
+element because the availabilities represent change, not removal. If you were to
+do so, it would cause an error:
+
+    protocol Foo {
+        @available(removed=2, legacy=true)
+        Bar();
+
+        @available(added=2)
+        Bar();
+    }
+
+Since the first `Bar` gets added back at `LEGACY`, and the second `Bar` is never
+removed, they both exist at `LEGACY` and fidlc will emit an error like it
+already does for same-named elements with overlapping availabilities.
+
 ### JSON IR {#json-ir}
 
 To represent deprecation in the IR, we add two fields:
@@ -367,6 +448,11 @@ produces an error. If any library is deprecated/absent with respect to the
 version selection, fidlc produces a warning/error.[^3]
 
 ## Policy {#policy}
+
+> *Note (Oct 2022)*. This section sketched out an initial policy, and is no
+> longer up to date. In particular, most new changes should be added at the
+> current in-development API level, not at `HEAD`. See [FIDL API compatibility
+> testing][api-compat-testing] for details.
 
 FIDL Versioning makes it possible to evolve APIs without breaking applications,
 but it does not guarantee it. To that end, we adopt the following policies,
@@ -730,18 +816,19 @@ i.e. without taking action to migrate.
     equivalent to an empty one, and there is no warning for deprecation.
 
 <!-- xrefs -->
-[rfc-0002]: /contribute/governance/rfcs/0002_platform_versioning.md
-[rfc-0002-lifecycle]: /contribute/governance/rfcs/0002_platform_versioning.md#lifecycle
-[rfc-0002-fidl]: /contribute/governance/rfcs/0002_platform_versioning.md#fidl
-[rfc-0002-dynamics]: /contribute/governance/rfcs/0002_platform_versioning.md#dynamics
-[rfc-0002-security]: /contribute/governance/rfcs/0002_platform_versioning.md#security-considerations
-[rfc-0002-prior-art]: /contribute/governance/rfcs/0002_platform_versioning.md#prior-art-and-references
-[rfc-0076]: /contribute/governance/rfcs/0076_fidl_api_summaries.md
-[rfc-0058]: /contribute/governance/rfcs/0058_deprecated_attribute.md
-[rfc-0052]: /contribute/governance/rfcs/0052_type_aliasing_named_types.md
-[rfc-0086]: /contribute/governance/rfcs/0086_rfc_0050_attributes.md
-[language]: /reference/fidl/language/language.md
-[attrs]: /reference/fidl/language/attributes.md
+[rfc-0002]: /docs/contribute/governance/rfcs/0002_platform_versioning.md
+[rfc-0002-lifecycle]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#lifecycle
+[rfc-0002-fidl]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#fidl
+[rfc-0002-dynamics]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#dynamics
+[rfc-0002-security]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#security-considerations
+[rfc-0002-prior-art]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#prior-art-and-references
+[rfc-0076]: /docs/contribute/governance/rfcs/0076_fidl_api_summaries.md
+[rfc-0058]: /docs/contribute/governance/rfcs/0058_deprecated_attribute.md
+[rfc-0052]: /docs/contribute/governance/rfcs/0052_type_aliasing_named_types.md
+[rfc-0086]: /docs/contribute/governance/rfcs/0086_rfc_0050_attributes.md
+[rfc-0138]: /docs/contribute/governance/rfcs/0138_handling_unknown_interactions.md
+[language]: /docs/reference/fidl/language/language.md
+[attrs]: /docs/reference/fidl/language/attributes.md
 [swift-attr]: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#ID583
 [objc-attr]: https://developer.apple.com/documentation/swift/objective-c_and_c_code_customization/marking_api_availability_in_objective-c
 [rust-attr]: https://rustc-dev-guide.rust-lang.org/stability.html
@@ -754,8 +841,9 @@ i.e. without taking action to migrate.
 [gcp-versioning]: https://cloud.google.com/apis/design/versioning
 [gcp-compatibility]: https://cloud.google.com/apis/design/compatibility
 [nfa-dfa]: https://en.wikipedia.org/wiki/Powerset_construction
-[compositional model]: /contribute/governance/rfcs/0023_compositional_model_protocols.md#compositional_model
-[strict-vs-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
-[value-vs-resource]: /reference/fidl/language/language.md#value-vs-resource
+[compositional model]: /docs/contribute/governance/rfcs/0023_compositional_model_protocols.md#compositional_model
+[strict-vs-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[value-vs-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
 [max-bound]: https://fuchsia-review.googlesource.com/c/fuchsia/+/325737
-[style]: /development/languages/fidl/guides/style.md#files
+[style]: /docs/development/languages/fidl/guides/style.md#files
+[api-compat-testing]: /docs/development/testing/ctf/fidl_api_compatibility_testing.md

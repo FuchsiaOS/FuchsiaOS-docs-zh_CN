@@ -24,7 +24,7 @@ Create a new instance of the `echo-args` component using the following command:
 
 ```posix-terminal
 ffx component create /core/ffx-laboratory:echo-args \
-    fuchsia-pkg://fuchsia.com/echo-args#meta/echo_args.cm
+    fuchsia-pkg://fuchsia.com/echo-args#meta/echo-args.cm
 ```
 
 This command accepts two parameters:
@@ -46,7 +46,7 @@ You should see the following output:
 
 ```none {:.devsite-disable-click-to-copy}
                Moniker: /core/ffx-laboratory:echo-args
-                   URL: fuchsia-pkg://fuchsia.com/echo-args#meta/echo_args.cm
+                   URL: fuchsia-pkg://fuchsia.com/echo-args#meta/echo-args.cm
                   Type: CML dynamic component
        Component State: Unresolved
        Execution State: Stopped
@@ -94,7 +94,7 @@ You should now see the following output:
 
 ```none {:.devsite-disable-click-to-copy}
                Moniker: /core/ffx-laboratory:echo-args
-                   URL: fuchsia-pkg://fuchsia.com/echo-args#meta/echo_args.cm
+                   URL: fuchsia-pkg://fuchsia.com/echo-args#meta/echo-args.cm
                   Type: CML dynamic component
        Component State: Resolved
  Incoming Capabilities: fuchsia.logger.LogSink

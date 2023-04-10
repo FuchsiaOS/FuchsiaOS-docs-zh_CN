@@ -46,7 +46,7 @@ Most tests that are currently on Bringup will either fail at first when moved to
 Core, or will appear to pass but actually skip the otherwise-failing test cases.
 The root cause is often a trivial configuration issue that manifests itself as a
 missing path in the test's namespace. Fixing these doesn't require changing the
-test code, only changing a `.cmx` file.
+test code, only changing a `.cml` file.
 
 If you determine that this test should stay in Bringup, update
 [the `BUILD.gn` file][build-gn] to note the reason.

@@ -118,14 +118,14 @@ workflows. The following table lists noteworthy signatures.
 
 | Use                  | Signature                    | Reference                                  |
 |----------------------|------------------------------|--------------------------------------------|
-| Logger               | port 33337                   | DEBUGLOG_PORT                              |
-| Logger               | port 33338                   | DEBUGLOG_ACK_PORT                          |
-| Bootserver           | port 33330                   | NB_SERVER_PORT                             |
-| Bootserver           | port 33331                   | NB_ADVERT_PORT                             |
-| Bootserver           | port 33332                   | NB_CMD_PORT_START                          |
-| Bootserver           | port 33339                   | NB_CMD_PORT_END                            |
-| Bootserver           | port 33340                   | NB_TFTP_OUTGOING_PORT                      |
-| Bootserver           | port 33341                   | NB_TFTP_INCOMING_PORT                      |
+| Logger               | port 33337                   | NETBOOT_DEBUGLOG_PORT_SERVER               |
+| Logger               | port 33338                   | NETBOOT_DEBUGLOG_PORT_ACK                  |
+| Bootserver           | port 33330                   | NETBOOT_PORT_SERVER                        |
+| Bootserver           | port 33331                   | NETBOOT_PORT_ADVERT                        |
+| Bootserver           | port 33332                   | NETBOOT_PORT_CMD_START                     |
+| Bootserver           | port 33339                   | NETBOOT_PORT_CMD_END                       |
+| Bootserver           | port 33340                   | NETBOOT_PORT_TFTP_OUTGOING                 |
+| Bootserver           | port 33341                   | NETBOOT_PORT_TFTP_INCOMING                 |
 | Package Server       | port 8083                    | docs/packages.md                           |
 | fx shell             | port 22                      | devshell/shell                             |
 | target netsvc addr   | fe80::xxxx:xxff:fexx:xxxx%XX | fx device-finder list --netboot            |

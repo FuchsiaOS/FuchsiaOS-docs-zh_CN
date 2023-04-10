@@ -6,12 +6,12 @@ and talks about ways to examine process and system memory usage.
 A process can use memory 3 ways:
 
  1. Mapped memory in the form of heaps, thread stacks, executable code + data.
-    This memory is represented by [VMARs](/reference/kernel_objects/vm_address_region.md)
-    which in turn hold a reference to [VMOs](/reference/kernel_objects/vm_object.md).
+    This memory is represented by [VMARs](/docs/reference/kernel_objects/vm_address_region.md)
+    which in turn hold a reference to [VMOs](/docs/reference/kernel_objects/vm_object.md).
     The programmer usually interfaces with this memory via memory addresses.
  2. Stand-alone VMOs. These are sets of memory pages that are not mapped via a
     VMAR. The programmer interfaces with this memory via handles; usually issuing
-    [vmo_read](/reference/syscalls/vmo_read.md) and [vmo_write](/reference/syscalls/vmo_write.md).
+    [vmo_read](/docs/reference/syscalls/vmo_read.md) and [vmo_write](/docs/reference/syscalls/vmo_write.md).
  3. Kernel memory in the form of handles to kernel objects.
 
 Fuchsia follows an over-commit model: processes can allocate more memory than
@@ -33,11 +33,11 @@ j:1028       32.9M   32.8M         root
   p:1043   1386.3k   1384k     28k bin/devmgr
   j:1082     30.0M   30.0M         zircon-drivers
     p:1209  774.3k    772k     28k /boot/bin/acpisvc
-    p:1565  250.3k    248k     28k driver_host:root
-    p:1619  654.3k    652k     28k driver_host:misc
-    p:1688  258.3k    256k     28k driver_host:platform
-    p:1867 3878.3k   3876k     28k driver_host:pci#1:1234:1111
-    p:1916   24.4M   24.4M     28k driver_host:pci#3:8086:2922
+    p:1565  250.3k    248k     28k driver_host
+    p:1619  654.3k    652k     28k driver_host
+    p:1688  258.3k    256k     28k driver_host
+    p:1867 3878.3k   3876k     28k driver_host
+    p:1916   24.4M   24.4M     28k driver_host
   j:1103   1475.7k   1464k         zircon-services
     p:1104  298.3k    296k     28k crashlogger
     p:1290  242.3k    240k     28k netsvc
@@ -149,7 +149,7 @@ R  000059f5c7068000-000059f5c708d000      148k:sz                    'useralloc'
 ```
 
 > You can also display memory mappings using the `aspace` command in
-> [zxdb](/development/debugger/README.md).
+> [zxdb](/docs/development/debugger/README.md).
 
 ### Dump all VMOs associated with a process
 
@@ -212,7 +212,7 @@ PSS     =  PRIVATE + (SHARED / #shr)
 ```
 
 > You can also display VMO information using the `handle` command in
-> [zxdb](/development/debugger/kernel_objects.md).
+> [zxdb](/docs/development/debugger/kernel_objects.md).
 
 ### Dump "hidden" (unmapped and kernel) VMOs
 

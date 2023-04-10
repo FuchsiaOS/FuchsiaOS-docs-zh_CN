@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_cprng_draw
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Draw from the kernel's CPRNG.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Draw from the kernel's CPRNG.
 void zx_cprng_draw(void* buffer, size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_cprng_draw()` draws random bytes from the kernel CPRNG.  This data should
 be suitable for cryptographic applications.
@@ -27,13 +34,11 @@ bytes to seed a user-space random number generator for better performance.
 currently 256. As always, test the actual latency of your call site before
 optimizing.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## NOTES
+## Notes
 
 `zx_cprng_draw()` terminates the calling process if **buffer** is not a valid
 userspace pointer.
@@ -41,10 +46,8 @@ userspace pointer.
 There are no other error conditions.  If its arguments are valid,
 `zx_cprng_draw()` will succeed.
 
-## SEE ALSO
+## See also
 
  - [`zx_cprng_add_entropy()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_cprng_add_entropy()`]: cprng_add_entropy.md

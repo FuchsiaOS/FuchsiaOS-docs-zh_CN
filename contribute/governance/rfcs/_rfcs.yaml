@@ -198,8 +198,8 @@
   reviewed: '2020-12-09'
 
 - name: 'RFC-0015'
-  title: 'Fuchsia Compatibility Test Suite (CTS)'
-  short_description: 'Requirements, goals, and context for a Compatibility Test Suite (CTS) for Fuchsia.'
+  title: 'Compatibility Tests for Fuchsia (CTF)'
+  short_description: 'Requirements, goals, and context for a Compatibility Tests for Fuchsia (CTF).'
   authors: ['jeremymanson@google.com']
   file: '0015_cts.md'
   area: ['Governance', 'Testing']
@@ -1149,7 +1149,7 @@
 - name: 'RFC-0089'
   title: 'Core realm variations'
   short_description: 'Generate custom core component realms per product configurations.'
-  authors: ['dgonyeo@google.com']
+  authors: ['cgonyeo@google.com']
   file: '0089_core_realm_variations.md'
   area: ['Component Framework']
   issue: ['74801']
@@ -1194,7 +1194,7 @@
   issue: ['']
   gerrit_change_id: ['513028']
   status: 'Accepted'
-  reviewers: [ 'aaronwood@google.com', 'bryanhenry@google.com', 'dgonyeo@google.com', 'geb@google.com', 'hjfreyer@google.com', 'jsankey@google.com', 'thatguy@google.com' ]
+  reviewers: [ 'aaronwood@google.com', 'bryanhenry@google.com', 'cgonyeo@google.com', 'geb@google.com', 'hjfreyer@google.com', 'jsankey@google.com', 'thatguy@google.com' ]
   submitted: '2021-04-08'
   reviewed: '2021-05-05'
 
@@ -1311,7 +1311,7 @@
   issue: ['']
   gerrit_change_id: ['531642']
   status: 'Accepted'
-  reviewers: [ 'bryanhenry@google.com', 'geb@google.com', 'dgonyeo@google.com', 'shayba@google.com', 'thatguy@google.com']
+  reviewers: [ 'bryanhenry@google.com', 'geb@google.com', 'cgonyeo@google.com', 'shayba@google.com', 'thatguy@google.com']
   submitted: '2021-05-18'
   reviewed: '2021-06-02'
 
@@ -1414,7 +1414,7 @@
   area: ['Netstack']
   issue: ['']
   gerrit_change_id: ['544642']
-  status: 'Socializing'
+  status: 'Accepted'
   reviewers: ['maniscalco@google.com', 'brunodalbo@google.com', 'abarth@google.com', 'iyerm@google.com']
   submitted: '2021-06-17'
   reviewed: '2021-06-25'
@@ -1462,7 +1462,7 @@
   title: 'Efficient envelopes'
   short_description: 'This FTP proposes a more compact encoding for envelopes.'
   authors: ['apang@google.com', 'ianloic@google.com', 'pascallouis@google.com', 'bprosnitz@google.com']
-  file: '0032_efficient_envelopes.md'
+  file: '0113_efficient_envelopes.md'
   area: ['FIDL']
   issue: ['']
   gerrit_change_id: ['545861']
@@ -1674,7 +1674,7 @@
   short_description: 'Define the versioning and script requirements for Python sources within the Fuchsia project.'
   authors: ['hansens@google.com']
   file: '0129_python_in_fuchsia.md'
-  area: ['governance']
+  area: ['Governance']
   issue: ['77963']
   gerrit_change_id: ['538447', '538448', '538449', '538450', '538451', '538452', '538453', '538454', '538455', '538456', '538457', '538459', '538460', '538561', '539023']
   status: 'Accepted'
@@ -1815,7 +1815,7 @@
 - name: 'RFC-0140'
   title: 'Realm Builder'
   short_description: 'The design an feature set of Realm Builder is outlined and described'
-  authors: ['dgonyeo@google.com']
+  authors: ['cgonyeo@google.com']
   file: '0140_realm_builder.md'
   area: ['Component Framework']
   issue: ['']
@@ -1826,8 +1826,8 @@
   reviewed: '2021-11-10'
 
 - name: 'RFC-0141'
-  title: 'CTS Process'
-  short_description: 'Describes a process for driving CTS tests to full coverage.'
+  title: 'CTF Process'
+  short_description: 'Describes a process for driving CTF tests to full coverage.'
   authors: ['jeremymanson@google.com']
   file: '0141_cts_process.md'
   area: ['Testing']
@@ -2006,14 +2006,14 @@
   issue: ['89252']
   gerrit_change_id: ['637489']
   status: 'Accepted'
-  reviewers: ['hjfreyer@google.com', 'wittrock@google.com', 'jsankey@google.com', 'abarth@google.com', 'wittrock@google.com', 'geb@google.com', 'shayba@google.com', 'ampearce@google.com', 'etryzelaar@google.com', 'aaronwood@google.com', 'dgonyeo@google.com']
+  reviewers: ['hjfreyer@google.com', 'wittrock@google.com', 'jsankey@google.com', 'abarth@google.com', 'geb@google.com', 'shayba@google.com', 'ampearce@google.com', 'etryzelaar@google.com', 'aaronwood@google.com', 'cgonyeo@google.com']
   submitted: '2022-01-25'
   reviewed: '2022-03-23'
 
 - name: 'RFC-0155'
   title: 'Optional capability routes'
   short_description: 'A new field is added to the offer and use sections of component manifests to denote when a given capability may not exist.'
-  authors: ['dgonyeo@google.com']
+  authors: ['cgonyeo@google.com']
   file: '0155_optional_capability_routes.md'
   area: ['Component Framework']
   issue: ['87164']
@@ -2067,7 +2067,7 @@
   short_description: 'Support for mapping execute-only memory.'
   authors: ['abrachet@google.com']
   file: '0159_execute_only_memory.md'
-  area: ['Zircon', 'Toolchain']
+  area: ['Kernel', 'Toolchain']
   issue: ['89845']
   gerrit_change_id: ['641406']
   status: 'Accepted'
@@ -2201,7 +2201,7 @@
   area: ['Developer']
   issue: ['99820']
   gerrit_change_id: ['677102']
-  status: 'Draft'
+  status: 'Accepted'
   reviewers: ['abarth@google.com', 'amituttam@google.com', 'dschuyler@google.com', 'maruel@google.com', 'sebmarchand@google.com', 'sethladd@google.com', 'yaar@google.com']
   submitted: '2022-05-06'
   reviewed: '2022-06-16'
@@ -2286,6 +2286,19 @@
   submitted: '2022-06-03'
   reviewed: '2022-07-06'
 
+- name: 'RFC-0176'
+  title: 'Disallow New Dart programs in the Fuchsia Source Tree'
+  short_description: 'Adding a new Dart program to the Fuchsia Source Tree requires an exemption.'
+  authors: ['dworsham@google.com']
+  file: '0176_disallow_new_dart_programs.md'
+  area: ['Build', 'Developer']
+  issue: ['91164']
+  gerrit_change_id: ['687859']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'akbiggs@google.com', 'chaselatta@google.com', 'fmeawad@google.com', 'hjfreyer@google.com', 'sanjayc@google.com', 'shaibarack@google.com', 'yuanzhi@google.com']
+  submitted: '2022-06-07'
+  reviewed: '2022-07-06'
+
 - name: 'RFC-0177'
   title: 'Focus Observer for Parent Views'
   short_description: 'API for parent view to learn how focus moves in its view tree'
@@ -2299,3 +2312,492 @@
   consulted: ['shiveshganju@google.com', 'fmil@google.com', 'emircan@google.com', 'jsankey@google.com']
   submitted: '2022-06-06'
   reviewed: '2022-07-07'
+
+- name: 'RFC-0178'
+  title: 'Multiple debug exception channels per job'
+  short_description: 'Zircon allows multiple debug exception channels on a job.'
+  authors: ['dangyi@google.com']
+  file: '0178_multiple_debug_job_exception_channel.md'
+  area: ['Kernel']
+  issue: ['97848']
+  gerrit_change_id: ['688614']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'maniscalco@google.com', 'brettw@google.com']
+  consulted: ['johngro@google.com']
+  submitted: '2022-06-08'
+  reviewed: '2022-07-12'
+
+- name: 'RFC-0179'
+  title: 'Basic clipboard service'
+  short_description: 'Proposal for a basic clipboard service to allow users to securely copy and paste text content between components, regardless of runner.'
+  authors: ['kpozin@google.com']
+  file: '0179_basic_clipboard_service.md'
+  area: ['HCI']
+  issue: ['97874']
+  gerrit_change_id: ['672676']
+  status: 'Accepted'
+  reviewers: ['enoharemaien@google.com', 'jmccandless@google.com', 'neelsa@google.com', 'palmer@google.com', 'quiche@google.com', 'wez@google.com']
+  submitted: '2022-05-16'
+  reviewed: '2020-07-18'
+
+- name: 'RFC-0180'
+  title: 'Test UI Stack'
+  short_description: 'This RFC is a design proposal for the Test UI Stack component, which will provide ui-specific testing capabilities to test clients both in- and out-of-tree.'
+  authors: ['abrusher@google.com']
+  file: '0180_test_ui_stack.md'
+  area: ['View System']
+  issue: ['102730']
+  gerrit_change_id: ['691540']
+  status: 'Accepted'
+  reviewers: ['crjohns@google.com', 'dworsham@google.com', 'jaeheon@google.com', 'neelsa@google.com']
+  submitted: '2022-06-16'
+  reviewed: '2022-07-26'
+
+- name: 'RFC-0181'
+  title: 'Lockless Discardable VMO'
+  short_description: 'Allow reads and writes to discardable VMOs that are in an unlocked stated.'
+  authors: ['adanis@google.com']
+  file: '0181_lockless_discardable_vmo.md'
+  area: ['Kernel']
+  issue: []
+  gerrit_change_id: ['679185']
+  submitted: '2022-05-18'
+  status: 'Accepted'
+  reviewers: ['eieio@google.com', 'cpu@google.com', 'davemoore@google.com', 'nathanrogers@google.com', 'rashaeqbal@google.com']
+  consulted: []
+  reviewed: '2022-08-03'
+
+- name: 'RFC-0182'
+  title: 'Deprecate config-data'
+  short_description: 'Intent to deprecate the legacy mechanism to provide/consume configuration files between components across repositories'
+  authors: ['shayba@google.com']
+  file: '0182_deprecate_config-data.md'
+  area: ['Component Framework']
+  issue: ['101976']
+  gerrit_change_id: ['696482']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'adamperry@google.com', 'ampearce@google.com', 'awolter@google.com', 'ddorwin@google.com', 'fmil@google.com', 'geb@google.com', 'jsankey@google.com', 'kpozin@google.com', 'wez@google.com', 'yaar@google.com', 'ypomortsev@google.com']
+  submitted: '2022-06-30'
+  reviewed: '2022-08-15'
+
+- name: 'RFC-0183'
+  title: 'SDK Library Documentation'
+  short_description: 'Define requirements for reference documentation for libraries in the SDK.'
+  authors: ['brettw@google.com']
+  file: '0183_sdk_library_documentation.md'
+  area: ['Developer']
+  issue: ['104663']
+  gerrit_change_id: ['701555']
+  status: 'Accepted'
+  reviewers: ['ccherubino@google.com', 'hjfreyer@google.com', 'mkearney@google.com']
+  submitted: ''
+  reviewed: ''
+
+- name: 'RFC-0184'
+  title: 'POSIX Compatibility for the System Netstack'
+  short_description: 'Describes the policy for supporting POSIX-like networking APIs on Fuchsia.'
+  authors: ['akonradi@google.com']
+  file: '0184_posix_compatibility_for_the_system_netstack.md'
+  area: ['Foreign ABI Compatibility', 'Netstack']
+  issue: ['104552']
+  gerrit_change_id: ['701126']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'brunodalbo@google.com', 'dhobsd@google.com']
+  submitted: '2022-07-15'
+  reviewed: '2022-08-17'
+
+- name: 'RFC-0185'
+  title: 'Remove `zx_interrupt_bind_vcpu`'
+  short_description: 'Remove the `zx_interrupt_bind_vcpu` syscall, which is no longer required.'
+  authors: ['abdulla@google.com']
+  file: '0185_remove_zx_interrupt_bind_vcpu.md'
+  area: ['Virtualization']
+  issue: ['104712']
+  gerrit_change_id: ['701396']
+  status: 'Accepted'
+  reviewers: ['maniscalco@google.com', 'tjdetwiler@google.com', 'travisg@google.com', 'zarvox@google.com']
+  submitted: '2022-08-19'
+  reviewed: '2022-08-19'
+
+- name: 'RFC-0186'
+  title: 'Bazel for Fuchsia'
+  short_description: 'Proposes to converge on and adopt Bazel as the primary build system of choice for Fuchsia components by bringing Fuchsia SDK and Bazel into fuchsia.git.'
+  authors: ['shayba@google.com', 'sethladd@google.com', 'aaronwood@google.com']
+  file: '0186_bazel_for_fuchsia.md'
+  area: ['Build']
+  issue: ['108259']
+  gerrit_change_id: ['671558']
+  status: 'Accepted'
+  reviewers: ['digit@google.com', 'chaselatta@google.com', 'mangini@google.com', 'nsylvain@google.com', 'abarth@google.com']
+  consulted: ['awolter@google.com', 'dannyrosen@google.com', 'keir@google.com', 'tmandry@google.com', 'brunodalbo@google.com', 'surajmalhotra@google.com', 'amathes@google.com', 'cphoenix@google.com', 'akbiggs@google.com']
+  submitted: '2022-04-21'
+  reviewed: '2022-08-29'
+
+- name: 'RFC-0187'
+  title: 'Allow first thread in process to start with zx_thread_start'
+  short_description: 'Currently the first thread in a process must be started with zx_process_start. This RFC proposes allowing the first thread to be started with zx_thread_start.'
+  authors: ['lindkvist@google.com']
+  file: '0187_allow_first_thread_in_process_to_start_with_zx_thread_start.md'
+  area: ['Kernel']
+  issue: ['']
+  gerrit_change_id: ['707462']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'cpu@google.com', 'mcgrathr@google.com', 'travisg@google.com']
+  submitted: '2022-08-04'
+  reviewed: '2022-09-31'
+
+- name: 'RFC-0188'
+  title: 'Component ABI Compatibility'
+  short_description: 'Detect a component target ABI revision and check its support with the platform.'
+  authors: ['caslyn@google.com']
+  file: '0188_component_abi_compatibility.md'
+  area: ['Component Framework']
+  issue: ['95188']
+  gerrit_change_id: ['695063']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'etryzelaar@google.com', 'geb@google.com', 'jsankey@google.com']
+  submitted: '2022-06-27'
+  reviewed: '2022-09-31'
+
+- name: 'RFC-0189'
+  title: 'Window Management'
+  short_description: 'Describe the platform architecture and standard APIs for window management.'
+  authors: ['neelsa@google.com']
+  file: '0189_window_management.md'
+  area: ['Graphics', 'HCI', 'View System']
+  issue: ['109665']
+  gerrit_change_id: ['711338']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'dworsham@google.com', 'thatguy@google.com', 'sanjayc@google.com', 'asz@google.com', 'wez@google.com']
+  submitted: '2022-08-12'
+  reviewed: '2022-09-20'
+
+- name: 'RFC-0190'
+  title: 'FIDL Support for Syscalls'
+  short_description: 'Extend FIDL to support syscall declarations and make a FIDL representation of the interface our source-of-truth.'
+  authors: ['joshuaseaton@google.com']
+  file: '0190_fidl_support_for_syscalls.md'
+  area: ['FIDL', 'Kernel']
+  issue: ['110021']
+  gerrit_change_id: ['695882']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'brettw@google.com', 'mcgrathr@google.com', 'hjfreyer@google.com', 'palmer@google.com']
+  submitted: '2022-07-08'
+  reviewed: '2022-09-22'
+
+- name: 'RFC-0191'
+  title: 'Fuchsia-on-GCE as a supported system configuration'
+  short_description: 'Add Google Compute Engine (x64 and arm64) as a supported system configuration for Fuchsia.'
+  authors: ['rudymathu@']
+  file: '0191_fuchsia-on-gce_as_a_supported_system_configuration.md'
+  area: ['Governance']
+  issue: ['9127']
+  gerrit_change_id: ['717989']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'curtisgalloway@google.com', 'tkilbourn@google.com', 'travisg@google.com']
+  submitted: '2022-08-29'
+  reviewed: '2022-09-28'
+
+- name: 'RFC-0192'
+  title: 'Device Trees on Fuchsia'
+  short_description: 'A strategy for using device trees to describe hardware layout'
+  authors: ['simonshields@google.com']
+  file: '0192_device_trees_on_fuchsia.md'
+  area: ['Devices']
+  issue: ['107029']
+  gerrit_change_id: ['706886']
+  status: 'Accepted'
+  reviewers: ['surajmalhotra@google.com', 'curtisgalloway@google.com', 'gkalsi@google.com', 'bradenkell@google.com', 'cja@google.com', 'dpursell@google.com']
+  submitted: '2022-08-03'
+  reviewed: '2022-10-01'
+
+- name: 'RFC-0193'
+  title: 'Supported C++ Versions'
+  short_description: 'Drop C++14 support from the SDK and clarify how support for C++ versions will be decided and supported in the future.'
+  authors: ['ianloic@google.com']
+  file: '0193_supported_c++_versions.md'
+  area: ['Build', 'Developer', 'Toolchain']
+  issue: ['']
+  gerrit_change_id: ['705630']
+  status: 'Accepted'
+  reviewers: ['johngro@google.com', 'dschuyler@google.com', 'abarth@google.com']
+  submitted: '2022-07-29'
+  reviewed: '2022-10-03'
+
+- name: 'RFC-0194'
+  title: 'Addendum: Sessions'
+  short_description: 'Addendum to RFC-0092 that ratifies decisions that were left open in RFC-0092.'
+  authors: ['thatguy@google.com']
+  file: '0194_addendum_sessions.md'
+  area: ['Sessions']
+  issue: ['']
+  gerrit_change_id: ['709745']
+  status: 'Accepted'
+  reviewers: ['emircan@google.com', 'jsankey@google.com', 'neelsa@google.com', 'sanjayc@google.com', 'yaar@google.com', 'dworsham@google.com', 'aaronwood@google.com', 'markdittmer@google.com']
+  submitted: '2022-08-09'
+  reviewed: '2022-10-17'
+
+- name: 'RFC-0195'
+  title: 'Positions and ranges in text APIs'
+  short_description: 'Prescribes the use of Unicode scalar values as the base unit for positions and ranges in text editing APIs.'
+  authors: ['kpozin@google.com']
+  file: '0195_positions_and_ranges_in_text_apis.md'
+  area: ['HCI']
+  issue: ['108240']
+  gerrit_change_id: ['717053']
+  status: 'Accepted'
+  reviewers: ['enoharemaien@google.com', 'fmil@google.com', 'gspencer@google.com', 'jmccandless@google.com', 'neelsa@google.com', 'pesk@google.com', 'wez@google.com']
+  submitted: '2022-08-26'
+  reviewed: '2022-10-25'
+
+- name: 'RFC-0196'
+  title: 'FIDL large messages'
+  short_description: 'Support for sending large messages over FIDL protocols.'
+  authors: ['azaslavsky@google.com']
+  file: '0196_fidl_large_messages.md'
+  area: ['FIDL']
+  issue: ['100478']
+  gerrit_change_id: ['695625']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'chcl@google.com', 'cpu@google.com', 'mseaborn@google.com', 'nickcano@google.com', 'surajmalhotra@google.com']
+  submitted: '2022-06-28'
+  reviewed: '2022-10-27'
+
+- name: 'RFC-0197'
+  title: 'Node Groups for composites'
+  short_description: 'Support defining composites at runtime.'
+  authors: ['spqchan@google.com']
+  file: '0197_node_groups.md'
+  area: ['Driver SDK']
+  issue: ['95821']
+  gerrit_change_id: ['726075']
+  status: 'Accepted'
+  reviewers: ['surajmalhotra@google.com', 'dgilhooley@google.com']
+  submitted: '2022-11-01'
+  reviewed: '2022-09-26'
+
+- name: 'RFC-0198'
+  title: 'Magma API'
+  short_description: 'Driver API design for GPUs and other compute accelerators.'
+  authors: ['cstout@google.com']
+  file: '0198_magma_api_design.md'
+  area: ['Graphics']
+  issue: ['']
+  gerrit_change_id: ['598606']
+  status: 'Accepted'
+  reviewers: ['jbauman@google.com', 'rlb@google.com']
+  consulted: ['andresoportus@google.com', 'surajmalhotra@google.com']
+  submitted: '2022-09-19'
+  reviewed: '2022-11-01'
+
+- name: 'RFC-0199'
+  title: 'Protect child VMARs'
+  short_description: 'Allow zx_vmar_protect to apply to mappings in child VMARs.'
+  authors: ['adanis@google.com']
+  file: '0199_protect_child_vmars.md'
+  area: ['Kernel']
+  issue: ['107058']
+  gerrit_change_id: ['724364']
+  submitted: '2022-09-13'
+  status: 'Accepted'
+  reviewers: ['travisg@google.com', 'rashaeqbal@google.com', 'nickcano@google.com']
+  consulted: ['wez@google.com', 'palmer@google.com', 'mvanotti@google.com']
+  reviewed: '2022-11-03'
+
+- name: 'RFC-0200'
+  title: 'Support adb protocol and interface for hardware testing'
+  short_description: 'Add adb protocol and interface support to enable Fuchsia device interaction with stock adb client for hardware testing usecases.'
+  authors: ['puneetha@google.com']
+  file: '0200_support_adb_protocol_and_interface_for_hardware_testing.md'
+  area: ['Developer', 'Testing']
+  issue: ['106067']
+  gerrit_change_id: ['715977']
+  status: 'Accepted'
+  reviewers: ['curtisgalloway@google.com', 'rdzhuang@google.com', 'gkalsi@google.com',  'prashanthsw@google.com', 'jeremymanson@google.com', 'surajmalhotra@google.com']
+  submitted: '2022-08-24'
+  reviewed: '2022-11-17'
+
+- name: 'RFC-0201'
+  title: 'Reclaim guest VM memory'
+  short_description: 'Allow host to use the previously allocated and lated released guest VM memory'
+  authors: ['alerad@google.com']
+  file: '0201_reclaim_guest_vm_memory.md'
+  area: ['Virtualization']
+  issue: ['10040', '100504', '100511', '88066']
+  gerrit_change_id: ['720508']
+  status: 'Accepted'
+  reviewers: ['abdulla@google.com', 'com', 'dahastin@google.com', 'tjdetwiler@google']
+  submitted: '2022-12-15'
+  reviewed: '2022-12-01'
+
+- name: 'RFC-0202'
+  title: 'Test manager as a Service'
+  short_description: 'Design for test manager as a service.'
+  authors: ['anmittal@google.com']
+  file: '0202_test_manager_as_a_service.md'
+  area: ['Testing']
+  issue: ['117504']
+  gerrit_change_id: ['703682']
+  status: 'Accepted'
+  reviewers: ['geb@google.com', 'shayba@google.com', 'richkadel@google.com', 'kjharland@google.com', 'crjohns@google.com', 'cgonyeo@google.com', 'aaronwood@google.com', 'satsukiu@google.com', 'xbhatnag@google.com', 'yaneury@google.com', 'hjfreyer@google.com', 'akbiggs@google.com']
+  submitted: '2022-07-22'
+  reviewed: '2022-12-14'
+
+- name: 'RFC-0203'
+  title: 'Introduce `zx_system_energy_info`'
+  short_description: 'Interface for communicating with the kernel to access the energy information.'
+  authors: ['didis@google.com']
+  file: '0203_system_energy_info.md'
+  area: ['Kernel', 'Power']
+  issue: ['103700']
+  gerrit_change_id: ['762927']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'alexlegg@google.com', 'claridge@google.com', 'curtisgalloway@google.com', 'achyb@google.com']
+  submitted: '2022-11-18'
+  reviewed: '2022-12-15'
+
+- name: 'RFC-0204'
+  title: 'VMO Reference Child'
+  short_description: 'VMO child type for reference tracking.'
+  authors: ['rashaeqbal@google.com']
+  file: '0204_vmo_reference_child.md'
+  area: ['Kernel']
+  issue: ['81316']
+  gerrit_change_id: ['751426']
+  status: 'Accepted'
+  reviewers: ['adanis@google.com', 'cpu@google.com', 'godtamit@google.com']
+  consulted: ['brettw@google.com', 'cdrllrd@google.com', 'csuter@google.com', 'travisg@google.com']
+  submitted: '2023-01-04'
+  reviewed: '2023-01-03'
+
+- name: 'RFC-0205'
+  title: 'Vulkan Loader'
+  short_description: 'A description of how applications load Vulkan ICDs and layers'
+  authors: ['jbauman@google.com']
+  file: '0205_vulkan_loader.md'
+  area: ['Graphics']
+  issue: ['87685']
+  gerrit_change_id: ['739772']
+  status: 'Accepted'
+  reviewers: ['cstout@google.com', 'costan@google.com', 'jhowarth@google.com', 'msandy@google.com', 'rosasco@google.com', 'palmer@google.com', 'wittrock@google.com']
+  submitted: '2023-01-12'
+  reviewed: '2023-01-12'
+
+- name: 'RFC-0206'
+  title: 'Deprecate stash'
+  short_description: 'Deprecate the stash service and migrate clients to use a storage capability'
+  authors: ['jsankey@google.com']
+  file: '0206_deprecate_stash.md'
+  area: ['Security', 'Storage']
+  issue: ['102879']
+  gerrit_change_id: ['774782']
+  status: 'Accepted'
+  reviewers: ['atait@google.com', 'brunodalbo@google.com', 'ecstone@google.com', 'emircan@google.com', 'jamuraa@google.com', 'nmccracken@google.com', 'palmer@google.com', 'senj@google.com', 'paulfaria@google.com']
+  submitted: '2022-12-08'
+  reviewed: '2022-01-13'
+
+- name: 'RFC-0207'
+  title: 'Offline blob compression'
+  short_description: 'Download compressed blobs.'
+  authors: ['senj@google.com']
+  file: '0207_offline_blob_compression.md'
+  area: ['Software Delivery']
+  issue: ['111850']
+  gerrit_change_id: ['752282']
+  status: 'Accepted'
+  reviewers: ['jsankey@google.com', 'etryzelaar@google.com', 'mlindsay@google.com', 'csuter@google.com', 'bcastell@google.com', 'marvinpaul@google.com', 'aaronwood@google.com', 'amituttam@google.com', 'dschuyler@google.com', 'atyfto@google.com']
+  submitted: '2022-11-02'
+  reviewed: '2023-02-01'
+
+- name: 'RFC-0208'
+  title: 'Distributing Packages with the SDK'
+  short_description: 'Proposes how we will distribute some in-tree packages in the SDK for out-of-tree subpackaging.'
+  authors: ['crjohns@google.com']
+  file: '0208_distributing_packages_with_the_sdk.md'
+  area: ['Software Delivery', 'Testing']
+  issue: ['http://fxbug.dev/119425']
+  gerrit_change_id: ['724843']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'dschuyler@google.com', 'jsankey@google.com', 'richkadel@google.com', 'yuxiaosun@google.com']
+  consulted: ['etryzelaar@google.com','geb@google.com', 'jeremymanson@google.com', 'kjharland@google.com', 'wittrock@google.com']
+  submitted: '2023-02-15'
+  reviewed: '2023-02-10'
+
+- name: 'RFC-0209'
+  title: 'Memory priority profiles'
+  short_description: 'Mark VMARs with a priority using profiles.'
+  authors: ['adanis@google.com']
+  file: '0209_memory_priority_profiles.md'
+  area: ['Kernel']
+  issue: ['101641']
+  gerrit_change_id: ['762586']
+  submitted: '2022-08-16'
+  status: 'Accepted'
+  reviewers: ['rashaeqbal@google.com', 'eieio@google.com', 'tombergan@google.com']
+  consulted: ['andresoportus@google.com']
+  reviewed: '2023-02-15'
+
+- name: 'RFC-0210'
+  title: 'Virtualization Capability Routing'
+  short_description: 'Define how virtualization capbailities will be routed between the platform and products.'
+  authors: ['tjdetwiler@google.com']
+  file: '0210_virtualization_capability_routing.md'
+  area: ['Virtualization']
+  issue: ['115651']
+  gerrit_change_id: ['754859']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'abdulla@google.com', 'alerad@google.com', 'jsankey@google.com', 'ypomortsev@google.com' ]
+  submitted: '2022-11-07'
+  reviewed: '2023-02-23'
+
+- name: 'RFC-0211'
+  title: 'Fuchsia on RISC-V'
+  short_description: 'Add support for 64-bits RISC-V CPUs.'
+  authors: ['cpu@google.com', 'curtisgalloway@google.com', 'revest@google.com', 'rogerta@google.com', 'travisg@google.com']
+  file: '0211_fuchsia_on_risc-v.md'
+  area: ['Build', 'Devices', 'Drivers', 'EngProd/Infra', 'Firmware', 'General', 'Kernel', 'Languages and Libraries', 'Security', 'Toolchain']
+  issue: ['']
+  gerrit_change_id: ['802787']
+  status: 'Accepted'
+  reviewers: ['cpu@google.com', 'travisg@google.com', 'mcgrathr@google.com', 'rogerta@google.com', 'maruel@google.com', 'mvanotti@google.com', 'shayba@google.com', 'curtisgalloway@google.com', 'mkearney@google.com', 'keir@google.com', 'jamesr@google.com', 'phosek@google.com', 'dpursell@google.com', 'jyotiraju@google.com']
+  submitted: '2023-02-14'
+  reviewed: '2023-03-07'
+
+- name: 'RFC-0212'
+  title: 'Package Sets'
+  short_description: 'Proposes a series of changes to the definition and menu of package sets on Fuchsia'
+  authors: ['jsankey@google.com']
+  file: '0212_package_sets.md'
+  area: ['Software Delivery']
+  issue: ['110948']
+  gerrit_change_id: ['794079']
+  status: 'Accepted'
+  reviewers: ['aaronwood@google.com', 'aminuttam@google.com', 'markdittmer@google.com', 'marvinpaul@google.com', 'sethladd@google.com', 'wittrock@google.com']
+  submitted: '2022-11-17'
+  reviewed: '2023-03-07'
+
+- name: 'RFC-0213'
+  title: 'Removing devfs FIDL multiplexing'
+  short_description: 'Outline reasoning and plan for removing FIDL multiplexing in devfs'
+  authors: ['dgilhooley@google.com']
+  file: '0213_removing_devfs_fidl_multiplexing.md'
+  area: ['Drivers']
+  issue: ['121802']
+  gerrit_change_id: ['802807']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'cja@google.com', 'csuter@google.com', 'jfsulliv@google.com', 'surajmalhotra@google.com', 'tamird@google.com', 'yifeit@google.com',  ]
+  submitted: '2023-03-28'
+  reviewed: '2023-03-17'
+
+- name: 'RFC-0214'
+  title: 'Fuchsia churn policy'
+  short_description: 'Enumerate rights and responsibilities to reduce engineering time spent on change.'
+  authors: ['rlb@google.com']
+  file: '0214_fuchsia_churn_policy.md'
+  area: ['General', 'Governance']
+  issue: ['114568']
+  gerrit_change_id: ['781865']
+  status: 'Accepted'
+  reviewers: ['abarth@google.com', 'keir@google.com', 'shayba@google.com']
+  submitted: '2022-12-22'
+  reviewed: '2023-04-03'

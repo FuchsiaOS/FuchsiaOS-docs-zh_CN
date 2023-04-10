@@ -7,24 +7,24 @@
 # team as reviewer.
 toc:
 - title: "Build and Assemble Workstation Out of Tree"
-  path: /contribute/roadmap/2021/workstation_out_of_tree.md
+  path: /docs/contribute/roadmap/2021/workstation_out_of_tree.md
 - title: "Decentralized Product Integration"
-  path: /contribute/roadmap/2021/decentralized_product_integration.md
+  path: /docs/contribute/roadmap/2021/decentralized_product_integration.md
 - title: "Defining a Stable Driver Runtime"
-  path: /contribute/roadmap/2021/stable_driver_runtime.md
+  path: /docs/contribute/roadmap/2021/stable_driver_runtime.md
 - title: "Flatland 2D Composition in Scenic"
-  path: /contribute/roadmap/2021/flatland.md
+  path: /docs/contribute/roadmap/2021/flatland.md
 - title: "Flutter-on-Fuchsia Velocity"
-  path: /contribute/roadmap/2021/flutter_on_fuchsia_velocity.md
+  path: /docs/contribute/roadmap/2021/flutter_on_fuchsia_velocity.md
 - title: "Invest in sanitizers"
-  path: /contribute/roadmap/2021/invest_in_sanitizers.md
+  path: /docs/contribute/roadmap/2021/invest_in_sanitizers.md
 - title: "Netstack3 - A Fuchsia owned rust based netstack"
-  path: /contribute/roadmap/2021/netstack3.md
+  path: /docs/contribute/roadmap/2021/netstack3.md
 - title: "Out-of-tree component testing support"
-  path: /contribute/roadmap/2021/oot_component_testing.md
+  path: /docs/contribute/roadmap/2021/oot_component_testing.md
 - title: "Out-of-tree system testing support"
-  path: /contribute/roadmap/2021/oot_system_testing.md
+  path: /docs/contribute/roadmap/2021/oot_system_testing.md
 - title: "Scaling Product Assembly and Configuration"
-  path: /contribute/roadmap/2021/product_assembly.md
+  path: /docs/contribute/roadmap/2021/product_assembly.md
 - title: "Structured Configuration"
-  path: /contribute/roadmap/2021/structured_configuration.md
+  path: /docs/contribute/roadmap/2021/structured_configuration.md

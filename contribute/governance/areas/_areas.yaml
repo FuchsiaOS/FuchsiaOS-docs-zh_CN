@@ -2,91 +2,399 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# TODO(pascallouis): Align with docs/contribute/governance/rfcs/_areas.yaml
+# NOTE: This should be a subset of the areas listed in
+# docs/contribute/governance/rfcs/_areas.yaml.
 
 - name: 'Bluetooth'
   api_primary: 'jamuraa@google.com'
   api_secondary: 'silberst@google.com'
+  description: |
+    <p>
+      The set of APIs for managing and communicating via Bluetooth.  This includes
+      both connecting peer devices, searching for devices, advertising the local
+      device, and communicating or interacting via Bluetooth profiles.  Generally
+      once connected, Bluetooth capabilities will be exposed through APIs in other
+      sections, and this API only exposes surfaces for connecting, managing
+      discovery and pairing, and Low Energy protocols which are often custom to
+      each device.
+    </p>
+    <p>
+      Often specific Bluetooth Profiles provide an API for system services to use
+      for status and control as well.
+    </p>
+  examples:
+    - fidl: 'fuchsia.bluetooth.sys'
+    - fidl: 'fuchsia.bluetooth.le'
+    - fidl: 'fuchsia.bluetooth.gatt'
 
 - name: 'Component Framework'
   api_primary: 'geb@google.com'
   api_secondary: 'ypomortsev@google.com'
+  description: |
+    The set of APIs that are used to define components, interact with
+    components, and integrate with the Component Framework. These are the low
+    level APIs for interfacing with the Component Framework -- in some cases
+    they may be used by developers directly, but they may also be used to build
+    higher level APIs such as Session Framework.
+  examples:
+    - fidl: 'fuchsia.component'
+    - fidl: 'fuchsia.component.internal'
+    - fidl: 'fuchsia.sys2'
+    - fidl: 'fuchsia.sys'
 
 - name: 'Developer'
   api_primary: 'dschuyler@google.com'
   api_secondary: 'crjohns@google.com'
+  description: |
+    Developer tool interfaces, such as the <a
+    href='/docs/development/api/cli.md'>Command-line Tools Rubric</a>. APIs that
+    affect the developer experience in the host environment such as debugging,
+    forensics, or the development kit.
 
 - name: 'Diagnostics'
   api_primary: 'crjohns@google.com'
   api_secondary: 'miguelfrde@google.com'
+  description: |
+    The set of APIs that are used to publish and query diagnostics data from
+    components on the system. This includes the ability to <a
+    href="/docs/reference/diagnostics/logs/access.md">stream logs</a>, view and
+    publish <a href="/docs/development/diagnostics/inspect/README.md">Inspect
+    data</a>, and <a
+    href="/docs/concepts/components/diagnostics/lifecycle_events/README.md">observe
+    lifecycle events</a>.
+  examples:
+    - fidl: 'fuchsia.diagnostics'
+    - fidl: 'fuchsia.inspect'
 
 - name: 'Drivers'
   api_primary: 'cja@google.com'
   api_secondary: 'jocelyndang@google.com'
+  description: |
+    <p>
+      The set of APIs used to communicate with various drivers that interact
+      with hardware or other drivers. The apis are accessible by opening the
+      device using a devfs path, such as <code>/dev/class/&lt;protocol the
+      device exposes&gt;/&lt;incremental number&gt;</code>.
+    </p>
+    <p>
+      Most of the APIs exposed by drivers are in the
+      <code>fuchsia.hardware.*</code> namespaces.
+    </p>
+    <p>
+      Other APIs are distributed under the corresponding area (e.g. Bluetooth,
+      WLAN, Graphics, HCI) that the driver tackles. Although these APIs do not
+      live under <code>fuchsia.hardware.*</code> namespace they might interact
+      with hardware, or other drivers that interact with hardware.
+    </p>
+  examples:
+    - fidl: 'fuchsia.hardware.pci'
 
 - name: 'Driver SDK'
   api_primary: 'jocelyndang@google.com'
   api_secondary: 'cja@google.com'
+  description: |
+    The set of APIs used to interact with devices via the driver manager. This
+    may be used by developers to retrieve information about a device or change
+    its current state.
+  examples:
+    - fidl: 'fuchsia.device'
+    - fidl: 'fuchsia.device.manager'
 
 - name: 'Experiences'
   api_primary: 'chaselatta@google.com'
   api_secondary: 'ianloic@google.com'
+  description: |
+    The set of APIs used to create user experiences. These include the set of
+    APIs that facilitate user interactions that are common across multiple
+    products.
+  examples:
+    - fidl: 'fuchsia.settings'
 
 - name: 'FIDL'
   api_primary: 'ianloic@google.com'
   api_secondary: ''
+  description: |
+    Since most APIs are expressed in FIDL, the FIDL area is cross-cutting with
+    the goal to both support all other areas, and leverage their experience to
+    inform the future direction of the FIDL language and ecosystem.
 
 - name: 'Firmware'
   api_primary: 'dpursell@google.com'
   api_secondary: ''
+  description: |
+    <p>
+      A small set of libraries necessary for firmware to boot Zircon, for
+      example ZBI image handling, A/B/R boot metadata, verified boot.
+      Essentially, this defines the contract for how the bootloader communicates
+      with Zircon.
+    </p>
+    <p>
+      As firmware runs outside of Fuchsia, this is not generally meant for
+      Fuchsia end-developers, but instead for bringing up Fuchsia on new
+      platforms. These libraries together form the "Firmware SDK"; which is then
+      ported to a specific platform's firmware codebase.
+    </p>
+  examples:
+    - description: |
+        <a
+        href="https://cs.opensource.google/fuchsia/fuchsia/+/main:src/firmware/lib/abr/">libabr</a>,
+        A/B/R metadata handling.
+    - description: |
+        <a
+        href="https://android.googlesource.com/platform/external/avb/">libavb</a>,
+        verified boot.
+    - description: |
+        <a
+        href="https://cs.opensource.google/fuchsia/fuchsia/+/main:src/firmware/lib/zbi/">libzbi</a>,
+        ZBI manipulation.
 
 - name: 'Foreign ABI Compatibility'
   api_primary: 'lindkvist@google.com'
   api_secondary: 'qsr@google.com'
+  description: |
+    <p>
+      The set of APIs used to run and interact with programs compiled for other
+      operating systems.
+    </p>
+    <p>
+      Currently this covers the Starnix (Linux binary compatibility) APIs.
+    </p>
+  examples:
+    - fidl: 'fuchsia.starnix.developer'
+      description: |
+        Protocols for starting a component containing an unmodified Linux binary.
 
 - name: 'Graphics'
   api_primary: 'jbauman@google.com'
   api_secondary: 'jaeheon@google.com'
+  description: |
+    The set of APIs that are used to transport and compose images on the system.
+    It includes interfaces for communicating with graphics hardware, as well as
+    scene-graph communication between Scenic and the rest of the system (not
+    including higher-level concepts such as views, see the <a
+    href="#view-system">View System</a> area for that).
+  examples:
+    - fidl: 'fuchsia.hardware.display'
+    - fidl: 'fuchsia.gpu.magma'
+    - fidl: 'fuchsia.ui.gfx'
 
 - name: 'HCI'
-  api_primary: 'neelsa@google.com'
-  api_secondary: 'jaeheon@google.com'
+  api_primary: 'quiche@google.com'
+  api_secondary: 'neelsa@google.com'
+  description: |
+    <p>Covers input, accessibility, internationalization.</p>
+    <p>
+      The set of APIs that connect human-computer interaction (HCI) devices
+      starting from drivers, to filtering, semantic understanding, grouping,
+      routing, all the way to delivering these inputs to the <a
+      href="#view-system">View System</a>. This includes APIs associated with
+      touch, mouse, keyboard, text editing and the accessibility framework.
+    </p>
+  examples:
+    - fidl: 'fuchsia.ui.input'
+    - fidl: 'fuchsia.ui.pointer'
+    - fidl: 'fuchsia.ui.input.accessibility'
+    - fidl: 'fuchsia.accessibility.semantics'
+    - description: 'fuchsia.accessibility.*'
+    - description: 'fuchsia.input.*'
 
 - name: 'Identity'
   api_primary: 'jsankey@google.com'
   api_secondary: ''
+  description: |
+    The set of APIs used to manage user accounts, authentication, and identity
+    information.
+  examples:
+    - fidl: 'fuchsia.identity.account'
+    - fidl: 'fuchsia.identity.authentication'
 
 - name: 'Kernel'
   api_primary: 'cpu@google.com'
   api_secondary: 'abarth@google.com'
+  description: |
+    <p>The Fuchsia kernel, whose API surface is:</p>
+    <ul>
+      <li>
+        The set of syscalls and the set of types and constants associated with
+        these syscalls. Those APIs are defined in
+        <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/vdso/">
+          <code>//zircon/vdso/</code>
+        </a>
+        and
+        <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/public/zircon/">
+          <code>//zircon/system/public/zircon/</code>
+        </a>.
+      </li>
+      <li>
+        The interface with bootloaders, the most important being the
+        <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:zircon/system/public/zircon/boot/image.h">
+          ZBI
+        </a>.
+      </li>
+      <li>The BOOTFS image and the ABI of the binaries within.</li>
+    </ul>
 
 - name: 'Media'
   api_primary: 'dalesat@google.com'
   api_secondary: ''
+  description: |
+    The set of APIs used to capture, process and render audio and video streams.
+    The media APIs also encompass adjacent concerns such as volume control and
+    media session management.
+  examples:
+    - fidl: 'fuchsia.camera'
+    - fidl: 'fuchsia.media'
+    - fidl: 'fuchsia.media.audio'
+    - fidl: 'fuchsia.media.drm'
+    - fidl: 'fuchsia.media.sessions2'
+    - fidl: 'fuchsia.media.sounds'
+    - fidl: 'fuchsia.mediacodec'
 
 - name: 'Metrics'
   api_primary: 'camrdale@google.com'
   api_secondary: ''
+  description: |
+    The set of APIs that allow clients to log events that are associated with
+    metrics. These events are collected off-device, and can later be analyzed
+    across many devices.
+  examples:
+    - fidl: 'fuchsia.metrics'
+    - fidl: 'fuchsia.cobalt'
 
 - name: 'Netstack'
   api_primary: 'brunodalbo@google.com'
-  api_secondary: ''
+  api_secondary: 'ghanan@google.com'
+  description: |
+    The set of APIs enabling networking in Fuchsia. Encompasses APIs that drive
+    the data, control, and management planes of networking ranging from
+    contracts with device drivers to auxiliary application-level protocol
+    services.
+  examples:
+    - fidl: 'fuchsia.hardware.network'
+      description: 'Data plane contract with device drivers.'
+    - fidl: 'fuchsia.posix.socket'
+      description: 'POSIX sockets API.'
+    - fidl: 'fuchsia.net.interfaces'
+      description: 'Interface management plane.'
+    - fidl: 'fuchsia.net.name'
+      description: 'Application-level name resolution.'
 
 - name: 'Security'
   api_primary: 'jsankey@google.com'
   api_secondary: ''
+  description: |
+    The set of APIs used to directly interact with security features (for
+    example cryptographic key management) or tools (for example fuzzers).
+  examples:
+    - fidl: 'fuchsia.fuzzer'
+    - fidl: 'fuchsia.kms'
+    - fidl: 'fuchsia.tee'
 
 - name: 'Sessions'
   api_primary: 'ypomortsev@google.com'
   api_secondary: ''
+  description: |
+    <p>
+      A set of APIs to coordinate a product's user experience. Specifically the
+      API contains protocols for communicating with the session component.
+    </p>
+    <p>
+      The session API often makes use of protocols and data structures defined
+      in other areas of the platform. For example,
+      <code>GraphicalPresenter</code> does not define its own view type.
+      Instead, it uses <code>ViewRef</code> from the <a href="#view-system">View
+      System</a> to identify component views.
+    </p>
+  examples:
+    - fidl: 'fuchsia.element'
+
+- name: 'Software Assembly'
+  api_primary: 'aaronwood@google.com'
+  api_secondary: 'awolter@google.com'
+  description: |
+    <p>
+      The Software Assembly team was put together to solve the problem of combining software from a
+      variety of sources into what we know of as the Fuchsia OS. The mission of Software Assembly is
+      to:
+      <ul>
+          <li>
+              Develop and ship software which assembles Fuchsia software and systems. That is,
+              software which takes a set of binaries and configuration and produces runnable,
+              flashable Fuchsia images for a specific product variant.</li>
+          <li>
+              Develop and maintain the assembly-time product/platform interface, which allows
+              product owners to specify how the platform should be configured for a particular
+              product.
+          </li>
+          <li>
+              Support the tools for platform contributors and SDK users. For the latter, we do this
+              with the longterm view of integrating with the Bazel SDK.
+          </li>
+          <li>
+              Define and maintain the contract for how assembly's input artifacts are specified to
+              the assembly tools which assemble the correct set of artifacts for a given product
+              build.
+          </li>
+      </ul>
+      This is all performed by the product assembly tool, which is an ffx plugin.
+    </p>
 
 - name: 'Software Delivery'
   api_primary: 'kevinwells@google.com'
-  api_secondary: 'jsankey@google.com'
+  api_secondary: 'etryzelaar@google.com'
+  description: |
+    <p>
+      The Software Delivery team manages software packaging and updates for Fuchsia devices.
+    </p>
 
 - name: 'Storage'
   api_primary: 'csuter@google.com'
   api_secondary: ''
+  description: |
+    <p>Storage is a combination of the following APIs:</p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.io/">
+            fuchsia.io
+          </a>
+        </p>
+        <p>
+          Describes the common means of service discovery, filesystem access,
+          and capability sharing on Fuchsia.
+        </p>
+        <p>
+          They are used primarily for client interaction with the filesystem,
+          where a client can be any component/process in the system that needs
+          to access files/directories in a filesystem.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.fshost/">
+            fuchsia.fshost
+          </a>
+        </p>
+        <p>
+          Used for finding block devices, starting filesystem processes to
+          service these block devices, and providing handles for these file
+          systems to the rest of Fuchsia.
+        </p>
+      </li>
+      <li>
+        <p>Filesystem specific APIs, used for operations specific to a filesystem.</p>
+        <p>Examples:</p>
+        <ul>
+          <li><a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.minfs/">fuchsia.minfs</a></li>
+          <li><a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.blobfs/">fuchsia.blobfs</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.fs/">
+          fuchsia.fs</a>, responsible for providing administration functionality for
+        filesystems.
+      </li>
+    </ul>
 
 - name: 'Toolchain'
   api_primary: 'mcgrathr@google.com'
@@ -95,14 +403,80 @@
 - name: 'View System'
   api_primary: 'jaeheon@google.com'
   api_secondary: 'neelsa@google.com'
+  description: |
+    The set of APIs that need to reason about and interact with visual regions
+    ("views") and their lifecycle. They generally are not tied to a particular
+    graphical representation, but some have close ties to graphics APIs. HCI APIs
+    are built on top of the View System.
+  examples:
+    - fidl: 'fuchsia.ui.views'
+    - fidl: 'fuchsia.ui.focus'
+    - fidl: 'fuchsia.ui.app'
+      description: |
+        In particular
+        <a href="https://cs.opensource.google/search?q=%22protocol%20ViewProvider%22%20file:.*.fidl&amp;sq=&amp;ss=fuchsia%2Ffuchsia">
+          ViewProvider
+        </a>
+    - fidl: 'fuchsia.ui.policy'
+    - fidl: 'fuchsia.ui.annotation'
+    - description: 'View/scene connection signals in fuchsia.ui.gfx.Event'
 
 - name: 'Virtualization'
   api_primary: 'abdulla@google.com'
-  api_secondary: ''
+  api_secondary: 'tjdetwiler@google.com'
+  description: |
+    <p>Virtualization is the combination of:</p>
+    <ul>
+      <li>
+        The hypervisor, which is implemented by the Zircon kernel, and provides
+        the execution environment for a virtual machine. Specifically, it
+        provides address space isolation, trapping of access to memory or IO
+        port addresses, and management of virtual CPUs.
+      </li>
+      <li>
+        The virtual machine manager, which uses the hypervisor in order to
+        provide a complete virtual machine for an operating system to run
+        within. This includes the emulation of hardware, as well as the loading
+        and execution of the operating system itself. It provides a bridge
+        between the guest operating system running within the virtual machine,
+        and services within the host operating system, such as storage,
+        networking, and graphics.
+      </li>
+    </ul>
 
 - name: 'Web'
   api_primary: 'wez@google.com'
   api_secondary: 'ianloic@google.com'
+  description: |
+    <p>
+      Web encompasses APIs for working with standard web protocols (e.g. HTTP,
+      HTTP2), content types (e.g. HTML) and application run-time technologies
+      (e.g. JavaScript, WebAssembly). Functional interfaces (e.g.
+      <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.web/">
+        fuchsia.web
+      </a>,
+      <a href="https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.net.http/">
+        fuchsia.net.http
+      </a>) typically replace functionality that would otherwise need to be
+      bundled as a library into each individual client package.
+    </p>
+  examples:
+    - fidl: fuchsia.net.http
+      description: supports basic interactions (e.g. GET, PUT) with HTTP-based services.
+    - fidl: fuchsia.url
+      description: defines web-standard URL type, and limits.
+    - fidl: fuchsia.web
+      description: |
+        <p>
+          allows component instances to be created to host content created using
+          standard web technologies (HTML, JavaScript, etc). These are used in a
+          similar way to in-process web-rendering libraries, with the benefit of
+          stronger isolation from the calling application.
+        </p>
+        <p>
+          An implementation provided by the Chromium project is included in the
+          Fuchsia repository as a pre-built package.
+        </p>
 
 - name: 'WLAN'
   api_primary: 'silberst@google.com'

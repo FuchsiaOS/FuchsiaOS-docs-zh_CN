@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_interrupt_trigger
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Triggers a virtual interrupt object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_interrupt_trigger(zx_handle_t handle,
                                  zx_time_t timestamp);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_interrupt_trigger()` is used to trigger a virtual interrupt interrupt object,
 causing an interrupt message packet to arrive on the bound port, if it is bound
@@ -26,18 +33,16 @@ to a port, or [`zx_interrupt_wait()`] to return if it is waiting on this interru
 
 *options* must be zero.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_INTERRUPT** and have **ZX_RIGHT_SIGNAL**.
 
-## RETURN VALUE
+## Return value
 
 `zx_interrupt_trigger()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is an invalid handle.
 
@@ -51,7 +56,7 @@ of failure, a negative error value is returned.
 
 **ZX_ERR_INVALID_ARGS** *options* is non-zero.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_interrupt_ack()`]
@@ -60,8 +65,6 @@ of failure, a negative error value is returned.
  - [`zx_interrupt_destroy()`]
  - [`zx_interrupt_wait()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_interrupt_ack()`]: interrupt_ack.md

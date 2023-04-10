@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_channel_write
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write a message to a channel.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_channel_write(zx_handle_t handle,
                              uint32_t num_handles);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_channel_write()` attempts to write a message of *num_bytes*
 bytes and *num_handles* handles to the channel specified by
@@ -48,7 +55,7 @@ The maximum number of bytes that may be sent in a message is
 Messages are drained by [`zx_channel_read()`] or [`zx_channel_read_etc()`].
 Failure to drain the messages in a timely fashion can cause excessive kernel
 memory to be used, which might generate an exception. See
-[ipc limits](/concepts/kernel/ipc_limits.md) for details.
+[ipc limits](/docs/concepts/kernel/ipc_limits.md) for details.
 
 ### ZX_CHANNEL_WRITE_USE_IOVEC option
 
@@ -74,19 +81,17 @@ across all `zx_channel_iovec_t` not exceeding **ZX_CHANNEL_MAX_MSG_BYTES** or
 Either all `zx_channel_iovec_t` are copied and the message is sent, or none
 are copied and the message is not sent. Usage for sending handles is unchanged.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_WRITE**.
 
 Every entry of *handles* must have **ZX_RIGHT_TRANSFER**.
 
-## RETURN VALUE
+## Return value
 
 `zx_channel_write()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** `handle` is not a valid handle, any element in
 `handles` is not a valid handle, or there are repeated handles among the
@@ -102,7 +107,7 @@ invalid pointer or if the reserved field is non-zero.
 
 **ZX_ERR_NOT_SUPPORTED** `handle` was found in the `handles` array.
 A handle to the channel performing the write cannot be included in the
-`handles` array. In other words a channel handle cannot be written to its own channel. 
+`handles` array. In other words a channel handle cannot be written to its own channel.
 Fix the error by making sure that `handle` is not in the `handles` array.
 
 **ZX_ERR_ACCESS_DENIED** `handle` does not have **ZX_RIGHT_WRITE** or
@@ -121,14 +126,14 @@ If the **ZX_CHANNEL_WRITE_USE_IOVEC** option is specified,
 **ZX_CHANNEL_MAX_MSG_IOVEC** or the sum of the iovec capacities exceeds
 **ZX_CHANNEL_MAX_MSG_BYTES**.
 
-## NOTES
+## Notes
 
 *num_handles* is a count of the number of elements in the *handles*
 array, not its size in bytes.
 
 The byte size limitation on messages is not yet finalized.
 
-## SEE ALSO
+## See also
 
  - [`zx_channel_call()`]
  - [`zx_channel_create()`]
@@ -136,13 +141,10 @@ The byte size limitation on messages is not yet finalized.
  - [`zx_channel_read_etc()`]
  - [`zx_channel_write_etc()`]
  - [`zx_handle_close()`]
- - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_many()`]
  - [`zx_object_wait_one()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_call()`]: channel_call.md
 [`zx_channel_create()`]: channel_create.md
@@ -150,7 +152,6 @@ The byte size limitation on messages is not yet finalized.
 [`zx_channel_read_etc()`]: channel_read_etc.md
 [`zx_channel_write_etc()`]: channel_write_etc.md
 [`zx_handle_close()`]: handle_close.md
-[`zx_handle_duplicate()`]: handle_duplicate.md
 [`zx_handle_replace()`]: handle_replace.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_many()`]: object_wait_many.md

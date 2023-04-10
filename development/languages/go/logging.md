@@ -2,7 +2,7 @@
 
 Go programs on Fuchsia generally use the [syslog package] and its `syslog.Infof()` functions.
 
-See the [language agnostic logging docs](/concepts/components/diagnostics/logs/README.md) for more information
+See the [language agnostic logging docs](/docs/concepts/components/diagnostics/logs/README.md) for more information
 about recording and viewing logs.
 
 ## Requirements
@@ -25,27 +25,14 @@ See [Go: Overview][go-dev] for more information about building Go within Fuchsia
 Ensure that your component has the required capabilities to log by including the
 following in your component manifest:
 
-   * {.cmx}
-
-   ```json
-   {
-     "include": [
-       "syslog/client.shard.cmx"
-     ],
-     ...
-   }
-   ```
-
-   * {.cml}
-
-   ```json5
-   {
-     include: [
-       "syslog/client.shard.cml"
-     ],
-     ...
-   }
-   ```
+```json5
+{
+  include: [
+    "syslog/client.shard.cml"
+  ],
+  ...
+}
+```
 
 The syslog library will fallback to `stderr` if the `LogSink` connection fails.
 
@@ -102,5 +89,5 @@ See [`stdout` & `stderr`] in the language-agnostic logging docs for details on t
 streams in the system.
 
 [syslog package]: /src/lib/syslog/go
-[go-dev]: /development/languages/go/README.md
-[`stdout` & `stderr`]: /development/diagnostics/logs/recording.md#stdout-stderr
+[go-dev]: /docs/development/languages/go/README.md
+[`stdout` & `stderr`]: /docs/development/diagnostics/logs/recording.md#stdout-stderr

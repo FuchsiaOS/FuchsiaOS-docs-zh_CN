@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_socket_read
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Read data from a socket.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_socket_read(zx_handle_t handle,
                            size_t* actual);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_socket_read()` attempts to read *buffer_size* bytes into *buffer*. If
 successful, the number of bytes actually read are return via
@@ -41,18 +48,16 @@ To determine how many bytes are available to read, use the **rx_buf_available**
 field of the resulting `zx_info_socket_t`, which you can obtain using the
 **ZX_INFO_SOCKET** topic for [`zx_object_get_info()`].
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_SOCKET** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_socket_read()` returns **ZX_OK** on success, and writes into
 *actual* (if non-NULL) the exact number of bytes read.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -71,13 +76,11 @@ but invalid pointers, or if *buffer* is NULL, or if *options* is zero.
 **ZX_ERR_PEER_CLOSED**  The other side of the socket is closed and no data is
 readable.
 
-## SEE ALSO
+## See also
 
  - [`zx_socket_create()`]
  - [`zx_socket_set_disposition()`]
  - [`zx_socket_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_object_get_info()`]: object_get_info.md
 [`zx_socket_create()`]: socket_create.md

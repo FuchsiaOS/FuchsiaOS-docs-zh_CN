@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_thread_read_state
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Read one aspect of thread state.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_thread_read_state(zx_handle_t handle,
                                  size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_thread_read_state()` reads one aspect of state of the thread. The thread
 state may only be read when the thread is halted for an exception or the thread
@@ -55,18 +62,16 @@ fields will be ignored and overwritten with the actual values for the thread.
 The buffer must point to a `zx_thread_state_single_step_t` value, which
 may contain either 0 (normal running), or 1 (single stepping enabled).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_THREAD** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_thread_read_state()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -91,7 +96,6 @@ to an exception.
 This can happen, for example, when trying to read a register set that
 is not supported by the hardware the program is currently running on.
 
-## SEE ALSO
-
+## See also
 
 [thread_write_state](thread_write_state.md).

@@ -1,6 +1,6 @@
 # Zircon System Calls
 
-[Life of a Fuchsia syscall](/concepts/kernel/life_of_a_syscall.md)
+[Life of a Fuchsia syscall](/docs/concepts/kernel/life_of_a_syscall.md)
 
 ## Handles
 + [handle_close](handle_close.md) - close a handle
@@ -29,6 +29,7 @@
 
 ## Processes
 + [process_create](process_create.md) - create a new process within a job
++ [process_create_shared](process_create_shared.md) - create a new shared process within a job
 + [process_read_memory](process_read_memory.md) - read from a process's address space
 + [process_start](process_start.md) - cause a new process to start executing
 + [process_write_memory](process_write_memory.md) - write to a process's address space
@@ -152,7 +153,6 @@
 + [vcpu_interrupt](vcpu_interrupt.md) - raise an interrupt on a VCPU
 + [vcpu_read_state](vcpu_read_state.md) - read state from a VCPU
 + [vcpu_write_state](vcpu_write_state.md) - write state to a VCPU
-+ [interrupt_bind_vcpu](interrupt_bind_vcpu.md) - bind an interrupt object to a VCPU
 
 ## Global system information
 + [system_get_dcache_line_size](system_get_dcache_line_size.md)
@@ -207,6 +207,11 @@
 + [ktrace_write](ktrace_write.md)
 + [mtrace_control](mtrace_control.md)
 
+## Restricted Mode (Work in progress)
++ [restricted_bind_state](restricted_bind_state.md)
++ [restricted_unbind_state](restricted_unbind_state.md)
++ [restricted_enter](restricted_enter.md)
+
 ## Others/Work in progress
 + [ioports_release](ioports_release.md)
 + [pc_firmware_tables](pc_firmware_tables.md)
@@ -223,27 +228,9 @@
 + [pci_reset_device](pci_reset_device.md)
 + [pci_set_irq_mode](pci_set_irq_mode.md)
 
+## Documentation generation
 
-+ [syscall_test_0](syscall_test_0.md)
-+ [syscall_test_1](syscall_test_1.md)
-+ [syscall_test_2](syscall_test_2.md)
-+ [syscall_test_3](syscall_test_3.md)
-+ [syscall_test_4](syscall_test_4.md)
-+ [syscall_test_5](syscall_test_5.md)
-+ [syscall_test_6](syscall_test_6.md)
-+ [syscall_test_7](syscall_test_7.md)
-+ [syscall_test_8](syscall_test_8.md)
-+ [syscall_test_wrapper](syscall_test_wrapper.md)
-+ [syscall_test_handle_create](syscall_test_handle_create.md)
-
-## Syscall generation
-
-Syscall support is generated from `//zircon/vdso`. The FIDL files in that
-directory are first run through `fidlc`, which produces an intermediate format.
-That intermediate format is consumed by [kazoo](/zircon/tools/kazoo), which
-produces output for both the kernel and userspace in a variety of languages.
-This output includes C or C++ headers for both the kernel and userspace, syscall
-entry points, other language bindings, and so on.
-
-This tool is invoked as a part of the build, rather than checking in its output.
-
+The system call markdown documentation is generated from the syscall definitions
+in `//zircon/vdso` by the `zither` FIDL backend. Regeneration will occur
+automatically during a build, but may be done directly with
+`fx check-goldens --all docs`.

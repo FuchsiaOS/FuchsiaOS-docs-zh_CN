@@ -25,7 +25,7 @@ Generally, adding or updating an external crate involves the following:
    Gerrit that adds an external crate. Do not request a code review for adding an
    external crate until you have approval from the OSRB.
 
--  Uploading the change for code review.
+-  Uploading the change for [code review](external_crates/review.md).
 
 ## Adding an external crate
 
@@ -68,6 +68,11 @@ To add an external crate, do the following:
       `cargo-gnaw`, which generates the GN rules from the Cargo.toml file.
       See [cargo-gnaw's README][cargo-gnaw-readme]
       for more details.
+
+      <!-- TODO(https://fxbug.dev/59592) remove this step -->
+      After committing your change locally, run `fx update-rustc-third-party`
+      a second time and ensure it completes successfully without producing any
+      changes. You can run `git status` to be certain.
 
    1. Run the following command to perform a build test:
 
@@ -116,19 +121,19 @@ To add an external crate, do the following:
       change.
 
       For more information about the associated actions for each contributor
-      role, see [Role matrix](/contribute/community/contributor-roles.md).
+      role, see [Role matrix](/docs/contribute/community/contributor-roles.md).
 
 ## Updating an external crate
 
-Warning: You must receive approval from the OSRB _before_ pushing a commit to
-Gerrit if updating an external crate changes the license or pulls in a new crate
-as a dependency. Do not request a code review until you have approval from the
-OSRB in these circumstances.
+Warning: If updating an external crate changes the license or pulls in a new crate as a dependency,
+you must receive approval from the OSRB _before_ uploading a CL (e.g. work in progress) to Gerrit.
+Do not request a code review until you have approval from the OSRB in these circumstances.
 
 To update an external crate, do the following:
 
    1. Increase the patch number of the crate in
-      [`third_party/rust_crates/Cargo.toml`][external-cargo-toml].
+      [`third_party/rust_crates/Cargo.toml`][external-cargo-toml]
+      1. For transitive deps (which don't appear in the root `Cargo.toml`), you can use a command like `cargo +fuchsia update --manifest-path third_party/rust_crates/Cargo.toml --package $crate_name`, instead.
 
    1. Run the following command:
 
@@ -144,13 +149,20 @@ To update an external crate, do the following:
       the `Cargo.toml` file.
       See [cargo-gnaw's README][cargo-gnaw-readme] for more details.
 
+      <!-- TODO(https://fxbug.dev/59592) remove this step -->
+      After committing your change locally, run `fx update-rustc-third-party`
+      a second time and ensure it completes successfully without producing any
+      changes. You can run `git status` to be certain.
+
    1. Run the following command to perform a build test:
 
       ```posix-terminal
       fx set core.x64 && fx build
       ```
 
-   1. Request OSRB approval by doing the following:
+   1. Examine the changes for any changes in license or dependencies. If there
+      are these types of changes, you must go through the OSRB approval process.
+      Request OSRB approval by doing the following:
       - Create an issue with the
       [Open Source Review Board (OSRB) template](https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Open+Source+Review+Board+).
       - In the issue, do the following:
@@ -170,23 +182,15 @@ To update an external crate, do the following:
       [Importing a subset of files in a crate](#importing_a_subset_of_files_in_a_crate)
       for more information.
 
-   1. If you receive OSRB approval, upload the change for review to
+   1. Update OWNERS files for modified crates. See the
+      [OWNERS files](#owners_files) section for more information on updating
+      OWNERS files.
+
+   1. If/when you receive OSRB approval, upload the change for review to
       Gerrit. Include the OSRB Issue ID number in the change.
 
-   1. Add an [OWNER][owners-file]
-   of the external rust crate repository as a code reviewer. You must get a
-   `Code Review Label +2` from one of the repository's owners.
-
-   1. If you have the ability to submit an approved change to the
-      Commit Queue (CQ), [submit your change](https://gerrit-review.googlesource.com/Documentation/intro-user.html#submit)
-      to merge that change into [third_party/rust_crates][external-crates].
-
-      If you don't have the ability to submit an approved change, reply to your
-      Gerrit change and request that one of the repository owners submit your
-      change.
-
-      For more information about the associated actions for each contributor
-      role, see [Role matrix](/contribute/community/contributor-roles.md).
+   1. If there are no license or dependency changes, you may upload the change
+      for review without going through the OSRB approval process.
 
 ## Adding a new mirror
 
@@ -281,17 +285,44 @@ indicate who is responsible for their reviews and updates. These files are
 generated from a combination of build graph metadata and an explicit
 override file.
 
+The `update-rustc-third-party` tool makes a best effort to update these files
+with the limited data it has, but it can make mistakes. The `update-3p-owners`
+tool can do better by regenerating the OWNERS files directly from our build
+graph, but it tends to be very slow and still has a few issues.
+
 ### Running the tool
 
 The tool discovers which build targets depend on a given crate, which means it
 needs the metadata from the completion of a maximal "kitchen sink" build:
 
-1. Include `//bundles/buildbot:core` and `//bundles:kitchen_sink` in your build
+1. Run `fx set core.x64 --with //bundles/buildbot/core --with //bundles/kitchen_sink`
 2. Run `fx build`
-3. Run `fx update-rust-3p-owners --num-threads <NUM_THREADS>`. It's usually a good idea to limit
-   the number of threads to 50% of available CPUs (see [#75382] for details).
+3. Run `fx update-3p-owners --rust-metadata
+   <FUCHSIA_BUILD_DIR>/rustlang/3p-crates-metadata.json --num-threads
+   <NUM_THREADS>`. It's usually a good idea to limit the number of threads to
+   50% of available CPUs (see [#75382] for details).
+
+This tool can take a significant amount of time to run - upwards of 45 minutes
+in some cases.
 
 [#75382]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=75382
+
+### Manually updating OWNERS
+
+The OWNERS files for vendored third-party crates are built from two main
+sources:
+
+1. Targets that depend on third-party Rust crates have their OWNERS files
+   imported into the OWNERS for the crates they depend on. For example, if a
+   target like `src/lib/foo` depended on the `bar` crate, then the OWNERS file
+   for the `bar` crate would include `src/lib/foo/OWNERS`.
+2. Third-party Rust crates that depend on another third-party Rust crate import
+   their dependency's OWNERS file into their own. For example, if the `bar`
+   crate depended on the `baz` crate, then the OWNERS file for the `bar` crate
+   would include `third_party/rust_crates/vendor/bar-1.0.0/OWNERS`.
+
+For version bumps of existing crates, it's usually sufficient to update the
+include statements to the latest version of the updated crate.
 
 ### Adding overrides
 
@@ -300,7 +331,7 @@ Some crates have more users than can be relied upon to maintain
 domain like security and we would prefer for a specific team to be responsible
 for reviews of the code.
 
-In these cases, add an entry to `//third_party/rust_crates/owners.toml` with
+In these cases, add an entry to `//third_party/owners.toml` with
 the path(s) to other `OWNERS` files to reference, then re-run the tool.
 This replaces the reverse-dependency metadata ownership with the overridden
 paths.
@@ -371,6 +402,6 @@ This issue is being tracked [upstream](https://github.com/rust-lang/cargo/issues
 [external-cargo-toml]: /third_party/rust_crates/Cargo.toml
 [external-vendor]: /third_party/rust_crates/vendor
 [cargo-gnaw-readme]: /tools/cargo-gnaw/README.md
-[osrb-process]: /contribute/governance/policy/osrb-process.md#process_for_adding_external_code_to_new_repositories
+[osrb-process]: /docs/contribute/governance/policy/osrb-process.md#process_for_adding_external_code_to_new_repositories
 [jiri-manifest]: https://fuchsia.googlesource.com/manifest/+/main/runtimes/rust "Jiri manifest"
 [owners-file]: /third_party/rust_crates/OWNERS

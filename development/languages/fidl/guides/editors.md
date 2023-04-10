@@ -2,21 +2,10 @@
 
 Several editors have support for FIDL:
 
-* [Atom](#atom)
 * [IntelliJ/Android Studio](#intellij)
 * [Sublime Text](#sublime)
 * [Vim](#vim)
 * [Visual Studio Code](#visual-studio-code)
-
-## Atom {#atom}
-
-To install:
-
-```
-pushd ~/.atom/packages
-git clone https://fuchsia.googlesource.com/atom-language-fidl
-popd
-```
 
 ## IntelliJ / Android Studio {#intellij}
 
@@ -45,7 +34,6 @@ There is a an extension,
 
 Contributions to the various plugins are welcome. Their respective code is in:
 
-* [Atom](https://fuchsia.googlesource.com/atom-language-fidl/)
 * [IntelliJ](https://fuchsia.googlesource.com/intellij-language-fidl/)
 * [Sublime](/tools/fidl/editors/sublime)
 * [vim](/tools/fidl/editors/vim/)

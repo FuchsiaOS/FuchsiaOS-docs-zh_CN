@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_timer_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a timer.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_timer_create(uint32_t options,
                             zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_timer_create()` creates a timer, an object that can signal
 when a specified point in time has been reached. The only valid
@@ -36,24 +43,22 @@ The possible values are:
 
 Passing 0 in options is equivalent to **ZX_TIMER_SLACK_CENTER**.
 
-See [timer slack](/concepts/kernel/timer_slack.md) for more information.
+See [timer slack](/docs/concepts/kernel/timer_slack.md) for more information.
 
 The returned handle has the **ZX_RIGHT_DUPLICATE**, **ZX_RIGHT_TRANSFER**,
 **ZX_RIGHT_WRITE**, **ZX_RIGHT_SIGNAL**, **ZX_RIGHT_WAIT**, and
 **ZX_RIGHT_INSPECT** rights.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 Caller job policy must allow **ZX_POL_NEW_TIMER**.
 
-## RETURN VALUE
+## Return value
 
 `zx_timer_create()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *out* is an invalid pointer or NULL or
 *options* is not one of the **ZX_TIMER_SLACK** values or *clock_id* is
@@ -63,14 +68,12 @@ any value other than **ZX_CLOCK_MONOTONIC**.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_deadline_after()`]
  - [`zx_handle_close()`]
  - [`zx_timer_cancel()`]
  - [`zx_timer_set()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_deadline_after()`]: deadline_after.md
 [`zx_handle_close()`]: handle_close.md

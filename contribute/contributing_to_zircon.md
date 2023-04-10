@@ -36,15 +36,15 @@ Writing documentation is a great idea and is encouraged:
 
 *   Documentation should be in Markdown files.
 *   Zircon documentation is located in
-    [`/concepts/kernel`][googlesource-docs].
+    [`/docs/concepts/kernel`][googlesource-docs].
 *   Before submitting documentation, make sure that the Markdown renders
     correctly.
 
 When editing or adding `syscalls` or `cmdlines`, update the following:
 
-*   A list of `syscalls` in [`/reference/syscalls/README.md`][syscall-doc]
+*   A list of `syscalls` in [`/docs/reference/syscalls/README.md`][syscall-doc]
 *   A list of kernel `cmdline` options in
-    [`/reference/kernel/kernel_cmdline.md`][cmdline-doc].
+    [`/docs/reference/kernel/kernel_cmdline.md`][cmdline-doc].
 
 ## Notes
 
@@ -61,10 +61,10 @@ typedef int ZX_RESUME_NOT_HANDLED_DEPRECATION __attribute__((deprecated));
 
 <!-- Reference links -->
 
-[contribute-changes]: /development/source_code/contribute_changes.md
+[contribute-changes]: /docs/development/source_code/contribute_changes.md
 [gerrir-code-review]: https://fuchsia-review.googlesource.com/#/q/project:zircon
-[build-zircon-for-all]: /development/kernel/getting_started.md#building_zircon_for_all_targets
-[run-the-tests]: /development/testing/testing.md
-[googlesource-docs]: /concepts/kernel
-[syscall-doc]: /reference/syscalls/README.md
-[cmdline-doc]: /reference/kernel/kernel_cmdline.md
+[build-zircon-for-all]: /docs/development/kernel/getting_started.md#building_zircon_for_all_targets
+[run-the-tests]: /docs/development/testing/testing.md
+[googlesource-docs]: /docs/concepts/kernel
+[syscall-doc]: /docs/reference/syscalls/README.md
+[cmdline-doc]: /docs/reference/kernel/kernel_cmdline.md

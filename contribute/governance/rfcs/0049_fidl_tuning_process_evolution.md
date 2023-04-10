@@ -16,7 +16,7 @@ We propose various evolutions of the FTP Process:
 
 ## Motivation {#motivation}
 
-The FIDL Tuning Process was [introduced](/contribute/governance/rfcs/0018_ftp_process.md)
+The FIDL Tuning Process was [introduced](/docs/contribute/governance/rfcs/0018_ftp_process.md)
 over a year ago. By all accounts, this process has successfully improved on
 the three motivations and goals that drove its creation: carefully considering
 design constraints; the thinking behind each decision is transparent, recorded,
@@ -183,31 +183,31 @@ For instance, changes to the following areas will likely require an FTP:
 
 Here are some example FTPs, and the areas they changed:
 
-* [RFC-0047: Tables](/contribute/governance/rfcs/0047_tables.md):<br />
+* [RFC-0047: Tables](/docs/contribute/governance/rfcs/0047_tables.md):<br />
   Type system) Introduced a new way to represent record-like data, first use
   of envelopes.<br />
   Wire format) New wire format for tables, and envelopes.<br />
   Bindings specification) Some API recommendation for bindings to follow.
 
-* [RFC-0023: Compositional Model for Protocols](/contribute/governance/rfcs/0023_compositional_model_protocols.md):<br />
+* [RFC-0023: Compositional Model for Protocols](/docs/contribute/governance/rfcs/0023_compositional_model_protocols.md):<br />
   Language grammar) Replaced interface syntax, with protocol syntax.<br />
   Protocol semantics) Made explicit the semantics of protocol composition,
   including absence of an "is-a" relationship is supported.<br />
   Bindings specification) Forbid bindings to leverage polymorphism to<br />
   model composition.
 
-* [RFC-0027: You only pay for what you use](/contribute/governance/rfcs/0027_you_only_pay_what_you_use.md):<br />
+* [RFC-0027: You only pay for what you use](/docs/contribute/governance/rfcs/0027_you_only_pay_what_you_use.md):<br />
   Design principles) Introduced a new design principle.<br />
   FIDL Governance) Explicitly called for the newly introduced design<br />
   principle to be considered as part of the FTP process.
 
-* [RFC-0024: Mandatory Source Compatibility](/contribute/governance/rfcs/0024_mandatory_source_compatibility.md):<br />
+* [RFC-0024: Mandatory Source Compatibility](/docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md):<br />
   FIDL governance) Modified the FTP template to add callout for source<br />
   compatibility.
   Bindings specification) Bootstrapped source compatibility requirements on<br />
   bindings.
 
-* [RFC-0049: FIDL Tuning Process Evolution, i.e. this change](/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md):<br />
+* [RFC-0049: FIDL Tuning Process Evolution, i.e. this change](/docs/contribute/governance/rfcs/0049_fidl_tuning_process_evolution.md):<br />
   FIDL governance) Aims to provide additional guidance to the FTP process,<br />
   and recognize alternate ways to contribute to FIDL.
 
@@ -246,7 +246,7 @@ they can be heard about rough edges, and contributions by non-FIDL team members
 are appropriately guided and supported to land, or rejected early with a
 rationale."
 
-Authoring an RFC [typically](/contribute/governance/rfcs/0030_fidl_is_little_endian.md)
+Authoring an RFC [typically](/docs/contribute/governance/rfcs/0030_fidl_is_little_endian.md)
 requires quite a bit of work, and a
 knowledge of the solution space to properly justify the specific design choice
 made relative to alternatives. The FTP process is also quite heavy, and can be
@@ -261,7 +261,7 @@ Other ways to contribute are:
   shift.
 
 * Participate in [Fuchsia API
-  review](/contribute/governance/api_council.md). This venue is key in
+  review](/docs/contribute/governance/api_council.md). This venue is key in
   seeing concrete use cases and measuring how well various FIDL features combine
   to support them. Multiple evolution have been driven by recognizing a pattern
   of API design that could be bolstered by tweaks to features, or new features
@@ -285,7 +285,7 @@ change to FIDL, or turn into an FTP.
 
 ## Implementation strategy
 
-Update the [FIDL Tuning Proposals page](/contribute/governance/deprecated-ftp-process.md). Communicate this change
+Update the [FIDL Tuning Proposals page](/docs/contribute/governance/deprecated-ftp-process.md). Communicate this change
 broadly. Follow through on the changes when conducting reviews.
 
 ## Ergonomics

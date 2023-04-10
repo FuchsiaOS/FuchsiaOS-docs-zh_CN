@@ -74,18 +74,18 @@ base core manifest, the following shard would be added in a separate file:
             to: [ "#temperature-logger" ],
         },
         {
-            directory: "dev",
-            from: "parent",
+            directory: "dev-class",
             as: "dev-temperature",
+            from: "parent",
             to: [ "#temperature-logger" ],
-            subdir: "class/temperature",
+            subdir: "temperature",
         },
         {
-            directory: "dev",
-            from: "parent",
+            directory: "dev-class",
             as: "dev-thermal",
+            from: "parent",
             to: [ "#temperature-logger" ],
-            subdir: "class/thermal",
+            subdir: "thermal",
         },
         {
             directory: "config-data",
@@ -231,7 +231,7 @@ the place they are defined in GN. Additionally, markdown documentation will be
 maintained describing each manifest shard and the impact it will have on the
 product's core realm.
 
-[build-policy]: /development/build/build_system/policies.md
+[build-policy]: /docs/development/build/build_system/policies.md
 [wip-cl]: https://fuchsia-review.googlesource.com/c/fuchsia/+/486644
 [generated-file]: https://gn.googlesource.com/gn/+/master/docs/reference.md#func_generated_file
 [cmc-merge]: /tools/cmc/build/cmc.gni

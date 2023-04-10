@@ -47,21 +47,21 @@ link requests:
     <fuchsia.dev/go/get-started> is probably redundant.
 
 * Is the link name meaningful, and does it comply with the
-  [Respectful Code policy](/contribute/respectful_code.md)?
+  [Respectful Code policy](/docs/contribute/respectful_code.md)?
   Short links should be, of course, short, but not at the expense of being
   understood.
 
   * <span class="compare-better">Positive example</span>:
     Both of these examples are short and descriptive:
 
-      * `/go/faq` (renders as fuchsia.dev/go/faq).
-      * `/go/hardware-specs` (renders as fuchsia.dev/go/hardware-specs).
+      * `/docs/go/faq` (renders as fuchsia.dev/go/faq).
+      * `/docs/go/hardware-specs` (renders as fuchsia.dev/go/hardware-specs).
 
 * Does the `to` link point to a document inside of the `/docs/` directory?
 
   * <span class="compare-better">Positive example</span>:
 
-      * `to: /concepts/software_model.md`.
+      * `to: /docs/concepts/software_model.md`.
 
   * <span class="compare-worse">Negative example</span>:
 

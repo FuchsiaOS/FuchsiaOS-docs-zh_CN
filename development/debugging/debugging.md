@@ -4,70 +4,61 @@
 
 Fuchsia has a debugger for native code (C++ and Rust) called zxdb.
 
-Please see the [zxdb documentation](/development/debugger/README.md) for
+Please see the [zxdb documentation](/docs/development/debugger/README.md) for
 more details.
 
 ## Backtraces
 
 ### Automagic backtraces
 
-Fuchsia starts a program at boot called "crashanalyzer" that reports program
+Fuchsia starts a program at boot called "crashsvc" that reports program
 crashes and prints a backtrace of the crashing thread.
 
 Example:
 
 ```
-$ crasher
-[11156.652165][1048][1187][klog] INFO: devmgr: crash_analyzer_listener: analyzing exception type 0x108
-[11156.652215][1107][1121][klog] INFO: <== fatal exception: process crasher[42410] thread initial-thread[42424]
-[11156.652218][1107][1121][klog] INFO: <== fatal page fault, PC at 0x1e1888dbbbd7
-[11156.652223][1107][1121][klog] INFO:  CS:                   0 RIP:     0x1e1888dbbbd7 EFL:            0x10246 CR2:                  0
-[11156.652226][1107][1121][klog] INFO:  RAX:                  0 RBX:                0x1 RCX:     0x721ad98697c6 RDX:     0x77accb36f264
-[11156.652229][1107][1121][klog] INFO:  RSI:                  0 RDI:                  0 RBP:     0x2781c4816f90 RSP:     0x2781c4816f80
-[11156.652232][1107][1121][klog] INFO:   R8:                  0  R9:                  0 R10:                  0 R11:              0x246
-[11156.652235][1107][1121][klog] INFO:  R12:     0x773bf11dcda0 R13:     0x773bf11dcdd0 R14:               0x16 R15:         0x78050d69
-[11156.652236][1107][1121][klog] INFO:  errc:               0x6
-[11156.652237][1107][1121][klog] INFO: bottom of user stack:
-[11156.652244][1107][1121][klog] INFO: 0x00002781c4816f80: f11dcda0 0000773b 9ccd2b38 000039b2 |....;w..8+...9..|
-[11156.652248][1107][1121][klog] INFO: 0x00002781c4816f90: c4816fd0 00002781 88dbbba7 00001e18 |.o...'..........|
-[11156.652252][1107][1121][klog] INFO: 0x00002781c4816fa0: 00000008 00000000 9ccd2b38 000039b2 |........8+...9..|
-[11156.652255][1107][1121][klog] INFO: 0x00002781c4816fb0: f11dcf70 0000773b f11dcf70 0000773b |p...;w..p...;w..|
-[11156.652260][1107][1121][klog] INFO: 0x00002781c4816fc0: cb36f570 000077ac f11dcdd0 0000773b |p.6..w......;w..|
-[11156.652270][1107][1121][klog] INFO: 0x00002781c4816fd0: c4816ff0 00002781 cb2b0d0f 000077ac |.o...'....+..w..|
-[11156.652277][1107][1121][klog] INFO: 0x00002781c4816fe0: 00000054 00000000 f11dcf70 0000773b |T.......p...;w..|
-[11156.652281][1107][1121][klog] INFO: 0x00002781c4816ff0: f11dcfe0 0000773b 00000000 00000000 |....;w..........|
-[11156.652282][1107][1121][klog] INFO: arch: x86_64
-[11156.652550][1107][1121][klog] INFO: dso: id=a94c78564173530d51670b6586b1aa471e004f06 base=0x7d3506a49000 name=libfdio.so
-[11156.652553][1107][1121][klog] INFO: dso: id=a61961ba9776a67a00fb322af9ebbdcfd1ce3f62 base=0x77accb297000 name=libc.so
-[11156.652554][1107][1121][klog] INFO: dso: id=760f1e6e47d3dd8b6a19150aa47241279ec75a9c base=0x721ad9863000 name=<vDSO>
-[11156.652558][1107][1121][klog] INFO: dso: id=b18462140c6784a53736105bbf3021852eeda68c base=0x1e1888dbb000 name=app:crasher
-[11156.652637][1107][1121][klog] INFO: bt#01: pc 0x1e1888dbbbd7 sp 0x2781c4816f80 (app:crasher,0xbd7)
-[11156.652750][1107][1121][klog] INFO: bt#02: pc 0x1e1888dbbba7 sp 0x2781c4816fa0 (app:crasher,0xba7)
-[11156.652847][1107][1121][klog] INFO: bt#03: pc 0x77accb2b0d0f sp 0x2781c4816fe0 (libc.so,0x19d0f)
-[11156.652978][1107][1121][klog] INFO: bt#04: pc 0 sp 0x2781c4817000
-[11156.653027][1107][1121][klog] INFO: bt#05: end
-```
-
-Since debug information is currently not available on the target, a program
-(`symbolizer`) must be run on the development host to translate the raw addresses
-in the backtrace to symbolic form. Any easy way to capture this output from the
-target is by running the `loglistener` program on your development host.
-
-```
-$ fx syslog | fx symbolize
-[11156.652165][1048][1187][klog] INFO: devmgr: crash_analyzer_listener: analyzing exception type 0x108
-... same output as "raw" backtrace ...
-start of symbolized stack:
-#01: blind_write at ../../src/developer/forensics/crasher/cpp/crasher.c:21
-#02: main at ../../src/developer/forensics/crasher/cpp/crasher.c:137
-#03: start_main at ../../zircon/third_party/ulib/musl/src/env/__libc_start_main.c:49
-#04: unknown, can't find pc, sp or app/library in line
-end of symbolized stack
+$ ffx log
+...
+[10023.913][klog][klog][I] crashsvc: exception received, processing
+[10023.913][klog][klog][I] <== CRASH: process crasher[1007318] thread initial-thread[1007320]
+[10023.913][klog][klog][I] <== write not-present page fault (error ZX_ERR_NOT_FOUND) at 0, PC at 0x2f3734f90fc
+[10023.913][klog][klog][I]  CS:                   0 RIP:      0x2f3734f90fc EFL:            0x10246 CR2:                  0
+[10023.913][klog][klog][I]  RAX:                  0 RBX:     0x43cf4e707f58 RCX:                  0 RDX:                  0
+[10023.913][klog][klog][I]  RSI:      0x2f3734de1f1 RDI:                  0 RBP:      0x1d7cee8df60 RSP:      0x1d7cee8df60
+[10023.913][klog][klog][I]   R8: 0xdc1287fe16b1b597  R9:                  0 R10: 0xdc1287fe16b1b597 R11:       0xc87a4939e8
+[10023.913][klog][klog][I]  R12:       0xc87a495fb0 R13:       0xc87a495fa0 R14:     0x4066b869c998 R15:       0xc87a495fc0
+[10023.913][klog][klog][I]  fs.base:      0x3bc9af38b18 gs.base:                  0
+[10023.913][klog][klog][I]  errc:               0x6
+[10023.913][klog][klog][I] bottom of user stack:
+[10023.913][klog][klog][I] 0x000001d7cee8df60: cee8df90 000001d7 734fa0ca 000002f3 |..........Os....|
+[10023.913][klog][klog][I] 0x000001d7cee8df70: 7353f000 000002f3 734dc1b1 000002f3 |..Ss......Ms....|
+[10023.913][klog][klog][I] 0x000001d7cee8df80: 7a495fb0 000000c8 00000001 00000000 |._Iz............|
+[10023.913][klog][klog][I] 0x000001d7cee8df90: cee8dfe0 000001d7 b82036f1 00004066 |.........6 .f@..|
+[10023.913][klog][klog][I] 0x000001d7cee8dfa0: 00000000 00000000 00000001 00000000 |................|
+[10023.913][klog][klog][I] 0x000001d7cee8dfb0: 00000001 00000000 4e707fd0 000043cf |..........pN.C..|
+[10023.913][klog][klog][I] 0x000001d7cee8dfc0: 0000000b 00000000 4e707f30 000043cf |........0.pN.C..|
+[10023.913][klog][klog][I] 0x000001d7cee8dfd0: 4e707e90 000043cf 4e707ec0 000043cf |.~pN.C...~pN.C..|
+[10023.913][klog][klog][I] 0x000001d7cee8dfe0: cee8dff0 000001d7 b820393b 00004066 |........;9 .f@..|
+[10023.913][klog][klog][I] 0x000001d7cee8dff0: 00000000 00000000 735146f1 000002f3 |.........FQs....|
+[10023.913][klog][klog][I] memory dump near pc:
+[10023.913][klog][klog][I] 0x000002f3734f90cc: cc cc cc cc 55 48 89 e5 48 83 ec 10 48 89 7d f8 |....UH..H...H.}.
+[10023.913][klog][klog][I] 0x000002f3734f90dc: 48 8b 7d f8 e8 9b 41 04 00 48 83 c4 10 5d c3 cc |H.}...A..H...]..
+[10023.913][klog][klog][I] 0x000002f3734f90ec: cc cc cc cc 55 48 89 e5 48 89 7d f8 48 8b 45 f8 |....UH..H.}.H.E.
+[10023.913][klog][klog][I] 0x000002f3734f90fc: c7 00 ea 1d ad 0b 31 c0 5d c3 cc cc cc cc cc cc |......1.].......
+[10023.913][klog][klog][I] arch: x86_64
+[10023.917][klog][klog][I] [[[ELF module #0x0 "<VMO#1007304=/boot/bin/crasher>" BuildID=d2974008fa020a45 0x2f3734d9000]]]
+[10023.918][klog][klog][I] [[[ELF module #0x1 "libc.so" BuildID=bda30eefb7cce4af 0x4066b819b000]]]
+[10023.918][klog][klog][I]    #0    0x000002f3734f90fc in blind_write(volatile unsigned int*) ../../src/developer/forensics/crasher/cpp/crasher.c:25 <<VMO#1007304=/boot/bin/crasher>>+0x200fc sp 0x1d7cee8df60
+[10023.918][klog][klog][I]    #1    0x000002f3734fa0ca in main(int, char**) ../../src/developer/forensics/crasher/cpp/crasher.c:352 <<VMO#1007304=/boot/bin/crasher>>+0x210ca sp 0x1d7cee8df70
+[10023.918][klog][klog][I]    #2    0x00004066b82036f1 in start_main(const start_params*) ../../zircon/third_party/ulib/musl/src/env/__libc_start_main.c:161 <libc.so>+0x686f1 sp 0x1d7cee8dfa0
+[10023.918][klog][klog][I]    #3    0x00004066b820393b in __libc_start_main(zx_handle_t, int (*)(int, char**, char**)) ../../zircon/third_party/ulib/musl/src/env/__libc_start_main.c:238 <libc.so>+0x6893b sp 0x1d7cee8dff0
+[10023.918][klog][klog][I]    #4    0x000002f3735146f1 in _start(zx_handle_t) ../../zircon/system/ulib/c/Scrt1.cc:7 <<VMO#1007304=/boot/bin/crasher>>+0x3b6f1 sp 0x43cf4e707fe0
+[10023.918][klog][klog][I]    #5    0x0000000000000000 is not covered by any module sp 0x43cf4e707ff0
 ```
 
 ### Manually requesting backtraces
 
-Akin to printf debugging, one can request crashlogger print a backtrace at a
+Akin to printf debugging, one can request crashsvc to print a backtrace at a
 particular point in your code.
 
 Include this header from zircon's backtrace-request library, which you must
@@ -91,4 +82,4 @@ void my_function() {
 
 Fuchsia has a tool for viewing FIDL messages as they are sent and received. See
 details at
-[the doc page for fidl inspection](/development/monitoring/fidlcat/README.md).
+[the doc page for fidl inspection](/docs/development/monitoring/fidlcat/README.md).

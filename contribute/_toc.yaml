@@ -6,38 +6,44 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- include: /contribute/community/_toc.yaml
+- include: /docs/contribute/community/_toc.yaml
 - heading: Before you contribute
 - title: "Code of conduct"
   path: /CODE_OF_CONDUCT.md
 - title: "Respectful code"
-  path: /contribute/respectful_code.md
+  path: /docs/contribute/respectful_code.md
 - title: "Contributing to Fuchsia"
   path: /CONTRIBUTING.md
 - title: "Commit message style guide"
-  path: /contribute/commit-message-style-guide.md
+  path: /docs/contribute/commit-message-style-guide.md
 - title: "Platform evolution"
   section:
-  - include: /contribute/updatability/_toc.yaml
+  - include: /docs/contribute/updatability/_toc.yaml
+- title: "Contributing to the SDK"
+  section:
+  - include: /docs/contribute/sdk/_toc.yaml
 - title: "Contributing to Zircon"
-  path: /contribute/contributing_to_zircon.md
+  path: /docs/contribute/contributing_to_zircon.md
+- title: "Contributing to the Component Framework"
+  section:
+  - include: /docs/contribute/contributing-to-cf/_toc.yaml
 - title: "Contributing to FIDL"
   section:
-  - include: /contribute/contributing-to-fidl/_toc.yaml
+  - include: /docs/contribute/contributing-to-fidl/_toc.yaml
 - title: "Contributing to Netstack"
   section:
-  - include: /contribute/contributing-to-netstack/_toc.yaml
+  - include: /docs/contribute/contributing-to-netstack/_toc.yaml
 - title: "Contributing to documentation"
   section:
-  - include: /contribute/docs/_toc.yaml
+  - include: /docs/contribute/docs/_toc.yaml
 - heading: Platform testing
-- include: /contribute/testing/_toc.yaml
+- include: /docs/contribute/testing/_toc.yaml
 - heading: Start contributing
 - title: "Open projects"
   section:
-  - include: /contribute/open_projects/_toc.yaml
+  - include: /docs/contribute/open_projects/_toc.yaml
 - heading: Issues
 - title: "Report an issue"
-  path: /contribute/report-issue.md
+  path: /docs/contribute/report-issue.md
 - title: "Report a security issue"
-  path: /contribute/report-security-issue.md
+  path: /docs/contribute/report-security-issue.md

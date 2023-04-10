@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_job_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a new job.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,9 +25,9 @@ zx_status_t zx_job_create(zx_handle_t parent_job,
                           zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
-`zx_job_create()` creates a new child [job object](/reference/kernel_objects/job.md) given a
+`zx_job_create()` creates a new child [job object](/docs/reference/kernel_objects/job.md) given a
 parent job.
 
 Upon success a handle for the new job is returned.
@@ -32,19 +39,17 @@ a process under such a job.)
 
 Job handles may be waited on (TODO(cpu): expand this)
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *parent_job* must be of type **ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_MANAGE_JOB**.
 
-## RETURN VALUE
+## Return value
 
 `zx_job_create()` returns **ZX_OK** and a handle to the new job
 (via *out*) on success.  In the event of failure, a negative error value
 is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *parent_job* is not a valid handle.
 
@@ -63,13 +68,11 @@ In a future build this error will no longer occur.
 
 **ZX_ERR_BAD_STATE**  The parent job object is in the dead state.
 
-## SEE ALSO
+## See also
 
  - [`zx_object_get_property()`]
  - [`zx_process_create()`]
  - [`zx_task_kill()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_object_get_property()`]: object_get_property.md
 [`zx_process_create()`]: process_create.md

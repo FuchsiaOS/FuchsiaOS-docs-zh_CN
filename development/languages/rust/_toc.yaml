@@ -7,30 +7,34 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /development/languages/rust
+  path: /docs/development/languages/rust
 - title: "Learn Rust"
-  path: /development/languages/rust/learn_rust.md
+  path: /docs/development/languages/rust/learn_rust.md
 - title: "Fuchsia Rust crates"
-  path: /development/languages/rust/crates.md
+  path: /docs/development/languages/rust/crates.md
 - title: "FIDL Rust crates"
-  path: /development/languages/rust/fidl_crates.md
+  path: /docs/development/languages/rust/fidl_crates.md
 - title: "Rust editor configurations"
-  path: /development/languages/rust/editors.md
+  path: /docs/development/languages/rust/editors.md
 - title: "Using cargo on Fuchsia"
-  path: /development/languages/rust/cargo.md
+  path: /docs/development/languages/rust/cargo.md
 - title: "Logging"
-  path: /development/languages/rust/logging.md
+  path: /docs/development/languages/rust/logging.md
 - title: "Ergonomic Inspect"
-  path: /development/languages/rust/ergonomic_inspect.md
+  path: /docs/development/languages/rust/ergonomic_inspect.md
 - title: "Testing Rust Code"
-  path: /development/languages/rust/testing.md
+  path: /docs/development/languages/rust/testing.md
 - title: "Measuring Rust Binary Bloat"
-  path: /development/languages/rust/bloat.md
+  path: /docs/development/languages/rust/bloat.md
 - title: "External Rust crates"
-  path: /development/languages/rust/external_crates.md
+  path: /docs/development/languages/rust/external_crates.md
+- title: "External Rust crate Reviews"
+  path: /docs/development/languages/rust/external_crates/review.md
 - title: "Unsafe code in Rust"
-  path: /development/languages/rust/unsafe.md
+  path: /docs/development/languages/rust/unsafe.md
+- title: "Running tests in miri"
+  path: /docs/development/languages/rust/miri.md
 - title: "Unstable Rust features"
-  path: /development/languages/rust/unstable.md
+  path: /docs/development/languages/rust/unstable.md
 - title: "Integrating C/C++ using bindgen"
-  path: /development/languages/rust/bindgen.md
+  path: /docs/development/languages/rust/bindgen.md

@@ -48,7 +48,7 @@ With the debugger ready, start a new `echo` component instance:
 
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsiasamples.com/echo-example#meta/echo.cm
+ffx component run /core/ffx-laboratory:echo fuchsia-pkg://fuchsiasamples.com/echo-example#meta/echo.cm
 ```
 
 ### Explore the debug session
@@ -128,11 +128,11 @@ int main(int argc, const char* argv[], char* envp[]) {
 }
 ```
 
-Run `bazel build` and verify that the build completes successfully:
+Build and publish the updated package to the `fuchsiasamples.com` repository:
 
 ```posix-terminal
-bazel build --config=fuchsia_x64 //fuchsia-codelab/echo:pkg \
-    --publish_to=$HOME/.package_repos/sdk-samples
+bazel run //fuchsia-codelab/echo:pkg.publish -- \
+    --repo_name fuchsiasamples.com
 ```
 
 Start a new debug session with `zxdb`:
@@ -152,7 +152,7 @@ Configure the debugger to attach to the `echo` component:
 Start a new instance of the component:
 
 ```posix-terminal
-ffx component run fuchsia-pkg://fuchsiasamples.com/echo-example#meta/echo.cm --recreate
+ffx component run /core/ffx-laboratory:echo fuchsia-pkg://fuchsiasamples.com/echo-example#meta/echo.cm --recreate
 ```
 
 This time, the debugger detects that an exception was thrown and halts execution:

@@ -70,7 +70,7 @@ CML for declaring the capabilities from the previous example component tests.
 
 Note: For complete details on the Test Runner Framework and component testing,
 see the
-[testing documentation](/development/testing/components/test_runner_framework.md).
+[testing documentation](/docs/development/testing/components/test_runner_framework.md).
 
 ## Unit tests
 
@@ -146,28 +146,78 @@ Add the following unit test functions to validate the behavior of the
 
 * {C++}
 
-  `echo-args/echo_args_unittest.cc`:
+  `echo-args/echo_unittest.cc`:
 
   ```
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/echo_unittest.cc" region_tag="imports" adjust_indentation="auto" %}
 
-  #include "vendor/fuchsia-codelab/echo-args/echo_args.h"
+  #include "vendor/fuchsia-codelab/echo-args/echo_component.h"
 
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/echo_unittest.cc" region_tag="test_mod" adjust_indentation="auto" %}
   ```
 
+### Update the build configuration
+
+Add the following rules to your `BUILD.gn` file to generate a new unit test package:
+
+{% set gn_rust_testpackage %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/BUILD.gn" region_tag="unittest" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_testpackage %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/BUILD.gn" region_tag="unittest" adjust_indentation="auto" %}
+{% endset %}
+
+* {Rust}
+
+  `echo-args/BUILD.gn`:
+
+  ```gn
+  group("tests") {
+    testonly = true
+    deps = [ ":echo-args-unittests" ]
+  }
+
+  {{ gn_rust_testpackage|replace("echo-rust-unittests","echo-args-unittests")|trim() }}
+  ```
+
+* {C++}
+
+  `echo-args/BUILD.gn`:
+
+  ```gn
+  group("tests") {
+    testonly = true
+    deps = [ ":echo-args-unittests" ]
+  }
+
+  {{ gn_cpp_testpackage|replace("echo-cpp-test","echo-args-test")|replace("echo-cpp-unittests","echo-args-unittests")|trim() }}
+  ```
+
+This rule packages your unit tests into a component with the following URL:
+
+```none {:.devsite-disable-click-to-copy}
+fuchsia-pkg://fuchsia.com/echo-args-unittests#meta/echo-args-unittests.cm
+```
+
 ### Run the unit tests
 
-In the previous exercise, your component project scaffold generated a
-`fuchsia_unittest_package()` in the `BUILD.gn` file. Locate this rule:
+Update the top-level build target to build both your component package and the
+test package:
 
 * {Rust}
 
   `echo-args/BUILD.gn`:
 
   ```gn {:.devsite-disable-click-to-copy}
-  fuchsia_unittest_package("echo-args-unittests") {
-    deps = [ ":bin_test" ]
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
+
+  group("echo-args") {
+    testonly = true
+    deps = [
+      ":package",
+      {{ '<strong>' }}":tests",{{ '</strong>' }}
+    ]
   }
   ```
 
@@ -176,17 +226,16 @@ In the previous exercise, your component project scaffold generated a
   `echo-args/BUILD.gn`:
 
   ```gn {:.devsite-disable-click-to-copy}
-  fuchsia_unittest_package("echo-args-unittests") {
-    deps = [ ":unittests" ]
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
+
+  group("echo-args") {
+    testonly = true
+    deps = [
+      ":package",
+      {{ '<strong>' }}":tests",{{ '</strong>' }}
+    ]
   }
   ```
-
-This rule packages your unit tests into a component with the following URL:
-
-
-```none {:.devsite-disable-click-to-copy}
-fuchsia-pkg://fuchsia.com/echo-args-unittests#meta/echo-args-unittests.cm
-```
 
 Run `fx build` again to build the test package:
 

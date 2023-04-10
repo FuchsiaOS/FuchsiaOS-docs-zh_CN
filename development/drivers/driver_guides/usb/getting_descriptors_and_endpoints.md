@@ -33,7 +33,7 @@ accessible through the `GetDescriptorList()` method.
 
 The hierarchy of these subclasses can be seen in **Figure 1.**
 
-![drawing](images/usbstructure.jpg)
+![Diagram of USB class hierarchy](images/usbstructure.jpg)
 
 **Figure 1**
 

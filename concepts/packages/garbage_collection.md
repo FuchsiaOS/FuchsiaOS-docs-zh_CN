@@ -5,8 +5,8 @@
 Static indexing is used for base packages. At `pkgfs` startup, base packages are
 pre-populated in `/pkgfs/packages` based on the `static_packages` index located in
 `/system/data/static_packages`. These static packages are then used to bootstrap
-the system, so that core components like `pkg_resolver`, `pkg_cache`, `netstack`,
-`sysmgr` can be started.
+the system, so that core components like `pkg_resolver`, `pkg_cache` and
+`netstack` can be started.
 
 `pkgfs` doesn't maintain state across reboots but the base package set is
 guaranteed to always be present. Base packages cannot be deleted.

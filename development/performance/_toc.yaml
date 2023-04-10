@@ -1,0 +1,30 @@
+# Copyright 2020 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "How to run performance tests"
+  path: /docs/development/performance/running_performance_tests.md
+- title: "Use cases for performance tests"
+  path: /docs/development/performance/use_cases_for_tests.md
+- title: "Perfcompare: Try builder for pre-submit testing"
+  path: /docs/development/performance/perfcompare.md
+- title: "Viewing Zircon microbenchmarks with Chromeperf"
+  path: /docs/development/performance/chromeperf_user_guide.md
+- title: "Fuchsiaperf format for performance test results"
+  path: /docs/development/performance/fuchsiaperf_format.md
+- title: "Fuchsiaperf producers: libraries"
+  path: /docs/development/performance/fuchsiaperf_producers.md
+- title: "Fuchsiaperf consumers: analysis tools"
+  path: /docs/development/performance/fuchsiaperf_consumers.md
+- title: "Naming style for metrics"
+  path: /docs/development/performance/metric_naming_style.md
+- title: "Metric name expectation files"
+  path: /docs/development/performance/metric_name_expectations.md
+- title: "Documenting performance tests"
+  path: /docs/development/performance/documenting_tests.md
+- title: "Chromeperf uploading and config"
+  path: /docs/development/performance/chromeperf_uploading_config.md

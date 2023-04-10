@@ -8,31 +8,31 @@
 toc:
 - title: "System calls"
   section:
-  - include: /reference/syscalls/_toc.yaml
+  - include: /docs/reference/syscalls/_toc.yaml
 - title: "Kernel objects"
   section:
-  - include: /reference/kernel_objects/_toc.yaml
+  - include: /docs/reference/kernel_objects/_toc.yaml
 - title: "Tools"
   section:
-  - include: /reference/tools/_toc.yaml
+  - include: /docs/reference/tools/_toc.yaml
 - title: "Kernel"
   section:
-  - include: /reference/kernel/_toc.yaml
+  - include: /docs/reference/kernel/_toc.yaml
 - title: "Tracing"
   section:
-  - include: /reference/tracing/_toc.yaml
+  - include: /docs/reference/tracing/_toc.yaml
 - title: "FIDL language"
   section:
-  - include: /reference/fidl/language/_toc.yaml
+  - include: /docs/reference/fidl/language/_toc.yaml
 - title: "FIDL bindings"
   section:
-  - include: /reference/fidl/bindings/_toc.yaml
+  - include: /docs/reference/fidl/bindings/_toc.yaml
 - title: "Diagnostics"
   section:
-  - include: /reference/diagnostics/_toc.yaml
+  - include: /docs/reference/diagnostics/_toc.yaml
 - title: "Hardware"
   section:
-   - include: /reference/hardware/_toc.yaml
+   - include: /docs/reference/hardware/_toc.yaml
 - title: "Platform specifications"
   section:
-  - include: /reference/platform-spec/_toc.yaml
+  - include: /docs/reference/platform-spec/_toc.yaml

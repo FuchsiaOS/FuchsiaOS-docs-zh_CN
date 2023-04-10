@@ -1,7 +1,7 @@
 # Getting started with ffx
 
 This doc will guide you through some of the features of `ffx`. For an overview
-of the design and components of `ffx`, see [the ffx overview](/development/tools/ffx/overview.md).
+of the design and components of `ffx`, see [the ffx overview](/docs/development/tools/ffx/overview.md).
 
 ## Contacting the ffx team
 
@@ -11,18 +11,16 @@ If you discover possible bugs or have questions or suggestions,
 ## Prerequisites
 
 To follow the examples in this doc, you'll need a Fuchsia device running. If you
-don't have a physical device connected, you can use an emulator with networking
-enabled by starting the emulator with the `--net tap` option.
+don't have a physical device connected, you can use an emulator.
 
 To start an emulator with networking enabled but without graphical user
-interface support,
-run `ffx emu start --net tap --headless`.
+interface support, run `ffx emu start --headless`.
 
 For more information on configuring the emulator
-see, [Start the Fuchsia emulator](/get-started/set_up_femu.md).
+see, [Start the Fuchsia emulator](/docs/get-started/set_up_femu.md).
 
 Your device must be running a `core`
-[product configuration](/development/build/build_system/boards_and_products.md)
+[product configuration](/docs/development/build/build_system/boards_and_products.md)
 or a product configuration that extends `core` (such as `workstation_eng`).
 
 Optionally, you can run `ffx log`, which will provide some additional information
@@ -133,7 +131,7 @@ NOTE: if the `RCS` column remains `N` for an extended amount of time and you hav
 already set this target's nodename to `target.default` _before_ initially starting
 ffx, [reach out](#contacting_the_ffx_team) to the `ffx` team.
 
-#### On Default Targets
+### On Default Targets
 
 Above we covered setting the default target using the command
 
@@ -149,6 +147,7 @@ fx ffx --target $NODENAME component list
 ```
 
 ### Interacting with multiple devices
+
 TODO: fill this out.
 
 ### Controlling the state of target devices
@@ -158,123 +157,179 @@ reboot a device, respectively.
 
 ## Configuration
 
-See documentation for the [config command](/development/tools/ffx/commands/config.md).
+See documentation for the [config command](/docs/development/tools/ffx/commands/config.md).
 
 ## Interacting with Components
 
-### Selectors
+### Monikers
 
-Many `ffx` commands that use components take selectors as a parameter. You can read more about selectors and their syntax
-in [component selector documentation](/development/tools/ffx/commands/component-select.md).
+Many `ffx` commands that use components take monikers as a parameter. You can read more about
+monikers and their syntax in [component moniker documentation](/docs/reference/components/moniker.md).
 
-### Inspecting the component topology
+### Finding components
 
-You can use the `component select` command to
-* inspect services in the
-  [component topology](/concepts/components/v2/topology.md)
-* search for components that expose a service.
-
-For example, the following command will display all services offered by
-[legacy components](/glossary/README.md#components-v1):
+The `component list` command will output monikers of all components that currently exist
+in the component topology.
 
 ```none
-$ fx ffx component select moniker 'core/appmgr:out:*'
-
-core/appmgr
-|
---out
-   |
-   --chromium.cast.ApplicationConfigManager
-   --fuchsia.bluetooth.avrcp.PeerManager
-   --fuchsia.bluetooth.avrcp.test.PeerManagerExt
-   --fuchsia.bluetooth.bredr.Profile
-   --fuchsia.bluetooth.control.Control
-   --fuchsia.bluetooth.gatt.Server
-   --fuchsia.bluetooth.le.Central
-   --fuchsia.bluetooth.le.Peripheral
-   --fuchsia.bluetooth.snoop.Snoop
-   --fuchsia.bluetooth.sys.Access
-   --fuchsia.bluetooth.sys.HostWatcher
-   --fuchsia.boot.Arguments
-   --fuchsia.boot.FactoryItems
-   --fuchsia.boot.Items
-   --fuchsia.boot.ReadOnlyLog
-   --fuchsia.boot.RootJobForInspect
-   --fuchsia.boot.RootResource
-   [truncated]
-```
-
-Note: this command can be slow (~10-15s), especially for selectors that match a
-large number of services.
-
-The following command will display all components that expose `diagnostics`:
-
-```none
-fx ffx component select capability diagnostics
+$ fx ffx component list
+/
+/bootstrap
 /bootstrap/archivist
+/bootstrap/base_resolver
+/bootstrap/console
+/bootstrap/console-launcher
+/bootstrap/cr50_agent
+/bootstrap/device_name_provider
+/bootstrap/driver_index
 /bootstrap/driver_manager
+/bootstrap/flashmap
 /bootstrap/fshost
-/bootstrap/power_manager
-/core/appmgr
-/core/detect
-/core/last_reboot
-/core/log-stats
-/core/pkg-cache
-/core/sampler
-/core/system-update-committer
+/bootstrap/fshost/blobfs
+/bootstrap/fshost/blobfs/decompressor
+...
 ```
 
-### Verifying a service is up
+You can use the `component select capability` command to search for components that use/expose
+a capability with a given name.
 
-You can use the `component knock` command to verify that a service starts
-successfully: `knock` will open a channel to the service and return success if
-and only if the channel isn't closed.
+The following command will display all components that use/expose the `diagnostics` capability:
 
-The component framework will start the component that provides the service
-on-demand.
+```none
+$ fx ffx component capability diagnostics
+Exposed:
+  /bootstrap/archivist
+  /bootstrap/base_resolver
+  /bootstrap/driver_manager
+  /bootstrap/fshost
+  /bootstrap/fshost/blobfs
+  /bootstrap/fshost/blobfs/decompressor
+  /bootstrap/fshost/minfs
+  /bootstrap/pkg-cache
+  /bootstrap/power_manager
+  ...
+```
 
-Note: the service you pass to `knock` may contain a wildcard but must match
-_exactly one_ service. You cannot `knock` on multiple services at once.
+### Inspecting a component
+
+You can use the `component show` command to get detailed information about a specific
+component.
+
+`component show` allows partial matching on URL, moniker and component instance ID.
+
+The following command will display information about the `/core/network/dhcpd` component:
+
+```none
+$ fx ffx component show dhcpd
+               Moniker:  /core/network/dhcpd
+                   URL:  #meta/dhcpv4_server.cm
+           Instance ID:  20b2c7aba6793929c252d4e933b8a1537f7bfe8e208ad228c50a896a18b2c4b5
+                  Type:  CML Component
+       Component State:  Resolved
+ Incoming Capabilities:  /svc/fuchsia.net.name.Lookup
+                         /svc/fuchsia.posix.socket.packet.Provider
+                         /svc/fuchsia.posix.socket.Provider
+                         /svc/fuchsia.stash.SecureStore
+                         /svc/fuchsia.logger.LogSink
+  Exposed Capabilities:  fuchsia.net.dhcp.Server
+           Merkle root:  521109a2059e15acc93bf77cd20546d106dfb625f2d1a1105bb71a5e5ea6b3ca
+       Execution State:  Running
+          Start reason:  '/core/network/netcfg' requested capability 'fuchsia.net.dhcp.Server'
+         Running since:  2022-09-15 16:07:48.469094140 UTC
+                Job ID:  28641
+            Process ID:  28690
+ Outgoing Capabilities:  fuchsia.net.dhcp.Server
+```
+
+### Verifying capability routes
+
+You can use the `component doctor` command to verify that all capabilities
+exposed and used by a component are successfully routed.
 
 For example:
 
 ```none
-$ fx ffx component knock /core/appmgr fuchsia.hwinfo.P*
-Success: service is up. Connected to 'core/appmgr:out:fuchsia.hwinfo.Product'.
+$ fx ffx component doctor /bootstrap/archivist
+Querying component manager for /bootstrap/archivist
+URL: fuchsia-boot:///#meta/archivist.cm
+Instance ID: None
+
+      Used Capability                      Error
+ [✓]  fuchsia.boot.ReadOnlyLog             N/A
+ [✓]  fuchsia.boot.WriteOnlyLog            N/A
+ [✓]  fuchsia.component.DetectBinder       N/A
+ [✓]  fuchsia.component.KcounterBinder     N/A
+ [✓]  fuchsia.component.LogStatsBinder     N/A
+ [✓]  fuchsia.component.PersistenceBinder  N/A
+ [✓]  fuchsia.component.SamplerBinder      N/A
+ [✓]  fuchsia.sys.internal.ComponentEvent  N/A
+      Provider
+ [✓]  fuchsia.sys.internal.LogConnector    N/A
+ [✓]  config-data                          N/A
+ [✓]  fuchsia.sys2.EventSource             N/A
+
+      Exposed Capability                   Error
+ [✓]  fuchsia.diagnostics.FeedbackArchive  N/A
+      Accessor
+ [✓]  fuchsia.diagnostics.LegacyMetricsAr  N/A
+      chiveAccessor
+ [✓]  fuchsia.diagnostics.LoWPANArchiveAc  N/A
+      cessor
+ [✓]  diagnostics                          N/A
+ [✓]  fuchsia.diagnostics.ArchiveAccessor  N/A
+ [✓]  fuchsia.diagnostics.LogSettings      N/A
+ [✓]  fuchsia.logger.Log                   N/A
+ [✓]  fuchsia.logger.LogSink               N/A
 ```
 
 ```none
-$ fx ffx component knock /core/appmgr not.a.real.service
-Failed to connect to service: NoMatchingServices
+$ fx ffx component doctor /core/feedback
+Querying component manager for /core/feedback
+URL: fuchsia-pkg://fuchsia.com/forensics#meta/feedback.cm
+Instance ID: eb345fb7dcaa4260ee0c65bb73ef0ec5341b15a4f603f358d6631c4be6bf7080
+
+      Used Capability                      Error
+ [✓]  fuchsia.boot.ReadOnlyLog             N/A
+ [✓]  fuchsia.boot.WriteOnlyLog            N/A
+ [✓]  fuchsia.diagnostics.FeedbackArchive  N/A
+      Accessor
+ [✓]  fuchsia.hardware.power.statecontrol  N/A
+      .RebootMethodsWatcherRegister
+ [✓]  fuchsia.hwinfo.Board                 N/A
+ [✓]  fuchsia.hwinfo.Product               N/A
+ [✓]  fuchsia.metrics.MetricEventLoggerFa  N/A
+      ctory
+ [✓]  fuchsia.net.http.Loader              N/A
+ [✓]  fuchsia.process.Launcher             N/A
+ [✓]  fuchsia.sysinfo.SysInfo              N/A
+ [✓]  fuchsia.ui.activity.Provider         N/A
+ [✗]  fuchsia.feedback.DeviceIdProvider    `/core/feedback` tried to use `fuchsia.feedback.DeviceIdProvider` from its parent,
+                                           but the parent does not offer that capability. Note, use clauses in CML default to
+                                           using from parent.
+ ...
 ```
 
-### Running a CML component
+### Running a component
 
-`ffx` can run CML components in an isolated realm given their package URL. Currently, this isolated
-realm provides the following capabilities:
-
-* `fuchsia.logger.LogSink` protocol
-* `fuchsia.process.Launcher` protocol
-* `tmp` storage
-* `data` storage
-* [`dev` directory](/concepts/process/namespaces.md#typical_directory_structure): the root
-device tree of the system
-* [`boot` directory](/concepts/process/namespaces.md#typical_directory_structure): the full
-bootfs filesystem used by the system during bootup
-
-CML components are run with the `ffx component run` subcommand. These components are automatically
-destroyed when they stop.
+The `component run` command can create and launch components in a given isolated collection.
 
 Note: `fx serve` must be running in order to run a package that is not
-[in base or cached](/development/build/build_system/boards_and_products.md#dependency_sets).
+[in base or cached](/docs/development/build/build_system/boards_and_products.md#dependency_sets).
 
-Here's an example of running the Rust hello-world component. First, you'll need
-the hello-world package in your universe:
+Here's an example of running the Rust `hello-world` component in the `/core/ffx-laboratory`
+collection. First, you'll need the hello-world package in your universe:
 
 ```none
 $ fx set <product>.<board> --with //examples/hello_world/rust:hello-world-rust && fx build
 ...
-$ fx ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
+```
+
+Then use the `component run` command to create and launch a component instance from the URL
+`fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm` with the moniker
+`/core/ffx-laboratory:hello-world-rust`:
+
+```none
+$ fx ffx component run /core/ffx-laboratory:hello-world-rust fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
 URL: fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
 Moniker: /core/ffx-laboratory:hello-world-rust
 Creating component instance...
@@ -288,16 +343,6 @@ $ fx ffx component show hello-world-rust
             Process ID: 50819
 ...
 ```
-
-### Running a CMX component
-
-`ffx` can run CMX components on a device given their package URL and arguments.
-
-CMX components are run with the `ffx component run-legacy` subcommand. `stdout` and `stderr` will
-be streamed to the corresponding descriptor on the host terminal.
-
-Note: `fx serve` must be running in order to run a package that is not
-[in base or cached](/development/build/build_system/boards_and_products.md#dependency_sets).
 
 ## Resolving connectivity issues
 
@@ -360,7 +405,25 @@ and include 1) all output
 above and 2) device syslog if available.Bug link: ...
 ```
 
+## Testing with ffx
+
+The `ffx` command is useful when writing integration tests which need to interact
+with the Fuchsia environment. However, since `ffx` is primarily designed for
+developers, it inspects the current environment for configuration and also starts
+a daemon in the background to coordinate communication with Fuchsia devices. This
+makes it more complex to write automated tests that use `ffx` since the configuration
+and daemon should be isolated in order to avoid side effects, or interference from
+the global environment.
+
+To achieve this isolation, test authors need to use [isolate directories][isolate-dir]
+when running tests which use `ffx`.
+
 ## Next steps
 
 - Please provide feedback on this doc by [reaching out to the ffx team](#contacting_the_ffx_team)!
-- Learn how to [extend `ffx`](/development/tools/ffx/development/plugins.md).
+- Learn how to [extend `ffx`](/docs/development/tools/ffx/development/plugins.md).
+
+
+<!-- Reference links -->
+
+[isolate-dir]: development/integration_testing.md

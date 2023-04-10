@@ -8,38 +8,21 @@ traffic.
 
 ## Enabling it
 
-To run fidlcat in-tree, you first build it, which you can do the following way:
+The `fidlcat` tool is included with the SDK.  In `fuchsia.git`, an invocation of
+`fx build` will build it automatically.
 
-```sh
-fx set <whatever> --with //bundles:tools
-fx build
-```
-
-If you want to add it to your existing gn args, you can do so by adding this
-stanza to the bottom of your <build_dir>/args.gn.
-
-```
-universe_package_labels += [ "//bundles:tools" ]
-```
-
-To run `fidlcat`, you must boot with networking enabled. If you're running an
-emulator run the following command:
-
-```sh
-ffx emu --net tap
-```
-
-In a separate console, you need to ensure your target is able to fetch updates:
-
-```sh
-fx serve
-```
+To run `fidlcat`, networking must be enabled on your Fuchsia target. To boot an
+emulator with networking enabled. Follow the instructions to [start the emulator
+with access to external networks on the FEMU
+page](/docs/get-started/set_up_femu.md).
 
 ## Running it
 
 When your environment is properly set up, and fidlcat is built, you should be
 able to use it to monitor FIDL messages from processes on the target. There are
-several ways to do this.
+several ways to do this.  Note that `fidlcat` must be invoked via the `ffx debug
+fidl` command, which automatically sets up a network tunnel and finds some of
+the prerequisite artifacts (e.g., debug symbols).
 
 ### Attaching to a running process
 
@@ -178,9 +161,13 @@ You have the following output options:
  want to monitor real time components).
 
 
-## Running without the fx tool
+## Troubleshooting
 
-Note that fidlcat needs two sources of information to work:
+If you have problems running `ffx debug fidl`, see the [troubleshooting guide
+for zxdb](/docs/development/debugger/running.md),
+
+The `fidlcat` tool needs two sources of information to work.  If either are
+missing, you will not be able to decode fidl messages:
 
  * First, it needs the symbols for the executable. In practice, if you are
    running in-tree, the symbols should be provided to fidlcat automatically.
@@ -197,21 +184,9 @@ Note that fidlcat needs two sources of information to work:
    to fidlcat with the `--fidl-ir-path` flag. The argument files need to be
    prepended with a `@` character: `--fidl-ir-path @argfile`.
 
- * Third, regex URL matching does not work outside of the fx tool. You must
-   specify the entire package URL.
-
-Finally, if you are running fidlcat without the fx tool, the debug agent needs
-to be running on the target. Connect to the target and run:
-
-```sh
-run fuchsia-pkg://fuchsia.com/debug_agent#meta/debug_agent.cmx --port=8080
-```
-
-And, when you run fidlcat on the host, make sure you connect to that agent:
-
-```sh
-tools/fidlcat --connect [$(fx get-device-addr)]:8080 <other args>
-```
+Developers with other concerns can [file a
+bug](https://bugs.fuchsia.dev/p/fuchsia/issues/entry).  Use the Tools>fidlcat
+component.
 
 ## Read the guide
 

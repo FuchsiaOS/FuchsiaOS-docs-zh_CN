@@ -1,4 +1,3 @@
-<!-- # Fuchsia architecture -->
-# Fuchsia 架构
+# Fuchsia architecture
 
 <<../../_common/intro/_architecture.md>>

@@ -4,7 +4,8 @@
 
 In Fuchsia, hardware support can be divided per architecture, board and drivers, see [RFC-0111:
 Initial Fuchsia hardware platform specifications][rfc-0111]. Adding support for a new architecture
-is not described on this page. This page describes adding support for a new board.
+is not described on this page. This page describes adding support for a new
+[board](/docs/glossary/README.md#board).
 
 Note that the x64 architecture is considered in itself a board (highly configurable one)
 hence it is not described here since it is already supported (although its implementation can be
@@ -113,7 +114,8 @@ board driver and its corresponding non-kernel drivers for additional functionali
 
 ### Board driver {#board-driver}
 
-With kernel support added for the board and build system assembly in place, a board driver (examples
+With kernel support added for the board and build system assembly in place, a
+[board driver](/docs/glossary/README.md#board-driver) (examples
 [here](https://fuchsia.googlesource.com/fuchsia/+/main/src/devices/board/drivers/)) must be created
 to, at runtime, add and configure the non-kernel drivers to be used. The board driver describes and
 configures a board’s HW that can’t be located/configured by probing, which is common in ARM64 based
@@ -165,8 +167,8 @@ includes a web browser and many other features. Similarly new product configurat
 for other architectures, for instance for ARM64 based systems.
 
 <!-- xrefs -->
-[glossary.bootfs]: /glossary#bootfs
-[glossary.driver]: /glossary#driver
-[fx]: /development/build/fx.md
-[driver-development]: /development/drivers/developer_guide/driver-development.md
-[rfc-0111]: /contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md
+[glossary.bootfs]: /docs/glossary#bootfs
+[glossary.driver]: /docs/glossary#driver
+[fx]: /docs/development/build/fx.md
+[driver-development]: /docs/development/drivers/developer_guide/driver-development.md
+[rfc-0111]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md

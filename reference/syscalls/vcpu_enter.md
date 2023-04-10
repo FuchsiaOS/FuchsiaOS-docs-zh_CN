@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vcpu_enter
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Enter a VCPU, causing it to resume execution.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -17,7 +24,7 @@ Enter a VCPU, causing it to resume execution.
 zx_status_t zx_vcpu_enter(zx_handle_t handle, zx_port_packet_t* packet);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vcpu_enter()` begins or resumes execution of *handle*, and blocks until it
 has paused execution. On pause of execution, *packet* is populated with reason
@@ -29,18 +36,16 @@ called on *handle*, execution may be resumed by calling `zx_vcpu_enter()` again.
 
 `zx_vcpu_enter()` must be called on the same thread *handle* was created on.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_VCPU** and have **ZX_RIGHT_EXECUTE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vcpu_enter()` returns **ZX_OK** on success. On failure, an error value is
 returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED** *handle* does not have the **ZX_RIGHT_EXECUTE** right.
 
@@ -60,7 +65,7 @@ executing *handle*.
 
 **ZX_ERR_WRONG_TYPE** *handle* is not a handle to a VCPU.
 
-## SEE ALSO
+## See also
 
  - [`zx_guest_create()`]
  - [`zx_guest_set_trap()`]
@@ -69,8 +74,6 @@ executing *handle*.
  - [`zx_vcpu_kick()`]
  - [`zx_vcpu_read_state()`]
  - [`zx_vcpu_write_state()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_guest_create()`]: guest_create.md
 [`zx_guest_set_trap()`]: guest_set_trap.md

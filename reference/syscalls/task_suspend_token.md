@@ -1,18 +1,25 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_task_suspend_token
 
 This function replaces [task_suspend](task_suspend.md). When all callers are
 updated, [`zx_task_suspend()`] will be deleted and this function will be renamed
 [`zx_task_suspend()`].
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Suspend the given task. Currently only thread or process handles may be suspended.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ Suspend the given task. Currently only thread or process handles may be suspende
 zx_status_t zx_task_suspend_token(zx_handle_t handle, zx_handle_t* token);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_task_suspend_token()` causes the requested task to suspend execution. Task
 suspension is not synchronous and the task might not be suspended before the
@@ -39,18 +46,16 @@ resuming is asynchronous so the thread may not be in a running state when the
 [`zx_handle_close()`] call returns, even if no other suspend tokens
 are open.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_THREAD** or **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 [`zx_task_suspend()`] returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is not a valid handle.
 
@@ -63,8 +68,6 @@ In the event of failure, a negative error value is returned.
 ## LIMITATIONS
 
 Currently only thread handles are supported.
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_task_kill()`]: task_kill.md

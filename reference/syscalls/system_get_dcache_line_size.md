@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_system_get_dcache_line_size
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 TODO(fxbug.dev/32938)
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,25 +23,22 @@ TODO(fxbug.dev/32938)
 uint32_t zx_system_get_dcache_line_size(void);
 ```
 
-## DESCRIPTION
+## Description
 
 TODO(fxbug.dev/32938)
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 TODO(fxbug.dev/32938)
 
-## ERRORS
+## Errors
 
 TODO(fxbug.dev/32938)
 
-## SEE ALSO
-
+## See also
 
 TODO(fxbug.dev/32938)

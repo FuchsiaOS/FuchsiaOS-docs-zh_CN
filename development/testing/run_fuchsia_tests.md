@@ -15,9 +15,9 @@ fx test <TEST_NAME>
 
 If `TEST_NAME` is a test component, `fx test` connects to your Fuchsia device to
 load and run the test component. That is, the command finds the component's
-corresponding [component URI][component-uri] and calls `run-test-component` on
-the target device. However, if `TEST_NAME` is a host test, `fx test` directly
-invokes that test binary to run on the host machine.
+corresponding [component URI][component-uri] and calls
+[`ffx test run`][ffx-test]. However, if `TEST_NAME` is a host test, `fx test`
+directly invokes that test binary to run on the host machine.
 
 Similar to a host test, an end-to-end test also runs on a host machine. The test
 then may interact with various services on a Fuchsia device for testing purposes
@@ -49,9 +49,9 @@ to include several of the primary testing bundles, build Fuchsia, and then run
 all tests in the build. For example:
 
 ```none
-$ fx set core.x64 --with //bundles:tools,//bundles:tests
-$ fx build
-$ fx test
+fx set core.x64 --with //bundles/tools,//bundles/tests
+fx build
+fx test
 ```
 
 You can also provide multiple targets in a single invocation:
@@ -70,28 +70,26 @@ Use the `--` flag to pass additional arguments to test components.
 Note: `fx test` passes these arguments to all selected tests. When you target
 many test components in a single command, this option may not be ideal.
 
-The following example passes a `timeout` flag to a test:
+The following example passes an `arg` flag to a test:
 
 ```none
-$ fx test <TEST_NAME> -- --timeout=5
+$ fx test <TEST_NAME> -- --arg=5
 ```
 
-For example, the command above internally calls the following command on the
-device:
+For example, the command above internally calls the following command:
 
 ```none
-$ fx shell run-test-component <TEST_COMPONENT_URI> -- --timeout=5
-$ fx shell run-test-suite <TEST_COMPONENT_URI> -- --timeout=5
+$ fx ffx test run <TEST_COMPONENT_URI> -- --arg=5
 ```
 
 ## Specify a test in multiple ways {#specify-a-test-in-multiple-ways}
 
 `fx test` supports multiple ways to reference a specific test:
 
-*   [Host test path](#host-test-path)
-*   [Package URL](#package-url)
-*   [Package name](#package-name)
-*   [Component name](#component-name)
+* [Host test path](#host-test-path)
+* [Package URL](#package-url)
+* [Package name](#package-name)
+* [Component name](#component-name)
 
 ### Host test path {#host-test-path}
 
@@ -117,7 +115,7 @@ Provide a full [Fuchsia component URL][component-uri] to specify a test
 component. For example:
 
 ```none
-fx test fuchsia-pkg://fuchsia.com/my_example_test_pkg#meta/my_example_test.cmx
+fx test fuchsia-pkg://fuchsia.com/my_example_test_pkg#meta/my_example_test.cm
 ```
 
 Provide a partial package URL to match and run all test components in the
@@ -166,51 +164,53 @@ To run a component on a specific package, use both `-p <PACKAGE_NAME>` and `-c
 fx test -p my_example_test_pkg -c my_example_test
 ```
 
-## Convert from run-test or run-host-tests {#convert-from-run-test-or-run-host-tests}
+## Set the minimum log severity
 
-The `fx run-test`, `fx run-host-tests` and `fx run-e2e-tests` commands are being
+`fx test` (and the underlying `ffx test`) accept a flag ``--min-severity-logs` which allows you to
+set the minimum severity of the logs that are emitted by the test and components under the test.
+
+If the test or components under it are using logging libraries which support setting dynamic
+log severity (Fuchsia Rust and C++ log libraries support this). For test components that don't
+support this, [`test_manager`][test-manager] manually filters their logs if the tests emit logs of
+a severity that is lower than the minimum you set.
+
+This flag accepts two ways of defining the minimum severity:
+
+- `<severity>`: one of `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`. This applies to logs
+  emitted by the test itself and all components under the test.
+
+- `<component selector>#<severity>` in which [`<component selector>`](#component-selectors)
+  specifies a set of components under the test (for example `foo/bar`) and severity is one of the
+  accepted severities mentioned earlier.
+
+A few examples:
+
+- `--min-severity-logs DEBUG`: the test and all components under the test are instructed to emit
+  logs of severity `DEBUG` or higher. This is equivalent to using a component selector:
+  `--min-severity-logs **#DEBUG`
+
+- `--min-severity-logs a#DEBUG --min-severity-logs b/c#ERROR`: the component under the test `a`
+  emits logs of severity `DEBUG` or higher and the component under the test `b/c` emits logs of
+  severity ERROR or higher. Logs emitted by the test itself uses their default minimum severity.
+
+- `--min-severity-logs '<root>#DEBUG'`: the test is instructed to emit logs of severity `DEBUG`
+  or higher, but components under it emits logs using their default minimum severity.
+
+- `--min-severity-logs foo/*/bar#ERROR`: all components named `bar` under a child of `foo` with any
+  name emits logs of severity `ERROR` or higher. For example, `foo/a/bar` and `foo/baz/bar`
+  are affected, but the test component, `foo/bar` and `a/b` aren't.
+
+## Convert from run-host-tests {#convert-from-run-host-tests}
+
+The `fx run-host-tests` and `fx run-e2e-tests` commands are being
 deprecated in favor of `fx test`. See the following instructions on how to use
 `fx test` in place of these commands:
 
-*   [run-test](#run-test)
-*   [run-host-tests](#run-host-tests)
-*   [run-e2e-tests](#run-e2e-tests)
+* [run-host-tests](#run-host-tests)
+* [run-e2e-tests](#run-e2e-tests)
 
-### run-test {#run-test}
-
-Substitute `fx run-test` with `fx test`.
-
-From:
-
-```posix-terminal
-fx run-test <TEST_PACKAGE_NAME>
-```
-
-To:
-
-```posix-terminal
-fx test <TEST_PACKAGE_NAME>
-```
-
-#### The -t flag
-
-With `run-test`, you were able to use the `-t` flag to specify a single test
-component to run. For example:
-
-```posix-terminal
-fx run-test <PACKAGE_NAME> -t <NESTED_COMPONENT_NAME>
-```
-
-With `fx test`, this command becomes:
-
-```posix-terminal
-fx test -p <PACKAGE_NAME> -c <NESTED_COMPONENT_NAME>
-```
-
-If there are no name collisions for the test component, you can simply run:
-
-```posix-terminal
 fx test <NESTED_COMPONENT_NAME>
+
 ```
 
 ### run-host-tests {#run-host-tests}
@@ -254,8 +254,8 @@ the build system as affected by changes in your checkout. Try the following:
 fx -i smoke-test --verbose
 ```
 
-In the command above, `--verbose` will also print which tests `fx smoke-test`
-thinks are affected by your change. `-i` will automatically repeat this command
+In the command above, `--verbose` also prints which tests `fx smoke-test`
+thinks are affected by your change. `-i` automatically repeats this command
 every time you save your changes. For test-driven development, try launching
 this command in a separate shell and watching your code rebuild and retest as
 you're working on it.
@@ -265,12 +265,24 @@ hermetic if the package contains all the dependencies of any tests in it.
 That is to say, any code changes that affect the outcome of this test should
 require rebuilding that test's package as well.
 
+## Inspect artifacts from test components
+
+Component tests may produce additional artifacts that cannot be displayed to
+stdout, such as [custom artifacts][custom-artifacts] and coverage profile. By
+default, `fx test` silently discards these artifacts. To see these
+artifacts, specify an output directory to `fx test` using
+`--ffx-output-directory`. The artifacts are pulled out of the test and
+saved to the specified directory.
+
 <!-- Reference links -->
 
-[tests-as-components]: /concepts/testing/v1_test_component.md
-[scripting-layer-for-fuchsia]: /development/drivers/concepts/driver_development/sl4f.md
-[component-uri]: /reference/components/url.md
-[rust-glob-syntax]: https://docs.rs/glob/0.3.0/glob/struct.Pattern.html
-[fuchsia-package-name]: /concepts/packages/package_url.md#package-name
-[resource-path]: /concepts/packages/package_url.md#resource-paths
+[compoennt-selectors]: /docs/reference/diagnostics/selectors.md#component-selector
+[custom-artifacts]: /docs/development/testing/components/test_runner_framework.md#custom-artifacts
+[tests-as-components]: /docs/development/testing/components/README.md
+[scripting-layer-for-fuchsia]: /docs/development/drivers/concepts/driver_development/sl4f.md
+[component-uri]: /docs/reference/components/url.md
+[fuchsia-package-name]: /docs/concepts/packages/package_url.md#package-name
+[resource-path]: /docs/concepts/packages/package_url.md#resource-paths
+[test-manager]: /docs/get-started/learn/components/component-tests.md
 [fx-test-flags]: https://fuchsia.dev/reference/tools/fx/cmd/test
+[ffx-test]: /docs/development/sdk/ffx/run-device-tests.md

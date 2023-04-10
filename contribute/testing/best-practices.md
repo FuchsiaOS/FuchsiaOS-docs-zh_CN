@@ -121,15 +121,15 @@ cross-component communication are common sources of nondeterminism.
 <span class="compare-better">Recommended</span>: Use these tips to write
 deterministic tests:
 
-  - For time-dependent tests, use fake or mocked clocks to provide
+- For time-dependent tests, use fake or mocked clocks to provide
     determinism. See [`fuchsia_async::Executor::new_with_fake_time`] and
     [fake-clock].
-  - Threaded code must always use the proper synchronization primitives to
+- Threaded code must always use the proper synchronization primitives to
     avoid flakes. Whenever possible, prefer single-threaded tests.
-  - Always provide a mechanism to inject seeds for RNGs and use them in
+- Always provide a mechanism to inject seeds for RNGs and use them in
     tests.
-  - Use mocks in component integration tests. See [Realm Builder][realm-builder].
-  - When working with tests that are sensitive to flaky behavior,
+- Use mocks in component integration tests. See [Realm Builder][realm-builder].
+- When working with tests that are sensitive to flaky behavior,
     consider running tests multiple times to ensure that they consistently pass.
     You can use repeat flags, such as[`--gtest_repeat`][gtest_test_flags]{:.external}
     in GoogleTest and [`--test.count`][go_test_flags]{:.external} in Go, to do this.
@@ -195,71 +195,10 @@ Further reading:
 - [Avoiding Flakey Tests](https://testing.googleblog.com/2008/04/tott-avoiding-flakey-tests.html){:.external}
 - [Where do our flaky tests come from?](https://testing.googleblog.com/2017/04/where-do-our-flaky-tests-come-from.html){:.external}
 
-[test-scope]: /contribute/testing/scope.md
-[testing-principles]: /contribute/testing/principles.md
-[audio-effects-example-tests]: /src/media/audio/examples/effects/test/audio_effects_example_tests.cc
-[build-bringup]: /development/build/build_system/bringup.md
-[capabilities-protocol]: /concepts/components/v2/capabilities/protocol.md
-[cf]: /concepts/components/v2/README.md
-[cf-capabilities]: /concepts/components/v2/capabilities/README.md
-[cf-manifests]: /concepts/components/v2/component_manifests.md
-[channel]: /reference/kernel_objects/channel.md
-[continuous-integration]: https://martinfowler.com/articles/continuousIntegration.html
-[contract-test]: https://martinfowler.com/bliki/ContractTest.html
-[coverage-no-e2e]: /contribute/testing/coverage.md#end-to-end_e2e_tests_exclusion
-[cpuperf]: /garnet/bin/cpuperf/README.md
-[create-e2e-test]: /development/testing/create_a_new_end_to_end_test.md
-[cts]: /sdk/cts/README.md
-[dependency-injection]: https://en.m.wikipedia.org/wiki/Dependency_injection
-[e2e-perf]: /src/tests/end_to_end/perf/README.md
-[fidl]: /concepts/fidl/overview.md
-[fidl-benchmarks]: /src/tests/benchmarks/fidl/benchmark_suite/
-[fidl-compatibility-tests]: /src/tests/fidl/compatibility/README.md
-[fidl-wire-format]: /reference/fidl/language/wire-format
-[fonts-tests-integration]: /src/fonts/tests/integration/README.md
-[fsi]: /concepts/packages/system.md
-[fuchsia.pkg.fontresolver]: https://fuchsia.dev/reference/fidl/fuchsia.pkg#FontResolver
-[fuzzing]: /development/testing/fuzzing/overview.md
-[gidl]: /tools/fidl/gidl/README.md
-[inspect]: /development/diagnostics/inspect/README.md
-[inspect-codelab]: /development/diagnostics/inspect/codelab/codelab.md
-[inspect-validator]: /reference/diagnostics/inspect/validator/README.md
-[inspect-vmo-format]: /reference/diagnostics/inspect/vmo-format.md
-[inspect-vmo-format-update]: /reference/diagnostics/inspect/updating-vmo-format.md
-[minfs]: /concepts/filesystems/minfs.md
-[minfs-stress]: /src/storage/stress-tests/minfs/
-[multi-repo-dev]: https://testing.googleblog.com/2015/05/multi-repository-development.html
-[netstack-benchmarks]: /src/connectivity/network/tests/benchmarks/README.md
-[netstack3-roadmap]: /contribute/roadmap/2021/netstack3.md
-[practical-test-pyramid]: https://martinfowler.com/articles/practical-test-pyramid.html
-[principles]: /concepts/index.md
-[principles-inclusive]: /concepts/principles/inclusive.md
-[principles-pragmatic]: /concepts/principles/pragmatic.md
-[principles-secure]: /concepts/principles/secure.md
-[principles-updatable]: /concepts/principles/updatable.md
-[reader-fuzzer]: /zircon/system/ulib/inspect/tests/reader_fuzzer.cc
-[realm-builder]: /development/testing/components/realm_builder.md
-[run-e2e-test]: /development/testing/run_an_end_to_end_test.md
-[run-test-component]: /development/run/run-test-component.md
-[rust-stress-test-lib]: /development/testing/rust_stress_test_library.md
-[sanitizers]: /contribute/testing/sanitizers.md
-[sanitizers-supported-configs]: /contribute/testing/sanitizers.md#supported_configurations
-[screen-is-not-black]: /src/tests/end_to_end/screen_is_not_black/README.md
-[stress-tests]: /development/testing/stress_tests.md
-[syscalls]: /reference/syscalls/README.md
-[test-coverage]: /contribute/testing/coverage.md
-[test-package-gn]: /development/components/build.md#test-packages
-[testing-integration]: /development/testing/components/integration_testing.md
-[testing-v2]: /development/testing/components/README.md
-[timer-slack]: /concepts/kernel/timer_slack.md
-[timer-tests]: /zircon/kernel/tests/timer_tests.cc
-[timers-test]: https://fuchsia.googlesource.com/fuchsia/+/main/src/zircon/tests/timers/timers.cc
-[userboot]: /concepts/process/userboot.md
-[utest-core]: /zircon/system/utest/core/README.md
-[vdso]: /concepts/kernel/vdso.md
-[wikipedia-dependency-injection]: https://en.m.wikipedia.org/wiki/Dependency_injection
+[test-scope]: /docs/contribute/testing/scope.md
+[testing-principles]: /docs/contribute/testing/principles.md
+[realm-builder]: /docs/development/testing/components/realm_builder.md
 [`fuchsia_async::Executor::new_with_fake_time`]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fuchsia-async/src/executor.rs#345
 [fake-clock]: https://fuchsia.googlesource.com/fuchsia/+/a874276/src/lib/fake-clock
-[rust_65218]: https://github.com/rust-lang/rust/issues/65218
 [go_test_flags]: https://golang.org/cmd/go/#hdr-Testing_flags
 [gtest_test_flags]: https://github.com/google/googletest/blob/main/docs/advanced.md#repeating-the-tests

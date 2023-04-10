@@ -132,7 +132,7 @@ which are separated by a `:`:
 3. The property path: The name of the property.
 
 For `iquery` only (1) is required. If only (1) is provided (for example
-`realm/component.cmx`) then iquery will use a selector `realm/component.cmx:*` to
+`realm/component`) then iquery will use a selector `realm/component:*` to
 fetch all the inspect data.
 
 `iquery` includes two utility commands to know what components are available and
@@ -146,50 +146,40 @@ what selectors can be used:
 These modes could be used together as follows:
 
 ```
-iquery show `iquery list | grep component_name`
+$ iquery show `iquery list | grep component_name`
 ```
 
 Alternatively `iquery` also allows to print the inspect data at a location. A
 location consists either of the path to a `.inspect` file, or the path to a
 directory containing `fuchsia.inspect.Tree`. `iquery` includes a utility command
-to list all files that contain inspect data (`list-files`). Note that these will be only data
-from v1 components given that v2 are not accessible through the filesystem at
-the moment.
+to list all files that contain inspect data (`list-files`).
 
 iquery's secondary mode of operation (triggered by `list-files`) recursively
-identifies locations for Inspect data from the given directorry path. The
+identifies locations for Inspect data from the given directory path. The
 two modes may be used together as follows:
 
 ```
-iquery show-file `iquery list-files /hub | grep -v system_objects | grep component_name`
+$ iquery list-files [component_moniker]
+bootstrap/driver_manager
+  class/display-controller/000.inspect
+  ... additional output
+
+
+$ iquery show --file 'class/display-controller/000.inspect'
 ```
 
-In the example above, `iquery` is run to find a list of Inspect
-locations that do not contain "system\_objects" and that do contain
-"component\_name". Then, `iquery` is run on the result of the first
-filter to recursively list data in the matching locations. You may instead write:
+In the example above, `iquery list-files` is ran to find a list of Inspect
+locations. Then, `iquery` is ran on one of the output to 
+recursively list data in the matching locations. You may instead write:
 
 ```
-fx iquery show --manifest component_name
+$ fx iquery show --manifest component_name
 ```
 
 ### Archivist {#archivist}
 
 The Fuchsia Diagnostics Platform, hosted by the [Archivist][archivist],
 is responsible for monitoring and aggregating Inspect data on demand.
-
-#### Collection under appmgr
-
-When a component is running under appmgr, diagnostics
-data is collected from its `out/diagnostics` directory.
-A connection to this directory is provided to Archivist by the
-[`ComponentEventProvider`][fidl-event-provider] protocol.
-
-A separate component, called `archivist-for-embedding.cmx`, serves the same
-purpose as the Archivist but may be injected into tests. This allows tests
-to find only their own diagnostics data, helping to make tests hermetic.
-
-#### Collection under component\_manager
 
 When running under component manager, diagnostics data is made available to the
 Archivist through [event capabilities][events].
@@ -245,9 +235,9 @@ running components.
 
 [archive]: /sdk/fidl/fuchsia.diagnostics/reader.fidl
 [archivist]: /src/diagnostics/archivist
-[events]: /concepts/components/v2/capabilities/event.md
+[events]: /docs/concepts/components/v2/capabilities/event.md
 [fidl-event-provider]: /sdk/fidl/fuchsia.sys.internal/component_event_provider.fidl
-[inspect]: /development/diagnostics/inspect/README.md
-[iquery]: /reference/diagnostics/consumers/iquery.md
+[inspect]: /docs/development/diagnostics/inspect/README.md
+[iquery]: /docs/reference/diagnostics/consumers/iquery.md
 [tree-fidl]: /sdk/fidl/fuchsia.inspect/tree.fidl
-[vmo-format]: /reference/platform-spec/diagnostics/inspect-vmo-format.md
+[vmo-format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md

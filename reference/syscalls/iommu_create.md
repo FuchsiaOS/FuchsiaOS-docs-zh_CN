@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_iommu_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a new IOMMU object in the kernel.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_iommu_create(zx_handle_t resource,
                             zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_iommu_create()` creates a new object in the kernel representing an IOMMU device.
 
@@ -40,19 +47,17 @@ done with it.
 *desc* must be a valid pointer to a value of type `zx_iommu_desc_dummy_t`.
 *desc_size* must be `sizeof(zx_iommu_desc_dummy_t)`.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *resource* must have resource kind **ZX_RSRC_KIND_ROOT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_iommu_create()` returns **ZX_OK** and a handle to the new IOMMU
 (via *out*) on success.  In the event of failure, a negative error value
 is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *resource* is not a valid handle.
 
@@ -71,13 +76,11 @@ supported on this system.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_bti_create()`]
  - [`zx_bti_pin()`]
  - [`zx_pmt_unpin()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_bti_create()`]: bti_create.md
 [`zx_bti_pin()`]: bti_pin.md

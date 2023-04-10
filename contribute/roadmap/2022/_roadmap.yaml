@@ -1,0 +1,99 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+- workstream: Bazel integration with Fuchsia SDK.
+  area: Developer
+  category: [Platform Evolution]
+
+- workstream: Revamp docs on fuchsia.dev to be SDK focused development.
+  area: Developer
+  category: [Platform Evolution]
+
+- workstream: |
+    Continuous improvements to diagnostics tools including Rust tracing support,
+    VS Code logging/triaging, and implementation of CPU profiler.
+  area: Diagnostics
+  category: [Platform Evolution, Product Support, Simplicity and Tech Debt]
+
+- workstream: |
+    Enable Rust development via SDK and improve automated testing of Rust support.
+  area: Rust
+  category: [Platform Evolution, Product Support, Simplicity and Tech Debt]
+  bug: [fxbug.dev/102246]
+
+- workstream: |
+    Driver Framework (DFv2) and Driver Runtime enablement and migrating drivers
+    to DFv2.
+  area: Driver Framework
+  category: [Platform Evolution]
+  bug: [fxbug.dev/33183]
+
+- workstream: |
+    Migrating Intel WLAN driver out-of-tree and transitioning to DFv2.
+  area: Driver Framework
+  category: [Platform Evolution]
+
+- workstream: |
+    Composite drivers support.
+  area: Driver Framework
+  category: [Platform Evolution]
+
+- workstream: |
+    Testing frameworks for driver authors.
+  area: Driver Framework
+  category: [Quality]
+
+- workstream: |
+    FIDL versioning support and various system components using FIDL interfaces.
+  area: Driver Framework
+  category: [Quality]
+  bug: [fxbug.dev/102231, fxbug.dev/102236]
+
+- workstream: |
+    UEFI productionization (including Secure Boot).
+  area: Firmware
+  category: [Platform Evolution]
+
+- workstream: |
+    USB Camera support.
+  area: Media
+  category: [Platform Evolution]
+
+- workstream: |
+    Continuous improvements to Fuchsia Emulator to support latest platform and
+    product specifications.
+  area: Graphics
+  category: [Platform Evolution]
+
+- workstream: |
+    Kernel improvements such as I/O optimizations to reduce latency, and virtual
+    memory compression support.
+  area: Kernel
+  category: [Kernel]
+
+- workstream: |
+    Packaging workflows for out-of-tree development.
+  area: Software Delivery
+  category: [Platform Evolution]
+  bug: [fxbug.dev/102601]
+
+- workstream: |
+    Fxfs and storage performance.
+  area: Storage
+  category: [Performance, Quality]
+  bug: [fxbug.dev/102657, fxbug.dev/102659, fxbug.dev/102661]
+
+- workstream: |
+    Continuous improvements to virtualization stack including an execution model
+    for Starnix, file sharing support, and moving virtual devices and VMM to
+    Rust.
+  area: Virtualization
+  category: [Platform Evolution, Simplicity and Tech Debt]
+  bug: [fxbug.dev/102873, fxbug.dev/102872]
+
+- workstream: |
+    Fuchsia toolchain improvements such as using LLVM IFS for ELF ABI tracking,
+    revamping Fuchsia libc, and implementing HWASan and TSan support.
+  area: Developer
+  category: [Platform Evolution, Quality]

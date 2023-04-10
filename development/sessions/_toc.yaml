@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Building and running a session"
-  path: /development/sessions/building-and-running-a-session.md
+  path: /docs/development/sessions/building-and-running-a-session.md
 - title: "Writing a Hello World session"
-  path: /development/sessions/writing-a-hello-world-session.md
+  path: /docs/development/sessions/writing-a-hello-world-session.md
 - title: "Session roles and responsibilities, by example"
-  path: /development/sessions/roles-and-responsibilities.md
+  path: /docs/development/sessions/roles-and-responsibilities.md

@@ -18,6 +18,21 @@ created and destroyed at runtime.
 
 <<../_common/_start_femu_with_packages.md>>
 
+### Publish the package
+
+Recall from [Software delivery](/docs/get-started/sdk/learn/intro/packages.md)
+that Fuchsia devices resolve software packages on demand from a package repository.
+
+Use the `bazel run` command to build and publish the `echo` component package:
+
+```posix-terminal
+bazel run //fuchsia-codelab/echo:pkg.publish -- \
+    --repo_name fuchsiasamples.com
+```
+
+This command publishes the package to a repository named `fuchsiasamples.com`;
+creating the repository if it does not exist and registering it with the target.
+
 ### Add to the component topology
 
 Create a new instance of the `echo` component using the following command:

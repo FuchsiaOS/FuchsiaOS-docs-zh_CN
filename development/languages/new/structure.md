@@ -6,17 +6,17 @@ Fuchsia.
 ## System calls
 
 The lowest level of Fuchsia support in a language provides access to the
-[Zircon system calls](/reference/syscalls/).
+[Zircon system calls](/docs/reference/syscalls/).
 Exposing these system calls lets programs written in the language interact with
 the kernel and, transitively, with the rest of the system.
 
 Programs cannot issue system calls directly. Instead, they make system calls by
-calling functions in the [vDSO](/concepts/kernel/vdso.md),
+calling functions in the [vDSO](/docs/concepts/kernel/vdso.md),
 which is loaded into newly created processes by their creator.
 
 The public entry points for the vDSO are defined in
 [//zircon/vdso](/zircon/vdso/).
-This file is processed by the [kazoo](/concepts/kernel/vdso.md#kazoo_tool)
+This file is processed by the [zither](/docs/concepts/kernel/vdso.md#zither_tool)
 tool.
 
 ## Async
@@ -27,9 +27,9 @@ sending messages to other processes), and then go back to sleep in their event
 loop.
 
 The fundamental building block for event loops in Fuchsia is the
-[port](/reference/kernel_objects/port.md)
+[port](/docs/reference/kernel_objects/port.md)
 object. A thread can sleep in a port using
-[`zx_port_wait`](/reference/syscalls/port_wait.md).
+[`zx_port_wait`](/docs/reference/syscalls/port_wait.md).
 When the kernel wakes up the thread, the kernel provides a *packet*, which is a
 data structure that describes why the kernel woke up the thread.
 
@@ -39,7 +39,7 @@ Rather than expose the port directly, language mantainers usually provide
 a library that abstracts over a port and provides asynchronous wait operations.
 
 Most asynchronous wait operations bottom out in
-[`zx_object_wait_async`](/reference/syscalls/object_wait_async.md). Typically, the `port` and `key`
+[`zx_object_wait_async`](/docs/reference/syscalls/object_wait_async.md). Typically, the `port` and `key`
 arguments are provided by the library and the `handle` and `signals`
 arguments are provided by the clients. When establishing a wait, the clients
 also typically provide an upcall (e.g., a closure) for the library to invoke
@@ -49,7 +49,7 @@ the upcall (e.g., from a hash table).
 No additional kernel object is needed to wake a thread up from another thread.
 You can wake up a thread by simply queuing a user packet to the thread's port
 using
-[zx_port_queue](/reference/syscalls/port_queue.md).
+[zx_port_queue](/docs/reference/syscalls/port_queue.md).
 
 ### Examples
 
@@ -63,7 +63,7 @@ using
 The Zircon kernel itself largely provides memory management, scheduling, and
 interprocess communication. Rather than being provided directly by the kernel,
 the bulk of the system interface is actually provided through interprocess
-communication, typically using [channels](/reference/kernel_objects/channel.md).
+communication, typically using [channels](/docs/reference/kernel_objects/channel.md).
 The protocols used for interprocess communication are defined in
 [Fuchsia Interface Definition Language (FIDL)](../fidl/README.md).
 
@@ -122,13 +122,13 @@ Typically the generated code will contain the following types of code:
 Some languages offer multiple options for some of these types of generated code.
 For example, a common pattern is to offer both *synchronous* and *asynchronous*
 proxy objects. The synchronous proxies make use of
-[`zx_channel_call`](/reference/syscalls/channel_call.md)
+[`zx_channel_call`](/docs/reference/syscalls/channel_call.md)
 to efficiently write a message, block waiting for a response, and then read the
 response, whereas asynchronous proxies use
-[`zx_channel_write`](/reference/syscalls/channel_write.md),
-[`zx_object_wait_async`](/reference/syscalls/object_wait_async.md),
+[`zx_channel_write`](/docs/reference/syscalls/channel_write.md),
+[`zx_object_wait_async`](/docs/reference/syscalls/object_wait_async.md),
 and
-[`zx_channel_read`](/reference/syscalls/channel_read.md)
+[`zx_channel_read`](/docs/reference/syscalls/channel_read.md)
 to avoid blocking on the remote end of the channel.
 
 Generally, we prefer to use *asynchronous* code whenever possible. Many FIDL
@@ -152,11 +152,11 @@ itself has no knowledge of FIDL. For example, most support libraries contain a
 on channels. The generated code can then be restricted to serialization,
 deserialization, and dispatch.
 
- * [C](/sdk/lib/fidl_base)
- * [C++](/sdk/lib/fidl/cpp/)
- * [Rust](/src/lib/fidl/rust/fidl)
- * [Dart](https://fuchsia.googlesource.com/topaz/+/HEAD/public/dart/fidl/)
- * [Go](https://fuchsia.googlesource.com/third_party/go/+/HEAD/src/syscall/zx/fidl/)
+* [C](/sdk/lib/fidl_base)
+* [C++](/sdk/lib/fidl/cpp/)
+* [Rust](/src/lib/fidl/rust/fidl)
+* [Dart](/sdk/dart/fidl/)
+* [Go](https://fuchsia.googlesource.com/third_party/go/+/HEAD/src/syscall/zx/fidl/)
 
 ## POSIX-style IO
 
@@ -174,6 +174,6 @@ provides a less error-prone interface that abstracts these "unsafe" FDIO
 functions.
 
 <!-- xrefs -->
-[json-ir]: /reference/fidl/language/json-ir.md
-[fidl-language]: /reference/fidl/language/language.md
-[fidl-wire-format]: /reference/fidl/language/wire-format
+[json-ir]: /docs/reference/fidl/language/json-ir.md
+[fidl-language]: /docs/reference/fidl/language/language.md
+[fidl-wire-format]: /docs/reference/fidl/language/wire-format

@@ -4,20 +4,20 @@
 
 toc:
   - title: "Overview"
-    path: /development/languages/fidl/guides/README.md
+    path: /docs/development/languages/fidl/guides/README.md
   - title: "Running FIDL"
-    path: /development/languages/fidl/guides/cli.md
+    path: /docs/development/languages/fidl/guides/cli.md
   - title: "Style guide"
-    path: /development/languages/fidl/guides/style.md
+    path: /docs/development/languages/fidl/guides/style.md
   - title: "Designing APIs"
-    path: /development/languages/fidl/guides/api-design.md
+    path: /docs/development/languages/fidl/guides/api-design.md
   - title: "Maxing out pagination"
-    path: /development/languages/fidl/guides/max-out-pagination.md
-  - title: "Picking between C, LLCPP, and HLCPP bindings"
-    path: /development/languages/fidl/guides/c-family-comparison.md
+    path: /docs/development/languages/fidl/guides/max-out-pagination.md
+  - title: "Picking between LLCPP and HLCPP bindings"
+    path: /docs/development/languages/fidl/guides/c-family-comparison.md
   - title: "Viewing generated bindings code"
-    path: /development/languages/fidl/guides/generated-code.md
+    path: /docs/development/languages/fidl/guides/generated-code.md
   - title: "Editor Support"
-    path: /development/languages/fidl/guides/editors.md
+    path: /docs/development/languages/fidl/guides/editors.md
   - title: "Hanging Gets in Rust"
-    path: /development/languages/fidl/guides/rust-hanging-get.md
+    path: /docs/development/languages/fidl/guides/rust-hanging-get.md

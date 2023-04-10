@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_pager_op_range
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Perform an operation on a range of a pager owned vmo.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_pager_op_range(zx_handle_t pager,
                               uint64_t data);
 ```
 
-## DESCRIPTION
+## Description
 
 Performs a pager operation, specified by *op* on *pager_vmo* in the range [*offset*, *offset* +
 *length*). The *pager_vmo* must have previously been created from the *pager* by
@@ -37,8 +44,8 @@ Operations that can be performed, i.e. values *op* can take:
 **ZX_PAGER_OP_FAIL** - The userspace pager failed to fulfill page requests for *pager_vmo* in the
 range [*offset*, *offset* + *length*) with command **ZX_PAGER_VMO_READ** or **ZX_PAGER_VMO_DIRTY**.
 *data* contains the error encountered (a `zx_status_t` error code sign-extended to a `uint64_t`
-value) - permitted values are **ZX_ERR_IO**, **ZX_ERR_IO_DATA_INTEGRITY**, **ZX_ERR_BAD_STATE** and
-**ZX_ERR_NO_SPACE**.
+value) - permitted values are **ZX_ERR_IO**, **ZX_ERR_IO_DATA_INTEGRITY**, **ZX_ERR_BAD_STATE**,
+**ZX_ERR_NO_SPACE**, and **ZX_ERR_BUFFER_TOO_SMALL**.
 
 This will signal threads that might be waiting on page requests in that range, unblocking them. If
 the blocked thread was requesting pages through a [`zx_vmo_read()`] / [`zx_vmo_write()`] or a
@@ -50,6 +57,13 @@ take a fatal page fault exception.
 [*offset*, *offset* + *length*). This indicates an intent to clean any dirty pages in the specified
 range once the writeback is completed (signaled with **ZX_PAGER_OP_WRITEBACK_END**). Refer to the
 sample code below for suggested usage.
+
+*data* can optionally be set to **ZX_VMO_DIRTY_RANGE_IS_ZERO** to indicate that the caller wants to
+write back the specified range as zeroes. This is intended to be used when the caller is processing
+a range that was returned by [`zx_pager_query_dirty_ranges()`] with its `options` set to
+**ZX_VMO_DIRTY_RANGE_IS_ZERO**. It ensures that any non-zero content that was created in the range
+after the query but before the writeback was started is not lost, by incorrectly assuming it is
+still zero and marking it clean (hence evictable).
 
 **ZX_PAGER_OP_WRITEBACK_END** - The userspace pager is done writing back pages in the range
 [*offset*, *offset* + *length*). This indicates that any dirty pages in the specified range that
@@ -76,40 +90,42 @@ this.
   }
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *pager* must be of type **ZX_OBJ_TYPE_PAGER**.
 
 *pager_vmo* must be of type **ZX_OBJ_TYPE_VMO**.
 
-## RETURN VALUE
+## Return value
 
 `zx_pager_op_range()` returns ZX_OK on success, or one of the following error codes on failure.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *pager* or *pager_vmo* is not a valid handle.
 
 **ZX_ERR_WRONG_TYPE** *pager* is not a pager handle, or *pager_vmo* is not a vmo handle.
 
-**ZX_ERR_INVALID_ARGS**  *pager_vmo* is not a vmo created from *pager*, or *offset* or *length* is
-not page aligned, or *op* is **ZX_PAGER_OP_FAIL** and *data* is not one of **ZX_ERR_IO**,
-**ZX_ERR_IO_DATA_INTEGRITY** or **ZX_ERR_BAD_STATE**.
+**ZX_ERR_INVALID_ARGS** under any of these conditions:
+- *pager_vmo* is not a vmo created from *pager*.
+- *offset* or *length* is not page aligned.
+- *op* is **ZX_PAGER_OP_FAIL** and *data* is not one of **ZX_ERR_IO**, **ZX_ERR_IO_DATA_INTEGRITY**
+  or **ZX_ERR_BAD_STATE**.
+- *op* is **ZX_PAGER_OP_WRITEBACK_BEGIN** and *data* is not 0 or **ZX_VMO_DIRTY_RANGE_IS_ZERO**.
 
 **ZX_ERR_OUT_OF_RANGE** The specified range in *pager_vmo* is invalid.
 
 **ZX_ERR_NOT_SUPPORTED**  *op* is not supported on the specified range in *pager_vmo*.
 
-## SEE ALSO
+**ZX_ERR_NOT_FOUND** *op* is **ZX_PAGER_OP_DIRTY** and the range denoted by *offset* and
+*length* contains unsupplied regions.
+
+## See also
 
  - [`zx_pager_create_vmo()`]
  - [`zx_pager_detach_vmo()`]
  - [`zx_pager_query_dirty_ranges()`]
  - [`zx_pager_supply_pages()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_pager_detach_vmo()`]: pager_detach_vmo.md

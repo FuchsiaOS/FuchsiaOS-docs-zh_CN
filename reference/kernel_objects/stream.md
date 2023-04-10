@@ -36,9 +36,9 @@ fails on the underlying VMO, the write can end up being short.
  - [`zx_stream_writev_at()`] - write data to the stream at a given offset
  - [`zx_stream_seek()`] - modify the current seek offset of the stream
 
-[`zx_stream_create()`]: /reference/syscalls/stream_create.md
-[`zx_stream_readv()`]: /reference/syscalls/stream_readv.md
-[`zx_stream_readv_at()`]: /reference/syscalls/stream_readv_at.md
-[`zx_stream_writev()`]: /reference/syscalls/stream_writev.md
-[`zx_stream_writev_at()`]: /reference/syscalls/stream_writev_at.md
-[`zx_stream_seek()`]: /reference/syscalls/stream_seek.md
+[`zx_stream_create()`]: /docs/reference/syscalls/stream_create.md
+[`zx_stream_readv()`]: /docs/reference/syscalls/stream_readv.md
+[`zx_stream_readv_at()`]: /docs/reference/syscalls/stream_readv_at.md
+[`zx_stream_writev()`]: /docs/reference/syscalls/stream_writev.md
+[`zx_stream_writev_at()`]: /docs/reference/syscalls/stream_writev_at.md
+[`zx_stream_seek()`]: /docs/reference/syscalls/stream_seek.md

@@ -19,25 +19,15 @@ Fuchsia, you must include the resource dependency in your package:
 
 ### Timezone configuration data
 
-To provide a specific version of the timezone data files to your package as
-configuration data, use the `icu_tzdata_config_data()` template in your
-`BUILD.gn` file and include it as a dependency in your package declaration:
-
-```gn
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/tz_version_parrot/BUILD.gn" region_tag="tzdata_config" adjust_indentation="auto" %}
-```
-
-Then, request the `config-data` capability in your component to map the
-subdirectory for your package into the component's namespace:
+To provide a specific version of the timezone data files to your component,
+request the appropriate [directory capability][directory-capability]
+in your component manifest:
 
 ```json5
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/tz_version_parrot/rust/meta/tz_version_parrot.cml" region_tag="config_data" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/tz_version_parrot/rust/meta/tz_version_parrot.cml" region_tag="tzdata-capability" adjust_indentation="auto" %}
 ```
 
-Note: For more details on using `config_data` in your builds,
-see [Product-specific configuration data][product-config]
-
-## Load the default ICU data
+## Load the ICU data
 
 You *must* load the ICU data in your program to make the locale data available.
 Otherwise, no locale data will be available and your ICU code will behave as if
@@ -97,10 +87,10 @@ the set of i18n data is empty.
 
 You are now ready to use ICU data in your program.
 
-### Load from the product configuration
+### Load from tzdata directory
 
-To load the specific version of the ICU data provided by `icu_tzdata_config_data()`,
-initialize the loader with the path to the data directory and revision file:
+To load the ICU data, initialize the loader with the path to the data directory
+and revision file:
 
 * {C++}
 
@@ -128,4 +118,5 @@ ffx setui intl --help
 ```
 
 <!-- xrefs -->
-[product-config]: /development/components/data.md#product-specific_configuration_with_config_data
+[product-config]: /docs/development/components/configuration/config_data.md
+[directory-capability]: /docs/concepts/components/v2/capabilities/directory.md

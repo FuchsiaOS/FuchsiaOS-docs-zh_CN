@@ -10,13 +10,12 @@ To distinguish between these, you need to be able to assess and improve your fuz
 
 ## Improve code coverage
 
+Note: This information is for the deprecated `fx fuzz` tool. Similar workflows are in development
+for the `ffx fuzz` tool.
+
 The first step in improving a fuzzer is to understand how well it is performing currently. An
-obvious key metric for coverage-guided fuzzers is code coverage.
-
-### Measure code coverage
-
-The prerequisite for improving a fuzzers code coverage is knowing the fuzzer's code coverage. You
-can collect this information using `fx fuzz`.
+obvious key metric for coverage-guided fuzzers is code coverage. You can collect this information
+using `fx fuzz`.
 
 For example:
 
@@ -27,35 +26,71 @@ fx fuzz analyze <var>package</var>/<var>fuzzer</var>
 This will run the fuzzer for 60 seconds and report the code coverage of the corpus on the device.
 If you specify a `--staging` option, files in that directory will first be added to the corpus.
 
+## Add or improve the seed corpus
+
 If notice gaps in the code coverage, you can add individual inputs to a seed corpus:
+
 1. Add a directory to the source tree near your fuzzer.
 1. Add one or more files to this directory, each containing the raw bytes of a test input that
    causes the fuzzer to reach previously uncovered code.
-1. Specify this directory in the [fuzzer GN template](build-a-fuzzer.md#fuzzer) as the seed corpus.
+1. Add a [`resource`][resource] GN target for this directory and add it to the fuzzer's `deps`.
+1. Add an argument with the package-relative path to the fuzzer's
+   [component manifest source][component-manifest-source].
 
 For example:
 
 <pre>
 <code class="devsite-terminal">cd $FUCHSIA_DIR</code>
 <code class="devsite-terminal">mkdir <var>path-to-library</var>/my-fuzzer-corpus</code>
-<code class="devsite-terminal">cp <var>handcrafted-input</var> <var>path-to-library</var>/my-fuzzer-corpus</code>
+<code class="devsite-terminal">cp <var>handcrafted-input</var> <var>path-to-library</var>/corpus</code>
 </pre>
 
 And in `//path/to/library/BUILD.gn`:
 
 ```
+{% verbatim %}
+import("//build/fuzz.gni")
+import("//build/dist/resource.gni")
+
+resource("my-library-corpus") {
+  sources = [
+    ...
+    "corpus/handcrafted-input",
+    ...
+  ]
+  outputs = [ "data/my-library-corpus/{{source_file_part}}" ]
+}
+
 cpp_fuzzer("my_fuzzer"){
   sources = [ "my-fuzzer.cc" ]
-  deps = [ ":my-library" ]
-  corpus = "my-fuzzer-corpus"
+  deps = [
+    ":my-library",
+    ":my-library-corpus"
+  ]
 }
+```
+
+And in the fuzzer's [component manifest source][component-manifest-source]:
+
+```
+{
+  ...
+  program: {
+    args: [
+      ...
+      "data/my-library-corpus",
+      ...
+    ]
+  }
+}
+{% endverbatim %}
 ```
 
 ## Make code friendlier to fuzzing
 
 Generally, libFuzzer is fairly effective at finding inputs that explore new conditional branches
 when the decision is based on bytes of the input. For example, it can use instrumentation on
-comparision instructions, such as CMP, to determine what value is needed to match a check on some
+comparison instructions, such as CMP, to determine what value is needed to match a check on some
 portion of the input.
 
 But this approach can fail when the fuzzer encounters "fuzzer-hostile" conditions. These include:
@@ -77,7 +112,7 @@ But this approach can fail when the fuzzer encounters "fuzzer-hostile" condition
     if (actual == expected) { ... }
     ```
 
-  * Conditions that check the results of [one-way functions][one-way-function].
+  * Conditions that check the results of [one-way functions][one-way-function]{:.external}.
 
     ```cpp
     int result = ECDSA_verify(0, data, data_len, signature, signature_len, ec_key);
@@ -103,7 +138,7 @@ But this approach can fail when the fuzzer encounters "fuzzer-hostile" condition
     if c == expected { ... }
     ```
 
-  * Conditions that check the results of [one-way functions][one-way-function].
+  * Conditions that check the results of [one-way functions][one-way-function]{:.external}.
 
     ```rust
     let digest = H::hash(message);
@@ -111,6 +146,9 @@ But this approach can fail when the fuzzer encounters "fuzzer-hostile" condition
     ```
 
 * {Go}
+
+  Note: Go fuzzing is experimental and may not be supported on your development host.
+
   * Conditions that use data from external sources. For example:
     ```golang
     if rand.Intn(100) == 0 { ... }
@@ -123,7 +161,7 @@ But this approach can fail when the fuzzer encounters "fuzzer-hostile" condition
     if iCksum != want { ... }
     ```
 
-  * Conditions that check the results of [one-way functions][one-way-function].
+  * Conditions that check the results of [one-way functions][one-way-function]{:.external}.
 
     ```golang
     ecdsaKey, ok := key.(*ecdsa.PublicKey)
@@ -176,6 +214,8 @@ the code being tested. libFuzzer refers to this as using a [fuzzer-friendly buil
 
 * {Go}
 
+  Note: Go fuzzing is experimental and may not be supported on your development host.
+
   Use the `fuzz` package. Since Go only performs [conditional compilation][go-build] at the file
   level, this package include two files that define an `const Enabled <bool>`. Which file is
   included, and therefore the value of `Enabled` is determined by whether the code is being built in
@@ -198,11 +238,11 @@ the code being tested. libFuzzer refers to this as using a [fuzzer-friendly buil
 ### Add custom mutators
 
 Note: Custom mutators are currently only supported in C/C++. You may be able to use them in other
-languages using [Rust's FFI][rust-ffi] or [Go's cgo][golang-cgo].
+languages using [Rust's FFI][rust-ffi]{:.external} or [Go's cgo][golang-cgo]{:.external}.
 
 In some case, the inputs being provided by the fuzzer may be transformed before being acted on.
 This can greatly reduce the fuzzer's ability to associate inputs with the behaviors they produce.
-For exmaple, a library being fuzzed my first decompress its inputs before processing them. The most
+For example, a library being fuzzed my first decompress its inputs before processing them. The most
 effective way to fuzz this library is to preform mutations on uncompressed inputs, then compress
 them before invoking the library.
 
@@ -214,7 +254,7 @@ extern "C" size_t LLVMFuzzerCustomMutator(uint8_t *Data, size_t Size,
                                           size_t MaxSize, unsigned int Seed);
 ```
 
-If provided, libFuzzer will call this function with a buffer `Data` of size `MaxSize` initally
+If provided, libFuzzer will call this function with a buffer `Data` of size `MaxSize` initially
 filled with `Size` bytes of a valid input from the corpus. This function can transform this data
 before calling another LLVM [fuzzing interface][fuzzer-interface] function:
 
@@ -228,7 +268,7 @@ In the example of the library that requires compressed inputs, a custom mutator 
 input from the corpus, call `LLVMFuzzerMutate` on it to create a new input, and compress the result.
 
 Google's public fuzzing documentation has detailed examples for this case and others. See
-[Structure-Aware Fuzzing with libFuzzer][structure-aware-fuzzing].
+[Structure-Aware Fuzzing with libFuzzer][structure-aware-fuzzing]{:.external}.
 
 ### Provide a dictionary {#dictionary}
 
@@ -237,19 +277,23 @@ fuzzer will use a dictionary to construct inputs that are more likely to be vali
 provide deeper coverage.
 
 If you know what sort of tokens your code expects, you can add them to a dictionary file, one per
-line. Then provide the file to the fuzzer using the [fuzzer GN template](build-a-fuzzer.md#fuzzer).
+line. Then provide the file to the fuzzer as a [`resource`][resource] in the same manner as a seed
+corpus, and add them to the fuzzer's [component manifest source][component-manifest-source].
 
 For example:
 
 ```
-cpp_fuzzer("my_fuzzer"){
-  sources = [ "my-fuzzer.cc" ]
-  deps = [ ":my-library" ]
-  dictionary = "relative/path/to/dictionary"
+{
+  ...
+  program: {
+    args: [
+      ...
+      "-dict=data/my-dictionary.txt",
+      ...
+    ]
+  }
 }
 ```
-
-`fx fuzz analyze` will display a recommended dictionary based on its observations.
 
 ## Improve fuzzer performance
 
@@ -307,10 +351,10 @@ extern "C" LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 ```
 
 As written, this introduces a trade-off between performance and sanitizer accuracy. If the code
-above instead allocated a memory region of length `max`, [AddressSanitizer][asan] would be able to
-detect if `Decompress` overflowed by any amount. With a pre-allocated region, it may silently
-succeed. Fortunately, [AddressSanitizer][asan] provides a way to [manually poison][manual-poison]
-memory.
+above instead allocated a memory region of length `max`, [AddressSanitizer][asan]{:.external} would
+be able to detect if `Decompress` overflowed by any amount. With a pre-allocated region, it may
+silently succeed. Fortunately, [AddressSanitizer][asan]{:.external} provides a way to
+[manually poison][manual-poison]{:.external} memory.
 
 For example:
 

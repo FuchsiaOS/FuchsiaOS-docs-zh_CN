@@ -2,17 +2,25 @@
 
 ## Run tests
 
-To run the zxdb tests:
+To run the zxdb frontend tests (these run on the host development computer
+only):
 
 ```posix-terminal
 fx test zxdb_tests
 ```
 
-To run the debug\_agent tests:
+To run the debug\_agent tests (these run on the target Fuchsia system only):
 
 ```posix-terminal
 fx test debug_agent_unit_tests
 fx test debug_agent_integration_tests
+```
+
+To run the end-to-end tests (these test the integration of the zxdb frontend
+with the debug\_agent):
+
+```posix-terminal
+fx test --e2e zxdb_e2e_tests
 ```
 
 ## Reload debug\_agent.cm after a new version is built
@@ -98,9 +106,3 @@ Breakpoint 1 now matching 1 addrs for $main
 
 // Now you have two running instances of the debugger!
 ```
-
-Note: Only one debugger can be attached to the main job in order to auto-attach to new processes
-due to [fxbug.dev/97848](https://fxbug.dev/97848). Since you're using it for the first debugger,
-you won't be able to auto-attach to new processes using a filter, or launch a component in the
-second debugger. However, you should still be able to launch processes and attach to existing
-processes.

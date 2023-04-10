@@ -52,7 +52,7 @@ unfortunately have to
 [wait for them to migrate first][wait-to-migrate]{: .external}.
 
 Make sure the Dart sources you are migrating are
-[included in your build](/development/build/fx.md#configure-a-build).
+[included in your build](/docs/development/build/fx.md#configure-a-build).
 Remove `// @dart=2.9` and the `TODO` line above it, rebuild, then follow errors
 and suggestions from Dart analysis. See
 [Dart's migration guide][dart-migration-guide]{: .external} for more suggestions.
@@ -70,8 +70,8 @@ close it after your change has merged.
 
 ## Examples
 
-*   [[cts][net] Enable null-safety](https://fuchsia-review.googlesource.com/c/fuchsia/+/584343)
-*   [[examples] Enable null safety check](https://fuchsia-review.googlesource.com/c/fuchsia/+/626781)
+*   [`[cts][net] Enable null-safety`](https://fuchsia-review.googlesource.com/c/fuchsia/+/584343)
+*   [`[examples] Enable null safety check`](https://fuchsia-review.googlesource.com/c/fuchsia/+/626781)
 
 ## Sponsors
 

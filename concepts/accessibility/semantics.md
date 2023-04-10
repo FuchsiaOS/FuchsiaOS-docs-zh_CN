@@ -35,14 +35,7 @@ On Fuchsia, the UI may be composed of multiple Scenic views and the
 accessibility framework tracks a separate semantic tree for each view on
 screen. This diagram shows an example UI with multiple semantic trees.
 
-![This figure shows the hierarchy of a Fuchsia UI from Scenic's perspective
-only.
-
-At the top are the many views that Scenic manages.  Each view is linked to a
-runtime displaying some UI, including both Flutter and Chromium runtimes.
-
-Each Flutter and Chromium runtime maintains within itself a semantic hierarchy
-that would be supplied to the Accessibility Manager.](scenic_semantics.png)
+![This figure shows the hierarchy of a Fuchsia UI from Scenic's perspective only. At the top are the many views that Scenic manages. Each view is linked to a runtime displaying some UI, including both Flutter and Chromium runtimes. Each Flutter and Chromium runtime maintains within itself a semantic hierarchy that would be supplied to the Accessibility Manager.](scenic_semantics.png)
 
 Internally, both Flutter and Chromium have the ability to produce semantic trees
 for UI they are rendering. The Fuchsia [accessibility
@@ -156,7 +149,7 @@ to a given metric.
 
 [flutter]: https://api.flutter.dev/flutter/widgets/Semantics-class.html
 [chromium]: https://source.chromium.org/chromium/chromium/src/+/master:ui/accessibility/ax_node_data.h
-[view]: /development/graphics/scenic/concepts/view_ref.md
+[view]: /docs/development/graphics/scenic/concepts/view_ref.md
 [a11yinput]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78638
 [viewref]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.ui.views/view_ref.fidl
 [node]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.accessibility.semantics/node.fidl

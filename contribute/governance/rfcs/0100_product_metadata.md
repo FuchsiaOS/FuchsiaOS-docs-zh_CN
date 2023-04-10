@@ -916,10 +916,10 @@ tree, which are mentioned above. Much of the existing metadata can be found in
 `//build/images/BUILD.gn`; for example, [the current version of the flashing
 schema can be found there][prior-art].
 
-[api-review]: /contribute/governance/api_council.md
+[api-review]: /docs/contribute/governance/api_council.md
 [build-configuration]: /products/
-[ffx]: /development/tools/ffx/overview.md
-[glossary.product]: /glossary/README.md#product
+[ffx]: /docs/development/tools/ffx/overview.md
+[glossary.product]: /docs/glossary/README.md#product
 [json-schema]: http://json-schema.org/draft-07/schema#
 [prior-art]: https://fuchsia.googlesource.com/fuchsia/+/545a693eabe7c282de7e1560a3ee64f24f6988d1/build/images/BUILD.gn#177701
 [schemata]: /build/sdk/meta

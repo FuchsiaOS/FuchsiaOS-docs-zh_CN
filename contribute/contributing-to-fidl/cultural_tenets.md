@@ -93,7 +93,7 @@ problematic because it took advantage of careful assembly (ensuring no handles
 we present, by visual review sort of) and was received negatively initially. The
 architectural gap this Dart FIDL JSON feature took advantage of was only closed
 by [RFC-0057: Default No
-Handles](/contribute/governance/rfcs/0057_default_no_handles.md), more than
+Handles](/docs/contribute/governance/rfcs/0057_default_no_handles.md), more than
 18 months later.
 
 Another example is work on code size analysis (see [PS1 of
@@ -142,6 +142,6 @@ craft of being an engineer. Practice makes perfect.
  itself is expanded here to be relevant to our work.
 
 <!-- link labels -->
-[iterate]: /contribute/governance/rfcs/rfc_process.md#iterate
-[medium]: /contribute/governance/rfcs/0017_folding_ftp_into_rfc.md#medium
-[RFC]: /contribute/governance/rfcs/rfc_process.md
+[iterate]: /docs/contribute/governance/rfcs/rfc_process.md#iterate
+[medium]: /docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md#medium
+[RFC]: /docs/contribute/governance/rfcs/rfc_process.md

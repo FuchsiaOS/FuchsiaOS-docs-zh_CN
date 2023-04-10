@@ -199,7 +199,7 @@ of changes to how tests are sharded and how profile data is represented could
 quickly bring the size closer to 1GB.
 
 [googletest]: https://github.com/google/googletest
-[rfc-0100]: /contribute/governance/rfcs/0100_product_metadata.md#schema-evolution
+[rfc-0100]: /docs/contribute/governance/rfcs/0100_product_metadata.md#schema-evolution
 [schema-change]: https://fuchsia-review.googlesource.com/c/fuchsia/+/654222
 [schema-dir]: /sdk/schema/ffx_test/
-[test-runner-framework]: /development/testing/components/test_runner_framework.md
+[test-runner-framework]: /docs/development/testing/components/test_runner_framework.md

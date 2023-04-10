@@ -114,6 +114,8 @@ The following are the approved licenses for production target devices:
 *   BSD 2-clause license, specifically the text at
     [https://opensource.org/licenses/BSD-2-Clause](https://opensource.org/licenses/BSD-2-Clause)
 
+*   BSD AES variant, specifically the text at [https://fedoraproject.org/wiki/Licensing:BSD#AES_Variant](https://web.archive.org/web/20221220074725/https://fedoraproject.org/wiki/Licensing:BSD#AES_Variant)
+
 *   MIT license, specifically the text at
     [/zircon/kernel/LICENSE](/zircon/kernel/LICENSE)
 
@@ -224,6 +226,9 @@ Additionally, the following licenses are permitted for the development target:
 *   GNU Lesser General Public License 2.1 (LGPL 2.1), specifically the text at
     [https://spdx.org/licenses/LGPL-2.1.html#licenseText](https://spdx.org/licenses/LGPL-2.1.html#licenseText)
 
+*   Mozilla Public License Version 2.0 (MPL 2.0), specifically the text at
+    [https://spdx.org/licenses/MPL-2.0.html#licenseText](https://spdx.org/licenses/MPL-2.0.html#licenseText)
+
 *   Open Font License 1.1 (OFL 1.1), specifically the text at
     [https://github.com/u-boot/u-boot/blob/master/Licenses/OFL.txt](https://github.com/u-boot/u-boot/blob/master/Licenses/OFL.txt)
 
@@ -237,7 +242,7 @@ purposes you must do the following:
 *   Verify the exact source of all dependencies are hosted on
     [https://fuchsia.googlesource.com/](https://fuchsia.googlesource.com/).
     *   If some components are hosted elsewhere, contact the
-        [Open Source Review Board (OSRB)](/contribute/governance/policy/osrb-process.md)
+        [Open Source Review Board (OSRB)](/docs/contribute/governance/policy/osrb-process.md)
         to check that the hosting arrangement satisfies the requirements of the
         Fuchsia project.
 *   Produce a file containing the license text of the license of the binary and
@@ -256,7 +261,7 @@ existing copyright notice or license file when changing external code.
 ### Add new external code
 
 For information on adding new external code, see
-[Open Source Review Board (OSRB) Process](/contribute/governance/policy/osrb-process.md).
+[Open Source Review Board (OSRB) Process](/docs/contribute/governance/policy/osrb-process.md).
 
 ### Questions
 

@@ -125,7 +125,7 @@ or every flag set (`$mask`):
 * `String toString()`: Returns a readable representation of the `FileMode`.
 * `FileMode operator |(FileMode other)`: Bitwise or operator.
 * `FileMode operator &(FileMode other)`: Bitwise and operator.
-* `bool operator(dynamic other)`: Equality operator.
+* `bool operator==(Object other)`: Equality operator.
 * `int getUnknownBits()`: Returns only the set bits that are unknown. Always
   returns 0 for [strict][lang-flexible] bits.
 * `bool hasUnknownBits()`: Returns whether this value contains any unknown bits.
@@ -203,7 +203,7 @@ The FIDL toolchain generates a `Color` class with the following methods:
   provided named arguments.
 * `List<Object> get $fields`: Returns a list of fields in declaration order.
 * `String toString()`: Returns a readable string of the `Color`
-* `bool operator==(dynamic other)`: Equality operator that performs a deep
+* `bool operator==(Object other)`: Equality operator that performs a deep
   comparison when compared to another instance of a `Color`.
 
 Example usage:
@@ -241,7 +241,7 @@ As well as a `JsonValue` class with the following methods:
 * `String toString()`: Returns a readable string of the `JsonValue`.
 * `int get $ordinal`: Getter for the underlying [ordinal][union-lexicon] value.
 * `Object get $data`: Getter for the underlying union data.
-* `bool operator ==(dynamic other)`: Equality operator that performs deep
+* `bool operator ==(Object other)`: Equality operator that performs deep
    comparison when compared to another `JsonValue` of the same variant.
 * `fidl.UnknownRawData? get $unknownData`: Returns the bytes and handles of the
   unknown data if this union contains an unknown variant, or `null` otherwise.
@@ -306,7 +306,7 @@ The FIDL toolchain generates a `User` class that defines the following methods:
   to unknown field values (i.e. bytes and handles). The list of handles is
   returned in [traversal order][traversal], and is guaranteed to be empty if the
   table is a [value][lang-resource] type.
-* `bool operator ==(dynamic other)`: Equality operator that performs deep
+* `bool operator ==(Object other)`: Equality operator that performs deep
   comparison when compared to another `User`.
 
 Example usage:
@@ -374,14 +374,19 @@ Examples on how to set up and bind a proxy class to a channel are covered in the
 ### Server {#server}
 
 Implementing a server for a FIDL protocol involves providing a concrete
-implementation of `TicTacToe` abstract class.
+implementation of the appropriate interface. For a `closed` protocol, the
+`TicTacToe` abstract class is used directly as the interface implemented on the
+server. For an `open` or `ajar` protocol, an additional interface called
+`TicTacToeServer` is generated, which must be implemented on the server.
 
-The bindings provide a `TicTacToeBinding` class that can bind to a `TicTacToe`
-instance and a channel, and listens to incoming messages on the channel,
+
+The bindings provide a `TicTacToeBinding` class that can bind to either a
+`TicTacToe` instance (if `closed`) or `TicTacToeServer` instance (if `open` or
+`ajar`), and a channel, and listens to incoming messages on the channel,
 dispatches them to the server implementation, and sends messages back through
 the channel. This class implements
 <!-- TODO(fxbug.dev/58672) add link to API docs when those are available -->
-`fidl.AsyncBinding<TicTacToe>`.
+`fidl.AsyncBinding<TicTacToe[Server]>`.
 
 Examples on how to set up and bind a server implementation are covered in the
 [Dart tutorial][dart-tutorial].
@@ -458,6 +463,74 @@ myproxy.makeMove(1, 2).then((gameState) { ... })
 
 ```
 
+### Unknown interaction handling {#unknown-interaction-handling}
+
+#### Server-side
+
+When a protocol is declared as `open` or `ajar`, the backend will generate a
+`TicTacToeServer` class which inherits from the `TicTacToe` class. The server
+interface will add a single method to the base interface, called
+`$unknownMethod`, with this signature:
+
+```dart
+Future<void> $unknownMethod(fidl.UnknownMethodMetadata metadata);
+```
+
+This method will be called whenever the server receives a flexible unknown
+interaction which it can handle, that is a `flexible` one-way method in the case
+of an `ajar` protocol, or any `flexible` method in the case of an `open`
+protocol. The argument is a class that holds basic information about the unknown
+method that was received:
+
+```dart
+/// Metadata about an unknown flexible method that was received.
+class UnknownMethodMetadata {
+  UnknownMethodMetadata(this.ordinal, this.unknownMethodType);
+
+  /// Ordinal of the method.
+  final int ordinal;
+
+  /// Type of the unknown method.
+  ///
+  /// For an ajar protocol, this will always be oneWay.
+  final UnknownMethodType unknownMethodType;
+}
+```
+
+`UnknownMethodType` is an enum with two variants, `oneWay` and `twoWay`. If the
+protocol is `ajar`, the `unknownMethodType` will always be `oneWay`, since
+two-way unknown methods cannot be handled.
+
+#### Client-side
+
+There is no way for the client to tell if a `flexible` one-way method was known
+to the server or not. For `flexible` two-way methods, if the method is not known
+to the server, `fidl.UnknownMethodException` will be thrown, which is a subclass
+of `FidlError` which has the error code `FidlErrorCode.fidlUnknownMethod`.
+
+Aside from the possibility of getting an `UnknownMethodException`, there are no
+API difference between `strict` and `flexible` methods on the client.
+
+For `open` and `ajar` protocols the generated `TicTacToeProxy` class will have an additional field, called `$unknownEvents`:
+
+```dart
+Stream<UnknownEvent> get $unknownEvents;
+```
+
+This stream will emit an `UnknownEvent` whenever the client receives an unknown
+`flexible` event from the server. `UnknownEvent` is a class that holds
+information about the event that was received:
+
+```dart
+/// Event used when an unknown, flexible event is received.
+class UnknownEvent {
+  UnknownEvent(this.ordinal);
+
+  /// Ordinal of the event.
+  final int ordinal;
+}
+```
+
 ### Protocol composition {#protocol-composition}
 
 FIDL does not have a concept of inheritance, and generates full code as
@@ -495,7 +568,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional {#transitional}
 
 For protocol methods annotated with the
-[`@transitional`](/reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/docs/reference/fidl/language/attributes.md#transitional)
 attribute, the FIDL toolchain generates a default implementation on the abstract
 class so that server implementations will continue to compile without having to
 override the new method.
@@ -503,7 +576,7 @@ override the new method.
 #### Discoverable {#discoverable}
 
 The generated class for a protocol annotated with the
-[`@discoverable`](/reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/docs/reference/fidl/language/attributes.md#discoverable)
 attribute has a non-null `$serviceName` field.
 
 ### Test scaffolding {#test-scaffolding}
@@ -521,18 +594,18 @@ and all events are implemented by returning a Stream with a single
 `UnimplementedError` event.
 
 <!-- xrefs -->
-[anon-names]: /reference/fidl/language/language.md#inline-layouts
-[dart-tutorial]: /development/languages/fidl/tutorials/dart
-[lang-constants]: /reference/fidl/language/language.md#constants
-[lang-bits]: /reference/fidl/language/language.md#bits
-[lang-enums]: /reference/fidl/language/language.md#enums
-[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: /reference/fidl/language/language.md#structs
-[lang-tables]: /reference/fidl/language/language.md#tables
-[lang-unions]: /reference/fidl/language/language.md#unions
-[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
-[lang-protocols]: /reference/fidl/language/language.md#protocols
-[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
-[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
-[unknown-attr]: /reference/fidl/language/attributes.md#unknown
-[traversal]: /reference/fidl/language/wire-format/README.md#traversal-order
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
+[dart-tutorial]: /docs/development/languages/fidl/tutorials/dart
+[lang-constants]: /docs/reference/fidl/language/language.md#constants
+[lang-bits]: /docs/reference/fidl/language/language.md#bits
+[lang-enums]: /docs/reference/fidl/language/language.md#enums
+[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /docs/reference/fidl/language/language.md#structs
+[lang-tables]: /docs/reference/fidl/language/language.md#tables
+[lang-unions]: /docs/reference/fidl/language/language.md#unions
+[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
+[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
+[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
+[union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
+[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
+[traversal]: /docs/reference/fidl/language/wire-format/README.md#traversal-order

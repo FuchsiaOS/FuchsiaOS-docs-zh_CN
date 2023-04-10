@@ -8,20 +8,20 @@
 
 ## Summary
 
-The Fuchsia [Compatibility Test Suite (CTS)][cts] is now running in our commit
+The [Compatibility Tests for Fuchsia (CTF)][cts] are now running in our commit
 queue (CQ), ensuring that new platform code doesn't break backwards
 compatibility.  However, a test suite is only as good as the tests it contains,
-and ours contains few tests.  This document outlines a CTS Program for the
+and ours contains few tests.  This document outlines a CTF Program for the
 platform to get to full API and ABI coverage.
 
 ## Motivation
 
-The CTS exists to determine whether a build of the Fuchsia platform, running on
+The CTF exists to determine whether a build of the Fuchsia platform, running on
 a particular device, correctly implements (or *is compatible with*) the API and
 ABI exposed by a particular Fuchsia SDK.  To put it another way, it demonstrates
 that the build correctly implements Fuchsia.
 
-If a system running Fuchsia passes the CTS tests for a particular ABI revision,
+If a system running Fuchsia passes the CTF tests for a particular ABI revision,
 then its developers can have confidence that components built for that revision
 will work on the system, and that the system is backwards compatible with that
 revision.  The tests associated with particular ABI and API revisions we care
@@ -30,7 +30,7 @@ about are run in our CQ system.
 Fuchsia Software Development Kits (SDKs) contain tools, libraries, and headers
 that allow developers to target Fuchsia's APIs and ABIs.  We refer to the API
 and ABI exposed to out-of-tree developers via SDKs as Platform Surface Area
-(PlaSA).  Each SDK is paired with a set of CTS tests that exercise the surface
+(PlaSA).  Each SDK is paired with a set of CTF tests that exercise the surface
 area it exposes.  The tests are available in both source and binary form.
 
 In order for this system to provide value, we must have a robust, complete set
@@ -39,7 +39,7 @@ platform behavior they are testing easily and do not exhibit flakiness. A set of
 tests is complete if it exercises all of the documented behavior for that
 interface.
 
-As of September 2021, there are a handful of tests in the CTS suite.  In the
+As of September 2021, there are a handful of tests in the CTF suite.  In the
 rest of this document, we identify how we will build out a robust, complete set
 of tests over time.
 
@@ -72,21 +72,21 @@ List people who should review the RFC, but whose approval is not required.
 
 _Socialization:_
 
-This document was socialized with the CTS and test infrastructure teams.
+This document was socialized with the CTF and test infrastructure teams.
 
 ## Design
 
 ### Requirements
 
-We have two basic requirements that drive CTS policy.
+We have two basic requirements that drive CTF policy.
 
-First, CTS tests should, in the long term, provide complete coverage of the
+First, CTF tests should, in the long term, provide complete coverage of the
 PlaSA, which consists of ABI (currently defined as anything in the [Fuchsia
 System Interface][fsi]) and API (currently defined as anything requiring API
 Review +1) exposed to end-developers via an SDK, and expected tooling behavior.
 A discussion of what constitutes coverage can be found in the next section.
 
-Second, CTS tests should, to the extent possible, cover both intended and
+Second, CTF tests should, to the extent possible, cover both intended and
 real-world use cases of the PlaSA.  We need to cover real world cases because we
 cannot claim that our tests provide any degree of compatibility if they do not
 reflect what developers do with surface area elements.  We need to cover
@@ -96,36 +96,36 @@ is a useful exercise for developers to write intended client code when
 developing an API.
 
 In this section, we present a path forward to providing broad platform coverage
-by the CTS.
+by the CTF.
 
 ### Coverage
 
 Before we discuss what it means for our platform to reach complete coverage, we
-will discuss what coverage looks like for the CTS.
+will discuss what coverage looks like for the CTF.
 
 Note that, in this document, "complete coverage" does not mean it has to
 exercise every possible behavior - merely that it has to exercise every
 documented behavior - both success and error conditions - and all of the
 interfaces.  Informally, each interface a test exercises is called an element.
 
-The CTS team is tracking coverage of FIDL and C++ methods exported via SDKs.
+The CTF team is tracking coverage of FIDL and C++ methods exported via SDKs.
 The team will be driving a process to ensure that we cover every FIDL and C/C++
 method, and that test code covers code shipped with SDKs (e.g., the code in
 libfdio).  In this document, when we refer to _full coverage_, we mean as
-tracked by the CTS program.
+tracked by the CTF program.
 
-Tests that are not part of the CTS do not count towards coverage.  Proprietary
+Tests that are not part of the CTF do not count towards coverage.  Proprietary
 tests - that is, tests that are not open and part of the Fuchsia platform - also
 do not count towards coverage.
 
 Note that full coverage does not ensure high quality, useful testing of all
-APIs.  There is much the CTS program will not track; for example, we cannot have
+APIs.  There is much the CTF program will not track; for example, we cannot have
 tests that exercise every possible set of parameter values (every API that takes
 a 32-bit integer can have 2^32 possible values; we are not likely to exercise it
 with 2^32 possible tests).  API developers and reviewers are therefore
 responsible for ensuring that we have high quality coverage.
 
-To phrase it another way, CTS is a mechanism that helps us enforce
+To phrase it another way, CTF is a mechanism that helps us enforce
 compatibility, but is not enough by itself.  It is necessary, but not
 sufficient.
 
@@ -136,7 +136,7 @@ be used by developers to inform whether they have adequate coverage.
 [API documentation rubric][doc-rubric] should also have a test that guarantees
 that behavior.* For example, the documentation rubric states that behavior when
 a parameter is null should be documented.  That behavior should be exercised
-with a CTS test.
+with a CTF test.
 
 Note that many APIs do not conform to the documentation rubric.  Since we
 encourage writing tests as part of API development, the process of writing such
@@ -144,26 +144,26 @@ tests is a good time to flesh out the documentation and ensure that it meets the
 rubric requirements.
 
 *Second, if a change in behavior causes a regression in application code running
-out of tree, then there is likely a CTS test missing.* CTS tests are supposed to
+out of tree, then there is likely a CTF test missing.* CTF tests are supposed to
 be the guarantee that new releases exhibit behavior compatible with older
 releases.  If a Fuchsia build is compatible with an older release, that build
 must be able to run software that targets that release.  Therefore, if a change
 causes a regression that breaks application code running out of tree, there is a
-compatibility behavior that was not tested - a missing CTS test.
+compatibility behavior that was not tested - a missing CTF test.
 
 In some cases, platform behavior may be changed to make platform behavior
 conform better to the documentation.  In this case, the change should come with
-a new CTS test.
+a new CTF test.
 
 A change in platform behavior may also result from a change to undocumented
 behavior that we want to remain undocumented.  What we do in that case is
-outside the scope of this document.  CTS tests should not exercise deliberately
+outside the scope of this document.  CTF tests should not exercise deliberately
 undocumented behavior.
 
-### CTS tiers
+### CTF tiers
 
-In order to encourage as much CTS coverage as possible, we will gradually
-introduce more requirements for CTS coverage.  As areas build their coverage,
+In order to encourage as much CTF coverage as possible, we will gradually
+introduce more requirements for CTF coverage.  As areas build their coverage,
 they move from less covered tiers to more covered tiers.  Prior to adding
 tests, areas are in no tier at all.
 
@@ -177,7 +177,7 @@ This is non-normative text.
 
 ##### Covering breakages
 
-Because one of the goals of the CTS is to ensure compatibility, and a critical
+Because one of the goals of the CTF is to ensure compatibility, and a critical
 sign of incompatibility is when a platform or SDK release breaks a customer due
 to a change in behavior, we propose introducing the following policy as soon as
 possible:
@@ -185,8 +185,8 @@ possible:
 > If a platform or SDK release causes an SDK roll failure or a failed canary
 > release due to backwards incompatible changes to Fuchsia PlaSA API or
 > behavior, the author of that breaking change is responsible for ensuring there
-> is documentation for the new behavior and a CTS test that covers the new
-> behavior.  If it is not currently possible to write CTS tests for that surface
+> is documentation for the new behavior and a CTF test that covers the new
+> behavior.  If it is not currently possible to write CTF tests for that surface
 > area element, then the team that owns that PlaSA element must prioritize a
 > plan for developing them.
 
@@ -201,12 +201,12 @@ We expect developers to start to develop platform testing capabilities alongside
 new SDK-facing features.
 
 > All additions to the PlaSA (e.g., new SDK tools, FIDL protocols or methods,
-> and C++ headers) shipped with partner or public SDKs require CTS tests. Anyone
+> and C++ headers) shipped with partner or public SDKs require CTF tests. Anyone
 > taking a new API element through API Review and including it in a public or
-> partner SDK must have a plan to include CTS tests with their new API.
+> partner SDK must have a plan to include CTF tests with their new API.
 
 It is the responsibility of the platform team owning the platform change to
-provide the CTS test, and work with the CTS program to deliver that test.
+provide the CTF test, and work with the CTF program to deliver that test.
 
 As API developers work through their test plans, we strongly recommend that they
 surface what kinds of tests they intend to write with their API reviewers so
@@ -217,9 +217,9 @@ If a platform team responds to all backwards-compatibility-breaking changes to
 API and ABI you own with a test, and write tests for new platform contract
 functionality and behaviors, that team is in Tier 1.
 
-Note that the requirement for CTS tests for API review only applies to PlaSA API
+Note that the requirement for CTF tests for API review only applies to PlaSA API
 elements.  As long as an API is not exposed to end developers via an SDK, it
-does not need associated CTS tests.
+does not need associated CTF tests.
 
 #### Tier 2 (building)
 
@@ -231,21 +231,21 @@ introducing the following policy:
 
 > All modifications to the API or behavior of a PlaSA element, regardless of
 > whether it is a new PlaSA element or an existing one, must be accompanied by a
-> CTS test that covers the change.
+> CTF test that covers the change.
 
-> If it is not currently possible to write CTS tests for an existing public or
+> If it is not currently possible to write CTF tests for an existing public or
 > partner surface area element, then the responsible team must provide a
 > plan for developing those tests prior to making the change, and execute on
 > that plan as soon as is feasible, as agreed upon with their API reviewer.
 
-In this tier, we strongly recommend CTS tests be written prior to major rewrites
+In this tier, we strongly recommend CTF tests be written prior to major rewrites
 or replacement of any services, tools, or libraries that affect PlaSA behavior,
 regardless of whether the new code is intended to change that behavior.  For
 example, if we were to rewrite the kernel from scratch, but keep the same VDSO
 behavior, tests of that behavior should be written prior to the rewrite.
 
 If you do everything you need for Tier 1, and you make sure that all changes you
-make to ABI or API are covered by CTS tests, you have achieved Tier 2.
+make to ABI or API are covered by CTF tests, you have achieved Tier 2.
 
 #### Tier 3 (complete)
 
@@ -263,34 +263,34 @@ PlaSA elements you own, you are complete.
 
 ## Implementation
 
-A CTS program will be initiated by the Fuchsia team to encourage full platform
-coverage.  CTS coverage will be tracked by several dashboards.  The details of
+A CTF program will be initiated by the Fuchsia team to encourage full platform
+coverage.  CTF coverage will be tracked by several dashboards.  The details of
 these dashboards will evolve, and are outside the scope of this RFC, but they
 will track basic test coverage for each PlaSA element.
 
-The CTS team is responsible for providing developers with the infrastructure
+The CTF team is responsible for providing developers with the infrastructure
 needed to run their tests.  If test developers do not see the functionality they
-need, they should partner with the CTS team to ensure that they can provide
-tests that can be run in CTS infrastructure.  Developers can reach out to the
-CTS team by [filing a bug in
-monorail](https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Fuchsia+Compatibility+Test+Suite+%28CTS%29).
+need, they should partner with the CTF team to ensure that they can provide
+tests that can be run in CTF infrastructure.  Developers can reach out to the
+CTF team by [filing a bug in
+monorail](https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Fuchsia+Compatibility+Test+Suite+%28CTF%29).
 
-API review will also evolve to accommodate the requirement that CTS tests
+API review will also evolve to accommodate the requirement that CTF tests
 accompany changes.  For areas at Tier 2 or higher, modifications or additions to
-PlaSA elements must have CTS tests.  Eventually, this requirement will be
+PlaSA elements must have CTF tests.  Eventually, this requirement will be
 extended to all areas; by that point, we expect to formalize testing as part of
 API Review.
 
 ## Performance
 
 The existence of tests has no impact on platform performance.  We have to track
-machine usage of the CTS tests carefully to make sure that they do not exceed
+machine usage of the CTF tests carefully to make sure that they do not exceed
 Fuchsia machine capacity.
 
 ## Ergonomics
 
-The CTS team is tasked with ensuring that it is easy for areas to write basic
-CTS tests and that infrastructure exists to run those tests.  They are not
+The CTF team is tasked with ensuring that it is easy for areas to write basic
+CTF tests and that infrastructure exists to run those tests.  They are not
 responsible for domain-specific infrastructure and frameworks.
 
 ## Backwards compatibility
@@ -301,12 +301,12 @@ mechanism to enforce backwards compatibility for the Fuchsia platform.
 
 ## Security considerations
 
-We do not believe the CTS program will negatively impact Fuchsia security.
+We do not believe the CTF program will negatively impact Fuchsia security.
 
 
 ## Privacy considerations
 
-We do not believe the CTS program will negatively impact Fuchsia privacy
+We do not believe the CTF program will negatively impact Fuchsia privacy
 properties.
 
 ## Testing
@@ -316,7 +316,7 @@ As this RFC largely details a process, it does not require a detailed test plan.
 ## Documentation
 
 The team will work with DevRel and Tech Writers to provide detailed and useful
-guidance on how to write effective CTS tests.
+guidance on how to write effective CTF tests.
 
 ## Drawbacks, alternatives, and unknowns
 
@@ -327,12 +327,12 @@ ergonomics of those APIs prior to release.
 
 ## Prior art and references
 
-The Android system has similar processes about CTS inclusion when developing new
+The Android system has similar processes about CTF inclusion when developing new
 APIs.
 
 Many programming languages have similar testing requirements for new APIs, as
 well.
 
-[cts]: /contribute/governance/rfcs/0015_cts.md
-[fsi]: /concepts/packages/system.md
-[doc-rubric]: /development/api/documentation.md
+[cts]: /docs/contribute/governance/rfcs/0015_cts.md
+[fsi]: /docs/concepts/packages/system.md
+[doc-rubric]: /docs/development/api/documentation.md

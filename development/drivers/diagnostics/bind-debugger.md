@@ -3,21 +3,21 @@
 Caution: This page may contain information that is specific to the legacy
 version of the driver framework (DFv1).
 
-The debugger can be used to run a bind program against a particular device. It
-outputs a trace of the bind program's execution, describing why the driver
+The debugger can be used to run a bind rules against a particular device. It
+outputs a trace of the bind rules's execution, describing why the driver
 would or would not bind to the device.
 
 You can run the debugger in the following ways:
 
- - **[As a host tool.](#running-the-debugger-host)** You provide the bind program
+ - **[As a host tool.](#running-the-debugger-host)** You provide the bind rules
    source file and a file listing the properties of the device. This is useful
-   during bind program development for testing the outcome of a program against
-   different combinations of device properties.
+   during bind rules development for testing the outcome of the rules against
+   different combinations of node properties.
  - **[On the target device.](#running-the-debugger-target)** You specify the driver
    path and the device path within the system. This is useful for figuring out why
    a driver did or did not bind to a particular device.
 
-Note: The debugger can only be used with bind programs written in the bind language
+Note: The debugger can only be used with bind rules written in the bind language
 described in this page.
 
 ## Running the debugger as a host tool {#running-the-debugger-host}
@@ -31,18 +31,18 @@ fx bindc debug \
   tools/bindc/examples/gizmo.bind
 ```
 
-The bind program source and the library sources are in the formats described in
-the [bind rules](/development/drivers/concepts/device_driver_model/driver-binding.md#bind-rules) and
-[bind libraries](/development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries) sections,
+The bind rules source and the library sources are in the formats described in
+the [bind rules](/docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-rules) and
+[bind libraries](/docs/development/drivers/concepts/device_driver_model/driver-binding.md#bind-libraries) sections,
 respectively. The `--debug` option takes a file containing a specification of
-the device to run the bind program against.
+the device to run the bind rules against.
 
 Note: The `--debug` and `--output` options are mutually exclusive, so the C
 header file will not be generated when running the compiler in debug mode.
 
 ### Device specification file {#device-specification}
 
-The debugger takes a file specifying the device to run the bind program against.
+The debugger takes a file specifying the device to run against the bind rules.
 This specification is simply a list of key-value pairs describing the properties
 of the device.
 
@@ -146,8 +146,8 @@ node's topological path can't be determined from its place in the node graph.
 
 ## Debugger output
 
-The output of the debugger is a trace of the bind program's execution. The trace
-contains information about whether each statement in the bind program succeeded,
+The output of the debugger is a trace of the bind rules' evaluation. The trace
+contains information about whether each statement in the bind rules succeeded,
 and why or why not. For example, if a condition statement failed because the
 device did not have the required value, the debugger will output what the actual
 value of the device was (or the fact that the device had no value for that
@@ -171,11 +171,11 @@ Driver binds to device.
 
 If you run the debugger on the Fuchsia target device, you will see similar output
 information. However, information such as identifiers and source code snippets may
-be missing, since the system only stores the bind program bytecode, not the
+be missing, since the system only stores the bind rules bytecode, not the
 source code.
 
 The trace shows the outcome of each statement that was reached while executing
-the bind program:
+the bind rules:
 
 - The device has the USB device protocol, so the first condition statement is
 satisfied.

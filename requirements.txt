@@ -1,7 +1,0 @@
-jinja2==3.0.3
-jieba
-mkdocs-material
-mkdocs-ezlinks-plugin
-mkdocs-exclude
-pymdown-extensions
-mkdocs-git-revision-date-localized-plugin

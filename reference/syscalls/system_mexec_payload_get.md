@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_system_mexec_payload_get
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Return a ZBI containing ZBI entries necessary to boot this system.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_system_mexec_payload_get(zx_handle_t resource,
                                         size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_system_mexec_payload_get()` accepts a resource handle and a
 pointer/length corresponding to an output buffer. The head of the buffer is
@@ -26,7 +33,8 @@ overwritten with non-bootable ZBI containing a sequence of entries that should
 be appended to a ZBI before passing that image to [`zx_system_mexec()`]; the
 tail of the buffer is left untouched.
 
-*resource* must be of type **ZX_RSRC_KIND_ROOT**.
+*resource* must be of type **ZX_RSRC_KIND_SYSTEM** with base
+**ZX_RSRC_SYSTEM_MEXEC_BASE**.
 
 *buffer* and *buffer_size* must point to a buffer that is no longer than 16KiB.
 
@@ -34,13 +42,12 @@ To use the `zx_system_mexec_payload_get()` function, you must specify
 `kernel.enable-debugging-syscalls=true` on the kernel command line. Otherwise,
 the function returns **ZX_ERR_NOT_SUPPORTED**.
 
-## RIGHTS
+## Rights
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+*resource* must have resource kind **ZX_RSRC_KIND_SYSTEM** with base
+**ZX_RSRC_SYSTEM_MEXEC_BASE**.
 
-*resource* must have resource kind **ZX_RSRC_KIND_ROOT**.
-
-## RETURN VALUE
+## Return value
 
 `zx_system_mexec_payload_get()` returns **ZX_OK** on success.
 
@@ -51,10 +58,8 @@ on the kernel command line.
 In this case, the caller is expected to make the syscall again with a larger
 buffer.
 
-## SEE ALSO
+## See also
 
  - [`zx_system_mexec()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_system_mexec()`]: system_mexec.md

@@ -64,7 +64,7 @@ host. However, a driver can also choose to be placed in the same driver
 host as its parent driver. When drivers are co-located in the same driver host,
 they share the same address space.
 
-![alt_text](images/diagram_driver_stack_01.svg "Diagram showing driver hosts for USB devices")
+![alt_text](images/diagram_driver_stack_01.svg "Diagram showing driver hosts for USB devices"){: width="600"}
 
 **Diagram 1**. Driver hosts representing USB devices connected to the PCI bus.
 
@@ -97,7 +97,7 @@ The driver index tracks the following types of drivers in a Fuchsia system:
 When the driver manager needs to find a driver for an unbound node in the
 [node topology][node-topology], it uses the [`MatchDriver`][fidl-matchdriver]
 FIDL protocol to send a match request to the driver index. The driver index then
-evaluates the node’s [binding properties][node-properties] (which is included in
+evaluates the [node properties][node-properties] (which is included in
 the match request) against the bind rules of every driver that is being tracked.
 When there is a match, the driver index returns the matched driver’s metadata to
 the driver manager. But if there is no match, the driver index responds with
@@ -146,11 +146,11 @@ developer.
 [driver-binding]: driver_binding.md
 [driver-host]: driver_framework.md#driver_host
 [service-discovery]: driver_communication.md#service_discovery
-[node-properties]: drivers_and_nodes.md#node_properties
+[node-properties]: drivers_and_nodes.md#node_attributes
 [node-topology]: drivers_and_nodes.md#node_topology
-[rfc-driver-runtime]: /contribute/governance/rfcs/0126_driver_runtime.md
+[rfc-driver-runtime]: /docs/contribute/governance/rfcs/0126_driver_runtime.md
 [fidl-node]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=107
 [fidl-nodecontroller]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/topology.fidl;l=73
 [fidl-matchdriver]: https://cs.opensource.google/fuchsia/fuchsia/+/main:sdk/fidl/fuchsia.driver.framework/driver_index.fidl;l=96
-[base-packages]: /concepts/packages/package.md#base-packages
-[universe-packages]: /concepts/packages/package.md#universe-packages
+[base-packages]: /docs/concepts/packages/package.md#base-packages
+[universe-packages]: /docs/concepts/packages/package.md#universe-packages

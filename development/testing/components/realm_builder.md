@@ -206,30 +206,9 @@ The example below adds two static child components to the created realm:
     {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/dart/test/sample.dart" region_tag="add_component_dart" adjust_indentation="auto" %}
     ```
 
-Note: Realm Builder interprets component sources defined using a relative URL
-to be contained in the same package as the test component.
-
-### Adding Legacy Components {#legacy-components}
-
-Realm Builder also supports adding Legacy Components to your realm:
-
-* {Rust}
-
-    ```rust
-    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/rust/src/lib.rs" region_tag="add_legacy_component_rust" adjust_indentation="auto" %}
-    ```
-
-* {C++}
-
-    ```cpp
-    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/cpp/sample.cc" region_tag="add_legacy_component_cpp" adjust_indentation="auto" %}
-    ```
-
-* {Dart}
-
-    ```dart
-    {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/realm_builder/dart/test/sample.dart" region_tag="add_legacy_component_dart" adjust_indentation="auto" %}
-    ```
+Note: Realm Builder interprets component sources defined using a
+[fragment-only URL][fragment-only-url] to be contained in the same package as
+the test component (for example, `#meta/other-component.cm`).
 
 ### Adding Mock Components {#mock-components}
 
@@ -492,7 +471,7 @@ routed using `parent` are now accessible by the test.
 
 ## Advanced Configuration {#advanced}
 
-### Modifying generated manifests (Rust and Dart only) {#modifying-manifests}
+### Modifying generated manifests {#modifying-manifests}
 
 For cases where the capability routing features supported by the add route
 method are not sufficient, you can manually adjust the manifest declarations.
@@ -512,32 +491,46 @@ After [constructing the realm](#construct-realm):
 * {Rust}
 
     ```rust
-    let mut root_manifest = builder.get_realm_decl().await?;
-    // root_manifest is mutated in whatever way is needed
-    builder.replace_realm_decl(root_manifest).await?;
+    let mut root_decl = builder.get_realm_decl().await?;
+    // root_decl is mutated in whatever way is needed
+    builder.replace_realm_decl(root_decl).await?;
 
-    let mut a_manifest = builder.get_component_decl("a").await?;
-    // a_manifest is mutated in whatever way is needed
-    builder.replace_component_decl("a", a_manifest).await?;
+    let mut a_decl = builder.get_component_decl("a").await?;
+    // a_decl is mutated in whatever way is needed
+    builder.replace_component_decl("a", a_decl).await?;
     ```
 
 * {Dart}
 
     ```dart
-    var rootManifest = await builder.getRealmDecl();
+    var rootDecl = await builder.getRealmDecl();
     // ...
-    // Clone and modify the rootManifest as needed, for example, after updating
+    // Clone and modify the rootDecl as needed, for example, after updating
     // the `children` list:
-    rootManifest = rootManifest.$cloneWith(children: fidl.Some(children));
-    await builder.replaceRealmDecl(rootManifest);
+    rootDecl = rootDecl.$cloneWith(children: fidl.Some(children));
+    await builder.replaceRealmDecl(rootDecl);
 
-    var aManifest = await builder.getComponentDecl("a");
+    var aDecl = await builder.getComponentDecl("a");
     // ...
-    // Clone and modify the aManifest as needed, for example, after updating
+    // Clone and modify the aDecl as needed, for example, after updating
     // exposed capabilities:
-    aManifest = aManifest.$cloneWith(exposes: fidl.Some(exposes));
-    await builder.replaceComponentDecl("a", aManifest);
+    aDecl = aDecl.$cloneWith(exposes: fidl.Some(exposes));
+    await builder.replaceComponentDecl("a", aDecl);
     ```
+
+* {C++}
+
+    ```cpp
+    auto root_decl = realm_builder.GetRealmDecl();
+    // ... root_decl is mutated as needed
+    realm_builder.ReplaceRealmDecl(std::move(root_decl));
+
+    auto a_decl = realm_builder.GetComponentDecl("a");
+    // ... a_decl is mutated as needed
+    realm_builder.ReplaceComponentDecl(std::move(a_decl));
+
+    ```
+
 
 When [adding routes](#routing) for modified components, add them directly to
 the **constructed realm** where you obtained the manifest instead of using the
@@ -593,7 +586,7 @@ corresponding [offer][offer], requests to open the capability will not resolve
 and you will see error messages similar to the following:
 
 ```none {:.devsite-disable-click-to-copy}
-[86842.196][klog][E] [component_manager] ERROR: Failed to route protocol `fidl.examples.routing.echo.Echo` with target component `/core/test_manager/tests:auto-10238282593681900609/test_wrapper/test_root/fuchsia_component_test_
+[86842.196][klog][E] [component_manager] ERROR: Required protocol `fidl.examples.routing.echo.Echo` was not available for target component `/core/test_manager/tests:auto-10238282593681900609/test_wrapper/test_root/fuchsia_component_test_
 [86842.197][klog][I] collection:auto-4046836611955440668/echo-client`: An `offer from parent` declaration was found at `/core/test_manager/tests:auto-10238282593681900609/test_wrapper/test_root/fuchsia_component_test_colle
 [86842.197][klog][I] ction:auto-4046836611955440668` for `fidl.examples.routing.echo.Echo`, but no matching `offer` declaration was found in the parent
 ```
@@ -636,18 +629,19 @@ controller, see [offering test capabilities](#routing-from-test).
   </tr>
 </table>
 
-[cap-routes]: /concepts/components/v2/capabilities/README.md#routing
+[cap-routes]: /docs/concepts/components/v2/capabilities/README.md#routing
 [children]: https://fuchsia.dev/reference/cml#children
 [collection]: https://fuchsia.dev/reference/cml#collections
-[component-urls]: /reference/components/url.md
+[component-urls]: /docs/reference/components/url.md
 [environment]: https://fuchsia.dev/reference/cml#environments
 [expose]: https://fuchsia.dev/reference/cml#expose
-[namespaces]: /concepts/process/namespaces.md
+[fragment-only-url]: /docs/reference/components/url.md#relative-fragment-only
+[namespaces]: /docs/concepts/process/namespaces.md
 [offer]: https://fuchsia.dev/reference/cml#offer
 [realm-builder-shard]: /sdk/lib/sys/component/realm_builder_base.shard.cml
-[realms]: /concepts/components/v2/realms.md
-[resolver]: /concepts/components/v2/capabilities/resolvers.md
-[runner]: /concepts/components/v2/capabilities/runners.md
+[realms]: /docs/concepts/components/v2/realms.md
+[resolver]: /docs/concepts/components/v2/capabilities/resolvers.md
+[runner]: /docs/concepts/components/v2/capabilities/runners.md
 [shard-includes]: https://fuchsia.dev/reference/cml#include
-[test-runner]: /development/testing/components/test_runner_framework.md#test-runners
+[test-runner]: /docs/development/testing/components/test_runner_framework.md#test-runners
 [use]: https://fuchsia.dev/reference/cml#use

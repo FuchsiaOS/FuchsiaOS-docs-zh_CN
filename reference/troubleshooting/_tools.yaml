@@ -1,0 +1,114 @@
+-
+ name: Inspect
+ team: Diagnostics
+ links:
+  Home: /docs/development/diagnostics/inspect
+ description: |
+   Expose structured state about a component. Monitor the state of a component at an
+   instant in time.
+
+   The Inspect tool allows a component to expose an arbitrary hierarchy of typed key/value pairs
+   and update it over the course of its execution. This data can be snapshotted and inspected
+   while the component is still running.
+
+   Inspect is commonly used to represent information about the working set and recent history
+   of a component to help during debugging.
+
+   Component authors use Inspect by depending on a library in their language of choice (Rust, C++,
+   and Dart are currently supported), and calling the appropriate methods to mutate their
+   recorded state.
+
+   Inspect data may be read using the <code>ffx component inspect</code>
+   tool or <code>ffx target snapshot</code>.
+ related:
+  - Triage
+
+-
+ name: Logs
+ team: Diagnostics
+ links:
+  Writing Logs: /docs/development/diagnostics/logs/recording
+  Viewing Logs: /docs/development/diagnostics/logs/viewing
+ description: |
+   Print string logs during the execution of a component.
+
+   Fuchsia, like many systems, supports basic logging of strings to record some information
+   when particular lines of source code are executed.
+
+   Logs are aggregated by the Archivist component. They may be read using `ffx log`.
+ related:
+  - Structured Logs
+
+-
+  name: Structured Logs
+  team: Diagnostics
+  links:
+   Structured log encoding reference: /docs/reference/platform-spec/diagnostics/logs-encoding
+  description: |
+   Store structured key/value pairs in log messages.
+
+   In addition to text-based logs, Fuchsia supports fully structured
+   log records encoded as typed key/value hierarchies.
+
+   Developers may write structured logs using the <code>tracing</code> crate macros in Rust
+   or the <code>FX_SLOG</code> macro in C++.
+
+-
+  name: Persistence
+  team: Diagnostics
+  links:
+   Persistence documentation: /docs/reference/diagnostics/persistence
+  description: |
+    Persistence stores Inspect data and publishes it on the subsequent boot.
+
+    Sometimes Diagnostics data can't be exported from the device until it's
+    rebooted, for example, if there's a problem with networking. Persistence
+    writes selected Inspect data to disk and then publishes it back to Inspect
+    on the next boot.
+  related:
+   - Inspect
+
+-
+  name: Sampler
+  team: Diagnostics
+  links:
+   Sampler documentation: /docs/reference/diagnostics/sampler
+  description: |
+    Sampler reads data from Inspect and forwards it to Cobalt.
+
+    Sampler provides an easy way to send data to Cobalt. Instead of linking
+    your app to the Cobalt service and using it directly, you can just publish
+    your data in Inspect and write a simple config file entry to tell Sampler
+    to fetch your data and send it to Cobalt.
+  related:
+   - Inspect
+
+-
+  name: Triage
+  team: Diagnostics
+  links:
+   Triage documentation: /docs/reference/diagnostics/triage
+  description: |
+    Triage selects and processes values from Diagnostics data, producing
+    useful actions and insights on-device and off-device.
+
+    Triage can: display calculated values; file snapshots (when running
+    on-device as the engine of Detect); and print warnings about
+    off-nominal values.
+  related:
+   - Inspect
+   - Detect
+
+-
+  name: Detect
+  team: Diagnostics
+  links:
+   Detect documentation: /docs/reference/diagnostics/consumers/detect
+  description: |
+    Detect scans Inspect data on-device to decide when to file crash reports.
+
+    Detect scans are configured using the Triage language and run every
+    few minutes.
+  related:
+   - Inspect
+   - Triage

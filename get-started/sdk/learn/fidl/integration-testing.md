@@ -64,21 +64,21 @@ load(
     "fuchsia_test_package",
 )
 
-// Component under test
+# Component under test
 fuchsia_component(
     name = "foo_client",
     manifest = ":foo_client_manifest",
     visibility = ["//visibility:public"],
 )
 
-// Test dependencies
+# Test dependencies
 fuchsia_component(
     name = "mock_service",
     manifest = ":mock_service_manifest",
     visibility = ["//visibility:public"],
 )
 
-// Component containing integration tests
+# Component containing integration tests
 fuchsia_cc_test(
     name = "client_integration_test",
     srcs = [ ... ],
@@ -96,7 +96,7 @@ fuchsia_test_component(
     deps = [":client_integration_test"],
 )
 
-// Hermetic test package
+# Hermetic test package
 fuchsia_test_package(
     name = "integration_test_pkg",
     visibility = ["//visibility:public"],
@@ -131,7 +131,8 @@ To begin, create a new project directory in your Bazel workspace:
 mkdir -p fuchsia-codelab/echo-integration
 ```
 
-This component project should have the following directory structure:
+After you complete this section, the project should have the following directory
+structure:
 
 ```none {:.devsite-disable-click-to-copy}
 //fuchsia-codelab/echo-integration
@@ -142,10 +143,11 @@ This component project should have the following directory structure:
                   |- echo_integration_test.cc
 ```
 
-### Update the test component manifest
+### Create the test component manifest
 
-Update the test component manifest to declare the `echo-server` component as a
-child and route the `Echo` protocol capability to the test component.
+Create the `echo-integration/meta/echo_integration_test.cml` test component
+manifest to declare the `echo-server` component as a child and route the `Echo`
+protocol capability to the test component.
 
 `echo-integration/meta/echo_integration_test.cml`:
 
@@ -162,43 +164,21 @@ test component in the build configuration:
 
 `echo-integration/BUILD.bazel`:
 
-```bazel
-load(
-    "@rules_fuchsia//fuchsia:defs.bzl",
-    "fuchsia_cc_test",
-    "fuchsia_component_manifest",
-    "fuchsia_test_component",
-    "fuchsia_test_package",
-)
+{% set build_bazel_snippet %}
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/integration_tests/BUILD.bazel" region_tag="imports" adjust_indentation="auto" %}
 
-fuchsia_cc_test(
-    name = "echo_integration_test",
-    size = "small",
-    srcs = ["echo_integration_test.cc"],
-    deps = [
-        "//fuchsia-codelab/echo-fidl:fidl.examples.routing.echo.fidl_cc",
-        "@com_google_googletest//:gtest_main",
-        "@fuchsia_sdk//pkg/async-default",
-        "@fuchsia_sdk//pkg/async-loop",
-        "@fuchsia_sdk//pkg/async-loop-cpp",
-        "@fuchsia_sdk//pkg/async-loop-default",
-        "@fuchsia_sdk//pkg/fdio",
-        "@fuchsia_sdk//pkg/sys_cpp",
-        "@fuchsia_sdk//pkg/syslog",
-    ],
-)
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/integration_tests/BUILD.bazel" region_tag="cc_test" adjust_indentation="auto" %}
 
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/integration_tests/BUILD.bazel" region_tag="component" adjust_indentation="auto" %}
 
-fuchsia_test_package(
-    name = "test_pkg",
-    package_name = "echo_integration_test",
-    visibility = ["//visibility:public"],
-    deps = [
-        ":echo_integration_test_component",
-        "//fuchsia-codelab/echo-server:echo_server_component",
-    ],
-)
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/integration_tests/BUILD.bazel" region_tag="test_package" adjust_indentation="auto" %}
+{% endset %}
+
+```bazel
+{{ build_bazel_snippet
+    |replace("//src/routing/fidl","//fuchsia-codelab/echo-fidl")
+    |replace("//src/routing/cpp/echo_server","//fuchsia-codelab/echo-server")
+    |trim() }}
 ```
 
 ### Implement the integration test
@@ -217,11 +197,12 @@ Add the following code to implement an integration test:
 
 ### Update the build configuration
 
-Run `bazel build` and verify that the build completes successfully:
+Build and publish the integration test package to the `fuchsiasamples.com`
+repository:
 
 ```posix-terminal
-bazel build --config=fuchsia_x64 //fuchsia-codelab/echo-integration:test_pkg \
-     --publish_to=$HOME/.package_repos/sdk-samples
+bazel run //fuchsia-codelab/echo-integration:test_pkg.publish -- \
+    --repo_name fuchsiasamples.com
 ```
 
 ### Run the integration test

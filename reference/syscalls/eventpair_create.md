@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_eventpair_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create an event pair.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_eventpair_create(uint32_t options,
                                 zx_handle_t* out1);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_eventpair_create()` creates an event pair, which is a pair of objects that
 are mutually signalable.
@@ -37,20 +44,16 @@ and **ZX_RIGHT_SIGNAL_PEER** rights.
 
 Currently, no options are supported, so *options* must be set to 0.
 
-
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 Caller job policy must allow **ZX_POL_NEW_EVENTPAIR**.
 
-## RETURN VALUE
+## Return value
 
 `zx_eventpair_create()` returns **ZX_OK** on success. On failure, a (negative)
 error code is returned.
 
-
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *out0* or *out1* is an invalid pointer or NULL.
 
@@ -60,8 +63,7 @@ error code is returned.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-
-## SEE ALSO
+## See also
 
  - [`zx_event_create()`]
  - [`zx_handle_close()`]
@@ -72,8 +74,6 @@ In a future build this error will no longer occur.
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_many()`]
  - [`zx_object_wait_one()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_event_create()`]: event_create.md
 [`zx_handle_close()`]: handle_close.md

@@ -4,7 +4,7 @@
 
 Usually this is related to the optimization level of the program:
 
-_Optimized out_ Indicates that the program symbols declare a variable with the given name, but
+_Optimized out_ indicates that the program symbols declare a variable with the given name, but
 that it has no value or location. This means the compiler has entirely optimized out the variable
 and the debugger can not show it. If you need to see it, use a less-optimized build setting.
 
@@ -49,8 +49,7 @@ Symbol index status
 ```
 
 If you see "0" in the "Indexed" column of the "Symbol index status" that means that the debugger
-could not find where your symbols are. Try the `-s` flag (see "Running out-of-tree" above) to
-specify where your symbols are.
+could not find where your symbols are. See below for how to specify the location of these.
 
 Symbol sources using the ".build-id" hierarchy will list "(folder)" for the indexed symbols since
 this type of source does not need to be indexed. To check if your hierarchy includes a given build
@@ -83,6 +82,141 @@ debugger found a symbolized file but there are few or no symbols in it. Normally
 binary was not built with symbols enabled or the symbols were stripped. Check your build, you should
 be passing the path to the unstripped binary and the original compile line should have a `-g` in it
 to get symbols.
+
+## Understanding how Zxdb loads symbols
+
+Symbol settings should normally be set automatically by your environment (see [About symbol
+settings](#about_symbol_settings) below) so most users should not have to do any configuration. This
+section provides some implementation details to help in diagnosing problems.
+
+#### About build IDs
+
+Zxdb locates the symbols for a binary on the target device using the binary's "build ID". If the
+build ID does not match, Zxdb will not load the symbols even if the file name is the same. To see
+the build ID for a binary on Linux (Mac users will have to install readelf separately), dump the
+"notes" for the ELF binary:
+
+```none {:.devsite-disable-click-to-copy}
+$ readelf -n my_binary
+
+  ... (some other notes omitted) ...
+
+Displaying notes found in: .note.gnu.build-id
+  Owner                Data size 	Description
+  GNU                  0x00000014	NT_GNU_BUILD_ID (unique build ID bitstring)
+    Build ID: 18cec080fc47cdc07ec554f946f2e73d38541869
+```
+
+The `sym-stat` Zxdb command will show the build IDs for each binary and library loaded in the
+currently attached process and the corresponding symbol file if found.
+
+#### Symbol servers
+
+Zxdb can load symbols for prebuilt libraries from Google servers. This is how symbols arrive
+for SDK users for anything not built locally. See [Downloading
+symbols](attaching.md#downloading_symbols) for more.
+
+The most common problem for symbol servers is not being authenticated: run the debugger `auth`
+command to authenticate.
+
+For large binaries, symbols can be several gigabytes so the download process can take many minutes.
+The `sym-stat` command will display "Downloading..." during this time.
+
+Downloaded symbols are stored in the symbol cache. The `symbol-cache` setting contains the name of
+this directory:
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] get symbol-cache
+symbol-cache = /home/me/.fuchsia/debug/symbol-cache
+```
+
+#### ".build-id" directory symbol databases
+
+Many build environments, including the main "fuchsia.git" repository, add symbolized binaries in a
+standard directory structure called ".build-id". This directory contains subdirectories named
+according to the first two characters of the binary's build ID, and inside those directories will be
+the symbol files named according to the remaining characters of the build ID.
+
+You can set one or more build ID directories (they do not need to be named ".build-id") on the
+command line or interactively using the `build-id-dirs` setting (a list of directory paths):
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] set build-id-dirs += "/home/me/project/out/x64/.build-id"
+```
+
+These directories will appear in the output of the `sym-stat` command but will be annotated with
+"(folder)" rather than the number of binaries found in it, and the binaries will not appear in the
+`sym-stat --dump-index` output. This is because Zxdb searches these directories on demand when
+searching for symbols rather than enumerating them in advance.
+
+#### Individual files and directories
+
+If you have a single binary file without one of the other symbol database formats, you can tell Zxdb
+about the file individually. You can use a command-line flag or set it interactively using the
+`symbol-paths` setting (a list of files or directories):
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] set symbol-paths += /home/me/project/a.out
+```
+
+This setting also accepts directory names. In this case, Zxdb will non-recursively enumerate all
+files in that directory and look for binaries with build IDs:
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] set symbol-paths += /home/me/project/build/
+```
+
+To see the status of the locations you provided:
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] sym-stat
+Symbol index status
+
+  This command just refreshed the index.
+  Use "sym-stat --dump-index" to see the individual mappings.
+
+   Indexed  Source path
+         1  /home/me/a.out
+         2  /home/me/project/build/
+```
+
+You can also see the build IDs and file names of the binaries added in this way with the
+`sym-stat --dump-index` command.
+
+#### "ids.txt" symbol index
+
+Some older internal Google projects generate a file called "ids.txt". This provides a mapping from a
+binary's build ID to the symbol path on the local system. If your build produces such a file and it
+is not automatically loaded, you can provide it to Zxdb via a command-line flag or interactively
+using the `ids-txts` setting (a list of file names):
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] set ids-txts += "/home/me/project/build/ids.txt"
+```
+
+The symbol files from ids.txt files will also be reflected in the `sym-stat` and
+`sym-stat --dump-index` commands described in the previous section.
+
+## About symbol settings
+
+The settings described in the above [Understanding how Zxdb loads
+symbols](#understanding_how_zxdb_loads_symbols) section should get automatically applied by your
+environment. This section describes how they get set for help debugging symbol load problems.
+
+The `symbol-index-files` setting contains one or more JSON-format files that should be set by the
+development environment:
+
+```none {:.devsite-disable-click-to-copy}
+[zxdb] get symbol-index-files
+symbol-index-files =
+  • /home/me/.fuchsia/debug/symbol-index.json
+```
+
+This file can contain some global settings and also refer to other symbol-index files. Typically
+each build environment you are actively using will have a similar file that is included by reference
+from this global file. If you are switching between build environments and find symbols aren't
+loading, please make sure your environment is registered by checking the
+`ffx debug symbol-index list` command.
 
 ## Mismatched source lines
 

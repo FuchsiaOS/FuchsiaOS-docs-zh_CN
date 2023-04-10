@@ -126,34 +126,34 @@ Fully qualified names are of the form:
 This will uniquely identify any member because there is no overloading.
 
 Currently, ordinal hashing is based on names of the form `<library>.<top
-level declaration>/<member>` (see [RFC-0020](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md)), and `fidlc`
+level declaration>/<member>` (see [RFC-0020](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md)), and `fidlc`
 reports errors using the form `<library>.<top level declaration>/<member>`.
 It's our intent to align these on the unambiguous format described above.
-We will amend [RFC-0029: Increasing Method Ordinals](/contribute/governance/rfcs/0029_increasing_method_ordinals.md) to use
+We will amend [RFC-0029: Increasing Method Ordinals](/docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md) to use
 `<library>/<top level declaration>.<member>` as the name hashed, and modify
 `fidlc` to report errors consistently.
 
 Links to other FIDL language elements that have documentation associated
-with them (or _documented entities_) can be made by adding [\`link-target\`].
-For example, [\`fidl.io/NodeInfo\`] links to docs on said library.
+with them (or _documented entities_) can be made by adding \[\`link-target\`\].
+For example, \[\`fidl.io/NodeInfo\`\] links to docs on said library.
 The resolution rules are as follows:
 
 1. First, nested elements will be checked.
    If you are documenting a `struct Object`, and it contains a member
-   `event`, you may refer to it as [\`event\`].
+   `event`, you may refer to it as \[\`event\`\].
 2. Next, elements at the same scope level as the documented element will
    be checked.
    For example, if you are documenting a protocol method `foo()`, and the
-   same protocol contains a method `bar()`, you may refer to it as [\`bar\`].
+   same protocol contains a method `bar()`, you may refer to it as \[\`bar\`\].
 3. Next, elements of the enclosing scope are checked, if there is an
    enclosing scope.
    For example, if you are documenting a protocol method `foo()`, and
    there is another protocol in the same library called `Info`, you may refer
-   to it (and its elements) by saying [\`Info\`].
+   to it (and its elements) by saying \[\`Info\`\].
 4. 3 is repeated at successively enclosed scopes until you are at the top
    level scope.
    If you are documenting a protocol method `foo()`, and you write
-   [\`fuchsia.io/NodeInfo\`], it will refer to the union
+   \[\`fuchsia.io/NodeInfo\`\], it will refer to the union
    `fuchsia.io/NodeInfo`.
 
 Fully qualified names are of the form `<library>/<top level
@@ -292,4 +292,4 @@ This proposal is heavily influenced by the documentation styles for Rust
 and Kotlin.
 
 <!-- xrefs -->
-[API documentation rubric]: /development/api/documentation.md
+[API documentation rubric]: /docs/development/api/documentation.md

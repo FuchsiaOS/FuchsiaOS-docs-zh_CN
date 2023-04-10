@@ -28,7 +28,7 @@ to provide guidelines for user facing (marketing/sales) notation.
 
 Some folks measure bytes in powers of 2. So while a kilometer is 1000 meters,
 these folks read a kilobyte as 1024 bytes.
-[Henkemans](https://www.google.com/books/edition/C++_Programming_for_the_Absolute_Beginne/ea2SOugw6g8C?hl=en&gbpv=1&pg=PP56)
+[Henkemans](https://www.google.com/books/edition/C++_Programming_for_the_Absolute_Beginne/ea2SOugw6g8C?gbpv=1&pg=PP56)
 See also,
 [Google search](https://www.google.com/search?tbm=bks&q=kilobyte+is+1024+bytes)
 

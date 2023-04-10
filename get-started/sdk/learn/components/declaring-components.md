@@ -10,7 +10,7 @@
 
 The Fuchsia SDK system provides Bazel rules to build and package software
 into Fuchsia components. The
-[Fuchsia SDK environment](/get-started/sdk/index.md#clone-the-sdk-samples-repository)
+[Fuchsia SDK environment](/docs/get-started/sdk/index.md#clone-the-sdk-samples-repository)
 makes these rules available within a
 [Bazel workspace](https://bazel.build/concepts/build-ref#workspace){:.external}
 directory.
@@ -84,7 +84,8 @@ component called `echo`:
 mkdir -p fuchsia-codelab/echo
 ```
 
-This component project should have the following directory structure:
+After you complete this section, the project should have the following directory
+structure:
 
 ```none {:.devsite-disable-click-to-copy}
 //fuchsia-codelab/echo
@@ -94,7 +95,6 @@ This component project should have the following directory structure:
                   |
                   |- echo_component.cc
                   |- echo_component.h
-                  |- echo_unittest.cc
                   |- main.cc
 ```
 
@@ -103,14 +103,14 @@ This component project should have the following directory structure:
 * `meta/echo.cml`: Manifest declaring the component's executable and
   required capabilities.
 * `echo_component.cc`: Source code for the C++ component functionality.
-* `echo_unittest.cc`: Source code for the C++ unit tests.
 * `main.cc`: Source code for the C++ executable binary main entry point.
 
 ### Add program arguments
 
 The component manifest file defines the attributes of the component's executable,
 including program arguments, and the component's capabilities.
-Add the following contents to `meta/echo.cml`:
+
+Create `echo/meta/echo.cml` and add the following contents:
 
 `echo/meta/echo.cml`:
 
@@ -120,8 +120,8 @@ Add the following contents to `meta/echo.cml`:
 
 ### Log the arguments
 
-Open the `main.cc` source file for the main executable and add the following
-import statements:
+Create the `echo/main.cc` source file for the main executable and add the
+following import statements:
 
 `echo/main.cc`:
 
@@ -142,7 +142,8 @@ Add the following code for the the `main()` function:
 This code reads the program arguments and passes them to a function called
 `greeting()` to generate a response for the syslog entry.
 
-Add the following code to implement the `greeting()` function:
+Create `echo/echo_component.h` and `echo/echo_component.cc`, including the
+following code to implement the `greeting()` function:
 
 `echo/echo_component.h`:
 
@@ -170,24 +171,18 @@ on the length of the list.
   streams to a Fuchsia log buffer.</p>
 
   <p>For more details on logging from your code, see
-  <a href="/development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
+  <a href="/docs/development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
 </aside>
 
 ### Add to the build configuration
 
-Add the following to your `BUILD.bazel` file to include the new component in the
-build configuration:
+Create the `echo/BUILD.bazel` file and add the following build rules to include
+the new component in the build configuration:
 
 `echo/BUILD.bazel`:
 
 ```bazel
-load(
-    "@rules_fuchsia//fuchsia:defs.bzl",
-    "fuchsia_cc_binary",
-    "fuchsia_component",
-    "fuchsia_component_manifest",
-    "fuchsia_package",
-)
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/echo/BUILD.bazel" region_tag="imports" adjust_indentation="auto" exclude_regexp="fuchsia_cc_test|fuchsia_test_package|if_fuchsia" %}
 
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/echo/BUILD.bazel" region_tag="echo" adjust_indentation="auto" %}
 ```
@@ -195,8 +190,7 @@ load(
 Run `bazel build` and verify that the build completes successfully:
 
 ```posix-terminal
-bazel build --config=fuchsia_x64 //fuchsia-codelab/echo:pkg \
-    --publish_to=$HOME/.package_repos/sdk-samples
+bazel build //fuchsia-codelab/echo:pkg
 ```
 
 In the next section, you'll integrate this component into the build and test the

@@ -395,25 +395,25 @@ time, as is the nature of entropic decay.
 
 A great Jedi once said: "Only a Sith deals in absolutes."
 
-[action-tracer]: /contribute/open_projects/build/hermetic_actions.md#reproducing_the_issue
+[action-tracer]: /docs/contribute/open_projects/build/hermetic_actions.md#reproducing_the_issue
 [arch-linux-chroot]: https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot
-[banjo]: /development/drivers/tutorials/banjo-tutorial.md
+[banjo]: /docs/development/drivers/tutorials/banjo-tutorial.md
 [bazel-sandboxfs]: https://blog.bazel.build/2017/08/25/introducing-sandboxfs.html
 [chroot]: https://en.wikipedia.org/wiki/Chroot
-[fidl]: /development/languages/fidl/README.md
-[fidlc]: /development/languages/fidl/guides/cli.md
-[fuchsia-build]: /development/build/build_system/fuchsia_build_system_overview.md
+[fidl]: /docs/development/languages/fidl/README.md
+[fidlc]: /docs/development/languages/fidl/guides/cli.md
+[fuchsia-build]: /docs/development/build/build_system/fuchsia_build_system_overview.md
 [fuse]: https://github.com/bazelbuild/sandboxfs
 [fxb-75437-c4]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=75437#c4
 [fxb-75451]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=75451
 [fxr-545687]: https://fuchsia-review.googlesource.com/c/fuchsia/+/545687
 [gn]: https://gn.googlesource.com/gn/
-[gn-best-rebase-path]: /development/build/build_system/best_practices.md#prefer-relative-paths-from-rebase-path
+[gn-best-rebase-path]: /docs/development/build/build_system/best_practices_templates.md#prefer-relative-paths-from-rebase-path
 [gn-dev-thread]: https://groups.google.com/a/chromium.org/g/gn-dev/c/WOFiYgcGgjw/m/89f3H7nnAQAJ
 [gn-rebase-path]: https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md#func_rebase_path
 [gn-root-build-dir]: https://gn.googlesource.com/gn/+/refs/heads/main/docs/reference.md#var_root_build_dir
 [goma]: https://chromium.googlesource.com/infra/goma/server/
-[hermetic-actions]: /development/build/hermetic_actions.md
+[hermetic-actions]: /docs/development/build/hermetic_actions.md
 [jmmv-caching]: https://jmmv.dev/2021/02/google-monorepos-and-caching.html
 [jmmv-no-clean]: https://jmmv.dev/2020/12/google-no-clean-builds.html
 [jmmv-osxfuse]: https://jmmv.dev/2020/01/osxfuse-hardlinks-dladdr.html
@@ -421,7 +421,7 @@ A great Jedi once said: "Only a Sith deals in absolutes."
 [llvm-d87928]: https://reviews.llvm.org/D87928
 [ninja-depfile]: https://ninja-build.org/manual.html#_depfile
 [path-wikipedia]: https://en.wikipedia.org/wiki/Path_(computing)
-[paving]: /development/build/fx.md#what-is-paving
+[paving]: /docs/development/build/fx.md#what-is-paving
 [reproducible-builds]: https://reproducible-builds.org
 [sandboxfs-performance]: https://blog.bazel.build/2017/08/25/introducing-sandboxfs.html
-[test-coverage]: /contribute/testing/coverage.md
+[test-coverage]: /docs/contribute/testing/coverage.md

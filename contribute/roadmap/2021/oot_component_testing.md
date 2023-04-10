@@ -34,7 +34,7 @@ impossible to scale for the following reasons:
 - Various text-based protocols that lack methods and practices for ensuring ABI
   stability or orchestrating ABI evolution.
 
-- Tests written as [legacy components][legacy-components] aka CFv1 which enjoy a
+- Tests written as legacy components aka CFv1 which enjoy a
   lesser degree of isolation, suffer from a greater degree of flakiness, and
   don’t benefit from [new testing tools][realm-builder].
 
@@ -50,8 +50,7 @@ impossible to scale for the following reasons:
   tests, such as [sanitizers] and [coverage].
 
 - Some tools and source code is distributed to partners not via the
-  [Fuchsia IDK][idk], the set of [SDK tools][sdk-tools], or specific frontends
-  such as the [Fuchsia GN SDK][gn-sdk]. For instance the
+  [Fuchsia IDK][idk], the set of [SDK tools][sdk-tools]. For instance the
   [`TestWithEnvironment`][testwithenvironment] helper class is
   [manually copied to the Flutter repository on GitHub][fxb-73984] to unblock
   integration testing needs.
@@ -150,7 +149,7 @@ The priority customer for TRF so far has been in-tree testing, with success
 measured in terms of the portion of tests that run on TRF. At the time of
 writing more than 70% of Fuchsia in-tree tests have been migrated to TRF, with
 modern (CFv2) tests running exclusively on TRF. By the end of 2021 we expect all
-remaining tests except [ZBI tests][fx-run-zbi-test] to run under TRF, thanks to
+remaining tests except [ZBI tests][fx-run-boot-test] to run under TRF, thanks to
 an upcoming compatibility layer.
 
 Once all component tests are migrated to TRF, we will turn down the legacy
@@ -286,10 +285,9 @@ Fuchsia SDK.
 
 Additionally, there exist CFv1 component tests that are arguably system tests.
 This is possible because the legacy CFv1 test runtime allows
-[accessing real system services][v1-test-system-services], as a legacy
-compromise that is intentionally not supported in CFv2 testing. For the purpose
-of this discussion we consider such strictly non-hermetic CFv1 component tests
-to be system tests as well.
+accessing real system services, as a legacy compromise that is intentionally not
+supported in CFv2 testing. For the purpose of this discussion we consider such
+strictly non-hermetic CFv1 component tests to be system tests as well.
 
 Current challenges in scaling e2e test development include:
 
@@ -304,65 +302,58 @@ Current challenges in scaling e2e test development include:
 
 - Only a Dart client library is provided.
 
-- A [helpful developer guide][sl4f-guide] is provided, but instructions are
-  given for developing SL4F tests in-tree only.
-
 Since system tests are so uniquely different than component tests, this topic is
 covered in a [separate roadmap document][oot-system-testing].
 
 [botanist]: /tools/botanist/
-[cfv2-migration]: /contribute/open_projects/components/migration.md
-[cfv2-roadmap-2020]: /contribute/roadmap/2020/overview.md#components_v2
-[components]: /concepts/components/v2/introduction.md
-[components-build]: /development/components/build.md
-[components-test]: /development/testing/components/README.md
+[cfv2-migration]: /docs/contribute/open_projects/components/migration.md
+[cfv2-roadmap-2020]: /docs/contribute/roadmap/2020/overview.md#components_v2
+[components]: /docs/concepts/components/v2/introduction.md
+[components-build]: /docs/development/components/build.md
+[components-test]: /docs/development/testing/components/README.md
 [covargs]: /tools/debug/covargs/
-[coverage]: /contribute/testing/coverage.md
-[dac]: /contribute/roadmap/2020/overview.md#implementing_drivers_as_components
+[coverage]: /docs/contribute/testing/coverage.md
+[dac]: /docs/contribute/roadmap/2020/overview.md#implementing_drivers_as_components
 [dash]: /zircon/third_party/uapp/dash/
-[driver-abi-stability]: /contribute/roadmap/2021/stable_driver_runtime.md
-[ffx]: /development/tools/ffx/getting-started.md
-[ffx-plugin]: /development/tools/ffx/development/plugins.md
+[driver-abi-stability]: /docs/contribute/roadmap/2021/stable_driver_runtime.md
+[ffx]: /docs/development/tools/ffx/getting-started.md
+[ffx-plugin]: /docs/development/tools/ffx/development/plugins.md
 [ffx-test]: https://fuchsia.dev/reference/tools/sdk/ffx.md#test
 [fidl]: /docs//concepts/fidl/overview.md
-[fof-velocity]: /contribute/roadmap/2021/flutter_on_fuchsia_velocity.md
+[fof-velocity]: /docs/contribute/roadmap/2021/flutter_on_fuchsia_velocity.md
 [fssh]: https://fuchsia.dev/reference/tools/sdk/fssh.md
 [fuchsia-git]: https://fuchsia.googlesource.com/fuchsia
 [fx-gce]: https://fuchsia.dev/reference/tools/fx/cmd/gce
 [fx-log]: https://fuchsia.dev/reference/tools/fx/cmd/log
 [fx-qemu]: https://fuchsia.dev/reference/tools/fx/cmd/qemu
-[fx-run-zbi-test]: https://fuchsia.dev/reference/tools/fx/cmd/run-zbi-test
+[fx-run-boot-test]: https://fuchsia.dev/reference/tools/fx/cmd/run-boot-test
 [fx-scp]: https://fuchsia.dev/reference/tools/fx/cmd/scp
 [fx-shell]: https://fuchsia.dev/reference/tools/fx/cmd/shell
 [fxb-73984]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=73984
-[glossary.in-tree]: /glossary/README.md#in-tree
-[glossary.out-of-tree]: /glossary/README.md#out-of-tree
-[gn-sdk]: /development/idk/gn/README.md
-[idk]: /development/idk/README.md
-[legacy-components]: /concepts/components/v1/README.md
+[glossary.in-tree]: /docs/glossary/README.md#in-tree
+[glossary.out-of-tree]: /docs/glossary/README.md#out-of-tree
+[idk]: /docs/development/idk/README.md
 [llvm]: https://llvm.org/
-[oot-system-testing]: /contribute/roadmap/2021/oot_system_testing.md
+[oot-system-testing]: /docs/contribute/roadmap/2021/oot_system_testing.md
 [overnet]: /src/connectivity/overnet/README.md
-[qemu-download]: /development/idk/download.md#qemu
-[realm-builder]: /development/testing/components/realm_builder.md
-[realm-builder-languages]: /development/testing/components/realm_builder.md#language-feature-matrix
-[rfc-0015]: /contribute/governance/rfcs/0015_cts.md
-[rfc-0106]: /contribute/governance/rfcs/0106_manifest_includes_in_sdk.md
-[runner-elf]: /development/testing/components/test_runner_framework.md#elf-test-runner
-[runner-go]: /development/testing/components/test_runner_framework.md#gotest-runner
-[runner-gtest]: /development/testing/components/test_runner_framework.md#gtest-runner
-[runner-rust]: /development/testing/components/test_runner_framework.md#rust-runner
+[qemu-download]: /docs/development/idk/download.md#qemu
+[realm-builder]: /docs/development/testing/components/realm_builder.md
+[realm-builder-languages]: /docs/development/testing/components/realm_builder.md#language-feature-matrix
+[rfc-0015]: /docs/contribute/governance/rfcs/0015_cts.md
+[rfc-0106]: /docs/contribute/governance/rfcs/0106_manifest_includes_in_sdk.md
+[runner-elf]: /docs/development/testing/components/test_runner_framework.md#elf-test-runner
+[runner-go]: /docs/development/testing/components/test_runner_framework.md#gotest-runner
+[runner-gtest]: /docs/development/testing/components/test_runner_framework.md#gtest-runner
+[runner-rust]: /docs/development/testing/components/test_runner_framework.md#rust-runner
 [rust]: https://www.rust-lang.org/
-[sanitizers]: /contribute/testing/sanitizers.md
+[sanitizers]: /docs/contribute/testing/sanitizers.md
 [sdk-tools]: https://fuchsia.dev/reference/tools/sdk/README.md
-[sl4f]: /development/drivers/concepts/driver_development/sl4f.md
+[sl4f]: /docs/development/drivers/concepts/driver_development/sl4f.md
 [sl4f-client]: /sdk/testing/sl4f/client/
-[sl4f-guide]: /development/testing/create_a_new_end_to_end_test.md
-[stress-tests]: /development/testing/stress_tests.md
+[stress-tests]: /docs/development/testing/stress_tests.md
 [tefmocheck]: /tools/testing/tefmocheck/README.md
 [testrunner]: /tools/testing/testrunner/README.md
 [testwithenvironment]: /sdk/lib/sys/cpp/testing/test_with_environment.h
-[trf]: /development/testing/components/test_runner_framework.md
-[troubleshooting-run-test-component]: /development/testing/components/test_runner_framework.md#troubleshooting
-[v1-test-system-services]: /concepts/testing/v1_test_component.md#additional_system_services
-[workstation-out-of-tree]: /contribute/roadmap/2021/workstation_out_of_tree.md
+[trf]: /docs/development/testing/components/test_runner_framework.md
+[troubleshooting-run-test-component]: /docs/development/testing/components/test_runner_framework.md#troubleshooting
+[workstation-out-of-tree]: /docs/contribute/roadmap/2021/workstation_out_of_tree.md

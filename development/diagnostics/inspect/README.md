@@ -112,7 +112,7 @@ about the component to the hub. For instance, appmgr exposes
   The [test matchers][cpp-6] library provides GMock matchers for verifying
   data that is read out of an Inspect hierarchy in tests.
 
-  #### Reading Support
+#### Reading Support
 
   The [reading library][cpp-reading-1] supports parsing an Inspect File
   into a [Hierarchy][cpp-reading-2]. `Hierarchy`s contain `NodeValue`s
@@ -184,7 +184,7 @@ about the component to the hub. For instance, appmgr exposes
   The [testing][rust-6] module supports the `assert_data_tree!` macro to
   match Inspect data for testing.
 
-* {[Dart](https://fuchsia.googlesource.com/topaz/+/HEAD/public/dart/fuchsia_inspect/)}
+* {[Dart](/sdk/dart/fuchsia_inspect/README.md)}
 
   The Dart Inspect Library provides [write][dart-1] support for the Inspect File Format.
 
@@ -213,13 +213,13 @@ language libraries.
 To examine the inspect hierarchies of components, you can use the
 [`ffx inspect show`][ffx-inspect-show] command:
 
-*  Print all inspect hierarchies:
+* Print all inspect hierarchies:
 
    ```posix-terminal
    ffx inspect show
    ```
 
-*  Print the inspect hierarchy of a specific component (for example,
+* Print the inspect hierarchy of a specific component (for example,
    `core/font_provider`):
 
    ```posix-terminal
@@ -253,10 +253,9 @@ ffx target snapshot
 [dart-1]: https://fuchsia-docs.firebaseapp.com/dart/package-fuchsia_inspect_inspect/Inspect-class.html
 [dart-2]: https://fuchsia-docs.firebaseapp.com/dart/package-fuchsia_inspect_inspect/package-fuchsia_inspect_inspect-library.html
 [dart-3]: https://fuchsia-docs.firebaseapp.com/dart/package-fuchsia_inspect_inspect/Node/delete.html
-[iquery]: /reference/diagnostics/consumers/iquery.md
-[Inspect File Format]: /reference/platform-spec/diagnostics/inspect-vmo-format.md
-[Validator Architecture]: /reference/diagnostics/inspect/validator/README.md
-[Health checks]: /development/diagnostics/inspect/health.md
+[Inspect File Format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
+[Validator Architecture]: /docs/reference/diagnostics/inspect/validator/README.md
+[Health checks]: /docs/development/diagnostics/inspect/health.md
 [ffx-inspect]: https://fuchsia.dev/reference/tools/sdk/ffx.md#inspect
 [ffx-inspect-show]: https://fuchsia.dev/reference/tools/sdk/ffx.md#show_3
 [ffx-target-snapshot]: https://fuchsia.dev/reference/tools/sdk/ffx.md#snapshot

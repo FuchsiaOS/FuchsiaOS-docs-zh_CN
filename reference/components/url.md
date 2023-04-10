@@ -66,11 +66,43 @@ https://en.wikipedia.org/wiki/Hippos
 
 The Component Framework supports a subset of relative URLs (Relative URLs are
 defined in [URL RFC 3986][url-rfc-3986]). Specifically, Component Framework
-only supports relative URLs expressed as *URL fragments*. If a relative URL has
-any fields set other than the fragment then it will not resolve.
+supports relative path URLs (plus a *URL fragment* with the path to the
+component manifest) to subpackaged components, and fragment-only URLs.
 
-A relative URL resolved at runtime based on the URL of the parent component's
-[package][doc-package]. Relative URLs have the following format:
+The path to the component manifest is the only content allowed in a relative
+component URL fragment (`#meta/<component>.cm`). If the fragment contains any
+other content, or if a relative component includes URL query parameters
+(`?key=value`), the component will not resolve.
+
+### Relative path URLs to subpackaged components
+
+A relative path URL is resolved at runtime based on a known "context". For
+components resolving a child component by relative URL, the context is a
+resolver-supplied value associated with the parent component. The URL `path` is
+interpreted as the name of one of the declared
+[subpackage][glossary.subpackage]s of the parent component's package.
+
+Relative subpackage path URLs start with a
+[relative package URL][doc-relative-package-url] and have the following format:
+
+```none {:.devsite-disable-click-to-copy}
+<subpackage-path>#<path-to-manifest>
+```
+
+Example:
+
+```none {:.devsite-disable-click-to-copy}
+child#meta/default.cm
+```
+
+For more information on subpackages and subpackaged components, see
+the documentation on [Fuchsia Subpackages][doc-subpackages].
+
+### Relative fragment-only URLs {#relative-fragment-only}
+
+A relative fragment-only URL is resolved at runtime based on the URL of the
+parent component's [package][doc-package]. Fragment-only URLs have the following
+format:
 
 ```none {:.devsite-disable-click-to-copy}
 #<path-to-manifest>
@@ -94,12 +126,15 @@ The relative URL resolves to:
 fuchsia-pkg://fuchsia.com/package#meta/child.cm
 ```
 
-[glossary.component-url]: /glossary/README.md#component-url
-[doc-manifests]: /concepts/components/v2/component_manifests.md
-[doc-package]: /concepts/packages/package.md
-[doc-package-url]: /concepts/packages/package_url.md
-[doc-package-url-resource-path]: /concepts/packages/package_url.md#resource-paths
-[doc-resolvers]: /concepts/components/v2/capabilities/resolvers.md
-[doc-runners]: /concepts/components/v2/capabilities/runners.md
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.subpackage]: /docs/glossary/README.md#subpackage
+[doc-manifests]: /docs/concepts/components/v2/component_manifests.md
+[doc-package]: /docs/concepts/packages/package.md
+[doc-package-url]: /docs/concepts/packages/package_url.md
+[doc-package-url-resource-path]: /docs/concepts/packages/package_url.md#resource-paths
+[doc-relative-package-url]: /docs/concepts/packages/package.md#relative-package-urls
+[doc-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
+[doc-runners]: /docs/concepts/components/v2/capabilities/runners.md
+[doc-subpackages]: /docs/concepts/components/v2/subpackaging.md
 [rfc-uri-scheme]: https://tools.ietf.org/html/rfc3986#section-3.1
 [url-rfc-3986]: https://datatracker.ietf.org/doc/html/rfc3986#section-4.2

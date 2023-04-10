@@ -95,7 +95,7 @@ Here are explanations for some high level decisions made around Flatland API:
     clients about an illegal operation. The Flatland channel is closed following
     this.
 * Flatland expects clients to define and keep track of [unique resource
-  identifiers](/development/api/fidl.md#client-assigned_identifiers). Type
+  identifiers](/docs/development/api/fidl.md#client-assigned_identifiers). Type
   safety is enforced by the structs defined around these identifiers, such as
   TransformId and ContentId.
 * Flatland uses hanging-gets to notify clients about changes in the link
@@ -153,7 +153,7 @@ null renderer implementation, which skips compositing. Display can be swapped
 the existing fake display implementation.
 
 Additional Flatland API integration tests will be provided under [Compatibility
-Test Suite](/contribute/governance/rfcs/0015_cts.md).
+Test Suite](/docs/contribute/governance/rfcs/0015_cts.md).
 
 ## Performance considerations
 
@@ -192,7 +192,7 @@ without affecting each other’s work.
 
 Flatland users are isolated from each other. Each of them connect to Scenic
 through their own channels. [Unique resource
-identifiers](/development/api/fidl.md#client-assigned_identifiers) are defined
+identifiers](/docs/development/api/fidl.md#client-assigned_identifiers) are defined
 only within the scope of their channel. They can only target the portion of the
 screen that is defined by their parent Flatland session.
 
@@ -227,7 +227,7 @@ feedback, bugs and lessons when making design decisions.
   clients. However, there are some negatives about mapping each comment as a
   method. This design prevents batching until [support for multiple messages in
   single
-  write](/contribute/governance/rfcs/0010_channel_iovec.md#support_for_multiple_messages_in_single_write)
+  write](/docs/contribute/governance/rfcs/0010_channel_iovec.md#support_for_multiple_messages_in_single_write)
   becomes available. However, we don’t expect the clients to manipulate the
   scene graph often and don’t consider this costly.
 

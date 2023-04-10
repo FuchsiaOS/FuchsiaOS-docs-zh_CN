@@ -40,7 +40,7 @@ Create a new component project at `examples/fidl/rust/client`:
    # Declare an executable for the client.
    rustc_binary("bin") {
      name = "fidl_echo_rust_client"
-     edition = "2018"
+     edition = "2021"
 
      sources = [ "src/main.rs" ]
    }
@@ -186,7 +186,7 @@ Note: You can explore the full source for the realm component at
    instances and routes the capabilities:
 
     ```posix-terminal
-    ffx component run fuchsia-pkg://fuchsia.com/echo-rust-client#meta/echo_realm.cm
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-rust-client#meta/echo_realm.cm
     ```
 
 1. Start the `echo_client` instance:
@@ -217,10 +217,10 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /glossary/README.md#realm
-[bindings-ref]: /reference/fidl/bindings/rust-bindings.md
-[events]: /reference/fidl/bindings/rust-bindings.md#protocol-events-client
+[glossary.realm]: /docs/glossary/README.md#realm
+[bindings-ref]: /docs/reference/fidl/bindings/rust-bindings.md
+[events]: /docs/reference/fidl/bindings/rust-bindings.md#protocol-events-client
 [rustdoc]: https://fuchsia-docs.firebaseapp.com/rust/
-[server-tut]: /development/languages/fidl/tutorials/rust/basics/server.md
-[sync-client]: /development/languages/fidl/tutorials/rust/basics/sync-client.md
-[overview]: /development/languages/fidl/tutorials/overview.md
+[server-tut]: /docs/development/languages/fidl/tutorials/rust/basics/server.md
+[sync-client]: /docs/development/languages/fidl/tutorials/rust/basics/sync-client.md
+[overview]: /docs/development/languages/fidl/tutorials/overview.md

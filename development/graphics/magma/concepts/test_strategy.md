@@ -3,12 +3,12 @@ Magma Test Strategy
 
 ## Architecture Diagram
 
-* [Magma Block Diagram](/development/graphics/magma/block_diagram.svg)
+* [Magma Block Diagram](/docs/development/graphics/magma/block_diagram.svg)
 
 Four major interfaces
 
 * [Vulkan](https://www.khronos.org/vulkan)
-* [magma](/src/graphics/lib/magma/include/magma/magma.h)
+* [magma](/sdk/lib/magma_client/include/lib/magma/magma.h)
 * [magma system](/src/graphics/lib/magma/src/magma_util/platform/platform_connection.h)
 * [msd](/src/graphics/lib/magma/include/msd/msd.h)
 
@@ -87,17 +87,14 @@ Those command buffers as well as other resources are shared with the magma syste
 
 Fuchsia supports devices with the following gpus:
 
-* Intel Gen 9 - Intel HD Graphics
+* Intel Gen 9/12 - Intel HD/Xe Graphics
 * ARM Mali - Bifrost
-* Verisilicon GC7000
 
 GPUs are complex pieces of hardware with flaws that may trigger misbehavior infrequently. There may be tests that flake rarely.  If detected these should be treated as driver bugs.
 
 ## Performance Tests
 
-* [Gfxbench](https://gfxbench.com)
-    * A large and complex performance benchmark.
-    * Fuchsia details, forthcoming.
+* TODO
 
 ## Fuzzing
 
@@ -105,7 +102,7 @@ MSDs should be fuzzed through the magma FIDL interface. Each MSD should have
 its own fuzzer, as every driver is unique in how it processes command buffer
 or immediate command data and as such needs different input pre-processing to
 ensure adequate coverage. [libfuzzer][libfuzzer] fuzzers should link against
-the MSD using [fake-ddk][fake-ddk] to ensure coverage information can be
+the MSD using [mock-ddk][mock-ddk] to ensure coverage information can be
 received from the driver. Since the real GPU hardware can't be used in a
 fuzzer environment, the fuzzer must have a fake device implementation.
 
@@ -137,8 +134,8 @@ happens in connection with the Vulkan CTS. There are external efforts such as
 * [Contributing](contributing.md)
 
 [graphicsfuzz]: https://github.com/google/graphicsfuzz
-[fake-ddk]: /src/devices/testing/fake_ddk
-[libfuzzer]: /development/testing/fuzzing/write-a-fuzzer.md
-[seedcorpus]: /development/testing/fuzzing/improve-a-fuzzer.md#measure_code_coverage
+[mock-ddk]: /src/devices/testing/mock-ddk
+[libfuzzer]: /docs/development/testing/fuzzing/write-a-fuzzer.md
+[seedcorpus]: /docs/development/testing/fuzzing/improve-a-fuzzer.md#measure_code_coverage
 [vulkanerrors]: https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#fundamentals-errors
 

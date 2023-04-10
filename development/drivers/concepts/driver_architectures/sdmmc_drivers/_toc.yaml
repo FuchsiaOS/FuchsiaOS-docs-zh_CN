@@ -7,4 +7,4 @@
 # team as reviewer.
 toc:
 - title: "SDMMC driver architecture"
-  path: /development/drivers/concepts/driver_architectures/sdmmc_drivers/sdmmc.md
+  path: /docs/development/drivers/concepts/driver_architectures/sdmmc_drivers/sdmmc.md

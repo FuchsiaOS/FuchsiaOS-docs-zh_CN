@@ -1,0 +1,32 @@
+# Copyright 2021 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+- title: "Overview"
+  path: /docs/development/testing/ctf/overview.md
+- title: "Introduction"
+  path:  /docs/development/testing/ctf/compatibility_testing.md
+- title: "Contributing"
+  section:
+  - title: "Contributing Tests"
+    path: /docs/development/testing/ctf/contributing_tests.md
+  - title: "CTF Test Realm"
+    path: /docs/development/testing/ctf/test_collection.md
+  - title: "Testing Guidelines"
+    path: /docs/development/testing/ctf/testing_guidelines.md
+  - title: "Diagnosing Test Failures"
+    path: /docs/development/testing/ctf/diagnosing_test_failures.md
+- title: "Platform Surface Area (Plasa)"
+  path: /docs/development/testing/ctf/plasa_overview.md
+  section:
+  - title: "Plasa manifest"
+    path: /docs/development/testing/ctf/plasa_manifest.md
+- title: "FIDL API Compatibility Testing"
+  path: /docs/development/testing/ctf/fidl_api_compatibility_testing.md
+- title: "Frequently Asked Questions"
+  path: /docs/development/testing/ctf/faq.md
+

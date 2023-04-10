@@ -67,11 +67,9 @@ Prints both the moniker and the URL with which the component was launched.
 
 Prints usage information about `list`.
 
-### `list-files [<paths...>]`
+### `list-files [<monikers...>]`
 
-Lists all files that contain inspect data under the given `paths`. This will
-only list files for v1 components given that v2 components are not mapped to the
-filesystem at the moment.
+Lists all files that contain inspect data under the given `paths`.
 
 The files that this command looks for are:
 
@@ -85,14 +83,19 @@ The files that this command looks for are:
 Example usage:
 
 ```
-$ iquery list-files /hub /dev
-/dev/diagnostics/driver_manager/dm.inspect
-/hub/c/archivist.cmx/21352/out/diagnostics/fuchsia.inspect.Tree
-/hub/c/archivist.cmx/21352/system_diagnostics/fuchsia.inspect.Tree
-/hub/c/bt-gap.cmx/35231/out/diagnostics/bt-gap.inspect
-/hub/c/bt-gap.cmx/35231/system_diagnostics/fuchsia.inspect.Tree
-/hub/c/netstack.cmx/26786/out/diagnostics/counters/fuchsia.inspect.deprecated.Inspect
-...
+$ iquery list-files bootstrap/archivist bootstrap/driver_manager
+bootstrap/archivist
+  fuchsia.inspect.Tree
+bootstrap/driver_manager
+  class/display-controller/000.inspect
+  class/input-report/000.inspect
+  class/input-report/001.inspect
+  class/misc/000.inspect
+  class/pci-root/000.inspect
+  class/pci/000.inspect
+  class/sysmem/481.inspect
+  driver_manager/driver_host/10171/root.inspect
+  ...
 ```
 
 #### `--help`
@@ -156,32 +159,16 @@ The name that you specified for the manifest file. If this is specified, the
 output only contains monikers for components whose URL contains the specified
 name.
 
-#### `--help
+#### `--file`
 
-Prints usage information about `show`.
+The filename we are interested in. If this is provided, the output will only
+contain data from components which expose Inspect under the given file under
+their out/diagnostics directory.
 
-### `show-file [<paths...>]`
-
-Given a path, prints the inspect data contained in files at the given paths. At the moment this
-command only works for v1 components as we only have a v1 hub.
-
-Example usage:
-
-```
-$ fx shell iquery show-file /dev/diagnostics/driver_manager/dm.inspect /hub/c/archivist.cmx/21352/out/diagnostics/fuchsia.inspect.Tree
-/dev/diagnostics/driver_manager/dm.inspect:
-  root:
-    device_count = 126
-    ...
-/hub/c/archivist.cmx/21352/out/diagnostics/fuchsia.inspect.Tree:
-  root:
-    all_archive_accessor_node:
-      archive_accessor_connections_closed = 15
-  ...
-```
 
 #### `--help`
 
-Prints usage information about `show-file`.
+Prints usage information about `show`.
 
-[Inspect API]: /development/diagnostics/inspect/README.md
+
+[Inspect API]: /docs/development/diagnostics/inspect/README.md

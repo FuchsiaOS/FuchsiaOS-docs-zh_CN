@@ -10,7 +10,7 @@ The variants defined so far enable things like
 ### Specifying variants
 
 Variant specifications are passed in to the build using the GN build argument
-[`select_variant`](/gen/build_arguments.md#select_variant). Note that the order of these
+[`select_variant`](/docs/gen/build_arguments.md#select_variant). Note that the order of these
 variant selectors matters as explained in the syntax section below.
 
 Using `fx set`, pass string variant selectors with the `--variant=` flag:
@@ -83,12 +83,12 @@ binary and use that name.
 You can also supply a GN "scope" in curly brackets as a variant selector which can give full
 control over exactly how matching targets are built. These must be set in the "gn args" rather
 than on the "fx set" command line. See the
-[`select_variant`](/gen/build_arguments.md#select_variant) build argument documentation for
+[`select_variant`](/docs/gen/build_arguments.md#select_variant) build argument documentation for
 more details.
 
 To see the list of variants available and learn more about how to define
 new ones, see the
-[`known_variants`](/gen/build_arguments.md#known_variants)
+[`known_variants`](/docs/gen/build_arguments.md#known_variants)
 build argument.
 
 ### Common variant names
@@ -113,7 +113,7 @@ build argument.
     only and only affects certain targets including the kernel.
 
 Fuzzer variants like `asan-fuzzer` are used when running tests under the
-[fuzzer](/development/testing/fuzzing/overview.md) with a sanitizer. These variants aren't
+[fuzzer](/docs/development/testing/fuzzing/overview.md) with a sanitizer. These variants aren't
 meant for manual selection, instead follow the fuzzing instructions to set up the build.
 
 There are additionally some shorthand selectors that apply variants to host binaries (the tools
@@ -157,31 +157,12 @@ example of a Fuchsia binary compiled for x64 using the "asan-ubsan" variant:
 
 ### Replicating ASan failures
 
-Our commit queue runs tests in an ASan-enabled configuration. To replicate the
-build in this configuration, use the following `args.gn` file:
+Our infrastructure runs tests in an ASan-enabled configuration. To replicate an
+ASan-enabled infrastructure build, use `fx repro <build_id>` and run the
+commands it emits.
 
-```sh
-import("//boards/<x64-or-arm64>.gni")
-import("//products/core.gni")
-
-base_package_labels+=[ "//bundles/buildbot:core" ]
-goma_dir="<path-to-goma-dir>"
-is_debug=true
-select_variant=["asan","host_asan"]
-target_cpu="<x64-or-arm64>"
-use_goma=true
-```
-
-Replace `x64-or-arm64` with your desired target architecture, and replace
-`<path-to-goma-dir>` with the path to your goma dir (for those who use goma). This
-can also be generated from the command line with:
-
-```sh
-fx set core.x64 --with-base //bundles/buildbot:core --variant host_asan --variant asan --goma
-```
-
-Note that this will build all of the tests that are run by the commit queue and
-install them in the system image. This may be undesirable for two reasons:
+Note that this will build all of the tests that are run by the infrastructure
+and install them in the system image. This may be undesirable for two reasons:
 
  * Building all of the tests is typically slow and unnecessary. Developers may
    find it more effective to limit the package labels to the tests they need.

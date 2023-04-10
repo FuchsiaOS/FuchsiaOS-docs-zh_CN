@@ -7,54 +7,50 @@
 # team as reviewer.
 toc:
 - title: "Run Fuchsia tests"
-  path: /development/testing/run_fuchsia_tests.md
-- title: "Run an end-to-end test"
-  path: /development/testing/run_an_end_to_end_test.md
-- title: "Create a new end-to-end test"
-  path: /development/testing/create_a_new_end_to_end_test.md
-
+  path: /docs/development/testing/run_fuchsia_tests.md
 # TODO(fxbug.dev/60809)
 # - title: "Test with Diagnostics"
-#   path: /development/testing/diagnostics.md
-
+#   path: /docs/development/testing/diagnostics.md
 - title: "Testing Scenic and Escher"
-  path: /development/testing/scenic_testing.md
+  path: /docs/development/testing/scenic_testing.md
 - title: "Questions and answers"
-  path: /development/testing/faq.md
+  path: /docs/development/testing/faq.md
 - title: "Zircon testing"
   section:
   - title: "Zircon testing overview"
-    path: /development/testing/testing.md
+    path: /docs/development/testing/testing.md
   - title: "Block device testing"
-    path: /development/testing/block_device_testing.md
+    path: /docs/development/testing/block_device_testing.md
   - title: "NAND testing"
-    path: /development/testing/nand_testing.md
+    path: /docs/development/testing/nand_testing.md
 - title: "Compatibility Testing"
   section:
-  - include: /development/testing/cts/_toc.yaml
+  - include: /docs/development/testing/ctf/_toc.yaml
 - title: "Component testing"
   section:
-  - include: /development/testing/components/_toc.yaml
+  - include: /docs/development/testing/components/_toc.yaml
 - title: "Driver testing"
   section:
   - title: "Testing a USB device"
-    path: /development/testing/testing_usb_device.md
+    path: /docs/development/testing/testing_usb_device.md
 - title: "Fuzzing"
   section:
-  - include: /development/testing/fuzzing/_toc.yaml
+  - include: /docs/development/testing/fuzzing/_toc.yaml
 - title: "Host-target interaction tests"
-  path: /development/testing/host_target_interaction_tests.md
+  path: /docs/development/testing/host_target_interaction_tests.md
 - title: "Testing for flakiness in CQ"
-  path: /development/testing/testing_for_flakiness_in_cq.md
+  path: /docs/development/testing/testing_for_flakiness_in_cq.md
 - title: "Flaky test policy"
-  path: /development/testing/test_flake_policy.md
+  path: /docs/development/testing/test_flake_policy.md
 - title: "Stress tests"
-  path: /development/testing/stress_tests.md
+  path: /docs/development/testing/stress_tests.md
 - title: "Rust stress test library"
-  path: /development/testing/rust_stress_test_library.md
+  path: /docs/development/testing/rust_stress_test_library.md
 - title: "Bluetooth"
   section:
   - title: "Writing unit tests for the C++ bt-host driver"
-    path: /development/testing/bt_host_unittesting.md
+    path: /docs/development/testing/bt_host_unittesting.md
 - title: "Testability rubrics"
-  path: /development/testing/testability_rubric.md
+  path: /docs/development/testing/testability_rubric.md
+- title: "Hardware testing guide"
+  path: /docs/development/testing/hardware/guide.md

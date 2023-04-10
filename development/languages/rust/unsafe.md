@@ -28,7 +28,7 @@ Example:
 ```rust
 impl Channel {
     /// Write a message to a channel. Wraps the
-    /// [zx_channel_write](//zircon/syscalls/channel_write.md)
+    /// [zx_channel_write](//docs/zircon/syscalls/channel_write.md)
     /// syscall.
     pub fn write(&self, bytes: &[u8], handles: &mut Vec<Handle>)
             -> Result<(), Status>
@@ -77,6 +77,18 @@ For more discussion on encapsulating `unsafe` invariants, see
 [Ralf Jung's "The Scope of Unsafe"][scope-of-unsafe] and
 [Niko Matsakis's "Tootsie Pop" model][tootsie-pop].
 
+## Unsafe Reviews
+
+To request an unsafe review for Rust code:
+
+1.  File a bug under the `Rust>Unsafe` component. Include a link to your review
+    in the bug description.
+1.  Add "Fuchsia Rust Unsafe Reviews <fuchsia-rust-unsafe-reviews@google.com>"
+    as a reviewer to your CL. A reviewer will be chosen at random and assigned
+    to your CL.
+
+If your review is time-sensitive, increase the priority on your bug and leave a
+comment explaining your situation.
 
 [scope-of-unsafe]: https://www.ralfj.de/blog/2016/01/09/the-scope-of-unsafe.html
 [tootsie-pop]: http://smallcultfollowing.com/babysteps/blog/2016/05/27/the-tootsie-pop-model-for-unsafe-code

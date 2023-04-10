@@ -45,5 +45,5 @@ Statically linking libc is not supported. Everything dynamically links libc.so.
 libc.so is also the dynamic linker.
 
 [c11std]: https://en.wikipedia.org/wiki/C11_(C_standard_revision)
-[dotdot]: /concepts/filesystems/dotdot.md
+[dotdot]: /docs/concepts/filesystems/dotdot.md
 [fdio]: /sdk/lib/fdio

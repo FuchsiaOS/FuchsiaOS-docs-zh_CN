@@ -10,7 +10,7 @@ _"Call me by another name"_
 ## Summary
 
 Portions of
-[RFC-0019](/contribute/governance/rfcs/0019_using_evolution_uint64.md)
+[RFC-0019](/docs/contribute/governance/rfcs/0019_using_evolution_uint64.md)
 introduced the notion of type aliasing into FIDL.
 This proposal aims to formally evolve FIDL's type aliasing and new type
 declaration mechanisms and their effects on bindings. More specifically, this
@@ -34,7 +34,7 @@ type systems of their binding languages.
 ### Type alias
 
 For full context on type aliasing,
-[RFC-0019](/contribute/governance/rfcs/0019_using_evolution_uint64.md)
+[RFC-0019](/docs/contribute/governance/rfcs/0019_using_evolution_uint64.md)
 (which proposes the current using style aliases) highlights the original design,
 motivation, and precedence. This RFC aims to pave a path forward for exposing
 type aliases in language bindings and refine some of the language grammar

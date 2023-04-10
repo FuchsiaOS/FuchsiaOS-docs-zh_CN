@@ -111,34 +111,70 @@ In this section, you'll use the generated FIDL bindings for
 Begin by creating a new component project to implement the echo server. This
 component will serve the `Echo` protocol and handle incoming requests.
 
+Create a project scaffold for a new component called `echo-server` in the
+`//vendor/fuchsia-codelab` directory:
+
+```posix-terminal
+mkdir -p vendor/fuchsia-codelab/echo-server
+```
+
+Create the following file and directory structure in the new project directory:
+
 * {Rust}
 
-  ```posix-terminal
-  fx create component --path vendor/fuchsia-codelab/echo-server --lang rust
+  ```none {:.devsite-disable-click-to-copy}
+  //vendor/fuchsia-codelab/echo-server
+                          |- BUILD.gn
+                          |- meta
+                          |   |- echo.cml
+                          |
+                          |- src
+                              |- main.rs
   ```
 
 * {C++}
 
-  ```posix-terminal
-  fx create component --path vendor/fuchsia-codelab/echo-server --lang cpp
+  ```none {:.devsite-disable-click-to-copy}
+  //vendor/fuchsia-codelab/echo-server
+                          |- BUILD.gn
+                          |- meta
+                          |   |- echo.cml
+                          |
+                          |- main.cc
   ```
 
-Add the generated bindings to the `BUILD.gn` file as a dependency:
+Add the following build rules to your `BUILD.gn` file to build and package the server component:
+
+{% set gn_rust_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_rust_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
 
 * {Rust}
 
   `echo-server/BUILD.gn`:
 
   ```gn
-  rustc_binary("bin") {
-    output_name = "echo-server"
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
 
-    deps = [
-      {{ '<strong>' }}"//vendor/fuchsia-codelab/echo-fidl:echo-rustc",{{ '</strong>' }}
-      ...
-    ]
+  {{ gn_rust_binary|replace("echo_server_rust","echo-server")|replace("//examples/components/routing/fidl","//vendor/fuchsia-codelab/echo-fidl")|trim() }}
 
-    sources = [ "src/main.rs" ]
+  {{ gn_rust_component|replace("echo_server_component","component")|trim() }}
+
+  fuchsia_package("echo-server") {
+    package_name = "echo-server"
+    deps = [ ":component" ]
   }
   ```
 
@@ -147,27 +183,35 @@ Add the generated bindings to the `BUILD.gn` file as a dependency:
   `echo-server/BUILD.gn`:
 
   ```gn
-  executable("bin") {
-    output_name = "echo-server"
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
 
-    deps = [
-      {{ '<strong>' }}"//vendor/fuchsia-codelab/echo-fidl:echo",{{ '</strong>' }}
-      ...
-    ]
+  {{ gn_cpp_binary|replace("echo_server_cpp","echo-server")|replace("//examples/components/routing/fidl","//vendor/fuchsia-codelab/echo-fidl")|trim() }}
 
-    sources = [ "main.cc" ]
+  {{ gn_cpp_component|replace("echo_server_component","component")|trim() }}
+
+  fuchsia_package("echo-server") {
+    package_name = "echo-server"
+    deps = [ ":component" ]
   }
   ```
 
 Declare the `Echo` protocol as a capability provided by the server component,
 and expose it for use by the parent realm:
 
+{% set cml_rust %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+{% endset %}
+
+{% set cml_cpp %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+{% endset %}
+
 * {Rust}
 
   `echo-server/meta/echo_server.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+  {{ cml_rust|replace("echo_server_rust","echo-server")|trim() }}
   ```
 
 * {C++}
@@ -175,7 +219,7 @@ and expose it for use by the parent realm:
   `echo-server/meta/echo_server.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/meta/echo_server.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+  {{ cml_cpp|replace("echo_server_cpp","echo-server")|trim() }}
   ```
 
 ### Implement the server
@@ -196,7 +240,7 @@ following code:
   <code>library</code>. For the <code>fidl.examples.routing.echo</code> library,
   the generated crate name is <code>fidl_fidl_examples_routing_echo</code>. For
   more details, see
-  <a href="/reference/fidl/bindings/rust-bindings">Rust bindings</a>.
+  <a href="/docs/reference/fidl/bindings/rust-bindings">Rust bindings</a>.
   </aside>
 
 * {C++}
@@ -214,7 +258,7 @@ Add the following code to `main()` to serve the `Echo` protocol:
   `echo-server/src/main.rs`:
 
   ```rust
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/src/main.rs" region_tag="main_body" adjust_indentation="auto" highlight="1,2,3,4,14,15,23,24,25,26,27" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_server/src/main.rs" region_tag="main_body" adjust_indentation="auto" %}
   ```
 
   This code performs the following steps to serve the `Echo` protocol:
@@ -230,7 +274,7 @@ Add the following code to `main()` to serve the `Echo` protocol:
   `echo-server/main.cc`:
 
   ```cpp
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/main.cc" region_tag="main_body" adjust_indentation="auto" highlight="3,8,13,14,15,16,17" %}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_server/main.cc" region_tag="main_body" adjust_indentation="auto" %}
   ```
 
   This code performs the following steps to serve the `Echo` protocol:
@@ -274,34 +318,70 @@ in the response payload.
 Create another new component project to implement the echo client. This
 component will connect to the protocol implementation and send requests.
 
+Create a project scaffold for a new component called `echo-client` in the
+`//vendor/fuchsia-codelab` directory:
+
+```posix-terminal
+mkdir -p vendor/fuchsia-codelab/echo-client
+```
+
+Create the following file and directory structure in the new project directory:
+
 * {Rust}
 
-  ```posix-terminal
-  fx create component --path vendor/fuchsia-codelab/echo-client --lang rust
+  ```none {:.devsite-disable-click-to-copy}
+  //vendor/fuchsia-codelab/echo-client
+                          |- BUILD.gn
+                          |- meta
+                          |   |- echo.cml
+                          |
+                          |- src
+                              |- main.rs
   ```
 
 * {C++}
 
-  ```posix-terminal
-  fx create component --path vendor/fuchsia-codelab/echo-client --lang cpp
+  ```none {:.devsite-disable-click-to-copy}
+  //vendor/fuchsia-codelab/echo-client
+                          |- BUILD.gn
+                          |- meta
+                          |   |- echo.cml
+                          |
+                          |- main.cc
   ```
 
-Add the generated bindings to the `BUILD.gn` file as a dependency:
+Add the following build rules to your `BUILD.gn` file to build and package the client component:
+
+{% set gn_rust_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_rust_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
 
 * {Rust}
 
   `echo-client/BUILD.gn`:
 
   ```gn
-  rustc_binary("bin") {
-    output_name = "echo-client"
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
 
-    deps = [
-      {{ '<strong>' }}"//vendor/fuchsia-codelab/echo-fidl:echo-rustc",{{ '</strong>' }}
-      ...
-    ]
+  {{ gn_rust_binary|replace("echo_client_rust","echo-client")|replace("//examples/components/routing/fidl","//vendor/fuchsia-codelab/echo-fidl")|trim() }}
 
-    sources = [ "src/main.rs" ]
+  {{ gn_rust_component|replace("echo_client_component","component")|trim() }}
+
+  fuchsia_package("echo-client") {
+    package_name = "echo-client"
+    deps = [ ":component" ]
   }
   ```
 
@@ -310,27 +390,35 @@ Add the generated bindings to the `BUILD.gn` file as a dependency:
   `echo-client/BUILD.gn`:
 
   ```gn
-  executable("bin") {
-    output_name = "echo-client"
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
 
-    deps = [
-      {{ '<strong>' }}"//vendor/fuchsia-codelab/echo-fidl:echo",{{ '</strong>' }}
-      ...
-    ]
+  {{ gn_cpp_binary|replace("echo_client_cpp","echo-client")|replace("//examples/components/routing/fidl","//vendor/fuchsia-codelab/echo-fidl")|trim() }}
 
-    sources = [ "main.cc" ]
+  {{ gn_cpp_component|replace("echo_client_component","component")|trim() }}
+
+  fuchsia_package("echo-client") {
+    package_name = "echo-client"
+    deps = [ ":component" ]
   }
   ```
 
 Configure the client's component manifest to request the
 `fidl.examples.routing.echo.Echo` capability exposed by the server:
 
+{% set cml_rust %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+{% endset %}
+
+{% set cml_cpp %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+{% endset %}
+
 * {Rust}
 
   `echo-client/meta/echo_client.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+  {{ cml_rust|replace("echo_client_rust","echo-client")|trim() }}
   ```
 
 * {C++}
@@ -338,7 +426,7 @@ Configure the client's component manifest to request the
   `echo-client/meta/echo_client.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" %}
+  {{ cml_cpp|replace("echo_client_cpp","echo-client")|trim() }}
   ```
 
 ### Implement the client
@@ -346,12 +434,20 @@ Configure the client's component manifest to request the
 Similar to `echo-args`, the client passes the program arguments as a message
 to the server. Add the following program arguments to `echo_client.cml`:
 
+{% set cml_rust %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/meta/echo_client.cml" region_tag="program_args" adjust_indentation="auto" highlight="9,10" %}
+{% endset %}
+
+{% set cml_cpp %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/meta/echo_client.cml" region_tag="program_args" adjust_indentation="auto" highlight="9,10" %}
+{% endset %}
+
 * {Rust}
 
   `echo-client/meta/echo_client.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/rust/echo_client/meta/echo_client.cml" region_tag="program_args" adjust_indentation="auto" highlight="9,10" %}
+  {{ cml_rust|replace("echo_client_rust","echo-client")|trim() }}
   ```
 
 * {C++}
@@ -359,45 +455,10 @@ to the server. Add the following program arguments to `echo_client.cml`:
   `echo-client/meta/echo_client.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/routing/cpp/echo_client/meta/echo_client.cml" region_tag="program_args" adjust_indentation="auto" highlight="9,10" %}
+  {{ cml_cpp|replace("echo_client_cpp","echo-client")|trim() }}
   ```
 
-Update the manifest includes to provide logging support on stdout:
-
-* {Rust}
-
-  `echo-client/meta/echo_client.cml`:
-
-  ```json5
-  {
-    include: [
-        "inspect/client.shard.cml",
-        // Enable logging on stdout
-        "syslog/elf_stdio.shard.cml",
-    ],
-
-    // ...
-  }
-  ```
-
-* {C++}
-
-  `echo-client/meta/echo_client.cml`:
-
-  ```json5
-  {
-    include: [
-        "inspect/client.shard.cml",
-        // Enable logging on stdout
-        "syslog/elf_stdio.shard.cml",
-    ],
-
-    // ...
-  }
-  ```
-
-Open the main source file and replace the import statements with the
-following code:
+Open the main source file and replace the import statements with the following code:
 
 * {Rust}
 
@@ -428,7 +489,7 @@ a request:
 
   The `EchoMarker` provides a wrapper to connect to the exposed capability by
   name and returns a handle to the open `EchoProxy` interface. This proxy contains
-  the `echo_string()` FIDL protocol method. 
+  the `echo_string()` FIDL protocol method.
 
 * {C++}
 
@@ -451,7 +512,16 @@ to act as the parent and manage capability routing.
 Create a new project directory for the realm product definition:
 
 ```posix-terminal
-mkdir vendor/fuchsia-codelab/echo-realm
+mkdir -p vendor/fuchsia-codelab/echo-realm
+```
+
+Create the following file and directory structure in the new project directory:
+
+```none {:.devsite-disable-click-to-copy}
+//vendor/fuchsia-codelab/echo-realm
+                        |- BUILD.gn
+                        |- meta
+                        |   |- echo_realm.cml
 ```
 
 Create a new component manifest file `meta/echo_realm.cml` with the
@@ -489,7 +559,6 @@ Update the build configuration to include the new components:
 
 ```posix-terminal
 fx set workstation_eng.qemu-x64 \
-    --with //vendor/fuchsia-codelab/echo-fidl:echo \
     --with //vendor/fuchsia-codelab/echo-server \
     --with //vendor/fuchsia-codelab/echo-client \
     --with //vendor/fuchsia-codelab/echo-realm

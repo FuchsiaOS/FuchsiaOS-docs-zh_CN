@@ -113,7 +113,7 @@ pub trait Environment: Send + Sync + Debug {
     fn timeout_seconds(&self) -> Option<u64>;
 
     /// Return the runners for all the actors
-    fn actor_runners(&mut self) -> Vec<ActorRunner>;
+    async fn actor_runners(&mut self) -> Vec<ActorRunner>;
 
     /// Reset the environment, when an actor requests one
     async fn reset(&mut self);
@@ -161,7 +161,7 @@ impl Environment for FilesystemEnvironment {
         None
     }
 
-    fn actor_runners(&mut self) -> Vec<ActorRunner> {
+    async fn actor_runners(&mut self) -> Vec<ActorRunner> {
         vec![
             ActorRunner::new(
                 "filesystem_actor",  // debug name
@@ -190,15 +190,9 @@ The main function of a stress test is straightforward, since most of the logic i
 implemented in the Environment and Actors. Use the main function to collect command-line
 arguments (if any), initialize logging and set log severity.
 
-Note: The stress test library offers a `StdoutLogger` that prints all logs to stdout. This
-functionality can be used by any stress test that runs as a legacy (cmx) component.
-
 ```rust
-#[fuchsia_async::run_singlethreaded]
+#[fuchsia::main]
 async fn main() {
-    // Print all logs to stdout.
-    stress_test::StdoutLogger::init();
-
     // Create the environment
     let env = FilesystemEnvironment::new();
 

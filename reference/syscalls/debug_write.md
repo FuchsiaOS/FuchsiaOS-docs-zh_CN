@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_debug_write
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write a message to the debug serial port.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Write a message to the debug serial port.
 zx_status_t zx_debug_write(const char* buffer, size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_debug_write()` attempts to write data of *buffer_size* bytes to the debug serial port.
 
@@ -29,33 +36,29 @@ Otherwise, the function returns **ZX_ERR_NOT_SUPPORTED**.
 truncated, but the data from two different `zx_debug_write` calls will not be
 interleaved or reordered.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## RETURN VALUE
+## Return value
 
 Returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_NOT_SUPPORTED**  `kernel.enable-serial-syscalls` is not set to `true`
 or `output-only` on the kernel command line.
 
 **ZX_ERR_INVALID_ARGS** *buffer* is NULL.
 
-## SEE ALSO
+## See also
 
  - [kernel command line]
  - [`zx_debug_read()`]
  - [`zx_debuglog_read()`]
  - [`zx_debuglog_write()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[kernel command line]: /reference/kernel/kernel_cmdline.md
+[kernel command line]: /docs/reference/kernel/kernel_cmdline.md
 [`zx_debug_read()`]: debug_read.md
 [`zx_debuglog_read()`]: debuglog_read.md
 [`zx_debuglog_write()`]: debuglog_write.md

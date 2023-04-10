@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_thread_legacy_yield
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Yield the CPU of the current thread back to the scheduler.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Yield the CPU of the current thread back to the scheduler.
 zx_status_t zx_thread_legacy_yield(uint32_t options);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_thread_legacy_yield()` causes the calling thread to yield the CPU back to the scheduler.
 
@@ -25,21 +32,17 @@ zx_status_t zx_thread_legacy_yield(uint32_t options);
 
  `options` must be zero.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_thread_legacy_yield(uint32_t options)` will always return `ZX_OK` for zero `options`.
 Any other `options` value, will result in `ZX_ERR_INVALID_ARGS`.
 
-## SEE ALSO
+## See also
 
  - [`zx_nanosleep()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_nanosleep()`]: nanosleep.md

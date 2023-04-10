@@ -136,12 +136,12 @@ Reducing the API surface area and matching POSIX is preferred over keeping
 
 ## Prior art and references
 
-[`zx_stream_create`](/reference/syscalls/stream_create.md)
+[`zx_stream_create`](/docs/reference/syscalls/stream_create.md)
 with `ZX_STREAM_MODE_APPEND` is similar to
 [`open`](https://pubs.opengroup.org/onlinepubs/9699919799/functions/open.html)
 with `O_APPEND` from POSIX.
 
-[`zx_object_set_property`](/reference/syscalls/object_set_property.md)
+[`zx_object_set_property`](/docs/reference/syscalls/object_set_property.md)
 with `ZX_PROP_STREAM_MODE_APPEND` is similar to
 [`fcntl`](https://pubs.opengroup.org/onlinepubs/9699919799/functions/fcntl.html)
 with `F_SETFL` and `O_APPEND` from POSIX.

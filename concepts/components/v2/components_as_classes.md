@@ -1,7 +1,5 @@
 # Understanding components through object-oriented design
 
-<<../_v2_banner.md>>
-
 [Fuchsia Components][component-intro] are composable units of software
 execution that emphasize reuse, isolation, and testability.
 
@@ -282,7 +280,6 @@ An analogous class definition would be as follows:
   };
   ```
 
-
 * {Dart}
 
   ```dart
@@ -429,7 +426,7 @@ This structure may be implemented using components as follows:
 }
 ```
 
-```
+```cpp
 // C++-like pseudocode for interacting with the child components from the session.
 
 // Create any arbitrarily named app in the apps collection with just a URL to execute.
@@ -484,7 +481,6 @@ the "apps" collection, so long as its dependencies are satisfied
       std::vector<App> apps;
   };
   ```
-
 
 * {Dart}
 
@@ -567,7 +563,6 @@ the "apps" collection, so long as its dependencies are satisfied
       }
   }
   ```
-
 
 ## FIDL data as inner or associated classes
 
@@ -760,7 +755,6 @@ maintaining the set of items according to the protocol's contract.
       std::vector<Cart> carts_;
   };
   ```
-
 
 * {Dart}
 
@@ -978,7 +972,6 @@ maintaining the set of items according to the protocol's contract.
 
   ```
 
-
 ## Capability routing as dependency injection
 
 [Dependency Injection][dependency-injection] is a technique in which an
@@ -1096,7 +1089,6 @@ protocol CreditCardCharger {
   ],
 }
 ```
-
 
 ```json5
 // fake_credit_card_charger.cml
@@ -1325,7 +1317,6 @@ The above system would be implemented in an OOP language as follows:
     EXPECT_EQ(100, charger->GetLastAmount());
   }
   ```
-
 
 * {Dart}
 
@@ -1694,20 +1685,19 @@ values and inspecting call arguments. The above code demonstrates how
 the functionality of those frameworks is implemented.
 
 [builder-pattern]: https://en.wikipedia.org/wiki/Builder_pattern
-[capabilities]: /concepts/components/v2/capabilities.md
+[capabilities]: /docs/concepts/components/v2/capabilities/README.md
 [class-oop]: https://en.wikipedia.org/wiki/Class-based_programming
-[component-binding]: /concepts/components/v2/lifecycle.md#binding
-[component-collections]: /concepts/components/v2/realms.md#collections
-[component-creation]: /concepts/components/v2/lifecycle.md#creating
-[component-intro]: /concepts/components/v2/introduction.md
-[component-manifests]: /concepts/components/v2/component_manifests.md
+[component-binding]: /docs/concepts/components/v2/lifecycle.md#binding
+[component-collections]: /docs/concepts/components/v2/realms.md#collections
+[component-creation]: /docs/concepts/components/v2/lifecycle.md#creating
+[component-intro]: /docs/concepts/components/v2/introduction.md
+[component-manifests]: /docs/concepts/components/v2/component_manifests.md
 [dependency-injection]: https://en.wikipedia.org/wiki/Dependency_injection
 [factory-method]: https://en.wikipedia.org/wiki/Factory_method_pattern
-[fidl]: /concepts/fidl/overview.md
-[has-a]: https://en.wikipedia.org/wiki/Has-a
+[fidl]: /docs/concepts/fidl/overview.md
 [late-binding]: https://en.wikipedia.org/wiki/Late_binding
 [lazy-init]: https://en.wikipedia.org/wiki/Lazy_initialization
-[lifecycle]: /concepts/components/v2/lifecycle.md
+[lifecycle]: /docs/concepts/components/v2/lifecycle.md
 [oop]: https://en.wikipedia.org/wiki/Object-oriented_programming
 [plain-data]: https://en.wikipedia.org/wiki/Passive_data_structure
 [realm-open]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#Realm.OpenExposedDir

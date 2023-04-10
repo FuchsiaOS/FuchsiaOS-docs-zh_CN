@@ -18,4 +18,4 @@ When writing code that will run in the kernel, to read the current monotonic clo
 lk_time_t current_time(void);
 ```
 
-[`zx_clock_get_monotonic()`]: /reference/syscalls/clock_get_monotonic.md
+[`zx_clock_get_monotonic()`]: /docs/reference/syscalls/clock_get_monotonic.md

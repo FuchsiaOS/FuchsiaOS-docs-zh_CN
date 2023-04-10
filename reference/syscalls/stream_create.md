@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_stream_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a stream from a VMO.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_stream_create(uint32_t options,
                              zx_handle_t* out_stream);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_stream_create()` creates a stream, which reads and writes the data in an
 underlying VMO.
@@ -38,18 +45,20 @@ right on the created stream object.
 **ZX_ERR_ACCESS_DENIED**.  Otherwise, **ZX_RIGHT_WRITE** will be included as a
 right on the created stream object.
 
-## RIGHTS
+**ZX_STREAM_MODE_APPEND**  The stream is created in append mode. A stream in
+append mode will atomically set the seek offset of the stream to the content
+size of the stream prior to writing data in `zx_stream_writev()`.
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_stream_create()` returns **ZX_OK** on success. In the event of
 failure, one of the following values is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *vmo* is not a valid handle.
 
@@ -63,15 +72,13 @@ has an unsupported bit set to 1.
 
 **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 
-## SEE ALSO
+## See also
 
  - [`zx_stream_readv()`]
  - [`zx_stream_readv_at()`]
  - [`zx_stream_seek()`]
  - [`zx_stream_writev()`]
  - [`zx_stream_writev_at()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_stream_readv()`]: stream_readv.md
 [`zx_stream_readv_at()`]: stream_readv_at.md

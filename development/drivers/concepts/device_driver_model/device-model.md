@@ -84,7 +84,7 @@ $ driver dump
 [root] pid=4766 fuchsia-boot:///#meta/platform-bus.cm
    [sys] pid=4766
       [platform] pid=4766
-         [platform-passthrough] pid=4766 fuchsia-boot:///#meta/platform-bus-x86.cm
+         [pt] pid=4766 fuchsia-boot:///#meta/platform-bus-x86.cm
             [acpi] pid=4766
                [acpi-pwrbtn] pid=4766 fuchsia-boot:///#meta/hid.cm
                [acpi-_SB_] pid=4766

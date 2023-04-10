@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_system_get_event
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Retrieve a handle to a system event.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_system_get_event(zx_handle_t root_job,
                                 zx_handle_t* event);
 ```
 
-## DESCRIPTION
+## Description
 
 *root_job* must be a handle to the root job of the system.
 
@@ -79,18 +86,16 @@ for ZX_SYSTEM_EVENT_OUT_OF_MEMORY, which does not trigger memory reclamation
 itself, but instead is used to capture memory diagnostics what will help debug
 the closely following ZX_SYSTEM_EVENT_OUT_OF_MEMORY event (if there is one).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## RETURN VALUE
+## Return value
 
 `zx_system_get_event()` returns ZX_OK on success, and *event* will be a valid
 handle, or an error code from below on failure.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED** The calling process' policy was invalid, the handle
 *root_job* did not have ZX_RIGHT_MANAGE_PROCESS rights for *kind*

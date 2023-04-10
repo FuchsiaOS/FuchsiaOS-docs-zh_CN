@@ -10,7 +10,7 @@ about recording and viewing logs.
 
 ### GN dependency
 
-The necessary packages can be included with an addtion to `deps` in `BUILD.gn`:
+The necessary packages can be included with an addition to `deps` in `BUILD.gn`:
 
 ```
 deps = [
@@ -26,17 +26,6 @@ See [Dart: Overview][dart-dev] for more information about building Dart within F
 
 Ensure that your component has the required capabilities to log by including the
 following in your component manifest:
-
-   * {.cmx}
-
-   ```json
-   {
-     "include": [
-       "syslog/client.shard.cmx"
-     ],
-     ...
-   }
-   ```
 
    * {.cml}
 
@@ -99,7 +88,7 @@ See [`stdout` & `stderr`] in the language-agnostic logging docs for details on t
 streams in the system.
 
 [Logger]: https://pub.dev/documentation/logging/latest/logging/Logger-class.html
-[`ffx log`]: /development/diagnostics/logs/viewing.md
-[dart-dev]: /development/languages/dart/README.md
-[`stdout` & `stderr`]: /development/diagnostics/logs/recording.md#stdout-stderr
-[language agnostic logging docs]: /concepts/components/diagnostics/logs/README.md
+[`ffx log`]: /docs/development/diagnostics/logs/viewing.md
+[dart-dev]: /docs/development/languages/dart/README.md
+[`stdout` & `stderr`]: /docs/development/diagnostics/logs/recording.md#stdout-stderr
+[language agnostic logging docs]: /docs/concepts/components/diagnostics/logs/README.md

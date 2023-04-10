@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_object_get_property
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Ask for various properties of various kernel objects.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_object_get_property(zx_handle_t handle,
                                    size_t value_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_object_get_property()` requests the value of a kernel object's property.
 Getting a property requires **ZX_RIGHT_GET_PROPERTY** rights on the handle.
@@ -83,11 +90,6 @@ Allowed operations: **get**, **set**
 
 The value of ld.so's `_dl_debug_addr`. This can be used by debuggers to
 interrogate the state of the dynamic loader.
-
-If this value is set to `ZX_PROCESS_DEBUG_ADDR_BREAK_ON_SET` on process
-creation, the loader will manually issue a debug breakpoint when the property
-has been set to its correct value. This gives an opportunity to read or modify
-the initial state of the program.
 
 ### ZX_PROP_PROCESS_BREAK_ON_LOAD
 
@@ -217,9 +219,20 @@ This property can only be set when the handle corresponds to a debugger process
 exception channel. Attempting to set this property when the exception channel
 is any other type will result in ZX_ERR_BAD_STATE.
 
-## RIGHTS
+### ZX_PROP_STREAM_MODE_APPEND
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+*handle* type: **Stream**
+
+*value* type: `uint8_t`
+
+Allowed operations: **get**, **set**
+
+This property will have a value of `1` when the Stream is in append mode and a
+value of `0` the Stream is not in append mode. A stream in append mode will
+atomically set the seek offset of the stream to the content size of the stream
+prior to writing data in `zx_stream_writev()`.
+
+## Rights
 
 *handle* must have **ZX_RIGHT_GET_PROPERTY**.
 
@@ -233,12 +246,12 @@ If *property* is **ZX_PROP_SOCKET_RX_THRESHOLD**, *handle* must be of type **ZX_
 
 If *property* is **ZX_PROP_SOCKET_TX_THRESHOLD**, *handle* must be of type **ZX_OBJ_TYPE_SOCKET**.
 
-## RETURN VALUE
+## Return value
 
 `zx_object_get_property()` returns **ZX_OK** on success. In the event of
 failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**: *handle* is not a valid handle
 
@@ -257,10 +270,8 @@ In a future build this error will no longer occur.
 
 **ZX_ERR_NOT_SUPPORTED**: *property* does not exist
 
-## SEE ALSO
+## See also
 
  - [`zx_object_set_property()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_object_set_property()`]: object_set_property.md

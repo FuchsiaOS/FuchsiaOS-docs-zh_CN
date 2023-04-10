@@ -1,0 +1,29 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as reviewer.
+toc:
+  - title: Overview
+    path: /docs/get-started/sdk/learn/driver/introduction.md
+    step_group: sdkdrivercodelab
+  - title: Explore the edu device
+    path: /docs/get-started/sdk/learn/driver/explore-device.md
+    step_group: sdkdrivercodelab
+  - title: Bind to the device node
+    path: /docs/get-started/sdk/learn/driver/driver-binding.md
+    step_group: sdkdrivercodelab
+  - title: Configure hardware resources
+    path: /docs/get-started/sdk/learn/driver/hardware-resources.md
+    step_group: sdkdrivercodelab
+  - title: Expose the driver capabilities
+    path: /docs/get-started/sdk/learn/driver/driver-service.md
+    step_group: sdkdrivercodelab
+  - title: Interact with the driver
+    path: /docs/get-started/sdk/learn/driver/driver-tools.md
+    step_group: sdkdrivercodelab
+  - title: Test and debug the driver
+    path: /docs/get-started/sdk/learn/driver/test-debug.md
+    step_group: sdkdrivercodelab

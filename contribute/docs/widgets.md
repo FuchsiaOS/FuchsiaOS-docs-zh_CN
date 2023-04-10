@@ -5,7 +5,7 @@
 {% comment %}
 # This is used to do the initial import statement in the doc due to a copybara limitation
 [ABI][glossary.ABI]
-[glossary.ABI]: /glossary/README.md#ABI
+[glossary.ABI]: /docs/glossary/README.md#ABI
 {% endcomment %}
 
 # Documentation widgets
@@ -93,7 +93,7 @@ This widget does not use parameters, make sure to specify the
 ## Glossary
 
 These widgets are specifically created to work with the glossary terms defined
-in [//glossary/_glossary.yaml][glossary-yaml].
+in [//docs/glossary/glossary.yaml][glossary-yaml].
 
 
 In order to enable over-hover definitions, you must use one of the syntaxes listed below. The
@@ -114,7 +114,7 @@ a link to the glossary term. Optionally, this term can be unclickable.
 
   * {Rendered}
 
-     Definition of [ABI](/glossary/README.md#ABI).
+     Definition of [ABI](/docs/glossary/README.md#ABI).
 
 * Non-clickable over-hover definition:
 
@@ -141,15 +141,15 @@ There are several ways of using this widget:
 
   For both formats, you must define the Xref at the bottom of the markdown file. For example:
 
-  <pre>{% verbatim %}[glossary.<var>display_name</var>]: /glossary/README.md#<var>term</var>{% endverbatim %}</pre>
+  <pre>{% verbatim %}[glossary.<var>display_name</var>]: /docs/glossary/README.md#<var>term</var>{% endverbatim %}</pre>
 
   * Inline link:
 
-  <pre>{% verbatim %}[<var>display_name</var>](/glossary/README.md#<var>term</var>){% endverbatim %}</pre>
+  <pre>{% verbatim %}[<var>display_name</var>](/docs/glossary/README.md#<var>term</var>){% endverbatim %}</pre>
 
   * Inline link (shortened):
 
-  <pre>{% verbatim %}[<var>display_name</var>](/glossary#<var>term</var>){% endverbatim %}</pre>
+  <pre>{% verbatim %}[<var>display_name</var>](/docs/glossary#<var>term</var>){% endverbatim %}</pre>
 
 * {HTML/Jinja2}
 
@@ -185,7 +185,7 @@ Note: When using the widgets in Jinja2 there are additional parameters available
         <td><code>term</code></td>
         <td><b>Required</b><br>Specify a term that is defined
           in the <a href="{{fuchsia_editor }}{{ glossary_file }}">
-          _glossary.yaml</a> file.</td>
+          glossary.yaml</a> file.</td>
       </tr>
     </tbody>
   </table>
@@ -201,7 +201,7 @@ Note: When using the widgets in Jinja2 there are additional parameters available
         <td><code>term</code></td>
         <td><b>Required</b><br>Specify a term that is defined
           in the <a href="{{fuchsia_editor }}{{ glossary_file }}">
-          _glossary.yaml</a> file.</td>
+          glossary.yaml</a> file.</td>
       </tr>
       <tr>
         <td><code>display_name</code></td>
@@ -232,7 +232,7 @@ glossary.
 
   * {Rendered}
 
-     [ABI](/glossary/README.md?style=box#ABI)
+     [ABI](/docs/glossary/README.md?style=box#ABI)
 
 #### Usage
 
@@ -253,18 +253,18 @@ There are several ways of using this widget:
 
     Then, you must define the Xref at the bottom of the markdown file. For example:
 
-    <pre>{% verbatim %}[glossary.box.<var>display_name</var>]: /glossary/README.md#<var>term</var>{% endverbatim %}</pre>
+    <pre>{% verbatim %}[glossary.box.<var>display_name</var>]: /docs/glossary/README.md#<var>term</var>{% endverbatim %}</pre>
 
   * Inline link:
 
     <pre>
-    {% verbatim %}[<var>display_name</var>](/glossary/README.md?style=box#<var>term</var>){% endverbatim  %}
+    {% verbatim %}[<var>display_name</var>](/docs/glossary/README.md?style=box#<var>term</var>){% endverbatim  %}
     </pre>
 
   * Inline link (shortened):
 
     <pre>
-    {% verbatim %}[<var>display_name</var>](/glossary?style=box#<var>term</var>){% endverbatim %}
+    {% verbatim %}[<var>display_name</var>](/docs/glossary?style=box#<var>term</var>){% endverbatim %}
     </pre>
 
 
@@ -291,7 +291,7 @@ Note: The parameters for markdown and Jinja2 are the same.
       <td><code>term</code></td>
       <td><b>Required</b><br>Specify a term that is defined
         in the <a href="{{fuchsia_editor }}{{ glossary_file }}">
-        _glossary.yaml</a> file.</td>
+        glossary.yaml</a> file.</td>
     </tr>
     <tr>
         <td><code>display_name</code></td>
@@ -303,7 +303,7 @@ Note: The parameters for markdown and Jinja2 are the same.
 
 <!-- xrefs -->
 
-[doc-widgets]: {{fuchsia_editor }}docs/_common/_doc_widgets.md
-[glossary-yaml]: {{fuchsia_editor }}{{ glossary_file }}
+[doc-widgets]: /docs/_common/_doc_widgets.md
+[glossary-yaml]: /docs/glossary/glossary.yaml
 [jinja-macros]: https://jinja.palletsprojects.com/en/2.11.x/templates/#macros
-[glossary-add]: /contribute/docs/glossary-entries.md
+[glossary-add]: /docs/contribute/docs/glossary-entries.md
