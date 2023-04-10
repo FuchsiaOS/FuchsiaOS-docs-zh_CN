@@ -1,0 +1,15 @@
+# Copyright 2022 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
+# before making changes to this file, and add a member of the fuchsia.dev
+# team as a reviewer.
+# Using ? or * is not supported in the redirect links.
+redirects:
+- from: /docs/development/languages/fidl/tutorials/llcpp/topics/memory-ownership
+  to: /docs/development/languages/fidl/tutorials/cpp/topics/wire-memory-ownership
+- from: /docs/development/languages/fidl/tutorials/llcpp/...
+  to: /docs/development/languages/fidl/tutorials/cpp/...
+- from: /docs/development/languages/fidl/tutorials/tutorial-c
+  to: /docs/development/languages/fidl/tutorials/overview

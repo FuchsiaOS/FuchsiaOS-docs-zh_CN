@@ -7,7 +7,7 @@ since the devhost process does it through `libdriver.so`.
 To register a trace provider, you must do the following:
 
 Note: For more information on the Fuchsia tracing system, see
-[Fuchsia tracing system](/concepts/kernel/tracing-system.md).
+[Fuchsia tracing system](/docs/concepts/kernel/tracing-system.md).
 
 * [Register with the trace manager](#register-with-the-trace-manager)
 * [Give the trace manager component access](#give-trace-manager-component-access)
@@ -18,7 +18,7 @@ To register as a trace provider, you can use the `libtrace-provider` library
 to provide an asynchronous loop in your component's code.
 
 Note: For more information on tracing libraries, see
-[Tracing libraries](/reference/tracing/libraries.md).
+[Tracing libraries](/docs/reference/tracing/libraries.md).
 
 For example:
 
@@ -26,7 +26,7 @@ For example:
 
   Note: This example uses `fdio` to set up the FIDL channel with Trace Manager. For
   more information, see
-  [`fdio`](/concepts/filesystems/life_of_an_open.md#fdio).
+  [`fdio`](/docs/concepts/filesystems/life_of_an_open.md#fdio).
 
   ```cpp
   #include <lib/async-loop/cpp/loop.h>
@@ -83,32 +83,43 @@ For example:
   }
   ```
 
-## Give the trace manager component access {#give-trace-manager-component-access}
+* {Rust}
 
-In the component manifest file (a `.cmx` file) of your component, you must
-specify that it needs to communicate with the Fuchsia trace manager.
-
-Note: For information on component manifests, see
-[Component Manifests](/concepts/components/v1/component_manifests.md).
-
-To give the trace manager component access, specify
-`fuchsia.tracing.provider.Registry` as a "services". For example:
-
-* {.cmx file}
-
-  ```json
-  {
-      "program": {
-          "binary": "bin/app"
-      },
-      "sandbox": {
-          "services": [
-              "fuchsia.tracing.provider.Registry"
-          ]
-      }
+  ```rust
+  fn main() {
+      fuchsia_trace_provider::trace_provider_create_with_fdio();
+      // ...
   }
   ```
 
+## Setup Routing {#setup-routing}
+
+Ensure that your component requests the appropriate tracing capabilities by
+including the following in your component manifest:
+
+* {.cml file}
+
+  ```json5
+  {
+    include: [
+      "trace/client.shard.cml",
+    ],
+    ...
+  }
+  ```
+
+This allows your component to communicate with trace_manager using the
+fuchsia.tracing.provider.Registry protocol as well as forward the offer to its
+children.
+
+If your component uses a Chromium-based `fuchsia.web` service and you would like to be able to collect
+trace data from it, ensure that your `Context` is provided both
+the `fuchsia.tracing.provider.Registry` and `fuchsia.tracing.perfetto.ProducerConnector`
+capabilities.
+
+Note: For more information on how capabilities are passed to the `Context`, see the documentation for
+[`fuchsia.web/CreateContextParams.service_directory`](https://fuchsia.dev/reference/fidl/fuchsia.web#CreateContextParams.service_directory).
+
 Once you have registered your component as a trace provider, you can enable
 tracing in your code. For more information, see
-[Adding tracing in your code](/development/tracing/tutorial/adding-tracing-in-code.md).
+[Adding tracing in your code](/docs/development/tracing/tutorial/adding-tracing-in-code.md).

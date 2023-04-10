@@ -1,19 +1,19 @@
 # Converting and visualizing a trace
 
-The [Fuchsia trace system](/concepts/kernel/tracing-system.md)
+The [Fuchsia trace system](/docs/concepts/kernel/tracing-system.md)
 supports various file formats for recording traces. Each data format
 requires a specific tool to visualize trace results.
 
 ## Prerequisites
 
 Before you attempt to convert or analyze a trace file, make sure you've
-[recorded a trace](/development/tracing/tutorial/recording-a-fuchsia-trace.md).
+[recorded a trace](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
 
 ## Fuchsia trace file formats
 
 The following types of file formats can store Fuchsia trace data:
 
- * FXT (or [Fuchsia trace format](/reference/tracing/trace-format.md)) is a binary format
+ * FXT (or [Fuchsia trace format](/docs/reference/tracing/trace-format.md)) is a binary format
    that is a direct encoding of the original trace data that is produced by
    the various programs. For more information, see [FXT trace](#fxt-trace).
  * JSON is used for viewing trace data on Chrome. For more information, see [JSON trace](#json-trace).
@@ -111,7 +111,7 @@ your host, if you don't have a Fuchsia target device, you can start a
 Fuchsia emulator with networking:
 
 Note: For more information on getting started with Fuchsia, see
-[Fuchsia](/get-started/README.md).
+[Fuchsia](/docs/get-started/README.md).
 
 ```posix-terminal
 ffx emu --net tap
@@ -124,7 +124,7 @@ To record a trace of `du`, do the following:
 1. In a new terminal, run `ffx trace start`:
 
    Note: For more information on recording a trace in Fuchsia, see
-   [Recording a Fuchsia trace](/development/tracing/tutorial/recording-a-fuchsia-trace.md).
+   [Recording a Fuchsia trace](/docs/development/tracing/tutorial/recording-a-fuchsia-trace.md).
 
    ```posix-terminal
    ffx trace start --buffer-size 64 --categories all
@@ -148,7 +148,7 @@ To record a trace of `du`, do the following:
    This command runs `du` in a loop,
 
    Note: For more information on creating a process in Fuchsia, see
-   [Process creation](/concepts/process/process_creation.md).
+   [Process creation](/docs/concepts/process/process_creation.md).
 
 3. To finish the tracing, press `Enter` key in the terminal
    on your host machine.
@@ -167,7 +167,7 @@ To record a trace of `du`, do the following:
    ./tracing/bin/trace2html trace.json
    ```
 
-![drawing](images/trace-example-overview.png)
+![Screenshot of trace interface](images/trace-example-overview.png)
 
 A trace file has a lot of information including a time scale near the top of
 the trace. In this example, the whole trace lasted about 2.5 seconds.
@@ -204,7 +204,7 @@ between the CPU usage and the filesystem:
 You can zoom in on specific areas of this region to determine the correlation
 between the CPU usage and the filesystem.
 
-![drawing](images/trace-example-zoom1.png)
+![Screenshot of zooming in on cpu and filesystem information](images/trace-example-zoom1.png)
 
 In this example, you can see just two `du` executions (the first is marked
 with a green circle). The first `blobfs` CPU burst actually consists of
@@ -218,7 +218,7 @@ Instead, it shows that the bursts are due to loading the `du` program.
 
 You are now ready to dive further into what is causing the `blobs` bursts.
 
-![drawing](images/trace-example-blobfs1.png)
+![Image of blobs trace timings](images/trace-example-blobfs1.png)
 
 In this example, notice the time scale that spans a time period from 2,023,500
 microseconds to just past 2,024,500 which indicated a time scale of about
@@ -233,7 +233,7 @@ of the report for more detailed information about a specific object.
 
 If you click on `FileReadAt`, you can see the following information:
 
-![drawing](images/trace-example-filereadat.png)
+![Image of FileReadAt information](images/trace-example-filereadat.png)
 
 This information tells you the following:
 
@@ -245,7 +245,7 @@ see [//src/lib/storage/vfs/cpp/connection.cc](/src/lib/storage/vfs/cpp/connectio
 
 If you click on `Blob::Read`, you can see the following information:
 
-![drawing](images/trace-example-blobread.png)
+![Image of Blob::Read information](images/trace-example-blobread.png)
 
 Note: For information on how tracing is performed for `Blob::Read`,
 see [//src/storage/blobfs/blob.cc](/src/storage/blobfs/blob.cc).

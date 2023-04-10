@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmo_set_size
 
 ## SUMMARY
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
-
 Resize a VMO object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,10 +23,10 @@ Resize a VMO object.
 zx_status_t zx_vmo_set_size(zx_handle_t handle, uint64_t size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmo_set_size()` sets the new size of a [virtual memory
-object](/reference/kernel_objects/vm_object.md) (VMO).
+object](/docs/reference/kernel_objects/vm_object.md) (VMO).
 
 The size will be rounded up to the next page size boundary.
 Subsequent calls to [`zx_vmo_get_size()`] will return the rounded up size.
@@ -31,26 +38,24 @@ content size of the VMO. Use [`zx_object_set_property()`] with
 actually resizing the VMO.
 
 The data in the VMO between the given size and the end of the VMO (i.e., the next page boundary)
-will be overritten with zeros.
+will be overwritten with zeros.
 
-## RIGHTS
+## Rights
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+*handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_WRITE** and **ZX_RIGHT_RESIZE**.
 
-*handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_WRITE**.
-
-## RETURN VALUE
+## Return value
 
 `zx_vmo_set_size()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
 **ZX_ERR_WRONG_TYPE**  *handle* is not a VMO handle.
 
-**ZX_ERR_ACCESS_DENIED**  *handle* does not have the **ZX_RIGHT_WRITE** right.
+**ZX_ERR_ACCESS_DENIED**  *handle* does not have the **ZX_RIGHT_WRITE** or **ZX_RIGHT_RESIZE** right.
 
 **ZX_ERR_UNAVAILABLE** The VMO was not created with **ZX_VMO_RESIZABLE**
 or **ZX_VMO_CHILD_RESIZABLE**.
@@ -61,7 +66,7 @@ or **ZX_VMO_CHILD_RESIZABLE**.
 
 **ZX_ERR_BAD_STATE**  Requested size would discard pinned pages.
 
-## SEE ALSO
+## See also
 
  - [`zx_vmo_create()`]
  - [`zx_vmo_create_child()`]
@@ -69,8 +74,6 @@ or **ZX_VMO_CHILD_RESIZABLE**.
  - [`zx_vmo_op_range()`]
  - [`zx_vmo_read()`]
  - [`zx_vmo_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_object_get_property()`]: object_get_property.md
 [`zx_object_set_property()`]: object_set_property.md

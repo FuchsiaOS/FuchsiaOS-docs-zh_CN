@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_clock_get_details
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Fetch all of the low level details of the clock's current status.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,16 +25,14 @@ zx_status_t zx_clock_get_details(zx_handle_t handle,
                                  void* details);
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CLOCK** and have **ZX_RIGHT_READ**.
 
-## DESCRIPTION
+## Description
 
 Fetches the fine grained details of the clock object. See
-[clocks](/reference/kernel_objects/clock.md) for the specifics of the details
+[clocks](/docs/reference/kernel_objects/clock.md) for the specifics of the details
 reported. Currently, there is only one details structure defined for clocks,
 `zx_clock_details_v1_t`. Users must specify the version of the structure using
 the options parameter as well as providing at least
@@ -49,12 +54,12 @@ void GetSomeDetails(zx_handle_t the_clock) {
 }
 ```
 
-## RETURN VALUE
+## Return value
 
 On success, returns **ZX_OK** along with clock details stored in the *details*
 out parameter.
 
-## ERRORS
+## Errors
 
  - **ZX_ERR_BAD_HANDLE** : *handle* is either an invalid handle, or a handle to
    an object type that is not **ZX_OBJ_TYPE_CLOCK**.
@@ -62,7 +67,7 @@ out parameter.
  - **ZX_ERR_INVALID_ARGS** : The version of the details structure signaled by
    `options` is invalid, or the pointer of the structure passed via `details` is bad.
 
-## SEE ALSO
+## See also
 
  - [clock transformations]
  - [clocks]
@@ -70,10 +75,8 @@ out parameter.
  - [`zx_clock_read()`]
  - [`zx_clock_update()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[clock transformations]: /concepts/kernel/clock_transformations.md
-[clocks]: /reference/kernel_objects/clock.md
+[clock transformations]: /docs/concepts/kernel/clock_transformations.md
+[clocks]: /docs/reference/kernel_objects/clock.md
 [`zx_clock_create()`]: clock_create.md
 [`zx_clock_read()`]: clock_read.md
 [`zx_clock_update()`]: clock_update.md

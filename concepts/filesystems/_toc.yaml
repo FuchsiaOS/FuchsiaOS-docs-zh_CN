@@ -7,18 +7,18 @@
 # team as reviewer.
 toc:
 - title: "Filesystem architecture"
-  path: /concepts/filesystems/filesystems.md
+  path: /docs/concepts/filesystems/filesystems.md
 - title: "MinFS"
-  path: /concepts/filesystems/minfs.md
+  path: /docs/concepts/filesystems/minfs.md
 - title: "BlobFS"
-  path: /concepts/filesystems/blobfs.md
+  path: /docs/concepts/filesystems/blobfs.md
 - title: "Random access compression in BlobFS"
-  path: /concepts/filesystems/random-access-compression.md
+  path: /docs/concepts/filesystems/random-access-compression.md
 - title: "\"dot dot\" (..) considered harmful"
-  path: /concepts/filesystems/dotdot.md
+  path: /docs/concepts/filesystems/dotdot.md
 - title: "Block devices"
-  path: /concepts/filesystems/block_devices.md
+  path: /docs/concepts/filesystems/block_devices.md
 - title: "zxcrypt"
-  path: /concepts/filesystems/zxcrypt.md
-- title: "POSIX I/O (libfdio)"
-  path: /concepts/filesystems/life_of_an_open.md
+  path: /docs/concepts/filesystems/zxcrypt.md
+- title: "Life of an open"
+  path: /docs/concepts/filesystems/life_of_an_open.md

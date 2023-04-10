@@ -4,7 +4,7 @@ This guide explains how to build a Rust compiler for use with the Fuchsia. This
 is useful if you need to build Fuchsia with a patched compiler, or a compiler
 built with custom options. Building a custom Rust toolchain is not always
 necessary for building Fuchsia with a different version of Rust; see
-[Build Fuchsia with a custom Rust toolchain](/development/build/fuchsia_custom_rust.md)
+[Build Fuchsia with a custom Rust toolchain](/docs/development/build/fuchsia_custom_rust.md)
 for details.
 
 ## Prerequisites
@@ -34,17 +34,25 @@ Prior to building a custom Rust toolchain for Fuchsia, you need to do the follow
    Note: Running `jiri update` from the `infra` directory ensures that you
    have the most recent configurations and tools.
 
-1. Download and extract the Fuchsia core IDK to `$DEV_ROOT/sdk`. For more
-   information, see [Download the Fuchsia IDK](/development/idk/download.md).
-
-1. Run the following command to use `cipd` to get the linux `sysroot` package
-   for your host platform:
+1. Run the following command to use `cipd` to get a Fuchsia core IDK, a Linux
+   sysroot, and a recent version of clang:
 
    ```posix-terminal
-   # You may want to: rm -rf $DEV_ROOT/sysroot
-   mkdir -p $DEV_ROOT/sysroot
-   cipd install fuchsia/third_party/sysroot/linux latest -root $DEV_ROOT/sysroot/linux
+   DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
+   cat <<"EOF" > cipd.ensure
+   @Subdir sdk
+   fuchsia/sdk/core/${platform} latest
+   @Subdir sysroot/linux
+   fuchsia/third_party/sysroot/linux latest
+   @Subdir clang
+   fuchsia/third_party/clang/${platform} integration
+   EOF
+   $DEV_ROOT/infra/fuchsia/prebuilt/tools/cipd ensure --root . --ensure-file cipd.ensure
    ```
+
+   Note: these versions are not pinned, so every time you run the `cipd ensure`
+   command, you will get an updated version. As of writing, however, this
+   matches the recipe behavior.
 
 1. If you haven't already, clone the Rust source. The
    [Guide to Rustc Development] is a good resource to reference whenever you're
@@ -64,19 +72,19 @@ Prior to building a custom Rust toolchain for Fuchsia, you need to do the follow
    ```posix-terminal
    DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
 
-   $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython \
+   $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython3 \
      $DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/generate_config.py \
        config_toml \
-       --clang-prefix=$DEV_ROOT/fuchsia/prebuilt/third_party/clang/linux-x64 \
+       --clang-prefix=$DEV_ROOT/clang \
        --host-sysroot=$DEV_ROOT/sysroot/linux \
        --prefix=$(pwd)/install/fuchsia-rust \
       | tee fuchsia-config.toml
 
-   $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython \
+   $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython3 \
        $DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/generate_config.py \
          environment \
          --eval \
-         --clang-prefix=$DEV_ROOT/fuchsia/prebuilt/third_party/clang/linux-x64 \
+         --clang-prefix=$DEV_ROOT/clang \
          --sdk-dir=$DEV_ROOT/sdk \
          --linux-amd64-sysroot=$DEV_ROOT/sysroot/linux \
          --linux-arm64-sysroot=$DEV_ROOT/sysroot/linux \
@@ -107,10 +115,10 @@ Prior to building a custom Rust toolchain for Fuchsia, you need to do the follow
    # The subshell avoids polluting your environment with fuchsia-specific rust settings.
    ( source fuchsia-env.sh && ./x.py install --config fuchsia-config.toml ) && \
    rm -rf install/fuchsia-rust/lib/.build-id && \
-   $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython \
+   $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython3 \
      $DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/generate_config.py \
        runtime \
-     | $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython \
+     | $DEV_ROOT/infra/fuchsia/prebuilt/tools/vpython3 \
          $DEV_ROOT/infra/fuchsia/recipes/recipe_modules/toolchain/resources/runtimes.py \
            --dir install/fuchsia-rust/lib \
            --readelf fuchsia-build/*/llvm/bin/llvm-readelf \
@@ -142,4 +150,4 @@ Then re-run the command to build Rust.
 With a newly compiled custom Rust toolchain, you're ready to use it to build
 Fuchsia. Directions on how to do so are available in a [dedicated guide].
 
-[dedicated guide]: /development/build/fuchsia_custom_rust.md
+[dedicated guide]: /docs/development/build/fuchsia_custom_rust.md

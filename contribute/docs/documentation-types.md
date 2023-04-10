@@ -16,13 +16,13 @@ Most documentation can be divided into these categories:
 - [Procedures (guides)](#procedural-documentation)
     - Get-started - Documentation that provides a step-by-step process for setting up a part of
       the Fuchsia developer environment, such as downloading and building Fuchsia. These are located
-      under `/get-started`.
+      under `/docs/get-started`.
     - Development, or Guides - Documentation that provides a step-by-step process for completing
-      any task related to Fuchsia. These are all located under `/development/`.
+      any task related to Fuchsia. These are all located under `/docs/development/`.
 - [Concepts](#conceptual-documentation) - Documentation that helps you understand a concept such
-  as mods in Fuchsia. This type of documentation is located under `/concepts`.
+  as mods in Fuchsia. This type of documentation is located under `/docs/concepts`.
 - [Reference](#reference-documentation) - Documentation that provides a source of information about
-  parts of a system such as API parameters or FIDL. These are located under `/reference/`. Much
+  parts of a system such as API parameters or FIDL. These are located under `/docs/reference/`. Much
   of the reference documentation is auto-generated.
 
 **You should write a procedural document** if you plan on explaining to a user how to use a specific
@@ -108,7 +108,7 @@ Good conceptual documentation usually includes:
 - **Description** rather than instruction
 - **Background** concepts
 - **Diagrams** or other visual aids (preferably in .png format)
-- **Links** to procedureal and/or reference docs
+- **Links** to procedural and/or reference docs
 
 After writing your document, it is good practice to proofread the document, put yourself in the
 user's shoes (no longer being the expert that developed the feature), and try to answer these
@@ -136,7 +136,7 @@ For the style guide for API documentation, see the
 
 <!-- Reference links -->
 
-[doc-standard]: /contribute/docs/documentation-standards.md
-[style-guide]: /contribute/docs/documentation-style-guide.md
-[code-sample-style-guide]: /contribute/docs/code-sample-style-guide.md
-[api-style]: /development/api/documentation.md
+[doc-standard]: /docs/contribute/docs/documentation-standards.md
+[style-guide]: /docs/contribute/docs/documentation-style-guide.md
+[code-sample-style-guide]: /docs/contribute/docs/code-sample-style-guide.md
+[api-style]: /docs/development/api/documentation.md

@@ -1,5 +1,7 @@
 # HLCPP tutorials
 
+<<../../../../../_common/_hlcpp_notice.md>>
+
 This section includes the following tutorials for using the HLCPP
 FIDL bindings:
 

@@ -4,14 +4,14 @@ Magma: Overview
 ## Background
 
 Fuchsia is a new open source, microkernel-like operating system from Google.  Drivers do not execute inside the Zircon kernel, instead they are privileged user-space processes.
-Drivers are built using a stable [FDF](/development/drivers/concepts/fdf.md).
+Drivers are built using a stable [FDF](/docs/development/drivers/concepts/fdf.md).
 
 Magma is the gpu driver architecture for Fuchsia. There are two driver components: a gpu-specific library loaded into each application’s address space; and the magma system driver that manages the hardware.
 
 ## Hardware requirements
 
 ### Vulkan conformant gpu
-Magma is designed to support [Vulkan](/development/graphics/magma/concepts/vulkan.md), though it could be used to implement OpenGL or other graphics APIs.  Fuchsia intends to support software consuming OpenGL APIs via translation to Vulkan using ANGLE.
+Magma is designed to support [Vulkan](/docs/development/graphics/magma/concepts/vulkan.md), though it could be used to implement OpenGL or other graphics APIs.  Fuchsia intends to support software consuming OpenGL APIs via translation to Vulkan using ANGLE.
 
 ### MMU
 A memory management unit that allows arbitrary mapping of system memory pages into the GPU address space is needed for DMA to/from non-contiguous buffers.
@@ -48,5 +48,5 @@ Responsibilities:
 
 Whereas a traditional client driver makes ioctl syscalls to communicate with a kernel driver; magma provides an interface for client drivers to communicate over IPC with the Magma system driver.
 
-Details on the Magma interface are given in [Magma: Design](/development/graphics/magma/concepts/design.md).
+Details on the Magma interface are given in [Magma: Design](/docs/development/graphics/magma/concepts/design.md).
 

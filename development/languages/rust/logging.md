@@ -9,27 +9,14 @@ Fuchsia. For general information about recording and viewing logs, see the
 Ensure that your component requests the appropriate logging capabilities by
 including the following in your component manifest:
 
-   * {.cmx}
-
-   ```json
-   {
-     "include": [
-       "syslog/client.shard.cmx"
-     ],
-     ...
-   }
-   ```
-
-   * {.cml}
-
-   ```json5
-   {
-     include: [
-       "syslog/client.shard.cml"
-     ],
-     ...
-   }
-   ```
+```json5
+{
+  include: [
+    "syslog/client.shard.cml"
+  ],
+  ...
+}
+```
 
 ## Initialization {#initialization}
 
@@ -112,7 +99,7 @@ deps = [
 
 ### Log events
 
-Call the macros provided by the `tracing` crate to record logs at the declared
+Call the macros provided by the [`tracing`][trc] crate to record logs at the declared
 severity level:
 
 ```rust
@@ -136,7 +123,8 @@ work for your program.
 For more details, see the [standard streams][std-streams] section in the
 language-agnostic logging documentation.
 
-[doc-logging]: /concepts/components/diagnostics/logs/README.md
+[doc-logging]: /docs/concepts/components/diagnostics/logs/README.md
 [ref-fuchsia]: https://fuchsia-docs.firebaseapp.com/rust/fuchsia/
-[rust-dev]: /development/languages/rust/README.md
-[std-streams]: /development/diagnostics/logs/recording.md#stdout-stderr
+[rust-dev]: /docs/development/languages/rust/README.md
+[std-streams]: /docs/development/diagnostics/logs/recording.md#stdout-stderr
+[trc]: https://fuchsia-docs.firebaseapp.com/rust/tracing/index.html

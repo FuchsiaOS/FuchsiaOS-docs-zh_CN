@@ -47,11 +47,11 @@ bindings process incoming request messages and deliver them through an abstract
 interface for components to implement.
 
 ![Diagram showing how FIDL bindings provide generated library code to translate
-function calls into FIDL messages for transport across process boundaries.]
-(/get-started/images/fidl/fidl-bindings.png){: width="574"}
+ function calls into FIDL messages for transport across
+  process boundaries.](/docs/get-started/images/fidl/fidl-bindings.png){: width="574"}
 
 Note: For more details on the bindings specification and supported programming
-languages, see the [Bindings Reference](/reference/fidl/bindings/overview.md).
+languages, see the [Bindings Reference](/docs/reference/fidl/bindings/overview.md).
 
 At build time, the `fidlgen` backend tools generate bindings for supported
 programming languages from the JSON IR library produced by `fidlc`.
@@ -78,10 +78,21 @@ In this section, you'll define a new FIDL library with a protocol called
 `Echo` containing a single method that returns string values back to the
 caller.
 
+### Create the FIDL library
+
 Start by creating a new directory for the FIDL library target:
 
 ```posix-terminal
 mkdir -p fuchsia-codelab/echo-fidl
+```
+
+After you complete this section, the project should have the following directory
+structure:
+
+```none {:.devsite-disable-click-to-copy}
+//fuchsia-codelab/echo-fidl
+                  |- BUILD.bazel
+                  |- echo.fidl
 ```
 
 Add a new FIDL interface file called `echo.fidl` with the following contents:
@@ -101,13 +112,15 @@ target:
 `echo-fidl/BUILD.bazel`:
 
 ```bazel
-{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/fidl/BUILD.bazel" adjust_indentation="auto" %}
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/fidl/BUILD.bazel" region_tag="imports" adjust_indentation="auto" %}
+
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/fidl/BUILD.bazel" region_tag="fidl_library" adjust_indentation="auto" %}
 ```
 
 Run `bazel build` and verify that the build completes successfully:
 
 ```posix-terminal
-bazel build --config=fuchsia_x64 //fuchsia-codelab/echo-fidl:fidl.examples.routing.echo.fidl_cc
+bazel build --config=fuchsia_x64 //fuchsia-codelab/echo-fidl:examples.routing.echo.fidl_cc
 ```
 
 ### Examine the FIDL bindings
@@ -119,10 +132,10 @@ language-specific bindings in the `bazel-bin/` directory:
 bazel-bin/fuchsia-codelab/echo-fidl/_virtual_includes/
 ```
 
-Locate and open the `fidl.h` generated header found in the above directory:
+Locate and open the generated headers found in the above directory:
 
 ```posix-terminal
-find bazel-bin/fuchsia-codelab/echo-fidl/_virtual_includes -name fidl.h
+find bazel-bin/fuchsia-codelab/echo-fidl/_virtual_includes -name *.h
 ```
 
 Explore the contents of these files. Below is a summary of some of the key
@@ -136,23 +149,23 @@ generated interfaces:
   </th>
   </tr>
   <tr>
-  <td><code>EchoPtr</code>
-  </td>
-  <td>
-    Asynchronous client that transforms protocol methods into FIDL request
-    messages sent over the IPC channel.
-  </td>
-  </tr>
-  <tr>
-  <td><code>EchoSyncPtr</code>
-  </td>
-  <td>
-    Synchronous client that transforms protocol methods into FIDL request
-    messages sent over the IPC channel.
-  </td>
-  </tr>
-  <tr>
   <td><code>Echo</code>
+  </td>
+  <td>
+    Represents the FIDL protocol and acts as the main entry point for types and
+    classes that both clients and servers use to interact with that protocol.
+  </td>
+  </tr>
+  <tr>
+  <td><code>EchoString</code>
+  </td>
+  <td>
+    Representation of the FIDL protocol method, used by clients and servers to
+    provide typed requests and responses.
+  </td>
+  </tr>
+  <tr>
+  <td><code>fidl::Server&lt;Echo&gt;</code>
   </td>
   <td>
     Abstract class for a server component to override and handle incoming FIDL
@@ -160,11 +173,21 @@ generated interfaces:
   </td>
   </tr>
   <tr>
-  <td><code>EchoStringCallback</code>
+  <td><code>fidl::internal::NaturalClientImpl&lt;Echo&gt;</code>
   </td>
   <td>
-    Callback to send a return value for each request as a FIDL response
-    message.
+    Asynchronous client that transforms protocol methods into FIDL request
+    messages sent over the IPC channel. Provided when a <code>fidl::Client</code>
+    is created for this protocol.
+  </td>
+  </tr>
+  <tr>
+  <td><code>fidl::internal::NaturalSyncClientImpl&lt;Echo&gt;</code>
+  </td>
+  <td>
+    Synchronous client that transforms protocol methods into FIDL request
+    messages sent over the IPC channel. Provided when a <code>fidl::SyncClient</code>
+    is created for this protocol.
   </td>
   </tr>
 </table>
@@ -179,5 +202,5 @@ method returns.</p>
 
 <p>Synchronous clients are not available in all supported languages. For more
 details, see the specifications for your chosen language in the
-<a href="/reference/fidl/bindings/overview">Bindings Reference</a>.</d>
+<a href="/docs/reference/fidl/bindings/overview">Bindings Reference</a>.</d>
 </aside>

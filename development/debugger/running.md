@@ -23,11 +23,11 @@ or a hardware device. If it doesn't work as expected, please check the troublesh
 ### The build type is compatible
 
 Debuggers on Fuchsia depend on privileged syscalls, most notably
-[`zx_process_write_memory`](/reference/syscalls/process_write_memory.md).
+[`zx_process_write_memory`](/docs/reference/syscalls/process_write_memory.md).
 These syscalls are only enabled when the kernel flag
-[`kernel.enable-debugging-syscalls`](/gen/boot-options.md#kernelenable-debugging-syscallsbool)
+[`kernel.enable-debugging-syscalls`](/docs/gen/boot-options.md#kernelenable-debugging-syscallsbool)
 is set to `true`, which means debuggers are not available for `user` and `userdebug`
-[build types](/contribute/governance/rfcs/0115_build_types.md).
+[build types](/docs/contribute/governance/rfcs/0115_build_types.md).
 
 If you are building from source, most probably these syscalls are enabled.
 
@@ -38,16 +38,16 @@ service selector 'core/debug\_agent:expose:fuchsia.debugger.DebugAgent' did not 
 on the target", it means that debug\_agent is not built.  You can also check whether there's
 `debug_agent` and `host_x64/zxdb` in your build directory.
 
-If you don't have the debugger in your build, add `//bundles:tools` to your "universe", either with:
+If you don't have the debugger in your build, add `//bundles/tools` to your "universe", either with:
 
 ```posix-terminal
-fx <normal_stuff_you_use> --with //bundles:tools
+fx <normal_stuff_you_use> --with //bundles/tools
 ```
 
 Or you can edit your GN args directly by editing `<build_dir>/args.gn` and adding to the bottom:
 
 ```none
-universe_package_labels += [ "//bundles:tools" ]
+universe_package_labels += [ "//bundles/tools" ]
 ```
 
 ### ffx can talk with the device
@@ -76,7 +76,7 @@ fx serve
 ### Debug symbols are registered {#set-symbol-location}
 
 Zxdb will by default obtain the locations of the debug symbols from the
-[symbol index](/development/sdk/ffx/register-debug-symbols.md).
+[symbol index](/docs/development/sdk/ffx/register-debug-symbols.md).
 The registrations of debug symbols from in-tree and most out-of-tree environments are automated.
 In case these doesn't work out, there are three command-line flags in zxdb to provide additional
 symbol lookup locations for zxdb: `--build-id-dir`, `--ids-txt`, and a general `--symbol-path`.
@@ -119,32 +119,16 @@ If it's a directory, all binaries under the given path are indexed.
 ### Source code location is correctly set up
 
 The Fuchsia build generates symbols relative to the build directory so relative paths look like
-`../../src/my_component/file.cc`). The build directory is usually provided by the symbol index.
+`../../src/my_component/file.cc`. The build directory is usually provided by the symbol index,
+so the source files can be located.
 
-If your files are not being found with the default build directories, you will need to provide a
-build directory to locate the files. This build directory does not need have been used to build, it
-just needs to produce correct absolute paths when concatenated with the relative paths from the
-symbol file.
-
-You can add additional build directories on the command line:
-
-```posix-terminal
-ffx debug connect -- --build-dir /home/me/fuchsia/out/x64
-```
-
-Or interactively from within the debugger:
+If your files are not being found, you will need to manually tweak the source map setting.
+For example, if the debugger cannot find `./../../src/my_component/file.cc`, and the file is
+located at `/path/to/fuchsia/src/my_component/file.cc`, you could
 
 ```none
-[zxdb] set build-dirs += /home/me/fuchsia/out/x64
+[zxdb] set source-map += ./../..=/path/to/fuchsia
 ```
 
-If debugger is finding the wrong file, you can replace the entire build directory list by omitting
-the `+=`:
-
-```none
-[zxdb] set build-dirs /home/me/fuchsia/out/x64
-```
-
-If your build produces DWARF symbols with absolute file paths the files must be in that location on
-the local system. Absolute file paths in the symbols are not affected by the build search path.
-Clang users should use the `-fdebug-prefix-map`, which will also help with build hermeticity.
+So the debugger will look for `/path/to/fuchsia/src/my_component/file.cc` instead. For more help,
+please check `get source-map`.

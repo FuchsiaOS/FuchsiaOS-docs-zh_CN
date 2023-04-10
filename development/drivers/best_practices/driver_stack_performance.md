@@ -25,7 +25,7 @@ consideration. Driver stack APIs fall into the application or driver category.
 Application APIs are used to give regular non-driver components access to hardware resources, while
 driver APIs are used to allow drivers to communicate among themselves. For example,
 [`fuchsia.hardware.network`][netdevice-fidl] is an application API to interact with network drivers,
-and [`fuchsia.hardware.network.device`][netdevice-banjo] defines the lower level driver API for network
+and [`fuchsia.hardware.network.driver`][netdevice-banjo] defines the lower level driver API for network
 devices.
 
 Device driver APIs are typically `fuchsia.hardware.*` banjo and `fuchsia.hardware.*` FIDL APIs.
@@ -130,4 +130,4 @@ device driver implementations, part of the fast path is often in interrupt threa
 
 
 [netdevice-fidl]: /sdk/fidl/fuchsia.hardware.network/device.fidl
-[netdevice-banjo]: /sdk/banjo/fuchsia.hardware.network.device/network-device.fidl
+[netdevice-banjo]: /sdk/fidl/fuchsia.hardware.network.driver/network-device.fidl

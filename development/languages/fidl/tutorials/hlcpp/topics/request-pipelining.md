@@ -78,7 +78,7 @@ templated on, but also the pointer type of the bindings that it stores. The code
 `unique_ptr` instead of raw pointers so that the binding set owns the
 instances of `EchoImpl`.
 
-This is the implentation of the two methods:
+This is the implementation of the two methods:
 
 ```cpp
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/hlcpp/request_pipelining/server/main.cc" region_tag="launcher-impl" highlight="3,4,5,6,7,8,9,11,12,13,14,15" %}
@@ -189,7 +189,7 @@ Note: You can explore the full source for the realm component at
    instances and routes the capabilities:
 
     ```posix-terminal
-    ffx component run fuchsia-pkg://fuchsia.com/echo-launcher-hlcpp#meta/echo_realm.cm
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-launcher-hlcpp#meta/echo_realm.cm
     ```
 
 1. Start the `echo_client` instance:
@@ -229,11 +229,11 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /glossary/README.md#realm
+[glossary.realm]: /docs/glossary/README.md#realm
 [src]: /examples/fidl/hlcpp/request_pipelining
-[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
-[server-tut-main]: /development/languages/fidl/tutorials/hlcpp/basics/server.md#main
-[client-tut]: /development/languages/fidl/tutorials/hlcpp/basics/client.md
-[rubric]: /development/api/fidl.md#request-pipelining
-[overview]: /development/languages/fidl/tutorials/hlcpp/README.md
+[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
+[server-tut-main]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#main
+[client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
+[rubric]: /docs/development/api/fidl.md#request-pipelining
+[overview]: /docs/development/languages/fidl/tutorials/hlcpp/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

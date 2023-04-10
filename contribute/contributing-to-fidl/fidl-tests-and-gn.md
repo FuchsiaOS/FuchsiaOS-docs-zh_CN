@@ -44,7 +44,7 @@ to make them unique in a consistent way rather than remembering odd rules like
 
 Names should use the following scheme, joining parts with underscores:
 
-> _tool_ [ _bindings_ ] [ _category_ [ _subcategory_ ] ] **tests**
+> _tool_ \[ _bindings_ ] \[ _category_ \[ _subcategory_ ] ] **tests**
 
 Where _tool_ is one of:
 
@@ -56,8 +56,8 @@ Where _tool_ is one of:
 And the other parts are:
 
 *   _bindings_
-    *   One of **c**, **llcpp**, **hlcpp**, **rust**, **go**, **dart** (note:
-        **hlcpp**, _not_ **cpp**)
+    *   One of **c**, **cpp**, **cpp_wire**, **hlcpp**, **rust**, **go**,
+        **dart**
 *   _category_, _subcategory_
     *   Example categories: **conformance**, **types**, **parser**, **lib**
     *   Do _not_ use: **frontend**, **backend**, **bindings** (_tool_
@@ -83,7 +83,7 @@ These groups are aggregated in "tests" groups of BUILD.gn files in parent
 directories. The root "tests" group (for some portion of the codebase, e.g.
 src/lib/fidl/BUILD.gn) should be included in bundles/fidl/BUILD.gn. This enables
 `fx set ... --with //bundles/fidl:tests` to include all FIDL tests in the build.
-(The tests are also run in CQ because `//bundles/buildbot:core` includes
+(The tests are also run in CQ because `//bundles/buildbot/core` includes
 `//bundles/fidl:tests`.)
 
 ## Binary names
@@ -134,21 +134,23 @@ If your test requires any component features, services, etc. beyond the
 import("//build/components.gni")
 
 fuchsia_unittest_package("fidl_foo_tests") {
-  manifest = "meta/fidl_foo_tests.cmx"
+  manifest = "meta/fidl_foo_tests.cml"
   deps = [ ":fidl_foo_tests_bin" ]
 }
 
-# meta/fidl_foo_tests.cmx
+# meta/fidl_foo_tests.cml
 {
-    "program": {
+    program: {
         "binary": "bin/fidl_foo_tests"
     },
-    "sandbox": {
-        "services": [
-            "fuchsia.logger.LogSink",   # some example services
-            "fuchsia.process.Launcher"
+    use: [
+      {
+        protocol: [
+          "fuchsia.logger.LogSink",   # some example services
+          "fuchsia.process.Launcher"
         ]
-    }
+      }
+    ]
 }
 ```
 
@@ -334,12 +336,12 @@ tests. Using `fx test`, we can already
 
 <!-- xrefs -->
 [GN target]: https://gn.googlesource.com/gn/+/HEAD/docs/language.md#Targets
-[Fuchsia package]: /concepts/packages/package.md
-[Fuchsia component]: /concepts/components/v2
-[Run Fuchsia tests]: /development/testing/run_fuchsia_tests.md
-[Fuchsia component manifest]: /concepts/components/v1/component_manifests.md
-[Fuchsia package URLs]: /concepts/packages/package_url.md
-[Source code layout]: /development/source_code/layout.md
-[Building components]: /development/components/build.md
-[Complex topologies and integration testing]: /development/testing/components/integration_testing.md
+[Fuchsia package]: /docs/concepts/packages/package.md
+[Fuchsia component]: /docs/concepts/components/v2
+[Run Fuchsia tests]: /docs/development/testing/run_fuchsia_tests.md
+[Fuchsia component manifest]: /docs/concepts/components/v2/component_manifests.md
+[Fuchsia package URLs]: /docs/concepts/packages/package_url.md
+[Source code layout]: /docs/development/source_code/layout.md
+[Building components]: /docs/development/components/build.md
+[Complex topologies and integration testing]: /docs/development/testing/components/integration_testing.md
 [with_unit_tests]: https://fuchsia.googlesource.com/fuchsia/+/9d9f092f2b30598c3929bd30d0058d4e052bb0f4/build/rust/rustc_library.gni#91

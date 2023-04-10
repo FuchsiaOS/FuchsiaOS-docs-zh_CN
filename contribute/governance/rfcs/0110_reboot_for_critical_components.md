@@ -12,12 +12,12 @@
 
 A proposal to introduce a "reboot-on-termination" option to the component
 manifest's child declaration, which provides parity to sysmgr's
-[`critical_components`][doc-critical-components] feature.
+`critical_components` feature.
 
 ## Motivation
 
-In [Components v1][glossary-components-v1], [sysmgr][doc-sysmgr] supports a
-feature called [`critical_components`][doc-critical-components] which lets
+In Components v1, sysmgr supports a
+feature called `critical_components` which lets
 system service components mark themselves as "critical". This means that, if the
 component terminates for any reason (including normal exit), sysmgr will trigger
 a reboot of the system. This reboot is a [graceful reboot][doc-graceful-reboot]
@@ -79,8 +79,8 @@ This is a sensitive feature; we don't want arbitrary components to unilaterally
 decide to trigger a reboot when they terminate. Thus, its use will be restricted
 by an allowlist in `component_manager`'s security policy, which will be checked
 at runtime when the component starts. Also, we can use the
-[`unstable_features`][git-unstable-features] GN allowlist (renamed to
-`restricted_features`) to produce a build-time failure when the option is set on
+[`restricted_features`][git-restricted-features] GN allowlist to produce a
+build-time failure when the option is set on
 a child in a realm that's not authorized to use the feature.
 
 ## Implementation
@@ -196,7 +196,7 @@ to verify that their termination indeed triggers a graceful reboot.
 The following documentation changes must be made:
 
 -   Add a doc for the `on_terminate` option to parallel
-    [critical components][doc-critical-components].
+    `critical components`.
 -   Update the [migration guide][doc-migration-guide] to explain how to migrate
     `critical_component`s
 
@@ -480,9 +480,6 @@ its knowledge of the dependency graph.
 
 ## Prior art and references
 
-Documentation for the `critical_components` feature can be found
-[here][doc-critical-components].
-
 Private design documents exist for the `critical_components` feature and
 revisions for the events API.
 
@@ -490,16 +487,10 @@ revisions for the events API.
 [fidl-destroy]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#fuchsia.sys2/Realm.DestroyChild
 [fidl-reboot]: https://fuchsia.dev/reference/fidl/fuchsia.hardware.power.statecontrol#fuchsia.hardware.power.statecontrol/Admin.Reboot
 [fidl-shutdown]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#fuchsia.sys2/SystemController.Shutdown
-[doc-critical-components]: /concepts/components/v1/sysmgr.md#critical_components
-[doc-events]: /concepts/components/v2/capabilities/event.md
-[doc-graceful-reboot]: /concepts/process/why_fuchsia_devices_reboot.md#graceful_reboot
-[doc-main-process-critical]: /concepts/components/v2/elf_runner.md#using_the_elf_runner
-[doc-manifests]: /concepts/components/v2/component_manifests.md
-[doc-migration-guide]: /development/components/v2/migration/README.md
-[doc-sysmgr]: /concepts/components/v1/sysmgr.md
+[doc-graceful-reboot]: /docs/concepts/process/why_fuchsia_devices_reboot.md#graceful_reboot
+[doc-main-process-critical]: /docs/concepts/components/v2/elf_runner.md#using_the_elf_runner
+[doc-manifests]: /docs/concepts/components/v2/component_manifests.md
+[doc-migration-guide]: /docs/development/components/v2/migration/README.md
 [gerrit-rfc-component-events]: https://fuchsia-review.googlesource.com/c/fuchsia/+/535692
-[gerrit-rfc-starter]: https://fuchsia-review.googlesource.com/c/fuchsia/+/533701
 [gerrit-system-critical-prototype]: https://fuchsia-review.googlesource.com/c/fuchsia/+/539915
-[git-unstable-features]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/tools/cmc/build/unstable_features/
-[glossary-components-v1]: /glossary/README.md#components-v1
-[rfc-41]: /contribute/governance/rfcs/0041_unifying_services_devices.md
+[git-restricted-features]: https://fuchsia.googlesource.com/fuchsia/+/refs/heads/main/tools/cmc/build/restricted_features

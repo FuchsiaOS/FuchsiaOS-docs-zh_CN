@@ -46,7 +46,7 @@ Escher can also build on Linux.  In order to do so, you need to:
     fx set terminal.x64 --with='//src/ui/examples/escher,//src/ui/lib/escher:escher_tests'
     ```
 
-    * See [Getting started](/get-started/README.md) for how to set up the `fx` tool.
+    * See [Getting started](/docs/get-started/README.md) for how to set up the `fx` tool.
 
     * The command-line above is just an example.
 

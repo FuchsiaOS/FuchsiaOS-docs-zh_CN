@@ -100,7 +100,7 @@ Benchmark paths are strings identifying a particular benchmark. They can contain
 
 Measurement names are one of: `WallTime`,` Allocations`,` AllocatedBytes`,` StackDepth` (case sensitive)
 
-#### Chromperf paths for other benchmarks
+#### Chromeperf paths for other benchmarks
 
 The structure is `[Overall Category]/[Specific Benchmark]/[Subbenchmarks]/[Measurements]`.
 

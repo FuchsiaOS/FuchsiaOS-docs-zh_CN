@@ -6,11 +6,13 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
+- title: "Hardware requirements and recommendations"
+  path: /docs/reference/hardware/summary.md
 - heading: "Drivers"
 - title: "Hardware drivers"
-  path: /reference/hardware/drivers.md
+  path: /docs/reference/hardware/drivers.md
 - title: "Deprecated hardware drivers"
-  path: /reference/hardware/driver-epitaphs.md
+  path: /docs/reference/hardware/driver-epitaphs.md
 - heading: "System configuration"
 - title: "Supported system configuration"
-  path: /reference/hardware/support-system-config.md
+  path: /docs/reference/hardware/support-system-config.md

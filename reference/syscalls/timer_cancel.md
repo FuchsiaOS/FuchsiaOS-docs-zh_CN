@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_timer_cancel
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Cancel a timer.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Cancel a timer.
 zx_status_t zx_timer_cancel(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_timer_cancel()` cancels a pending timer that was started with
 [`zx_timer_set()`].
@@ -26,18 +33,16 @@ signal is de-asserted. If a new pending timer is immediately needed
 rather than calling `zx_timer_cancel()` first, call [`zx_timer_set()`]
 with the new deadline.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_TIMER** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_timer_cancel()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -47,12 +52,10 @@ In the event of failure, a negative error value is returned.
 
 Calling this function before [`zx_timer_set()`] has no effect.
 
-## SEE ALSO
+## See also
 
  - [`zx_timer_create()`]
  - [`zx_timer_set()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_timer_create()`]: timer_create.md
 [`zx_timer_set()`]: timer_set.md

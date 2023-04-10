@@ -1,7 +1,5 @@
 # Component manifests {#component-manifests}
 
-<<../_v2_banner.md>>
-
 A [component manifest](#component-manifest) is a file that defines a component
 by encoding a [component declaration](#component-declaration). This document
 gives an overview of the concepts used by component declarations.
@@ -53,19 +51,19 @@ using the [`Component`][fidl-component-decl] FIDL table.
 The framework calls a [component resolver][capability-resolver] to retrieve a
 component declaration from a component URL.
 
-[capability-resolver]: /concepts/components/v2/capabilities/resolvers.md
-[capability-runner]: /concepts/components/v2/capabilities/runners.md
-[doc-children]: /concepts/components/v2/realms.md#child-component-instances
-[doc-capabilities]: /concepts/components/v2/capabilities/README.md
-[doc-collections]: /concepts/components/v2/realms.md#collections
-[doc-component-url]: /concepts/components/v2/identifiers.md#component-urls
-[doc-environments]: /concepts/components/v2/environments.md
+[capability-resolver]: /docs/concepts/components/v2/capabilities/resolvers.md
+[capability-runner]: /docs/concepts/components/v2/capabilities/runners.md
+[doc-children]: /docs/concepts/components/v2/realms.md#child-component-instances
+[doc-capabilities]: /docs/concepts/components/v2/capabilities/README.md
+[doc-collections]: /docs/concepts/components/v2/realms.md#collections
+[doc-component-url]: /docs/concepts/components/v2/identifiers.md#component-urls
+[doc-environments]: /docs/concepts/components/v2/environments.md
 [fidl-component-decl]: https://fuchsia.dev/reference/fidl/fuchsia.component.decl#Component
-[fidl-wire-encoded]: /reference/fidl/language/wire-format/README.md#dual-forms
-[glossary.component declaration]: /glossary/README.md#component-declaration
-[glossary.component manifest]: /glossary/README.md#component-manifest
-[glossary.component manifest source]: /glossary/README.md#component-manifest-source
-[glossary.package]: /glossary/README.md#package
+[fidl-wire-encoded]: /docs/reference/fidl/language/wire-format/README.md#dual-forms
+[glossary.component declaration]: /docs/glossary/README.md#component-declaration
+[glossary.component manifest]: /docs/glossary/README.md#component-manifest
+[glossary.component manifest source]: /docs/glossary/README.md#component-manifest-source
+[glossary.package]: /docs/glossary/README.md#package
 [json5-external]: https://json5.org/
 [manifest-program]: https://fuchsia.dev/reference/cml#program
 [manifest-facet]: https://fuchsia.dev/reference/cml#facets

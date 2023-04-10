@@ -10,8 +10,7 @@ following pages:
 
 - [Inspect overview][inspect_overview]
 - [Inspect codelab][inspect_codelab]
-
-<!-- TODO(fxbug.dev/60811): link to the selectors doc when it's submitted -->
+- [Inspect selectors][selectors]
 
 ## Introduction
 
@@ -146,56 +145,53 @@ with Inspect included, see the following [example test driver][example_test_driv
   }
   ```
 
-  You can publish one inspect VMO per device; Instance devices do not count. To add inspect for
-  instance devices, you can create child nodes from the devices’ inspect and add to it.
+  You can publish one inspect VMO per device.
 
 1. Done. Now you can view Inspect data for the driver.
 
-  - The device inspect file is hosted in /dev/diagnostics/class/<protocol>/xxx.inspect
+  - The device inspect file is hosted in `class/<protocol>/xxx.inspect`
   - Check the inspect data using `iquery`
 
+    Important: if you are working in a product other than `bringup` please
+    read [this section](#include-iquery-bootfs) to learn how to include
+    `iquery` in bootfs. If you are working on a product in which networking and
+    `ffx` are available, you can use `ffx inspect` instead of `iquery` without
+    the need of including `iquery` in `bootfs`.
+
     ```
-    fx iquery show-file /dev/diagnostics/class/ethernet/000.inspect
+    fx iquery show bootstrap/driver_manager --file class/ethernet/000.inspect
 
     // To view all of driver_manager and driver host
-    fx iquery show 'bootstrap/driver_manager'
+    fx iquery show bootstrap/driver_manager
     ```
 
 1. Run `fx snapshot` and check if your inspect data is present in `inspect.json`. Note that the
 feedback component is not part of bringup, so taking snapshots is not very useful when working
-only with a bringup build. For these situations, prefer using `iquery` which is available in bootfs.
+only with a bringup build. For these situations, prefer using `iquery` which is available in bootfs
+(in bringup, if you are working in other product see [below](#include-iquery-bootfs).
 
   Note: Don’t forget to write tests for the inspect code. You can look at the inspect
   [codelab][inspect_codelab] or [the driver host inspect test][driver_host_inspect_test] for some
   examples.
 
-### Isolated devmgr
 
-You can view devfs with `/hub`, which enables tools like `iquery` on tests using isolated devmgr.
+## Include `iquery` in bootfs {#include-iquery-bootfs}
 
-1. If you are using `src/lib/isolated_devmgr/isolated_devmgr.gni`, then it’ll automatically be
-  hosted in the test’s out directory.
+The `bringup` product already includes `iquery` in bootfs, so if you are working
+with that product, you can skip this section.
 
-  Example:
+If you are working on some other product and need to have `iquery` available in
+bootfs, then add the following to your `fx set`:
 
-  ```
-  iquery show-file  /hub/r/test_env_**/**/c/fs-management-devmgr.cmx/**/out/dev/diagnostics/driver_manager/dm.inspect
-  ```
+```
+fx set core.x64 --args='product_bootfs_labels+=["//bundles:diagnostics-eng"]'
+```
 
-1. If you are using `zircon/system/ulib/devmgr-integration-test/isolated_devmgr.gni`, you will need
-to call `AddDevfsToOutgoingDir` on the devmgr instance ([example][devmgr_integration_test]) to host
-devfs in the test’s out directory. Once this is done, viewing the inspect file is similar to the
-previous point.
-
-
-
-
-[selectors]: https://docs.google.com/document/d/1gI3FizKlTlth9DL8l7Ja9f7xuY_GKDffa5x1uZesLMY/edit
-[inspect_overview]: /development/diagnostics/inspect/README.md
-[Inspect codelab]: /development/diagnostics/inspect/codelab.md
-[roadmap_drivers_components]: /contribute/roadmap/2020/overview.md#implementing_drivers_as_components
+[inspect_overview]: /docs/development/diagnostics/inspect/README.md
+[Inspect codelab]: /docs/development/diagnostics/inspect/codelab.md
+[roadmap-drivers-components]: /docs/contribute/roadmap/2020/overview.md#implementing_drivers_as_components
 [example_test_driver]: /src/devices/tests/driver-inspect-test/test-driver.cc
-[property_types]: /development/diagnostics/inspect/README.md#property
-[inspect_codelab]: /development/diagnostics/inspect/codelab/README.md
-[driver_host_inspect_test]: /src/devices/bin/driver_host/inspect_test.cc
-[devmgr_integration_test]: /zircon/system/ulib/devmgr-integration-test/test/launcher_test.cc#113
+[property_types]: /docs/development/diagnostics/inspect/README.md#property
+[inspect_codelab]: /docs/development/diagnostics/inspect/codelab/README.md
+[driver_host_inspect_test]: /src/devices/bin/driver_host/tests/inspect_test.cc
+[selectors]: /docs/reference/diagnostics/selectors.md

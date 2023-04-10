@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_process_start
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Start execution on a process.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_process_start(zx_handle_t handle,
                              uintptr_t arg2);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_process_start()` is similar to [`zx_thread_start()`], but is used for the
 purpose of starting the first thread in a process.
@@ -54,9 +61,7 @@ without more handles and no way to transfer them outside the process.
 Its only means of communication is via the memory mapped into its
 address space by others.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_WRITE**.
 
@@ -64,12 +69,12 @@ address space by others.
 
 *arg1* must have **ZX_RIGHT_TRANSFER**.
 
-## RETURN VALUE
+## Return value
 
 `zx_process_start()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *process* or *thread* or *arg1* is not a valid handle.
 
@@ -85,7 +90,7 @@ does not belong to *process*, or the handle *process* lacks **ZX_RIGHT_WRITE** o
 **ZX_ERR_INVALID_ARGS** *entry* is not a userspace address, is not a
 canonical address, or is not `0`.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
@@ -96,8 +101,6 @@ canonical address, or is not `0`.
  - [`zx_thread_create()`]
  - [`zx_thread_exit()`]
  - [`zx_thread_start()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_duplicate()`]: handle_duplicate.md

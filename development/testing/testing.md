@@ -6,12 +6,12 @@ To build Zircon and run unit tests, run one of the following commands:
 
 ```sh
 # Build and run x64.
-fx set bringup.x64 --with-base //bundles/buildbot:bringup
+fx set bringup.x64 --with-base //bundles/buildbot/bringup
 fx build
 fx qemu
 
 # Build and run arm64.
-fx set bringup.arm64 --with-base //bundles/buildbot:bringup
+fx set bringup.arm64 --with-base //bundles/buildbot/bringup
 fx build
 fx qemu
 ```
@@ -32,7 +32,7 @@ To run in-kernel tests, use the Zircon shell to run:
 k ut all
 ```
 
-Fuchsia's [Get Started](/get-started/README.md) page has more details about how to
+Fuchsia's [Get Started](/docs/get-started/README.md) page has more details about how to
 use the Zircon shell and how to automatically build all supported architectures.
 
 ## Userspace Tests

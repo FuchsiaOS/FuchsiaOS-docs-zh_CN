@@ -29,4 +29,4 @@ are hosted:
 symbolizer --build-id-dir .build-id
 ```
 
-[log_listener CLI]: /reference/diagnostics/consumers/log_listener.md
+[log_listener CLI]: /docs/reference/diagnostics/consumers/log_listener.md

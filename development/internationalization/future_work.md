@@ -8,12 +8,12 @@ For information about the future work related to localization, see
 ## Internationalization preferences
 
 -   Migrate `fuchsia.intl.PropertyProvider` change watcher API to a
-    [hanging get](/development/api/fidl.md#hanging-get) design and migrate all
+    [hanging get](/docs/development/api/fidl.md#hanging-get) design and migrate all
     existing clients.
 
 -   Instead of having a single `fuchsia.intl.PropertyProvider` implemented by
-    `intl_services`, demonstrate best practices for embedding custom
-    `PropertyProvider`s in [Session](/concepts/session/introduction.md)
+    the `intl` component, demonstrate best practices for embedding custom
+    `PropertyProvider`s in [session component](/docs/glossary#session-component)
     implementations, ideally with multi-user use cases.
 
 -   Wire up Dart's `Platform.localeName` (blocked by Dart SDK

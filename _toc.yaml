@@ -11,42 +11,42 @@ toc:
     - title: "Overview"
       path: /docs
     - title: "Fundamentals"
-      path: /get-started/learn-fuchsia.md
-    - include: /get-started/sdk/_toc.yaml
-    - include: /get-started/_toc.yaml
-    - include: /get-started/learn/_toc.yaml
+      path: /docs/get-started/learn-fuchsia.md
+    - include: /docs/get-started/sdk/_toc.yaml
+    - include: /docs/get-started/_toc.yaml
+    - include: /docs/get-started/learn/_toc.yaml
 - name: "Concepts"
   contents:
-    - include: /concepts/_toc.yaml
+    - include: /docs/concepts/_toc.yaml
     - title: "Glossary"
-      path: /glossary/README.md
+      path: /docs/glossary/README.md
 - name: "Development"
   contents:
-  - include: /development/_toc.yaml
-  - include: /development/sdk/_toc.yaml
+  - include: /docs/development/_toc.yaml
+  - include: /docs/development/sdk/_toc.yaml
 - name: "Reference"
   contents:
-  - include: /reference/_toc.yaml
+  - include: /docs/reference/_toc.yaml
 - name: "Contribute"
   contents:
-  - include: /contribute/_toc.yaml
+  - include: /docs/contribute/_toc.yaml
 - name: "Governance"
   contents:
-  - include: /contribute/governance/_toc.yaml
+  - include: /docs/contribute/governance/_toc.yaml
 - name: "Contribute to docs"
   contents:
-  - include: /contribute/docs/_toc.yaml
+  - include: /docs/contribute/docs/_toc.yaml
 - name: "Community"
   contents:
-  - include: /contribute/community/_toc.yaml
-  - include: /contribute/docs/_toc.yaml
+  - include: /docs/contribute/community/_toc.yaml
+  - include: /docs/contribute/docs/_toc.yaml
 
 # Orphaned files, these files don't display anywhere. Workaround for doc-checker, should be avoided
 - title: "Deprecated: FTP process"
-  path: /contribute/governance/deprecated-ftp-process.md
+  path: /docs/contribute/governance/deprecated-ftp-process.md
 - title: "Deprecated: FTP template"
-  path: /contribute/governance/deprecated-ftp-template.md
+  path: /docs/contribute/governance/deprecated-ftp-template.md
 - title: "Fuchsia.dev shortlinks"
-  path: /go/README.md
+  path: /docs/go/README.md
 - title: "Deprecation notice"
-  path: /contribute/docs/deprecation-notice.md
+  path: /docs/contribute/docs/deprecation-notice.md

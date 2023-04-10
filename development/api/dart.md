@@ -75,7 +75,7 @@ like Flutter.
 
 Dart code written against the Fuchsia SDK should pass all the lint rules
 specified by the
-[analysis_options.yaml](https://fuchsia.googlesource.com/topaz/+/HEAD/tools/analysis_options.yaml)
+[analysis_options.yaml](https://fuchsia.googlesource.com/fuchsia/+/HEAD/analysis_options.yaml)
 file, which lives in the topaz repository. These lint rules will help to automate
 the review API review process. There are situations where a lint rule may be in
 conflict with a specific API and may need to be explicitly ignored. If a file is
@@ -107,7 +107,7 @@ dependencies that are not themselves also in the Fuchsia SDK. Exceptions will be
 made for the following, well established, dependencies that are likely to be
 present in all environments. Any packages that should be added to this list
 must be approved by the [API
-Council](/contribute/governance/api_council.md).
+Council](/docs/contribute/governance/api_council.md).
 
 - [logger](https://pub.dev/packages/logging)
 - [meta](https://pub.dev/packages/meta)
@@ -360,7 +360,7 @@ specific call can fail and handle that appropriately when needed.
 
 ```
 final _proxy = fidl_myService.MyServiceProxy();
-connectToService('fuchsia-pkg://fuchsia.com/my_service#meta/my_service.cmx', _proxy);
+connectToService('fuchsia-pkg://fuchsia.com/my_service#meta/my_service.cm', _proxy);
 
 _proxy
   .doSomething()

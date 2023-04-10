@@ -7,105 +7,105 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /development/README.md
+  path: /docs/development/README.md
 - heading: "Quickstart"
-- include: /get-started/_toc.yaml
+- include: /docs/get-started/_toc.yaml
 - heading: "Set up devices"
 - title: "Fuchsia hardware"
   section:
-  - include: /development/hardware/_toc.yaml
+  - include: /docs/development/hardware/_toc.yaml
 - heading: "Build and run"
 - title: "Build"
   section:
-  - include: /development/build/_toc.yaml
+  - include: /docs/development/build/_toc.yaml
 - title: "Run"
   section:
-  - include: /development/run/_toc.yaml
+  - include: /docs/development/run/_toc.yaml
 - heading: "Write code"
 - title: "API development"
   section:
-  - include: /development/api/_toc.yaml
+  - include: /docs/development/api/_toc.yaml
+- title: "Audio"
+  section:
+  - include: /docs/development/audio/_toc.yaml
 - title: "Bluetooth"
   section:
-  - include: /development/bluetooth/_toc.yaml
+  - include: /docs/development/bluetooth/_toc.yaml
 - title: "Boards"
   section:
-  - include: /development/boards/_toc.yaml
+  - include: /docs/development/boards/_toc.yaml
 - title: "Components"
   section:
-  - include: /development/components/_toc.yaml
+  - include: /docs/development/components/_toc.yaml
 - title: "Drivers"
   section:
-  - include: /development/drivers/_toc.yaml
-- title: "Editors"
-  section:
-  - include: /development/editors/_toc.yaml
+  - include: /docs/development/drivers/_toc.yaml
 - title: "ffx"
   section:
-  - include: /development/tools/ffx/_toc.yaml
+  - include: /docs/development/tools/ffx/_toc.yaml
 - title: "FIDL"
   section:
-  - include: /development/languages/fidl/_toc.yaml
+  - include: /docs/development/languages/fidl/_toc.yaml
 - title: "Graphics"
   section:
-  - include: /development/graphics/_toc.yaml
+  - include: /docs/development/graphics/_toc.yaml
 - title: "IDK"
   section:
-  - include: /development/idk/_toc.yaml
+  - include: /docs/development/idk/_toc.yaml
 - title: "Internationalization"
   section:
-  - include: /development/internationalization/_toc.yaml
+  - include: /docs/development/internationalization/_toc.yaml
 - title: "Kernel"
   section:
-  - include: /development/kernel/_toc.yaml
+  - include: /docs/development/kernel/_toc.yaml
 - title: "Languages"
   section:
-  - include: /development/languages/_toc.yaml
-- title: "Media"
-  section:
-  - include: /development/media/_toc.yaml
-- title: "Modular framework"
-  section:
-  - include: /development/modular/_toc.yaml
+  - include: /docs/development/languages/_toc.yaml
 - title: "Networking"
   section:
-  - include: /development/networking/_toc.yaml
+  - include: /docs/development/networking/_toc.yaml
 - title: "Sessions"
   section:
-  - include: /development/sessions/_toc.yaml
+  - include: /docs/development/sessions/_toc.yaml
 - title: "Settings"
   section:
-  - include: /development/settings/_toc.yaml
+  - include: /docs/development/settings/_toc.yaml
 - title: "UI-Input"
   section:
-  - include: /development/ui-input/_toc.yaml
+  - include: /docs/development/ui-input/_toc.yaml
+- title: "Virtualization"
+  section:
+  - include: /docs/development/virtualization/_toc.yaml
 - heading: "Test and debug"
 - title: "Test"
   section:
-  - include: /development/testing/_toc.yaml
+  - include: /docs/development/testing/_toc.yaml
 - title: "Diagnose"
   section:
-  - include: /development/diagnostics/_toc.yaml
+  - include: /docs/development/diagnostics/_toc.yaml
   - title: "Error codes"
     section:
-    - include: /development/error_codes/_toc.yaml
-- title: "Benchmark"
+    - include: /docs/development/error_codes/_toc.yaml
+- title: "Performance testing"
   section:
-  - include: /development/benchmarking/_toc.yaml
+  - include: /docs/development/performance/_toc.yaml
 - title: "Debug"
   section:
-  - include: /development/debugging/_toc.yaml
+  - include: /docs/development/debugging/_toc.yaml
 - title: "Monitoring"
   section:
-  - include: /development/monitoring/_toc.yaml
+  - include: /docs/development/monitoring/_toc.yaml
 - title: "Trace"
   section:
-  - include: /development/tracing/_toc.yaml
+  - include: /docs/development/tracing/_toc.yaml
 - heading: "Publish and deploy"
 - title: "Prebuilt packages"
   section:
-  - include: /development/prebuilt_packages/_toc.yaml
+  - include: /docs/development/prebuilt_packages/_toc.yaml
 - heading: "Contribute code"
 - title: "Contribute source code"
   section:
-  - include: /development/source_code/_toc.yaml
+  - include: /docs/development/source_code/_toc.yaml
+- title: "Verifying system properties"
+  section:
+  - include: /docs/development/verification/_toc.yaml

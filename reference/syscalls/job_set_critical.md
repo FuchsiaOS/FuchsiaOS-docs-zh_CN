@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_job_set_critical
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Set a process as critical to a job.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_job_set_critical(zx_handle_t job,
                                 zx_handle_t process);
 ```
 
-## DESCRIPTION
+## Description
 
 Sets *process* as critical to *job*. When *process* terminates, *job* will be
 terminated as if [`zx_task_kill()`] was called on it. The return code used will
@@ -29,20 +36,18 @@ The *job* specified must be the parent of *process*, or an ancestor.
 If *options* is **ZX_JOB_CRITICAL_PROCESS_RETCODE_NONZERO**, then *job* will
 only be terminated if *process* has a non-zero return code.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *job* must have **ZX_RIGHT_DESTROY**.
 
 *process* must have **ZX_RIGHT_WAIT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_job_set_critical()` returns **ZX_OK** on success. In the event of failure, a
 negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *job* or *process* is not a valid handle.
 
@@ -57,13 +62,11 @@ negative error value is returned.
 **ZX_ERR_ACCESS_DENIED**  *job* does not have **ZX_RIGHT_DESTROY** or *process*
 does not have **ZX_RIGHT_WAIT**.
 
-## SEE ALSO
+## See also
 
  - [`zx_job_create()`]
  - [`zx_process_create()`]
  - [`zx_task_kill()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_job_create()`]: job_create.md
 [`zx_process_create()`]: process_create.md

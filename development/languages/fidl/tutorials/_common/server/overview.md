@@ -16,3 +16,5 @@ This document covers how to complete the following tasks:
 
 The tutorial starts by creating a component that is served to a Fuchsia device
 and run. Then, it gradually adds functionality to get the server up and running.
+
+[concepts]: /docs/concepts/fidl/overview.md

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_handle_close
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Close a handle.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Close a handle.
 zx_status_t zx_handle_close(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_handle_close()` closes a *handle*, causing the underlying object to be
 reclaimed by the kernel if no other handles to it exist.
@@ -31,30 +38,26 @@ Closing the last handle to a peered object using `zx_handle_close()` can affect
 the state of the object's peer (if any).  See also
 [peered-objects][peered-objects].
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## RETURN VALUE
+## Return value
 
 `zx_handle_close()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* isn't a valid handle.
 
-## SEE ALSO
+## See also
 
 <!-- Reference links -->
-[peered-objects]: /reference/kernel_objects/objects.md#peered-objects-and-the-peer-closed-state
+[peered-objects]: /docs/reference/kernel_objects/objects.md#peered-objects-and-the-peer-closed-state
 
  - [`zx_handle_close_many()`]
  - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close_many()`]: handle_close_many.md
 [`zx_handle_duplicate()`]: handle_duplicate.md

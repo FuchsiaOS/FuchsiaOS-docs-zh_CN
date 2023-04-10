@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmo_write
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write bytes to the VMO.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,29 +26,27 @@ zx_status_t zx_vmo_write(zx_handle_t handle,
                          size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmo_write()` attempts to write exactly *buffer_size* bytes to a [virtual memory
-object](/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
+object](/docs/reference/kernel_objects/vm_object.md) (VMO) at *offset*.
 
 *buffer* pointer to a user buffer to write bytes from.
 
 *buffer_size* number of bytes to attempt to write.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_VMO** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmo_write()` returns **ZX_OK** on success, and exactly *buffer_size* bytes will
 have been written from *buffer*.
 In the event of failure, a negative error value is returned, and the number of
 bytes written from *buffer* is undefined.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -60,7 +65,7 @@ bytes written from *buffer* is undefined.
 
 **ZX_ERR_BAD_STATE**  VMO has been marked uncached and is not directly writable.
 
-## SEE ALSO
+## See also
 
  - [`zx_vmo_create()`]
  - [`zx_vmo_create_child()`]
@@ -69,8 +74,6 @@ bytes written from *buffer* is undefined.
  - [`zx_vmo_read()`]
  - [`zx_vmo_set_cache_policy()`]
  - [`zx_vmo_set_size()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_vmo_create()`]: vmo_create.md
 [`zx_vmo_create_child()`]: vmo_create_child.md

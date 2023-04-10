@@ -87,7 +87,7 @@ Note: You can explore the full source for the realm component at
    instances and routes the capabilities:
 
     ```posix-terminal
-    ffx component run fuchsia-pkg://fuchsia.com/echo-hlcpp-multi-client#meta/echo_realm.cm
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-hlcpp-multi-client#meta/echo_realm.cm
     ```
 
 1. Start the `echo_client` instance:
@@ -113,11 +113,11 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /glossary/README.md#realm
-[client-tut]: /development/languages/fidl/tutorials/hlcpp/basics/client.md
-[client-main]: /development/languages/fidl/tutorials/hlcpp/basics/client.md#main
-[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
-[server-tut-impl]: /development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
-[services-tut]: /development/languages/fidl/tutorials/hlcpp/topics/services.md
+[glossary.realm]: /docs/glossary/README.md#realm
+[client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
+[client-main]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md#main
+[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
+[server-tut-impl]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md#impl
+[services-tut]: /docs/development/languages/fidl/tutorials/hlcpp/topics/services.md
 [src]: /examples/fidl/hlcpp/multiple_clients
-[overview]: /development/languages/fidl/tutorials/hlcpp/README.md
+[overview]: /docs/development/languages/fidl/tutorials/hlcpp/README.md

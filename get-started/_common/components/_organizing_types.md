@@ -13,19 +13,7 @@ a component inherits the environment of its parent. Components may also declare
 a new environment for their children.
 
 
-<aside class="key-point">
-  <b>No ambient authority</b>
-  <p>One of Fuchsia's <a href="/concepts/principles/secure.md">security
-  design principles</a> is "no ambient authority" for programs on the system.
-  This means that every operation must be scoped to an object capability rather
-  than granting access based on a higher-level scope such as user identity or
-  role.</p>
-
-  <p>The component framework upholds this principle by ensuring that components
-  only have direct access to capabilities explicitly routed by their parent.
-  Access to capabilities provisioned through environments is mediated by
-  Component Manager on the component's behalf.</p>
-</aside>
+<<_no_ambient_authority.md>>
 
 The following table lists the capability types available to components,
 and whether they must be explicitly routed from the parent component or
@@ -101,5 +89,5 @@ provided by the environment:
 
 
 Note: For more details on individual capabilities, see
-[component capabilities](/concepts/components/v2/capabilities/README.md)
-and [environments](/concepts/components/v2/environments.md).
+[component capabilities](/docs/concepts/components/v2/capabilities/README.md)
+and [environments](/docs/concepts/components/v2/environments.md).

@@ -7,18 +7,18 @@
 # team as reviewer.
 toc:
 - title: "Build components"
-  path: /development/components/build.md
+  path: /docs/development/components/build.md
 - title: "Connect components"
-  path: /development/components/connect.md
+  path: /docs/development/components/connect.md
 - title: "Run components"
-  path: /development/components/run.md
+  path: /docs/development/components/run.md
 - title: "Provide data files to components"
-  path: /development/components/data.md
-- title: "Structured Configuration"
-  path: /development/components/structured_config.md
-  status: experimental
-- title: "Component storage index"
-  path: /development/components/component_id_index.md
+  path: /docs/development/components/data.md
+- title: "Configure components"
+  section:
+  - include: /docs/development/components/configuration/_toc.yaml
+- title: "Component ID index"
+  path: /docs/development/components/component_id_index.md
 - title: "Migrating legacy components"
   section:
-  - include: /development/components/v2/migration/_toc.yaml
+  - include: /docs/development/components/v2/migration/_toc.yaml

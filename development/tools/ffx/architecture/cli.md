@@ -15,7 +15,7 @@ code is able to be structured into decoupled plugins for FFX. Each subcommand
 in the FFX call can be represented by a plugin, so for example:
 
 ```sh
-$fx ffx component run "fuchsia-pkg://fuchsia.com/hello_world_rust#meta/hello_world_rust.cmx"
+$fx ffx component run /core/ffx-laboratory:hello_world_rust "fuchsia-pkg://fuchsia.com/hello_world_rust#meta/hello_world_rust.cm"
 ```
 
 The part of the command 'component run' is a subcommand that routes the code
@@ -40,5 +40,5 @@ The CLI is designed as an extensible architecture. In this architecture,
 plugins provide the code execution. Plugins are defined by a mixture of GN
 build rules and Rust attributes. Plugins are designed to be as decoupled from
 the internal workings of FFX as possible. If you are interested in developing a
-plugin for FFX, please visit the [Integrating With FFX](/development/tools/ffx/development/plugins.md) page.
+plugin for FFX, please visit the [Integrating With FFX](/docs/development/tools/ffx/development/plugins.md) page.
 

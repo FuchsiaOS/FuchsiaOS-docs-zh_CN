@@ -7,11 +7,11 @@ before the gfxconsole comes up.
 
 To force-enable log output to the legacy serial console on an x64 machine, pass
 "kernel.serial=legacy".  For other serial configurations, see the kernel.serial
-docs in [kernel_cmdline.md](/reference/kernel/kernel_cmdline.md).
+docs in [kernel_cmdline.md](/docs/reference/kernel/kernel_cmdline.md).
 
 To enable the early console before the graphical console comes up use the
 ``gfxconsole.early`` cmdline option. More information can be found in
-[kernel_cmdline.md](/reference/kernel/kernel_cmdline.md).
+[kernel_cmdline.md](/docs/reference/kernel/kernel_cmdline.md).
 Enabling ``startup.keep-log-visible``will ensure that the kernel log stays
 visible if the gfxconsole comes up after boot. To disable the gfxconsole
 entirely you can disable the video driver it is binding to via ``driver.<driver

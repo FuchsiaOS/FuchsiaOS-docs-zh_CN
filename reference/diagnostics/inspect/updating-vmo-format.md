@@ -352,7 +352,7 @@ TODO([fxbug.dev/43131][update-this-doc-bug])
 
 <!-- xrefs -->
 [update-this-doc-bug]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=43131
-[inspect-file-format]: /reference/platform-spec/diagnostics/inspect-vmo-format.md
+[inspect-file-format]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
 [bitfield-rs]: /src/lib/diagnostics/inspect/format/rust/src/bitfields.rs
 [block-type-rs]: /src/lib/diagnostics/inspect/format/rust/src/block_type.rs
 [block-rs]: /src/lib/diagnostics/inspect/format/rust/src/block.rs
@@ -369,5 +369,5 @@ TODO([fxbug.dev/43131][update-this-doc-bug])
 [state-unittest-cc]: /zircon/system/ulib/inspect/tests/state_unittest.cc
 [types-cc]: /zircon/system/ulib/inspect/vmo/types.cc
 [types-header]: /zircon/system/ulib/inspect/include/lib/inspect/cpp/vmo/types.h
-[inspect-vmo]: /reference/platform-spec/diagnostics/inspect-vmo-format.md
+[inspect-vmo]: /docs/reference/platform-spec/diagnostics/inspect-vmo-format.md
 [validator-tests]: /src/diagnostics/validator/inspect/src

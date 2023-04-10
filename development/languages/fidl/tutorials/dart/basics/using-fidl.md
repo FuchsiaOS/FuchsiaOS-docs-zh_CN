@@ -45,7 +45,7 @@ Relative paths in the rest of the tutorial will be relative to this directory.
    }
    ```
 
-1. Define a `dart_test` and then create a depencency on the test through the `$host_toolchain`.
+1. Define a `dart_test` and then create a dependency on the test through the `$host_toolchain`.
    To do this, add the following to `BUILD.gn`:
 
    ```gn
@@ -140,8 +140,8 @@ fx test -vo fidl-example-dart-test
 ```
 
 <!-- xrefs -->
-[package-layout]: /development/languages/dart/README.md#layout
-[generated-code]: /development/languages/fidl/guides/generated-code.md#dart
-[bindings-ref]: /reference/fidl/bindings/dart-bindings.md
-[fidl-intro]: /development/languages/fidl/tutorials/fidl.md
-[overview]: /development/languages/fidl/tutorials/overview.md
+[package-layout]: /docs/development/languages/dart/README.md#layout
+[generated-code]: /docs/development/languages/fidl/guides/generated-code.md#dart
+[bindings-ref]: /docs/reference/fidl/bindings/dart-bindings.md
+[fidl-intro]: /docs/development/languages/fidl/tutorials/fidl.md
+[overview]: /docs/development/languages/fidl/tutorials/overview.md

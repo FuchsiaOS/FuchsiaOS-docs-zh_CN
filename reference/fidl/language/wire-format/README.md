@@ -438,7 +438,7 @@ bit 0 of its flags indicate whether the data is stored inline or out-of-line:
 ![drawing](images/inline_envelope.png)
 
   - If bit 0 is unset an *out-of-line representation* is used.
-  
+
 ![drawing](images/out_of_line_envelope.png)
 
 Bit 0 may only be set if the size of the payload is <= 4 bytes. Bit 0 may be
@@ -507,7 +507,7 @@ The header has the following form:
 
 *   `zx_txid_t txid`, transaction ID (32 bits)
     * `txid`s with the high bit set are reserved for use by
-      [**zx_channel_write()**][channel write]
+      [**zx_channel_call()**][channel call]
     * `txid`s with the high bit unset are reserved for use by userspace
     * A value of `0` for `txid` is reserved for messages that do not
       require a response from the other side.
@@ -570,6 +570,10 @@ Note the `txid` value of `1` &mdash; this identifies the transaction.
 The `ordinal` value of `2` indicates the method &mdash; in this case, the
 **Divide()** method.
 
+Note: Although only the `txid` is needed to determine which request a method
+response is associated with, bindings must also check that the `ordinal` matches
+the method that was called.
+
 ![drawing](images/transaction-division.png)
 
 Below, we see that `123 + 456` is `579`.
@@ -611,19 +615,21 @@ The **body** contains the event arguments as if they were packed in a
 **struct**, just as with method result messages.
 Note that the body is padded to maintain 8-byte alignment.
 
-#### Epitaph (Control Message Ordinal 0xFFFFFFFF)
+#### Epitaph (Control Message Ordinal 0xFFFFFFFFFFFFFFFF)
 
-An epitaph is a message with ordinal **0xFFFFFFFF**. A server may send an
-epitaph as the last message prior to closing the connection, to provide an
-indication of why the connection is being closed. No further messages may be
-sent through the channel after the epitaph. Epitaphs are not sent from clients
-to servers.
+An epitaph is an event (txid zero) with ordinal **0xFFFFFFFFFFFFFFFF**. A server
+may send an epitaph as the last message prior to closing the connection, to
+provide an indication of why the connection is being closed. No further messages
+may be sent through the connection after the epitaph. Epitaphs are not sent from
+clients to servers.
 
-The epitaph contains an error status. The error status of the epitaph is stored
-in the reserved `uint32` of the message header. The reserved word is treated as
-being of type **zx_status_t**: negative numbers are reserved for system error
-codes, positive numbers are reserved for application error codes, and `ZX_OK` is
-used to indicate normal connection closure. The message is otherwise empty.
+An epitaph's wire representation is equivalent to this FIDL:
+```fidl
+struct {
+  error zx.status;
+};
+```
+Epitaphs may be formally defined in FIDL in the future.
 
 ## Details
 
@@ -852,14 +858,14 @@ of the `ZX_HANDLE_INVALID` constant.
 Read [The Lost Art of Structure Packing][lostart]{:.external} for an in-depth
 treatise on the subject.
 
-[channel call]: /reference/syscalls/channel_call.md
-[channel write]: /reference/syscalls/channel_write.md
-[RFC-0030]: /contribute/governance/rfcs/0030_fidl_is_little_endian.md
-[RFC-0059]: /contribute/governance/rfcs/0059_reserved_bits_count_fields.md
-[RFC-0061]: /contribute/governance/rfcs/0061_extensible_unions.md
-[RFC-0114]: /contribute/governance/rfcs/0114_fidl_envelope_inlining.md
-[abi-api-compat]: /development/languages/fidl/guides/compatibility/README.md
+[channel call]: /docs/reference/syscalls/channel_call.md
+[channel write]: /docs/reference/syscalls/channel_write.md
+[RFC-0030]: /docs/contribute/governance/rfcs/0030_fidl_is_little_endian.md
+[RFC-0059]: /docs/contribute/governance/rfcs/0059_reserved_bits_count_fields.md
+[RFC-0061]: /docs/contribute/governance/rfcs/0061_extensible_unions.md
+[RFC-0114]: /docs/contribute/governance/rfcs/0114_fidl_envelope_inlining.md
+[abi-api-compat]: /docs/development/languages/fidl/guides/compatibility/README.md
 [lostart]: http://www.catb.org/esr/structure-packing/
-[concepts]: /concepts/fidl/overview.md
-[c-tutorial]: /development/languages/fidl/tutorials/tutorial-c.md
-[Life of a handle]: /concepts/fidl/life-of-a-handle.md
+[concepts]: /docs/concepts/fidl/overview.md
+[c-tutorial]: /docs/development/languages/fidl/tutorials/tutorial-c.md
+[Life of a handle]: /docs/concepts/fidl/life-of-a-handle.md

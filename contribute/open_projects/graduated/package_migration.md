@@ -104,6 +104,6 @@ Reach out for questions or for status updates:
 *   <shayba@google.com>
 *   <xbhatnag@google.com>
 
-[building-components]: /development/components/build.md
+[building-components]: /docs/development/components/build.md
 [gn-reference]: https://gn.googlesource.com/gn/+/master/docs/reference.md
 [migration-guide]: https://cs.opensource.google/fuchsia/fuchsia/+/87df72ac6fe698e93d81814ee698c037910c49dc:docs/development/components/package_migration.md

@@ -7,10 +7,10 @@ This guide explains how to go about adding exporting a FIDL protocol from a
 driver and utilize it in another driver. This guide assumes familiarity with the
 following concepts:
 
-*   [FIDL](/development/languages/fidl/README.md)
-*   [Driver Binding](/development/drivers/concepts/device_driver_model/driver-binding.md)
-*   [DDKTL](/development/drivers/concepts/driver_development/using-ddktl.md)
-*   [LLCPP FIDL Bindings](/development/languages/fidl/tutorials/llcpp/README.md)
+*   [FIDL](/docs/development/languages/fidl/README.md)
+*   [Driver Binding](/docs/development/drivers/concepts/device_driver_model/driver-binding.md)
+*   [DDKTL](/docs/development/drivers/concepts/driver_development/using-ddktl.md)
+*   [New C++ FIDL Bindings](/docs/development/languages/fidl/tutorials/cpp/README.md)
 
 ## FIDL Protocol Definition
 
@@ -42,7 +42,7 @@ utilizing the DDKTL.
 
 ```
 // This class implement the fuchsia.examples.echo/Echo FIDL protocol using the
-// LLCPP FIDL bindings
+// new C++ FIDL bindings
 class Device : public fidl::WireServer<fidl_examples_echo::Echo> {
 
   // This is the main entry point for the driver.
@@ -55,44 +55,35 @@ class Device : public fidl::WireServer<fidl_examples_echo::Echo> {
     auto* dispatcher = fdf::Dispatcher::GetCurrent()->async_dispatcher();
     auto device = std::make_unique<Device>(parent, dispatcher);
 
-    // We start by creating a pair of endpoints. These are equivalent to a
-    // zircon channel pair with better type safety.
-    auto endpoints = fidl::CreateEndpoints<fuchsia_io::Directory>();
-    if (endpoints.is_error()) {
-      return endpoints.status_value();
-    }
-
     // We add the FIDL protocol we wish to export to our child to our outgoing
     // directory. When a connection is attempted we will bind the server end of
     // the channel pair to our server implementation.
-    device->outgoing_dir_.svc_dir()->AddEntry(
-        fidl::DiscoverableProtocolName<fidl_examples_echo::Echo>,
-        fbl::MakeRefCounted<fs::Service>(
-            [device = device.get()](fidl::ServerEnd<fidl_examples_echo::Echo> request) mutable {
-              device->Bind(std::move(request));
-              return ZX_OK;
+    zx::result = device->outgoing_.AddService<fidl_examples_echo::EchoService>(
+        fidl_examples_echo::EchoService::InstanceHandler({
+            .echo = device->bindings_.CreateHandler(device.get(), dispatcher,
+                                                    fidl::kIgnoreBindingClosure),
             }));
 
     // Utilizing the server end of the endpoint pair we created above, we bind
     // it to our outgoing directory.
-    auto status = device->outgoing_dir_.Serve(std::move(endpoints->server));
-    if (status != ZX_OK) {
-      zxlogf(ERROR, "Failed to service the outoing directory");
-      return status;
+    result = device->outgoing_.Serve(std::move(endpoints->server));
+    if (result.is_error()) {
+      zxlogf(ERROR, "Failed to service the outgoing directory");
+      return result.status_value();
     }
 
     // We declare our outgoing protocols here. These will be utilize to
-    // help the framework populate device properties which can be used for
+    // help the framework populate node properties which can be used for
     // binding.
     std::array offers = {
-        fidl::DiscoverableProtocolName<fidl_examples_echo::Echo>,
+        fidl_examples_echo::Service::Name,
     };
 
     status = device->DdkAdd(ddk::DeviceAddArgs("parent")
                                 // The device must be spawned in a separate
                                 // driver host.
                                 .set_flags(DEVICE_ADD_MUST_ISOLATE)
-                                .set_fidl_protocol_offers(offers)
+                                .set_fidl_service_offers(offers)
                                 // The client side of outgoing directory is
                                 // provided to the framework. This will be
                                 // forwarded to the new driver host that spawns to
@@ -100,7 +91,7 @@ class Device : public fidl::WireServer<fidl_examples_echo::Echo> {
                                 // to connect to our outgoing FIDL protocols.
                                 .set_outgoing_dir(endpoints->client.TakeChannel()));
     if (status == ZX_OK) {
-      __UNUSED auto ptr = device.release();
+      [[maybe_unused]] auto ptr = device.release();
     } else {
       zxlogf(ERROR, "Failed to add device");
     }
@@ -109,21 +100,15 @@ class Device : public fidl::WireServer<fidl_examples_echo::Echo> {
   }
 
  private:
-  // This is a helper routine which will bind the incoming request to our
-  // server. Note that we continue to utilize the same framework provided
-  // dispatcher to service the work.
-  void Bind(fidl::ServerEnd<fidl_examples_echo::Echo> request) {
-    fidl::BindServer<fidl::WireServer<fidl_examples_echo::Echo>>(device_get_dispatcher(parent()),
-                                                                 std::move(request), this);
-  }
-
   // This is the implementation of the only method our FIDL protocol requires.
   void EchoString(EchoStringRequestView request, EchoStringCompleter::Sync& completer) override {
     completer.Reply(request->value);
   }
 
   // This is a helper class which we use to serve the outgoing directory.
-  svc::Outgoing outgoing_dir_;
+  component::OutgoingDirectory outgoing_;
+  // This ensures that the fidl connections don't outlive the device object.
+  fidl::ServerBindingGroup<fidl_examples_echo::Echo> bindings_;
 };
 ```
 
@@ -132,23 +117,21 @@ class Device : public fidl::WireServer<fidl_examples_echo::Echo> {
 ### Binding
 
 The first important thing to discuss is how the child driver will bind. It can
-bind due to any number of device properties, but if you wish to bind based
-solely on the FIDL protocol the parent exports, you will need to create the
-following bind library:
+bind due to any number of node properties, but if you wish to bind based
+solely on the FIDL protocol the parent exports, you will need the bind library
+that the build automatically generates for you from the FIDL library
+(For more information, see [Generated bind libraries](#generated-bind-libraries)).
 
-```
-library fidl.examples.echo;
-
-bool Echo;
-```
-
-You will then need to use this library in your driver's bind rules:
+You will depend on and use this bind library in your driver's bind rules:
 
 ```
 using fidl.examples.echo;
 
-fidl.examples.echo.Echo == true;
+fidl.examples.echo.Echo == fidl.examples.echo.Echo.ZirconTransport;
 ```
+
+ZirconTransport is the transport method that the parent driver uses to
+provide the Echo FIDL protocol to the child.
 
 You can addition additional bind constraints if you desire. Note that the
 property which we describe here is only added if the parent driver declares
@@ -171,7 +154,7 @@ zx_status_t CallEcho() {
   }
 
   // We turn the client side of the endpoint pair into a synchronous client.
-  auto client = fidl::BindSyncClient(std::move(endpoints->client));
+  fidl::WireSyncClient client{std::move(endpoints->client)};
 
   // The following method allows us to connect to the protocol we desire. This
   // works by providing the server end of our endpoint pair to the framework. It
@@ -203,3 +186,114 @@ zx_status_t CallEcho() {
   return ZX_OK;
 }
 ```
+
+## Generated bind libraries {:#generated-bind-libraries}
+
+All FIDL libraries get an auto-generated bind library created from them. This is to help driver
+authors create bind rules based on FIDL protocols and services provided by the parent, and the
+transport method the parent uses to provide each one.
+
+### The bind library
+
+There are three possible transport methods put in these bind libraries: `Banjo`, `ZirconTransport`,
+and `DriverTransport`. Currently it is safe to assume the value is `ZirconTransport`
+(which is just regular FIDL over Zircon channels). The bind library contains constants for
+protocols and these transport methods.
+
+Each service and discoverable protocol defined in the FIDL library gets an enum in the
+bind library with the values of the enum being the three transport methods.
+
+Here is an example of one where the FIDL library contains a single discoverable protocol:
+
+#### protocol.fidl {:#protocol-fidl}
+
+```fidl {:.devsite-disable-click-to-copy}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/protocol.fidl" region_tag="fidl" %}
+```
+
+#### Generated lib {:#generated-lib}
+
+```none {:.devsite-disable-click-to-copy}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/generated_lib.bind.golden" %}
+```
+
+### The build target
+
+These generated bind libraries will be based on the FIDL library's
+`library_name` and `target_name`. The bind library will have a target name of
+`{fidl_target_name}_bindlib`, and its `library_name` will be the same as the FIDL's.
+
+For example, if the FIDL library target is `//sdk/fidl/fidl.examples.echo:myecholibrary`,
+then the auto-generated bind library target is
+`//sdk/fidl/fidl.examples.echo:myecholibrary_bindlib`.
+
+In practice, most FIDL libraries have the same `target_name` as the folder they are in, which
+is usually the library name as well. So for example, if the FIDL library is
+`//sdk/fidl/fidl.examples.echo`, the auto-generated bind library target is
+`//sdk/fidl/fidl.examples.echo:fidl.examples.echo_bindlib`.
+
+### The generated code targets
+
+These generated bind libraries work exactly the same as if they were user-written
+bind libraries. Code generation for user-written bind libraries is described in detail at
+[Bind library code generation tutorial](/docs/development/drivers/tutorials/bind-libraries-codegen.md).
+
+### Example
+
+Lets take the FIDL library shown [above](#protocol-fidl) and use it in an example.
+
+
+#### FIDL (BUILD.gn)
+
+```gn {:.devsite-disable-click-to-copy}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/BUILD.gn" region_tag="fidl" %}
+```
+
+This now gives us the generated bind library with the target name of `:my_fidl_target_bindlib`
+and library name of `fuchsia.gizmo.protocol`. The generated source for the bind library was shown
+[earlier](#generated-lib). We can use this to create bind rules for the child driver.
+
+#### Child bind rules (BUILD.gn)
+
+```gn {:.devsite-disable-click-to-copy}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/BUILD.gn" region_tag="child_bind_rules" %}
+```
+
+#### child-driver.bind
+
+```none {:.devsite-disable-click-to-copy}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/child_driver.bind" exclude_regexp="// Copyright.*|// Use of.*|// found in.*" %}
+```
+
+We can use the auto-generated code targets to access constants for this bind library from
+the parent driver code.
+
+#### Parent driver (BUILD.gn)
+
+* {C++}
+
+  ```gn {:.devsite-disable-click-to-copy}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/BUILD.gn" region_tag="example_cpp_target" %}
+  ```
+
+* {Rust}
+
+  ```gn {:.devsite-disable-click-to-copy}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/BUILD.gn" region_tag="example_rust_target" %}
+  ```
+
+
+
+#### Parent driver code
+
+* {C++}
+
+  ```cpp {:.devsite-disable-click-to-copy}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/bindlib_usage.cc" region_tag="code" %}
+  ```
+
+* {Rust}
+
+  ```rust {:.devsite-disable-click-to-copy}
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/drivers/fidl_bindlib_codegen/bindlib_usage.rs" region_tag="code" %}
+  ```

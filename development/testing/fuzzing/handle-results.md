@@ -4,43 +4,27 @@ When [your fuzzer runs](run-a-fuzzer.md), it searches for inputs that crash the 
 checked conditions. When the fuzzer finds and reports such a test input, it is evidence of a bug
 that needs to be resolved.
 
-Typically, you might use `fx fuzz` when first developing your fuzzer. This can often produce results
-immediately. After a fuzzer has been submitted it will be run at scale by
-[ClusterFuzz][clusterfuzz], and any results it finds will be filed as bugs.
+Typically, you might use `ffx fuzz` when first developing your fuzzer. This can often produce
+results immediately. After a fuzzer has been submitted, it is run at scale by
+[ClusterFuzz][clusterfuzz]{:.external} and any results it finds will be filed as bugs.
 
-## Handle results from `fx fuzz` {#fx-fuzz-results}
+## Handle results from `ffx fuzz` {#ffx-fuzz-results}
 
-After [running a fuzzer with `fx fuzz`](run-a-fuzzer.md#run-on-device), the tool can be used to
-report any artifacts found by running:
-
-<pre class="devsite-terminal">
-fx fuzz check <var>package</var>/<var>fuzzer</var>
-</pre>
-
-Additionally, output logs and any results are stored to the output directory. By default, this is:
-
-<pre>
-$FUCHSIA_DIR/test_data/fuzzing/<var>package</var>/<var>fuzzer</var>/<var>timestamp</var>
-</pre>
-
-A different location can be set passing the `--output` option to `fx fuzz`.
-
-The most recent fuzzer run is symbolically linked to:
-
-<pre>
-$FUCHSIA_DIR/test_data/fuzzing/<var>package</var>/<var>fuzzer</var>/latest
-</pre>
+When [running a fuzzer with `ffx fuzz`](run-a-fuzzer.md#run-on-device), output logs and results are
+stored to the output directory. By default, this is the current working directory.  A different
+location can be set passing the `--output` option to `attach`.
 
 Crashes and other artifacts will have file name like
-`{{ "<var>" }}type-of-finding{{ "</var>" }}.{{ "<var>" }}SHA1-hash-of-input{{ "</var>" }}`. The file
+`{{ "<var>" }}type-of-finding{{ "</var>" }}.{{ "<var>" }}SHA2-hash-of-input{{ "</var>" }}`. The file
 contents will be the input bytes themselves.
 
 For example, examining a crash produced by a [toy example][toy-example] might look like the
 following:
 
 <pre class="prettyprint devsite-disable-click-to-copy">
+<code class="devsite-terminal">ffx fuzz run -o results fuchsia.pkg://fuchsia.com/example-fuzzers#meta/toy_example_arbitrary.cm</code>
 <code class="devsite-terminal">cd test_data/fuzzing/example-fuzzers/toy_example_arbitrary/latest</code>
-<code class="devsite-terminal">hd /crash-2fda3f03bb699c8a2151724b64b6e36c3b986aea</code>
+<code class="devsite-terminal">hd results/crash-2fda3f03bb699c8a2151724b64b6e36c3b986aea</code>
 00000000  2a 48 49 21 2a 00 08 00  00 00 2a 48 49 00 0a 66  |*HI!*.....*HI..f|
 00000010  4a 33 00 0a f9                                    |J3...|
 00000015
@@ -48,10 +32,10 @@ following:
 
 ### Reproduce a result {#repro}
 
-You can execute the fuzzer with this input again using `fx fuzz repro`. For example:
+You can execute the fuzzer with this input again using `ffx fuzz try`. For example:
 
 <pre class="devsite-terminal devsite-disable-click-to-copy">
-fx fuzz repro examples/toy crash-2fda3f03bb699c8a2151724b64b6e36c3b986aea
+ffx fuzz try fuchsia.pkg://fuchsia.com/example-fuzzers#meta/toy_example_arbitrary.cm crash-2fda3f03bb699c8a2151724b64b6e36c3b986aea
 </pre>
 
 If the result is reproducible, this will produce a symbolized log including a stack trace. The top
@@ -89,26 +73,27 @@ Fuchsia creates a [debug exception channel][exception-channel] attached to the f
 order to detect and handle crashes during fuzzing. Only one process may do this per thread, so
 debuggers are prevented from attaching.
 
-To prevent `libfuzzer` from creating a debug exception channel, use the `--debug` option with
-`fx fuzz`.
+To prevent `libfuzzer` from creating a debug exception channel, set the `debug` fuzzer option to
+true.
 
 For example, to use [zxdb] while reproducing a specific test case:
 
 <pre class="prettyprint devsite-disable-click-to-copy">
 <code class="devsite-terminal">ffx debug connect</code>
-[zxdb] attach noop-fuzzer
+[zxdb] attach my-fuzzer
 [zxdb] break LLVMFuzzerTestOneInput
 </pre>
 
 Now, in a separate terminal, start the fuzzer with your test case:
 
-<pre class="devsite-terminal">
-fx fuzz repro --debug zircon_fuzzers/noop-fuzzer testcase_input_file
+<pre class="prettyprint devsite-disable-click-to-copy">
+<code class="devsite-terminal">ffx fuzz shell</code>
+fuzz >> attach fuchsia-pkg://fuchsia.com/my-fuzzers#meta/my-fuzzer.cm
+fuzz >> set debug true
+fuzz >> try <var>my_input_file</var>
 </pre>
 
 ### File fuzzing bugs {#bug-filing}
-
-Note: The bug tracker is currently only open to Googlers.
 
 It may be tempting to immediately fix the bug related to the fuzzer result, especially if the bug is
 obvious. No matter how trivial the bug is, please file a bug report!
@@ -118,11 +103,14 @@ certain labels, such as `found-by-fuzzing`, `libfuzzer` and `Sec-TriageMe`. This
 security team see where fuzzers are being used and stay aware of any critical issues they are
 finding.
 
+Note: Due to their potential security implications, fuzzing bugs are not public until they have been
+triaged and found to have no security impact or have been mitigated.
+
 Important: As with other potential security issues, bugs should be filed in the component of the
 code under test, and _not_ in the `Security` component.
 
 If you encounter problems or shortcomings in the fuzzing framework _itself_, open bugs or
-feature requests in the [`Security>libFuzzer` component][security-libfuzzer].
+feature requests in the [`Security>Fuzzing` component][security-fuzzing].
 
 As with all potential security issues, you do not need to wait for triage to begin fixing the bug!
 Once fixed, reference the bug number in the commit message.
@@ -159,9 +147,9 @@ You can also see graphs of this information using the Fuchsia fuzzing bug [dashb
 
 [clusterfuzz]: https://google.github.io/clusterfuzz/
 [dashboard]: https://goto.google.com/fuchsia-fuzzing-bugs
-[exception-channel]: /concepts/kernel/exceptions.md
+[exception-channel]: /docs/concepts/kernel/exceptions.md
 [fuzzing-bug-template]: https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Fuzzing+Bug
 [monorail]: https://goto.google.com/fuchsia-found-by-fuzzing
-[security-libfuzzer]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=component%3ASecurity%3Elibfuzzer&can=2
+[security-fuzzing]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=component%3ASecurity%3EFuzzing&can=2
 [toy-example]: /examples/fuzzers/rust/src/lib.rs
-[zxdb]: /development/debugger
+[zxdb]: /docs/development/debugger

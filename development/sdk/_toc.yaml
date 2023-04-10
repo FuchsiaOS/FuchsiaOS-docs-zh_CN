@@ -1,12 +1,23 @@
 toc:
 - title: Overview
-  path: /development/sdk/index.md
+  path: /docs/development/sdk/index.md
 - heading: Quickstart
 - title: "Get started with the Fuchsia SDK"
-  path: /get-started/sdk/index.md
+  path: /docs/get-started/sdk/index.md
 - heading: Driver development
 - title: "Get started with driver development"
-  path: /get-started/sdk/get-started-with-driver.md
-- title: "Driver sample walkthrough: qemu_edu"
-  path: /development/sdk/driver-sample-qemu-edu.md
-- include: /development/sdk/ffx/_toc.yaml
+  path: /docs/get-started/sdk/get-started-with-driver.md
+- title: "Codelab: Build a driver"
+  section:
+  - include: /docs/get-started/sdk/learn/driver/_toc.yaml
+- title: "Driver binding"
+  section:
+  - title: "Write bind rules for a driver"
+    path: /docs/development/sdk/write-bind-rules-for-driver.md
+  - title: "Create a new bind library for a driver"
+    path: /docs/development/sdk/create-new-bind-library-for-driver.md
+  - title: "FIDL-based bind libraries tutorial"
+    path: /docs/development/sdk/fidl-bind-libraries-bazel.md
+  - title: "Debug a driver when it fails to load"
+    path: /docs/development/sdk/debug-driver-when-it-fails-to-load.md
+- include: /docs/development/sdk/ffx/_toc.yaml

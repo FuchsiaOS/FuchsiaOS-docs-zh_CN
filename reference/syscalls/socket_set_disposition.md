@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_socket_set_disposition
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Set disposition of writes.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_socket_set_disposition(zx_handle_t handle,
                                       uint32_t disposition_peer);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_socket_set_disposition` sets the disposition of
 [`zx_socket_write()`] calls for a socket handle and its peer.
@@ -46,17 +53,15 @@ It is invalid to specify both **ZX_SOCKET_DISPOSITION_WRITE_DISABLED** and
 doing so will result in `zx_socket_set_disposition` returning
 **ZX_ERR_INVALID_ARGS** and no action being taken.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_SOCKET** and have **ZX_RIGHT_MANAGE_SOCKET**.
 
-## RETURN VALUE
+## Return value
 
 `zx_socket_set_disposition()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -71,13 +76,11 @@ buffered data on the specified socket endpoint.
 **ZX_ERR_INVALID_ARGS**  *disposition* or *disposition_peer* contains flags
 outside of the ones listed above or an invalid combination of flags.
 
-## SEE ALSO
+## See also
 
  - [`zx_socket_create()`]
  - [`zx_socket_read()`]
  - [`zx_socket_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_socket_create()`]: socket_create.md
 [`zx_socket_read()`]: socket_read.md

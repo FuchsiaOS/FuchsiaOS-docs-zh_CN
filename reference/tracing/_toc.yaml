@@ -6,11 +6,9 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Trace specification file"
-  path: /reference/tracing/trace-specification-file.md
 - title: "Tracing libraries"
-  path: /reference/tracing/libraries.md
+  path: /docs/reference/tracing/libraries.md
 - title: "Tracing: C and C++ macros"
-  path: /reference/tracing/c_cpp_macros.md
+  path: /docs/reference/tracing/c_cpp_macros.md
 - title: "FIFO packets"
-  path: /reference/tracing/FIFO-packets.md
+  path: /docs/reference/tracing/FIFO-packets.md

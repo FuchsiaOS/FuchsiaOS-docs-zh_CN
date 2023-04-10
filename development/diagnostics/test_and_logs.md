@@ -21,7 +21,7 @@ For instance, to allow a test to produce `ERROR` logs:
 ```gn
 fuchsia_component("my-package") {
   testonly = true
-  manifest = "meta/my-test.cmx"
+  manifest = "meta/my-test.cml"
   deps = [ ":my_test" ]
 }
 
@@ -42,5 +42,5 @@ Valid values for `max_severity`: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FAT
 
 See also: [choosing severity for log records][choose-severity].
 
-[choose-severity]: /development/diagnostics/logs/severity.md
-[syslog]: /development/diagnostics/logs/README.md
+[choose-severity]: /docs/development/diagnostics/logs/severity.md
+[syslog]: /docs/development/diagnostics/logs/README.md

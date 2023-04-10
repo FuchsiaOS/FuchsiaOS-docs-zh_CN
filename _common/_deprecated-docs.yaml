@@ -9,5 +9,5 @@
 # deprecated and on which date it was deprecated.
 # Using ? or * is not supported in the redirect links.
 included:
-- from: /contribute/fake-page.md
-  to: /contribute/docs/deprecation-notice.md
+- from: /docs/contribute/fake-page.md
+  to: /docs/contribute/docs/deprecation-notice.md

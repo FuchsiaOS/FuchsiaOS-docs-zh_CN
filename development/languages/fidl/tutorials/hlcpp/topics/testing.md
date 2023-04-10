@@ -51,7 +51,7 @@ To create a server implementation:
    inherits from the [corresponding test base class][test-base]. This means that
    the implementation only needs to override the methods that are being tested
    (in this case, `EchoString`), as well as the `NotImplemented_` method, which
-  is called if any of the request handler methods that are not overriden get
+  is called if any of the request handler methods that are not overridden get
   called.
 
 1. Create a test class that wraps the logic of publishing the echo protocol:
@@ -119,6 +119,6 @@ You should see the test output indicating a success.
   to only implement the methods under test.
 
 <!-- xrefs -->
-[test-base]: /reference/fidl/bindings/hlcpp-bindings.md#test-scaffolding
-[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
-[overview]: /development/languages/fidl/tutorials/hlcpp/README.md
+[test-base]: /docs/reference/fidl/bindings/hlcpp-bindings.md#test-scaffolding
+[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
+[overview]: /docs/development/languages/fidl/tutorials/hlcpp/README.md

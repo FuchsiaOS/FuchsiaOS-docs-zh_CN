@@ -12,7 +12,7 @@ http://www.fuchsia.dev/fuchsia-src/reference/hardware/drivers
 {% endcomment %}
 
 This page lists drivers that are in the Fuchsia source tree. For deprecated
-drivers, see [Deprecated drivers](/reference/hardware/driver-epitaphs.md).
+drivers, see [Deprecated drivers](/docs/reference/hardware/driver-epitaphs.md).
 
 <a name="drivers"><h2>Drivers</h2></a>
 <div class="form-checkbox">

@@ -7,41 +7,54 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /concepts/ui/index.md
-- title: "User interface client"
-  path: /concepts/ui/ui-client.md
+  path: /docs/concepts/ui/index.md
+- title: "User Interface Client"
+  path: /docs/concepts/ui/ui-client.md
 - title: "Scenic"
   section:
   - title: "Overview"
-    path: /concepts/ui/scenic/index.md
+    path: /docs/concepts/ui/scenic/index.md
   - title: "Flatland"
-    path: /concepts/ui/scenic/flatland/index.md
+    path: /docs/concepts/ui/scenic/flatland/index.md
+    section:
+    - title: "Flatland timeline"
+      path: /docs/concepts/ui/scenic/flatland/timeline.md
   - title: "Gfx"
     section:
-    - include: /concepts/ui/scenic/gfx/_toc.yaml
-  - title: "Frame scheduling"
-    path: /concepts/ui/scenic/frame_scheduling.md
-  - title: "View tree"
-    path: /concepts/ui/scenic/view_tree.md
+    - include: /docs/concepts/ui/scenic/gfx/_toc.yaml
+  - title: "Life of a pixel"
+    path: /docs/concepts/ui/scenic/life_of_a_pixel.md
+  - title: "Frame Scheduling"
+    path: /docs/concepts/ui/scenic/frame_scheduling.md
+  - title: "View System"
+    path: /docs/concepts/ui/scenic/views.md
+  - title: "Pointer input"
+    path: /docs/concepts/ui/scenic/input.md
+  - title: "Hit testing"
+    path: /docs/concepts/ui/scenic/hit_testing.md
+  - title: "Color spaces"
+    path: /docs/concepts/ui/scenic/color_spaces.md
   - title: "Display"
-    path: /concepts/ui/scenic/display.md
+    path: /docs/concepts/ui/scenic/display/index.md
+  - title: "Screen Capture"
+    path: /docs/concepts/ui/scenic/screen_capture/index.md
 - title: "Input"
   section:
   - title: "Overview"
-    path: /concepts/ui/input/index.md
+    path: /docs/concepts/ui/input/index.md
   - title: "Mouse"
-    path: /concepts/ui/input/mouse.md
-  - title: "Mouse scroll"
-    path: /concepts/ui/input/mouse_scroll.md
+    path: /docs/concepts/ui/input/mouse.md
+  - title: "Mouse Scroll"
+    path: /docs/concepts/ui/input/mouse_scroll.md
   - title: "Focus"
-    path: /concepts/ui/input/focus.md
-  - title: "Hit testing"
-    path: /concepts/ui/input/hit_testing.md
-  - title: "Semantic visibility"
-    path: /concepts/ui/input/semantic_visibility.md
-  - title: "Scene root"
-    path: /concepts/ui/input/scene_root.md
+    path: /docs/concepts/ui/input/focus.md
+  - title: "Hit Testing"
+    path: /docs/concepts/ui/input/hit_testing.md
+  - title: "Semantic Visibility"
+    path: /docs/concepts/ui/input/semantic_visibility.md
+  - title: "Scene Root"
+    path: /docs/concepts/ui/input/scene_root.md
   - title: "Testing"
     section:
     - title: "Overview"
-      path: /concepts/ui/input/testing/index.md
+      path: /docs/concepts/ui/input/testing/index.md

@@ -22,7 +22,7 @@
 
 * [fuchsia-merkle/](/src/sys/pkg/lib/fuchsia-merkle/)
 
-    Protect and verify data blobs using [Merkle Trees](/concepts/packages/merkleroot.md)
+    Protect and verify data blobs using [Merkle Trees](/docs/concepts/packages/merkleroot.md)
 
 * [fuchsia-scenic/](/src/lib/ui/fuchsia-scenic/)
 
@@ -38,7 +38,10 @@
 
 * [fuchsia-system-alloc/](/src/lib/fuchsia-system-alloc/)
 
-    A crate that sets the Rust allocator to the system allocator. This is automatically included for projects that use fuchsia-async, and all Fuchsia binaries should ensure that they take a transitive dependency on this crate (and “use” it, as merely setting it as a dependency in GN is not sufficient to ensure that it is linked in).
+    A crate that sets the Rust allocator to the system allocator. This is automatically included
+    for projects that use fuchsia-async, and all Fuchsia binaries should ensure that they take a
+    transitive dependency on this crate (and “use” it, as merely setting it as a dependency in GN
+    is not sufficient to ensure that it is linked in).
 
 * [fuchsia-trace/](/src/lib/trace/rust/)
 
@@ -48,9 +51,10 @@
 
     Bindings and protocol for serving filesystems on the Fuchsia platform
 
-* [storage/fuchsia-vfs-watcher/](/src/lib/storage/fuchsia-vfs-watcher/)
+* [fuchsia-fs](/src/lib/fuchsia-fs/)
 
-    Bindings for watching a directory for changes
+    Wrapper library for fuchsia.io operations, such as reading and writing files, reading directory
+    entries, and watching directories.
 
 * [fuchsia-zircon/](/src/lib/zircon/rust/)
 
@@ -67,7 +71,3 @@
 * [shared-buffer/](/src/lib/shared-buffer/)
 
     Utilities for safely operating on memory shared between untrusting processes
-
-* [zerocopy/](/src/lib/zerocopy/)
-
-    Work with values contained in raw Byte strings without copying

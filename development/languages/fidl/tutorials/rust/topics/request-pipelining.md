@@ -195,7 +195,7 @@ Note: You can explore the full source for the realm component at
    instances and routes the capabilities:
 
     ```posix-terminal
-    ffx component run fuchsia-pkg://fuchsia.com/echo-launcher-rust#meta/echo_realm.cm
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-launcher-rust#meta/echo_realm.cm
     ```
 
 1. Start the `echo_client` instance:
@@ -234,11 +234,11 @@ ffx component destroy /core/ffx-laboratory:echo_realm
 ```
 
 <!-- xrefs -->
-[glossary.realm]: /glossary/README.md#realm
+[glossary.realm]: /docs/glossary/README.md#realm
 [src]: /examples/fidl/rust/request_pipelining
-[server-tut]: /development/languages/fidl/tutorials/rust/basics/server.md
-[server-tut-main]: /development/languages/fidl/tutorials/rust/basics/server.md#main
-[client-tut]: /development/languages/fidl/tutorials/rust/basics/client.md
-[rubric]: /development/api/fidl.md#request-pipelining
-[overview]: /development/languages/fidl/tutorials/rust/README.md
+[server-tut]: /docs/development/languages/fidl/tutorials/rust/basics/server.md
+[server-tut-main]: /docs/development/languages/fidl/tutorials/rust/basics/server.md#main
+[client-tut]: /docs/development/languages/fidl/tutorials/rust/basics/client.md
+[rubric]: /docs/development/api/fidl.md#request-pipelining
+[overview]: /docs/development/languages/fidl/tutorials/rust/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

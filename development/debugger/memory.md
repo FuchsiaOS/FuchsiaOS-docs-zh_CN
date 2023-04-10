@@ -5,14 +5,14 @@ Zxdb supports the following commands for inspecting memory:
   * [`aspace`](#aspace_show_mapped_memory_regions)
   * [`mem-analyze`](#mem-analyze_dumps_memory_trying_to_interpret_pointers)
   * [`mem-read` / `x`](#mem-read_dumps_process_memory)
-  * [`stack`](#stack_provides_a_low-level_analysis_of_the_stack)
+  * [`stack-data`](#stack-data_provides_a_low-level_analysis_of_the_stack)
   * [`sym-near`](#sym-near_map_addresses_to_symbols)
 
 ## `aspace`: Show mapped memory regions.
 
 The `aspace` command, abbreviated `as`, outputs address space information for the process. In
 Fuchsia, virtual memory consists of a hierarchy of [Virtual Memory
-Objects](/reference/kernel_objects/vm_object.md) (VMOs).
+Objects](/docs/reference/kernel_objects/vm_object.md) (VMOs).
 
 With no parameters, the `aspace` command shows all VMOs in the process.
 
@@ -39,11 +39,11 @@ address:
       * From the name in this example, you can tell the address is in a stack allocated by pthreads.
 
 ```none {:.devsite-disable-click-to-copy}
-          Start              End   Size  Name
-      0x1000000   0x7ffffffff000   127T  proc:3109
-      0x1000000   0x7ffffffff000   127T    root
-  0x10b7f104000    0x10b7f305000     2M      useralloc
-  0x10b7f105000    0x10b7f305000     2M        pthread_t:0x10c4ea38b00
+          Start              End   Size  Koid    Offset  Com.Pgs  Name
+      0x1000000   0x7ffffffff000   127T                           proc:3109
+      0x1000000   0x7ffffffff000   127T                             root
+  0x10b7f104000    0x10b7f305000     2M                               useralloc
+  0x10b7f105000    0x10b7f305000     2M  3824       0x0        2        pthread_t:0x10c4ea38b00
 ```
 
 The following are relevant VMO names that could be included in output from the `aspace` command:
@@ -61,6 +61,16 @@ The following are relevant VMO names that could be included in output from the `
   * `vdso/stable`: The built-in library that implements the stable system calls.
   * `blob-*`: Mapped library coming from blobfs. The `libs` command can tell you the library name
     for that address.
+
+To see more information about a VMO, use the command `handle -k <koid>`
+
+The "Cmt.Pgs" column shows the number of committed pages (not bytes) in that memory region in the
+mapped VMO. This can be surprising for memory mapped files like blobs and other shared VMOs.
+
+If a VMO is a child (as in the case of mapped blobs), the original data will be present in the
+parent VMO but the child VMO that is actually mapped will indirectly reference this data. The only
+pages in the child that will count as committed are those that are duplicated due to copy-on-write.
+This is why blobs and other files that are not modified will have a 0 committed page count.
 
 ## `mem-analyze`: Dumps memory, trying to interpret pointers.
 
@@ -114,16 +124,16 @@ a known size, the dump automatically shows that many bytes:
 0x1605a5d1ed0:  70 1a c8 36 47 04 00 00-68 fe 3d dd 25 01 00 00  |p  6G   h = %
 ```
 
-## `stack`: Provides a low-level analysis of the stack
+## `stack-data`: Provides a low-level analysis of the stack
 
-The `stack` command analyzes the stack in a similar way to `mem-analyze`. It defaults to the
-top of the current thread's stack. The `stack` command attempts to decode addresses present in the
-memory region, but it also adds annotations for the known register values and stack base pointers of
-the thread.
+The `stack-data` command analyzes the stack in a similar way to `mem-analyze`. It defaults to the
+top of the current thread's stack. The `stack-data` command attempts to decode addresses present in
+the memory region, but it also adds annotations for the known register values and stack base
+pointers of the thread.
 
 ```none {:.devsite-disable-click-to-copy}
-[zxdb] stack
-      Address               Data 
+[zxdb] stack-data
+      Address               Data
 0x1605a5d1428 0x000042a352fca11f ◁ rsp. ▷ _zx_port_wait + 0x1f
 0x1605a5d1430 0x000001605a5d1460 ◁ frame 1 rsp. ▷ inside map "initial-thread"
 0x1605a5d1438 0x000001605a5d1540 ▷ inside map "initial-thread"
@@ -145,7 +155,7 @@ interpreted as an address.
 ## `sym-near`: Map addresses to symbols
 
 The `sym-near` command, abbreviated `sn`, attempts to map an address to a symbol name. Running the
-command outputs the name and line information (if available) for the symbol at or preceeding the
+command outputs the name and line information (if available) for the symbol at or preceding the
 address and is most often used to tell what a pointer points to.
 
 ```none {:.devsite-disable-click-to-copy}

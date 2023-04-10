@@ -1,4 +1,4 @@
-> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/concepts/ui/index.md).
+> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/docs/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/docs/concepts/ui/index.md).
 
 # Life of a Pixel
 
@@ -21,4 +21,4 @@ The diagram below shows the steps a client Present follows when it is requested.
 9. The GPU processes the commands and sends the results to the display driver.
 10. The display driver pushes the pixels to the screen.
 
-![Image of the classes and calls a client Present request goes through to become a pixel on screen. This is a visual representation of the enumerated list above.](/development/graphics/scenic/meta/life_of_pixel.svg)
+![Image of the classes and calls a client Present request goes through to become a pixel on screen. This is a visual representation of the enumerated list above.](/docs/development/graphics/scenic/meta/life_of_pixel.svg)

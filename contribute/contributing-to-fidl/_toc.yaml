@@ -7,16 +7,16 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /contribute/contributing-to-fidl
+  path: /docs/contribute/contributing-to-fidl
 - title: "Cultural tenets"
-  path: /contribute/contributing-to-fidl/cultural_tenets.md
+  path: /docs/contribute/contributing-to-fidl/cultural_tenets.md
 - title: "Design principles"
-  path: /contribute/contributing-to-fidl/design-principles.md
+  path: /docs/contribute/contributing-to-fidl/design-principles.md
 - title: "Design history"
-  path: /contribute/contributing-to-fidl/design-history.md
+  path: /docs/contribute/contributing-to-fidl/design-history.md
 - title: "FIDL Tests & GN"
-  path: /contribute/contributing-to-fidl/fidl-tests-and-gn.md
+  path: /docs/contribute/contributing-to-fidl/fidl-tests-and-gn.md
 - title: "Project checklists"
-  path: /contribute/contributing-to-fidl/fidl-project-checklist.md
+  path: /docs/contribute/contributing-to-fidl/fidl-project-checklist.md
 - title: "Benchmark rubric"
-  path: /contribute/contributing-to-fidl/benchmark_rubric.md
+  path: /docs/contribute/contributing-to-fidl/benchmark_rubric.md

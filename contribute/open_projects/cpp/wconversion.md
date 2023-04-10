@@ -86,10 +86,10 @@ then you're not wrong, just lucky.
 
 Example:
 
-*   [478402: [cleanup] Remove unused -Wno-conversions](https://fuchsia-review.googlesource.com/c/fuchsia/+/478402)
-*   [474400: [bt][common] Remove Wno-conversion suppression](https://fuchsia-review.googlesource.com/c/fuchsia/+/474400)
-*   [487186: [connectivity] Clean up Wno-conversion](https://fuchsia-review.googlesource.com/c/fuchsia/+/487186)
-*   [484416: [storage] Drop Wno-conversion](https://fuchsia-review.googlesource.com/c/fuchsia/+/484416)
+*   [478402: \[cleanup\] Remove unused -Wno-conversions](https://fuchsia-review.googlesource.com/c/fuchsia/+/478402)
+*   [474400: \[bt\]\[common\] Remove Wno-conversion suppression](https://fuchsia-review.googlesource.com/c/fuchsia/+/474400)
+*   [487186: \[connectivity\] Clean up Wno-conversion](https://fuchsia-review.googlesource.com/c/fuchsia/+/487186)
+*   [484416: \[storage\] Drop Wno-conversion](https://fuchsia-review.googlesource.com/c/fuchsia/+/484416)
 
 #### Simple downcasts
 
@@ -343,11 +343,11 @@ If the tryjobs turn red, you can click on them to find descriptive errors.
 
 ## Examples
 
-*   [469454: [debugger] Fix -Wconversion issues](https://fuchsia-review.googlesource.com/c/fuchsia/+/469454)
-*   [464514: [fit, fzl] Enable -Wconversion warnings](https://fuchsia-review.googlesource.com/c/fuchsia/+/464514)
-*   [463856: [kcounter] Enable -Wconversion warnings](https://fuchsia-review.googlesource.com/c/fuchsia/+/463856)
-*   [456573: [feedback] fix -Wconversion errors](https://fuchsia-review.googlesource.com/c/fuchsia/+/456573)
-*   [450719: [camera][lib] Fix -Wconversion build errors](https://fuchsia-review.googlesource.com/c/fuchsia/+/450719)
+*   [469454: \[debugger\] Fix -Wconversion issues](https://fuchsia-review.googlesource.com/c/fuchsia/+/469454)
+*   [464514: \[fit, fzl\] Enable -Wconversion warnings](https://fuchsia-review.googlesource.com/c/fuchsia/+/464514)
+*   [463856: \[kcounter\] Enable -Wconversion warnings](https://fuchsia-review.googlesource.com/c/fuchsia/+/463856)
+*   [456573: \[feedback\] fix -Wconversion errors](https://fuchsia-review.googlesource.com/c/fuchsia/+/456573)
+*   [450719: \[camera\]\[lib\] Fix -Wconversion build errors](https://fuchsia-review.googlesource.com/c/fuchsia/+/450719)
 
 ## Sponsors
 

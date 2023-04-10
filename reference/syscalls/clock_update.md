@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_clock_update
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Make adjustments to a clock object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,13 +25,11 @@ zx_status_t zx_clock_update(zx_handle_t handle,
                             const void* args);
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CLOCK** and have **ZX_RIGHT_WRITE**.
 
-## DESCRIPTION
+## Description
 
 Three different parameters may be dynamically controlled by a clock maintainer.
 They are
@@ -115,7 +120,7 @@ reference time does _not_ affect when the actual transformation is updated, it
 will always take effect during the call to `zx_clock_update`.
 
 Diagrams provided in
-[RFC-0077](/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
+[RFC-0077](/docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
 may help to understand the effects of the operations described below.
 
 #### Synthetic value updates with an explicitly provided reference time.
@@ -199,14 +204,14 @@ zx_status_t SetRateAtRef(zx_handle_t the_clock, zx_time_t ref, int32_t ppm_adj) 
    synthetic value update and a rate adjustment simultaneously.
 
 Details provided in
-[RFC-0077](/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
+[RFC-0077](/docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
 may help to understand the reasoning behind some of these rules and limitations.
 
-## RETURN VALUE
+## Return value
 
 On success, returns **ZX_OK**.
 
-## ERRORS
+## Errors
 
  - **ZX_ERR_BAD_HANDLE** : *handle* is either an invalid handle, or a handle to
    an object type that is not **ZX_OBJ_TYPE_CLOCK**.
@@ -216,9 +221,9 @@ On success, returns **ZX_OK**.
    permissible clock update operations. Otherwise, the version/pointer of
    the arguments structure is incorrect.
 
-## SEE ALSO
+## See also
 
- - [RFC-0077](/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
+ - [RFC-0077](/docs/contribute/governance/rfcs/0077_zx_clock_update_accuracy.md)
 
  - [clock transformations]
  - [clocks]
@@ -226,10 +231,8 @@ On success, returns **ZX_OK**.
  - [`zx_clock_get_details()`]
  - [`zx_clock_read()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[clock transformations]: /concepts/kernel/clock_transformations.md
-[clocks]: /reference/kernel_objects/clock.md
+[clock transformations]: /docs/concepts/kernel/clock_transformations.md
+[clocks]: /docs/reference/kernel_objects/clock.md
 [`zx_clock_create()`]: clock_create.md
 [`zx_clock_get_details()`]: clock_get_details.md
 [`zx_clock_read()`]: clock_read.md

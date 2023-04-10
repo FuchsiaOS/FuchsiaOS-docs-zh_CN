@@ -5,14 +5,10 @@ version of the driver framework (DFv1).
 
 *A driver unit testing framework*
 
-Note: The fake-ddk library has been deprecated, and an effort is underway to migrate
-all usages to the mock-ddk.  More on this migration can be found at the
-[mock-ddk migration](/contribute/open_projects/testing/mock_ddk_migration.md) page.
-
 Note: ***The mock-ddk is only for unit testing.***
 The mock_ddk does not test any interfaces for correctness, it is simply a
 framework which helps driver authors load and exercise their code.
-For integration testing, use the isolated devmgr instead.
+For integration testing, use the [Driver Test Realm](driver_test_realm.md) instead.
 
 ## Simple example
 
@@ -39,7 +35,7 @@ class MyDevice : public MyDeviceType {
         auto status = device->DdkAdd("my-device-name");
         if (status == ZX_OK) {
           // Intentionally leak this device because it's owned by the driver framework.
-           __UNUSED auto unused = device.release();
+           [[maybe_unused]] auto unused = device.release();
         }
         return status;
     }
@@ -93,9 +89,7 @@ Here is an interaction model of how the mock-ddk interacts with a driver:
 
 ![Figure: Interaction Model](images/interaction_model.png)
 
-## Using the Mock DDK
-
-### Interactions with the Driverhost
+## Interactions with the Driverhost
 
 The mock_ddk mocks out and makes available calls to and from the driverhost.
 
@@ -104,7 +98,7 @@ Calling into the device <br> (device ops)  | Calling out to the driverhost <br> 
 Call device ops through the MockDevice. Functions are named as op name + `Op` <br> **Example:** <br> Call the `init` function using `InitOp()`  | All calls in the libdriver API are recorded on the appropriate device, but no action is taken. <br> **Example:**<br> To test if `device_init_reply()` has been called, call `InitReplyCalled()`<br> or to wait on the call, `WaitUntilInitReplyCalled()`.
 
 
-#### An example lifecycle test {: #lifecycle-test}
+### An example lifecycle test {: #lifecycle-test}
 
 
 ```c++
@@ -128,7 +122,7 @@ EXPECT_TRUE(child->UnbindReplyCalled());
 // Mock-ddk will release all the devices on destruction, or you can do it manually.
 ```
 
-#### Automatically Unbind and Release {: #auto-unbind-release }
+### Automatically Unbind and Release {: #auto-unbind-release }
 The driverhost will always call unbind before releasing a driver, but that
 step must be done manually in the mock-ddk.
 If you have multiple drivers under test, it may be easier to automate the
@@ -156,7 +150,7 @@ device_async_remove(child_dev);
 mock_ddk::ReleaseFlaggedDevices(parent.get());
 ```
 
-#### Getting Device Context {: #getting-device-context }
+### Getting Device Context {: #getting-device-context }
 The mock-ddk only deals with the `zx_device_t`'s that are associated with a device.
 However, if you have assigned a device context, by for example using
 the ddktl library, you may want to access corresponding the ddk::Device:
@@ -171,12 +165,12 @@ the ddktl library, you may want to access corresponding the ddk::Device:
   MyDevice* test_dev = child_dev->GetDeviceContext<MyDevice>();
 ```
 
-### Interactions with other drivers
+## Interactions with other drivers
 
 Some information can be added to a device (usually a parent) so that the
 device under test can retrieve expected values.
 
-#### Mocking Parent Protocols
+### Mocking Parent Protocols
 
 Parent protocols are added to the parent before a child device is expected to
 access them with a call to `device_get_protocol()`
@@ -190,7 +184,7 @@ parent->AddProtocol(8, ops, ctx);
 ```
 
 
-#### Fragment protocols
+### Fragment protocols
 
 Composite devices get protocols from multiple parent “fragments”.  This is manifested
 in protocols being keyed by a name.  Mock-ddk allows binding a name to a protocol,
@@ -206,7 +200,7 @@ parent->AddProtocol(ZX_PROTOCOL_CODEC, codec.GetProto()->ops, codec.GetProto()->
 // gpio, i2c, and codec are device objects with mocked/faked HW interfaces.
 ```
 
-#### Mocking FIDL connections
+### Mocking FIDL connections
 
 If the device serves a FIDL protocol, the test may want to call the fidl
 functions provided.  This can be difficult as the fidl functions take a
@@ -222,15 +216,15 @@ MyDevice* test_dev = child_dev->GetDeviceContext<MyDevice>();
 async::Loop loop(&kAsyncLoopConfigNoAttachToCurrentThread);
 auto endpoints = fidl::CreateEndpoints<fidl_proto>();
 std::optional<fidl::ServerBindingRef<fidl_proto>> fidl_server;
-fidl_server = fidl::BindServer<fidl::WireServer<fidl_proto>>(
+fidl_server = fidl::BindServer(
     loop.dispatcher(), std::move(endpoints->server), test_dev);
 loop.StartThread("thread-name");
-auto fidl_client = fidl::BindSyncClient(std::move(endpoints->client));
+fidl::WireSyncClient fidl_client{std::move(endpoints->client)};
 // fidl_client can be used synchronously.
 ```
 
 
-#### Mocking Metadata
+### Mocking Metadata
 
 Metadata can be added to any ancestor of the device under test.
 Metadata is propagated to be available to all descendants.
@@ -241,7 +235,7 @@ const char kSource[] = "test";
 parent->SetMetadata(kFakeMetadataType, kSource, sizeof(kSource));
 ```
 
-#### Load Firmware
+### Load Firmware
 
 Load firmware is an deprecated function, but is included for
 the drivers that still need it:
@@ -258,7 +252,7 @@ EXPECT_TRUE(test_dev->LoadFirmware(kFirmwarePath).is_ok());
 ```
 
 
-### Common Issues:
+## Common Issues
 
 * Not calling Init/Unbind
     * Call Init using the `MockDevice::InitOp()`

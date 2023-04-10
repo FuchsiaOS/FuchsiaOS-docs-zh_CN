@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmo_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a VM object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,10 +23,10 @@ Create a VM object.
 zx_status_t zx_vmo_create(uint64_t size, uint32_t options, zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmo_create()` creates a new, zero-filled, [virtual memory
-object](/reference/kernel_objects/vm_object.md) (VMO), which represents a container of zero to
+object](/docs/reference/kernel_objects/vm_object.md) (VMO), which represents a container of zero to
 *size* bytes of memory managed by the operating system.
 
 The size of the VMO will be rounded up to the next system page size boundary,
@@ -51,6 +58,8 @@ The following rights will be set on the handle by default:
 
   - **ZX_RIGHT_SET_PROPERTY** - May set its properties using [`zx_object_set_property()`].
 
+  - **ZX_RIGHT_RESIZE** - May be resized. Only set if the **ZX_VMO_RESIZABLE** option was specified.
+
 The *options* field can be 0 or a combination of:
 
   - **ZX_VMO_RESIZABLE** to create a VMO that can change size. Children of a non-resizable VMO can
@@ -66,18 +75,16 @@ inactive whenever a child of the VMO is created and becomes active again when
 all children have been destroyed and no mappings of those children into address
 spaces exist.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 Caller job policy must allow **ZX_POL_NEW_VMO**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmo_create()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *out* is an invalid pointer or NULL or *options* is
 any value other than 0.
@@ -88,7 +95,7 @@ In a future build this error will no longer occur.
 
 **ZX_ERR_OUT_OF_RANGE**  Requested size is too large.
 
-## SEE ALSO
+## See also
 
  - [`zx_system_get_page_size()`]
  - [`zx_vmar_map()`]
@@ -99,8 +106,6 @@ In a future build this error will no longer occur.
  - [`zx_vmo_replace_as_executable()`]
  - [`zx_vmo_set_size()`]
  - [`zx_vmo_write()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_object_get_property()`]: object_get_property.md
 [`zx_object_set_property()`]: object_set_property.md

@@ -1,11 +1,13 @@
-# Implement a Dart FIDL client
+# Implement a FIDL client in Dart
 
 <!-- TODO(fxbug.dev/58758) <<../../common/client/overview.md>> -->
 
 ## Prerequisites
 
-This tutorial builds on the [FIDL server][server-tut] tutorial. For the
-full set of FIDL tutorials, refer to the [overview][overview].
+This tutorial assumes that you are familiar with writing and running a Fuchsia
+component and with implementing a FIDL server, which are both covered in the
+[FIDL server][server-tut] tutorial. For the full set of FIDL tutorials, refer
+to the [overview][overview].
 
 ## Overview
 
@@ -16,38 +18,57 @@ synchronous clients.
 
 If you want to write the code yourself, delete the following directories:
 
-```
+```posix-terminal
 rm -r examples/fidl/dart/client/*
 ```
 
-## Create a stub component
+## Create the component
 
-1. Set up a hello world `dart_app` in `examples/fidl/dart/client`, with a name of `echo-dart-client`.
+Create a new component project at `examples/fidl/dart/client`:
 
-1. Once you have created your component, ensure that the following works:
+1. Add a `main()` function to `examples/fidl/dart/client/lib/main.dart`:
 
+   ```dart
+   import 'dart:async';
+
+   Future<void> main(List<String> args) async {
+     print('hello world!');
+   }
    ```
-   fx set core.x64 --with //examples/fidl/dart/client
+
+1. Declare a target for the client in `examples/fidl/dart/client/BUILD.gn`:
+
+   ```gn
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/BUILD.gn" region_tag="imports" %}
+
+   # Declare a `dart_library` for the client executable.
+   dart_library("lib") {
+     package_name = "echo_client"
+     null_safe = true
+
+     sources = [ "main.dart" ]
+   }
+
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/BUILD.gn" region_tag="rest" %}
    ```
 
-   Note: If necessary, refer back to the [previous tutorial][server-tut].
+1. Add a component manifest in `examples/fidl/dart/client/meta/client.cml`:
+
+   ```json5
+   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/meta/client.cml" region_tag="example_snippet" %}
+   ```
+
+1. Once you have created your component, ensure that you can add it to the
+   build configuration:
+
+   ```posix-terminal
+   fx set core.x64 --with //examples/fidl/dart/client:echo-client
+   ```
 
 1. Build the Fuchsia image:
 
    ```
    fx build
-   ```
-
-1. In a separate terminal, run:
-
-   ```
-   fx serve
-   ```
-
-1. In a separate terminal, run:
-
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/echo-dart-client#meta/echo-dart-client.cmx
    ```
 
 ## Edit GN dependencies
@@ -65,15 +86,6 @@ rm -r examples/fidl/dart/client/*
    ```
 
 These dependencies are explained in the [server tutorial][server-tut].
-
-## Edit component manifest
-
-1. Include the `Echo` protocol in the client component's sandbox by
-   editing the component manifest in `client.cmx`.
-
-   ```cmx
-   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/dart/client/meta/client.cmx" %}
-   ```
 
 ## Connect to the server {#main}
 
@@ -152,52 +164,67 @@ for a single event from it.
 
 ## Run the client
 
-If you run the client directly, it will not connect to the server correctly because the
-client does not automatically get the `Echo` protocol provided in its
-sandbox (in `/svc`). To get this to work, a launcher tool is provided
-that launches the server, creates a new [`Environment`][environment] for
-the client that provides the server's protocol, then launches the client in it.
+In order for the client and server to communicate using the `Echo` protocol,
+component framework must route the `fuchsia.examples.Echo` capability from the
+server to the client. For this tutorial, a [realm][glossary.realm] component is
+provided to declare the appropriate capabilities and routes.
 
-1. Configure your GN build as follows:
+Note: You can explore the full source for the realm component at
+[`//examples/fidl/echo-realm`](/examples/fidl/echo-realm)
 
-    ```
-    fx set core.x64 --with //examples/fidl/dart/server --with //examples/fidl/dart/client --with //examples/fidl/dart/launcher_bin
-    ```
+1. Configure your build to include the provided package that includes the
+   echo realm, server, and client:
 
-2. Build the Fuchsia image:
-
+   ```posix-terminal
+   fx set core.x64 --with examples/fidl/dart:echo-launcher-dart --with-base //src/dart \
+     --args='core_realm_shards += [ "//src/dart:dart_runner_core_shard" ]'
    ```
+
+   NOTE: The flag `--with-base //src/dart` adds the required dart runner to the
+   base packages; and the `core_realm_shards` argument updates the
+   `laboratory-env` component environment (the environment provided to the
+   `ffx-laboratory` realm, used in `ffx component start`) to include the
+   required dart runner.
+
+1. Build the Fuchsia image:
+
+   ```posix-terminal
    fx build
    ```
 
-3. Run the launcher by passing it the client URL, the server URL, and
-   the protocol that the server provides to the client:
+1. Run the `echo_realm` component. This creates the client and server component
+   instances and routes the capabilities:
 
+    ```posix-terminal
+    ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-dart-client#meta/echo_realm.cm
     ```
-    fx shell run fuchsia-pkg://fuchsia.com/example-launcher-dart#meta/example-launcher-dart.cmx fuchsia-pkg://fuchsia.com/echo-dart-client#meta/echo-dart-client.cmx fuchsia-pkg://fuchsia.com/echo-dart-server#meta/echo-dart-server.cmx fuchsia.examples.Echo
+
+1. Start the `echo_client` instance:
+
+    ```posix-terminal
+    ffx component start /core/ffx-laboratory:echo_realm/echo_client
     ```
 
-You should see output similar to the following in the QEMU console
-(or using `ffx log`):
+The server component starts when the client attempts to connect to the `Echo`
+protocol. You should see output similar to the following in the device logs
+(`ffx log`):
 
-```
-[105541.570] 489493:489495> Listening for incoming connections...
-[105541.573] 489493:489495> Received EchoString request for string "hello"
-[105541.574] 489493:489495> Response sent successfully
-[105541.574] 489272:489274> response: "hello"
-[105541.575] 489493:489495> Received SendString request for string "hi"
-[105541.575] 489493:489495> Event sent successfully
-[105541.575] 489272:489274> Received OnString event for string "hi"
+```none {:.devsite-disable-click-to-copy}
+[echo-server, main.dart(64)] INFO: Running Echo server
+[echo-server, main.dart(33)] INFO: Received EchoString request: hello
+[echo-server, main.dart(41)] INFO: Received SendString request: hi
+[echo-client, main.dart(27)] INFO: Got response: hello
+[echo-client, main.dart(33)] INFO: Got event: hi
 ```
 
 <!-- xrefs -->
-[bindings-ref]: /reference/fidl/bindings/dart-bindings.md
-[proxy]: /reference/fidl/bindings/dart-bindings.md#proxy
-[events]: /reference/fidl/bindings/dart-bindings.md#protocol-events-client
-[server-tut]: /development/languages/fidl/tutorials/dart/basics/server.md
-[server-handler]: /development/languages/fidl/tutorials/dart/basics/server.md#handler
-[overview]: /development/languages/fidl/tutorials/overview.md
-[environment]: /concepts/components/v2/environments.md
-[service-name]: /reference/fidl/bindings/dart-bindings.md#discoverable
-[pipeline]: /development/api/fidl.md#request-pipelining
-[pipeline-tut]: /development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
+[bindings-ref]: /docs/reference/fidl/bindings/dart-bindings.md
+[proxy]: /docs/reference/fidl/bindings/dart-bindings.md#proxy
+[events]: /docs/reference/fidl/bindings/dart-bindings.md#protocol-events-client
+[server-tut]: /docs/development/languages/fidl/tutorials/dart/basics/server.md
+[server-handler]: /docs/development/languages/fidl/tutorials/dart/basics/server.md#handler
+[overview]: /docs/development/languages/fidl/tutorials/overview.md
+[service-name]: /docs/reference/fidl/bindings/dart-bindings.md#discoverable
+[pipeline]: /docs/development/api/fidl.md#request-pipelining
+[pipeline-tut]: /docs/development/languages/fidl/tutorials/hlcpp/topics/request-pipelining.md
+[sync-client]: /docs/development/languages/fidl/tutorials/cpp/basics/sync-client.md

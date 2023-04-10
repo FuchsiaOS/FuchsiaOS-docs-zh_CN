@@ -21,7 +21,7 @@ Components on Fuchsia can read current time using three different
 
 These time standards are frequently available through the
 [time functions in supported languages](language_support.md) in addition to
-[time syscalls](/reference/syscalls/clock_create.md).
+[time syscalls](/docs/reference/syscalls/clock_create.md).
 
 As a developer, you must select the most appropriate time standard to address
 each problem. Monotonic time has the fewest failure modes and the most stable

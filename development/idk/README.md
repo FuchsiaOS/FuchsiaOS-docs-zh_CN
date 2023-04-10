@@ -1,7 +1,6 @@
 # Integrator Development Kit (IDK)
 
 This folder contains information about developing the Fuchsia Integrator Development Kit (IDK).
-For information on the GN C++ Frontend SDK see [this getting started guide](/development/idk/gn).
 
 > [Download the Fuchsia IDK](download.md)
 
@@ -15,7 +14,7 @@ the Fuchsia IDK. The APIs in the IDK are subject to change at any time without n
 Fuchsia is taking a modular approach to exposing the Fuchsia platform to developers.
 
 At the center of this strategy is the Integrator Development Kit (IDK), distilled out
-of the Git repository mentioned in [Contributing changes](/development/source_code/contribute_changes.md).
+of the Git repository mentioned in [Contributing changes](/docs/development/source_code/contribute_changes.md).
 This IDK contains a small set of libraries and tools required to start building
 and running programs that target Fuchsia.
 The contents of that IDK represent the most basic contract that the Fuchsia
@@ -106,7 +105,6 @@ The Core IDK is represented by the `//sdk:core` target.
 That IDK is complemented by multiple IDK add-ons:
 
 - `//sdk:e2e_testing`: an end-to-end testing framework for Fuchsia;
-- `//sdk:modular_testing`: an hermetic testing framework for the app framework;
 - `//sdk:fuchsia_dart`: a Dart SDK to build mods and agents.
 
 Internally these targets are all instances of the `sdk` GN template.
@@ -126,6 +124,18 @@ To build the archive, add the GN argument `build_sdk_archives=true` [to your
 build configuration][fx-config] and run the build command again.
 The resulting archive will be located under
 `<outdir>/sdk/archive/<name>.tar.gz`.
+
+The `core` SDK includes host tools needed for Fuchsia development. By default, when
+the SDK is built locally, it only includes host tools for the current host architecture,
+either x64 or arm64. When building the SDK on x64 hosts, you can also include arm64
+host tools by setting optional attributes for `fx` and `jiri`.
+
+   1. Add the `arm-sdk-tools` attribute to the jiri configuration by running
+    `jiri init -fetch-optional=arm-sdk-tools`. This only needs to be done once.
+   2. Update the Fuchsia checkout by running `jiri update`.
+   3. Configure to build the core sdk.
+    `fx set core.x64 --with //sdk:core --args arm_sdk_tools=true --args build_sdk_archives=true`
+   4. Build `fx build`
 
 ### Adding content to an IDK {#adding-content-to-an-idk}
 
@@ -161,5 +171,5 @@ for more details.
 [backend]: /build/sdk/README.md
 [frontends]: /scripts/sdk/README.md
 [bazel]: https://bazel.build/
-[fx-config]: /development/build/fx.md#configure-a-build
-[fx-build-target]: /development/build/fx.md#building-a-specific-target
+[fx-config]: /docs/development/build/fx.md#configure-a-build
+[fx-build-target]: /docs/development/build/fx.md#building-a-specific-target

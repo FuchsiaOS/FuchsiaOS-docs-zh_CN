@@ -21,7 +21,7 @@ protocols that developers can use to control the session. Product variants
 the same session.
 
 The intention of this document is to ratify design decisions that have been made
-since the [Modular Framework][modular] was deprecated.
+since the `Modular Framework` was deprecated.
 
 ## Motivation
 
@@ -142,7 +142,7 @@ capabilities from `session_manager`. This set contains a wide range of
 capabilities. However, the set of capabilities available to the session is
 smaller, and more auditable, than the set that is offered to components that run
 on product configurations that have not been migrated to use a session (i.e.,
-products that use the [Modular Framework][modular]).
+products that use the `Modular Framework`).
 
 It is important that the capabilities offered to the session go through security
 review. It unlikely that the Fuchsia team will be able to perform thorough
@@ -153,7 +153,7 @@ capabilities offered to the session.
 ## Privacy considerations
 
 `session_manager` only stores the URL of the current session, which may be
-logged. This is an improvement over the [Modular Framework][modular], which
+logged. This is an improvement over the `Modular Framework, which
 manages components that are launched by the user.
 
 Each session will require its own comprehensive privacy review.
@@ -173,8 +173,7 @@ and recreate the session.
 
 ## Documentation
 
-Conceptual documentation and developer guides can be found
-[here][documentation].
+Per [RFC-194][rfc_0194], conceptual documentation has been removed.
 
 Each individual binary and library in `//src/session` also contains a README
 explaining its purpose.
@@ -198,7 +197,6 @@ number of offered protocols.
 
 [examples]: /src/session/examples
 [experiences]: /src/experiences/session_shells/ermine/session
-[documentation]: /concepts/session/introduction.md
-[modular]: /development/modular/overview.md
 [session_manager]: /src/session/bin/session_manager
-[rfc_0089]: /contribute/governance/rfcs/0089_core_realm_variations.md
+[rfc_0089]: /docs/contribute/governance/rfcs/0089_core_realm_variations.md
+[rfc_0194]: /docs/contribute/governance/rfcs/0194_addendum_sessions.md

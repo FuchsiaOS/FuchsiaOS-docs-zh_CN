@@ -14,14 +14,14 @@ that requires a stepping stone release. According to [RFC 103][rfc-103], all
 stepping stone releases require their own RFC. This RFC details the new update
 package format.
 
-[rfc-103]: /contribute/governance/rfcs/0103_software_delivery_rfc_criteria.md#changes_which_require_an_rfc
+[rfc-103]: /docs/contribute/governance/rfcs/0103_software_delivery_rfc_criteria.md#changes_which_require_an_rfc
 
 ## Motivation
 
-An [Over-The-Air (OTA)](/concepts/packages/ota.md) update is the mechanism
+An [Over-The-Air (OTA)](/docs/concepts/packages/ota.md) update is the mechanism
 for upgrading the version of Fuchsia on a running device. If an update is
 available, the system-updater will fetch the
-[update package](/concepts/packages/update_pkg.md). To fetch a package
+[update package](/docs/concepts/packages/update_pkg.md). To fetch a package
 means that the contents of the package are written to BlobFS and protected from
 garbage collection. The update package contains the images (like the recovery
 image and Zircon Boot Images) that also have reserved space on the Zircon
@@ -49,7 +49,7 @@ use by those other packages. Changing the SWD design to remove the duplicate
 copy of images has the potential to save a significant amount of space, which is
 at a premium on some Fuchsia devices.
 
-[write-images]: /concepts/packages/ota.md#write-images-block-device
+[write-images]: /docs/concepts/packages/ota.md#write-images-block-device
 
 In order to garbage collect our binary images during an OTA while still
 guaranteeing forward progress, we need to make a change to the format of the
@@ -73,7 +73,7 @@ Currently the update package is a package that also contains images that get
 fetched and written to blobfs when the update package is fetched.
 
 We propose to pull the images out of the update package and put each image in
-its own [package](/concepts/packages/package.md).
+its own [package](/docs/concepts/packages/package.md).
 
 This fits cleanly with our current OTA process and package format, but does
 require a change to the update package format.
@@ -249,8 +249,8 @@ update package will always fail.
 ## Documentation
 
 We'll need to update the update package
-[documentation](/concepts/packages/update_pkg.md) and
-[OTA docs](/concepts/packages/ota.md) should this change be approved.
+[documentation](/docs/concepts/packages/update_pkg.md) and
+[OTA docs](/docs/concepts/packages/ota.md) should this change be approved.
 
 ## Drawbacks, Alternatives, Unknowns
 
@@ -274,4 +274,4 @@ the update package, rather than introducing special handling logic.
 ## Prior Art
 
 The design of the update package was
-[previously documented](/concepts/packages/update_pkg.md) on fuchsia.dev.
+[previously documented](/docs/concepts/packages/update_pkg.md) on fuchsia.dev.

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_interrupt_ack
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Acknowledge an interrupt and re-arm it.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Acknowledge an interrupt and re-arm it.
 zx_status_t zx_interrupt_ack(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_interrupt_ack()` acknowledges an interrupt object, causing it to be eligible
 to trigger again (and delivering a packet to the port it is bound to).
@@ -32,18 +39,16 @@ This syscall only operates on interrupts bound to a port.  Interrupts
 being waited upon with [`zx_interrupt_wait()`] do not need to be re-armed with this
 call -- it happens automatically when [`zx_interrupt_wait()`] is called.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_INTERRUPT** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_interrupt_ack()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is an invalid handle.
 
@@ -55,7 +60,7 @@ of failure, a negative error value is returned.
 
 **ZX_ERR_ACCESS_DENIED** *handle* lacks **ZX_RIGHT_WRITE**.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_interrupt_bind()`]
@@ -64,8 +69,6 @@ of failure, a negative error value is returned.
  - [`zx_interrupt_trigger()`]
  - [`zx_interrupt_wait()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_interrupt_bind()`]: interrupt_bind.md

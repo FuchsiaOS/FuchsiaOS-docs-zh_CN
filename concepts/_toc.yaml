@@ -7,48 +7,45 @@
 # team as reviewer.
 toc:
 - title: "Overview"
-  path: /concepts/index.md
+  path: /docs/concepts/index.md
 - title: "Principles"
   section:
-  - include: /concepts/principles/_toc.yaml
+  - include: /docs/concepts/principles/_toc.yaml
 - title: "Software model"
-  path: /concepts/software_model.md
+  path: /docs/concepts/software_model.md
 - title: "Accessibility"
   section:
-  - include: /concepts/accessibility/_toc.yaml
+  - include: /docs/concepts/accessibility/_toc.yaml
 - title: "Components"
   section:
-  - include: /concepts/components/_toc.yaml
+  - include: /docs/concepts/components/_toc.yaml
 - title: "Drivers"
   section:
-  - include: /concepts/drivers/_toc.yaml
+  - include: /docs/concepts/drivers/_toc.yaml
 - title: "Filesystems"
   section:
-  - include: /concepts/filesystems/_toc.yaml
+  - include: /docs/concepts/filesystems/_toc.yaml
 - title: "Memory"
   section:
-  - include: /concepts/memory/_toc.yaml
+  - include: /docs/concepts/memory/_toc.yaml
 - title: "Process"
   section:
-  - include: /concepts/process/_toc.yaml
+  - include: /docs/concepts/process/_toc.yaml
 - title: "FIDL"
   section:
-  - include: /concepts/fidl/_toc.yaml
+  - include: /docs/concepts/fidl/_toc.yaml
 - title: "Kernel"
   section:
-  - include: /concepts/kernel/_toc.yaml
+  - include: /docs/concepts/kernel/_toc.yaml
 - title: "Packages"
   section:
-  - include: /concepts/packages/_toc.yaml
+  - include: /docs/concepts/packages/_toc.yaml
 - title: "Security"
   section:
-  - include: /concepts/security/_toc.yaml
-- title: "Sessions"
-  section:
-  - include: /concepts/session/_toc.yaml
+  - include: /docs/concepts/security/_toc.yaml
 - title: "Source code"
   section:
-  - include: /concepts/source_code/_toc.yaml
+  - include: /docs/concepts/source_code/_toc.yaml
 - title: "User interface"
   section:
-  - include: /concepts/ui/_toc.yaml
+  - include: /docs/concepts/ui/_toc.yaml

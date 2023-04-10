@@ -7,27 +7,14 @@ This document explains how to get started with syslogger APIs.
 Ensure that your component has the required capabilities to log by including the
 following in your component manifest:
 
-   * {.cmx}
-
-   ```json
-   {
-     "include": [
-       "syslog/client.shard.cmx"
-     ],
-     ...
-   }
-   ```
-
-   * {.cml}
-
-   ```json5
-   {
-     include: [
-       "syslog/client.shard.cml"
-     ],
-     ...
-   }
-   ```
+```json5
+{
+  include: [
+    "syslog/client.shard.cml"
+  ],
+  ...
+}
+```
 
 The syslog library will fallback to `stderr` if the `LogSink` connection fails.
 
@@ -65,7 +52,6 @@ FX_LOGF(INFO, NULL, "my msg: %d", 10);
 int main(int argc, char** argv) {
     fx_logger_config_t config = {
       .min_severity = FX_LOG_INFO,
-      .console_fd = -1,
       .tags = (const char * []) {"gtag", "gtag2"},
       .num_tags = 2,
     };

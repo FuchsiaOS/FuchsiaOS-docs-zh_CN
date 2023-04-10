@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_clock_create
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Create a new clock object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,15 +25,13 @@ zx_status_t zx_clock_create(uint64_t options,
                             zx_handle_t* out);
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## DESCRIPTION
+## Description
 
-Creates a new zircon clock object. See [clocks](/reference/kernel_objects/clock.md) for an
+Creates a new zircon clock object. See [clocks](/docs/reference/kernel_objects/clock.md) for an
 overview of clock objects.
 
 ### Options
@@ -55,7 +60,7 @@ The following options are defined for clock objects:
 ### Arguments
 
 One additional creation-time argument may be specified when configuring the clock, the backstop
-time. See [clocks](/reference/kernel_objects/clock.md) for more details about backstop times.
+time. See [clocks](/docs/reference/kernel_objects/clock.md) for more details about backstop times.
 
 In order to configure a backstop time, a user must pass a `zx_clock_create_args_v1_t` structure to
 the `zx_clock_create` call via the `args` parameter. Additionally, the `options` bits must have
@@ -87,13 +92,13 @@ zx_handle_t MakeAClock() {
 Users do not have to supply an arguments structure. If an explicit backstop is not required, users
 may omit the version bits from the options parameter and simply pass nullptr for args.
 
-## RETURN VALUE
+## Return value
 
 On success, returns **ZX_OK** along with a new clock object via the *out*
 handle. Handles to newly created clock objects will have the **ZX_RIGHT_READ**
 and **ZX_RIGHT_WRITE** rights assigned to them.
 
-## ERRORS
+## Errors
 
  - **ZX_ERR_INVALID_ARGS** : An invalid option flag was specified, a bad args
    structure version or pointer was passed, **ZX_CLOCK_OPT_CONTINUOUS** was
@@ -102,16 +107,14 @@ and **ZX_RIGHT_WRITE** rights assigned to them.
    monotonic time.
  - **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 
-## SEE ALSO
+## See also
 
  - [clocks]
  - [`zx_clock_get_details()`]
  - [`zx_clock_read()`]
  - [`zx_clock_update()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[clocks]: /reference/kernel_objects/clock.md
+[clocks]: /docs/reference/kernel_objects/clock.md
 [`zx_clock_get_details()`]: clock_get_details.md
 [`zx_clock_read()`]: clock_read.md
 [`zx_clock_update()`]: clock_update.md

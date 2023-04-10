@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_cache_flush
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Flush CPU data and/or instruction caches.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Flush CPU data and/or instruction caches.
 zx_status_t zx_cache_flush(const void* addr, size_t size, uint32_t options);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_cache_flush()` flushes CPU caches covering memory in the given
 virtual address range.  If that range of memory is not readable, then
@@ -46,16 +53,14 @@ the thread may fault as it would for a data read.
 At least one of **ZX_CACHE_FLUSH_DATA** and **ZX_CACHE_FLUSH_INSN**
 must be included in *options*.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_cache_flush()` returns **ZX_OK** on success, or an error code on failure.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS** *options* is invalid.

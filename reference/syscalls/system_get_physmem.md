@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_system_get_physmem
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Get amount of physical memory on the system.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,34 +23,30 @@ Get amount of physical memory on the system.
 uint64_t zx_system_get_physmem(void);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_system_get_physmem()` returns the total size of physical memory on
 the machine, in bytes.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_system_get_physmem()` returns a number in bytes.
 
-## ERRORS
+## Errors
 
 `zx_system_get_physmem()` cannot fail.
 
-## NOTES
+## Notes
 
 Currently the total size of physical memory cannot change during a run of
 the system, only at boot time.  This might change in the future.
 
-## SEE ALSO
+## See also
 
  - [`zx_system_get_num_cpus()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_system_get_num_cpus()`]: system_get_num_cpus.md

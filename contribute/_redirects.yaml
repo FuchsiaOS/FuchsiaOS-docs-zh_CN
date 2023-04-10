@@ -1,0 +1,3 @@
+redirects:
+- from: /docs/contribute/contributing-to-api.md
+  to: /docs/contribute/sdk/README.md

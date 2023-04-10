@@ -47,7 +47,7 @@ Fuchsia aims to have no ambient authority, which means every operation is
 scoped to an object capability. Similarly, Fuchsia has no global file system.
 Instead, each program is given its own local namespace in which to operate.
 
-[zircon]: /concepts/kernel/README.md
-[components]: /concepts/components/v2/introduction.md
-[packages]: /concepts/packages/package.md
-[namespaces]: /concepts/process/namespaces.md
+[zircon]: /docs/concepts/kernel/README.md
+[components]: /docs/concepts/components/v2/introduction.md
+[packages]: /docs/concepts/packages/package.md
+[namespaces]: /docs/concepts/process/namespaces.md

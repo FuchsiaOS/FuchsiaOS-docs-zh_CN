@@ -54,7 +54,7 @@ To mark a document as deprecated in a `_toc.yaml` file:
 
    ```none {:.devsite-disable-click-to-copy}
    - title: "Deprecating documentation"
-     path: /contribute/docs/deprecating-docs.md
+     path: /docs/contribute/docs/deprecating-docs.md
    ```
 
 1. Add a key/value pair of `status: deprecated` under the title of the page. For
@@ -63,7 +63,7 @@ To mark a document as deprecated in a `_toc.yaml` file:
    ```none {:.devsite-disable-click-to-copy}
    - title: "Deprecating documentation"
      status: deprecated
-     path: /contribute/docs/deprecating-docs.md
+     path: /docs/contribute/docs/deprecating-docs.md
    ```
 
 1. Submit the changes (document and TOC deprecation) to the Fuchsia repository.
@@ -78,7 +78,7 @@ To delete the pages and redirect:
    example:
 
    ```
-   grep -r "/contribute/docs/deprecating-docs.md" ~/fuchsia/docs/
+   grep -r "/docs/contribute/docs/deprecating-docs.md" ~/fuchsia/docs/
    ```
 
    This lists all the documents that link to the page from the `grep` command.
@@ -113,12 +113,12 @@ To delete the pages and redirect:
    ```
    # May 13th, 2022
    # Deprecating documentation around deprecation
-   - from: /contribute/docs/deprecating-docs.md
-     to: /contribute/docs/deprecation-notice.md
+   - from: /docs/contribute/docs/deprecating-docs.md
+     to: /docs/contribute/docs/deprecation-notice.md
    ```
 
 1. Submit the changes to the Fuchsia repository.
 
 
 [deprecate-docs]: /docs/_common/_deprecate-docs.yaml
-[deprecation-notice]: /contribute/docs/deprecation-notice.md
+[deprecation-notice]: /docs/contribute/docs/deprecation-notice.md

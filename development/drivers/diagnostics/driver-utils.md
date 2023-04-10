@@ -23,13 +23,13 @@ Error -1
 ## API
 
 The communication mechanism between between drivers and applications is
-[FIDL](/development/languages/fidl/README.md), and hence the FIDL API
+[FIDL](/docs/development/languages/fidl/README.md), and hence the FIDL API
 exported by any given driver fully defines what diagnostics can be performed on
 it. For instance for I2C, from
 [i2c.fidl](/sdk/fidl/fuchsia.hardware.i2c/i2c.fidl), there is a
 `Transfer()` FIDL method that allows for writes and reads from I2C devices.
 
-Note: [Banjo](/development/drivers/tutorials/banjo-tutorial.md) should not be used for
+Note: [Banjo](/docs/development/drivers/tutorials/banjo-tutorial.md) should not be used for
 driver utilities application to driver communication.
 
 TODO(fxbug.dev/45662): Add inspect usage description.
@@ -37,7 +37,7 @@ TODO(fxbug.dev/45662): Add inspect usage description.
 ## Discovery
 
 The Fuchsia driver model defines a `devfs` filesystem (see
-[Device Model](/development/drivers/concepts/device_driver_model/device-model.md), which is the mechanism
+[Device Model](/docs/development/drivers/concepts/device_driver_model/device-model.md), which is the mechanism
 through which userspace services and applications gain access to devices. As a
 user, you can navigate the `devfs` filesystem to see what devices are exported,
 note that there are multiple ways to access the same device, you can use the
@@ -89,17 +89,18 @@ To implement the Fuchsia application that would communicate with the device,
 call into the FIDL API. For this utilize the FIDL bindings for your language of
 choice, for C++:
 
-* [LLCPP](/reference/fidl/bindings/llcpp-bindings.md)
-* [HLCPP](/reference/fidl/bindings/hlcpp-bindings.md)
+* [New C++ bindings](/docs/reference/fidl/bindings/cpp-bindings.md)
+* [HLCPP](/docs/reference/fidl/bindings/hlcpp-bindings.md)
 
-For example for I2C using LLCPP we have:
+For example for I2C in [i2cutil](/src/devices/i2c/bin) using the new C++ bindings
+we have:
 
 ```
-fuchsia_hardware_i2c::Device2::SyncClient client((zx::channel(channel)));
+fidl::WireSyncClient<fuchsia_hardware_i2c::Device2> client(zx::channel(channel));
 auto read = client.Transfer(...);
 ```
 
 This calls the `Transfer()` method to write and read from an I2C device.
 
 <!-- xrefs -->
-[abi-api-compat]: /development/languages/fidl/guides/compatibility/README.md
+[abi-api-compat]: /docs/development/languages/fidl/guides/compatibility/README.md

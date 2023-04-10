@@ -61,7 +61,7 @@ In the diagram below, a fuzzer author would provide the fuzz target function and
 This is combined with the fuzzing engine, a sanitizer for instrumentation, and the library code to
 be tested to create a fuzzer. The fuzzer returns inputs that demonstrate software defects along with
 other artifacts such as logs and/or stack traces.
-![Coverage guided fuzzing](/images/fuzzing/coverage-guided.png)
+![Coverage guided fuzzing](/docs/images/fuzzing/coverage-guided.png)
 
 ## Fuzzing infrastructure {#fuzzing-infra}
 
@@ -112,7 +112,7 @@ Another critical aspect is the low overall developer cost for writing and mainta
 code is well unit-tested, it likely can be fuzzed with very little additional effort. The unit tests
 describe how to call an API, and can form the basis for a fuzz target function.
 
-If code isn't well unit-tested, developing fuzzers is harder but still extermely beneficial. Writing
+If code isn't well unit-tested, developing fuzzers is harder but still extremely beneficial. Writing
 fuzzers can make code easier to unit test:
 
  * It may prompt refactoring code to expose an API that's easier to fuzz, such as turning a binary
@@ -133,21 +133,21 @@ Fuchsia includes several guides for developers looking to fuzz Fuchsia software:
 [afl-trophies]: http://lcamtuf.coredump.cx/afl/#bugs
 [asan]: https://clang.llvm.org/docs/AddressSanitizer.html
 [Barton Miller]: http://pages.cs.wisc.edu/~bart/fuzz/Foreword1.html
-[build-a-fuzzer]: /development/testing/fuzzing/build-a-fuzzer.md
+[build-a-fuzzer]: /docs/development/testing/fuzzing/build-a-fuzzer.md
 [clusterfuzz]: https://google.github.io/clusterfuzz/
 [clusterfuzz-trophies]: https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3AClusterFuzz+-status%3AWontFix%2CDuplicate
 [corpus]: https://llvm.org/docs/LibFuzzer.html#corpus
 [fuzz-target]: https://llvm.org/docs/LibFuzzer.html#fuzz-target
-[fuzzing-in-fuchsia]: /development/testing/fuzzing/overview.md
+[fuzzing-in-fuchsia]: /docs/development/testing/fuzzing/overview.md
 [go-fuzz-trophies]: https://github.com/dvyukov/go-fuzz#trophies
-[handle-results]: /development/testing/fuzzing/handle-results.md
+[handle-results]: /docs/development/testing/fuzzing/handle-results.md
 [heap-overflow]: https://cwe.mitre.org/data/definitions/122.html
 [honggfuzz-trophies]: https://github.com/google/honggfuzz#honggfuzz
 [libfuzzer]: https://llvm.org/docs/LibFuzzer.html
 [libfuzzer-trophies]: http://llvm.org/docs/LibFuzzer.html#trophies
 [oss-fuzz]: https://google.github.io/oss-fuzz/
 [oss-fuzz-trophies]: https://bugs.chromium.org/p/oss-fuzz/issues/list?q=label%3AClusterFuzz%20-status%3AWontFix%2CDuplicate
-[run-a-fuzzer]: /development/testing/fuzzing/run-a-fuzzer.md
+[run-a-fuzzer]: /docs/development/testing/fuzzing/run-a-fuzzer.md
 [sancov]: https://clang.llvm.org/docs/SanitizerCoverage.html
 [sanitizers]: https://github.com/google/sanitizers
 [stack-overflow]: https://cwe.mitre.org/data/definitions/121.html
@@ -155,4 +155,4 @@ Fuchsia includes several guides for developers looking to fuzz Fuchsia software:
 [syzkaller]: https://github.com/google/syzkaller
 [syzkaller-trophies]: https://groups.google.com/g/syzkaller-bugs
 [use-after-free]: https://cwe.mitre.org/data/definitions/416.html
-[write-a-fuzzer]: /development/testing/fuzzing/write-a-fuzzer.md
+[write-a-fuzzer]: /docs/development/testing/fuzzing/write-a-fuzzer.md

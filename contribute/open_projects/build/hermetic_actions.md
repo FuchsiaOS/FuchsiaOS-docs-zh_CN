@@ -115,5 +115,5 @@ Reach out for questions or for status updates:
 *   <jayzhuang@google.com>
 *   <shayba@google.com>
 
-[hermetic-build-actions]: /development/build/hermetic_actions.md
-[common-issues]: /development/build/hermetic_actions.md#common_issues_and_how_to_fix_them
+[hermetic-build-actions]: /docs/development/build/hermetic_actions.md
+[common-issues]: /docs/development/build/hermetic_actions.md#common_issues_and_how_to_fix_them

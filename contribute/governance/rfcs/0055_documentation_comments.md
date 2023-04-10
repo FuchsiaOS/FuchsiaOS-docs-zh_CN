@@ -38,8 +38,7 @@ formated documentation. Using an attribute as the basis of the documentation
 tooling also allows for additional options to be added to the formatted output
 without breaking changes.
 
-
-```FIDL
+```fidl {:.devsite-disable-click-to-copy}
 [Discoverable, Doc = "Primary Bluetooth control service to access bluetooth"]
 interface Control {
   ...
@@ -68,9 +67,11 @@ case of this simplifies the consumption of the metadata in the IR.
 The suggested modification of the grammar is in the appendix of the FTP, but
 mostly involves adding an additional rule and minor rule re-ordering.
 
-``` documentation-comment = "///", STRING-LITERAL, "\n" ```
-
+```none {:.devsite-disable-click-to-copy}
+documentation-comment = "///", STRING-LITERAL, "\n"
 ```
+
+```fidl {:.devsite-disable-click-to-copy}
 interface Control {
   /// Sent when an adapter with the given |identifier| has been
   /// removed from the system.
@@ -81,8 +82,8 @@ interface Control {
 
 This would de-sugar to:
 
-```
- [Doc="Sent when an adapter with the given |identifier| has been\n removed from the system\n"]
+```none {:.devsite-disable-click-to-copy}
+[Doc="Sent when an adapter with the given |identifier| has been\n removed from the system\n"]
 ```
 
 ### Documentation comment contents

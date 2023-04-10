@@ -66,7 +66,7 @@ Definition of values:
 ## Merkle root {#merkle-root}
 
 In the Fuchsia repository, each package target includes the
-[merkle root](/concepts/packages/merkleroot.md) of the package's meta FAR as a custom attribute.
+[merkle root](/docs/concepts/packages/merkleroot.md) of the package's meta FAR as a custom attribute.
 This example shows the format for the merkle root:
 
 ```

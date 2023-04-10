@@ -116,10 +116,14 @@ It is RECOMMENDED to support the following operators over generated values:
 * bitwise or, i.e `|`
 * bitwise exclusive-or, i.e `^`
 * bitwise not, i.e `~`
+* bitwise difference, i.e all the bits present in one operand, except the bits
+  present in the other operand. This is usually represented by the `-` operator.
 
-To provide bitwise operations that always result in valid bits values,
-implementations of bitwise not should further mask the resulting value with the
-mask of all values. In pseudo code:
+An invariant of FIDL bitwise operations is that they should not introduce
+unknown bits unless a corresponding unknown bit occur in the source operands.
+All recommended operators naturally have this property, except `bitwise not`.
+Implementations of the `bitwise not` operation MUST further mask the resulting
+value with the mask of all values. In pseudo code:
 
 ```
 ~value1   means   mask & ~bits_of(value1)
@@ -127,14 +131,26 @@ mask of all values. In pseudo code:
 
 This mask value is provided in the [JSON IR][jsonir] for convenience.
 
-In languages where operator overloading is supported, such as C++, bitwise
-negation MUST be implemented by overloading the built in operator in a manner
-that always unsets the unknown members of the bitfield.  In languages that do
-not support operator overloading, such as Go, values SHOULD provide an
+In languages where operator overloading is supported, such as C++, the `bitwise
+not` operation MUST be implemented by overloading the built in operator in a
+manner that always unsets the unknown members of the bitfield.  In languages
+that do not support operator overloading, such as Go, values SHOULD provide an
 `InvertBits()` method (cased in the manner most appropriate for the language)
 for executing the masked inversion.
 
-Bindings SHOULD NOT support other operators since they could result in invalid
+The bitwise difference operator SHOULD be preferred over the bitwise not
+operator when clearing bits, because the former preserves unknown bits:
+
+```
+// Unknown bits in value1 are preserved.
+value1 = value1 - value2
+
+// Unknown bits in value1 are cleared, even if the user may only intend to
+// clear just the bits in value2.
+value1 = value1 & ~value2
+```
+
+Bindings SHOULD NOT support other operators which could result in invalid
 bits value (or risk a non-obvious translation of their meaning), e.g.:
 
 * bitwise shifts, i.e `<<` or `>>`
@@ -144,14 +160,15 @@ For cases where the generated code includes a type wrapping the underlying
 numeric bits value, it SHOULD be possible to convert between the raw value and
 the wrapper type. It is RECOMMENDED for this conversion to be explicit.
 
-Bindings MAY provide functions for converting a primitive value of the underlying
-type of a `bits` to the `bits` type itself. These converters may be of several
-flavors:
+Bindings MAY provide functions for converting a primitive value of the
+underlying type of a `bits` to the `bits` type itself. These converters may be
+of several flavors:
 
 * Possibly failing (or returning null) if the input value contains any unknown
   bits.
 * Truncates any unknown bits from the input value.
-* For [flexible](#strict-flexible) bits only: Keeps any unknown bits from the input value.
+* For [flexible](#strict-flexible) bits only: Keeps any unknown bits from the
+  input value.
 
 #### Unknown data {#unknown-bits}
 
@@ -165,7 +182,7 @@ For [flexible](#strict-flexible) bits:
   for known members.
 
 Strict bits MAY provide the above APIs as well in order to simplify [transitions
-betwen strict and flexible][source-compatible].
+between strict and flexible][source-compatible].
 
 In some languages, it is difficult or impossible to prevent users from
 manually creating an instance of a `bits` type from a primitive, therefore
@@ -195,10 +212,10 @@ For [flexible](#strict-flexible) enums:
 * Bindings MAY expose the (possibly unknown) underlying raw value of the enum.
 * Bindings MUST provide a way to obtain a valid unknown enum, without the
   user needing to provide an explicit unknown raw primitive value. If one of the
-  enum members is annotated with the [`[Unknown]`][unknown-attr] attribute,
+  enum members is annotated with the [`@unknown`][unknown-attr] attribute,
   then this unknown enum constructor MUST use the value of the annotated
   member. Otherwise, the value used by the unknown constructor is unspecified.
-* The `[Unknown]` member MUST be treated as unknown in any
+* The `@unknown` member MUST be treated as unknown in any
   function that determines whether a value is unknown.
 
 ### Struct support
@@ -248,19 +265,15 @@ Examples of this exist for the
 
 For [flexible unions](#strict-flexible):
 
-* Bindings MAY provide a constructor to create a union with an unknown variant
-  with specified ordinal, bytes, and handles.
-  * Such a constructor is useful not just for testing the bindings, but also for
-    end-developer testing needs (e.g. to check that unknown data is handled
-    correctly in a proxy).
-  * Having a constructor also prevents end-developers from constructing unions
-    with unknown variants in roundabout ways, such as by manually decoding raw
-    bytes.
-  * Usage of this constructor is discouraged in production code.
-* Bindings MUST provide a way to determine whether the union has an unknown
-  variant.
-* Bindings MAY provide getters and setters for the unknown variant,
-  similar to methods generated for the union's known variants.
+* When the ordinal is unknown, decoding MUST succeed, but re-encoding MUST fail.
+* Bindings MUST provide a way to determine if the union has an unknown variant.
+* Bindings MAY provide a way to access the unknown variant's ordinal.
+* Bindings MAY provide a constructor to create a union with an unknown variant.
+  * The constructor MUST be named to discourage use in production code, e.g.
+    `unknown_variant_for_testing()`.
+  * The constructor MUST NOT allow the user to choose the ordinal.
+  * Having a constructor prevents end-developers from constructing unions with
+    unknown variants in roundabout ways, such as by manually decoding raw bytes.
 
 ### Table support
 
@@ -274,7 +287,7 @@ operations:
 
 Bindings MAY provide constructors for tables that only require specifying values
 for fields that have a value. For example, in Rust this can be accomplished
-using the `::empty()` constructor along with struct update syntax. Supporting
+using the `::EMTPY` constant along with struct update syntax. Supporting
 construction this ways allows users to write code that is robust against
 addition of new fields to the table.
 
@@ -282,44 +295,35 @@ addition of new fields to the table.
 
 All tables are [flexible](#strict-flexible).
 
-Bindings MUST provide a way to determine whether the table included any
-unknown fields during decoding.
+When there are unknown fields, decoding and re-encoding MUST succeed.
+Re-encoding MUST omit the unknown fields.
 
-For bindings that store the unknown data in the decoded value,
-bindings MAY provide a way for users to read and write the unknown ordinals,
-bytes, and handles. Being able to modify the unknown data is useful for
-testing, but should be discouraged in production code.
+Bindings MAY provide a way to determine whether the table included any unknown
+fields during decoding. They MAY provide a way to access their ordinals.
+
+Bindings MUST NOT provide a way to create a table with unknown fields or to set
+unknown fields on an existing table.
 
 ### Strict and flexible types {#strict-flexible}
 
-Examples of FIDL types and their corresponding unknown data include:
-
-FIDL Type | Unknown Data | Unknown Data Type
-----------|--------------|-------------------
-union | unknown variant | ordinal, bytes, and handles
-table | unknown fields | map from ordinal to corresponding bytes and handles
-enum | unknown variant | same as the underlying type of the `enum`
-bits | unknown bits | same as the underlying type of the `bits`
-
 Strict types MUST fail to decode when encountering any unknown data.
-Flexible types MUST succeed when decoding a value with unknown data (with
-one exception, see [value types and resource types](#value-resource)).
+Flexible types MUST succeed when decoding a value with unknown data.
+
+Examples of flexible FIDL types and their behavior with respect to unknowns:
+
+FIDL type      | Access to unknowns  | Re-encode fidelity
+---------------|---------------------|-------------------
+flexible bits  | raw integer         | lossless
+flexible enum  | raw integer         | lossless
+flexible union | boolean or ordinal  | _fails_
+table          | boolean or ordinals | lossy
 
 In general, the underlying unknown data can either be discarded during decoding,
 or be stored within the decoded type. In either case, the type SHOULD indicate
-whether it encountered unknown data or not when decoding.
-If the unknown data is stored, bindings MAY provide ways for the user to
-access this data, though bindings SHOULD either provide access to all of the
-parts of the unknown data (e.g. for unions and tables: handles, bytes, and
-ordinals) or to none of them. Refer to the
-[enum support](#unknown-enums), [bits support](#unknown-bits),
-[union support](#unknown-unions), and [table support](#unknown-tables) sections
-for specific guidance on the design of these APIs.
-
-If any part of the unknown data is discarded, the decoded value SHOULD
-fail to re-encode rather than send a message with missing data. On the other
-hand, if all of the unknown data is stored, the decoded value SHOULD
-support re-encoding back onto the wire.
+whether it encountered unknown data or not when decoding. Refer to the [enum
+support](#unknown-enums), [bits support](#unknown-bits), [union
+support](#unknown-unions), and [table support](#unknown-tables) sections for
+specific guidance on the design of these APIs.
 
 Bindings authors SHOULD favor optimizing `strict` types, possibly at the expense
 of `flexible` types. For example, if there is a design tradeoff between the two,
@@ -329,18 +333,11 @@ Changing a type from strict to flexible MUST be [transitionable][soft-transition
 
 ### Value types and resource types {#value-resource}
 
-Value types MUST NOT contain handles, and resource types MAY contain
-handles.
+Value types MUST NOT contain handles, and resource types MAY contain handles.
 
-In the interaction between value types and flexible types, the requirements of
-the value type supersedes the requirements of the flexible type when they are
-in conflict. In other words, in the case where:
-
-* a type stores unknown data, and encounters handles in the unknown data during
-  decoding, and
-* the type is value type.
-
-decoding MUST fail.
+In the interaction between value types and flexible types, the flexible type
+requirements takes priority. Specifically, decoding a flexible value type that
+contains unknown handles MUST succeed.
 
 ## Protocol support
 
@@ -361,7 +358,7 @@ handler and events arriving on the endpoint.
 Bindings MUST close the connection upon receiving an unknown
 [strict event][strict-event].
 
-### Error types
+### Domain error types
 
 It is OPTIONAL that bindings provide some form of special support for protocol
 methods with an error type matching the idiomatic way errors are handled in the
@@ -388,6 +385,59 @@ categorized as errors encountered when converting between the native type and
 the wire format data, or as errors from the underlying transport mechanism (for
 example, an error obtained from calling `zx_channel_write_etc`). These errors
 MAY consist of the error status, as well as any other diagnostics information.
+
+We define these transport errors as terminal. The rest of the document may
+additionally specify other situations as terminal errors, such as incorrect
+transaction IDs.
+
+* Validation errors during encode, if validation is performed.
+* Decode errors.
+* Errors from the underlying transport mechanism. Note: this does not include
+  the `transport_err` member from the family of result unions sent by a server
+  in response to an unknown flexible interaction.
+
+By comparison, domain errors found in a method declaration are not terminal.
+
+### Terminal error handling
+
+Bindings MUST provide asynchronous client and server APIs that own the
+underlying endpoint. When a terminal error occurs over a connection, the client
+and server APIs MUST teardown the connection by closing the underlying endpoint.
+
+Because the IPC transport model of FIDL does not contain transient errors, there
+is no value in e.g. retrying sending the same reply. Triggering teardown on
+error encourages this way of bindings usage and simplifies error handling.
+
+Bindings MAY provide synchronous client and server APIs. In synchronous APIs,
+closing the endpoint on terminal errors generally requires taking locks. If that
+is undesirable for performance reasons, those APIs MAY leave the connection open
+on terminal errors, and SHOULD be clearly documented accordingly. The
+asynchronous flavors SHOULD be the recommended flavors of APIs.
+
+Bindings MAY provide client and server APIs that do not own the underlying
+endpoint, to cater to low level use cases. Those APIs cannot close the endpoint
+on terminal errors, and SHOULD be clearly documented accordingly. The owning
+flavors SHOULD be the recommended flavors of APIs.
+
+### Peer closed special handling
+
+When the underlying transport mechanism reports that the peer endpoint is
+closed during message sending (e.g. getting a `ZX_ERR_PEER_CLOSED` error when
+writing to the channel), the client/server MUST first read and process any
+remaining messages, before surfacing the transport error to the user and closing
+the connection.
+
+When the underlying transport mechanism notifies that the peer endpoint is
+closed during message waiting (e.g. observing a `ZX_CHANNEL_PEER_CLOSED` signal
+when waiting for signals on the channel), the client/server MUST first read and
+process any remaining message, before surfacing the transport error to the user
+and closing the connection.
+
+This is to stay coherent with the read semantics of a channel: given a pair of
+endpoints `A <-> B`, suppose several messages are written into `B`, and then
+`B` is closed. One can keep reading from `A` without observing peer closed
+errors until all lingering messages are drained. In other words, "peer closed"
+is not a fatal error until no more messages could be read from the endpoint.
 
 ## Handle type and rights checking
 
@@ -423,7 +473,7 @@ See [Life of a handle] for a detailed example.
 Bindings may optionally use the vectorized `zx_channel_write_etc` and
 `zx_channel_call_etc` syscalls. When these are used, the first iovec entry MUST
 be present and large enough to hold the FIDL
-[transactional message header](/reference/fidl/language/wire-format#transactional-messages)
+[transactional message header](/docs/reference/fidl/language/wire-format#transactional-messages)
 (16 bytes).
 
 ### Attributes
@@ -604,15 +654,15 @@ ensuring their rights are the same.
 * [RFC-0024: Mandatory Source Compatibility][rfc0024]
 
 <!-- xrefs -->
-[jsonir]: /reference/fidl/language/json-ir.md
-[rfc0024]: /contribute/governance/rfcs/0024_mandatory_source_compatibility.md
-[rfc0040]: /contribute/governance/rfcs/0040_identifier_uniqueness.md
-[rfc0057]: /contribute/governance/rfcs/0057_default_no_handles.md
+[jsonir]: /docs/reference/fidl/language/json-ir.md
+[rfc0024]: /docs/contribute/governance/rfcs/0024_mandatory_source_compatibility.md
+[rfc0040]: /docs/contribute/governance/rfcs/0040_identifier_uniqueness.md
+[rfc0057]: /docs/contribute/governance/rfcs/0057_default_no_handles.md
 [RFC2119]: https://tools.ietf.org/html/rfc2119
 [go-generated-code-comment]: https://github.com/golang/go/issues/13560#issuecomment-288457920
-[attributes]: /reference/fidl/language/attributes.md
-[Life of a handle]: /concepts/fidl/life-of-a-handle.md
-[llcpp]: /reference/fidl/bindings/llcpp-bindings.md
-[source-compatible]: /development/languages/fidl/guides/compatibility/README.md#strict-flexible
-[soft-transitions]: /contribute/governance/rfcs/0002_platform_versioning.md#terminology
-[strict-event]: /contribute/governance/rfcs/0138_handling_unknown_interactions.md#changes-to-bindings
+[attributes]: /docs/reference/fidl/language/attributes.md
+[Life of a handle]: /docs/concepts/fidl/life-of-a-handle.md
+[llcpp]: /docs/reference/fidl/bindings/cpp-bindings.md
+[source-compatible]: /docs/development/languages/fidl/guides/compatibility/README.md#strict-flexible
+[soft-transitions]: /docs/contribute/governance/rfcs/0002_platform_versioning.md#terminology
+[strict-event]: /docs/contribute/governance/rfcs/0138_handling_unknown_interactions.md#changes-to-bindings

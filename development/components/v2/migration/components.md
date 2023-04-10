@@ -92,7 +92,7 @@ be explicitly specified in CML.
 ### Declaring required services {#required-services}
 
 Add [`use`][manifests-use] declarations to your CML file. These are the
-approximate equivalent of the [`services`][cmx-services] list in CMX.
+approximate equivalent of the `services` list in CMX.
 
 ```json
 // fonts.cmx
@@ -137,15 +137,11 @@ corresponding service `protocol`.
 
 ### Exposing available services {#available-services}
 
-In [Components v1][glossary.components-v1], you typically declare information
+In Components v1, you typically declare information
 about services exposed by a component in a
 [sysmgr configuration file][sysmgr-config]. These files are referenced by
 `config_data` targets in the build, and specify mappings of services to
 components in the `sys` [environment][glossary.environment].
-
-Note: The most common location of this service mapping is
-[`services.config`][example-services-config], which defines service mappings
-that apply to every product configuration.
 
 1.  Identify all service mappings, if any, for your component. You can use
     [CodeSearch][code-search] to find service mappings. Here is a
@@ -200,13 +196,6 @@ that apply to every product configuration.
 
     ```posix-terminal
     fx build
-    ```
-
-1.  Verify that your package includes the compiled v2 component manifest (with a
-    `.cm` extension).
-
-    ```posix-terminal
-    ffx scrutiny shell "search.components --url {{ '<var label="component">my_component.cm</var>' }}$"
     ```
 
 Note: it is valid to `use` from `self` in the unusual case that your component
@@ -478,8 +467,7 @@ convention is to apply `weak_for_migration` on the capability offered from
 ### Remove sysmgr configuration entries {#remove-config-entries}
 
 Before you test your component, remove the service mappings in
-[`services.config`][example-services-config] and other sysmgr configuration
-files you identified previously.
+the sysmgr configuration files you identified previously.
 
 Without this step, sysmgr will report errors attempting to load services from
 your v1 component instead of using the new capabilities routed to it through
@@ -686,23 +674,6 @@ using Components v2.
     fx build
     ```
 
-1.  Perform manual verification of capability routing using the `verify routes`
-    command built into [scrutiny][fx-scrutiny].
-
-    ```posix-terminal
-    ffx scrutiny verify routes \
-        --build-path {{ '<var label="build directory">$(fx get-build-dir)</var>' }} \
-        --repository-path {{ '<var label="build directory">$(fx get-build-dir)/amber-files/repository</var>' }} 
-    ```
-
-    This command reports routing errors in the static component topology of the
-    current build. This can help you find missing `offer` or `expose`
-    declarations before performing runtime tests.
-
-    Note: Scrutiny can only verify routes in the v2 component topology. It
-    cannot look into `appmgr` and the `sys` environment to review usage from
-    v1 components.
-
 1.  Manually verify your component's behavior. You can use the complete set of
     [`ffx component` tools][ffx-component] to interact with your component and
     its capabilities at runtime. For additional details on running components in
@@ -713,32 +684,29 @@ correctly, try following the advice in
 [Troubleshooting components][troubleshooting-components].
 
 [cf-dev-list]: https://groups.google.com/a/fuchsia.dev/g/component-framework-dev
-[cmx-services]: /concepts/components/v1/component_manifests.md#sandbox
 [code-search]: https://cs.opensource.google/fuchsia
-[components-topology]: /concepts/components/v2/topology.md
-[core-realm-rfc]: /contribute/governance/rfcs/0089_core_realm_variations.md
+[components-topology]: /docs/concepts/components/v2/topology.md
+[core-realm-rfc]: /docs/contribute/governance/rfcs/0089_core_realm_variations.md
 [cs-core-cml]: /src/sys/core/meta/core.cml
 [cs-appmgr-core-shard]: /src/sys/appmgr/meta/appmgr.core_shard.cml
-[ffx-component]: /development/tools/ffx/getting-started.md#interacting_with_components
-[ffx-plugins]: /development/tools/ffx/development/plugins.md
+[ffx-component]: /docs/development/tools/ffx/getting-started.md#interacting_with_components
+[ffx-plugins]: /docs/development/tools/ffx/development/plugins.md
 [fx-scrutiny]: https://fuchsia.dev/reference/tools/fx/cmd/scrutiny
-[glossary.component-manifest]: /glossary/README.md#component-manifest
-[glossary.components-v1]: /glossary/README.md#components-v1
-[glossary.environment]: /glossary/README.md#environment
-[glossary.runner]: /glossary/README.md#runner
+[glossary.component-manifest]: /docs/glossary/README.md#component-manifest
+[glossary.environment]: /docs/glossary/README.md#environment
+[glossary.runner]: /docs/glossary/README.md#runner
 [example-fonts]: https://fuchsia.googlesource.com/fuchsia/+/cd29e692c5bfdb0979161e52572f847069e10e2f/src/fonts/meta/fonts.cmx
 [example-package-rule]: https://fuchsia.googlesource.com/fuchsia/+/cd29e692c5bfdb0979161e52572f847069e10e2f/src/fonts/BUILD.gn
-[example-services-config]: /src/sys/sysmgr/config/services.config
 [json5-external]: https://json5.org/
 [manifests-capabilities]: https://fuchsia.dev/reference/cml#capabilities
 [manifests-expose]: https://fuchsia.dev/reference/cml#expose
 [manifests-include]: https://fuchsia.dev/reference/cml#include
 [manifests-program]: https://fuchsia.dev/reference/cml#program
-[manifests-shard]: /development/components/build.md#component-manifest-shards
+[manifests-shard]: /docs/development/components/build.md#component-manifest-shards
 [manifests-use]: https://fuchsia.dev/reference/cml#use
-[migrate-features-directory]: /development/components/v2/migration/features.md#directory-features
-[run-components]: /development/components/run.md
-[sysmgr-config]: /concepts/components/v1/sysmgr.md
+[migrate-features-directory]: /docs/development/components/v2/migration/features.md#directory-features
+[run-components]: /docs/development/components/run.md
+[sysmgr-config]: /docs/development/components/v2/migration/sysmgr.md
 [sysmgr-config-search]: https://cs.opensource.google/search?q=fuchsia-pkg:%2F%2Ffuchsia.com%2F.*%23meta%2Fmy_component.cmx%20-f:.*.cmx$%20%5C%22services%5C%22&ss=fuchsia
 [sysmgr-gn-config-search]: https://cs.opensource.google/search?q=-f:.*.gn%20"font_provider:sysmgr_config"&ss=fuchsia
-[troubleshooting-components]: /development/components/connect.md#troubleshooting
+[troubleshooting-components]: /docs/development/components/connect.md#troubleshooting

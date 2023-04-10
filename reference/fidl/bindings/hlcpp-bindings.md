@@ -1,5 +1,7 @@
 # HLCPP bindings
 
+<<../../../_common/_hlcpp_notice.md>>
+
 ## Libraries {#libraries}
 
 Given the library declaration:
@@ -541,11 +543,23 @@ The [tutorial][server-tut] has an example for obtaining a `Binding`.
 
 ### Results {#protocols-results}
 
-Given the method with an error type:
+Given a method with an error type, a flexible method, or a flexible method with
+an error type:
 
 ```fidl
-protocol TicTacToe {
-    MakeMove(struct {
+open protocol TicTacToe {
+    strict MakeMove(struct {
+      row uint8;
+      col uint8;
+    }) -> (struct {
+      new_state GameState;
+    }) error MoveError;
+
+    flexible GetState() -> (struct {
+      current_state GameState;
+    });
+
+    flexible DryRunMove(struct {
       row uint8;
       col uint8;
     }) -> (struct {
@@ -555,31 +569,85 @@ protocol TicTacToe {
 ```
 
 FIDL generates code so that clients and servers can use `fpromise::result` in
-place of the generated `MakeMove` response type. This is done by generating a
-`TicTacToe_MakeMove_Result` class to represent the response that is
-interchangeable with `fpromise::result<GameState, MoveError>`. Using this
-feature, an example implementation of `MakeMove` on the server side could look
-like:
+place of the generated response type. This is done by generating a result class
+to represent the response that is interchangeable with an `fpromise::result`.
+
+* `MakeMove`:
+  * Generates class `TicTacToe_MakeMove_Result`
+  * Interchangeable with `fpromise::result<GameState, MoveError>`
+* `GetState`:
+  * Generates class `TicTacToe_GetState_Result`
+  * Interchangeable with `fpromise::result<GameState, fidl::TransportErr>`
+* `DryRunMove`:
+  * Generates class `TicTacToe_DryRunMove_Result`
+  * Interchangeable with
+    `fpromise::result<GameState, std::variant<MoveError, fidl::TransportErr>>`
+
+ Using this feature, example implementations of these methods on the server side
+ could look like:
 
 ```c++
-void  MakeMove(MakeMoveCallback callback) override {
+void MakeMove(uint8_t row, uint8_t col, MakeMoveCallback callback) override {
+  std::optional<MoveError> error = ApplyMove(row, col);
+  if (!error.has_value()) {
     callback(fpromise::ok(game_state_.state()));
-    // or, in the error case: callback(fpromise::error(Error::kInvalid);
+  }
+  callback(fpromise::error(error.value()));
+}
+
+void GetState(MakeMoveCallback callback) override {
+  callback(fpromise::ok(game_state_.state()));
+  // The server application code *must not* attempt to send a
+  // fidl::TransportErr. If it does, the server binding will panic.
+  }
+
+void DryRynMove(uint8_t row, uint8_t col, MakeMoveCallback callback) override {
+  std::optional<MoveError> error = TestMove(row, col);
+  if (!error.has_value()) {
+    callback(fpromise::ok(game_state_.state()));
+  }
+  // The server application code *must not* attempt to send a
+  // fidl::TransportErr. If it does, the server binding will panic.
+  callback(fpromise::error(error.value()));
 }
 ```
 
 An example of using this on the client side, in the async case would be:
 
 ```c++
-async_game->MakeMove([&](fpromise::result<GameState, MoveError>> response) { ... });
+async_game->MakeMove([&](fpromise::result<GameState, MoveError> response) { ... });
+async_game->GetState(
+    [&](fpromise::result<GameState, fidl::TransportErr> response) { ... });
+async_game->DryRunMove(
+    [&](fpromise::result<GameState, std::variant<MoveError, fidl::TransportErr>> response) { ... });
 ```
 
-When generating code, the FIDL toolchain treats `TicTacToe_MakeMove_Result` as a
-`union` with two variants: `response`, which is a generated type described
-below, and `err`, which is the error type (in this case `uint32`), which means
-that it provides all the methods available to a [regular union](#unions). In
-addition, `TicTacToe_MakeMove_Result` provides methods that allow interop with
-`fpromise::result`:
+On the client side, `fidl::TransportErr` means that the flexible two-way
+interaction was not known to the server.
+
+When generating code, the FIDL toolchain treats `TicTacToe_*_Result` as a
+`union` with up to three variants:
+
+* `response` is a generated type which follows the
+  [parameter type conversion rules](#protocol-and-method-attributes):
+  * if `MakeMove` returns a single parameter in its struct return type, or if
+    the return type is a tuple or union, the return type would be
+    `fpromise::result<T, ...>` where `T` is either the single parameter of the
+    struct or the tuple or union return type.
+  * if `MakeMove` returned multiple values on success, the result type would be
+    a tuple of the response parameters `fpromise::result<std::tuple<...>, ...>`
+  * if `MakeMove` returned an empty response, the result type would be
+    `fpromise::result<void, ...>`
+* `err` is the error type, which is `MoveError` in the examples of both
+  `MakeMove` and `DryRunMove`.
+  * This variant only exists if the method uses error syntax.
+* `transport_err` always has the type `fidl::TransportErr`.
+  * This variant only exists if the method is `flexible`.
+
+The `TicTacToe_*_Result` types provide all the methods available to a [regular
+union](#unions). In addition, `TicTacToe_*_Result` types provide methods that
+allow interop with `fpromise::result`, for example, for
+`TicTacToe_MakeMove_Result`:
 
 * `TicTacToe_MakeMove_Result(fpromise::result<GameState, MoveError>&& result)`: Move
   constructor from a `fpromise::result`.
@@ -590,12 +658,8 @@ addition, `TicTacToe_MakeMove_Result` provides methods that allow interop with
 * `operator fpromise::result<GameState, MoveError>() &&`: Conversion to a
   `fpromise::result`.
 
-Note that the successful result type parameter of the `fpromise::result` follows the
-[parameter type conversion rules](#protocol-and-method-attributes): if
-`MakeMove` returned multiple values on success, the result type would be a tuple
-of the response parameters `fpromise::result<std::tuple<...>, ...>`, and if
-`MakeMove` returned an empty response, the result type would be
-`fpromise::result<void, ...>`.
+The other `TicTacToe_*_Result` types will have similar conversions for their
+corresponding `fpromise::result` types.
 
 The FIDL toolchain also generates a `TicTacToe_MakeMove_Response` class, which
 is the type of the `response` variant of `TicTacToe_MakeMove_Result`. This class
@@ -607,6 +671,54 @@ methods that allow interop with `std::tuple`:
 * `explicit TicTacToe_MakeMove_Response(std::tuple<GameState> _value_tuple)`:
   Constructor from a tuple.
 * `operator std::tuple<GameState>() &&`: Conversion operator for a tuple.
+
+### Unknown interaction handling {#unknown-interaction-handling}
+
+#### Server-side
+
+When a protocol is declared as `open` or `ajar`, the generated interface class,
+e.g. `TicTacToe`, will contain an extra virtual method, called
+`handle_unknown_method`, with this signature:
+
+```c++
+// If the protocol is open:
+virtual void handle_unknown_method(uint64_t ordinal, bool method_has_response) = 0;
+// If the protocol is ajar:
+virtual void handle_unknown_method(uint64_t ordinal) = 0;
+```
+
+When implementing an `open` or `ajar` server, you must also implement this
+method. The `ordinal` parameter is the FIDL method ordinal of the method that
+was called. If the protocol was `open`, the `method_has_response` parameter
+indicates whether the method was one-way or two-way; for a one-way method,
+`method_has_response` is false, for a two-way method, it is true. In an `ajar`
+protocol, only unknown one-way methods can be handled.
+
+The `handle_unknown_method` method will be called any time the server receives
+an unknown flexible method that it can handle.
+
+#### Client-side
+
+There is no way for the client to tell if a `flexible` one way-method was known
+to the server or not. For `flexible` two-way methods, the [result
+union](#protocols-results) can be used to tell whether the method was known to
+the server. If the `transport_err` variant of the `TicTacToe_<Method>_Result`
+class is set or the converted `fpromise::result` has the `fidl::TransportErr`
+error set, that means that the server did not recognize the method.
+
+The API for sending one-way methods and receiving events is the same for `strict`
+and `flexible` one-way methods and events.
+
+For `open` and `ajar` protocols, the generated `TicTacToe_Proxy` class will have an extra public field, called `handle_unknown_event` with this type:
+
+```c++
+fit::function<void(uint64_t)> handle_unknown_event;
+```
+
+Just like a an event handler for an event declared in the protocol, e.g.
+`OnOpponentMove`, you can assign a function callback here to be called whenever
+an unknown `flexible` event is received. The single `uint64_t` argument to the
+callback is the FIDL method ordinal of the event.
 
 ### Protocol composition {#protocol-composition}
 
@@ -645,7 +757,7 @@ The generated code is identical except for the method ordinals.
 #### Transitional
 
 For protocol methods annotated with the
-[`@transitional`](/reference/fidl/language/attributes.md#transitional)
+[`@transitional`](/docs/reference/fidl/language/attributes.md#transitional)
 attribute, the `virtual` methods on the protocol class are not pure. This allows
 implementations of the protocol class with missing method overrides to compile
 successfully.
@@ -653,7 +765,7 @@ successfully.
 #### Discoverable {#discoverable}
 
 A protocol annotated with the
-[`@discoverable`](/reference/fidl/language/attributes.md#discoverable)
+[`@discoverable`](/docs/reference/fidl/language/attributes.md#discoverable)
 attribute causes the FIDL toolchain to generate an additional `static const char
 Name_[]` field on the protocol class, containing the full protocol name. For a
 protocol `Baz` in the library `foo.bar`, the generated name is `"foo.bar.Baz"`.
@@ -690,21 +802,21 @@ For the same `TicTacToe` protocol listed above, the FIDL toolchain generates a
 
 
 <!-- xrefs -->
-[anon-names]: /reference/fidl/language/language.md#inline-layouts
-[client-tut]: /development/languages/fidl/tutorials/hlcpp/basics/client.md
-[server-tut]: /development/languages/fidl/tutorials/hlcpp/basics/server.md
-[lang-constants]: /reference/fidl/language/language.md#constants
-[lang-bits]: /reference/fidl/language/language.md#bits
-[lang-enums]: /reference/fidl/language/language.md#enums
-[lang-flexible]: /reference/fidl/language/language.md#strict-vs-flexible
-[lang-structs]: /reference/fidl/language/language.md#structs
-[lang-tables]: /reference/fidl/language/language.md#tables
-[lang-unions]: /reference/fidl/language/language.md#unions
-[lang-protocols]: /reference/fidl/language/language.md#protocols
-[lang-protocol-composition]: /reference/fidl/language/language.md#protocol-composition
-[lang-resource]: /reference/fidl/language/language.md#value-vs-resource
-[union-lexicon]: /reference/fidl/language/lexicon.md#union-terms
-[unknown-attr]: /reference/fidl/language/attributes.md#unknown
-[traversal]: /reference/fidl/language/wire-format/README.md#traversal-order
+[anon-names]: /docs/reference/fidl/language/language.md#inline-layouts
+[client-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/client.md
+[server-tut]: /docs/development/languages/fidl/tutorials/hlcpp/basics/server.md
+[lang-constants]: /docs/reference/fidl/language/language.md#constants
+[lang-bits]: /docs/reference/fidl/language/language.md#bits
+[lang-enums]: /docs/reference/fidl/language/language.md#enums
+[lang-flexible]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[lang-structs]: /docs/reference/fidl/language/language.md#structs
+[lang-tables]: /docs/reference/fidl/language/language.md#tables
+[lang-unions]: /docs/reference/fidl/language/language.md#unions
+[lang-protocols]: /docs/reference/fidl/language/language.md#protocols
+[lang-protocol-composition]: /docs/reference/fidl/language/language.md#protocol-composition
+[lang-resource]: /docs/reference/fidl/language/language.md#value-vs-resource
+[union-lexicon]: /docs/reference/fidl/language/lexicon.md#union-terms
+[unknown-attr]: /docs/reference/fidl/language/attributes.md#unknown
+[traversal]: /docs/reference/fidl/language/wire-format/README.md#traversal-order
 [fostr]: /src/lib/fostr
-[fostr-tutorial]: /development/languages/fidl/tutorials/hlcpp/topics/fostr.md
+[fostr-tutorial]: /docs/development/languages/fidl/tutorials/hlcpp/topics/fostr.md

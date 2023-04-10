@@ -2,10 +2,10 @@
 
 To migrate your test components, follow these steps:
 
-1.  [Migrate the test manifest](#create-test-manifest)
-1.  [Update test dependencies](#update-dependencies)
-1.  [Migrate component features](#features)
-1.  [Verify the migrated tests](#verify-tests)
+1. [Migrate the test manifest](#create-test-manifest)
+1. [Update test dependencies](#update-dependencies)
+1. [Migrate component features](#features)
+1. [Verify the migrated tests](#verify-tests)
 
 ## Migrate the test manifest {#create-test-manifest}
 
@@ -50,7 +50,7 @@ Consider the following example test component manifest:
 
 To migrate this test to the Test Runner Framework, do the following:
 
-1.  Create a CML file that points to the test binary that includes the
+1. Create a CML file that points to the test binary that includes the
     appropriate [test runner][trf-test-runners]:
 
     Note: See the [available test runners][trf-provided-test-runners] provided
@@ -72,7 +72,7 @@ To migrate this test to the Test Runner Framework, do the following:
     }
     ```
 
-1.  Locate the GN build rule for your test component referenced by the
+1. Locate the GN build rule for your test component referenced by the
     `fuchsia_test_package()`:
 
     ```gn
@@ -87,7 +87,7 @@ To migrate this test to the Test Runner Framework, do the following:
     }
     ```
 
-1.  Update your test component's build rule to reference the new CML file:
+1. Update your test component's build rule to reference the new CML file:
 
     ```gn
     fuchsia_component("my_component_test") {
@@ -106,9 +106,9 @@ To migrate this test to the Test Runner Framework, do the following:
 A test may include or depend on components that are separate from the test
 component. Here are some things to look for:
 
--   Does your test have a CMX with [`fuchsia.test facets`][fuchsia-test-facets],
+- Does your test have a CMX with `fuchsia.test facets`,
     such as `injected-services` or `system-services`?
--   Does your test create environments in-process? If so, does it create a
+- Does your test create environments in-process? If so, does it create a
     separate environment for each test case?
 
 Note: The Test Runner Framework executes tests within a realm that enforces
@@ -119,10 +119,10 @@ For more details, see [hermetic component resolution][hermetic-resolution].
 The migration procedure varies depending on the testing framework features in
 your v1 component:
 
--   [Test depends on system services](#system-services): The test has a CMX that
-    contains [`system-services`][system-services] test facets.
--   [Test depend on injected services](#injected-services): The test has a CMX that
-    contains [`injected-services`][fuchsia-test-facets] test facets.
+- [Test depends on system services](#system-services): The test has a CMX that
+    contains `system-services` test facets.
+- [Test depend on injected services](#injected-services): The test has a CMX that
+    contains `injected-services` test facets.
 
 Note: For more details on the services and capabilities provided to components
 by the Test Runner Framework, see the
@@ -130,7 +130,7 @@ by the Test Runner Framework, see the
 
 ### System service dependencies {#system-services}
 
-For tests that use [`system-services`][system-services] test facets, consider if
+For tests that use `system-services` test facets, consider if
 they can be converted to [injected services](#injected-services) instead.
 Injecting services is the preferred method because it promotes hermetic test
 behavior.
@@ -206,7 +206,7 @@ below.
 
 ### Injected service dependencies {#injected-services}
 
-For tests that use other [fuchsia.test facets][fuchsia-test-facets], such as
+For tests that use other fuchsia.test facets, such as
 `injected-services`, your test component manifest must declare each dependent
 component and route the provided capabilities to the test component.
 
@@ -237,7 +237,7 @@ In the following example, suppose there's a single injected service,
 
 To migrate this test to the Test Runner Framework, do the following:
 
-1.  Create a CML file for the test component that points to the test binary and
+1. Create a CML file for the test component that points to the test binary and
     includes the appropriate [test runner][trf-test-runners]:
 
     Note: See [test runners][trf-provided-test-runners] that are provided by the
@@ -261,12 +261,8 @@ To migrate this test to the Test Runner Framework, do the following:
     }
     ```
 
-1.  Ensure each component providing capabilities to this test has a CML manifest
-    file. If this manifest does not already exist, consider creating it at this
-    point. You can also temporarily wrap a legacy (CMX) provider component using
-    the `cmx_runner` in your migrated test.
-
-    * {CML provider}
+1. Ensure each component providing capabilities to this test has a CML manifest
+    file. If this manifest does not already exist, create it at this point.
 
         ```json5
         // mock_font_resolver.cml (capability provider)
@@ -295,57 +291,14 @@ To migrate this test to the Test Runner Framework, do the following:
         }
         ```
 
-    * {CMX provider}
-
-        ```json5
-        // mock_font_resolver.cml (capability provider)
-        {
-            include: [
-                // Use `cmx_runner` to wrap the component.
-                "//src/sys/test_manager/cmx_runner/default.shard.cml",
-                "syslog/client.shard.cml",
-            ],
-            program: {
-                // wrap v1 component
-                legacy_url: "fuchsia-pkg://fuchsia.com/font_provider_test#meta/mock_font_resolver.cmx",
-            },
-            use: [
-                // if `mock_font_resolver.cmx` depends on some other protocol.
-                {
-                    protocol: [ "fuchsia.proto.SomeProtocol" ],
-                },
-            ],
-            // expose capability provided by mock component.
-            capabilities: [
-                {
-                    protocol: [ "fuchsia.pkg.FontResolver" ],
-                },
-            ],
-            expose: [
-                {
-                    protocol: "fuchsia.pkg.FontResolver",
-                    from: "self",
-                },
-            ],
-        }
-        ```
-
-        Note: Component manifests wrapping a legacy component can only `use`
-        protocol capabilities. The `.cmx` file of the legacy component defines
-        the remaining non-protocol capabilities (`isolated-tmp`, `/dev`, etc).
-        These capabilities will come directly from the system and can't be mocked
-        or forwarded from the test to legacy components.
-
     Note: The CML files for the capability providers can be distributed in the
     same package that contained the v1 test. Follow the same instructions in
     [Migrate the component manifest][migrate-component-manifest] that you used
     to package your component.
 
-1.  Add the capability provider(s) as children of the test component, and route
+1. Add the capability provider(s) as children of the test component, and route
     the capabilities from each provider.
 
-    * {CML provider}
-
         ```json5
         // my_component_test.cml (test component)
         {
@@ -375,45 +328,8 @@ To migrate this test to the Test Runner Framework, do the following:
         }
         ```
 
-    * {CMX provider}
-
-        ```json5
-        // my_component_test.cml (test component)
-        {
-            include: [
-                // Required for wrapped CMX components
-                "sys/testing/hermetic-tier-2-test.shard.cml",
-            ],
-            ...
-
-            // Add capability providers
-            children: [
-                {
-                    name: "font_resolver",
-                    url: "#meta/mock_font_resolver.cm",
-                },
-            ],
-            // Route capabilities to the test
-            use: [
-                {
-                    protocol: [ "fuchsia.pkg.FontResolver" ],
-                    from: "#font_resolver",
-                },
-            ],
-            offer: [
-                {
-                    // offer dependencies to mock font provider.
-                    protocol: [ "fuchsia.proto.SomeProtocol" ],
-                    from: "#some_other_child",
-                },
-            ],
-        }
-        ```
-
-1.  Package the test component and capability provider(s) together into a
+1. Package the test component and capability provider(s) together into a
     single hermetic `fuchsia_test_package()`:
-
-    * {CML provider}
 
         ```gn
         # Test component
@@ -427,29 +343,6 @@ To migrate this test to the Test Runner Framework, do the following:
           testonly = true
           manifest = "meta/mock_font_resolver.cml"
           deps = [ ":mock_font_resolver_bin" ]
-        }
-
-        # Hermetic test package
-        fuchsia_test_package("my_component_tests") {
-          test_components = [ ":my_component_test" ]
-          deps = [ ":mock_font_resolver" ]
-        }
-        ```
-
-    * {CMX provider}
-
-        ```gn
-        # Test component
-        fuchsia_component("my_component_test") {
-          testonly = true
-          manifest = "meta/my_component_test.cml"
-          deps = [ ":bin_test" ]
-        }
-
-        fuchsia_component("mock_font_resolver") {
-          testonly = true
-          manifest = "meta/mock_font_resolver.cml"
-          deps = [ {{ '<var label="legacy_component">"//path/to/legacy(v1)_component"</var>' }} ]
         }
 
         # Hermetic test package
@@ -531,15 +424,7 @@ _before_ it is created. Once a realm is created its contents are immutable.
 To add a CML component with Realm Builder, use `AddChild()`:
 
 ```cpp
-realm_builder->AddChild("example_component", "#meta/example_component.cm");
-```
-
-To include a legacy component in the same realm, use `AddLegacyChild()`:
-
-```cpp
-realm_builder->AddLegacyChild(
-    "example_legacy_component",
-    "fuchsia-pkg://fuchsia.com/example-package#meta/example.cmx");
+realm_builder->AddChild("example_component", "example_component#meta/default.cm");
 ```
 
 Realm Builder allows you to provide additional options for each new child
@@ -550,7 +435,7 @@ its parent:
 ```cpp
 realm_builder->AddChild(
     "example_eager_component",
-    "#meta/example_eager.cm",
+    "example_eager#meta/default.cm",
     ChildOptions{.startup_mode = StartupMode::EAGER});
 ```
 
@@ -562,19 +447,17 @@ services in their nested environment using the `EnvironmentServices` instance.
 It is not necessary to route these services from the components providing them
 to the test environment.
 
-With Realm Builder, tests must explicitly route all capabilities between
-the components in the realm and the parent using `AddRoute()`.
-The following example makes the `fuchsia.logger.LogSink` protocol available
-from the parent to `example_component` and `example_legacy_component` in the
-realm:
+With Realm Builder, tests must explicitly route all capabilities between the
+components in the realm and the parent using `AddRoute()`. The following example
+makes the `fuchsia.logger.LogSink` protocol available from the parent to
+`example_component` in the realm:
 
 ```cpp
 realm_builder->AddRoute(
     Route{.capabilities = {Protocol{"fuchsia.logger.LogSink"}},
           .source = ParentRef(),
           .targets = {
-              ChildRef{"example_component"},
-              ChildRef{"example_legacy_component"}}});
+              ChildRef{"example_component"}}});
 ```
 
 Note: All components should be added to the realm _before_ adding routes.
@@ -586,13 +469,12 @@ back to the parent, simply adjust the `source` and `target` properties.
 // Route fuchsia.examples.Example from one child to another
 realm_builder->AddRoute(
     Route{.capabilities = {Protocol{"fuchsia.examples.Example"}},
-          .source = ChildRef{"example_component"},
-          .targets = {ChildRef{"example_legacy_component"}}});
+          .targets = {ChildRef{"example_component"}}});
 
 //Route fuchsia.examples.Example2 up to the parent
 realm_builder->AddRoute(
     Route{.capabilities = {Protocol{"fuchsia.examples.Example2"}},
-          .source = ChildRef{"example_legacy_component"},
+          .source = ChildRef{"example_component"},
           .targets = {ParentRef{}}});
 ```
 
@@ -658,21 +540,21 @@ accessed.
 Explore the following sections for additional migration guidance on
 specific features your test components may support:
 
--   [Component sandbox features](features.md)
--   [Diagnostics capabilities](diagnostics.md)
--   [Other common situations](common.md)
+- [Component sandbox features](features.md)
+- [Diagnostics capabilities](diagnostics.md)
+- [Other common situations](common.md)
 
 ## Verify the migrated tests {#verify-tests}
 
 Verify that your migrated tests are passing successfully using Components v2.
 
-1.  Build the target for your test package:
+1. Build the target for your test package:
 
     ```posix-terminal
     fx build
     ```
 
-1.  Verify your tests successfully pass with the test:
+1. Verify your tests successfully pass with the test:
 
     ```posix-terminal
     fx test my_component_tests
@@ -686,15 +568,12 @@ If your test doesn't run correctly or doesn't start at all, try following the
 advice in [Troubleshooting test components][troubleshooting-tests].
 
 [cml-children]: https://fuchsia.dev/reference/cml#children
-[example-package-rule]: https://fuchsia.googlesource.com/fuchsia/+/cd29e692c5bfdb0979161e52572f847069e10e2f/src/fonts/BUILD.gn
-[fuchsia-test-facets]: /concepts/testing/v1_test_component.md
-[hermetic-resolution]: /development/testing/components/test_runner_framework.md#hermetic_component_resolution
-[integration-test]: /development/testing/components/integration_testing.md
-[migrate-component-manifest]: /development/components/v2/migration/components.md#create-component-manifest
-[system-services]: /concepts/testing/v1_test_component.md#services
+[hermetic-resolution]: /docs/development/testing/components/test_runner_framework.md#hermetic_component_resolution
+[integration-test]: /docs/development/testing/components/integration_testing.md
+[migrate-component-manifest]: /docs/development/components/v2/migration/components.md#create-component-manifest
 [trf-provided-test-runners]: /src/sys/test_runners
-[trf-test-manager]: /development/testing/components/test_runner_framework.md#the_test_manager
-[trf-test-runners]: /development/testing/components/test_runner_framework.md#test-runners
-[troubleshooting-tests]: /development/testing/components/test_runner_framework.md#troubleshooting
-[unit-test-manifests]: /development/components/build.md#unit-tests
-[realm-builder]: /development/testing/components/realm_builder.md
+[trf-test-manager]: /docs/development/testing/components/test_runner_framework.md#the_test_manager
+[trf-test-runners]: /docs/development/testing/components/test_runner_framework.md#test-runners
+[troubleshooting-tests]: /docs/development/testing/components/test_runner_framework.md#troubleshooting
+[unit-test-manifests]: /docs/development/components/build.md#unit-tests
+[realm-builder]: /docs/development/testing/components/realm_builder.md

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_interrupt_destroy
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Destroys an interrupt object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Destroys an interrupt object.
 zx_status_t zx_interrupt_destroy(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_interrupt_destroy()` "destroys" an interrupt object, putting it in a state
 where any [`zx_interrupt_wait()`] operations on it will return **ZX_ERR_CANCELED**,
@@ -33,18 +40,16 @@ in flight are removed.  Otherwise, **ZX_ERR_NOT_FOUND** is returned, indicating
 that the packet has been read but the interrupt has not been re-armed by calling
 [`zx_interrupt_ack()`].
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_interrupt_destroy()` returns **ZX_OK** on success. In the event
 of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is an invalid handle.
 
@@ -55,7 +60,7 @@ being waited for.
 
 **ZX_ERR_ACCESS_DENIED** *handle* lacks **ZX_RIGHT_WRITE**.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_interrupt_ack()`]
@@ -64,8 +69,6 @@ being waited for.
  - [`zx_interrupt_trigger()`]
  - [`zx_interrupt_wait()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_interrupt_ack()`]: interrupt_ack.md

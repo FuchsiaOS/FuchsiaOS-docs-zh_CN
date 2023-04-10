@@ -100,12 +100,13 @@ Optionally, to check that things are correct, try building the server:
 
 1. Configure your GN build to include the server:
 
+   ```posix-terminal
+   fx set core.x64 --with //examples/fidl/dart/request_pipelining/server:echo-server
    ```
-   fx set core.x64 --with //examples/fidl/dart/request_pipelining/server
-   ```
+
 2. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
    ```
 
@@ -156,33 +157,65 @@ Optionally, to check that things are correct, try building the client:
 
 1. Configure your GN build to include the client:
 
+   ```posix-terminal
+   fx set core.x64 --with //examples/fidl/dart/request_pipelining/client:echo-client
    ```
-   fx set core.x64 --with //examples/fidl/dart/request_pipelining/client
-   ```
+
 2. Build the Fuchsia image:
 
-   ```
+   ```posix-terminal
    fx build
    ```
 
 ## Run the example code
 
-To run the example code:
+For this tutorial, a [realm][glossary.realm] component is
+provided to declare the appropriate capabilities and routes for
+`fuchsia.examples.Echo` and `fuchsia.examples.EchoLauncher`.
 
-1. Configure your GN build as follows:
+Note: You can explore the full source for the realm component at
+[`//examples/fidl/echo-realm`](/examples/fidl/echo-realm)
 
+1. Configure your build to include the provided package that includes the
+   echo realm, server, and client:
+
+   ```posix-terminal
+   fx set core.x64 --with examples/fidl/dart:echo-launcher-dart --with-base //src/dart \
+     --args='core_realm_shards += [ "//src/dart:dart_runner_core_shard" ]'
    ```
-   fx set core.x64 --with //examples/fidl/dart/request_pipelining/client --with //examples/fidl/dart/request_pipelining/server --with //examples/fidl/dart/launcher_bin
+
+   NOTE: The flag `--with-base //src/dart` adds the required dart runner to the
+   base packages; and the `core_realm_shards` argument updates the
+   `laboratory-env` component environment (the environment provided to the
+   `ffx-laboratory` realm, used in `ffx component start`) to include the
+   required dart runner.
+
+1. Build the Fuchsia image:
+
+   ```posix-terminal
+   fx build
    ```
 
-2. Run the example:
+1. Start or restart your device and package server (`fx serve` or
+   `fx serve-updates`) to ensure the Dart runner package can be served.
 
-   ```
-   fx shell run fuchsia-pkg://fuchsia.com/example-launcher-dart#meta/example-launcher-dart.cmx fuchsia-pkg://fuchsia.com/echo-launcher-dart-client#meta/echo-launcher-dart-client.cmx fuchsia-pkg://fuchsia.com/echo-launcher-dart-server#meta/echo-launcher-dart-server.cmx fuchsia.examples.EchoLauncher
+1. Run the `echo_realm` component. This creates the client and server component
+   instances and routes the capabilities:
+
+   ```posix-terminal
+   ffx component run /core/ffx-laboratory:echo_realm fuchsia-pkg://fuchsia.com/echo-launcher-dart#meta/echo_realm.cm
+    ```
+
+1. Start the `echo_client` instance:
+
+    ```posix-terminal
+   ffx component start /core/ffx-laboratory:echo_realm/echo_client
    ```
 
-You should see output similar to the following in the QEMU console
-(or using `ffx log`):
+The server component starts when the client attempts to connect to the
+`EchoLauncher` protocol. You should see output similar to the following
+in the device logs (`ffx log`):
+
 
 ```
 [echo-launcher-server][][I] Running EchoLauncher server
@@ -198,11 +231,18 @@ between the client and server. Request pipelining also simplifies the code.
 For further reading about protocol request pipelining, including how to handle
 protocol requests that may fail, see the [FIDL API rubric][rubric].
 
+Terminate the realm component to stop execution and clean up the component
+instances:
+
+```posix-terminal
+ffx component destroy /core/ffx-laboratory:echo_realm
+```
+
 <!-- xrefs -->
 [src]: /examples/fidl/dart/request_pipelining
-[server-tut]: /development/languages/fidl/tutorials/dart/basics/server.md
-[server-tut-main]: /development/languages/fidl/tutorials/dart/basics/server.md#main
-[client-tut]: /development/languages/fidl/tutorials/dart/basics/client.md
-[rubric]: /development/api/fidl.md#request-pipelining
-[overview]: /development/languages/fidl/tutorials/dart/README.md
+[server-tut]: /docs/development/languages/fidl/tutorials/dart/basics/server.md
+[server-tut-main]: /docs/development/languages/fidl/tutorials/dart/basics/server.md#main
+[client-tut]: /docs/development/languages/fidl/tutorials/dart/basics/client.md
+[rubric]: /docs/development/api/fidl.md#request-pipelining
+[overview]: /docs/development/languages/fidl/tutorials/dart/README.md
 [examples-fidl]: /examples/fidl/fuchsia.examples/

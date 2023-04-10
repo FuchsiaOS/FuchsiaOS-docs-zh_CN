@@ -1,7 +1,8 @@
 # README.fuchsia file syntax
 
 `README.fuchsia` files are used to annotate third-party source libraries
-with some useful metadata, such as code origin, version and license.
+with some useful metadata, such as code origin, version, license, and security
+critical label.
 
 The format of these files consists of one or more directive lines,
 followed by unstructured description and notes.
@@ -94,7 +95,7 @@ Common directive keywords include:
   file.
 
   ```
-  License File: LICENCE
+  License File: LICENSE
   ```
 
   This directive may be repeated to include multiple files if necessary.
@@ -108,6 +109,29 @@ Common directive keywords include:
   ```
   Upstream Git: https://github.com/openssh/openssh-portable
   ```
+
+* `Security Critical`
+
+  A `yes` or `no` label indicating whether the package is security critical,
+  useful for assessing the impact security bugs in the package have on Fuchsia.
+
+  A package is security critical if it is for production use, and does any of
+  the following:
+
+    * Accepts untrustworthy inputs from the internet
+    * Parses or interprets complex input formats
+    * Sends data to internet servers
+    * Collects new data
+    * Influences or sets security-related policy (including the user experience)
+    * Is written in a memory-unsafe language (e.g.: C/C++, Rust with unsafe
+      blocks)
+
+  This directive is required.
+
+  ```
+  Security Critical: yes
+  ```
+
 
 * `Description`
 

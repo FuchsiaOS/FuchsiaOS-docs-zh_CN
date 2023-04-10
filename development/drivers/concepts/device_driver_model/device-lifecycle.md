@@ -41,7 +41,7 @@ any global initialization. Typically none is required. If the `init()` method is
 implemented and fails, the driver load will fail.
 
 `bind()` is invoked to offer the driver a device to bind to. The device is one that
-has matched the bind program the driver has published. If the `bind()` method succeeds,
+has matched the bind rules the driver has published. If the `bind()` method succeeds,
 the driver **must** create a new device and add it as a child of the device passed in
 to the `bind()` method. See Device Lifecycle for more information.
 

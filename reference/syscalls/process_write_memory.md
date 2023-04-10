@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_process_write_memory
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write into the given process's address space.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_process_write_memory(zx_handle_t handle,
                                     size_t* actual);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_process_write_memory()` attempts to write memory of the specified process.
 
@@ -42,19 +49,17 @@ To use the `zx_process_write_memory()` function, you must specify
 `kernel.enable-debugging-syscalls=true` on the kernel command line. Otherwise,
 the function returns **ZX_ERR_NOT_SUPPORTED**.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_process_write_memory()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned, and the number of
 bytes written to *buffer* is undefined.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have the **ZX_RIGHT_WRITE** right or
 the address range to write falls into a protected area like the vDSO.
@@ -76,10 +81,8 @@ on the kernel command line.
 
 **ZX_ERR_WRONG_TYPE**  *handle* is not a process handle.
 
-## SEE ALSO
+## See also
 
  - [`zx_process_read_memory()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_process_read_memory()`]: process_read_memory.md

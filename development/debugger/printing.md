@@ -92,8 +92,8 @@ Vector registers can be treated as arrays according to the `vector-format` setti
 
 Sometimes an identifier may have a name that is not parseable in the current language. This is often
 the case for compiler-generated symbols. Enclose such strings in "$(...)". Parentheses inside the
-escaped contents can be literal as long as they are balanced, otherwise, escape them by preceeding
-with a backslash. Include a literal backslash with two blackslashes:
+escaped contents can be literal as long as they are balanced, otherwise, escape them by preceding
+with a backslash. Include a literal backslash with two backslashes:
 
   * `$(something with spaces)`
   * `{% verbatim %}$({{impl}}){% endverbatim %}`  {# note: the verbatim block is to avoid issues with the fuchsia.dev template engine #}

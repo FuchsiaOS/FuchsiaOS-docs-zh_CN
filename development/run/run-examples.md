@@ -11,7 +11,7 @@ Note: You can find the source code for the "Hello, World" example at
 
 Before you can run an example component, you must:
 
-*   [Set up the Fuchsia development environment](/get-started/get_fuchsia_source.md)
+*   [Set up the Fuchsia development environment](/docs/get-started/get_fuchsia_source.md)
 
 ## Exploring the example {#exploring-the-example}
 
@@ -28,7 +28,7 @@ three main elements:
 
 Fuchsia components can execute programs written in any language with a supported
 runtime. The most common runtime used for C++ and Rust programs is the
-[ELF runner](/concepts/components/v2/elf_runner.md).
+[ELF runner](/docs/concepts/components/v2/elf_runner.md).
 
 * {C++}
 
@@ -44,8 +44,8 @@ runtime. The most common runtime used for C++ and Rust programs is the
 
 ### Component manifest {#component-manifest}
 
-A [component manifest](/glossary/README.md#component-manifest) describes
-how to run a Fuchsia program as a [component](/glossary/README.md#component).
+A [component manifest](/docs/glossary/README.md#component-manifest) describes
+how to run a Fuchsia program as a [component](/docs/glossary/README.md#component).
 This includes declaring program binary, runtime information, and any capabilities
 the component requires to execute, such as logging support.
 
@@ -62,7 +62,7 @@ the component requires to execute, such as logging support.
   ```
 
 For more details on component manifests and their declaration syntax,
-see [component manifests](/concepts/components/v2/component_manifests.md).
+see [component manifests](/docs/concepts/components/v2/component_manifests.md).
 
 ### BUILD.gn {#build-gn}
 
@@ -72,7 +72,7 @@ The `BUILD.gn` file declares the build targets for a `fuchsia_component()` and
 `fuchsia_package()`.
 
 Note: If you aren't familiar with GN, see
-[Introduction to GN](/development/build/build_system/intro.md).
+[Introduction to GN](/docs/development/build/build_system/intro.md).
 
 * {C++}
 
@@ -89,7 +89,7 @@ Note: If you aren't familiar with GN, see
   ```
 
 To learn more about how Fuchsia uses GN to define components and packages,
-see: [Building components](/development/components/build.md).
+see: [Building components](/docs/development/components/build.md).
 
 ## Include the example package in your Fuchsia image {#include-the-example}
 
@@ -117,7 +117,7 @@ For a Fuchsia device with the minimum build configuration, the command is:
 fx set core.x64 --with //examples/hello_world
 ```
 
-See [Configure a build](/development/build/fx.md#configure-a-build) for
+See [Configure a build](/docs/development/build/fx.md#configure-a-build) for
 more options.
 
 Once you have set your build configuration, build Fuchsia with the following
@@ -128,7 +128,7 @@ fx build
 ```
 
 You now have a build that includes the example package that can be
-[fetched and launched on demand](/development/build/build_system/boards_and_products.md#universe).
+[fetched and launched on demand](/docs/development/build/build_system/boards_and_products.md#universe).
 
 ### Explore your product configuration {#explore-your-product-configuration}
 
@@ -145,16 +145,15 @@ There may be many entries, so add the name to find the one you're looking for:
 
 ```posix-terminal
 fx list-packages hello-world
+hello-world
 hello-world-cpp-unittests
 hello-world-rust-tests
-hello-world-cpp
-hello-world-rust
 ```
 
 ## Run the example component {#run-the-example-component}
 
 To run a Fuchsia component, use its
-[Fuchsia package URL](/glossary/README.md#fuchsia-pkg-url) as an argument
+[Fuchsia package URL](/docs/glossary/README.md#fuchsia-pkg-url) as an argument
 to the `run` command:
 
 1.  Open a terminal and run `fx serve-updates`:
@@ -168,13 +167,13 @@ to the `run` command:
     * {C++}
 
       ```posix-terminal
-      ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
+      ffx component run /core/ffx-laboratory:hello-world-cpp fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-cpp.cm
       ```
 
     * {Rust}
 
       ```posix-terminal
-      ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
+      ffx component run /core/ffx-laboratory:hello-world-rust fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm
       ```
 
 1.  Open another terminal and view the system log:

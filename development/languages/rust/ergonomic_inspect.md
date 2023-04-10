@@ -3,7 +3,7 @@
 This guide covers the usage of the
 [`fuchsia_inspect_derive`](/src/lib/diagnostics/inspect/derive)
 library, and assumes that you are familiar with
-[Inspect](/development/diagnostics/inspect)
+[Inspect](/docs/development/diagnostics/inspect)
 and have basic experience with the
 [`fuchsia_inspect`](/src/lib/diagnostics/inspect/rust) library.
 
@@ -46,6 +46,7 @@ When you integrate your Rust code base with this library, be aware that:
   - Lazy nodes, histograms and inspect arrays.
   - `Option<T>` and other enums.
   - Collection types, such as vectors and maps.
+  - StringReferences
 - The library promotes [custom smart pointers](#iowned), which creates another
   layer of data wrapping.
 

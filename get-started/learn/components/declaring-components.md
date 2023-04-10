@@ -9,7 +9,7 @@
 <aside class="key-point">
 To review the merged CML output with all includes resolved, run the
 <code>fx cmc include</code> command with your manifest. For more details, see
-the <a href="/reference/tools/sdk/cmc.md"> reference documentation</a>.
+the <a href="/docs/reference/tools/sdk/cmc.md"> reference documentation</a>.
 </aside>
 
 ## Building components
@@ -98,130 +98,93 @@ fuchsia_package_with_single_component("hello-world") {
 ```
 
 Note: For more details on the GN syntax of the component build rules, see the
-[components build reference](/development/components/build.md).
+[components build reference](/docs/development/components/build.md).
 
 ## Exercise: Create a new component
 
 In this exercise, you'll build and run a basic component that reads the program
 arguments and echoes a greeting out the system log.
 
-To begin, create a project scaffold for a new component called `echo-args` under
+To begin, Create a project scaffold for a new component called `echo-args` in
 the `//vendor/fuchsia-codelab` directory:
 
-* {Rust}
+```posix-terminal
+mkdir -p vendor/fuchsia-codelab/echo-args
+```
 
-  ```posix-terminal
-  fx create component --path vendor/fuchsia-codelab/echo-args --lang rust
-  ```
-
-* {C++}
-
-  ```posix-terminal
-  fx create component --path vendor/fuchsia-codelab/echo-args --lang cpp
-  ```
-
-This creates a project directory structure with a basic component template:
+Create the following file and directory structure in the new project directory:
 
 * {Rust}
 
   ```none {:.devsite-disable-click-to-copy}
-  echo-args
-    |- BUILD.gn
-    |- meta
-    |   |- echo_args.cml
-    |
-    |- src
-        |- main.rs
+  //vendor/fuchsia-codelab/echo-args
+                          |- BUILD.gn
+                          |- meta
+                          |   |- echo.cml
+                          |
+                          |- src
+                              |- main.rs
   ```
 
   * `BUILD.gn`: GN build targets for the executable binaries, component, and
     package.
-  * `meta/echo_args.cml`: Manifest declaring the component's executable and
+  * `meta/echo.cml`: Manifest declaring the component's executable and
     required capabilities.
   * `src/main.rs`: Source code for the Rust executable binary and unit tests.
 
 * {C++}
 
   ```none {:.devsite-disable-click-to-copy}
-  echo-args
-    |- BUILD.gn
-    |- meta
-    |   |- echo_args.cml
-    |
-    |- echo_args.cc
-    |- echo_args.h
-    |- echo_args_unittest.cc
-    |- main.cc
+  //vendor/fuchsia-codelab/echo-args
+                          |- BUILD.gn
+                          |- meta
+                          |   |- echo.cml
+                          |
+                          |- echo_component.cc
+                          |- echo_component.h
+                          |- main.cc
   ```
 
   * `BUILD.gn`: GN build targets for the executable binaries, component, and
     package.
-  * `meta/echo_args.cml`: Manifest declaring the component's executable and
+  * `meta/echo.cml`: Manifest declaring the component's executable and
     required capabilities.
-  * `echo_args.cc`: Source code for the C++ component functionality.
-  * `echo_args_unittest.cc`: Source code for the C++ unit tests.
+  * `echo_component.cc`: Source code for the C++ component functionality.
   * `main.cc`: Source code for the C++ executable binary main entry point.
 
 ### Add program arguments
 
-Open the component manifest file in your editor and locate the `program` block.
-This defines the attributes of the component's executable. Add an `args` array
-to supply the list of names to greet:
+The component manifest file defines the attributes of the component's executable,
+including program arguments, and the component's capabilities.
+Add the following contents to `meta/echo.cml`:
+
+{% set cml_rust %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/meta/echo.cml" region_tag="manifest" adjust_indentation="auto" %}
+{% endset %}
+
+{% set cml_cpp %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/meta/echo.cml" region_tag="manifest" adjust_indentation="auto" %}
+{% endset %}
 
 * {Rust}
 
-  `echo-args/meta/echo_args.cml`:
+  `echo-args/meta/echo.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/meta/echo.cml" region_tag="manifest" adjust_indentation="auto" highlight="15,16,17,18,19,21,22" %}
+  {{ cml_rust|replace("echo_example_rust","echo-args")|trim() }}
   ```
 
 * {C++}
 
-  `echo-args/meta/echo_args.cml`:
+  `echo-args/meta/echo.cml`:
 
   ```json5
-  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/meta/echo.cml" region_tag="manifest" adjust_indentation="auto" highlight="15,16,17,18,19,21,22" %}
-  ```
-
-Update the manifest includes to provide logging support on stdout:
-
-* {Rust}
-
-  `echo-args/meta/echo_args.cml`:
-
-  ```json5
-  {
-    include: [
-        "inspect/client.shard.cml",
-        // Enable logging on stdout
-        "syslog/elf_stdio.shard.cml",
-    ],
-
-    // ...
-  }
-  ```
-
-* {C++}
-
-  `echo-args/meta/echo_args.cml`:
-
-  ```json5
-  {
-    include: [
-        "inspect/client.shard.cml",
-        // Enable logging on stdout
-        "syslog/elf_stdio.shard.cml",
-    ],
-
-    // ...
-  }
+  {{ cml_cpp|replace("echo_example_cpp","echo-args")|trim() }}
   ```
 
 ### Log the arguments
 
-Open the source file for the main executable and replace the import statements
-with the following code:
+Open the source file for the main executable and add the following import statements:
 
 * {Rust}
 
@@ -238,10 +201,10 @@ with the following code:
   ```cpp
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/main.cc" region_tag="imports" adjust_indentation="auto" %}
 
-  #include "vendor/fuchsia-codelab/echo-args/echo_args.h"
+  #include "vendor/fuchsia-codelab/echo-args/echo_component.h"
   ```
 
-Replace the `main()` function with the following code:
+Add the following code to implement the `main()` function:
 
 * {Rust}
 
@@ -280,17 +243,17 @@ Add the following code to implement the `greeting()` function:
 
 * {C++}
 
-  `echo-args/echo_args.h`:
+  `echo-args/echo_component.h`:
 
   ```cpp
-  #include "vendor/fuchsia-codelab/echo-args/echo_args.h"
-
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/echo_component.h" region_tag="greeting" adjust_indentation="auto" %}
   ```
 
-  `echo-args/echo_args.cc`:
+  `echo-args/echo_component.cc`:
 
   ```cpp
+  #include "vendor/fuchsia-codelab/echo-args/echo_component.h"
+
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/echo_component.cc" region_tag="greeting" adjust_indentation="auto" %}
   ```
 
@@ -300,16 +263,83 @@ on the length of the list.
 <aside class="key-point">
   <b>Logging and standard streams</b>
   <p>Fuchsia has two main logging buffers; the system log (<code>syslog</code>)
-  and kernel's debug log (<code>klog</code>). By default, components do not have
-  stream handles for stdout and stderr available to record log messages from your
-  code. Instead, you must use one of Fuchsia's logging libraries or redirect these
-  streams to a Fuchsia log buffer.</p>
+  and the kernel's debug log (<code>klog</code>). By default, components only
+  have stream handles for stdout and stderr available to record log messages
+  from your code if they have access to the system log. Fuchsia also has logging
+  libraries available for greater control over metadata and format of
+  messages.</p>
 
   <p>For more details on logging from your code, see
-  <a href="/development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
+  <a href="/docs/development/diagnostics/logs/recording.md">Recording Logs</a>.</p>
 </aside>
 
 ### Add to the build configuration
+
+Update the program's dependencies in your `BUILD.gn` file:
+
+{% set gn_rust_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_rust_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_binary %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/BUILD.gn" region_tag="executable" adjust_indentation="auto" %}
+{% endset %}
+
+{% set gn_cpp_component %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/BUILD.gn" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+* {Rust}
+
+  `echo-args/BUILD.gn`:
+
+  ```gn
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/rust/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
+
+  group("echo-args") {
+    testonly = true
+    deps = [
+      ":package",
+    ]
+  }
+
+  {{ gn_rust_binary|replace("echo_example_rust","echo-args")|trim() }}
+
+  {{ gn_rust_component|replace("echo_rust","echo-args")|trim() }}
+
+  fuchsia_package("package") {
+    package_name = "echo-args"
+    deps = [ ":component" ]
+  }
+  ```
+
+* {C++}
+
+  `echo-args/BUILD.gn`:
+
+  ```gn
+  {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/echo/cpp/BUILD.gn" region_tag="imports" adjust_indentation="auto" %}
+
+  group("echo-args") {
+    testonly = true
+    deps = [
+      ":package",
+    ]
+  }
+
+  {{ gn_cpp_binary|replace("echo_example_cpp","echo-args")|trim() }}
+
+  {{ gn_cpp_component|replace("echo_cpp","echo-args")|trim() }}
+
+  fuchsia_package("package") {
+    package_name = "echo-args"
+    deps = [ ":component" ]
+  }
+  ```
 
 Add your new component to the build configuration:
 

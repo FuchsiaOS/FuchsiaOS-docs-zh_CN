@@ -1,7 +1,5 @@
 # Component identifiers
 
-<<../_v2_banner.md>>
-
 The Component Framework uses different identifiers to describe components.
 This section describes the relationship between the following component
 identifiers, and their usage:
@@ -37,9 +35,10 @@ of a component instance, as part of a [child declaration][doc-manifests-children
 The above example declares the `logger` component as an absolute resource
 in a [Fuchsia package][doc-package] hosted in a package repository.
 
-Component Framework also supports relative URLs to identify components built
-into the same package as the parent component. This allows component reuse
-between packages without creating additional manifests:
+Component Framework also supports relative URLs.
+
+To identify a component built into the same package as the parent component,
+specify only the URL fragment:
 
 ```json5 {:.devsite-disable-click-to-copy}
 {
@@ -52,8 +51,23 @@ between packages without creating additional manifests:
 }
 ```
 
-This pattern is often used in tests, where the best practice is to re-package
-production components in a test-specific package to promote
+To identify a component in a [subpackage][doc-subpackaging] of the parent
+component's package, include the subpackage name followed by the component
+manifest path (via URL fragment):
+
+```json5 {:.devsite-disable-click-to-copy}
+{
+    children: [
+        {
+            name: "child",
+            url: "child#meta/default.cm",
+        }
+    ],
+}
+```
+
+Relative component URLs are often used in tests, where the best practice is to
+re-package production components in a test-specific package to promote
 [hermeticity][test-hermeticity].
 
 For more details on component URL syntax, see the
@@ -115,7 +129,7 @@ There are three types of component monikers:
 Every component instance has a unique absolute moniker. Consider the following
 example component instance tree:
 
-<br>![Diagram of Absolute Monikers](/reference/components/images/monikers_absolute.png)<br>
+<br>![Diagram of Absolute Monikers](/docs/reference/components/images/monikers_absolute.png)<br>
 
 -   `/alice:0/carol:0/sandy:0`: Uniquely identifies the component instance
     "sandy" as the descendent of "alice" and "carol".
@@ -131,14 +145,15 @@ component instances on a target device.
 For more details on component moniker syntax, see the
 [component moniker reference][moniker-reference].
 
-[glossary.component-url]: /glossary/README.md#component-url
-[glossary.moniker]: /glossary/README.md#moniker
-[component-select]: /development/tools/ffx/commands/component-select.md
+[glossary.component-url]: /docs/glossary/README.md#component-url
+[glossary.moniker]: /docs/glossary/README.md#moniker
+[component-select]: /docs/development/tools/ffx/commands/component-select.md
 [doc-manifests-children]: https://fuchsia.dev/reference/cml#children
-[doc-manifests-declaration]: /concepts/components/v2/component_manifests.md#component-declaration
-[doc-package]: /concepts/packages/package.md
-[doc-resolvers]: /concepts/components/v2/capabilities/resolvers.md
-[moniker-reference]: /reference/components/moniker.md
-[url-reference]: /reference/components/url.md
-[test-hermeticity]: /development/testing/components/test_runner_framework.md#hermeticity
+[doc-manifests-declaration]: /docs/concepts/components/v2/component_manifests.md#component-declaration
+[doc-package]: /docs/concepts/packages/package.md
+[doc-subpackaging]: /docs/concepts/components/v2/subpackaging.md
+[doc-resolvers]: /docs/concepts/components/v2/capabilities/resolvers.md
+[moniker-reference]: /docs/reference/components/moniker.md
+[url-reference]: /docs/reference/components/url.md
+[test-hermeticity]: /docs/development/testing/components/test_runner_framework.md#hermeticity
 [wiki-url]: https://en.wikipedia.org/wiki/URL

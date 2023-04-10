@@ -1,5 +1,10 @@
 # Developing an ffx plugin
 
+Note: This document describes the legacy plugin macro system and is here only
+as a reference while we still have some plugins using it around. See
+[the top level ffx development docs](/docs/development/tools/ffx/development/README.md)
+for documentation on writing subtools.
+
 This page describes the basic steps for creating a plugin for `ffx`.
 
 The plugin system employs a combination of GN build rules and Rust attributes
@@ -18,7 +23,7 @@ import("//src/developer/ffx/build/ffx_plugin.gni")
 
 ffx_plugin("ffx_example") {
   version = "0.1.0"
-  edition = "2018"
+  edition = "2021"
   with_unit_tests = true
   deps = []
   sources = [
@@ -147,6 +152,7 @@ fx test ffx_example_lib_test
 ```
 
 If fx test doesn't find your test, check that the product configuration includes your test. You can include all the ffx tests with this command:
+
 ```posix-terminal
 fx set ... --with=//src/developer/ffx:tests
 ```
@@ -165,10 +171,10 @@ instructions in this section.
 
     ffx_plugin("ffx_example") {
       version = "0.1.0"
-      edition = "2018"
+      edition = "2021"
       with_unit_tests = true
       deps = [
-        "//sdk/fidl/fuchsia.device:fuchsia.device-rustc",
+        "//sdk/fidl/fuchsia.device:fuchsia.device_rust",
       ]
       sources = [
         "src/args.rs",
@@ -272,8 +278,8 @@ This example enables RCS to override references to
 `some/new/moniker:expose:fuchsia.MyOtherService` in any build which contains
 the mapping.
 
-[component-select]: /development/tools/ffx/commands/component-select.md
+[component-select]: /docs/development/tools/ffx/commands/component-select.md
 [ffx-build]: /src/developer/ffx/BUILD.gn
 [overnet]: /src/connectivity/overnet/
-[rust-testing]: /development/languages/rust/testing.md
+[rust-testing]: /docs/development/languages/rust/testing.md
 [selector-maps]: /src/developer/remote-control/data/selector-maps.json

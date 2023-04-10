@@ -6,9 +6,9 @@
 
 This section presents techniques, best practices, and general advice about
 defining protocols in the [Fuchsia Interface Definition
-Language](/development/languages/fidl/README.md).
+Language](/docs/development/languages/fidl/README.md).
 
-See also the [FIDL Style Guide](/development/languages/fidl/guides/style.md).
+See also the [FIDL Style Guide](/docs/development/languages/fidl/guides/style.md).
 
 ### Protocols not objects
 
@@ -45,7 +45,7 @@ undermine that core value proposition.
 ### Ordinals
 
 Protocols contain a number of methods.  Each method is automatically assigned a
-unique 32 bit identifier, called an ordinal.  Servers use the ordinal value
+unique 64-bit identifier, called an ordinal.  Servers use the ordinal value
 to determine which protocol method should be dispatched.
 
 The compiler determines the ordinal value by hashing the library, protocol, and
@@ -79,7 +79,7 @@ FIDL should be used when runtime decisions will be made based on diagnostics inf
 programs. Inspect must never be used for communication between programs, it’s a best effort system
 that must not be relied on to make decisions or alter behavior during runtime in production.
 
-A heuristic to decide whether to use Insepct or FIDL could be:
+A heuristic to decide whether to use Inspect or FIDL could be:
 
 1. Is the data used by other programs in production?
    - Yes: Use FIDL.
@@ -270,7 +270,7 @@ reduces the cost of using structs to name important concepts.
 
 The [`zx.time`](/zircon/vdso/zx_common.fidl) type monotonically measures the
 number of nanoseconds from a
-[device-specific timebase](/concepts/kernel/time/monotonic.md).
+[device-specific timebase](/docs/concepts/kernel/time/monotonic.md).
 Uses of `zx.time` can assume this timebase, and it does not need to be spelled
 out.
 
@@ -347,6 +347,8 @@ To address use cases with arbitrarily large sequences, consider breaking the
 sequence up into multiple messages using one of the pagination patterns
 discussed below or consider moving the data out of the message itself, for
 example into a VMO.
+
+<<../languages/fidl/widgets/_size_constraint.md>>
 
 ### String encoding, string contents, and length bounds
 
@@ -645,9 +647,9 @@ Use `bytes` or `array<uint8>` for small non-text data:
  * Use `bytes` for HTTP header fields because HTTP header fields do not
    specify an encoding and therefore cannot necessarily be represented in UTF-8.
 
- * Use `array<uint8>:6` for MAC addresses because MAC address are binary data.
+ * Use `array<uint8, 6>` for MAC addresses because MAC address are binary data.
 
- * Use `array<uint8>:16` for UUIDs because UUIDs are (almost!) arbitrary binary
+ * Use `array<uint8, 16>` for UUIDs because UUIDs are (almost!) arbitrary binary
    data.
 
 Use shared-memory primitives for blobs:
@@ -800,7 +802,7 @@ transition later on. This situation is rare: experience has shown that most
 messages do not contain resources, and passing resources in protocols requires
 care and upfront planning.
 
-### Should I use `strict` or `flexible`?
+### Should I use `strict` or `flexible` on types?
 
 Marking a type as [`flexible`][flexible-lang] makes it possible to handle data
 that is unknown to the current FIDL schema, and is recommended for types that
@@ -809,7 +811,7 @@ is always possible to [soft transition][flexible-transition] between `strict`
 and `flexible` for an existing type.
 
 It is
-[stylish](/development/languages/fidl/guides/style.md#explicit-strict-flexible)
+[stylish](/docs/development/languages/fidl/guides/style.md#explicit-strict-flexible)
 to always specify this modifier, when the type permits. The Fuchsia project
 enforces this style with a linter check.
 
@@ -820,9 +822,12 @@ Using `strict` or `flexible` does not have any significant performance impact.
 This section describes best practices for assigning rights constraints on
 handles in FIDL.
 
-See the FIDL [bindings spec](/reference/fidl/language/bindings-spec.md)
-or [RFC-0028](/contribute/governance/rfcs/0028_handle_rights.md) for more
+See the FIDL [bindings spec](/docs/reference/fidl/language/bindings-spec.md)
+or [RFC-0028](/docs/contribute/governance/rfcs/0028_handle_rights.md) for more
 details on how rights are used in bindings.
+
+For the zircon rights definitions, see [kernel rights](/docs/concepts/kernel/rights.md).
+FIDL uses [rights.fidl](/zircon/vdso/rights.fidl) to resolve rights constraints.
 
 #### Always specify rights on handles
 
@@ -861,6 +866,110 @@ be present.
 
 This section describes several good design patterns that recur in many FIDL
 protocols.
+
+### Should I use `strict` or `flexible` on methods and events? {#strict-flexible-method}
+
+Marking a method or event as [`flexible`][unknown-interactions-lang] makes it
+easier to deal with removing the method or event when different components might
+have been built at different versions, such that some components think the
+method or event exists while others that they communicate with do not. Because
+flexibility for evolving protocols is generally desirable, it is recommended to
+choose `flexible` for methods and events unless there is a good reason to choose
+`strict`.
+
+Making a method `flexible` has no overhead for one-way methods or events. For
+two-way methods, choosing `flexible` adds a tiny amount of overhead (16 bytes or
+fewer) to the message and possibly some tiny additional time to message
+decoding. Overall the cost of making a two-way method flexible should be small
+enough not to be a consideration for almost all use cases.
+
+Methods and events should be made `strict` only when they are so critical to the
+correct behavior of the protocol that the absence of that method or event on the
+receiving side is serious enough that all communication between the two ends
+should be aborted and the connection closed.
+
+This can be particularly useful when designing for [feed-forward
+dataflow](#feed-forward). Consider this logger protocol which supports a mode
+for safely handling logs with personally identifiable information (PII). It uses
+the feed-forward pattern to add records so that the client can initiate many
+operations sequentially without waiting for the round-trip time, and just flush
+the pending operations at the end.
+
+```fidl
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/api_rubric.test.fidl" region_tag="method-strictness" %}
+```
+
+All the methods here are `flexible` except `EnablePIIMode`; consider what
+happens if the server doesn't recognize any one of the methods:
+
+*   `AddRecord`: the server just fails to add the data to the log output. The
+    sending application behaves normally, though its log records become less
+    useful. This is inconvenient, but safe.
+*   `EnablePIIMode`: the server fails to enable PII mode, meaning it might fail
+    to take security precautions and leak PII. This is a serious issue, so it is
+    preferable to close the channel if the server doesn't recognize this method.
+*   `DisablePIIMode`: the server takes unnecessary security precautions for
+    messages that don't need PII logging. This might be inconvenient for someone
+    trying to read the logs, but is safe for the system.
+*   `Flush`: the server fails to flush the records as requested, which is
+    potentially inconvenient, but still safe.
+
+An alternative way of designing this protocol to be fully flexible would be to
+make `EnablePIIMode` a two-way method (`flexible EnablePIIMode() -> ();`) so
+that the client can find out if the server doesn't have the method. Notice how
+this creates additional flexbility for the client; with this setup, the client
+has the choice of whether to respond to the server not recognizing
+`EnablePIIMode` by closing the connection or by just choosing not to log PII,
+whereas with `strict` the protocol is always closed automatically. However this
+does interrupt the feed-forward flow.
+
+Keep in mind that strictness is based on the sender. Suppose you have some
+method `strict A();` in version 1, then change it to `flexible A();` in version
+2, and then delete it in version 3. If a client built at version 1 tries to call
+`A()` on a server built at version `3`, the method will be treated as strict,
+because the client at version 1 thinks the method is strict, and the server at
+version 3 takes the client's word for it because it doesn't recognize the method
+at all.
+
+It is
+[stylish](/docs/development/languages/fidl/guides/style.md#explicit-strict-flexible-method)
+to always specify this modifier. The Fuchsia project enforces this style with a
+linter check.
+
+### Should I use `open`, `ajar`, or `closed`? {#open-ajar-closed}
+
+Marking a protocol as [`open`][unknown-interactions-lang] makes it
+easier to deal with removing methods or events when different components might
+have been built at different versions, such that each component has a different
+view of which methods and events exist. Because flexibility for evolving
+protocols is generally desirable, it is recommended to choose `open` for
+protocols unless there is a reason to choose a more closed protocol.
+
+Deciding to use `ajar` or `closed` should be based on expected constraints on
+the evolution of a protocol. Using `closed` or `ajar` does not prevent protocol
+evolution, however it does impose the requirement for a longer roll-out period
+where methods and events exist but aren't used in order to ensure all clients
+and servers agree about what methods exist. The flexibility of using `flexible`
+applies to both adding and removing methods and events, depending on whether the
+client or server is updated first.
+
+`ajar` could be useful for a protocol which uses [feed-forward
+dataflow](#feed-forward) but which is only expected to have its evolution
+limited to one-way methods. For example, this could apply to a [tear-off
+protocol](#paginating-writes) representing a transaction, where the only two-way
+method is a commit operation which must be strict while other operations on the
+transaction may evolve.
+
+```fidl
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/api_rubric.test.fidl" region_tag="ajar-tear-off" %}
+```
+
+`closed` is useful for critical protocols where any unknown method is a serious
+issue which should result in closing the channel rather than continuing in a
+potentially bad state. It is also reasonable to use it for protocols which are
+very unlikely to change, or at least where any change is likely to involve an
+extremely long rollout cycle anyway, such that the extra cost involved in
+changing `strict` methods is already expected in the rollout cycle.
 
 ### Protocol request pipelining {#request-pipelining}
 
@@ -980,6 +1089,8 @@ produces messages to match the rate at which the callee consumes them.  For
 example, the caller might arrange for only one (or a fixed number) of messages
 to be in flight (i.e., waiting for acknowledgement).
 
+<<../languages/fidl/widgets/_acknowledgement_pattern.md>>
+
 #### Push bounded data using events
 
 In FIDL, servers can send clients unsolicited messages called _events_.
@@ -1033,7 +1144,9 @@ relationship between the request and the response in FIDL syntax and therefore
 it is prone to misuse. Flow control will only work when clients correctly
 implement sending of the notification message.
 
-### Feed-forward dataflow
+<<../languages/fidl/widgets/_throttled_event_pattern.md>>
+
+### Feed-forward dataflow {#feed-forward}
 
 Some protocols have _feed-forward dataflow_, which avoids round-trip latency by
 having data flow primarily in one direction, typically from client to server.
@@ -1075,6 +1188,8 @@ Example:
 ```fidl
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/api_rubric.test.fidl" region_tag="feed-forward" %}
 ```
+
+<<../languages/fidl/widgets/_size_constraint.md>>
 
 ### Privacy by design
 
@@ -1236,7 +1351,7 @@ reasonable amounts of data, but there are use cases for transmitting large (or
 even unbounded) amounts of data.  One way to transmit a large or unbounded
 amount of information is to use a _pagination pattern_.
 
-#### Paginating writes
+#### Paginating writes {#paginating-writes}
 
 A simple approach to paginating writes to the server is to let the client send
 data in multiple messages and then have a "finalize" method that causes the
@@ -1359,8 +1474,8 @@ retained by the client is destroyed.
 ### Empty protocols
 
 Sometimes an empty protocol can provide value.  For example, a method that
-creates an object might also receive a `request<FooController>` parameter.  The
-caller provides an implementation of this empty protocol:
+creates an object might also receive a `server_end:FooController` parameter.
+The caller provides an implementation of this empty protocol:
 
 ```fidl
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples.docs/api_rubric.test.fidl" region_tag="empty" %}
@@ -1475,6 +1590,30 @@ For `union`:
 This section describes several antipatterns: design patterns that often provide
 negative value.  Learning to recognize these patterns is the first step towards
 avoiding using them in the wrong ways.
+
+### Pushed settings: avoid when possible
+
+The Fuchsia platform generally prefers pull semantics.  The [semantics of
+components][fuchsia-components] provide an important example; capabilities are
+assumed to be pulled from components, allowing component startup to be lazy and
+component shutdown ordering to be inferred from the directed graph of capability
+routes.
+
+Designs in which a FIDL protocol is used to push configuration from one
+component to another are tempting because of their apparent simplicity.  This
+arises in cases where component A pushes policy to component B for B's business
+logic.  This causes the platform to misunderstand the dependency relationship: A
+is not automatically started in support of B's function, A may be shut down
+before B has completed the execution of its business logic.  This in turn leads
+to workarounds involving weak dependencies along with phantom reverse
+dependencies to produce the desired behavior; all this is simpler when policy is
+pulled rather than pushed.
+
+When possible, prefer a design in which policy is pulled rather than pushed.
+
+Note: if you find yourself writing a FIDL function of the form `SetXXX`,
+consider if you have ended up in this situation, and whether a pull-oriented
+design would better serve your needs.
 
 ### Client libraries: use with care
 
@@ -1622,14 +1761,16 @@ a more idiomatic interface:
 
 
 <!-- xrefs -->
-[api-council]: /contribute/governance/api_council.md
-[api-council-membership]: /contribute/governance/api_council.md#membership
-[bindings-spec-unknown-enums]: /reference/fidl/language/bindings-spec.md#unknown-enums
-[inspect]: /development/diagnostics/inspect/quickstart.md
-[rfc-0025]: /contribute/governance/rfcs/0025_bit_flags.md
-[rfc-0114]: /contribute/governance/rfcs/0114_fidl_envelope_inlining.md
+[api-council]: /docs/contribute/governance/api_council.md
+[api-council-membership]: /docs/contribute/governance/api_council.md#membership
+[bindings-spec-unknown-enums]: /docs/reference/fidl/language/bindings-spec.md#unknown-enums
+[inspect]: /docs/development/diagnostics/inspect/quickstart.md
+[rfc-0025]: /docs/contribute/governance/rfcs/0025_bit_flags.md
+[rfc-0114]: /docs/contribute/governance/rfcs/0114_fidl_envelope_inlining.md
 [locale-passing-example]: /examples/intl/wisdom/
-[rust-hanging-get]: /development/languages/fidl/guides/rust-hanging-get.md
-[resource-lang]: /reference/fidl/language/language.md#value-vs-resource
-[flexible-lang]: /reference/fidl/language/language.md#strict-vs-flexible
-[flexible-transition]: /development/languages/fidl/guides/compatibility/README.md#strict-flexible
+[rust-hanging-get]: /docs/development/languages/fidl/guides/rust-hanging-get.md
+[resource-lang]: /docs/reference/fidl/language/language.md#value-vs-resource
+[flexible-lang]: /docs/reference/fidl/language/language.md#strict-vs-flexible
+[flexible-transition]: /docs/development/languages/fidl/guides/compatibility/README.md#strict-flexible
+[unknown-interactions-lang]: /docs/reference/fidl/language/language.md#unknown-interactions
+[fuchsia-components]: /docs/concepts/components/v2/introduction.md

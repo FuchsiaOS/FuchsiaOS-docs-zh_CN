@@ -1,38 +1,54 @@
 # Debugging a process, component, or crash dump
 
-## Attaching to a process by name filters
+## Attaching to a process by filters
 
-Running a process on Fuchsia is more complicated than in other systems because there are different
-loader environments (see "A note about launcher environments" below).
+Running a process on Fuchsia is more complicated than in other systems because there isn't a default
+environment (see "A note about launcher environments" below).
 
-The only way to reliably debug all types of processes is to create a filter on the process name via
-"attach" and start it the normal way you would start that process. The process name is usually the
-name of the build target that generates it. To check what this is, use "ps" (either in the debugger
-or from a system shell) with it running.
+The only way to reliably debug all types of processes is to create a filter via "attach" and start
+it the normal way you would start that process outside of the debugger.
+The debugger supports the following filter criteria.
 
-> Note: only the first 32 bytes of the name are included in the Zircon process description.
-> Sometimes the number of path components can cause the name to be truncated. If the filter isn't
-> working, check the actual name in "ps". We hope to have a better way to match this in the future.
+  * Component moniker (v2 components).
+  * Component URL (v2 components).
+  * Process name, exact match or partial match.
+
+The "attach" command can interpret the input differently according to the format. For example,
+`attach /core/feedback` will be interpreted as a [component moniker](../../reference/components/moniker.md)
+and thus creates a filter that matches *all* processes in that component, while `attach fuchsia-boot:///#meta/archivist.cm`
+will be interpreted as a [component URL](../../reference/components/url.md) and could possibly
+match processes in multiple components.
+
+For convenience, it's allowed to only pass the last part of a component URL to the "attach" command.
+So `attach archivist.cm` will function the same as `attach fuchsia-boot:///#meta/archivist.cm`.
+
+If the input doesn't look like some component, it'll be interpreted as a process name.
+The launcher of a process could set the process name freely. To check what this is, use "ps"
+(either in the debugger or from a system shell) with it running.
+
+> Note: only the first 31 bytes of the name are included in the Zircon process description.
 
 This example sets a pending breakpoint on `main` to stop at the beginning of execution, and waits
-for a process called "my\_app" to start:
+for processes in "my\_app.cm" component to start:
 
 ```
-[zxdb] attach my_app
-Waiting for process matching "my_app"
+[zxdb] attach my_app.cm
+Waiting for process matching "my_app.cm".
 
 [zxdb] break main
-Breakpoint 1 (Software) on Global, Enabled, stop=All, @ main
-Pending: No matches for location, it will be pending library loads.
+Created Breakpoint 1 @ main
+Pending: No current matches for location. It will be matched against new
+         processes and shared libraries.
 ```
 
-Then run the process the way you would in normal use (directly on the command line, via `fx test`,
-via the shell's `run fuchsia-pkg://...`, or another way. The debugger should then immediately break
-on `main` (it may take some time to load symbols so you may see a delay before showing the source
+Then run the process the way you would in normal use (directly on the command
+line, via `fx test`, `ffx component run /core/... fuchsia-pkg://...`, or
+another way. The debugger should then immediately break on `main` (it may take
+some time to load symbols so you may see a delay before showing the source
 code):
 
 ```none {:.devsite-disable-click-to-copy}
-Attached Process 1 [Running] koid=51590 my_app.cmx
+Attached Process 1 [Running] koid=51590 my_app.cm
 🛑 on bp 1 main(…) • main.cc:222
    220 }
    221
@@ -51,57 +67,42 @@ continue
 quit
 ```
 
-#### A note about launcher environments
+## Directly launching in debugger
 
-The following loader environments all have different capabilities (in order
-from least capable to most capable):
+It's possible to launch an executable, a component, or a test in the debugger directly.
 
-  * The debugger's `run <file name>` command (base system process stuff).
-  * The system console or `fx shell` (adds some libraries).
-  * The base component environment via the shell's `run` and the debugger's
-    `run -c <package url>` (adds component capabilities).
-  * The test environment via `fx test`.
-  * The user environment when launched from a "story" (adds high-level
-    services like scenic).
+### Launching an executable
 
-This panoply of environments is why the debugger can't have a simple "run"
-command that always works.
+Use `run <executable>` to launch an executable from the debugger. Note that in Fuchsia, all
+processes need to be run in a namespace. `run` will launch the process in debug_agent's namespace,
+which means only executables in the debug_agent package and executables from [bootfs](../../glossary#bootfs)
+are available. Since they are run in debug_agent's namespace, the processes will also share the same
+capabilities of the debug_agent.
 
-## Launching simple command-line processes
+Due to the limitation above, `run` is only meant to be used to run some demo programs.
 
-Minimal console apps including some unit tests can be launched directly from within the debugger
-which avoids the above "attach" dance:
+### Launching a component
 
-```none {:.devsite-disable-click-to-copy}
-[zxdb] break main
-Breakpoint 1 (Software) on Global, Enabled, stop=All, @ $main
-Pending: No matches for location, it will be pending library loads.
+Use `run-component <component url>` to launch a component. V2 components will be created in the
+[`ffx-laboratory`](../../development/components/run.md#ffx-laboratory) collection, similar to the
+behavior of `ffx component run --recreate`. The output of the component will NOT be redirected.
+Since all the limitations from `ffx-laboratory` are applied, `run-component` is usually only used
+to launch demo programs.
 
-[zxdb] run /bin/cowsay
-```
+### Launching a test
 
-If you get a shared library load error or errors about files or services not being found, it means
-the app can't be run from within the debugger's launcher environment. This is true even for things
-that may seem relatively simple.
+Use `run-test <test url>` to launch a test, similar to `ffx test run`. Optional case filters can be
+provided to specify test cases to run.
 
-## Directly launching components
-
-Components that can be executed with the console command `run fuchsia-pkg://...` can be loaded in
-the debugger with the following command, substituting your component's URL:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] run -c fuchsia-pkg://fuchsia.com/your\_app#meta/your\_app.cmx
-```
-
-Not all components can be launched this way since most higher-level services won't be accessible: if
-you can't do `run ...` from the system console, it won't work from the debugger either. Note also
-that `fx test` is a different environment. According to your test's dependencies, it may or may not
-work from the debugger's `run` command.
+Since Fuchsia test runners start one process for each test case, there could be many processes
+started in the debugger. These processes will have their names replaced as the names of the test
+cases, so that it's easier to navigate between test cases. The output of these processes will be
+redirected in the debugger and can be replayed by `stdout` or `stderr`.
 
 ## Attaching to an existing process
 
 You can attach to most running processes given the process’ koid (the [kernel object
-ID](/concepts/kernel/concepts.md) that, when applied to a process, is equivalent to a process
+ID](/docs/concepts/kernel/concepts.md) that, when applied to a process, is equivalent to a process
 ID on other systems). You can get the koid by running `ps` on the target Fuchsia system or use
 zxdb's built-in `ps` command:
 
@@ -109,11 +110,11 @@ zxdb's built-in `ps` command:
 [zxdb] ps
 j: 1030 root
   j: 1079 zircon-drivers
-    p: 1926 driver_host:sys
+    p: 1926 driver_host
 ...
 ```
 
-In this listing, "j:" indicates a [job](/concepts/kernel/concepts.md) (a container for
+In this listing, "j:" indicates a [job](/docs/concepts/kernel/concepts.md) (a container for
 processes) and "p:" indicates a process. The number following the type prefix is the object's koid.
 
 Then to attach:
@@ -127,55 +128,21 @@ When you’re done, you can choose to `detach` (keep running) or `kill` (termina
 
 ## Attaching to processes in specific jobs
 
-By default the debugger will attampt to attach to the root job so process launch filters will apply
-globally. Normally this will appear as "job 1" in the debugger:
+It's possible to limit the scope of a filter to specific jobs. In this case, the filter can be empty
+which means attaching to all applied processes. For example,
 
 ```none {:.devsite-disable-click-to-copy}
-[zxdb] job
-  # State     Koid Name
-  1 Attached  1027 root
+[zxdb] ps
+ j: 1033 root
+   j: 2057
+     p: 2274 foobar.cm
+     j: 2301
+       p: 2307 foo
+       p: 2318 bar
 ```
 
-You can also apply filters for processes launched in a specific job. First attach to the job using
-the `attach-job` command, specifying the job's koid:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] attach-job 30053
-Job 2 state=Attached koid=30053 name=""
-```
-
-The debugger will now be attached to two jobs, with the new job being the current one:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] job
-  # State     Koid Name
-  1 Attached  1027 root
-▶ 2 Attached 30053
-```
-
-Now you can make a filter (see above) that applies to the process names only to this job by
-prefixing the attach command with the job object number (not koid) created above:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] job 2 attach my_app
-Waiting for process matching "my_app".
-Type "filter" to see the current filters.
-```
-
-You can also attach to all current and future processes in a job using the `*` wildcard as the
-filter name:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] attach-job 30053
-Job 2 state=Attached koid=30053 name=""
-
-[zxdb] job 2 attach *
-Attached Process 1 state=Running koid=28071 name=sysmem_connector.cm
-```
-
-> **Warning:** Be careful only to use the wildcard `attach *` command with an explicit,
-> narrowly-scoped job. Making a global filter or applying it to a job with too many children can
-> attach to too many processes that may include drivers necessary for the system to function.
+`attach -j 2301 foo` will only attach to process 2307. `attach -j 2057` will attach to all 3
+processes.
 
 ## Debugging drivers
 
@@ -184,32 +151,18 @@ driver initialization. And since zxdb itself uses the network and filesystem, no
 with network communication can be debuged, and neither can many drivers associated with storage or
 other critical system functions.
 
-Driver debugging support is tracked in issue
-[5456](https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=5456).
-
-You can debug running drivers by attaching like any other process (see “Attaching to an existing
-process”). You can delay initialization to allow time to attach by adding a busyloop at the
-beginning of your code:
+You can debug running drivers by attaching to the driver hosts, which can be listed by
+`ffx driver list-hosts`. Initialization of the driver can be delayed by calling `WaitForDebugger()`,
+given the driver is not depended by the debugger.
 
 ```cpp
-volatile bool stop = false;
-while (!stop) {}
+#include "src/lib/debug/debug.h"
+
+debug::WaitForDebugger();
 ```
 
-To break out of the loop after attaching, either set the variable to true:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] print stop = true
-true
-[zxdb] continue
-```
-
-Or jump to the line after the loop:
-
-```none {:.devsite-disable-click-to-copy}
-[zxdb] jump <line #>
-[zxdb] continue
-```
+Once the debugger is attached, `WaitForDebugger()` will trigger a software breakpoint.
+After necessary setup is performed, type `continue` to continue the execution.
 
 ## Debugging crash dumps
 
@@ -242,7 +195,7 @@ automatically, run the following command, substituting the location of your symb
 zxdb --symbol-server gs://my-bucket-name/namespace
 ```
 
-In-tree users automatically have the option set, with the server pointed to a bucket containing
+Most users should automatically have the option set, with the server pointed to a bucket containing
 symbols for all release builds.
 
 The first time you use the symbol server, you will have to authenticate using the `auth` command.

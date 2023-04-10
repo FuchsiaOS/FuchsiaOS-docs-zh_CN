@@ -44,29 +44,29 @@ driver and `driver_manager` logs.
 The timestamp is from the monotonic clock by default, and it is formatted with microsecond
 granularity.
 
-If the message "something happened" is written at WARN level by my-component.cmx from process=1902
+If the message "something happened" is written at WARN level by my-component from process=1902
 and thread=1904 at time=278.14, the default output would be:
 
 ```
-[278.14][1902][1904][my-component.cmx] WARN: something happened
+[278.14][1902][1904][my-component] WARN: something happened
 ```
 
 [`log_listener`] has `--hide_metadata` and `--pretty` flags that reduces the printed metadata,
 and color codes log lines by severity, respectively. With these flags, some metadata is hidden
 (PID, TID, etc.) while others are trimmed down (timestamp, severity).
 
-For example, if the message "something happened" is printed at WARN level by my-component.cmx at
+For example, if the message "something happened" is printed at WARN level by my-component at
 time=278.14, the pretty output will look like:
 
 ```
-[278.14][my-component.cmx][W] something happened
+[278.14][my-component][W] something happened
 ```
 
 With a running device available, run `ffx log --help` to see the options for modifying the output format.
 
 #### `fx test`
 
-Under the hood, `fx test` calls `run-test-component`, which collects isolated `stdout`, `stderr`, and
+Under the hood, `fx test` calls `run-test-suite`, which collects isolated `stdout`, `stderr`, and
 `LogSink` connections from test components, printing the output inline and preventing them showing
 up in the global log buffers.
 
@@ -110,14 +110,14 @@ while others are trimmed down (timestamp, severity).
 Serial output should be piped in from the emulator or from other sources:
 
 ```
-ffx emu start --console | fx symbolize
+ffx emu start --console | ffx debug symbolize
 ```
 
 For example, if the message "something happened" is printed to klog at WARN level by
-my-component.cmx at time=278.14, the pretty output will look like:
+my-component at time=278.14, the pretty output will look like:
 
 ```
-[278.14][my-component.cmx][W] something happened
+[278.14][my-component][W] something happened
 ```
 
 For example, if the message "something happened" is printed to klog by an unknown component with
@@ -133,9 +133,9 @@ When running tests, a [Swarming] bot invokes [botanist], which collects several 
 presented in the web UI. The `stdout` & `stderr` of botanist are what's presented in the "swarming task
 UI".
 
-For individual test executables botanist invokes [testrunner] and collects that output separately.
+For individual test executables botanist uses [testrunner] lib and collects that output separately.
 It is this output that can be seen after a failing test, with a link named `stdio`. Most tests that
-testrunner invokes run `run-test-component` via SSH to the target device. This collects the
+testrunner invokes run `run-test-suite` via SSH to the target device. This collects the
 stdout, stderr, and logs from the test environment and prints them inline.
 
 ### syslog.txt
@@ -150,14 +150,13 @@ Normally this includes the following notable items, all interleaved:
 
 * [botanist]'s log messages
 * kernel log from netsvc (equivalent to `fx klog`)
-* [testrunner]'s log messages
 * `stdout` and `stderr` of the tests run by testrunner
 
-This aggregate log is run through the equivalent of `fx symbolize` before upload.
+This aggregate log is run through the equivalent of `ffx debug symbolize` before upload.
 
-[monotonic clock]: /reference/syscalls/clock_get_monotonic.md
-[Concepts: Storage]: /concepts/components/diagnostics/logs/README.md#storage
-[forwarded from the klog]: /development/diagnostics/logs/recording.md#forwarding-klog-to-syslog
+[monotonic clock]: /docs/reference/syscalls/clock_get_monotonic.md
+[Concepts: Storage]: /docs/concepts/components/diagnostics/logs/README.md#storage
+[forwarded from the klog]: /docs/development/diagnostics/logs/recording.md#forwarding-klog-to-syslog
 [`log_listener`]: /src/diagnostics/log_listener/README.md
 [`fuchsia.logger.Log`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#Log
 [`fuchsia.logger.LogListenerSafe`]: https://fuchsia.dev/reference/fidl/fuchsia.logger#LogListenerSafe
@@ -165,5 +164,5 @@ This aggregate log is run through the equivalent of `fx symbolize` before upload
 [forwarded over UDP by netsvc]: /src/bringup/bin/netsvc/debuglog.cc
 [`dlog`]: /src/bringup/bin/dlog/README.md
 [botanist]: /tools/botanist/cmd/main.go
-[testrunner]: /tools/testing/testrunner/cmd/main.go
+[testrunner]: /tools/testing/testrunner/lib.go
 [Swarming]: https://chromium.googlesource.com/infra/luci/luci-py/+/HEAD/appengine/swarming/doc/README.md

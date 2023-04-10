@@ -69,8 +69,7 @@ components are still CFv1, most tests (>70%) use the CFv2 test framework since
 it’s more reliable and offers some new features for developers.
 
 For legacy reasons the v1 test runtime is not hermetic in many ways, for
-instance by
-[allowing access to certain real system services][v1-test-system-services]. As a
+instance by allowing access to certain real system services. As a
 result, inadvertently many CFv1 tests actually behave as system tests. These
 tests suffer from multiple issues, including:
 
@@ -113,8 +112,7 @@ underlying JSON-RPC/HTTPS protocol to drive the target device. This arrangement
 has been very useful for Fuchsia connectivity testing.
 
 As a system automation framework, SL4F can also be used to test CUJs. For
-instance SL4F powers a platform CUJ tests that ensure that
-[the device doesn't boot into a black screen][e2e-not-black-screen].
+instance SL4F powers a platform CUJ tests.
 
 However, SL4F was not designed for OOT testing. Interacting with SL4F is done
 over protocols that are outside the FSI, and don't offer the same evolution
@@ -268,9 +266,7 @@ over time.
 However, developing facades can only be done in-tree, meaning that OOT there is
 currently no possibility to extend the system automation capabilities. This is
 not a surprising property of SL4F - it was simply not designed to be used by OOT
-clients. This is seen for instance in the handy
-[developer guide][new-e2e-test-guide], which references fuchsia.git paths and
-`fx` commands.
+clients.
 
 #### Separate stack
 
@@ -472,25 +468,22 @@ compatibility or sharing tests with a partner project, that would require
 additional justification or otherwise be discouraged by the platform team.
 
 [acts]: https://android.googlesource.com/platform/tools/test/connectivity/+/HEAD/acts
-[cf]: /concepts/components/v2/README.md
+[cf]: /docs/concepts/components/v2/README.md
 [dash]: /zircon/third_party/uapp/dash/
-[e2e-not-black-screen]: /src/tests/end_to_end/screen_is_not_black/
-[ffx-components]: /development/tools/ffx/getting-started.md#interacting_with_components
-[ffx-plugins]: /development/tools/ffx/development/plugins.md
-[ffx-proxy-plugin]: /development/tools/ffx/development/plugins.md#fidl-proxy
-[fidl-abi-compatibility]: /development/languages/fidl/guides/compatibility/README.md
-[fsi]: /concepts/packages/system.md
-[fuchsia-updatable]: /concepts/principles/updatable.md
-[glossary.product-owner]: /glossary/README.md#product-owner
-[inspect]: /development/diagnostics/inspect/README.md
-[new-e2e-test-guide]: /development/testing/create_a_new_end_to_end_test.md
-[oot-component-testing]: /contribute/roadmap/2021/oot_component_testing.md
+[ffx-components]: /docs/development/tools/ffx/getting-started.md#interacting_with_components
+[ffx-plugins]: /docs/development/tools/ffx/development/plugins.md
+[ffx-proxy-plugin]: /docs/development/tools/ffx/development/plugins.md#fidl-proxy
+[fidl-abi-compatibility]: /docs/development/languages/fidl/guides/compatibility/README.md
+[fsi]: /docs/concepts/packages/system.md
+[fuchsia-updatable]: /docs/concepts/principles/updatable.md
+[glossary.product-owner]: /docs/glossary/README.md#product-owner
+[inspect]: /docs/development/diagnostics/inspect/README.md
+[oot-component-testing]: /docs/contribute/roadmap/2021/oot_component_testing.md
 [practical-test-pyramid]: https://martinfowler.com/articles/practical-test-pyramid.html
 [scp]: https://fuchsia.dev/reference/tools/fx/cmd/scp
 [sl4a]: https://android.googlesource.com/platform/external/sl4a/
-[sl4f]: /development/drivers/concepts/driver_development/sl4f.md
+[sl4f]: /docs/development/drivers/concepts/driver_development/sl4f.md
 [snapshot]: https://fuchsia.dev/reference/tools/fx/cmd/snapshot
-[ssh]: /development/idk/documentation/ssh.md
-[v1-test-system-services]: /concepts/testing/v1_test_component.md#additional_system_services
-[v2-migration]: /contribute/open_projects/components/migration.md
-[v2-testing]: /development/testing/components/README.md
+[ssh]: /docs/development/idk/documentation/ssh.md
+[v2-migration]: /docs/contribute/open_projects/components/migration.md
+[v2-testing]: /docs/development/testing/components/README.md

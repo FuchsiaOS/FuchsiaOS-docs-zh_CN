@@ -71,7 +71,7 @@ objects of that class.
 #### Decision
 
 *   C is supported for end-developers. (See
-    [the list of supported versions of C](/development/api/c.md#Language-versions).)
+    [the list of supported versions of C](/docs/development/api/c.md#Language-versions).)
 *   Within the Fuchsia Platform Source Tree, new uses of C are discouraged. Ask
     the relevant OWNERS for guidance about whether to use C for new code.
 *   C is approved for use in the Fuchsia Platform Source Tree:
@@ -96,20 +96,15 @@ objects of that class.
 #### Decision
 
 *   C++ is supported for end-developers. (See
-    [the list of supported versions of C++](/development/api/c.md#Language-versions).)
+    [the list of supported versions of C++](/docs/development/api/c.md#Language-versions).)
 *   C++ is approved for use throughout the Fuchsia Platform Source Tree.
 
 ### Dart
 
 #### Analysis
 
-*   Pro: Our current end-developers already use the language.
-*   Pro: The majority of Fuchsia's user interface is built using Flutter, which
-    uses Dart.
 *   Pro: Asynchronous programs can be written using straight-line code.
 *   Pro: People using the language are highly productive.
-*   Pro: The Fuchsia project has the opportunity to influence the evolution of
-    the language.
 *   Pro: The language provides memory safety guarantees, which reduces the risk
     of software developed in the language having security bugs.
 *   Con: The language uses garbage collection to manage memory, which is more
@@ -118,12 +113,18 @@ objects of that class.
 *   Con: The toolchain forces a trade-off between binary size, performance, and
     startup latency that is worse than the tradeoff provided by toolchains for
     other languages.
+*   Con: Updates of the Dart language, runtimes, and libraries in the Fuchsia
+    Platform Source Tree have proven to be a maintenance burden. They make heavy
+    usage of the SDK, but are developed out-of-tree.  This ties together Dart
+    and Fuchsia versions in a way that makes updates difficult.
 
 #### Decision
 
 *   Dart is supported for end-developers targeting non-drivers.
-*   Dart is approved for use in the Fuchsia Platform Source Tree for user
-    interfaces and for programs that do not run indefinitely.
+*   Per
+    [RFC-0176](/docs/contribute/governance/rfcs/0176_disallow_new_dart_programs.md),
+    use of Dart is allowlisted in the Fuchsia Platform Source Tree, and new
+    additions to the allowlist require an exemption.
 
 ### Rust
 

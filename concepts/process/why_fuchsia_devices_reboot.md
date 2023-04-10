@@ -104,7 +104,7 @@ reboots.
 
 ### Critical component failure
 
-If a critical component managed by sysmgr crashed, the device reboots.
+If a component marked `reboot_on_terminate` crashed, the device reboots.
 
 ### Factory data reset
 
@@ -122,12 +122,6 @@ between a software update, a user request or some higher-level component
 detecting the device as overheating. All the platform knows is that the reboot
 was graceful.
 
-### Generic ungraceful
-
-There are some scenarios in which a specific reboot reason cannot be determined,
-i.e. we don’t know if it was a kernel panic or a watchdog timeout, but we still
-know the reboot was ungraceful.
-
 ### Unknown
 
 There are some scenarios in which the platform cannot determine the specific
@@ -139,28 +133,33 @@ Fuchsia exposes the reason a device last (re)booted through
 [FIDL](/sdk/fidl/fuchsia.feedback/last_reboot_info.fidl) and tracks it on Cobalt
 and the crash server.
 
-Reboot reason                | **FIDL**                      | **Cobalt event**           | **Crash signature**
-:--------------------------- | :---------------------------- | :------------------------- | :------------------
-Kernel panic                 | `KERNEL_PANIC`                | `KernelPanic`              | `fuchsia-kernel-panic`
-System running out of memory | `SYSTEM_OUT_OF_MEMORY`        | `SystemOutOfMemory`        | `fuchsia-oom`
-Cold boot                    | `COLD`                        | `Cold`                     | N/A\*
-Brownout                     | `BROWNOUT`                    | `Brownout`                 | `fuchsia-brownout`
-Hardware watchdog timeout    | `HARDWARE_WATCHDOG_TIMEOUT`   | `HardwareWatchdogTimeout`  | `fuchsia-hw-watchdog-timeout`
-Software watchdog timeout    | `SOFTWARE_WATCHDOG_TIMEOUT`   | `SoftwareWatchdogTimeout`  | `fuchsia-sw-watchdog-timeout`
-Brief power loss             | `BRIEF POWER LOSS`            | `BriefPowerLoss`           | `fuchsia-brief-power-loss`
-User request                 | `USER_REQUEST`                | `UserRequest`              | N/A\*
-System update                | `SYSTEM_UPDATE`               | `SystemUpdate`             | N/A\*
-Retry system update          | `RETRY_SYSTEM_UPDATE`         | `RetrySystemUpdate`        | `fuchsia-retry-system-update`
-ZBI swap                     | `ZBI_SWAP`                    | `ZbiSwap`                  | N/A\*
-High temperature             | `HIGH_TEMPERATURE`            | `HighTemperature`          | `fuchsia-high-temperature-reboot`
-Session failure              | `SESSION_FAILURE`             | `SessionFailure`           | `fuchsia-session-failure`
-Sysmgr failure               | `SYSMGR_FAILURE`              | `SysmgrFailure`            | `fuchsia-sysmgr-failure`
-Critical component failure   | `CRITICAL_COMPONENT_FAILURE`  | `CriticalComponentFailure` | `fuchsia-critical-component-failure`
-Factory data reset           | `FACTORY_DATA_RESET`          | `FactoryDataReset`         | N/A\*
-Root job termination         | `ROOT_JOB_TERMINATION         | `RootJobTermination`       | fuchsia-root-job-termination
-Generic graceful             | *graceful* field set to true  | `GenericGraceful`          | N/A\*
-Generic ungraceful           | *graceful* field set to false | `GenericUngraceful`        | N/A\*\*
-Unknown                      | *graceful* field not set      | `Unknown`                  | `fuchsia-reboot-log-not-parseable`
+#### Culprits
+
+Reboots that at are the result of an error in a specific component have crash
+signatures that attribute that component as the cause of the reboot. They follow
+a general pattern of combining the reboot reason and the component deemed
+responsible for the reboot, a.k.a the culprit.
+
+Reboot reason                | **FIDL**                     | **Cobalt event**           | **Crash signature**
+:--------------------------- | :--------------------------- | :------------------------- | :------------------
+Kernel panic                 | `KERNEL_PANIC`               | `KernelPanic`              | Function responsible for the crash, exactly like a userspace crash report
+System running out of memory | `SYSTEM_OUT_OF_MEMORY`       | `SystemOutOfMemory`        | `fuchsia-oom` or `fuchsia-oom-$CULPRIT`
+Cold boot                    | `COLD`                       | `Cold`                     | N/A\*
+Brownout                     | `BROWNOUT`                   | `Brownout`                 | `fuchsia-brownout`
+Hardware watchdog timeout    | `HARDWARE_WATCHDOG_TIMEOUT`  | `HardwareWatchdogTimeout`  | `fuchsia-hw-watchdog-timeout`
+Software watchdog timeout    | `SOFTWARE_WATCHDOG_TIMEOUT`  | `SoftwareWatchdogTimeout`  | `fuchsia-sw-watchdog-timeout`
+Brief power loss             | `BRIEF POWER LOSS`           | `BriefPowerLoss`           | `fuchsia-brief-power-loss`
+User request                 | `USER_REQUEST`               | `UserRequest`              | N/A\*
+System update                | `SYSTEM_UPDATE`              | `SystemUpdate`             | N/A\*
+Retry system update          | `RETRY_SYSTEM_UPDATE`        | `RetrySystemUpdate`        | `fuchsia-retry-system-update`
+ZBI swap                     | `ZBI_SWAP`                   | `ZbiSwap`                  | N/A\*
+High temperature             | `HIGH_TEMPERATURE`           | `HighTemperature`          | `fuchsia-reboot-high-temperature`
+Session failure              | `SESSION_FAILURE`            | `SessionFailure`           | `fuchsia-session-failure`
+Sysmgr failure               | `SYSMGR_FAILURE`             | `SysmgrFailure`            | `fuchsia-sysmgr-failure`
+Critical component failure   | `CRITICAL_COMPONENT_FAILURE` | `CriticalComponentFailure` | `fuchsia-critical-component-failure` or `fuchsia-reboot-$CULPRIT-terminated`
+Factory data reset           | `FACTORY_DATA_RESET`         | `FactoryDataReset`         | N/A\*
+Root job termination         | `ROOT_JOB_TERMINATION        | `RootJobTermination`       | `fuchsia-root-job-termination` or `fuchsia-reboot-$CULPRIT-terminated`
+Generic graceful             | *graceful* field set to true | `GenericGraceful`          | `fuchsia-undetermined-userspace-reboot`
+Unknown                      | *graceful* field not set     | `Unknown`                  | `fuchsia-reboot-log-not-parseable`
 
 \* Not a crash. \
-\*\* Currently not implemented.

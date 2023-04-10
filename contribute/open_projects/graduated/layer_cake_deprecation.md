@@ -63,12 +63,12 @@ Bug: 36063
 
 ## Examples
 
-*   [424156: [fuchsia-cprng] Move to src/lib/zircon/rust](https://fuchsia-review.googlesource.com/c/fuchsia/+/424156)
-*   [449714: [build][power] Move power_manager to //src/power](https://fuchsia-review.googlesource.com/c/fuchsia/+/449714)
-*   [461096: [thermd][shuffle] Migrate thermd from //garnet to //src](https://fuchsia-review.googlesource.com/c/fuchsia/+/461096)
-*   [473957: [sysmem] Move sysmem_connector to src/devices/sysmem/bin](https://fuchsia-review.googlesource.com/c/fuchsia/+/473957)
-*   [592547: [log_listener] Move from garnet to src/diagnostics](https://fuchsia-review.googlesource.com/c/fuchsia/+/592547)
-*   [627766: [boards][garnet] Cleanup graphics targets](https://fuchsia-review.googlesource.com/c/fuchsia/+/627766)
+*   [`424156: [fuchsia-cprng] Move to src/lib/zircon/rust`](https://fuchsia-review.googlesource.com/c/fuchsia/+/424156)
+*   [`449714: [build][power] Move power_manager to //src/power`](https://fuchsia-review.googlesource.com/c/fuchsia/+/449714)
+*   [`461096: [thermd][shuffle] Migrate thermd from //garnet to //src`](https://fuchsia-review.googlesource.com/c/fuchsia/+/461096)
+*   [`473957: [sysmem] Move sysmem_connector to src/devices/sysmem/bin`](https://fuchsia-review.googlesource.com/c/fuchsia/+/473957)
+*   [`592547: [log_listener] Move from garnet to src/diagnostics`](https://fuchsia-review.googlesource.com/c/fuchsia/+/592547)
+*   [`627766: [boards][garnet] Cleanup graphics targets`](https://fuchsia-review.googlesource.com/c/fuchsia/+/627766)
 
 ## Sponsors
 
@@ -77,4 +77,4 @@ Reach out for questions, status updates, or OWNERS approvals:
 *   jamesr@google.com
 *   shayba@google.com
 
-[source-code-layout]: /development/source_code/layout.md
+[source-code-layout]: /docs/development/source_code/layout.md

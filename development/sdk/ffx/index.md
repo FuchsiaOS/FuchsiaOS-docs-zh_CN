@@ -1,9 +1,7 @@
-# ffx workflows
+# SDK workflows
 
-[`ffx`][ffx-reference] is a CLI (command line interface) tool that supports
-common Fuchsia development workflows, such as interacting with Fuchsia
-target devices and managing [Fuchsia components][fuchsia-components] and
-[Fuchsia packages][fuchsia-packages].
+Below is the list of workflows you can perform in the Fuchsia SDK development environment to
+interact with Fuchsia systems, devices, and software.
 
 ## Table of contents
 
@@ -17,6 +15,7 @@ target devices and managing [Fuchsia components][fuchsia-components] and
 
 * Components
 
+  * [Explore components][explore-components]
   * [View component information][view-component-info]
   * [Start a component during development][start-a-component]
   * [Copy files to and from a component][copy-files]
@@ -36,12 +35,17 @@ target devices and managing [Fuchsia components][fuchsia-components] and
 * Performance
 
   * [Record traces for performance analysis][record-traces]
+  * [Measure the memory usage on a device][measure-memory-usage]
+
+* Testing
+
+  * [Run tests on a device][run-tests]
 
 <!-- Reference links -->
 
 [ffx-reference]: https://fuchsia.dev/reference/tools/sdk/ffx
-[fuchsia-components]: /concepts/components/v2/README.md
-[fuchsia-packages]: /concepts/packages/package.md
+[fuchsia-components]: /docs/concepts/components/v2/README.md
+[fuchsia-packages]: /docs/concepts/packages/package.md
 [start-femu]: start-the-fuchsia-emulator.md
 [view-device-info]: view-device-information.md
 [flash-device]: flash-a-device.md
@@ -57,3 +61,6 @@ target devices and managing [Fuchsia components][fuchsia-components] and
 [start-zxdb]: start-the-fuchsia-debugger.md
 [monitor-fidl]: monitor-fidl-messages-on-a-device.md
 [record-traces]: record-traces.md
+[explore-components]: explore-components.md
+[measure-memory-usage]: explore-memory-usage.md
+[run-tests]: run-device-tests.md

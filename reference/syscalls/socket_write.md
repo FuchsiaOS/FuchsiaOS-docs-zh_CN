@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_socket_write
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write data to a socket.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_socket_write(zx_handle_t handle,
                             size_t* actual);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_socket_write()` attempts to write *buffer_size* bytes to the socket
 specified by *handle*. The pointer to *bytes* may be NULL if *buffer_size* is
@@ -35,24 +42,21 @@ Otherwise, if the socket was already full, the call returns
 **ZX_ERR_SHOULD_WAIT** and the client should wait (e.g., with
 [`zx_object_wait_one()`] or [`zx_object_wait_async()`]).
 
-
 A **ZX_SOCKET_DATAGRAM** socket write is never short. If the socket has
 insufficient space for *buffer*, it writes nothing and returns
 **ZX_ERR_SHOULD_WAIT**. If the write succeeds, *buffer_size* is returned via
 *actual*. Attempting to write a packet larger than the datagram socket's
 capacity will fail with **ZX_ERR_OUT_OF_RANGE**.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_SOCKET** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_socket_write()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -76,13 +80,11 @@ capacity will fail with **ZX_ERR_OUT_OF_RANGE**.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_socket_create()`]
  - [`zx_socket_read()`]
  - [`zx_socket_set_disposition()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_one()`]: object_wait_one.md

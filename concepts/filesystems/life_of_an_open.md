@@ -14,7 +14,7 @@ Where does that request go?
 
 ## Standard Library: Where 'open' is defined
 
-The ‘open’ call is a function, provided by a [standard library](/concepts/kernel/libc.md). For
+The ‘open’ call is a function, provided by a [standard library](/docs/concepts/kernel/libc.md). For
 C/C++ programs, this will normally be declared in `unistd.h`, which has a
 backing definition in [libfdio](/sdk/lib/fdio/).
 For Go programs, there is an equivalent (but distinct) implementation in the Go
@@ -26,7 +26,7 @@ call, where the kernel might handle path parsing, redirection, etc. In that
 model, the kernel would need to mediate access to resources based on exterior
 knowledge about the caller. The Zircon kernel, however, intentionally has no
 such system call. Instead, clients access filesystems through **channels** --
-when a process is initialized, it is provided a [namespace](/concepts/process/namespaces.md),
+when a process is initialized, it is provided a [namespace](/docs/concepts/process/namespaces.md),
 which is a table of "absolute path" -> "handle" mappings. All paths accessed
 from within a process are opened by directing requests through this namespace
 mapping.
@@ -63,7 +63,7 @@ receive a call to `open` or `write`, they will need to interpret those commands
 differently.
 
 For the purposes of this document, we’ll be focusing on the primary protocol
-used by filesystem clients: [FIDL](/development/languages/fidl/README.md).
+used by filesystem clients: [FIDL](/docs/development/languages/fidl/README.md).
 
 ## FIDL
 
@@ -73,11 +73,11 @@ need to send a request to a remote server to “please open foo”. How can this
 accomplished? The program has the following tools:
 
   * One or more **handles** representing a connection to the CWD
-  * [zx_channel_write](/reference/syscalls/channel_write.md):
+  * [zx_channel_write](/docs/reference/syscalls/channel_write.md):
     A system call that can send bytes and handles (over a channel)
-  * [zx_channel_read](/reference/syscalls/channel_read.md):
+  * [zx_channel_read](/docs/reference/syscalls/channel_read.md):
     A system call that can receive bytes and handles (over a channel)
-  * [zx_object_wait_one](/reference/syscalls/object_wait_one.md):
+  * [zx_object_wait_one](/docs/reference/syscalls/object_wait_one.md):
     A system call that can wait for a handle to be readable / writable
 
 Using these primitives, the client can write a message to the filesystem server
@@ -122,8 +122,15 @@ communication with the “CWD” handle.
 By designing the protocol so FIDL clients provide handles, rather than servers,
 the communication is better suited to pipelining. Access to FIDL objects can be
 asynchronous; requests to the FIDL object can be transmitted before the object
-is actually opened. This behavior is critical for interaction with services
-(which will be described in more detail in the “ServiceFS” section).
+is actually opened. This behavior is critical for interacting with
+[capabilities][glossary.capabilities] hosted by
+[components][glossary.component] - components are (by default) launched lazily,
+when a capability is requested, which is done via an open call. Instead of
+blocking open on the component finishing it's launch procedure and starting to
+serve requests, this model allows the client to begin sending requests
+immediately, which will then be responded to once the component is ready. See
+[life of a protocol open][life-of-a-protocol-open] for more details on how this
+behavior applies to capability routing.
 
 To recap, an “open” call has gone through the standard library, acted on the
 “CWD” fdio object, which transformed the request into a FIDL message, which is
@@ -227,7 +234,7 @@ vnode, and another “/” segment is detected, then the process continues until
 component in a path, or (3) `lookup` finds a **mountpoint vnode**, which is a
 vnode that has an attached “remote” handle. For now, we will ignore mountpoint
 vnodes, although they are discussed in a section on [filesystem
-mounting](/concepts/filesystems/filesystems.md#Mounting).
+mounting](/docs/concepts/filesystems/filesystems.md#Mounting).
 
 Let’s assume `lookup` successfully found the “foo” Vnode. The filesystem server
 will proceed to call the VFS interface “Open”, verifying that the requested
@@ -261,9 +268,9 @@ need to route through the ‘CWD’ on future requests.
 ## Life of an Open: Diagrams
 
 ```
-             +----------------+
-             | Client Program |
-+-----------------------------+
++----------------+
+| Client Program |
++----------------+
 |   fd: x    |   fd: y    |
 | Fdio (FIDL)| Fdio (FIDL)|
 +-------------------------+
@@ -280,14 +287,14 @@ Zircon Channels, speaking FIDL                   State BEFORE open(‘foo’)
 |  I/O State |  I/O State |
 +-------------------------+
 |   Vnode A  |   Vnode B  |
-+------------------------------+
-           | Filesystem Server |
-           +-------------------+
++-------------------------+
+| Filesystem Server |
++-------------------+
 
 
-             +----------------+
-             | Client Program |
-+-----------------------------+
++----------------+
+| Client Program |
++-------------------------+
 |   fd: x    |   fd: y    |
 | Fdio (FIDL)| Fdio (FIDL)|
 +-------------------------+
@@ -304,14 +311,14 @@ Zircon Channels, speaking FIDL                   Client Creates Channel
 |  I/O State |  I/O State |
 +-------------------------+
 |   Vnode A  |   Vnode B  |
-+------------------------------+
-           | Filesystem Server |
-           +-------------------+
++-------------------------+
+| Filesystem Server |
++-------------------+
 
 
-             +----------------+
-             | Client Program |
-+-----------------------------+
++----------------+
+| Client Program |
++-------------------------+
 |   fd: x    |   fd: y    |
 | Fdio (FIDL)| Fdio (FIDL)|
 +-------------------------+--------------+
@@ -328,14 +335,14 @@ Zircon Channels, speaking FIDL                  Client Sends FIDL message to Ser
 |  I/O State |  I/O State |
 +-------------------------+
 |   Vnode A  |   Vnode B  |
-+------------------------------+
-           | Filesystem Server |
-           +-------------------+
++-------------------------+
+| Filesystem Server |
++-------------------+
 
 
-             +----------------+
-             | Client Program |
-+-----------------------------+
++----------------+
+| Client Program |
++-------------------------+
 |   fd: x    |   fd: y    |
 | Fdio (FIDL)| Fdio (FIDL)|
 +-------------------------+--------------+
@@ -353,13 +360,13 @@ Zircon Channels, speaking FIDL                  Server dispatches message to I/O
 +-------------------------+-------------+
 |   Vnode A  |   Vnode B  |   Vnode C   |
 +------------------------------+--------+
-           | Filesystem Server |
-           +-------------------+
+| Filesystem Server |
++-------------------+
 
 
-             +----------------+
-             | Client Program |
-+-----------------------------+
++----------------+
+| Client Program |
++-------------------------+
 |   fd: x    |   fd: y    |
 | Fdio (FIDL)| Fdio (FIDL)|
 +-------------------------+--------------+
@@ -377,12 +384,12 @@ Zircon Channels, FIDL         |                   Server allocates I/O state for
 +-------------------------+--------------+
 |   Vnode A  |   Vnode B  |    Vnode C   |
 +------------------------------+---------+
-           | Filesystem Server |
-           +-------------------+
+| Filesystem Server |
++-------------------+
 
 
-             +----------------+
-             | Client Program |
++----------------+
+| Client Program |
 +-----------------------------+----------+
 |   fd: x    |   fd: y    |    fd: z     |
 | Fdio (FIDL)| Fdio (FIDL)|  Fdio (FIDL) |
@@ -401,6 +408,10 @@ Zircon Channels, speaking FIDL |                  Client recognizes that ‘foo�
 +-------------------------+--------------+
 |   Vnode A  |   Vnode B  |    Vnode C   |
 +------------------------------+---------+
-           | Filesystem Server |
-           +-------------------+
+| Filesystem Server |
++-------------------+
 ```
+
+[glossary.component]: /docs/glossary/README.md#component
+[glossary.capabilities]: /docs/glossary/README.md#capability
+[life-of-a-protocol-open]: /docs/concepts/components/v2/capabilities/life_of_a_protocol_open.md

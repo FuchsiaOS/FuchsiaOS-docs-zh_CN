@@ -3,16 +3,13 @@
 This guide details the process for running the Rust compiler test suite on an
 emulated Fuchsia image.
 
-Note: The full compiler test suite does not currently pass on Fuchsia (
-[tracking issue](https://fxbug.dev/96554)).
-
 ## Prerequisites
 
 Before running the Rust test suite on Fuchsia, you'll need to
 [build a custom Rust toolchain for Fuchsia]. Building a Fuchsia image is not
 required for running the test suite.
 
-[build a custom Rust toolchain for Fuchsia]: /development/build/rust_toolchain.md
+[build a custom Rust toolchain for Fuchsia]: /docs/development/build/rust_toolchain.md
 
 ## Running the Rust test suite
 
@@ -34,7 +31,7 @@ required for running the test suite.
 
    ```posix-terminal
    DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
-   TEST_TOOLCHAIN=$DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/test_toolchain.py
+   TEST_TOOLCHAIN={{ '<var>' }}RUST_SRC{{ '</var>' }}/src/ci/docker/scripts/fuchsia-test-runner.py
 
    python3 $TEST_TOOLCHAIN start \
      --rust $DEV_ROOT/rust/install/fuchsia-rust \
@@ -50,19 +47,31 @@ required for running the test suite.
 
    ```posix-terminal
    DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
-   TEST_TOOLCHAIN=$DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/test_toolchain.py
+   TEST_TOOLCHAIN={{ '<var>' }}RUST_SRC{{ '</var>' }}/src/ci/docker/scripts/fuchsia-test-runner.py
 
    ( \
      source $DEV_ROOT/rust/fuchsia-env.sh && \
      $DEV_ROOT/rust/x.py \
-       --config $DEV_ROOT/rust/fuchsia-config.toml --stage=2 \
+       --config $DEV_ROOT/rust/fuchsia-config.toml \
+       --stage=2 \
        test {{ '<var>' }}TEST_SUITE{{ '</var>' }} \
        --target {{ '<var>' }}x86_64|aarch64{{ '</var>' }}-fuchsia \
-       --run=always --jobs 1 --test-args "--target-panic=abort
-       --remote-test-client $TEST_TOOLCHAIN" \
-       --rustc-args "-C panic=abort -Zpanic_abort_tests
-       -L $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/sysroot/lib
-       -L $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/lib" \
+       --run=always \
+       --jobs 1 \
+       --test-args --target-rustcflags \
+       --test-args -L \
+       --test-args --target-rustcflags \
+       --test-args $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/sysroot/lib \
+       --test-args --target-rustcflags \
+       --test-args -L \
+       --test-args --target-rustcflags \
+       --test-args $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/lib \
+       --test-args --target-rustcflags \
+       --test-args -Cpanic=abort \
+       --test-args --target-rustcflags \
+       --test-args -Zpanic_abort_tests \
+       --test-args --remote-test-client  \
+       --test-args $TEST_TOOLCHAIN \
    )
    ```
 
@@ -72,7 +81,7 @@ required for running the test suite.
 
    ```posix-terminal
    DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
-   TEST_TOOLCHAIN=$DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/test_toolchain.py
+   TEST_TOOLCHAIN={{ '<var>' }}RUST_SRC{{ '</var>' }}src/ci/docker/scripts/fuchsia-test-runner.py
 
    python3 $TEST_TOOLCHAIN stop
    ```
@@ -81,7 +90,7 @@ required for running the test suite.
 
 Running the test suite produces many logs and other artifacts to aid in
 investigating failing test suite tests. These can be dumped to standard output
-during `test_toolchain.py stop` if the `--verbose` flag was used to start the
+during `fuchsia-test-runner.py stop` if the `--verbose` flag was used to start the
 testing environment.
 
 Note: These files are cleaned up by default when running the `stop` command. You
@@ -115,35 +124,55 @@ environments.
 
    ```posix-terminal
    DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
-   TEST_TOOLCHAIN=$DEV_ROOT/infra/fuchsia/recipes/recipes/contrib/rust_toolchain.resources/test_toolchain.py
+   TEST_TOOLCHAIN={{ '<var>' }}RUST_SRC{{ '</var>' }}/src/ci/docker/scripts/fuchsia-test-runner.py
 
    python3 $TEST_TOOLCHAIN debug \
      --rust-src {{ '<var>' }}RUST_SRC{{ '</var>' }} \
      --test {{ '<var>' }}TEST_PATH{{ '</var>' }}
    ```
 
+   Note: If you have the Fuchsia source available, you can additionally pass
+   `--fuchsia-src` with the Fuchsia source path and `zxdb` will include source
+   for zircon and Fuchsia.
+
    Then set any relevant breakpoints and run the test with:
+
+   ```posix-terminal
+   DEV_ROOT={{ '<var>' }}DEV_ROOT{{ '</var>' }}
+   TEST_TOOLCHAIN={{ '<var>' }}RUST_SRC{{ '</var>' }}/src/ci/docker/scripts/fuchsia-test-runner.py
 
    ( \
      source $DEV_ROOT/rust/fuchsia-env.sh && \
      $DEV_ROOT/rust/x.py \
-       --config $DEV_ROOT/rust/fuchsia-config.toml --stage=2 \
+       --config $DEV_ROOT/rust/fuchsia-config.toml \
+       --stage=2 \
        test {{ '<var>' }}TEST_SUITE{{ '</var>' }} \
        --target {{ '<var>' }}x86_64|aarch64{{ '</var>' }}-fuchsia \
-       --run=always --jobs 1 --test-args "--target-panic=abort
-       --remote-test-client $TEST_TOOLCHAIN" --rustc-args "-C debuginfo=2
-       -C opt-level=0 -C panic=abort -Zpanic_abort_tests
-       -L $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/sysroot/lib
-       -L $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/lib" \
+       --run=always \
+       --jobs 1 \
+       --test-args --target-rustcflags \
+       --test-args -L \
+       --test-args --target-rustcflags \
+       --test-args $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/sysroot/lib \
+       --test-args --target-rustcflags \
+       --test-args -L \
+       --test-args --target-rustcflags \
+       --test-args $DEV_ROOT/sdk/arch/{{ '<var>' }}x64|a64{{ '</var>' }}/lib \
+       --test-args --target-rustcflags \
+       --test-args -Cpanic=abort \
+       --test-args --target-rustcflags \
+       --test-args -Zpanic_abort_tests \
+       --test-args --remote-test-client  \
+       --test-args $TEST_TOOLCHAIN \
+       --rustc-args -Cdebuginfo=2 \
+       --rustc-args -Copt-level=0 \
+       --rustc-args  -Cstrip=none \
    )
+   ```
 
-   and `zxdb` will catch any crashes and break at any breakpoints you define.
+   And `zxdb` will catch any crashes and break at any breakpoints you define.
    This command is the same as the one above with the additional
    `-C debuginfo=2 -C opt-level=0` flags for debugging.
-
-   Note: If you have the Fuchsia source available, you can additionally pass
-   `--fuchsia-src` with the Fuchsia source path and `zxdb` will include source
-   for zircon and Fuchsia.
 
 ### Tips
 

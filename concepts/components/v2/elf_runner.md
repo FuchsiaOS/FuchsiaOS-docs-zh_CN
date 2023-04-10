@@ -1,7 +1,5 @@
 # ELF Runner
 
-<<../_v2_banner.md>>
-
 The ELF runner is the runner responsible for launching
 [components][glossary.component] based on standard executable files (ELF
 format). It is a built-in runner and is available to all components.
@@ -41,7 +39,7 @@ The arguments set will be passed in the same order as declared in the manifest.
     program: {
         runner: "elf",
         binary: "bin/foo",
-        args: ["--verbose", "--debug"]
+        {{ '<strong>' }}args: ["--verbose", "--debug"]{{ '</strong>' }}
     }
 }
 ```
@@ -49,9 +47,8 @@ The arguments set will be passed in the same order as declared in the manifest.
 ### Forwarding stdout and stderr streams
 
 The stdout and stderr streams of ELF components can be routed to the
-[LogSink service][logsink]. By default, the ELF runner doesn't route these
-streams to any output sink. Therefore, any write to these streams, such as
-`printf`, is lost and can be considered a no-op. If your component prints
+[LogSink service][logsink]. By default, the ELF runner only forwards these
+streams if LogSink is available to the component. If your component prints
 diagnostics messages to either of these streams, you should forward the streams
 to the [LogSink service][logsink].
 
@@ -59,7 +56,7 @@ To enable this feature, add the following to your manifest file:
 
 ```json5
 {
-    include: [ "syslog/elf_stdio.shard.cml" ],
+    include: [ "syslog/client.shard.cml" ],
 }
 ```
 
@@ -68,12 +65,21 @@ and all writes to stderr are logged as `WARN` messages. Messages are split
 by newlines and decoded as UTF-8 strings. Invalid byte sequences are converted
 to the U+FFFD replacement character, which usually looks like `�`.
 
+Whether or not the syslog shard is included, this feature can be disabled with
+explicit flags:
+
+```json5
+    program: {
+        runner: "elf",
+        binary: "bin/foo",
+        {{ '<strong>' }}forward_stdout_to: "none",{{ '</strong>' }}
+        {{ '<strong>' }}forward_stderr_to: "none",{{ '</strong>' }}
+    }
+```
+
 Note: There are known issues where messages from `ZX_ASSERT_...` in C/C++
-components and `Error` objects returned in `main` in Rust components are lost.
-To prevent issues where messages are lost from `ZX_ASSERT_...` in C/C++
-components and `Error` objects returned from `main` in Rust components it is
-recommended that component authors include the aforementioned shard in their
-manifest.
+components and `Error` objects returned in `main` in Rust components are lost
+when stdout/stderr forwarding is disabled.
 
 ### Lifecycle
 
@@ -86,7 +92,7 @@ manifest. Currently `stop` is the only method in the Lifecycle protocol.
     program: {
         runner: "elf",
         binary: "bin/foo",
-        lifecycle: { stop_event: "notify" },
+        {{ '<strong>' }}lifecycle: { stop_event: "notify" },{{ '</strong>' }}
     }
 }
 ```
@@ -119,15 +125,43 @@ cause component manager (and all components) to be terminated if the process
 exits with a non-zero code. This will force the system to trigger a hard reboot.
 
 #### Ambient VMO Exec
+
 The `ambient_mark_vmo_exec` field may be used to allow the component's first
 process to use [`zx_vmo_replace_as_executable`][vmo-replace] with a
 `ZX_HANDLE_INVALID` as the second argument rather than a valid
-`ZX_RSRC_KIND_VMEX`.
+`ZX_RSRC_KIND_SYSTEM` with base `ZX_RSRC_SYSTEM_VMEX_BASE`.
 
 #### Create Raw Processes
 
-The `create_raw_processes` field may be used to allow a component to create
-processes by using [`zx_process_create`][process-create].
+The `job_policy_create_raw_processes` field may be used to allow a component to
+create processes by using [`zx_process_create`][process-create].
+
+```json5
+{
+    program: {
+        runner: "elf",
+        binary: "bin/foo",
+        {{ '<strong>' }}job_policy_create_raw_processes: "true"{{ '</strong>' }}
+    }
+}
+```
+
+#### Is Shared Process
+
+The `is_shared_process` field may be used to pass the `ZX_PROCESS_SHARED` flag
+when calling [`zx_process_create`][process-create]. This flag can only be used
+if the component also has `job_policy_create_raw_processes` set to `true`.
+
+```json5
+{
+    program: {
+        runner: "elf",
+        binary: "bin/foo",
+        job_policy_create_raw_processes: "true",
+        {{ '<strong>' }}is_shared_process: "true"{{ '</strong>' }}
+    }
+}
+```
 
 ## Further Reading
 
@@ -147,28 +181,27 @@ and `red`.
     program: {
         runner: "elf",
         binary: "bin/echo",
-        environ: [
-            "FAVORITE_ANIMAL=cat",
-            "FAVORITE_COLOR=red",
-        ]
+        {{ '<strong>' }}environ: [{{ '</strong>' }}
+            {{ '<strong>' }}"FAVORITE_ANIMAL=cat",{{ '</strong>' }}
+            {{ '<strong>' }}"FAVORITE_COLOR=red",{{ '</strong>' }}
+        {{ '<strong>' }}]{{ '</strong>' }}
     }
 }
 ```
 
-[glossary.component]: /glossary/README.md#component
+[glossary.component]: /docs/glossary/README.md#component
 [capability-routing]: capabilities/README.md#routing
 [cml-shards]: https://fuchsia.dev/reference/cml#include
 [lc-example]: /examples/components/lifecycle
 [lc-proto]: /sdk/fidl/fuchsia.process.lifecycle/lifecycle.fidl
 [lifecycle]: lifecycle.md
-[program-loading]: /concepts/process/program_loading.md
-[job-set-critical]: /reference/syscalls/job_set_critical.md
-[job-set-policy]: /reference/syscalls/job_set_policy.md
-[process-create]: /reference/syscalls/process_create.md
-[vmo-replace]: /reference/syscalls/vmo_replace_as_executable.md
+[program-loading]: /docs/concepts/process/program_loading.md
+[job-set-critical]: /docs/reference/syscalls/job_set_critical.md
+[job-set-policy]: /docs/reference/syscalls/job_set_policy.md
+[process-create]: /docs/reference/syscalls/process_create.md
+[vmo-replace]: /docs/reference/syscalls/vmo_replace_as_executable.md
 [fxb-72178]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=72178
 [fxb-72764]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=72764
-[logsink]: /development/diagnostics/logs/recording.md#logsinksyslog
+[logsink]: /docs/development/diagnostics/logs/recording.md#logsinksyslog
 [security-allowlist]: /src/security/policy/component_manager_policy.json5
-<!-- TODO: the component manifest link describes v1 manifests -->
-[glossary-component-manifests]: /glossary/README.md#component-manifest
+[glossary-component-manifests]: /docs/glossary/README.md#component-manifest

@@ -15,7 +15,7 @@ on a Fuchsia device.
 
 <<../_common/_start_femu.md>>
 
-### Register a new package server
+### Examine the system packages
 
 List the package repositories configured in your package server:
 
@@ -29,41 +29,20 @@ This command prints output similar to the following:
 +--------------------------+------+-----------------------------------------------+
 | NAME                     | TYPE | EXTRA                                         |
 +==========================+======+===============================================+
-| fuchsiasamples.com       | pm   | /home/alice/.package_repos/sdk-samples        |
-+--------------------------+------+-----------------------------------------------+
-| workstation.qemu-x64     | pm   | /home/alice/.local/share/Fuchsia/.../packages |
+| workstation-packages     | pm   | /home/alice/.local/share/Fuchsia/.../packages |
 +--------------------------+------+-----------------------------------------------+
 ```
 
-The `workstation.qemu-x64` repository is created when you run the
+The `workstation-packages` repository is created when you run the
 `ffx product-bundle get` command (previously in "Get started with the Fuchsia SDK"
 quickstart guide). This repository contains additional system packages for the
-`workstation.qemu-x64` prebuilt image.
-
-Start a local package server instance to begin serving these packages:
-
-```posix-terminal
-ffx repository server start
-```
-
-```none {:.devsite-disable-click-to-copy}
-server is listening on [::]:8083
-```
-
-Configure the emulator to resolve package URLs for `fuchsia.com` from the local
-package server:
-
-```posix-terminal
-ffx target repository register -r workstation.qemu-x64 --alias fuchsia.com
-```
-
-### Examine the package server
+`workstation_eng.qemu-x64` prebuilt image.
 
 With the local package server running, you can explore the list of packages that
 are available in the repository:
 
 ```posix-terminal
-ffx repository package list -r workstation.qemu-x64
+ffx repository package list -r workstation-packages
 ```
 
 This command prints additional details about each package in the repository,
@@ -192,4 +171,4 @@ In the next module, you'll learn more about building Fuchsia's fundamental unit
 of software:
 
 <a class="button button-primary"
-    href="/get-started/sdk/learn/components">Fuchsia components</a>
+    href="/docs/get-started/sdk/learn/components">Fuchsia components</a>

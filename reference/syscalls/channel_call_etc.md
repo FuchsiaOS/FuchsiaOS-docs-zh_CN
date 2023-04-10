@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_channel_call_etc
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Send a message to a channel and await a reply.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_channel_call_etc(zx_handle_t handle,
                                 uint32_t* actual_handles);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_channel_call_etc()` writes a request to a channel and blocks until it
 receives a response. It is an extension of [`zx_channel_call()`] that
@@ -75,21 +82,19 @@ it may only be `NULL` if `capacity` is zero. `reserved` must be set to zero.
 Either all `zx_channel_iovec_t` are copied and the message is sent, or none
 are copied and the message is not sent. Usage for sending handles is unchanged.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_READ** and have **ZX_RIGHT_WRITE**.
 
 All wr_handles of *args* must have **ZX_RIGHT_TRANSFER**.
 
-## RETURN VALUE
+## Return value
 
 `zx_channel_call_etc()` returns **ZX_OK** on success and the number of bytes and
 count of handles in the reply message are returned via *actual_bytes* and
 *actual_handles*, respectively.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle, any element in
 *handles* is not a valid handle, or there are duplicates among the handles
@@ -134,8 +139,6 @@ to contain the reply message.
 
 **ZX_ERR_NOT_SUPPORTED**  one of the handles in *handles* was *handle*
 (the handle to the channel being written to).
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_call()`]: channel_call.md
 [`zx_channel_create()`]: channel_create.md

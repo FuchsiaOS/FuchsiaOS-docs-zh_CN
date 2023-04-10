@@ -1,4 +1,4 @@
-> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/concepts/ui/index.md).
+> **_ATTENTION:_** This document describes the behavior of Scenic's GFX API which is currently being replaced by the [Flatland API](/docs/concepts/ui/scenic/flatland/index.md). Workstation currently uses Flatland only, and Smart Display will be converted to use Flatland as well. If working with Flatland, please refer to the [Flatland documentation](/docs/concepts/ui/index.md).
 
 # Frame Scheduling
 
@@ -51,12 +51,12 @@ Vsync interval independent way.
 
 #### Major Vsync disruptions {#major-vsync-disruptions}
 
-Another problem is a Vsync occuring milliseconds after it was supposed to,
+Another problem is a Vsync occurring milliseconds after it was supposed to,
 with the following Vsync resuming the previously established pattern.
 
 Assume the display has a 60Hz refresh rate. You can then expect Vsyncs to
 occur at times 0ms, 16.7ms, 33.3ms, 50ms and so on. On some hardware, a Vsync
-can be delayed. This might lead to Vsyncs occuring at times 0ms, **22ms**,
+can be delayed. This might lead to Vsyncs occurring at times 0ms, **22ms**,
 33.3ms, 50ms and so on.
 
 This issue happens sporadically and without warning, so there is no way to
@@ -93,7 +93,7 @@ examples assume that clients using the API have listeners registered for the
 that `session` is an initialized Scenic
 [Session](/sdk/fidl/fuchsia.ui.scenic/session.fidl)
 channel. For examples of how to set up scenic, see
-[Scenic examples](/concepts/ui/scenic/index.md#examples-of-using-scenic).
+[Scenic examples](/docs/concepts/ui/scenic/index.md#examples-of-using-scenic).
 
 ### Example 1 {#example1}
 
@@ -311,4 +311,4 @@ void OnFramePresented(FramePresentedInfo info) {
 
 ```
 
-[scenic]: /concepts/ui/scenic/index.md
+[scenic]: /docs/concepts/ui/scenic/index.md

@@ -16,7 +16,7 @@ However, Fuchsia's current customers are fundamentally 2D products. This led to 
 Scenic's 3D scene representation and the 2D representation experienced by the user. Fuchsia decided
 that Gfx API is no longer suitable for the demands being placed on Scenic, both from a product
 standpoint and a performance standpoint. See
-[Flatland roadmap entry](/contribute/roadmap/2021/flatland.md) for details on this decision.
+[Flatland roadmap entry](/docs/contribute/roadmap/2021/flatland.md) for details on this decision.
 All of Fuchsia's graphics clients are [being migrated](http://fxbug.dev/93979) to Flatland API.
 
 ## Design
@@ -57,7 +57,7 @@ Here are some high level design decisions made around Flatland API:
 
 The main protocol for creating and submitting a 2D scene graph. Connecting to Flatland protocol does
 not mean the submitted content can reach display. Flatland instance is still expected to connect to
-the global [View Tree](/concepts/ui/scenic/view_tree.md) by creating its own View.
+the global [View Tree](/docs/concepts/ui/scenic/views.md) by creating its own View.
 
 ### ViewBoundProtocols
 

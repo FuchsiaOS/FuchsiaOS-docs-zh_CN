@@ -45,9 +45,8 @@ the start of the lexeme that is currently being worked on. Each time the `Lex()`
 the `current_` pointer is advanced until a complete lexeme has been traversed. Then, a `Token` is
 constructed using the data in between the two pointers.
 
-The lexer also keeps track of a third `previous_end_` pointer so it can get the data between
-lexemes (generally whitespace) when it constructs the `Token`. This example shows of how the
-pointers change during a call to `Lex()` on the short FIDL snippet `const bool flag = true;`:
+This example shows of how the pointers change during a call to `Lex()` on the short FIDL snippet
+`const bool flag = true;`:
 
 Initial state after lexing the `const` keyword:
 
@@ -55,7 +54,6 @@ Initial state after lexing the `const` keyword:
  const bool flag = true;
       ^current_
       ^token_start_
-      ^previous_end_
 ```
 
 Whitespaces are skipped until the next lexeme:
@@ -64,7 +62,6 @@ Whitespaces are skipped until the next lexeme:
 const bool flag = true;
       ^current_
       ^token_start_
-     ^previous_end_
 ```
 
 The `current_` pointer is updated until the end of the lexeme:
@@ -73,11 +70,9 @@ The `current_` pointer is updated until the end of the lexeme:
 const bool flag = true;
           ^current_
       ^token_start_
-     ^previous_end_
 ```
 
-At this point, the next `Token` that gets returned is ready to be constructed. A `Token` is created
-with its `previous_end_` argument set to the data between `previous_end_` and `token_start_`. The
+At this point, the next `Token` that gets returned is ready to be constructed. The
 `location_` is set to the data between `token_start_` and `current_`. The kind is set to
 `Identifier`. Before returning, the pointers are reset and end up in a state similar to the initial
 state. This process can then be repeated for the next token:
@@ -86,7 +81,6 @@ state. This process can then be repeated for the next token:
  const bool flag = true;
            ^current_
            ^token_start_
-           ^previous_end_
 ```
 
 Internally the two pointers are manipulated with these main methods:
@@ -362,8 +356,6 @@ A token is essentially a lexeme (in the form of a [`SourceLocation`](#sourceloca
 `location_` attribute), enhanced with two other pieces information that are useful to the parser
 during the later stages of compilation:
 
-* `previous_end_`. A `SourceLocation`, which starts at the end of the previous token and ends at the
-   start of this token. It contains data that is uninteresting to the parser such as whitespace.
 *  A kind and subkind that, together, classify the lexeme. The possible kinds are:
    * The special characters such as `Kind::LeftParen`, `Kind::Dot`, `Kind::Comma`, etc...
    * String and numeric constants
@@ -425,11 +417,11 @@ anonymous [`Name`](#name)s.
 
 <!-- xrefs -->
 [internal]: ///sdk/lib/fidl_base/include/lib/fidl/internal.h
-[layout-attr]: /reference/fidl/language/attributes.md#layout_layout
+[layout-attr]: /docs/reference/fidl/language/attributes.md#layout_layout
 [fidlgen_dart]: /tools/fidl/fidlgen_dart
 [fidlgen_go]: /tools/fidl/fidlgen_go
 [fidlgen_hlcpp]: /tools/fidl/fidlgen_hlcpp
 [fidlgen_cpp]: /tools/fidl/fidlgen_cpp
 [fidlgen_rust]: /tools/fidl/fidlgen_rust
-[schema]: /reference/fidl/language/json-ir.md
+[schema]: /docs/reference/fidl/language/json-ir.md
 [coding-readme]: /src/lib/fidl/c/walker_tests/README.md

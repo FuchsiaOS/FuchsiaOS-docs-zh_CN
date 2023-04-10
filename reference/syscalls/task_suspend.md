@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_task_suspend
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Suspend the given task. Currently only thread or process handles may be suspended.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Suspend the given task. Currently only thread or process handles may be suspende
 zx_status_t zx_task_suspend(zx_handle_t handle, zx_handle_t* token);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_task_suspend()` causes the requested task to suspend
 execution. Task suspension is not synchronous and the task might not
@@ -59,18 +66,16 @@ before executing any code.
 The **ZX_EXCP_PROCESS_STARTING** and **ZX_EXCP_THREAD_STARTING** debug
 exceptions will also be sent on start whether the task is suspended or not.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_THREAD** or **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_task_suspend()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is not a valid handle.
 
@@ -88,8 +93,6 @@ In the event of failure, a negative error value is returned.
 ## LIMITATIONS
 
 Currently only thread and process handles are supported.
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_process_start()`]: process_start.md

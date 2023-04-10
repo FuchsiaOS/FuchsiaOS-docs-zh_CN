@@ -95,6 +95,26 @@ Other properties can be modified via the "get" and "set" commands.
 [zxdb] bp 1 set location = Frobulator::GetThing
 ```
 
+### Conditional breakpoints
+
+A breakpoint can optionally have a condition, which is an expression that evaluates to either true
+or false. The breakpoint will not trigger a stop unless the condition is true. For example, given
+a source file
+
+```none {:.devsite-disable-click-to-copy}
+    7 void do_loop(int n) {
+    8   for (int i = 0; i < n; i++) {
+ ▶  9     std::cout << "Hello world!" << std::endl;
+   10   }
+   11 }
+```
+
+It's possible to set a breakpoint that only stops on the last iteration.
+
+```none {:.devsite-disable-click-to-copy}
+b 9 if i == n - 1
+```
+
 ### Hardware data breakpoints ("watchpoints")
 
 The processor can be set to break execution when it reads or writes certain addresses. This can be

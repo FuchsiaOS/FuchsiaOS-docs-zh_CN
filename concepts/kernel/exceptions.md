@@ -17,7 +17,7 @@ intercept crashes, [signals](signals.md) may be a better choice.
 Exceptions are handled from userspace by creating an exception channel on a
 task (thread, process, or job) with the [`zx_task_create_exception_channel()`]
 system call. The created handle is a standard Zircon
-[channel](/reference/kernel_objects/channel.md), but is created read-only so can only be used
+[channel](/docs/reference/kernel_objects/channel.md), but is created read-only so can only be used
 for receiving exception messages.
 
 When an exception occurs, the thread is paused and a message containing a
@@ -107,7 +107,7 @@ At a high level there are two types of exceptions: architectural and synthetic.
 Architectural exceptions are things like a segfault (e.g., dereferencing the
 NULL pointer) or executing an undefined instruction. Synthetic exceptions are
 things like thread start/stop notifications or
-[policy violations](/reference/syscalls/job_set_policy.md).
+[policy violations](/docs/reference/syscalls/job_set_policy.md).
 
 Architectural and policy exceptions are considered fatal, and will cause the
 process to be killed if they are unhandled. Debugger-only exceptions - thread
@@ -126,21 +126,21 @@ whether the `ZX_EXCEPTION_CHANNEL_DEBUGGER` flag is passed to
 [`zx_task_create_exception_channel()`]. The table below summarizes the
 differences between the various channel types:
 
-Channel Type  | `get_thread` | `get_process` | Architectural & Policy Exceptions | Thread Start/Stop Exceptions | Process Start Exception
-------------- | :----------: | :-----------: | :-------------------------------: | :--------------------------: | :---------------------:
-Thread        | X            |               | X                                 |                              |
-Process       | X            | X             | X                                 |                              |
-Process Debug | X            | X             | X                                 | X                            |
-Job           | X            | X             | X                                 |                              |
-Job Debug     | X            | X             |                                   |                              | X
+Channel Type     | `get_thread` | `get_process` | Architectural & Policy Exceptions | Thread Start/Stop Exceptions | Process Start Exception
+---------------- | :----------: | :-----------: | :-------------------------------: | :--------------------------: | :---------------------:
+Thread           | X            |               | X                                 |                              |
+Process          | X            | X             | X                                 |                              |
+Process Debugger | X            | X             | X                                 | X                            |
+Job              | X            | X             | X                                 |                              |
+Job Debugger     | X            | X             |                                   |                              | X
 
 The channel type also determines the order in which exception channels will be
 given the chance to handle an exception:
 
-1. process debug
+1. process debugger
 2. thread
 3. process
-4. process debug (optionally, if the exception is [`'second-chance'`](#process-debugger-first-and-possibly-again-later))
+4. process debugger (optionally, if the exception is [`'second-chance'`](#process-debugger-first-and-possibly-again-later))
 5. job (parent job -> grandparent job -> etc)
 
 If there are no remaining exception channels to try, the kernel terminates the
@@ -155,12 +155,18 @@ will succeed.
 
 ### `ZX_EXCP_PROCESS_STARTING` and Job Debugger Channels
 
-The `ZX_EXCP_PROCESS_STARTING` behaves differently than other exceptions.
-It is only sent to job debugger exception channels, and is only sent to the
-first found handler, essentially assuming `ZX_EXCEPTION_STATE_HANDLED`
-regardless of actual handler behavior. This is also the only exception that
-job debugger channels receive, making them a special-case handler for just
-detecting new processes.
+The `ZX_EXCP_PROCESS_STARTING` behaves differently than other exceptions. It is
+only sent to job debugger exception channels, and is always sent to all found
+handlers, essentially assuming `ZX_EXCEPTION_STATE_TRY_NEXT` regardless of the
+actual handler behavior. This is also the only exception that job debugger
+channels receive, making them a special-case handler for just detecting new
+processes.
+
+Since job debugger channels are considered as "read-only", multiple job debugger
+channels (up to `ZX_EXCEPTION_CHANNEL_JOB_DEBUGGER_MAX_COUNT`) may be created on
+a single job. When multiple debug channels are created on one job, a
+`ZX_EXCP_PROCESS_STARTING` event will be sent to all channels sequentially, with
+the earlier created channels being notified before the later created channels.
 
 ### Process Debugger First... and Possibly Again Later
 
@@ -325,11 +331,11 @@ Zircon code that uses exceptions can be viewed for further examples, including:
 - [`zx_object_set_property()`]
 - [`zx_port_wait()`]
 
-[`zx_exception_get_process()`]: /reference/syscalls/exception_get_process.md
-[`zx_exception_get_thread()`]: /reference/syscalls/exception_get_thread.md
-[`zx_object_get_info()`]: /reference/syscalls/object_get_info.md
-[`zx_object_set_property()`]: /reference/syscalls/object_set_property.md
-[`zx_object_wait_async()`]: /reference/syscalls/object_wait_async.md
-[`zx_port_wait()`]: /reference/syscalls/port_wait.md
-[`zx_task_create_exception_channel()`]: /reference/syscalls/task_create_exception_channel.md
-[`zx_task_kill()`]: /reference/syscalls/task_kill.md
+[`zx_exception_get_process()`]: /docs/reference/syscalls/exception_get_process.md
+[`zx_exception_get_thread()`]: /docs/reference/syscalls/exception_get_thread.md
+[`zx_object_get_info()`]: /docs/reference/syscalls/object_get_info.md
+[`zx_object_set_property()`]: /docs/reference/syscalls/object_set_property.md
+[`zx_object_wait_async()`]: /docs/reference/syscalls/object_wait_async.md
+[`zx_port_wait()`]: /docs/reference/syscalls/port_wait.md
+[`zx_task_create_exception_channel()`]: /docs/reference/syscalls/task_create_exception_channel.md
+[`zx_task_kill()`]: /docs/reference/syscalls/task_kill.md

@@ -1,6 +1,6 @@
 # Debug the kernel using QEMU
 
-Zircon can [run under emulation](/development/debugging/qemu.md)
+Zircon can [run under emulation](/docs/development/debugging/qemu.md)
 using QEMU. QEMU can either be installed via prebuilt binaries, or built
 locally.
 
@@ -309,4 +309,4 @@ directory and anyone should be able to restore your state and start to poke
 at stuff from the QEMU console.
 
 
-[minfs-create-image]: /zircon/minfs.md#Host-Device-QEMU-Only
+[minfs-create-image]: /docs/zircon/minfs.md#Host-Device-QEMU-Only

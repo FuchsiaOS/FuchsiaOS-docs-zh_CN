@@ -13,8 +13,7 @@ Unlike more common monolithic kernels, Fuchsia’s filesystems live entirely
 within userspace. They are not linked nor loaded with the kernel; they are
 simply userspace processes that implement servers that can appear as
 filesystems. As a consequence, Fuchsia’s filesystems themselves can be changed
-with ease -- modifications don’t require recompiling the kernel. In fact,
-updating to a new Fuchsia filesystem can be done without rebooting.
+with ease -- modifications don’t require recompiling the kernel.
 
 ![Filesystem block diagram](images/filesystem.svg "filesystem")
 
@@ -39,8 +38,9 @@ the following interface:
 
 As a benefit of this interface, any resources accessible via a channel can make
 themselves appear like filesystems by implementing the expected protocols for
-files or directories. For example, “serviceFS” (discussed in more detail later
-in this document) allows for service discovery through a filesystem interface.
+files or directories. For example, components serve their
+[outgoing directory][glossary.outgoing-directory], which contains their
+[capabilities][capabilities-overview], in a filesystem-like structure.
 
 ## File Lifecycle
 
@@ -55,18 +55,18 @@ VFS layer, Fuchsia processes send requests to filesystem services which
 implement protocols for Files, Directories, and Devices. To send one of these
 open requests, a Fuchsia process must transmit an RPC message over an existing
 handle to a directory; for more detail on this process, refer to the [life of an
-open document](/concepts/filesystems/life_of_an_open.md).
+open document](/docs/concepts/filesystems/life_of_an_open.md).
 
 ### Namespaces
 
-On Fuchsia, a [namespace](/concepts/process/namespaces.md) is a small filesystem that exists
+On Fuchsia, a [namespace](/docs/concepts/process/namespaces.md) is a small filesystem that exists
 entirely within the client. At the most basic level, the idea of the client
 saving “/” as root and associating a handle with it is a very primitive
 namespace. Instead of a typical singular "global" filesystem namespace, Fuchsia
 processes can be provided an arbitrary directory handle to represent "root",
 limiting the scope of their namespace. In order to limit this scope, Fuchsia
 filesystems [intentionally do not allow access to parent directories via
-dotdot](/concepts/filesystems/dotdot.md).
+dotdot](/docs/concepts/filesystems/dotdot.md).
 
 Fuchsia processes may additionally redirect certain path operations to separate
 filesystem servers. When a client refers to “/bin”, the client may opt to
@@ -74,7 +74,7 @@ redirect these requests to a local handle representing the “/bin” directory,
 rather than sending a request directly to the “bin” directory within the “root”
 directory. Namespaces, like all filesystem constructs, are not visible from the
 kernel: rather, they are implemented in client-side runtimes (such as
-[libfdio](/concepts/filesystems/life_of_an_open.md#Fdio)) and are interposed between most client code
+[libfdio](/docs/concepts/filesystems/life_of_an_open.md#Fdio)) and are interposed between most client code
 and the handles to remote filesystems.
 
 Since namespaces operate on handles, and most Fuchsia resources and services
@@ -89,7 +89,7 @@ according to application-launching policy.
 
 For more detail the mechanisms and policies applied to restricting process
 capability, refer to the documentation on
-[sandboxing](/concepts/process/sandboxing.md).
+[sandboxing](/docs/concepts/process/sandboxing.md).
 
 ### Passing Data
 
@@ -213,8 +213,8 @@ filesystems to a namespace from the command line.
 
 [Blobfs](/src/storage/bin/blobfs/)
 is a simple, flat filesystem optimized for “write-once, then read-only” [signed
-data](/concepts/packages/merkleroot.md), such as
-[packages](/concepts/packages/package.md).
+data](/docs/concepts/packages/merkleroot.md), such as
+[packages](/docs/concepts/packages/package.md).
 Other than two small prerequisites (file names, which are deterministic, content
 addressable hashes of a file’s Merkle Tree root, for integrity-verification)
 and forward knowledge of file size (identified to Blobfs by a call to
@@ -222,14 +222,6 @@ and forward knowledge of file size (identified to Blobfs by a call to
 typical filesystem. It can be mounted and unmounted, it appears to contain a
 single flat directory of hashes, and blobs can be accessed by operations like
 “open”, “read”, “stat” and “mmap”.
-
-### ThinFS: A FAT filesystem written in Go
-
-[ThinFS](/src/lib/thinfs/) is an implementation of a
-FAT filesystem in Go. It serves a dual purpose: first, proving that our system
-is actually modular, and capable of using novel filesystems, regardless of
-language or runtime. Secondly, it provides a mechanism for reading a universal
-filesystem, found on EFI partitions and many USB sticks.
 
 ### FVM
 
@@ -292,9 +284,12 @@ The slice allocation table is made up of tightly packed slice entries
 
 FVM library can be found
 [here](/src/storage/fvm/). During
-[paving](/development/build/fx.md#what-is-paving),
+[paving](/docs/development/build/fx.md#what-is-paving),
 some partitions are copied from host to target. So the partitions and FVM
 file itself may be created on host. To do this there is host side utility
 [here](/src/storage/bin/fvm).
 Integrity of the FVM device/file can be verbosely verified with
 [fvm-check](/src/devices/block/bin/fvm-check)
+
+[glossary.outgoing-directory]: /docs/glossary/README.md#outgoing-directory
+[capabilities-overview]: /docs/concepts/components/v2/capabilities/README.md

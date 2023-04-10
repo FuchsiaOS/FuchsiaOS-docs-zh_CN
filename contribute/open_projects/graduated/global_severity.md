@@ -20,7 +20,7 @@ if `ERROR`s are expected then developers will set `max_severity = "ERROR"` in
 the test specification associated with the test.
 
 When this feature was first introduced, all overrides were set in a
-[single file][restrict-legacy]. Since then it became possible to set the
+single file. Since then it became possible to set the
 override specific to the test where the test itself is defined. The new approach
 is easier to maintain.
 
@@ -38,7 +38,7 @@ For instance:
 ```json
       {
            "max_severity": "FATAL"
-           "url": "fuchsia-pkg://fuchsia.com/audio_core_unittests#meta/audio_core_unittests.cmx"
+           "url": "fuchsia-pkg://fuchsia.com/audio_core_unittests#meta/audio_core_unittests.cm"
       },
 ```
 
@@ -71,20 +71,19 @@ Find reviewers by OWNERS and merge your change.
 
 ## Examples
 
-*   [555759: [log] Move intl_services log severity config to test definition](https://fuchsia-review.googlesource.com/c/fuchsia/+/555759)
-*   [410049: [blobfs] blobfs stress tests v1](https://fuchsia-review.googlesource.com/c/fuchsia/+/410049)
-*   [436337: [network/tests] Split up integration test binary](https://fuchsia-review.googlesource.com/c/fuchsia/+/436337)
-*   [426214: [isolated-ota] Refactor into a library for integration tests.](https://fuchsia-review.googlesource.com/c/fuchsia/+/426214)
-*   [440054: [run_test_component] Prune network test allowlist](https://fuchsia-review.googlesource.com/c/fuchsia/+/440054)
+* [555759: [log] Move intl_services log severity config to test definition](https://fuchsia-review.googlesource.com/c/fuchsia/+/555759)
+* [410049: [blobfs] blobfs stress tests v1](https://fuchsia-review.googlesource.com/c/fuchsia/+/410049)
+* [436337: [network/tests] Split up integration test binary](https://fuchsia-review.googlesource.com/c/fuchsia/+/436337)
+* [426214: [isolated-ota] Refactor into a library for integration tests.](https://fuchsia-review.googlesource.com/c/fuchsia/+/426214)
+* [440054: [run_test_component] Prune network test allowlist](https://fuchsia-review.googlesource.com/c/fuchsia/+/440054)
 
 ## Sponsors
 
 Reach out for questions or for status updates:
 
-*   <anmittal@google.com>
-*   <shayba@google.com>
+* <anmittal@google.com>
+* <shayba@google.com>
 
-[logs]: /concepts/components/diagnostics/logs/README.md
-[logs-tests]: /development/diagnostics/test_and_logs.md
+[logs]: /docs/concepts/components/diagnostics/logs/README.md
+[logs-tests]: /docs/development/diagnostics/test_and_logs.md
 [max-severity-json]: https://fuchsia.googlesource.com/fuchsia/+/589aecf5a99689e33621137355b79dcebf6e0c48/garnet/bin/run_test_component/max_severity_fuchsia.json
-[restrict-legacy]: https://fuchsia.googlesource.com/fuchsia/+/66ed695f5c0fcf9ef642fb8736f3a85264e18bfd/docs/concepts/testing/test_component.md#restricting-log-severity

@@ -236,12 +236,12 @@ to help you get started.
 
 * {Rust}
 
-  Refer to [C++ Library Concepts](#c++), as similar concepts apply in Rust.
+  The Rust library provides two ways of managing nodes and properties: creation
+  and recording.
 
-  The Rust library provides two ways of managing nodes and properties: creation and recording.
-
-  With the `create_*` methods, the ownership of the property or node object to the caller.
-  When the returned object is dropped, it is removed. For example:
+  With the `create_*` methods, the ownership of the property or node object belongs
+  to the caller. When the returned object is dropped, the property is removed.
+  For example:
 
   ```rust
   {
@@ -249,12 +249,11 @@ to help you get started.
   }
   ```
 
-  In this example, the property went out of scope so a drop on the property is
+  In this example, `property` went out of scope so a drop on the property is
   called. Readers won't see this property.
 
-  With the `record_*` methods, the lifetime of the node the method is
-  called on is entangled with the resulting property. When the node the method was called
-  is deleted, the recorded property is deleted.
+  With the `record_*` methods, the lifetime of the property is tied to the parent
+  node. When the node is deleted, the recorded property is deleted.
 
   ```rust
   {
@@ -266,8 +265,8 @@ to help you get started.
   }
   ```
 
-  In this example, neither the `name` node nor the uint property is visible to readers
-  after `node` is dropped.
+  In this example, the uint property associated with `name` is visible to readers
+  until the parent `node` goes out of scope.
 
 ### Dynamic values
 
@@ -304,7 +303,7 @@ a value. The callback function is invoked when the property value is read.
     a.GetRoot().CreateString("version", "1.0", &a);
     a.GetRoot().CreateLazy{Node,Values}("lazy", [] {
       Inspector b;
-      b.GetRoot().CreateInt("value", 10, &b);
+      b.GetRoot().RecordInt("value", 10);
       return fpromise::make_ok_promise(std::move(b));
     }, &a);
 
@@ -319,14 +318,14 @@ a value. The callback function is invoked when the property value is read.
     lazy:
       version = "1.0"
       lazy:
-        val = 10
+        value = 10
   ```
 
   Output (CreateLazyValues):
 
   ```
   root:
-    val = 10
+    value = 10
     version = "1.0"
   ```
 
@@ -367,8 +366,8 @@ a value. The callback function is invoked when the property value is read.
           // lazy_ = ...
 
           // The value is set to the result of calling a method on "this".
-          inspector.GetRoot().CreateInt("performance_score",
-                                        this->CalculatePerformance(), &inspector);
+          inspector.GetRoot().RecordInt("performance_score",
+                                        this->CalculatePerformance());
 
           // Callbacks return a fpromise::promise<Inspector>, so return a result
           // promise containing the value we created.
@@ -394,10 +393,10 @@ a value. The callback function is invoked when the property value is read.
   ```rust
   root.create_lazy_{child,values}("lazy", [] {
       async move {
-          let inspector = Inspector::new();
+          let inspector = Inspector::default();
           inspector.root().record_string("version", "1.0");
           inspector.root().record_lazy_{node,values}("lazy", || {
-              let inspector = Inspector::new();
+              let inspector = Inspector::default();
               inspector.root().record_int("value", 10);
               // `_value`'s drop is called when the function returns, so it will be removed.
               // For these situations `record_` is provided.
@@ -414,11 +413,11 @@ a value. The callback function is invoked when the property value is read.
     lazy:
       version = "1.0"
       lazy:
-        val = 10
+        value = 10
 
   Output (create_lazy_values):
   root:
-    val = 10
+    value = 10
     version = "1.0"
   ```
 
@@ -460,45 +459,28 @@ a value. The callback function is invoked when the property value is read.
 
   Will generate only one copy of `"child"` which is referenced 100 times.
 
+  This saves 16 bytes for each child node, and has a cost of 32 bytes
+  for the shared data. The net result is a savings of 1568 bytes.
+
   This pattern is recommended anywhere a global constant key would be used.
 
 * {Rust}
 
-  You can use `fuchsia_inspect::StringReference` to reduce the memory footprint
-  of an Inspect hierarchy that has a lot of repeated data. For instance,
+  String names are automatically de-duplicated in Rust Inspect. For example,
 
   ```rust
   use fuchsia_inspect::Inspector;
 
-  let inspector = Inspector::new();
+  let inspector = Inspector::default();
   for _ in 0..100 {
     inspector.root().record_child("child");
   }
   ```
 
-  Will generate 100 copies of `"child"`.
-
-  Alternatively,
-
-  ```rust
-  use fuchsia_inspect::{Inspector, StringReference}
-
-  lazy_static! {
-    static ref CHILD: StringReference<'static> = "child".into();
-  }
-
-  let inspector = Inspector::new();
-  for _ in 0..100 {
-    inspector.root().record_child(&*CHILD);
-  }
-  ```
-
   Will generate only 1 copy of `"child"` which is referenced 100 times.
 
-  This pattern is recommended anytime a global constant key would be used.
-
-  Note: It isn't necessary for the `StringReference` to be static.
-  It can also take a `String`, owning it.
+  This saves 16 bytes for each child node, and has a cost of 32 bytes
+  for the shared data. The net result is a savings of 1568 bytes.
 
 ## Viewing Inspect Data {#view-inspect-data}
 
@@ -507,36 +489,14 @@ you exported from your component.
 
 This section assumes you have SSH access to your running Fuchsia system and
 that you started running your component. We will use the name
-`my_component.cmx` as a placeholder for the name of your component.
+`my_component.cm` as a placeholder for the name of your component's manifest.
 
-### Find your Inspect endpoint
-
-The command below prints all available components that expose inspect:
-
-```posix-terminal
-ffx inspect list
-```
-
-The command below prints all `fuchsia.diagnostics.ArchiveAccessor` paths:
-
-```posix-terminal
-ffx inspect list-accessors
-```
-Your component's endpoint is listed as
-`<path>/my_component.cmx/<id>/out/diagnostics/fuchsia.inspect.Tree`.
-However, in some languages (without dynamic value support) and in drivers,
-the data is placed in VMO files instead. In that case, the endpoint is listed
-as `<path>/my_component.cmx/<id>/out/diagnostics/root.inspect`.
-
-An accessor path listed by `ffx inspect list-accessors` can later be used by
-`ffx inspect show` and `ffx inspect selectors` using the `--accessor-path` flag.
-
-The command below prints all available selectors for a component
-(for example, `my_component.cmx`):
-
-```posix-terminal
-ffx inspect selectors my_component.cmx
-```
+Note: Your component's full URL may be
+`fuchsia-pkg://fuchsia.com/my_component#meta/my_component.cm`, but
+you only need the manifest name to find it. This is separate from
+your component's *[moniker]*, which is the location it is running in
+the component hierarchy. You may refer to your component by either
+moniker or manifest name.
 
 ### Read your Inspect data
 
@@ -548,29 +508,53 @@ ffx inspect show
 ```
 
 Using the output from `ffx inspect list`, you can specify a
-single component (for example, `my_component.cmx`) as input to
+single component (for example, `my_component.cm`) as input to
 `ffx inspect show`:
 
 ```posix-terminal
-ffx inspect show my_component.cmx
+ffx inspect show --manifest my_component.cm
 ```
 
-Or specify multiple components (for example, `core/font_provider`
-and `my_component.cmx`):
+Specifying `--manifest` above will return data for all instances
+of your component running on the system. If you know a specific
+moniker of your component (for example, `core/my_component`) you
+may pass that instead:
 
 ```posix-terminal
-ffx inspect show core/font_provider my_component.cmx
+ffx inspect show core/my_component
 ```
 
-You can also specify a node and property value (for example,
-`my_component.cmx:root.inspect)` from `ffx inspect selectors`
+You may specify multiple components (for example, `core/font_provider`
+and `core/my_component`):
+
+```posix-terminal
+ffx inspect show core/font_provider core/my_component
+```
+
+You can also specify a node and property value. To see the
+list of all possible [selectors], use `ffx inspect selectors`:
+
+```posix-terminal
+ffx inspect selectors core/my_component
+```
+
+You may then specify a selector (for example, `core/my_component:root`)
 as input to `ffx inspect show`:
 
 ```posix-terminal
-ffx inspect show my_component.cmx:root
+ffx inspect show core/my_component:root
 ```
 
-This will print out the following if you followed the suggested steps above:
+If you don't know the moniker for your component, you may use
+`--manifest` with a selector that applies to all matched component
+monikers (using `*`):
+
+```posix-terminal
+ffx inspect show --manifest my_component.cm *:root
+```
+
+This will print out the following if you followed the suggested
+steps above:
 
 ```none {:.devsite-disable-click-to-copy}
 root:
@@ -595,5 +579,7 @@ root:
 <!-- Reference links -->
 
 [ffx-inspect]: https://fuchsia.dev/reference/tools/sdk/ffx.md#inspect
-[health-check]: /development/diagnostics/inspect/health.md
-[overview]: /development/diagnostics/inspect/README.md
+[health-check]: /docs/development/diagnostics/inspect/health.md
+[overview]: /docs/development/diagnostics/inspect/README.md
+[moniker]: /reference/components/moniker
+[selectors]: /reference/diagnostics/selectors

@@ -18,7 +18,7 @@ FDF is constantly evolving and has yet to achieve ABI stability.
 Driver manager is a binary maintained and developed as part of FDF. It is responsible for
 loading drivers and managing devices on all platforms. This is one of the initial process to be started
 on device bootup. It finds driver packages in pre-configured paths, tries to match a
-driver for every device by running the driver's bind program, and manages the device lifecycle.
+driver for every device by running the driver's bind rules, and manages the device lifecycle.
 It hosts a virtual filesystem named as Device Filesystem (`devfs`), that provides
 uniform access to all devices from userspace services/components external to the drivers. `devfs`
 is mounted under `/dev` and contains virtual files that eventually route to interfaces

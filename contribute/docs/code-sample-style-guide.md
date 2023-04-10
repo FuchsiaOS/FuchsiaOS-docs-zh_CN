@@ -1,6 +1,6 @@
 # Code sample style guidelines {#overview}
 
-This document describes how to incorportate code samples in documentation,
+This document describes how to incorporate code samples in documentation,
 and specific style guidelines for code samples. This includes:
 
   *  [Code sample best practices](#code-sample-best-practices)
@@ -58,7 +58,7 @@ list before submitting your contribution, to ensure code sample clarity:
       might be a paved Fuchsia target device.
       Rather than restating how to pave one’s device, link to an existing
       “Pave” topic that already exists on [fuchsia.dev](https://fuchsia.dev/),
-      such as [Build and pave quickstart](/development/build/build_and_pave_quickstart.md).
+      such as [Build and pave quickstart](/docs/development/build/build_and_pave_quickstart.md).
 *   **Avoid using `foo`, `bar`, or other vague placeholder names** if you are
     including placeholders in your code sample.
     Instead, use a name that expresses what that placeholder's function
@@ -107,22 +107,24 @@ Refer to the following example of avoiding vague placeholders.
     <header id="not-recommended">Not Recommended</header>
 <p>
 To add a service, include the following:
-  <pre><code class= "prettyprint">"services": [ "fuchsia.example.Foo" ],</code></pre>
+  <pre><code class= "prettyprint">protocol: "fuchsia.example.Foo"</code></pre>
 </p>
   </article>
   <article>
     <header id="recommended">Recommended</header>
 <p>
-To add a service, you must edit your component manifest (.cmx).
-For example, adding the <code>fuchsia.sys.Launcher</code> <code>service</code>
+To add a service, you must edit your component manifest (.cml).
+For example, adding the <code>fuchsia.process.Launcher</code> <code>service</code>
 to your component manifest gives your component the ability to launch
-other components.
+processes.
 </p>
 <p>
   <pre class= "prettyprint">
-  "sandbox": {
-              "services": [ "fuchsia.sys.Launcher" ],
-          }</pre>
+  use: [
+    {
+      protocol: "fuchsia.process.Launcher"
+    }
+  ]</pre>
 </p>
 </article>
 </section>
@@ -224,7 +226,7 @@ following steps:
 
         <p><pre><code class="devsite-terminal">cd ~/fuchsia</code></pre></p>
 
-        <p><pre><code class="devsite-terminal">ffx component run fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm</code></pre></p>
+        <p><pre><code class="devsite-terminal">ffx component run /core/ffx-laboratory:hello-world fuchsia-pkg://fuchsia.com/hello-world#meta/hello-world-rust.cm</code></pre></p>
 
   <li>Navigate to the shell tab where you ran <code>ffx log</code>.</li>
 
@@ -234,6 +236,6 @@ following steps:
   </article>
 </section>
 
-[doc-standard]: /contribute/docs/documentation-standards.md
-[style-guide]: /contribute/docs/documentation-style-guide.md
+[doc-standard]: /docs/contribute/docs/documentation-standards.md
+[style-guide]: /docs/contribute/docs/documentation-style-guide.md
 [fuchsia]: https://fuchsia.dev/

@@ -167,7 +167,7 @@ shared_library("foo") {
 }
 ```
 
-Which now corresponds to the depedency graph:
+Which now corresponds to the dependency graph:
 
 ```
   program ->

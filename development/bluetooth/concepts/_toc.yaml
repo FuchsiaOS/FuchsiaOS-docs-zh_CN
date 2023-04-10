@@ -7,6 +7,6 @@
 # team as reviewer.
 toc:
 - title: "Bluetooth architecture"
-  path: /development/bluetooth/concepts/architecture.md
+  path: /docs/development/bluetooth/concepts/architecture.md
 - title: "Bluetooth persistent data schema"
-  path: /development/bluetooth/concepts/persistent_data_schema.md
+  path: /docs/development/bluetooth/concepts/persistent_data_schema.md

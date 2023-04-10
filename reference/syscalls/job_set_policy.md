@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_job_set_policy
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Set job security and resource policies.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -20,7 +27,7 @@ zx_status_t zx_job_set_policy(zx_handle_t handle,
                               uint32_t policy_size);
 ```
 
-## DESCRIPTION
+## Description
 
 Sets one or more security and/or resource policies to an empty job. The job's
 effective policies is the combination of the parent's effective policies and
@@ -99,7 +106,8 @@ Where *condition* is one of
   a new VMO pager.
 + **ZX_POL_AMBIENT_MARK_VMO_EXEC** a process under this job is attempting
   to use [`zx_vmo_replace_as_executable()`] with a **ZX_HANDLE_INVALID**
-  as the second argument rather than a valid **ZX_RSRC_KIND_VMEX**.
+  as the second argument rather than a valid **ZX_RSRC_KIND_SYSTEM** resource with base
+  **ZX_RSRC_SYSTEM_VMEX_BASE**.
 + **ZX_POL_NEW_ANY** is a special *condition* that stands for all of
   the above **ZX_NEW** conditions such as **ZX_POL_NEW_VMO**,
   **ZX_POL_NEW_CHANNEL**, **ZX_POL_NEW_EVENT**, **ZX_POL_NEW_EVENTPAIR**,
@@ -156,29 +164,27 @@ parent job's *default_mode*. The possible values for *default_mode* are:
 + **ZX_TIMER_SLACK_EARLY**
 + **ZX_TIMER_SLACK_LATE**
 
-See [timer slack](/concepts/kernel/timer_slack.md) for more information.
+See [timer slack](/docs/concepts/kernel/timer_slack.md) for more information.
 
 When setting timer slack policy, *options* must be **ZX_JOB_POL_RELATIVE** and
 **count** must be 1.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_JOB** and have **ZX_RIGHT_SET_POLICY**.
 
-## RETURN VALUE
+## Return value
 
 `zx_job_set_policy()` returns **ZX_OK** on success.  In the event of failure,
 a negative error value is returned.
 
-## NOTES
+## Notes
 
 The **ZX_POL_BAD_HANDLE** policy never applies when calling [`zx_object_get_info()`]
 with the topic **ZX_INFO_HANDLE_VALID**.  All other topics and all other syscalls that
 take handles are subject to the policy if active.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *policy* was not a valid pointer, or *count* was 0,
 or *policy* was not **ZX_JOB_POL_RELATIVE** or **ZX_JOB_POL_ABSOLUTE**, or
@@ -203,13 +209,11 @@ bigger than **ZX_POL_MAX**.
 There is no good way for userspace to handle this (unlikely) error.
 In a future build this error will no longer occur.
 
-## SEE ALSO
+## See also
 
  - [`zx_job_create()`]
  - [`zx_object_get_info()`]
  - [`zx_process_create()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_job_create()`]: job_create.md
 [`zx_object_get_info()`]: object_get_info.md

@@ -1,8 +1,7 @@
 # Zircon Kernel Command Line Options
 
-TODO(53594): [//gen/boot-options.md](/gen/boot-options.md) is now the
-source of truth. kernel_cmdlind.md is in the process of being replaced. Please
-do not update it without coordinating with the migration effort.
+See [//docs/gen/boot-options.md](/docs/gen/boot-options.md) is now the
+source of truth.
 
 The Zircon kernel receives a textual command line from the bootloader, which can
 be used to alter some behaviours of the system. Kernel command line parameters
@@ -26,19 +25,7 @@ values from the kernel command line. Leading whitespace is ignored and lines
 starting with # are ignored. Whitespace is not allowed in names.
 
 In order to specify options in the build, see
-[this guide](/development/kernel/build.md#options).
-
-## aslr.disable
-
-If this option is set, the system will not use Address Space Layout
-Randomization.
-
-## aslr.entropy_bits=\<num\>
-
-For address spaces that use ASLR this controls the number of bits of entropy in
-the randomization. Higher entropy results in a sparser address space and uses
-more memory for page tables. Valid values range from 0-36, with default being
-30.
+[this guide](/docs/development/kernel/build.md#options).
 
 ## blobfs.cache-eviction-policy=\<policy\>
 
@@ -105,69 +92,6 @@ Add a tag to the deny list. Log entries with matching tags will be prevented
 from being printed the console. This takes precedent over tags passed via
 process args as well as the allow list.
 
-## devmgr.bind-eager=\<driver\>,\<driver\>...
-
-For each driver listed as an argument to this option, the driver manager will
-not wait for all other drivers to be loaded before attempting to bind it, even
-if the driver is marked as a fallback driver by including '*' at the start of
-its version string.
-
-## devmgr\.enable-ephemeral=\<bool\>
-
-Enables loading drivers ephemerally. This should only be used on eng builds for
-development purposes.
-
-## devmgr\.require-system=\<bool\>
-
-Instructs the devmgr that a /system volume is required. Without this, devmgr
-assumes this is a standalone Zircon build and not a full Fuchsia system.
-
-## devmgr\.suspend-timeout-fallback
-
-If this option is set, the system invokes kernel fallback to reboot or poweroff
-the device when the operation did not finish in 10 seconds.
-
-## devmgr\.devhost\.asan
-
-This option must be set if any drivers not included directly in /boot are built
-with `-fsanitize=address`. If there are `-fsanitize=address` drivers in /boot,
-then all `-fsanitize=address` drivers will be supported regardless of this
-option. If this option is not set and there are no such drivers in /boot, then
-drivers built with `-fsanitize=address` cannot be loaded and will be rejected.
-
-## devmgr\.log-to-debuglog
-
-If this option is set, devmgr and all drivers will output logs to debuglog, as
-opposed to syslog.
-
-## devmgr\.verbose
-
-If this option is set, devmgr will enable verbose logging.
-
-## driver-manager.driver-host-crash-policy
-
-Sets the policy for what action to take when a driver host crash is observed by
-the driver manager.
-
-Valid options include:
-
-*   `restart-driver-host` : Restarts the driver host (up to 3 times).
-*   `reboot-system` : Reboots the system.
-*   `do-nothing` : Take no action on observed crash.
-
-## driver.\<name>.compatibility-tests-enable
-
-If this option is set, devmgr will run compatibility tests for the driver.
-zircon\_driver\_info, and can be found as the first argument to the
-ZIRCON\_DRIVER\_BEGIN macro.
-
-## driver.\<name>.compatibility-tests-wait-time
-
-This timeout lets you configure the wait time in milliseconds for each of
-bind/unbind/suspend hooks to complete in compatibility tests.
-zircon\_driver\_info, and can be found as the first argument to the
-ZIRCON\_DRIVER\_BEGIN macro.
-
 ## driver.\<name>.disable
 
 Disables the driver with the given name. The driver name comes from the
@@ -178,7 +102,7 @@ Example: `driver.usb_audio.disable`
 
 ## driver.\<name>.log=\<flags>
 
-Set the minumum log severity for a driver. The textual constants "error",
+Set the minimum log severity for a driver. The textual constants "error",
 "warn", "info", "debug", "trace", may be used, and they map to the corresponding
 bits in DDK\_LOG\_... in `ddk/debug.h`. If an unknown value is passed, the
 minimum log severity will be set to "trace". The default minimum log severity
@@ -220,7 +144,7 @@ driver, see `driver.\<name>.enable_tests`. The default is disabled.
 
 Enable or disable support for tracing drivers. When enabled drivers may
 participate in
-[Fuchsia tracing](/development/drivers/diagnostics/tracing.md).
+[Fuchsia tracing](/docs/development/drivers/diagnostics/tracing.md).
 
 Implementation-wise, what this option does is tell each devhost whether to
 register as "trace provider".
@@ -232,86 +156,6 @@ problem arise.
 
 This option (disabled by default) allows the system to use a hardware IOMMU if
 present.
-
-## kernel.arm64.event-stream.enable=\<bool>
-
-When enabled, each ARM cpu will enable an event stream generator, which per-cpu
-sets the hidden event flag at a particular rate. This has the effect of kicking
-cpus out of any WFE states they may be sitting in. The default is false.
-
-## kernel.arm64.event-stream.freq-hz=\<uint32>
-
-If the event stream is enabled, specifies the frequency at which it will attempt
-to run. The resolution is limited, so the driver will only be able to pick the
-nearest power of 2 from the cpu timer counter. The default is 10000.
-
-## kernel.cprng-reseed-require.hw-rng=\<bool>
-
-When enabled and if HW RNG fails at reseeding, CPRNG panics. Defaults to false.
-
-## kernel.cprng-reseed-require.jitterentropy=\<bool>
-
-When enabled and if jitterentropy fails at reseeding, CPRNG panics. Defaults to
-false.
-
-## kernel.cprng-seed-require.hw-rng=\<bool>
-
-When enabled and if HW RNG fails at initial seeding, CPRNG panics. Defaults to
-false.
-
-## kernel.cprng-seed-require.jitterentropy=\<bool>
-
-When enabled and if jitterentrop fails initial seeding, CPRNG panics. Defaults
-to false.
-
-## kernel.cprng-seed-require.cmdline=\<bool>
-
-When enabled and if you do not provide entropy input from the kernel command
-line, CPRNG panics. Defaults to false.
-
-## kernel.entropy-mixin=\<hex>
-
-Provides entropy to be mixed into the kernel's CPRNG.
-
-## kernel.jitterentropy.bs=\<num>
-
-Sets the "memory block size" parameter for jitterentropy (the default is 64).
-When jitterentropy is performing memory operations (to increase variation in CPU
-timing), the memory will be accessed in blocks of this size.
-
-## kernel.jitterentropy.bc=\<num>
-
-Sets the "memory block count" parameter for jitterentropy (the default is 512).
-When jitterentropy is performing memory operations (to increase variation in CPU
-timing), this controls how many blocks (of size `kernel.jitterentropy.bs`) are
-accessed.
-
-## kernel.jitterentropy.ml=\<num>
-
-Sets the "memory loops" parameter for jitterentropy (the default is 32). When
-jitterentropy is performing memory operations (to increase variation in CPU
-timing), this controls how many times the memory access routine is repeated.
-This parameter is only used when `kernel.jitterentropy.raw` is true. If the
-value of this parameter is `0` or if `kernel.jitterentropy.raw` is `false`, then
-jitterentropy chooses the number of loops is a random-ish way.
-
-## kernel.jitterentropy.ll=\<num>
-
-Sets the "LFSR loops" parameter for jitterentropy (the default is 1). When
-jitterentropy is performing CPU-intensive LFSR operations (to increase variation
-in CPU timing), this controls how many times the LFSR routine is repeated. This
-parameter is only used when `kernel.jitterentropy.raw` is true. If the value of
-this parameter is `0` or if `kernel.jitterentropy.raw` is `false`, then
-jitterentropy chooses the number of loops is a random-ish way.
-
-## kernel.jitterentropy.raw=\<bool>
-
-When true (the default), the jitterentropy entropy collector will return raw,
-unprocessed samples. When false, the raw samples will be processed by
-jitterentropy, producing output data that looks closer to uniformly random. Note
-that even when set to false, the CPRNG will re-process the samples, so the
-processing inside of jitterentropy is somewhat redundant.
-
 ### x64 specific values
 
 On x64, some additional values are supported for configuring 8250-like UARTs:
@@ -328,11 +172,6 @@ All numbers may be in any base accepted by *strtoul*().
 
 All other values are currently undefined.
 
-## kernel.wallclock=\<name>
-
-This option can be used to force the selection of a particular wall clock. It
-only is used on pc builds. Options are "tsc", "hpet", and "pit".
-
 ## ldso.trace
 
 This option (disabled by default) turns on dynamic linker trace output. The
@@ -347,7 +186,9 @@ true, the `live_usb` component does nothing.
 
 ## zircon.autorun.boot=\<command>
 
-This option requests that *command* be run at boot, after devmgr starts up.
+This option requests that *command* be run at boot.
+
+Commands should be absolute paths starting at the root '/'.
 
 Any `+` characters in *command* are treated as argument separators, allowing you
 to pass arguments to an executable.
@@ -356,9 +197,10 @@ This option is disabled if console.shell is false.
 
 ## zircon.autorun.system=\<command>
 
-This option requests that *command* be run once the system partition is mounted
-and *init* is launched. If there is no system bootfs or system partition, it
-will never be launched.
+This option requests that *command* be run once the system partition is mounted.
+If there is no system partition, it will never be launched.
+
+Commands should be absolute paths starting at the root '/'.
 
 Any `+` characters in *command* are treated as argument separators, allowing you
 to pass arguments to an executable.
@@ -433,10 +275,11 @@ Defaults to true.
 
 ## netsvc.interface=\<path>
 
-This option instructs netsvc to use only the ethernet device at the given
-topological path. All other ethernet devices are ignored by netsvc. The
+This option instructs netsvc to use only the device whose topological path ends
+with the option's value. All other devices are ignored by netsvc. The
 topological path for a device can be determined from the shell by running the
-`lsdev` command on the ethernet class device (e.g., `/dev/class/ethernet/000`).
+`lsdev` command on the device (e.g. `/dev/class/network/000` or
+`/dev/class/ethernet/000`).
 
 This is useful for configuring network booting for a device with multiple
 ethernet ports, which may be enumerated in a non-deterministic order.
@@ -461,7 +304,7 @@ It should not start with a `/` prefix.
 
 If this executable uses `PT_INTERP` (i.e. the dynamic linker), the userboot
 process provides a
-[loader service](/concepts/process/program_loading.md#the-loader-service)
+[loader service](/docs/concepts/process/program_loading.md#the-loader-service)
 to resolve the `PT_INTERP` (dynamic linker) name and any shared library names it
 may request. That service simply looks in the `lib/` directory (under
 `userboot.root`) in the BOOTFS.
@@ -479,15 +322,6 @@ and the `lib/` directory for the loader service will be found. By default, there
 is no prefix so paths are treated as exact relative paths from the root of the
 BOOTFS. e.g. with `userboot.root=pkg/foo` and `userboot.next=bin/app`, the names
 found in the BOOTFS will be `pkg/foo/bin/app`, `pkg/foo/lib/ld.so.1`, etc.
-
-## userboot.reboot
-
-If this option is set, userboot will attempt to reboot the machine after waiting
-3 seconds when the process it launches exits.
-
-*If running a "ZBI test" image in QEMU, this will cause the system to
-continually run tests and reboot.* For QEMU, `userboot.shutdown` is usually
-preferable.
 
 ## userboot.shutdown
 
@@ -546,16 +380,11 @@ the bootloader by passing the UUID of the partition containing the Zircon kernel
 that was booted. Setting this also informs the paver that ABR is supported, and
 that it should update the ABR metadata.
 
-## console.path=\<path>
+## console.device_topological_suffix=\<path>
 
-Specify console device path. If not specified device manager will open
-`/dev/misc/console`. Only has effect if kernel.shell=false.
-
-## console.is_virtio=\<bool>
-
-Specify if the device given with `console.path` is a virtio-console device.
-Defaults to false. This is needed as a workaround due to drivers not being able
-to implement fuchsia.io.File themselves.
+If this is set then console launcher will connect to the console device whose topological
+path matches this suffix. If not specified then console launcher will connect to `/svc/console`.
+Only has effect if kernel.shell=false.
 
 # Additional Gigaboot Command Line Options
 
@@ -578,12 +407,12 @@ to netboot via zedboot.
 
 # How to pass the command line to the kernel
 
-## in the emulator or Qemu, using fx emu or fx qemu
+## in the emulator or Qemu, using ffx emu or fx qemu
 
 Pass each option using -c, for example:
 
 ```
-fx qemu -c gfxconsole.font=18x32 -c gfxconsole.early=false
+ffx emu start -c gfxconsole.font=18x32 -c gfxconsole.early=false
 ```
 
 ## in GigaBoot20x6, when netbooting

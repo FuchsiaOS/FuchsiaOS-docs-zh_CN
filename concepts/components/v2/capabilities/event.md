@@ -1,159 +1,80 @@
-# Event capabilities
+# event_stream capabilities
 
-<<../../_v2_banner.md>>
-
-Event capabilities allow components to subscribe to specific events that occur
-during the various stages of the [component lifecycle][doc-lifecycle].
+event_stream capabilities allow components to subscribe to specific events that
+occur during the various stages of the [component lifecycle][doc-lifecycle].
 This includes information about component state changes as well as capability
 routing.
 
 For a complete list of supported events and their descriptions, see the
-[`fuchsia.sys2.EventType`][event-type] reference documentation.
+[`fuchsia.component.EventType`][event-type] reference documentation. See [RFC-121]
+for the original RFC for event_stream capabilities.
 
-## Providing event capabilities {#provide}
+## Providing event_stream capabilities {#provide}
 
-Event capabilities always originate from component manager. They are provided to
-components as a *framework capability*. Individual components cannot declare
-events in their manifest `capabilities`.
+event_stream capabilities always originate from component manager. They are
+provided to components from AboveRoot. Individual components cannot declare
+events in their manifest `capabilities`, nor can they be used `from:
+"framework"`
 
-Each event capability covers a specific *scope*, determined by the
-[realm][doc-realms] of the component where the capability was initially offered.
-The scope of the capability does not change, even when the capability is
-[routed](#route) to another component.
+Each event_stream capability has an optional `scope` which determines the
+subtree of events that a connecting client would receive. `scope` may be either
+a single sub-tree or refer to multiple children.
 
-## Routing event capabilities {#route}
+## Routing event_stream capabilities {#route}
 
-Components can [offer](#offer) and [expose](#expose) event capabilities that
-they receive from the framework to other components.
+Components can [offer](#offer) event_stream capabilities that they receive from
+their parent to other components. event_stream capabilities cannot be exposed.
 
-For more details on how the framework routes component capabilities,
-see [capability routing][capability-routing].
-
-### Exposing {#expose}
-
-Exposing an event capability gives the component's parent access to that
-capability:
-
-```json5
-{
-    expose: [
-        {
-            event: "started",
-            from: "framework",
-        },
-    ]
-}
-```
-
-The `from: "framework"` directive means that the protocol capability is
-[provided](#provide) by component manager.
+For more details on how the framework routes component capabilities, see
+[capability routing][capability-routing].
 
 ### Offering {#offer}
 
-Offering an event capability gives a child component access to that
-capability:
+Offering an event capability gives a child component access to that capability:
 
 ```json5
 {
     offer: [
         {
-            event: "started",
+            event_stream: "started",
             from: "parent",
+            scope: ["#child_a"]
             to: [ "#child-a", "#child_b" ],
         },
         {
-            event: "stopped",
-            from: "framework",
+            event_stream: "stopped",
+            from: "parent",
             to: "#child-c",
         }
     ]
 }
 ```
 
-Events can be offered from two sources:
+Events can only be offered from parent.
 
--   `framework`: The event capability provided by component manager.
-    The scope of this event will be the offering component's realm.
--   `parent`: An event capability that was offered to the parent by another
-    component. The scope of the offered capability matches the component that
-    originally routed the capability from `framework`.
+## Consuming event_stream capabilities {#consume}
 
-## Consuming event capabilities {#consume}
-
-To consume an event capability, the component must request the
-[`fuchsia.sys2.EventSource`][event-source] protocol and the set of
-[`fuchsia.sys2.EventType`][event-type] for subscription.
+To consume an event capability, the component must use the `event_stream`
+capability. Event streams may be merged by specifying multiple streams in a
+single `use`.
 
 To request the capability, add a `use` declaration for it:
 
 ```json5
 {
     use: [
-        { protocol: "fuchsia.sys2.EventSource" },
-        { 
-            event: [
-                "started",
-                "stopped",
-            ],
-            from: "framework",
-        },
+        { event_stream: ["started", "stopped"] },
     ]
 }
 ```
 
-Events can be used from two sources:
+event_streams may only be used `from: "parent"`.
 
--   `framework`: The event capability provided by component manager.
-    The scope of this event will be the consuming component's realm.
--   `parent`: An event capability that was offered to the parent by another
-    component. The scope of the offered capability matches the component that
-    originally routed the capability from `framework`.
-
-Caution: The default source for capabilities is `parent` unless otherwise
-specified.
-
-## Static event streams {#event-streams}
-
-Event subscriptions can be set up statically in the component manifest using
-*static event streams*.
-Static event streams are similar to event streams created through the
-`fuchsia.sys2.EventSource/Subscribe` FIDL method but they are set up by the
-framework during the resolution of a component's manifest.
-
-The following is an example of the syntax of a static event stream declaration:
-
-```json5
-use: [
-    {
-        event: "started",
-        from: "parent",
-    },
-    {
-        event_stream: "MyEventStream",
-        subscriptions: [
-            {
-                event: "started",
-            }
-        ],
-    },
-]
-```
-
-To connect to a static event stream, call the
-`fuchsia.sys2.EventSource/TakeStaticEventStream` FIDL method and provide the
-name of the event stream defined in the manifest. In the above example, the
-name is `MyEventStream`.
-
-Static event streams are limited to the events listed in the `subscriptions`
-section of the manifest. Attempting to subscribe to a different event produces a
-validation error. In the above example, the only events available to the stream
-are `started` events.
-
-## Event routing example {#example}
+## event_stream routing example {#example}
 
 Consider the following example of a component topology:
 
-![A visual tree representation of the declarations explained below][example-img]
+![event_stream example][example-img]
 
 Notice the following key aspects of this example:
 
@@ -165,12 +86,7 @@ Notice the following key aspects of this example:
     {
         offer: [
             {
-                protocol: "fuchsia.sys2.EventSource",
-                from: "parent",
-                to: "#core",
-            },
-            {
-                event: "started",
+                event_stream: "started",
                 from: "parent",
                 to: "#core",
             },
@@ -181,23 +97,23 @@ Notice the following key aspects of this example:
     {
         offer: [
             {
-                protocol: "fuchsia.sys2.EventSource",
+                event_stream: "started",
                 from: "parent",
-                to: [ "#archivist", "#test_manager" ],
+                to: "#archivist",
             },
             {
-                event: "started",
+                event_stream: "started",
                 from: "parent",
-                to: [ "#archivist", "#test_manager" ],
-            },
+                to: "#test_manager",
+                scope: ["#test_manager"],
+            }
         ]
     }
 
     // archivist.cml
     {
         use: [
-            { protocol: "fuchsia.sys2.EventSource" },
-            { event: "started" },
+            { event_stream: "started" },
         ]
     }
     ```
@@ -210,46 +126,59 @@ Notice the following key aspects of this example:
     {
         offer: [
             {
-                protocol: "fuchsia.sys2.EventSource",
+                event_stream: "started",
                 from: "parent",
-                to: [ "#tests", "#archivist" ],
-            },
-            {
-                event: "started",
-                from: "framework",
                 to: "#archivist",
             },
+            {
+                event_stream: "started",
+                from: "parent",
+                to: "#tests",
+                // Downscopes the event to the tests collection
+                scope: ["#tests"],
+            }
         ]
     }
+
+    - The root Archivist gets `started` events for all components in the
+    topology from the root, whereas the embedded Archivist only gets events from
+    its own test collection.
+    NOTE: An event_stream must be routed through the entire topology from the root
+    component_manager all the way down to the component that wants to use the event.
+    event_streams cannot be used `from: "framework"`, and they are not
+    automatically made available in every component's environment.
 
     // archivist.cml
     {
           use: [
-              { protocol: "fuchsia.sys2.EventSource" },
-              { event: "started" },
+            {
+                event_stream: "started",
+                from: "parent",
+            },
         ]
     }
     ```
 
--   `core/test_manager/tests:test-12345`: Receives started events for `foo` and
-    `bar` through the events capability provided by `framework`.
+-   `core/test_manager/tests:test-12345`: Receives started events for things
+    under its collection through an `event_stream` capability routed from
+    `test_manager`.
 
     ```json5
     // test-12345.cml
     {
         use: [
-            { protocol: "fuchsia.sys2.EventSource" },
             {
-                event: "started",
-                from: "framework",
+                event_stream: "started",
+                from: "parent",
             },
         ]
     }
     ```
 
-[capability-routing]: /concepts/components/v2/capabilities/README.md#routing
-[doc-lifecycle]: /concepts/components/v2/lifecycle.md
-[doc-realms]: /concepts/components/v2/realms.md
-[event-source]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventSource
-[event-type]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#EventType
-[example-img]: ../images/event-example.png
+[RFC-121]: /docs/contribute/governance/rfcs/0121_component_events.md
+[capability-routing]: /docs/concepts/components/v2/capabilities/README.md#routing
+[doc-lifecycle]: /docs/concepts/components/v2/lifecycle.md
+[doc-realms]: /docs/concepts/components/v2/realms.md
+[event-source]: https://fuchsia.googlesource.com/fuchsia/+/refs/changes/44/656544/21/sdk/fidl/fuchsia.sys2/events.fidl#283
+[event-type]: https://fuchsia.googlesource.com/fuchsia/+/refs/changes/44/656544/21/sdk/fidl/fuchsia.sys2/events.fidl#21
+[example-img]: ../images/example_topology.svg

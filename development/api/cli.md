@@ -40,12 +40,12 @@ determine if the tool is a good fit for Fuchsia or the Fuchsia SDK.
 > IDK tools are specific to Fuchsia in some way. Generic tools or tools that are
 > widely available should not be part of Fuchsia and will not be included in the
 > Fuchsia IDK. For example, a tool that verifies generic JSON files would not be
-> a good addition. However a tool that verifies Fuchsia `.cmx` files, which
+> a good addition. However a tool that verifies Fuchsia `.cml` files, which
 > happen to use the JSON format, would be okay.
 
 > **ffx**
 >
-> [ffx](/development/tools/ffx/overview.md) is Fuchsia's unified CLI
+> [ffx](/docs/development/tools/ffx/overview.md) is Fuchsia's unified CLI
 > tool platform for host to target interactions. It provides a logical
 > subcommand based grouping that maps to high-level Fuchsia workflows.
 > It also provides a plugin framework to allow contributors to expand the
@@ -126,7 +126,7 @@ argument to ask the C++ compiler to only run the preprocessor).
 > by extending `ffx` via additional flags, options or subcommands to take
 > advantage of shared code and functionality. For considerations and
 > additional details refer to the `ffx` development
-> [overview](/development/tools/ffx/overview.md).
+> [overview](/docs/development/tools/ffx/overview.md).
 
 #### Sharing common functionality
 
@@ -202,7 +202,7 @@ languages is up to the author of the tool.
 
 ### Style Guides
 
-Follow the corresponding [style guide](/development/languages/README.md)
+Follow the corresponding [style guide](/docs/development/languages/README.md)
 for the language and area of Fuchsia being developed. For example, if the tool
 is included with Zircon and written in C++, use the style guide for C++ in
 Zircon. Specifically, avoid creating a separate style guide for tools.
@@ -470,7 +470,7 @@ Command line tools are expected to support some common switches:
 
 A tool must accept a `--help` switch and provide usage information to the
 command line in that case. The layout and syntax of the help text is described
-in [CLI tool help requirements](/development/api/cli_help.md).
+in [CLI tool help requirements](/docs/development/api/cli_help.md).
 
 The tool must not do other work (i.e. have side effects) when displaying help.
 
@@ -690,7 +690,7 @@ For interactive tools (e.g. `zxdb`) prompting the user for input is expected.
 
 When sending output to the user on stdout use proper spelling, grammar, and
 avoid unusual abbreviations. If an unusual abbreviation is used, be sure it has
-an entry in the [glossary](/glossary/README.md).
+an entry in the [glossary](/docs/glossary/README.md).
 
 Try to check for output to terminal, i.e. see if a user is there or whether the
 receiver is a program.

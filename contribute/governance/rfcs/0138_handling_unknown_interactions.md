@@ -83,7 +83,7 @@ represented as a header ("the transactional header"), optionally followed by a
 
 [^transactional-message]: Confusingly, a message (as opposed to a transactional
     message) refers to the [encoded form of a FIDL
-    value](/reference/fidl/language/wire-format/README.md#message).
+    value](/docs/reference/fidl/language/wire-format/README.md#message).
 
 An interaction is directed, and we name the two peers **client** and **server**
 respectively. A **client to server interaction** starts by a request from the
@@ -115,7 +115,7 @@ writing to a channel that was closed), or an error occurring in FIDL.
 ## Motivation
 
 A core principle of Fuchsia is to be
-[updatable](/concepts/principles/updatable.md): packages are designed to be
+[updatable](/docs/concepts/principles/updatable.md): packages are designed to be
 updated independently of each other. Even drivers are meant to be binary-stable,
 so that devices can update to a newer version of Fuchsia seamlessly while
 keeping their existing drivers. FIDL [plays a central
@@ -300,7 +300,24 @@ ajar protocol may only compose closed or ajar protocols.
 
 (There are no restrictions on open protocols.)
 
-By default, protocols are ajar.
+By default, protocols are open.
+
+A previous version of this proposal specified ajar as the default. However, this
+lead to a conflict where the default value of the openness modifier, ajar,
+conflicted with the default value of the strictness modifier, flexible, in the
+case of a two-way method declared without explicit modifiers. This meant that a
+protocol containing a two way method could not be compiled without a modifier on
+at least either the protocol or the method.  See below: the default value of
+openness is shown in bold and the default value of strictness is shown in
+italics.
+
+![Visualization: grid showing which combinations of open/ajar/closed compile
+with
+strict/flexible.](resources/0138_handling_unknown_interactions/compileable_interactions.png)
+
+To resolve this, we changed the default of openness from ajar to open, which
+allows protocols to compile two way methods without modifiers on either the
+protocol or the method.
 
 Style guide wise, it is recommended to always indicate explicitly the mode
 of a protocol, i.e. it should be set for every protocol.[^default-debate]
@@ -470,7 +487,7 @@ terminate the communication.
   * For example, in the Rust bindings, `Result<T, fidl::Error>` is used to
     present other transport-level errors from calls, so `transport_err` should
     be folded into `fidl::Error`. Similarly, in the low-level C++ bindings,
-    `fitx::result<fidl::Error>` is used to convey transport-level errors, so
+    `fit::result<fidl::Error>` is used to convey transport-level errors, so
     `transport_err` should be merged into `fidl::Error`.  The `response` and
     `err` variants would be conveyed the same way as for a strict method. In
     Rust that would mean `Result<Result<T, ApplicationError>, fidl::Error>` for
@@ -505,17 +522,59 @@ terminate the communication.
       * For open protocols, bindings must raise this unknown interaction to the
         application (details below).
     * Details about raising an unknown interaction:
+      * If the interaction is two way, bindings must respond to the request by
+        sending a result union with the third variant selected, and a
+        `fidl.TransportErr` of `UNKNOWN_METHOD`. This must happen before the
+        unknown interaction is raised to user code.
       * Bindings should raise the unknown interaction to the application,
         possibly by invoking a previously registered handler (or similar).
       * It is recommended for bindings to require the registration of an unknown
         interaction handler to avoid building in "default behavior" that could
         be misunderstood. Bindings can offer a "no-op handler" or similar, but
         it is recommended for its use to be explicit.
-      * If the interaction is two way, bindings must respond to the request by
-        sending a result union with the third variant selected, and a
-        `fidl.TransportErr` of `UNKNOWN_METHOD`.
       * Bindings MAY choose to offer the option to the application to close the
         channel when handling unknown interactions.
+
+When an unknown message contains handles, the server must close the handles in
+the incoming message. The server must close all handles in the incoming message
+before:
+
+* closing the channel, in the case of a strict method, a flexible method on a
+  closed protocol, or a flexible two-way method on an ajar protocol
+* replying to the message, in the case of a flexible two-way method on an open
+  protocol
+* notifying user code of the unknown method call, in the case of a flexible
+  one-way method on an open or ajar protocol.
+
+Likewise, when a client receives an unknown event which contains handles, the
+client must close the handles in the incoming message. The client must close all
+handles in the incoming message before:
+
+* closing the channel, in the case of a strict event or a flexible event on a
+  closed protocol.
+* notifying user code of the unknown event, in the case of a flexible event on
+  an open or ajar protocol.
+
+In general, when an unknown interaction is handled, the order of operations is
+as follows.
+
+1.  Close handles in the incoming message.
+2.  If applicable, close the channel or send the `UNKNOWN_METHOD` reply.
+3.  Raise the unknown interaction to the unknown interaction handler or report
+    an error.
+
+In asynchronous environments where multiple threads may be simultaneously
+attempting to send/receive messages on the channel, it may not be possible or
+practical to guarantee the channel is closed before reporting the unknown method
+error. Therefore it is not required to close the channel before reporting an
+error for an unknown method or event when that interaction is fatal. However,
+for recoverable unknown interactions as specified in this RFC, it is required to
+close handles and reply (if applicable) before dispatching the unknown
+interaction handler.
+
+Previous versions of this RFC did not specify ordering between closing handles
+in incoming messages, responding to unknown two-way methods, and raising unknown
+interactions to the user.
 
 ### Compatibility implications
 
@@ -551,10 +610,10 @@ a handler which will go unused.
 As detailed in the [evolution section of
 RFC-0002](0002_platform_versioning.md#evolution), we "change the ABI revision
 whenever the platform makes a _backwards-incompatible_ change to the semantics
-of the [Fuchsia System Interface](/concepts/packages/system.md)".
+of the [Fuchsia System Interface](/docs/concepts/packages/system.md)".
 
 One metric of how well we achieve our
-[updatable](/concepts/principles/updatable.md) goal is the pace at which we
+[updatable](/docs/concepts/principles/updatable.md) goal is the pace at which we
 mint new ABI revisions. Since adding or removing flexible interactions can be
 made in a backwards compatible way, this feature will help with improving
 Fuchsia's updatability.
@@ -572,11 +631,16 @@ Fuchsia's updatability.
 * With that in mind, we detail changes to the bindings specification. This is
   ABI breaking, and is a major evolution of the wire format (which
   covers both "at rest" and "dynamic" concerns).
-* We will build support for all features, gated by a new [magic
-  number][RFC-0037-new-magic-number] `0xa` (10).
-* As we have done in the past, we will likely group together multiple wire
-  format breaking changes which will all see the light of day under "magic
-  number 2". Our goal is to complete this migration rapidly.
+
+A previous version of this RFC called for gating the rollout of unknown
+interactions behind a new magic number. However, as specified, unknown
+interactions is backwards compatible with existing protocols, since the header
+bit used to indicate strictness was previously unused/reserved and the wire
+format only changes for flexible two way methods, which can only exist in open
+protocols. Instead of changing the magic number, we will use a two stage rollout
+where we enable unknown interactions support but have the default modifiers set
+to `closed` and `strict`, then add those modifiers explicitly to existing FIDL
+files, then change the defaults to `open` and `flexible`.
 
 ## Performance considerations {#performance-considerations}
 
@@ -669,11 +733,11 @@ a end-result and may instead prefer fluently expressed tests written by hand.
 There will be extensive documentation for this feature. On the specification
 side:
 
-* [FIDL Language Specification](/reference/fidl/language/language.md)
-* [FIDL Wire Format Specification](/reference/fidl/language/wire-format/README.md)
-* [FIDL Bindings Specification](/reference/fidl/language/bindings-spec.md)
+* [FIDL Language Specification](/docs/reference/fidl/language/language.md)
+* [FIDL Wire Format Specification](/docs/reference/fidl/language/wire-format/README.md)
+* [FIDL Bindings Specification](/docs/reference/fidl/language/bindings-spec.md)
 
-Additional entries in the [FIDL API Rubric](/development/api/fidl.md) will be
+Additional entries in the [FIDL API Rubric](/docs/development/api/fidl.md) will be
 added covering protocol evolution.
 
 On the concrete use of this feature in a given target language, we expect every
@@ -710,7 +774,7 @@ Some ideas for future direction might be:
 
 ### Alternative: comparison to the command pattern
 
-The [command pattern](/development/api/fidl.md#command-union) is useful to
+The [command pattern](/docs/development/api/fidl.md#command-union) is useful to
 allow clients to batch many requests to be processed by a server. It is also
 possible to use the command pattern to achieve the kind of evolvability
 described in this RFC.
@@ -928,11 +992,10 @@ can receive both one way and two way interactions:
 
 <!-- link labels -->
 
-[`zx_channel_call`]: /reference/syscalls/channel_call.md
-[`zx_channel_write`]: /reference/syscalls/channel_write.md
+[`zx_channel_call`]: /docs/reference/syscalls/channel_call.md
+[`zx_channel_write`]: /docs/reference/syscalls/channel_write.md
 [RFC-0024]: 0024_mandatory_source_compatibility.md
 [RFC-0033]: 0033_handling_unknown_fields_strictness.md
-[RFC-0037-new-magic-number]: 0037_transactional_message_header_v3.md#new-magic-number
 [RFC-0037-transactional-message-header-v3]: 0037_transactional_message_header_v3.md#transactional-message-header-v3
 [RFC-0037]: 0037_transactional_message_header_v3.md
 [RFC-0057]: 0057_default_no_handles.md

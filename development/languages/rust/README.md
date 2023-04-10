@@ -57,9 +57,13 @@ By default our build configuration makes all Rust warnings into errors. This req
 onerous during development, and on your local machine you may wish to see warnings as warnings and
 let CQ enforce the hard boundary.
 
-The `rust_cap_lints` GN arg allows you to control this behavior in your development environment.
-Setting `rust_cap_lints = "warn"` in `fx args` or adding `--args='rust_cap_lints = "warn"'` to
-your `fx set` will allow you to develop locally without being blocked by warnings.
+The `deny_warnings` GN arg allows you to control this behavior in your development environment.
+Setting `deny_warnings = false` in `fx args` or adding `--args=deny_warnings=false` to
+your `fx set` will allow you to develop locally without being blocked by warnings. You can
+add the argument to [`local/args.gn`][local-args] in your checkout so that it will be applied
+to all builds without needing to type it in your terminal each time.
+
+[local-args]: /docs/development/build/fx.md#defining-persistent-local-build-arguments
 
 ## Style
 
@@ -119,7 +123,7 @@ Public discussion happens on the [rust-users@fuchsia.dev] mailing list.
 [fargo]: https://fuchsia.googlesource.com/fargo
 [rustfmt-install]: https://github.com/rust-lang-nursery/rustfmt#quick-start
 [rustfmt-toml]: /rustfmt.toml
-[fidl-tutorial]: /development/languages/fidl/tutorials/rust
+[fidl-tutorial]: /docs/development/languages/fidl/tutorials/rust
 [rust-users@fuchsia.dev]: https://groups.google.com/a/fuchsia.dev/g/rust-users
 [go/fuchsia-rust-googlers]: https://goto.google.com/fuchsia-rust-googlers
 [rust-proc-macros]: https://doc.rust-lang.org/reference/procedural-macros.html

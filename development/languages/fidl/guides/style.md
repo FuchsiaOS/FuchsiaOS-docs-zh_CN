@@ -1,9 +1,9 @@
 # FIDL Style Guide
 
 This section contains style-related information for
-[Fuchsia Interface Definition Language](/development/languages/fidl/README.md) files.
+[Fuchsia Interface Definition Language](/docs/development/languages/fidl/README.md) files.
 
-See also the [FIDL API Rubric](/development/api/fidl.md).
+See also the [FIDL API Rubric](/docs/development/api/fidl.md).
 
 [TOC]
 
@@ -70,7 +70,7 @@ Element                    | Casing             | Example
 `bits`                     | _upper camel case_ | `InfoFeatures`
 bitfield members           | _upper snake case_ | `WLAN_SNOOP`
 `const`                    | _upper snake case_ | `MAX_NAMES`
-primitive alias            | _lower snake case_ | `hw_partition`
+`alias`                    | _upper camel case_ | `DeviceId`
 `protocol`                 | _upper camel case_ | `AudioRenderer`
 protocol method parameters | _lower snake case_ | `enable_powersave`
 protocol methods           | _upper camel case_ | `GetBatteryStatus`
@@ -198,6 +198,15 @@ The term is meaningless. For example, `fuchsia.tts.TtsService` violates this
 rubric in two ways.  First, the `Tts` prefix is redundant with the library
 name. Second, the `Service` suffix is banned.
 
+#### Explicit "`open`/`ajar`/`closed`" modifier {#explicit-open-ajar-closed}
+
+Note: `open`, `ajar`, and `closed` protocols is a new feature which is not fully
+released yet.
+
+For protocols, `open`, `ajar`, or `closed` should should always be specified
+rather than relying on defaults. That is, always prefer `open protocol Foo {
+...` to just `protocol Foo { ...`.
+
 #### Methods
 
 Methods must must be verb phrases.
@@ -237,6 +246,15 @@ Because replacing a protocol is harder than evolving a protocol, if an API was
 never intended to evolve but eventually finds a need to move to a multi-method
 protocol, it is preferred to evolve the existing protocol by adding a method,
 and possibly renaming the existing method.
+
+#### Explicit "`strict`/`flexible`" modifier {#explicit-strict-flexible-method}
+
+Note: `strict` and `flexible` methods is a new feature which is not fully
+released yet.
+
+For methods and events, `strict` or `flexible` should should always be specified
+rather than relying on defaults. That is, always prefer `flexible Foo();` to
+just `Foo()`.
 
 ### Structs, unions, and tables
 
@@ -394,7 +412,7 @@ specification that describes a configuration structure.  Similarly, if a
 structure must match an ABI defined in a C header, reference the C header.
 
 For more information about what your comments should contain, see the [API
-Documentation Rubric](/development/api/documentation.md).
+Documentation Rubric](/docs/development/api/documentation.md).
 
 #### Referencing FIDL protocols or protocol methods
 

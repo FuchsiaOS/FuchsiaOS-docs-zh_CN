@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmar_destroy
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Destroy a virtual memory address region.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Destroy a virtual memory address region.
 zx_status_t zx_vmar_destroy(zx_handle_t handle);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vmar_destroy()` unmaps all mappings within the given region, and destroys
 all sub-regions of the region.  Note that this operation is logically recursive.
@@ -26,17 +33,17 @@ VMAR will remain valid handles, but all VMAR operations on them will fail.
 
 The root VMAR, as obtained by `zx_process_create()`, cannot be destroyed.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_vmar_destroy()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
+
+**ZX_ERR_ACCESS_DENIED** *handle* does not have **ZX_RIGHT_OP_CHILDREN**.
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -46,16 +53,14 @@ TODO(fxbug.dev/32253)
 
 **ZX_ERR_NOT_SUPPORTED** *handle* is a root VMAR.
 
-## NOTES
+## Notes
 
-## SEE ALSO
+## See also
 
  - [`zx_vmar_allocate()`]
  - [`zx_vmar_map()`]
  - [`zx_vmar_protect()`]
  - [`zx_vmar_unmap()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_vmar_allocate()`]: vmar_allocate.md
 [`zx_vmar_map()`]: vmar_map.md

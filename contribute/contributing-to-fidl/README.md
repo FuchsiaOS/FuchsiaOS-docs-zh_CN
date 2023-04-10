@@ -28,11 +28,9 @@ with tests in [//tools/fidl/fidlc/tests][fidlc-compiler-tests].
 
 Target | Codegen | Runtime Libraries | Tests
 -------|---------|-------------------|-------
-C | [/tools/fidl/fidlc/lib/c_generator.cc] | [/sdk/lib/fidl_base] | [/src/lib/fidl/c]
 Coding Tables | [/tools/fidl/fidlc/lib/tables_generator.cc] | - | [/src/lib/fidl/c]
-HLCPP | [/tools/fidl/fidlgen_hlcpp] | [/sdk/lib/fidl/cpp] | *(located alongside runtime libraries)*
-LLCPP | [/tools/fidl/fidlgen_cpp] | [/sdk/lib/fidl/cpp/wire] | [/src/lib/fidl/llcpp]
-Unified C++ | [/tools/fidl/fidlgen_cpp] | [/src/lib/fidl/cpp] | *(located alongside runtime libraries)*
+HLCPP (Old) | [/tools/fidl/fidlgen_hlcpp] | [/sdk/lib/fidl/cpp] | *(located alongside runtime libraries)*
+New C++ | [/tools/fidl/fidlgen_cpp] | [/sdk/lib/fidl/cpp] | [/src/lib/fidl/llcpp] and [/src/lib/fidl/cpp]
 Go | [/tools/fidl/fidlgen_go] | [/third_party/go/src/syscall/zx/fidl](https://fuchsia.googlesource.com/third_party/go/+/main/src/syscall/zx/fidl) | *(located alongside runtime libraries)*
 Rust | [/tools/fidl/fidlgen_rust] | [/src/lib/fidl/rust] | *(located alongside runtime libraries)*
 Dart | [/tools/fidl/fidlgen_dart] | [/sdk/dart/fidl] | [/src/tests/fidl/dart_bindings_test]
@@ -57,8 +55,8 @@ Path | Description
 -----|------------
 [/tools/fidl/gidl] | Source code and build templates for the GIDL tool itself.
 [/src/tests/fidl/conformance_suite] | Test definitions (`.fidl` and `.gidl` files) for conformance tests.
-[/sdk/cts/tests/pkg/fidl/cpp/test/{test,handle}_util.h](/sdk/cts/tests/pkg/fidl/cpp/test) | Runtime support for HLCPP conformance tests.
-[/src/lib/fidl/llcpp/tests/conformance/conformance_utils.h] | Runtime support for LLCPP conformance tests.
+[/sdk/ctf/tests/pkg/fidl/cpp/test/{test,handle}_util.h](/sdk/ctf/tests/pkg/fidl/cpp/test) | Runtime support for HLCPP conformance tests.
+[/src/lib/fidl/llcpp/tests/conformance/conformance_utils.h] | Runtime support for C++ wire types conformance tests.
 [/src/lib/fidl/rust/gidl_util] | Runtime support for Rust conformance tests.
 [/third_party/go/src/syscall/zx/fidl/fidl_test] | Runtime support for Go conformance tests.
 [/src/lib/fidl/dart/gidl] | Runtime support for Dart conformance tests.
@@ -139,8 +137,8 @@ really well for doing remote work from your laptop.
   * Setting up tmux or screen is also helpful for remote work, to preserve
   history and manage multiple sessions in the shell.
 * The Fuchsia documentation has instructions for setting up language servers:
-  * [clangd](/development/languages/c-cpp/editors.md) for c++
-  * [rust-analyzer](/development/languages/rust/editors.md) for rust
+  * [clangd](/docs/development/languages/c-cpp/editors.md) for c++
+  * [rust-analyzer](/docs/development/languages/rust/editors.md) for rust
 * The [rewrap extension](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap) is useful
   for automatically reflowing lines to a certain length (e.g. when editing markdown files).
 * To get automatic syntax highlighting for the bindings golden files, update the
@@ -210,8 +208,7 @@ The `--with-base` flag is necessary to run Dart tests and benchmarks.
 If you are working on an LSC:
 
 ```sh
-fx set terminal.x64 --with //bundles:kitchen_sink \
-                    --with //sdk:modular_testing
+fx set terminal.x64 --with //bundles/kitchen_sink \
 ```
 
 ### symbolizer
@@ -220,6 +217,22 @@ To symbolize backtraces, you'll need a symbolizer in scope:
 
 ```sh
 export ASAN_SYMBOLIZER_PATH="$(find `pwd` -name llvm-symbolizer | grep clang | head -1)"
+```
+
+### Fast test builds
+
+FIDL is a very deep-seated part of the system, so modifying it often results in
+"rebuilding the world", with small changes potentially triggering tens of
+thousands of compilation actions and minutes long builds. This can be slow and
+cumbersome when you're just trying to build and run some FIDL tests, rather than
+the system as a whole.
+
+The `fx` tool supports on-demand, narrow-scope build and package publishing to
+help with this exact situation. To enable it, set the following environment
+variable in your `~/.bashrc` (or equivalent):
+
+```sh
+export FUCHSIA_DISABLED_incremental=0
 ```
 
 ## Compiling and running tests
@@ -347,7 +360,7 @@ These "golden" files are examples of what kind of JSON IR `fidlc` produces and
 are used to track changes. It is required to regenerate the golden files each
 time the JSON IR is changed in any way, otherwise the `json_generator_tests` fails.
 
-### fidlgen (LLCPP, HLCPP, Rust, Go, Dart)
+### fidlgen (New C++, HLCPP, Rust, Go, Dart)
 
 Build:
 
@@ -358,7 +371,7 @@ fx build tools/fidl
 Run:
 
 ```sh
-$FUCHSIA_DIR/out/default/host_x64/fidlgen_{llcpp,hlcpp,rust,go,dart}
+$FUCHSIA_DIR/out/default/host_x64/fidlgen_{cpp,hlcpp,rust,go,dart}
 ```
 
 Some example tests you can run:
@@ -482,8 +495,8 @@ useful for debugging issues that prevent boot of the device.
 | walker, misc             | `fx test fidl-walker-tests`         |  //sdk/lib/fidl_base
 | walker tests w/ handle closing checks | `fx test fidl-handle-closing-tests` | //sdk/lib/fidl_base
 | hlcpp bindings tests including conformance tests     | `fx test fidl_hlcpp_unit_test_package fidl_hlcpp_conformance_test_package`         | //sdk/lib/fidl                                                             |
-| llcpp bindings tests     | `fx test //src/lib/fidl/llcpp`      | //sdk/lib/fidl/cpp/wire
-| unified C++ bindings tests | `fx test //src/lib/fidl/cpp`      | //src/lib/fidl/cpp
+| New C++ wire tests       | `fx test //src/lib/fidl/llcpp`      | //sdk/lib/fidl/cpp/wire
+| New C++ tests            | `fx test //src/lib/fidl/cpp`        | //src/lib/fidl/cpp
 | go bindings tests        | `fx test go-fidl-tests`             | //third_party/go/syscall/zx/fidl //third_party/go/syscall/zx/fidl/fidl_test //src/tests/fidl/go_bindings_test |
 | dart bindings tests      | `fx test dart-bindings-test`<br>(_see note below_) | //sdk/dart/fidl                                                  |
 | rust bindings tests      | `fx test //src/lib/fidl/rust`           | //src/lib/fidl/rust |
@@ -499,7 +512,8 @@ for test failures. To see those, look at the `fx qemu` or `ffx log` output.
 | walker, misc             | `fx test --host fidl-walker-host-tests`         | //sdk/lib/fidl_base
 | hlcpp unittests          | `fx test --host fidl_hlcpp_unit_tests`          | //sdk/lib/fidl
 | hlcpp conformance tests  | `fx test --host fidl_hlcpp_conformance_tests`   | //sdk/lib/fidl
-| llcpp conformance tests  | `fx test --host fidl_llcpp_conformance_tests`   | //sdk/lib/fidl/cpp/wire
+| C++ wire types conformance tests  | `fx test --host fidl_llcpp_conformance_tests`    | //sdk/lib/fidl/cpp/wire
+| C++ natural types conformance tests  | `fx test --host fidl_cpp_conformance_tests`   | //src/lib/fidl/cpp
 | rust conformance tests   | `fx test --host fidl_rust_conformance_tests`    | //src/lib/fidl/rust
 | rust fidl lib tests      | `fx test --host fidl_rust_lib_tests`            | //src/lib/fidl/rust
 | go conformance tests     | `fx test --host fidl_go_conformance_tests`      | //third_party/go/syscall/zx/fidl
@@ -513,7 +527,7 @@ for test failures. To see those, look at the `fx qemu` or `ffx log` output.
 | fidlgen type definitions   | `fx test fidlgen_lib_test`                         | //tools/fidl/lib/fidlgen
 | fidlgen C++ specific IR    | `fx test fidlgen_cpp_ir_test`                      | //tools/fidl/lib/fidlgen_cpp
 | fidlgen hlcpp              | `fx test fidlgen_hlcpp_golden_tests`               | //tools/fidl/fidlgen_hlcpp
-| fidlgen llcpp              | `fx test fidlgen_cpp_golden_tests`               | //tools/fidl/fidlgen_cpp
+| fidlgen new C++        | `fx test fidlgen_cpp_golden_tests`                 | //tools/fidl/fidlgen_cpp
 | fidlgen golang             | `fx test fidlgen_go_{lib,golden}_tests`            | //tools/fidl/fidlgen_golang
 | fidlgen rust               | `fx test fidlgen_rust_{lib,golden}_tests`          | //tools/fidl/fidlgen_rust
 | fidlgen syzkaller          | `fx test fidlgen_syzkaller_golden_tests`           | //tools/fidl/fidlgen_syzkaller
@@ -554,7 +568,7 @@ Available benchmarks:
 |------|-------------------|-------|
 | Go Benchmarks |  `fx shell /bin/go_fidl_microbenchmarks` | |
 | Rust Benchmarks | `fx shell /bin/rust_fidl_microbenchmarks /tmp/myresultsfile` | Results can be viewed with `fx shell cat /tmp/myresultsfile/` |
-| LLCPP benchmarks |  `fx shell /bin/llcpp_fidl_microbenchmarks` | |
+| C++ wire types benchmarks |  `fx shell /bin/llcpp_fidl_microbenchmarks` | |
 | lib/fidl Benchmarks | `fx shell /bin/lib_fidl_microbenchmarks` | |
 | Roundtrip Benchmarks | `fx shell /bin/roundtrip_fidl_benchmarks` | |
 
@@ -575,16 +589,16 @@ fx test --e2e fidl_microbenchmarks_test
 
 ### All regen commands
 
-This section gives the `fx regen-goldens` commands to regnerate all FIDL-related
+This section gives the `fx check-goldens` commands to regenerate all FIDL-related
 golden files. This is what `fidldev regen` uses under the hood.
 
 | Name            | Regen commands                                 | Input                     |  Output
 |-----------------|------------------------------------------------|---------------------------|------------
-| (all goldens)   | fx regen-goldens |  |
-| fidlc goldens   | fx regen-goldens fidlc                         | tools/fidl/fidlc/testdata | tools/fidl/fidlc/goldens
-| fidlgen goldens | fx regen-goldens $TOOL                         | tools/fidl/fidlc/testdata | tools/fidl/$TOOL/goldens
-| fidldoc goldens | fx regen-goldens fidldoc                       | tools/fidl/fidlc/testdata | tools/fidl/fidldoc/goldens
-| gidl goldens    | fx regen-goldens gidl | src/tests/fidl/conformance_suite/golden{.gidl,.test.fidl} | tools/fidl/gidl/goldens
+| (all goldens)   | fx check-goldens |  |
+| fidlc goldens   | fx check-goldens fidlc                         | tools/fidl/fidlc/testdata | tools/fidl/fidlc/goldens
+| fidlgen goldens | fx check-goldens $TOOL                         | tools/fidl/fidlc/testdata | tools/fidl/$TOOL/goldens
+| fidldoc goldens | fx check-goldens fidldoc                       | tools/fidl/fidlc/testdata | tools/fidl/fidldoc/goldens
+| gidl goldens    | fx check-goldens gidl | src/tests/fidl/conformance_suite/golden{.gidl,.test.fidl} | tools/fidl/gidl/goldens
 | third party go  | fx exec $FUCHSIA_DIR/third_party/go/regen-fidl |                           |
 
 ### Compiling with `ninja`
@@ -703,28 +717,27 @@ fidl fmt --library my_library.fidl -i
 ```
 
 <!-- xrefs -->
-[abi-api-compat]: /development/languages/fidl/guides/compatibility/README.md
-[fidl-readme]: /development/languages/fidl
-[cpp-style]: /development/languages/c-cpp/cpp-style.md
+[abi-api-compat]: /docs/development/languages/fidl/guides/compatibility/README.md
+[fidl-readme]: /docs/development/languages/fidl
+[cpp-style]: /docs/development/languages/c-cpp/cpp-style.md
 [fidlc-source]: /tools/fidl/fidlc/
 [fidlc-coding-tables-tests]: /src/lib/fidl/c/coding_tables_tests/
 [fidl-simple]: /src/lib/fidl/c/simple_tests/
 [fidlc-compiler]: /tools/fidl/fidlc/
 [fidlc-compiler-tests]: /tools/fidl/fidlc/tests/
 [walker-tests]: /src/lib/fidl/c/walker_tests/
-[jsonir]: /reference/fidl/language/json-ir.md
-[getting_started]: /get-started/README.md
+[jsonir]: /docs/reference/fidl/language/json-ir.md
+[getting_started]: /docs/get-started/README.md
 [compat_readme]: /src/tests/fidl/compatibility/README.md
 [go-test-flags]: https://golang.org/cmd/go/#hdr-Testing_flags
 [fidl-misc]: https://fuchsia.googlesource.com/fidl-misc
 [fidldev]: https://fuchsia.googlesource.com/fidl-misc/+/HEAD/fidldev
-[RFC-0042]: /contribute/governance/rfcs/0042_non_nullable_types.md
-[pagination]: /development/languages/fidl/guides/max-out-pagination.md
-[commit-message]: /contribute/commit-message-style-guide.md
+[RFC-0042]: /docs/contribute/governance/rfcs/0042_non_nullable_types.md
+[pagination]: /docs/development/languages/fidl/guides/max-out-pagination.md
+[commit-message]: /docs/contribute/commit-message-style-guide.md
 
 [/tools/fidl/fidlc/formatter]: /tools/fidl/fidlc/formatter
 [/tools/fidl/fidlc/linter]: /tools/fidl/fidlc/linter
-[/tools/fidl/fidlc/lib/c_generator.cc]: /tools/fidl/fidlc/lib/c_generator.cc
 [/tools/fidl/fidlc/lib/tables_generator.cc]: /tools/fidl/fidlc/lib/tables_generator.cc
 [/tools/fidl/fidlgen_hlcpp]: /tools/fidl/fidlgen_hlcpp
 [/tools/fidl/fidlgen_cpp]: /tools/fidl/fidlgen_cpp

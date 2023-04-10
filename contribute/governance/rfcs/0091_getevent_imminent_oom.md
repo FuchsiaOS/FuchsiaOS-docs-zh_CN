@@ -191,9 +191,9 @@ able to write a report.
 
 ## Prior art and references
 
-The [`zx_system_get_event`](/reference/syscalls/system_get_event.md)
+The [`zx_system_get_event`](/docs/reference/syscalls/system_get_event.md)
 docs describe how the kernel memory events work. The
-[`fuchsia.memorypressure`](https://fuchsia.dev/reference/fidl/fuchsia.memorypressure?hl=en)
+[`fuchsia.memorypressure`](https://fuchsia.dev/reference/fidl/fuchsia.memorypressure)
 docs describe the userspace memory pressure signals that are built on top of the
 kernel events.
 

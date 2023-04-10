@@ -49,4 +49,4 @@ fuchsiasamples.com
 [ffx-target-update]: https://fuchsia.dev/reference/tools/sdk/ffx#update_3
 [flash-fuchsia]: ./flash-a-device.md
 [start-a-package-repo]: ./create-a-package-repository.md
-[merkle-root]: /concepts/packages/merkleroot.md
+[merkle-root]: /docs/concepts/packages/merkleroot.md

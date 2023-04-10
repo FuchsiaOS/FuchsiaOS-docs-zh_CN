@@ -524,15 +524,15 @@ builder.add_route(
 builder.add_route(
     vec![
         RouteCapability::Directory(RouteCapabilityDirectory {
-            name: "dev",
+            name: "dev-class",
             as: "dev-class-input",
-            subdir: "class/input",
+            subdir: "input",
             ..RouteCapabilityDirectory::default()
         }),
         RouteCapability::Directory(RouteCapabilityDirectory {
-            name: "dev",
+            name: "dev-class",
             as: "dev-class-block",
-            subdir: "class/block",
+            subdir: "block",
             ..RouteCapabilityDirectory::default()
         }),
     ],
@@ -642,12 +642,12 @@ let component_storage_proxy = builder.host_storage(
     &echo_server,
     "data",
 ).await?;
-let file_proxy = fuchsia_fs::open_file(
+let file_proxy = fuchsia_fs::directory::open_file_no_describe(
     &component_storage_proxy,
     "config-file.json",
     fio::OpenFlags::RIGHT_WRITABLE|fio::OpenFlags::CREATE,
 )?;
-fuchsia_fs::write_file(&file_proxy, "{ \"foo\": \"bar\"}").await?;
+fuchsia_fs::file::write(&file_proxy, "{ \"foo\": \"bar\"}").await?;
 let realm_instance = builder.create().await?;
 ```
 
@@ -952,7 +952,7 @@ let realm_instance = builder.build().await?;
 
 ```rust
 let rb_factory_proxy = connect_to_service::<RealmBuilderFactoryMarker>().await?;
-let pkg_dir_proxy = fuchsia_fs::open_directory_in_namespace(
+let pkg_dir_proxy = fuchsia_fs::directory::open_in_namespace(
     "/pkg",
     fuchsia_fs::OpenFlags::RIGHT_READABLE | fuchsia_fs::OpenFlags::RIGHT_EXECUTABLE,
 )?;
@@ -1127,11 +1127,11 @@ easier exploration in the future of [deep realm support](#deep-realm-support),
 this approach will allow us to gather more data on the utility of a combined
 offer/expose API, and this approach results in a slightly simpler API.
 
-[realm-builder-docs]: /development/testing/components/realm_builder.md
-[realm-docs]: /concepts/components/v2/realms.md
-[resolver-docs]: /concepts/components/v2/capabilities/resolvers.md
-[runner-docs]: /concepts/components/v2/capabilities/runners.md
+[realm-builder-docs]: /docs/development/testing/components/realm_builder.md
+[realm-docs]: /docs/concepts/components/v2/realms.md
+[resolver-docs]: /docs/concepts/components/v2/capabilities/resolvers.md
+[runner-docs]: /docs/concepts/components/v2/capabilities/runners.md
 [test-manager-lib-rs]: /src/sys/test_manager/src/lib.rs
 [lifecycle-controller]: https://fuchsia.dev/reference/fidl/fuchsia.sys2#LifecycleController
-[collection]: /concepts/components/v2/realms.md#collections
-[manifest-shards]: /development/components/build.md#component-manifest-shards
+[collection]: /docs/concepts/components/v2/realms.md#collections
+[manifest-shards]: /docs/development/components/build.md#component-manifest-shards

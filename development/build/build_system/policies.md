@@ -202,4 +202,4 @@ it may be possible to make changes upstream. Use your best judgement.
 [bash-style]: https://google.github.io/styleguide/shellguide.html
 [python-style]: https://google.github.io/styleguide/pyguide.html
 [shellcheck]: https://www.shellcheck.net/
-[wconversion-project]: /contribute/open_projects/cpp/wconversion.md
+[wconversion-project]: /docs/contribute/open_projects/cpp/wconversion.md

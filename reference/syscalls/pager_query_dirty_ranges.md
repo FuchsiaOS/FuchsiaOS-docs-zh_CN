@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_pager_query_dirty_ranges
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Query contiguous ranges of dirty pages in a pager owned vmo.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -23,7 +30,7 @@ zx_status_t zx_pager_query_dirty_ranges(zx_handle_t pager,
                                         size_t* avail);
 ```
 
-## DESCRIPTION
+## Description
 
 Queries *pager_vmo* for contiguous runs of pages in the range [*offset*, *offset* + *length*) that
 are dirty, i.e. have outstanding modifications that have not been written back to the pager source.
@@ -90,20 +97,18 @@ Sample user code that wants to query all dirty ranges in a VMO might look like t
 
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *pager* must be of type **ZX_OBJ_TYPE_PAGER**.
 
 *pager_vmo* must be of type **ZX_OBJ_TYPE_VMO**.
 
-## RETURN VALUE
+## Return value
 
 `zx_pager_query_dirty_ranges()` returns **ZX_OK** on success. In the event of failure, a negative
 error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *pager* or *pager_vmo* is not a valid handle.
 
@@ -113,15 +118,13 @@ error value is returned.
 
 **ZX_ERR_OUT_OF_RANGE** The specified range in *pager_vmo* is invalid.
 
-## SEE ALSO
+## See also
 
  - [`zx_pager_create_vmo()`]
  - [`zx_pager_detach_vmo()`]
  - [`zx_pager_op_range()`]
  - [`zx_pager_query_vmo_stats()`]
  - [`zx_pager_supply_pages()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_pager_detach_vmo()`]: pager_detach_vmo.md

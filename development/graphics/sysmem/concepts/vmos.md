@@ -98,7 +98,7 @@ The kernel supports a `ZX_VMO_ZERO_CHILDREN` signal to help with these
 use-cases - if all [children][vmo_create_child] of a VMO are closed then
 `ZX_VMO_ZERO_CHILDREN` will be signaled on the parent VMO.
 
-![VMO hierarchy](/development/graphics/sysmem/images/vmo_hierarchy.png)
+![VMO hierarchy](/docs/development/graphics/sysmem/images/vmo_hierarchy.png)
 
 ### Client leaf VMOs
 These are the VMOs handed out to clients; clients name them by calling
@@ -158,21 +158,21 @@ snapshots and other client applications. Here's a simple example hierarchy:
           collection-5:
             channel_koid = 20048
             debug_id = 5498
-            debug_name = driver_host:pdev:00:00:1e
+            debug_name = driver_host
           collection-6:
             channel_koid = 20050
             debug_id = 5498
-            debug_name = driver_host:pdev:00:00:1e
+            debug_name = driver_host
           collection-at-allocation-7:
             debug_id = 19829
             debug_name = virtual-console.cm
             min_buffer_count = 1
           collection-at-allocation-8:
             debug_id = 5498
-            debug_name = driver_host:pdev:00:00:1e
+            debug_name = driver_host
           collection-at-allocation-9:
             debug_id = 5498
-            debug_name = driver_host:pdev:00:00:1e
+            debug_name = driver_host
           vmo-20085:
             koid = 20085
       heaps:
@@ -194,11 +194,12 @@ snapshots and other client applications. Here's a simple example hierarchy:
           id = 0
 ```
 Sysmem reports its view of memory through an inspect hierarchy in the
-`/dev/diagnostics/class/sysmem/000.inspect` file. Each logical-collection
-shown represents a set of identical buffers allocated by a set of clients.
-Those logical-collections contain lists of koids of live middle VMOs in that
-collection. koids are unique for the lifetime of the system and can be used
-to uniquely identify sysmem VMOs in memgraph output.
+`/dev/diagnostics/class/sysmem/XXX.inspect` file (where XXX is the pseudo-random
+3-digit identifier). Each logical-collection shown represents a set of identical
+buffers allocated by a set of clients. Those logical-collections contain lists
+of koids of live middle VMOs in that collection. koids are unique for the
+lifetime of the system and can be used to uniquely identify sysmem VMOs in
+memgraph output.
 
 All heaps also have inspect nodes. These can include the size and koids of
 all child VMOs, as well as information about how full the heap is and whether
@@ -277,18 +278,18 @@ clients still have references to VMOs.
 - Have component framework pass an unforgeable identifier to sysmem instead
 of having the client pass a forgeable debug name.
 
-[glossary.zircon boot image]: /glossary/README.md#zircon-boot-image
-[vmo]: /reference/kernel_objects/vm_object.md
-[pmt]: /reference/kernel_objects/pinned_memory_token.md
-[vmo_create_child]: /reference/syscalls/vmo_create_child.md
+[glossary.zircon boot image]: /docs/glossary/README.md#zircon-boot-image
+[vmo]: /docs/reference/kernel_objects/vm_object.md
+[pmt]: /docs/reference/kernel_objects/pinned_memory_token.md
+[vmo_create_child]: /docs/reference/syscalls/vmo_create_child.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
 [HeapType]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem#HeapType
 [BufferMemorySettings]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem#BufferMemorySettings
 [SetName]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem#BufferCollection.SetName
-[inspect]: /development/diagnostics/inspect
-[FEMU]: /development/build/emulator.md
+[inspect]: /docs/development/diagnostics/inspect
+[FEMU]: /docs/development/build/emulator.md
 [DRM]: https://en.wikipedia.org/wiki/Digital_rights_management
-[memoryusage]: /development/kernel/memory/memory.md
+[memoryusage]: /docs/development/kernel/memory/memory.md
 [guest]: https://en.wikipedia.org/wiki/Virtualization
 [virtualmemory]: https://en.wikipedia.org/wiki/Virtual_memory
 [fragmentation]: https://en.wikipedia.org/wiki/Fragmentation_(computing)

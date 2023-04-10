@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_timer_set
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Start a timer.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -18,7 +25,7 @@ zx_status_t zx_timer_set(zx_handle_t handle,
                          zx_duration_t slack);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_timer_set()` starts a one-shot timer that will fire when
 *deadline* passes. If a previous call to `zx_timer_set()` was
@@ -46,19 +53,16 @@ option value of 0 is **ZX_TIMER_SLACK_CENTER** and allows both early and
 late firing with an effective interval of *deadline* - *slack* to
 *deadline* + *slack*
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_TIMER** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_timer_set()` returns **ZX_OK** on success.
 In the event of failure, a negative error value is returned.
 
-
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -66,13 +70,11 @@ In the event of failure, a negative error value is returned.
 
 **ZX_ERR_OUT_OF_RANGE**  *slack* is negative.
 
-## SEE ALSO
+## See also
 
  - [`zx_deadline_after()`]
  - [`zx_timer_cancel()`]
  - [`zx_timer_create()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_deadline_after()`]: deadline_after.md
 [`zx_timer_cancel()`]: timer_cancel.md

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmar_map
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Add a memory mapping.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -22,7 +29,7 @@ zx_status_t zx_vmar_map(zx_handle_t handle,
                         zx_vaddr_t* mapped_addr);
 ```
 
-## DESCRIPTION
+## Description
 
 Maps the given VMO into the given virtual memory address region.  The mapping
 retains a reference to the underlying virtual memory object, which means
@@ -90,22 +97,19 @@ and continues up to
 Using **ZX_VM_ALIGN** flags with **ZX_VM_SPECIFIC** will fail if the vmar
 base address + *vmo_offset* are not aligned to the requested value.
 
-
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_VMAR**.
 
 *vmo* must be of type **ZX_OBJ_TYPE_VMO**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vmar_map()` returns **ZX_OK** and the absolute base address of the
 mapping (via *mapped_addr*) on success.  The base address will be page-aligned
 and non-zero.  In the event of failure, a negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* or *vmo* is not a valid handle.
 
@@ -143,22 +147,19 @@ In a future build this error will no longer occur.
 
 **ZX_ERR_OUT_OF_RANGE** `vmo_offset + ROUNDUP(len, PAGE_SIZE)` overflows.
 
-## NOTES
+## Notes
 
 The VMO that backs a memory mapping can be resized to a smaller size. This can cause the
 thread is reading or writing to the VMAR region to fault. To avoid this hazard, services
 that receive VMOs from clients should use **ZX_VM_REQUIRE_NON_RESIZABLE** when mapping
 the VMO.
 
-
-## SEE ALSO
+## See also
 
  - [`zx_vmar_allocate()`]
  - [`zx_vmar_destroy()`]
  - [`zx_vmar_protect()`]
  - [`zx_vmar_unmap()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_pager_create_vmo()`]: pager_create_vmo.md
 [`zx_vmar_allocate()`]: vmar_allocate.md

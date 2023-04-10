@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_guest_set_trap
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Sets a trap within a guest.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_guest_set_trap(zx_handle_t handle,
                               uint64_t key);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_guest_set_trap()` sets a trap within a guest, which generates a packet when
 there is an access by a VCPU within the address range defined by *addr* and
@@ -49,7 +56,6 @@ handle traps.
 *key* is used to set the key field within `zx_port_packet_t`, and can be used to
 distinguish between packets for different traps.
 
-
 **ZX_GUEST_TRAP_BELL** is a type of trap that defines a door-bell. If there is
 an access to the memory region specified by the trap, then a packet is generated
 that does not fetch the instruction associated with the access. The packet will
@@ -61,20 +67,18 @@ and **ZX_PKT_TYPE_GUEST_VCPU**. **ZX_PKT_TYPE_GUEST_VCPU** is a special packet,
 not caused by a trap, that indicates that the guest requested to start an
 additional VCPU.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_GUEST** and have **ZX_RIGHT_WRITE**.
 
 *port_handle* must be of type **ZX_OBJ_TYPE_PORT** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_guest_set_trap()` returns **ZX_OK** on success. On failure, an error value is
 returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED** *handle* or *port_handle* do not have the
 **ZX_RIGHT_WRITE** right.
@@ -97,7 +101,7 @@ of the valid bounds of the address space *kind*.
 **ZX_ERR_WRONG_TYPE** *handle* is not a handle to a guest, or *port_handle* is
 not a handle to a port.
 
-## NOTES
+## Notes
 
 **ZX_GUEST_TRAP_BELL** shares the same address space as **ZX_GUEST_TRAP_MEM**.
 
@@ -107,7 +111,7 @@ a page. This is due to a special page being mapped when a trap is requested at t
 address of the local APIC. This allows us to take advantage of hardware
 acceleration when available.
 
-## SEE ALSO
+## See also
 
  - [`zx_guest_create()`]
  - [`zx_port_create()`]
@@ -118,8 +122,6 @@ acceleration when available.
  - [`zx_vcpu_kick()`]
  - [`zx_vcpu_read_state()`]
  - [`zx_vcpu_write_state()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_guest_create()`]: guest_create.md
 [`zx_port_create()`]: port_create.md

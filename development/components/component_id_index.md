@@ -1,19 +1,15 @@
-# Component storage index
-
-<!-- TODO(fxbug,dev/77043): Update this guide for modern components -->
-
-Note: This guide uses the [components v1](/glossary/README.md#components-v1)
-architecture.
+# Component ID index
 
 ## Terminology
 
-[Moniker](/glossary?style=box#moniker)
-[Component instance identifier](/glossary?style=box#component-instance-identifier)
+[Moniker](/docs/glossary?style=box#moniker)
+[Component instance identifier](/docs/glossary?style=box#component-instance-identifier)
 
 ## Scope
 
 This document describes how to define an index that maps instance ids to
-monikers, for components that use isolated-persistent-storage.
+monikers. This mapping matters for components that use isolated storage
+capabilities.
 
 ## Overview
 
@@ -29,11 +25,7 @@ automatically moves the component instance's existing storage directory to be
 keyed under its instance ID.
 
 Only components that use storage capabilities must to be included in the
-index. The following class of components should not be included in the
-index:
-
-* Test components
-* Components whose storage is not managed by `appmgr`.
+index. Test components should not be included in the index.
 
 ## Define a new index
 
@@ -56,31 +48,17 @@ The schema for an index file is described in the following example:
       // strings (in lower case). To generate a new instance ID, omit this
       // field and run the build; the build will fail and suggest a new
       // instance ID which you can copy-paste here.
-      instance_id: "11601233aef81741f7251907d4d2a1a33aa6fec6b2e54abffc21bec29f95fec2",
+      instance_id: "2bd6cc2bd10243354b873a4ddb8a188b1d29171e26eebac06567bcdc36614af6",
       // The `instance_id` above is associated to the following moniker:
-      appmgr_moniker: {
-        // This the URL of the component.
-        url: "fuchsia-pkg://example.com/my_package#meta/my_component.cmx",
-
-        // This is the realm path where this component runs.
-        realm_path: [
-          "sys",     // This the parent realm of "session"
-          "session"  // This is the realm the component runs under
-        ]
-      }
+      moniker: "/core/account/credential_manager",
     },
 
     // More than one entry can be included. However, all entries must be distinct:
     // * Two entries cannot reference the same `instance_id`
-    // * Two entries cannot reference the same `realm`
+    // * Two entries cannot reference the same `moniker`
     {
-      instance_id: "644a7f0f66f8994d894c5f78b5b879911fee6c185c6aadd29d52888812d20ac4",
-      appmgr_moniker: {
-        url: "fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cmx",
-        realm_path: [
-          "sys"
-        ]
-      }
+      instance_id: "7db7e88479772e241229682b47f1794e12ac5d692f8d67421acd9d7ff318a975",
+      moniker: "/core/account/password_authenticator",
     }
   ]
 }
@@ -101,7 +79,7 @@ component_id_index("my_component_id_index") {
 
 In order to add a component to the index, you must insert an entry into the
 appropriate index file. Currently, `fuchsia.git`'s components are listed in the
-[core_component_id_index.json5](/src/sys/appmgr/config/core_component_id_index.json5)
+[core_component_id_index.json5](/src/sys/core/core_component_id_index.json5)
 index file.
 
 {% dynamic if user.is_googler %}
@@ -114,10 +92,8 @@ a product's configuration.
 
 ### Add an entry to the index
 
-The first step is to determine the component instance's moniker, which is its
-URL and realm path. You can find the realm path of a component on a
-particular product's eng build by checking `ffx component list` and collecting
-"(realm)" labels under appmgr leading up to the component.
+The first step is to determine the component instance's moniker. You can find the
+moniker of a component on a particular product's eng build by running `ffx component show`.
 
 Then, append an entry to the `instances` list with the component's moniker.
 Omit the `instance_id` field to have the build fail and suggest a new one you
@@ -125,41 +101,28 @@ can use.
 
 #### Example
 
-In this example, component `fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cmx`
-is added to the index.
+In this example, the component
+`fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cm` is added to the index.
 
-To determine the component instance's realm_path, you can look at the output of
-`ffx component list`:
+To determine the component instance's moniker, you can run
+`ffx component show fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cm`:
 
 ```shell
-$ ffx component list
-/
-.
-.
-/core/appmgr/app/sysmgr.cmx
-/core/appmgr/app/sys/my_other_component.cmx
-.
-.
+$ ffx component show fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cm
+               Moniker:  /core/my_other_component
+                   URL:  fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cm
+                      ...
 ```
 
-The above output tells us that my_other_component.cmx runs under the
-`[app, sys]` realm path.
+The above output shows us that the moniker of this instance is `/core/my_other_component`
 
-Add `fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cmx` to
-the index by appending this entry to [core_component_id_index.json5](/src/sys/appmgr/config/core_component_id_index.json5)'s
+Add `/core/my_other_component` to the index by appending this entry to
+[core_component_id_index.json5](/src/sys/core/core_component_id_index.json5)'s
 `instances` list:
 
 ```json5
   {
-    appmgr_moniker: {
-      // The component's URL
-      url: "fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cmx",
-      // The realm the component is run under.
-      realm_path: [
-        "app",
-        "sys"
-      ]
-    }
+    moniker: "/core/my_other_component"
   }
 ```
 
@@ -169,20 +132,14 @@ Now run the build.  The build should fail, suggesting a new instance ID:
 $ fx build
 .
 .
-Error: Could not merge index file ../../src/sys/appmgr/config/core_component_id_index.json5
+Error: Could not merge index file ../../src/sys/core/core_component_id_index.json5
 
 Caused by:
     Some entries are missing `instance_id` fields. Here are some generated IDs for you:
 [
   {
     instance_id: "47c3bf08f3e560c4dee659c28fa8d863dbdc0b1dbb74065e6cb1f38441ac759c",
-    appmgr_moniker: {
-      url: "fuchsia-pkg://example.com/my_other_package#meta/my_other_component.cmx",
-      realm_path: [
-        "app",
-        "sys"
-      ]
-    }
+    moniker: "/core/my_other_component"
   }
 ]
 ```

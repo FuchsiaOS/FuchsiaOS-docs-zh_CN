@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_object_get_info
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Query information about an object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_object_get_info(zx_handle_t handle,
                                size_t* avail);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_object_get_info()` requests information about the provided handle (or the
 object the handle refers to). The *topic* parameter indicates what specific
@@ -999,9 +1006,7 @@ typedef struct zx_info_bti {
 } zx_info_bti_t;
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 If *topic* is **ZX_INFO_PROCESS**, *handle* must be of type **ZX_OBJ_TYPE_PROCESS** and have **ZX_RIGHT_INSPECT**.
 
@@ -1051,12 +1056,12 @@ If *topic* is **ZX_INFO_MSI**, *handle* must be of type **ZX_OBJ_TYPE_MSI** and 
 
 If *topic* is **ZX_INFO_TASK_RUNTIME**, *handle* must be of type **ZX_OBJ_TYPE_THREAD**, **ZX_OBJ_TYPE_PROCESS**, or **ZX_OBJ_TYPE_JOB**, and have **ZX_RIGHT_INSPECT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_object_get_info()` returns **ZX_OK** on success. In the event of failure, a
 negative error value is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* is not a valid handle.
 
@@ -1112,14 +1117,12 @@ void examine_threads(zx_handle_t proc) {
 }
 ```
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
  - [`zx_object_get_child()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_call()`]: channel_call.md
 [`zx_futex_wait()`]: futex_wait.md

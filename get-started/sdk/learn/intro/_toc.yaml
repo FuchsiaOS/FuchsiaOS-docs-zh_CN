@@ -7,20 +7,20 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: /get-started/sdk/learn/intro/README.md
+    path: /docs/get-started/sdk/learn/intro/README.md
     step_group: sdkintrofuchsia
   - title: Fuchsia architecture
-    path: /get-started/sdk/learn/intro/architecture.md
+    path: /docs/get-started/sdk/learn/intro/architecture.md
     step_group: sdkintrofuchsia
   - title: Zircon fundamentals
-    path: /get-started/sdk/learn/intro/zircon.md
+    path: /docs/get-started/sdk/learn/intro/zircon.md
     step_group: sdkintrofuchsia
   - title: Software isolation model
-    path: /get-started/sdk/learn/intro/sandboxing.md
+    path: /docs/get-started/sdk/learn/intro/sandboxing.md
     step_group: sdkintrofuchsia
   - title: Component-based software
-    path: /get-started/sdk/learn/intro/components.md
+    path: /docs/get-started/sdk/learn/intro/components.md
     step_group: sdkintrofuchsia
   - title: Software delivery
-    path: /get-started/sdk/learn/intro/packages.md
+    path: /docs/get-started/sdk/learn/intro/packages.md
     step_group: sdkintrofuchsia

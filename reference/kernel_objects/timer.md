@@ -36,11 +36,11 @@ The typical lifecycle is:
 
 ## SEE ALSO
 
-+ [timer slack](/concepts/kernel/timer_slack.md)
++ [timer slack](/docs/concepts/kernel/timer_slack.md)
 
-[`zx_object_wait_one()`]: /reference/syscalls/object_wait_one.md
-[`zx_object_wait_many()`]: /reference/syscalls/object_wait_many.md
-[`zx_object_wait_async()`]: /reference/syscalls/object_wait_async.md
-[`zx_timer_create()`]: /reference/syscalls/timer_create.md
-[`zx_timer_set()`]: /reference/syscalls/timer_set.md
-[`zx_timer_cancel()`]: /reference/syscalls/timer_cancel.md
+[`zx_object_wait_one()`]: /docs/reference/syscalls/object_wait_one.md
+[`zx_object_wait_many()`]: /docs/reference/syscalls/object_wait_many.md
+[`zx_object_wait_async()`]: /docs/reference/syscalls/object_wait_async.md
+[`zx_timer_create()`]: /docs/reference/syscalls/timer_create.md
+[`zx_timer_set()`]: /docs/reference/syscalls/timer_set.md
+[`zx_timer_cancel()`]: /docs/reference/syscalls/timer_cancel.md

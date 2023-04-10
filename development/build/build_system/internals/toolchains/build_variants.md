@@ -83,7 +83,7 @@ example:
   by applying the `ubsan` variant, and its `root_out_dir` is
   `${root_build_dir}/host_x64-ubsan`.
 
-- `//build/toolchain/fuchsia:x64` is the default toolchain (when targetting
+- `//build/toolchain/fuchsia:x64` is the default toolchain (when targeting
   x64-based devices), used to build Fuchsia user-level binaries. Because it is
   the default, its `root_out_dir` is the same as `root_build_dir`.
 
@@ -844,8 +844,8 @@ TBW
 TBW
 
 [gn-toolchain]: https://gn.googlesource.com/gn/+/main/docs/reference.md#toolchain-overview
-[gn-toolchains-overview]: /development/build/build_system/internals/toolchains/gn_toolchains_overview.md
-[elf-shared-library-redirection]: /development/build/build_system/internals/toolchains/elf_shared_library_redirection.md
+[gn-toolchains-overview]: /docs/development/build/build_system/internals/toolchains/gn_toolchains_overview.md
+[elf-shared-library-redirection]: /docs/development/build/build_system/internals/toolchains/elf_shared_library_redirection.md
 [clang-asan]: https://clang.llvm.org/docs/AddressSanitizer.html
 [clang-ubsan]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
 [enable-variants]: https://cs.opensource.google/fuchsia/fuchsia/+/main:build/toolchain/variant_toolchain_suite.gni;drc=28b4b027204084d695ba0659a7ecb733196b543f;l=180

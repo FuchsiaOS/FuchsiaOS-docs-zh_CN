@@ -11,7 +11,7 @@ A FIDL struct member may have a default value.
 Today, support of defaults is partially implemented (see section below),
 this proposal aims to clarify how defaults ought to behave.
 
-# Motivation
+## Motivation
 
 1. It provides regularity across the language binding, provides protections
    from inconsistent or unexpected uses, and
@@ -25,7 +25,7 @@ Non-motivation includes:
 It is *not* a motivation to save bytes in wire format or to save processing
 power in doing encoding or decoding.
 
-# Today's Implementation
+## Today's Implementation
 
 Defaults can be [expressed][grammar] in the FIDL language on struct members:
 
@@ -42,7 +42,7 @@ Defaults can be [expressed][grammar] in the FIDL language on struct members:
 
 For example (from [//zircon/system/host/fidl/examples/types.test.fidl][example-types]):
 
-```fidl
+```fidl {:.devsite-disable-click-to-copy}
 struct default_values {
     bool b1 = true;
     bool b2 = false;
@@ -60,14 +60,14 @@ struct default_values {
 };
 ```
 
-# Design
+## Design
 
 Default values MAY be defined on struct members.
 Defaults appear at the end of a field definition with a C-like `= {value}` pattern.
 
-## Syntax
+### Syntax
 
-```fidl
+```fidl {:.devsite-disable-click-to-copy}
 // cat.fidl
 
 enum CatAction : int8 {
@@ -91,12 +91,12 @@ struct Cat {
 };
 ```
 
-## Semantics
+### Semantics
 
-Please refer to [RFC-006](/contribute/governance/rfcs/0066_programmer_advisory_explicit.md), which clarified the semantics of defaults,
+Please refer to [RFC-006](/docs/contribute/governance/rfcs/0066_programmer_advisory_explicit.md), which clarified the semantics of defaults,
 and requirements on bindings.
 
-## Supported Types
+### Supported Types
 
 * Primitive types:
     * `bool`, `int8`, `int16`, `int32`, `int64`, `uint8`, `uint16`, `uint32`,
@@ -104,7 +104,7 @@ and requirements on bindings.
 * Non-nullable `string`, `string:N`
     * `string:N` shall zero out the memory that is reserved, and not used.
 
-## Unsupported Types
+### Unsupported Types
 
 * `array<T>:N`
     * Set to zero
@@ -121,7 +121,7 @@ and requirements on bindings.
       or that of a substructure (in any depth) of the `union` shall be
       ignored.
 
-## Nuances of Defaults
+### Nuances of Defaults
 
 The focus is on the value itself, and not on the *manner* of assigning the
 value.
@@ -132,11 +132,11 @@ This implies two things at least:
 * There is no extra (transparent) layer of logic to assign values at the
   time of marshalling or unmarshalling.
 
-# Implementation
+## Implementation
 
 Here are some example implemention ideas for C, Rust, and Go Bindings
 
-```fidl
+```fidl {:.devsite-disable-click-to-copy}
 // in FIDL "default.fidl"
 struct Location {
     uint8 pos_x = 10;
@@ -145,7 +145,7 @@ struct Location {
 };
 ```
 
-```c
+```c {:.devsite-disable-click-to-copy}
 // C binding "defaults/fidl.h"
 typedef struct _Location_raw {
    uint8_t pos_x;
@@ -160,7 +160,7 @@ memcpy, etc.
 #define Location(my_instance) Location my_instance = Location_default;
 ```
 
-```c
+```c {:.devsite-disable-click-to-copy}
 // C code "example.c"
 #include <fidl.h>
 void showme(Location loc) {
@@ -176,7 +176,7 @@ int main() {
 }
 ```
 
-```rust
+```rust {:.devsite-disable-click-to-copy}
 // Rust binding
 struct Location {
     pos_x: u8,
@@ -188,7 +188,7 @@ impl std::default::Default for Location {
 }
 ```
 
-```golang
+```golang {:.devsite-disable-click-to-copy}
 // Go binding, using export control
 type location struct {
     pos_x  uint8
@@ -205,32 +205,37 @@ Func NewLocation() location {
 }
 ```
 
+## Performance
 
-# Backwards compatibility
+n/a
+
+## Security
+
+n/a
+
+## Testing
+
+n/a
+
+## Backwards compatibility
 
 This change makes the FIDL file source backward-incompatible. No ABI or
 wire format change is needed.
 
-# Performance
-
-# Security
-
-# Testing
-
-# Drawbacks, alternatives, and unknowns
+## Drawbacks, alternatives, and unknowns
 
 It is not evaluated if implementation of this in all language bindings will
 be straightforward.
 
-# Prior art and references
+## Prior art and references
 
 [Protocol buffer][proto3-defaults], Flat buffer provides default values. Golang has a concept
 of *zero values* where variables declared without an explicit initial values
 are explicitly initialized as zero.
 
-An open source approach
+An open source approach:
 
-```
+```golang {:.devsite-disable-click-to-copy}
 // From https://github.com/creasty/defaults
 type Sample struct {
         Name   string `default:"John Smith"`
@@ -252,6 +257,6 @@ type Sample struct {
 
 <!-- xref -->
 
-[grammar]: /reference/fidl/language/grammar.md
+[grammar]: /docs/reference/fidl/language/grammar.md
 [example-types]: https://fuchsia.googlesource.com/fuchsia/+/1d98ab5e39255f8305825a18cd385198d6517569/zircon/system/host/fidl/examples/types.test.fidl#45
 [proto3-defaults]: https://developers.google.com/protocol-buffers/docs/proto3#default

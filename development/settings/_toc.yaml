@@ -7,8 +7,8 @@
 # team as reviewer.
 toc:
 - title: "Introduction"
-  path: /development/settings/introduction.md
+  path: /docs/development/settings/introduction.md
 - title: "Policy concepts"
-  path: /development/settings/policy_concepts.md
+  path: /docs/development/settings/policy_concepts.md
 - title: "Using Settings"
-  path: /development/settings/using_settings.md
+  path: /docs/development/settings/using_settings.md

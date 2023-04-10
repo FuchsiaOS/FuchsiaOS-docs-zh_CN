@@ -7,4 +7,6 @@
 # team as reviewer.
 toc:
 - title: "CLI"
-  path: /development/tools/ffx/architecture/cli.md
+  path: /docs/development/tools/ffx/architecture/cli.md
+- title: "FHO subtool interface"
+  path: /docs/development/tools/ffx/architecture/fho.md

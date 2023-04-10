@@ -15,7 +15,7 @@ OOM: 5915.8M free (+0B) / 8072.4M total
 OOM: oom_lowmem(shortfall_bytes=524288) called
 OOM: Process mapped committed bytes:
 OOM:   proc  1043  397M 'bin/devmgr'
-OOM:   proc  2107   88M 'driver_host:pci#1:8086:1916'
+OOM:   proc  2107   88M 'driver_host'
 OOM:   proc  1297   12M 'virtual-console'
 OOM:   proc  3496   17M 'netstack'
 OOM:   proc  4157  170M 'flutter:userpicker_device_shell'
@@ -45,7 +45,7 @@ memory, in no particular order:
 ```
 OOM: Process mapped committed bytes:
 OOM:   proc  1043  397M 'bin/devmgr'
-OOM:   proc  2107   88M 'driver_host:pci#1:8086:1916'
+OOM:   proc  2107   88M 'driver_host'
 OOM:   proc  1297   12M 'virtual-console'
 OOM:   ...
              ^koid  ^mem

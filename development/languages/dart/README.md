@@ -1,6 +1,5 @@
 # Dart
 
-
 ## Overview
 
 Dart artifacts are not built the same way in Fuchsia as they are on other
@@ -13,7 +12,7 @@ This is to ensure we use consistent versions of our dependencies across multiple
 builds.
 
 Likewise, no build output is placed in the source tree as everything goes under
-`out/`. That includes `.packages` files, which are generated as part of the build
+`out/`. That includes `package_config.json` files, which are generated as part of the build
 based on a target's dependency.
 
 ## Exiting Dart programs
@@ -42,9 +41,11 @@ There are five gn targets for building Dart:
 
 - [`dart_library`][target-library] defines a library that can be used by other
 Dart targets;
-- [`dart_app`][target-app] defines a Dart executable for Fuchsia;
+- [`dart_component`][target-dart-component] defines a Fuchsia component based on a Dart
+  library, that can be packaged using GN targets `fuchsia_package` or
+  `fuchsia_test_package`;
 - [`dart_tool`][target-tool] defines a Dart tool for the host;
-- [`flutter_app`][target-flutter] defines a [Flutter][flutter] application;
+- [`flutter_component`][target-flutter] defines a [Flutter][flutter] component;
 - [`dart_test`][target-test] defines a group of test.
 
 See the definitions of each of these targets for how to use them.
@@ -54,7 +55,7 @@ See the definitions of each of these targets for how to use them.
 
 We use a layout very similar to the [standard layout][package-layout].
 
-```
+```none
 my_package/
   |
   |-- pubspec.yaml           # Empty, used as a marker [mandatory]
@@ -75,12 +76,11 @@ my_package/
 - [Managing third_party dependencies](third_party.md)
 - [IDEs](ides.md)
 
-
 [pub]: https://www.dartlang.org/tools/pub/get-started "Pub"
 [package-layout]: https://www.dartlang.org/tools/pub/package-layout "Package layout"
 [target-library]: /build/dart/dart_library.gni "dart_library target"
-[target-app]: https://fuchsia.googlesource.com/topaz/+/HEAD/runtime/dart_runner/dart_app.gni "dart_app target"
+[target-dart-component]: /build/dart/dart_component.gni "dart_component target"
 [target-tool]: /build/dart/dart_tool.gni "dart_tool target"
-[target-flutter]: https://fuchsia.googlesource.com/topaz/+/HEAD/runtime/flutter_runner/flutter_app.gni "flutter_app target"
+[target-flutter]: https://fuchsia.googlesource.com/fuchsia/+/HEAD/build/flutter/flutter_component.gni "flutter_component target"
 [target-test]: /build/dart/dart.gni "dart_test target"
 [flutter]: https://flutter.io/ "Flutter"

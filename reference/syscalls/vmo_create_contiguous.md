@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vmo_create_contiguous
 
 ## SUMMARY
 
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
-
 TODO(fxbug.dev/32938)
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,25 +26,22 @@ zx_status_t zx_vmo_create_contiguous(zx_handle_t bti,
                                      zx_handle_t* out);
 ```
 
-## DESCRIPTION
+## Description
 
 TODO(fxbug.dev/32938)
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *bti* must be of type **ZX_OBJ_TYPE_BTI** and have **ZX_RIGHT_MAP**.
 
-## RETURN VALUE
+## Return value
 
 TODO(fxbug.dev/32938)
 
-## ERRORS
+## Errors
 
 TODO(fxbug.dev/32938)
 
-## SEE ALSO
-
+## See also
 
 TODO(fxbug.dev/32938)

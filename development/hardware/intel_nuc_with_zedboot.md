@@ -30,8 +30,10 @@ complete the [Get started with Fuchsia][get-started-with-fuchsia] guide.
 
 ### Get parts {#get-parts}
 
-Note: Fuchsia only supports the specific system configurations listed in
-[Supported system configurations][supported-sys-config].
+Note: Fuchsia only supports the NUC configurations listed in
+[Supported system configurations][supported-sys-config]. However,
+unsupported NUC configurations may also work with Fuchsia. For more information
+on experimental setups, see [Experimental hardware][experimental-hardware].
 
 The following parts are required for this guide:
 
@@ -120,30 +122,92 @@ To prepare a bootable USB drive, do the following:
 Update your NUC's BIOS setup so that it can boot from
 a USB drive.
 
-To enable EFI (Extensible Firmware Interface) booting on your NUC,
-do the following:
+Two versions of BIOS are available on NUC devices: **Visual BIOS** (for instance, NUC7)
+and **Aptio V BIOS** (for instance, NUC11). The steps are slightly different depending
+on which BIOS is included in your system.
 
-1. Reboot your NUC.
-1. To enter the BIOS setup, press `F2` while booting.
-1. In the **Boot Order** window on the left, click the **Legacy** tab.
-1. Uncheck **Legacy Boot**.
+Important: To be able to enter the BIOS setup mode, you may need to unplug the
+Ethernet cable from the NUC device if it's already connected to the host machine.
 
-   <img width="40%" src="/images/developing_on_nuc/bios.jpg"/>
-1. Click the **Advanced** button.
-1. Confirm the following boot configuration:
-    * Under the **Boot Priority** tab:
-       * **UEFI Boot** is checked.
-    * Under the **Boot Configuration** tab:
-       * In the **UEFI Boot** window:
-         * **Boot USB Devices First** is checked.
-         * **Boot Network Devices Last** is checked.
-         * **Unlimited Network Boot Attempts** is checked.
-       * In the **Boot Devices** window:
-         * **USB** is checked.
-         * **Network Boot** is set to **UEFI PXE & iSCSI**.
-    * Under the **Secure Boot** tab:
-       * **Secure Boot** is unchecked.
-1. To save and exit BIOS, press `F10` and click **Yes**.
+* {Visual BIOS}
+
+   ![Visual BIOS](images/visual_bios.png "Screenshot showing Visual BIOS"){: width="700"}
+
+   **Figure 1**. A screenshot of Visual BIOS
+
+   To enable EFI (Extensible Firmware Interface) booting on your NUC,
+   do the following:
+
+   1. Reboot your NUC.
+   1. To enter the BIOS setup, press `F2` while booting.
+   1. Click the **Advanced** button at the top.
+   1. Click the **Boot** tab.
+   1. Click the **Boot Priority** tab and confirm the following settings:
+
+      -  **UEFI Boot** is checked.
+      -  **Legacy Boot** is unchecked.
+
+     ![Visual BIOS Boot Priority tab](images/visual_bios_boot_priority.png "Screenshot showing the Boot Priority tab in Visual BIOS"){: width="700"}
+
+   1. Click the **Boot Configuration** tab and confirm the following settings:
+
+      -  In the **UEFI Boot** window:
+
+         -  **Boot USB Devices First** is checked.
+         -  **Boot Network Devices Last** is checked.
+         -  **Unlimited Network Boot Attempts** is checked.
+
+      -  In the **Boot Devices** window:
+
+         -  **USB** is checked.
+         -  **Network Boot** is set to `UEFI PXE & iSCSI`.
+
+      ![Visual BIOS Boot Configuration](images/visual_bios_boot_configuration.png "Screenshot showing the Boot Configuration tab in Visual BIOS"){: width="400"}
+
+   1. Click the **Secure Boot** tab and confirm the following settings:
+
+      -  **Secure Boot** is unchecked.
+
+      ![Visual BIOS Secure Boot](images/visual_bios_secure_boot.png "Screenshot showing the Secure Boot tab Visual BIOS"){: width="400"}
+
+   1. To save and exit BIOS, press `F10` and click **Yes**.
+
+* {Aptio V BIOS}
+
+   ![Aptio V BIOS](images/aptio_v_bios.png "Screenshot showing Aptio V BIOS"){: width="700"}
+
+   **Figure 2**. A screenshot of Aptio V BIOS
+
+   To enable EFI (Extensible Firmware Interface) booting on your NUC,
+   do the following:
+
+   1. Reboot your NUC.
+   1. To enter the BIOS setup, press `F2` while booting.
+   1. Click the **Boot** tab.
+   1. Click **Secure Boot** and confirm the following settings:
+
+      -  **Secure Boot** is set to `Disabled`.
+
+      ![Aptio V BIOS Secure Boot](images/aptio_v_bios_secure_boot.png "Screenshot showing the Secure Boot tab in Aptio V BIOS"){: width="500"}
+
+   1. To return, click the **<** button on the left.
+   1. Click **Boot Priority** and confirm the following settings:
+
+      -  **UEFI Boot** is checked.
+      -  **Legacy Boot** is unchecked.
+
+         Note: If you don't see the **UEFI Boot** and **Legacy Boot** options, it means that
+         your system does not support legacy boot. Skip these first two checks.
+
+      -  **Boot USB Devices First** is checked.
+      -  **Boot Network Devices Last** is checked.
+      -  **Unlimited Boot to Network Attempts** is checked.
+      -  **USB** is checked.
+      -  **Network Boot** is set to `UEFI PXE & iSCSI`.
+
+      ![Aptio V BIOS Boot Priority](images/aptio_v_bios_boot_priority.png "Screenshot showing the Boot priority tab in Aptio V BIOS"){: width="500"}
+
+   1. To save and exit BIOS, press `F10` and click **Ok**.
 
 ## 5. Install Fuchsia on the NUC {#install-fuchsia}
 
@@ -316,7 +380,7 @@ generation.
 The list below shows some example models:
 
  * [Intel® NUC Kit NUC7i5DNKE][NUC7i5DNKE]{:.external}
- * [Intel® NUC Kit NUC7i5DNHE][NUC7i5DNHE]{:.external}
+ * [Intel® NUC Kit NUC7i5DNHE][NUC7i5DNHE]{:.external} (Best choice)
  * [Intel® NUC Kit NUC7i3DNKE][NUC7i3DNKE]{:.external}
  * [Intel® NUC Kit NUC7i3DNHE][NUC7i3DNHE]{:.external}
  * [Intel® NUC Kit NUC8i5BEK][NUC8i5BEK]{:.external}
@@ -329,7 +393,7 @@ The list below shows some example models:
 Some NUC devices do not come with RAM or an SSD. In which case,
 you need to install them manually.
 
-<img width="40%" src="/images/developing_on_nuc/parts.jpg"/>
+<img width="40%" src="/docs/images/developing_on_nuc/parts.jpg"/>
 
 **Figure 1**. A NUC device and RAM and SSD sticks.
 
@@ -346,8 +410,8 @@ To install the RAM and SSD on your NUC, do the following:
 
 1. Remove the Phillips screws on the bottom feet of the NUC.
 
-   <img width="40%" src="/images/developing_on_nuc/nuc_bottom.jpg"/>
-   <img width="40%" src="/images/developing_on_nuc/nuc_inside.jpg"/>
+   <img width="40%" src="/docs/images/developing_on_nuc/nuc_bottom.jpg"/>
+   <img width="40%" src="/docs/images/developing_on_nuc/nuc_inside.jpg"/>
 
 1. Install the RAM.
 1. Remove the Phillips screws that would hold the SSD in place
@@ -356,7 +420,7 @@ To install the RAM and SSD on your NUC, do the following:
 1. Install the SSD.
 1. Mount the SSD in place using the screws from Step 3.
 
-   <img width="40%" src="/images/developing_on_nuc/parts_installed.jpg"/>
+   <img width="40%" src="/docs/images/developing_on_nuc/parts_installed.jpg"/>
 1. Put the bottom feet and screws back in.
 1. Plug the power, monitor (using HDMI), and keyboard into the NUC.
 
@@ -369,95 +433,118 @@ Note: This assumes you're using NUC connected to the EdgeRouter. If
 your networking setup is different, you may need a different network
 configuration.
 
-Do the following:
+First, configure Intel ME on your NUC:
 
+1. Reboot your NUC.
 1. Enter Intel ME settings by pressing `Ctrl+P` on the boot screen.
+1. Select **MEBx Login**
+1. Set up a new password, the default one is `admin`.
 
-   * The first time you need to set a password, the default one is `admin`.
-     Password must be at least 8 characters long, contain both lowercase and
-     uppercase characters, at least one digit and at least one non alphanumeric
-     character.
+   Note: The password must be at least 8 characters long, contain both lowercase and
+   uppercase characters, at least one digit and at least one non alphanumeric
+   character ("_" is considered alphanumeric).
+
+   Tip: If you choose a password that is exactly 8 characters long, you can use the same password
+   as the VNC password below.
 
 1. Configure network:
 
-   1. Go to Network Setup > TCP/IP Settings > Wired LAN IPV4 Configuration.
-   1. Disable __DHCP Mode__ and set a static __IPV4 Address__. You need to
-      pick an address that will be reachable from your host (for example,
-      an address on the same network as the IPv4 interface of your host machine).
-   1. Return to AMT Configuration and enable __Activate Network Access__.
+   1. Select **Intel(R) AMT Configuration**.
+   1. Unconfigure existing network settings:
+
+      1. Select **Unconfigure Network Access**
+      1. Select **Full Unprovision**
+      1. Press `Y` to confirm.
+   1. Select **Network Setup** > **TCP/IP Settings** > **Wired LAN IPV4 Configuration**.
+   1. Set **DHCP Mode** to **Disabled**.
+   1. Set **IPV4 Address** to an address reachable from your host machine via the EdgeRouter.
+
+      On your host machine, run `ifconfig` and find the entry that corresponds to the EdgeRouter, for example:
+
+      ``` none {:.devsite-disable-click-to-copy}
+      $ ifconfig
+      enx00e04c0c13ba: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+              inet 192.168.42.86  netmask 255.255.255.0  broadcast 192.168.42.255
+              ...
+      ```
+
+      In this case, you could try using the address **192.168.42.20**
+
+   1. Set **Subnet Mask Address** to the netmask of your host machine to EdgeRouter connection, for example **255.255.255.0**.
+   1. Press `Esc` until you return to **Intel(R) AMT Configuration**.
+   1. Select **Activate Network Access** and press `Y` to confirm.
    1. Exit Intel ME settings and save your changes.
 
-The [Intel AMT serial-over-LAN](#amt-serial-over-lan) and [vPro KVM](#vpor-kvm)
-needs to be enabled before use. These are enabled using the
-[`wsman`][wsman]{:.external} command-line utility.
+Now, configure the [`amtctrl`][amtctrl]{:.external} command-line utility on your host machine:
 
-These instructions assume you have set the `AMT_HOST` variable, which
-contains the IPv4 address you configured in the Intel ME settings,
-In these instructions, `AMT_PASSWORD` is the Intel ME password and `VNC_PASSWORD`
-is the VNC password.
+These instructions assume you have set some environment variables:
 
-Note: Password must be _exactly_ 8 characters long, contain both lowercase and
-uppercase characters, at least one digit and at least one non alphanumeric
-character.
+ * `AMT_HOST`: The IPv4 address you configured in the Intel ME settings.
+ * `AMT_PASSWORD`: The password you chose for Intel ME.
+ * `VNC_PASSWORD`: A password for accessing the NUC over VNC.
 
-#### Intel AMT serial-over-LAN {:#amt-serial-over-lan}
+Note: The password used for `VNC_PASSWORD` must be _exactly_ 8 characters long,
+must contain both lowercase and uppercase characters, at least one digit and
+at least one non alphanumeric character.
 
-Enable AMT redirection service:
-
-```posix-terminal
-wsman put http://intel.com/wbem/wscim/1/amt-schema/1/AMT_RedirectionService -h ${AMT_HOST} -P 16992 -u admin -p ${AMT_PASSWORD} -k ListenerEnabled=true
-```
-
-Now, you can remotely access the NUC using [`amtterm`][amtterm]{:.external}:
-`amtterm -u admin -p ${AMT_PASWORD} ${AMT_HOST}`.
-
-#### Intel vPro KVM {:#vpor-kvm}
-
-Do the following:
-
-1. Set the VNC password:
+1. Clone the `amtctrl` repository:
 
    ```posix-terminal
-   wsman put http://intel.com/wbem/wscim/1/ips-schema/1/IPS_KVMRedirectionSettingData -h ${AMT_HOST} -P 16992 -u admin -p ${AMT_PASSWORD} -k RFBPassword=${VNC_PASSWORD}
+   git clone https://github.com/sdague/amt
    ```
 
-2. Enable KVM redirection to port 5900:
+1. Install `amtctrl`:
 
    ```posix-terminal
-   wsman put http://intel.com/wbem/wscim/1/ips-schema/1/IPS_KVMRedirectionSettingData -h ${AMT_HOST} -P 16992 -u admin -p ${AMT_PASSWORD} -k Is5900PortEnabled=true
+   cd amt && sudo ./setup.py install
    ```
 
-3. Disable opt-in policy (do not ask user for console access):
+1. Configure NUC IP address and passwords:
 
    ```posix-terminal
-   wsman put http://intel.com/wbem/wscim/1/ips-schema/1/IPS_KVMRedirectionSettingData -h ${AMT_HOST} -P 16992 -u admin -p ${AMT_PASSWORD} -k OptInPolicy=false
+   amtctrl set -V $VNC_PASSWORD nuc $AMT_HOST $AMT_PASSWORD
    ```
 
-4. Disable session timeout:
+1. Enable VNC:
 
    ```posix-terminal
-   wsman put http://intel.com/wbem/wscim/1/ips-schema/1/IPS_KVMRedirectionSettingData -h ${AMT_HOST} -P 16992 -u admin -p ${AMT_PASSWORD} -k SessionTimeout=0
+   amtctrl nuc vnc
    ```
 
-5. Enable KVM:
+Now, you can access the NUC from your host machine using any VNC client by connecting to
+the IP address set in `AMT_HOST`. Enter the password set in `VNC_PASSWORD` when prompted.
+
+Note: The NUC needs to be plugged in to a monitor with a HDMI cable to accept VNC connections.
+
+You can also turn on, turn off or reboot the NUC with the following terminal commands:
+
+ * To turn on the NUC:
 
    ```posix-terminal
-   wsman invoke -a RequestStateChange http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_KVMRedirectionSAP -h ${AMT_HOST} -P 16992 -u admin -p ${AMT_PASSWORD} -k RequestedState=2
+   amtctrl nuc on
    ```
 
-   Now, you can remotely access the NUC using any VNC client, for example using VNC:
-   `vncviewer ${AMT_HOST}`.
+ * To turn off the NUC:
+
+   ```posix-terminal
+   amtctrl nuc off
+   ```
+
+ * To reboot the NUC:
+
+   ```posix-terminal
+   amtctrl nuc reboot
+   ```
 
 <!-- Reference links -->
 
 [nuc-wiki]: https://en.wikipedia.org/wiki/Next_Unit_of_Computing
-[remote-management-for-nuc]: nuc-remote-management.md
-[get-started-with-fuchsia]: /get-started/README.md
+[get-started-with-fuchsia]: /docs/get-started/README.md
 [gigaboot]: /src/firmware/gigaboot
-[glossary.zedboot]: /glossary/README.md#zedboot
-[netbooting]: /development/kernel/getting_started.md#network-booting
-[usb-setup]: /development/hardware/usb_setup.md
-[supported-sys-config]: /reference/hardware/support-system-config.md
+[glossary.zedboot]: /docs/glossary/README.md#zedboot
+[netbooting]: /docs/development/kernel/getting_started.md#network-booting
+[usb-setup]: /docs/development/hardware/usb_setup.md
+[supported-sys-config]: /docs/reference/hardware/support-system-config.md
 [NUC7i5DNKE]: https://ark.intel.com/content/www/us/en/ark/products/122486/intel-nuc-kit-nuc7i5dnke.html
 [NUC7i5DNHE]: https://ark.intel.com/content/www/us/en/ark/products/122488/intel-nuc-kit-nuc7i5dnhe.html
 [NUC7i3DNKE]: https://ark.intel.com/content/www/us/en/ark/products/122495/intel-nuc-kit-nuc7i3dnke.html
@@ -473,6 +560,6 @@ Do the following:
 [ffx]: https://fuchsia.dev/reference/tools/sdk/ffx
 [flash-fuchsia-to-nuc]: intel_nuc.md#flash-fuchsia
 [install-fuchsia]: intel_nuc.md
-[amtterm]: https://git.kraxel.org/cgit/amtterm/
 [amt]: https://www.intel.com/content/www/us/en/architecture-and-technology/intel-active-management-technology.html
-[wsman]: https://github.com/Openwsman/wsmancli
+[amtctrl]: https://github.com/sdague/amt
+[experimental-hardware]: /docs/contribute/governance/rfcs/0111_fuchsia_hardware_specifications.md#experimental-hardware

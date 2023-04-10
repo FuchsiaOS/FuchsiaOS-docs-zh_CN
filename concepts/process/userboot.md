@@ -18,7 +18,7 @@ image and a data blob in Zircon Boot Image format.
 The [ZBI format](/zircon/system/public/zircon/boot/image.h) is a
 simple container format that embeds items passed by the boot loader,
 including hardware-specific information,
-the [kernel "command line"](/reference/kernel/kernel_cmdline.md) giving boot options, and RAM
+the [kernel "command line"](/docs/reference/kernel/kernel_cmdline.md) giving boot options, and RAM
 disk images (which are usually compressed).  The kernel extracts some
 essential information for its own use in the early stages of booting.
 
@@ -48,12 +48,12 @@ any code for interpreting the BOOTFS format.  Instead, all of this work
 is done by the first userspace process, called `userboot`.
 
 `userboot` is a normal userspace process.  It can only make the standard
-system calls through the [vDSO](/concepts/kernel/vdso.md) like any other process would, and
-is subject to the full [vDSO enforcement](/concepts/kernel/vdso.md#Enforcement) regime.
+system calls through the [vDSO](/docs/concepts/kernel/vdso.md) like any other process would, and
+is subject to the full [vDSO enforcement](/docs/concepts/kernel/vdso.md#Enforcement) regime.
 What's special about `userboot` is the way it gets loaded.
 
 `userboot` is built as an ELF dynamic shared object, using the
-same [RODSO layout](/concepts/kernel/vdso.md#read-only-dynamic-shared-object-layout) as
+same [RODSO layout](/docs/concepts/kernel/vdso.md#read-only-dynamic-shared-object-layout) as
 the vDSO.  Like the vDSO, the `userboot` ELF image is embedded in the
 kernel at compile time.  Its simple layout means that loading it does
 not require the kernel to interpret ELF headers at boot time.  The
@@ -72,7 +72,7 @@ starts it running at the `userboot` entry point.
 In normal [program loading](program_loading.md),
 a [*bootstrap message*](program_loading.md#the-processargs-protocol) is
 sent to each new process.  The process's first thread receives
-a [channel](/reference/kernel_objects/channel.md) handle in a register.  It can then read
+a [channel](/docs/reference/kernel_objects/channel.md) handle in a register.  It can then read
 data and handles sent by its creator.
 
 The kernel uses the exact same protocol to start `userboot`.  The kernel
@@ -81,11 +81,11 @@ bootstrap message.  All the handles that `userboot` itself will need, and
 that the rest of the system will need to access kernel facilities, are
 included in this message.  Following the normal format, *handle info
 entries* describe the purpose of each handle.  These include
-the [`PA_VMO_VDSO` handle](/concepts/kernel/vdso.md#pa_vmo_vdso-handle).
+the [`PA_VMO_VDSO` handle](/docs/concepts/kernel/vdso.md#pa_vmo_vdso-handle).
 
 ## userboot finds system calls in the vDSO
 
-The [standard convention](/concepts/kernel/vdso.md#process_start_argument) for informing
+The [standard convention](/docs/concepts/kernel/vdso.md#process_start_argument) for informing
 a new process of its vDSO mapping requires the process to interpret the
 vDSO's ELF headers and symbol table to locate system call entry points.
 To avoid this complexity, `userboot` finds the entry points in the vDSO
@@ -111,7 +111,7 @@ location it will appear in memory after the `userboot` image itself.
 The first thing `userboot` does is to read the bootstrap message sent by
 the kernel.  Among the handles it gets from the kernel is one with
 *handle info entry* `PA_HND(PA_VMO_BOOTDATA, 0)`.  This is
-a [VMO](/reference/kernel_objects/vm_object.md) containing the ZBI from the
+a [VMO](/docs/reference/kernel_objects/vm_object.md) containing the ZBI from the
 boot loader.  `userboot` reads the ZBI headers from this VMO
 looking for the first item with type `ZBI_TYPE_STORAGE_BOOTFS`.  That
 contains the [BOOTFS](#BOOTFS) image.  The item's ZBI header
@@ -169,7 +169,7 @@ When the loader service channel is closed (or if the executable had no
 `PT_INTERP` and so no loader service was required, then as soon as the
 process has been started), `userboot` no longer has anything to do.
 
-If [the `userboot.shutdown` option was given on the kernel command line](/reference/kernel/kernel_cmdline.md#userboot-shutdown),
+If [the `userboot.shutdown` option was given on the kernel command line](/docs/reference/kernel/kernel_cmdline.md#userboot-shutdown),
 then `userboot` waits for the process it started to exit, and then shuts
 down the system (as if by the `dm shutdown` command).  This can be useful
 to run a single test program and then shut down the machine (or emulator).

@@ -114,4 +114,4 @@ required or optional.
 n/a
 
 <!-- xrefs -->
-[fidl-language]: /reference/fidl/language/language.md
+[fidl-language]: /docs/reference/fidl/language/language.md

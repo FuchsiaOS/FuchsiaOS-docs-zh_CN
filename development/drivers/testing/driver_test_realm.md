@@ -18,7 +18,7 @@ APIs, and provides an environment that is nearly identical to a running system.
 
 DriverTestRealm is for integration testing. For a light weight unit testing
 framework, use
-[mock DDK](/development/drivers/testing/mock_ddk.md) instead.
+[mock DDK](/docs/development/drivers/testing/mock_ddk.md) instead.
 
 ## Overview of DriverTestRealm
 
@@ -111,7 +111,7 @@ The examples can be seen at [//examples/drivers/driver_test_realm/](/examples/dr
 ### Hermetic
 
 Test authors can use
-[RealmBuilder](/development/testing/components/realm_builder.md) to create a new DriverTestRealm for each test.
+[RealmBuilder](/docs/development/testing/components/realm_builder.md) to create a new DriverTestRealm for each test.
 The DriverFramework has provided a helpful library using
 [DriverTestRealm in RealmBuilder](/sdk/lib/driver_test_realm/realm_builder).
 

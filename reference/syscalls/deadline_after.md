@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_deadline_after
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Convert a time relative to now to an absolute deadline.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,24 +23,22 @@ Convert a time relative to now to an absolute deadline.
 zx_time_t zx_deadline_after(zx_duration_t nanoseconds);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_deadline_after()` is a utility for converting from now-relative durations
 to absolute deadlines. If *nanoseconds* plus the current time is bigger than the
 maximum value for `zx_time_t`, the output is clamped to **ZX_TIME_INFINITE**.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_deadline_after()` returns the absolute time (with respect to **ZX_CLOCK_MONOTONIC**)
 that is *nanoseconds* nanoseconds from now.
 
-## ERRORS
+## Errors
 
 `zx_deadline_after()` does not report any error conditions.
 
@@ -45,7 +50,6 @@ zx_time_t deadline = zx_deadline_after(ZX_MSEC(50));
 zx_nanosleep(deadline);
 ```
 
-## SEE ALSO
-
+## See also
 
 [ticks_get](ticks_get.md)

@@ -126,14 +126,14 @@ receiving `Code-Review+2`.
     details, heuristics, or "cosmetic" changes (e.g. background color of a UI).
     Tests of the style `assert_eq!(CONFIG_PARAM, 5);` are not considered useful
     and are not required by testability. However, if the contribution results
-    in an easily observable behavioral change, that contirbution should
+    in an easily observable behavioral change, that contribution should
     include a test for the new behavior.
 
 ## What does require testing
 
 ### If fixing a flake, test for flakiness in CQ
 
-If fixing a flake, verify the fix by [testing for flakiness in CQ](/development/testing/testing_for_flakiness_in_cq.md).
+If fixing a flake, verify the fix by [testing for flakiness in CQ](/docs/development/testing/testing_for_flakiness_in_cq.md).
 
 ### Tests should not sleep
 
@@ -201,4 +201,4 @@ change that.
     infrastructure is tracked in fxbug.dev/34478. A testability exception is granted
     until fxbug.dev/34478 is addressed.
 
-[determinism]: /contribute/testing/best-practices.md#write_reproducible_deterministic_tests
+[determinism]: /docs/contribute/testing/best-practices.md#write_reproducible_deterministic_tests

@@ -27,7 +27,7 @@ usefulness of Triage for everyone.
 
 Before you start on this codelab, make sure you have completed the following:
 
-*   [Getting started](/get-started/README.md).
+*   [Getting started](/docs/get-started/README.md).
 *   Made a Fuchsia build with `fx build`.
 
 ## Running Triage from the command line
@@ -575,4 +575,4 @@ keep improving!
 [triage-inspect-example]: /examples/diagnostics/triage/snapshot/inspect.json
 [triage-rules-example]: /examples/diagnostics/triage/rules.triage
 [triage-codelab-solution]: /examples/diagnostics/triage/solution
-[triage-config-reference]: /src/diagnostics/triage/config.md
+[triage-config-reference]: /docs/development/diagnostics/triage/config.md

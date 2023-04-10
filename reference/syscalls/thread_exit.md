@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_thread_exit
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Terminate the current running thread.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,7 +23,7 @@ Terminate the current running thread.
 [[noreturn]] void zx_thread_exit(void);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_thread_exit()` causes the currently running thread to cease
 running and exit.
@@ -25,17 +32,15 @@ The signal **ZX_THREAD_TERMINATED** will be asserted on the thread
 object upon exit and may be observed via [`zx_object_wait_one()`]
 or [`zx_object_wait_many()`] on a handle to the thread.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 TODO(fxbug.dev/32253)
 
-## RETURN VALUE
+## Return value
 
 `zx_thread_exit()` does not return.
 
-## SEE ALSO
+## See also
 
  - [`zx_handle_close()`]
  - [`zx_handle_duplicate()`]
@@ -44,8 +49,6 @@ TODO(fxbug.dev/32253)
  - [`zx_object_wait_one()`]
  - [`zx_thread_create()`]
  - [`zx_thread_start()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_handle_close()`]: handle_close.md
 [`zx_handle_duplicate()`]: handle_duplicate.md

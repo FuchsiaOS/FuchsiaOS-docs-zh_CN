@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_stream_writev_at
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Write data to a stream at the given offset.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -16,15 +23,15 @@ Write data to a stream at the given offset.
 zx_status_t zx_stream_writev_at(zx_handle_t handle,
                                 uint32_t options,
                                 zx_off_t offset,
-                                const zx_iovec_t* vector,
-                                size_t num_vector,
+                                const zx_iovec_t* vectors,
+                                size_t num_vectors,
                                 size_t* actual);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_stream_writev_at()` attempts to write bytes to the stream, starting at the
-given *offset*, from the buffers specified by *vector* and *num_vector*.
+given *offset*, from the buffers specified by *vectors* and *num_vectors*.
 If successful, the number of bytes actually written are return via *actual*.
 
 If the write operation would write beyond the end of the stream, the function
@@ -40,23 +47,21 @@ If a NULL *actual* is passed in, it will be ignored.
 
 Does not advance the seek offset of the stream.
 
-If the contents of *vector* change during this operation, if any of the buffers
-overlap, or if any of the buffers overlap *vector*, the behavior is unspecified.
+If the contents of *vectors* change during this operation, if any of the buffers
+overlap, or if any of the buffers overlap *vectors*, the behavior is unspecified.
 
 *options* is reserved for future use and must be 0.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_STREAM** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_stream_writev_at()` returns **ZX_OK** on success, and writes into
 *actual* (if non-NULL) the exact number of bytes written.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -64,11 +69,11 @@ overlap, or if any of the buffers overlap *vector*, the behavior is unspecified.
 
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have the ZX_RIGHT_WRITE right.
 
-**ZX_ERR_INVALID_ARGS** *vector* is an invalid zx_iovec_t or *options* has an
+**ZX_ERR_INVALID_ARGS** *vectors* is an invalid zx_iovec_t or *options* has an
 unsupported bit set to 1.
 
-**ZX_ERR_NOT_FOUND**  the *vector* address, or an address specified within
-*vector* does not map to address in address space.
+**ZX_ERR_NOT_FOUND**  the *vectors* address, or an address specified within
+*vectors* does not map to address in address space.
 
 **ZX_ERR_BAD_STATE**  the underlying data source cannot be written.
 
@@ -76,15 +81,13 @@ unsupported bit set to 1.
 
 **ZX_ERR_NO_SPACE**  the underlying storage medium does not have sufficient space.
 
-## SEE ALSO
+## See also
 
  - [`zx_stream_create()`]
  - [`zx_stream_readv()`]
  - [`zx_stream_readv_at()`]
  - [`zx_stream_seek()`]
  - [`zx_stream_writev()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_stream_create()`]: stream_create.md
 [`zx_stream_readv()`]: stream_readv.md

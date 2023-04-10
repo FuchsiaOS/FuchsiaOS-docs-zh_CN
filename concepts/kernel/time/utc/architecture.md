@@ -20,7 +20,7 @@ synchronization and the basic relationships between them.
 ### Kernel
 
 The kernel defines the concept of a
-[clock object](/reference/kernel_objects/clock.md) that may be used to
+[clock object](/docs/reference/kernel_objects/clock.md) that may be used to
 track the progress of time. Each clock object is a one dimensional affine
 transformation of the clock monotonic reference timeline, which may be adjusted
 by a userspace component (the "clock maintainer"), and observed by many other
@@ -52,7 +52,7 @@ using the standard time API provided by its runtime. See
 
 Components that need deeper insight into the state of time synchronization may
 acquire the UTC clock handle and use it to call
-[`zx_clock_get_details`](/reference/syscalls/clock_get_details.md) or wait
+[`zx_clock_get_details`](/docs/reference/syscalls/clock_get_details.md) or wait
 on the `ZX_CLOCK_STARTED` signal.
 
 ### Timekeeper

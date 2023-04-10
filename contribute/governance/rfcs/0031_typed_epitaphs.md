@@ -57,7 +57,7 @@ provided since by design service discovery is dynamic.
 
 **Interaction with request pipelining**
 
-The [request pipelining](/development/api/fidl.md#request-pipelining) pattern
+The [request pipelining](/docs/development/api/fidl.md#request-pipelining) pattern
 can be thought of as a generalization of the service discovery pattern, and
 imposes similarly strong restrictions on epitaphs.
 
@@ -362,10 +362,10 @@ N/A
 
 <!-- xrefs -->
 
-[RFC-0023]: /contribute/governance/rfcs/0023_compositional_model_protocols.md
-[RFC-0037-performance]: /contribute/governance/rfcs/0037_transactional_message_header_v3.md#performance
-[RFC-0053-guidance]: /contribute/governance/rfcs/0053_epitaphs.md#guidance
-[RFC-0053]: /contribute/governance/rfcs/0053_epitaphs.md
-[RFC-0060]: /contribute/governance/rfcs/0060_error_handling.md
-[wire-format]: /reference/fidl/language/wire-format/README.md
-[wire-format-transactional-messages]: /reference/fidl/language/wire-format/README.md#transactional-messages
+[RFC-0023]: /docs/contribute/governance/rfcs/0023_compositional_model_protocols.md
+[RFC-0037-performance]: /docs/contribute/governance/rfcs/0037_transactional_message_header_v3.md#performance
+[RFC-0053-guidance]: /docs/contribute/governance/rfcs/0053_epitaphs.md#guidance
+[RFC-0053]: /docs/contribute/governance/rfcs/0053_epitaphs.md
+[RFC-0060]: /docs/contribute/governance/rfcs/0060_error_handling.md
+[wire-format]: /docs/reference/fidl/language/wire-format/README.md
+[wire-format-transactional-messages]: /docs/reference/fidl/language/wire-format/README.md#transactional-messages

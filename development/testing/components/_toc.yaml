@@ -8,12 +8,12 @@
 
 toc:
 - title: "Overview"
-  path: /development/testing/components/README.md
+  path: /docs/development/testing/components/README.md
 - title: "Test components"
-  path: /development/testing/components/test_component.md
+  path: /docs/development/testing/components/test_component.md
 - title: "Test Runner Framework"
-  path: /development/testing/components/test_runner_framework.md
+  path: /docs/development/testing/components/test_runner_framework.md
 - title: "Integration testing"
-  path: /development/testing/components/integration_testing.md
+  path: /docs/development/testing/components/integration_testing.md
 - title: "Realm builder"
-  path: /development/testing/components/realm_builder.md
+  path: /docs/development/testing/components/realm_builder.md

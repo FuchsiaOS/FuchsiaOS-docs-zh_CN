@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_channel_call
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Send a message to a channel and await a reply.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_channel_call(zx_handle_t handle,
                             uint32_t* actual_handles);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_channel_call()` is like a combined [`zx_channel_write()`], [`zx_object_wait_one()`],
 and [`zx_channel_read()`], with the addition of a feature where a transaction id at
@@ -86,21 +93,19 @@ it may only be `NULL` if `capacity` is zero. `reserved` must be set to zero.
 Either all `zx_channel_iovec_t` are copied and the message is sent, or none
 are copied and the message is not sent. Usage for sending handles is unchanged.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_READ** and have **ZX_RIGHT_WRITE**.
 
 All wr_handles of *args* must have **ZX_RIGHT_TRANSFER**.
 
-## RETURN VALUE
+## Return value
 
 `zx_channel_call()` returns **ZX_OK** on success and the number of bytes and
 count of handles in the reply message are returned via *actual_bytes* and
 *actual_handles*, respectively.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle, any element in
 *handles* is not a valid handle, or there are duplicates among the handles
@@ -143,7 +148,7 @@ to contain the reply message.
 **ZX_ERR_NOT_SUPPORTED**  one of the handles in *handles* was *handle*
 (the handle to the channel being written to).
 
-## NOTES
+## Notes
 
 The facilities provided by `zx_channel_call()` can interoperate with message dispatchers
 using [`zx_channel_read()`] and [`zx_channel_write()`] directly, provided the following rules
@@ -163,27 +168,23 @@ at some point in the future, the reply *could* match another outbound request (p
 around the expectation that timeouts are generally fatal and clients do not expect to continue
 communications on a channel that is timing out.
 
-## SEE ALSO
+## See also
 
  - [timer slack]
  - [`zx_channel_create()`]
  - [`zx_channel_read()`]
  - [`zx_channel_write()`]
  - [`zx_handle_close()`]
- - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_many()`]
  - [`zx_object_wait_one()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[timer slack]: /concepts/kernel/timer_slack.md
+[timer slack]: /docs/concepts/kernel/timer_slack.md
 [`zx_channel_create()`]: channel_create.md
 [`zx_channel_read()`]: channel_read.md
 [`zx_channel_write()`]: channel_write.md
 [`zx_handle_close()`]: handle_close.md
-[`zx_handle_duplicate()`]: handle_duplicate.md
 [`zx_handle_replace()`]: handle_replace.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_many()`]: object_wait_many.md

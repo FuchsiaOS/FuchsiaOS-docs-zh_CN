@@ -384,29 +384,38 @@ When propagating errors, see [error wrapping](#error-wrapping).
 
 ### GN targets
 
-When defining GN targets, name the package `go.fuchsia.dev/fuchsia/<path>`. For
-example:
+A typical `BUILD.gn` file for a Go tool will look something like this:
 
 ```gn
 go_library("gopkg") {
-  name = "go.fuchsia.dev/fuchsia/tools/foo"
-  sources = [ "main.go" ]
+  sources = [
+    "main.go",
+    "main_test.go",
+  ]
 }
+
 go_binary("foo") {
-  gopackage = "go.fuchsia.dev/fuchsia/tools/foo"
-  deps = [ ":gopkg" ]
+  library = ":gopkg"
+}
+
+go_test("foo_test") {
+  library = ":gopkg"
 }
 ```
 
 If you have nested packages (and [only in this
-case](https://fuchsia-review.googlesource.com/c/fuchsia/+/406682/)), use the
-`go.fuchsia.dev/fuchsia/<path>/...` form in go_library to enable recursive
-package dependencies:
+case](https://fuchsia-review.googlesource.com/c/fuchsia/+/406682/)), use
+`name = "go.fuchsia.dev/fuchsia/<path>/..."` form in go_library to enable
+recursive package sources:
 
 ```gn
 go_library("gopkg") {
   name = "go.fuchsia.dev/fuchsia/tools/foo/..."
-  sources = [ "main.go", "subdir/bar.go", "extra/baz.go" ]
+  sources = [
+    "main.go",
+    "subdir/bar.go",
+    "extra/baz.go",
+  ]
 }
 ```
 
@@ -480,7 +489,7 @@ package name it is used to test. Examples in the standard library are
 [Effective Go embedding]: https://golang.org/doc/effective_go#embedding
 [Effective Go pointers_vs_values]: https://golang.org/doc/effective_go#pointers_vs_values
 [Effective Go]: https://golang.org/doc/effective_go
-[enum-fidl-rubric]: /development/api/fidl.md#enum
+[enum-fidl-rubric]: /docs/development/api/fidl.md#enum
 [Go Code Review Comments receiver-type]: https://github.com/golang/go/wiki/CodeReviewComments#receiver-type
 [Go Code Review Comments]: https://github.com/golang/go/wiki/CodeReviewComments
 [go-cmp]: https://github.com/google/go-cmp

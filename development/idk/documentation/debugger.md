@@ -43,4 +43,4 @@ system. Symbols on the target are not used. The location where the local build
 stores symbols must be passed to the `zxdb` client.
 
 For more information on how to specify symbol paths, see [set the symbol
-location](/development/debugger/README.md#set-symbol-location)
+location](/docs/development/debugger/README.md#set-symbol-location)

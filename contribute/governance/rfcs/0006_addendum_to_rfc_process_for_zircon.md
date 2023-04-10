@@ -13,7 +13,7 @@ process before being accepted.
 ## Motivation
 
 Currently Zircon uses an ad-hoc process to make system-wide changes, but now
-that Fuchsia has a clear [RFC process](/contribute/governance/rfcs/0001_rfc_process.md),
+that Fuchsia has a clear [RFC process](/docs/contribute/governance/rfcs/0001_rfc_process.md),
 Zircon should follow it. However, given that Zircon sits at the very bottom of the
 software stack, it is far more sensitive to certain types of changes than code that
 sits closer to the leafs of the project (e.g., when greatly increasing the dependency
@@ -72,13 +72,13 @@ is to find the best patterns and uniformly apply them to the entire codebase.
 
 ## Documentation
 
-This RFC along with the [Fuchsia RFC process](/contribute/governance/rfcs/0001_rfc_process.md)
+This RFC along with the [Fuchsia RFC process](/docs/contribute/governance/rfcs/0001_rfc_process.md)
 serves as documentation for the RFC process as it applies to Zircon.
 
 ## Drawbacks, Alternatives, and Unknowns
 
 The Fuchsia RFC process introduces friction that might slow down the pace of making and
-executing decisions. The criteria in the ["when to use the process" section](/contribute/governance/rfcs/0001_rfc_process.md#when-to-use-the-process)
+executing decisions. The criteria in the ["when to use the process" section](/docs/contribute/governance/rfcs/0001_rfc_process.md#when-to-use-the-process)
 attempts to mitigate this by scoping the process to consequential situations but such
 scoping is bound to have false positives and false negatives.
 

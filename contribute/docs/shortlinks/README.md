@@ -8,16 +8,16 @@ based on [RFC-0125][RFC-0125].
 Before you create a shortlink, review the shortlink [rubric] to determine if
 your shortlink proposal meets the requirements.
 
-1. Review the [`/go/_redirects.yaml`][redirects-file] file to
+1. Review the [`/docs/go/_redirects.yaml`][redirects-file] file to
    make sure that the proposed keyword doesn't already exist.
 1. If the keyword is available, append the following to
-   [`/go/_redirects.yaml`][redirects-file]:
+   [`/docs/go/_redirects.yaml`][redirects-file]:
 
    Note: You can use the [GIT source editor][git-source-editor] to propose a
    shortlink from a browser.
 
    ```yaml
-   - from: /go/{{ '<var>' }}keyword{{ '</var>' }}
+   - from: /docs/go/{{ '<var>' }}keyword{{ '</var>' }}
      to: /docs/{{ '<var>' }}path_of_shortlink{{ '</var>' }}
    ```
 
@@ -46,12 +46,12 @@ Reviewers are expected to meet the following criteria:
  * Reviewers must enforce the shortlink criteria detailed in the [rubric].
 
 If you meet the review criteria, you can create a change to propose yourself
-as a member by editing the [OWNERS] file of the `/go/` directory.
+as a member by editing the [OWNERS] file of the `/docs/go/` directory.
 
 
 [git-source-editor]: https://ci.android.com/edit?repo=fuchsia/fuchsia/main&file=docs/go/_redirects.yaml
 [redirects-file]: https://cs.opensource.google/fuchsia/fuchsia/+/main:docs/go/_redirects.yaml
-[RFC-0125]: /contribute/governance/rfcs/0125_shortlink_fuchsia_dev.md
-[rubric]: /contribute/docs/shortlinks/rubric.md
+[RFC-0125]: /docs/contribute/governance/rfcs/0125_shortlink_fuchsia_dev.md
+[rubric]: /docs/contribute/docs/shortlinks/rubric.md
 [OWNERS]: https://ci.android.com/edit?repo=fuchsia/fuchsia/main&file=docs/go/OWNERS
 [OWNERS-cs]: https://cs.opensource.google/fuchsia/fuchsia/+/main:docs/go/OWNERS

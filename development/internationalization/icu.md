@@ -17,7 +17,7 @@ Include the necessary library dependencies in your `BUILD.gn` file:
 
 * {C++}
 
-  The ICU library is a single third-party dependency `//third_party/icu`:
+  The ICU library is a single third-party dependency, used as `${icu_root}:icu`
 
   ```gn
   {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/intl/wisdom/cpp/client/BUILD.gn" region_tag="icu_library" adjust_indentation="auto" %}

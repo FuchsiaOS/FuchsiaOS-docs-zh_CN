@@ -2,98 +2,117 @@
 
 ## Prerequisites
 
-This tutorial expects that you have completed the [Getting Started][getting-started]
-guide and are able to build and run Fuchsia (using [FEMU][femu] or a physical device).
-You should be familiar with running components on Fuchsia, which is covered in
-[Run an example component][run-examples]. This tutorial is the first of the
-sequence of FIDL tutorials listed in the [overview][overview].
+This tutorial expects that you have completed the [getting
+started][getting-started] guide and are able to build and run Fuchsia.  You
+should be familiar with running components on Fuchsia, which is covered in [run
+an example component][run-examples].
 
 ## Overview
 
-In this tutorial, we will define a FIDL library `fuchsia.examples`. Defining the
-FIDL library lets us compile the `.fidl` files using `fx build` and check for any errors.
-It also creates targets that can be included to depend on the bindings for the
-new library. The bindings tutorials, as well as the prerequisites for this tutorial are
-listed in the [FIDL tutorials overview][overview].
+In this tutorial, you will define and build the FIDL library
+`examples.keyvaluestore.baseline`. After you're done, you'll know how to author
+a FIDL file, set up necessary GN rules, and build FIDL bindings.
+
+The full source for this tutorial can be found at
+[//examples/fidl/new/key_value_store/baseline/fidl/][baseline]
+
+Note: This library will be used later in the [key-value store example series].
 
 ## Define the FIDL library
 
-The example code for this tutorial is in
-[//examples/fidl/fuchsia.examples](/examples/fidl/fuchsia.examples).
+First, create a directory for this tutorial by running the following command
+from your fuchsia checkout:
 
-We've chosen the directory name to match the library name, which is the
-convention taken by the libraries defined in the Fuchsia IDK in
-[`//sdk/fidl`][sdk] such as `//sdk/fidl/fuchsia.url` or `//sdk/fidl/fuchsia.ui.text`.
+```
+mkdir -p vendor/fidl-tutorials/building-fidl
+```
 
-FIDL file names use the `.fidl` extension. Analogous to C header files, FIDL files
+Create a new file, `key_value_store.test.fidl`:
+
+```
+touch vendor/fidl-tutorials/building-fidl/key_value_store.test.fidl
+```
+
+FIDL file names use the `.fidl` extension. Similar to C header files, FIDL files
 define data types and declare functional interfaces. These declarations are used in
 conjunction with FIDL-specific data types to communicate between FIDL endpoints.
 
-The following are some examples of various FIDL language features as defined in
-`//examples/fidl/fuchsia.examples/types.test.fidl`:
+Add the following FIDL code to `key_value_store.test.fidl`:
 
 ```fidl
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="lib" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="consts" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="bits" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="enums" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="structs" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="unions" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="tables" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols-preface" %}
-
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/types.test.fidl" region_tag="protocols" %}
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/new/key_value_store/baseline/fidl/key_value_store.test.fidl" %}
 ```
 
-and also add a protocol to `examples/fidl/fuchsia.examples/echo.test.fidl`:
+This FIDL defines an `Item` type to represent items in the store, a `WriteError`
+enum to list known errors for writes, and a `Store` protocol with one method:
+`WriteItem`. As defined, this library can only write values into a store, but in
+the [key-value store example series], you'll augment this library to support
+nested stores, reading values, and other features.
 
-```fidl
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/echo.test.fidl" %}
-```
-
-The `test.fidl` extension is used instead of just `.fidl`, since
-exemptions to certain requirements like linting or API review are applied to
-`test.fidl` files. You should use `.fidl` when writing your own FIDL files.
+Note: The `test.fidl` extension is used instead of `.fidl` to avoid linting and
+API review requirements. Use `.fidl` for production code.
 
 ## Create a GN target for the FIDL library
 
-Now we can define a target for our FIDL library that other code can depend on:
+Now that you've defined your FIDL, you need to create a `gn` target that other
+code can depend on.
 
-```gn
-{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/fuchsia.examples/BUILD.gn" %}
+Create a new file, `BUILD.gn`:
+
+```
+touch vendor/fidl-tutorials/building-fidl/BUILD.gn
 ```
 
-The `fuzzers = [...]` line is only needed to enable fuzzing of protocols
-from the library (see [FIDL fuzzing][fidl-fuzzing]), and can otherwise be
-omitted.
+and add the following build rules:
 
-The bindings tutorials can use the bindings for our FIDL library
-by depending on targets generated by the [GN `fidl` template][fidl-template].
+```gn
+{% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/fidl/new/key_value_store/baseline/fidl/BUILD.gn" %}
+```
+
+The `gn` template [`fidl("examples.keyvaluestore.baseline")`][fidl-template]
+creates the necessary targets to use this library from other code.
 
 ## Compile the FIDL library
 
-You can build the `.fidl` files and check for syntax errors by including the
-target in your build config:
+To build your new FIDL library, run the following `fx set` command:
 
-    fx set core.x64 --with //examples/fidl/fuchsia.examples
+```
+fx set core.x64\
+  --with //vendor/fidl-tutorials/building-fidl:examples.keyvaluestore.baseline_rust\
+  --with //vendor/fidl-tutorials/building-fidl:examples.keyvaluestore.baseline_cpp
+```
 
-Then run `fx build examples/fidl/fuchsia.examples`.
+This command configures `fx build` to generate the rust and cpp bindings.
 
-Note: If you are rewriting the FIDL files yourself, don't forget to add the
-Fuchsia copyright notice at the top of each file.
+Next, build the code:
+
+```
+fx build
+```
+
+## Explore the generated bindings
+
+Now that the code is built, you can explore the generated code for your
+bindings. To see the generated code, browse the following directories:
+
+| binding type | directory                                                                                                                                   |
+|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| rust         | //out/default/fidling/gen/vendor/fidl-tutorials/building-fidl/examples.keyvaluestore.baseline/rust/                                         |
+| new c++      | //out/default/fidling/gen/vendor/fidl-tutorials/building-fidl/examples.keyvaluestore.baseline/cpp/fidl/examples.keyvaluestore.baseline/cpp/ |
+
+See [generated code] for more details.
+
+
+## Next steps
+
+Now that you've finished this tutorial, you're ready to explore the full
+[key-value store example series].
 
 <!-- xrefs -->
-[sdk]: /sdk/fidl
 [fidl-template]: /build/fidl/fidl.gni
-[overview]: /development/languages/fidl/tutorials/overview.md
-[femu]: /get-started/set_up_femu.md
-[getting-started]: /get-started/README.md
-[run-examples]: /development/run/run-examples.md
-[fidl-fuzzing]: /development/testing/fuzzing/fidl-fuzzing.md
+[getting-started]: /docs/get-started/README.md
+[run-examples]: /docs/development/run/run-examples.md
+[example series]: /docs/development/languages/fidl/examples.md
+[key-value store example series]: /docs/development/languages/fidl/examples/key_value_store/README.md
+[baseline]: https://cs.opensource.google/fuchsia/fuchsia/+/main:examples/fidl/new/key_value_store/baseline/fidl/
+[generated code]: /docs/development/languages/fidl/guides/generated-code.md

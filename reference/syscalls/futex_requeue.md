@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_futex_requeue
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Wake some number of threads waiting on a futex, and move more waiters to another wait queue.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -21,7 +28,7 @@ zx_status_t zx_futex_requeue(const zx_futex_t* value_ptr,
                              zx_handle_t new_requeue_owner);
 ```
 
-## DESCRIPTION
+## Description
 
 Requeuing is a generalization of waking. First, the kernel verifies
 that the value in *current_value* matches the value of the futex at
@@ -39,7 +46,7 @@ futex_.  The ownership implications for each are discussed separately.
 Generally, if the call fails for any reason, no changes to ownership for either
 futex are made.
 
-See *Ownership and Priority Inheritance* in [futex](/reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](/docs/reference/kernel_objects/futex.md) for
 details.
 
 ### Effects on the _wake futex_ target
@@ -59,17 +66,15 @@ results in the owner of the futex being set to the thread referenced by the
 *new_requeue_owner* handle, or to nothing if *new_requeue_owner* is
 **ZX_HANDLE_INVALID**.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## RETURN VALUE
+## Return value
 
 `zx_futex_requeue()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  One of the following is true:
 
@@ -86,16 +91,14 @@ None.
 
 **ZX_ERR_BAD_STATE**  *current_value* does not match the value at *value_ptr*.
 
-## SEE ALSO
+## See also
 
  - [futex objects]
  - [`zx_futex_requeue_single_owner()`]
  - [`zx_futex_wait()`]
  - [`zx_futex_wake()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[futex objects]: /reference/kernel_objects/futex.md
+[futex objects]: /docs/reference/kernel_objects/futex.md
 [`zx_futex_requeue_single_owner()`]: futex_requeue_single_owner.md
 [`zx_futex_wait()`]: futex_wait.md
 [`zx_futex_wake()`]: futex_wake.md

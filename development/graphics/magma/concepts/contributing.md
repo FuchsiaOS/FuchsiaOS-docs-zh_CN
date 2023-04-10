@@ -69,17 +69,12 @@ If you have an attached display, execute the spinning [vkcube](/src/graphics/exa
 This test uses an imagepipe swapchain to pass frames to the system compositor.
 Build with `--with-base //src/graphics/bundles:vulkan --with src/graphics/lib/magma/tests:l1`.
 Test with present direct to display: `run fuchsia-pkg://fuchsia.com/vkcube-on-fb#meta/vkcube-on-fb.cmx --c 500`
-Test with present via Scenic: `present_view fuchsia-pkg://fuchsia.com/vkcube-on-scenic#meta/vkcube-on-scenic.cmx`.
+Test with present via Scenic: `ffx session add fuchsia-pkg://fuchsia.com/vkcube-on-scenic#meta/vkcube-on-scenic.cmx`.
 
 #### L2
 
-A full UI 'smoke' test. Build the entire product including your change.
-
-Login as Guest on the device and run both of these commands:
-./scripts/fx shell sessionctl  --story_name=spinning_cube --mod_name=spinning_cube --mod_url=spinning_cube add_mod spinning_cube
-./scripts/fx shell sessionctl  --story_name=spinning_cube2 --mod_name=spinning_cube2 --mod_url=spinning_cube add_mod spinning_cube
-
-For details, refer to top level project documentation.
+A full UI 'smoke' test.  Build workstation, launch Chromium and navigate to a
+WebGL demo such as Aquarium.
 
 #### S0
 

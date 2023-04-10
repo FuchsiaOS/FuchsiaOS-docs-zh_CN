@@ -6,40 +6,40 @@
 
 toc:
 - title: Overview
-  path: /development/languages/fidl/guides/compatibility/README.md
+  path: /docs/development/languages/fidl/guides/compatibility/README.md
 - title: Change a bits from flexible to strict
-  path: /development/languages/fidl/guides/compatibility/bits_flexible_strict.md
+  path: /docs/development/languages/fidl/guides/compatibility/bits_flexible_strict.md
 - title: Add a bits member
-  path: /development/languages/fidl/guides/compatibility/bits_member_add.md
+  path: /docs/development/languages/fidl/guides/compatibility/bits_member_add.md
 - title: Remove a bits member
-  path: /development/languages/fidl/guides/compatibility/bits_member_remove.md
+  path: /docs/development/languages/fidl/guides/compatibility/bits_member_remove.md
 - title: Change a bits from strict to flexible
-  path: /development/languages/fidl/guides/compatibility/bits_strict_flexible.md
+  path: /docs/development/languages/fidl/guides/compatibility/bits_strict_flexible.md
 - title: Change an enum from flexible to strict
-  path: /development/languages/fidl/guides/compatibility/enum_flexible_strict.md
+  path: /docs/development/languages/fidl/guides/compatibility/enum_flexible_strict.md
 - title: Add an enum member
-  path: /development/languages/fidl/guides/compatibility/enum_member_add.md
+  path: /docs/development/languages/fidl/guides/compatibility/enum_member_add.md
 - title: Remove an enum member
-  path: /development/languages/fidl/guides/compatibility/enum_member_remove.md
+  path: /docs/development/languages/fidl/guides/compatibility/enum_member_remove.md
 - title: Change an enum from strict to flexible
-  path: /development/languages/fidl/guides/compatibility/enum_strict_flexible.md
+  path: /docs/development/languages/fidl/guides/compatibility/enum_strict_flexible.md
 - title: Add a protocol event
-  path: /development/languages/fidl/guides/compatibility/protocol_event_add.md
+  path: /docs/development/languages/fidl/guides/compatibility/protocol_event_add.md
 - title: Remove a protocol event
-  path: /development/languages/fidl/guides/compatibility/protocol_event_remove.md
+  path: /docs/development/languages/fidl/guides/compatibility/protocol_event_remove.md
 - title: Add a protocol method
-  path: /development/languages/fidl/guides/compatibility/protocol_method_add.md
+  path: /docs/development/languages/fidl/guides/compatibility/protocol_method_add.md
 - title: Remove a protocol method
-  path: /development/languages/fidl/guides/compatibility/protocol_method_remove.md
+  path: /docs/development/languages/fidl/guides/compatibility/protocol_method_remove.md
 - title: Add a table member
-  path: /development/languages/fidl/guides/compatibility/table_member_add.md
+  path: /docs/development/languages/fidl/guides/compatibility/table_member_add.md
 - title: Remove a table member
-  path: /development/languages/fidl/guides/compatibility/table_member_remove.md
+  path: /docs/development/languages/fidl/guides/compatibility/table_member_remove.md
 - title: Change a union from flexible to strict
-  path: /development/languages/fidl/guides/compatibility/union_flexible_strict.md
+  path: /docs/development/languages/fidl/guides/compatibility/union_flexible_strict.md
 - title: Add union member
-  path: /development/languages/fidl/guides/compatibility/union_member_add.md
+  path: /docs/development/languages/fidl/guides/compatibility/union_member_add.md
 - title: Remove union member
-  path: /development/languages/fidl/guides/compatibility/union_member_remove.md
+  path: /docs/development/languages/fidl/guides/compatibility/union_member_remove.md
 - title: Change a union from strict to flexible
-  path: /development/languages/fidl/guides/compatibility/union_strict_flexible.md
+  path: /docs/development/languages/fidl/guides/compatibility/union_strict_flexible.md

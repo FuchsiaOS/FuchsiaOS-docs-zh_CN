@@ -19,9 +19,8 @@ Over two thirds of components have been migrated (`.cmx` to `.cml`).
 
 Presently there are two revisions of the component framework, the legacy
 architecture (also called *appmgr* after its main program, or sometimes
-[Components v1][glossary.components-v1]) and the modern architecture (also
-called *Component Framework*, or sometimes
-[Components v2][glossary.components-v2]).
+Components v1 and the modern architecture (also called *Component Framework*,
+or sometimes [Components v2][glossary.components-v2]).
 
 The legacy framework is largely comprised of:
 
@@ -29,9 +28,8 @@ The legacy framework is largely comprised of:
     legacy components. `appmgr` is the root of the legacy components tree, and
     provides some foundational services such as the legacy component ELF runner
     and Loader service.
-*   [`sysmgr`][glossary.sysmgr], a component that manages the `sys` realm.
-    `sysmgr` is launched by `appmgr`.
-*   The [`.cmx`][cmx] file format for legacy component manifests.
+*   `sysmgr`, a component that manages the `sys` realm. `sysmgr` is launched by `appmgr`.
+*   The `.cmx` file format for legacy component manifests.
 *   The [`fuchsia.sys.*`][fuchsia-sys] FIDL library.
 *   The [TestWithEnvironment][sdk-test-with-environment] testing library.
 
@@ -62,9 +60,8 @@ A high-level diagram of the system's component topology is shown below:
 
 *   Modern components are shown in blue boxes.
 *   Legacy components are shown in red boxes.
-*   The dashed arrow between the [session][glossary.session] and
-    [Modular][doc-modular] represents bidirectional communication between both
-    systems.
+*   The dashed arrow between the [session component][glossary.session-component]
+    and Modular represents bidirectional communication between both systems.
 
 In addition, all [unit tests with generated manifests][unit-tests-generated] are
 modern components.
@@ -79,10 +76,10 @@ a new component, you are strongly advised to make it a modern component unless
 there is some reason it must be legacy. All legacy components in-tree must
 appear in the GN allowlist at [//build/components/cmx][gn-cmx-allowlist].
 
-Build configurations that use the [Session Framework][session-framework] also
-include a [session][glossary.session] component which runs under
-`session_manager`. All capabilities hosted by legacy components that are
-required by the session are routed from `appmgr` to `session_manager` by `core`.
+For build configurations that include a [session
+component][glossary.session-component], all capabilities hosted by legacy
+components that are required by the
+session are routed from `appmgr` to `session_manager` by `core`.
 
 ### Terminology
 
@@ -186,27 +183,21 @@ Reach out for questions or for status updates:
 *   <component-framework-dev@fuchsia.dev>
 
 [appmgr]: /src/sys/appmgr
-[glossary.components-v1]: /glossary/README.md#components-v1
-[glossary.components-v2]: /glossary/README.md#components-v2
+[glossary.components-v2]: /docs/glossary/README.md#components-v2
 [cmc]: /tools/cmc/
-[cml]: /concepts/components/v2/component_manifests.md
-[cmx]: /concepts/components/v1/component_manifests.md
-[component_manager]: /concepts/components/v2/component_manager.md
-[doc-realm-builder]: /development/testing/components/realm_builder.md
-[doc-modular]: /development/modular/overview.md
+[cml]: /docs/concepts/components/v2/component_manifests.md
+[component_manager]: /docs/concepts/components/v2/component_manager.md
+[doc-realm-builder]: /docs/development/testing/components/realm_builder.md
 [fuchsia-component]: https://fuchsia.dev/reference/fidl/fuchsia.component
 [fuchsia-sys2]: https://fuchsia.dev/reference/fidl/fuchsia.sys2
 [fuchsia-sys]: https://fuchsia.dev/reference/fidl/fuchsia.sys
 [gn-cmx-allowlist]: /build/components/cmx/BUILD.gn
-[initial-processes]: /concepts/process/everything_between_power_on_and_your_component.md#initial-processes
-[intro]: /concepts/components/v2/introduction.md
+[initial-processes]: /docs/concepts/process/everything_between_power_on_and_your_component.md#initial-processes
+[intro]: /docs/concepts/components/v2/introduction.md
 [label-cf-v2-migration]: https://bugs.fuchsia.dev/p/fuchsia/issues/list?q=label%3Acf-v2-migration
 [lib-fuchsia-component]: /src/lib/fuchsia-component/README.md
-[migrating-sys-components]: /development/components/v2/migration/README.md
-[session-framework]: /concepts/session/introduction.md
+[migrating-sys-components]: /docs/development/components/v2/migration/README.md
 [sdk-components]: /sdk/lib/sys/cpp
 [sdk-test-with-environment]: /sdk/lib/sys/cpp/testing/test_with_environment.h
-[sfw]: /concepts/session/introduction.md
-[glossary.session]: /glossary/README.md#session
-[glossary.sysmgr]: /glossary/README.md#sysmgr
-[unit-tests-generated]: /development/components/build.md#unit-tests
+[glossary.session-component]: /docs/glossary/README.md#session-component
+[unit-tests-generated]: /docs/development/components/build.md#unit-tests

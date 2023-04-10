@@ -143,8 +143,6 @@ Issues detected by sanitizers typically have similar root causes. You may be
 able to find references for prior work by [searching Fuchsia bugs][fxb] for a
 bug with some of the same keywords that you're seeing in the sanitizer output.
 
-See also: [UBSan issues on Open Projects][ubsan-open-project].
-
 ## Known issues
 
 ### `#[should_panic]`
@@ -196,8 +194,6 @@ executable("please_fix_the_bugs") {
   deps += [ "//build/config/sanitizers:suppress-asan-container-overflow" ]
   # TODO(fxbug.dev/12345): delete the below and fix the memory leak.
   deps += [ "//build/config/sanitizers:suppress-lsan.DO-NOT-USE-THIS" ]
-  # TODO(fxbug.dev/12345): delete the below and fix undefined behavior.
-  configs += [ "//build/config:temporarily_disable_ubsan_do_not_use" ]
 }
 ```
 
@@ -292,17 +288,17 @@ See also: [sanitizers in the 2021 roadmap][sanitizers-2021-roadmap].
 
 [asan-conditional]: https://clang.llvm.org/docs/AddressSanitizer.html#conditional-compilation-with-has-feature-address-sanitizer
 [asan-disabling]: https://clang.llvm.org/docs/AddressSanitizer.html#disabling-instrumentation-with-attribute-no-sanitize-address
-[enable-pmm-checker]:  /gen/boot-options.md#kernel_pmm_checker_enable_bool
+[enable-pmm-checker]:  /docs/gen/boot-options.md#kernel_pmm_checker_enable_bool
 [ffi]: https://doc.rust-lang.org/nomicon/ffi.html
 [fsanitize]: https://clang.llvm.org/docs/UsersManual.html#controlling-code-generation
 [ftrivial-rfc]: https://lists.llvm.org/pipermail/cfe-dev/2018-November/060172.html
-[fuzz-testing]: /contribute/testing/fuzz_testing.md
+[fuzz-testing]: /docs/contribute/testing/fuzz_testing.md
 [fxb]: https://bugs.fuchsia.dev/p/fuchsia/issues/list
 [fxb73214]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=73214
 [fxb88496]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=88496
 [fxr605381]: https://fuchsia-review.googlesource.com/c/fuchsia/+/605381/
 [kasan]: /zircon/kernel/lib/instrumentation/asan/README.md
-[lockdep]: /concepts/kernel/lockdep.md
+[lockdep]: /docs/concepts/kernel/lockdep.md
 [llvm-asan]: https://clang.llvm.org/docs/AddressSanitizer.html
 [llvm-gwp-asan]: https://llvm.org/docs/GwpAsan.html
 [llvm-hwasan]: https://clang.llvm.org/docs/HardwareAssistedAddressSanitizerDesign.html
@@ -311,17 +307,16 @@ See also: [sanitizers in the 2021 roadmap][sanitizers-2021-roadmap].
 [llvm-msan]: https://clang.llvm.org/docs/MemorySanitizer.html
 [llvm-tsan]: https://clang.llvm.org/docs/ThreadSanitizer.html
 [llvm-ubsan]: https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
-[nuc]: /development/hardware/intel_nuc.md
+[nuc]: /docs/development/hardware/intel_nuc.md
 [qemu]: https://www.qemu.org
-[rfc-0078]: /contribute/governance/rfcs/0078_kernel_coverage_for_fuchsia_fuzzing.md
-[rfc-0143]: /contribute/governance/rfcs/0143_userspace_top_byte_ignore.md
+[rfc-0078]: /docs/contribute/governance/rfcs/0078_kernel_coverage_for_fuchsia_fuzzing.md
+[rfc-0143]: /docs/contribute/governance/rfcs/0143_userspace_top_byte_ignore.md
 [rust-heap]: https://doc.rust-lang.org/1.22.0/book/first-edition/the-stack-and-the-heap.html#the-heap
 [rust-leaks]: https://doc.rust-lang.org/nomicon/leaking.html
 [rust-panic-abort]: https://doc.rust-lang.org/book/ch09-01-unrecoverable-errors-with-panic.html#unwinding-the-stack-or-aborting-in-response-to-a-panic
-[safestack]: /concepts/kernel/safestack.md
-[sanitizers-2021-roadmap]: /contribute/roadmap/2021/invest_in_sanitizers.md
-[shadowcallstack]: /concepts/kernel/shadow_call_stack.md
+[safestack]: /docs/concepts/kernel/safestack.md
+[sanitizers-2021-roadmap]: /docs/contribute/roadmap/2021/invest_in_sanitizers.md
+[shadowcallstack]: /docs/concepts/kernel/shadow_call_stack.md
 [syzkaller]: https://github.com/google/syzkaller
-[test-coverage]: /contribute/testing/coverage.md
-[testing-flakiness]: /development/testing/testing_for_flakiness_in_cq.md
-[ubsan-open-project]: /contribute/open_projects/cpp/ubsan.md
+[test-coverage]: /docs/contribute/testing/coverage.md
+[testing-flakiness]: /docs/development/testing/testing_for_flakiness_in_cq.md

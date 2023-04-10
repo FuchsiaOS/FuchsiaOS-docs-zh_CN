@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_stream_seek
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Modify the seek offset.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_stream_seek(zx_handle_t handle,
                            zx_off_t* out_seek);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_stream_seek()` sets the seek offset of the stream to *offset* relative to
 *whence*.
@@ -42,18 +49,16 @@ seek offset of the stream.
 **ZX_STREAM_SEEK_ORIGIN_END**  set the seek offset relative to the end of the
 stream, as defined by the content size of the stream.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_STREAM** and have **ZX_RIGHT_WRITE** or have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_stream_seek()` returns **ZX_OK** on success, and writes the resulting seek
 offset, relative to the start of the stream, into *out_offset* (if non-NULL).
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -66,15 +71,13 @@ offset, relative to the start of the stream, into *out_offset* (if non-NULL).
 the resulting seek would be negative or exceed the maximum representable
 `zx_off_t`.
 
-## SEE ALSO
+## See also
 
  - [`zx_stream_create()`]
  - [`zx_stream_readv()`]
  - [`zx_stream_readv_at()`]
  - [`zx_stream_writev()`]
  - [`zx_stream_writev_at()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_stream_create()`]: stream_create.md
 [`zx_stream_readv()`]: stream_readv.md

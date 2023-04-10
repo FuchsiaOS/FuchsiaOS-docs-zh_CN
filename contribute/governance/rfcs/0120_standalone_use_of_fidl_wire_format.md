@@ -548,21 +548,21 @@ of APIs in this alternative together.
 - [Protocol buffers][protobuf]
 
 [driver-metadata-rfc]: https://fuchsia-review.googlesource.com/c/fuchsia/+/543802
-[fast-datagram-rfc]: /contribute/governance/rfcs/0109_socket_datagram_socket.md
-[fidl-bindings-spec]: /reference/fidl/language/bindings-spec.md
-[fidl-encoded-form]: /reference/fidl/language/wire-format/README.md#dual-forms
+[fast-datagram-rfc]: /docs/contribute/governance/rfcs/0109_socket_datagram_socket.md
+[fidl-bindings-spec]: /docs/reference/fidl/language/bindings-spec.md
+[fidl-encoded-form]: /docs/reference/fidl/language/wire-format/README.md#dual-forms
 [go-cutting-the-fidl-encoding-pickle]: http://go/cutting-the-fidl-encoding-pickle
 [go-fidl-wire-format-for-wires]: http://go/fidl-wire-format-for-wires
 [go-i2i-persistent-fidl]: http://go/i2i-persistent-fidl-messages
 [go-phickle]: http://go/phickle
-[llcpp-bindings-reference]: /reference/fidl/bindings/llcpp-bindings.md#encoding-decoding
-[llcpp-encoding-decoding]: /reference/fidl/bindings/llcpp-bindings.md#encoding-decoding
-[unknown-interactions-rfc]: /contribute/governance/rfcs/0138_handling_unknown_interactions.md
-[rust-encoding-decoding]: /reference/fidl/bindings/rust-bindings.md#encoding-decoding
+[llcpp-bindings-reference]: /docs/reference/fidl/bindings/cpp-bindings.md
+[llcpp-encoding-decoding]: /docs/reference/fidl/bindings/cpp-bindings.md#encoding-decoding
+[unknown-interactions-rfc]: /docs/contribute/governance/rfcs/0138_handling_unknown_interactions.md
+[rust-encoding-decoding]: /docs/reference/fidl/bindings/rust-bindings.md#encoding-decoding
 [rust-persistence-impl]: https://cs.opensource.google/fuchsia/fuchsia/+/b9b8d7aae9cff4398182a0e125055950556178e1:src/lib/fidl/rust/fidl/src/encoding.rs;l=3662
-[supported-magic-number]: /contribute/governance/rfcs/0037_transactional_message_header_v3.md#when_should_a_new_magic_number_be_assigned
-[transactional-message-header-rfc]: /contribute/governance/rfcs/0037_transactional_message_header_v3.md
-[transactional-message-header-spec]: /reference/fidl/language/wire-format/README.md#transactional-messages
-[padding]: /reference/fidl/language/wire-format/README.md#padding
+[supported-magic-number]: /docs/contribute/governance/rfcs/0037_transactional_message_header_v3.md#when_should_a_new_magic_number_be_assigned
+[transactional-message-header-rfc]: /docs/contribute/governance/rfcs/0037_transactional_message_header_v3.md
+[transactional-message-header-spec]: /docs/reference/fidl/language/wire-format/README.md#transactional-messages
+[padding]: /docs/reference/fidl/language/wire-format/README.md#padding
 [protobuf]: https://developers.google.com/protocol-buffers
-[validation]: /reference/fidl/language/wire-format/README.md#validation
+[validation]: /docs/reference/fidl/language/wire-format/README.md#validation

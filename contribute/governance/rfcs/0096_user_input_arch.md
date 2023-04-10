@@ -285,11 +285,10 @@ device state. Examples:
   inferred from the absence of a key in a later InputReport.
 
 The product's use of the input pipeline may in theory be configured by the
-Fuchsia product [session][session], which is built on the [Fuchsia Session
-Framework][session-framework]. However, the input pipeline does not run inside
-the session realm. The input pipeline is a more privileged component than the
-session and makes use of a number of capabilities that we do not currently wish
-to expose to session components.
+Fuchsia product [session component][glossary.session-component]. However, the
+input pipeline does not run inside the session realm. The input pipeline is a
+more privileged component than the session and makes use of a number of
+capabilities that we do not currently wish to expose to session components.
 
 Input pipeline implementation(s) are provided to product owners as part of the
 Fuchsia platform. As of the publication fo this RFC, these implementations are
@@ -714,8 +713,7 @@ presenter][root-presenter] could be extended to handle additional
 use-cases. However, this code lacks test coverage and would require a
 substantial re-write to give the desired properties of consistency and
 configurability, and to remove unnecessary coupling between input handling and
-the graphics API. We have instead opted for a new implementation in Rust to
-allow protoyping with the [session framework][session-framework].
+the graphics API.
 
 ### Product-specific Scenic
 Because input (especially pointer-based input) is intimately related to
@@ -735,23 +733,22 @@ for each new product type. This approach might be a valuable optimization in the
 future but was deemed too heavyweight for the current use-cases.
 
 [HID]: http://www.freebsddiary.org/APC/usb_hid_usages.php
-[views]: /development/graphics/scenic/concepts/view_ref.md
-[scenic]: /concepts/ui/scenic/index.md
-[scenegraph]: /concepts/ui/scenic/index.md#scenes
-[viewref]: /development/graphics/scenic/concepts/view_ref.md
-[focuschain]: /development/graphics/scenic/concepts/focus_chain.md
+[views]: /docs/development/graphics/scenic/concepts/view_ref.md
+[scenic]: /docs/concepts/ui/scenic/index.md
+[scenegraph]: /docs/concepts/ui/scenic/index.md#scenes
+[viewref]: /docs/development/graphics/scenic/concepts/view_ref.md
+[focuschain]: /docs/development/graphics/scenic/concepts/focus_chain.md
 [latencyreference]: https://www-user.tu-chemnitz.de/~attig/Attig-Rauh-Franke-Krems_2017_LatencyGuidelines.pdf
 [inputmethod]: https://en.wikipedia.org/wiki/Input_method
-[i18n]: /development/internationalization/README.md
+[i18n]: /docs/development/internationalization/README.md
 [root-presenter]: /src/ui/bin/root_presenter/presentation.cc
-[input-pipeline]: /concepts/session/input.md#input-pipeline
-[drivers]: /development/drivers/concepts/driver_architectures/input_drivers/input.md
+[input-pipeline]: /src/ui/bin/input-pipeline/
+[drivers]: /docs/development/drivers/concepts/driver_architectures/input_drivers/input.md
 [input-report]: https://fuchsia.dev/reference/fidl/fuchsia.input.report
-[glossary.InputEvent]: /glossary/README.md#inputevent
-[glossary.InputHandler]: /glossary/README.md#inputhandler
-[session-framework]: /concepts/session/introduction.md
+[glossary.InputEvent]: /docs/glossary/README.md#inputevent
+[glossary.InputHandler]: /docs/glossary/README.md#inputhandler
+[glossary.session-component]: /docs/glossary#session-component
 [output-report]: https://fuchsia.dev/reference/fidl/fuchsia.input.report#fuchsia.input.report/InputDevice.SendOutputReport
-[input-roadmap]: /contribute/roadmap/2020/overview.md#implementing_accessibility_and_input_improvements
-[config-roadmap]: /contribute/roadmap/2021/structured_configuration.md
-[event-pair]: /reference/kernel_objects/eventpair.md
-[session]: /contribute/governance/rfcs/0092_sessions.md
+[input-roadmap]: /docs/contribute/roadmap/2020/overview.md#implementing_accessibility_and_input_improvements
+[config-roadmap]: /docs/contribute/roadmap/2021/structured_configuration.md
+[event-pair]: /docs/reference/kernel_objects/eventpair.md

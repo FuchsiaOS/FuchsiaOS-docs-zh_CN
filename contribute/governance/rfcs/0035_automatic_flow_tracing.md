@@ -73,8 +73,8 @@ We propose to combine a few identifiers:
     topic [`ZX_INFO_HANDLE_BASIC`][ZX_INFO_HANDLE_BASIC], using the
     koid on the server side, and the related koid on the client side;
 *   The **method ordinal** of the transactional message (note: this is
-    [currently a uint32](/contribute/governance/rfcs/0020_interface_ordinal_hashing.md) hashed value, and will soon evolve
-    to be a uint64 hashed value, see [RFC-0029](/contribute/governance/rfcs/0029_increasing_method_ordinals.md));
+    [currently a uint32](/docs/contribute/governance/rfcs/0020_interface_ordinal_hashing.md) hashed value, and will soon evolve
+    to be a uint64 hashed value, see [RFC-0029](/docs/contribute/governance/rfcs/0029_increasing_method_ordinals.md));
 *   Lastly, the **transactional ID** of the [transactional message][wformat-transactional].
 
 How these three identifiers are assembled should strive to reduce possible
@@ -152,7 +152,7 @@ This results in harder to read trace viewer output, unnecessary ktrace
 buffer usage, and also relies on FIDL implementation detail.
 
 <!-- xrefs -->
-[zx_object_get_info]: /reference/syscalls/object_get_info.md
-[ZX_INFO_HANDLE_BASIC]: /reference/syscalls/object_get_info.md#zx_info_handle_basic
-[wformat-transactional]: /reference/fidl/language/wire-format/README.md#Transactional-Messages
-[zx_channel_call]: /reference/syscalls/channel_call.md
+[zx_object_get_info]: /docs/reference/syscalls/object_get_info.md
+[ZX_INFO_HANDLE_BASIC]: /docs/reference/syscalls/object_get_info.md#zx_info_handle_basic
+[wformat-transactional]: /docs/reference/fidl/language/wire-format/README.md#Transactional-Messages
+[zx_channel_call]: /docs/reference/syscalls/channel_call.md

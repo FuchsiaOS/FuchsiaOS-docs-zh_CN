@@ -7,99 +7,93 @@
 # team as reviewer
 toc:
 - title: "Overview"
-  path: /reference/diagnostics/README.md
+  path: /docs/reference/diagnostics/README.md
 
 # TODO(fxbug.dev/60819)
 # - title: "Glossary"
-#   path: /reference/diagnostics/glossary.md
+#   path: /docs/reference/diagnostics/glossary.md
 
 # TODO(fxbug.dev/60821)
 # - title: "Data"
-#   path: /reference/diagnostics/data.md
+#   path: /docs/reference/diagnostics/data.md
 
 # TODO(fxbug.dev/60763)
 # - title: "Access"
-#   path: /reference/diagnostics/access.md
+#   path: /docs/reference/diagnostics/access.md
 
 - title: "Selectors"
-  path: /reference/diagnostics/selectors.md
+  path: /docs/reference/diagnostics/selectors.md
 
 # TODO(fxbug.dev/60812)
 # - title: "Product Integration"
-#   path: /reference/diagnostics/products.md
+#   path: /docs/reference/diagnostics/products.md
 
 # TODO(fxbug.dev/60768)
 # - title: "Component Lifecycle"
-#   path: /reference/diagnostics/lifecycle.md
+#   path: /docs/reference/diagnostics/lifecycle.md
 
 - title: "Inspect"
   section:
   - title: "Overview"
-    path: /reference/diagnostics/inspect
+    path: /docs/reference/diagnostics/inspect
 
   # TODO(fxbug.dev/60817)
   # - title: "Access"
-  #   path: /reference/diagnostics/inspect/access.md
+  #   path: /docs/reference/diagnostics/inspect/access.md
 
   - title: "Extending the VMO file format"
-    path: /reference/diagnostics/inspect/updating-vmo-format.md
+    path: /docs/reference/diagnostics/inspect/updating-vmo-format.md
 
   # TODO(fxbug.dev/60816)
   # - title: "VMO Lifecycle"
-  #   path: /reference/diagnostics/inspect/lifecycle.md
+  #   path: /docs/reference/diagnostics/inspect/lifecycle.md
 
   - title: "Inspect discovery and hosting"
-    path: /reference/diagnostics/inspect/tree.md
+    path: /docs/reference/diagnostics/inspect/tree.md
   - title: "Validating implementations"
     section:
     - title: "Validator architecture"
-      path: /reference/diagnostics/inspect/validator/README.md
+      path: /docs/reference/diagnostics/inspect/validator/README.md
     - title: "Inspect validator puppet architecture"
-      path: /reference/diagnostics/inspect/validator/puppet.md
+      path: /docs/reference/diagnostics/inspect/validator/puppet.md
 - title: "Logs"
   section:
   - title: "Overview"
-    path: /reference/diagnostics/logs
+    path: /docs/reference/diagnostics/logs
 
   - title: "Access"
-    path: /reference/diagnostics/logs/access.md
+    path: /docs/reference/diagnostics/logs/access.md
 
 # TODO(fxbug.dev/60813)
 # - title: "Producers"
-#   path: /reference/diagnostics/producers.md
+#   path: /docs/reference/diagnostics/producers.md
 
 - title: "Consumers"
   section:
-  # - title: "Analysis"
-  #   section:
-
-  # TODO(fxbug.dev/60826)
-  #   - title: "Detect"
-  #     path: /reference/diagnostics/consumers/detect.md
 
   # TODO(fxbug.dev/53921)
   #   - title: "Log Stats"
-  #     path: /reference/diagnostics/consumers/log-stats.md
+  #     path: /docs/reference/diagnostics/consumers/log-stats.md
 
   # - title: "Forwarding"
   #   section:
 
   # TODO(fxbug.dev/60825)
   #   - title: "Forensics"
-  #     path: /reference/diagnostics/consumers/forensics.md
+  #     path: /docs/reference/diagnostics/consumers/forensics.md
 
   # TODO(fxbug.dev/60823)
   #   - title: "System Monitor"
-  #     path: /reference/diagnostics/consumers/system-monitor.md
+  #     path: /docs/reference/diagnostics/consumers/system-monitor.md
 
   - title: "Local and development"
     section:
     - title: "iquery"
-      path: /reference/diagnostics/consumers/iquery.md
+      path: /docs/reference/diagnostics/consumers/iquery.md
 
     - title: "log_listener CLI"
-      path: /reference/diagnostics/consumers/log_listener.md
+      path: /docs/reference/diagnostics/consumers/log_listener.md
 
     # TODO(fxbug.dev/60828)
     # - title: "triage tool"
-    #   path: /reference/diagnostics/consumers/triage.md
+    #   path: /docs/reference/diagnostics/consumers/triage.md

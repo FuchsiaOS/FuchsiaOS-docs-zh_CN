@@ -46,7 +46,7 @@ Accessibility manager code lives in
 ## Settings
 
 Accessibility settings will be managed through
-[SetUI](/development/settings/introduction.md), which is responsible for
+[SetUI](/docs/development/settings/introduction.md), which is responsible for
 storing settings locally and notifying the Accessibility Manager when settings
 change. This is done via the
 [fuchsia.settings.accessibility](/sdk/fidl/fuchsia.settings/accessibility.fidl)
@@ -77,7 +77,7 @@ For additional information see [Accessibility Semantics][semantics].
 ## Accessibility View
 
 The accessibility manager owns a view in the Fuchsia [view
-tree](/development/graphics/scenic/concepts/view_ref.md).  This view allows
+tree](/docs/development/graphics/scenic/concepts/view_ref.md).  This view allows
 accessibility to intercept gestures, change graphics, inject input, and
 participate in focus changes.
 
@@ -123,7 +123,7 @@ Accessibility tests live in
 [src/ui/a11y/lib/testing/](/src/ui/a11y/lib/testing/).
 
 [chromium]: https://chromium.googlesource.com/chromium/src/+/lkgr/docs/accessibility/overview.md
-[semantics]: https://fuchsia.dev/reference/fidl/fuchsia.accessibility.semantics?hl=en
+[semantics]: https://fuchsia.dev/reference/fidl/fuchsia.accessibility.semantics
 [screenreader]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78636
 [magnifier]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78645
 [colorcorrection]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78644
@@ -133,4 +133,4 @@ Accessibility tests live in
 [a11yfocus]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78637
 [highlights]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78639
 [tts]: https://bugs.fuchsia.dev/p/fuchsia/issues/detail?id=78642
-[scenic]: /concepts/ui/scenic/index.md
+[scenic]: /docs/concepts/ui/scenic/index.md

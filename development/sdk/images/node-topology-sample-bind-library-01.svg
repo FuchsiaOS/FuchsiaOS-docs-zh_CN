@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="469" height="163" viewBox="0 0 469 163">
+  <defs>
+    <style>
+      .b {
+        fill: #80d186;
+      }
+
+      .b, .c, .d, .e {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .c {
+        stroke-width: 8px;
+      }
+
+      .c, .d {
+        fill: none;
+      }
+
+      .f {
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+
+      .d {
+        stroke-width: 2px;
+      }
+
+      .e {
+        fill: #c5c5ff;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="b" x="117.5" y=".5" width="108" height="36" rx="18" ry="18"/>
+    <text class="f" transform="translate(146.16 21.7)"><tspan x="0" y="0">ACPI bus</tspan></text>
+  </g>
+  <g>
+    <rect class="e" x="351.5" y="72.5" width="117" height="36"/>
+    <text class="f" transform="translate(375.99 93.7)"><tspan x="0" y="0">parent-driver</tspan></text>
+  </g>
+  <line class="c" x1="342.5" y1="90.5" x2="351.5" y2="90.5"/>
+  <g>
+    <line class="d" x1="171.5" y1="36.5" x2="171.5" y2="65.44"/>
+    <polygon points="171.5 72.5 167.43 62.55 171.5 64.91 175.56 62.55 171.5 72.5"/>
+  </g>
+  <g>
+    <polyline class="d" points="54.5 65.44 54.5 54.5 288.5 54.5 288.5 65.44"/>
+    <polygon points="54.5 72.5 58.57 62.55 54.5 64.91 50.44 62.55 54.5 72.5"/>
+    <polygon points="288.5 72.5 284.43 62.55 288.5 64.91 292.56 62.55 288.5 72.5"/>
+  </g>
+  <g>
+    <rect class="b" x=".5" y="72.5" width="108" height="36" rx="18" ry="18"/>
+    <text class="f" transform="translate(16.48 93.7)"><tspan x="0" y="0">ACPI device 1</tspan></text>
+  </g>
+  <g>
+    <rect class="b" x="117.5" y="72.5" width="108" height="36" rx="18" ry="18"/>
+    <text class="f" transform="translate(133.48 93.7)"><tspan x="0" y="0">ACPI device 2</tspan></text>
+  </g>
+  <g>
+    <rect class="b" x="234.5" y="72.5" width="108" height="36" rx="18" ry="18"/>
+    <text class="f" transform="translate(250.48 93.7)"><tspan x="0" y="0">ACPI device 3</tspan></text>
+  </g>
+  <g>
+    <rect class="b" x="234.5" y="126.5" width="108" height="36" rx="18" ry="18"/>
+    <text class="f" transform="translate(256.82 147.7)"><tspan x="0" y="0">bindlib-child</tspan></text>
+  </g>
+  <g>
+    <rect class="e" x="351.5" y="126.5" width="117" height="36"/>
+    <text class="f" transform="translate(380.66 147.7)"><tspan x="0" y="0">child-driver</tspan></text>
+  </g>
+  <line class="c" x1="342.5" y1="144.5" x2="351.5" y2="144.5"/>
+  <g>
+    <line class="d" x1="288.5" y1="108.5" x2="288.5" y2="119.44"/>
+    <polygon points="288.5 126.5 284.43 116.55 288.5 118.91 292.56 116.55 288.5 126.5"/>
+  </g>
+</svg>

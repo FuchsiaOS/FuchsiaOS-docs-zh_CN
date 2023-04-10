@@ -15,7 +15,7 @@ asynchronous service into a synchronous service, leading to livelocks and deadlo
 Instead, when programming for Zircon, developers should assume that sending IPC messages at a
 reasonable rate in a healthy system always succeeds. The kernel in turn implements some limits on
 the amount of data it can buffer and when the limit is crossed, a
-[policy exception](/concepts/kernel/exceptions.md) is raised in the calling thread for the
+[policy exception](/docs/concepts/kernel/exceptions.md) is raised in the calling thread for the
 following syscalls:
 
  - [`zx_channel_write()`]
@@ -37,7 +37,7 @@ request/response, request-expiration, sidecar VMOs, etc. The most appropriate me
 on the nature of the service.
 
 
-[`zx_channel_write()`]: /reference/syscalls/channel_write.md
-[`zx_channel_write_etc()`]: /reference/syscalls/channel_write_etc.md
-[`zx_port_queue()`]: /reference/syscalls/port_queue.md
+[`zx_channel_write()`]: /docs/reference/syscalls/channel_write.md
+[`zx_channel_write_etc()`]: /docs/reference/syscalls/channel_write_etc.md
+[`zx_port_queue()`]: /docs/reference/syscalls/port_queue.md
 

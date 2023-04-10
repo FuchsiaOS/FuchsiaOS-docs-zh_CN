@@ -18,7 +18,7 @@ More information on the currently available bundles can be found in
   reconfiguring and testing networks, making http requests, debugging programs,
   changing audio volume, and so on.
 * `tests` causes all test programs to be built. Most test programs can be
-  invoked using `run-test-component` on the device, or via `fx test`.
+  invoked using `run-test-suite` on the device, or via `fx test`.
 * `kitchen_sink` is a target that causes all other build targets to be
   included. It is useful when testing the impact of core changes, or when
   making large scale changes in the code base. It also may be a fun
@@ -27,4 +27,4 @@ More information on the currently available bundles can be found in
   20GB of build artifacts and requires at least 2GB of storage on the target
   device (size estimates from Q1/2019).
 
-[fx-build-config]: /development/build/fx.md#configure-a-build
+[fx-build-config]: /docs/development/build/fx.md#configure-a-build

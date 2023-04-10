@@ -296,18 +296,6 @@
   available_in_git: '636114fa5f0c3a175cf6f054f26b415f72a72dad'
   areas: ['LightSensor']
   path: '/src/devices/light-sensor/drivers/lite-on'
-- short_description: 'DesignWire I2C driver'
-  deletion_reason: 'Hardware is not actively supported'
-  gerrit_change_id: '610581'
-  available_in_git: '636114fa5f0c3a175cf6f054f26b415f72a72dad'
-  areas: ['I2c']
-  path: '/src/devices/i2c/drivers/dw-i2c'
-- short_description: 'Texas Instruments Lp LED driver'
-  deletion_reason: 'Hardware is not actively supported'
-  gerrit_change_id: '610581'
-  available_in_git: '636114fa5f0c3a175cf6f054f26b415f72a72dad'
-  areas: ['Light']
-  path: '/src/ui/light/drivers/lp50xx-light'
 - short_description: 'Silergy SY8827 power driver'
   deletion_reason: 'Hardware is not actively supported'
   gerrit_change_id: '675799'
@@ -320,3 +308,27 @@
   available_in_git: 'db7856d0d304cfbb0f4beed0b73644a645aab0a5'
   areas: ['Audio']
   path: '/src/media/audio/drivers/codecs/tas5782'
+- short_description: 'ath10k - Atheros softmac WLAN driver'
+  deletion_reason: 'Hardware is not actively supported'
+  gerrit_change_id: '717822'
+  available_in_git: '618381f4f6fd880c72951ceb030d51427f5a7b80'
+  areas: ['WLAN']
+  path: '/src/connectivity/wlan/drivers/third_party/atheros/ath10k'
+- short_description: 'Mediatek Bluetooth HCI driver'
+  deletion_reason: 'Hardware is not actively supported'
+  gerrit_change_id: '735505'
+  available_in_git: 'e77f0783e89fcbfed969d5888eb7b3f34df5bdae'
+  areas: ['Bluetooth']
+  path: '/src/connectivity/bluetooth/hci/vendor/mediatek'
+- short_description: 'Luis board driver'
+  deletion_reason: 'Hardware is not actively supported'
+  gerrit_change_id: '794069'
+  available_in_git: 'c90782f99960bc373a79d1948575ff0eb92980e6'
+  areas: ['Board']
+  path: '/src/devices/board/drivers/sherlock'
+- short_description: 'USB DFU'
+  deletion_reason: 'Hardware is not actively supported'
+  gerrit_change_id: '798008'
+  available_in_git: '07c54ed670c4dd5b25fbe509943bc660932e046a'
+  areas: ['USB']
+  path: '/src/devices/usb/drivers/usb-dfu'

@@ -7,13 +7,13 @@
 # team as reviewer.
 toc:
 - title: "Getting started"
-  path: /development/drivers/developer_guide/driver-development.md
-- title: "Write an ethernet driver"
-  path: /development/drivers/developer_guide/ethernet.md
+  path: /docs/development/drivers/developer_guide/driver-development.md
 - title: "Write a ramdisk driver"
-  path: /development/drivers/developer_guide/ramdisk.md
+  path: /docs/development/drivers/developer_guide/ramdisk.md
+- title: "Create a composite node"
+  path: /docs/development/drivers/developer_guide/composite-node.md
 
 
 - title: "Drivers rubric"
-  path: /development/drivers/developer_guide/rubric.md
+  path: /docs/development/drivers/developer_guide/rubric.md
 

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_object_wait_one
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Wait for signals on an object.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_object_wait_one(zx_handle_t handle,
                                zx_signals_t* observed);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_object_wait_one()` is a blocking syscall that causes the caller to wait
 until either the *deadline* passes or the object to which *handle* refers
@@ -42,13 +49,11 @@ The *deadline* parameter specifies a deadline with respect to
   * 0 (or any value before the current time in **ZX_CLOCK_MONOTONIC**) will
     query the current value of the signal(s).
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must have **ZX_RIGHT_WAIT**.
 
-## RETURN VALUE
+## Return value
 
 `zx_object_wait_one()` returns **ZX_OK** if any of *signals* were active when
 the call was made, or observed on the object before *deadline* passes.
@@ -61,7 +66,7 @@ and *observed* will have the **ZX_SIGNAL_HANDLE_CLOSED** bit set.
 
 For any other return value, *observed* is undefined.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  *observed* is an invalid pointer.
 
@@ -78,20 +83,18 @@ not be waited upon.
 **ZX_ERR_NOT_SUPPORTED**  *handle* is a handle that cannot be waited on
 (for example, a Port handle).
 
-## NOTES
+## Notes
 
 See [signals] for more information about signals and their terminology.
 
-## SEE ALSO
+## See also
 
  - [signals]
  - [timer slack]
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_many()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[signals]: /concepts/kernel/signals.md
-[timer slack]: /concepts/kernel/timer_slack.md
+[signals]: /docs/concepts/kernel/signals.md
+[timer slack]: /docs/concepts/kernel/timer_slack.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_many()`]: object_wait_many.md

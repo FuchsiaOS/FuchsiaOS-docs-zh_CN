@@ -7,20 +7,20 @@
 # team as reviewer.
 toc:
   - title: Overview
-    path: /get-started/learn/components/README.md
+    path: /docs/get-started/learn/components/README.md
     step_group: fuchsiacomponents
   - title: Declaring components
-    path: /get-started/learn/components/declaring-components.md
+    path: /docs/get-started/learn/components/declaring-components.md
     step_group: fuchsiacomponents
   - title: Organizing components
-    path: /get-started/learn/components/organizing-components.md
+    path: /docs/get-started/learn/components/organizing-components.md
     step_group: fuchsiacomponents
   - title: Component tests
-    path: /get-started/learn/components/component-tests.md
+    path: /docs/get-started/learn/components/component-tests.md
     step_group: fuchsiacomponents
   - title: Debugging components
-    path: /get-started/learn/components/debugging-components.md
+    path: /docs/get-started/learn/components/debugging-components.md
     step_group: fuchsiacomponents
   - title: Building a cohesive product
-    path: /get-started/learn/components/build-product.md
+    path: /docs/get-started/learn/components/build-product.md
     step_group: fuchsiacomponents

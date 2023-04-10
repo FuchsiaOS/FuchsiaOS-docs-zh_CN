@@ -7,3 +7,4 @@ version of the driver framework (DFv1).
 - [PCI Base Address Registers (BAR)](bar.md)
 - [Interrupts](interrupts.md)
 - [DMA](dma.md)
+- [GPIO initialization](gpio-initialization.md)

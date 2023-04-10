@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_channel_read_etc
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Read a message from a channel.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -23,7 +30,7 @@ zx_status_t zx_channel_read_etc(zx_handle_t handle,
                                 uint32_t* actual_handles);
 ```
 
-## DESCRIPTION
+## Description
 
 See [`zx_channel_read()`] for a full description.
 
@@ -44,19 +51,17 @@ When communicating to an untrusted party over a channel, it is recommended
 that the `zx_channel_read_etc()` form is used and each handle type and rights
 are validated against the expected values.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_CHANNEL** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 Both forms of read return **ZX_OK** on success, if *actual_bytes*
 and *actual_handles* (if non-NULL), contain the exact number of bytes
 and count of handles read.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE**  *handle* is not a valid handle.
 
@@ -67,9 +72,11 @@ and count of handles read.
 
 **ZX_ERR_ACCESS_DENIED**  *handle* does not have **ZX_RIGHT_READ**.
 
-**ZX_ERR_SHOULD_WAIT**  The channel contained no messages to read.
+**ZX_ERR_SHOULD_WAIT**  The channel contained no messages to read and the other side of the
+channel is open.
 
-**ZX_ERR_PEER_CLOSED**  The other side of the channel is closed.
+**ZX_ERR_PEER_CLOSED**  The channel contained no messages to read and the other side of the
+channel is closed.
 
 **ZX_ERR_NO_MEMORY**  Failure due to lack of memory.
 There is no good way for userspace to handle this (unlikely) error.
@@ -81,12 +88,12 @@ the message will be written to *actual_bytes* and *actual_handles*,
 provided they are non-NULL). If *options* has **ZX_CHANNEL_READ_MAY_DISCARD**
 set, then the message is discarded.
 
-## NOTES
+## Notes
 
 *num_handles* and *actual_handles* are counts of the number of elements
 in the *handles* array, not its size in bytes.
 
-## SEE ALSO
+## See also
 
  - [`zx_channel_call()`]
  - [`zx_channel_create()`]
@@ -94,13 +101,10 @@ in the *handles* array, not its size in bytes.
  - [`zx_channel_write()`]
  - [`zx_channel_write_etc()`]
  - [`zx_handle_close()`]
- - [`zx_handle_duplicate()`]
  - [`zx_handle_replace()`]
  - [`zx_object_wait_async()`]
  - [`zx_object_wait_many()`]
  - [`zx_object_wait_one()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_channel_call()`]: channel_call.md
 [`zx_channel_create()`]: channel_create.md
@@ -108,7 +112,6 @@ in the *handles* array, not its size in bytes.
 [`zx_channel_write()`]: channel_write.md
 [`zx_channel_write_etc()`]: channel_write_etc.md
 [`zx_handle_close()`]: handle_close.md
-[`zx_handle_duplicate()`]: handle_duplicate.md
 [`zx_handle_replace()`]: handle_replace.md
 [`zx_object_wait_async()`]: object_wait_async.md
 [`zx_object_wait_many()`]: object_wait_many.md

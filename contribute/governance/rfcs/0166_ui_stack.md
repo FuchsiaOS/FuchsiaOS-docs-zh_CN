@@ -42,8 +42,8 @@ This RFC seeks to clarify which of the components and APIs involved are
 deprecated, which are plan of record, and to ratify the planned order of the
 migrations. It provides additional context on the architecture discussed in
 [RFC-0096: User input
-architecture](/contribute/governance/rfcs/0096_user_input_arch.md) and
-[RFC-0147: View System](/contribute/governance/rfcs/0147_view_system.md).
+architecture](/docs/contribute/governance/rfcs/0096_user_input_arch.md) and
+[RFC-0147: View System](/docs/contribute/governance/rfcs/0147_view_system.md).
 
 ## Stakeholders
 
@@ -72,12 +72,12 @@ Accessibility teams.
 
 ## Glossary
 
-* [Scenic](/concepts/ui/scenic/index.md) - Fuchsia platform component that handles
+* [Scenic](/docs/concepts/ui/scenic/index.md) - Fuchsia platform component that handles
   graphical composition, focus management, and routing of graphical input.
-* [Gfx](/concepts/ui/scenic/gfx/index.md) - Legacy Scenic graphics API. Found in
+* [Gfx](/docs/concepts/ui/scenic/gfx/index.md) - Legacy Scenic graphics API. Found in
   [fuchsia.ui.scenic](https://fuchsia.dev/reference/fidl/fuchsia.ui.scenic) and
   [fuchsia.ui.gfx](https://fuchsia.dev/reference/fidl/fuchsia.ui.gfx/).
-* [Flatland](/concepts/ui/scenic/flatland/index.md) - Plan of record Scenic
+* [Flatland](/docs/concepts/ui/scenic/flatland/index.md) - Plan of record Scenic
   API. Found in
   [fuchsia.ui.composition](https://fuchsia.dev/reference/fidl/fuchsia.ui.composition).
 * [Input
@@ -93,7 +93,7 @@ Accessibility teams.
   Presenter](https://cs.opensource.google/fuchsia/fuchsia/+/main:src/ui/bin/root_presenter/) -
   Legacy Fuchsia platform component that handles input routing and setup and
   configuration of the Scenic scene.
-* [Accessibility Manager](/concepts/accessibility/accessibility_framework.md) -
+* [Accessibility Manager](/docs/concepts/accessibility/accessibility_framework.md) -
   Fuchsia platform component that handles accessibility services.
 
 ## Design
@@ -210,7 +210,7 @@ should be monitored through each transition but is not expected to worsen.
 
 This RFC does not introduce any new security or privacy concerns not already
 covered by [Flatland API
-reviews](/contribute/governance/rfcs/0162_flatland.md).
+reviews](/docs/contribute/governance/rfcs/0162_flatland.md).
 No user data will be collected.
 
 ## Testing
@@ -249,5 +249,5 @@ and requires a large amount of throw-away work.
 ## Prior art and references
 
 * [RFC-0096: User input
-architecture](/contribute/governance/rfcs/0096_user_input_arch.md)
-* [RFC-0147:View System](/contribute/governance/rfcs/0147_view_system.md)
+architecture](/docs/contribute/governance/rfcs/0096_user_input_arch.md)
+* [RFC-0147:View System](/docs/contribute/governance/rfcs/0147_view_system.md)

@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_vcpu_read_state
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Read the state of a VCPU.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_vcpu_read_state(zx_handle_t handle,
                                size_t buffer_size);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_vcpu_read_state()` reads the state of *handle* as specified by *kind* into
 *buffer*. It is only valid to read the state of *handle* when execution has been
@@ -30,18 +37,16 @@ paused.
 `zx_vcpu_read_state()` must be called on the same thread *handle* was created
 on.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_VCPU** and have **ZX_RIGHT_READ**.
 
-## RETURN VALUE
+## Return value
 
 `zx_vcpu_read_state()` returns **ZX_OK** on success. On failure, an error value
 is returned.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_ACCESS_DENIED** *handle* does not have the **ZX_RIGHT_READ** right.
 
@@ -54,7 +59,7 @@ invalid pointer, or *buffer_size* does not match the expected size of *kind*.
 
 **ZX_ERR_WRONG_TYPE** *handle* is not a handle to a VCPU.
 
-## SEE ALSO
+## See also
 
  - [`zx_guest_create()`]
  - [`zx_guest_set_trap()`]
@@ -63,8 +68,6 @@ invalid pointer, or *buffer_size* does not match the expected size of *kind*.
  - [`zx_vcpu_interrupt()`]
  - [`zx_vcpu_kick()`]
  - [`zx_vcpu_write_state()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_guest_create()`]: guest_create.md
 [`zx_guest_set_trap()`]: guest_set_trap.md

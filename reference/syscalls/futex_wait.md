@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_futex_wait
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Wait on a futex.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -19,7 +26,7 @@ zx_status_t zx_futex_wait(const zx_futex_t* value_ptr,
                           zx_time_t deadline);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_futex_wait()` atomically verifies that *value_ptr* still contains the value
 *current_value* and sleeps until the futex is made available by a call to
@@ -47,20 +54,18 @@ A successful call to `zx_futex_wait()` results in the owner of the futex being
 set to the thread referenced by the *new_futex_owner* handle, or to nothing if
 *new_futex_owner* is **ZX_HANDLE_INVALID**.
 
-See *Ownership and Priority Inheritance* in [futex](/reference/kernel_objects/futex.md) for
+See *Ownership and Priority Inheritance* in [futex](/docs/reference/kernel_objects/futex.md) for
 details.
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 None.
 
-## RETURN VALUE
+## Return value
 
 `zx_futex_wait()` returns **ZX_OK** on success.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_INVALID_ARGS**  One of the following is true:
 
@@ -78,16 +83,14 @@ None.
 
 **ZX_ERR_TIMED_OUT**  The thread was not woken before *deadline* passed.
 
-## SEE ALSO
+## See also
 
  - [futex objects]
  - [timer slack]
  - [`zx_futex_requeue()`]
  - [`zx_futex_wake()`]
 
-<!-- References updated by update-docs-from-fidl, do not edit. -->
-
-[futex objects]: /reference/kernel_objects/futex.md
-[timer slack]: /concepts/kernel/timer_slack.md
+[futex objects]: /docs/reference/kernel_objects/futex.md
+[timer slack]: /docs/concepts/kernel/timer_slack.md
 [`zx_futex_requeue()`]: futex_requeue.md
 [`zx_futex_wake()`]: futex_wake.md

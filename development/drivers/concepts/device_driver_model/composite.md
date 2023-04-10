@@ -153,7 +153,7 @@ Argument                  | Meaning
 --------------------------|---------------------------------------------------
 `dev`                     | Parent device
 `name`                    | The name of the device
-`props`                   | Properties ([see "Declaring a Driver"](/development/drivers/developer_guide/driver-development.md#declaring-a-driver))
+`props`                   | Properties ([see "Declaring a Driver"](/docs/development/drivers/developer_guide/driver-development.md#declaring-a-driver))
 `props_count`             | How many entries are in `props`
 `fragments`              | The individual fragment devices
 `fragments_count`        | How many entries are in `fragments`
@@ -295,6 +295,6 @@ the other half in
 [fragment.cc]: /src/devices/internal/drivers/fragment/fragment.cc
 [fragment]: /src/devices/internal/drivers/fragment/
 [driver.h]: /src/lib/ddk/include/ddk/driver.h
-[isolate]: /development/drivers/developer_guide/driver-development.md#isolate-devices
+[isolate]: /docs/development/drivers/developer_guide/driver-development.md#isolate-devices
 
 <!-- diagram source at https://docs.google.com/document/d/1JKLPaHmoISdS23TFHgDmxJgIb78TS_t4TNDnbd6PXiE/edit?usp=sharing -->

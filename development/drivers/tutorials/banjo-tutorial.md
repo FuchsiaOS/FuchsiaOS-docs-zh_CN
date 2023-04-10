@@ -4,7 +4,7 @@ Caution: This page may contain information that is specific to the legacy
 version of the driver framework (DFv1).
 
 Banjo is a "transpiler" (like [FIDL's
-`fidlc`](/development/languages/fidl/README.md))
+`fidlc`](/docs/development/languages/fidl/README.md))
 &mdash; a program that converts an interface definition language (**IDL**) into target language
 specific files.
 
@@ -26,7 +26,7 @@ and the protocol user.
 ## A simple example
 
 As a first step, let's take a look at a relatively simple Banjo specification.
-This is the file [`//sdk/banjo/fuchsia.hardware.i2c/i2c.fidl`](/sdk/banjo/fuchsia.hardware.i2c/i2c.fidl):
+This is the file [`//sdk/banjo/fuchsia.hardware.i2cimpl/i2cimpl.fidl`](/sdk/banjo/fuchsia.hardware.i2cimpl/i2c-impl.fidl):
 
 > Note that the line numbers in the code samples throughout this tutorial are not part of the files.
 
@@ -34,35 +34,62 @@ This is the file [`//sdk/banjo/fuchsia.hardware.i2c/i2c.fidl`](/sdk/banjo/fuchsi
 [01] // Copyright 2018 The Fuchsia Authors. All rights reserved.
 [02] // Use of this source code is governed by a BSD-style license that can be
 [03] // found in the LICENSE file.
-[04]
-[05] library fuchsia.hardware.i2c;
+[04] @available(added=7)
+[05] library fuchsia.hardware.i2cimpl;
 [06]
 [07] using zx;
 [08]
-[09] const uint32 I2C_10_BIT_ADDR_MASK = 0xF000;
-[10] const uint32 I2C_MAX_RW_OPS = 8;
-[11]
-[12] /// See `Transact` below for usage.
-[13] struct I2cOp {
-[14]     vector<voidptr> data;
-[15]     bool is_read;
-[16]     bool stop;
-[17] };
-[18]
-[19] [Transport = "Banjo", BanjoLayout = "ddk-protocol"]
-[20] protocol I2c {
-[21]     /// Writes and reads data on an i2c channel. Up to I2C_MAX_RW_OPS operations can be passed in.
-[22]     /// For write ops, i2c_op_t.data points to data to write.  The data to write does not need to be
-[23]     /// kept alive after this call.  For read ops, i2c_op_t.data is ignored.  Any combination of reads
-[24]     /// and writes can be specified.  At least the last op must have the stop flag set.
-[25]     /// The results of the operations are returned asynchronously through the transact_cb.
-[26]     /// The cookie parameter can be used to pass your own private data to the transact_cb callback.
-[27]     [Async]
-[28]     Transact(vector<I2cOp> op) -> (zx.status status, vector<I2cOp> op);
-[29]     /// Returns the maximum transfer size for read and write operations on the channel.
-[30]     GetMaxTransferSize() -> (zx.status s, usize size);
-[31]     GetInterrupt(uint32 flags) -> (zx.status s, handle<interrupt> irq);
-[32] };
+[09] const I2C_IMPL_10_BIT_ADDR_MASK uint32 = 0xF000;
+[10] /// The maximum number of I2cImplOp's that may be passed to Transact.
+[11] const I2C_IMPL_MAX_RW_OPS uint32 = 8;
+[12] /// The maximum length of all read or all write transfers in bytes.
+[13] const I2C_IMPL_MAX_TOTAL_TRANSFER uint32 = 4096;
+[14]
+[15] /// See `Transact` below for usage.
+[16] type I2cImplOp = struct {
+[17]     address uint16;
+[18]     @buffer
+[19]     @mutable
+[20]     data vector<uint8>:MAX;
+[21]     is_read bool;
+[22]     stop bool;
+[23] };
+[24]
+[25] /// Low-level protocol for i2c drivers.
+[26] @transport("Banjo")
+[27] @banjo_layout("ddk-protocol")
+[28] protocol I2cImpl {
+[29]     /// First bus ID that this I2cImpl controls, zero-indexed.
+[30]     GetBusBase() -> (struct {
+[31]         base uint32;
+[32]     });
+[33]     /// Number of buses that this I2cImpl supports.
+[34]     GetBusCount() -> (struct {
+[35]         count uint32;
+[36]     });
+[37]     GetMaxTransferSize(struct {
+[38]         bus_id uint32;
+[39]     }) -> (struct {
+[40]         s zx.status;
+[41]         size uint64;
+[42]     });
+[43]     /// Sets the bitrate for the i2c bus in KHz units.
+[44]     SetBitrate(struct {
+[45]         bus_id uint32;
+[46]         bitrate uint32;
+[47]     }) -> (struct {
+[48]         s zx.status;
+[49]     });
+[50]     /// |Transact| assumes that all ops buf are not null.
+[51]     /// |Transact| assumes that all ops length are not zero.
+[52]     /// |Transact| assumes that at least the last op has stop set to true.
+[53]     Transact(struct {
+[54]         bus_id uint32;
+[55]         op vector<I2cImplOp>:MAX;
+[56]     }) -> (struct {
+[57]         status zx.status;
+[58]     });
+[59] };
 ```
 
 It defines an interface that allows an application to read and write data on an I2C bus.
@@ -76,13 +103,13 @@ Let's look at the individual components, line-by-line:
 * `[05]` &mdash; the `library` directive tells the Banjo compiler what prefix it should
   use on the generated output; think of it as a namespace specifier.
 * `[07]` &mdash; the `using` directive tells Banjo to include the `zx` library.
-* `[09]` and `[10]` &mdash; these introduce two constants for use by the programmer.
-* `[13` .. `17]` &mdash; these define a structure, called `I2cOp`, that the programmer
+* `[09]` `[11]` and `[13]` &mdash; these introduce two constants for use by the programmer.
+* `[16` .. `23]` &mdash; these define a structure, called `I2cImplOp`, that the programmer
   will then use for transferring data to and from the bus.
-* `[19` .. `32]` &mdash; these lines define the interface methods that are provided by
-  this Banjo specification; we'll discuss this in greater detail [below](#the-interface).
+* `[26` .. `59]` &mdash; these lines define the interface methods that are provided by
+  this Banjo specification; we'll discuss this in greater detail [below](#the_interface).
 
-> Don't be confused by the comments on `[21` .. `26]` (and elsewhere) &mdash; they're
+> Don't be confused by the comments on `[50` .. `52]` (and elsewhere) &mdash; they're
 > "flow through" comments that are intended to be emitted into the generated source.
 > Any comment that starts with "`///`" (three! slashes) is a "flow through" comment.
 > Ordinary comments (that is, "`//`") are intended for the current module.
@@ -90,10 +117,11 @@ Let's look at the individual components, line-by-line:
 
 ## The operation structure
 
-In our I2C sample, the `struct I2cOp` structure defines three elements:
+In our I2C sample, the `struct I2cImplOp` structure defines four elements:
 
 Element   | Type              | Use
 ----------|-------------------|-----------------------------------------------------------------
+`address` | `uint16`          | the address of the chip to interact with on the bus
 `data`    | `vector<voidptr>` | contains the data sent to, and optionally received from, the bus
 `is_read` | `bool`            | flag indicating read functionality desired
 `stop`    | `bool`            | flag indicating a stop byte should be sent after the operation
@@ -105,14 +133,16 @@ implementation (the driver) and the protocol user (the program that's using the 
 
 The more interesting part is the `protocol` specification.
 
-We'll skip the `[Transport = "Banjo", BanjoLayout]` (line `[19]`) and `[Async]` (line `[27]`) attributes for now,
-but will return to them below, in [Attributes](#attributes).
+We'll skip the `@transport("Banjo")` (line `[26]`) and `@banjo_layout("ddk-protocol")` (line `[27]`)
+attributes for now, but will return to them below, in [Attributes](#attributes).
 
-The `protocol` section defines three interface methods:
+The `protocol` section defines five interface methods:
 
-* `Transact`
+* `GetBusBase`
+* `GetBusCount`
 * `GetMaxTransferSize`
-* `GetInterrupt`
+* `SetBitrate`
+* `Transact`
 
 Without going into details about their internal operations (this isn't a tutorial on
 I2C, after all), let's see how they translate into the target language.
@@ -134,8 +164,7 @@ The C implementation is relatively straightforward:
 * Some helper functions are also generated.
 
 The C version is generated into
-`$BUILD_DIR/banjoing/gen/fuchisia/hardware/i2c/c/banjo.h`,
-where _TARGET_ is the target architecture, e.g., `arm64`.
+`$BUILD_DIR/fidling/gen/sdk/banjo/fuchsia.hardware.i2cimpl/fuchsia.hardware.i2cimpl_banjo_c/fuchsia/hardware/i2cimpl/c/banjo.h`
 
 The file is relatively long, so we'll look at it in several parts.
 
@@ -149,14 +178,15 @@ The first part has some boilerplate, which we'll show without further comment:
 [03] // found in the LICENSE file.
 [04]
 [05] // WARNING: THIS FILE IS MACHINE GENERATED. DO NOT EDIT.
-[06] //          MODIFY sdk/banjo/fuchsia.hardware.i2c/i2c.banjo INSTEAD.
+[06] // Generated from the fuchsia.hardware.i2cimpl banjo file
 [07]
 [08] #pragma once
 [09]
-[10] #include <zircon/compiler.h>
-[11] #include <zircon/types.h>
-[12]
-[13] __BEGIN_CDECLS
+[10]
+[11] #include <zircon/compiler.h>
+[12] #include <zircon/types.h>
+[13]
+[14] __BEGIN_CDECLS
 ```
 
 ### Forward declarations
@@ -164,38 +194,37 @@ The first part has some boilerplate, which we'll show without further comment:
 Next are forward declarations for our structures and functions:
 
 ```c
-[15] // Forward declarations
-[16]
-[17] typedef struct i2c_op i2c_op_t;
-[18] typedef struct i2c_protocol i2c_protocol_t;
-[19] typedef void (*i2c_transact_callback)(void* ctx, zx_status_t status, const i2c_op_t* op_list, size_t op_count);
-[20]
-[21] // Declarations
-[22]
-[23] // See `Transact` below for usage.
-[24] struct i2c_op {
-[25]     const void* data_buffer;
-[26]     size_t data_size;
-[27]     bool is_read;
-[28]     bool stop;
-[29] };
+[16] // Forward declarations
+[17] typedef struct i2c_impl_op i2c_impl_op_t;
+[18] typedef struct i2c_impl_protocol i2c_impl_protocol_t;
+[19] typedef struct i2c_impl_protocol_ops i2c_impl_protocol_ops_t;
+...
+[26] // Declarations
+[27] // See `Transact` below for usage.
+[28] struct i2c_impl_op {
+[29]     uint16_t address;
+[30]     uint8_t* data_buffer;
+[31]     size_t data_size;
+[32]     bool is_read;
+[33]     bool stop;
+[34] };
 ```
 
 Note that lines `[17` .. `19]` only declare types, they don't actually define
 structures or prototypes for functions.
 
-Notice how the "flow through" comments (original `.banjo` file line `[12]`, for example)
-got emitted into the generated code (line `[23]` above), with one slash stripped off to
+Notice how the "flow through" comments (original `.fidl` file line `[15]`, for example)
+got emitted into the generated code (line `[27]` above), with one slash stripped off to
 make them look like normal comments.
 
-Lines `[24` .. `29`] are, as advertised, an almost direct mapping of the `struct I2cOp`
-from the `.banjo` file above (lines `[13` .. `17`]).
+Lines `[28` .. `34`] are, as advertised, an almost direct mapping of the `struct I2cImplOp`
+from the `.fidl` file above (lines `[16` .. `23`]).
 
 Astute C programmers will immediately see how the C++ style `vector<voidptr> data` (original
-`.banjo` file line `[14]`) is handled in C: it gets converted to a pointer
+`.fidl` file line `[20]`) is handled in C: it gets converted to a pointer
 ("`data_buffer`") and a size ("`data_size`").
 
-> As far as the naming goes, the base name is `data` (as given in the `.banjo` file).
+> As far as the naming goes, the base name is `data` (as given in the `.fidl` file).
 > For a vector of `voidptr`, the transpiler appends `_buffer` and `_size` to convert the
 > `vector` into a C compatible structure.
 > For all other vector types, the transpiler appends `_list` and `_count` instead (for
@@ -206,9 +235,11 @@ Astute C programmers will immediately see how the C++ style `vector<voidptr> dat
 Next, we see our `const uint32` constants converted into `#define` statements:
 
 ```c
-[31] #define I2C_MAX_RW_OPS UINT32_C(8)
-[32]
-[33] #define I2C_10_BIT_ADDR_MASK UINT32_C(0xF000)
+[20] // The maximum length of all read or all write transfers in bytes.
+[21] #define I2C_IMPL_MAX_TOTAL_TRANSFER UINT32_C(4096)
+[22] // The maximum number of I2cImplOp's that may be passed to Transact.
+[23] #define I2C_IMPL_MAX_RW_OPS UINT32_C(8)
+[24] #define I2C_IMPL_10_BIT_ADDR_MASK UINT32_C(0xF000)
 ```
 
 In the C version, We chose `#define` instead of "passing through" the `const uint32_t`
@@ -221,10 +252,10 @@ representation because:
 The downside is that we don't get type safety, which is why you see the helper macros (like
 **UINT32_C()** above); they just cast the constant to the appropriate type.
 
-Note: Adding the `[Namespaced]` attribute to constant declarations for
+Note: Adding the `@namespaced` attribute to constant declarations for
 Banjo C bindings will cause the variable name to be prefaced by the FIDL
-library name. In this example, adding the `[Namespaced]` attribute to `I2C_MAX_RW_OPS`
-would cause the variable name to be `fuchsia_hardware_i2c_I2C_MAX_RW_OPS`
+library name. In this example, adding the `@namespaced` attribute to `I2C_IMPL_MAX_RW_OPS`
+would cause the variable name to be `fuchsia_hardware_i2c_impl_I2C_IMPL_MAX_RW_OPS`
 instead. This may be required to avoid name conflicts with FIDL hlcpp constant
 bindings in the same build target.
 
@@ -233,15 +264,17 @@ bindings in the same build target.
 And now we get into the good parts.
 
 ```c
-[35] typedef struct i2c_protocol_ops {
-[36]     void (*transact)(void* ctx, const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie);
-[37]     zx_status_t (*get_max_transfer_size)(void* ctx, size_t* out_size);
-[38]     zx_status_t (*get_interrupt)(void* ctx, uint32_t flags, zx_handle_t* out_irq);
-[39] } i2c_protocol_ops_t;
+[36] struct i2c_impl_protocol_ops {
+[37]     uint32_t (*get_bus_base)(void* ctx);
+[38]     uint32_t (*get_bus_count)(void* ctx);
+[39]     zx_status_t (*get_max_transfer_size)(void* ctx, uint32_t bus_id, uint64_t* out_size);
+[40]     zx_status_t (*set_bitrate)(void* ctx, uint32_t bus_id, uint32_t bitrate);
+[41]     zx_status_t (*transact)(void* ctx, uint32_t bus_id, const i2c_impl_op_t* op_list, size_t op_count);
+[42] };
 ```
 
-This `typedef` creates a structure definition that contains the three `protocol` methods
-that were defined in the original `.banjo` file at lines `[28]`, `[30]` and `[31]`.
+This creates a structure definition that contains the five `protocol` methods that were defined in
+the original `.fidl` file at lines `[30]`, `[34]`, `[37]`, `[44]`, and `[43]`.
 
 Notice the name mangling that has occurred &mdash; this is how you can map the
 `protocol` method names to the C function pointer names so that you know what
@@ -250,80 +283,82 @@ they're called:
 Banjo                | C                       | Rule
 ---------------------|-------------------------|---------------------------------------------------------------
 `Transact`           | `transact`              | Convert leading uppercase to lowercase
-`GetMaxTransferSize` | `get_max_transfer_size` | As above, and convert camel-case to underscore-separated style
-`GetInterrupt`       | `get_interrupt`         | Same as above
+`GetBusBase`         | `get_bus_base`          | As above, and convert camel-case to underscore-separated style
+`GetBusCount`        | `get_bus_count`         | Same as above
+`SetBitrate`         | `set_bitrate`           | Same as above
+`GetMaxTransferSize` | `get_max_transfer_size` | Same as above
 
 Next, the interface definitions are wrapped in a context-bearing structure:
 
 ```c
-[41] struct i2c_protocol {
-[42]     i2c_protocol_ops_t* ops;
-[43]     void* ctx;
-[44] };
+[45] struct i2c_impl_protocol {
+[46]     i2c_impl_protocol_ops_t* ops;
+[47]     void* ctx;
+[48] };
 ```
 
-And now the "flow-through" comments (`.banjo` file, lines `[21` .. `26]`)
-suddenly make way more sense!
+Finally, we see the actual generated code for the five methods:
 
 ```c
-[46] // Writes and reads data on an i2c channel. Up to I2C_MAX_RW_OPS operations can be passed in.
-[47] // For write ops, i2c_op_t.data points to data to write.  The data to write does not need to be
-[48] // kept alive after this call.  For read ops, i2c_op_t.data is ignored.  Any combination of reads
-[49] // and writes can be specified.  At least the last op must have the stop flag set.
-[50] // The results of the operations are returned asynchronously through the transact_cb.
-[51] // The cookie parameter can be used to pass your own private data to the transact_cb callback.
-```
-
-Finally, we see the actual generated code for the three methods:
-
-```c
-[52] static inline void i2c_transact(const i2c_protocol_t* proto, const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie) {
-[53]     proto->ops->transact(proto->ctx, op_list, op_count, callback, cookie);
-[54] }
-[55] // Returns the maximum transfer size for read and write operations on the channel.
-[56] static inline zx_status_t i2c_get_max_transfer_size(const i2c_protocol_t* proto, size_t* out_size) {
-[57]     return proto->ops->get_max_transfer_size(proto->ctx, out_size);
-[58] }
-[59] static inline zx_status_t i2c_get_interrupt(const i2c_protocol_t* proto, uint32_t flags, zx_handle_t* out_irq) {
-[60]     return proto->ops->get_interrupt(proto->ctx, flags, out_irq);
-[61] }
+[53] static inline uint32_t i2c_impl_get_bus_base(const i2c_impl_protocol_t* proto) {
+[54]     return proto->ops->get_bus_base(proto->ctx);
+[55] }
+[56]
+[57] // Number of buses that this I2cImpl supports.
+[58] static inline uint32_t i2c_impl_get_bus_count(const i2c_impl_protocol_t* proto) {
+[59]     return proto->ops->get_bus_count(proto->ctx);
+[60] }
+[61]
+[62] static inline zx_status_t i2c_impl_get_max_transfer_size(const i2c_impl_protocol_t* proto, uint32_t bus_id, uint64_t* out_size) {
+[63]     return proto->ops->get_max_transfer_size(proto->ctx, bus_id, out_size);
+[64] }
+[65]
+[66] // Sets the bitrate for the i2c bus in KHz units.
+[67] static inline zx_status_t i2c_impl_set_bitrate(const i2c_impl_protocol_t* proto, uint32_t bus_id, uint32_t bitrate) {
+[68]     return proto->ops->set_bitrate(proto->ctx, bus_id, bitrate);
+[69] }
+[70]
+[71] // |Transact| assumes that all ops buf are not null.
+[72] // |Transact| assumes that all ops length are not zero.
+[73] // |Transact| assumes that at least the last op has stop set to true.
+[74] static inline zx_status_t i2c_impl_transact(const i2c_impl_protocol_t* proto, uint32_t bus_id, const i2c_impl_op_t* op_list, size_t op_count) {
+[75]     return proto->ops->transact(proto->ctx, bus_id, op_list, op_count);
+[76] }
 ```
 
 ### Prefixes and paths
 
-Notice how the prefix `i2c_` (from the interface name, `.banjo` file line `[20]`)
-got added to the method names; thus, `Transact` became `i2c_transact`, and so on.
-This is part of the mapping between `.banjo` names and their C equivalents.
+Notice how the prefix `i2c_impl_` (from the interface name, `.fidl` file line `[28]`)
+got added to the method names; thus, `Transact` became `i2c_impl_transact`, and so on.
+This is part of the mapping between `.fidl` names and their C equivalents.
 
-Also, the `library` name (line `[05]` in the `.banjo` file) is transformed into the
-include path: so `library fuchsia.hardware.i2c` implies a path of `<fuchsia/hardware/i2c/c/banjo.h>`.
+Also, the `library` name (line `[05]` in the `.fidl` file) is transformed into the
+include path: so `library fuchsia.hardware.i2cimpl` implies a path of `<fuchsia/hardware/i2cimpl/c/banjo.h>`.
 
-## C++
+## C++ {#cpp}
 
 The C++ code is slightly more complex than the C version.
 Let's take a look.
 
 The Banjo transpiler generates three files:
 the first is the C file discussed above, and the other two are under
-`$BUILD_DIR/banjoing/gen/fuchsia/hardware/i2c/cpp/banjo.h`:
+`$BUILD_DIR/fidling/gen/sdk/banjo/fuchsia.hardware.i2cimpl/fuchsia.hardware.i2cimpl_banjo_c/fuchsia/hardware/i2cimpl/cpp/`
 
-* `i2c.h` &mdash; the file your program should include, and
-* `i2c-internal.h` &mdash; an internal file, included by `i2c.h`
-
-As usual, _TARGET_ is the build target architecture (e.g., `x64`).
+* `i2cimpl.h` &mdash; the file your program should include, and
+* `i2cimpl-internal.h` &mdash; an internal file, included by `i2cimpl.h`
 
 The "internal" file contains declarations and assertions, which we can safely skip.
 
-The C++ version of `i2c.h` is fairly long, so we'll look at it in smaller pieces.
+The C++ version of `i2cimpl.h` is fairly long, so we'll look at it in smaller pieces.
 Here's an overview "map" of what we'll be looking at, showing the starting line
 number of each piece:
 
 Line | Section
---------------|----------------------------
-1    | [boilerplate](#a-simple-example-c-boilerplate-2)
-20   | [auto generated usage comments](#auto_generated-comments)
-55   | [class I2cProtocol](#the-i2cprotocol-mixin-class)
-99   | [class I2cProtocolClient](#the-i2cprotocolclient-wrapper-class)
+-----|----------------------------
+1    | [boilerplate](#boilerplate_2)
+20   | [auto generated usage comments](#auto-generated_comments)
+61   | [class I2cImplProtocol](#the_i2cimplprotocol_mixin_class)
+112  | [class I2cImplProtocolClient](#the_i2cimplprotocolclient_wrapper_class)
 
 ### Boilerplate
 
@@ -335,144 +370,203 @@ The boilerplate is pretty much what you'd expect:
 [003] // found in the LICENSE file.
 [004]
 [005] // WARNING: THIS FILE IS MACHINE GENERATED. DO NOT EDIT.
-[006] //          MODIFY sdk/banjo/fuchsia.hardware.i2c/i2c.banjo INSTEAD.
+[006] // Generated from the fuchsia.hardware.i2cimpl banjo file
 [007]
 [008] #pragma once
 [009]
-[010] #include <ddk/driver.h>
-[011] #include <fuchsia/hardware/i2c/c/banjo.h>
-[012] #include <ddktl/device-internal.h>
-[013] #include <zircon/assert.h>
-[014] #include <zircon/compiler.h>
-[015] #include <zircon/types.h>
-[016] #include <lib/zx/interrupt.h>
+[010] #include <ddktl/device-internal.h>
+[011] #include <fuchsia/hardware/i2cimpl/c/banjo.h>
+[012] #include <lib/ddk/device.h>
+[013] #include <lib/ddk/driver.h>
+[014] #include <zircon/assert.h>
+[015] #include <zircon/compiler.h>
+[016] #include <zircon/types.h>
 [017]
-[018] #include "i2c-internal.h"
+[018] #include "banjo-internal.h"
 ```
 
 It `#include`s a bunch of DDK and OS headers, including:
 
 * the C version of the header (line `[011]`, which means that everything discussed
-  [above in the C section](#a-simple-example-c-1) applies here as well), and
-* the generated `i2c-internal.h` file (line `[018]`).
+  [above in the C section](#a_simple_example) applies here as well), and
+* the generated `i2cimpl-internal.h` file (line `[018]`).
 
 Next is the "auto generated usage comments" section; we'll come back to that
-[later](#auto_generated-comments) as it will make more sense once we've seen
+[later](#auto-generated_comments) as it will make more sense once we've seen
 the actual class declarations.
 
 The two class declarations are wrapped in the DDK namespace:
 
 ```c++
-[053] namespace ddk {
+[057] namespace ddk {
 ...
-[150] } // namespace ddk
+[214] } // namespace ddk
 ```
 
-### The I2cProtocolClient wrapper class
+### The I2cImplProtocolClient wrapper class
 
-The `I2cProtocolClient` class is a simple wrapper around the `i2c_protocol_t`
-structure (defined in the C include file, line `[41]`, which we discussed in
-[Protocol structures](#protocol-structures), above).
+The `I2cImplProtocolClient` class is a simple wrapper around the `i2c_impl_protocol_t`
+structure (defined in the C include file, line `[45]`, which we discussed in
+[Protocol structures](#protocol_structures), above).
 
 ```c++
-[099] class I2cProtocolClient {
-[100] public:
-[101]     I2cProtocolClient()
-[102]         : ops_(nullptr), ctx_(nullptr) {}
-[103]     I2cProtocolClient(const i2c_protocol_t* proto)
-[104]         : ops_(proto->ops), ctx_(proto->ctx) {}
-[105]
-[106]     I2cProtocolClient(zx_device_t* parent) {
-[107]         i2c_protocol_t proto;
-[108]         if (device_get_protocol(parent, ZX_PROTOCOL_I2C, &proto) == ZX_OK) {
-[109]             ops_ = proto.ops;
-[110]             ctx_ = proto.ctx;
-[111]         } else {
-[112]             ops_ = nullptr;
-[113]             ctx_ = nullptr;
-[114]         }
-[115]     }
-[116]
-[117]     void GetProto(i2c_protocol_t* proto) const {
-[118]         proto->ctx = ctx_;
-[119]         proto->ops = ops_;
-[120]     }
-[121]     bool is_valid() const {
-[122]         return ops_ != nullptr;
-[123]     }
-[124]     void clear() {
-[125]         ctx_ = nullptr;
-[126]         ops_ = nullptr;
-[127]     }
-[128]     // Writes and reads data on an i2c channel. Up to I2C_MAX_RW_OPS operations can be passed in.
-[129]     // For write ops, i2c_op_t.data points to data to write.  The data to write does not need to be
-[130]     // kept alive after this call.  For read ops, i2c_op_t.data is ignored.  Any combination of reads
-[131]     // and writes can be specified.  At least the last op must have the stop flag set.
-[132]     // The results of the operations are returned asynchronously through the transact_cb.
-[133]     // The cookie parameter can be used to pass your own private data to the transact_cb callback.
-[134]     void Transact(const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie) const {
-[135]         ops_->transact(ctx_, op_list, op_count, callback, cookie);
-[136]     }
-[137]     // Returns the maximum transfer size for read and write operations on the channel.
-[138]     zx_status_t GetMaxTransferSize(size_t* out_size) const {
-[139]         return ops_->get_max_transfer_size(ctx_, out_size);
-[140]     }
-[141]     zx_status_t GetInterrupt(uint32_t flags, zx::interrupt* out_irq) const {
-[142]         return ops_->get_interrupt(ctx_, flags, out_irq->reset_and_get_address());
-[143]     }
-[144]
-[145] private:
-[146]     i2c_protocol_ops_t* ops_;
-[147]     void* ctx_;
-[148] };
+[112] class I2cImplProtocolClient {
+[113] public:
+[114]     I2cImplProtocolClient()
+[115]         : ops_(nullptr), ctx_(nullptr) {}
+[116]     I2cImplProtocolClient(const i2c_impl_protocol_t* proto)
+[117]         : ops_(proto->ops), ctx_(proto->ctx) {}
+[118]
+[119]     I2cImplProtocolClient(zx_device_t* parent) {
+[120]         i2c_impl_protocol_t proto;
+[121]         if (device_get_protocol(parent, ZX_PROTOCOL_I2C_IMPL, &proto) == ZX_OK) {
+[122]             ops_ = proto.ops;
+[123]             ctx_ = proto.ctx;
+[124]         } else {
+[125]             ops_ = nullptr;
+[126]             ctx_ = nullptr;
+[127]         }
+[128]     }
+[129]
+[130]     I2cImplProtocolClient(zx_device_t* parent, const char* fragment_name) {
+[131]         i2c_impl_protocol_t proto;
+[132]         if (device_get_fragment_protocol(parent, fragment_name, ZX_PROTOCOL_I2C_IMPL, &proto) == ZX_OK) {
+[133]             ops_ = proto.ops;
+[134]             ctx_ = proto.ctx;
+[135]         } else {
+[136]             ops_ = nullptr;
+[137]             ctx_ = nullptr;
+[138]         }
+[139]     }
+[140]
+[141]     // Create a I2cImplProtocolClient from the given parent device + "fragment".
+[142]     //
+[143]     // If ZX_OK is returned, the created object will be initialized in |result|.
+[144]     static zx_status_t CreateFromDevice(zx_device_t* parent,
+[145]                                         I2cImplProtocolClient* result) {
+[146]         i2c_impl_protocol_t proto;
+[147]         zx_status_t status = device_get_protocol(
+[148]                 parent, ZX_PROTOCOL_I2C_IMPL, &proto);
+[149]         if (status != ZX_OK) {
+[150]             return status;
+[151]         }
+[152]         *result = I2cImplProtocolClient(&proto);
+[153]         return ZX_OK;
+[154]     }
+[155]
+[156]     // Create a I2cImplProtocolClient from the given parent device.
+[157]     //
+[158]     // If ZX_OK is returned, the created object will be initialized in |result|.
+[159]     static zx_status_t CreateFromDevice(zx_device_t* parent, const char* fragment_name,
+[160]                                         I2cImplProtocolClient* result) {
+[161]         i2c_impl_protocol_t proto;
+[162]         zx_status_t status = device_get_fragment_protocol(parent, fragment_name,
+[163]                                  ZX_PROTOCOL_I2C_IMPL, &proto);
+[164]         if (status != ZX_OK) {
+[165]             return status;
+[166]         }
+[167]         *result = I2cImplProtocolClient(&proto);
+[168]         return ZX_OK;
+[169]     }
+[170]
+[171]     void GetProto(i2c_impl_protocol_t* proto) const {
+[172]         proto->ctx = ctx_;
+[173]         proto->ops = ops_;
+[174]     }
+[175]     bool is_valid() const {
+[176]         return ops_ != nullptr;
+[177]     }
+[178]     void clear() {
+[179]         ctx_ = nullptr;
+[180]         ops_ = nullptr;
+[181]     }
+[182]
+[183]     // First bus ID that this I2cImpl controls, zero-indexed.
+[184]     uint32_t GetBusBase() const {
+[185]         return ops_->get_bus_base(ctx_);
+[186]     }
+[187]
+[188]     // Number of buses that this I2cImpl supports.
+[189]     uint32_t GetBusCount() const {
+[190]         return ops_->get_bus_count(ctx_);
+[191]     }
+[192]
+[193]     zx_status_t GetMaxTransferSize(uint32_t bus_id, uint64_t* out_size) const {
+[194]         return ops_->get_max_transfer_size(ctx_, bus_id, out_size);
+[195]     }
+[196]
+[197]     // Sets the bitrate for the i2c bus in KHz units.
+[198]     zx_status_t SetBitrate(uint32_t bus_id, uint32_t bitrate) const {
+[199]         return ops_->set_bitrate(ctx_, bus_id, bitrate);
+[200]     }
+[201]
+[202]     // |Transact| assumes that all ops buf are not null.
+[203]     // |Transact| assumes that all ops length are not zero.
+[204]     // |Transact| assumes that at least the last op has stop set to true.
+[205]     zx_status_t Transact(uint32_t bus_id, const i2c_impl_op_t* op_list, size_t op_count) const {
+[206]         return ops_->transact(ctx_, bus_id, op_list, op_count);
+[207]     }
+[208]
+[209] private:
+[210]     i2c_impl_protocol_ops_t* ops_;
+[211]     void* ctx_;
+[212] };
 ```
 
-There are three constructors:
+There are four constructors:
 
-* the default one (`[101]`) that sets `ops_` and `ctx_` to `nullptr`,
-* an initializer (`[103]`) that takes a pointer to an `i2c_protocol_t` structure and populates
+* the default one (`[114]`) that sets `ops_` and `ctx_` to `nullptr`,
+* an initializer (`[116]`) that takes a pointer to an `i2c_impl_protocol_t` structure and populates
   the `ops_` and `ctx`_ fields from their namesakes in the structure, and
-* another initializer (`[106]`) that extracts the `ops`_ and `ctx_` information from
-  a `zx_device_t`.
+* an initializer (`[119]`) that extracts the `ops_` and `ctx_` information from a `zx_device_t`.
+* an initializer (`[130]`) like above but gets `ops_` and `ctx_` from a device fragment.
 
-The last constructor is the preferred one, and can be used like this:
+The last two constructors are preferred, and can be used like this:
 
 ```c++
-ddk::I2cProtocolClient i2c(parent);
-if (!i2c.is_valid()) {
+ddk::I2cImplProtocolClient i2cimpl(parent);
+if (!i2cimpl.is_valid()) {
+  return ZX_ERR_*; // return an appropriate error
+}
+```
+```c++
+ddk::I2cImplProtocolClient i2cimpl(parent, "i2c-impl-fragment");
+if (!i2cimpl.is_valid()) {
   return ZX_ERR_*; // return an appropriate error
 }
 ```
 
 Three convenience member functions are provided:
 
-* `[117]` **GetProto()** fetches the `ctx_` and `ops_` members into a protocol structure,
-* `[121]` **is_valid()** returns a `bool` indicating if the class has been initialized with
+* `[171]` **GetProto()** fetches the `ctx_` and `ops_` members into a protocol structure,
+* `[175]` **is_valid()** returns a `bool` indicating if the class has been initialized with
    a protocol, and
-* `[124]` **clear()** invalidates the `ctx_` and `ops_` pointers.
+* `[178]` **clear()** invalidates the `ctx_` and `ops_` pointers.
 
-Next we find the three member functions that were specified in the `.banjo` file:
+Next we find the four member functions that were specified in the `.fidl` file:
 
-* `[134]` **Transact()**,
+* `[138]` **GetBusBase()**, and
+* `[138]` **GetBusCount()**, and
 * `[138]` **GetMaxTransferSize()**, and
-* `[141]` **GetInterrupt()**.
+* `[138]` **SetBitrate()**, and
+* `[134]` **Transact()**.
 
-These work just liked the three wrapper functions from the C version of the include file &mdash;
+These work just liked the four wrapper functions from the C version of the include file &mdash;
 that is, they pass their arguments into a call through the respective function pointer.
 
-In fact, compare **i2c_get_max_transfer_size()** from the C version:
+In fact, compare **i2c_impl_get_max_transfer_size()** from the C version:
 
 ```c
-[56] static inline zx_status_t i2c_get_max_transfer_size(const i2c_protocol_t* proto, size_t* out_size) {
-[57]     return proto->ops->get_max_transfer_size(proto->ctx, out_size);
-[58] }
+[138] zx_status_t GetMaxTransferSize(size_t* out_size) const {
+[139]     return ops_->get_max_transfer_size(ctx_, out_size);
+[140] }
 ```
 
 with the C++ version above:
 
 ```c++
 [138] zx_status_t GetMaxTransferSize(size_t* out_size) const {
-[139]   return ops_->get_max_transfer_size(ctx_, out_size);
+[139]     return ops_->get_max_transfer_size(ctx_, out_size);
 [140] }
 ```
 
@@ -482,7 +576,7 @@ later use, so that the call through the wrapper is more elegant.
 > You'll also notice that the C++ wrapper function doesn't have any name mangling &mdash;
 > to use a tautology, **GetMaxTransferSize()** is **GetMaxTransferSize()**.
 
-### The I2cProtocol mixin class
+### The I2cImplProtocol mixin class
 
 Ok, that was the easy part.
 For this next part, we're going to talk about [mixins](https://en.wikipedia.org/wiki/Mixin)
@@ -493,108 +587,121 @@ Let's understand the "shape" of the class first (comment lines deleted for outli
 purposes):
 
 ```c++
-[055] template <typename D, typename Base = internal::base_mixin>
-[056] class I2cProtocol : public Base {
-[057] public:
-[058]     I2cProtocol() {
-[059]         internal::CheckI2cProtocolSubclass<D>();
-[060]         i2c_protocol_ops_.transact = I2cTransact;
-[061]         i2c_protocol_ops_.get_max_transfer_size = I2cGetMaxTransferSize;
-[062]         i2c_protocol_ops_.get_interrupt = I2cGetInterrupt;
-[063]
-[064]         if constexpr (internal::is_base_proto<Base>::value) {
-[065]             auto dev = static_cast<D*>(this);
-[066]             // Can only inherit from one base_protocol implementation.
-[067]             ZX_ASSERT(dev->ddk_proto_id_ == 0);
-[068]             dev->ddk_proto_id_ = ZX_PROTOCOL_I2C;
-[069]             dev->ddk_proto_ops_ = &i2c_protocol_ops_;
-[070]         }
-[071]     }
-[072]
-[073] protected:
-[074]     i2c_protocol_ops_t i2c_protocol_ops_ = {};
-[075]
-[076] private:
+[060] template <typename D, typename Base = internal::base_mixin>
+[061] class I2cImplProtocol : public Base {
+[062] public:
+[063]     I2cImplProtocol() {
+[064]         internal::CheckI2cImplProtocolSubclass<D>();
+[065]         i2c_impl_protocol_ops_.get_bus_base = I2cImplGetBusBase;
+[066]         i2c_impl_protocol_ops_.get_bus_count = I2cImplGetBusCount;
+[067]         i2c_impl_protocol_ops_.get_max_transfer_size = I2cImplGetMaxTransferSize;
+[068]         i2c_impl_protocol_ops_.set_bitrate = I2cImplSetBitrate;
+[069]         i2c_impl_protocol_ops_.transact = I2cImplTransact;
+[070]
+[071]         if constexpr (internal::is_base_proto<Base>::value) {
+[072]             auto dev = static_cast<D*>(this);
+[073]             // Can only inherit from one base_protocol implementation.
+[074]             ZX_ASSERT(dev->ddk_proto_id_ == 0);
+[075]             dev->ddk_proto_id_ = ZX_PROTOCOL_I2C_IMPL;
+[076]             dev->ddk_proto_ops_ = &i2c_impl_protocol_ops_;
+[077]         }
+[078]     }
+[079]
+[080] protected:
+[081]     i2c_impl_protocol_ops_t i2c_impl_protocol_ops_ = {};
+[082]
+[083] private:
 ...
-[083]     static void I2cTransact(void* ctx, const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie) {
-[084]         static_cast<D*>(ctx)->I2cTransact(op_list, op_count, callback, cookie);
-[085]     }
+[085]     static uint32_t I2cImplGetBusBase(void* ctx) {
+[086]         auto ret = static_cast<D*>(ctx)->I2cImplGetBusBase();
+[087]         return ret;
+[088]     }
 ...
-[087]     static zx_status_t I2cGetMaxTransferSize(void* ctx, size_t* out_size) {
-[088]         auto ret = static_cast<D*>(ctx)->I2cGetMaxTransferSize(out_size);
-[089]         return ret;
-[090]     }
-[091]     static zx_status_t I2cGetInterrupt(void* ctx, uint32_t flags, zx_handle_t* out_irq) {
-[092]         zx::interrupt out_irq2;
-[093]         auto ret = static_cast<D*>(ctx)->I2cGetInterrupt(flags, &out_irq2);
-[094]         *out_irq = out_irq2.release();
-[095]         return ret;
-[096]     }
-[097] };
+[090]     static uint32_t I2cImplGetBusCount(void* ctx) {
+[091]         auto ret = static_cast<D*>(ctx)->I2cImplGetBusCount();
+[092]         return ret;
+[093]     }
+[094]     static zx_status_t I2cImplGetMaxTransferSize(void* ctx, uint32_t bus_id, uint64_t* out_size) {
+[095]         auto ret = static_cast<D*>(ctx)->I2cImplGetMaxTransferSize(bus_id, out_size);
+[096]         return ret;
+[097]     }
+...
+[099]     static zx_status_t I2cImplSetBitrate(void* ctx, uint32_t bus_id, uint32_t bitrate) {
+[100]         auto ret = static_cast<D*>(ctx)->I2cImplSetBitrate(bus_id, bitrate);
+[101]         return ret;
+[102]     }
+...
+[106]     static zx_status_t I2cImplTransact(void* ctx, uint32_t bus_id, const i2c_impl_op_t* op_list, size_t op_count) {
+[107]         auto ret = static_cast<D*>(ctx)->I2cImplTransact(bus_id, op_list, op_count);
+[108]         return ret;
+[109]     }
+[110] };
 ```
 
-The `I2CProtocol` class inherits from a base class, specified by the second template parameter.
+The `I2CImplProtocol` class inherits from a base class, specified by the second template parameter.
 If it's left unspecified, it defaults to `internal::base_mixin`, and no special magic happens.
 If, however, the base class is explicitly specified, it should be `ddk::base_protocol`,
 in which case additional asserts are added (to double check that only one mixin is the base protocol).
 In addition, special DDKTL fields are set to automatically register this protocol as the
 base protocol when the driver triggers **DdkAdd()**.
 
-The constructor calls an internal validation function, **CheckI2cProtocolSubclass()** `[059]`
-(defined in the generated `i2c-internal.h` file), which has several **static_assert()** calls.
-The class `D` is expected to implement the three member functions (**I2cTransact()**,
-**I2cGetMaxTransferSize()**, and **I2cGetInterrupt()**) in order for the static methods to work.
-If they're not provided by `D`, then the compiler would (in the absence of the static
-asserts) produce gnarly templating errors.
-The static asserts serve to produce diagnostic errors that are understandable by mere humans.
+The constructor calls an internal validation function, **CheckI2cImplProtocolSubclass()** `[32]`
+(defined in the generated `i2c-impl-internal.h` file), which has several **static_assert()** calls.
+The class `D` is expected to implement the five member functions (**I2cImplGetBusBase()**,
+**I2cIImplGetBusCount()**, **I2cImplGetMaxTransferSize()**, **I2cImplSetBitrate()**, and
+**I2cImplTransact()**) in order for the static methods to work. If they're not provided by `D`, then
+the compiler would (in the absence of the static asserts) produce gnarly templating errors. The
+static asserts serve to produce diagnostic errors that are understandable by mere humans.
 
-Next, the three pointer-to-function operations members (`transact`,
-`get_max_transfer_size`, and `get_interrupt`) are bound (lines `[060` .. `062]`).
+Next, the five pointer-to-function operations members (`get_bus_base`, `get_bus_count`,
+`get_max_transfer_size`, `set_bitrate`, and `transact`) are bound (lines `[065` .. `069]`).
 
 Finally, the `constexpr` expression provides a default initialization if required.
 
 ### Using the mixin class
 
-The `I2cProtocol` class can be used as follows (from
-[`//src/devices/bus/drivers/platform/platform-proxy.h`](/src/devices/bus/drivers/platform/platform-proxy.h)):
+The `I2cImplProtocol` class can be used as follows (from
+[`//src/devices/i2c/drivers/intel-i2c/intel-i2c-controller.h`](/src/devices/i2c/drivers/intel-i2c/intel-i2c-controller.h)):
 
 ```c++
-[01] class ProxyI2c : public ddk::I2cProtocol<ProxyI2c> {
-[02] public:
-[03]     explicit ProxyI2c(uint32_t device_id, uint32_t index, fbl::RefPtr<PlatformProxy> proxy)
-[04]         : device_id_(device_id), index_(index), proxy_(proxy) {}
-[05]
-[06]     // I2C protocol implementation.
-[07]     void I2cTransact(const i2c_op_t* ops, size_t cnt, i2c_transact_callback transact_cb,
-[08]                      void* cookie);
-[09]     zx_status_t I2cGetMaxTransferSize(size_t* out_size);
-[10]     zx_status_t I2cGetInterrupt(uint32_t flags, zx::interrupt* out_irq);
-[11]
-[12]     void GetProtocol(i2c_protocol_t* proto) {
-[13]         proto->ops = &i2c_protocol_ops_;
-[14]         proto->ctx = this;
-[15]     }
-[16]
-[17] private:
-[18]     uint32_t device_id_;
-[19]     uint32_t index_;
-[20]     fbl::RefPtr<PlatformProxy> proxy_;
-[21] };
+[135] class IntelI2cController : public IntelI2cControllerType,
+[136]                            public ddk::I2cImplProtocol<IntelI2cController, ddk::base_protocol> {
+[137]  public:
+[138]   explicit IntelI2cController(zx_device_t* parent)
+[139]       : IntelI2cControllerType(parent), pci_(parent, "pci") {}
+[140]
+[141]   static zx_status_t Create(void* ctx, zx_device_t* parent);
+[142]
+[143]   void DdkInit(ddk::InitTxn txn);
+...
+[170]   uint32_t I2cImplGetBusBase();
+[171]   uint32_t I2cImplGetBusCount();
+[172]   zx_status_t I2cImplGetMaxTransferSize(const uint32_t bus_id, size_t* out_size);
+[173]   zx_status_t I2cImplSetBitrate(const uint32_t bus_id, const uint32_t bitrate);
+[174]   zx_status_t I2cImplTransact(const uint32_t bus_id, const i2c_impl_op_t* op_list,
+[175]                               const size_t op_count);
+[176]
+[177]   void DdkUnbind(ddk::UnbindTxn txn);
+[178]   void DdkRelease();
+[179]
+[180]  private:
+...
 ```
 
-Here we see that `class ProxyI2c` inherits from the DDK's `I2cProtocol` and provides
+Here we see that `class IntelI2cController` inherits from the DDK's `I2cImplProtocol` and provides
 itself as the argument to the template &mdash; this is the "mixin" concept.
-This causes the `ProxyI2c` type to be substituted for `D` in the template definition
-of the class (from the `i2c.h` header file above, lines `[084]`, `[088]`, and `[093]`).
+This causes the `IntelI2cController` type to be substituted for `D` in the template definition
+of the class (from the `i2c-impl.h` header file above, lines `[086]`, `[091]`, `[95]`, `[100]`, and
+`[107]`).
 
-Taking a look at just the **I2cGetMaxTransferSize()** function as an example, it's
+Taking a look at just the **I2cImplGetMaxTransferSize()** function as an example, it's
 effectively as if the source code read:
 
 ```c++
-[087] static zx_status_t I2cGetMaxTransferSize(void* ctx, size_t* out_size) {
-[088]     auto ret = static_cast<ProxyI2c*>(ctx)->I2cGetMaxTransferSize(out_size);
-[089]     return ret;
-[090] }
+[094] static zx_status_t I2cImplGetMaxTransferSize(void* ctx, uint32_t bus_id, uint64_t* out_size) {
+[095]     auto ret = static_cast<IntelI2cController*>(ctx)->I2cImplGetMaxTransferSize(bus_id, out_size);
+[096]     return ret;
+[097] }
 ```
 
 This ends up eliminating the cast-to-self boilerplate in your code.
@@ -607,38 +714,42 @@ Banjo automatically generates comments in the include file that basically summar
 talked about above:
 
 ```c++
-[020] // DDK i2c-protocol support
+[020] // DDK i2cimpl-protocol support
 [021] //
 [022] // :: Proxies ::
 [023] //
-[024] // ddk::I2cProtocolClient is a simple wrapper around
-[025] // i2c_protocol_t. It does not own the pointers passed to it
+[024] // ddk::I2cImplProtocolClient is a simple wrapper around
+[025] // i2c_impl_protocol_t. It does not own the pointers passed to it.
 [026] //
 [027] // :: Mixins ::
 [028] //
-[029] // ddk::I2cProtocol is a mixin class that simplifies writing DDK drivers
-[030] // that implement the i2c protocol. It doesn't set the base protocol.
+[029] // ddk::I2cImplProtocol is a mixin class that simplifies writing DDK drivers
+[030] // that implement the i2c-impl protocol. It doesn't set the base protocol.
 [031] //
 [032] // :: Examples ::
 [033] //
-[034] // // A driver that implements a ZX_PROTOCOL_I2C device.
-[035] // class I2cDevice;
-[036] // using I2cDeviceType = ddk::Device<I2cDevice, /* ddk mixins */>;
+[034] // // A driver that implements a ZX_PROTOCOL_I2C_IMPL device.
+[035] // class I2cImplDevice;
+[036] // using I2cImplDeviceType = ddk::Device<I2cImplDevice, /* ddk mixins */>;
 [037] //
-[038] // class I2cDevice : public I2cDeviceType,
-[039] //                   public ddk::I2cProtocol<I2cDevice> {
+[038] // class I2cImplDevice : public I2cImplDeviceType,
+[039] //                      public ddk::I2cImplProtocol<I2cImplDevice> {
 [040] //   public:
-[041] //     I2cDevice(zx_device_t* parent)
-[042] //         : I2cDeviceType(parent) {}
+[041] //     I2cImplDevice(zx_device_t* parent)
+[042] //         : I2cImplDeviceType(parent) {}
 [043] //
-[044] //     void I2cTransact(const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie);
+[044] //     uint32_t I2cImplGetBusBase();
 [045] //
-[046] //     zx_status_t I2cGetMaxTransferSize(size_t* out_size);
+[046] //     uint32_t I2cImplGetBusCount();
 [047] //
-[048] //     zx_status_t I2cGetInterrupt(uint32_t flags, zx::interrupt* out_irq);
+[048] //     zx_status_t I2cImplGetMaxTransferSize(uint32_t bus_id, uint64_t* out_size);
 [049] //
-[050] //     ...
-[051] // };
+[050] //     zx_status_t I2cImplSetBitrate(uint32_t bus_id, uint32_t bitrate);
+[051] //
+[052] //     zx_status_t I2cImplTransact(uint32_t bus_id, const i2c_impl_op_t* op_list, size_t op_count);
+[053] //
+[054] //     ...
+[055] // };
 ```
 
 # Using Banjo
@@ -667,15 +778,20 @@ at how we would use it.
 ## Attributes
 
 Recall from the example above that the `protocol` section had two attributes;
-a `[Transport = "Banjo", BanjoLayout]` and an `[Async]` attribute.
+a `@transport("Banjo")` and a `@banjo_layout("ddk-protocol")` attribute.
 
-### The BanjoLayout attribute
+### The transport attribute
 
-The line just before the `protocol` is the `[Transport = "Banjo", BanjoLayout]` attribute:
+All Banjo protocols must have `@transport("Banjo")` to indicate that Banjo is
+being used instead of FIDL.
+
+### The banjo\_layout attribute
+
+The line just before the `protocol` is the `banjo_layout` attribute:
 
 ```banjo
-[19] [Transport = "Banjo", BanjoLayout = "ddk-protocol"]
-[20] protocol I2c {
+[27] @banjo_layout("ddk-protocol")
+[28] protocol I2cImpl {
 ```
 
 The attribute applies to the next item; so in this case, the entire `protocol`.
@@ -728,59 +844,69 @@ struct callback {
 };
 ```
 
-### The Async attribute
+### The async attribute
 
-Within the `protocol` section, we see another attribute: the `[Async]` attribute:
+For an example of the `@async` attribute, see the
+[`fuchsia.hardware.block`](/sdk/fidl/fuchsia.hardware.block.driver/block.fidl) `Block` protocol.
+
+Within the `protocol` section, we see the `@async` attribute:
 
 ```banjo
-[20] protocol I2c {
-...      /// comments (removed)
-[27]     [Async]
+[254] protocol Block {
+...       /// comments (removed)
+[268]     @async
 ```
 
-The `[Async]` attribute is a way to make protocol messages not be synchronous.
+The `@async` attribute is a way to make protocol messages not be synchronous.
 It autogenerates a callback type in which the output arguments are inputs to the callback.
 The original method will not have any of the output parameters specified in its signatures.
 
-Recall from the example above that we had a `Transact` method:
+In the protocol above there is a `Queue` method declared as:
 
 ```banjo
-[27] [Async]
-[28] Transact(vector<I2cOp> op) -> (zx.status status, vector<I2cOp> op);
+[268] @async
+[269] Queue(resource struct {
+[270]     @in_out
+[271]     txn BlockOp;
+[272] }) -> (resource struct {
+[273]     status zx.status;
+[274]     @mutable
+[275]     op BlockOp;
+[276] });
 ```
 
-When used (as above) in conjunction with the `[Async]` attribute, it means that we want Banjo
+When used (as above) in conjunction with the `@async` attribute, it means that we want Banjo
 to invoke a callback function, so that we can handle the output data (the second
-`vector<I2cOp>` above, representing the data from the I2C bus).
+`BlockOp` above, representing the data from the block device).
 
 Here's how it works.
-We send data to the I2C bus through the first `vector<I2cOp>` argument.
-Some time later, the I2C bus may generate data in response to our request.
-Because we specified `[Async]`, Banjo generates the functions to take a callback function
+We send data to the block device through the first `BlockOp` argument.
+Some time later, the block device may generate data in response to our request.
+Because we specified `@async`, Banjo generates the functions to take a callback function
 as input.
 
-In C, these two lines (from the `i2c.h` file) are important:
+In C, these two lines (from the `block.h` file) are important:
 
 ```c
-[19] typedef void (*i2c_transact_callback)(void* ctx, zx_status_t status, const i2c_op_t* op_list, size_t op_count);
+[085] typedef void (*block_queue_callback)(void* ctx, zx_status_t status, block_op_t* op);
 ...
-[36] void (*transact)(void* ctx, const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie);
+[211] void (*queue)(void* ctx, block_op_t* txn, block_queue_callback callback, void* cookie);
 ```
 
 In C++, we have two place where the callback is referenced:
 
 ```c++
-[083] static void I2cTransact(void* ctx, const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie) {
-[084]     static_cast<D*>(ctx)->I2cTransact(op_list, op_count, callback, cookie);
-[085] }
+[113] static void BlockQueue(void* ctx, block_op_t* txn, block_queue_callback callback, void* cookie) {
+[114]     static_cast<D*>(ctx)->BlockQueue(txn, callback, cookie);
+[115] }
 ```
 
 and
 
 ```c++
-[134] void Transact(const i2c_op_t* op_list, size_t op_count, i2c_transact_callback callback, void* cookie) const {
-[135]     ops_->transact(ctx_, op_list, op_count, callback, cookie);
-[136] }
+[201] void Queue(block_op_t* txn, block_queue_callback callback, void* cookie) const {
+[202]     ops_->queue(ctx_, txn, callback, cookie);
+[203] }
 ```
 
 Notice how the C++ is similar to the C: that's because the generated code includes the
@@ -792,10 +918,9 @@ Argument   | Meaning
 -----------|----------------------------------------
 `ctx`      | the cookie
 `status`   | status of the asynchronous response (provided by callee)
-`op_list`  | the data from the transfer
-`op_count` | the number of elements in the transfer
+`op`       | the data from the transfer
 
-How is this different than just using the `ddk-callback` `[Transport = "Banjo", BanjoLayout]` attribute we
+How is this different than just using the `@banjo_layout("ddk-callback")` attribute we
 discussed above?
 
 First, there's no `struct` with the callback and cookie value in it, they're inlined
@@ -810,7 +935,7 @@ For this reason, `ddk-callback` and `ddk-interface` structures usually have
 paired **register()** and **unregister()** calls in order to tell the parent device
 when it should stop calling those callbacks.
 
-> One more caveat with `[Async]` is that its callback *MUST* be called for each
+> One more caveat with `@async` is that its callback *MUST* be called for each
 > protocol method invocation, and the accompanying cookie must be provided.
 > Failure to do so will result in undefined behavior (likely a leak, deadlock,
 > timeout, or crash).
@@ -819,20 +944,20 @@ Although not the case currently, C++ and future language bindings (like Rust)
 will provide "future" / "promise" style based APIs in the generated code, built on top of
 these callbacks in order to prevent mistakes.
 
-> Ok, one more caveat with `[Async]` &mdash; the `[Async]` attribute applies *only*
+> Ok, one more caveat with `@async` &mdash; the `@async` attribute applies *only*
 > to the immediately following method; not any other methods.
 
-### The Buffer attribute
+### The buffer attribute
 
 This attribute applies to protocol method parameters of the `vector` type to convey that they are
 used as buffers. In practice, it only affects the names of the generated parameters.
 
-### The CalleeAllocated attribute
+### The callee\_allocated attribute
 
 When applied to a protocol method output parameter of type `vector`, the attribute conveys the fact
 that the contents of the vector should be allocated by the receiver of the method call.
 
-### The DeriveDebug attribute (C bindings only)
+### The derive\_debug attribute (C bindings only)
 
 When applied to an enum declaration, a helper `*_to_str()` function
 will be generated for C bindings which returns a `const char*` for each
@@ -840,7 +965,7 @@ value of the enum. For example, an enum declared with this attribute such
 as
 
 ```banjo
-[DeriveDebug]
+@derive_debug
 enum ExampleEnum {
     VAL_ONE = 1;
     VAL_TWO = 2;
@@ -864,33 +989,33 @@ static inline const char* example_enum_to_str(example_enum_t value) {
 #endif
 ```
 
-### The InnerPointer attribute
+### The inner\_pointer attribute
 
 In the context of a protocol input parameter of type `vector`, this attribute turns the contents of
 the vector into pointers to objects instead of objects themselves.
 
-### The InOut attribute
+### The in\_out attribute
 
 Adding this attribute to a protocol method input parameter makes the parameter mutable, effectively
 turning it into an "in-out" parameter.
 
-### The Mutable attribute
+### The mutable attribute
 
 This attribute should be used to make `struct`/`union` fields of type `vector` or `string` mutable.
 
-### The Namespaced attribute
+### The namespaced attribute
 
 This attribute applies to `const` declarations and makes it so that the C backend prefaces the
 constant name with the snake-cased FIDL library name, e.g. `library_name_CONSTANT_K` instead
 of `CONSTANT_K`. This attribute may be required to avoid name conflicts with FIDL hlcpp constant
 bindings in the same build target.
 
-### The OutOfLineContents attribute
+### The out\_of\_line\_contents attribute
 
 This attribute allows the contents of a `vector` field in a `struct`/`union` to be stored outside
 of the container.
 
-### The PreserveCNames attribute
+### The preserve\_c\_names attribute
 
 This attribute applies to `struct` declarations and makes it so that their fields' names remain
 unchanged when run through the C backend.
@@ -908,19 +1033,25 @@ protocol target with a `_mock` suffix, e.g.
 
 ## Using the mocks
 
-Test code must include the protocol header with a `mock/` prefix, e.g.
+Test code must include the protocol header with a `-mock` suffix, e.g.
 `#include <fuchsia/hardware/gpio/cpp/banjo-mock.h>`.
 
 Consider the following Banjo protocol snippet:
 
 ```banjo
-[021] [Transport = "Banjo", BanjoLayout = "ddk-protocol"]
-[022] protocol Gpio {
+[20] @transport("Banjo")
+[21] @banjo_layout("ddk-protocol")
+[22] protocol Gpio {
  ...
-[034]     /// Gets an interrupt object pertaining to a particular GPIO pin.
-[035]     GetInterrupt(uint32 flags) -> (zx.status s, handle<interrupt> irq);
+[53]     /// Gets an interrupt object pertaining to a particular GPIO pin.
+[54]     GetInterrupt(struct {
+[55]         flags uint32;
+[56]     }) -> (resource struct {
+[57]         s zx.status;
+[58]         irq zx.handle:INTERRUPT;
+[59]     });
  ...
-[040] };
+[82] };
 ```
 
 Here are the corresponding bits of the mock class generated by Banjo:
@@ -930,24 +1061,26 @@ Here are the corresponding bits of the mock class generated by Banjo:
 [035] public:
 [036]     MockGpio() : proto_{&gpio_protocol_ops_, this} {}
 [037]
-[038]     const gpio_protocol_t* GetProto() const { return &proto_; }
+[038]    virtual ~MockGpio() {}
+[039]
+[040]     const gpio_protocol_t* GetProto() const { return &proto_; }
  ...
-[065]     virtual MockGpio& ExpectGetInterrupt(zx_status_t out_s, uint32_t flags, zx::interrupt out_irq) {
-[066]         mock_get_interrupt_.ExpectCall({out_s, std::move(out_irq)}, flags);
-[067]         return *this;
-[068]     }
+[067]     virtual MockGpio& ExpectGetInterrupt(zx_status_t out_s, uint32_t flags, zx::interrupt out_irq) {
+[068]         mock_get_interrupt_.ExpectCall({out_s, std::move(out_irq)}, flags);
+[069]         return *this;
+[070]     }
  ...
-[080]     void VerifyAndClear() {
+[092]     void VerifyAndClear() {
  ...
-[086]         mock_get_interrupt_.VerifyAndClear();
+[098]         mock_get_interrupt_.VerifyAndClear();
  ...
-[089]     }
+[103]     }
  ...
-[117]     virtual zx_status_t GpioGetInterrupt(uint32_t flags, zx::interrupt* out_irq) {
-[118]         std::tuple<zx_status_t, zx::interrupt> ret = mock_get_interrupt_.Call(flags);
-[119]         *out_irq = std::move(std::get<1>(ret));
-[120]         return std::get<0>(ret);
-[121]     }
+[131]     virtual zx_status_t GpioGetInterrupt(uint32_t flags, zx::interrupt* out_irq) {
+[132]         std::tuple<zx_status_t, zx::interrupt> ret = mock_get_interrupt_.Call(flags);
+[133]         *out_irq = std::move(std::get<1>(ret));
+[134]         return std::get<0>(ret);
+[135]     }
 ```
 
 The MockGpio class implements the GPIO protocol. `ExpectGetInterrupt`

@@ -7,6 +7,7 @@ which components and function paths are involved in an event path.
 ## Touch event flow
 
 <!-- mdformat off(keep custom line breaks for alt text) -->
+
 ![Alt text.
 L1. Touch driver: Stack(FtDevice Read, HID IO Queue, InputReportInstance GetReports).
 L2. Flow event: InputReportInstance GetReports to touch-binding-process-report.
@@ -18,6 +19,7 @@ L7. Scenic: Stack(Injector::Inject, dispatch_event_to_client, scenic_impl::Sessi
 L8. Flow event: dispatch_event_to_client to PlatformView::OnHandlePointerEvent.
 L9. Flutter Runner: Stack(PlatformView::OnScenicEvent, PlatformView::OnHandlePointerEvent, Shell::OnPlatformViewDispatchPointerDataPacket).
 ](images/flow-example.png)
+
 <!-- mdformat on -->
 
 The touch event path involves a touch driver component, Input Pipeline, Scenic,

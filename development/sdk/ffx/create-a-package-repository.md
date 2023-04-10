@@ -105,7 +105,7 @@ needs to be running on the host machine.
 1. Enable your Fuchsia device to connect to the new repository:
 
    ```posix-terminal
-   ffx target repository register [-r <REPO_NAME>] --alias fuchsia.com
+   ffx target repository register [-r <REPO_NAME>] --alias fuchsia.com --alias chromium.org
    ```
 
    Replace `REPO_NAME` with the name of the repository that you want the Fuchsia device
@@ -115,7 +115,7 @@ needs to be running on the host machine.
    repository (`my-repo`) at `fuchsia.com`:
 
    ```none {:.devsite-disable-click-to-copy}
-   $ ffx target repository register --alias fuchsia.com
+   $ ffx target repository register --alias fuchsia.com --alias chromium.org
    ```
 
    After registering the repository, this command exits silently without output.
@@ -135,6 +135,7 @@ needs to be running on the host machine.
    | REPO    | TARGET                 |
    +=========+========================+
    | my-repo | fuchsia-f80f-f974-a123 |
+   |         |   alias: chromium.org  |
    |         |   alias: fuchsia.com   |
    +---------+------------------------+
    ```
@@ -214,4 +215,4 @@ server stopped
 <!-- Reference links -->
 
 [ffx-repository]: https://fuchsia.dev/reference/tools/sdk/ffx#repository
-[fuchsia-package]: /concepts/packages/package.md
+[fuchsia-package]: /docs/concepts/packages/package.md

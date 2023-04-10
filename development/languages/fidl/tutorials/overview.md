@@ -1,10 +1,9 @@
 # Tutorials
 
-The tutorials in this section gradually walk you through how to use FIDL
-and run code on Fuchsia. There are no prerequisites other than completing the
-[Getting Started][getting-started] section and being comfortable writing code in
-your chosen language, but the tutorials build on each other. The progression of
-tutorials is as follows:
+The tutorials in this section walk you through how to use FIDL and run code on
+Fuchsia. The only prerequisites are completing the [Getting
+Started][getting-started] section and being comfortable writing code in your
+chosen language. The progression of tutorials is as follows:
 
 1. [Compiling FIDL][compiling-fidl], which is a basic introduction to writing
    and building FIDL files.
@@ -24,21 +23,21 @@ directory. Feel free to follow along by reading the code, or by deleting the
 example code and rewriting it yourself based on the tutorials.
 
 If you're using C++ and wondering which tutorial to follow, take a look
-at the [HLCPP and LLCPP comparison doc][c-family].
+at the [C++ bindings comparison][c-family].
 
-  * [High Level C++ (HLCPP) Tutorial][hlcpp]
-  * [Low Level C++ (LLCPP) Tutorial][llcpp]
-  * [Rust Tutorial][rust]
-  * [Dart Tutorial][dart]
+  * [New C++ bindings][cpp]
+  * [High Level C++ (HLCPP)][hlcpp]
+  * [Rust][rust]
+  * [Dart][dart]
 
 <!-- xrefs -->
-[getting-started]: /get-started/README.md
-[fidl-concepts]: /concepts/fidl/overview.md
-[compiling-fidl]: /development/languages/fidl/tutorials/fidl.md
+[getting-started]: /docs/get-started/README.md
+[fidl-concepts]: /docs/concepts/fidl/overview.md
+[compiling-fidl]: /docs/development/languages/fidl/tutorials/fidl.md
+[cpp]: cpp/README.md
 [hlcpp]: hlcpp/README.md
-[llcpp]: llcpp/README.md
 [rust]: rust/README.md
 [dart]: dart/README.md
-[c]: /development/languages/fidl/tutorials/tutorial-c.md
-[c-family]: /development/languages/fidl/guides/c-family-comparison.md
+[c]: /docs/development/languages/fidl/tutorials/tutorial-c.md
+[c-family]: /docs/development/languages/fidl/guides/c-family-comparison.md
 [examples]: /examples/fidl

@@ -6,7 +6,10 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
+- heading: "Community"
 - title: "Get involved"
-  path: /contribute/community/get-involved.md
+  path: /docs/contribute/community/get-involved.md
+- title: "Mailing lists"
+  path: /docs/contribute/community/mailing-lists.md
 - title: "Contributor roles"
-  path: /contribute/community/contributor-roles.md
+  path: /docs/contribute/community/contributor-roles.md

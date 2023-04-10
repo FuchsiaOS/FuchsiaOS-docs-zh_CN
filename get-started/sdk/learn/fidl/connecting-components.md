@@ -81,7 +81,7 @@ context->svc()->Connect(proxy.NewRequest());
 ## Exercise: Echo server and client
 
 In this section, you'll use the generated FIDL bindings for
-`fidl.examples.routing.echo` to implement client and server components.
+`examples.routing.echo` to implement client and server components.
 
 <<../_common/_start_femu_with_packages.md>>
 
@@ -97,7 +97,8 @@ called `echo_server`:
 mkdir -p fuchsia-codelab/echo-server
 ```
 
-This component project should have the following directory structure:
+After you complete this section, the project should have the following directory
+structure:
 
 ```none {:.devsite-disable-click-to-copy}
 //fuchsia-codelab/echo-server
@@ -108,8 +109,9 @@ This component project should have the following directory structure:
                   |- main.cc
 ```
 
-Declare the `Echo` protocol as a capability provided by the server component,
-and expose it for use by the parent realm:
+Create the `echo-server/meta/echo_server.cml` component manifest, declare the
+`Echo` protocol as a capability provided by the server component, and expose it
+for use by the parent realm:
 
 `echo-server/meta/echo_server.cml`:
 
@@ -121,29 +123,16 @@ Add the following `BUILD.bazel` rules to build and package the server component:
 
 `echo-server/BUILD.bazel`:
 
-```bazel
+{% set build_bazel_snippet %}
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_server/BUILD.bazel" region_tag="imports" adjust_indentation="auto" %}
 
-fuchsia_cc_binary(
-    name = "echo_server_cpp",
-    srcs = [
-        "main.cc",
-    ],
-    deps = [
-        "//fuchsia-codelab/echo-fidl:fidl.examples.routing.echo.fidl_cc",
-        "@fuchsia_sdk//pkg/async-default",
-        "@fuchsia_sdk//pkg/async-loop",
-        "@fuchsia_sdk//pkg/async-loop-cpp",
-        "@fuchsia_sdk//pkg/async-loop-default",
-        "@fuchsia_sdk//pkg/fdio",
-        "@fuchsia_sdk//pkg/inspect",
-        "@fuchsia_sdk//pkg/sys_cpp",
-        "@fuchsia_sdk//pkg/sys_inspect_cpp",
-        "@fuchsia_sdk//pkg/syslog",
-    ],
-)
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_server/BUILD.bazel" region_tag="cc_binary" adjust_indentation="auto" %}
 
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_server/BUILD.bazel" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+```bazel
+{{ build_bazel_snippet|replace("//src/routing/fidl","//fuchsia-codelab/echo-fidl")|trim() }}
 ```
 
 ### Implement the server
@@ -182,7 +171,7 @@ Add the following code to `main()` to serve the `Echo` protocol:
 This code performs the following steps to serve the `Echo` protocol:
 
 1.  Initialize `ComponentContext` and add an entry under
-    `/svc/fidl.examples.routing.echo.Echo` in the outgoing directory.
+    `/svc/examples.routing.echo.Echo` in the outgoing directory.
 1.  Serve the directory and begin listening for incoming connections.
 1.  Attach the `EchoImplementation` instance as a request handler for any
     matching `Echo` requests.
@@ -199,7 +188,8 @@ called `echo_client`:
 mkdir -p fuchsia-codelab/echo-client
 ```
 
-This component project should have the following directory structure:
+After you complete this section, the project should have the following directory
+structure:
 
 ```none {:.devsite-disable-click-to-copy}
 //fuchsia-codelab/echo-client
@@ -210,8 +200,9 @@ This component project should have the following directory structure:
                   |- main.cc
 ```
 
-Configure the client's component manifest to request the
-`fidl.examples.routing.echo.Echo` capability exposed by the server:
+Create the `echo-client/meta/echo_client.cml` component manifest and configure
+the client component to request the `examples.routing.echo.Echo` capability
+exposed by the server:
 
 `echo-client/meta/echo_client.cml`:
 
@@ -219,31 +210,20 @@ Configure the client's component manifest to request the
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_client/meta/echo_client.cml" region_tag="example_snippet" adjust_indentation="auto" %}
 ```
 
-Add the following `BUILD.bazel` rules to build and package the server component:
+Add the following `BUILD.bazel` rules to build and package the client component:
 
 `echo-client/BUILD.bazel`:
 
-```bazel
+{% set build_bazel_snippet %}
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_client/BUILD.bazel" region_tag="imports" adjust_indentation="auto" %}
 
-fuchsia_cc_binary(
-    name = "echo_client_cpp",
-    srcs = [
-        "main.cc",
-    ],
-    deps = [
-        "//fuchsia-codelab/echo-fidl:fidl.examples.routing.echo.fidl_cc",
-        "@fuchsia_sdk//pkg/async-default",
-        "@fuchsia_sdk//pkg/async-loop",
-        "@fuchsia_sdk//pkg/async-loop-cpp",
-        "@fuchsia_sdk//pkg/async-loop-default",
-        "@fuchsia_sdk//pkg/fdio",
-        "@fuchsia_sdk//pkg/sys_cpp",
-        "@fuchsia_sdk//pkg/syslog",
-    ],
-)
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_client/BUILD.bazel" region_tag="cc_binary" adjust_indentation="auto" %}
 
 {% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/cpp/echo_client/BUILD.bazel" region_tag="component" adjust_indentation="auto" %}
+{% endset %}
+
+```bazel
+{{ build_bazel_snippet|replace("//src/routing/fidl","//fuchsia-codelab/echo-fidl")|trim() }}
 ```
 
 ### Implement the client
@@ -289,10 +269,20 @@ to act as the parent and manage capability routing.
 Create a new project directory for the realm component definition:
 
 ```posix-terminal
-mkdir -p fuchsia-codelab/echo-realm/meta
+mkdir -p fuchsia-codelab/echo-realm
 ```
 
-Create a new component manifest file `meta/echo_realm.cml` with the
+After you complete this section, the project should have the following directory
+structure:
+
+```none {:.devsite-disable-click-to-copy}
+//fuchsia-codelab/echo-realm
+                  |- BUILD.bazel
+                  |- meta
+                      |- echo_realm.cml
+```
+
+Create a new component manifest file `echo-realm/meta/echo_realm.cml` with the
 following contents:
 
 `echo-realm/meta/echo_realm.cml`:
@@ -302,7 +292,7 @@ following contents:
 ```
 
 This creates a component realm with the server and client as child components,
-and routes the `fidl.examples.routing.echo.Echo` protocol capability to the
+and routes the `examples.routing.echo.Echo` protocol capability to the
 client.
 
 Add a `BUILD.bazel` file to create a build target for the realm component and a
@@ -310,33 +300,27 @@ Fuchsia package containing the server and client:
 
 `echo-realm/BUILD.bazel`:
 
+{% set build_bazel_snippet %}
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/BUILD.bazel"  region_tag="imports" adjust_indentation="auto" %}
+
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/BUILD.bazel"  region_tag="component" adjust_indentation="auto" %}
+
+{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/BUILD.bazel"  region_tag="package" adjust_indentation="auto" %}
+{% endset %}
+
 ```bazel
-load(
-    "@rules_fuchsia//fuchsia:defs.bzl",
-    "fuchsia_component",
-    "fuchsia_component_manifest",
-    "fuchsia_package",
-)
-
-{% includecode gerrit_repo="fuchsia/sdk-samples/getting-started" gerrit_path="src/routing/BUILD.bazel" region_tag="component" adjust_indentation="auto" %}
-
-fuchsia_package(
-    name = "pkg",
-    package_name = "echo-realm",
-    visibility = ["//visibility:public"],
-    deps = [
-        ":echo_realm",
-        "//fuchsia-codelab/echo-client:echo_client_component",
-        "//fuchsia-codelab/echo-server:echo_server_component",
-    ],
-)
+{{ build_bazel_snippet
+    |replace("components_routing_example","echo-realm")
+    |replace("//src/routing/cpp/echo_client","//fuchsia-codelab/echo-client")
+    |replace("//src/routing/cpp/echo_server","//fuchsia-codelab/echo-server")
+    |trim() }}
 ```
 
-Run `bazel build` and verify that the build completes successfully:
+Build and publish the package to the `fuchsiasamples.com` repository:
 
 ```posix-terminal
-bazel build --config=fuchsia_x64 //fuchsia-codelab/echo-realm:pkg \
-     --publish_to=$HOME/.package_repos/sdk-samples
+bazel run //fuchsia-codelab/echo-realm:pkg.publish -- \
+    --repo_name fuchsiasamples.com
 ```
 
 ### Add the components to the topology
@@ -407,7 +391,7 @@ You should see the following output in the device logs:
 ```
 
 The server component starts once the client makes a connection to the
-`fidl.examples.routing.echo.Echo` capability and continues running to serve
+`examples.routing.echo.Echo` capability and continues running to serve
 additional FIDL requests.
 
 Use `ffx component show` the see the echo server running in the component
@@ -424,14 +408,14 @@ ffx component show echo_server
        Component State: Resolved
  Incoming Capabilities: fuchsia.logger.LogSink
   Exposed Capabilities: diagnostics
-                        fidl.examples.routing.echo.Echo
+                        examples.routing.echo.Echo
        Execution State: Running
                 Job ID: 474691
             Process ID: 474712
            Running for: 2026280474361 ticks
            Merkle root: 666c40477785f89b0ace22b30d65f1338f1d308ecceacb0f65f5140baa889e1b
  Outgoing Capabilities: diagnostics
-                        fidl.examples.routing.echo.Echo
+                        examples.routing.echo.Echo
 ```
 
 ### Destroy the instance

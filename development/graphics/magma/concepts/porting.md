@@ -1,7 +1,7 @@
 # Magma: Porting Guide
 
 For an overview of Magma including background, hardware requirements, and
-description of architecture, please see [Magma: Overview](/development/graphics/magma/README.md).
+description of architecture, please see [Magma: Overview](/docs/development/graphics/magma/README.md).
 
 This document gives a process a driver developer can follow to port a Vulkan
 driver to Fuchsia.
@@ -182,26 +182,43 @@ Testing at this stage:
 
 ## Building the ICD
 
-The ICD must be ported to Fuchsia. ICD code must be checked out with the
-rest of the Fuchsia tree and built along with the rest of Fuchsia.
-
-The ICD may be either given a completely new GN build, or the Fuchsia GN
-build can execute actions in the driver's existing build system.
+The IHV ICD must be ported to Fuchsia. ICDs should be built using the [Bazel
+SDK][sdk-get-started]. ICD builds may be ported to [Bazel][bazel], or wrapped in
+a Bazel build.  [rules_foreign_cc][rules_foreign_cc] is a good example of how to
+wrap an existing build.
 
 Because of [ICD abi][icdabi] restrictions, ICDs must be statically linked
-against all their dependencies. An ICD must be a single shared library, and
-may only reference libc.so and libzircon.so. At this stage you can stub out
-all other references as necessary. The ICD must also link to
-[libmagma][libmagma], which provides the Magma runtime.
+against all their dependencies. They may only reference these shared libraries:
 
-The Vulkan loader service retrieves the ICDs from packages and advertises them
-to Vulkan clients. The ICD must be packaged with metadata and manifest JSON
-files, as described in the [loader service documentation][loader-readme].
+* `libc.so`
+* `libzircon.so`
+
+This limits what dependencies ICDs can use. For example, here are some disallowed
+libraries and potential replacements:
+
+* [HLCPP][HLCPP]: Can be replaced with the [New C++ bindings][new-cpp-fidl].
+* [syslog][syslog]: Can be replaced with
+  [syslog/structured_backend][syslog-structured-backend].
+* [async-default][async-default]: async dispatchers must always be specified
+  explicitly.
+* [libtrace-engine][libtrace-engine]: No replacement as of yet.
+* [libsvc][libsvc]: Can be replaced with `fuchsia.io` calls and
+  `vk_icdInitializeOpenInNamespaceCallback` (see below).
+
+At this stage you can stub out all other references as necessary. The ICD must
+also link to the Magma runtime library provided in the SDK as
+[@fuchsia_pkg//pkg/magma_client][libmagma].
+
+The Vulkan loader service retrieves ICDs from packages and advertises them to
+Vulkan clients. The ICD must be included in a Fuchsia package with metadata and
+manifest JSON files, as described in the [loader service
+documentation][loader-readme]. This package can be served to the device using
+the Bazel SDK repository commands.
 
 If the ICD package is included in [universe][package-deployment] it can be
 reloaded by doing `fx shell killall vulkan_loader.cm`. Components launched
-afterwards will get the new ICD package, while older components will either use
-the old ICD or may fail when creating Vulkan instances.
+afterwards will get the new ICD package, while older components will fail when
+creating Vulkan instances.
 
 The ICD must export a certain set of symbols - see
 [the Vulkan ABI definition][icdabi]. You should implement them at this point.
@@ -209,19 +226,31 @@ The ICD must export a certain set of symbols - see
 Testing at this stage:
 
 * `readelf -d` on the shared library to ensure it has no dependencies besides
-  libc.so and libzircon.so.
+  `libc.so` and `libzircon.so`.
 * Launching the vulkan loader using `fx shell cat
   /svc/fuchsia.vulkan.loader.Loader` and checking `ffx inspect show
   core/vulkan_loader` to see if it's loaded. Errors will go to syslog.
-* Run the [icd_load][icd_load] test. This test will check if any ICD on the
-  system works, so ensure no other ICDs are on the system before running it.
+* Run the [vulkan_icd_load][vulkan_icd_load] test. This test will check if any
+  ICD on the system works, so ensure no other ICDs are on the system before
+  running it.
 
 ## Connect the ICD to Magma
 
-At this point the ICD should connect to /dev/class/gpu/<n> using zxio and
-provide that device to libmagma using [magma_device_import][magmaheader].
+At this point the ICD should connect to the `/loader-gpu-devices/class/gpu`
+directory using the callback provided to
+`vk_icdInitializeOpenInNamespaceCallback`. The ICD can list the directory
+contents using the `fuchsia.io.Directory` FIDL protocol. This directory contains
+device nodes of all MSDs on the system, each named as a unique three-digit
+number. Numbers are stable within a boot, but may change whenever the MSD is
+reloaded, such as when the device is rebooted.
 
-After this stage the [magma_*][magmheader] functions will work, so ioctl
+Each magma device path can be opened using
+`vk_icdInitializeOpenInNamespaceCallback` and the resulting zircon channel can
+be provided to libmagma using [magma_device_import][magmaheader]. If there are
+multiple magma devices on the system, the driver will have to use `magma_query`
+with `MAGMA_QUERY_VENDOR_ID` to determine which to device to use.
+
+After this stage the [magma_*][magmaheader] functions will work, so `ioctl()`
 calls can gradually be converted over to equivalent Magma calls.
 
 Testing at this stage:
@@ -236,17 +265,17 @@ Testing at this stage:
 Use the [version script][versionscript] when linking your ICD to ensure it
 only exposes the symbols allowed by the Fuchsia system ABI.
 
-Only symbols listed in [the symbol allow list][allowlist] may be used from
-the ICD. To check this, either pass the allowlist to
-`imported_symbols_allowlist` in your `magma_vulkan_icd` target or use the
-`verify_imported_symbols` GN template to check your prebuilt ICD.
+Only symbols listed in [the symbol allow list][allowlist] may be used from the
+ICD. To check this, compare the allowlist against the list obtained by running
+`llvm-nm -gD` on the ICD shared library.
 
 Some unsupported file operations may be replaced with calls to the
-`OpenInNamespace` callback provided to `vk_icdInitializeOpenInNamespaceCallback`.
+`OpenInNamespace` callback provided to
+`vk_icdInitializeOpenInNamespaceCallback`.
 
 Testing at this stage:
 
-* `verify_imported_symbols` succeeds.
+* [icd_conformance][icd_conformance] test succeeds.
 
 ## Implement Fuchsia extensions
 
@@ -300,40 +329,51 @@ The MSD and ICD must be updated with new code drops from the hardware vendor.
 Ideally the code is upstreamed and the GPU vendor will supply and maintain
 the system driver using the Zircon DDK.
 
-[glossary.bootfs]: /glossary/README.md#bootfs
-[paving]: /development/build/fx.md#what-is-paving
-[boarddriver]: /development/drivers/concepts/device_driver_model/platform-bus.md
-[icdabi]: /concepts/packages/system.md#vulkan-icd
-[banjo]: /development/drivers/concepts/device_driver_model/banjo.md
-[sysmem]: /development/graphics/sysmem/concepts/sysmem.md
+[glossary.bootfs]: /docs/glossary/README.md#bootfs
+[paving]: /docs/development/build/fx.md#what-is-paving
+[boarddriver]: /docs/development/drivers/concepts/device_driver_model/platform-bus.md
+[icdabi]: /docs/concepts/packages/system.md#vulkan-icd
+[banjo]: /docs/development/drivers/concepts/device_driver_model/banjo.md
+[sysmem]: /docs/development/graphics/sysmem/concepts/sysmem.md
 [vkreadback]: /src/graphics/tests/vkreadback
 [hardwareunit]: /src/graphics/drivers/msd-arm-mali/tests/integration/run_unit_tests.cc
 [vulkanheader]: https://fuchsia.googlesource.com/third_party/Vulkan-Headers/+/refs/heads/master/include/vulkan/vulkan_fuchsia.h
-[scenic]: /concepts/ui/scenic/index.md
+[scenic]: /docs/concepts/ui/scenic/index.md
 [msd-arm-mali]: /src/graphics/drivers/msd-arm-mali
 [aml-gpu]: /src/graphics/drivers/aml-gpu
 [msd-intel-gen]: /src/graphics/drivers/msd-intel-gen
 [intel-i915]: /src/graphics/display/drivers/intel-i915
 [driverdir]: /src/graphics/drivers
 [vkcube]: /src/graphics/examples/vkcube
-[icd_load]: /src/graphics/tests/icd_load
+[vulkan_icd_load]: /sdk/ctf/tests/pkg/vulkan
 [libmagma]: /src/graphics/lib/magma/src/libmagma
 [intelgn]: /src/graphics/lib/magma/gnbuild/magma-intel-gen/BUILD.gn
 [fuchsia.hardware.clock.Clock]: /sdk/banjo/fuchsia.hardware.clock/clock.fidl
 [fuchsia.hardware.power.Power]: /sdk/banjo/fuchsia.hardware.power/power.fidl
-[dgsd]: /development/drivers/concepts/getting_started.md
-[libc]: /concepts/kernel/libc.md
-[fdio]: /concepts/filesystems/life_of_an_open.md#fdio
+[dgsd]: /docs/development/drivers/concepts/getting_started.md
+[libc]: /docs/concepts/kernel/libc.md
+[fdio]: /docs/concepts/filesystems/life_of_an_open.md#fdio
 [versionscript]: /src/graphics/lib/magma/scripts/libvulkan.version
 [allowlist]: /src/graphics/lib/magma/gnbuild/imported_symbols.allowlist
 [magma_pdev_entry]: /src/graphics/lib/magma/src/magma_util/platform/zircon/driver_entry.gni
-[vmo]: /reference/kernel_objects/vm_object.md
+[vmo]: /docs/reference/kernel_objects/vm_object.md
 [msdheader]: /src/graphics/lib/magma/include/msd/msd.h
-[magmaheader]: /src/graphics/lib/magma/include/magma/magma.h
-[l0]: /development/graphics/magma/concepts/contributing.md#l0
-[l1]: /development/graphics/magma/concepts/contributing.md#l1
-[teststrategy]: /development/graphics/magma/concepts/test_strategy.md
+[magmaheader]: /sdk/lib/magma_client/include/lib/magma/magma.h
+[l0]: /docs/development/graphics/magma/concepts/contributing.md#l0
+[l1]: /docs/development/graphics/magma/concepts/contributing.md#l1
+[teststrategy]: /docs/development/graphics/magma/concepts/test_strategy.md
 [loader-readme]: /src/graphics/bin/vulkan_loader/README.md
 [extmemoryspec]: https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_FUCHSIA_external_memory.html
 [extsemaphorespec]: https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_FUCHSIA_external_semaphore.html
-[package-deployment]: /development/build/fx.md#package_deployment_options
+[package-deployment]: /docs/development/build/fx.md#package_deployment_options
+[sdk-get-started]: /docs/get-started/sdk/index.md
+[bazel]: https://bazel.build/
+[rules_foreign_cc]: https://github.com/bazelbuild/rules_foreign_cc
+[HLCPP]: /docs/reference/fidl/bindings/hlcpp-bindings.md
+[new-cpp-fidl]: /docs/development/languages/fidl/tutorials/cpp/README.md
+[syslog]: /zircon/system/ulib/syslog/
+[syslog-structured-backend]: /sdk/lib/syslog/structured_backend/
+[async-default]: /zircon/system/ulib/async-default/
+[libtrace-engine]: /zircon/system/ulib/trace-engine/
+[libsvc]: /sdk/lib/svc
+[icd_conformance]: /src/graphics/tests/icd_conformance/icd_conformance.cc

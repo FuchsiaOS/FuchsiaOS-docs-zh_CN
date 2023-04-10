@@ -3,12 +3,12 @@
 This document details the processes for adding external code to the
 [Fuchsia Platform Source Tree](https://fuchsia.googlesource.com/).
 For more information on the definition of external code,
-see [Fuchsia Open Source Licensing Policies](/contribute/governance/policy/open-source-licensing-policies.md).
+see [Fuchsia Open Source Licensing Policies](/docs/contribute/governance/policy/open-source-licensing-policies.md).
 
 ## Overview
 
 Any external code that is hosted within the [Fuchsia Platform Source Tree](https://fuchsia.googlesource.com/)
-, must be compliant with [Fuchsia Open Source Licensing Policies](/contribute/governance/policy/open-source-licensing-policies.md)
+, must be compliant with [Fuchsia Open Source Licensing Policies](/docs/contribute/governance/policy/open-source-licensing-policies.md)
 at all times.
 
 ## Process for adding external code to new repositories
@@ -18,7 +18,7 @@ not yet contain any code, submit an issue in Monorail using the
 [Open Source Review Board (OSRB) template](https://bugs.fuchsia.dev/p/fuchsia/issues/entry?template=Open+Source+Review+Board+).
 
 This issue lets Fuchsia’s OSRB review the code that you want to add, to ensure
-that the code that you want to add is in compliance with [Fuchsia Open Source Licensing Policies](/contribute/governance/policy/open-source-licensing-policies.md).
+that the code that you want to add is in compliance with [Fuchsia Open Source Licensing Policies](/docs/contribute/governance/policy/open-source-licensing-policies.md).
 
 Warning: You must receive approval from the OSRB _before_ pushing a commit to Gerrit that adds external code to new repositories. Do not request a code review for adding external code to new repositories until you have approval from the OSRB.
 
@@ -32,7 +32,7 @@ Monorail using the [Open Source Review Board (OSRB) template](https://bugs.fuchs
 
 This Monorail issue lets Fuchsia’s OSRB review the code that you want to add
 to ensure that the code that you want to add is in compliance with
-[Fuchsia Open Source Licensing Policies](/contribute/governance/policy/open-source-licensing-policies.md).
+[Fuchsia Open Source Licensing Policies](/docs/contribute/governance/policy/open-source-licensing-policies.md).
 
 Warning: You must receive approval from the OSRB _before_ pushing a commit to Gerrit that adds external code to repositories with existing external code. Do not request a code review for adding external code to repositories with existing external code until you have approval from the OSRB.
 

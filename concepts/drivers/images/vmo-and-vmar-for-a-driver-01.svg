@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="387" height="270" viewBox="0 0 387 270">
+  <defs>
+    <style>
+      .d {
+        fill: #c5c5ff;
+      }
+
+      .e {
+        fill: #80d186;
+      }
+
+      .e, .f, .g, .h, .i, .j, .k, .l {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .f, .h, .i, .j, .m {
+        fill: none;
+      }
+
+      .g {
+        fill: #f0f0f0;
+      }
+
+      .g, .i {
+        stroke-width: 2px;
+      }
+
+      .n {
+        font-family: ArialMT, Arial;
+      }
+
+      .n, .o {
+        font-size: 12px;
+      }
+
+      .h {
+        stroke-dasharray: 0 0 1.95 1.95;
+      }
+
+      .o {
+        font-family: Arial-BoldMT, Arial;
+      }
+
+      .j {
+        stroke-dasharray: 0 0 2 2;
+      }
+
+      .k {
+        fill: #88f;
+      }
+
+      .p {
+        letter-spacing: -.02em;
+      }
+
+      .l {
+        fill: #cfffd2;
+      }
+
+      .q {
+        letter-spacing: -.06em;
+      }
+    </style>
+  </defs>
+  <rect class="g" x="27" y="144" width="333" height="117"/>
+  <polygon class="d" points="378 45 9 45 4.5 40.5 9 36 4.5 31.5 9 27 4.5 22.5 9 18 4.5 13.5 9 9 378 9 382.5 13.5 378 18 382.5 22.5 378 27 382.5 31.5 378 36 382.5 40.5 378 45"/>
+  <text class="o" transform="translate(18 23.1)"><tspan x="0" y="0">Physical</tspan><tspan x="0" y="14.4">Memory</tspan></text>
+  <g>
+    <rect class="k" x="81" y="9" width="54" height="36"/>
+    <text class="n" transform="translate(89.33 32.1)"><tspan x="0" y="0">VMO 1</tspan></text>
+  </g>
+  <g>
+    <rect class="k" x="198" y="9" width="72" height="36"/>
+    <text class="n" transform="translate(215.33 32.1)"><tspan x="0" y="0">VMO 2</tspan></text>
+  </g>
+  <g>
+    <rect class="k" x="297" y="9" width="45" height="36"/>
+    <text class="n" transform="translate(300.83 32.1)"><tspan x="0" y="0">VMO 3</tspan></text>
+  </g>
+  <rect class="k" x="9" y="63" width="117" height="36"/>
+  <text class="n" transform="translate(44.16 84.2)"><tspan x="0" y="0">Device 1</tspan></text>
+  <rect class="k" x="135" y="63" width="117" height="36"/>
+  <text class="n" transform="translate(170.16 84.2)"><tspan x="0" y="0">Device 2</tspan></text>
+  <rect class="k" x="261" y="63" width="117" height="36"/>
+  <text class="n" transform="translate(296.16 84.2)"><tspan x="0" y="0">Device 3</tspan></text>
+  <g>
+    <line class="f" x1="81" y1="45" x2="80.03" y2="45.24"/>
+    <line class="h" x1="78.14" y1="45.72" x2="10.92" y2="62.52"/>
+    <line class="f" x1="9.97" y1="62.76" x2="9" y2="63"/>
+  </g>
+  <line class="j" x1="135" y1="45" x2="126" y2="63"/>
+  <line class="j" x1="198" y1="45" x2="135" y2="63"/>
+  <line class="j" x1="270" y1="45" x2="252" y2="63"/>
+  <line class="j" x1="297" y1="45" x2="261" y2="63"/>
+  <line class="j" x1="342" y1="45" x2="378" y2="63"/>
+  <rect class="l" x="36" y="216" width="315" height="36"/>
+  <text class="o" transform="translate(36 163.29)"><tspan x="0" y="0">Driver host (process)</tspan></text>
+  <g>
+    <rect class="k" x="243" y="153" width="54" height="36"/>
+    <text class="n" transform="translate(251.33 176.1)"><tspan x="0" y="0">VMO 1</tspan></text>
+  </g>
+  <rect class="e" x="243" y="216" width="54" height="36"/>
+  <g>
+    <line class="i" x1="270" y1="216" x2="270" y2="196.06"/>
+    <polygon points="270 189 274.07 198.95 270 196.59 265.94 198.95 270 189"/>
+  </g>
+  <text class="n" transform="translate(279 205.1)"><tspan x="0" y="0">mapping</tspan></text>
+  <text class="n" transform="translate(45 237.2)"><tspan class="p" x="0" y="0">V</tspan><tspan x="7.79" y="0">irtual Memory</tspan><tspan class="q" x="80.47" y="0"> </tspan><tspan x="83.14" y="0">Address Region</tspan></text>
+  <rect class="m" width="387" height="270"/>
+</svg>

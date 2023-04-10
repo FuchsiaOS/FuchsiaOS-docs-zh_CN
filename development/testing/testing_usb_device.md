@@ -6,11 +6,6 @@
 
 # Testing a USB Device
 
-Note: This is for the non-component version of USB Virtual
-Bus. The component version is located at
-[/src/lib/isolated_devmgr/usb-virtual-bus.h](/src/lib/isolated_devmgr/usb-virtual-bus.h).
-There is currently no documentation about the component version.
-
 The [USB Virtual Bus](/src/devices/usb/drivers/usb-virtual-bus/) framework is a
 helpful framework to connect a USB Function driver to a
 USB device driver for testing.

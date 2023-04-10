@@ -7,25 +7,25 @@
 # team as reviewer.
 toc:
 - title: "Debugging workflow"
-  path: /development/debugging/debugging.md
+  path: /docs/development/debugging/debugging.md
 - title: "Packet capture"
-  path: /development/debugging/packet_capture.md
+  path: /docs/development/debugging/packet_capture.md
 - title: "Just In Time Debugging"
-  path: /development/debugging/just_in_time_debugging.md
+  path: /docs/development/debugging/just_in_time_debugging.md
 - title: "UI debugging tips"
-  path: /development/debugging/ui_tips.md
+  path: /docs/development/debugging/ui_tips.md
 - title: "Use the native debugger (zxdb)"
   section:
-  - include: /development/debugger/_toc.yaml
+  - include: /docs/development/debugger/_toc.yaml
 - title: "Debug the kernel"
   section:
   - title: "Debug the kernal using QEMU"
-    path: /development/debugging/qemu.md
+    path: /docs/development/debugging/qemu.md
   - title: "JTRACE"
-    path: /development/debugging/jtrace.md
+    path: /docs/development/debugging/jtrace.md
   - title: "Kernel debugging tips"
-    path: /development/debugging/tips.md
+    path: /docs/development/debugging/tips.md
 - title: "Advanced"
   section:
   - title: "ACPI debugging"
-    path: /development/debugging/acpi.md
+    path: /docs/development/debugging/acpi.md

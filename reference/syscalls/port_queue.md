@@ -1,14 +1,21 @@
+<!--
+Copyright 2022 The Fuchsia Authors. All rights reserved.
+Use of this source code is governed by a BSD-style license that can be
+found in the LICENSE file.
+
+DO NOT EDIT. Generated from FIDL library zx by zither, a Fuchsia platform tool.
+
+See //docs/reference/syscalls/README.md#documentation-generation for
+regeneration instructions.
+-->
+
 # zx_port_queue
 
-## SUMMARY
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Summary
 
 Queue a packet to a port.
 
-## DECLARATION
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Declaration
 
 ```c
 #include <zircon/syscalls.h>
@@ -17,13 +24,13 @@ Queue a packet to a port.
 zx_status_t zx_port_queue(zx_handle_t handle, const zx_port_packet_t* packet);
 ```
 
-## DESCRIPTION
+## Description
 
 `zx_port_queue()` queues a user *packet* to the port specified by *handle*.
 
 User packets are drained by [`zx_port_wait()`]. Failure to drain packets in a
 timely fashion can cause excessive kernel memory to be used, which might generate
-an exception. See [ipc limits](/concepts/kernel/ipc_limits.md) for details.
+an exception. See [ipc limits](/docs/concepts/kernel/ipc_limits.md) for details.
 
 ```
 typedef struct zx_port_packet {
@@ -51,17 +58,15 @@ typedef union zx_packet_user {
 
 ```
 
-## RIGHTS
-
-<!-- Contents of this heading updated by update-docs-from-fidl, do not edit. -->
+## Rights
 
 *handle* must be of type **ZX_OBJ_TYPE_PORT** and have **ZX_RIGHT_WRITE**.
 
-## RETURN VALUE
+## Return value
 
 `zx_port_queue()` returns **ZX_OK** on successful queue of a packet.
 
-## ERRORS
+## Errors
 
 **ZX_ERR_BAD_HANDLE** *handle* isn't a valid handle
 
@@ -71,12 +76,10 @@ typedef union zx_packet_user {
 
 **ZX_ERR_ACCESS_DENIED** *handle* does not have **ZX_RIGHT_WRITE**.
 
-## SEE ALSO
+## See also
 
  - [`zx_port_create()`]
  - [`zx_port_wait()`]
-
-<!-- References updated by update-docs-from-fidl, do not edit. -->
 
 [`zx_port_create()`]: port_create.md
 [`zx_port_wait()`]: port_wait.md

@@ -51,8 +51,8 @@ for the new driver will live in `src/graphics/display/drivers/fancy-display/`.
 To begin, create:
 
  * A minimal implementation of [DisplayControllerImpl][dcimpl]
- * A [bind program][driver-binding]
- * A build recipe for the `DisplayControllerImpl` and the bind program
+ * A set of [bind rules][driver-binding]
+ * A build recipe for the `DisplayControllerImpl` and the bind rules
 
 ### Add the driver to the build {#adding-to-build}
 
@@ -166,14 +166,24 @@ class Device : public DeviceType {
   void DisplayControllerImplSetDisplayControllerInterface(
       const display_controller_interface_protocol* interface) {}
 
+  zx_status_t DisplayControllerImplImportBufferCollection(
+      uint64_t collection_id, zx::channel collection_token) {
+    return ZX_ERR_NOT_SUPPORTED;
+  }
+
+  zx_status_t DisplayControllerImplReleaseBufferCollection(
+      uint64_t collection_id) {
+    return ZX_ERR_NOT_SUPPORTED;
+  }
+
   zx_status_t DisplayControllerImplImportImage(
-      image_t* image, zx_unowned_handle_t sysmem_handle, uint32_t index) {
+      image_t* image, uint64_t collection_id, uint32_t index) {
     return ZX_ERR_NOT_SUPPORTED;
   }
 
   void DisplayControllerImplReleaseImage(image_t* image) {}
 
-  uint32_t DisplayControllerImplCheckConfiguration(
+  config_check_result_t DisplayControllerImplCheckConfiguration(
       const display_config_t** display_config, size_t display_count,
       uint32_t** layer_cfg_result, size_t* layer_cfg_result_count) {}
 
@@ -191,7 +201,7 @@ class Device : public DeviceType {
   }
 
   zx_status_t DisplayControllerImplSetBufferCollectionConstraints(
-      const image_t* config, uint32_t collection) {
+      const image_t* config, uint64_t collection_id) {
     return ZX_ERR_NOT_SUPPORTED;
   }
 
@@ -210,7 +220,7 @@ zx_status_t fancy_display_bind(void* ctx, zx_device_t* parent) {
     auto status = dev->Bind();
     if (status == ZX_OK) {
       // The driver/device manager now owns this memory.
-      __UNUSED auto ptr = dev.release();
+      [[maybe_unused]] auto ptr = dev.release();
     }
     return status;
 }
@@ -281,11 +291,11 @@ basic bootloader driver. In most cases, your roadmap will be:
 
 <!--xrefs-->
 [dcimpl]: /sdk/banjo/fuchsia.hardware.display.controller/display-controller.fidl
-[ddk-tl]: /development/drivers/concepts/driver_development/using-ddktl.md
+[ddk-tl]: /docs/development/drivers/concepts/driver_development/using-ddktl.md
 [display-core]: /src/graphics/display/drivers/display/
-[driver-binding]: /development/drivers/concepts/device_driver_model/driver-binding.md
+[driver-binding]: /docs/development/drivers/concepts/device_driver_model/driver-binding.md
 [intel-bind]: /src/graphics/display/drivers/intel-i915/intel-i915.bind
-[license-policies]: /contribute/governance/policy/open-source-licensing-policies.md
+[license-policies]: /docs/contribute/governance/policy/open-source-licensing-policies.md
 [sysmem]: https://fuchsia.dev/reference/fidl/fuchsia.sysmem
 [tearing]: https://en.wikipedia.org/wiki/Screen_tearing
 [amlogic-display-bind]: /src/graphics/display/drivers/amlogic-display/amlogic-display.bind

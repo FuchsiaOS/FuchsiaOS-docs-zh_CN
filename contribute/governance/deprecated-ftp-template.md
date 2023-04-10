@@ -1,7 +1,7 @@
 # [FTP](deprecated-ftp-process.md)-NNN: Your Boring Title
 
-Note: This process was deprecated in [RFC-0017](/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md).
-FTP proposals should now use the [Fuchsia RFC process](/contribute/governance/rfcs/rfc_process.md).
+Note: This process was deprecated in [RFC-0017](/docs/contribute/governance/rfcs/0017_folding_ftp_into_rfc.md).
+FTP proposals should now use the [Fuchsia RFC process](/docs/contribute/governance/rfcs/rfc_process.md).
 
 _(optional) Your Witty Title_
 
@@ -67,8 +67,8 @@ the concept.
 
 There are potentially several kinds of documentation to address.
 
-How would you write or change a tutorial for this feature, in the style of [the
-various FIDL tutorials][fidl-tutotials]? Imagine explaining your feature to
+How would you write or change a tutorial for this feature, in the style of the
+various FIDL tutorials? Imagine explaining your feature to
 someone new to Fuchsia.
 
 How would you write reference documentation? For example, suppose your proposal
@@ -86,8 +86,8 @@ time, the ability to make backwards-incompatible changes will get harder.
 
 If you are introducing a new data type or language feature, consider what
 changes you would expect users to make to FIDL definitions without breaking
-users of the generated code. If your feature places any new [source
-compatibility][ftp-024.md] restrictions on the generated language bindings, list
+users of the generated code. If your feature places any new source
+compatibility restrictions on the generated language bindings, list
 those here.
 
 ## Performance
@@ -133,4 +133,4 @@ problem this proposal addresses?
 [ietf-rfc2119]: https://tools.ietf.org/html/rfc2119
 [conformance-suite]: /src/tests/fidl/conformance_suite/
 [source-compatibility-suite]: /src/tests/fidl/source_compatibility/
-[fidl-tutorials]: /development/languages/fidl/tutorials/overview.md
+[fidl-tutorials]: /docs/development/languages/fidl/tutorials/overview.md
