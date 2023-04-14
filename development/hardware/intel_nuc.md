@@ -7,7 +7,7 @@
 This guide provides instructions on how to install Fuchsia on an
 Intel [NUC][nuc-wiki]{:.external} (Next Unit of Computing) device.
  -->
-本指南提供了有关在 Intel [NUC][nuc-wiki]{:.external}（Next Unit of Computing）迷你电脑设备上 Fuchsia 安装方法的说明。
+本指南提供了有关在 Intel [NUC][nuc-wiki]{:.external}（Next Unit of Computing）迷你电脑设备上安装 Fuchsia 方法的说明。
 
 <!--
 The steps are:
@@ -107,7 +107,7 @@ section.
 <!--
 ## Build Fuchsia {:#build-fuchsia .numbered}
  -->
-## 构建 Fuchisa {:#build-fuchsia .numbered}
+## 构建 Fuchsia {:#build-fuchsia .numbered}
 
 <!--
 Installing Fuchsia on a NUC device requires that you build a Workstation
@@ -125,7 +125,7 @@ To build Fuchsia for NUC installation, do the following:
 1. Set your build configuration to `workstation_eng.x64` and include the
    recovery package (`recovery-installer`):
  -->
-1. 将构建配置设置为 `workstation_eng.x64` 恢复包（`recovery-installer`）：
+1. 将构建配置设置为 `workstation_eng.x64`，并包含恢复包（`recovery-installer`）：
 
    ```posix-terminal
    fx set workstation_eng.x64 --with //build/images/recovery:recovery-installer
@@ -463,7 +463,7 @@ To install Fuchsia on your NUC, do the following:
 <!--
 1. Plug the bootable USB drive into the NUC.
  -->
-1. 将可引导 USB 驱动器插入您的 NUC 迷你电脑中。
+1. 将可引导 USB 驱动器插入 NUC 迷你电脑中。
 
 <!--
 1. Reboot your NUC.
