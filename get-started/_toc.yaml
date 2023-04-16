@@ -6,13 +6,13 @@
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
 toc:
-- title: "Overview"
+- title: "概述"
   path: /get-started/README.md
-- title: "1. Download the Fuchsia source code"
+- title: "1. 下载 Fuchsia 源代码"
   path: /get-started/get_fuchsia_source.md
-- title: "2. Configure and build Fuchsia"
+- title: "2. 配置并构建 Fuchsia"
   path: /get-started/build_fuchsia.md
-- title: "3. Start the Fuchsia emulator"
+- title: "3. 启动 Fuchsia 模拟器"
   path: /get-started/set_up_femu.md
-- title: "4. Explore Fuchsia"
+- title: "4. 探索 Fuchsia"
   path: /get-started/explore_fuchsia.md
