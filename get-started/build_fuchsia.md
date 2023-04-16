@@ -1,7 +1,7 @@
 <!--
 # Configure and build Fuchsia {#configure-and-build-fuchsia}
  -->
-# 配置和构建 Fuchsia {#configure-and-build-fuchsia}
+# 配置并构建 Fuchsia {#configure-and-build-fuchsia}
 
 <!--
 This guide provide instructions on how to configure and build Fuchsia

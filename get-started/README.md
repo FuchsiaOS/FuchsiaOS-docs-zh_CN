@@ -34,7 +34,7 @@ The steps are:
 1.  [Explore Fuchsia][explore-fuchsia].
  -->
 1.  [下载 Fuchsia 源代码][download-fuchsia]。
-1.  [配置和构建 Fuchsia][build-fuchsia]。
+1.  [配置并构建 Fuchsia][build-fuchsia]。
 1.  [启动 Fuchsia 模拟器][start-the-fuchsia-emulator]。
 1.  [探索 Fuchsia][explore-fuchsia]。
 
