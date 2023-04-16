@@ -2,16 +2,19 @@
 # Download the Fuchsia source code
 -->
 # 下载 Fuchsia 源代码
+
 <!--
 This guide provides instructions on how to download the
 Fuchsia source code and set up the Fuchsia development
 environment on your machine.
 -->
 本指南说明了如何下载 Fuchsia 源代码以及在您的机器上部署开发环境。
+
 <!--
 The steps are:
 -->
 步骤如下：
+
 <!--
 1. [Perform a preflight check](#perform-a-preflight-check).
 2. [Install prerequisite packages](#install-prerequisite-packages).
@@ -25,10 +28,12 @@ The steps are:
 4. [设置环境变量](#set-up-environment-variables)。
 5. [配置防火墙规则（可选）](#configure-firewall-rules)。
 
+
 <!--
 ## 1. Perform a preflight check {#perform-a-preflight-check}
 -->
 ## 1. 执行预检查 {#perform-a-preflight-check}
+
 <!--
 Fuchsia provides a preflight check tool
 ([`ffx platform preflight`][ffx-platform-preflight])
@@ -36,6 +41,7 @@ that examines your machine and informs you of any issues that may
 affect building Fuchsia from source on the machine.
 -->
 Fuchsia 提供了一个预检查工具（[`ffx platform preflight`][ffx-platform-preflight]），这个工具可以测试您的机器，并会通知您在该机器上可能会影响从源代码构建 Fuchsia 的任何问题。
+
 <!--
 Note: The preflight tool only works for the x64 architecture. Fuchsia
 is currently not guaranteed to build successfully on other host
@@ -64,6 +70,7 @@ Run the following command:
 ## 2. Install prerequisite packages {#install-prerequisite-packages}
 -->
 ## 2. 安装必备软件包 {#install-prerequisite-packages}
+
 <!--
 Fuchsia requires `curl`, `file`, `unzip`, and `git` to be up to date. The version
 of `git` needs to be 2.28 or higher.
@@ -101,12 +108,14 @@ Fuchsia 要求 `curl`、 `file`、 `unzip` 以及 `git` 等工具是最新版。
 ## 3. Download the Fuchsia source code {#download-the-fuchsia-source-code}
 -->
 ## 3. 下载 Fuchsia 源代码 {#download-the-fuchsia-source-code}
+
 <!--
 Fuchsia provides a [bootstrap script](/scripts/bootstrap) that creates a
 directory named `fuchsia` and downloads the Fuchsia source code in that
 directory.
 -->
 Fuchsia 提供了一个[引导脚本](/scripts/bootstrap)，这个脚本会创建一个名为 `fuchsia` 的文件夹，并把 Fuchsia 源码下载到这里。
+
 <!--
 Downloading the Fuchsia source code requires about 2 GB of space
 on your machine. Depending on your build configuration, you need
@@ -115,10 +124,12 @@ the download process uses a substantial amount of memory. It is advisible
 to close non-crucial processes during this time.
 -->
 下载 Fuchsia 源码要求您机器上有大约 2 GB 的存储空间。根据您的构建配置，之后在构建 Fuchsia 时，您还额外需要 80 到 90 GB 的存储空间。另外，下载过程中也会使用大量的内存。建议您在此过程中关闭其他非必要的进程。
+
 <!--
 To download the Fuchsia source, do the following:
 -->
 要下载 Fuchsia 源代码，请执行如下步骤：
+
 <!--
 1.  Select a directory for downloading the Fuchsia source code, for example:
 
