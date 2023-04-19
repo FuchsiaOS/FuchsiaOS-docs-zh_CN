@@ -79,6 +79,7 @@
 | robust                         | 可靠的                 | G                                                     |
 | rubric                         | 评分准则               | G                                                     |
 | sandbox                        | 沙盒                   | G                                                     |
+| sandboxed                      | 沙盒化（的）           | G                                                     |
 | sandboxing                     | 沙盒                   | G                                                     |
 | sanity check                   | 健全性检查             | G                                                     |
 | service                        | 服务                   |                                                       |
