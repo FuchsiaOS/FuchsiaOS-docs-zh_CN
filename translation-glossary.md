@@ -27,6 +27,7 @@
 | build                          | 构建                   | G                                                     |
 | capability                     | 能力                   | i                                                     |
 | caveats                        | 注意事项               | G                                                     |
+| channel                        | 通道                   |                                                       |
 | cleanup                        | 清理                   | G                                                     |
 | compile                        | 编译                   | G                                                     |
 | consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                           |
@@ -65,6 +66,7 @@
 | Next steps                     | 后续步骤               | G                                                     |
 | node                           | 节点                   | G & i                                                 |
 | out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
+| override                       | 覆盖                   | G                                                     |
 | parse                          | 解析                   | G                                                     |
 | parser                         | 解析器                 | G                                                     |
 | path                           | 路径                   | G                                                     |
