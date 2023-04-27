@@ -79,8 +79,10 @@
 | proxy                          | 代理                   |                                                       |
 | realm                          | 领域                   | i                                                     |
 | remote                         | 远程                   |                                                       |
+| resolver                       | 解析器                 |                                                       |
 | robust                         | 可靠的                 | G                                                     |
 | rubric                         | 评分准则               | G                                                     |
+| runner                         | 运行器                 |                                                       |
 | sandbox                        | 沙盒                   | G                                                     |
 | sandboxed                      | 沙盒化（的）           | G                                                     |
 | sandboxing                     | 沙盒                   | G                                                     |
