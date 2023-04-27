@@ -52,6 +52,7 @@
 | guideline                      | 方针                   |                                                       |
 | hash                           | 哈希                   | i                                                     |
 | heap dump                      | 堆转储                 | G                                                     |
+| hook                           | 钩子                   | G                                                     |
 | HTTP header                    | HTTP 标头              | G                                                     |
 | in-tree                        | 树内                   | G <br> 此处指源码树                                   |
 | infrastructure                 | 基础架构               | G                                                     |
