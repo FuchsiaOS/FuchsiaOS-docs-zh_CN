@@ -51,7 +51,7 @@ Fuchsia. Some example runners are:
     pages.
  -->
 -   [ELF 运行器][elf-runner]运行编译为 ELF 文件格式的二进制文件。
--   Dart AOT 运行器为 Dart 程序（例如VM）提供运行时。
+-   Dart AOT 运行器为 Dart 程序（例如 VM）提供运行时。
 -   Chromium Web 运行器为实现为网页的组件提供运行时。
 
 <!--

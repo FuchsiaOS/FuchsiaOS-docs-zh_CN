@@ -62,6 +62,7 @@
 | job                            | 作业                   | G                                                     |
 | just-in-time (JIT) compilation | 即时（JIT）编译        | G                                                     |
 | legacy                         | 旧版                   | G                                                     |
+| LogSink                        | LogSink                | i                                                     |
 | moniker                        | 代称                   | i                                                     |
 | mount                          | 装载                   | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
@@ -93,6 +94,7 @@
 | service mesh                   | 服务网格               | G                                                     |
 | set up / setup                 | 设置                   |                                                       |
 | settings                       | 设置                   |                                                       |
+| shard                          | 分片                   | G                                                     |
 | sidecar                        | Sidecar                | 首字母大写，不译 <br> G                               |
 | source code                    | 源代码                 | G                                                     |
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
