@@ -99,6 +99,9 @@
 | source code                    | 源代码                 | G                                                     |
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
 | strategy                       | 策略                   | G                                                     |
+| subpackage                     | 子包（化）             | 作名词时译为“子包” <br> 作动词时译为“子包化”          |
+| subpackaging                   | 子包化                 |                                                       |
+| subpackaged                    | 子包                   | 暂定                                                  |
 | suite                          | 套件                   | G                                                     |
 | tap                            | 点按                   | G                                                     |
 | traffic                        | 流量                   | G                                                     |
