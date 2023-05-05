@@ -54,11 +54,6 @@ same component thus share the same URL but have different monikers.
 尽管组件通过[网址][doc-component-urls]（URL）标识，但组件实例是通过[代称](#monikers)（moniker）标识的。因此，同一组件的不同实例共享相同的网址，却拥有不同的代称。
 
 <!--
-<br>![Components and component instances](images/topology_instances.png)<br>
- -->
-<br>![组件和组件实例](images/topology_instances.png)<br>
-
-<!--
 ## Component instance tree {#composition}
  -->
 ## 组件实例树 {#composition}
