@@ -8,7 +8,7 @@ The _[component topology][glossary.component topology]_ is a general concept
 that expresses the set of relationships between
 [component instances](#component-instances).
  -->
-[组件拓扑][glosossary.compontontoly]（_component topology_）是一个通用概念，表达了[组件实例](#component-instances)之间的一系列关系。
+[组件拓扑][glossary.component topology]（_component topology_）是一个通用概念，表达了[组件实例](#component-instances)之间的一系列关系。
 
 <!--
 These relationships are the following:
@@ -202,7 +202,7 @@ See the [realms documentation][doc-realms] for more information.
 <!--
 ## Capability routing graph {#capability-routing}
  -->
-## 能力路由图 {#功能路由}
+## 能力路由图 {#capability-routing}
 
 <!--
 The _capability routing graph_ describes how components gain access to use
