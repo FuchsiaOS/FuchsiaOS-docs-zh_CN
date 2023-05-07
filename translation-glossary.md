@@ -65,6 +65,7 @@
 | LogSink                        | LogSink                | i                                                     |
 | moniker                        | 代称                   | i                                                     |
 | mount                          | 装载                   | G                                                     |
+| named                          | 具名（的）             | G                                                     |
 | namespace                      | 命名空间               | G                                                     |
 | Next steps                     | 后续步骤               | G                                                     |
 | node                           | 节点                   | G & i                                                 |
