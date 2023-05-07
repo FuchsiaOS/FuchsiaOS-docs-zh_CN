@@ -70,7 +70,7 @@ Components are the basic unit of executable software on Fuchsia.
 <!--
 -   [Hub](hub.md): A live view of the component topology at runtime.
  -->
- -  [Hub]（hub.md）：运行时组件拓扑的实时视图。
+ -  [Hub](hub.md)：运行时组件拓扑的实时视图。
 
 <!--
 ## Internals
