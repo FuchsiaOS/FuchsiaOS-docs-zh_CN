@@ -25,7 +25,7 @@ To provide a directory capability, a component must declare the capability and
 [route](#route) it from `self`. The component hosts the directory capability in
 its [outgoing directory][glossary.outgoing-directory].
  -->
-为提供目录能力，组件必须声明该能力并将其[路由](#route)自 `self`。该组件在其[传出目录][glossary.outgoing-directory]（outgoing directory）中托管目录能力。
+要提供目录能力，组件必须声明该能力，并从 `self` 对其[路由](#route)。组件在其[传出目录][glossary.outgoing-directory]（outgoing directory）中托管目录能力。
 
 <!--
 To define the capability, add a `capabilities` declaration for it:
@@ -49,12 +49,12 @@ This defines a capability hosted by this component whose outgoing directory path
 is `/published-data`, and whose maximum usable
 [rights](#directory-capability-rights) are "read-only".
  -->
-该声明定义了该传出目录路径为 `/published-data` 的组件托管的能力，其可用的最大[权利](#directory-capability-rights)（right）是“只读的”。
+这段声明定义了该传出目录路径为 `/published-data` 的组件托管的能力，其可用的最大[权利](#directory-capability-rights)（right）是“只读的”。
 
 <!--
 ## Routing directory capabilities {#route}
  -->
-## 路由目录能力 {#Route}
+## 路由目录能力 {#route}
 
 <!--
 Components route directory capabilities by [exposing](#expose) them to their
@@ -77,7 +77,7 @@ see [capability routing][capability-routing].
 Exposing a directory capability gives the component's parent access to that
 capability:
  -->
-公开目录能力会给予父组件访问该能力的权限：
+公开（expose）目录能力会给予父组件访问该能力的权限：
 
 ```json5
 {
@@ -108,7 +108,7 @@ You may optionally specify:
 Offering a storage capability gives a child component access to that
 capability:
  -->
-提供存储能力会给予子组件访问该能力的权限：
+提供（offer）存储能力会给予子组件访问该能力的权限：
 
 ```json5
 {
@@ -140,7 +140,7 @@ You may optionally specify:
 To consume a storage capability, the component must request the capability and
 open the corresponding path in its [namespace][glossary.namespace].
  -->
-要使用（consume）存储能力，组件必须请求该能力并在其[命名空间][glossary.namespace]中打开相应路径。
+要使用（consume）目录能力，组件必须请求该能力并在其[命名空间][glossary.namespace]中打开相应路径。
 
 <!--
 To request the capability, add a `use` declaration for it:
