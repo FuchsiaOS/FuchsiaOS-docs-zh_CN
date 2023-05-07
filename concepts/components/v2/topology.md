@@ -35,7 +35,7 @@ A _component instance_ is a distinct embodiment of a
 [component][glossary.component] running in its own sandbox that is isolated from
 other component instances (including other instances of the same component).
  -->
-组件实例（_component instance_）是[组件]的[glossary.component]明确实体，运行在其自身的沙箱中，该沙箱与其他组件实例（包括同一组件的其他实例）隔离。
+组件实例（_component instance_）是[组件][glossary.component]的明确实体，运行在其自身的沙箱中，该沙箱与其他组件实例（包括同一组件的其他实例）隔离。
 
 <!--
 You can often use the terms component and component instance interchangeably
