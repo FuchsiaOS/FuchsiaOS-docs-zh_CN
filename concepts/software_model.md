@@ -43,7 +43,7 @@ distributed through packages which is the unit of distribution in Fuchsia.
 <!--
 Note: For more information on packages, see [Fuchsia packages](/concepts/packages/package.md)
  -->
-注意：要获取关于包的更多信息，请参阅 [Fuchsia 包]（/concepts/packages/package.md）
+注意：要获取关于包的更多信息，请参阅 [Fuchsia 包](/concepts/packages/package.md)
 
 <!--
 Fuchsia resolves packaged dependencies at install time, creating an ABI
