@@ -9,11 +9,9 @@ The Fuchsia platform can be installed on the following hardware devices:
 Fuchsia 平台能够安装在以下硬件设备上：
 
 <!-- 
-- [Chromebooks][install-fuchsia-on-chromebook]
 - [Intel NUC (Next Unit of Computing) devices][install-fuchsia-on-nuc]
 - [Khadas VIM3 board][install-fuchsia-on-vim3]
  -->
-- [Chromebook][install-fuchsia-on-chromebook]
 - [Intel NUC 迷你电脑][install-fuchsia-on-nuc]
 - [Khadas VIM3 开发板][install-fuchsia-on-vim3]
 
