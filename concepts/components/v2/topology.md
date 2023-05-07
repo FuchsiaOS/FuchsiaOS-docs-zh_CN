@@ -218,12 +218,12 @@ declarations in [component declarations][doc-component-declaration].
 See the [capability routing documentation][doc-capability-routing] for more
 information.
  -->
-要获取更多信息，请参阅[功能路由文档][doc-capability-routing]。
+要获取更多信息，请参阅[能力路由文档][doc-capability-routing]。
 
 <!--
 <br>![Diagram of capability routing](images/topology_capability_routing.png)<br>
  -->
-<br>![功能路由图示](images/topology_capability_routing.png)<br>
+<br>![能力路由图示](images/topology_capability_routing.png)<br>
 
 [glossary.component]: /glossary/README.md#component
 [glossary.component instance tree]: /glossary/README.md#component-instance-tree
