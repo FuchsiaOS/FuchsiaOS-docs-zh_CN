@@ -151,7 +151,7 @@ see [capability routing][capability-routing].
 Exposing a service capability gives the component's parent access to that
 capability:
  -->
-公开（expose）服务能力会给予父组件访问该能力的权限：
+公开服务能力会给予父组件访问该能力的权限：
 
 ```json5
 {
@@ -214,7 +214,7 @@ expose the same service.
 Offering a service capability gives a child component access to that
 capability:
  -->
-提供（offer）服务能力会给予子组件访问该能力的权限：
+提供服务能力会给予子组件访问该能力的权限：
 
 ```json5
 {
