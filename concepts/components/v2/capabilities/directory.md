@@ -77,7 +77,7 @@ see [capability routing][capability-routing].
 Exposing a directory capability gives the component's parent access to that
 capability:
  -->
-公开（expose）目录能力会给予父组件访问该能力的权限：
+公开目录能力会给予父组件访问该能力的权限：
 
 ```json5
 {
@@ -108,7 +108,7 @@ You may optionally specify:
 Offering a storage capability gives a child component access to that
 capability:
  -->
-提供（offer）存储能力会给予子组件访问该能力的权限：
+提供存储能力会给予子组件访问该能力的权限：
 
 ```json5
 {

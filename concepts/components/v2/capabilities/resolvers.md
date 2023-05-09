@@ -81,7 +81,7 @@ see [capability routing][capability-routing].
 Exposing a resolver capability gives the component's parent access to that
 capability:
  -->
-公开（expose）解析器能力会给予父组件访问该能力的权限：
+公开解析器能力会给予父组件访问该能力的权限：
 
 ```json5
 {
@@ -103,7 +103,7 @@ capability:
 Offering a resolver capability gives a child component access to that
 capability:
  -->
-提供（offer）解析器能力会给予子组件访问该能力的权限：
+提供解析器能力会给予子组件访问该能力的权限：
 
 ```json5
 {
