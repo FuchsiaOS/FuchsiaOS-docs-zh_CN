@@ -134,7 +134,7 @@ is `/svc/fuchsia.example.ExampleService`. You can also customize the path:
 Components route service capabilities by [exposing](#expose) them to their
 parent and [offering](#offer) them to their children.
  -->
-组件通过将服务功能[公开](#expose)（expose）至其父级并[提供](#offer)（offer）至其子级对其进行路由。
+组件通过将服务能力[公开](#expose)（expose）至其父级并[提供](#offer)（offer）至其子级对其进行路由。
 
 <!--
 For more details on how the framework routes component capabilities,
