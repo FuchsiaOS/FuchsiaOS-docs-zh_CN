@@ -10,7 +10,7 @@
 components][hierarchy-of-nested-components], where each component is
 encapsulated in its own package, and brings its own set of dependencies.
  -->
-[包][Packages]（package）可以“包含”其他软件包（称为其[子包][glossary.subpackage]（subpackage）），产生嵌套包的层次结构。[组件][Components]可以利用子包化（subpackaging）来组织[嵌套组件的层次结构][hierarchy-of-nested-components]，其中每个组件都封装在其自身的包中，并带来了其自身的一套依赖项。
+[包][Packages]（package）可以“包含”其他包（称为其[子包][glossary.subpackage]（subpackage）），产生嵌套包的层次结构。[组件][Components]可以利用子包化（subpackaging）来组织[嵌套组件的层次结构][hierarchy-of-nested-components]，其中每个组件都封装在其自身的包中，并带来了其自身的一套依赖项。
 
 <!--
 _Subpackages enable:_
@@ -113,7 +113,7 @@ component dependencies has a hermetic implementation, and the behavior of its
 child components will not change without rebuilding the parent component's
 package.
  -->
-子包化（subpackaging）允许开发人员改为使用构建时解析来声明包依赖性，“融入”预期的组件实现，包括已知的 ABI 和行为，而不会损害包边界的封装和隔离优势。这确保了具有组件依赖项的包具有密封实现，且其子组件的行为不会在未重建父组件包的情况下发生变化。
+子包化允许开发人员改为使用构建时解析来声明包依赖性，“融入”预期的组件实现，包括已知的 ABI 和行为，而不会损害包边界的封装和隔离优势。这确保了具有组件依赖项的包具有密封实现，且其子组件的行为不会在未重建父组件包的情况下发生变化。
 
 <!--
 Subpackaged component URLs also avoid problems inherent with absolute component
@@ -134,7 +134,7 @@ declared in a build configuration, and resolved at build time, by storing the
 subpackage's package hash in the parent component's package metadata, mapped to
 the subpackage name.
  -->
-通过使用相对包路径，子包子组件（subpackaged child component）的实现由带有子包名称的[相对组件网址]标识（一个带有指定组件清单路径的 URI 片段的子包网址），例如 `some-child#meta/default.cm`。子包名称 `some-child` 的映射在构建配置中声明，并在构建时解析，方法是将子包的包哈希存储在父组件的包元数据中，映射到子包名称。
+通过使用相对包路径，子包子组件（subpackaged child component）的实现由带有子包名称的[相对组件网址][relative component URL]标识（一个带有指定组件清单路径的 URI 片段的子包网址），例如 `some-child#meta/default.cm`。子包名称 `some-child` 的映射在构建配置中声明，并在构建时解析，方法是将子包的包哈希存储在父组件的包元数据中，映射到子包名称。
 
 <!--
 <aside class="key-point">
@@ -241,7 +241,7 @@ does not require a separate package per component, but it does encourage it, and
 the Fuchsia runtime and tools are designed to make the process of declaring,
 building, and running separately-packaged components natural and performant.
  -->
-如前所述，子包化允许软件包将其组件依赖声明为分层的、封装的组件包。该模型不需要每个组件一个单独的包，但确实鼓励这样做，Fuchsia 运行时和工具旨在使声明、构建和运行单独打包组件的过程自然而高效。
+如前所述，子包化允许包将其组件依赖声明为分层的、封装的组件包。该模型不需要每个组件一个单独的包，但确实鼓励这样做，Fuchsia 运行时和工具旨在使声明、构建和运行单独打包组件的过程自然而高效。
 
 <!--
 Conversely, multiple components combined in a single package share a single,
@@ -286,7 +286,7 @@ hierarchical nesting.
 <!--
 ## Advantages over using multiple components in a single package
  -->
-## 相较于在单个软件包中使用多个组件的优势
+## 相较于在单个包中使用多个组件的优势
 
 <!--
 Today, Fuchsia allows a single package to contain multiple components. This
@@ -326,7 +326,7 @@ This supports any use case that might otherwise have been satisfied by relying
 on access to a shared `/pkg` directory from a common package, without exposing
 the entire `/pkg` directory.
  -->
-这支持了原本可能依靠从通用软件包对共享 `/pkg` 目录访问的任何用例，而无需公开整个`/pkg`目录。
+这支持了原本可能依靠从通用包对共享 `/pkg` 目录访问的任何用例，而无需公开整个`/pkg`目录。
 
 <!--
 Subpackage-isolated `/pkg` directories combined with Component Framework
@@ -474,7 +474,7 @@ reason), the parent is free to assign its own subpackage names (via
 When declaring subpackaged child components in CML, the `url` should be the
 relative subpackaged component URL, as shown in the following example:
  -->
-当在 CML 中声明子包子组件（subpackaged child component）时，`url` 应为相对子包组件网址（subpackaged component URL），如下例所示：
+当在 CML 中声明子包子组件时，`url` 应为相对子包组件网址，如下例所示：
 
 ```json5
 {% includecode gerrit_repo="fuchsia/fuchsia" gerrit_path="examples/components/subpackages/meta/echo_client_with_subpackaged_server.cml" region_tag="declare_children_statically" adjust_indentation="auto" %}
