@@ -191,7 +191,7 @@ ancestors.
 Monikers may be collected in system logs. They are also used to implement the
 component framework's persistence features.
  -->
-代称可以在系统日志中收集。它们还用于实现组件框架的持久性功能。
+代称可以在系统日志中收集。它们还用于实现组件框架的持久功能。
 
 <!--
 ### Usage

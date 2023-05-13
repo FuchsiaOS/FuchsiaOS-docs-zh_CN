@@ -219,7 +219,7 @@ Concretely, there are two ways that `A` can bind to `B`:
     by `B`. Unlike a traditional capability, this protocol
     is implemented by the component framework.
  -->
--   `A` 连接到其命名空间中的功能，该功能由 `B` [公开][doc-manifests-expose]或[提供][doc-manifests-offer]。这是最常见的方式。
+-   `A` 连接到其命名空间中的能力，该能力由 `B` [公开][doc-manifests-expose]或[提供][doc-manifests-offer]。这是最常见的方式。
 -   `A` 绑定到由 `B` 公开或提供的 [`fuchsia.component.Binder`][binder.fidl] [框架协议][doc-framework-protocol]。 与传统能力不同，该协议由组件框架实现。
 
 <!--

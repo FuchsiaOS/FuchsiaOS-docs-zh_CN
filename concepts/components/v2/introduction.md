@@ -111,7 +111,7 @@ describe the capabilities the component requires to function.
 Components can discover the available capabilities in their namespace using the
 [`fuchsia.io.Directory`][fidl-directory] protocol.
  -->
-组件框架使用[组件声明][glossary.component-declaration]（component declaration）为组件组装“[命名空间][glossary.namespace]”（_namespace_），描述了组件运转需要功能。组件可以使用 [`fuchsia.io.Directory`][fidl-directory] 协议发现在其命名空间中可用的能力。
+组件框架使用[组件声明][glossary.component-declaration]（component declaration）为组件组装“[命名空间][glossary.namespace]”（_namespace_），描述了组件运转需要能力。组件可以使用 [`fuchsia.io.Directory`][fidl-directory] 协议发现在其命名空间中可用的能力。
 
 <!--
 At runtime, every component receives its namespace as well as a handle to the
@@ -120,7 +120,7 @@ the _[outgoing directory][glossary.outgoing-directory]_. Through the
 outgoing directory, the component's executable makes discoverable any
 capabilities that it provides.
  -->
-在运行时，每个组件都会收到其命名空间以及 `Directory` 通道的服务器端句柄。该 `Directory` 频道称为“[传出目录][glossary.outgoing-directory]”（_outgoing directory_）。通过传出目录，组件的可执行文件可发现其提供的任何功能。
+在运行时，每个组件都会收到其命名空间以及 `Directory` 通道的服务器端句柄。该 `Directory` 频道称为“[传出目录][glossary.outgoing-directory]”（_outgoing directory_）。通过传出目录，组件的可执行文件可发现其提供的任何能力。
 
 <!--
 The Component Framework brokers discovery from a providing component's
@@ -179,7 +179,7 @@ At its core, a component consists of the following:
   launch the component, as well as any capability routes.
  -->
 * 一个[组件网址][glossary.component-url]（Component URL），它独特地标识了该组件。
-* 一份[组件清单][glossary.component-manifest]，其中描述了如何启动该组件以及任何功能路由。
+* 一份[组件清单][glossary.component-manifest]，其中描述了如何启动该组件以及任何能力路由。
 
 <!--
 The Component Framework relies on _component resolvers_ to retrieve components

@@ -616,7 +616,7 @@ of [Late Binding][late-binding] or [Lazy Initialization][lazy-init]).
 Components have their own [lifecycle][lifecycle] which largely does not need to
 be observed.
  -->
-相比之下，组件实例通常在静态层次结构中定义。简单地将一个组件指定为另一个组件的子组件就足以[使子组件“存在”][component-creation]。但是，存在并不意味着该组件实际上正在运行。通常，只有当某物[绑定][component-binding]到它公开的功能时，组件才会运行。在 OOP 术语中，就好像一个对象在第一次调用方法时就已经存在（[后期绑定][late-binding]（Late Binding）或[延迟初始化][lazy-init]（Lazy Initialization）的一种）。组件有自己的[生命周期][lifecycle]，在很大程度上不需要观察。
+相比之下，组件实例通常在静态层次结构中定义。简单地将一个组件指定为另一个组件的子组件就足以[使子组件“存在”][component-creation]。但是，存在并不意味着该组件实际上正在运行。通常，只有当某物[绑定][component-binding]至其公开的能力时，组件才会运行。在 OOP 术语中，就好像一个对象在第一次调用方法时就已经存在（[后期绑定][late-binding]（Late Binding）或[延迟初始化][lazy-init]（Lazy Initialization）的一种）。组件有自己的[生命周期][lifecycle]，在很大程度上不需要观察。
 
 <!--
 The exception to static component initialization is [dynamic
@@ -775,10 +775,10 @@ incoming_namespace.Open("fuchsia.session_example.User").GetName();
 CreateChild("apps", "my_app", "fuchsia-pkg://..." /* 要执行的 app 的网址 */);
 
 // 访问公开协议会导致组件实际运行。
-// 输出参数是访问功能的目录句柄。
+// 输出参数是访问能力的目录句柄。
 OpenExposedDir("apps", "my_app", &out_dir);
 
-// 在绑定组件上打开任意功能。
+// 在绑定组件上打开任意能力。
 // 假设“Controller”（控制器）协议有一个名为“ExecuteCommand”（执行命令）的方法。
 out_dir.Open("fuchsia.my_app.Controller").ExecuteCommand();
 
@@ -895,7 +895,7 @@ the "apps" collection, so long as its dependencies are satisfied
 
       // 与所有组件共享“基类型”的方式类似，Dart 的对象类型可以动态转换为所需的接口。
       //
-      // 如果对象未实现所请求的类型，则转换失败，这类似于组件连接到非公开功能而失败。
+      // 如果对象未实现所请求的类型，则转换失败，这类似于组件连接到非公开能力而失败。
       void AddApp(Object app) {
         apps.add(app);
       }
@@ -1003,7 +1003,7 @@ the "apps" collection, so long as its dependencies are satisfied
 
       // 与所有组件共享“基类型”的方式类似，Java 的对象类型可以动态转换为所需的接口。
       //
-      // 如果对象未实现所请求的类型，则转换失败，这类似于组件连接到非公开功能而失败。
+      // 如果对象未实现所请求的类型，则转换失败，这类似于组件连接到非公开能力而失败。
       public void AddApp(Object app) {
         apps.add(app);
       }

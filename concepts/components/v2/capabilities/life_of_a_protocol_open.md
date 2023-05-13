@@ -359,7 +359,7 @@ updates could break this chain at runtime, and it's entirely possible a
 component that claims to provide a capability in its manifest will fail to do so
 when run.
  -->
-由于能力路由的运行时特性和提供能力的组件行为，在尝试之前，是无法预知给定组件能否成功访问其命名空间中的能力的。即使该能力具有有效的提供/公开链，包更新也可能在运行时破坏该链，且声称在其清单中提供能力的组件在运行时完全有可能无法提供。
+由于能力路由的运行时性质和提供能力的组件行为，在尝试之前，是无法预知给定组件能否成功访问其命名空间中的能力的。即使该能力具有有效的提供/公开链，包更新也可能在运行时破坏该链，且声称在其清单中提供能力的组件在运行时完全有可能无法提供。
 <!--
 ### Offered vs ambient capabilities
  -->

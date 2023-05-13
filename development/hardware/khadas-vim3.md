@@ -16,7 +16,7 @@ relatively low-cost real hardware that supports many kinds of peripheral devices
 See [Appendix: Feature support](#features) for details on which VIM3 features
 Fuchsia supports.
  -->
-如果您想在相对低成本、支持多种外设的实际硬件上了解 Fuchsia 的工作原理，那么在 VIM3 上运行 Fuchsia 非常有用。有关 Fuchsia 所支持的 VIM3 特性的详细信息，请参阅[附录：特性支持](#features)。
+如果您想在相对低成本、支持多种外设的实际硬件上了解 Fuchsia 的工作原理，那么在 VIM3 上运行 Fuchsia 非常有用。有关 Fuchsia 所支持的 VIM3 功能的详细信息，请参阅[附录：功能支持](#features)。
 
 <!-- 
 If you just want to explore Fuchsia with the lowest friction possible, check out
@@ -618,12 +618,12 @@ your VIM3 and need to "factory reset" it:
 <!-- 
 ## Appendix: Feature support {#features}
  -->
-## 附录：特性支持 {#features}
+## 附录：功能支持 {#features}
 
 <!-- 
 Fuchsia currently supports these features of the VIM3:
  -->
-Fuchsia 目前支持 VIM3 的下列特性：
+Fuchsia 目前支持 VIM3 的下列功能：
 
 <!-- 
 * UART Serial Debugger
@@ -663,7 +663,7 @@ Fuchsia 目前支持 VIM3 的下列特性：
 <!-- 
 These features are under development and may not be supported:
  -->
-下列特性正在开发中，可能不受支持：
+下列功能正在开发中，可能不受支持：
 
 <!-- 
 * Video decoder
@@ -678,7 +678,7 @@ These features are under development and may not be supported:
 The following features are not supported, but might be added by future
 contributions:
  -->
-下列特性不受支持，但未来可能通过代码贡献添加：
+下列功能不受支持，但未来可能通过代码贡献添加：
 
 <!-- 
 * SPI Flash
@@ -696,7 +696,7 @@ contributions:
 <!-- 
 These features are not supported and are unlikely to be added:
  -->
-下列特性不受支持，且不太可能添加：
+下列功能不受支持，且不太可能添加：
 
 <!-- 
 * Video encoding (due to non-public firmware)

@@ -18,7 +18,7 @@ A component can interact with the system and other components only through the
 discoverable capabilities from its namespace and the few
 [numbered handles][src-processargs] it receives.
  -->
-组件只能通过其命名空间的可发现功能以及它收到的少数[已编号句柄][src-processargs]（numbered handles）来与系统和其他组件进行交互。
+组件只能通过其命名空间的可发现能力以及它收到的少数[已编号句柄][src-processargs]（numbered handles）来与系统和其他组件进行交互。
 
 <!--
 ## Capability routing {#routing}
@@ -40,7 +40,7 @@ a provider. Since capabilities are most often routed through parent components
 to their children, parent components play an important role in defining the
 sandboxes for their child components.
  -->
-对于在运行时可用的功能，还必须存在从使用者组件到提供者组件的有效[能力路由][glossary.capability-routing]。由于能力最常通过父组件路由至其子组件，因此父组件在为其子组件定义沙箱方面发挥重要作用。
+对于在运行时可用的能力，还必须存在从使用者组件到提供者组件的有效[能力路由][glossary.capability-routing]。由于能力最常通过父组件路由至其子组件，因此父组件在为其子组件定义沙箱方面发挥重要作用。
 
 <!--
 Some capability types are routed to [environments][glossary.environment] rather
@@ -49,7 +49,7 @@ the framework for the realms where they are assigned. Capabilities routed to
 environments are accessed and used by the framework. Component instances do not
 have runtime access to the capabilities in their environment.
  -->
-某些功能类型被路由到[环境][glossary.environment]（environment），而不是单个组件实例（component instance）。环境为分配的领域（realm）配置框架的行为。路由到环境的能力由框架访问和使用。组件实例对其环境中的能力没有运行时访问权限。
+某些能力类型被路由到[环境][glossary.environment]（environment），而不是单个组件实例（component instance）。环境为分配的领域（realm）配置框架的行为。路由到环境的能力由框架访问和使用。组件实例对其环境中的能力没有运行时访问权限。
 
 <!--
 ### Routing terminology {#routing-terminology}

@@ -297,7 +297,7 @@ component URL of the form `#meta/some-child.cm` informs the Fuchsia component
 resolver to load the component implementation for `some-child` from the same
 package that contained the parent component's manifest.
  -->
-如今，Fuchsia 允许单个包包含多个组件。该特性早于子包出现，提供了另一种通过相对网址声明子组件的方法；即，通过利用组件清单的资源路径来标识组件的 URI 片段。`#meta/some-child.cm` 形式的组件网址通知 Fuchsia 组件解析器从父组件清单所在包中加载 `some-child` 的组件实现。
+如今，Fuchsia 允许单个包包含多个组件。该功能早于子包出现，提供了另一种通过相对网址声明子组件的方法；即，通过利用组件清单的资源路径来标识组件的 URI 片段。`#meta/some-child.cm` 形式的组件网址通知 Fuchsia 组件解析器从父组件清单所在包中加载 `some-child` 的组件实现。
 
 <!--
 ### Built-in access controls to share package resources
