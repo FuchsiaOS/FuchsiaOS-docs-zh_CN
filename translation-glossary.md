@@ -31,6 +31,8 @@
 | cleanup                        | 清理                   | G                                                     |
 | compile                        | 编译                   | G                                                     |
 | consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                           |
+| consumer (component)           | 使用者组件             | 暂定                                                  |
+| consuming                      | 使用者组件             | 暂定                                                  |
 | contribute changes             | 贡献更改               | i                                                     |
 | control plane                  | 控制层面 <br> 控制平面 | G                                                     |
 | data plane                     | 数据平面 <br> 数据层面 | G                                                     |
@@ -80,6 +82,8 @@
 | prerequisites                  | 前提条件               | G                                                     |
 | print                          | 输出 <br> 打印         | G <br> 后者**只**用于有“印刷”含义的具体情况           |
 | product                        | 产品                   | i & G                                                 |
+| provider (component)           | 提供者组件             | 暂定                                                  |
+| providing component            | 提供者组件             | 暂定                                                  |
 | proxy                          | 代理                   |                                                       |
 | realm                          | 领域                   | i                                                     |
 | remote                         | 远程                   |                                                       |

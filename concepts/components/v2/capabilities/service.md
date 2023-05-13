@@ -69,14 +69,14 @@ component as subdirectories of the service.
 The component framework generates an arbitrary, unique identifier for each
 service instance name.
  -->
-服务的多个具名实例可由单个组件托管。这些示例作为服务的子目录存在于消费者组件的[命名空间][glossary.namespace]中。组件框架为每个服务实例名称生成任意的唯一标识符。
+服务的多个具名实例可由单个组件托管。这些示例作为服务的子目录存在于使用者组件的[命名空间][glossary.namespace]中。组件框架为每个服务实例名称生成任意的唯一标识符。
 
 <!--
 For example, if the framework generates `57dfe118a2a8` as the instance name of
 the `fuchsia.examples.EchoService` service, a consuming component could connect
 to the protocols in that instance using the following namespace paths:
  -->
-例如，如果框架生成 `57dfe118a2a8` 作为 `fuchsia.examples.EchoService` 服务的实例名称，则消费者组件可以使用以下命名空间路径连接到该实例中的协议：
+例如，如果框架生成 `57dfe118a2a8` 作为 `fuchsia.examples.EchoService` 服务的实例名称，则使用者组件可以使用以下命名空间路径连接到该实例中的协议：
 
 - `/svc/fuchsia.examples.EchoService/57dfe118a2a8/regular_echo`
 - `/svc/fuchsia.examples.EchoService/57dfe118a2a8/reversed_echo`

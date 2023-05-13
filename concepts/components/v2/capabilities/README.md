@@ -40,7 +40,7 @@ a provider. Since capabilities are most often routed through parent components
 to their children, parent components play an important role in defining the
 sandboxes for their child components.
  -->
-对于在运行时可用的功能，还必须存在从消费者组件到提供者组件的有效[能力路由][glossary.capability-routing]。由于能力最常通过父组件路由至其子组件，因此父组件在为其子组件定义沙箱方面发挥重要作用。
+对于在运行时可用的功能，还必须存在从使用者组件到提供者组件的有效[能力路由][glossary.capability-routing]。由于能力最常通过父组件路由至其子组件，因此父组件在为其子组件定义沙箱方面发挥重要作用。
 
 <!--
 Some capability types are routed to [environments][glossary.environment] rather
