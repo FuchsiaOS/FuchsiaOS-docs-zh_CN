@@ -92,7 +92,7 @@ sophistication of these FFI systems varies wildly, from essentially
 sed to sophisticated libclang-based tooling. Some amount of
 consideration of FFI friendliness went into these decisions.
  -->
-外部功能接口 (FFI) 的友好性受到了一定程度的关注。许多非 C 语言都支持 C 接口。这些 FFI 系统的复杂程度千差万别，从基本的 sed 到基于 libclang 的复杂工具。它们的决定体现了对 FFI 友好性的一些考虑。
+外部函数接口 (Foreign Function Interface，FFI) 的友好性受到了一定程度的关注。许多非 C 语言都支持 C 接口。这些 FFI 系统的复杂程度千差万别，从基本的 sed 到基于 libclang 的复杂工具。它们的决定体现了对 FFI 友好性的一些考虑。
 
 <!-- 
 ## Language versions
@@ -684,14 +684,14 @@ about what to do instead, and a bug tracking the deprecation.
 <!--
 ## Disallowed or Discouraged Language Features
  -->
-## 不允许或不鼓励的语言特性
+## 不允许或不鼓励的语言功能
 
 <!--
 This section describes language features that cannot or should not be
 used in the interfaces to Fuchsia's C libraries, and the rationales
 behind the decisions to disallow them.
  -->
-本节介绍了无法或不应在 Fuchsia 的 C 库中使用的语言特性及个中缘由。
+本节介绍了无法或不应在 Fuchsia 的 C 库中使用的语言功能及个中缘由。
 
 <!--
 ### Enums
@@ -701,7 +701,7 @@ behind the decisions to disallow them.
 <!--
 C enums are banned. They are brittle from an ABI standpoint.
  -->
-C 枚举（enum）是禁止的。从 ABI 的角度来看，该特性是脆弱的。
+C 枚举（enum）是禁止的。从 ABI 的角度来看，该功能是脆弱的。
 
 <!--
 - The size of integer used to represent a constant of enum type is
@@ -721,13 +721,13 @@ C 枚举（enum）是禁止的。从 ABI 的角度来看，该特性是脆弱的
 C's bitfields are banned. They are brittle from an ABI standpoint, and
 have a lot of nonintuitive sharp edges.
  -->
-C 位域（bitfield）是禁止的。从 ABI 的角度来看，该特性是脆弱的，并且具有许多非直观的不良影响。
+C 位域（bitfield）是禁止的。从 ABI 的角度来看，该功能是脆弱的，并且具有许多非直观的不良影响。
 
 <!--
 Note that this applies to the C language feature, not to an API that
 exposes bit flags. The C bitfield feature looks like:
  -->
-请注意，这适用于 C 语言功能，而非公开位标志的 API。C 位域特性形如：
+请注意，这适用于 C 语言功能，而非公开位标志的 API。C 位域功能形如：
 
 <!--
 ```C
@@ -776,7 +776,7 @@ C 允许使用函数 `with_empty_parameter_lists()`，其与 `functions_that_tak
 This is the C99 feature that allows declaring an incomplete array as
 the last member of a struct with more than one parameter. For example:
  -->
-这是 C99 特性，它允许将不完整的数组声明为具有多个参数的结构体的最后一个成员。例如：
+这是 C99 功能，它允许将不完整的数组声明为具有多个参数的结构体的最后一个成员。例如：
 
 ```C
 typedef struct foo_buffer {
@@ -797,7 +797,7 @@ pattern）的外部布局时，允许其使用此模式。
 The similar GCC extension of declaring a 0-sized array member is
 similarly disallowed.
  -->
-类似地，声明零大小数组成员的 GCC 扩展特性同样是不允许的。
+类似地，声明零大小数组成员的 GCC 扩展功能同样是不允许的。
 
 <!--
 ### Module Maps
@@ -810,7 +810,7 @@ many of the issues with header-driven compilation. While the Fuchsia
 toolchain team is very likely to invest in these in the future, we
 currently do not support them.
  -->
-这是 Clang 针对类 C 语言的扩展特性之一，试图通过由头文件驱动的编译来解决许多问题。尽管 Fuchsia 工具链团队未来很可能会投入该类特性的开发，但目前是不支持的。
+这是 Clang 针对类 C 语言的扩展功能之一，试图通过由头文件驱动的编译来解决许多问题。尽管 Fuchsia 工具链团队未来很可能会投入该类功能的开发，但目前是不支持的。
 
 <!--
 ### Compiler Extensions

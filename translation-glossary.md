@@ -48,6 +48,7 @@
 | expose                         | 公开 <br> 显示         | G <br> 具体选择取决于语境，亦有“公开显示”译法         |
 | event_stream                   | 事件流                 | Fuchsia 专有名词                                      |
 | fault injection                | 故障注入               | G                                                     |
+| feature                        | 功能<br>特性           | G<br>后者使用场景未涉及，不采用                       |
 | fully qualified URL            | 完全限定的网址         | G                                                     |
 | get stared                     | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
 | get started with               | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
@@ -106,7 +107,7 @@
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
 | strategy                       | 策略                   | G                                                     |
 | subpackage                     | 子包（化）             | 作名词时译为“子包” <br> 作动词时译为“子包化”          |
-| subpackaging                   | 子包化                 |                                                       |
+| subpackaging                   | 子包化                 | 暂定                                                  |
 | subpackaged                    | 子包                   | 暂定                                                  |
 | suite                          | 套件                   | G                                                     |
 | tap                            | 点按                   | G                                                     |

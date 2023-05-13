@@ -253,7 +253,7 @@ capability:
 <!--
 ## Consuming storage capabilities {#consume}
  -->
-## 使用存储功能 {#consume}
+## 使用存储能力 {#consume}
 
 <!--
 To consume a storage capability, the component must request the capability and
@@ -322,7 +322,7 @@ of component `A`.
 The parent component `B` offers this capability to `A` using a backing directory
 provided by the `memfs` component in the same realm:
  -->
-这就在组件 `A` 命名空间中的 `/example_dir` 提供了一个隔离的存储目录。父组件 `B` 使用由同一领域中 `memfs` 组件提供的支持目录向 `A` 提供了该功能：
+这就在组件 `A` 命名空间中的 `/example_dir` 提供了一个隔离的存储目录。父组件 `B` 使用由同一领域中 `memfs` 组件提供的支持目录向 `A` 提供了该能力：
 
 ```json5
 // B.cml

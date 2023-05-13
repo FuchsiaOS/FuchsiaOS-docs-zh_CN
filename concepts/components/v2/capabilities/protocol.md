@@ -231,7 +231,7 @@ Any component may `use` these capabilities by setting `framework` as the source
 without an accompanying `offer` from its parent.
 Fuchsia supports the following framework protocols:
  -->
-“框架协议”（*framework protocol*）是组件框架提供的协议。任何组件都可以通过将框架（`framework`）设置为源来使用（`use`）这些功能，而无需相应的来自其父组件的 `offer`。Fuchsia 支持下列框架协议：
+“框架协议”（*framework protocol*）是组件框架提供的协议。任何组件都可以通过将框架（`framework`）设置为源来使用（`use`）这些能力，而无需相应的来自其父组件的 `offer`。Fuchsia 支持下列框架协议：
 
 <!--
 -   [`fuchsia.component.Realm`][fidl-realm]: Allows a component to manage and bind to
