@@ -23,7 +23,7 @@ These relationships are the following:
     provider-consumer relationships).
  -->
 -   组件实例树：描述组件实例是如何[组合](#composition)在一起的（其父子关系）。
--   能力路由图：描述组件实例是如何获得由其他组件实例发布能力的使用权限的（其提供者-消费者关系）。
+-   能力路由图：描述组件实例是如何获得由其他组件实例发布能力的使用权限的（其提供者-使用者关系）。
 
 <!--
 ## Component instances {#component-instances}
@@ -212,7 +212,7 @@ consumer component instance, there must be capability routing path between them.
 Such capability routes are determined by `use`, `offer`, and `expose`
 declarations in [component declarations][doc-component-declaration].
  -->
-能力路由图（_capability routing graph_）描述了组件如何获取组件实例树中其他组件公开和提供的能力的使用权限。为了让组件实例提供的能力可供消费者组件实例使用，其间必须有能力路由路径。此类能力路由通过[组件声明][doc-component-declaration]中的 `use`（使用）、`offer`（提供）和 `expose`（公开）声明确定。
+能力路由图（_capability routing graph_）描述了组件如何获取组件实例树中其他组件公开和提供的能力的使用权限。为了让组件实例提供的能力可供使用者组件实例使用，其间必须有能力路由路径。此类能力路由通过[组件声明][doc-component-declaration]中的 `use`（使用）、`offer`（提供）和 `expose`（公开）声明确定。
 
 <!--
 See the [capability routing documentation][doc-capability-routing] for more

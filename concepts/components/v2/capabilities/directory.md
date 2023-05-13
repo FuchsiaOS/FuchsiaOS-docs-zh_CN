@@ -207,7 +207,7 @@ routed throughout the system. Directory rights are applied as follows:
   from the `expose` source if not present.
  -->
 * [`capabilities`][manifest-capabilities]：**必需**。提供可用于目录的基本权利集。`use`、`offer` 或 `expose` 中指定的任何权利必须是此处声明内容的子集。
-* [`use`][manifest-use]：**必需**。描述消费者组件请求的访问权限。
+* [`use`][manifest-use]：**必需**。描述使用者组件请求的访问权限。
 * [`offer`][manifest-offer]：**可选**。目标组件可用的已修改权限。如果不出现，权利将从 `offer` 来源继承。
 * [`expose`][manifest-expose]：**可选**。目标组件可用的已修改权限。如果不出现，权利将从 `expose` 来源继承。
 

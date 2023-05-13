@@ -182,7 +182,7 @@ nature of capability routing makes it easy to guarantee that components don't
 receive access to capabilities they shouldn't have, thus maintaining the
 [principle of least privilege][wiki-least-privilege].
  -->
-环境的语义与[能力路由][doc-capability-routing]形成对比。对于能力路由，从提供者到消费者的路径中的每个组件都必须显式地[公开][doc-expose]或[提供][doc-offer]能力。能力路由的显式性质使得很容易保证组件不会获得其不应拥有的能力的访问权限，从而维护[最小特权原则][wiki-least-privilege]。
+环境的语义与[能力路由][doc-capability-routing]形成对比。对于能力路由，从提供者到使用者的路径中的每个组件都必须显式地[公开][doc-expose]或[提供][doc-offer]能力。能力路由的显式性质使得很容易保证组件不会获得其不应拥有的能力的访问权限，从而维护[最小特权原则][wiki-least-privilege]。
 
 <!--
 However, there are some configuration choices that don't make sense to configure
