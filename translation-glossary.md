@@ -42,6 +42,7 @@
 | deprecated                     | 已弃用（的）           | G                                                     |
 | detach                         | 分离                   | G                                                     |
 | directory                      | 目录                   | G                                                     |
+| descriptor                     | 描述符                 |                                                       |
 | distributed tracing            | 分布式跟踪             | G                                                     |
 | driver                         | 驱动程序               | G                                                     |
 | emulator                       | 模拟器                 | G                                                     |
