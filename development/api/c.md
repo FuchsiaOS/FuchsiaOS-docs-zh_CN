@@ -551,7 +551,7 @@ of the reservation.
 A future version of this document will give guidance as to how to
 describe string parameters in C interfaces.
  -->
-本文档的未来版本将提供有关在 C 接口中描述字符串参数方法的指导。
+本文档的未来版本将提供有关在 C 接口中描述字符串参数方法的指南。
 
 <!-- 
 #### Anonymous types
