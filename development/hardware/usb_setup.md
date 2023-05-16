@@ -126,7 +126,7 @@ To prepare a USB flash drive to be a bootable disk, do the following:
 <!--
 1. Press **Enter** on prompts to continue the installation process.
  -->
-1. 出现提示时，请按下 **Enter**（回车）键以继续安装过程。 
+1. 出现提示时，请按下 **Enter**（回车）键以继续安装过程。
 
 <!--
    When the installation is finished, the screen displays `Success! Please restart your computer.`

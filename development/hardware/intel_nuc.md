@@ -254,7 +254,7 @@ Two versions of BIOS are available on NUC devices: **Visual BIOS** (for instance
 and **Aptio V BIOS** (for instance, NUC11). The steps are slightly different depending
 on which BIOS is included in your system.
  -->
-NUC 迷你电脑设备上的 BIOS 有两个版本：**Visual BIOS**（例如 NUC7）和 **Aptio V BIOS**（例如 NUC11）。 根据系统中包含的 BIOS 版本，设置步骤略有不同。
+NUC 迷你电脑设备上的 BIOS 有两个版本：**Visual BIOS**（例如 NUC7）和 **Aptio V BIOS**（例如 NUC11）。根据系统中包含的 BIOS 版本，设置步骤略有不同。
 
 <!--
 Important: To be able to enter the BIOS setup mode, you may need to unplug the
@@ -519,7 +519,7 @@ in turn uploads the [Fuchsia-specific SSH keys][fuchsia-ssh-keys] to the NUC.
 Once those Fuchsia-specific SSH keys are uploaded to the NUC, you can perform
 [`ffx`-based  workflows][ffx-workflows] on the NUC from your host machine.
  -->
-如果您计划使用该 NUC 迷你电脑设备**进行 Fuchsia 开发**，那么您需要将 Fuchsia 镜像从您的主机刷入该 NUC 迷你电脑设备，从而上传 [Fuchsia 特定的 SSH 密钥][fuchsia-ssh-keys] 至 NUC 迷你电脑。 Fuchsia 特定的 SSH 密钥上传至 NUC 迷你电脑之后，您就可以从主机在 NUC 迷你电脑上执行 [`ffx`-based workflows][ffx-workflows] 了。
+如果您计划使用该 NUC 迷你电脑设备**进行 Fuchsia 开发**，那么您需要将 Fuchsia 镜像从您的主机刷入该 NUC 迷你电脑设备，从而上传 [Fuchsia 特定的 SSH 密钥][fuchsia-ssh-keys] 至 NUC 迷你电脑。Fuchsia 特定的 SSH 密钥上传至 NUC 迷你电脑之后，您就可以从主机在 NUC 迷你电脑上执行 [`ffx`-based workflows][ffx-workflows] 了。
 
 <!--
 To upload Fuchsia SSH keys to the NUC, do the following:

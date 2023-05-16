@@ -75,7 +75,7 @@ Run the following command:
 Fuchsia requires `curl`, `file`, `unzip`, and `git` to be up to date. The version
 of `git` needs to be 2.28 or higher.
 -->
-Fuchsia 要求 `curl`、 `file`、 `unzip` 以及 `git` 等工具是最新版。 `git` 版本需为 2.28 或以上。
+Fuchsia 要求 `curl`、 `file`、 `unzip` 以及 `git` 等工具是最新版。`git` 版本需为 2.28 或以上。
 
 * {Linux}
 

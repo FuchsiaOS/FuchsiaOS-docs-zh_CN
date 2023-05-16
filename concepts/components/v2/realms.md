@@ -86,7 +86,7 @@ corresponding realms. For example, if `services` did not expose `fuchsia.Echo`,
 `shell` would not be aware that `fuchsia.Echo` exists, and could not offer the
 service to its children or access it at runtime.
  -->
-箭头描绘了通过领域路由从 `echo` 到 `echo_tool` 的 `fuchsia.Echo` 服务能力的路径。向上的箭头对应 [`expose`][expose] 声明，而向下的箭头代表 [`offer`][offer] 声明。 `expose` 声明使得 `fuchsia.Echo` 公开于相应领域的能力边界之外。例如，如果 `services` 没有公开 `fuchsia.Echo`，`shell` 将不知道 `fuchsia.Echo` 的存在，并且无法向其子组件提供服务，或在运行时对其访问。
+箭头描绘了通过领域路由从 `echo` 到 `echo_tool` 的 `fuchsia.Echo` 服务能力的路径。向上的箭头对应 [`expose`][expose] 声明，而向下的箭头代表 [`offer`][offer] 声明。`expose` 声明使得 `fuchsia.Echo` 公开于相应领域的能力边界之外。例如，如果 `services` 没有公开 `fuchsia.Echo`，`shell` 将不知道 `fuchsia.Echo` 的存在，并且无法向其子组件提供服务，或在运行时对其访问。
 
 <!--
 For a more detailed walkthrough of capability routing with this example, see the
