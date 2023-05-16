@@ -17,6 +17,9 @@
 | ArchiveAccessor                | 档案访问器             | i                                                     |
 | archivist                      | 归档器                 | i                                                     |
 | attach                         | 挂接                   | G                                                     |
+| attributed                     | 归因                   | G                                                     |
+| attributing                    | 归因（于）             | G                                                     |
+| attribution                    | 归因                   | G                                                     |
 | audience                       | 受众群体               | G                                                     |
 | authentication                 | 认证                   |                                                       |
 | authorization                  | 授权                   |                                                       |
@@ -32,7 +35,7 @@
 | compile                        | 编译                   | G                                                     |
 | consume                        | 使用 <br> 消耗         | G <br> 后者在结算系统中使用                           |
 | consumer (component)           | 使用者组件             | 暂定                                                  |
-| consuming                      | 使用者组件             | 暂定                                                  |
+| consuming component            | 使用者组件             | 暂定                                                  |
 | contribute changes             | 贡献更改               | i                                                     |
 | control plane                  | 控制层面 <br> 控制平面 | G                                                     |
 | data plane                     | 数据平面 <br> 数据层面 | G                                                     |
@@ -52,9 +55,9 @@
 | fully qualified URL            | 完全限定的网址         | G                                                     |
 | get stared                     | 使用入门 <br> 入门     | G <br> 前者更常用                                     |
 | get started with               | 开始使用 <br> 使用入门 | G <br> 二者均常用                                     |
-| guidance                       | 指导                   |                                                       |
+| guidance                       | 指南                   | G                                                     |
 | guide                          | 指南                   | G                                                     |
-| guideline                      | 方针                   |                                                       |
+| guideline                      | 准则                   | G                                                     |
 | hash                           | 哈希                   | i                                                     |
 | heap dump                      | 堆转储                 | G                                                     |
 | hook                           | 钩子                   | G                                                     |
@@ -75,12 +78,14 @@
 | node                           | 节点                   | G & i                                                 |
 | out-of-tree                    | 树外                   | G <br> 此处指源码树                                   |
 | override                       | 覆盖                   | G                                                     |
+| overview                       | 概述<br>概览           | G<br>后者更常用                                       |
 | parse                          | 解析                   | G                                                     |
 | parser                         | 解析器                 | G                                                     |
 | path                           | 路径                   | G                                                     |
 | pave                           | 铺设                   | i                                                     |
 | policy                         | 政策                   | G                                                     |
 | prerequisites                  | 前提条件               | G                                                     |
+| principle                      | 原则                   | G                                                     |
 | print                          | 输出 <br> 打印         | G <br> 后者**只**用于有“印刷”含义的具体情况           |
 | product                        | 产品                   | i & G                                                 |
 | provider (component)           | 提供者组件             | 暂定                                                  |
@@ -105,6 +110,7 @@
 | sidecar                        | Sidecar                | 首字母大写，不译 <br> G                               |
 | source code                    | 源代码                 | G                                                     |
 | span                           | Span <br> 跨           | 作名词时首字母大写，不译 <br> 作动词时译为“跨” <br> G |
+| specification                  | 规范<br>规格           | G<br>前者更常用                                       |
 | strategy                       | 策略                   | G                                                     |
 | subpackage                     | 子包（化）             | 作名词时译为“子包” <br> 作动词时译为“子包化”          |
 | subpackaging                   | 子包化                 | 暂定                                                  |

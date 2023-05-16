@@ -5,6 +5,17 @@
 # Please, read https://fuchsia.dev/fuchsia-src/contribute/docs/documentation-navigation-toc
 # before making changes to this file, and add a member of the fuchsia.dev
 # team as reviewer.
+# toc:
+# - title: "Overview"
+#   path: /get-started/README.md
+# - title: "1. Download the Fuchsia source code"
+#   path: /get-started/get_fuchsia_source.md
+# - title: "2. Configure and build Fuchsia"
+#   path: /get-started/build_fuchsia.md
+# - title: "3. Start the Fuchsia emulator"
+#   path: /get-started/set_up_femu.md
+# - title: "4. Explore Fuchsia"
+#   path: /get-started/explore_fuchsia.md
 toc:
 - title: "概述"
   path: /get-started/README.md
