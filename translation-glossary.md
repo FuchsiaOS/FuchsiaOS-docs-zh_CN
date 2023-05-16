@@ -45,6 +45,7 @@
 | distributed tracing            | 分布式跟踪             | G                                                     |
 | driver                         | 驱动程序               | G                                                     |
 | emulator                       | 模拟器                 | G                                                     |
+| end user                       | 最终用户               | G                                                     |
 | ergonomics                     | 工效学                 | i & G                                                 |
 | escalate                       | 上报                   | G                                                     |
 | execute-only memory            | 只执行内存             | G                                                     |
@@ -95,6 +96,7 @@
 | remote                         | 远程                   |                                                       |
 | resolver                       | 解析器                 |                                                       |
 | robust                         | 可靠的                 | G                                                     |
+| rollout                        | 发布                   | G                                                     |
 | rubric                         | 评分准则               | G                                                     |
 | runner                         | 运行器                 |                                                       |
 | sandbox                        | 沙盒                   | G                                                     |
